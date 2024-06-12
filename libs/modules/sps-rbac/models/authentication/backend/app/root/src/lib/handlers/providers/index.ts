@@ -3,9 +3,14 @@ import { model } from "@sps/sps-rbac-models-authentication-backend-model";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { SessionMiddlewareGeneric } from "@sps/sps-rbac-backend-sdk";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/providers/:provider`, BlankInput>,
+  c: Context<
+    MiddlewaresGeneric & SessionMiddlewareGeneric,
+    `${string}/providers/:provider`,
+    BlankInput
+  >,
   next: Next,
 ) => {
   const body = await c.req.parseBody();
@@ -17,7 +22,29 @@ export const handler = async (
   const data = JSON.parse(body["data"]);
 
   try {
-    const entity = await model.services.providers({ data });
+    const session = c.var.session;
+
+    if (!session) {
+      throw new HTTPException(401, {
+        message: "No session provided",
+      });
+    }
+
+    const provider = c.req.param("provider").replaceAll("-", "_");
+
+    if (!provider) {
+      throw new HTTPException(400, {
+        message: "No provider provided",
+      });
+    }
+
+    if (provider !== "login_and_password") {
+      throw new HTTPException(400, {
+        message: "Invalid provider",
+      });
+    }
+
+    const entity = await model.services.providers({ data, session, provider });
 
     return c.json(
       {

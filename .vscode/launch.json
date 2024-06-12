@@ -30,13 +30,18 @@
       "runtimeVersion": "20",
       "outputCapture": "std",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "frontend:dev", "--inspect"],
-      // "envFile": "${workspaceFolder}/apps/frontend/.env.development",
-      // "program": "${workspaceFolder}/node_modules/.bin/next",
-      // "runtimeArgs": ["--inspect"],
+      "runtimeArgs": ["run-script", "frontend:debug"],
       "cwd": "${workspaceFolder}",
       "localRoot": "${workspaceFolder}",
       "console": "internalConsole"
+    },
+    {
+      "name": "frontend:attach",
+      "type": "node",
+      "request": "attach",
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "port": 9230
     }
   ]
 }

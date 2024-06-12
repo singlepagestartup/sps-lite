@@ -49,11 +49,11 @@ export type IResultData<
 
 export interface FindServiceProps {
   params?: {
-    populate: any;
-    filters: any;
-    orderBy: any;
-    offset: any;
-    limit: any;
+    populate?: any;
+    filters?: any;
+    orderBy?: any;
+    offset?: any;
+    limit?: any;
   };
 }
 

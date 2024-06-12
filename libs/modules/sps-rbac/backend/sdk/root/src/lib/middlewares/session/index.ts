@@ -49,6 +49,7 @@ export function middleware(options?: SessionOptions) {
     let createNewSession = false;
 
     const sessionCookie = getCookie(c, cookieSessionName);
+
     if (sessionCookie) {
       try {
         const cookieData = await await Iron.unseal(
@@ -122,6 +123,26 @@ export function middleware(options?: SessionOptions) {
       expires: session?.expiresAt,
       sameSite: "Strict",
     });
+
+    const expiredSessions = await sessionModel.services.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "expiresAt",
+              method: "lt",
+              value: new Date(),
+            },
+          ],
+        },
+      },
+    });
+
+    for (const expiredSession of expiredSessions) {
+      await sessionModel.services.delete({
+        id: expiredSession.id,
+      });
+    }
 
     // if (shouldDelete) {
     // if (store) {

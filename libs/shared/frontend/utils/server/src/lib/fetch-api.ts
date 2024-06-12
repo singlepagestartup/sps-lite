@@ -7,54 +7,6 @@ import {
 import QueryString from "qs";
 import { cookies } from "next/headers";
 
-async function findByIdAndName<T>(params: {
-  id: number | string;
-  name: string;
-  populate: any;
-  tag?: string;
-  revalidate?: number;
-}): Promise<T> {
-  const { id, populate, name, tag, revalidate = 60 } = params;
-
-  const stringifiedQuery = QueryString.stringify(
-    {
-      populate,
-    },
-    {
-      encodeValuesOnly: true,
-    },
-  );
-
-  const fetchOptions = {
-    next: {
-      revalidate,
-    },
-  } as any;
-
-  if (tag) {
-    fetchOptions.next.tags = [tag];
-  }
-
-  const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/components/${name}/${id}?${stringifiedQuery}`,
-    fetchOptions as any,
-  );
-
-  const json = await res.json();
-
-  if (!res.ok) {
-    if (json.error) {
-      throw new Error(json.error.message || "Failed to fetch data");
-    }
-
-    throw new Error("Failed to fetch data");
-  }
-
-  const transformedData = transformResponseItem(json);
-
-  return transformedData;
-}
-
 async function findOne<T>(params: {
   id: number | string;
   model: string;
@@ -93,7 +45,7 @@ async function findOne<T>(params: {
 
   const res = await fetch(
     `${BACKEND_URL}${rootPath}/${model}/${id}?${stringifiedQuery}`,
-    fetchOptions,
+    { ...fetchOptions, headers: { Cookie: cookies().toString() } },
   );
 
   const json = await res.json();
@@ -132,13 +84,6 @@ async function find<T>(params: {
     revalidate = 60,
   } = params;
 
-  const cookiesList = cookies();
-  // console.log(`🚀 ~ cookiesList:`, cookiesList);
-
-  // cookiesList.getAll().map((cookie) => {
-  //   console.log(`🚀 ~ cookiesList.getAll ~ cookie:`, cookie);
-  // });
-
   const stringifiedQuery = QueryString.stringify(
     {
       populate,
@@ -163,7 +108,7 @@ async function find<T>(params: {
 
   const res = await fetch(
     `${BACKEND_URL}${rootPath}/${model}?${stringifiedQuery}`,
-    fetchOptions,
+    { ...fetchOptions, headers: { Cookie: cookies().toString() } },
   );
 
   const json = await res.json();
@@ -222,6 +167,7 @@ async function create<T>(params: {
     `${BACKEND_URL}${rootPath}/${model}?${stringifiedQuery}`,
     {
       ...fetchOptions,
+      headers: { Cookie: cookies().toString() },
       method: "POST",
       body: formData,
     } as any,
@@ -243,7 +189,6 @@ async function create<T>(params: {
 }
 
 export const api = {
-  findByIdAndName,
   findOne,
   find,
   create,

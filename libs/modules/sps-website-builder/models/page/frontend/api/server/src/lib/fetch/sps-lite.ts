@@ -7,6 +7,7 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
+import { cookies } from "next/headers";
 
 export interface Params {
   url?: string | string[];
@@ -36,7 +37,7 @@ async function getByUrl({ url }: Params) {
       new URLSearchParams({
         url: localUrl,
       }),
-    fetchOptions,
+    { ...fetchOptions, headers: { Cookie: cookies().toString() } },
   );
 
   const targetPage = await request.json();
@@ -137,7 +138,7 @@ async function getPage(params: Params) {
 
   const request = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}?${stringifiedQuery}`,
-    fetchOptions,
+    { ...fetchOptions, headers: { Cookie: cookies().toString() } },
   );
 
   const filledTargetPage = await request.json();
@@ -168,7 +169,7 @@ export const api = {
     const pageProps = await api.getPage(props);
     const request = await fetch(
       `${BACKEND_URL}/api/sps-website-builder/metatags`,
-      fetchOptions,
+      { ...fetchOptions, headers: { Cookie: cookies().toString() } },
     );
 
     if (!request.ok) {
@@ -181,7 +182,7 @@ export const api = {
     if (!metatags?.length) {
       const defaultMetatagsRequest = await fetch(
         `${BACKEND_URL}/api/sps-website-builder/metatags`,
-        fetchOptions,
+        { ...fetchOptions, headers: { Cookie: cookies().toString() } },
       );
 
       const defaultMetatagsJson = await defaultMetatagsRequest.json();
@@ -232,7 +233,7 @@ export const api = {
     try {
       const request = await fetch(
         `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
-        fetchOptions,
+        { ...fetchOptions, headers: { Cookie: cookies().toString() } },
       );
 
       const pagesUrls = await request.json();
