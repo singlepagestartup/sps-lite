@@ -1,3 +1,0 @@
-{
-  "extends": ["<%= offset_from_root %>.eslintrc.json"],
-}
