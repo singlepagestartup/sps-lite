@@ -74,8 +74,26 @@ export async function relationGenerator(
   });
 
   if (options.action === "remove") {
-    // await coder.remove();
-    throw new Error("Not implemented");
+    const models =
+      coder.project.root.project.libs.project.modules[0].project.module.project
+        .models;
+
+    for (const model of models) {
+      const relations =
+        model.project.model.project.backend.project.schema.project.relations
+          .project.relations;
+
+      for (const relation of relations) {
+        await relation.remove();
+      }
+    }
+
+    const relations =
+      coder.project.root.project.libs.project.modules[0].project.module.project
+        .relations;
+    for (const relation of relations) {
+      await relation.project.relation.remove();
+    }
   } else {
     await coder.create();
   }

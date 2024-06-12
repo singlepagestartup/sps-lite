@@ -207,6 +207,8 @@ export class Coder {
       return;
     }
 
+    await this.detach();
+
     await nxWorkspace.removeGenerator(this.tree, {
       projectName: this.baseName,
       skipFormat: true,
