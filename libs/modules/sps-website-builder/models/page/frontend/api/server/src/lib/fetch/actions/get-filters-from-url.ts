@@ -1,5 +1,7 @@
 "use server";
 
+import { IModel } from "@sps/sps-website-builder-models-page-frontend-api-model";
+
 interface Params {
   url?: string | string[];
 }
@@ -9,8 +11,8 @@ export async function action({
   params,
 }: {
   page: {
-    id: number;
-    url: string;
+    id: IModel["id"];
+    url: IModel["url"];
   };
   params: Params;
 }): Promise<string[]> {

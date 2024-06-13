@@ -27,6 +27,9 @@ export function GlobalError({ error, reset, fonts }: any) {
         if (pages.length > 0) {
           setPage(pages[0]);
         }
+      })
+      .catch((error) => {
+        console.error("GlobalError error:", error);
       });
   }, []);
 

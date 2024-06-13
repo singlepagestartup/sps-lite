@@ -1,7 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL } from "@sps/shared-utils";
 import {
+  BACKEND_URL,
   prepareFormDataToSend,
   transformResponseItem,
 } from "@sps/shared-utils";
@@ -68,8 +68,25 @@ export const api = createApi({
 
       async onQueryStarted(...args) {},
 
-      transformResponse: (result) => {
+      transformResponse: (result: any) => {
         return transformResponseItem(result);
+      },
+
+      // invalidatesTags: invalidatesTagsFunc
+      //   ? invalidatesTagsFunc
+      //   : [{ type: rtkType, id: "LIST" }],
+    }),
+    isAuthenticated: build.query<IModelExtended, unknown>({
+      query: () => {
+        return {
+          url: `${route}/authentications/is-authenticated`,
+        };
+      },
+
+      async onQueryStarted(...args) {},
+
+      transformResponse: (result: { data: IModelExtended }) => {
+        return transformResponseItem<IModelExtended>(result);
       },
 
       // invalidatesTags: invalidatesTagsFunc

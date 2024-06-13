@@ -13,6 +13,10 @@ export function middleware() {
     const path = c.req.url;
     const method = c.req.method;
 
+    if (path.includes("sps-rbac")) {
+      return await next();
+    }
+
     if (method === "GET" && store) {
       const cachedValue = await store.find(path);
 

@@ -32,6 +32,10 @@ app.get("/check", async (c, next) => {
   );
 });
 
+app.get("/is-authenticatated", async (c, next) => {
+  return handlers.isAuthenticatated(c, next);
+});
+
 app.get("/:uuid", async (c, next) => {
   return handlers.findById(c, next);
 });

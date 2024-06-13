@@ -138,8 +138,11 @@ function findApi<T>({
       }
     },
 
-    transformResponse: (result) => {
-      return transformResponseItem(result);
+    transformResponse: (result: {
+      data: TransformedApiArray<T>;
+      meta: any;
+    }) => {
+      return transformResponseItem<TransformedApiArray<T>>(result);
     },
 
     providesTags: (result: any) => {
@@ -208,8 +211,8 @@ function findOneApi<T>({
       }
     },
 
-    transformResponse: (result) => {
-      return transformResponseItem(result);
+    transformResponse: (result: { data: T }) => {
+      return transformResponseItem<T>(result);
     },
 
     providesTags: (result: any) => {
@@ -264,8 +267,8 @@ function createApi<T>({
       }
     },
 
-    transformResponse: (result) => {
-      return transformResponseItem(result);
+    transformResponse: (result: { data: T }) => {
+      return transformResponseItem<T>(result);
     },
 
     // invalidatesTags: invalidatesTagsFunc
@@ -317,8 +320,8 @@ function updateApi<T>(props: {
       }
     },
 
-    transformResponse: (result) => {
-      return transformResponseItem(result);
+    transformResponse: (result: { data: T }) => {
+      return transformResponseItem<T>(result);
     },
 
     invalidatesTags: [],
@@ -371,8 +374,8 @@ function deleteApi<T>({
       }
     },
 
-    transformResponse: (result) => {
-      return transformResponseItem(result);
+    transformResponse: (result: { data: T }) => {
+      return transformResponseItem<T>(result);
     },
 
     invalidatesTags: invalidatesTagsFunc

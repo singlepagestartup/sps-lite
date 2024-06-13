@@ -41,6 +41,8 @@ export function Component(props: IComponentPropsExtended) {
     loginAndPassword({
       data,
     });
+
+    router.refresh();
     // if (props.data?.id) {
     //   await updateEntity({ id: props.data?.id, data });
     //   return;

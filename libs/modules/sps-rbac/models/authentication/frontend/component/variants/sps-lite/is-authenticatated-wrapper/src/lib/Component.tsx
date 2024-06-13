@@ -1,6 +1,5 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -9,11 +8,8 @@ export function Component(props: IComponentPropsExtended) {
       data-model="authentication"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full py-10 text-center flex flex-col gap-1")}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: authentication</p>
-      <p className="font-bold text-4xl">Variant: is-authenticatated-wrapper</p>
+      {props.children}
     </div>
   );
 }

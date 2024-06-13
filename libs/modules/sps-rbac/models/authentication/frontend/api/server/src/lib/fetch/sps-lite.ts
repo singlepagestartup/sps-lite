@@ -1,4 +1,5 @@
 import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { action as isAuthenticated } from "./actions/is-authenticated";
 import {
   populate,
   route,
@@ -21,4 +22,5 @@ export const api = {
       rootPath: "/api/sps-rbac",
     });
   },
+  isAuthenticated,
 };

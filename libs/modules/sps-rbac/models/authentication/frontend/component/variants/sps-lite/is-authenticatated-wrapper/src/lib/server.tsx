@@ -9,13 +9,9 @@ import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  if (!props.data.id) {
-    return <></>;
-  }
+  const data = await api.fetch.isAuthenticated();
 
-  const data = await api.fetch.findById({
-    id: props.data.id,
-  });
+  console.log(`🚀 ~ Server ~ isAuthenticated data:`, data);
 
   if (!data) {
     return <></>;

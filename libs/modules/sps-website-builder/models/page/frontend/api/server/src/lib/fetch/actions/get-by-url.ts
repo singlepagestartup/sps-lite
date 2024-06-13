@@ -1,6 +1,9 @@
 "use server";
 
-import { route } from "@sps/sps-website-builder-models-page-frontend-api-model";
+import {
+  route,
+  IModelExtended,
+} from "@sps/sps-website-builder-models-page-frontend-api-model";
 import {
   BACKEND_URL,
   NextRequestOptions,
@@ -30,7 +33,7 @@ export async function action({ url }: Params) {
     },
   };
 
-  const request = await fetch(
+  const res = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url?` +
       new URLSearchParams({
         url: localUrl,
@@ -38,8 +41,17 @@ export async function action({ url }: Params) {
     options,
   );
 
-  const targetPage = await request.json();
-  const transformedData = transformResponseItem(targetPage);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const json = await res.json();
+
+  if (json.error) {
+    throw new Error(json.error.message || "Failed to fetch data");
+  }
+
+  const transformedData = transformResponseItem<IModelExtended>(json);
 
   if (!transformedData?.id) {
     return;

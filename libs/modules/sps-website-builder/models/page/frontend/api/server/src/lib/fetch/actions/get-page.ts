@@ -58,13 +58,22 @@ export async function action(params: Params) {
     },
   );
 
-  const request = await fetch(
+  const res = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}?${stringifiedQuery}`,
     options,
   );
 
-  const filledTargetPage = await request.json();
-  const transformedData = transformResponseItem(filledTargetPage);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const json = await res.json();
+
+  if (json.error) {
+    throw new Error(json.error.message || "Failed to fetch data");
+  }
+
+  const transformedData = transformResponseItem<IModelExtended>(json);
 
   return transformedData;
 }

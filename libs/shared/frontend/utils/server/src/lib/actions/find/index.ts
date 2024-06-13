@@ -60,17 +60,17 @@ export async function action<T>(params: {
     options,
   );
 
-  const json = await res.json();
-
   if (!res.ok) {
-    if (json.error) {
-      throw new Error(json.error.message || "Failed to fetch data");
-    }
-
     throw new Error("Failed to fetch data");
   }
 
-  const transformedData = transformResponseItem(json);
+  const json = await res.json();
+
+  if (json.error) {
+    throw new Error(json.error.message || "Failed to fetch data");
+  }
+
+  const transformedData = transformResponseItem<T[]>(json);
 
   return transformedData;
 }

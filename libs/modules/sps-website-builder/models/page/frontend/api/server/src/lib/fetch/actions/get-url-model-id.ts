@@ -16,6 +16,10 @@ export async function action({
 }): Promise<string | undefined> {
   const page = await getByUrl({ url });
 
+  if (!page) {
+    return;
+  }
+
   const filters = await getFiltersFromUrl({ page, params: { url } });
 
   const targetFilter = filters.find(

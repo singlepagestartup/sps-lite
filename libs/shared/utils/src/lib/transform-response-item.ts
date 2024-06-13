@@ -1,9 +1,7 @@
-export function util(resItem: any) {
-  const passItem = resItem.data;
-
-  if (Array.isArray(resItem.data)) {
-    passItem._meta = { ...resItem.meta };
+export function util<T>(resItem: { data: T } | { data: T; meta: any }): T {
+  if ("meta" in resItem && Array.isArray(resItem.data)) {
+    return Object.assign(resItem.data, { _meta: resItem.meta });
   }
 
-  return passItem;
+  return resItem.data as T;
 }

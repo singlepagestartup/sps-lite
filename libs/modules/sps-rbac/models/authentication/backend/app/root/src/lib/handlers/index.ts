@@ -4,6 +4,7 @@ import { handler as createHander } from "./create";
 import { handler as updateHander } from "./update";
 import { handler as deleteHander } from "./delete";
 import { handler as providersHandler } from "./providers";
+import { handler as isAuthenticatatedHandler } from "./is-authenticatated";
 
 export const handlers = {
   find: findHander,
@@ -12,4 +13,5 @@ export const handlers = {
   update: updateHander,
   delete: deleteHander,
   providers: providersHandler,
+  isAuthenticatated: isAuthenticatatedHandler,
 };

@@ -4,6 +4,7 @@ import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-
 import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-frontend-component";
 import { TipTap } from "@sps/shadcn";
 import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as SpsRbacAuthentifications } from "@sps/sps-rbac-models-authentication-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -38,22 +39,27 @@ export function Component(props: IComponentPropsExtended) {
             );
           })}
         </div>
-        {props.data.heroSectionBlocksToSpsFileStorageWidgets.length ? (
-          <div className="w-full">
-            {props.data.heroSectionBlocksToSpsFileStorageWidgets.map(
-              (entity, index) => {
-                return (
-                  <HeroSectionBlocksToSpsFileStorageWidgets
-                    key={index}
-                    isServer={props.isServer}
-                    variant="default"
-                    data={entity}
-                  />
-                );
-              },
-            )}
-          </div>
-        ) : null}
+        <SpsRbacAuthentifications
+          isServer={props.isServer}
+          variant="is-authenticatated-wrapper"
+        >
+          {props.data.heroSectionBlocksToSpsFileStorageWidgets.length ? (
+            <div className="w-full">
+              {props.data.heroSectionBlocksToSpsFileStorageWidgets.map(
+                (entity, index) => {
+                  return (
+                    <HeroSectionBlocksToSpsFileStorageWidgets
+                      key={index}
+                      isServer={props.isServer}
+                      variant="default"
+                      data={entity}
+                    />
+                  );
+                },
+              )}
+            </div>
+          ) : null}
+        </SpsRbacAuthentifications>
       </div>
     </div>
   );

@@ -1,6 +1,9 @@
 "use server";
 
-import { route } from "@sps/sps-website-builder-models-page-frontend-api-model";
+import {
+  route,
+  IModel,
+} from "@sps/sps-website-builder-models-page-frontend-api-model";
 import {
   BACKEND_URL,
   NextRequestOptions,
@@ -15,13 +18,22 @@ export async function action() {
     },
   };
 
-  const request = await fetch(
+  const res = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/get-urls`,
     options,
   );
 
-  const pagesUrls = await request.json();
-  const transformedData = transformResponseItem(pagesUrls);
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  const json = await res.json();
+
+  if (json.error) {
+    throw new Error(json.error.message || "Failed to fetch data");
+  }
+
+  const transformedData = transformResponseItem<IModel>(json);
 
   const paths =
     transformedData?.urls?.map(

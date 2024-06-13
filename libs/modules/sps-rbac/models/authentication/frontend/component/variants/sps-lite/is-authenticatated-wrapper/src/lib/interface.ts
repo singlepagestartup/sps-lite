@@ -1,5 +1,6 @@
 import { IModel } from "@sps/sps-rbac-models-authentication-contracts";
 import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-contracts-extended";
+import { ReactNode } from "react";
 
 export const variant = "is-authenticatated-wrapper" as const;
 
@@ -10,7 +11,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  data: Partial<IModel>;
+  children: ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

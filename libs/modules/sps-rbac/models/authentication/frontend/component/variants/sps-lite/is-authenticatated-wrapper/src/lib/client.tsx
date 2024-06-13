@@ -10,9 +10,7 @@ import { api } from "@sps/sps-rbac-models-authentication-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByIdQuery({
-      id: props.data.id,
-    });
+    api.rtk.useIsAuthenticatedQuery({});
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Skeleton {...props} />;
