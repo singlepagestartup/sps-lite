@@ -23,6 +23,9 @@
             "command": "nx run frontend:db:sps-rbac-generate"
           },
           {
+            "command": "nx run frontend:db:sps-notification-generate"
+          },
+          {
             "command": "nx run frontend:db:sps-billing-generate"
           },
           {
@@ -139,6 +142,33 @@
         ]
       }
     },
+    "db:sps-notification-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-notification/backend/db/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-notification-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-notification/backend/db/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
     "db:startup-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -183,6 +213,9 @@
           },
           {
             "command": "nx run frontend:db:sps-billing-migrate"
+          },
+          {
+            "command": "nx run frontend:db:sps-notification-migrate"
           },
           {
             "command": "nx run frontend:db:startup-migrate"

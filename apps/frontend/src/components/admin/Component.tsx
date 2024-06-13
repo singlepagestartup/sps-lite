@@ -15,6 +15,9 @@ const SpsFileStorageAdminComponent = dynamic(() =>
 const SpsRbacAdminComponent = dynamic(() =>
   import("@sps/sps-rbac-frontend").then((mod) => mod.AdminComponent),
 );
+const SpsNotificationdminComponent = dynamic(() =>
+  import("@sps/sps-notification-frontend").then((mod) => mod.AdminComponent),
+);
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -77,6 +80,13 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
             {widget === "sps-rbac" ? (
               <SpsRbacAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-notification" ? (
+              <SpsNotificationdminComponent
                 {...props}
                 isServer={false}
                 variant="default"
