@@ -19,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      {/* {props.data.widgetsToHeroSectionBlocks?.map(
+      {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {
           return (
             <WidgetsToHeroSectionBlocks
@@ -92,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
             data={entity}
           />
         );
-      })} */}
+      })}
       {props.data.widgetsToSpsRbacModuleWidgets.map((entity, index) => {
         return (
           <WidgetsToSpsRbacModuleWidgets
