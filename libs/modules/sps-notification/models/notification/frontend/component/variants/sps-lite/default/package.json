@@ -1,0 +1,8 @@
+{
+  "name": "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-default",
+  "version": "0.0.1",
+  "singlepagestartup": {
+    "version": "0.0.156",
+    "template": "default"
+  }
+}

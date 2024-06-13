@@ -381,6 +381,45 @@
       "@sps/sps-notification-frontend": [
         "libs/modules/sps-notification/frontend/root/src/index.ts"
       ],
+      "@sps/sps-notification-models-notification-backend-app": [
+        "libs/modules/sps-notification/models/notification/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-backend-model": [
+        "libs/modules/sps-notification/models/notification/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-backend-schema": [
+        "libs/modules/sps-notification/models/notification/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-backend-schema-relations": [
+        "libs/modules/sps-notification/models/notification/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-backend-schema-table": [
+        "libs/modules/sps-notification/models/notification/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-contracts": [
+        "libs/modules/sps-notification/models/notification/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-contracts-extended": [
+        "libs/modules/sps-notification/models/notification/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-api-client": [
+        "libs/modules/sps-notification/models/notification/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-api-model": [
+        "libs/modules/sps-notification/models/notification/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-api-server": [
+        "libs/modules/sps-notification/models/notification/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component": [
+        "libs/modules/sps-notification/models/notification/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-redux": [
+        "libs/modules/sps-notification/models/notification/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-notification-models-widget-backend-app": [
         "libs/modules/sps-notification/models/widget/backend/app/root/src/index.ts"
       ],

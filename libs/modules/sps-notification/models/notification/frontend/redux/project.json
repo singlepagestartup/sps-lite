@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-notification-models-notification-frontend-redux",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-notification/models/notification/frontend/redux/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}
