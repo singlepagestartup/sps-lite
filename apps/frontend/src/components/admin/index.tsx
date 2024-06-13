@@ -3,6 +3,7 @@ import Server from "./server";
 import { ReduxProvider } from "@sps/sps-website-builder-models-page-frontend-redux";
 import { headers } from "next/headers";
 import QueryString from "qs";
+import { Component as IsAuthenticatatedWrapper } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper";
 
 export function Component(props: IComponentPropsExtended) {
   const headersList = headers();
@@ -16,8 +17,13 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ReduxProvider>
-      <Comp {...props} />
-    </ReduxProvider>
+    <IsAuthenticatatedWrapper
+      variant="is-authenticatated-wrapper"
+      isServer={props.isServer}
+    >
+      <ReduxProvider>
+        <Comp {...props} />
+      </ReduxProvider>
+    </IsAuthenticatatedWrapper>
   );
 }

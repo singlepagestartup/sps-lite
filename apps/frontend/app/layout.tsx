@@ -16,7 +16,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth bg-bald-400">
+    <html className="scroll-smooth">
       <body
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
