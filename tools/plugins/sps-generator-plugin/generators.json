@@ -29,6 +29,11 @@
       "factory": "./src/generators/update/generator",
       "schema": "./src/generators/update/schema.json",
       "description": "update generator"
+    },
+    "custom": {
+      "factory": "./src/generators/custom/generator",
+      "schema": "./src/generators/custom/schema.json",
+      "description": "custom generator"
     }
   }
 }
