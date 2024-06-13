@@ -12,11 +12,17 @@ const StartupAdminComponent = dynamic(() =>
 const SpsFileStorageAdminComponent = dynamic(() =>
   import("@sps/sps-file-storage-frontend").then((mod) => mod.AdminComponent),
 );
+const SpsBillingAdminComponent = dynamic(() =>
+  import("@sps/sps-billing-frontend").then((mod) => mod.AdminComponent),
+);
 const SpsRbacAdminComponent = dynamic(() =>
   import("@sps/sps-rbac-frontend").then((mod) => mod.AdminComponent),
 );
-const SpsNotificationdminComponent = dynamic(() =>
+const SpsNotificationAdminComponent = dynamic(() =>
   import("@sps/sps-notification-frontend").then((mod) => mod.AdminComponent),
+);
+const SpsCrmAdminComponent = dynamic(() =>
+  import("@sps/sps-crm-frontend").then((mod) => mod.AdminComponent),
 );
 
 export function Component(props: IComponentPropsExtended) {
@@ -47,6 +53,20 @@ export function Component(props: IComponentPropsExtended) {
                 setWidget("sps-rbac");
               }}
               active={widget === "sps-rbac"}
+            />
+            <Button
+              title="sps-notification"
+              onClick={() => {
+                setWidget("sps-notification");
+              }}
+              active={widget === "sps-notification"}
+            />
+            <Button
+              title="sps-billing"
+              onClick={() => {
+                setWidget("sps-billing");
+              }}
+              active={widget === "sps-billing"}
             />
             <Button
               title="startup"
@@ -86,7 +106,21 @@ export function Component(props: IComponentPropsExtended) {
               />
             ) : null}
             {widget === "sps-notification" ? (
-              <SpsNotificationdminComponent
+              <SpsNotificationAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-billing" ? (
+              <SpsBillingAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
+            {widget === "sps-crm" ? (
+              <SpsCrmAdminComponent
                 {...props}
                 isServer={false}
                 variant="default"

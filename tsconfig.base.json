@@ -106,6 +106,84 @@
       "@sps/sps-billing-models-widget-frontend-redux": [
         "libs/modules/sps-billing/models/widget/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-crm-backend-app": [
+        "libs/modules/sps-crm/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-crm-backend-db": [
+        "libs/modules/sps-crm/backend/db/root/src/index.ts"
+      ],
+      "@sps/sps-crm-backend-models": [
+        "libs/modules/sps-crm/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-crm-backend-schema": [
+        "libs/modules/sps-crm/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-crm-backend-sdk": [
+        "libs/modules/sps-crm/backend/sdk/root/src/index.ts"
+      ],
+      "@sps/sps-crm-frontend": [
+        "libs/modules/sps-crm/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-backend-app": [
+        "libs/modules/sps-crm/models/widget/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-backend-model": [
+        "libs/modules/sps-crm/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-backend-schema": [
+        "libs/modules/sps-crm/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-backend-schema-relations": [
+        "libs/modules/sps-crm/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-backend-schema-table": [
+        "libs/modules/sps-crm/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-contracts": [
+        "libs/modules/sps-crm/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-contracts-extended": [
+        "libs/modules/sps-crm/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-api-client": [
+        "libs/modules/sps-crm/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-api-model": [
+        "libs/modules/sps-crm/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-api-server": [
+        "libs/modules/sps-crm/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component": [
+        "libs/modules/sps-crm/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-crm/models/widget/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-crm-models-widget-frontend-redux": [
+        "libs/modules/sps-crm/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-db-provider": ["libs/providers/sps-db-provider/src/index.ts"],
       "@sps/sps-file-storage-backend-app": [
         "libs/modules/sps-file-storage/backend/app/root/src/index.ts"
