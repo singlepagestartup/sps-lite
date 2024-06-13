@@ -7,6 +7,7 @@ import { service as updateEntity } from "./update";
 import { service as seedEntities } from "./seed";
 import { service as dumpEntities } from "./dump";
 import { service as isAuthenticatated } from "./is-authenticatated";
+import { service as logout } from "./logout";
 
 export const services = {
   create: createEntity,
@@ -18,4 +19,5 @@ export const services = {
   dump: dumpEntities,
   providers,
   isAuthenticatated,
+  logout,
 };

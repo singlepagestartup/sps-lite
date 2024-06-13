@@ -1,5 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { Component as LogoutAction } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-logout-action";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -10,9 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full py-10 text-center flex flex-col gap-1"
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: authentication-block</p>
-      <p className="font-bold text-4xl">Variant: logout</p>
+      <LogoutAction isServer={props.isServer} variant="logout-action" />
     </div>
   );
 }

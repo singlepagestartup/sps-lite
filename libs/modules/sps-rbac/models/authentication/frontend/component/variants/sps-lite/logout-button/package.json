@@ -1,0 +1,8 @@
+{
+  "name": "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-logout-button",
+  "version": "0.0.1",
+  "singlepagestartup": {
+    "version": "0.0.156",
+    "template": "default"
+  }
+}

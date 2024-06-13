@@ -56,7 +56,6 @@ export const util = async ({
     offset_from_root: offsetFromRoot(root),
     lib_name: name,
   });
-  console.log(`🚀 ~ generateFilesPath:`, generateFilesPath);
 
   generateFiles(tree, `${__dirname}/files`, root, {
     template: "",
@@ -73,6 +72,18 @@ export const util = async ({
         path: "./tsconfig.lib.json",
       },
     ];
+
+    return json;
+  });
+
+  updateJson(tree, `${root}/package.json`, (json) => {
+    json.singlepagestartup = {
+      version: "0.0.156",
+    };
+
+    if (templateParams?.["template_name"]) {
+      json.singlepagestartup.template = templateParams["template_name"];
+    }
 
     return json;
   });

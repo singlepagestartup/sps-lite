@@ -10,22 +10,6 @@ export const handler = async (
   next: Next,
 ) => {
   try {
-    const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
-
-    if (secretKey && secretKey !== process.env["SPS_RBAC_SECRET_KEY"]) {
-      throw new HTTPException(401, {
-        message: "Unauthorized",
-      });
-    }
-
-    if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
-      return c.json({
-        data: {
-          message: "Permission granted.",
-        },
-      });
-    }
-
     const session = c.var.session;
 
     if (!session) {
@@ -36,7 +20,7 @@ export const handler = async (
       }
     }
 
-    const data = await model.services.isAuthenticatated({
+    const data = await model.services.logout({
       session,
     });
 

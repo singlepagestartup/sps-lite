@@ -1,78 +1,50 @@
 import { createMiddleware } from "hono/factory";
-import { app as spsRbacApp } from "@sps/sps-rbac-backend-app";
-import { BACKEND_URL } from "@sps/shared-utils";
 import { HTTPException } from "hono/http-exception";
-import { StatusCode } from "hono/utils/http-status";
 import { MiddlewareGeneric } from "../session";
-import { model as usersToSessions } from "@sps/sps-rbac-relations-users-to-sessions-backend-model";
+import { BACKEND_URL } from "@sps/shared-utils";
+import { getCookie } from "hono/cookie";
 
 export function middleware() {
   return createMiddleware<MiddlewareGeneric>(async (c, next) => {
     const method = c.req.method;
     const url = c.req.url;
-    const session = c.var.session;
+    const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
 
     if (["GET"].includes(method) || url.includes("/authentications")) {
       return next();
     }
 
-    console.log(
-      `🚀 ~ returncreateMiddleware<MiddlewareGeneric> ~ session:`,
-      session,
-    );
+    const cookies = getCookie(c);
+    const cookiesString = Object.keys(cookies)
+      .map((key) => `${key}=${cookies[key]}`)
+      .join("; ");
 
-    if (!session) {
-      throw new HTTPException(403, {
-        message: "Unauthorized",
-      });
-    }
-
-    const userToSession = await usersToSessions.services.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "userId",
-              method: "isNotNull",
-            },
-            {
-              column: "sessionId",
-              method: "eq",
-              value: session.id,
-            },
-          ],
+    const check = await fetch(
+      BACKEND_URL + "/api/sps-rbac/authentications/is-authenticatated",
+      {
+        method: "GET",
+        headers: {
+          Cookie: cookiesString,
+          ...(secretKey ? { "X-SPS-RBAC-SECRET-KEY": secretKey } : {}),
         },
       },
-    });
-
-    if (!userToSession.length) {
-      throw new HTTPException(403, {
-        message: "Unauthorized",
-      });
-    }
-
-    console.log(
-      `🚀 ~ returncreateMiddleware<MiddlewareGeneric> ~ userToSession:`,
-      userToSession,
     );
 
-    // const roles = await spsRbacApp.request(
-    //   new Request(BACKEND_URL + "/authentications/check"),
-    //   {
-    //     headers: {
-    //       ...c.req.header(),
-    //     },
-    //   },
-    // );
+    await check
+      .json()
+      .then((data) => {
+        if (!data) {
+          throw new HTTPException(401, {
+            message: "Unauthorized",
+          });
+        }
 
-    // await roles.json().then((data) => {
-    //   if (!roles.ok) {
-    //     throw new HTTPException(roles.status as StatusCode, {
-    //       message: data.message,
-    //     });
-    //   }
-    // });
-
-    return next();
+        return next();
+      })
+      .catch((error) => {
+        throw new HTTPException(401, {
+          message: "Unauthorized",
+        });
+      });
   });
 }

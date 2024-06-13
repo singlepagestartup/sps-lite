@@ -76,10 +76,34 @@ export const api = createApi({
       //   ? invalidatesTagsFunc
       //   : [{ type: rtkType, id: "LIST" }],
     }),
+    logout: build.mutation({
+      query: (params: any = {}) => {
+        const formData = prepareFormDataToSend(params);
+
+        return {
+          url: `${route}/logout`,
+          method: "POST",
+          params: {
+            populate,
+          },
+          body: formData,
+        };
+      },
+
+      async onQueryStarted(...args) {},
+
+      transformResponse: (result: any) => {
+        return transformResponseItem(result);
+      },
+
+      // invalidatesTags: invalidatesTagsFunc
+      //   ? invalidatesTagsFunc
+      //   : [{ type: rtkType, id: "LIST" }],
+    }),
     isAuthenticated: build.query<IModelExtended, unknown>({
       query: () => {
         return {
-          url: `${route}/authentications/is-authenticated`,
+          url: `${route}/is-authenticated`,
         };
       },
 

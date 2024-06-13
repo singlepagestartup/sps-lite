@@ -5,6 +5,7 @@ import { handler as updateHander } from "./update";
 import { handler as deleteHander } from "./delete";
 import { handler as providersHandler } from "./providers";
 import { handler as isAuthenticatatedHandler } from "./is-authenticatated";
+import { handler as logoutHandler } from "./logout";
 
 export const handlers = {
   find: findHander,
@@ -14,4 +15,5 @@ export const handlers = {
   delete: deleteHander,
   providers: providersHandler,
   isAuthenticatated: isAuthenticatatedHandler,
+  logout: logoutHandler,
 };

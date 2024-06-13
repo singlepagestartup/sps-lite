@@ -8,32 +8,12 @@ app.get("/", async (c, next) => {
   return handlers.find(c, next);
 });
 
-app.get("/check", async (c, next) => {
-  const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
-
-  if (!secretKey || secretKey !== process.env["SPS_RBAC_SECRET_KEY"]) {
-    return c.json(
-      {
-        message: "No permission to access this resource.",
-      },
-      {
-        status: 400,
-      },
-    );
-  }
-
-  return c.json(
-    {
-      message: "Permission granted.",
-    },
-    {
-      status: 200,
-    },
-  );
-});
-
 app.get("/is-authenticatated", async (c, next) => {
   return handlers.isAuthenticatated(c, next);
+});
+
+app.post("/logout", async (c, next) => {
+  return handlers.logout(c, next);
 });
 
 app.get("/:uuid", async (c, next) => {

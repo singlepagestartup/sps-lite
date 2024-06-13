@@ -420,6 +420,12 @@
       "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-login-and-password": [
         "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/login-and-password/src/index.ts"
       ],
+      "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-logout-action": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/logout-action/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-logout-button": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/logout-button/src/index.ts"
+      ],
       "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-select-method": [
         "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/select-method/src/index.ts"
       ],

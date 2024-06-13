@@ -1,8 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL } from "@sps/shared-utils";
+import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
 import { populate, route, tag, IModelExtended } from "../model";
-import { transformResponseItem } from "@sps/shared-utils";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(
@@ -73,8 +72,8 @@ export const api = createApi({
         };
       },
 
-      transformResponse: (result) => {
-        return transformResponseItem(result);
+      transformResponse: (result: { data: IModelExtended }) => {
+        return transformResponseItem<IModelExtended>(result);
       },
 
       providesTags: (result: any) => {
