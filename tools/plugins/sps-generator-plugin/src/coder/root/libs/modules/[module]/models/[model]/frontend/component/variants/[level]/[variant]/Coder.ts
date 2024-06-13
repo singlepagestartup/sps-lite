@@ -41,7 +41,6 @@ export class Coder {
   exportVariant: ExportVariant;
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
-  importStyles: ImportStyles;
   template: string;
   level: string;
 
@@ -85,10 +84,6 @@ export class Coder {
     });
     this.exportInterface = new ExportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
-    });
-    this.importStyles = new ImportStyles({
-      level,
-      kebabCasedVariant: nameStyles.kebabCased.base,
     });
 
     this.project = getProjects(this.tree).get(this.baseName);
@@ -250,13 +245,6 @@ export class Coder {
         throw error;
       }
     }
-
-    await addToFile({
-      toTop: true,
-      pathToFile: props.indexScssPath,
-      content: this.importStyles.onCreate.content,
-      tree: this.tree,
-    });
   }
 
   async detach(props: {
@@ -315,38 +303,6 @@ export class Coder {
         throw error;
       }
     }
-
-    try {
-      await replaceInFile({
-        tree: this.tree,
-        pathToFile: props.indexScssPath,
-        regex: this.importStyles.onRemove.regex,
-        content: "",
-      });
-    } catch (error) {
-      if (!error.message.includes(`No expected value`)) {
-        throw error;
-      }
-    }
-  }
-
-  async addStylesToRoot({
-    projectRoot,
-    tree,
-    type,
-    variant,
-  }: {
-    projectRoot: string[];
-    tree: Tree;
-    type: string;
-    variant: string;
-  }) {
-    const rootProjectStylesPath =
-      projectRoot.join("/") + `/src/lib/${type}/_index.scss`;
-
-    let rootProjectStyles = tree.read(rootProjectStylesPath).toString();
-    const importStyles = `${rootProjectStyles}\n@import "../../../../variants/${type}/${variant}/src/index";`;
-    tree.write(rootProjectStylesPath, importStyles);
   }
 }
 

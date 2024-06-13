@@ -16,6 +16,7 @@ export async function action<T>(params: {
   pagination?: any;
   tag?: string;
   sort?: string;
+  orderBy?: any;
   revalidate?: number;
 }): Promise<T[]> {
   const {
@@ -27,6 +28,7 @@ export async function action<T>(params: {
     tag,
     sort,
     revalidate = 0,
+    orderBy,
   } = params;
 
   const stringifiedQuery = QueryString.stringify(
@@ -35,6 +37,7 @@ export async function action<T>(params: {
       filters,
       pagination,
       sort,
+      orderBy,
     },
     {
       encodeValuesOnly: true,
