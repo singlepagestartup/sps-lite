@@ -1113,6 +1113,99 @@
       "@sps/sps-third-parties-frontend": [
         "libs/modules/sps-third-parties/frontend/root/src/index.ts"
       ],
+      "@sps/sps-third-parties-models-telegram-backend-app": [
+        "libs/modules/sps-third-parties/models/telegram/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-backend-model": [
+        "libs/modules/sps-third-parties/models/telegram/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-backend-schema": [
+        "libs/modules/sps-third-parties/models/telegram/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-backend-schema-relations": [
+        "libs/modules/sps-third-parties/models/telegram/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-backend-schema-table": [
+        "libs/modules/sps-third-parties/models/telegram/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-contracts": [
+        "libs/modules/sps-third-parties/models/telegram/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-contracts-extended": [
+        "libs/modules/sps-third-parties/models/telegram/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-api-client": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-api-model": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-api-server": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-frontend-redux": [
+        "libs/modules/sps-third-parties/models/telegram/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-backend-app": [
+        "libs/modules/sps-third-parties/models/telegram-message/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-backend-model": [
+        "libs/modules/sps-third-parties/models/telegram-message/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-backend-schema": [
+        "libs/modules/sps-third-parties/models/telegram-message/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-backend-schema-relations": [
+        "libs/modules/sps-third-parties/models/telegram-message/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-backend-schema-table": [
+        "libs/modules/sps-third-parties/models/telegram-message/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-contracts": [
+        "libs/modules/sps-third-parties/models/telegram-message/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-contracts-extended": [
+        "libs/modules/sps-third-parties/models/telegram-message/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-frontend-api-client": [
+        "libs/modules/sps-third-parties/models/telegram-message/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-frontend-api-model": [
+        "libs/modules/sps-third-parties/models/telegram-message/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-frontend-api-server": [
+        "libs/modules/sps-third-parties/models/telegram-message/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-frontend-component": [
+        "libs/modules/sps-third-parties/models/telegram-message/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-telegram-message-frontend-redux": [
+        "libs/modules/sps-third-parties/models/telegram-message/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-third-parties-models-widget-backend-app": [
         "libs/modules/sps-third-parties/models/widget/backend/app/root/src/index.ts"
       ],

@@ -11,8 +11,6 @@ import React, {
   useRef,
 } from "react";
 import { UseFormReturn } from "react-hook-form";
-// import mime from "mime-types";
-
 export interface FileInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "form"> {
   form: UseFormReturn<any>;
@@ -112,10 +110,9 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
 
             const splittedPath = props.value?.split("/");
             const fileName = splittedPath[splittedPath.length - 1];
-            // const type = mime.lookup(fileName);
-            const type = "image/jpg";
+            const type = blob.type;
 
-            if (!type) {
+            if (!type || type === "text/html") {
               return;
             }
 

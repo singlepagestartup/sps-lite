@@ -24,6 +24,9 @@ const SpsNotificationAdminComponent = dynamic(() =>
 const SpsCrmAdminComponent = dynamic(() =>
   import("@sps/sps-crm-frontend").then((mod) => mod.AdminComponent),
 );
+const SpsThirdPartiesAdminComponent = dynamic(() =>
+  import("@sps/sps-third-parties-frontend").then((mod) => mod.AdminComponent),
+);
 
 export function Component(props: IComponentPropsExtended) {
   const [widget, setWidget] = useState<string>("sps-website-builder");
@@ -74,6 +77,20 @@ export function Component(props: IComponentPropsExtended) {
                 setWidget("startup");
               }}
               active={widget === "startup"}
+            />
+            <Button
+              title="sps-crm"
+              onClick={() => {
+                setWidget("sps-crm");
+              }}
+              active={widget === "sps-crm"}
+            />
+            <Button
+              title="sps-third-parties"
+              onClick={() => {
+                setWidget("sps-third-parties");
+              }}
+              active={widget === "sps-third-parties"}
             />
           </div>
           <div className="bg-white rounded-b-lg">
@@ -126,6 +143,13 @@ export function Component(props: IComponentPropsExtended) {
                 variant="default"
               />
             ) : null}
+            {widget === "sps-third-parties" ? (
+              <SpsThirdPartiesAdminComponent
+                {...props}
+                isServer={false}
+                variant="default"
+              />
+            ) : null}
           </div>
         </div>
       </div>
@@ -144,7 +168,7 @@ function Button(props: {
         props.onClick();
       }}
       data-active={props.active}
-      className="w-full lg:w-fit bg-white lg:rounded-t-xl overflow-hidden font-bold text-4xl leading-none -tracking-[.08em] group text-muted-foreground"
+      className="w-full lg:w-fit bg-white lg:rounded-t-md overflow-hidden font-bold text-2xl leading-none -tracking-[.08em] group text-muted-foreground"
     >
       <p className="group-data-[active=true]:opacity-100 group-hover:opacity-100 opacity-30 transition duration-300">
         {props.title}

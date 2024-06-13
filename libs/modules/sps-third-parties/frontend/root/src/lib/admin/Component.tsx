@@ -9,6 +9,8 @@ import {
   CollapsibleTrigger,
 } from "@sps/shadcn";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-table";
+import { Component as TelegarmSpsLiteAdminTable } from "@sps/sps-third-parties-models-telegram-frontend-component-variants-sps-lite-admin-table";
+
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Component(props: IComponentProps) {
@@ -22,6 +24,10 @@ export function Component(props: IComponentProps) {
       {
         name: "widget",
         Comp: WidgetSpsLiteAdminTable,
+      },
+      {
+        name: "telegram",
+        Comp: TelegarmSpsLiteAdminTable,
       },
     ];
   }, []);
