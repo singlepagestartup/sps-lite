@@ -18,7 +18,7 @@ export const util = async ({
   root: string;
   name: string;
   tree: Tree;
-  generateFilesPath: string;
+  generateFilesPath?: string;
   templateParams: {
     [key: string]: string | boolean | number | undefined;
   };
@@ -34,11 +34,13 @@ export const util = async ({
     strict: true,
   });
 
-  generateFiles(tree, generateFilesPath, root, {
-    ...templateParams,
-    offset_from_root: offsetFromRoot(root),
-    lib_name: name,
-  });
+  if (generateFilesPath) {
+    generateFiles(tree, generateFilesPath, root, {
+      ...templateParams,
+      offset_from_root: offsetFromRoot(root),
+      lib_name: name,
+    });
+  }
 
   const offsetFromRootProject = offsetFromRoot(root);
 

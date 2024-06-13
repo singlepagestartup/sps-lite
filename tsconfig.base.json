@@ -414,8 +414,29 @@
       "@sps/sps-notification-models-notification-frontend-component": [
         "libs/modules/sps-notification/models/notification/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
       "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-default": [
         "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-notification/models/notification/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
       ],
       "@sps/sps-notification-models-notification-frontend-redux": [
         "libs/modules/sps-notification/models/notification/frontend/redux/src/index.ts"

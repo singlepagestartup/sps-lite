@@ -9,6 +9,7 @@ import {
   CollapsibleTrigger,
 } from "@sps/shadcn";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-notification-models-widget-frontend-component-variants-sps-lite-admin-table";
+import { Component as NotificationSpsLiteAdminTable } from "@sps/sps-notification-models-notification-frontend-component-variants-sps-lite-admin-table";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Component(props: IComponentProps) {
@@ -22,6 +23,10 @@ export function Component(props: IComponentProps) {
       {
         name: "widget",
         Comp: WidgetSpsLiteAdminTable,
+      },
+      {
+        name: "notification",
+        Comp: NotificationSpsLiteAdminTable,
       },
     ];
   }, []);
