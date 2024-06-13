@@ -75,6 +75,8 @@ export class Coder {
       },
     });
 
+    await this.attach();
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
@@ -85,6 +87,8 @@ export class Coder {
       return;
     }
 
+    await this.detach();
+
     await nxWorkspace.removeGenerator(this.tree, {
       projectName: this.baseName,
       skipFormat: true,
@@ -92,27 +96,39 @@ export class Coder {
     });
   }
 
-  async attach({ routesPath }: { routesPath: string }) {
+  async attach() {
+    const moduleAppRoutesPath = path.join(
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory,
+      "/src/lib/routes.ts",
+    );
+
     await addToFile({
       toTop: true,
-      pathToFile: routesPath,
+      pathToFile: moduleAppRoutesPath,
       content: this.importAppAsAsPropertyModelName.onCreate.content,
       tree: this.tree,
     });
 
     await replaceInFile({
       tree: this.tree,
-      pathToFile: routesPath,
+      pathToFile: moduleAppRoutesPath,
       regex: this.exportRoute.onCreate.regex,
       content: this.exportRoute.onCreate.content,
     });
   }
 
-  async detach({ routesPath }: { routesPath: string }) {
+  async detach() {
+    const moduleAppRoutesPath = path.join(
+      this.parent.parent.parent.parent.project.backend.project.app.project.root
+        .baseDirectory,
+      "/src/lib/routes.ts",
+    );
+
     try {
       const replaceExportRoutes = await replaceInFile({
         tree: this.tree,
-        pathToFile: routesPath,
+        pathToFile: moduleAppRoutesPath,
         regex: this.exportRoute.onRemove.regex,
         content: "",
       });
@@ -125,7 +141,7 @@ export class Coder {
     try {
       const replaceImportRoutes = await replaceInFile({
         tree: this.tree,
-        pathToFile: routesPath,
+        pathToFile: moduleAppRoutesPath,
         regex: this.importAppAsAsPropertyModelName.onRemove.regex,
         content: "",
       });

@@ -41,8 +41,6 @@ export async function service(props: {
     throw new Error("No user associated with this identity");
   }
 
-  console.log(`🚀 ~ identities:`, identities);
-
   const plainData = insertSchema.parse(props.data);
 
   const [entity] = await db.insert(Table).values(plainData).returning();
@@ -53,8 +51,6 @@ export async function service(props: {
       sessionId: props.session.id,
     },
   });
-
-  console.log(`🚀 ~ userToSession:`, userToSession);
 
   return entity;
 }

@@ -50,6 +50,10 @@ export function middleware(options?: SessionOptions) {
 
     const sessionCookie = getCookie(c, cookieSessionName);
 
+    if (c.req.url.includes("/sps-website-builder/pages")) {
+      return await next();
+    }
+
     if (sessionCookie) {
       try {
         const cookieData = await await Iron.unseal(
