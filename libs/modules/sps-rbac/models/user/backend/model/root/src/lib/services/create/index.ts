@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-rbac-backend-db";
 import { insertSchema, Table } from "@sps/sps-rbac-models-user-backend-schema";
 
 export async function service(props: { data: any }) {

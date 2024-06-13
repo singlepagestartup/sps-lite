@@ -3,9 +3,14 @@ import { model } from "@sps/sps-rbac-models-authentication-backend-model";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { SessionMiddlewareGeneric } from "@sps/sps-rbac-backend-sdk";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<
+    MiddlewaresGeneric & SessionMiddlewareGeneric,
+    `${string}/:uuid`,
+    BlankInput
+  >,
   next: Next,
 ) => {
   const body = await c.req.parseBody();

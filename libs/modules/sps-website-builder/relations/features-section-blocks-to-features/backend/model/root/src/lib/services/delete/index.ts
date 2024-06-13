@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-website-builder-backend-db";
 import { Table } from "@sps/sps-website-builder-relations-features-section-blocks-to-features-backend-schema";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";

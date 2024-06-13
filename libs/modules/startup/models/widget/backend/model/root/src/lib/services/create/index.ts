@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/startup-backend-db";
 import { insertSchema, Table } from "@sps/startup-models-widget-backend-schema";
 
 export async function service(props: { data: any }) {

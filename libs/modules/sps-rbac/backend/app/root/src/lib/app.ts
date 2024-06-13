@@ -2,8 +2,11 @@ import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { SessionMiddlewareGeneric } from "@sps/sps-rbac-backend-sdk";
 
-export const app = new Hono<MiddlewaresGeneric>();
+export const app = new Hono<
+  MiddlewaresGeneric | (MiddlewaresGeneric & SessionMiddlewareGeneric)
+>();
 
 app.get("/", async (c) => {
   try {
@@ -18,5 +21,6 @@ app.get("/", async (c) => {
 });
 
 for (const route in routes) {
+  // @ts-ignore
   app.route(route, routes[route as keyof typeof routes]);
 }

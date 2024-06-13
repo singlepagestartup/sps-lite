@@ -1,5 +1,5 @@
 import { FindServiceProps, queryBuilder } from "@sps/shared-backend-api";
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-rbac-backend-db";
 import {
   populate,
   schemaName,

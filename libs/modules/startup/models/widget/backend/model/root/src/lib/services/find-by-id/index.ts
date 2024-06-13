@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/startup-backend-db";
 import {
   Table,
   populate,

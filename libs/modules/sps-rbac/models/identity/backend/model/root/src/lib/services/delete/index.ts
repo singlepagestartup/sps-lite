@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-rbac-backend-db";
 import { Table } from "@sps/sps-rbac-models-identity-backend-schema";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";

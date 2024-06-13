@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-website-builder-backend-db";
 import {
   insertSchema,
   Table,

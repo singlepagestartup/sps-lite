@@ -30,7 +30,7 @@
     "tsc:build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "dependsOn": [],
+      "dependsOn": ["^tsc:build"],
       "cache": false,
       "options": {
         "outputPath": "dist/tsc/{projectRoot}",
