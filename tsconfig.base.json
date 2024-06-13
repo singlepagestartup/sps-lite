@@ -1095,6 +1095,84 @@
       "@sps/sps-rbac-relations-widgets-to-authentication-blocks-frontend-redux": [
         "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-third-parties-backend-app": [
+        "libs/modules/sps-third-parties/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-backend-db": [
+        "libs/modules/sps-third-parties/backend/db/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-backend-models": [
+        "libs/modules/sps-third-parties/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-backend-schema": [
+        "libs/modules/sps-third-parties/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-backend-sdk": [
+        "libs/modules/sps-third-parties/backend/sdk/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-frontend": [
+        "libs/modules/sps-third-parties/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-backend-app": [
+        "libs/modules/sps-third-parties/models/widget/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-backend-model": [
+        "libs/modules/sps-third-parties/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-backend-schema": [
+        "libs/modules/sps-third-parties/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-backend-schema-relations": [
+        "libs/modules/sps-third-parties/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-backend-schema-table": [
+        "libs/modules/sps-third-parties/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-contracts": [
+        "libs/modules/sps-third-parties/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-contracts-extended": [
+        "libs/modules/sps-third-parties/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-api-client": [
+        "libs/modules/sps-third-parties/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-api-model": [
+        "libs/modules/sps-third-parties/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-api-server": [
+        "libs/modules/sps-third-parties/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-third-parties-models-widget-frontend-redux": [
+        "libs/modules/sps-third-parties/models/widget/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-website-builder-backend-app": [
         "libs/modules/sps-website-builder/backend/app/root/src/index.ts"
       ],

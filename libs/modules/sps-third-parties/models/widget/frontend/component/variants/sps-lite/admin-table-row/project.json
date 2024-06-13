@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-third-parties-models-widget-frontend-component-variants-sps-lite-admin-table-row",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-table-row/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

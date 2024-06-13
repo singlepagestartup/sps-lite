@@ -27,6 +27,7 @@
           { "value": "sps-notification" },
           { "value": "sps-rbac" },
           { "value": "sps-website-builder" },
+          { "value": "sps-third-parties" },
           { "value": "startup" }
         ]
       }
