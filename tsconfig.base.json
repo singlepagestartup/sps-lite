@@ -414,11 +414,17 @@
       "@sps/sps-rbac-models-authentication-frontend-component": [
         "libs/modules/sps-rbac/models/authentication/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper/src/index.ts"
+      ],
       "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-login-and-password": [
         "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/login-and-password/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-select-method": [
         "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/select-method/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-set-session-wrapper": [
+        "libs/modules/sps-rbac/models/authentication/frontend/component/variants/sps-lite/set-session-wrapper/src/index.ts"
       ],
       "@sps/sps-rbac-models-authentication-frontend-redux": [
         "libs/modules/sps-rbac/models/authentication/frontend/redux/src/index.ts"

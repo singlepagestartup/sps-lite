@@ -1,4 +1,8 @@
-export const variants = ["default"] as const;
+export const variants = [
+  "default",
+  "is-authenticatated-wrapper",
+  "set-session-wrapper",
+] as const;
 
 export interface IModel {
   id: string;
