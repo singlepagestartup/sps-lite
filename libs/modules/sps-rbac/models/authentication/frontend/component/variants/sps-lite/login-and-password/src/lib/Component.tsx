@@ -43,14 +43,6 @@ export function Component(props: IComponentPropsExtended) {
     });
 
     router.refresh();
-    // if (props.data?.id) {
-    //   await updateEntity({ id: props.data?.id, data });
-    //   return;
-    // }
-
-    // await createEntity({
-    //   data,
-    // });
   }
 
   useEffect(() => {
