@@ -50,32 +50,15 @@
       "x-prompt": {
         "message": "Select module for creating model",
         "type": "list",
-        "default": "sps-website-module",
+        "default": "sps-website-builder",
         "items": [
-          {
-            "value": "sps-billing"
-          },
-          {
-            "value": "sps-crm"
-          },
-          {
-            "value": "sps-ecommerce"
-          },
-          {
-            "value": "sps-file-storage"
-          },
-          {
-            "value": "sps-rbac"
-          },
-          {
-            "value": "sps-subscription"
-          },
-          {
-            "value": "sps-website-builder"
-          },
-          {
-            "value": "startup"
-          }
+          { "value": "sps-billing" },
+          { "value": "sps-crm" },
+          { "value": "sps-file-storage" },
+          { "value": "sps-notification" },
+          { "value": "sps-rbac" },
+          { "value": "sps-website-builder" },
+          { "value": "startup" }
         ]
       }
     },
