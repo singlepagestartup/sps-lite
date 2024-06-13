@@ -56,7 +56,6 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     const filterMethod: keyof QueryBuilderFilterMethods = filter?.method;
     const filterColumn: keyof T["$inferSelect"] = filter?.column;
     const filterValue = filter?.value;
-    console.log(`🚀 ~ filterValue:`, filterValue);
 
     const tableColumn = table[filterColumn];
 
