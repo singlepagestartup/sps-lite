@@ -11,12 +11,5 @@ export async function util({
         Update.CallbackQueryUpdate<CallbackQuery>
       >;
 }) {
-  // const user = await userModel.services.findOrCreateByTelegramId({
-  //   telegramId: String(ctx.from.id),
-  //   username: ctx.from.username || `${ctx.from.id}`,
-  // });
-  // if (!user) {
-  //   throw new Error("User not found");
-  // }
-  // return user;
+  //
 }

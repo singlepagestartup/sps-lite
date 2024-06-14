@@ -1,4 +1,3 @@
-import { TELEGRAM_BOT_USERNAME } from "@sps/shared-utils";
 import { model as telegramMessageModel } from "@sps/sps-third-parties-models-telegram-message-backend-model";
 import { Context } from "telegraf";
 import { Message, Update } from "telegraf/types";
@@ -22,7 +21,7 @@ export async function handler(
 
   const dbMessage = await telegramMessageModel.services.create({
     data: {
-      from: TELEGRAM_BOT_USERNAME,
+      from: ctx.botInfo.username,
       to: `${ctx.from.id}`,
       content: JSON.stringify(welcomeMessage),
     },

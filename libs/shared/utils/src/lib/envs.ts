@@ -3,8 +3,6 @@ export const BACKEND_URL =
 export const FRONTEND_URL =
   process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
 export const SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
-export const TELEGRAM_BOT_USERNAME =
-  process.env["NEXT_PUBLIC_TELEGRAM_BOT_USERNAME"] || "";
 
 export const SPS_RBAC_COOKIE_SESSION_SECRET =
   process.env["SPS_RBAC_COOKIE_SESSION_SECRET"];

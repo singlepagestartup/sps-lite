@@ -38,14 +38,14 @@ export async function service(props: {
   const identity = identities[0];
 
   if (identity.subjectsToIdentities.length === 0) {
-    throw new Error("No user associated with this identity");
+    throw new Error("No subject associated with this identity");
   }
 
   const plainData = insertSchema.parse(props.data);
 
   const [entity] = await db.insert(Table).values(plainData).returning();
 
-  const userToSession = await subjectsToIdentities.services.create({
+  const subjectToSession = await subjectsToIdentities.services.create({
     data: {
       subjectId: identity.subjectsToIdentities[0].subjectId,
       sessionId: props.session.id,

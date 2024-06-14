@@ -8,7 +8,6 @@ import {
   EndpointBuilder,
 } from "@reduxjs/toolkit/query";
 import { QueryLifecycleApi } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
-import { gzip } from "pako";
 import QueryString from "qs";
 import {
   TransformedApiArray,
@@ -43,9 +42,6 @@ export type TRTKOnQueryStarted = (
 
 export function fetchBaseQueryBuilder(baseUrl: string) {
   return async (args: any, api: any, extraOptions: any) => {
-    // const requestId = Math.random().toString(36).substring(7);
-    // const timestamp = Date.now();
-
     const baseResult = await fetchBaseQuery({
       baseUrl: `${baseUrl}`,
       paramsSerializer: (object) => {
@@ -53,20 +49,9 @@ export function fetchBaseQueryBuilder(baseUrl: string) {
           encodeValuesOnly: true,
         });
 
-        // const compressedQuery = gzip(stringifiedQuery);
-        // const base64CompressedQuery =
-        //   Buffer.from(compressedQuery).toString("base64");
-
-        // return base64CompressedQuery;
-
         return stringifiedQuery;
       },
       prepareHeaders: (headers) => {
-        const username = localStorage["username"];
-        if (username) {
-          headers.set("Anonymus-Username", username);
-        }
-
         const token = localStorage["jwt"];
         headers.set("Query-Encoding", "application/gzip");
 

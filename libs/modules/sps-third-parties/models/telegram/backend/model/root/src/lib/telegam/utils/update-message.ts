@@ -1,4 +1,3 @@
-import { TELEGRAM_BOT_USERNAME } from "@sps/shared-utils";
 import { model as telegramMessageModel } from "@sps/sps-third-parties-models-telegram-message-backend-model";
 import { NarrowedContext, Telegram } from "telegraf";
 import {
@@ -24,7 +23,7 @@ export async function util({
   };
 }) {
   const dbMessages = await telegramMessageModel.services.findByContent({
-    from: TELEGRAM_BOT_USERNAME,
+    from: ctx.botInfo.username,
     to: `${ctx.from.id}`,
     contentPattern: dbMessageContentPattern,
   });

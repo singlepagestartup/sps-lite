@@ -5,7 +5,7 @@ import { HTTPException } from "hono/http-exception";
 export async function service(props: {
   session: typeof SessionTable.$inferSelect;
 }) {
-  const userToSession = await subjectsToSessions.services.find({
+  const subjectToSession = await subjectsToSessions.services.find({
     params: {
       filters: {
         and: [
@@ -23,11 +23,11 @@ export async function service(props: {
     },
   });
 
-  if (!userToSession.length) {
+  if (!subjectToSession.length) {
     throw new HTTPException(401, {
       message: "Unauthorized",
     });
   }
 
-  return userToSession[0];
+  return subjectToSession[0];
 }
