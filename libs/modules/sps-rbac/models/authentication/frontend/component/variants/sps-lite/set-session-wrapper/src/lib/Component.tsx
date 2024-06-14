@@ -7,7 +7,7 @@ import { api } from "@sps/sps-rbac-models-session-frontend-api-server";
 export function Component(props: IComponentPropsExtended) {
   useEffect(() => {
     async function setSession() {
-      await api.fetch.find();
+      await api.fetch.init();
     }
 
     setSession();

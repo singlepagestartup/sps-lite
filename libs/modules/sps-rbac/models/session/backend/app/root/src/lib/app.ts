@@ -4,6 +4,10 @@ import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const app = new Hono<MiddlewaresGeneric>();
 
+app.get("/init", async (c, next) => {
+  return handlers.init(c, next);
+});
+
 app.get("/", async (c, next) => {
   return handlers.find(c, next);
 });

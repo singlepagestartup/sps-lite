@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL } from "@sps/shared-utils";
+import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
 import {
   IModelExtended,
   route,
@@ -47,6 +47,17 @@ export const api = createApi({
       populate,
       model: route,
       rtkType: tag,
+    }),
+    init: build.query<{ ok: true }, any>({
+      query: () => {
+        return {
+          url: `${route}/init`,
+        };
+      },
+
+      transformResponse: (result: { data: { ok: true } }) => {
+        return transformResponseItem<{ ok: true }>(result);
+      },
     }),
   }),
 });

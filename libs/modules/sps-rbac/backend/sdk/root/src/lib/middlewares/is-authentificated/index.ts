@@ -4,13 +4,45 @@ import { MiddlewareGeneric } from "../session";
 import { BACKEND_URL } from "@sps/shared-utils";
 import { getCookie } from "hono/cookie";
 
+/**
+ * Routes that are allowed to be accessed without authentication
+ * @type {Array<{ regexPath: RegExp; methods: string[] }>}
+ *
+ * [..., {
+ *   regexPath: /\/api\/sps-rbac\/identities\/[a-zA-Z0-9-]+/,
+ *   methods: ["GET"],
+ * }]
+ */
+const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
+  {
+    regexPath: /\/api\/sps-rbac\/authentications\/is-authenticatated/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/sps-rbac\/sessions\/init/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/sps-rbac\/authentications\/logout/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/(sps-website-builder|startup|sps-file-storage)\/.*/,
+    methods: ["GET"],
+  },
+];
+
 export function middleware() {
   return createMiddleware<MiddlewareGeneric>(async (c, next) => {
-    const method = c.req.method;
-    const url = c.req.url;
+    const reqMethod = c.req.method;
+    const reqPath = c.req.path;
     const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
 
-    if (["GET"].includes(method) || url.includes("/authentications")) {
+    const matchedRoute = allowedRoutes.find((route) => {
+      return route.regexPath.test(reqPath);
+    });
+
+    if (matchedRoute && matchedRoute.methods.includes(reqMethod)) {
       return next();
     }
 
