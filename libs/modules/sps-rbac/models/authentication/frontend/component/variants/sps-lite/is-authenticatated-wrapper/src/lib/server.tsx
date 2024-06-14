@@ -6,13 +6,21 @@ import { IComponentProps } from "./interface";
 import { Error } from "./Error";
 import { api } from "@sps/sps-rbac-models-authentication-frontend-api-server";
 import { Component } from "./Component";
+import { Component as AuthenticationSpsLiteSelectMethod } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-select-method";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
   const data = await api.fetch.isAuthenticated();
 
   if (!data) {
-    return <></>;
+    return (
+      <div className="w-full max-w-7xl mx-auto py-20">
+        <AuthenticationSpsLiteSelectMethod
+          isServer={props.isServer}
+          variant="select-method"
+        />
+      </div>
+    );
   }
 
   return (
