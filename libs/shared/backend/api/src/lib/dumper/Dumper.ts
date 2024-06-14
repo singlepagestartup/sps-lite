@@ -5,21 +5,20 @@ export class Dumper<S, T extends PgTableWithColumns<any>> {
   services: any;
   table: PgTableWithColumns<any>;
   seedsPath = `${__dirname}/../seed/seeds`;
+  skip: boolean;
 
-  constructor({
-    services,
-    table,
-    seedsPath,
-  }: {
+  constructor(props: {
     services: S;
     table: T;
     seedsPath?: string;
+    skip?: boolean;
   }) {
-    this.services = services;
-    this.table = table;
+    this.services = props.services;
+    this.table = props.table;
+    this.skip = props.skip || false;
 
-    if (seedsPath) {
-      this.seedsPath = seedsPath;
+    if (props.seedsPath) {
+      this.seedsPath = props.seedsPath;
     }
   }
 
@@ -38,6 +37,10 @@ export class Dumper<S, T extends PgTableWithColumns<any>> {
   }
 
   async dump() {
+    if (this.skip) {
+      return;
+    }
+
     await this.init();
 
     const entities = await this.services.find();

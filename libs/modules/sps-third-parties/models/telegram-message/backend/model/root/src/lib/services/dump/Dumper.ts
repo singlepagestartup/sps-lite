@@ -8,6 +8,7 @@ export class Dumper extends SpsDumper<typeof modelServices, typeof Table> {
       services: modelServices,
       table: Table,
       seedsPath: __dirname + "/../seed/seeds",
+      skip: true,
     });
   }
 }
