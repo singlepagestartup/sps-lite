@@ -6,6 +6,7 @@ import {
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { Update } from "telegraf/types";
 
 export const handler = async (
   c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
@@ -24,12 +25,11 @@ export const handler = async (
     );
   }
 
-  const json = await c.req.json();
-
   const data = await model.services.findById({
     id: uuid,
-    params: c.var.parsedQuery,
   });
+
+  const json = c.var.parsedJson;
 
   if (!data?.token) {
     throw new HTTPException(400, {
@@ -38,7 +38,7 @@ export const handler = async (
   }
 
   const telegram = new Telegram({ token: data.token, id: uuid });
-  await telegram.bot.handleUpdate(json);
+  await telegram.bot.handleUpdate(json as Update);
 
   return c.json({
     data: {

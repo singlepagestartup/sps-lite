@@ -18,7 +18,7 @@ type DateTimePickerProps = ComponentProps<typeof Calendar> & {
 export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
   (props, ref) => {
     const [localValue, setLocalValue] = useState<Date | undefined>(
-      new Date(props.value),
+      props.value && props.value !== "" ? new Date(props.value) : undefined,
     );
     const [hour, setHour] = useState<string>("00");
     const [minute, setMinute] = useState<string>("00");
@@ -99,6 +99,10 @@ export const DateTimePicker = forwardRef<HTMLInputElement, DateTimePickerProps>(
     }, [hour, minute, localValue]);
 
     useEffect(() => {
+      if (!localValue) {
+        return;
+      }
+
       const sanitizedHour = getSanitizedValue({ type: "hour", value: hour });
       const sanitizedMinute = getSanitizedValue({
         type: "minute",

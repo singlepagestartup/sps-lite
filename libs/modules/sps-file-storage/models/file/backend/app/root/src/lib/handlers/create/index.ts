@@ -13,6 +13,12 @@ export const handler = async (
   next: Next,
 ) => {
   try {
+    if (!c.var.parsedBody) {
+      throw new HTTPException(400, {
+        message: "Invalid body",
+      });
+    }
+
     if (!c.var.parsedBody.files) {
       const entity = await model.services.create({
         data: c.var.parsedBody.data,

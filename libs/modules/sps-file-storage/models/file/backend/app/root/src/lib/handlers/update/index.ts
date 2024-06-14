@@ -25,7 +25,13 @@ export const handler = async (
       );
     }
 
-    if (!c.var.parsedBody.files) {
+    if (!c.var.parsedBody) {
+      throw new HTTPException(400, {
+        message: "Invalid body",
+      });
+    }
+
+    if (!c.var.parsedBody?.files) {
       const entity = await model.services.update({
         id: uuid,
         data: c.var.parsedBody.data,
