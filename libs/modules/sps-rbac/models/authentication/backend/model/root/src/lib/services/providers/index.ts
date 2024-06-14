@@ -5,7 +5,7 @@ import {
 } from "@sps/sps-rbac-models-authentication-backend-schema";
 import { Table as SessionTable } from "@sps/sps-rbac-models-session-backend-schema";
 import { model as identityModel } from "@sps/sps-rbac-models-identity-backend-model";
-import { model as subjectsToIdentities } from "@sps/sps-rbac-relations-subjects-to-identities-backend-model";
+import { model as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-model";
 
 export async function service(props: {
   data: any;
@@ -45,7 +45,7 @@ export async function service(props: {
 
   const [entity] = await db.insert(Table).values(plainData).returning();
 
-  const subjectToSession = await subjectsToIdentities.services.create({
+  const subjectToSession = await subjectsToSessions.services.create({
     data: {
       subjectId: identity.subjectsToIdentities[0].subjectId,
       sessionId: props.session.id,

@@ -30,10 +30,32 @@ export const handler = async (
     );
   }
 
+  if (!data.to) {
+    return c.json(
+      {
+        message: "No data.to provided in data",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
   if (typeof data.message !== "string") {
     return c.json(
       {
         message: "Invalid data.message, must be a string",
+      },
+      {
+        status: 400,
+      },
+    );
+  }
+
+  if (typeof data.to !== "string") {
+    return c.json(
+      {
+        message: "Invalid data.to, must be a string",
       },
       {
         status: 400,
@@ -66,6 +88,7 @@ export const handler = async (
   await model.services.sendMessage({
     id: uuid,
     message: data.message,
+    to: data.to,
   });
 
   return c.json({

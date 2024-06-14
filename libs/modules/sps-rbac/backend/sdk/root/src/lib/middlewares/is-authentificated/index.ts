@@ -19,11 +19,27 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
+    regexPath: /\/api\/sps-rbac\/authentications\/providers\/(\w+)?/,
+    methods: ["POST"],
+  },
+  {
     regexPath: /\/api\/sps-rbac\/sessions\/init/,
     methods: ["GET"],
   },
   {
     regexPath: /\/api\/sps-rbac\/authentications\/logout/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/sps-rbac\/widgets\/?/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/sps-rbac\/authentication-blocks\/?/,
+    methods: ["GET"],
+  },
+  {
+    regexPath: /\/api\/sps-third-parties\/telegrams\/[a-zA-Z0-9-]+\/webhook/,
     methods: ["GET"],
   },
   {

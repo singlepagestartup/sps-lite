@@ -9,9 +9,9 @@ import { FindByIdServiceProps } from "@sps/shared-backend-api";
 import { Telegram } from "../../telegam/Telegam";
 
 export async function service(
-  props: FindByIdServiceProps & { message: string },
+  props: FindByIdServiceProps & { message: string; to: string },
 ) {
-  const { id, message } = props;
+  const { id, message, to } = props;
 
   const result = await db.query[schemaName].findFirst({
     where: eq(Table.id, id),
@@ -23,7 +23,7 @@ export async function service(
   }
 
   const telegram = new Telegram({ token: result.token, id: result.id });
-  // telegram.bot.telegram.sendMessage("chatId | accountId", message);
+  telegram.bot.telegram.sendMessage(to, message);
 
   return result;
 }
