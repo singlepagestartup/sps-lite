@@ -42,6 +42,10 @@ export class Coder {
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
 
+    this.project = getProjects(this.tree).get(this.baseName);
+  }
+
+  async setReplacers() {
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
     const leftModelName =
@@ -96,11 +100,11 @@ export class Coder {
       moduleNamePascalCased: this.moduleNameStyles.pascalCased,
       relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     });
-
-    this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async update() {
+    await this.setReplacers();
+
     const migrator = new Migrator({
       coder: this,
     });
@@ -110,6 +114,8 @@ export class Coder {
   }
 
   async create() {
+    await this.setReplacers();
+
     if (this.project) {
       return;
     }
@@ -201,6 +207,8 @@ export class Coder {
   }
 
   async remove() {
+    await this.setReplacers();
+
     const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {

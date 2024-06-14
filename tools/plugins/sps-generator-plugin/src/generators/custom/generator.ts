@@ -20,14 +20,18 @@ export async function customGenerator(
         modules: [
           {
             module: {
-              name: "sps-third-parties",
+              name: "sps-rbac",
               models: [
                 {
                   model: {
-                    name: "telegram",
+                    name: "subject",
                     frontend: {
                       component: {
                         variants: [
+                          {
+                            name: "default",
+                            level: "sps-lite",
+                          },
                           {
                             template: "admin-form",
                             name: "admin-form",

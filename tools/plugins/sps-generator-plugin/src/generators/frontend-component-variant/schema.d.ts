@@ -6,4 +6,6 @@ export interface FrontendComponentVariantGeneratorSchema {
   entity_name: string;
   module_name: string;
   template?: string;
+  left_model_is_external?: boolean;
+  right_model_is_external?: boolean;
 }

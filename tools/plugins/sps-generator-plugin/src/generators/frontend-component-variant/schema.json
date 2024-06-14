@@ -100,6 +100,22 @@
           { "value": "startup" }
         ]
       }
+    },
+    "left_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "right_model_is_external": {
+      "type": "boolean",
+      "description": "Model name, for example: layout",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     }
   },
   "required": ["action", "name", "level", "type", "entity_name", "module_name"]

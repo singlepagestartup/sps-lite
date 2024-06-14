@@ -10,7 +10,7 @@ import {
 } from "@sps/shadcn";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac-models-role-frontend-component-variants-sps-lite-admin-table";
-import { Component as UserSpsLiteAdminTable } from "@sps/sps-rbac-models-user-frontend-component-variants-sps-lite-admin-table";
+import { Component as SubjectSpsLiteAdminTable } from "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-table";
 import { Component as IdentitySpsLiteAdminTable } from "@sps/sps-rbac-models-identity-frontend-component-variants-sps-lite-admin-table";
 import { Component as AuthenticationBlockSpsLiteAdminTable } from "@sps/sps-rbac-models-authentication-block-frontend-component-variants-sps-lite-admin-table";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-table";
@@ -28,8 +28,8 @@ export function Component(props: IComponentProps) {
         Comp: RoleSpsLiteAdminTable,
       },
       {
-        name: "user",
-        Comp: UserSpsLiteAdminTable,
+        name: "subject",
+        Comp: SubjectSpsLiteAdminTable,
       },
       {
         name: "identity",

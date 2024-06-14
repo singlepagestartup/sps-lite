@@ -663,6 +663,9 @@
       "@sps/sps-rbac-models-identity-backend-schema-relations": [
         "libs/modules/sps-rbac/models/identity/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-rbac-models-identity-backend-schema-relations-subjects-to-identities": [
+        "libs/modules/sps-rbac/models/identity/backend/schema/relations/subjects-to-identities/src/index.ts"
+      ],
       "@sps/sps-rbac-models-identity-backend-schema-table": [
         "libs/modules/sps-rbac/models/identity/backend/schema/table/src/index.ts"
       ],
@@ -716,6 +719,9 @@
       ],
       "@sps/sps-rbac-models-role-backend-schema-relations": [
         "libs/modules/sps-rbac/models/role/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-role-backend-schema-relations-subjects-to-roles": [
+        "libs/modules/sps-rbac/models/role/backend/schema/relations/subjects-to-roles/src/index.ts"
       ],
       "@sps/sps-rbac-models-role-backend-schema-table": [
         "libs/modules/sps-rbac/models/role/backend/schema/table/src/index.ts"
@@ -774,6 +780,9 @@
       "@sps/sps-rbac-models-session-backend-schema-relations-sessions-to-authentications": [
         "libs/modules/sps-rbac/models/session/backend/schema/relations/sessions-to-authentications/src/index.ts"
       ],
+      "@sps/sps-rbac-models-session-backend-schema-relations-subjects-to-sessions": [
+        "libs/modules/sps-rbac/models/session/backend/schema/relations/subjects-to-sessions/src/index.ts"
+      ],
       "@sps/sps-rbac-models-session-backend-schema-table": [
         "libs/modules/sps-rbac/models/session/backend/schema/table/src/index.ts"
       ],
@@ -797,6 +806,75 @@
       ],
       "@sps/sps-rbac-models-session-frontend-redux": [
         "libs/modules/sps-rbac/models/session/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-app": [
+        "libs/modules/sps-rbac/models/subject/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-model": [
+        "libs/modules/sps-rbac/models/subject/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema-relations": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema-relations-subjects-to-identities": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/relations/subjects-to-identities/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema-relations-subjects-to-roles": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/relations/subjects-to-roles/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema-relations-subjects-to-sessions": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/relations/subjects-to-sessions/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-backend-schema-table": [
+        "libs/modules/sps-rbac/models/subject/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-contracts": [
+        "libs/modules/sps-rbac/models/subject/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-contracts-extended": [
+        "libs/modules/sps-rbac/models/subject/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-api-client": [
+        "libs/modules/sps-rbac/models/subject/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-api-model": [
+        "libs/modules/sps-rbac/models/subject/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-api-server": [
+        "libs/modules/sps-rbac/models/subject/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-rbac/models/subject/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-rbac-models-subject-frontend-redux": [
+        "libs/modules/sps-rbac/models/subject/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-models-widget-backend-app": [
         "libs/modules/sps-rbac/models/widget/backend/app/root/src/index.ts"
@@ -884,6 +962,114 @@
       ],
       "@sps/sps-rbac-relations-sessions-to-authentications-frontend-redux": [
         "libs/modules/sps-rbac/relations/sessions-to-authentications/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-backend-app": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-backend-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-backend-schema": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-contracts": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-contracts-extended": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-api-client": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-api-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-api-server": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-component": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-identities-frontend-redux": [
+        "libs/modules/sps-rbac/relations/subjects-to-identities/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-backend-app": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-backend-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-backend-schema": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-contracts": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-contracts-extended": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-api-client": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-api-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-api-server": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-component": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-roles-frontend-redux": [
+        "libs/modules/sps-rbac/relations/subjects-to-roles/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-backend-app": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-backend-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-backend-schema": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-contracts": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-contracts-extended": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-client": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-model": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-server": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-component": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-rbac-relations-subjects-to-sessions-frontend-redux": [
+        "libs/modules/sps-rbac/relations/subjects-to-sessions/frontend/redux/src/index.ts"
       ],
       "@sps/sps-rbac-relations-widgets-to-authentication-blocks-backend-app": [
         "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root/src/index.ts"

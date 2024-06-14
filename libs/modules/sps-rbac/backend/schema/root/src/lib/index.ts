@@ -1,4 +1,20 @@
 export {
+  Table as SPSRSubjectsToSessions,
+  Relations as SPSRSubjectsToSessionsRelations,
+} from "@sps/sps-rbac-relations-subjects-to-sessions-backend-schema";
+export {
+  Table as SPSRSubjectsToIdentities,
+  Relations as SPSRSubjectsToIdentitiesRelations,
+} from "@sps/sps-rbac-relations-subjects-to-identities-backend-schema";
+export {
+  Table as SPSRSubjectsToRoles,
+  Relations as SPSRSubjectsToRolesRelations,
+} from "@sps/sps-rbac-relations-subjects-to-roles-backend-schema";
+export {
+  Table as SPSRSubject,
+  Relations as SPSRSubjectRelations,
+} from "@sps/sps-rbac-models-subject-backend-schema";
+export {
   Table as SPSRSessionsToAuthentications,
   Relations as SPSRSessionsToAuthenticationsRelations,
 } from "@sps/sps-rbac-relations-sessions-to-authentications-backend-schema";

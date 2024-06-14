@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-rbac-relations-subjects-to-roles-contracts",
+  "$schema": "../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-rbac/relations/subjects-to-roles/contracts/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

@@ -1,6 +1,7 @@
 import { FrontendComponentVariantGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 import { Tree, formatFiles } from "@nx/devkit";
+import pluralize from "pluralize";
 
 // npx nx generate @sps/sps-generator-plugin:frontend-component-variant --name=get-layout --entity_name=pages-to-layouts --action=create --level=sps-lite --module_name=sps-website-builder --type=relation --no-interactive --dry-run
 export async function frontendComponentVariantGenerator(
@@ -53,6 +54,12 @@ export async function frontendComponentVariantGenerator(
       await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.project.variants[0].create();
     }
   } else if (options.type === "relation") {
+    const leftModelPluralized = options.entity_name.split("-to-")[0];
+    const rightModelPluralized = options.entity_name.split("-to-")[1];
+
+    const leftModelName = pluralize.singular(leftModelPluralized);
+    const rightModelName = pluralize.singular(rightModelPluralized);
+
     const coder = new Coder({
       tree,
       root: {
@@ -61,6 +68,42 @@ export async function frontendComponentVariantGenerator(
             {
               module: {
                 name: moduleName,
+                models: [
+                  {
+                    model: {
+                      name: leftModelName,
+                      isExternal: options.left_model_is_external,
+                      backend: {
+                        schema: {
+                          relations: {
+                            relations: [
+                              {
+                                name,
+                              },
+                            ],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    model: {
+                      name: rightModelName,
+                      isExternal: options.right_model_is_external,
+                      backend: {
+                        schema: {
+                          relations: {
+                            relations: [
+                              {
+                                name,
+                              },
+                            ],
+                          },
+                        },
+                      },
+                    },
+                  },
+                ],
                 relations: [
                   {
                     relation: {

@@ -114,6 +114,8 @@ export class Coder {
   }
 
   async update() {
+    await this.setReplacers();
+
     const migrator = new Migrator({
       coder: this,
     });
@@ -123,6 +125,8 @@ export class Coder {
   }
 
   async create() {
+    await this.setReplacers();
+
     if (this.project) {
       return;
     }
@@ -182,6 +186,8 @@ export class Coder {
   }
 
   async remove() {
+    await this.setReplacers();
+
     const project = getProjects(this.tree).get(this.baseName);
 
     if (!project) {
