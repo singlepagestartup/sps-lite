@@ -40,7 +40,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   },
   {
     regexPath: /\/api\/sps-third-parties\/telegrams\/[a-zA-Z0-9-]+\/webhook/,
-    methods: ["GET"],
+    methods: ["POST"],
   },
   {
     regexPath: /\/api\/(sps-website-builder|startup|sps-file-storage)\/.*/,
