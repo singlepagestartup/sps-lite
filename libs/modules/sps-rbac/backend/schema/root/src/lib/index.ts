@@ -2,10 +2,7 @@ export {
   Table as SPSRSessionsToAuthentications,
   Relations as SPSRSessionsToAuthenticationsRelations,
 } from "@sps/sps-rbac-relations-sessions-to-authentications-backend-schema";
-export {
-  Table as SPSRUsersToSessions,
-  Relations as SPSRUsersToSessionsRelations,
-} from "@sps/sps-rbac-relations-users-to-sessions-backend-schema";
+
 export {
   Table as SPSRSession,
   Relations as SPSRSessionRelations,
@@ -22,22 +19,12 @@ export {
   Table as SPSRAuthenticationBlock,
   Relations as SPSRAuthenticationBlockRelations,
 } from "@sps/sps-rbac-models-authentication-block-backend-schema";
-export {
-  Table as SPSRUsersToRoles,
-  Relations as SPSRUsersToRolesRelations,
-} from "@sps/sps-rbac-relations-users-to-roles-backend-schema";
-export {
-  Table as SPSRUsersToIdentities,
-  Relations as SPSRUsersToIdentitiesRelations,
-} from "@sps/sps-rbac-relations-users-to-identities-backend-schema";
+
 export {
   Table as SPSRIdentity,
   Relations as SPSRIdentityRelations,
 } from "@sps/sps-rbac-models-identity-backend-schema";
-export {
-  Table as SPSRUser,
-  Relations as SPSRUserRelations,
-} from "@sps/sps-rbac-models-user-backend-schema";
+
 export {
   Table as SPSRAuthentication,
   Relations as SPSRAuthenticationRelations,

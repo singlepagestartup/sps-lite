@@ -23,6 +23,7 @@ export async function service(
   }
 
   const telegram = new Telegram({ token: result.token, id: result.id });
+  // telegram.bot.telegram.sendMessage("chatId | accountId", message);
 
   return result;
 }

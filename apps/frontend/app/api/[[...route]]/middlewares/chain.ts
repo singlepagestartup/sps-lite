@@ -7,7 +7,7 @@ export function chain(app: any) {
   app.use(spsRbacSdk.middlewares.session() as any);
   app.use(middlewares.parseQuery());
   app.use(middlewares.logger());
-  // app.use(spsRbacSdk.middlewares.isAuthenticated() as any);
+  app.use(spsRbacSdk.middlewares.isAuthenticated() as any);
   app.use(middlewares.parseBody());
   app.use(kvMiddlewares.httpCache());
 
