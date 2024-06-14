@@ -1,4 +1,12 @@
 export {
+  Table as SPSRRolesToPermissions,
+  Relations as SPSRRolesToPermissionsRelations,
+} from "@sps/sps-rbac-relations-roles-to-permissions-backend-schema";
+export {
+  Table as SPSRPermission,
+  Relations as SPSRPermissionRelations,
+} from "@sps/sps-rbac-models-permission-backend-schema";
+export {
   Table as SPSRSubjectsToSessions,
   Relations as SPSRSubjectsToSessionsRelations,
 } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-schema";

@@ -24,7 +24,7 @@ export async function customGenerator(
               models: [
                 {
                   model: {
-                    name: "subject",
+                    name: "permission",
                     frontend: {
                       component: {
                         variants: [

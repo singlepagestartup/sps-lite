@@ -1,0 +1,8 @@
+{
+  "name": "@sps/sps-rbac-models-permission-frontend-component-variants-sps-lite-admin-table",
+  "version": "0.0.1",
+  "singlepagestartup": {
+    "version": "0.0.156",
+    "template": "admin-table"
+  }
+}

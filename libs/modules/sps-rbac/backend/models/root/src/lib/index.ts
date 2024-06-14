@@ -1,3 +1,5 @@
+import { model as rolesToPermissions } from "@sps/sps-rbac-relations-roles-to-permissions-backend-model";
+import { model as permission } from "@sps/sps-rbac-models-permission-backend-model";
 import { model as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-model";
 import { model as subjectsToIdentities } from "@sps/sps-rbac-relations-subjects-to-identities-backend-model";
 import { model as subjectsToRoles } from "@sps/sps-rbac-relations-subjects-to-roles-backend-model";
@@ -14,6 +16,8 @@ import { model as identity } from "@sps/sps-rbac-models-identity-backend-model";
 import { model as authentication } from "@sps/sps-rbac-models-authentication-backend-model";
 import { model as role } from "@sps/sps-rbac-models-role-backend-model";
 export const models = {
+  rolesToPermissions,
+  permission,
   subjectsToSessions,
   subjectsToIdentities,
   subjectsToRoles,

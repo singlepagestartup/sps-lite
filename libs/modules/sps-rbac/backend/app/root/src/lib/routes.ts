@@ -1,3 +1,5 @@
+import { app as rolesToPermissions } from "@sps/sps-rbac-relations-roles-to-permissions-backend-app";
+import { app as permission } from "@sps/sps-rbac-models-permission-backend-app";
 import { app as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-app";
 import { app as subjectsToIdentities } from "@sps/sps-rbac-relations-subjects-to-identities-backend-app";
 import { app as subjectsToRoles } from "@sps/sps-rbac-relations-subjects-to-roles-backend-app";
@@ -12,6 +14,8 @@ import { app as identity } from "@sps/sps-rbac-models-identity-backend-app";
 import { app as authentication } from "@sps/sps-rbac-models-authentication-backend-app";
 import { app as role } from "@sps/sps-rbac-models-role-backend-app";
 export const routes = {
+  "/roles-to-permissions": rolesToPermissions,
+  "/permissions": permission,
   "/subjects-to-sessions": subjectsToSessions,
   "/subjects-to-identities": subjectsToIdentities,
   "/subjects-to-roles": subjectsToRoles,
