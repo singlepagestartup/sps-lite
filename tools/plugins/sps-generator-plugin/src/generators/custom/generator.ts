@@ -81,7 +81,16 @@ export async function customGenerator(
     },
   };
 
-  const relation = {};
+  const relation = {
+    relation: {
+      name: "metadata-to-sps-file-storage-module-files",
+      frontend: {
+        component: {
+          variants: relationAdminVariants,
+        },
+      },
+    },
+  };
 
   const additions = new Coder({
     tree,
@@ -92,18 +101,7 @@ export async function customGenerator(
             module: {
               name: "sps-website-builder",
               models: [leftModel, rightModel],
-              relations: [
-                {
-                  relation: {
-                    name: "metadata-to-sps-file-storage-module-files",
-                    frontend: {
-                      component: {
-                        variants: relationAdminVariants,
-                      },
-                    },
-                  },
-                },
-              ],
+              relations: [relation],
             },
           },
         ],

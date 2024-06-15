@@ -3019,6 +3019,12 @@
       "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-component": [
         "libs/modules/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/component/root/src/index.ts"
       ],
+      "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
       "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-redux": [
         "libs/modules/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/redux/src/index.ts"
       ],
