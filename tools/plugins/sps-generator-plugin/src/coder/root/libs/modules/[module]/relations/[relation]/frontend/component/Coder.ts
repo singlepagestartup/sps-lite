@@ -67,10 +67,18 @@ export class Coder {
 
   async create() {
     await this.project.root.create();
+
+    for (const variant of this.project.variants) {
+      await variant.create();
+    }
   }
 
   async remove() {
     await this.project.root.remove();
+
+    for (const variant of this.project.variants) {
+      await variant.remove();
+    }
   }
 
   async createVariant({

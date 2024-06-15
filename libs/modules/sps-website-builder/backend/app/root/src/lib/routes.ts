@@ -1,3 +1,4 @@
+import { app as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-app";
 import { app as metadata } from "@sps/sps-website-builder-models-metadata-backend-app";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-app";
 import { app as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-app";
@@ -47,6 +48,8 @@ import { app as layout } from "@sps/sps-website-builder-models-layout-backend-ap
 import { app as pages } from "@sps/sps-website-builder-models-page-backend-app";
 
 export const routes = {
+  "/metadata-to-sps-file-storage-module-files":
+    metadataToSpsFileStorageModuleFiles,
   "/metadata": metadata,
   "/slides-to-buttons-arrays": slidesToButtonsArrays,
   "/widgets-to-sps-rbac-module-widgets": widgetsToSpsRbacModuleWidgets,

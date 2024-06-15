@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-metadata-backend-schema-relations-metadata-to-sps-file-storage-module-files",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/metadata/backend/schema/relations/metadata-to-sps-file-storage-module-files/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

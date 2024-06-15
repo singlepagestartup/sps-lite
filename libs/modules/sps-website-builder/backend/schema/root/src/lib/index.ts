@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBMetadataToSpsFileStorageModuleFiles,
+  Relations as SPSWBMetadataToSpsFileStorageModuleFilesRelations,
+} from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-schema";
+export {
   Table as SPSWBMetadata,
   Relations as SPSWBMetadataRelations,
 } from "@sps/sps-website-builder-models-metadata-backend-schema";
