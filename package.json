@@ -3,10 +3,10 @@
   "private": true,
   "scripts": {
     "format": "nx format:write --all",
-    "frontend:build": "nx run frontend:next:build",
-    "frontend:dev": "nx run frontend:prepare && nx run frontend:next:dev",
-    "frontend:production": "NODE_ENV=production npm run frontend:build && npm run frontend:start",
-    "frontend:start": "nx run frontend:next:start",
+    "host:build": "nx run host:next:build",
+    "host:dev": "nx run host:prepare && nx run host:next:dev",
+    "host:production": "NODE_ENV=production npm run host:build && npm run host:start",
+    "host:start": "nx run host:next:start",
     "lint": "nx run-many --target=lint --parallel=2 --all",
     "prepare": "husky"
   },

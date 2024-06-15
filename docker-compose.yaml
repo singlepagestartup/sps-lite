@@ -8,21 +8,12 @@ services:
     networks:
       - sps_db_network
 
-  redix:
+  redis:
     extends:
       file: ./apps/redis/docker-compose.redis.yaml
       service: redis
     networks:
       - sps_db_network
-
-  frontend:
-    extends:
-      file: ./apps/frontend/docker-compose.frontend.yaml
-      service: frontend
-    networks:
-      - sps_db_network
-    ports:
-      - 3000:3000
 
 networks:
   sps_db_network:

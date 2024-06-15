@@ -36,7 +36,7 @@
         chdir: "/home/code/github-node-api"
       loop:
         - { secret_name: PORTAINER_FRONTEND_UPDATE_URL, secret_scope: actions }
-        - { secret_name: NEXT_PUBLIC_FRONTEND_URL, secret_scope: actions }
+        - { secret_name: NEXT_PUBLIC_HOST_URL, secret_scope: actions }
 
     - name: Delete artifacts
       file:

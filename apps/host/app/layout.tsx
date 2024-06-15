@@ -8,8 +8,6 @@ import { Component as Admin } from "../src/components/admin";
 import { Component as SpsLiteRbacSetSessionWrapper } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-set-session-wrapper";
 import Loading from "./loading";
 
-export const dynamic = "force-dynamic";
-
 export default async function RootLayout({
   children,
 }: {

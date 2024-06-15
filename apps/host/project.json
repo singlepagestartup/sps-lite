@@ -1,7 +1,7 @@
 {
-  "name": "frontend",
+  "name": "host",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/frontend",
+  "sourceRoot": "apps/host",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,31 +11,31 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run frontend:db:migrate"
+            "command": "nx run host:db:migrate"
           },
           {
-            "command": "nx run frontend:db:sps-website-builder-generate"
+            "command": "nx run host:db:sps-website-builder-generate"
           },
           {
-            "command": "nx run frontend:db:sps-file-storage-generate"
+            "command": "nx run host:db:sps-file-storage-generate"
           },
           {
-            "command": "nx run frontend:db:sps-rbac-generate"
+            "command": "nx run host:db:sps-rbac-generate"
           },
           {
-            "command": "nx run frontend:db:sps-crm-generate"
+            "command": "nx run host:db:sps-crm-generate"
           },
           {
-            "command": "nx run frontend:db:sps-third-parties-generate"
+            "command": "nx run host:db:sps-third-parties-generate"
           },
           {
-            "command": "nx run frontend:db:sps-notification-generate"
+            "command": "nx run host:db:sps-notification-generate"
           },
           {
-            "command": "nx run frontend:db:sps-billing-generate"
+            "command": "nx run host:db:sps-billing-generate"
           },
           {
-            "command": "nx run frontend:db:startup-generate"
+            "command": "nx run host:db:startup-generate"
           }
         ]
       }
@@ -260,31 +260,31 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "apps/frontend",
+        "cwd": "apps/host",
         "commands": [
           {
-            "command": "nx run frontend:db:sps-website-builder-migrate"
+            "command": "nx run host:db:sps-website-builder-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-file-storage-migrate"
+            "command": "nx run host:db:sps-file-storage-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-rbac-migrate"
+            "command": "nx run host:db:sps-rbac-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-crm-migrate"
+            "command": "nx run host:db:sps-crm-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-billing-migrate"
+            "command": "nx run host:db:sps-billing-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-third-parties-migrate"
+            "command": "nx run host:db:sps-third-parties-migrate"
           },
           {
-            "command": "nx run frontend:db:sps-notification-migrate"
+            "command": "nx run host:db:sps-notification-migrate"
           },
           {
-            "command": "nx run frontend:db:startup-migrate"
+            "command": "nx run host:db:startup-migrate"
           }
         ]
       }
@@ -293,7 +293,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "apps/frontend",
+        "cwd": "apps/host",
         "commands": [
           {
             "command": "drizzle-kit drop --config=./src/db/config.ts"
@@ -309,10 +309,10 @@
       "dependsOn": ["db:prepare"],
       "options": {
         "parallel": false,
-        "cwd": "apps/frontend",
+        "cwd": "apps/host",
         "commands": [
           {
-            "command": "nx run frontend:db:migrate"
+            "command": "nx run host:db:migrate"
           },
           {
             "command": "bun run src/db/dump.ts"
@@ -325,10 +325,10 @@
       "dependsOn": ["db:prepare"],
       "options": {
         "parallel": false,
-        "cwd": "apps/frontend",
+        "cwd": "apps/host",
         "commands": [
           {
-            "command": "nx run frontend:db:migrate"
+            "command": "nx run host:db:migrate"
           },
           {
             "command": "bun run src/db/seed.ts"
@@ -342,7 +342,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run frontend:db:migrate"
+            "command": "nx run host:db:migrate"
           }
         ]
       }
@@ -365,7 +365,7 @@
       "cache": true,
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "apps/frontend"
+        "outputPath": "apps/host"
       }
     },
     "next:start": {
@@ -373,7 +373,7 @@
       "defaultConfiguration": "production",
       "dependsOn": [],
       "options": {
-        "buildTarget": "frontend:next:build",
+        "buildTarget": "host:next:build",
         "dev": false,
         "port": 3000
       }
@@ -381,7 +381,7 @@
     "next:export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "frontend:build:production"
+        "buildTarget": "host:build:production"
       }
     },
     "eslint:lint": {}

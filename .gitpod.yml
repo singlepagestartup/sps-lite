@@ -3,7 +3,7 @@ image:
 
 ports:
   - port: 3000
-    name: Frontend
+    name: Host
     visibility: public
   - port: 8080
     name: Adminer
@@ -11,7 +11,7 @@ ports:
 
 tasks:
   - name: "infrastructure"
-    init: cd ./apps/db && ./up.sh && cd ../redis && ./up.sh && cd ../frontend && ./create_env.sh
+    init: cd ./apps/db && ./up.sh && cd ../redis && ./up.sh && cd ../host && ./create_env.sh
   - name: "bash"
     init: npm i
 

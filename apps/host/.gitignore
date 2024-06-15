@@ -1,34 +1,37 @@
 ############################
-# NX
+# Next.js
 ############################
-
-.nx
-dist
-tmp
-
-############################
-# Git
-############################
-
-.git
-.github
+.next
+out
+build
+.env
+.env*.local
+.env*.testing
+.vercel
+next-env.d.ts
 
 ############################
-# Node
+# Testing
 ############################
-
-node_modules
-*.log
+coverage
 
 ############################
-# IDE
+# ICP
 ############################
-
-.devcontainer
-.vscode
+.dfx
+*.key
+*.pem
+*.pem.base64
+*-wallet.txt
+.env.cloudflare
 
 ############################
-# Others
+# Sentry
 ############################
+.sentryclirc
 
-.husky
+############################
+# Uploads
+############################
+/public/sps-file-storage/*
+!/public/sps-file-storage/.gitkeep

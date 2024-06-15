@@ -2,7 +2,7 @@
 
 import { api as metadataApi } from "@sps/sps-website-builder-models-metadata-frontend-api-server";
 import { api as spsFileStorageFileApi } from "@sps/sps-file-storage-models-file-frontend-api-server";
-import { BACKEND_URL, FRONTEND_URL } from "@sps/shared-utils";
+import { BACKEND_URL, HOST_URL } from "@sps/shared-utils";
 import { Metadata } from "next/types";
 
 export async function action(props: any) {
@@ -42,7 +42,7 @@ export async function action(props: any) {
       description:
         primaryMetadata?.opengraphDescription || primaryMetadata?.description,
       type: primaryMetadata?.opengraphType || "website",
-      url: FRONTEND_URL,
+      url: HOST_URL,
       image,
     },
     twitter: {
@@ -52,7 +52,7 @@ export async function action(props: any) {
       image,
     },
     keywords: primaryMetadata?.keywords || [],
-    url: FRONTEND_URL,
+    url: HOST_URL,
     image,
     icons,
   } as Metadata;

@@ -1,7 +1,7 @@
 export const BACKEND_URL =
   process.env["NEXT_PUBLIC_BACKEND_URL"] || "http://localhost:3000";
-export const FRONTEND_URL =
-  process.env["NEXT_PUBLIC_FRONTEND_URL"] || "http://localhost:3000";
+export const HOST_URL =
+  process.env["NEXT_PUBLIC_HOST_URL"] || "http://localhost:3000";
 export const SENTRY_DSN = process.env["NEXT_PUBLIC_SENTRY_DSN"] || "";
 
 export const SPS_RBAC_COOKIE_SESSION_SECRET =

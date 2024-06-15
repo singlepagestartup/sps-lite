@@ -1,4 +1,4 @@
-import { FRONTEND_URL } from "@sps/shared-utils";
+import { HOST_URL } from "@sps/shared-utils";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
 
 async function generateSiteMap() {
@@ -17,7 +17,7 @@ async function generateSiteMap() {
        ?.map((page) => {
          return `
            <url>
-               <loc>${`${FRONTEND_URL}${page.url}`}</loc>
+               <loc>${`${HOST_URL}${page.url}`}</loc>
            </url>
          `;
        })

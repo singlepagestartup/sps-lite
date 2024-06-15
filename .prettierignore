@@ -14,14 +14,18 @@ tmp
 
 ############################
 # Db
-# Postgres
 ############################
 apps/db/db_data
 
 ############################
-# Frontend
+# Redis
+############################
+apps/redis/db_data
+
+############################
+# host
 # Next.js
 ############################
-apps/frontend/.next
-apps/frontend/out
-apps/frontend/build
+apps/host/.next
+apps/host/out
+apps/host/build

@@ -58,14 +58,11 @@ $RECYCLE.BIN/
 *.pid
 
 ############################
-# Logs and databases
+# Logs
 ############################
 
 .tmp
 *.log
-*.sql
-*.sqlite
-*.sqlite3
 
 ############################
 # Node.js
@@ -98,12 +95,3 @@ tmp
 ############################
 
 .env.testing
-
-############################
-# Pass modules migrations
-############################
-!libs/modules/**/migrations/*.sql
-
-# Next.js
-.next
-out
