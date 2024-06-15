@@ -25,7 +25,7 @@ export {
 export {
   Table as SPSWBHeroSectionBlocksToSpsFileStorageWidgets,
   Relations as SPSWBHeroSectionBlocksToSpsFileStorageWidgetsRelations,
-} from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-widgets-backend-schema";
+} from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-module-widgets-backend-schema";
 export {
   Table as SPSWBLogotypesToSpsFileStorageWidgets,
   Relations as SPSWBLogotypesToSpsFileStorageWidgetsRelations,
