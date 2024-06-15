@@ -1936,8 +1936,8 @@
       "@sps/sps-website-builder-models-logotype-backend-schema-relations-footer-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/footer-blocks-to-logotypes/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotype-backend-schema-relations-logotypes-to-sps-file-storage-widgets": [
-        "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/logotypes-to-sps-file-storage-widgets/src/index.ts"
+      "@sps/sps-website-builder-models-logotype-backend-schema-relations-logotypes-to-sps-file-storage-module-widgets": [
+        "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/logotypes-to-sps-file-storage-module-widgets/src/index.ts"
       ],
       "@sps/sps-website-builder-models-logotype-backend-schema-relations-navbar-blocks-to-logotypes": [
         "libs/modules/sps-website-builder/models/logotype/backend/schema/relations/navbar-blocks-to-logotypes/src/index.ts"
@@ -2884,41 +2884,41 @@
       "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-redux": [
         "libs/modules/sps-website-builder/relations/layouts-to-navbars/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-app": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/backend/app/root/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-app": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/app/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-model": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/backend/model/root/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-model": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/model/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-schema": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/backend/schema/root/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-schema": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/schema/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-contracts": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/contracts/root/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-contracts": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/contracts/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-contracts-extended": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/contracts/extended/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-contracts-extended": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/contracts/extended/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-api-client": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/api/client/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-api-client": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/api/client/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-api-model": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/api/model/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-api-model": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/api/model/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-api-server": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/api/server/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-api-server": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/api/server/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-component": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/component/root/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-component": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/root/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-component-variants-sps-lite-select-right": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
       ],
-      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-frontend-redux": [
-        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-widgets/frontend/redux/src/index.ts"
+      "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-redux": [
+        "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-app": [
         "libs/modules/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/app/root/src/index.ts"

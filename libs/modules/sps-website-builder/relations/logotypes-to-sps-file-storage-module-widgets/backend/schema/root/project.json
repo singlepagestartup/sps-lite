@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-schema",
+  "$schema": "../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/schema/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

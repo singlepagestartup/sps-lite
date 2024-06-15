@@ -5,7 +5,7 @@ import { model as slidesToButtonsArrays } from "@sps/sps-website-builder-relatio
 import { model as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-backend-model";
 import { model as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-module-widgets-backend-model";
 import { model as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-module-widgets-backend-model";
-import { model as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-model";
+import { model as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-model";
 import { model as footerBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-backend-model";
 import { model as buttonsArraysToButtons } from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-backend-model";
 import { model as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-backend-model";

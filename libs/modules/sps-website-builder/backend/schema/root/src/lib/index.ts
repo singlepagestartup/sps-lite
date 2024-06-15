@@ -29,7 +29,7 @@ export {
 export {
   Table as SPSWBLogotypesToSpsFileStorageWidgets,
   Relations as SPSWBLogotypesToSpsFileStorageWidgetsRelations,
-} from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-widgets-backend-schema";
+} from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-backend-schema";
 export {
   Table as SPSWBFooterBlocksToButtonsArrays,
   Relations as SPSWBFooterBlocksToButtonsArraysRelations,
