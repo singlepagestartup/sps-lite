@@ -64,7 +64,7 @@ export async function customGenerator(
 
   const leftModel = {
     model: {
-      name: "metadata",
+      name: "page",
       frontend: {
         component: {
           variants: modelAdminVariants,
@@ -75,15 +75,14 @@ export async function customGenerator(
 
   const rightModel = {
     model: {
-      name: "sps-file-storage-module-file",
-      isExternal: true,
+      name: "metadata",
       frontend: {},
     },
   };
 
   const relation = {
     relation: {
-      name: "metadata-to-sps-file-storage-module-files",
+      name: "pages-to-metadata",
       frontend: {
         component: {
           variants: relationAdminVariants,

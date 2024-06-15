@@ -1,3 +1,4 @@
+import { model as pagesToMetadata } from "@sps/sps-website-builder-relations-pages-to-metadata-backend-model";
 import { model as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-model";
 import { model as metadata } from "@sps/sps-website-builder-models-metadata-backend-model";
 import { model as slidesToButtonsArrays } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-model";
@@ -48,6 +49,7 @@ import { model as layout } from "@sps/sps-website-builder-models-layout-backend-
 import { model as page } from "@sps/sps-website-builder-models-page-backend-model";
 
 export const models = {
+  pagesToMetadata,
   metadataToSpsFileStorageModuleFiles,
   metadata,
   slidesToButtonsArrays,
