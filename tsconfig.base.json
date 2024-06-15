@@ -1984,45 +1984,6 @@
       "@sps/sps-website-builder-models-logotype-frontend-redux": [
         "libs/modules/sps-website-builder/models/logotype/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-logotypes-list-block-backend-app": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-backend-model": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-backend-schema": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-backend-schema-relations": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/backend/schema/relations/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/backend/schema/table/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-contracts": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-model": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/model/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-component-variants-sps-lite-default": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/component/variants/sps-lite/default/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-logotypes-list-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-metadata-backend-app": [
         "libs/modules/sps-website-builder/models/metadata/backend/app/root/src/index.ts"
       ],
