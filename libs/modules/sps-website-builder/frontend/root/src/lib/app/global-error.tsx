@@ -1,11 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Component as Layout } from "@sps/sps-website-builder-models-layout-frontend-component";
+import { Component as Page } from "@sps/sps-website-builder-models-page-frontend-component";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
+import { NextFontWithVariable } from "next/dist/compiled/@next/font";
+import { IModel } from "@sps/sps-website-builder-models-page-contracts-extended";
 
-export function GlobalError({ error, reset, fonts }: any) {
-  const [page, setPage] = useState<any>();
+export function GlobalError({
+  error,
+  reset,
+  fonts,
+}: {
+  fonts: {
+    defaultFont: NextFontWithVariable;
+    primaryFont: NextFontWithVariable;
+  };
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
+  const [page, setPage] = useState<IModel>();
+
   useEffect(() => {
     console.error("GlobalError error:", error);
   }, [error]);
@@ -29,7 +43,7 @@ export function GlobalError({ error, reset, fonts }: any) {
         }
       })
       .catch((error) => {
-        console.error("GlobalError error:", error);
+        console.error("api.fetch error:", error);
       });
   }, []);
 
@@ -40,7 +54,14 @@ export function GlobalError({ error, reset, fonts }: any) {
           className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
         >
           <div className="relative">
-            <Layout {...page} />
+            <Page
+              isServer={false}
+              variant="default"
+              hostUrl={page.url}
+              data={{
+                url: page.url,
+              }}
+            />
           </div>
         </body>
       </html>

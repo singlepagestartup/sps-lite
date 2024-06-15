@@ -9,14 +9,16 @@ export const handler = async (
   c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
-  let query = c.req.query("url");
+  const query = c.req.query("url");
+  const sanitizedUrl = query?.split("?")[0];
+  let url = sanitizedUrl;
 
   // Vercel changes url "/" to "index" so we need to change it back
-  if (!query || query === "/index") {
-    query = "/";
+  if (!url || url === "/index") {
+    url = "/";
   }
 
-  if (query === "favicon.ico") {
+  if (url === "favicon.ico") {
     return c.json({
       ok: true,
     });
@@ -25,7 +27,7 @@ export const handler = async (
   const filledPages = await services.getFilledPages();
 
   const targetPage = filledPages.find((page) => {
-    const cuttedLastSlash = query !== "/" ? query?.replace(/\/$/, "") : query;
+    const cuttedLastSlash = url !== "/" ? url?.replace(/\/$/, "") : url;
 
     if (
       page.urls.find((urlParam) => {

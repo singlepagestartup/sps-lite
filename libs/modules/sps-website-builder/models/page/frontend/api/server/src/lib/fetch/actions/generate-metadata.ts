@@ -5,7 +5,7 @@ import { api as spsFileStorageFileApi } from "@sps/sps-file-storage-models-file-
 import { BACKEND_URL, FRONTEND_URL } from "@sps/shared-utils";
 import { Metadata } from "next/types";
 
-export async function action() {
+export async function action(props: any) {
   const metadataEntites = await metadataApi.fetch.find();
   const primaryMetadata = metadataEntites.find(
     (item) => item.variant === "primary",

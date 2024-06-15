@@ -11,21 +11,10 @@ import {
 } from "@sps/shared-utils";
 
 interface Params {
-  url?: string | string[];
+  url: string;
 }
 
 export async function action({ url }: Params) {
-  const localUrl =
-    typeof url === "string"
-      ? url.startsWith("/")
-        ? url
-        : `/${url}`
-      : `/${url?.join("/") || ""}`;
-
-  if (!localUrl) {
-    return;
-  }
-
   const options: NextRequestOptions = {
     next: {
       revalidate: 0,
@@ -36,7 +25,7 @@ export async function action({ url }: Params) {
   const res = await fetch(
     `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url?` +
       new URLSearchParams({
-        url: localUrl,
+        url,
       }),
     options,
   );

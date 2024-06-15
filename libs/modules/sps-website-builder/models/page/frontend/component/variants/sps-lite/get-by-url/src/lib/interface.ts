@@ -11,7 +11,7 @@ export interface IComponentBase {
 
 export interface IComponentProps extends IComponentBase {
   variant: typeof variant;
-  url: string[] | string;
+  url: string;
   set?: Dispatch<SetStateAction<IModelExtended | undefined>>;
   children?: any;
 }

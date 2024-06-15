@@ -4,7 +4,7 @@ import { action as getByUrl } from "./get-by-url";
 import { action as getFiltersFromUrl } from "./get-filters-from-url";
 
 interface Params {
-  url?: string | string[];
+  url: string;
 }
 
 export async function action({

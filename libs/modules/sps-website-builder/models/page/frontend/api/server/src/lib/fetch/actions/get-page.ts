@@ -16,7 +16,7 @@ import {
 import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
 
 interface Params {
-  url?: string | string[];
+  url: string;
 }
 
 export async function action(params: Params) {
