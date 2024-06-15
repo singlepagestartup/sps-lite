@@ -27,6 +27,14 @@ export function Component(props: IComponentPropsExtended) {
       <FormField
         ui="shadcn"
         type="text"
+        name="anchor"
+        label="Anchor"
+        form={props.form}
+        placeholder="Type anchor"
+      />
+      <FormField
+        ui="shadcn"
+        type="text"
         name="subtitle"
         label="Subitle"
         form={props.form}
@@ -39,6 +47,14 @@ export function Component(props: IComponentPropsExtended) {
         name="description"
         form={props.form}
         placeholder="Type description"
+      />
+      <FormField
+        ui="shadcn"
+        type="text"
+        name="className"
+        label="Class name"
+        form={props.form}
+        placeholder="Type class name"
       />
       <FormField
         ui="shadcn"

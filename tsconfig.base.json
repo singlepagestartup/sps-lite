@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "importHelpers": true,
     "skipLibCheck": true,
@@ -2021,42 +2022,6 @@
       ],
       "@sps/sps-website-builder-models-logotypes-list-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/redux/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-backend-app": [
-        "libs/modules/sps-website-builder/models/metatag/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-backend-model": [
-        "libs/modules/sps-website-builder/models/metatag/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-backend-schema": [
-        "libs/modules/sps-website-builder/models/metatag/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-backend-schema-relations": [
-        "libs/modules/sps-website-builder/models/metatag/backend/schema/relations/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/metatag/backend/schema/table/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-contracts": [
-        "libs/modules/sps-website-builder/models/metatag/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-contracts-extended": [
-        "libs/modules/sps-website-builder/models/metatag/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/metatag/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-frontend-api-model": [
-        "libs/modules/sps-website-builder/models/metatag/frontend/api/model/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/metatag/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-frontend-component": [
-        "libs/modules/sps-website-builder/models/metatag/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-metatag-frontend-redux": [
-        "libs/modules/sps-website-builder/models/metatag/frontend/redux/src/index.ts"
       ],
       "@sps/sps-website-builder-models-modal-backend-app": [
         "libs/modules/sps-website-builder/models/modal/backend/app/root/src/index.ts"

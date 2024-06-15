@@ -20,11 +20,11 @@ export async function customGenerator(
         modules: [
           {
             module: {
-              name: "sps-rbac",
+              name: "sps-website-builder",
               models: [
                 {
                   model: {
-                    name: "permission",
+                    name: "metatag",
                     frontend: {
                       component: {
                         variants: [
