@@ -20,6 +20,7 @@ export function Component(props: IComponentPropsExtended) {
     <IsAuthenticatatedWrapper
       variant="is-authenticatated-wrapper"
       isServer={props.isServer}
+      hostUrl={props.hostUrl}
     >
       <ReduxProvider>
         <Comp {...props} />

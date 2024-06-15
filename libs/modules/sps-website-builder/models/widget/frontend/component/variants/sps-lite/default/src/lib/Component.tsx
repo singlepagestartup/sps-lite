@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
             <WidgetsToHeroSectionBlocks
               key={index}
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="default"
               data={widgetToHeroSectionBlock}
             />
@@ -36,6 +37,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToNavbarBlocks
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={widgetToNavbarBlock}
           />
@@ -46,6 +48,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToFooterBlocks
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={widgetToFooterBlock}
           />
@@ -56,6 +59,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToSliderBlocks
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={widgetToSliderBlock}
           />
@@ -67,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
             <WidgetToFeaturesSectionBlock
               key={index}
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="default"
               data={widgetToFeaturesSectionBlock}
             />
@@ -78,6 +83,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToStartupModuleWidgets
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={widgetToModule}
           />
@@ -88,6 +94,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToSpsFileStorageWidgets
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={entity}
           />
@@ -98,6 +105,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToSpsRbacModuleWidgets
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={entity}
           />

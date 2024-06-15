@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Logotype
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.logotype.variant}
         data={props.data.logotype}
       />

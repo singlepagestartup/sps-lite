@@ -60,6 +60,7 @@ export function Component(props: IComponentPropsExtended) {
                 <ButtonsArraysToButtons
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -67,6 +68,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <ButtonsArraysToButtons
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
             />
           </div>

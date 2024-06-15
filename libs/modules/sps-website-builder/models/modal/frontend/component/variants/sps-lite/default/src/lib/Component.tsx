@@ -55,6 +55,7 @@ export function Component(props: IComponentPropsExtended) {
                 <PageBlocks
                   variant="default"
                   isServer={false}
+                  hostUrl={props.hostUrl}
                   data={props.data}
                 />
               </Dialog.Panel>

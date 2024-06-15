@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
             {props.data.media.length ? (
               <File
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="image"
                 data={props.data.media[0]}
                 containerClassName="default-media-container"
@@ -34,6 +35,7 @@ export function Component(props: IComponentPropsExtended) {
             {props.data.media.length > 1 ? (
               <File
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="image"
                 data={props.data.media[1]}
                 containerClassName="hover-media-container"
@@ -51,6 +53,7 @@ export function Component(props: IComponentPropsExtended) {
             {props.data.additionalMedia.length ? (
               <File
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="image"
                 data={props.data.additionalMedia[0]}
                 containerClassName="default-additional-media-container"
@@ -60,6 +63,7 @@ export function Component(props: IComponentPropsExtended) {
             {props.data.additionalMedia.length > 1 ? (
               <File
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="image"
                 data={props.data.additionalMedia[1]}
                 containerClassName="hover-additional-media-container"

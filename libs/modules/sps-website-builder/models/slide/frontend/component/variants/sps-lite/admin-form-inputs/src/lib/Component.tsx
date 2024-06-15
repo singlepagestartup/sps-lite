@@ -63,6 +63,7 @@ export function Component(props: IComponentPropsExtended) {
                 <SlidesToSpsFileStorageWidgets
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -70,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <SlidesToSpsFileStorageWidgets
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               slideId={props.data?.id}
               data={undefined}
@@ -83,6 +85,7 @@ export function Component(props: IComponentPropsExtended) {
                 <SlidesToButtonsArrays
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -90,6 +93,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <SlidesToButtonsArrays
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               slideId={props.data?.id}
               data={undefined}

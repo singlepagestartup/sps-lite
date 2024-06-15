@@ -1,14 +1,10 @@
 import { IModel } from "<%= root_contracts_import_path %>";
 import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "<%= variant %>" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   data: Partial<IModel>;
 }

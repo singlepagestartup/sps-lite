@@ -47,6 +47,7 @@ export function Component(props: IComponentPropsExtended) {
                 <PagesToWidgetsSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   pageId={props.data?.id}
                   data={entity}
@@ -55,6 +56,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <PagesToWidgetsSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               pageId={props.data?.id}
               data={undefined}
@@ -68,6 +70,7 @@ export function Component(props: IComponentPropsExtended) {
                 <PagesToLayoutsSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   pageId={props.data?.id}
                   data={entity}
@@ -76,6 +79,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <PagesToLayoutsSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               pageId={props.data?.id}
             />

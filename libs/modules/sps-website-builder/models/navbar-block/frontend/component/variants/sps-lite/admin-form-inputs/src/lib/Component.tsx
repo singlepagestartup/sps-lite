@@ -68,6 +68,7 @@ export function Component(props: IComponentPropsExtended) {
                 <NavbarBlocksToButtonsArraySpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -75,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <NavbarBlocksToButtonsArraySpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
             />
           </div>
@@ -89,6 +91,7 @@ export function Component(props: IComponentPropsExtended) {
                     key={index}
                     variant="select-right"
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     data={navbarBlocksToLogotypes}
                   />
                 );
@@ -97,6 +100,7 @@ export function Component(props: IComponentPropsExtended) {
             <NavbarBlocksToLogotypes
               variant="select-right"
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
             />
           </div>
         </ModelEntitiesListCard>

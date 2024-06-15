@@ -1,14 +1,10 @@
 import { IModel } from "@sps/sps-rbac-models-authentication-block-contracts";
 import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-block-contracts-extended";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "change-password" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   data: Partial<IModel>;
 }

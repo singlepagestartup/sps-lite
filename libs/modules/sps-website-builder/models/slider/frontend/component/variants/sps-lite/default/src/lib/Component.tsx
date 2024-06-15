@@ -57,6 +57,7 @@ export function Component(props: IComponentPropsExtended) {
                 <SlidersToSlides
                   key={index}
                   isServer={false}
+                  hostUrl={props.hostUrl}
                   variant="default"
                   data={entity}
                 />

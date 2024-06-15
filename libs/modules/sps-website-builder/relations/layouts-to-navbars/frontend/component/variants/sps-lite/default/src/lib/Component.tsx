@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Navbar
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.navbar.variant}
         data={props.data.navbar}
       />

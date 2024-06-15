@@ -1,11 +1,8 @@
+import { ISpsComponentBase } from "@sps/ui-adapter";
+
 export const variants = ["default"] as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   className?: string;
   variant: (typeof variants)[number];
   data: {

@@ -16,6 +16,7 @@ export function Component(props: IComponentPropsExtended) {
           <WidgetsToFiles
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={entity}
           />

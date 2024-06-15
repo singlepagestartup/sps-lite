@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Widget
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant="default"
         data={props.data.widget}
       />

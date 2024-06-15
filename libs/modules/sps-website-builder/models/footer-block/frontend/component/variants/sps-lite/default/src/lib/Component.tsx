@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
                   key={index}
                   variant="default"
                   isServer={false}
+                  hostUrl={props.hostUrl}
                   data={entity}
                 />
               );
@@ -41,6 +42,7 @@ export function Component(props: IComponentPropsExtended) {
                   <FooterBlocksToButtonsArrays
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="default"
                     data={entity}
                   />
@@ -55,6 +57,7 @@ export function Component(props: IComponentPropsExtended) {
                   <FooterBlocksToButtonsArrays
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="default"
                     data={entity}
                   />
@@ -79,6 +82,7 @@ export function Component(props: IComponentPropsExtended) {
                   <FooterBlocksToButtonsArrays
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="default"
                     data={entity}
                   />

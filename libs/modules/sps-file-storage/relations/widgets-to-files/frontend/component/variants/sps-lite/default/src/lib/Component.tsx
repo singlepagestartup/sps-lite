@@ -13,6 +13,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <File
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.file.variant}
         data={props.data.file}
       />

@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <FeaturesSectionBlock
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.featuresSectionBlock.variant}
         data={props.data.featuresSectionBlock}
       />

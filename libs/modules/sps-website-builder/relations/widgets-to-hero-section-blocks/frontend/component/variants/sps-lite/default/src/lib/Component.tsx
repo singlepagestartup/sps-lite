@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <HeroSectionBlock
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.heroSectionBlock.variant}
         data={props.data.heroSectionBlock}
       />

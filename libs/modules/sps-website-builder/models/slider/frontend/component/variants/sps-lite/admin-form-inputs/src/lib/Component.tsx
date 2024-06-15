@@ -46,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
                 <SlidersToSlidesSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={sliderToSlide}
                 />
@@ -53,6 +54,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <SlidersToSlidesSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
             />
           </div>

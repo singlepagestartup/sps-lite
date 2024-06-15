@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <FooterBlock
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.footerBlock.variant}
         data={props.data.footerBlock}
       />

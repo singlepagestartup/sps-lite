@@ -1,14 +1,10 @@
 import { IRelation } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts";
 import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-contracts-extended";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "select-right" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   heroSectionBlockId?: string;
   data?: IRelation;

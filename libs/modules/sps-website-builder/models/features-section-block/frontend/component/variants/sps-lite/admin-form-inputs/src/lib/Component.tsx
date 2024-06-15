@@ -80,6 +80,7 @@ export function Component(props: IComponentPropsExtended) {
                     key={index}
                     data={entity}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="select-right"
                   />
                 );
@@ -87,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
             )}
             <FeaturesSectionBlocksToFeatures
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
             />
           </div>

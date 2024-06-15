@@ -13,7 +13,11 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("flex w-full", props.data.className || "py-20")}
     >
       <div className="w-full max-w-7xl mx-auto">
-        <Authentication isServer={props.isServer} variant="select-method" />
+        <Authentication
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="select-method"
+        />
       </div>
     </div>
   );

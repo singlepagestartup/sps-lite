@@ -30,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
                 <FootersToWidgetsSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   data={footerToWidget}
                   variant="select-right"
                 />
@@ -38,6 +39,7 @@ export function Component(props: IComponentPropsExtended) {
 
             <FootersToWidgetsSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
             />
           </div>

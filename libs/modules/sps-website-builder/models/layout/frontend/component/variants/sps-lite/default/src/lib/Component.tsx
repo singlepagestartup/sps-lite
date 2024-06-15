@@ -17,6 +17,7 @@ export function Component(props: IComponentPropsExtended) {
         return (
           <LayoutsToNavbars
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             key={index}
             variant="default"
             data={layoutsToNavbars}
@@ -29,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
           <LayoutsToFooters
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={layoutsToFooters}
           />

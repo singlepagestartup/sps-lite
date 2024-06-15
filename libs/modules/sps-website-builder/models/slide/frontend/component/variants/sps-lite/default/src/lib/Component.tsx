@@ -18,6 +18,7 @@ export function Component(props: IComponentPropsExtended) {
               <SlidesToSpsFileStorageWidgets
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="default"
                 data={entity}
               />
@@ -38,6 +39,7 @@ export function Component(props: IComponentPropsExtended) {
                   <SlidesToButtonsArrays
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="default"
                     data={entity}
                   />

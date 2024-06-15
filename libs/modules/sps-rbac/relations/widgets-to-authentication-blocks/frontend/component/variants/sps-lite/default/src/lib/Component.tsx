@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <AuthenticationBlock
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.authenticationBlock.variant}
         data={props.data.authenticationBlock}
       />

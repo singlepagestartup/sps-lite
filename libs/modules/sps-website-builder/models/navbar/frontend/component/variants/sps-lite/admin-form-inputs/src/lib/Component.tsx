@@ -39,6 +39,7 @@ export function Component(props: IComponentPropsExtended) {
                 <NavbarsToWidgetsSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   navbarId={props.data?.id}
                   data={entity}
@@ -48,6 +49,7 @@ export function Component(props: IComponentPropsExtended) {
 
             <NavbarsToWidgetsSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               navbarId={props.data?.id}
               data={undefined}

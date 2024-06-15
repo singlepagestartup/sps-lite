@@ -57,6 +57,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToHeroSectionBlocksSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -64,6 +65,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToHeroSectionBlocksSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -78,6 +80,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToFeaturesSectionBlocksSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -85,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToFeaturesSectionBlocksSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -99,6 +103,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToNavbarBlocksSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -106,6 +111,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToNavbarBlocksSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -120,6 +126,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToFooterBlocksSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -127,6 +134,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToFooterBlocksSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -141,6 +149,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToSliderBlocksSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -148,6 +157,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToSliderBlocksSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -162,6 +172,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToStartupModuleWidgets
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -169,6 +180,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToStartupModuleWidgets
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -183,6 +195,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -190,6 +203,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}
@@ -205,6 +219,7 @@ export function Component(props: IComponentPropsExtended) {
                   <WidgetsToSpsFileStorageModuleWidgets
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="select-right"
                     data={entity}
                   />
@@ -213,6 +228,7 @@ export function Component(props: IComponentPropsExtended) {
             )}
             <WidgetsToSpsFileStorageModuleWidgets
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}

@@ -32,6 +32,7 @@ export function Component(props: IComponentPropsExtended) {
               <HeroSectionBlocksToButtonsArrays
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 data={entity}
                 variant="default"
               />
@@ -46,6 +47,7 @@ export function Component(props: IComponentPropsExtended) {
                   <HeroSectionBlocksToSpsFileStorageWidgets
                     key={index}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="default"
                     data={entity}
                   />

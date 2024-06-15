@@ -7,7 +7,7 @@
       "cache": true,
       "options": {
         "ignorePath": ".eslintignore",
-        "eslintConfig": "{projectRoot}/.eslintrc.json",
+        "eslintConfig": ".eslintrc.json",
         "quiet": false
       }
     },

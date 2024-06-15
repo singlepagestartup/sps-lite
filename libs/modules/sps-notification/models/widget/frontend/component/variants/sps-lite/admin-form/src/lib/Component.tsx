@@ -72,6 +72,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent className="flex flex-col gap-6 pb-10">
             <AdminFormInputs
               isServer={false}
+              hostUrl={props.hostUrl}
               variant="admin-form-inputs"
               data={props.data}
               form={form}

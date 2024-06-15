@@ -21,6 +21,7 @@ export function Component(props: IComponentPropsExtended) {
             <NavbarsToWidgets
               key={index}
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="default"
               data={entity}
             />

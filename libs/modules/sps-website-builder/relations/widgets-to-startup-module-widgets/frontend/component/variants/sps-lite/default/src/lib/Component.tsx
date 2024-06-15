@@ -16,6 +16,7 @@ export function Component(props: IComponentPropsExtended) {
         <Startup
           variant="default"
           isServer={props.isServer}
+          hostUrl={props.hostUrl}
           widgetId={props.data.startupModuleWidgetId}
         />
       ) : null}

@@ -1,9 +1,5 @@
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-  isEditing?: boolean;
-}
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
-export interface IComponentProps extends IComponentBase {}
+export interface IComponentProps extends ISpsComponentBase {}
 
 export interface IComponentPropsExtended extends IComponentProps {}

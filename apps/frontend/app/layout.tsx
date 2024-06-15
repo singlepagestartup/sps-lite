@@ -23,9 +23,10 @@ export default async function RootLayout({
         <Suspense fallback={<Loading />}>
           <SpsLiteRbacSetSessionWrapper
             isServer={false}
+            hostUrl="/"
             variant="set-session-wrapper"
           >
-            <Admin isServer={true} />
+            <Admin hostUrl="/" isServer={true} />
             <div className="relative">
               {children}
               <Toaster />

@@ -17,6 +17,7 @@ export default async function Server(props: IComponentProps) {
       <div className="w-full max-w-7xl mx-auto py-20">
         <AuthenticationSpsLiteSelectMethod
           isServer={props.isServer}
+          hostUrl={props.hostUrl}
           variant="select-method"
         />
       </div>

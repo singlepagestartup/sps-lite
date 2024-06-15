@@ -11,6 +11,7 @@ export function App(props: IComponentProps) {
     >
       <Widget
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant="default"
         data={{
           id: props.widgetId,

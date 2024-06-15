@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
                   key={index}
                   variant="default"
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   data={entity}
                 />
               );
@@ -29,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
                     variant="default"
                     data={entity}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                   />
                 );
               })}
@@ -44,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
                   variant="default"
                   data={entity}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                 />
               );
             })}
@@ -57,6 +60,7 @@ export function Component(props: IComponentPropsExtended) {
               variant="default"
               data={entity}
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
             />
           );
         })}

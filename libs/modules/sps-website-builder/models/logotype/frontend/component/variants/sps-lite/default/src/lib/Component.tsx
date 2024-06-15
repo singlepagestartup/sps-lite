@@ -18,6 +18,7 @@ export function Component(props: IComponentPropsExtended) {
               <LogotypesToSpsFileStorageWidgets
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="default"
                 data={entity}
               />
@@ -30,6 +31,7 @@ export function Component(props: IComponentPropsExtended) {
             <LogotypesToSpsFileStorageWidgets
               key={index}
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="default"
               data={entity}
             />

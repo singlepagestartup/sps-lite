@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Buttons
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.button.variant}
         data={props.data.button}
       />

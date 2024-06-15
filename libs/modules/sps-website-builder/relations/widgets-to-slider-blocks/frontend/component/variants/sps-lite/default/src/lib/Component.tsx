@@ -14,6 +14,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <SliderBlock
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant={props.data.sliderBlock.variant}
         data={props.data.sliderBlock}
       />

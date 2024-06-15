@@ -13,6 +13,7 @@ export function Component(props: IComponentPropsExtended) {
       {props.data.pagesToLayouts?.length ? (
         <PagesToLayouts
           isServer={props.isServer}
+          hostUrl={props.hostUrl}
           variant="get-layout"
           data={props.data.pagesToLayouts[0]}
         >
@@ -21,6 +22,7 @@ export function Component(props: IComponentPropsExtended) {
               <PagesToWidgets
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="default"
                 data={widget}
               />

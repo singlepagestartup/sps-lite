@@ -18,6 +18,7 @@ export function Component(props: IComponentPropsExtended) {
               <SliderBlocksToSliders
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="default"
                 data={sliderBlocksToSliders}
               />

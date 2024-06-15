@@ -40,6 +40,7 @@ export function Component(props: IComponentPropsExtended) {
                 <WidgetsToFilesSpsLiteSelectRight
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   widgetId={props.data?.id}
                   data={entity}
@@ -48,6 +49,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <WidgetsToFilesSpsLiteSelectRight
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               widgetId={props.data?.id}
               data={undefined}

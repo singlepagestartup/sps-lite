@@ -1,15 +1,11 @@
 import { IModel } from "@sps/sps-website-builder-models-page-contracts";
 import { IModel as IModelExtended } from "@sps/sps-website-builder-models-page-contracts-extended";
 import { Dispatch, SetStateAction } from "react";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "get-url-model-id" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   model: string;
   children?: (props: { data: string | undefined }) => any;

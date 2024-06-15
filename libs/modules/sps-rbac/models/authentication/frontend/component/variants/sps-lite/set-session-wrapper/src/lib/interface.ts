@@ -1,15 +1,11 @@
 import { IModel } from "@sps/sps-rbac-models-authentication-contracts";
 import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-contracts-extended";
 import { ReactNode } from "react";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "set-session-wrapper" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   children: ReactNode;
 }

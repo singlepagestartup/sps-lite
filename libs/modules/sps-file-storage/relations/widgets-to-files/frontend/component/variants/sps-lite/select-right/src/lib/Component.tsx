@@ -86,6 +86,7 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <AdminSelectInput
               isServer={false}
+              hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
               formFieldName="fileId"
@@ -100,6 +101,7 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent>
             <AdminSelectInput
               isServer={false}
+              hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
               formFieldName="fileId"

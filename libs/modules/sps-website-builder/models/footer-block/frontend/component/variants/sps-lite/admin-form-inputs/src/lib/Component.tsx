@@ -61,6 +61,7 @@ export function Component(props: IComponentPropsExtended) {
                 <FooterBlocksToLogotypes
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -68,6 +69,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <FooterBlocksToLogotypes
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               footerBlockId={props.data?.id}
               data={undefined}
@@ -82,6 +84,7 @@ export function Component(props: IComponentPropsExtended) {
                 <FooterBlocksToButtonsArrays
                   key={index}
                   isServer={props.isServer}
+                  hostUrl={props.hostUrl}
                   variant="select-right"
                   data={entity}
                 />
@@ -89,6 +92,7 @@ export function Component(props: IComponentPropsExtended) {
             })}
             <FooterBlocksToButtonsArrays
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               footerBlockId={props.data?.id}
               data={undefined}

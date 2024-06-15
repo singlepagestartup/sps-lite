@@ -1,14 +1,10 @@
 import { IRelation } from "@sps/sps-rbac-relations-subjects-to-roles-contracts";
 import { IRelation as IRelationExtended } from "@sps/sps-rbac-relations-subjects-to-roles-contracts-extended";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "select-right" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   subjectId?: string;
   data?: IRelation;

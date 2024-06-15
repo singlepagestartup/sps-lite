@@ -1,15 +1,11 @@
 import { IModel } from "@sps/sps-billing-models-widget-contracts";
 import { IModel as IModelExtended } from "@sps/sps-billing-models-widget-contracts-extended";
 import { Dispatch, SetStateAction } from "react";
+import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "find-by-id" as const;
 
-export interface IComponentBase {
-  showSkeletons?: boolean;
-  isServer: boolean;
-}
-
-export interface IComponentProps extends IComponentBase {
+export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   id: string;
   set?: Dispatch<SetStateAction<IModelExtended | undefined>>;

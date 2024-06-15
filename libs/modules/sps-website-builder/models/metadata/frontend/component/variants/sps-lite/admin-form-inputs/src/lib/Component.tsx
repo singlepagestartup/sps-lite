@@ -186,6 +186,7 @@ export function Component(props: IComponentPropsExtended) {
                     key={index}
                     data={entity}
                     isServer={props.isServer}
+                    hostUrl={props.hostUrl}
                     variant="select-right"
                   />
                 );
@@ -193,6 +194,7 @@ export function Component(props: IComponentPropsExtended) {
             )}
             <MetadataToSpsFileStorageModuleFiles
               isServer={props.isServer}
+              hostUrl={props.hostUrl}
               variant="select-right"
               metadataId={props.data?.id}
             />

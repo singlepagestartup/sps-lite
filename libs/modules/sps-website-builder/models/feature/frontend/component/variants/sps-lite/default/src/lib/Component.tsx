@@ -15,6 +15,7 @@ export function Component(props: IComponentPropsExtended) {
         {props.data?.media?.length ? (
           <File
             isServer={false}
+              hostUrl={props.hostUrl}
             variant="image"
             className="object-contain"
             containerClassName="relative w-[100px] h-[100px]"

@@ -22,6 +22,7 @@ export function Component(props: IComponentPropsExtended) {
               <FeaturesSectionBlocksToFeaturesSpsLiteDefault
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 variant="default"
                 data={entity}
               />

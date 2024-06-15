@@ -17,6 +17,7 @@ export function Component(props: IComponentPropsExtended) {
           <ButtonsArrayToButtons
             key={index}
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="default"
             data={entity}
           />

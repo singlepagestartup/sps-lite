@@ -14,13 +14,20 @@ export function Component(props: IComponentPropsExtended) {
     >
       <ModelEntitiesListCard
         title="footer-blocks"
-        adminForm={<AdminForm isServer={props.isServer} variant="admin-form" />}
+        adminForm={
+          <AdminForm
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-form"
+          />
+        }
       >
         {props.data.map((entity, index) => {
           return (
             <AdminTableRow
               key={index}
               isServer={false}
+              hostUrl={props.hostUrl}
               variant="admin-table-row"
               data={entity}
             />

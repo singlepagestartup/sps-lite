@@ -40,7 +40,12 @@ export function Component(props: IComponentPropsExtended) {
         }}
         data={props.data}
         adminForm={
-          <AdminForm isServer={false} variant="admin-form" data={props.data} />
+          <AdminForm
+            isServer={false}
+            hostUrl={props.hostUrl}
+            variant="admin-form"
+            data={props.data}
+          />
         }
       >
         <div className="flex flex-col gap-0.5 overflow-hidden">

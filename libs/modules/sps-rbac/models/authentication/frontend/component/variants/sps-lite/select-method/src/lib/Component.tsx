@@ -12,6 +12,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <AuthenticationSpsLiteLoginAndPassword
         isServer={props.isServer}
+        hostUrl={props.hostUrl}
         variant="login-and-password"
       />
     </div>

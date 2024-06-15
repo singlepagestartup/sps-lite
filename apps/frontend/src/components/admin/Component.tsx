@@ -98,6 +98,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsWebsiteAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -105,6 +106,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsFileStorageAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -112,6 +114,7 @@ export function Component(props: IComponentPropsExtended) {
               <StartupAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -119,6 +122,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsRbacAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -126,6 +130,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsNotificationAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -133,6 +138,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsBillingAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -140,6 +146,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsCrmAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}
@@ -147,6 +154,7 @@ export function Component(props: IComponentPropsExtended) {
               <SpsThirdPartiesAdminComponent
                 {...props}
                 isServer={false}
+                hostUrl={props.hostUrl}
                 variant="default"
               />
             ) : null}

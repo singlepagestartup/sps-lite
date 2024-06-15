@@ -38,6 +38,7 @@ export function Component(props: IComponentPropsExtended) {
               <LayoutsToNavbarsSpsLiteSelectRight
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 data={layoutToNavbar}
                 variant="select-right"
               />
@@ -45,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
           })}
           <LayoutsToNavbarsSpsLiteSelectRight
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="select-right"
           />
         </div>
@@ -56,6 +58,7 @@ export function Component(props: IComponentPropsExtended) {
               <LayoutsToFooterSpsLiteSelectRight
                 key={index}
                 isServer={props.isServer}
+                hostUrl={props.hostUrl}
                 data={layoutToFooter}
                 variant="select-right"
               />
@@ -63,6 +66,7 @@ export function Component(props: IComponentPropsExtended) {
           })}
           <LayoutsToFooterSpsLiteSelectRight
             isServer={props.isServer}
+            hostUrl={props.hostUrl}
             variant="select-right"
           />
         </div>
