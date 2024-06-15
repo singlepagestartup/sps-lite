@@ -7,16 +7,12 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
-import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const params = useParams();
-
   const { data, isFetching, isLoading, isUninitialized } =
     api.rtk.useGetByUrlQuery({
-      url: params.url,
-      locale: params.locale,
+      url: props.url,
     });
 
   useEffect(() => {
