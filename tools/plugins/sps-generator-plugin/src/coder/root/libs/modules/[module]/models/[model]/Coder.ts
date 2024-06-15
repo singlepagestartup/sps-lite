@@ -89,12 +89,22 @@ export class Coder {
   }
 
   async create() {
+    if (this.isExternal) {
+      console.log(`External model "${this.name}", skipping update`);
+      return;
+    }
+
     await this.project.contracts.create();
     await this.project.backend.create();
     await this.project.frontend.create();
   }
 
   async remove() {
+    if (this.isExternal) {
+      console.log(`External model "${this.name}", skipping update`);
+      return;
+    }
+
     await this.project.frontend.remove();
     await this.project.backend.remove();
     await this.project.contracts.remove();
