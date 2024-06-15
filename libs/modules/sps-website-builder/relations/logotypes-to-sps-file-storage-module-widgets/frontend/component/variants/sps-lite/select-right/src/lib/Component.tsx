@@ -14,7 +14,7 @@ import { variants } from "@sps/sps-website-builder-relations-logotypes-to-sps-fi
 
 const formSchema = z.object({
   logotypeId: z.string().min(1),
-  spsFileStorageWidgetId: z.string().min(1),
+  spsFileStorageModuleWidgetId: z.string().min(1),
   variant: z.enum(variants).default("default"),
   className: z.string().optional(),
   orderIndex: z.number().default(0),
@@ -30,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       logotypeId: props.data?.logotypeId || props.logotypeId,
-      spsFileStorageWidgetId: props.data?.spsFileStorageWidgetId,
+      spsFileStorageModuleWidgetId: props.data?.spsFileStorageModuleWidgetId,
       className: props.data?.className || "",
       orderIndex: props.data?.orderIndex || 0,
       variant: props.data?.variant || "default",
@@ -40,7 +40,7 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.logotypeId || !data.spsFileStorageWidgetId) {
+    if (!data.logotypeId || !data.spsFileStorageModuleWidgetId) {
       return;
     }
 
@@ -119,7 +119,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               form={form}
               variant="admin-select-input"
-              formFieldName="spsFileStorageWidgetId"
+              formFieldName="spsFileStorageModuleWidgetId"
             />
           </div>
         </ModelEntityCard>
@@ -158,7 +158,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               form={form}
               variant="admin-select-input"
-              formFieldName="spsFileStorageWidgetId"
+              formFieldName="spsFileStorageModuleWidgetId"
             />
           </CardContent>
         </Card>

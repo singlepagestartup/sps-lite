@@ -6,5 +6,5 @@ export interface IRelation {
   variant: (typeof variants)[number];
   orderIndex: number;
   heroSectionBlockId: string;
-  spsFileStorageWidgetId: string;
+  spsFileStorageModuleWidgetId: string;
 }

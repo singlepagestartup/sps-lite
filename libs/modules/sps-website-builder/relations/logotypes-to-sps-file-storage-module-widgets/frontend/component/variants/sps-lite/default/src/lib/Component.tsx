@@ -15,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       <SpsFileStorage
         isServer={props.isServer}
         variant="default"
-        data={{ id: props.data.spsFileStorageWidgetId }}
+        data={{ id: props.data.spsFileStorageModuleWidgetId }}
       />
     </div>
   );

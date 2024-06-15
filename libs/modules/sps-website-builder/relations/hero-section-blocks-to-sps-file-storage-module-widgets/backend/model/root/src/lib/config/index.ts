@@ -1,4 +1,4 @@
 export const config = {
   heroSectionBlockId: "spsWebsiteBuilder.heroSectionBlock.id",
-  spsFileStorageWidgetId: "spsFileStorage.widget.id",
+  spsFileStorageModuleWidgetId: "spsFileStorage.widget.id",
 };

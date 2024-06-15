@@ -16,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
         isServer={props.isServer}
         variant="default"
         data={{
-          id: props.data.spsFileStorageWidgetId,
+          id: props.data.spsFileStorageModuleWidgetId,
         }}
       />
     </div>

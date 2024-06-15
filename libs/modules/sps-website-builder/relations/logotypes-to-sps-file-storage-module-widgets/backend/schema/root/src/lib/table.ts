@@ -19,7 +19,7 @@ export const Table = pgTable(table, {
     .uuid("le_id")
     .notNull()
     .references(() => Logotype.id, { onDelete: "cascade" }),
-  spsFileStorageWidgetId: pgCore.uuid("sps_fe_se_wt_id").notNull(),
+  spsFileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_wt_id").notNull(),
 });
 
 export const insertSchema = createInsertSchema(Table);
