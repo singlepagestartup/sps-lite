@@ -1,4 +1,8 @@
 export {
+  Table as SPSWBMetadata,
+  Relations as SPSWBMetadataRelations,
+} from "@sps/sps-website-builder-models-metadata-backend-schema";
+export {
   Table as SPSWBSlidesToButtonsArrays,
   Relations as SPSWBSlidesToButtonsArraysRelations,
 } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-backend-schema";

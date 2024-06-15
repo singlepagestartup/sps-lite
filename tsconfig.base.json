@@ -2023,6 +2023,42 @@
       "@sps/sps-website-builder-models-logotypes-list-block-frontend-redux": [
         "libs/modules/sps-website-builder/models/logotypes-list-block/frontend/redux/src/index.ts"
       ],
+      "@sps/sps-website-builder-models-metadata-backend-app": [
+        "libs/modules/sps-website-builder/models/metadata/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-backend-model": [
+        "libs/modules/sps-website-builder/models/metadata/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-backend-schema": [
+        "libs/modules/sps-website-builder/models/metadata/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-backend-schema-relations": [
+        "libs/modules/sps-website-builder/models/metadata/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-backend-schema-table": [
+        "libs/modules/sps-website-builder/models/metadata/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-contracts": [
+        "libs/modules/sps-website-builder/models/metadata/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-contracts-extended": [
+        "libs/modules/sps-website-builder/models/metadata/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-frontend-api-client": [
+        "libs/modules/sps-website-builder/models/metadata/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-frontend-api-model": [
+        "libs/modules/sps-website-builder/models/metadata/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-frontend-api-server": [
+        "libs/modules/sps-website-builder/models/metadata/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-frontend-component": [
+        "libs/modules/sps-website-builder/models/metadata/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-website-builder-models-metadata-frontend-redux": [
+        "libs/modules/sps-website-builder/models/metadata/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-website-builder-models-modal-backend-app": [
         "libs/modules/sps-website-builder/models/modal/backend/app/root/src/index.ts"
       ],
