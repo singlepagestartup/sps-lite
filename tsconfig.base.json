@@ -2254,45 +2254,6 @@
       "@sps/sps-website-builder-models-navbar-frontend-redux": [
         "libs/modules/sps-website-builder/models/navbar/frontend/redux/src/index.ts"
       ],
-      "@sps/sps-website-builder-models-not-found-block-backend-app": [
-        "libs/modules/sps-website-builder/models/not-found-block/backend/app/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-backend-model": [
-        "libs/modules/sps-website-builder/models/not-found-block/backend/model/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-backend-schema": [
-        "libs/modules/sps-website-builder/models/not-found-block/backend/schema/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-backend-schema-relations": [
-        "libs/modules/sps-website-builder/models/not-found-block/backend/schema/relations/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-backend-schema-table": [
-        "libs/modules/sps-website-builder/models/not-found-block/backend/schema/table/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-contracts": [
-        "libs/modules/sps-website-builder/models/not-found-block/contracts/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-contracts-extended": [
-        "libs/modules/sps-website-builder/models/not-found-block/contracts/extended/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-api-client": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/api/client/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-api-model": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/api/model/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-api-server": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/api/server/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-component": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/component/root/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-component-variants-sps-lite-simple": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/component/variants/sps-lite/simple/src/index.ts"
-      ],
-      "@sps/sps-website-builder-models-not-found-block-frontend-redux": [
-        "libs/modules/sps-website-builder/models/not-found-block/frontend/redux/src/index.ts"
-      ],
       "@sps/sps-website-builder-models-page-backend-app": [
         "libs/modules/sps-website-builder/models/page/backend/app/root/src/index.ts"
       ],
