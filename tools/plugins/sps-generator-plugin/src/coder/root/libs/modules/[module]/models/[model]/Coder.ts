@@ -90,7 +90,7 @@ export class Coder {
 
   async create() {
     if (this.isExternal) {
-      console.log(`External model "${this.name}", skipping update`);
+      console.log(`External model "${this.name}", skipping create`);
       return;
     }
 
@@ -101,7 +101,7 @@ export class Coder {
 
   async remove() {
     if (this.isExternal) {
-      console.log(`External model "${this.name}", skipping update`);
+      console.log(`External model "${this.name}", skipping remove`);
       return;
     }
 

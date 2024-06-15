@@ -73,6 +73,10 @@ export class Coder {
     const models = this.parent.parent.parent.parent.project.models;
 
     for (const model of models) {
+      if (model.project.model.isExternal) {
+        continue;
+      }
+
       const levelContractsPath = path.join(
         model.project.model.project.contracts.project.extended.baseDirectory,
         "/src/lib/interfaces/sps-lite.ts",
@@ -100,6 +104,10 @@ export class Coder {
     const models = this.parent.parent.parent.parent.project.models;
 
     for (const model of models) {
+      if (model.project.model.isExternal) {
+        continue;
+      }
+
       const levelContractsPath = path.join(
         model.project.model.project.contracts.project.extended.baseDirectory,
         "/src/lib/interfaces/sps-lite.ts",
