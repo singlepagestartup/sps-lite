@@ -21,7 +21,7 @@ export {
 export {
   Table as SPSWBSlidesToSpsFileStorageWidgets,
   Relations as SPSWBSlidesToSpsFileStorageWidgetsRelations,
-} from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-widgets-backend-schema";
+} from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-module-widgets-backend-schema";
 export {
   Table as SPSWBHeroSectionBlocksToSpsFileStorageWidgets,
   Relations as SPSWBHeroSectionBlocksToSpsFileStorageWidgetsRelations,

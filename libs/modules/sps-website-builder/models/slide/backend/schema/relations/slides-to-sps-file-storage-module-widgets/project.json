@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-website-builder-models-slide-backend-schema-relations-slides-to-sps-file-storage-module-widgets",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-website-builder/models/slide/backend/schema/relations/slides-to-sps-file-storage-module-widgets/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}
