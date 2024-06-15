@@ -1,79 +1,59 @@
 "use server";
 
-import { route } from "@sps/sps-website-builder-models-page-frontend-api-model";
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+import { api as metadataApi } from "@sps/sps-website-builder-models-metadata-frontend-api-server";
+import { api as spsFileStorageFileApi } from "@sps/sps-file-storage-models-file-frontend-api-server";
+import { BACKEND_URL, FRONTEND_URL } from "@sps/shared-utils";
+import { Metadata } from "next/types";
 
 export async function action() {
-  // const options: NextRequestOptions = {
-  //   next: {
-  //     revalidate: 0,
-  //     tags: [route],
-  //   },
-  // };
+  const metadataEntites = await metadataApi.fetch.find();
+  const primaryMetadata = metadataEntites.find(
+    (item) => item.variant === "primary",
+  );
 
-  // const request = await fetch(
-  //   `${BACKEND_URL}/api/sps-website-builder/metatags`,
-  //   options,
-  // );
+  let image = "";
+  const icons: Metadata["icons"] = [];
 
-  // if (!request.ok) {
-  //   return {};
-  // }
+  if (primaryMetadata?.metadataToSpsFileStorageModuleFiles?.length) {
+    for (const metadataToSpsFileStorageModuleFile of primaryMetadata.metadataToSpsFileStorageModuleFiles) {
+      const file = await spsFileStorageFileApi.fetch.findById({
+        id: metadataToSpsFileStorageModuleFile.spsFileStorageModuleFileId,
+      });
 
-  // const metatagsJson = await request.json();
-  // const metatags = transformResponseItem(metatagsJson);
+      const fileUrl = `${BACKEND_URL}${file.file}`;
 
-  // if (!metatags?.length) {
-  //   const defaultMetatagsRequest = await fetch(
-  //     `${BACKEND_URL}/api/sps-website-builder/metatags`,
-  //     options,
-  //   );
+      if (metadataToSpsFileStorageModuleFile.type === "icon") {
+        icons.push({
+          url: fileUrl,
+        });
 
-  //   const defaultMetatagsJson = await defaultMetatagsRequest.json();
-  //   const defaultMetatags = transformResponseItem(defaultMetatagsJson);
+        continue;
+      }
 
-  //   if (!defaultMetatags?.length) {
-  //     return {
-  //       title: "Single Page Startup",
-  //       description: "The fastest way to create startup",
-  //       icons: {
-  //         icon: "/assets/images/favicon.svg",
-  //       },
-  //     };
-  //   }
+      image = fileUrl;
+    }
+  }
 
-  //   const defaultMetatag = defaultMetatags[0];
-
-  //   const defaultMetadata = {
-  //     title: defaultMetatag.title,
-  //     description: defaultMetatag.description,
-  //   } as any;
-
-  //   if (defaultMetatag.favicon?.url) {
-  //     // defaultMetadata.icons = {
-  //     //   icon: getFileUrl(defaultMetatag.favicon),
-  //     // };
-  //   }
-
-  //   return defaultMetadata;
-  // }
-
-  // const metatag = metatags[0];
-
-  // const metadata = {
-  //   title: metatag.title,
-  //   description: metatag.description,
-  // } as any;
-
-  // // if (metatag.favicon?.url) {
-  // //   metadata.icons = {
-  // //     icon: getFileUrl(metatag.favicon),
-  // //   };
-  // // }
-
-  return;
+  return {
+    title: primaryMetadata?.title || "Title",
+    description: primaryMetadata?.description || "Description",
+    openGraph: {
+      title: primaryMetadata?.opengraphTitle || primaryMetadata?.title,
+      description:
+        primaryMetadata?.opengraphDescription || primaryMetadata?.description,
+      type: primaryMetadata?.opengraphType || "website",
+      url: FRONTEND_URL,
+      image,
+    },
+    twitter: {
+      title: primaryMetadata?.twitterTitle || primaryMetadata?.title,
+      description:
+        primaryMetadata?.twitterDescription || primaryMetadata?.description,
+      image,
+    },
+    keywords: primaryMetadata?.keywords || [],
+    url: FRONTEND_URL,
+    image,
+    icons,
+  } as Metadata;
 }

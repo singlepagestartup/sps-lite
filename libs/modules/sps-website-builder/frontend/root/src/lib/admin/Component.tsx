@@ -90,6 +90,11 @@ const PageSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table"
   ).then((mod) => mod.Component),
 );
+const MetadataSpsLiteAdminTable = dynamic(() =>
+  import(
+    "@sps/sps-website-builder-models-metadata-frontend-component-variants-sps-lite-admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -102,6 +107,10 @@ export function Component(props: IComponentProps) {
       {
         name: "widget",
         Comp: WidgetSpsLiteAdminTable,
+      },
+      {
+        name: "metadata",
+        Comp: MetadataSpsLiteAdminTable,
       },
       {
         name: "button",
@@ -136,17 +145,8 @@ export function Component(props: IComponentProps) {
         Comp: LayoutSpsLiteAdminTable,
       },
       {
-        name: "loader",
-      },
-      {
         name: "logotype",
         Comp: LogotypeSpsLiteAdminTable,
-      },
-      {
-        name: "logotypes-list-block",
-      },
-      {
-        name: "metatag",
       },
       {
         name: "modal",
@@ -158,9 +158,6 @@ export function Component(props: IComponentProps) {
       {
         name: "navbar-block",
         Comp: NavbarBlockSpsLiteAdminTable,
-      },
-      {
-        name: "not-found-block",
       },
       {
         name: "page",
@@ -177,9 +174,6 @@ export function Component(props: IComponentProps) {
       {
         name: "slider-block",
         Comp: SliderBlockSpsLiteAdminTable,
-      },
-      {
-        name: "topbar",
       },
     ];
   }, []);
@@ -245,47 +239,6 @@ export function Component(props: IComponentProps) {
                   </Button>
                 );
               })}
-
-            <Collapsible className="flex flex-col gap-3 pt-6">
-              <CollapsibleTrigger asChild={true}>
-                <Button
-                  variant="link"
-                  className="text-left justify-start gap-3 py-0 text-secondary-foreground"
-                >
-                  Not finished models
-                  <ChevronUpDownIcon className="w-4 h-4" />
-                </Button>
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                {models
-                  .filter((model) => !model.Comp)
-                  .map((model, modelIndex) => {
-                    let hasComponent = false;
-
-                    if ("Comp" in model && model.Comp) {
-                      hasComponent = true;
-                    }
-
-                    return (
-                      <Button
-                        variant="ghost"
-                        className="text-left justify-start"
-                        disabled={!hasComponent}
-                        onClick={() => {
-                          setPage({
-                            model,
-                          });
-                        }}
-                        key={modelIndex}
-                      >
-                        <p className="max-w-full text-ellipsis overflow-hidden">
-                          {model.name}
-                        </p>
-                      </Button>
-                    );
-                  })}
-              </CollapsibleContent>
-            </Collapsible>
           </div>
         </div>
       </div>

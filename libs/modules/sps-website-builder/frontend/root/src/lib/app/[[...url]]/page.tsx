@@ -10,7 +10,7 @@ export async function generateStaticParams() {
   return api.fetch.getUrls();
 }
 
-export async function generateMetadata() {
+export async function generateMetadata(props: any) {
   return api.fetch.generateMetadata();
 }
 

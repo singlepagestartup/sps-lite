@@ -15,7 +15,7 @@ export const Table = pgTable(table, {
   variant: pgCore.text("variant").notNull().default("default"),
   orderIndex: pgCore.integer("order_index").notNull().default(0),
   className: pgCore.text("class_name"),
-  type: pgCore.text("type").default("opengraph_image"),
+  type: pgCore.text("type").default("icon"),
   metadataId: pgCore
     .uuid("ma_id")
     .notNull()

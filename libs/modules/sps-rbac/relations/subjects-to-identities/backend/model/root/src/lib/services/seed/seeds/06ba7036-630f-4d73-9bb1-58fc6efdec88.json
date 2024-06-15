@@ -1,0 +1,25 @@
+{
+  "id": "06ba7036-630f-4d73-9bb1-58fc6efdec88",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": null,
+  "subjectId": "458fa7b1-2bce-4577-96cd-d819af633c69",
+  "identityId": "e6999669-c04f-4196-8081-3fd4b0c358fc",
+  "subject": {
+    "id": "458fa7b1-2bce-4577-96cd-d819af633c69",
+    "createdAt": "2024-06-14T02:17:36.587Z",
+    "updatedAt": "2024-06-14T02:17:36.587Z",
+    "variant": "default"
+  },
+  "identity": {
+    "password": "Password123!",
+    "salt": null,
+    "account": "",
+    "email": "rogwild.design@gmail.com",
+    "provider": "login_and_password",
+    "id": "e6999669-c04f-4196-8081-3fd4b0c358fc",
+    "createdAt": "2024-06-01T02:36:11.809Z",
+    "updatedAt": "2024-06-01T02:36:11.809Z",
+    "variant": "default"
+  }
+}

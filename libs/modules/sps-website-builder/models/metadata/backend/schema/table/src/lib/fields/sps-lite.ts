@@ -21,7 +21,6 @@ export const fields = {
   twitterCreator: pgCore.text("twitter_creator"),
   twitterTitle: pgCore.text("twitter_title"),
   twitterDescription: pgCore.text("twitter_description"),
-  twitterImage: pgCore.text("twitter_image"),
   twitterUrl: pgCore.text("twitter_url"),
   twitterDomain: pgCore.text("twitter_domain"),
   twitterAppCountry: pgCore.text("twitter_app_country"),

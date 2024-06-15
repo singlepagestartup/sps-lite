@@ -1,0 +1,27 @@
+{
+  "id": "458fa7b1-2bce-4577-96cd-d819af633c69",
+  "createdAt": "2024-06-14T02:17:36.587Z",
+  "updatedAt": "2024-06-14T02:17:36.587Z",
+  "variant": "default",
+  "subjectsToSessions": [
+    {
+      "id": "95fcf416-fef8-4f12-ba3c-c5f488eac923",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "subjectId": "458fa7b1-2bce-4577-96cd-d819af633c69",
+      "sessionId": "e39c4d8b-5995-49cf-9848-172663b7b82b"
+    }
+  ],
+  "subjectsToIdentities": [
+    {
+      "id": "06ba7036-630f-4d73-9bb1-58fc6efdec88",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "subjectId": "458fa7b1-2bce-4577-96cd-d819af633c69",
+      "identityId": "e6999669-c04f-4196-8081-3fd4b0c358fc"
+    }
+  ],
+  "subjectsToRoles": []
+}

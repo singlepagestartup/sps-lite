@@ -16,6 +16,25 @@ import { variants } from "@sps/sps-website-builder-models-metadata-contracts";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  keywords: z.string().optional(),
+  author: z.string().optional(),
+  viewport: z.string().optional(),
+  opengraphTitle: z.string().optional(),
+  opengraphDescription: z.string().optional(),
+  opengraphUrl: z.string().optional(),
+  opengraphType: z.string().optional(),
+  opengraphSiteName: z.string().optional(),
+  opengraphLocale: z.string().optional(),
+  twitterCard: z.string().optional(),
+  twitterSite: z.string().optional(),
+  twitterCreator: z.string().optional(),
+  twitterTitle: z.string().optional(),
+  twitterDescription: z.string().optional(),
+  twitterUrl: z.string().optional(),
+  twitterDomain: z.string().optional(),
+  twitterAppCountry: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +48,25 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      description: props.data?.description || "",
+      keywords: props.data?.keywords || "",
+      author: props.data?.author || "",
+      viewport: props.data?.viewport || "",
+      opengraphTitle: props.data?.opengraphTitle || "",
+      opengraphDescription: props.data?.opengraphDescription || "",
+      opengraphUrl: props.data?.opengraphUrl || "",
+      opengraphType: props.data?.opengraphType || "",
+      opengraphSiteName: props.data?.opengraphSiteName || "",
+      opengraphLocale: props.data?.opengraphLocale || "",
+      twitterCard: props.data?.twitterCard || "",
+      twitterSite: props.data?.twitterSite || "",
+      twitterCreator: props.data?.twitterCreator || "",
+      twitterTitle: props.data?.twitterTitle || "",
+      twitterDescription: props.data?.twitterDescription || "",
+      twitterUrl: props.data?.twitterUrl || "",
+      twitterDomain: props.data?.twitterDomain || "",
+      twitterAppCountry: props.data?.twitterAppCountry || "",
     },
   });
 

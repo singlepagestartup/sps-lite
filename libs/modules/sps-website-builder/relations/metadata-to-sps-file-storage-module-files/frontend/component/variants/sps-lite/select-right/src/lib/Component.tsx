@@ -10,12 +10,16 @@ import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
 import { api } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-api-client";
 import { Component as AdminSelectInput } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-select-input";
-import { variants } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-contracts";
+import {
+  variants,
+  types,
+} from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-contracts";
 
 const formSchema = z.object({
   metadataId: z.string().min(1),
   spsFileStorageModuleFileId: z.string().min(1),
   variant: z.enum(variants).default("default"),
+  type: z.enum(types).default("icon"),
   className: z.string().optional(),
   orderIndex: z.number().default(0),
 });
@@ -34,6 +38,7 @@ export function Component(props: IComponentPropsExtended) {
       className: props.data?.className || "",
       orderIndex: props.data?.orderIndex || 0,
       variant: props.data?.variant || "default",
+      type: props.data?.type || "icon",
     },
   });
 
@@ -98,6 +103,15 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Select variant of relation"
               options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Type"
+              name="type"
+              form={form}
+              placeholder="Select type of relation"
+              options={types.map((type) => [type, type])}
             />
             <FormField
               ui="shadcn"

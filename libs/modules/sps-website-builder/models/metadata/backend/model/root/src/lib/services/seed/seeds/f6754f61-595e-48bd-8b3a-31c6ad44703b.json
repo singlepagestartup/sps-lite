@@ -1,0 +1,37 @@
+{
+  "id": "f6754f61-595e-48bd-8b3a-31c6ad44703b",
+  "createdAt": "2024-06-15T09:53:30.249Z",
+  "updatedAt": "2024-06-15T09:53:30.249Z",
+  "variant": "primary",
+  "title": "Single Page Startup",
+  "description": "The fastest way to create service oriented TypeScript project",
+  "keywords": "typescript, next.js, hono, startup",
+  "author": "singlepagestartup",
+  "viewport": "",
+  "opengraphTitle": "Single Page Startup",
+  "opengraphDescription": "The fastest way to create service oriented TypeScript project",
+  "opengraphUrl": "",
+  "opengraphType": "",
+  "opengraphSiteName": "",
+  "opengraphLocale": "",
+  "twitterCard": "",
+  "twitterSite": "",
+  "twitterCreator": "",
+  "twitterTitle": "Single Page Startup",
+  "twitterDescription": "The fastest way to create service oriented TypeScript project",
+  "twitterUrl": "",
+  "twitterDomain": "",
+  "twitterAppCountry": "",
+  "pagesToMetadata": [],
+  "metadataToSpsFileStorageModuleFiles": [
+    {
+      "id": "c5afcb8f-8048-4fe8-967c-bb6beb84741f",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "type": "icon",
+      "metadataId": "f6754f61-595e-48bd-8b3a-31c6ad44703b",
+      "spsFileStorageModuleFileId": "beef7342-8f7c-490c-8956-d5fb89fd8e82"
+    }
+  ]
+}

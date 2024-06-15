@@ -1,5 +1,5 @@
 export const variants = ["default"] as const;
-export const types = ["opengraph_image"] as const;
+export const types = ["icon", "image", "opengraph_image"] as const;
 
 export interface IRelation {
   id: string;

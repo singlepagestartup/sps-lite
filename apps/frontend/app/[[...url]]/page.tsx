@@ -7,14 +7,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any) {
-  // return page.generateMetadata(props);
-  return {
-    title: "Single Page Startup",
-    description: "Single Page Startup",
-    icons: {
-      icon: "/images/favicon.svg",
-    },
-  };
+  return page.generateMetadata(props);
 }
 
 export default async function Page(props: any) {
