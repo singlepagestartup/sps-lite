@@ -105,20 +105,11 @@ var args = process.argv.slice(2);
 
 const service_id = args[0];
 
-// process.stdout.write(`🚀 ~ service_id: ${service_id}\n`);
-
-// console.log(`🚀 ~ service_id:`, service_id);
-
 const registry_id = args[1];
-// console.log(`🚀 ~ registry_id:`, registry_id);
 const url = args[2];
-// console.log(`🚀 ~ url:`, url);
 const portainer_username = args[3];
-// console.log(`🚀 ~ portainer_username:`, portainer_username);
 const portainer_password = args[4];
-
 const file_name = args[5];
-// console.log(`🚀 ~ portainer_password:`, portainer_password);
 
 createWebhook({
   service_id,

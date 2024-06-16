@@ -70,7 +70,7 @@ export async function middleware(request: any) {
 
     return NextResponse.next();
   } catch (error) {
-    console.log("🚀 ~ middleware ~ error:", error);
+    console.log("middleware ~ error:", error);
   }
 }
 

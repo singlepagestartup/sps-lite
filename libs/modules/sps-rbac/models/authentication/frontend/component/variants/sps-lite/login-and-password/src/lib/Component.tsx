@@ -36,8 +36,6 @@ export function Component(props: IComponentPropsExtended) {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(`🚀 ~ onSubmit ~ data:`, data);
-
     loginAndPassword({
       data,
     });

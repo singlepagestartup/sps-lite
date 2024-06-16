@@ -23,7 +23,7 @@ if (
       });
     }
   } catch (error: any) {
-    console.log(`🚀 ~ error:`, error.message);
+    console.log(`redis store ~ error:`, error.message);
   }
 }
 

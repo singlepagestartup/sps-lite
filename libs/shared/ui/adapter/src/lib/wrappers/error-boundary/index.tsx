@@ -46,8 +46,6 @@ export class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
   }
 
   public render() {
-    // console.log("🚀 ~ render ~ this.state:", this.state);
-
     /**
      * In production build "NEXT_REDIRECT" becomes
      * "An error occurred in the Server Components..."
@@ -64,7 +62,6 @@ export class ErrorBoundary extends Component<Props, ErrorBoundaryState> {
 
     if (this.state.hasError) {
       const Comp = this.props.fallback;
-      // console.log("🚀 ~ render ~ Comp:", Comp);
 
       if (!Comp) {
         return <ErrorComponent {...this.state} variant="simple" />;
