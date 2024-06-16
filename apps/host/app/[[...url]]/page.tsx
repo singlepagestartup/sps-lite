@@ -2,6 +2,8 @@ import { api as spsWebsiteBuilderPageApi } from "@sps/sps-website-builder-models
 import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-models-page-frontend-component";
 import QueryString from "qs";
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   return spsWebsiteBuilderPageApi.fetch.urls();
 }
