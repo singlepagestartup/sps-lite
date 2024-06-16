@@ -5,6 +5,7 @@ import {
   Table,
 } from "@sps/sps-website-builder-models-page-backend-schema";
 import { eq } from "drizzle-orm";
+import { util as buildTreePaths } from "./build-tree-paths";
 
 export type EntityWithUrls = typeof Table.$inferSelect & {
   urls: { url: string }[];
@@ -19,7 +20,6 @@ export async function service(props: { id: string }): Promise<EntityWithUrls> {
     throw new Error(`Entity with id ${props.id} not found`);
   }
 
-  const urls: EntityWithUrls["urls"] = [];
   const segments = result.url.split("/").filter((url) => url !== "");
 
   const saturatedSegments: Array<string | string[]> = [];
@@ -53,53 +53,19 @@ export async function service(props: { id: string }): Promise<EntityWithUrls> {
     saturatedSegments.push(segment);
   }
 
-  const urlsArray: string[] = [];
-  const saturatedSegmentsLength = saturatedSegments.length;
-
-  for (let i = 0; i < saturatedSegmentsLength; i++) {
-    const segment = saturatedSegments[i];
-    const urlsLength = urlsArray.length;
-
-    if (Array.isArray(segment)) {
-      if (!urlsLength) {
-        segment.forEach((url) => {
-          urlsArray.push(url);
-        });
-        continue;
-      }
-
-      const newUrlsArray: string[] = [];
-
-      for (let j = 0; j < urlsLength; j++) {
-        const url = urlsArray[j];
-
-        segment.forEach((segmentUrl) => {
-          newUrlsArray.push(`${url}/${segmentUrl}`);
-        });
-      }
-
-      urlsArray.length = 0;
-      urlsArray.push(...newUrlsArray);
-      continue;
-    }
-
-    if (!urlsLength) {
-      urlsArray.push("/" + segment);
-      continue;
-    }
-
-    urlsArray.forEach((url) => {
-      urlsArray.push(`${url}/${segment}`);
-    });
+  if (saturatedSegments.length === 0) {
+    return { ...result, urls: [{ url: "/" }] };
   }
 
-  urlsArray.forEach((url) => {
-    urls.push({ url });
+  const constructedUrls = buildTreePaths({
+    segments: saturatedSegments,
   });
 
-  if (saturatedSegments.length === 0) {
-    urls.push({ url: "/" });
-  }
+  const urls: EntityWithUrls["urls"] = constructedUrls.map((url) => {
+    return {
+      url: url.join("/").startsWith("/") ? url.join("/") : `/${url.join("/")}`,
+    };
+  });
 
   return { ...result, urls };
 }
