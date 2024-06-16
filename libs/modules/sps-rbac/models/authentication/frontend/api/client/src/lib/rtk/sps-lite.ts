@@ -103,7 +103,7 @@ export const api = createApi({
     isAuthenticated: build.query<IModelExtended, unknown>({
       query: () => {
         return {
-          url: `${route}/is-authenticated`,
+          url: `${route}/is-authenticatated`,
         };
       },
 

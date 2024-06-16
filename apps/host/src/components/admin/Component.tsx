@@ -3,6 +3,12 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
+import { useParams, useSearchParams } from "next/navigation";
+const IsAuthenticatatedWrapper = dynamic(() =>
+  import(
+    "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper"
+  ).then((mod) => mod.Component),
+);
 const SpsWebsiteAdminComponent = dynamic(() =>
   import("@sps/sps-website-builder-frontend").then((mod) => mod.AdminComponent),
 );
@@ -29,139 +35,155 @@ const SpsThirdPartiesAdminComponent = dynamic(() =>
 );
 
 export function Component(props: IComponentPropsExtended) {
+  const params = useSearchParams();
+  const adminQueryParams = params.get("admin");
+
   const [widget, setWidget] = useState<string>("sps-website-builder");
 
+  if (!adminQueryParams) {
+    return null;
+  }
+
   return (
-    <section data-module="frontend" className="w-full py-2 lg:py-10 bg-dotted">
-      <div className="w-full mx-auto max-w-7xl px-2">
-        <div className="p-5">
-          <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
-            <Button
-              title="sps-website-builder"
-              onClick={() => {
-                setWidget("sps-website-builder");
-              }}
-              active={widget === "sps-website-builder"}
-            />
-            <Button
-              title="sps-file-storage"
-              onClick={() => {
-                setWidget("sps-file-storage");
-              }}
-              active={widget === "sps-file-storage"}
-            />
-            <Button
-              title="sps-rbac"
-              onClick={() => {
-                setWidget("sps-rbac");
-              }}
-              active={widget === "sps-rbac"}
-            />
-            <Button
-              title="sps-notification"
-              onClick={() => {
-                setWidget("sps-notification");
-              }}
-              active={widget === "sps-notification"}
-            />
-            <Button
-              title="sps-billing"
-              onClick={() => {
-                setWidget("sps-billing");
-              }}
-              active={widget === "sps-billing"}
-            />
-            <Button
-              title="startup"
-              onClick={() => {
-                setWidget("startup");
-              }}
-              active={widget === "startup"}
-            />
-            <Button
-              title="sps-crm"
-              onClick={() => {
-                setWidget("sps-crm");
-              }}
-              active={widget === "sps-crm"}
-            />
-            <Button
-              title="sps-third-parties"
-              onClick={() => {
-                setWidget("sps-third-parties");
-              }}
-              active={widget === "sps-third-parties"}
-            />
-          </div>
-          <div className="bg-white rounded-b-lg">
-            {widget === "sps-website-builder" ? (
-              <SpsWebsiteAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+    <IsAuthenticatatedWrapper
+      variant="is-authenticatated-wrapper"
+      isServer={false}
+      hostUrl={props.hostUrl}
+    >
+      <section
+        data-module="frontend"
+        className="w-full py-2 lg:py-10 bg-dotted"
+      >
+        <div className="w-full mx-auto max-w-7xl px-2">
+          <div className="p-5">
+            <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
+              <Button
+                title="sps-website-builder"
+                onClick={() => {
+                  setWidget("sps-website-builder");
+                }}
+                active={widget === "sps-website-builder"}
               />
-            ) : null}
-            {widget === "sps-file-storage" ? (
-              <SpsFileStorageAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-file-storage"
+                onClick={() => {
+                  setWidget("sps-file-storage");
+                }}
+                active={widget === "sps-file-storage"}
               />
-            ) : null}
-            {widget === "startup" ? (
-              <StartupAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-rbac"
+                onClick={() => {
+                  setWidget("sps-rbac");
+                }}
+                active={widget === "sps-rbac"}
               />
-            ) : null}
-            {widget === "sps-rbac" ? (
-              <SpsRbacAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-notification"
+                onClick={() => {
+                  setWidget("sps-notification");
+                }}
+                active={widget === "sps-notification"}
               />
-            ) : null}
-            {widget === "sps-notification" ? (
-              <SpsNotificationAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-billing"
+                onClick={() => {
+                  setWidget("sps-billing");
+                }}
+                active={widget === "sps-billing"}
               />
-            ) : null}
-            {widget === "sps-billing" ? (
-              <SpsBillingAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="startup"
+                onClick={() => {
+                  setWidget("startup");
+                }}
+                active={widget === "startup"}
               />
-            ) : null}
-            {widget === "sps-crm" ? (
-              <SpsCrmAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-crm"
+                onClick={() => {
+                  setWidget("sps-crm");
+                }}
+                active={widget === "sps-crm"}
               />
-            ) : null}
-            {widget === "sps-third-parties" ? (
-              <SpsThirdPartiesAdminComponent
-                {...props}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="default"
+              <Button
+                title="sps-third-parties"
+                onClick={() => {
+                  setWidget("sps-third-parties");
+                }}
+                active={widget === "sps-third-parties"}
               />
-            ) : null}
+            </div>
+            <div className="bg-white rounded-b-lg">
+              {widget === "sps-website-builder" ? (
+                <SpsWebsiteAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-file-storage" ? (
+                <SpsFileStorageAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "startup" ? (
+                <StartupAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-rbac" ? (
+                <SpsRbacAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-notification" ? (
+                <SpsNotificationAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-billing" ? (
+                <SpsBillingAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-crm" ? (
+                <SpsCrmAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-third-parties" ? (
+                <SpsThirdPartiesAdminComponent
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </IsAuthenticatatedWrapper>
   );
 }
 
