@@ -3,7 +3,7 @@ import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-mod
 import QueryString from "qs";
 
 export async function generateStaticParams() {
-  return spsWebsiteBuilderPageApi.fetch.getUrls();
+  return spsWebsiteBuilderPageApi.fetch.urls();
 }
 
 export async function generateMetadata(props: any) {

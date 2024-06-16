@@ -1,11 +1,9 @@
 import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
 import { populate, route, IModelExtended } from "../model";
-import { action as getByUrl } from "./actions/get-by-url";
-import { action as getPage } from "./actions/get-page";
-import { action as getUrls } from "./actions/get-urls";
-import { action as getUrlModelId } from "./actions/get-url-model-id";
+import { action as findByUrl } from "./actions/find-by-url";
+import { action as urls } from "./actions/urls";
 import { action as generateMetadata } from "./actions/generate-metadata";
-import { action as getFiltersFromUrl } from "./actions/get-filters-from-url";
+import { action as urlSegmentValue } from "./actions/url-segment-value";
 
 export interface Params {
   url?: string | string[];
@@ -26,10 +24,8 @@ export const api = {
       ...params,
     });
   },
-  getFiltersFromUrl,
-  getByUrl,
-  getPage,
-  getUrlModelId,
+  findByUrl,
   generateMetadata,
-  getUrls,
+  urls,
+  urlSegmentValue,
 };

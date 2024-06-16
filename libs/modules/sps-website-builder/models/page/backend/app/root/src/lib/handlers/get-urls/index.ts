@@ -1,7 +1,7 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { services } from "../../services";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { model } from "@sps/sps-website-builder-models-page-backend-model";
 
 /**
  * Only one level of nesting is supported
@@ -14,8 +14,7 @@ export const handler = async (
   c: Context<MiddlewaresGeneric, string, BlankInput>,
   next: Next,
 ) => {
-  const filledPages = await services.getFilledPages();
-  const urls = filledPages.map((page) => page.urls).flat();
+  const urls = await model.services.urls();
 
   return c.json({
     data: { urls },

@@ -59,20 +59,16 @@ export async function middleware(request: any) {
     //   return response;
     // }
 
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set(
-      "x-sps-website-builder-pathname",
-      request.nextUrl.pathname,
-    );
+    // const requestHeaders = new Headers(request.headers);
+    // requestHeaders.set(
+    //   "x-sps-website-builder-pathname",
+    //   request.nextUrl.pathname,
+    // );
 
-    const query = new URLSearchParams(request.nextUrl.search);
-    requestHeaders.set("x-sps-website-builder-query", query.toString());
+    // const query = new URLSearchParams(request.nextUrl.search);
+    // requestHeaders.set("x-sps-website-builder-query", query.toString());
 
-    return NextResponse.next({
-      request: {
-        headers: requestHeaders,
-      },
-    });
+    return NextResponse.next();
   } catch (error) {
     console.log("🚀 ~ middleware ~ error:", error);
   }

@@ -2,7 +2,7 @@
 
 import {
   route,
-  IModelExtended,
+  IModel,
 } from "@sps/sps-website-builder-models-page-frontend-api-model";
 import {
   BACKEND_URL,
@@ -10,11 +10,7 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 
-interface Params {
-  url: string;
-}
-
-export async function action({ url }: Params) {
+export async function action() {
   const options: NextRequestOptions = {
     next: {
       revalidate: 0,
@@ -23,10 +19,7 @@ export async function action({ url }: Params) {
   };
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/pages/get-by-url?` +
-      new URLSearchParams({
-        url,
-      }),
+    `${BACKEND_URL}/api/sps-website-builder/pages/urls`,
     options,
   );
 
@@ -40,11 +33,20 @@ export async function action({ url }: Params) {
     throw new Error(json.error.message || "Failed to fetch data");
   }
 
-  const transformedData = transformResponseItem<IModelExtended>(json);
+  const transformedData = transformResponseItem<IModel>(json);
 
-  if (!transformedData?.id) {
-    return;
-  }
+  const paths =
+    transformedData?.urls?.map(
+      (pageParams: { url: string; locale: string }) => {
+        return {
+          ...pageParams,
+          url:
+            pageParams.url === "/"
+              ? []
+              : pageParams.url.split("/").filter((p) => p !== ""),
+        };
+      },
+    ) || [];
 
-  return transformedData;
+  return paths;
 }

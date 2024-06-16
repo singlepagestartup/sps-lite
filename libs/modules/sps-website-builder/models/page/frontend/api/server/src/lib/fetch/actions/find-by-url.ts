@@ -5,23 +5,18 @@ import {
   route,
   IModelExtended,
 } from "@sps/sps-website-builder-models-page-frontend-api-model";
-import QueryString from "qs";
-import { notFound } from "next/navigation";
-import { action as getByUrl } from "./get-by-url";
 import {
   BACKEND_URL,
   NextRequestOptions,
   transformResponseItem,
 } from "@sps/shared-utils";
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import QueryString from "qs";
 
 interface Params {
   url: string;
 }
 
-export async function action(params: Params) {
-  const { url } = params;
-
+export async function action({ url }: Params) {
   const options: NextRequestOptions = {
     next: {
       revalidate: 0,
@@ -29,28 +24,9 @@ export async function action(params: Params) {
     },
   };
 
-  let targetPage = await getByUrl({ url });
-
-  if (!targetPage) {
-    targetPage = await getByUrl({ url: "/404" });
-  }
-
-  if (!targetPage) {
-    const pages = await utilsFetch.api.find<IModelExtended>({
-      model: route,
-      populate,
-      ...params,
-    });
-
-    if (pages.length) {
-      return notFound();
-    }
-
-    return;
-  }
-
   const stringifiedQuery = QueryString.stringify(
     {
+      url,
       populate,
     },
     {
@@ -59,7 +35,7 @@ export async function action(params: Params) {
   );
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/pages/${targetPage.id}?${stringifiedQuery}`,
+    `${BACKEND_URL}/api/sps-website-builder/pages/find-by-url?${stringifiedQuery}`,
     options,
   );
 
@@ -74,6 +50,10 @@ export async function action(params: Params) {
   }
 
   const transformedData = transformResponseItem<IModelExtended>(json);
+
+  if (!transformedData?.id) {
+    return;
+  }
 
   return transformedData;
 }

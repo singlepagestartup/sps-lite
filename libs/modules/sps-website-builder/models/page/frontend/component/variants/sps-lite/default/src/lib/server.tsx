@@ -13,7 +13,7 @@ export default async function Server(props: IComponentProps) {
     return <></>;
   }
 
-  const data = await api.fetch.getPage({ url: props.data.url });
+  const data = await api.fetch.findByUrl({ url: props.data.url });
 
   if (!data) {
     return <></>;
