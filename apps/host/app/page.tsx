@@ -4,10 +4,6 @@ import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-mod
 
 export const revalidate = 3600;
 
-export async function generateStaticParams() {
-  return spsWebsiteBuilderPageApi.fetch.urls();
-}
-
 export async function generateMetadata(props: any) {
   return spsWebsiteBuilderPageApi.fetch.generateMetadata(props);
 }
