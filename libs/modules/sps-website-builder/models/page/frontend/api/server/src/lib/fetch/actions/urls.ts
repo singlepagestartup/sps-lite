@@ -37,17 +37,15 @@ export async function action() {
     const transformedData = transformResponseItem<IModel>(json);
 
     const paths =
-      transformedData?.urls?.map(
-        (pageParams: { url: string; locale: string }) => {
-          return {
-            ...pageParams,
-            url:
-              pageParams.url === "/"
-                ? []
-                : pageParams.url.split("/").filter((p) => p !== ""),
-          };
-        },
-      ) || [];
+      transformedData?.urls?.map((pageParams: { url: string }) => {
+        return {
+          ...pageParams,
+          url:
+            pageParams.url === "/"
+              ? []
+              : pageParams.url.split("/").filter((p) => p !== ""),
+        };
+      }) || [];
 
     return paths;
   } catch (error) {

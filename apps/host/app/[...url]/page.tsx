@@ -5,7 +5,15 @@ import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-mod
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  return spsWebsiteBuilderPageApi.fetch.urls();
+  const urls = await spsWebsiteBuilderPageApi.fetch.urls();
+
+  return urls.filter((url) => {
+    if (url.url.length === 0) {
+      return false;
+    }
+
+    return true;
+  });
 }
 
 export async function generateMetadata(props: any) {
