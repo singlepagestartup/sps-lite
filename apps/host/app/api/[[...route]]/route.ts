@@ -14,6 +14,8 @@ import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 import { setRoutes } from "@sps/sps-kv-provider";
 import { BlankSchema } from "hono/types";
 
+export const dynamic = "force-dynamic";
+
 declare module "hono" {
   interface ContextVariableMap extends MiddlewaresGeneric {}
 }
