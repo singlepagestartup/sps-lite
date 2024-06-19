@@ -9,4 +9,5 @@ export const fields = {
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
   orderIndex: pgCore.integer("order_index"),
+  className: pgCore.text("class_name"),
 };

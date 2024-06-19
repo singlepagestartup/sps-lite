@@ -1,8 +1,21 @@
 import { Hono } from "hono";
 import { handlers } from "./handlers/index";
+
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
 
 export const app = new Hono<MiddlewaresGeneric>();
+
+app.get("/urls", async (c, next) => {
+  return handlers.urls(c, next);
+});
+
+app.get("/find-by-url", async (c, next) => {
+  return handlers.findByUrl(c, next);
+});
+
+app.get("/url-segment-value", async (c, next) => {
+  return handlers.urlSegmentValue(c, next);
+});
 
 app.get("/", async (c, next) => {
   return handlers.find(c, next);

@@ -9,6 +9,16 @@ const Widget = dynamic(() =>
     (mod) => mod.Component,
   ),
 );
+const Page = dynamic(() =>
+  import("@sps/sps-host-models-page-frontend-component").then(
+    (mod) => mod.Component,
+  ),
+);
+const Layout = dynamic(() =>
+  import("@sps/sps-host-models-layout-frontend-component").then(
+    (mod) => mod.Component,
+  ),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -21,6 +31,14 @@ export function Component(props: IComponentProps) {
       {
         name: "widget",
         Comp: Widget,
+      },
+      {
+        name: "page",
+        Comp: Page,
+      },
+      {
+        name: "layout",
+        Comp: Layout,
       },
     ];
   }, []);
@@ -91,7 +109,11 @@ export function Component(props: IComponentProps) {
       </div>
       <div className="w-full lg:w-9/12 flex flex-col gap-6 p-4 pt-6">
         {typeof RenderWidget === "function" ? (
-          <RenderWidget {...({} as any)} />
+          <RenderWidget
+            {...({} as any)}
+            isServer={false}
+            variant="admin-table"
+          />
         ) : null}
       </div>
     </div>

@@ -5,7 +5,7 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-host-models-page-frontend-api-client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent } from "@sps/shadcn";
+import { Form, Card, CardContent, CardFooter } from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,7 +15,9 @@ import { Component as AdminFormInputs } from "@sps/sps-host-models-page-frontend
 import { variants } from "@sps/sps-host-models-page-contracts";
 
 const formSchema = z.object({
-  variant: z.enum(variants),
+  title: z.string().min(2).max(50),
+  url: z.string().min(1),
+  variant: z.enum(variants).default("default"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -28,6 +30,8 @@ export function Component(props: IComponentPropsExtended) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      title: props.data?.title || "",
+      url: props.data?.url || "/",
       variant: props.data?.variant || "default",
     },
   });
@@ -65,25 +69,25 @@ export function Component(props: IComponentPropsExtended) {
       className={`w-full ${props.className || ""}`}
     >
       <Form {...form}>
-        <Card className="admin-edit-card">
-          <h1 className="admin-edit-card-heading">
-            {props.data?.id ? "Edit" : "Create"} page
-          </h1>
-          <CardContent className="flex flex-col gap-6 pb-10">
-            <AdminFormInputs
-              isServer={false}
-              hostUrl={props.hostUrl}
-              variant="admin-form-inputs"
-              data={props.data}
-              form={form}
-            />
-          </CardContent>
-          <div className="admin-edit-card-button-container">
-            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
-              {props.data?.id ? "Update" : "Create"}
-            </Button>
-          </div>
-        </Card>
+        <CardContent>
+          <AdminFormInputs
+            isServer={false}
+            hostUrl={props.hostUrl}
+            variant="admin-form-inputs"
+            data={props.data}
+            form={form}
+          />
+        </CardContent>
+        <CardFooter>
+          <Button
+            ui="shadcn"
+            variant="primary"
+            size="lg"
+            onClick={form.handleSubmit(onSubmit)}
+          >
+            {props.data?.id ? "Update" : "Create"}
+          </Button>
+        </CardFooter>
       </Form>
     </div>
   );

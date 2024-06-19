@@ -53,19 +53,4 @@ export class Coder {
   async removeRelations() {
     await this.project.relation.remove();
   }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.relation.createRelationFrontendComponentVariant(props);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.relation.removeRelationFrontendComponentVariant(props);
-  }
 }

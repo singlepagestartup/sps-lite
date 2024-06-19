@@ -1,7 +1,15 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { Dialog, DialogTrigger, DialogContent } from "@sps/shadcn";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  Card,
+  CardHeader,
+  Button,
+} from "@sps/shadcn";
 import { ChevronUpDownIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 interface IComponentProps {
@@ -15,30 +23,41 @@ export function Component(props: IComponentProps) {
   const [show, setShow] = useState(true);
 
   return (
-    <div className="model-container bg-dotted">
-      <div className="model-header-block">
-        <p className="model-legend">{props.title}</p>
+    <div className="relative gap-6 pt-8 rounded-lg border p-4 border-input">
+      <div className="flex absolute top-0 inset-x-0 px-4 transform -translate-y-1/2 justify-between items-center">
+        <Button variant="outline" size="sm" className="gap-2 w-fit">
+          {props.title}
+        </Button>
         <div className="flex items-center gap-3">
           {props.adminForm ? (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <button className="pill-button">
-                  <PlusIcon className="h-3 w-3" />
-                  <p className="hidden lg:inline">Add new</p>
-                </button>
+                <Button variant="outline" size="sm" className="gap-2">
+                  <PlusIcon className="h-3 w-3" /> Add new
+                </Button>
               </DialogTrigger>
-              <DialogContent>{props.adminForm}</DialogContent>
+              <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
+                <Card>
+                  {props.title ? (
+                    <CardHeader>
+                      <DialogTitle>{props.title}</DialogTitle>
+                    </CardHeader>
+                  ) : null}
+                  {props.adminForm}
+                </Card>
+              </DialogContent>
             </Dialog>
           ) : null}
-          <button
-            className="pill-button"
+          <Button
             onClick={() => {
               setShow(!show);
             }}
+            variant="outline"
+            size="sm"
+            className="gap-2"
           >
-            <ChevronUpDownIcon className="h-3 w-3" />
-            <p className="hidden lg:inline">{show ? "Hide" : "Show"}</p>
-          </button>
+            <ChevronUpDownIcon className="h-3 w-3" /> {show ? "Hide" : "Show"}
+          </Button>
         </div>
       </div>
       <div className={`flex flex-col gap-6 ${show ? "" : "hidden"}`}>

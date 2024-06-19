@@ -78,16 +78,4 @@ export class Coder {
     await this.project.redux.remove();
     await this.project.api.remove();
   }
-
-  async createVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.component.createVariant(props);
-  }
-
-  async removeVariant(props: { variantName: string; variantLevel: string }) {
-    await this.project.component.removeVariant(props);
-  }
 }

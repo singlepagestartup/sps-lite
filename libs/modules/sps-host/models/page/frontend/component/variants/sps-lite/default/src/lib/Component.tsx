@@ -1,6 +1,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as PagesToLayouts } from "@sps/sps-host-relations-pages-to-layouts-frontend-component";
+import { Component as PagesToWidgets } from "@sps/sps-host-relations-pages-to-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -9,11 +11,31 @@ export function Component(props: IComponentPropsExtended) {
       data-model="page"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full py-10 text-center flex flex-col gap-1")}
+      className={cn("w-full flex-col", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: page</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      {props.data.pagesToLayouts?.map((entity, index) => {
+        return (
+          <PagesToLayouts
+            key={index}
+            isServer={props.isServer}
+            variant="default"
+            hostUrl={props.hostUrl}
+            data={entity}
+          >
+            {props.data.pagesToWidgets?.map((entity, index) => {
+              return (
+                <PagesToWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                  data={entity}
+                />
+              );
+            })}
+          </PagesToLayouts>
+        );
+      })}
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as Layout } from "@sps/sps-host-models-layout-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,11 +10,16 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="pages-to-layouts"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full flex flex-col", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Relation: pages-to-layouts</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Layout
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant={props.data.layout.variant}
+        data={props.data.layout}
+      >
+        {props.children}
+      </Layout>
     </div>
   );
 }

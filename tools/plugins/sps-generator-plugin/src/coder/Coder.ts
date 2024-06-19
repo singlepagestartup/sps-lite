@@ -63,29 +63,4 @@ export class Coder {
 
     await formatFiles(this.tree);
   }
-
-  async createRelationFrontendComponentVariant(props: {
-    name: string;
-    level: string;
-    templateName?: string;
-  }) {
-    await this.project.root.createRelationFrontendComponentVariant({
-      variantLevel: props.level,
-      variantName: props.name,
-      templateName: props.templateName,
-    });
-  }
-
-  async removeRelationFrontendComponentVariant({
-    name,
-    level,
-  }: {
-    name: string;
-    level: string;
-  }) {
-    await this.project.root.removeRelationFrontendComponentVariant({
-      variantLevel: level,
-      variantName: name,
-    });
-  }
 }

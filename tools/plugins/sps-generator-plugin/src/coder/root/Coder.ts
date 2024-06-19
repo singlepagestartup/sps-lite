@@ -61,23 +61,4 @@ export class Coder {
   async removeField(props: IEditFieldProps) {
     await this.project.libs.removeField(props);
   }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.libs.createRelationFrontendComponentVariant(props);
-
-    await formatFiles(this.tree);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.libs.removeRelationFrontendComponentVariant(props);
-
-    await formatFiles(this.tree);
-  }
 }

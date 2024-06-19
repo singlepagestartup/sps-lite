@@ -10,17 +10,17 @@ import { api } from "@sps/sps-host-models-page-frontend-api-client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByIdQuery({
-      id: props.data.id,
+    api.rtk.useFindByUrlQuery({
+      url: props.url,
     });
 
-  if (isFetching || isLoading || isUninitialized || !data) {
+  if (isFetching || isLoading || isUninitialized) {
     return <Skeleton {...props} />;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
-  );
+  if (!props.children) {
+    return <></>;
+  }
+
+  return props.children({ data });
 }

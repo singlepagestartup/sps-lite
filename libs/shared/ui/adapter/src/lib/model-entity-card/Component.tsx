@@ -15,6 +15,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   CardContent,
+  Card,
+  CardHeader,
+  DialogTitle,
 } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
 
@@ -34,8 +37,13 @@ export function Component(props: IComponentProps) {
                   <p className="hidden lg:inline">Edit</p>
                 </button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-3xl p-0 max-h-[90vh] overflow-y-scroll">
-                {props.adminForm}
+              <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
+                <Card>
+                  <CardHeader>
+                    <DialogTitle>Edit</DialogTitle>
+                  </CardHeader>
+                  {props.adminForm}
+                </Card>
               </DialogContent>
             </Dialog>
           ) : null}

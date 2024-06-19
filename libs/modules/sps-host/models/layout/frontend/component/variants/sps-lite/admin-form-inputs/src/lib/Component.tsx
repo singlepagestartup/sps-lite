@@ -17,11 +17,19 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={props.form}
+          placeholder="Type title"
+        />
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
           form={props.form}
-          placeholder="Select variant"
+          placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
       </div>

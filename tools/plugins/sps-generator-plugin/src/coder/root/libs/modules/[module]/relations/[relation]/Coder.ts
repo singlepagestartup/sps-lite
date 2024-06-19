@@ -89,19 +89,4 @@ export class Coder {
     await this.project.backend.remove();
     await this.project.contracts.remove();
   }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.frontend.createVariant(props);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.frontend.removeVariant(props);
-  }
 }

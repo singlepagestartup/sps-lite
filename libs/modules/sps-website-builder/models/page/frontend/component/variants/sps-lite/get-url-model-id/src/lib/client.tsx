@@ -20,6 +20,10 @@ export default function Client(props: IComponentProps) {
       locale: params.locale,
     });
 
+  if (isFetching || isLoading || isUninitialized) {
+    return <Skeleton {...props} />;
+  }
+
   useEffect(() => {
     if (data) {
       const filters = getFiltersFromUrl({
