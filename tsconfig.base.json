@@ -363,6 +363,396 @@
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
+      "@sps/sps-host-backend-app": [
+        "libs/modules/sps-host/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-backend-db": [
+        "libs/modules/sps-host/backend/db/root/src/index.ts"
+      ],
+      "@sps/sps-host-backend-models": [
+        "libs/modules/sps-host/backend/models/root/src/index.ts"
+      ],
+      "@sps/sps-host-backend-schema": [
+        "libs/modules/sps-host/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-backend-sdk": [
+        "libs/modules/sps-host/backend/sdk/root/src/index.ts"
+      ],
+      "@sps/sps-host-frontend": [
+        "libs/modules/sps-host/frontend/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-app": [
+        "libs/modules/sps-host/models/layout/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-model": [
+        "libs/modules/sps-host/models/layout/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-schema": [
+        "libs/modules/sps-host/models/layout/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-schema-relations": [
+        "libs/modules/sps-host/models/layout/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-schema-relations-pages-to-layouts": [
+        "libs/modules/sps-host/models/layout/backend/schema/relations/pages-to-layouts/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-backend-schema-table": [
+        "libs/modules/sps-host/models/layout/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-contracts": [
+        "libs/modules/sps-host/models/layout/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-contracts-extended": [
+        "libs/modules/sps-host/models/layout/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-api-client": [
+        "libs/modules/sps-host/models/layout/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-api-model": [
+        "libs/modules/sps-host/models/layout/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-api-server": [
+        "libs/modules/sps-host/models/layout/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component": [
+        "libs/modules/sps-host/models/layout/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-host-models-layout-frontend-redux": [
+        "libs/modules/sps-host/models/layout/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-app": [
+        "libs/modules/sps-host/models/metadata/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-model": [
+        "libs/modules/sps-host/models/metadata/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-schema": [
+        "libs/modules/sps-host/models/metadata/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-schema-relations": [
+        "libs/modules/sps-host/models/metadata/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-schema-relations-pages-to-metadata": [
+        "libs/modules/sps-host/models/metadata/backend/schema/relations/pages-to-metadata/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-backend-schema-table": [
+        "libs/modules/sps-host/models/metadata/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-contracts": [
+        "libs/modules/sps-host/models/metadata/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-contracts-extended": [
+        "libs/modules/sps-host/models/metadata/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-api-client": [
+        "libs/modules/sps-host/models/metadata/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-api-model": [
+        "libs/modules/sps-host/models/metadata/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-api-server": [
+        "libs/modules/sps-host/models/metadata/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component": [
+        "libs/modules/sps-host/models/metadata/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-host/models/metadata/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-host-models-metadata-frontend-redux": [
+        "libs/modules/sps-host/models/metadata/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-app": [
+        "libs/modules/sps-host/models/page/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-model": [
+        "libs/modules/sps-host/models/page/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema": [
+        "libs/modules/sps-host/models/page/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema-relations": [
+        "libs/modules/sps-host/models/page/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema-relations-pages-to-layouts": [
+        "libs/modules/sps-host/models/page/backend/schema/relations/pages-to-layouts/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema-relations-pages-to-metadata": [
+        "libs/modules/sps-host/models/page/backend/schema/relations/pages-to-metadata/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema-relations-pages-to-widgets": [
+        "libs/modules/sps-host/models/page/backend/schema/relations/pages-to-widgets/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-backend-schema-table": [
+        "libs/modules/sps-host/models/page/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-contracts": [
+        "libs/modules/sps-host/models/page/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-contracts-extended": [
+        "libs/modules/sps-host/models/page/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-api-client": [
+        "libs/modules/sps-host/models/page/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-api-model": [
+        "libs/modules/sps-host/models/page/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-api-server": [
+        "libs/modules/sps-host/models/page/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component": [
+        "libs/modules/sps-host/models/page/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-find-by-url": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/find-by-url/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-component-variants-sps-lite-url-segment-value": [
+        "libs/modules/sps-host/models/page/frontend/component/variants/sps-lite/url-segment-value/src/index.ts"
+      ],
+      "@sps/sps-host-models-page-frontend-redux": [
+        "libs/modules/sps-host/models/page/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-app": [
+        "libs/modules/sps-host/models/widget/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-model": [
+        "libs/modules/sps-host/models/widget/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-schema": [
+        "libs/modules/sps-host/models/widget/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-schema-relations": [
+        "libs/modules/sps-host/models/widget/backend/schema/relations/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-schema-relations-pages-to-widgets": [
+        "libs/modules/sps-host/models/widget/backend/schema/relations/pages-to-widgets/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-backend-schema-table": [
+        "libs/modules/sps-host/models/widget/backend/schema/table/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-contracts": [
+        "libs/modules/sps-host/models/widget/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-contracts-extended": [
+        "libs/modules/sps-host/models/widget/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-api-client": [
+        "libs/modules/sps-host/models/widget/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-api-model": [
+        "libs/modules/sps-host/models/widget/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-api-server": [
+        "libs/modules/sps-host/models/widget/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component": [
+        "libs/modules/sps-host/models/widget/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-admin-form": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/admin-form/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-admin-form-inputs": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/admin-form-inputs/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-admin-select-input": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/admin-select-input/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-admin-table": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/admin-table/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-admin-table-row": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/admin-table-row/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-find": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/find/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-component-variants-sps-lite-find-by-id": [
+        "libs/modules/sps-host/models/widget/frontend/component/variants/sps-lite/find-by-id/src/index.ts"
+      ],
+      "@sps/sps-host-models-widget-frontend-redux": [
+        "libs/modules/sps-host/models/widget/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-backend-app": [
+        "libs/modules/sps-host/relations/pages-to-layouts/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-backend-model": [
+        "libs/modules/sps-host/relations/pages-to-layouts/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-backend-schema": [
+        "libs/modules/sps-host/relations/pages-to-layouts/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-contracts": [
+        "libs/modules/sps-host/relations/pages-to-layouts/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-contracts-extended": [
+        "libs/modules/sps-host/relations/pages-to-layouts/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-api-client": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-api-model": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-api-server": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-component": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-layouts-frontend-redux": [
+        "libs/modules/sps-host/relations/pages-to-layouts/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-backend-app": [
+        "libs/modules/sps-host/relations/pages-to-metadata/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-backend-model": [
+        "libs/modules/sps-host/relations/pages-to-metadata/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-backend-schema": [
+        "libs/modules/sps-host/relations/pages-to-metadata/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-contracts": [
+        "libs/modules/sps-host/relations/pages-to-metadata/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-contracts-extended": [
+        "libs/modules/sps-host/relations/pages-to-metadata/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-api-client": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-api-model": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-api-server": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-component": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-metadata-frontend-redux": [
+        "libs/modules/sps-host/relations/pages-to-metadata/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-backend-app": [
+        "libs/modules/sps-host/relations/pages-to-widgets/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-backend-model": [
+        "libs/modules/sps-host/relations/pages-to-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-backend-schema": [
+        "libs/modules/sps-host/relations/pages-to-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-contracts": [
+        "libs/modules/sps-host/relations/pages-to-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-contracts-extended": [
+        "libs/modules/sps-host/relations/pages-to-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-api-client": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-api-model": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-api-server": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-component": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-host-relations-pages-to-widgets-frontend-redux": [
+        "libs/modules/sps-host/relations/pages-to-widgets/frontend/redux/src/index.ts"
+      ],
       "@sps/sps-kv-provider": ["libs/providers/sps-kv-provider/src/index.ts"],
       "@sps/sps-notification-backend-app": [
         "libs/modules/sps-notification/backend/app/root/src/index.ts"

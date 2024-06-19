@@ -2,8 +2,7 @@ import { Tree, formatFiles } from "@nx/devkit";
 import { ModelGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
-// npx nx generate @sps/sps-generator-plugin:create-model --name=project --module=sps-website-builder --dry-run
-// npx nx generate @sps/sps-generator-plugin:create-model --name=portfolio --module=sps-website-builder --dry-run
+// npx nx generate @sps/sps-generator-plugin:model --action=create --name=page --module=sps-host --dry-run
 export async function modelGenerator(
   tree: Tree,
   options: ModelGeneratorSchema,

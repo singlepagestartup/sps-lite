@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-host-models-page-backend-schema-relations-pages-to-metadata",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-host/models/page/backend/schema/relations/pages-to-metadata/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

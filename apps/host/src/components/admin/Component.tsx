@@ -9,6 +9,9 @@ const IsAuthenticatatedWrapper = dynamic(() =>
     "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper"
   ).then((mod) => mod.Component),
 );
+const SpsHost = dynamic(() =>
+  import("@sps/sps-host-frontend").then((mod) => mod.AdminComponent),
+);
 const SpsWebsiteAdminComponent = dynamic(() =>
   import("@sps/sps-website-builder-frontend").then((mod) => mod.AdminComponent),
 );
@@ -57,6 +60,13 @@ export function Component(props: IComponentPropsExtended) {
         <div className="w-full mx-auto max-w-7xl px-2">
           <div className="p-5">
             <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
+              <Button
+                title="sps-host"
+                onClick={() => {
+                  setWidget("sps-host");
+                }}
+                active={widget === "sps-host"}
+              />
               <Button
                 title="sps-website-builder"
                 onClick={() => {
@@ -115,6 +125,14 @@ export function Component(props: IComponentPropsExtended) {
               />
             </div>
             <div className="bg-white rounded-b-lg">
+              {widget === "sps-host" ? (
+                <SpsHost
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
               {widget === "sps-website-builder" ? (
                 <SpsWebsiteAdminComponent
                   {...props}

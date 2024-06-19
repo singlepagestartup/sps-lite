@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-host-models-layout-backend-schema-relations",
+  "$schema": "../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-host/models/layout/backend/schema/relations/root/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

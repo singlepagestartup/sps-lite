@@ -2,6 +2,11 @@ import { Tree } from "@nx/devkit";
 import { CustomGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 import { util as createSpsTsLibrary } from "../../utils/create-sps-ts-library";
+import { IGeneratorProps as IModuleGeneratorProps } from "../../coder/root/libs/modules/Coder";
+import { IGeneratorProps as IModelGeneratorProps } from "../../coder/root/libs/modules/[module]/models/Coder";
+import { IGeneratorProps as IModelFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
+import { IGeneratorProps as IRelationGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/Coder";
+import { IGeneratorProps as IRelationFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
 
 /**
  * Custom logic inside the generator
@@ -13,7 +18,7 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const modelAdminVariants = [
+  const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     {
       name: "default",
       level: "sps-lite",
@@ -50,39 +55,57 @@ export async function customGenerator(
       level: "sps-lite",
     },
   ];
-  const relationAdminVariants = [
-    {
-      name: "default",
-      level: "sps-lite",
-    },
-    {
-      name: "select-right",
-      level: "sps-lite",
-      template: "select-right",
-    },
-  ];
 
-  const leftModel = {
+  const relationAdminVariants: IRelationFrontendComponentVariantGeneratorProps[] =
+    [
+      {
+        name: "default",
+        level: "sps-lite",
+      },
+      {
+        name: "select-right",
+        level: "sps-lite",
+        template: "select-right",
+      },
+    ];
+
+  const leftModel: IModelGeneratorProps = {
     model: {
       name: "page",
-      frontend: {
-        component: {
-          variants: modelAdminVariants,
+      backend: {
+        schema: {
+          relations: {
+            relations: [
+              {
+                name: "pages-to-widgets",
+              },
+            ],
+          },
         },
       },
     },
   };
 
-  const rightModel = {
+  const rightModel: IModelGeneratorProps = {
     model: {
-      name: "metadata",
-      frontend: {},
+      name: "widget",
+      backend: {
+        schema: {
+          relations: {
+            relations: [
+              {
+                name: "pages-to-widgets",
+              },
+            ],
+          },
+        },
+      },
     },
   };
 
-  const relation = {
+  const relation: IRelationGeneratorProps = {
     relation: {
-      name: "pages-to-metadata",
+      name: "pages-to-widgets",
       frontend: {
         component: {
           variants: relationAdminVariants,
@@ -91,24 +114,27 @@ export async function customGenerator(
     },
   };
 
-  const additions = new Coder({
+  const generateModule: IModuleGeneratorProps = {
+    module: {
+      name: "sps-host",
+      models: [leftModel, rightModel],
+      relations: [relation],
+    },
+  };
+
+  const modules = [generateModule];
+
+  const coder = new Coder({
     tree,
     root: {
       libs: {
-        modules: [
-          {
-            module: {
-              name: "sps-website-builder",
-              models: [leftModel, rightModel],
-              relations: [relation],
-            },
-          },
-        ],
+        modules,
       },
     },
   });
+
   // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.create();
-  await additions.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.create();
+  await coder.create();
 
   // await createSpsTsLibrary({
   //   root: "libs/third-parties/telegram",

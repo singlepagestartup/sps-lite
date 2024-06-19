@@ -1,0 +1,10 @@
+{
+  "name": "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-admin-form",
+  "$schema": "../../../../../../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-host/models/layout/frontend/component/variants/sps-lite/admin-form/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "tsc:build": {}
+  }
+}

@@ -2,7 +2,6 @@ import { api as spsWebsiteBuilderPageApi } from "@sps/sps-website-builder-models
 import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-models-page-frontend-component";
 
 export const revalidate = 3600;
-export const dynamic = "force-static";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
