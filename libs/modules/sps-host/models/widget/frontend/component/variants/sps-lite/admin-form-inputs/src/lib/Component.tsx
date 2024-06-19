@@ -4,6 +4,7 @@ import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-host-models-widget-contracts";
+import { Component as WidgetsToExternalModules } from "@sps/sps-host-relations-widgets-to-external-modules-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -42,6 +43,28 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+        <ModelEntitiesListCard title="widgets-to-external-modules">
+          <div className="flex flex-col gap-6">
+            {props.data?.widgetsToExternalModules.map((entity, index) => {
+              return (
+                <WidgetsToExternalModules
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="select-right"
+                  data={entity}
+                />
+              );
+            })}
+            <WidgetsToExternalModules
+              isServer={props.isServer}
+              hostUrl={props.hostUrl}
+              variant="select-right"
+              widgetId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

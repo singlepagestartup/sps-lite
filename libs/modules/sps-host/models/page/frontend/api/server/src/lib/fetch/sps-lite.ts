@@ -16,6 +16,7 @@ export const api = {
   findById: async ({ id }: { id: string }) => {
     return await utilsFetch.api.findById<IModelExtended>({
       id,
+      rootPath: "/api/sps-host",
       model: route,
       populate,
     });
@@ -23,6 +24,7 @@ export const api = {
   find: async (params: any = {}) => {
     return await utilsFetch.api.find<IModelExtended>({
       model: route,
+      rootPath: "/api/sps-host",
       populate,
       ...params,
     });

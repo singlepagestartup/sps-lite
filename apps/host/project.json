@@ -299,6 +299,9 @@
             "command": "nx run host:db:sps-rbac-migrate"
           },
           {
+            "command": "nx run host:db:sps-host-migrate"
+          },
+          {
             "command": "nx run host:db:sps-crm-migrate"
           },
           {

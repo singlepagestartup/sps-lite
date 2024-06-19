@@ -13,13 +13,9 @@ export default async function Server(props: IComponentProps) {
     url: props.url,
   });
 
-  if (!data) {
+  if (!props.children || typeof props.children !== "function") {
     return <></>;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
-  );
+  return props.children({ data });
 }

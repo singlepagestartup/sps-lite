@@ -77,7 +77,7 @@ export async function customGenerator(
           relations: {
             relations: [
               {
-                name: "widgets-to-sps-website-builder-module-widgets",
+                name: "widgets-to-external-modules",
               },
             ],
           },
@@ -88,14 +88,14 @@ export async function customGenerator(
 
   const rightModel: IModelGeneratorProps = {
     model: {
-      name: "sps-website-builder-module-widget",
+      name: "external-module",
       isExternal: true,
       backend: {
         schema: {
           relations: {
             relations: [
               {
-                name: "widgets-to-sps-website-builder-module-widgets",
+                name: "widgets-to-external-modules",
               },
             ],
           },
@@ -106,7 +106,7 @@ export async function customGenerator(
 
   const relation: IRelationGeneratorProps = {
     relation: {
-      name: "widgets-to-sps-website-builder-module-widgets",
+      name: "widgets-to-external-modules",
       frontend: {
         component: {
           variants: relationAdminVariants,

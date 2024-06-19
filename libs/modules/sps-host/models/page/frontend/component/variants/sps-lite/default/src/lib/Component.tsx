@@ -30,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
                   hostUrl={props.hostUrl}
                   variant="default"
                   data={entity}
+                  children={props.children}
                 />
               );
             })}
