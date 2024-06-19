@@ -1,4 +1,8 @@
 export {
+  Table as SPSHWidgetsToSpsWebsiteBuilderModuleWidgets,
+  Relations as SPSHWidgetsToSpsWebsiteBuilderModuleWidgetsRelations,
+} from "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-backend-schema";
+export {
   Table as SPSHPagesToWidgets,
   Relations as SPSHPagesToWidgetsRelations,
 } from "@sps/sps-host-relations-pages-to-widgets-backend-schema";

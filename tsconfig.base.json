@@ -597,6 +597,9 @@
       "@sps/sps-host-models-widget-backend-schema-relations-pages-to-widgets": [
         "libs/modules/sps-host/models/widget/backend/schema/relations/pages-to-widgets/src/index.ts"
       ],
+      "@sps/sps-host-models-widget-backend-schema-relations-widgets-to-sps-website-builder-module-widgets": [
+        "libs/modules/sps-host/models/widget/backend/schema/relations/widgets-to-sps-website-builder-module-widgets/src/index.ts"
+      ],
       "@sps/sps-host-models-widget-backend-schema-table": [
         "libs/modules/sps-host/models/widget/backend/schema/table/src/index.ts"
       ],
@@ -752,6 +755,42 @@
       ],
       "@sps/sps-host-relations-pages-to-widgets-frontend-redux": [
         "libs/modules/sps-host/relations/pages-to-widgets/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-backend-app": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-backend-model": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-backend-schema": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-contracts": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-contracts-extended": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-api-client": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-api-model": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-api-server": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-component": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-host-relations-widgets-to-sps-website-builder-module-widgets-frontend-redux": [
+        "libs/modules/sps-host/relations/widgets-to-sps-website-builder-module-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-kv-provider": ["libs/providers/sps-kv-provider/src/index.ts"],
       "@sps/sps-notification-backend-app": [

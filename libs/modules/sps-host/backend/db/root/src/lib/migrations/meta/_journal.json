@@ -15,6 +15,13 @@
       "when": 1718826495488,
       "tag": "0001_aspiring_sally_floyd",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1718828031811,
+      "tag": "0002_legal_mole_man",
+      "breakpoints": true
     }
   ]
 }

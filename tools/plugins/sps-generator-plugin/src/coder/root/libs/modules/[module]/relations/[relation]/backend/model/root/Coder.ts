@@ -94,6 +94,8 @@ export class Coder {
     const moduleBackendRelationsRootPath =
       this.parent.parent.parent.parent.project.backend.project.models.project
         .root.baseDirectory;
+    const moduleDbImportPath =
+      this.parent.parent.parent.parent.project.backend.project.db.baseName;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -111,6 +113,7 @@ export class Coder {
         module_lib_name_property_cased: getNameStyles({ name: moduleLibName })
           .propertyCased.base,
         module_lib_name: moduleLibName,
+        module_db_import_path: moduleDbImportPath,
         schema_module_lib_name: schemaModuleLibName,
         model_name: this.modelName,
         module_name: this.moduleName,

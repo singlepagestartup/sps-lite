@@ -15,7 +15,9 @@ import { Component as AdminFormInputs } from "@sps/sps-host-models-widget-fronte
 import { variants } from "@sps/sps-host-models-widget-contracts";
 
 const formSchema = z.object({
-  variant: z.enum(variants),
+  title: z.string(),
+  variant: z.enum(variants).default("default"),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -29,6 +31,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      className: props.data?.className || "",
     },
   });
 

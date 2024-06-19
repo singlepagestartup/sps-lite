@@ -1,4 +1,4 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-host-backend-db";
 import { Table } from "@sps/sps-host-relations-pages-to-layouts-backend-schema";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
