@@ -1,6 +1,7 @@
 import {
   generateFiles,
   offsetFromRoot,
+  updateJson,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
@@ -71,5 +72,13 @@ export class Migrator {
     );
 
     this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
+
+    updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
+      const updatedJson = { ...json };
+
+      delete updatedJson.compilerOptions.paths[`${baseName}`];
+
+      return updatedJson;
+    });
   }
 }
