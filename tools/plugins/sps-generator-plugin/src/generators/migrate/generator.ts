@@ -229,6 +229,60 @@ export async function migrateGenerator(
                         ],
                       },
                     },
+                    backend: {
+                      schema: {
+                        relations: {
+                          relations: [
+                            {
+                              name: "layouts-to-widgets",
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  },
+                },
+                {
+                  model: {
+                    name: "widget",
+                    frontend: {
+                      component: {
+                        variants: [
+                          {
+                            level: "sps-lite",
+                            name: "find-by-id",
+                          },
+                        ],
+                      },
+                    },
+                    backend: {
+                      schema: {
+                        relations: {
+                          relations: [
+                            {
+                              name: "layouts-to-widgets",
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  },
+                },
+              ],
+              relations: [
+                {
+                  relation: {
+                    name: "layouts-to-widgets",
+                    frontend: {
+                      component: {
+                        variants: [
+                          {
+                            name: "default",
+                            level: "sps-lite",
+                          },
+                        ],
+                      },
+                    },
                   },
                 },
               ],
@@ -244,7 +298,13 @@ export async function migrateGenerator(
   //     version: "0.1.0",
   //   },
   // );
-  await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.migrate(
+  // await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.migrate(
+  //   {
+  //     version: "0.1.0",
+  //   },
+  // );
+
+  await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.redux.migrate(
     {
       version: "0.1.0",
     },
