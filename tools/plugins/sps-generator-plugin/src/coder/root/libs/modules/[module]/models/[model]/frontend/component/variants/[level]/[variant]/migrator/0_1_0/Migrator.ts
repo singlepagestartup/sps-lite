@@ -52,5 +52,10 @@ export class Migrator {
         );
       }
     }
+
+    const legacySrc = this.parent.coder.tree.delete(baseDirectory + "/src");
+
+    this.parent.coder.tree.delete(baseDirectory + "/package.json");
+    this.parent.coder.tree.delete(baseDirectory + "/project.json");
   }
 }
