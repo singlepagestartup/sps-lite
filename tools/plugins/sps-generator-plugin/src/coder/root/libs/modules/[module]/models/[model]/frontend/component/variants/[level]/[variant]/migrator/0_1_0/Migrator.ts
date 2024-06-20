@@ -18,34 +18,39 @@ export class Migrator {
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
 
-    console.log(`🚀 ~ execute ~ baseDirectory:`, baseDirectory);
     const exists = this.parent.coder.tree.exists(baseDirectory);
 
     if (!exists) {
       throw new Error(`The directory ${baseDirectory} does not exist`);
     }
 
-    // generateFiles(
-    //   this.parent.coder.tree,
-    //   path.join(__dirname, `files`),
-    //   baseDirectory,
-    //   {
-    //     template: "",
-    //     lib_name: baseName,
-    //     offset_from_root: offsetFromRootProject,
-    //   },
-    // );
+    const rootFiles = this.parent.coder.tree.children(baseDirectory);
 
-    // this.parent.coder.tree.delete(`${baseDirectory}/tsconfig.spec.json`);
+    for (const rootFile of rootFiles) {
+      const pathToFile = `${baseDirectory}/${rootFile}`;
+      const isFile = this.parent.coder.tree.isFile(pathToFile);
 
-    // updateProjectConfiguration(this.parent.coder.tree, baseName, {
-    //   ...this.parent.coder.project,
-    //   targets: {
-    //     "tsc:build": {},
-    //   },
-    // });
+      if (isFile) {
+        this.parent.coder.tree.delete(rootFile);
+      }
+    }
 
-    // this.parent.coder.tree.delete(`${baseDirectory}/.babelrc`);
-    // this.parent.coder.tree.delete(`${baseDirectory}/.eslintrc.json`);
+    const libFiles = this.parent.coder.tree.children(
+      `${baseDirectory}/src/lib`,
+    );
+
+    for (const libFile of libFiles) {
+      const pathToFile = `${baseDirectory}/src/lib/${libFile}`;
+      const isFile = this.parent.coder.tree.isFile(pathToFile);
+
+      if (isFile) {
+        const content = this.parent.coder.tree.read(pathToFile);
+
+        const newFile = this.parent.coder.tree.write(
+          baseDirectory + "/" + libFile,
+          content,
+        );
+      }
+    }
   }
 }
