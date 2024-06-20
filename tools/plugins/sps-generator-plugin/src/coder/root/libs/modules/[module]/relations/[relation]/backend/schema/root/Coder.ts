@@ -105,13 +105,11 @@ export class Coder {
   }
 
   async migrate(props: { version: string }) {
-    await this.setReplacers();
-
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

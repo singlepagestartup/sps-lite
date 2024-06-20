@@ -3,6 +3,7 @@ import { releases } from "./releases";
 
 export class Migrator {
   coder: Coder;
+  releases = releases;
 
   constructor({ coder }: { coder: Coder }) {
     this.coder = coder;
