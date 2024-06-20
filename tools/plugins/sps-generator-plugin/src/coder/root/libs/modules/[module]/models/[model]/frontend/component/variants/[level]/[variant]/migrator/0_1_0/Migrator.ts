@@ -6,6 +6,7 @@ import {
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
+import * as nxWorkspace from "@nx/workspace";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -73,12 +74,18 @@ export class Migrator {
 
     this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
 
-    updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
-      const updatedJson = { ...json };
+    // updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
+    //   const updatedJson = { ...json };
 
-      delete updatedJson.compilerOptions.paths[`${baseName}`];
+    //   delete updatedJson.compilerOptions.paths[`${baseName}`];
 
-      return updatedJson;
+    //   return updatedJson;
+    // });
+
+    await nxWorkspace.removeGenerator(this.parent.coder.tree, {
+      projectName: this.parent.coder.baseName,
+      skipFormat: true,
+      forceRemove: true,
     });
   }
 }
