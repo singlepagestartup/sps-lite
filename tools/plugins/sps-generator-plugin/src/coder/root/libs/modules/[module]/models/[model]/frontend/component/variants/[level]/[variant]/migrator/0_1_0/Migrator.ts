@@ -1,12 +1,5 @@
-import {
-  generateFiles,
-  offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
-} from "@nx/devkit";
+import { offsetFromRoot, updateJson } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
-import path from "path";
-import * as nxWorkspace from "@nx/workspace";
 
 export class Migrator {
   parent: ParentMigrator;
