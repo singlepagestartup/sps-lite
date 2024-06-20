@@ -3,4 +3,4 @@
 
 # cd ./db && ./dump.sh && git add .
 
-# npx lint-staged --concurrent false --relative
+npx lint-staged --concurrent false --relative
