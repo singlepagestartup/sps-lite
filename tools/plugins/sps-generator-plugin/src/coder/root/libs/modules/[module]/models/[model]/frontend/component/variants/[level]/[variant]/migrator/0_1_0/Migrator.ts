@@ -55,7 +55,20 @@ export class Migrator {
 
     const legacySrc = this.parent.coder.tree.delete(baseDirectory + "/src");
 
-    // this.parent.coder.tree.delete(baseDirectory + "/package.json");
-    // this.parent.coder.tree.delete(baseDirectory + "/project.json");
+    const variantsPath =
+      this.parent.coder.parent.project.root.baseDirectory +
+      "/src/lib/sps-lite/variants.ts";
+    const interfacePath =
+      this.parent.coder.parent.project.root.baseDirectory +
+      "/src/lib/sps-lite/interface.ts";
+    const indexScssPath =
+      this.parent.coder.parent.project.root.baseDirectory +
+      "/src/lib/sps-lite/index.scss";
+
+    this.parent.coder.detach({
+      variantsPath,
+      interfacePath,
+      indexScssPath,
+    });
   }
 }
