@@ -39,7 +39,7 @@ export class Migrator {
     }
 
     const oldRelationSchemaImportPath = `${this.parent.coder.parent.project.schema.baseName}`;
-    const newRelationSchemaImportPath = `${this.parent.coder.parent.project.schema.absoluteName}`;
+    const newRelationSchemaImportPath = `${this.parent.coder.parent.project.schema.project.root.absoluteName}`;
 
     const files = visitAllFiles(
       this.parent.coder.tree,
