@@ -18,6 +18,7 @@ export class Coder {
   parent: FrontendCoder;
   tree: Tree;
   baseName: string;
+  absoluteName: string;
   baseDirectory: string;
   name: string;
   project: {
@@ -34,6 +35,7 @@ export class Coder {
     this.name = "component";
     this.baseName = `${this.parent.baseName}-component`;
     this.baseDirectory = `${this.parent.baseDirectory}/component`;
+    this.absoluteName = `${this.parent.absoluteName}/component`;
 
     const root = new RootCoder({
       ...props.root,

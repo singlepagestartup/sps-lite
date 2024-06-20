@@ -25,6 +25,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
   nameStyles: ReturnType<typeof getNameStyles>;
   importPopulate: ImportPopulate;
@@ -39,6 +40,7 @@ export class Coder {
 
     this.baseName = `${props.parent.baseName}-${this.name}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${this.name}`;
+    this.absoluteName = `${props.parent.absoluteName}/${this.name}`;
 
     const nameStyles = getNameStyles({ name: this.name });
 

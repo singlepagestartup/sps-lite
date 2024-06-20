@@ -19,6 +19,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
 
   constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
@@ -26,6 +27,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${props.parent.baseName}-extended`;
     this.baseDirectory = `${props.parent.baseDirectory}/extended`;
+    this.absoluteName = `${props.parent.absoluteName}/extended`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

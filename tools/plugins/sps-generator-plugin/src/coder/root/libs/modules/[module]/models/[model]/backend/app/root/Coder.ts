@@ -19,6 +19,7 @@ export class Coder {
   baseName: string;
   name: string;
   baseDirectory: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
@@ -27,6 +28,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-app`;
     this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
+    this.absoluteName = `${this.parent.absoluteName}/app/root`;
     this.tree = props.tree;
     this.name = "app";
 

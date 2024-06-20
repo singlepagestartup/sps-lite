@@ -19,6 +19,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
   modelName: string;
   modelNamePluralized: string;
@@ -28,6 +29,7 @@ export class Coder {
     this.name = "model";
     this.baseName = `${props.parent.baseName}-model`;
     this.baseDirectory = `${props.parent.baseDirectory}/model`;
+    this.absoluteName = `${props.parent.absoluteName}/model`;
     this.tree = props.tree;
     this.parent = props.parent;
 

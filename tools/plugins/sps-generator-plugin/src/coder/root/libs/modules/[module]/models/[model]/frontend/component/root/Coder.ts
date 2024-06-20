@@ -26,6 +26,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
 
   constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
@@ -34,6 +35,7 @@ export class Coder {
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

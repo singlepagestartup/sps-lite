@@ -31,6 +31,7 @@ export class Coder {
   parent: RelationsCoder;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   nameStyles: ReturnType<typeof getNameStyles>;
   project: {
@@ -52,6 +53,7 @@ export class Coder {
 
     this.baseName = `${this.parent.baseName}-${this.name}`;
     this.baseDirectory = `${this.parent.baseDirectory}/${this.name}`;
+    this.absoluteName = `${this.parent.absoluteName}/${this.name}`;
 
     this.project.backend = new BackendCoder({
       ...props.backend,

@@ -32,6 +32,7 @@ export class Coder {
   parent: ModelsCoder;
   baseName: string;
   isExternal: boolean = false;
+  absoluteName: string;
   baseDirectory: string;
   nameStyles: ReturnType<typeof getNameStyles>;
   project: {
@@ -54,6 +55,7 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-${props.name}`;
     this.isExternal = props.isExternal;
     this.baseDirectory = `${this.parent.baseDirectory}/${props.name}`;
+    this.absoluteName = `${this.parent.absoluteName}/${props.name}`;
     this.name = props.name;
     this.nameStyles = getNameStyles({ name: props.name });
     this.tree = props.tree;

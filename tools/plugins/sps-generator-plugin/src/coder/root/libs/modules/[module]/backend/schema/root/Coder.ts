@@ -15,6 +15,7 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   project: ProjectConfiguration;
+  absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 
   constructor(props: { tree: Tree; parent: SchemaCoder } & IGeneratorProps) {
@@ -23,6 +24,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     const moduleName = this.parent.parent.parent.name;
     const moduleNameStyles = getNameStyles({ name: moduleName });

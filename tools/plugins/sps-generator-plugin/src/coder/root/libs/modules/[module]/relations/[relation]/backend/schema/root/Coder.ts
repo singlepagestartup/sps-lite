@@ -31,6 +31,7 @@ export class Coder {
   moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
   relationNameStyles: ReturnType<typeof getNameStyles>;
   exportAll: ExportNamedVariables;
+  absoluteName: string;
   tableName: string;
   leftModelTableUuidName: string;
   rightModelTableUuidName: string;
@@ -41,6 +42,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

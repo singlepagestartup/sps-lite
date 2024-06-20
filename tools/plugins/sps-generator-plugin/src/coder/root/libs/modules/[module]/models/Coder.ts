@@ -22,6 +22,7 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     model: ModelCoder;
   } = {} as {
@@ -37,6 +38,7 @@ export class Coder {
     this.name = "models";
     this.baseName = `${props.parent.baseName}-models`;
     this.baseDirectory = `${props.parent.baseDirectory}/models`;
+    this.absoluteName = `${props.parent.absoluteName}/models`;
     this.tree = props.tree;
     this.parent = props.parent;
 

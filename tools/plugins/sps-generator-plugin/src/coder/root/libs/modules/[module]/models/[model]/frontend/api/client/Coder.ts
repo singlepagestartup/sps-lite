@@ -18,6 +18,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
   moduleName: string;
 
@@ -28,6 +29,7 @@ export class Coder {
     this.name = "client";
     this.baseName = `${parent.baseName}-client`;
     this.baseDirectory = `${parent.baseDirectory}/client`;
+    this.absoluteName = `${parent.absoluteName}/client`;
     this.tree = tree;
     this.parent = parent;
 

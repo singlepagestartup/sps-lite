@@ -17,6 +17,7 @@ export class Coder {
   parent: ModuleCoder;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project: {
     relation: RelationCoder;
@@ -30,6 +31,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${props.parent.baseName}-relations`;
     this.baseDirectory = `${props.parent.baseDirectory}/relations`;
+    this.absoluteName = `${props.parent.absoluteName}/relations`;
 
     this.project.relation = new RelationCoder({
       ...props.relation,

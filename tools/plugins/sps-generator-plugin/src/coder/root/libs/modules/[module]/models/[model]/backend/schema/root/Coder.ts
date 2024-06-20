@@ -20,6 +20,7 @@ export class Coder {
   tree: Tree;
   name: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
@@ -28,6 +29,7 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.name = "schema";
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({

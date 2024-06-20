@@ -27,6 +27,7 @@ export class Coder {
   parent: RelationCoder;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project: {
     schema: SchemaCoder;
@@ -44,6 +45,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${this.parent.baseName}-backend`;
     this.baseDirectory = `${this.parent.baseDirectory}/backend`;
+    this.absoluteName = `${this.parent.absoluteName}/backend`;
 
     this.project.schema = new SchemaCoder({
       ...props.schema,

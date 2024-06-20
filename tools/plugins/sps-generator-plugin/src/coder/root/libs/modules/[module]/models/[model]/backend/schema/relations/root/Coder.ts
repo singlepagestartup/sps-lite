@@ -17,6 +17,7 @@ export class Coder {
   project?: ProjectConfiguration;
   modelName: string;
   snakeCasePluralizedModelName: string;
+  absoluteName: string;
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -24,6 +25,7 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.name = "relations";
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     const modelName = this.parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");

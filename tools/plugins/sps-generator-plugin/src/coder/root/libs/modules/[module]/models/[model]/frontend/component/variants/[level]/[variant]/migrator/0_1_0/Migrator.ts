@@ -13,6 +13,7 @@ export class Migrator {
     const baseDirectory = this.parent.coder.baseDirectory;
     const baseName = this.parent.coder.baseName;
     const offsetFromRootProject = offsetFromRoot(baseDirectory);
+    const absoluteName = this.parent.coder.absoluteName;
 
     const exists = this.parent.coder.tree.exists(baseDirectory);
 

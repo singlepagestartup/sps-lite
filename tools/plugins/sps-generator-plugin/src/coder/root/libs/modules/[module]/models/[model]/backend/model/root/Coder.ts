@@ -20,6 +20,7 @@ export class Coder {
   baseDirectory: string;
   libName: string;
   rootAppProject: ProjectConfiguration;
+  absoluteName: string;
   rootSchemaProject: ProjectConfiguration;
   root: string;
   modelName: string;
@@ -37,6 +38,7 @@ export class Coder {
 
     this.baseName = `${this.parent.baseName}-model`;
     this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
+    this.absoluteName = `${this.parent.absoluteName}/model/root`;
 
     const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;

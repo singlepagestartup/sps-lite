@@ -25,6 +25,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project: {
     app: AppRootCoder;
@@ -40,6 +41,7 @@ export class Coder {
     this.name = "backend";
     this.baseName = `${props.parent.baseName}-backend`;
     this.baseDirectory = `${props.parent.baseDirectory}/backend`;
+    this.absoluteName = `${props.parent.absoluteName}/backend`;
     this.tree = props.tree;
     this.parent = props.parent;
 

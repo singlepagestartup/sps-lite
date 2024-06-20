@@ -43,6 +43,7 @@ export class Coder {
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
   importStyles: ImportStyles;
+  absoluteName: string;
   apiClientImportPath: string;
   apiServerImportPath: string;
   reduxImportPath: string;
@@ -64,6 +65,7 @@ export class Coder {
     this.level = props.level;
     this.baseName = `${this.parent.baseName}-variants-${props.level}-${this.name}`;
     this.baseDirectory = `${this.parent.baseDirectory}/variants/${props.level}/${this.name}`;
+    this.absoluteName = `${this.parent.absoluteName}/variants/${props.level}/${this.name}`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

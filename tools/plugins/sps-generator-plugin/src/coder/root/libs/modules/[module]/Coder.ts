@@ -36,6 +36,7 @@ export class Coder {
   root: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   tree: Tree;
   parent: ModuleCoder;
   project: {
@@ -61,6 +62,7 @@ export class Coder {
     this.name = props.name;
     this.tree = props.tree;
     this.parent = props.parent;
+    this.absoluteName = `${props.parent.absoluteName}/${props.name}`;
 
     this.project.backend = new BackendCoder({
       ...props.backend,

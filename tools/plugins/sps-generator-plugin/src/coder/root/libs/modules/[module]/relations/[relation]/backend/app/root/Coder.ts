@@ -20,6 +20,7 @@ export class Coder {
   name: string;
   baseDirectory: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
 
@@ -29,6 +30,7 @@ export class Coder {
     this.name = "app";
     this.baseName = `${this.parent.baseName}-app`;
     this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
+    this.absoluteName = `${this.parent.absoluteName}/app/root`;
 
     const pluralNameModelName = pluralize(
       names(this.parent.parent.name).fileName,

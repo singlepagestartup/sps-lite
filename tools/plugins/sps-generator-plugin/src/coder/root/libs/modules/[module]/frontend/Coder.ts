@@ -15,6 +15,7 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     root: RootCoder;
   };
@@ -25,6 +26,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-frontend`;
     this.baseDirectory = `${this.parent.baseDirectory}/frontend`;
+    this.absoluteName = `${this.parent.absoluteName}/frontend`;
 
     const root = new RootCoder({
       ...props.root,

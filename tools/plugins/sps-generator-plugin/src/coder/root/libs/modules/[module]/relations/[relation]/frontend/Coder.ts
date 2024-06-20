@@ -25,6 +25,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     component: ComponentCoder;
     api: ApiCoder;
@@ -41,6 +42,7 @@ export class Coder {
     this.name = "frontend";
     this.baseName = `${this.parent.baseName}-frontend`;
     this.baseDirectory = `${this.parent.baseDirectory}/frontend`;
+    this.absoluteName = `${this.parent.absoluteName}/frontend`;
 
     this.project.component = new ComponentCoder({
       ...props.component,

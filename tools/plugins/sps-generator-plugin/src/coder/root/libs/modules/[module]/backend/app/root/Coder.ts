@@ -13,12 +13,14 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   project: ProjectConfiguration;
+  absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 
   constructor({ tree, parent }: { tree: Tree; parent: AppCoder }) {
     this.name = "root";
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/root`;
+    this.absoluteName = `${parent.absoluteName}/root`;
     this.tree = tree;
     this.parent = parent;
 

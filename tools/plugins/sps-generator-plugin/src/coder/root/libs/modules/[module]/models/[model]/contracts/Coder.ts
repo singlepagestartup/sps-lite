@@ -20,6 +20,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     root: RootCoder;
     extended: ExtendedCoder;
@@ -31,6 +32,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseDirectory = `${props.parent.baseDirectory}/contracts`;
     this.baseName = `${props.parent.baseName}-contracts`;
+    this.absoluteName = `${props.parent.absoluteName}/contracts`;
 
     const root = new RootCoder({
       ...props.root,

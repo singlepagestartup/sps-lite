@@ -35,6 +35,7 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     db: DbCoder;
     app: AppCoder;
@@ -49,6 +50,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-backend`;
     this.baseDirectory = `${this.parent.baseDirectory}/backend`;
+    this.absoluteName = `${this.parent.absoluteName}/backend`;
 
     const db = new DbCoder({
       ...props.schema,

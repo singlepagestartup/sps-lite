@@ -24,6 +24,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project: {
     client: ClientCoder;
@@ -37,6 +38,7 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/api`;
     this.tree = props.tree;
     this.parent = props.parent;
+    this.absoluteName = `${props.parent.absoluteName}/api`;
 
     const model = new ModelCoder({
       ...props.model,

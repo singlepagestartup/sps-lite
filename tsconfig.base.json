@@ -363,6 +363,7 @@
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
+      "@sps/sps-host/*": ["libs/modules/sps-host/*"],
       "@sps/sps-host-backend-app": [
         "libs/modules/sps-host/backend/app/root/src/index.ts"
       ],

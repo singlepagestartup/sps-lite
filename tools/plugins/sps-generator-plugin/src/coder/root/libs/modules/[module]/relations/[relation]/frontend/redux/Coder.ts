@@ -22,6 +22,7 @@ export class Coder {
   project?: ProjectConfiguration;
   moduleName: string;
   modelName: string;
+  absoluteName: string;
   modelNamePluralized: string;
 
   constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
@@ -29,6 +30,8 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-redux`;
     this.baseDirectory = `${this.parent.baseDirectory}/redux`;
+    this.absoluteName = `${this.parent.absoluteName}/redux`;
+
     this.tree = props.tree;
 
     const moduleName = this.parent.parent.parent.parent.name;

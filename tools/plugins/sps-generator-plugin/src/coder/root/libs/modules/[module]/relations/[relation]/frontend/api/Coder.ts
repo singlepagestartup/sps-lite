@@ -25,6 +25,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     client: ClientCoder;
     server: ServerCoder;
@@ -41,6 +42,7 @@ export class Coder {
     this.name = "api";
     this.baseName = `${this.parent.baseName}-api`;
     this.baseDirectory = `${this.parent.baseDirectory}/api`;
+    this.absoluteName = `${this.parent.absoluteName}/api`;
 
     this.project.model = new ModelCoder({
       ...props.model,

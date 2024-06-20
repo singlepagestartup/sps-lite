@@ -20,6 +20,7 @@ export class Coder {
   name: string;
   project?: ProjectConfiguration;
   moduleName: string;
+  absoluteName: string;
 
   constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.tree = props.tree;
@@ -27,6 +28,7 @@ export class Coder {
     this.name = "server";
     this.baseName = `${this.parent.baseName}-server`;
     this.baseDirectory = `${this.parent.baseDirectory}/server`;
+    this.absoluteName = `${this.parent.absoluteName}/server`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
