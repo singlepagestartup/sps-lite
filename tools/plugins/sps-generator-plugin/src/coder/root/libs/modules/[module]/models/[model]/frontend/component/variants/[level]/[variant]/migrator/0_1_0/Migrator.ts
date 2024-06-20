@@ -70,7 +70,7 @@ export class Migrator {
       this.parent.coder.parent.project.root.baseDirectory +
       `/src/lib/${this.parent.coder.level}/interface.ts`;
 
-    const newInterfaceImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}`;
+    const newInterfaceImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}/interface.ts`;
 
     const interfacesContent = this.parent.coder.tree
       .read(interfacesPath)
