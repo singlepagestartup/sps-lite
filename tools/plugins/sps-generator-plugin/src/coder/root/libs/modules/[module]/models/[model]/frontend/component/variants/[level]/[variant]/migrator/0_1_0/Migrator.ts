@@ -1,5 +1,6 @@
-import { offsetFromRoot, updateJson } from "@nx/devkit";
+import { generateFiles, offsetFromRoot, updateJson } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
+import path from "path";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -30,22 +31,16 @@ export class Migrator {
       }
     }
 
-    const libFiles = this.parent.coder.tree.children(
-      `${baseDirectory}/src/lib`,
+    generateFiles(
+      this.parent.coder.tree,
+      path.join(__dirname, `files`),
+      baseDirectory,
+      {
+        template: "",
+        lib_name: baseName,
+        offset_from_root: offsetFromRootProject,
+      },
     );
-
-    for (const libFile of libFiles) {
-      const pathToFile = `${baseDirectory}/src/lib/${libFile}`;
-      const isFile = this.parent.coder.tree.isFile(pathToFile);
-
-      if (isFile) {
-        const content = this.parent.coder.tree.read(pathToFile);
-
-        this.parent.coder.tree.write(baseDirectory + "/" + libFile, content);
-      }
-    }
-
-    this.parent.coder.tree.delete(baseDirectory + "/src");
 
     // variants.ts
     const variantsPath =
