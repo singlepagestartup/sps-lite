@@ -39,8 +39,8 @@ export class Migrator {
     const oldSchemaTableImportPath = `${this.parent.coder.parent.project.table.baseName}`;
     const newSchemaTableImportPath = `${this.parent.coder.parent.project.table.absoluteName}`;
 
-    const oldSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.baseName}`;
-    const newSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.absoluteName}`;
+    const oldSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.project.root.baseName}`;
+    const newSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.project.root.absoluteName}`;
 
     const oldImportPath = `${this.parent.coder.baseName}`;
     const newImportPath = `${this.parent.coder.absoluteName}`;
