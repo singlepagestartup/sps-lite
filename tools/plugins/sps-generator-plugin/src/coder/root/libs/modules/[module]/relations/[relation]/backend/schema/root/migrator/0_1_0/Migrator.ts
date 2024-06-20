@@ -1,4 +1,5 @@
 import {
+  Tree,
   generateFiles,
   offsetFromRoot,
   updateJson,
@@ -6,6 +7,7 @@ import {
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
+import { util as visitAllFiles } from "../../../../../../../../../../../../utils/visit-all-files";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -35,6 +37,31 @@ export class Migrator {
         this.parent.coder.tree.delete(pathToFile);
       }
     }
+
+    const leftModelSchemaTableOldImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[0].project.model.project.backend.project.schema.project.table.baseName}`;
+    const leftModelSchemaTableNewImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[0].project.model.project.backend.project.schema.project.table.absoluteName}`;
+    const rightModelSchemaTableOldImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[1].project.model.project.backend.project.schema.project.table.baseName}`;
+    const rightModelSchemaTableNewImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[1].project.model.project.backend.project.schema.project.table.absoluteName}`;
+
+    const files = visitAllFiles(
+      this.parent.coder.tree,
+      baseDirectory,
+      (filePath) => {
+        const file = this.parent.coder.tree.read(filePath).toString("utf8");
+
+        const newFile = file
+          .replace(
+            new RegExp(leftModelSchemaTableOldImportPath, "g"),
+            leftModelSchemaTableNewImportPath,
+          )
+          .replace(
+            new RegExp(rightModelSchemaTableOldImportPath, "g"),
+            rightModelSchemaTableNewImportPath,
+          );
+
+        this.parent.coder.tree.write(filePath, newFile);
+      },
+    );
 
     generateFiles(
       this.parent.coder.tree,

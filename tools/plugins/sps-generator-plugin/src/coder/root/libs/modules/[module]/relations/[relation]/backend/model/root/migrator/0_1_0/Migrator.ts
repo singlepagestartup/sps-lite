@@ -38,8 +38,8 @@ export class Migrator {
       }
     }
 
-    const oldSchemaImportPath = `${this.parent.coder.parent.project.schema.baseName}`;
-    const newSchemaImportPath = `${this.parent.coder.parent.project.schema.absoluteName}`;
+    const oldRelationSchemaImportPath = `${this.parent.coder.parent.project.schema.baseName}`;
+    const newRelationSchemaImportPath = `${this.parent.coder.parent.project.schema.absoluteName}`;
 
     const files = visitAllFiles(
       this.parent.coder.tree,
@@ -48,8 +48,8 @@ export class Migrator {
         const file = this.parent.coder.tree.read(filePath).toString("utf8");
 
         const newFile = file.replace(
-          new RegExp(oldSchemaImportPath, "g"),
-          newSchemaImportPath,
+          new RegExp(oldRelationSchemaImportPath, "g"),
+          newRelationSchemaImportPath,
         );
 
         this.parent.coder.tree.write(filePath, newFile);

@@ -304,7 +304,7 @@ export async function migrateGenerator(
   //   },
   // );
 
-  await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.backend.project.app.migrate(
+  await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.backend.migrate(
     {
       version: "0.1.0",
     },
