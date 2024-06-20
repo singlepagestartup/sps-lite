@@ -38,6 +38,9 @@ export class Migrator {
       }
     }
 
+    const oldDbImportPath = `${this.parent.coder.parent.parent.parent.parent.project.backend.project.db.project.root.baseName}`;
+    const newDbImportPath = `${this.parent.coder.parent.parent.parent.parent.project.backend.project.db.project.root.absoluteName}`;
+
     const oldSchemaImportPath = `${this.parent.coder.parent.project.schema.project.root.baseName}`;
     const newSchemaImportPath = `${this.parent.coder.parent.project.schema.project.root.absoluteName}`;
 
@@ -47,10 +50,9 @@ export class Migrator {
       (filePath) => {
         const file = this.parent.coder.tree.read(filePath).toString("utf8");
 
-        const newFile = file.replace(
-          new RegExp(oldSchemaImportPath, "g"),
-          newSchemaImportPath,
-        );
+        const newFile = file
+          .replace(new RegExp(oldSchemaImportPath, "g"), newSchemaImportPath)
+          .replace(new RegExp(oldDbImportPath, "g"), newDbImportPath);
 
         this.parent.coder.tree.write(filePath, newFile);
       },
