@@ -49,7 +49,7 @@ export class Migrator {
     );
 
     this.parent.coder.tree.write(
-      `${baseDirectory}/src/lib/index.ts`,
+      `${baseDirectory}/src/lib/index.tsx`,
       newIndexFile,
     );
 
