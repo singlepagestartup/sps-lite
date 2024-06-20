@@ -55,9 +55,9 @@ export class Coder {
     }
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     for (const module of this.project.modules) {
-      await module.update();
+      await module.migrate(props);
     }
   }
 

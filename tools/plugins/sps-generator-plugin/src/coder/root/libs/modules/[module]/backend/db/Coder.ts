@@ -31,8 +31,8 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
   }
 
   /**

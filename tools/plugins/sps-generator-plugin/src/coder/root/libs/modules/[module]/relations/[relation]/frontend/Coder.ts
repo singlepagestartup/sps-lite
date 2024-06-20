@@ -61,10 +61,10 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.api.update();
-    await this.project.redux.update();
-    await this.project.component.update();
+  async migrate(props: { version: string }) {
+    await this.project.api.migrate(props);
+    await this.project.redux.migrate(props);
+    await this.project.component.migrate(props);
   }
 
   async create() {

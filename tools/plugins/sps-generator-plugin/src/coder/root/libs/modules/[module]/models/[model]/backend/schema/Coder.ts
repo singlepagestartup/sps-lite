@@ -68,10 +68,10 @@ export class Coder {
     await this.project.root.create();
   }
 
-  async update() {
-    await this.project.table.update();
-    await this.project.relations.update();
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.table.migrate(props);
+    await this.project.relations.migrate(props);
+    await this.project.root.migrate(props);
   }
 
   async remove() {

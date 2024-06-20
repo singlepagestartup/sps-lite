@@ -50,8 +50,8 @@ export class Coder {
     await this.project.module.create();
   }
 
-  async update() {
-    await this.project.module?.update();
+  async migrate(props: { version: string }) {
+    await this.project.module?.migrate(props);
   }
 
   async remove() {

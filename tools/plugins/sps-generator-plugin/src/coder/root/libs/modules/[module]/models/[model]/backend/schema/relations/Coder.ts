@@ -62,12 +62,12 @@ export class Coder {
     }
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
 
     if (this.project.relations) {
       for (const relation of this.project.relations) {
-        await relation.update();
+        await relation.migrate(props);
       }
     }
   }

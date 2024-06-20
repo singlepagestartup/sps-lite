@@ -108,17 +108,17 @@ export class Coder {
     }
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     for (const model of this.project.models) {
-      await model.update();
+      await model.migrate(props);
     }
 
     for (const relation of this.project.relations) {
-      await relation.update();
+      await relation.migrate(props);
     }
 
-    await this.project.backend.update();
-    await this.project.frontend.update();
+    await this.project.backend.migrate(props);
+    await this.project.frontend.migrate(props);
   }
 
   async remove() {

@@ -63,10 +63,10 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.model.update();
-    await this.project.client.update();
-    await this.project.server.update();
+  async migrate(props: { version: string }) {
+    await this.project.model.migrate(props);
+    await this.project.client.migrate(props);
+    await this.project.server.migrate(props);
   }
 
   async create() {

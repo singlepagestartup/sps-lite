@@ -89,12 +89,12 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.db.update();
-    await this.project.schema.update();
-    await this.project.models.update();
-    await this.project.app.update();
-    await this.project.sdk.update();
+  async migrate(props: { version: string }) {
+    await this.project.db.migrate(props);
+    await this.project.schema.migrate(props);
+    await this.project.models.migrate(props);
+    await this.project.app.migrate(props);
+    await this.project.sdk.migrate(props);
   }
 
   async create() {

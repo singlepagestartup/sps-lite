@@ -77,15 +77,15 @@ export class Coder {
     });
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     if (this.isExternal) {
       console.log(`External model "${this.name}", skipping update`);
       return;
     }
 
-    await this.project.contracts.update();
-    await this.project.backend.update();
-    await this.project.frontend.update();
+    await this.project.contracts.migrate(props);
+    await this.project.backend.migrate(props);
+    await this.project.frontend.migrate(props);
   }
 
   async create() {

@@ -78,10 +78,10 @@ export class Coder {
     await this.project.frontend.create();
   }
 
-  async update() {
-    await this.project.contracts.update();
-    await this.project.backend.update();
-    await this.project.frontend.update();
+  async migrate(props: { version: string }) {
+    await this.project.contracts.migrate(props);
+    await this.project.backend.migrate(props);
+    await this.project.frontend.migrate(props);
   }
 
   async remove() {

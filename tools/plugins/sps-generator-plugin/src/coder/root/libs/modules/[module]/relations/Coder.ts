@@ -42,8 +42,8 @@ export class Coder {
     await this.project.relation.create();
   }
 
-  async update() {
-    await this.project.relation.update();
+  async migrate(props: { version: string }) {
+    await this.project.relation.migrate(props);
   }
 
   async remove() {

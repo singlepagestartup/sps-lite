@@ -102,7 +102,7 @@ export class Coder {
     });
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     await this.setReplacers();
 
     const migrator = new Migrator({

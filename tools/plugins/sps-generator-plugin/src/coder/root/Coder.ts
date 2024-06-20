@@ -46,8 +46,8 @@ export class Coder {
     await this.project.libs.create();
   }
 
-  async update() {
-    await this.project.libs.update();
+  async migrate(props: { version: string }) {
+    await this.project.libs.migrate(props);
   }
 
   async remove() {
