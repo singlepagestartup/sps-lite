@@ -1,6 +1,6 @@
-import { Table as FooterBlock } from "@sps/sps-website-builder-models-footer-block-backend-schema-table";
+import { Table as FooterBlock } from "@sps/sps-website-builder/models/footer-block/backend/schema/table";
 
-import { Table as Logotype } from "@sps/sps-website-builder-models-logotype-backend-schema-table";
+import { Table as Logotype } from "@sps/sps-website-builder/models/logotype/backend/schema/table";
 
 import { relations } from "drizzle-orm";
 import { Table } from "./table";

@@ -1,16 +1,16 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { ModelEntitiesListCard, FormField } from "@sps/ui-adapter";
-import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component-variants-sps-lite-select-right";
-import { Component as WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component-variants-sps-lite-select-right";
+import { Component as WidgetsToHeroSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToNavbarBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/variants/sps-lite/select-right";
+import { Component as WidgetsToSpsRbacModuleWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/component/variants/sps-lite/select-right";
 
-import { variants } from "@sps/sps-website-builder-models-widget-contracts";
+import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

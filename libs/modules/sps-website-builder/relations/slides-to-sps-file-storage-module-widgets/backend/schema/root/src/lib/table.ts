@@ -1,6 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Slide } from "@sps/sps-website-builder-models-slide-backend-schema-table";
+import { Table as Slide } from "@sps/sps-website-builder/models/slide/backend/schema/table";
 
 export const schemaName = "SPSWBSlidesToSpsFileStorageWidgets";
 export const modelName = "slidesToSpsFileStorageWidgets";

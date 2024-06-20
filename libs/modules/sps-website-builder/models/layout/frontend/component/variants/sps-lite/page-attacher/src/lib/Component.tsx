@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
-import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/layout/frontend/api/client";
 import { FormProvider, useForm } from "react-hook-form";
 
 export function Component(props: IComponentPropsExtended) {

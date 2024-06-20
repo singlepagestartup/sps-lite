@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-file-storage-backend-db";
+import { db } from "@sps/sps-file-storage/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-file-storage-models-file-backend-schema";
+} from "@sps/sps-file-storage/models/file/backend/schema/root";
 
 export async function service(props: { data: any }) {
   const { data } = props;

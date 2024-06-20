@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-models-footer-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-models-footer-block-contracts-extended";
+import { IModel } from "@sps/sps-website-builder/models/footer-block/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-website-builder/models/footer-block/contracts/extended";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 

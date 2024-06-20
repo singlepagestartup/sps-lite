@@ -7,8 +7,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-select-input";
+import { api } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/slide/frontend/component/variants/sps-lite/admin-select-input";
 import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 
 const formSchema = z.object({

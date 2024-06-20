@@ -8,8 +8,8 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-select-input";
+import { api } from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/api/client";
+// import { Component as AdminSelectInput } from "@sps/startup/models/widget/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
@@ -93,13 +93,13 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Type class name"
             />
-            <AdminSelectInput
+            {/* <AdminSelectInput
               isServer={false}
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
               formFieldName="startupModuleWidgetId"
-            />
+            /> */}
           </div>
         </ModelEntityCard>
       ) : (
@@ -116,13 +116,13 @@ export function Component(props: IComponentPropsExtended) {
               form={form}
               placeholder="Type class name"
             />
-            <AdminSelectInput
+            {/* <AdminSelectInput
               isServer={false}
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
               formFieldName="startupModuleWidgetId"
-            />
+            /> */}
           </CardContent>
         </Card>
       )}

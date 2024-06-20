@@ -4,7 +4,6 @@ import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { IComponentPropsExtended } from "./interface";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { Component as PageBlocks } from "@sps/sps-website-builder-page-blocks-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -40,28 +39,7 @@ export function Component(props: IComponentPropsExtended) {
           leave="ease-out duration-300"
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
-        >
-          {props.data?.pageBlocks ? (
-            <div className="modal-container">
-              <Dialog.Panel className={`dialog-panel w-full`}>
-                <button
-                  onClick={() => {
-                    props.close();
-                  }}
-                  className="button-close"
-                >
-                  <XMarkIcon />
-                </button>
-                <PageBlocks
-                  variant="default"
-                  isServer={false}
-                  hostUrl={props.hostUrl}
-                  data={props.data}
-                />
-              </Dialog.Panel>
-            </div>
-          ) : null}
-        </Transition.Child>
+        ></Transition.Child>
       </Dialog>
     </Transition>
   );

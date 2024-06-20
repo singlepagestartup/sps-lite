@@ -1,6 +1,6 @@
 import { createMiddleware } from "hono/factory";
-import { model as sessionModel } from "@sps/sps-rbac-models-session-backend-model";
-import { Table as SessionTable } from "@sps/sps-rbac-models-session-backend-schema";
+import { model as sessionModel } from "@sps/sps-rbac/models/session/backend/model/root";
+import { Table as SessionTable } from "@sps/sps-rbac/models/session/backend/schema/root";
 import {
   SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
   SPS_RBAC_COOKIE_SESSION_NAME,

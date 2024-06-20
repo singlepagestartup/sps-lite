@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-models-authentication-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-block-contracts-extended";
+import { IModel } from "@sps/sps-rbac/models/authentication-block/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-rbac/models/authentication-block/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "login" as const;

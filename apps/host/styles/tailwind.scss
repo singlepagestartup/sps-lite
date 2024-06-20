@@ -90,23 +90,11 @@ input[type="number"] {
   }
 
   .admin-edit-card {
-    @apply overflow-hidden rounded-lg pb-0 relative pb-10 lg:pb-14 border-none;
-  }
-
-  .admin-edit-card-heading {
-    @apply admin-heading-h1 -mt-1.5 lg:-mt-2.5 -ml-1.5 lg:-ml-2.5 pb-4;
+    @apply overflow-hidden rounded-lg relative pb-10 lg:pb-14 border-none;
   }
 
   .admin-edit-card-button-container {
     @apply absolute -bottom-[0.45em] inset-x-0;
-  }
-
-  .model-container {
-    @apply relative gap-6 pt-8 rounded-lg border p-4 border-muted-foreground;
-  }
-
-  .model-header-block {
-    @apply flex absolute top-0 inset-x-0 px-4 transform -translate-y-1/2 justify-between items-center;
   }
 
   .model-legend {

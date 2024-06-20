@@ -13,12 +13,14 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   project: ProjectConfiguration;
+  absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 
   constructor({ tree, parent }: { tree: Tree; parent: AppCoder }) {
     this.name = "root";
     this.baseName = `${parent.baseName}`;
     this.baseDirectory = `${parent.baseDirectory}/root`;
+    this.absoluteName = `${parent.absoluteName}/root`;
     this.tree = tree;
     this.parent = parent;
 
@@ -29,12 +31,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

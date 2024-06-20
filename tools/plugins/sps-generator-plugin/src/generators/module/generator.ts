@@ -2,6 +2,7 @@ import { Tree, formatFiles } from "@nx/devkit";
 import { ModuleGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
+// npx nx generate @sps/sps-generator-plugin:module --module=sps-host --action=create --no-interactive --dry-run
 export async function moduleGenerator(
   tree: Tree,
   options: ModuleGeneratorSchema,

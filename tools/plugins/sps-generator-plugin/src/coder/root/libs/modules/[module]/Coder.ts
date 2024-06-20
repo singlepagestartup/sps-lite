@@ -36,6 +36,7 @@ export class Coder {
   root: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   tree: Tree;
   parent: ModuleCoder;
   project: {
@@ -61,6 +62,7 @@ export class Coder {
     this.name = props.name;
     this.tree = props.tree;
     this.parent = props.parent;
+    this.absoluteName = `${props.parent.absoluteName}/${props.name}`;
 
     this.project.backend = new BackendCoder({
       ...props.backend,
@@ -108,17 +110,17 @@ export class Coder {
     }
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     for (const model of this.project.models) {
-      await model.update();
+      await model.migrate(props);
     }
 
     for (const relation of this.project.relations) {
-      await relation.update();
+      await relation.migrate(props);
     }
 
-    await this.project.backend.update();
-    await this.project.frontend.update();
+    await this.project.backend.migrate(props);
+    await this.project.frontend.migrate(props);
   }
 
   async remove() {
@@ -140,24 +142,5 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.models[0].removeField(props);
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.relations[0].createRelationFrontendComponentVariant(
-      props,
-    );
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.relations[0].removeRelationFrontendComponentVariant(
-      props,
-    );
   }
 }

@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-rbac-relations-roles-to-permissions-backend-schema";
+} from "@sps/sps-rbac/relations/roles-to-permissions/backend/schema/root";
 
 export async function service(props: { data: any }) {
   const { data } = props;

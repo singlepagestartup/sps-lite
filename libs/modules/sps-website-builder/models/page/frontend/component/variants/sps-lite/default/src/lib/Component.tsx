@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as PagesToLayouts } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component";
-import { Component as PagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component";
+import { Component as PagesToLayouts } from "@sps/sps-website-builder/relations/pages-to-layouts/frontend/component/root";
+import { Component as PagesToWidgets } from "@sps/sps-website-builder/relations/pages-to-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant="default"
-      className="flex flex-col"
+      className="flex flex-col w-full"
     >
       {props.data.pagesToLayouts?.length ? (
         <PagesToLayouts

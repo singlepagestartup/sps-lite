@@ -20,6 +20,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     root: RootCoder;
     extended: ExtendedCoder;
@@ -34,6 +35,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseDirectory = `${this.parent.baseDirectory}/contracts`;
     this.baseName = `${this.parent.baseName}-contracts`;
+    this.absoluteName = `${this.parent.absoluteName}/contracts`;
 
     this.project.root = new RootCoder({
       ...props.root,
@@ -48,9 +50,9 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.root.update();
-    await this.project.extended.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
+    await this.project.extended.migrate(props);
   }
 
   async create() {

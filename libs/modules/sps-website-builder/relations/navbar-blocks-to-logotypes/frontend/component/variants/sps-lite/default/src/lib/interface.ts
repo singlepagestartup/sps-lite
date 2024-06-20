@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-contracts-extended";
+import { IRelation } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

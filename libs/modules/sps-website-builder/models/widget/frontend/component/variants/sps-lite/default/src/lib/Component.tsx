@@ -1,13 +1,13 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-component";
-import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder-relations-widgets-to-navbar-blocks-frontend-component";
-import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder-relations-widgets-to-footer-blocks-frontend-component";
-import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder-relations-widgets-to-slider-blocks-frontend-component";
-import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder-relations-widgets-to-features-section-blocks-frontend-component";
-import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-startup-module-widgets-frontend-component";
-import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-frontend-component";
-import { Component as WidgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-component";
+import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/root";
+import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/root";
+import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/root";
+import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/root";
+import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/root";
+import { Component as WidgetsToStartupModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/frontend/component/root";
+import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/frontend/component/root";
+import { Component as WidgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
@@ -17,7 +17,7 @@ export function Component(props: IComponentPropsExtended) {
       data-model="widget"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex", props.data.className)}
+      className={cn("w-full flex flex-col", props.data.className)}
     >
       {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {

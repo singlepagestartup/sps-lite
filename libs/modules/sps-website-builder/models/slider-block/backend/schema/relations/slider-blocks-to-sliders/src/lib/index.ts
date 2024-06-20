@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "@sps/sps-website-builder-relations-slider-blocks-to-sliders-backend-schema";
+} from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/backend/schema/root";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
   PopulateQueryBuilderProps,

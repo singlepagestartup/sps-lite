@@ -3,8 +3,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-buttons-array-contracts";
-import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
+import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

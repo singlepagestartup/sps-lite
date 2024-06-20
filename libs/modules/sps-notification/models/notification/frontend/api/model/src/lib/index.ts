@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-notification-models-notification-contracts";
+import type { IModel as IParentModel } from "@sps/sps-notification/models/notification/contracts/root";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-notification-models-notification-contracts-extended";
+} from "@sps/sps-notification/models/notification/contracts/extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

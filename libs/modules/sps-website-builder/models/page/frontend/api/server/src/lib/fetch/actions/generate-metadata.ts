@@ -1,7 +1,7 @@
 "use server";
 
-import { api as metadataApi } from "@sps/sps-website-builder-models-metadata-frontend-api-server";
-import { api as spsFileStorageFileApi } from "@sps/sps-file-storage-models-file-frontend-api-server";
+import { api as metadataApi } from "@sps/sps-website-builder/models/metadata/frontend/api/server";
+import { api as spsFileStorageFileApi } from "@sps/sps-file-storage/models/file/frontend/api/server";
 import { BACKEND_URL, HOST_URL } from "@sps/shared-utils";
 import { Metadata } from "next/types";
 

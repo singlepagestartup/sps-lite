@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-rbac-relations-sessions-to-authentications-backend-model";
+import { model } from "@sps/sps-rbac/relations/sessions-to-authentications/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";

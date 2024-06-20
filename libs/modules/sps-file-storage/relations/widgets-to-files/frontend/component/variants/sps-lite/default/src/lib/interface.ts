@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-file-storage-relations-widgets-to-files-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-file-storage-relations-widgets-to-files-contracts-extended";
+import { IRelation } from "@sps/sps-file-storage/relations/widgets-to-files/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-file-storage/relations/widgets-to-files/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

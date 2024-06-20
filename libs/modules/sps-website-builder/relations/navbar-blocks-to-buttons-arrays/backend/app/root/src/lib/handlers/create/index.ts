@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-backend-model";
+import { model } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";

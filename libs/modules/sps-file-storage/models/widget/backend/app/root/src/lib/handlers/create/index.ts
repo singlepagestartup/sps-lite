@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-file-storage-models-widget-backend-model";
+import { model } from "@sps/sps-file-storage/models/widget/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";

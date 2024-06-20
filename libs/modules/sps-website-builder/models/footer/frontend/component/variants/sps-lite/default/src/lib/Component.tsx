@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as FootersToWidgets } from "@sps/sps-website-builder-relations-footers-to-widgets-frontend-component";
+import { Component as FootersToWidgets } from "@sps/sps-website-builder/relations/footers-to-widgets/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {

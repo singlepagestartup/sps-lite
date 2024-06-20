@@ -1,9 +1,9 @@
-import { db } from "@sps/sps-website-builder-backend-db";
+import { db } from "@sps/sps-website-builder/backend/db/root";
 import {
   Table,
   populate,
   schemaName,
-} from "@sps/sps-website-builder-models-page-backend-schema";
+} from "@sps/sps-website-builder/models/page/backend/schema/root";
 import { service as find } from "../find";
 import { service as findById } from "../find-by-id";
 import { EntityWithUrls, service as withUrls } from "../with-urls";

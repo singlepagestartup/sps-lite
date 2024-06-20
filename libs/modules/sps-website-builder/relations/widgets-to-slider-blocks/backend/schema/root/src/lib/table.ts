@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-schema-table";
-import { Table as SliderBlock } from "@sps/sps-website-builder-models-slider-block-backend-schema-table";
+import { Table as Widget } from "@sps/sps-website-builder/models/widget/backend/schema/table";
+import { Table as SliderBlock } from "@sps/sps-website-builder/models/slider-block/backend/schema/table";
 
 export const schemaName = "SPSWBWidgetsToSliderBlocks";
 export const modelName = "widgetsToSliderBlocks";

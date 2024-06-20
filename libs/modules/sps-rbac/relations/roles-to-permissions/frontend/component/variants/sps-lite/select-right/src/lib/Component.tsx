@@ -8,9 +8,9 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-rbac-relations-roles-to-permissions-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-rbac-models-permission-frontend-component";
-import { variants } from "@sps/sps-rbac-relations-roles-to-permissions-contracts";
+import { api } from "@sps/sps-rbac/relations/roles-to-permissions/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-rbac/models/permission/frontend/component/root";
+import { variants } from "@sps/sps-rbac/relations/roles-to-permissions/contracts/root";
 
 const formSchema = z.object({
   roleId: z.string().min(1),

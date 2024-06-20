@@ -1,4 +1,4 @@
-import { models } from "@sps/sps-notification-backend-models";
+import { models } from "@sps/sps-notification/backend/models/root";
 import { config } from "./config";
 import { ModuleSeeder as ParentModuleSeeder } from "@sps/shared-backend-api";
 

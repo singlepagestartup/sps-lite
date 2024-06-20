@@ -25,6 +25,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     client: ClientCoder;
     server: ServerCoder;
@@ -41,6 +42,7 @@ export class Coder {
     this.name = "api";
     this.baseName = `${this.parent.baseName}-api`;
     this.baseDirectory = `${this.parent.baseDirectory}/api`;
+    this.absoluteName = `${this.parent.absoluteName}/api`;
 
     this.project.model = new ModelCoder({
       ...props.model,
@@ -61,10 +63,10 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.model.update();
-    await this.project.client.update();
-    await this.project.server.update();
+  async migrate(props: { version: string }) {
+    await this.project.model.migrate(props);
+    await this.project.client.migrate(props);
+    await this.project.server.migrate(props);
   }
 
   async create() {

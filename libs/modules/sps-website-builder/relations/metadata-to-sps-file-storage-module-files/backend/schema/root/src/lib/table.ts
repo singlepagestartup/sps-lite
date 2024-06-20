@@ -1,6 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Metadata } from "@sps/sps-website-builder-models-metadata-backend-schema-table";
+import { Table as Metadata } from "@sps/sps-website-builder/models/metadata/backend/schema/table";
 
 export const schemaName = "SPSWBMetadataToSpsFileStorageModuleFiles";
 export const modelName = "metadataToSpsFileStorageModuleFiles";

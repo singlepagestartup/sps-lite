@@ -119,16 +119,9 @@ export async function frontendComponentVariantGenerator(
     });
 
     if (options.action === "remove") {
-      await coder.removeRelationFrontendComponentVariant({
-        name,
-        level,
-      });
+      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants[0].remove();
     } else {
-      await coder.createRelationFrontendComponentVariant({
-        name,
-        level,
-        templateName: options.template,
-      });
+      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants[0].create();
     }
   }
 

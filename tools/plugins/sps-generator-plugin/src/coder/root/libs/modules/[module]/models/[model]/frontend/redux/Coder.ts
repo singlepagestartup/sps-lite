@@ -20,6 +20,7 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   moduleName: string;
   modelName: string;
   modelNamePluralized: string;
@@ -28,6 +29,7 @@ export class Coder {
     this.name = "redux";
     this.baseName = `${props.parent.baseName}-redux`;
     this.baseDirectory = `${props.parent.baseDirectory}/redux`;
+    this.absoluteName = `${props.parent.absoluteName}/redux`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -43,12 +45,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

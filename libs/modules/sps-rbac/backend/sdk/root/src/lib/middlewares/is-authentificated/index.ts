@@ -43,7 +43,8 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["POST"],
   },
   {
-    regexPath: /\/api\/(sps-website-builder|startup|sps-file-storage)\/.*/,
+    regexPath:
+      /\/api\/(sps-host|sps-website-builder|startup|sps-file-storage)\/.*/,
     methods: ["GET"],
   },
 ];

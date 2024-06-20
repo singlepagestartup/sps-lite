@@ -1,5 +1,5 @@
 import { HTTPException } from "hono/http-exception";
-import { model } from "@sps/sps-website-builder-relations-sliders-to-slides-backend-model";
+import { model } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";

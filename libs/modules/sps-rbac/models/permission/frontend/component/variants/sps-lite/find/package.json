@@ -1,8 +1,0 @@
-{
-  "name": "@sps/sps-rbac-models-permission-frontend-component-variants-sps-lite-find",
-  "version": "0.0.1",
-  "singlepagestartup": {
-    "version": "0.0.156",
-    "template": "find"
-  }
-}

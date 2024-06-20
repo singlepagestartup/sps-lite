@@ -6,7 +6,7 @@ import {
   route,
   tag,
   populate,
-} from "@sps/sps-website-builder-relations-buttons-arrays-to-buttons-frontend-api-model";
+} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(

@@ -1,9 +1,9 @@
-import { db } from "@sps/sps-rbac-backend-db";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   populate,
   schemaName,
-} from "@sps/sps-rbac-models-widget-backend-schema";
+} from "@sps/sps-rbac/models/widget/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

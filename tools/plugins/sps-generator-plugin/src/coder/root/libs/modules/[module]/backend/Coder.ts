@@ -35,6 +35,7 @@ export class Coder {
   name: string;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   project: {
     db: DbCoder;
     app: AppCoder;
@@ -49,6 +50,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-backend`;
     this.baseDirectory = `${this.parent.baseDirectory}/backend`;
+    this.absoluteName = `${this.parent.absoluteName}/backend`;
 
     const db = new DbCoder({
       ...props.schema,
@@ -89,12 +91,12 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.db.update();
-    await this.project.schema.update();
-    await this.project.models.update();
-    await this.project.app.update();
-    await this.project.sdk.update();
+  async migrate(props: { version: string }) {
+    await this.project.db.migrate(props);
+    await this.project.schema.migrate(props);
+    await this.project.models.migrate(props);
+    await this.project.app.migrate(props);
+    await this.project.sdk.migrate(props);
   }
 
   async create() {

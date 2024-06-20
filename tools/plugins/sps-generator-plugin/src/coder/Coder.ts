@@ -44,8 +44,8 @@ export class Coder {
     await this.project.root.create();
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
   }
 
   async remove() {
@@ -62,30 +62,5 @@ export class Coder {
     await this.project.root.removeField(props);
 
     await formatFiles(this.tree);
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    name: string;
-    level: string;
-    templateName?: string;
-  }) {
-    await this.project.root.createRelationFrontendComponentVariant({
-      variantLevel: props.level,
-      variantName: props.name,
-      templateName: props.templateName,
-    });
-  }
-
-  async removeRelationFrontendComponentVariant({
-    name,
-    level,
-  }: {
-    name: string;
-    level: string;
-  }) {
-    await this.project.root.removeRelationFrontendComponentVariant({
-      variantLevel: level,
-      variantName: name,
-    });
   }
 }

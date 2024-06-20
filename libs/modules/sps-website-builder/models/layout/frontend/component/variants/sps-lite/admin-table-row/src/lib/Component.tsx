@@ -2,8 +2,8 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminForm } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form";
-import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
+import { Component as AdminForm } from "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form";
+import { api } from "@sps/sps-website-builder/models/layout/frontend/api/client";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { invalidateServerTag } from "@sps/store";

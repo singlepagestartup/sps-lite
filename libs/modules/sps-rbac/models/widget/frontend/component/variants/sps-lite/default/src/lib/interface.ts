@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-models-widget-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-models-widget-contracts-extended";
+import { IModel } from "@sps/sps-rbac/models/widget/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-rbac/models/widget/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

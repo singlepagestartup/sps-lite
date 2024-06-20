@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-rbac-relations-subjects-to-identities-backend-schema";
+} from "@sps/sps-rbac/relations/subjects-to-identities/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { variants } from "@sps/sps-website-builder-models-button-contracts";
+import { variants } from "@sps/sps-website-builder/models/button/contracts/root";
 import { FormField } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {

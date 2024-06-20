@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/page/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Card, CardContent, CardFooter, Form } from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
@@ -12,8 +12,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-import { Component as PageSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-form-inputs";
-import { variants } from "@sps/sps-website-builder-models-page-contracts";
+import { Component as PageSpsLiteAdminFormInputs } from "@sps/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-form-inputs";
+import { variants } from "@sps/sps-website-builder/models/page/contracts/root";
 import { toast } from "sonner";
 
 const formSchema = z.object({

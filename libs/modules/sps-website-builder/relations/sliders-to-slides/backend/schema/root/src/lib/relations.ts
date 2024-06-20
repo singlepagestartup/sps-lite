@@ -1,5 +1,5 @@
-import { Table as Slider } from "@sps/sps-website-builder-models-slider-backend-schema-table";
-import { Table as Slide } from "@sps/sps-website-builder-models-slide-backend-schema-table";
+import { Table as Slider } from "@sps/sps-website-builder/models/slider/backend/schema/table";
+import { Table as Slide } from "@sps/sps-website-builder/models/slide/backend/schema/table";
 import { relations } from "drizzle-orm";
 import { Table } from "./table";
 

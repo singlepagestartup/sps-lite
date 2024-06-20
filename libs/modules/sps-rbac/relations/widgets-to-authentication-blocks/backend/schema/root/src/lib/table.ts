@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Widget } from "@sps/sps-rbac-models-widget-backend-schema-table";
+import { Table as Widget } from "@sps/sps-rbac/models/widget/backend/schema/table";
 
-import { Table as AuthenticationBlock } from "@sps/sps-rbac-models-authentication-block-backend-schema-table";
+import { Table as AuthenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/schema/table";
 
 export const schemaName = "SPSRWidgetsToAuthenticationBlocks";
 export const modelName = "widgetsToAuthenticationBlocks";

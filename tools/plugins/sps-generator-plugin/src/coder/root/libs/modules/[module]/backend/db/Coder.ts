@@ -9,6 +9,7 @@ export class Coder {
   tree: Tree;
   parent: BackendCoder;
   baseName: string;
+  absoluteName: string;
   baseDirectory: string;
   project: {
     root: RootCoder;
@@ -20,6 +21,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-db`;
     this.baseDirectory = `${this.parent.baseDirectory}/db`;
+    this.absoluteName = `${this.parent.absoluteName}/db`;
 
     const root = new RootCoder({
       tree: this.tree,
@@ -31,8 +33,8 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
   }
 
   /**

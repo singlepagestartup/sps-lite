@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-notification-models-notification-contracts";
-import { IModel as IModelExtended } from "@sps/sps-notification-models-notification-contracts-extended";
+import { IModel } from "@sps/sps-notification/models/notification/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-notification/models/notification/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-table" as const;

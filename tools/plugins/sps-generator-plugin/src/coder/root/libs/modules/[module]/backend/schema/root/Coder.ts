@@ -15,6 +15,7 @@ export class Coder {
   baseDirectory: string;
   tree: Tree;
   project: ProjectConfiguration;
+  absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 
   constructor(props: { tree: Tree; parent: SchemaCoder } & IGeneratorProps) {
@@ -23,6 +24,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     const moduleName = this.parent.parent.parent.name;
     const moduleNameStyles = getNameStyles({ name: moduleName });
@@ -31,12 +33,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

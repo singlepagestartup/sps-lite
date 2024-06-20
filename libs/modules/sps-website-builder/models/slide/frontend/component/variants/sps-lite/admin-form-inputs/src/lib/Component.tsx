@@ -1,9 +1,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-slide-contracts";
-import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-slides-to-sps-file-storage-module-widgets-frontend-component";
-import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder-relations-slides-to-buttons-arrays-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/slide/contracts/root";
+import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component/root";
+import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

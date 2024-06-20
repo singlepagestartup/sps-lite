@@ -20,6 +20,7 @@ export class Coder {
   name: string;
   baseDirectory: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
 
@@ -29,6 +30,7 @@ export class Coder {
     this.name = "app";
     this.baseName = `${this.parent.baseName}-app`;
     this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
+    this.absoluteName = `${this.parent.absoluteName}/app/root`;
 
     const pluralNameModelName = pluralize(
       names(this.parent.parent.name).fileName,
@@ -46,12 +48,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

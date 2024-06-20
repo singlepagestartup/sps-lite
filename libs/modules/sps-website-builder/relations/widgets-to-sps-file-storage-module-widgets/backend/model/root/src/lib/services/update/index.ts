@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-website-builder-backend-db";
+import { db } from "@sps/sps-website-builder/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-website-builder-relations-widgets-to-sps-file-storage-module-widgets-backend-schema";
+} from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

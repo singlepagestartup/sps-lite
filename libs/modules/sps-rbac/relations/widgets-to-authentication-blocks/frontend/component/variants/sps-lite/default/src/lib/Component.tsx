@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as AuthenticationBlock } from "@sps/sps-rbac-models-authentication-block-frontend-component";
+import { Component as AuthenticationBlock } from "@sps/sps-rbac/models/authentication-block/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

@@ -2,7 +2,7 @@ import { HTTPException } from "hono/http-exception";
 import {
   model,
   Telegram,
-} from "@sps/sps-third-parties-models-telegram-backend-model";
+} from "@sps/sps-third-parties/models/telegram/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";

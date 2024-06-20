@@ -46,8 +46,8 @@ export class Coder {
     await this.project.libs.create();
   }
 
-  async update() {
-    await this.project.libs.update();
+  async migrate(props: { version: string }) {
+    await this.project.libs.migrate(props);
   }
 
   async remove() {
@@ -60,24 +60,5 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.libs.removeField(props);
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.libs.createRelationFrontendComponentVariant(props);
-
-    await formatFiles(this.tree);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.libs.removeRelationFrontendComponentVariant(props);
-
-    await formatFiles(this.tree);
   }
 }

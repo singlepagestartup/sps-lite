@@ -3,14 +3,14 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Card, CardContent, CardHeader, CardTitle } from "@sps/shadcn";
-import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-select-input";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-select-input";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-frontend-api-client";
+import { api } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/api/client";
 import { FormField, ModelEntityCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-relations-widgets-to-hero-section-blocks-contracts";
+import { variants } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/contracts/root";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),

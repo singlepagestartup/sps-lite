@@ -33,6 +33,7 @@
     "@tiptap/extension-link": "2.4.0",
     "@tiptap/react": "2.4.0",
     "@tiptap/starter-kit": "2.4.0",
+    "@types/react": "18.3.3",
     "axios": "1.7.2",
     "class-variance-authority": "0.7.0",
     "client-only": "0.0.1",

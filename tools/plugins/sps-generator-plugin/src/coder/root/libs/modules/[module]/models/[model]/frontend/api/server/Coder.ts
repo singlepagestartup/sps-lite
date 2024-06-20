@@ -17,6 +17,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project?: ProjectConfiguration;
   moduleName: string;
@@ -25,6 +26,7 @@ export class Coder {
     this.name = "server";
     this.baseName = `${props.parent.baseName}-server`;
     this.baseDirectory = `${props.parent.baseDirectory}/server`;
+    this.absoluteName = `${props.parent.absoluteName}/server`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -35,12 +37,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

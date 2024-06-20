@@ -19,6 +19,7 @@ export class Coder {
   tree: Tree;
   parent: RootCoder;
   baseName: string;
+  absoluteName: string;
   baseDirectory: string;
   name: string;
   project: {
@@ -36,6 +37,7 @@ export class Coder {
     this.baseDirectory = `libs`;
     this.name = "libs";
     this.baseName = `${props.parent.baseName}`;
+    this.absoluteName = `${props.parent.baseName}/${this.name}`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -55,9 +57,9 @@ export class Coder {
     }
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     for (const module of this.project.modules) {
-      await module.update();
+      await module.migrate(props);
     }
   }
 
@@ -76,25 +78,6 @@ export class Coder {
   async removeField(props: IEditFieldProps) {
     for (const module of this.project.modules) {
       await module.removeField(props);
-    }
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.createRelationFrontendComponentVariant(props);
-    }
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    for (const module of this.project.modules) {
-      await module.removeRelationFrontendComponentVariant(props);
     }
   }
 }

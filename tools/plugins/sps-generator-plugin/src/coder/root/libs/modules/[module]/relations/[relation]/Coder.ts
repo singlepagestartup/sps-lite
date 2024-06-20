@@ -31,6 +31,7 @@ export class Coder {
   parent: RelationsCoder;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   nameStyles: ReturnType<typeof getNameStyles>;
   project: {
@@ -52,6 +53,7 @@ export class Coder {
 
     this.baseName = `${this.parent.baseName}-${this.name}`;
     this.baseDirectory = `${this.parent.baseDirectory}/${this.name}`;
+    this.absoluteName = `${this.parent.absoluteName}/${this.name}`;
 
     this.project.backend = new BackendCoder({
       ...props.backend,
@@ -78,30 +80,15 @@ export class Coder {
     await this.project.frontend.create();
   }
 
-  async update() {
-    await this.project.contracts.update();
-    await this.project.backend.update();
-    await this.project.frontend.update();
+  async migrate(props: { version: string }) {
+    await this.project.contracts.migrate(props);
+    await this.project.backend.migrate(props);
+    await this.project.frontend.migrate(props);
   }
 
   async remove() {
     await this.project.frontend.remove();
     await this.project.backend.remove();
     await this.project.contracts.remove();
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.frontend.createVariant(props);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.frontend.removeVariant(props);
   }
 }

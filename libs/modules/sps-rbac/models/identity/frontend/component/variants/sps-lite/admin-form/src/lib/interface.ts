@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-models-identity-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-models-identity-contracts-extended";
+import { IModel } from "@sps/sps-rbac/models/identity/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-rbac/models/identity/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-form" as const;

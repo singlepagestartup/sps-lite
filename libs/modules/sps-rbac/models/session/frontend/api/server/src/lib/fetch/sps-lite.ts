@@ -8,7 +8,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/sps-rbac-models-session-frontend-api-model";
+} from "@sps/sps-rbac/models/session/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

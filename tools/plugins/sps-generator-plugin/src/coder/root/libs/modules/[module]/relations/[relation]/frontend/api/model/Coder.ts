@@ -22,6 +22,7 @@ export class Coder {
   project?: ProjectConfiguration;
   relationName: string;
   relationNamePluralized: string;
+  absoluteName: string;
   moduleName: string;
 
   constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
@@ -30,6 +31,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-model`;
     this.baseDirectory = `${this.parent.baseDirectory}/model`;
+    this.absoluteName = `${this.parent.absoluteName}/model`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const relationName = this.parent.parent.parent.name;
@@ -43,12 +45,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

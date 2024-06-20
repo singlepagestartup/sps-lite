@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IRelationExtended,
-} from "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-model";
+} from "@sps/sps-rbac/relations/subjects-to-sessions/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

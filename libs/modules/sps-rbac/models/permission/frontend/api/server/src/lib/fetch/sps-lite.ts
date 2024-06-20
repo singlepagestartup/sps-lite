@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/sps-rbac-models-permission-frontend-api-model";
+} from "@sps/sps-rbac/models/permission/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

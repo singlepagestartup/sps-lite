@@ -6,7 +6,7 @@ import {
   route,
   tag,
   populate,
-} from "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-model";
+} from "@sps/sps-rbac/relations/subjects-to-sessions/frontend/api/model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-rbac`),

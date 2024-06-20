@@ -3,8 +3,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-file-storage-models-widget-contracts";
-import { Component as WidgetsToFilesSpsLiteSelectRight } from "@sps/sps-file-storage-relations-widgets-to-files-frontend-component-variants-sps-lite-select-right";
+import { variants } from "@sps/sps-file-storage/models/widget/contracts/root";
+import { Component as WidgetsToFilesSpsLiteSelectRight } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/component/variants/sps-lite/select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (

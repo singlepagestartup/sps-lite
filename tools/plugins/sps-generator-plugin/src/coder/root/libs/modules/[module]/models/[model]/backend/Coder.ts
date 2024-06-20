@@ -25,6 +25,7 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   name: string;
   project: {
     app: AppRootCoder;
@@ -40,6 +41,7 @@ export class Coder {
     this.name = "backend";
     this.baseName = `${props.parent.baseName}-backend`;
     this.baseDirectory = `${props.parent.baseDirectory}/backend`;
+    this.absoluteName = `${props.parent.absoluteName}/backend`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -62,10 +64,10 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.schema.update();
-    await this.project.model.update();
-    await this.project.app.update();
+  async migrate(props: { version: string }) {
+    await this.project.schema.migrate(props);
+    await this.project.model.migrate(props);
+    await this.project.app.migrate(props);
   }
 
   async create() {

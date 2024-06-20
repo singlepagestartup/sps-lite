@@ -1,5 +1,5 @@
 import { IModuleSeedConfig } from "@sps/shared-backend-api";
-import { models } from "@sps/startup-backend-models";
+import { models } from "@sps/startup/backend/models/root";
 import { configModels as parentConfigModels } from "./startup";
 
 export const config: IModuleSeedConfig<typeof models> = {

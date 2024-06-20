@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { App as SpsRbacApp } from "@sps/sps-rbac-frontend";
+import { App as SpsRbacApp } from "@sps/sps-rbac/frontend/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {

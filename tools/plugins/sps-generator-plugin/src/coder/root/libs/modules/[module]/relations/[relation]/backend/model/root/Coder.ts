@@ -29,6 +29,7 @@ export class Coder {
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   schemaModuleLibName: string;
+  absoluteName: string;
   project?: ProjectConfiguration;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
@@ -38,6 +39,7 @@ export class Coder {
 
     this.baseName = `${this.parent.baseName}-model`;
     this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
+    this.absoluteName = `${this.parent.absoluteName}/model/root`;
 
     const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
@@ -62,12 +64,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 
@@ -94,6 +96,8 @@ export class Coder {
     const moduleBackendRelationsRootPath =
       this.parent.parent.parent.parent.project.backend.project.models.project
         .root.baseDirectory;
+    const moduleDbImportPath =
+      this.parent.parent.parent.parent.project.backend.project.db.baseName;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -111,6 +115,7 @@ export class Coder {
         module_lib_name_property_cased: getNameStyles({ name: moduleLibName })
           .propertyCased.base,
         module_lib_name: moduleLibName,
+        module_db_import_path: moduleDbImportPath,
         schema_module_lib_name: schemaModuleLibName,
         model_name: this.modelName,
         module_name: this.moduleName,

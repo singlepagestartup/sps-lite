@@ -1,5 +1,5 @@
 export {
   Table as SPSCWidget,
   Relations as SPSCWidgetRelations,
-} from "@sps/sps-crm-models-widget-backend-schema";
+} from "@sps/sps-crm/models/widget/backend/schema/root";
 export {};

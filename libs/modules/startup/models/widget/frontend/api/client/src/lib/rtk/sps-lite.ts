@@ -6,7 +6,7 @@ import {
   route,
   tag,
   populate,
-} from "@sps/startup-models-widget-frontend-api-model";
+} from "@sps/startup/models/widget/frontend/api/model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/startup`),

@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/startup-models-widget-frontend-api-model";
+} from "@sps/startup/models/widget/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

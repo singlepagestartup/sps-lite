@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-db-provider";
+import { db } from "@sps/sps-website-builder/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-website-builder-relations-pages-to-metadata-backend-schema";
+} from "@sps/sps-website-builder/relations/pages-to-metadata/backend/schema/root";
 
 export async function service(props: { data: any }) {
   const { data } = props;

@@ -1,15 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
-import {
-  Button,
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@sps/shadcn";
-import { Component as WidgetSpsLiteAdminTable } from "<%= module_name %>-models-widget-frontend-component-variants-sps-lite-admin-table";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { Button } from "@sps/shadcn";
+const Widget = dynamic(() =>
+  import("<%= module_name %>-models-widget/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -21,7 +20,7 @@ export function Component(props: IComponentProps) {
     return [
       {
         name: "widget",
-        Comp: WidgetSpsLiteAdminTable,
+        Comp: Widget,
       },
     ];
   }, []);
@@ -87,47 +86,6 @@ export function Component(props: IComponentProps) {
                   </Button>
                 );
               })}
-
-            <Collapsible className="flex flex-col gap-3 pt-6">
-              <CollapsibleTrigger asChild={true}>
-                <Button
-                  variant="link"
-                  className="text-left justify-start gap-3 py-0 text-secondary-foreground"
-                >
-                  Not finished models
-                  <ChevronUpDownIcon className="w-4 h-4" />
-                </Button>
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                {models
-                  .filter((model) => !model.Comp)
-                  .map((model, modelIndex) => {
-                    let hasComponent = false;
-
-                    if ("Comp" in model && model["Comp"]) {
-                      hasComponent = true;
-                    }
-
-                    return (
-                      <Button
-                        variant="ghost"
-                        className="text-left justify-start"
-                        disabled={!hasComponent}
-                        onClick={() => {
-                          setPage({
-                            model,
-                          });
-                        }}
-                        key={modelIndex}
-                      >
-                        <p className="max-w-full text-ellipsis overflow-hidden">
-                          {model.name}
-                        </p>
-                      </Button>
-                    );
-                  })}
-              </CollapsibleContent>
-            </Collapsible>
           </div>
         </div>
       </div>

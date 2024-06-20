@@ -6,39 +6,50 @@ import { IComponentPropsExtended } from "./interface";
 import { useParams, useSearchParams } from "next/navigation";
 const IsAuthenticatatedWrapper = dynamic(() =>
   import(
-    "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper"
+    "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper"
   ).then((mod) => mod.Component),
 );
+const SpsHost = dynamic(() =>
+  import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),
+);
 const SpsWebsiteAdminComponent = dynamic(() =>
-  import("@sps/sps-website-builder-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-website-builder/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
 );
 const StartupAdminComponent = dynamic(() =>
-  import("@sps/startup-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsFileStorageAdminComponent = dynamic(() =>
-  import("@sps/sps-file-storage-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-file-storage/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
 );
 const SpsBillingAdminComponent = dynamic(() =>
-  import("@sps/sps-billing-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-billing/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsRbacAdminComponent = dynamic(() =>
-  import("@sps/sps-rbac-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsNotificationAdminComponent = dynamic(() =>
-  import("@sps/sps-notification-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-notification/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
 );
 const SpsCrmAdminComponent = dynamic(() =>
-  import("@sps/sps-crm-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-crm/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsThirdPartiesAdminComponent = dynamic(() =>
-  import("@sps/sps-third-parties-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-third-parties/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
 );
 
 export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();
   const adminQueryParams = params.get("admin");
 
-  const [widget, setWidget] = useState<string>("sps-website-builder");
+  const [widget, setWidget] = useState<string>("sps-host");
 
   if (!adminQueryParams) {
     return null;
@@ -57,6 +68,13 @@ export function Component(props: IComponentPropsExtended) {
         <div className="w-full mx-auto max-w-7xl px-2">
           <div className="p-5">
             <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
+              <Button
+                title="sps-host"
+                onClick={() => {
+                  setWidget("sps-host");
+                }}
+                active={widget === "sps-host"}
+              />
               <Button
                 title="sps-website-builder"
                 onClick={() => {
@@ -115,6 +133,14 @@ export function Component(props: IComponentPropsExtended) {
               />
             </div>
             <div className="bg-white rounded-b-lg">
+              {widget === "sps-host" ? (
+                <SpsHost
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
               {widget === "sps-website-builder" ? (
                 <SpsWebsiteAdminComponent
                   {...props}

@@ -3,11 +3,11 @@
 import React, { Suspense, useEffect } from "react";
 import { ErrorBoundary, ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-file-storage-models-file-frontend-api-client";
+import { api } from "@sps/sps-file-storage/models/file/frontend/api/client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { Component as AdminForm } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminForm } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-form";
 import { BACKEND_URL } from "@sps/shared-utils";
 import Image from "next/image";
 

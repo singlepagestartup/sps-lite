@@ -18,6 +18,7 @@ export class Coder {
   parent: FrontendCoder;
   tree: Tree;
   baseName: string;
+  absoluteName: string;
   baseDirectory: string;
   name: string;
   project: {
@@ -29,6 +30,7 @@ export class Coder {
     this.name = "component";
     this.baseName = `${props.parent.baseName}-component`;
     this.baseDirectory = `${props.parent.baseDirectory}/component`;
+    this.absoluteName = `${props.parent.absoluteName}/component`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -54,11 +56,11 @@ export class Coder {
     }
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
 
     for (const variant of this.project.variants) {
-      await variant.update();
+      await variant.migrate(props);
     }
   }
 

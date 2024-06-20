@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-models-navbar-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-models-navbar-contracts-extended";
+import { IModel } from "@sps/sps-website-builder/models/navbar/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-website-builder/models/navbar/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

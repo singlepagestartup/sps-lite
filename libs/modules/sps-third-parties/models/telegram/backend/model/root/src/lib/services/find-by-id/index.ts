@@ -1,9 +1,9 @@
-import { db } from "@sps/sps-third-parties-backend-db";
+import { db } from "@sps/sps-third-parties/backend/db/root";
 import {
   Table,
   populate,
   schemaName,
-} from "@sps/sps-third-parties-models-telegram-backend-schema";
+} from "@sps/sps-third-parties/models/telegram/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

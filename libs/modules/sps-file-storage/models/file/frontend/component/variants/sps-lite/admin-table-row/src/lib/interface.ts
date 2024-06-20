@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-file-storage-models-file-contracts";
-import { IModel as IModelExtended } from "@sps/sps-file-storage-models-file-contracts-extended";
+import { IModel } from "@sps/sps-file-storage/models/file/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-file-storage/models/file/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-table-row" as const;

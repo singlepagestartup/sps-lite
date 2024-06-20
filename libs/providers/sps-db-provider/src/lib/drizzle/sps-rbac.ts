@@ -1,1 +1,1 @@
-export * from "@sps/sps-rbac-backend-schema";
+export * from "@sps/sps-rbac/backend/schema/root";

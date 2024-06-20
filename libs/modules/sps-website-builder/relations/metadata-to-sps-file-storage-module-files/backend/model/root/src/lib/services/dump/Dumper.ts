@@ -1,5 +1,5 @@
 import { services as modelServices } from "..";
-import { Table } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-schema";
+import { Table } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/schema/root";
 import { Dumper as SpsDumper } from "@sps/shared-backend-api";
 
 export class Dumper extends SpsDumper<typeof modelServices, typeof Table> {

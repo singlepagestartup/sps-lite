@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IRelationExtended,
-} from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-api-model";
+} from "@sps/sps-website-builder/relations/pages-to-layouts/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

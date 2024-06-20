@@ -67,6 +67,33 @@
         ]
       }
     },
+    "db:sps-host-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-host/backend/db/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-host-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-host/backend/db/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
     "db:sps-billing-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -270,6 +297,9 @@
           },
           {
             "command": "nx run host:db:sps-rbac-migrate"
+          },
+          {
+            "command": "nx run host:db:sps-host-migrate"
           },
           {
             "command": "nx run host:db:sps-crm-migrate"

@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-crm",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-crm",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "tsc:build": {}
+  }
+}

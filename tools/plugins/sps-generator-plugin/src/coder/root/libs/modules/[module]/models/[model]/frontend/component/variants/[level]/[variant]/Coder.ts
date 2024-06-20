@@ -35,6 +35,7 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   moduleName: string;
   modelName: string;
   importVariant: ImportVariant;
@@ -57,6 +58,7 @@ export class Coder {
     this.name = name;
     this.baseName = `${parent.baseName}-variants-${level}-${name}`;
     this.baseDirectory = `${parent.baseDirectory}/variants/${level}/${name}`;
+    this.absoluteName = `${parent.absoluteName}/variants/${level}/${name}`;
     this.tree = tree;
     this.parent = parent;
     this.template = template;
@@ -89,12 +91,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
 
     await migrator.execute({ version });
   }

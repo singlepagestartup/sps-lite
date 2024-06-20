@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-rbac-models-session-frontend-api-server";
+import { api } from "@sps/sps-rbac/models/session/frontend/api/server";
 
 export function Component(props: IComponentPropsExtended) {
   useEffect(() => {

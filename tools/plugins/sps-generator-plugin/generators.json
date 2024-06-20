@@ -25,10 +25,10 @@
       "schema": "./src/generators/relation/schema.json",
       "description": "relation generator"
     },
-    "update": {
-      "factory": "./src/generators/update/generator",
-      "schema": "./src/generators/update/schema.json",
-      "description": "update generator"
+    "migrate": {
+      "factory": "./src/generators/migrate/generator",
+      "schema": "./src/generators/migrate/schema.json",
+      "description": "migrate generator"
     },
     "custom": {
       "factory": "./src/generators/custom/generator",

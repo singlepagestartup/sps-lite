@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-rbac-backend-db";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   insertSchema,
   Table,
-} from "@sps/sps-rbac-models-identity-backend-schema";
+} from "@sps/sps-rbac/models/identity/backend/schema/root";
 
 export async function service(props: { data: any }) {
   const { data } = props;

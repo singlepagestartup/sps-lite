@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
-import { api } from "@sps/startup-models-widget-frontend-api-client";
+import { api } from "@sps/startup/models/widget/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Form, Card, CardContent } from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
@@ -11,8 +11,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-import { Component as AdminFormInputs } from "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
-import { variants } from "@sps/startup-models-widget-contracts";
+import { Component as AdminFormInputs } from "@sps/startup/models/widget/frontend/component/variants/sps-lite/admin-form-inputs";
+import { variants } from "@sps/startup/models/widget/contracts/root";
 
 const formSchema = z.object({
   variant: z.enum(variants),

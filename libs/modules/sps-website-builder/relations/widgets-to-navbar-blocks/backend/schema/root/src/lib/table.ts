@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-schema-table";
-import { Table as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-backend-schema-table";
+import { Table as Widget } from "@sps/sps-website-builder/models/widget/backend/schema/table";
+import { Table as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/schema/table";
 
 export const schemaName = "SPSWBWidgetsToNavbarBlocks";
 export const modelName = "widgetsToNavbarBlocks";

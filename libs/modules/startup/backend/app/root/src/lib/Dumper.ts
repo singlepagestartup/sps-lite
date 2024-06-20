@@ -1,4 +1,4 @@
-import { models } from "@sps/startup-backend-models";
+import { models } from "@sps/startup/backend/models/root";
 
 export class Dumper {
   models: typeof models;

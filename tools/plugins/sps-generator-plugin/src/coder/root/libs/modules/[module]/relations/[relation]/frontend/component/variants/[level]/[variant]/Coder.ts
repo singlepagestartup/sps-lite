@@ -43,6 +43,7 @@ export class Coder {
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
   importStyles: ImportStyles;
+  absoluteName: string;
   apiClientImportPath: string;
   apiServerImportPath: string;
   reduxImportPath: string;
@@ -64,6 +65,7 @@ export class Coder {
     this.level = props.level;
     this.baseName = `${this.parent.baseName}-variants-${props.level}-${this.name}`;
     this.baseDirectory = `${this.parent.baseDirectory}/variants/${props.level}/${this.name}`;
+    this.absoluteName = `${this.parent.absoluteName}/variants/${props.level}/${this.name}`;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -113,14 +115,12 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.setReplacers();
-
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 
@@ -182,6 +182,16 @@ export class Coder {
       },
     });
 
+    const rootVariantsPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/variants.ts`;
+    const rootInterfacePath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/interface.ts`;
+    const rootScssPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/_index.scss`;
+
+    await this.attach({
+      variantsPath: rootVariantsPath,
+      interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
+    });
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
@@ -193,6 +203,16 @@ export class Coder {
     if (!project) {
       return;
     }
+
+    const rootVariantsPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/variants.ts`;
+    const rootInterfacePath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/interface.ts`;
+    const rootScssPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/_index.scss`;
+
+    await this.detach({
+      variantsPath: rootVariantsPath,
+      interfacePath: rootInterfacePath,
+      indexScssPath: rootScssPath,
+    });
 
     await nxWorkspace.removeGenerator(this.tree, {
       projectName: this.baseName,

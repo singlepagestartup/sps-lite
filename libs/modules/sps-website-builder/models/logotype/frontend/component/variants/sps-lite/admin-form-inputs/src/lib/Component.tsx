@@ -1,8 +1,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-logotype-contracts";
-import { Component as LogotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/logotype/contracts/root";
+import { Component as LogotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

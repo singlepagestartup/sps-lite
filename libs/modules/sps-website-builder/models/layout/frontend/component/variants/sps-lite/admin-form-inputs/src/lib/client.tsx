@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/layout/frontend/api/client";
 import { UseFormReturn } from "react-hook-form";
 
 export default function Client(props: IComponentProps) {

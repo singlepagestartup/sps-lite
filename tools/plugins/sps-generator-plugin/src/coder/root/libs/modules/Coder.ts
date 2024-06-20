@@ -20,6 +20,7 @@ export class Coder {
   parent: ModulesCoder;
   baseName: string;
   baseDirectory: string;
+  absoluteName: string;
   type: "modules" | "providers" | "shared";
   name: string;
   project: {
@@ -38,6 +39,7 @@ export class Coder {
     this.name = props.type;
     this.tree = props.tree;
     this.parent = props.parent;
+    this.absoluteName = `${props.parent.baseName}`;
 
     this.project.module = new ModuleCoder({
       ...props.module,
@@ -50,8 +52,8 @@ export class Coder {
     await this.project.module.create();
   }
 
-  async update() {
-    await this.project.module?.update();
+  async migrate(props: { version: string }) {
+    await this.project.module?.migrate(props);
   }
 
   async remove() {
@@ -64,20 +66,5 @@ export class Coder {
 
   async removeField(props: IEditFieldProps) {
     await this.project.module.removeField(props);
-  }
-
-  async createRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.module.createRelationFrontendComponentVariant(props);
-  }
-
-  async removeRelationFrontendComponentVariant(props: {
-    variantName: string;
-    variantLevel: string;
-  }) {
-    await this.project.module.removeRelationFrontendComponentVariant(props);
   }
 }

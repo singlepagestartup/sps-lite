@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-models-permission-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-models-permission-contracts-extended";
+import { IModel } from "@sps/sps-rbac/models/permission/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-rbac/models/permission/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-table-row" as const;

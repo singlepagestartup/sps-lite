@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/page/frontend/api/client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -19,6 +19,10 @@ export default function Client(props: IComponentProps) {
       url: Array.isArray(params.url) ? "/" + params.url.join("/") : params.url,
       locale: params.locale,
     });
+
+  if (isFetching || isLoading || isUninitialized) {
+    return <Skeleton {...props} />;
+  }
 
   useEffect(() => {
     if (data) {

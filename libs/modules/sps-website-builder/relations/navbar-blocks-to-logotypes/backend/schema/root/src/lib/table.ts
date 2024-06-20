@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-backend-schema-table";
-import { Table as Logotype } from "@sps/sps-website-builder-models-logotype-backend-schema-table";
+import { Table as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/schema/table";
+import { Table as Logotype } from "@sps/sps-website-builder/models/logotype/backend/schema/table";
 
 export const schemaName = "SPSWBNavbarBlocksToLogotypes";
 export const modelName = "navbarBlocksToLogotypes";

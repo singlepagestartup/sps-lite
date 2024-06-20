@@ -3,7 +3,7 @@ import "server-only";
 
 import { IComponentProps } from "./interface";
 import { Component } from "./Component";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
+import { api } from "@sps/sps-website-builder/models/page/frontend/api/server";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { Error } from "./Error";
 import { notFound } from "next/navigation";

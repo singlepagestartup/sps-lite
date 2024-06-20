@@ -1,1 +1,1 @@
-export * from "@sps/sps-notification-backend-schema";
+export * from "@sps/sps-notification/backend/schema/root";

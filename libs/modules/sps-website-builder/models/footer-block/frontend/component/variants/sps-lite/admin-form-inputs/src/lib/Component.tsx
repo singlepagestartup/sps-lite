@@ -3,9 +3,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-footer-block-contracts";
-import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-component-variants-sps-lite-select-right";
-import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/footer-block/contracts/root";
+import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/select-right";
+import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

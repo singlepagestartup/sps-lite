@@ -1,4 +1,4 @@
-import { models } from "@sps/sps-file-storage-backend-models";
+import { models } from "@sps/sps-file-storage/backend/models/root";
 import { config } from "./config";
 import { ModuleSeeder as ParentModuleSeeder } from "@sps/shared-backend-api";
 

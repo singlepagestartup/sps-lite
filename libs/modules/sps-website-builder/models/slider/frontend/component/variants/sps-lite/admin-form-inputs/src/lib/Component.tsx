@@ -1,8 +1,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-slider-contracts";
-import { Component as SlidersToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-component-variants-sps-lite-select-right";
+import { variants } from "@sps/sps-website-builder/models/slider/contracts/root";
+import { Component as SlidersToSlidesSpsLiteSelectRight } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/variants/sps-lite/select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (

@@ -1,24 +1,16 @@
-import { api as spsWebsiteBuilderPageApi } from "@sps/sps-website-builder-models-page-frontend-api-server";
-import { Component as SpsWebsiteBuilderPage } from "@sps/sps-website-builder-models-page-frontend-component";
+import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
+import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
 
 export const revalidate = 3600;
+export const runtime = "nodejs";
 
 export async function generateMetadata(props: any) {
-  return spsWebsiteBuilderPageApi.fetch.generateMetadata(props);
+  return metadataApi.fetch.generate({ catchError: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {
   const url = props.params.url?.join("/") || "/";
   const slashedUrl = url.startsWith("/") ? url : `/${url}`;
 
-  return (
-    <SpsWebsiteBuilderPage
-      isServer={true}
-      variant="default"
-      hostUrl={slashedUrl}
-      data={{
-        url: slashedUrl,
-      }}
-    />
-  );
+  return <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl} />;
 }

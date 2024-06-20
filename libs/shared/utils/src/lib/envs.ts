@@ -44,3 +44,14 @@ export const DATABASE_OPTIONS = DATABASE_NO_SSL
       ...DEFAULT_DATABASE_OPTIONS,
       ssl: true,
     };
+
+export const NEXT_PUBLIC_HOST_METADATA_TITLE =
+  process.env["NEXT_PUBLIC_HOST_METADATA_TITLE"] || "Single Page Startup";
+export const NEXT_PUBLIC_HOST_METADATA_DESCRIPTION =
+  process.env["NEXT_PUBLIC_HOST_METADATA_DESCRIPTION"] ||
+  "The fastest way to create service oriented Next.js project.";
+export const NEXT_PUBLIC_HOST_METADATA_ICON =
+  process.env["NEXT_PUBLIC_HOST_METADATA_ICON"] || "/images/favicon.svg";
+export const NEXT_PUBLIC_HOST_METADATA_KEYWORDS =
+  process.env["NEXT_PUBLIC_HOST_METADATA_KEYWORDS"] ||
+  "nextjs,startup,sps,singlepagestartup,nx";

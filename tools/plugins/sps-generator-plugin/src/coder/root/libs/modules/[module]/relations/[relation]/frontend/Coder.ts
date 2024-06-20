@@ -25,6 +25,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     component: ComponentCoder;
     api: ApiCoder;
@@ -41,6 +42,7 @@ export class Coder {
     this.name = "frontend";
     this.baseName = `${this.parent.baseName}-frontend`;
     this.baseDirectory = `${this.parent.baseDirectory}/frontend`;
+    this.absoluteName = `${this.parent.absoluteName}/frontend`;
 
     this.project.component = new ComponentCoder({
       ...props.component,
@@ -61,10 +63,10 @@ export class Coder {
     });
   }
 
-  async update() {
-    await this.project.api.update();
-    await this.project.redux.update();
-    await this.project.component.update();
+  async migrate(props: { version: string }) {
+    await this.project.api.migrate(props);
+    await this.project.redux.migrate(props);
+    await this.project.component.migrate(props);
   }
 
   async create() {
@@ -77,17 +79,5 @@ export class Coder {
     await this.project.component.remove();
     await this.project.redux.remove();
     await this.project.api.remove();
-  }
-
-  async createVariant(props: {
-    variantName: string;
-    variantLevel: string;
-    templateName?: string;
-  }) {
-    await this.project.component.createVariant(props);
-  }
-
-  async removeVariant(props: { variantName: string; variantLevel: string }) {
-    await this.project.component.removeVariant(props);
   }
 }

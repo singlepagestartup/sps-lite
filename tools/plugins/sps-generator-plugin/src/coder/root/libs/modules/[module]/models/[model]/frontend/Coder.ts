@@ -21,6 +21,7 @@ export type IGeneratorProps = {
 
 export class Coder {
   parent: ModelCoder;
+  absoluteName: string;
   tree: Tree;
   baseName: string;
   baseDirectory: string;
@@ -35,6 +36,7 @@ export class Coder {
     this.name = "frontend";
     this.baseName = `${props.parent.baseName}-frontend`;
     this.baseDirectory = `${props.parent.baseDirectory}/frontend`;
+    this.absoluteName = `${props.parent.absoluteName}/frontend`;
     this.tree = props.tree;
     this.parent = props.parent;
 
@@ -63,10 +65,10 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.api.update();
-    await this.project.redux.update();
-    await this.project.component.update();
+  async migrate(props: { version: string }) {
+    await this.project.api.migrate(props);
+    await this.project.redux.migrate(props);
+    await this.project.component.migrate(props);
   }
 
   async create() {

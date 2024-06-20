@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentProps } from "./interface";
-import { Component as Widget } from "@sps/sps-crm-models-widget-frontend-component";
+import { Component as Widget } from "@sps/sps-crm/models/widget/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function App(props: IComponentProps) {

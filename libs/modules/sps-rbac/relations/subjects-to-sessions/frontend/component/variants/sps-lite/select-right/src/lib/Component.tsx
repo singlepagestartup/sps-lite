@@ -8,9 +8,9 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-rbac-relations-subjects-to-sessions-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-rbac-models-session-frontend-component";
-import { variants } from "@sps/sps-rbac-relations-subjects-to-sessions-contracts";
+import { api } from "@sps/sps-rbac/relations/subjects-to-sessions/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-rbac/models/session/frontend/component/root";
+import { variants } from "@sps/sps-rbac/relations/subjects-to-sessions/contracts/root";
 
 const formSchema = z.object({
   subjectId: z.string().min(1),

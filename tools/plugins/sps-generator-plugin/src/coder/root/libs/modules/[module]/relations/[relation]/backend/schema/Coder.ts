@@ -18,6 +18,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     root: RootCoder;
   };
@@ -28,6 +29,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${this.parent.baseName}-schema`;
     this.baseDirectory = `${this.parent.baseDirectory}/schema`;
+    this.absoluteName = `${this.parent.absoluteName}/schema`;
 
     const root = new RootCoder({
       tree: this.tree,
@@ -39,8 +41,8 @@ export class Coder {
     };
   }
 
-  async update() {
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.root.migrate(props);
   }
 
   async create() {

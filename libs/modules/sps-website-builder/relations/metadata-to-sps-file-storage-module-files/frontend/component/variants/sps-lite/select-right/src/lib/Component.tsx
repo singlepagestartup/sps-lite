@@ -8,12 +8,12 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-select-input";
+import { api } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-select-input";
 import {
   variants,
   types,
-} from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-contracts";
+} from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/contracts/root";
 
 const formSchema = z.object({
   metadataId: z.string().min(1),

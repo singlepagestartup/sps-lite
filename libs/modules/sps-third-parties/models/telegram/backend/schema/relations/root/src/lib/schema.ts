@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { Table } from "@sps/sps-third-parties-models-telegram-backend-schema-table";
+import { Table } from "@sps/sps-third-parties/models/telegram/backend/schema/table";
 
 export const Relations = relations(Table, (helpers) => {
   return {};

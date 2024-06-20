@@ -1,11 +1,11 @@
-import { db } from "@sps/sps-rbac-backend-db";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   insertSchema,
   Table,
-} from "@sps/sps-rbac-models-authentication-backend-schema";
-import { Table as SessionTable } from "@sps/sps-rbac-models-session-backend-schema";
-import { model as identityModel } from "@sps/sps-rbac-models-identity-backend-model";
-import { model as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-model";
+} from "@sps/sps-rbac/models/authentication/backend/schema/root";
+import { Table as SessionTable } from "@sps/sps-rbac/models/session/backend/schema/root";
+import { model as identityModel } from "@sps/sps-rbac/models/identity/backend/model/root";
+import { model as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/model/root";
 
 export async function service(props: {
   data: any;

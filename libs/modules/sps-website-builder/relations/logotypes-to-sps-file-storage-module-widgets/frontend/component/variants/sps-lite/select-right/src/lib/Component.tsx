@@ -8,9 +8,9 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-file-storage-models-widget-frontend-component-variants-sps-lite-admin-select-input";
-import { variants } from "@sps/sps-website-builder-relations-logotypes-to-sps-file-storage-module-widgets-contracts";
+import { api } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { variants } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/contracts/root";
 
 const formSchema = z.object({
   logotypeId: z.string().min(1),

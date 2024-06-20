@@ -20,6 +20,7 @@ export class Coder {
   tree: Tree;
   name: string;
   project?: ProjectConfiguration;
+  absoluteName: string;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
@@ -28,6 +29,7 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.name = "schema";
+    this.absoluteName = `${this.parent.absoluteName}/root`;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
@@ -46,12 +48,12 @@ export class Coder {
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
-  async update() {
+  async migrate(props: { version: string }) {
     const migrator = new Migrator({
       coder: this,
     });
 
-    const version = "0.0.156";
+    const version = props.version as keyof typeof migrator.releases;
     await migrator.execute({ version });
   }
 

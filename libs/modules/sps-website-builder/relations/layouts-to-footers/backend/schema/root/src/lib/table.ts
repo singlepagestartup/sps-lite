@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Layout } from "@sps/sps-website-builder-models-layout-backend-schema-table";
-import { Table as Footer } from "@sps/sps-website-builder-models-footer-backend-schema-table";
+import { Table as Layout } from "@sps/sps-website-builder/models/layout/backend/schema/table";
+import { Table as Footer } from "@sps/sps-website-builder/models/footer/backend/schema/table";
 
 export const schemaName = "SPSWBLayoutsToFooters";
 export const modelName = "layoutsToFooters";

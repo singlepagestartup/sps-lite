@@ -26,6 +26,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   name: string;
+  absoluteName: string;
   project: {
     table: TableCoder;
     relations: RelationsCoder;
@@ -42,6 +43,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${props.parent.baseName}-schema`;
     this.baseDirectory = `${props.parent.baseDirectory}/schema`;
+    this.absoluteName = `${props.parent.absoluteName}/schema`;
 
     this.project.table = new TableCoder({
       ...props.table,
@@ -68,10 +70,10 @@ export class Coder {
     await this.project.root.create();
   }
 
-  async update() {
-    await this.project.table.update();
-    await this.project.relations.update();
-    await this.project.root.update();
+  async migrate(props: { version: string }) {
+    await this.project.table.migrate(props);
+    await this.project.relations.migrate(props);
+    await this.project.root.migrate(props);
   }
 
   async remove() {

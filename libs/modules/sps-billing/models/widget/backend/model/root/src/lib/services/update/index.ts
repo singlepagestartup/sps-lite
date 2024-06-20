@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-billing-backend-db";
+import { db } from "@sps/sps-billing/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-billing-models-widget-backend-schema";
+} from "@sps/sps-billing/models/widget/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

@@ -8,9 +8,9 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-rbac-models-widget-frontend-component-variants-sps-lite-admin-select-input";
-import { variants } from "@sps/sps-website-builder-relations-widgets-to-sps-rbac-module-widgets-contracts";
+import { api } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { variants } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/contracts/root";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
