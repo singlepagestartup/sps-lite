@@ -48,7 +48,7 @@ export class Migrator {
       this.parent.coder.parent.project.root.baseDirectory +
       `/src/lib/${this.parent.coder.level}/variants.ts`;
 
-    const newVariantImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}`;
+    const newImportPath = `${this.parent.coder.absoluteName}`;
 
     const variantsContent = this.parent.coder.tree
       .read(variantsPath)
@@ -56,7 +56,7 @@ export class Migrator {
 
     const newVariantImportPathContent = variantsContent.replace(
       new RegExp(`"${this.parent.coder.baseName}"`, "g"),
-      `"${newVariantImportPath}"`,
+      `"${newImportPath}"`,
     );
 
     this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
@@ -66,15 +66,13 @@ export class Migrator {
       this.parent.coder.parent.project.root.baseDirectory +
       `/src/lib/${this.parent.coder.level}/interface.ts`;
 
-    const newInterfaceImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}/interface.ts`;
-
     const interfacesContent = this.parent.coder.tree
       .read(interfacesPath)
       .toString("utf8");
 
     const newInterfaceImportPathContent = interfacesContent.replace(
       new RegExp(`"${this.parent.coder.baseName}"`, "g"),
-      `"${newInterfaceImportPath}"`,
+      `"${newImportPath}"`,
     );
 
     this.parent.coder.tree.write(interfacesPath, newInterfaceImportPathContent);
@@ -88,7 +86,7 @@ export class Migrator {
       .read(stylesPath)
       .toString("utf8");
 
-    const newStylesImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}/_index.scss`;
+    const newStylesImportPath = `${this.parent.coder.absoluteName}/src/lib/_index.scss`;
 
     const newStylesImportPathContent = stylesContent.replace(
       new RegExp(`"${this.parent.coder.baseName}"`, "g"),
