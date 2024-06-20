@@ -1,5 +1,8 @@
 import { db } from "@sps/sps-host/backend/db/root";
-import { insertSchema, Table } from "@sps/sps-host/models/page/backend/schema/root";
+import {
+  insertSchema,
+  Table,
+} from "@sps/sps-host/models/page/backend/schema/root";
 
 export async function service(props: { data: any }) {
   const { data } = props;
