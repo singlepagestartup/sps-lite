@@ -36,17 +36,21 @@ export class Migrator {
       }
     }
 
-    const oldContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.baseName}`;
-    const newContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.absoluteName}`;
+    const oldContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.root.baseName}`;
+    const newContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.root.absoluteName}`;
+    const oldContractsExtendedImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.baseName}`;
+    const newContractsExtendedImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.absoluteName}`;
 
     const indexFile = this.parent.coder.tree
       .read(`${baseDirectory}/src/lib/index.ts`)
       .toString("utf8");
 
-    const newIndexFileContent = indexFile.replace(
-      new RegExp(oldContractsImportPath, "g"),
-      newContractsImportPath,
-    );
+    const newIndexFileContent = indexFile
+      .replace(
+        new RegExp(oldContractsExtendedImportPath, "g"),
+        newContractsExtendedImportPath,
+      )
+      .replace(new RegExp(oldContractsImportPath, "g"), newContractsImportPath);
 
     this.parent.coder.tree.write(
       `${baseDirectory}/src/lib/index.ts`,
