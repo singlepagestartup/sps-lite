@@ -38,8 +38,8 @@ export class Migrator {
       }
     }
 
-    const oldSchemaImportPath = `${this.parent.coder.parent.project.schema.baseName}`;
-    const newSchemaImportPath = `${this.parent.coder.parent.project.schema.absoluteName}`;
+    const oldSchemaImportPath = `${this.parent.coder.parent.project.schema.project.root.baseName}`;
+    const newSchemaImportPath = `${this.parent.coder.parent.project.schema.project.root.absoluteName}`;
 
     const files = visitAllFiles(
       this.parent.coder.tree,
