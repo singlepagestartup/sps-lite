@@ -74,18 +74,13 @@ export class Migrator {
 
     this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
 
-    // updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
-    //   const updatedJson = { ...json };
+    updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
+      const updatedJson = { ...json };
+      const project = updatedJson.compilerOptions.paths[`${baseName}`];
 
-    //   delete updatedJson.compilerOptions.paths[`${baseName}`];
+      delete updatedJson.compilerOptions.paths[`${baseName}`];
 
-    //   return updatedJson;
-    // });
-
-    await nxWorkspace.removeGenerator(this.parent.coder.tree, {
-      projectName: this.parent.coder.baseName,
-      skipFormat: true,
-      forceRemove: true,
+      return updatedJson;
     });
   }
 }
