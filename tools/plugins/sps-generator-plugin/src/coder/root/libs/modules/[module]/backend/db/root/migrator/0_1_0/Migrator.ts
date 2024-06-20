@@ -36,6 +36,23 @@ export class Migrator {
       }
     }
 
+    const oldBackendSchemaImportPath = `${this.parent.coder.parent.parent.project.schema.project.root.baseName}`;
+    const newBackendSchemaImportPath = `${this.parent.coder.parent.parent.project.schema.project.root.absoluteName}`;
+
+    const schameFile = this.parent.coder.tree
+      .read(`${baseDirectory}/src/lib/schema.ts`)
+      .toString("utf8");
+
+    const newSchemaFile = schameFile.replace(
+      new RegExp(oldBackendSchemaImportPath, "g"),
+      newBackendSchemaImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${baseDirectory}/src/lib/schema.ts`,
+      newSchemaFile,
+    );
+
     generateFiles(
       this.parent.coder.tree,
       path.join(__dirname, `files`),
