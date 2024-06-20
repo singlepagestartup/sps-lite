@@ -66,7 +66,7 @@ export class Migrator {
       .toString("utf8");
 
     const newVariantImportPathContent = variantsContent.replace(
-      new RegExp(`"${this.parent.coder.name}"`, "g"),
+      new RegExp(`"${this.parent.coder.baseName}"`, "g"),
       `"${newVariantImportPath}"`,
     );
 
