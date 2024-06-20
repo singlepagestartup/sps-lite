@@ -6,6 +6,7 @@ import {
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
 import path from "path";
+import { util as visitAllFiles } from "../../../../../../../../../../utils/visit-all-files";
 
 export class Migrator {
   parent: ParentMigrator;
@@ -35,6 +36,24 @@ export class Migrator {
         this.parent.coder.tree.delete(pathToFile);
       }
     }
+
+    const oldModelsImportPath = `${this.parent.coder.parent.parent.project.models.project.root.baseName}`;
+    const newModelsImportPath = `${this.parent.coder.parent.parent.project.models.project.root.absoluteName}`;
+
+    const files = visitAllFiles(
+      this.parent.coder.tree,
+      baseDirectory,
+      (filePath) => {
+        const file = this.parent.coder.tree.read(filePath).toString("utf8");
+
+        const newFile = file.replace(
+          new RegExp(oldModelsImportPath, "g"),
+          newModelsImportPath,
+        );
+
+        this.parent.coder.tree.write(filePath, newFile);
+      },
+    );
 
     generateFiles(
       this.parent.coder.tree,
