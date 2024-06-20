@@ -1,12 +1,11 @@
 import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
+import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
 
 export const revalidate = 3600;
+export const runtime = "nodejs";
 
 export async function generateMetadata(props: any) {
-  return {
-    title: "Host App",
-    description: "Host App",
-  };
+  return metadataApi.fetch.generate({ catchError: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {

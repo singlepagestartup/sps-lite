@@ -11,6 +11,7 @@ import { Component } from "./Component";
 export default async function Server(props: IComponentProps) {
   const data = await api.fetch.findByUrl({
     url: props.url,
+    catchError: true,
   });
 
   if (!props.children || typeof props.children !== "function") {

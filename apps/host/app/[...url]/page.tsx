@@ -1,8 +1,10 @@
 import { api as spsHostPageApi } from "@sps/sps-host/models/page/frontend/api/server";
 import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
+import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
+export const runtime = "nodejs";
 
 export async function generateStaticParams() {
   const urls = await spsHostPageApi.fetch.urls();
@@ -17,11 +19,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any) {
-  // return spsWebsiteBuilderPageApi.fetch.generateMetadata(props);
-  return {
-    title: "Host App",
-    description: "Host App",
-  };
+  return metadataApi.fetch.generate({ catchError: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {

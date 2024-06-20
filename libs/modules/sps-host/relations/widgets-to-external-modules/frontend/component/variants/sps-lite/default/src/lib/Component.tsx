@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-// import { App as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/root";
+import { App as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
@@ -12,13 +12,13 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {/* {props.data.externalModule === "sps-website-builder" ? (
+      {props.data.externalModule === "sps-website-builder" ? (
         <SpsWebsiteBuilder
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="default"
         />
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

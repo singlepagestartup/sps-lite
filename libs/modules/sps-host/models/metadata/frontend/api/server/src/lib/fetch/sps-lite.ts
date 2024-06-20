@@ -4,6 +4,7 @@ import {
   route,
   IModelExtended,
 } from "@sps/sps-host/models/metadata/frontend/api/model";
+import { action as generate } from "./actions/generate";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {
@@ -21,4 +22,5 @@ export const api = {
       rootPath: "/api/sps-host",
     });
   },
+  generate,
 };
