@@ -146,6 +146,30 @@ export class Migrator {
       newServerFile,
     );
 
+    const oldRootContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.root.baseName}`;
+    const newRootContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.root.absoluteName}`;
+    const oldExtendedContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.baseName}`;
+    const newExtendedContractsImportPath = `${this.parent.coder.parent.parent.parent.project.contracts.project.extended.absoluteName}`;
+
+    const interfaceFile = this.parent.coder.tree
+      .read(`${baseDirectory}/src/lib/interface.ts`)
+      .toString("utf8");
+
+    const newInterfaceFile = interfaceFile
+      .replace(
+        new RegExp(oldRootContractsImportPath, "g"),
+        newRootContractsImportPath,
+      )
+      .replace(
+        new RegExp(oldExtendedContractsImportPath, "g"),
+        newExtendedContractsImportPath,
+      );
+
+    this.parent.coder.tree.write(
+      `${baseDirectory}/src/lib/interface.ts`,
+      newInterfaceFile,
+    );
+
     updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
       const updatedJson = { ...json };
       const project = updatedJson.compilerOptions.paths[`${baseName}`];
