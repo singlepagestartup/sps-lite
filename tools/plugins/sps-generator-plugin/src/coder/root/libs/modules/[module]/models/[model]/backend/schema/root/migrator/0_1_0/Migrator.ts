@@ -42,6 +42,27 @@ export class Migrator {
     const oldSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.baseName}`;
     const newSchemaRelationsImportPath = `${this.parent.coder.parent.project.relations.absoluteName}`;
 
+    const oldImportPath = `${this.parent.coder.baseName}`;
+    const newImportPath = `${this.parent.coder.absoluteName}`;
+
+    const moduleRootSchema =
+      this.parent.coder.parent.parent.parent.parent.parent.project.backend
+        .project.schema.project.root.baseDirectory;
+
+    const moduleRoot = this.parent.coder.tree
+      .read(`${moduleRootSchema}/src/lib/index.ts`)
+      .toString("utf8");
+
+    const newModuleRoot = moduleRoot.replace(
+      new RegExp(oldImportPath, "g"),
+      newImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${moduleRootSchema}/src/lib/index.ts`,
+      newModuleRoot,
+    );
+
     const indexFile = this.parent.coder.tree
       .read(`${baseDirectory}/src/lib/index.ts`)
       .toString("utf8");
