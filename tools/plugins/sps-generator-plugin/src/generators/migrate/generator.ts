@@ -239,7 +239,7 @@ export async function migrateGenerator(
     },
   });
 
-  await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.migrate(
+  await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.migrate(
     {
       version: "0.1.0",
     },
