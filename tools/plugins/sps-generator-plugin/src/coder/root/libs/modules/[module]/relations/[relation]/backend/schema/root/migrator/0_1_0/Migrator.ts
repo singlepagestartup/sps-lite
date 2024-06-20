@@ -43,6 +43,27 @@ export class Migrator {
     const rightModelSchemaTableOldImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[1].project.model.project.backend.project.schema.project.table.baseName}`;
     const rightModelSchemaTableNewImportPath = `${this.parent.coder.parent.parent.parent.parent.parent.project.models[1].project.model.project.backend.project.schema.project.table.absoluteName}`;
 
+    const moduleRootSchema =
+      this.parent.coder.parent.parent.parent.parent.parent.project.backend
+        .project.schema.project.root.baseDirectory;
+
+    const oldImportPath = `${this.parent.coder.baseName}`;
+    const newImportPath = `${this.parent.coder.absoluteName}`;
+
+    const moduleRoot = this.parent.coder.tree
+      .read(`${moduleRootSchema}/src/lib/index.ts`)
+      .toString("utf8");
+
+    const newModuleRoot = moduleRoot.replace(
+      new RegExp(oldImportPath, "g"),
+      newImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${moduleRootSchema}/src/lib/index.ts`,
+      newModuleRoot,
+    );
+
     const files = visitAllFiles(
       this.parent.coder.tree,
       baseDirectory,
