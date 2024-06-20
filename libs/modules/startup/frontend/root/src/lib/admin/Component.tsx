@@ -12,7 +12,7 @@ import {
 } from "@sps/shadcn";
 const WidgetSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/startup-models-widget-frontend-component-variants-sps-lite-admin-table"
+    "@sps/startup/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 

@@ -7,7 +7,7 @@ import {
   variants,
   methods,
   types,
-} from "@sps/sps-rbac-models-permission-contracts";
+} from "@sps/sps-rbac/models/permission/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

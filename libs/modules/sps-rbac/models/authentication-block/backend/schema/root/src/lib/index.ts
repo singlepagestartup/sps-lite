@@ -4,8 +4,8 @@ export {
   selectSchema,
   modelName,
   schemaName,
-} from "@sps/sps-rbac-models-authentication-block-backend-schema-table";
+} from "@sps/sps-rbac/models/authentication-block/backend/schema/table";
 export {
   Relations,
   populate,
-} from "@sps/sps-rbac-models-authentication-block-backend-schema-relations";
+} from "@sps/sps-rbac/models/authentication-block/backend/schema/relations/root";

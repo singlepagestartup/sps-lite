@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as ButtonsArrays } from "@sps/sps-website-builder-models-buttons-array-frontend-component";
+import { Component as ButtonsArrays } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

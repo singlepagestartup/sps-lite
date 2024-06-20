@@ -3,9 +3,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-host-models-page-contracts";
-import { Component as PagesToLayouts } from "@sps/sps-host-relations-pages-to-layouts-frontend-component";
-import { Component as PagesToWidgets } from "@sps/sps-host-relations-pages-to-widgets-frontend-component";
+import { variants } from "@sps/sps-host/models/page/contracts/root";
+import { Component as PagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/frontend/component/root";
+import { Component as PagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

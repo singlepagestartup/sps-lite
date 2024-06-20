@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IRelationExtended,
-} from "@sps/sps-host-relations-pages-to-metadata-frontend-api-model";
+} from "@sps/sps-host/relations/pages-to-metadata/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

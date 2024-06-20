@@ -1,6 +1,6 @@
 import { cn } from "@sps/shared-frontend-utils-client";
 import { IComponentPropsExtended } from "./interface";
-// import { Component as File } from "@sps/sps-file-storage-models-file-frontend-component";
+// import { Component as File } from "@sps/sps-file-storage/models/file/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

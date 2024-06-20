@@ -12,87 +12,87 @@ import {
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 const FeaturesSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-feature-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/feature/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const ButtonsArraySpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-buttons-array-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const SlideSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-slide-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/slide/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const SliderSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/slider/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const SliderBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-slider-block-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const FooterBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-footer-block-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const NavbarBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-navbar-block-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/navbar-block/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const ButtonSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-button-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const LogotypeSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/logotype/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const FooterSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-footer-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const NavbarSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const HeroSectionBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-hero-section-block-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const WidgetSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const LayoutSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const PageSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 const MetadataSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder-models-metadata-frontend-component-variants-sps-lite-admin-table"
+    "@sps/sps-website-builder/models/metadata/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
 

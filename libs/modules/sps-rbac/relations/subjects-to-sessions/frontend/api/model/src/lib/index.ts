@@ -1,8 +1,8 @@
-import type { IRelation as IParentRelation } from "@sps/sps-rbac-relations-subjects-to-sessions-contracts";
+import type { IRelation as IParentRelation } from "@sps/sps-rbac/relations/subjects-to-sessions/contracts/root";
 import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
-} from "@sps/sps-rbac-relations-subjects-to-sessions-contracts-extended";
+} from "@sps/sps-rbac/relations/subjects-to-sessions/contracts/extended";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}

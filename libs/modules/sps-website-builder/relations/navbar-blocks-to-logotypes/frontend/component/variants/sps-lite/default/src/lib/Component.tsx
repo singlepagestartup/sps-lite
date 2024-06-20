@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Logotype } from "@sps/sps-website-builder-models-logotype-frontend-component";
+import { Component as Logotype } from "@sps/sps-website-builder/models/logotype/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {

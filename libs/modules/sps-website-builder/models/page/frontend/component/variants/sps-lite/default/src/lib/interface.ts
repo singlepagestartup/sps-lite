@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import type { IModel } from "@sps/sps-website-builder-models-page-contracts";
-import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-page-contracts-extended";
+import type { IModel } from "@sps/sps-website-builder/models/page/contracts/root";
+import type { IModel as IModelExtended } from "@sps/sps-website-builder/models/page/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 const variant = "default" as const;

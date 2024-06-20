@@ -1,5 +1,5 @@
-import { db } from "@sps/sps-rbac-backend-db";
-import { Table, insertSchema } from "@sps/sps-rbac-models-role-backend-schema";
+import { db } from "@sps/sps-rbac/backend/db/root";
+import { Table, insertSchema } from "@sps/sps-rbac/models/role/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

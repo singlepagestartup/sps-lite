@@ -3,7 +3,10 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField } from "@sps/ui-adapter";
-import { variants, providers } from "@sps/sps-rbac-models-identity-contracts";
+import {
+  variants,
+  providers,
+} from "@sps/sps-rbac/models/identity/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

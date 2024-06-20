@@ -4,7 +4,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/sps-host-models-page-frontend-api-model";
+} from "@sps/sps-host/models/page/frontend/api/model";
 import {
   BACKEND_URL,
   NextRequestOptions,

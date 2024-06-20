@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Slide } from "@sps/sps-website-builder-models-slide-backend-schema-table";
+import { Table as Slide } from "@sps/sps-website-builder/models/slide/backend/schema/table";
 
-import { Table as ButtonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-schema-table";
+import { Table as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/schema/table";
 
 export const schemaName = "SPSWBSlidesToButtonsArrays";
 export const modelName = "slidesToButtonsArrays";

@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Subject } from "@sps/sps-rbac-models-subject-backend-schema-table";
+import { Table as Subject } from "@sps/sps-rbac/models/subject/backend/schema/table";
 
-import { Table as Identity } from "@sps/sps-rbac-models-identity-backend-schema-table";
+import { Table as Identity } from "@sps/sps-rbac/models/identity/backend/schema/table";
 
 export const schemaName = "SPSRSubjectsToIdentities";
 export const modelName = "subjectsToIdentities";

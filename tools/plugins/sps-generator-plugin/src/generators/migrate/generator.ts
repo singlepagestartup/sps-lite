@@ -16,6 +16,7 @@ export async function migrateGenerator(
 ) {
   // const leftExternalModels = options.left_external_models?.split(",") || [];
   // const rightExternalModels = options.right_external_models?.split(",") || [];
+
   // const fullProjectSchema = getProjects(tree);
   // for (const moduleName of options.modules) {
   //   const root = {
@@ -195,225 +196,490 @@ export async function migrateGenerator(
   //       }
   //     }
   //   });
+
   //   const coder = new Coder({
   //     tree,
   //     root,
   //   });
-  //   await coder.update();
+
+  //   await coder.migrate({
+  //     version: "0.1.0",
+  //   });
+
   //   // await crateForgottenModules({
   //   //   moduleName,
   //   //   tree,
   //   //   modelName: "widget",
   //   // });
   // }
+
   // await formatFiles(tree);
-  const coder = new Coder({
-    tree,
-    root: {
-      libs: {
-        modules: [
-          {
-            module: {
-              name: "sps-host",
-              models: [
-                {
-                  model: {
-                    name: "layout",
-                    frontend: {
-                      component: {
-                        variants: [
-                          {
-                            level: "sps-lite",
-                            name: "find-by-id",
-                          },
-                        ],
-                      },
-                    },
-                    backend: {
-                      schema: {
-                        relations: {
-                          relations: [
-                            {
-                              name: "layouts-to-widgets",
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  },
-                },
-                {
-                  model: {
-                    name: "widget",
-                    frontend: {
-                      component: {
-                        variants: [
-                          {
-                            level: "sps-lite",
-                            name: "find-by-id",
-                          },
-                        ],
-                      },
-                    },
-                    backend: {
-                      schema: {
-                        relations: {
-                          relations: [
-                            {
-                              name: "layouts-to-widgets",
-                            },
-                          ],
-                        },
-                      },
-                    },
-                  },
-                },
-              ],
-              relations: [
-                {
-                  relation: {
-                    name: "layouts-to-widgets",
-                    frontend: {
-                      component: {
-                        variants: [
-                          {
-                            name: "default",
-                            level: "sps-lite",
-                          },
-                        ],
-                      },
-                    },
-                  },
-                },
-              ],
-            },
-          },
-        ],
+
+  const relations = [
+    {
+      name: "buttons-arrays-to-buttons",
+      left: {
+        name: "buttons-array",
+      },
+      right: {
+        name: "button",
       },
     },
-  });
-
-  // await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.migrate(
-  //   {
-  //     version: "0.1.0",
-  //   },
-  // );
-  // await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.migrate(
-  //   {
-  //     version: "0.1.0",
-  //   },
-  // );
-
-  await coder.project.root.project.libs.project.modules[0].project.module.migrate(
     {
-      version: "0.1.0",
+      name: "footer-blocks-to-buttons-arrays",
+      left: {
+        name: "footer-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
     },
-  );
+    {
+      name: "hero-section-blocks-to-buttons-arrays",
+      left: {
+        name: "hero-section-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "navbar-blocks-to-buttons-arrays",
+      left: {
+        name: "navbar-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "slides-to-buttons-arrays",
+      left: {
+        name: "slide",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "features-section-blocks-to-features",
+      left: {
+        name: "features-section-block",
+      },
+      right: {
+        name: "feature",
+      },
+    },
+    {
+      name: "features-section-blocks-to-features",
+      left: {
+        name: "features-section-block",
+      },
+      right: {
+        name: "feature",
+      },
+    },
+    {
+      name: "widgets-to-features-section-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "features-section-block",
+      },
+    },
+    {
+      name: "footers-to-widgets",
+      left: {
+        name: "footer",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "layouts-to-footers",
+      left: {
+        name: "layout",
+      },
+      right: {
+        name: "footer",
+      },
+    },
+    {
+      name: "footer-blocks-to-buttons-arrays",
+      left: {
+        name: "footer-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "footer-blocks-to-logotypes",
+      left: {
+        name: "footer-block",
+      },
+      right: {
+        name: "logotype",
+      },
+    },
+    {
+      name: "widgets-to-footer-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "footer-block",
+      },
+    },
+    {
+      name: "hero-section-blocks-to-buttons-arrays",
+      left: {
+        name: "hero-section-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "widgets-to-hero-section-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "hero-section-block",
+      },
+    },
+    {
+      name: "layouts-to-footers",
+      left: {
+        name: "layout",
+      },
+      right: {
+        name: "footer",
+      },
+    },
+    {
+      name: "layouts-to-navbars",
+      left: {
+        name: "layout",
+      },
+      right: {
+        name: "navbar",
+      },
+    },
+    {
+      name: "pages-to-layouts",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "layout",
+      },
+    },
+    {
+      name: "footer-blocks-to-logotypes",
+      left: {
+        name: "footer-block",
+      },
+      right: {
+        name: "logotype",
+      },
+    },
+    {
+      name: "navbar-blocks-to-logotypes",
+      left: {
+        name: "navbar-block",
+      },
+      right: {
+        name: "logotype",
+      },
+    },
+    {
+      name: "pages-to-metadata",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "metadata",
+      },
+    },
+    {
+      name: "layouts-to-navbars",
+      left: {
+        name: "layout",
+      },
+      right: {
+        name: "navbar",
+      },
+    },
+    {
+      name: "navbars-to-widgets",
+      left: {
+        name: "navbar",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "navbar-blocks-to-buttons-arrays",
+      left: {
+        name: "navbar-block",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "navbar-blocks-to-logotypes",
+      left: {
+        name: "navbar-block",
+      },
+      right: {
+        name: "logotype",
+      },
+    },
+    {
+      name: "widgets-to-navbar-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "navbar-block",
+      },
+    },
+    {
+      name: "pages-to-layouts",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "layout",
+      },
+    },
+    {
+      name: "pages-to-metadata",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "metadata",
+      },
+    },
+    {
+      name: "pages-to-widgets",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "sliders-to-slides",
+      left: {
+        name: "slider",
+      },
+      right: {
+        name: "slide",
+      },
+    },
+    {
+      name: "slides-to-buttons-arrays",
+      left: {
+        name: "slide",
+      },
+      right: {
+        name: "buttons-array",
+      },
+    },
+    {
+      name: "slider-blocks-to-sliders",
+      left: {
+        name: "slider-block",
+      },
+      right: {
+        name: "slider",
+      },
+    },
+    {
+      name: "sliders-to-slides",
+      left: {
+        name: "slider",
+      },
+      right: {
+        name: "slide",
+      },
+    },
+    {
+      name: "slider-blocks-to-sliders",
+      left: {
+        name: "slider-block",
+      },
+      right: {
+        name: "slider",
+      },
+    },
+    {
+      name: "widgets-to-slider-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "slider-block",
+      },
+    },
+    {
+      name: "footers-to-widgets",
+      left: {
+        name: "footer",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "navbars-to-widgets",
+      left: {
+        name: "navbar",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "pages-to-widgets",
+      left: {
+        name: "page",
+      },
+      right: {
+        name: "widget",
+      },
+    },
+    {
+      name: "widgets-to-features-section-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "features-section-block",
+      },
+    },
+    {
+      name: "widgets-to-footer-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "footer-block",
+      },
+    },
+    {
+      name: "widgets-to-hero-section-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "hero-section-block",
+      },
+    },
+    {
+      name: "widgets-to-navbar-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "navbar-block",
+      },
+    },
+    {
+      name: "widgets-to-slider-blocks",
+      left: {
+        name: "widget",
+      },
+      right: {
+        name: "slider-block",
+      },
+    },
+  ];
 
-  // const coder = new Coder({
-  //   tree,
-  //   root: {
-  //     libs: {
-  //       modules: [
-  //         {
-  //           module: {
-  //             name: options.module,
-  //             models: [
-  //               // {
-  //               //   model: {
-  //               //     name: options.model_name,
-  //               //     frontend: {
-  //               //       component: {
-  //               //         variants: [
-  //               //           { name: "admin-form", level: "sps-lite" },
-  //               //           { name: "admin-form-inputs", level: "sps-lite" },
-  //               //           { name: "admin-panel", level: "sps-lite" },
-  //               //           { name: "admin-select-input", level: "sps-lite" },
-  //               //           { name: "admin-table", level: "sps-lite" },
-  //               //           { name: "admin-table-row", level: "sps-lite" },
-  //               //           { name: "default", level: "sps-lite" },
-  //               //           { name: "get-by-url", level: "sps-lite" },
-  //               //           { name: "get-query-from-url", level: "sps-lite" },
-  //               //           { name: "get-url-model-id", level: "sps-lite" },
-  //               //         ],
-  //               //       },
-  //               //     },
-  //               //   },
-  //               // },
-  //             ],
-  //             relations: [
-  //               {
-  //                 relation: {
-  //                   name: "buttons-arrays-to-buttons",
-  //                   rightModelIsExternal: true,
-  //                   // frontend: {
-  //                   //   component: {
-  //                   //     variants: [
-  //                   //       {
-  //                   //         name: "default",
-  //                   //         level: "sps-lite",
-  //                   //       },
-  //                   //     ],
-  //                   //   },
-  //                   // },
-  //                 },
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
-  // await coder.update();
-  // const coder = new Coder({
-  //   tree,
-  //   root: {
-  //     libs: {
-  //       modules: [
-  //         {
-  //           module: {
-  //             name: moduleName,
-  //             models: [
-  //               {
-  //                 model: {
-  //                   name: "button",
-  //                   backend: {
-  //                     schema: {
-  //                       relations: [
-  //                         {
-  //                           relation: {
-  //                             name: "buttons-arrays-to-buttons",
-  //                           },
-  //                         },
-  //                       ],
-  //                     },
-  //                   },
-  //                 },
-  //               },
-  //             ],
-  //             relations: [
-  //               {
-  //                 relation: {
-  //                   name: "buttons-arrays-to-buttons",
-  //                 },
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
-  // await coder.update();
-  // const models = ["widget"];
-  // for (const model of models) {
-  //   await crateForgottenModules({
-  //     moduleName: moduleName,
-  //     tree,
-  //     modelName: model,
-  //   });
-  // }
+  for (const relation of relations) {
+    const coder = new Coder({
+      tree,
+      root: {
+        libs: {
+          modules: [
+            {
+              module: {
+                name: "sps-website-builder",
+                models: [
+                  {
+                    model: {
+                      name: relation.left.name,
+                      backend: {
+                        schema: {
+                          relations: {
+                            relations: [
+                              {
+                                name: relation.name,
+                              },
+                            ],
+                          },
+                        },
+                      },
+                    },
+                  },
+                  {
+                    model: {
+                      name: relation.right.name,
+                      backend: {
+                        schema: {
+                          relations: {
+                            relations: [
+                              {
+                                name: relation.name,
+                              },
+                            ],
+                          },
+                        },
+                      },
+                    },
+                  },
+                ],
+                relations: [
+                  {
+                    relation: {
+                      name: relation.name,
+                      frontend: {
+                        component: {
+                          variants: [
+                            {
+                              name: "default",
+                              level: "sps-lite",
+                            },
+                            {
+                              name: "select-right",
+                              level: "sps-lite",
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    });
+
+    await coder.project.root.project.libs.project.modules[0].migrate({
+      version: "0.1.0",
+    });
+  }
 }
 
 export default migrateGenerator;

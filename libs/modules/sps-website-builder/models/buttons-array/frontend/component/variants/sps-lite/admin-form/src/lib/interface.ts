@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-models-buttons-array-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-models-buttons-array-contracts-extended";
+import { IModel } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-website-builder/models/buttons-array/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-form" as const;

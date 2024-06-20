@@ -8,9 +8,9 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-website-builder-models-logotype-frontend-component-variants-sps-lite-admin-select-input";
-import { variants } from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-contracts";
+import { api } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/logotype/frontend/component/variants/sps-lite/admin-select-input";
+import { variants } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/contracts/root";
 
 const formSchema = z.object({
   footerBlockId: z.string().min(1),

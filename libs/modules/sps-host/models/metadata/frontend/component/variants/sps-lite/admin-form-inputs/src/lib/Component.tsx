@@ -3,7 +3,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-host-models-metadata-contracts";
+import { variants } from "@sps/sps-host/models/metadata/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

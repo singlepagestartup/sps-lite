@@ -10,10 +10,10 @@ import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
-import { api } from "@sps/sps-website-builder-models-widget-frontend-api-client";
-import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-widget-frontend-component-variants-sps-lite-admin-form-inputs";
+import { api } from "@sps/sps-website-builder/models/widget/frontend/api/client";
+import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-form-inputs";
 import { Button } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-widget-contracts";
+import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
 
 const formSchema = z.object({
   title: z.string(),

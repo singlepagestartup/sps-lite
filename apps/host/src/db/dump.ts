@@ -1,7 +1,7 @@
-import { Dumper as SpsWebsiteBuilderDumper } from "@sps/sps-website-builder-backend-app";
-import { Dumper as StartupDumper } from "@sps/startup-backend-app";
-import { Dumper as SpsFileStorageDumper } from "@sps/sps-file-storage-backend-app";
-import { Dumper as SpsRbacDumper } from "@sps/sps-rbac-backend-app";
+import { Dumper as SpsWebsiteBuilderDumper } from "@sps/sps-website-builder/backend/app/root";
+import { Dumper as StartupDumper } from "@sps/startup/backend/app/root";
+import { Dumper as SpsFileStorageDumper } from "@sps/sps-file-storage/backend/app/root";
+import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
 import { exit } from "process";
 
 (async () => {

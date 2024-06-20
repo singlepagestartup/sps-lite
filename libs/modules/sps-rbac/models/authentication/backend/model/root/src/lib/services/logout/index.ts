@@ -1,5 +1,5 @@
-import { Table as SessionTable } from "@sps/sps-rbac-models-session-backend-schema";
-import { model as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-model";
+import { Table as SessionTable } from "@sps/sps-rbac/models/session/backend/schema/root";
+import { model as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/model/root";
 import { HTTPException } from "hono/http-exception";
 
 export async function service(props: {

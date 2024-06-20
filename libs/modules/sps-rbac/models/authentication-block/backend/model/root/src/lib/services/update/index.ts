@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-rbac-backend-db";
+import { db } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-rbac-models-authentication-block-backend-schema";
+} from "@sps/sps-rbac/models/authentication-block/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as AuthenticationSpsLiteLoginAndPassword } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-login-and-password";
+import { Component as AuthenticationSpsLiteLoginAndPassword } from "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/login-and-password";
 
 export function Component(props: IComponentPropsExtended) {
   return (

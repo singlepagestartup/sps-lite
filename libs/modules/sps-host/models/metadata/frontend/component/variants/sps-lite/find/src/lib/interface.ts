@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-host-models-metadata-contracts";
-import { IModel as IModelExtended } from "@sps/sps-host-models-metadata-contracts-extended";
+import { IModel } from "@sps/sps-host/models/metadata/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-host/models/metadata/contracts/extended";
 import { Dispatch, SetStateAction } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 

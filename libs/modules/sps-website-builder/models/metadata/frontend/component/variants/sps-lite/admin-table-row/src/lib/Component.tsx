@@ -3,11 +3,11 @@
 import React, { useEffect } from "react";
 import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder-models-metadata-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/metadata/frontend/api/client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { Component as AdminForm } from "@sps/sps-website-builder-models-metadata-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminForm } from "@sps/sps-website-builder/models/metadata/frontend/component/variants/sps-lite/admin-form";
 
 export function Component(props: IComponentPropsExtended) {
   const dispatch = useDispatch();

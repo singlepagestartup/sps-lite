@@ -6,7 +6,7 @@ import {
   route,
   tag,
   populate,
-} from "@sps/sps-file-storage-models-widget-frontend-api-model";
+} from "@sps/sps-file-storage/models/widget/frontend/api/model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(

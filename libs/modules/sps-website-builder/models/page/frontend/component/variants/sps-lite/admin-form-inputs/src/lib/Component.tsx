@@ -1,9 +1,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { Component as PagesToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component-variants-sps-lite-select-right";
-import { Component as PagesToLayoutsSelectRight } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component-variants-sps-lite-select-right";
-import { variants } from "@sps/sps-website-builder-models-page-contracts";
+import { Component as PagesToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder/relations/pages-to-widgets/frontend/component/variants/sps-lite/select-right";
+import { Component as PagesToLayoutsSelectRight } from "@sps/sps-website-builder/relations/pages-to-layouts/frontend/component/variants/sps-lite/select-right";
+import { variants } from "@sps/sps-website-builder/models/page/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

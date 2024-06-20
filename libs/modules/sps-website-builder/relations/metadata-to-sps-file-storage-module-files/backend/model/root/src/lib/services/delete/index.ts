@@ -1,5 +1,5 @@
-import { db } from "@sps/sps-db-provider";
-import { Table } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-schema";
+import { db } from "@sps/sps-website-builder/backend/db/root";
+import { Table } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

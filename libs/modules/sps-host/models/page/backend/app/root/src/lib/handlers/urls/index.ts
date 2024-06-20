@@ -1,7 +1,7 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { model } from "@sps/sps-host-models-page-backend-model";
+import { model } from "@sps/sps-host/models/page/backend/model/root";
 
 /**
  * Only one level of nesting is supported

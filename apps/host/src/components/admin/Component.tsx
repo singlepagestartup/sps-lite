@@ -6,36 +6,44 @@ import { IComponentPropsExtended } from "./interface";
 import { useParams, useSearchParams } from "next/navigation";
 const IsAuthenticatatedWrapper = dynamic(() =>
   import(
-    "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-is-authenticatated-wrapper"
+    "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper"
   ).then((mod) => mod.Component),
 );
 const SpsHost = dynamic(() =>
-  import("@sps/sps-host-frontend").then((mod) => mod.AdminComponent),
+  import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),
 );
-// const SpsWebsiteAdminComponent = dynamic(() =>
-//   import("@sps/sps-website-builder-frontend").then((mod) => mod.AdminComponent),
-// );
-// const StartupAdminComponent = dynamic(() =>
-//   import("@sps/startup-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsFileStorageAdminComponent = dynamic(() =>
-//   import("@sps/sps-file-storage-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsBillingAdminComponent = dynamic(() =>
-//   import("@sps/sps-billing-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsRbacAdminComponent = dynamic(() =>
-//   import("@sps/sps-rbac-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsNotificationAdminComponent = dynamic(() =>
-//   import("@sps/sps-notification-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsCrmAdminComponent = dynamic(() =>
-//   import("@sps/sps-crm-frontend").then((mod) => mod.AdminComponent),
-// );
-// const SpsThirdPartiesAdminComponent = dynamic(() =>
-//   import("@sps/sps-third-parties-frontend").then((mod) => mod.AdminComponent),
-// );
+const SpsWebsiteAdminComponent = dynamic(() =>
+  import("@sps/sps-website-builder/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
+);
+const StartupAdminComponent = dynamic(() =>
+  import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
+);
+const SpsFileStorageAdminComponent = dynamic(() =>
+  import("@sps/sps-file-storage/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
+);
+const SpsBillingAdminComponent = dynamic(() =>
+  import("@sps/sps-billing/frontend/root").then((mod) => mod.AdminComponent),
+);
+const SpsRbacAdminComponent = dynamic(() =>
+  import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
+);
+const SpsNotificationAdminComponent = dynamic(() =>
+  import("@sps/sps-notification/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
+);
+const SpsCrmAdminComponent = dynamic(() =>
+  import("@sps/sps-crm/frontend/root").then((mod) => mod.AdminComponent),
+);
+const SpsThirdPartiesAdminComponent = dynamic(() =>
+  import("@sps/sps-third-parties/frontend/root").then(
+    (mod) => mod.AdminComponent,
+  ),
+);
 
 export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();

@@ -1,7 +1,7 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { model } from "@sps/sps-website-builder-models-page-backend-model";
+import { model } from "@sps/sps-website-builder/models/page/backend/model/root";
 
 /**
  * Return parameter of url for page with schema

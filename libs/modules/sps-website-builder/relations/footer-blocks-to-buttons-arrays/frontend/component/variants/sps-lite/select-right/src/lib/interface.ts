@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-footer-blocks-to-buttons-arrays-contracts-extended";
+import { IRelation } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "select-right" as const;

@@ -1,8 +1,8 @@
-import type { IRelation as IParentRelation } from "@sps/sps-file-storage-relations-widgets-to-files-contracts";
+import type { IRelation as IParentRelation } from "@sps/sps-file-storage/relations/widgets-to-files/contracts/root";
 import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
-} from "@sps/sps-file-storage-relations-widgets-to-files-contracts-extended";
+} from "@sps/sps-file-storage/relations/widgets-to-files/contracts/extended";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}

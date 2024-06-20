@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as PagesToLayouts } from "@sps/sps-website-builder-relations-pages-to-layouts-frontend-component";
-import { Component as PagesToWidgets } from "@sps/sps-website-builder-relations-pages-to-widgets-frontend-component";
+import { Component as PagesToLayouts } from "@sps/sps-website-builder/relations/pages-to-layouts/frontend/component/root";
+import { Component as PagesToWidgets } from "@sps/sps-website-builder/relations/pages-to-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

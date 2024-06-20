@@ -6,7 +6,7 @@ import {
   route,
   tag,
   populate,
-} from "@sps/sps-website-builder-relations-sliders-to-slides-frontend-api-model";
+} from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/api/model";
 
 export const api = createApi({
   baseQuery: rtk.api.fetchBaseQueryBuilder(

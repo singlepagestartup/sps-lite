@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as LogoutAction } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-logout-action";
+import { Component as LogoutAction } from "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/logout-action";
 
 export function Component(props: IComponentPropsExtended) {
   return (

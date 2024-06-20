@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminForm } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-form";
-import { Component as AdminTableRow } from "@sps/sps-website-builder-models-features-section-block-frontend-component-variants-sps-lite-admin-table-row";
+import { Component as AdminForm } from "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-form";
+import { Component as AdminTableRow } from "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-table-row";
 import { ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,1 +1,1 @@
-export * from "@sps/sps-website-builder-backend-schema";
+export * from "@sps/sps-website-builder/backend/schema/root";

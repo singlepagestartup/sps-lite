@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-backend-schema";
+} from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/schema/root";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
   PopulateQueryBuilderProps,

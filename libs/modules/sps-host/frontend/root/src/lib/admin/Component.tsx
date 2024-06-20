@@ -5,17 +5,17 @@ import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
 import { Button } from "@sps/shadcn";
 const Widget = dynamic(() =>
-  import("@sps/sps-host-models-widget-frontend-component").then(
+  import("@sps/sps-host/models/widget/frontend/component/root").then(
     (mod) => mod.Component,
   ),
 );
 const Page = dynamic(() =>
-  import("@sps/sps-host-models-page-frontend-component").then(
+  import("@sps/sps-host/models/page/frontend/component/root").then(
     (mod) => mod.Component,
   ),
 );
 const Layout = dynamic(() =>
-  import("@sps/sps-host-models-layout-frontend-component").then(
+  import("@sps/sps-host/models/layout/frontend/component/root").then(
     (mod) => mod.Component,
   ),
 );

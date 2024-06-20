@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Layout } from "@sps/sps-host-models-layout-backend-schema-table";
+import { Table as Layout } from "@sps/sps-host/models/layout/backend/schema/table";
 
-import { Table as Widget } from "@sps/sps-host-models-widget-backend-schema-table";
+import { Table as Widget } from "@sps/sps-host/models/widget/backend/schema/table";
 
 export const schemaName = "SPSHLayoutsToWidgets";
 export const modelName = "layoutsToWidgets";

@@ -1,6 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Logotype } from "@sps/sps-website-builder-models-logotype-backend-schema-table";
+import { Table as Logotype } from "@sps/sps-website-builder/models/logotype/backend/schema/table";
 
 export const schemaName = "SPSWBLogotypesToSpsFileStorageWidgets";
 export const modelName = "logotypesToSpsFileStorageWidgets";

@@ -1,0 +1,11 @@
+{
+  "name": "@sps/sps-third-parties",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/modules/sps-third-parties",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "tsc:build": {}
+  }
+}

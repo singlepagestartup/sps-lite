@@ -1,6 +1,6 @@
 "use server";
 
-import { route, IModel } from "@sps/sps-host-models-page-frontend-api-model";
+import { route, IModel } from "@sps/sps-host/models/page/frontend/api/model";
 import {
   BACKEND_URL,
   NextRequestOptions,

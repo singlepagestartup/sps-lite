@@ -6,7 +6,7 @@ import {
   IModelExtended,
   populate,
   route,
-} from "@sps/sps-host-models-page-frontend-api-model";
+} from "@sps/sps-host/models/page/frontend/api/model";
 
 export interface Params {
   url?: string | string[];

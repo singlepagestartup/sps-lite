@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Layout } from "@sps/sps-website-builder-models-layout-backend-schema-table";
-import { Table as Navbar } from "@sps/sps-website-builder-models-navbar-backend-schema-table";
+import { Table as Layout } from "@sps/sps-website-builder/models/layout/backend/schema/table";
+import { Table as Navbar } from "@sps/sps-website-builder/models/navbar/backend/schema/table";
 
 export const schemaName = "SPSWBLayoutsToNavbars";
 export const modelName = "layoutsToNavbars";

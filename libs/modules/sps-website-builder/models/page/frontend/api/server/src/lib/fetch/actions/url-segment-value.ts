@@ -1,6 +1,6 @@
 "use server";
 
-import { route } from "@sps/sps-website-builder-models-page-frontend-api-model";
+import { route } from "@sps/sps-website-builder/models/page/frontend/api/model";
 import {
   BACKEND_URL,
   NextRequestOptions,

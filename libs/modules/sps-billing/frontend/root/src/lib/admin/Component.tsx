@@ -8,7 +8,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@sps/shadcn";
-import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-billing-models-widget-frontend-component-variants-sps-lite-admin-table";
+import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-table";
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 
 export function Component(props: IComponentProps) {

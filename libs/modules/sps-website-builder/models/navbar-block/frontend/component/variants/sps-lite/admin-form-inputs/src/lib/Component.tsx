@@ -1,9 +1,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-navbar-block-contracts";
-import { Component as NavbarBlocksToButtonsArraySpsLiteSelectRight } from "@sps/sps-website-builder-relations-navbar-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right";
-import { Component as NavbarBlocksToLogotypes } from "@sps/sps-website-builder-relations-navbar-blocks-to-logotypes-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/navbar-block/contracts/root";
+import { Component as NavbarBlocksToButtonsArraySpsLiteSelectRight } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right";
+import { Component as NavbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

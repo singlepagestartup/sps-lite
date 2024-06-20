@@ -1,8 +1,8 @@
-import type { IRelation as IParentRelation } from "@sps/sps-host-relations-widgets-to-external-modules-contracts";
+import type { IRelation as IParentRelation } from "@sps/sps-host/relations/widgets-to-external-modules/contracts/root";
 import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
-} from "@sps/sps-host-relations-widgets-to-external-modules-contracts-extended";
+} from "@sps/sps-host/relations/widgets-to-external-modules/contracts/extended";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}

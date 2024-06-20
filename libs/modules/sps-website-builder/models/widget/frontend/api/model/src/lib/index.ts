@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-website-builder-models-widget-contracts";
+import type { IModel as IParentModel } from "@sps/sps-website-builder/models/widget/contracts/root";
 import {
   IModel as IParentModelExtended,
   populate as relationPopulate,
-} from "@sps/sps-website-builder-models-widget-contracts-extended";
+} from "@sps/sps-website-builder/models/widget/contracts/extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

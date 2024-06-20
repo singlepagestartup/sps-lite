@@ -1,5 +1,5 @@
-import { db } from "@sps/sps-db-provider";
-import { Table } from "@sps/sps-website-builder-relations-pages-to-metadata-backend-schema";
+import { db } from "@sps/sps-website-builder/backend/db/root";
+import { Table } from "@sps/sps-website-builder/relations/pages-to-metadata/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

@@ -6,7 +6,7 @@ import {
   route,
   tag,
   IModelExtended,
-} from "@sps/sps-host-models-page-frontend-api-model";
+} from "@sps/sps-host/models/page/frontend/api/model";
 import { globalActionsStore, invalidateServerTag } from "@sps/store";
 import QueryString from "qs";
 

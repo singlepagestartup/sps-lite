@@ -2,11 +2,11 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder-models-slider-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/slider/frontend/api/client";
 import { invalidateServerTag } from "@sps/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { Component as AdminForm } from "@sps/sps-website-builder-models-slider-frontend-component-variants-sps-lite-admin-form";
+import { Component as AdminForm } from "@sps/sps-website-builder/models/slider/frontend/component/variants/sps-lite/admin-form";
 import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {

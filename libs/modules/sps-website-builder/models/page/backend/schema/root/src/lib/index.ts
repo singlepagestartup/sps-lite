@@ -4,8 +4,8 @@ export {
   selectSchema,
   modelName,
   schemaName,
-} from "@sps/sps-website-builder-models-page-backend-schema-table";
+} from "@sps/sps-website-builder/models/page/backend/schema/table";
 export {
   Relations,
   populate,
-} from "@sps/sps-website-builder-models-page-backend-schema-relations";
+} from "@sps/sps-website-builder/models/page/backend/schema/relations/root";

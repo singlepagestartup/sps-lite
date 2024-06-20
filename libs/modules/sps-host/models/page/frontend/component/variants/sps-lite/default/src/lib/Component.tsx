@@ -1,8 +1,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as PagesToLayouts } from "@sps/sps-host-relations-pages-to-layouts-frontend-component";
-import { Component as PagesToWidgets } from "@sps/sps-host-relations-pages-to-widgets-frontend-component";
+import { Component as PagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/frontend/component/root";
+import { Component as PagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

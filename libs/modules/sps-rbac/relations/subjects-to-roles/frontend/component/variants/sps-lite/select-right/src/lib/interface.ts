@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-rbac-relations-subjects-to-roles-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-rbac-relations-subjects-to-roles-contracts-extended";
+import { IRelation } from "@sps/sps-rbac/relations/subjects-to-roles/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-rbac/relations/subjects-to-roles/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "select-right" as const;

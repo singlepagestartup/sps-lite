@@ -1,9 +1,9 @@
-import { db } from "@sps/startup-backend-db";
+import { db } from "@sps/startup/backend/db/root";
 import {
   Table,
   populate,
   schemaName,
-} from "@sps/startup-models-widget-backend-schema";
+} from "@sps/startup/models/widget/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

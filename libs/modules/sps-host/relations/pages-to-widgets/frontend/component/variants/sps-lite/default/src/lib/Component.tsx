@@ -1,10 +1,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as Widget } from "@sps/sps-host-models-widget-frontend-component";
+import { Component as Widget } from "@sps/sps-host/models/widget/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
-  console.log(`🚀 ~ Component ~ props:`, props);
   return (
     <div
       data-module="sps-host"

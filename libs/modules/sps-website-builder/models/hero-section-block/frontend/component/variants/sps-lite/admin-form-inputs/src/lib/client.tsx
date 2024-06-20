@@ -5,7 +5,7 @@ import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder-models-hero-section-block-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
 import { Skeleton } from "./Skeleton";
 
 export default function Client(props: IComponentProps) {

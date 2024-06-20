@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { handlers } from "./handlers/index";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { SessionMiddlewareGeneric } from "@sps/sps-rbac-backend-sdk";
+import { SessionMiddlewareGeneric } from "@sps/sps-rbac/backend/sdk/root";
 
 export const app = new Hono<MiddlewaresGeneric & SessionMiddlewareGeneric>();
 

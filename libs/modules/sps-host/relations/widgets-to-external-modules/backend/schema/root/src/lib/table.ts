@@ -1,6 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Widget } from "@sps/sps-host-models-widget-backend-schema-table";
+import { Table as Widget } from "@sps/sps-host/models/widget/backend/schema/table";
 
 export const schemaName = "SPSHWidgetsToExternalModules";
 export const modelName = "widgetsToExternalModules";

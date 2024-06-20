@@ -1,9 +1,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-navbars-frontend-component-variants-sps-lite-select-right";
-import { Component as LayoutsToFooterSpsLiteSelectRight } from "@sps/sps-website-builder-relations-layouts-to-footers-frontend-component-variants-sps-lite-select-right";
-import { variants } from "@sps/sps-website-builder-models-layout-contracts";
+import { Component as LayoutsToNavbarsSpsLiteSelectRight } from "@sps/sps-website-builder/relations/layouts-to-navbars/frontend/component/variants/sps-lite/select-right";
+import { Component as LayoutsToFooterSpsLiteSelectRight } from "@sps/sps-website-builder/relations/layouts-to-footers/frontend/component/variants/sps-lite/select-right";
+import { variants } from "@sps/sps-website-builder/models/layout/contracts/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

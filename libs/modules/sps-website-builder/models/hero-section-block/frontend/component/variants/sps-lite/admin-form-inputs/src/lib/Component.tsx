@@ -3,9 +3,9 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-hero-section-block-contracts";
-import { Component as HeroSectionsToButtonsArraysSpsLiteSelectRight } from "@sps/sps-website-builder-relations-hero-section-blocks-to-buttons-arrays-frontend-component-variants-sps-lite-select-right";
-import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder-relations-hero-section-blocks-to-sps-file-storage-module-widgets-frontend-component-variants-sps-lite-select-right";
+import { variants } from "@sps/sps-website-builder/models/hero-section-block/contracts/root";
+import { Component as HeroSectionsToButtonsArraysSpsLiteSelectRight } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/select-right";
+import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/select-right";
 
 export function Component(props: IComponentPropsExtended) {
   return (

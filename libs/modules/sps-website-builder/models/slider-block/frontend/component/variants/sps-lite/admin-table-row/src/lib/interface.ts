@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-website-builder-models-slider-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-website-builder-models-slider-block-contracts-extended";
+import { IModel } from "@sps/sps-website-builder/models/slider-block/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-website-builder/models/slider-block/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "admin-table-row" as const;

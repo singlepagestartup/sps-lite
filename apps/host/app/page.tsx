@@ -1,4 +1,4 @@
-import { App as SpsHostApp } from "@sps/sps-host-frontend";
+import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
 
 export const revalidate = 3600;
 

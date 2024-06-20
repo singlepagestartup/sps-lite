@@ -1,7 +1,7 @@
-import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder-backend-app";
-import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup-backend-app";
-import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage-backend-app";
-import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac-backend-app";
+import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
+import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
+import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
+import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { exit } from "process";
 
 (async () => {

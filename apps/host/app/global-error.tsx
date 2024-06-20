@@ -1,7 +1,7 @@
 "use client";
 
 import { fonts } from "./fonts";
-import { GlobalError as SpsWebsiteBuilderGlobalError } from "@sps/sps-website-builder-frontend";
+import { GlobalError as SpsWebsiteBuilderGlobalError } from "@sps/sps-website-builder/frontend/root";
 
 export default function GlobalError({
   error,

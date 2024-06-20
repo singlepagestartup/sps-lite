@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as NavbarBlock } from "@sps/sps-website-builder-models-navbar-block-backend-schema-table";
+import { Table as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/schema/table";
 
-import { Table as ButtonsArray } from "@sps/sps-website-builder-models-buttons-array-backend-schema-table";
+import { Table as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/schema/table";
 
 export const schemaName = "SPSWBNavbarBlocksToButtonsArrays";
 export const modelName = "navbarBlocksToButtonsArrays";

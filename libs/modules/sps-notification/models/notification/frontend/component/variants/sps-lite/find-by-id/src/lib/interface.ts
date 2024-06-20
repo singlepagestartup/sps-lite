@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-notification-models-notification-contracts";
-import { IModel as IModelExtended } from "@sps/sps-notification-models-notification-contracts-extended";
+import { IModel } from "@sps/sps-notification/models/notification/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-notification/models/notification/contracts/extended";
 import { Dispatch, SetStateAction } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 

@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-host-relations-pages-to-layouts-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-host-relations-pages-to-layouts-contracts-extended";
+import { IRelation } from "@sps/sps-host/relations/pages-to-layouts/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-host/relations/pages-to-layouts/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { ReactNode } from "react";
 

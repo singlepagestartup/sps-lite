@@ -1,5 +1,5 @@
-import { db } from "@sps/sps-third-parties-backend-db";
-import { Table } from "@sps/sps-third-parties-models-widget-backend-schema";
+import { db } from "@sps/sps-third-parties/backend/db/root";
+import { Table } from "@sps/sps-third-parties/models/widget/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

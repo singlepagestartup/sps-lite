@@ -1,6 +1,6 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { Component as NavbarsToWidgets } from "@sps/sps-website-builder-relations-navbars-to-widgets-frontend-component";
+import { Component as NavbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {

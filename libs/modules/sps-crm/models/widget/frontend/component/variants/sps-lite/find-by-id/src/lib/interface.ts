@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-crm-models-widget-contracts";
-import { IModel as IModelExtended } from "@sps/sps-crm-models-widget-contracts-extended";
+import { IModel } from "@sps/sps-crm/models/widget/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-crm/models/widget/contracts/extended";
 import { Dispatch, SetStateAction } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 

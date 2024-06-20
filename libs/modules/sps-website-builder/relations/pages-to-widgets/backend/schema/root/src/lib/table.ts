@@ -1,7 +1,7 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Page } from "@sps/sps-website-builder-models-page-backend-schema-table";
-import { Table as Widget } from "@sps/sps-website-builder-models-widget-backend-schema-table";
+import { Table as Page } from "@sps/sps-website-builder/models/page/backend/schema/table";
+import { Table as Widget } from "@sps/sps-website-builder/models/widget/backend/schema/table";
 
 export const schemaName = "SPSWBPagesToWidgets";
 export const modelName = "pagesToWidgets";

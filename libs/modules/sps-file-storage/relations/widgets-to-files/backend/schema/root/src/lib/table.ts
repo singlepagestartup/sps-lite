@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Widget } from "@sps/sps-file-storage-models-widget-backend-schema-table";
+import { Table as Widget } from "@sps/sps-file-storage/models/widget/backend/schema/table";
 
-import { Table as File } from "@sps/sps-file-storage-models-file-backend-schema-table";
+import { Table as File } from "@sps/sps-file-storage/models/file/backend/schema/table";
 
 export const schemaName = "SPSFSWidgetsToFiles";
 export const modelName = "widgetsToFiles";

@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Component as Page } from "@sps/sps-website-builder-models-page-frontend-component";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
+import { Component as Page } from "@sps/sps-website-builder/models/page/frontend/component/root";
+import { api } from "@sps/sps-website-builder/models/page/frontend/api/server";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import { IModel } from "@sps/sps-website-builder-models-page-contracts-extended";
+import { IModel } from "@sps/sps-website-builder/models/page/contracts/extended";
 
 export function GlobalError({
   error,

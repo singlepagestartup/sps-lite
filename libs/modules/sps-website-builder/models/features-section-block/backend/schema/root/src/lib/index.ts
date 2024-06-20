@@ -4,8 +4,8 @@ export {
   Table,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder-models-features-section-block-backend-schema-table";
+} from "@sps/sps-website-builder/models/features-section-block/backend/schema/table";
 export {
   Relations,
   populate,
-} from "@sps/sps-website-builder-models-features-section-block-backend-schema-relations";
+} from "@sps/sps-website-builder/models/features-section-block/backend/schema/relations/root";

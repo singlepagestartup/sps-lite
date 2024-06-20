@@ -1,8 +1,8 @@
-import { db } from "@sps/sps-host-backend-db";
+import { db } from "@sps/sps-host/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-host-relations-pages-to-metadata-backend-schema";
+} from "@sps/sps-host/relations/pages-to-metadata/backend/schema/root";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

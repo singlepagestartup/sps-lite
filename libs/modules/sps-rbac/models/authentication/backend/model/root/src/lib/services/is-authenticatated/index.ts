@@ -1,7 +1,7 @@
-import { Table as SessionTable } from "@sps/sps-rbac-models-session-backend-schema";
-import { model as subjectsToSessions } from "@sps/sps-rbac-relations-subjects-to-sessions-backend-model";
-import { db } from "@sps/sps-rbac-backend-db";
-import { schemaName } from "@sps/sps-rbac-models-authentication-backend-schema";
+import { Table as SessionTable } from "@sps/sps-rbac/models/session/backend/schema/root";
+import { model as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/model/root";
+import { db } from "@sps/sps-rbac/backend/db/root";
+import { schemaName } from "@sps/sps-rbac/models/authentication/backend/schema/root";
 import { HTTPException } from "hono/http-exception";
 import { FindServiceProps } from "@sps/shared-backend-api";
 import { eq } from "drizzle-orm";

@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "@sps/sps-website-builder-relations-footer-blocks-to-logotypes-backend-schema";
+} from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/schema/root";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
   PopulateQueryBuilderProps,

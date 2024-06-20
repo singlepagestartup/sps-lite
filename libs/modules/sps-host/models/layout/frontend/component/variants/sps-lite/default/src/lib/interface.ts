@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-host-models-layout-contracts";
-import { IModel as IModelExtended } from "@sps/sps-host-models-layout-contracts-extended";
+import { IModel } from "@sps/sps-host/models/layout/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-host/models/layout/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { ReactNode } from "react";
 

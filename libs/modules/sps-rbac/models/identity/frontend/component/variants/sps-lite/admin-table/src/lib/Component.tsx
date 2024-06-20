@@ -1,8 +1,8 @@
 import React from "react";
 import { ModelEntitiesListCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminForm } from "@sps/sps-rbac-models-identity-frontend-component-variants-sps-lite-admin-form";
-import { Component as AdminTableRow } from "@sps/sps-rbac-models-identity-frontend-component-variants-sps-lite-admin-table-row";
+import { Component as AdminForm } from "@sps/sps-rbac/models/identity/frontend/component/variants/sps-lite/admin-form";
+import { Component as AdminTableRow } from "@sps/sps-rbac/models/identity/frontend/component/variants/sps-lite/admin-table-row";
 
 export function Component(props: IComponentPropsExtended) {
   return (

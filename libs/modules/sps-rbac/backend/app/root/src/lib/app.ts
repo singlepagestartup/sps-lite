@@ -2,7 +2,7 @@ import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { SessionMiddlewareGeneric } from "@sps/sps-rbac-backend-sdk";
+import { SessionMiddlewareGeneric } from "@sps/sps-rbac/backend/sdk/root";
 
 export const app = new Hono<
   MiddlewaresGeneric | (MiddlewaresGeneric & SessionMiddlewareGeneric)

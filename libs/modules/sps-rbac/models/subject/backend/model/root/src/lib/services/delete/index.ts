@@ -1,5 +1,5 @@
-import { db } from "@sps/sps-rbac-backend-db";
-import { Table } from "@sps/sps-rbac-models-subject-backend-schema";
+import { db } from "@sps/sps-rbac/backend/db/root";
+import { Table } from "@sps/sps-rbac/models/subject/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

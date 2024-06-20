@@ -3,15 +3,15 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
-import { api } from "@sps/sps-website-builder-models-layout-frontend-api-client";
+import { api } from "@sps/sps-website-builder/models/layout/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, Form } from "@sps/shadcn";
 import { Button } from "@sps/ui-adapter";
 import { useActionTrigger } from "@sps/hooks";
 import { z } from "zod";
-import { variants } from "@sps/sps-website-builder-models-layout-contracts";
-import { Component as LayoutSpsLiteAdminFormInputs } from "@sps/sps-website-builder-models-layout-frontend-component-variants-sps-lite-admin-form-inputs";
+import { variants } from "@sps/sps-website-builder/models/layout/contracts/root";
+import { Component as LayoutSpsLiteAdminFormInputs } from "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form-inputs";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/store";
 

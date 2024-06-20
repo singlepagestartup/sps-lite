@@ -1,6 +1,6 @@
 import { BACKEND_URL } from "@sps/shared-utils";
-import { db } from "@sps/sps-host-backend-db";
-import { schemaName, Table } from "@sps/sps-host-models-page-backend-schema";
+import { db } from "@sps/sps-host/backend/db/root";
+import { schemaName, Table } from "@sps/sps-host/models/page/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { util as buildTreePaths } from "./build-tree-paths";
 

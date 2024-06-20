@@ -1,9 +1,9 @@
-import { db } from "@sps/sps-billing-backend-db";
+import { db } from "@sps/sps-billing/backend/db/root";
 import {
   Table,
   populate,
   schemaName,
-} from "@sps/sps-billing-models-widget-backend-schema";
+} from "@sps/sps-billing/models/widget/backend/schema/root";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

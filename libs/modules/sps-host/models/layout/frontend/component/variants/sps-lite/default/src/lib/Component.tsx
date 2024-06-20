@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as LayoutsToWidgets } from "@sps/sps-host-relations-layouts-to-widgets-frontend-component";
+import { Component as LayoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

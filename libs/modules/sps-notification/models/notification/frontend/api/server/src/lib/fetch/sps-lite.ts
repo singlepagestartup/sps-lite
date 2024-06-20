@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/sps-notification-models-notification-frontend-api-model";
+} from "@sps/sps-notification/models/notification/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

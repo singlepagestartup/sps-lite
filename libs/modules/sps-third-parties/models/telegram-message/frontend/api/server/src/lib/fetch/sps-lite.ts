@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IModelExtended,
-} from "@sps/sps-third-parties-models-telegram-message-frontend-api-model";
+} from "@sps/sps-third-parties/models/telegram-message/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

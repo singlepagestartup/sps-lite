@@ -1,8 +1,8 @@
-import type { IRelation as IParentRelation } from "@sps/sps-website-builder-relations-pages-to-metadata-contracts";
+import type { IRelation as IParentRelation } from "@sps/sps-website-builder/relations/pages-to-metadata/contracts/root";
 import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
-} from "@sps/sps-website-builder-relations-pages-to-metadata-contracts-extended";
+} from "@sps/sps-website-builder/relations/pages-to-metadata/contracts/extended";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}

@@ -8,11 +8,11 @@ import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-host-relations-widgets-to-external-modules-frontend-api-client";
+import { api } from "@sps/sps-host/relations/widgets-to-external-modules/frontend/api/client";
 import {
   variants,
   externalModules,
-} from "@sps/sps-host-relations-widgets-to-external-modules-contracts";
+} from "@sps/sps-host/relations/widgets-to-external-modules/contracts/root";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),

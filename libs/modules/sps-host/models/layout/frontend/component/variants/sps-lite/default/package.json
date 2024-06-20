@@ -1,8 +1,0 @@
-{
-  "name": "@sps/sps-host-models-layout-frontend-component-variants-sps-lite-default",
-  "version": "0.0.1",
-  "singlepagestartup": {
-    "version": "0.0.156",
-    "template": "default"
-  }
-}

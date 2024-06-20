@@ -3,7 +3,7 @@ import {
   populate,
   route,
   IRelationExtended,
-} from "@sps/sps-file-storage-relations-widgets-to-files-frontend-api-model";
+} from "@sps/sps-file-storage/relations/widgets-to-files/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {

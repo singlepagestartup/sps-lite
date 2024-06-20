@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-third-parties-models-telegram-contracts";
-import { IModel as IModelExtended } from "@sps/sps-third-parties-models-telegram-contracts-extended";
+import { IModel } from "@sps/sps-third-parties/models/telegram/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-third-parties/models/telegram/contracts/extended";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 

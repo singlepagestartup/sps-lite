@@ -1,8 +1,8 @@
-import type { IModel as IModelExtended } from "@sps/sps-website-builder-models-button-contracts-extended";
+import type { IModel as IModelExtended } from "@sps/sps-website-builder/models/button/contracts/extended";
 import {
   IModel,
   variants as modelVariants,
-} from "@sps/sps-website-builder-models-button-contracts";
+} from "@sps/sps-website-builder/models/button/contracts/root";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variants = [...modelVariants] as const;

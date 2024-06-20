@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-host-models-layout-frontend-api-client";
+import { api } from "@sps/sps-host/models/layout/frontend/api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

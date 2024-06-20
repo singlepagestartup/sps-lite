@@ -1,5 +1,5 @@
-import { api as spsHostPageApi } from "@sps/sps-host-models-page-frontend-api-server";
-import { App as SpsHostApp } from "@sps/sps-host-frontend";
+import { api as spsHostPageApi } from "@sps/sps-host/models/page/frontend/api/server";
+import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
 
 export const revalidate = 3600;
 export const dynamicParams = true;

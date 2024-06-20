@@ -1,8 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { Table as Role } from "@sps/sps-rbac-models-role-backend-schema-table";
+import { Table as Role } from "@sps/sps-rbac/models/role/backend/schema/table";
 
-import { Table as Permission } from "@sps/sps-rbac-models-permission-backend-schema-table";
+import { Table as Permission } from "@sps/sps-rbac/models/permission/backend/schema/table";
 
 export const schemaName = "SPSRRolesToPermissions";
 export const modelName = "rolesToPermissions";

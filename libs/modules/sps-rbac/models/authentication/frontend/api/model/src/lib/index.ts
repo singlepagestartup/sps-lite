@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-rbac-models-authentication-contracts";
+import type { IModel as IParentModel } from "@sps/sps-rbac/models/authentication/contracts/root";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-rbac-models-authentication-contracts-extended";
+} from "@sps/sps-rbac/models/authentication/contracts/extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

@@ -3,8 +3,8 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder-models-metadata-contracts";
-import { Component as MetadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder-relations-metadata-to-sps-file-storage-module-files-frontend-component";
+import { variants } from "@sps/sps-website-builder/models/metadata/contracts/root";
+import { Component as MetadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

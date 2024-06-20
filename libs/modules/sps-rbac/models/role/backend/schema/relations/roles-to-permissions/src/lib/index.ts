@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "@sps/sps-rbac-relations-roles-to-permissions-backend-schema";
+} from "@sps/sps-rbac/relations/roles-to-permissions/backend/schema/root";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
   PopulateQueryBuilderProps,

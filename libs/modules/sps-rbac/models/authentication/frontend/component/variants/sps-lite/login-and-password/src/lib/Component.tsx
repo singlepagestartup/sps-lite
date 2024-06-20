@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { api } from "@sps/sps-rbac-models-authentication-frontend-api-client";
+import { api } from "@sps/sps-rbac/models/authentication/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {

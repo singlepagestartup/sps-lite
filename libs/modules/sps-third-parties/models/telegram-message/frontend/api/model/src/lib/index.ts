@@ -1,8 +1,8 @@
-import type { IModel as IParentModel } from "@sps/sps-third-parties-models-telegram-message-contracts";
+import type { IModel as IParentModel } from "@sps/sps-third-parties/models/telegram-message/contracts/root";
 import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
-} from "@sps/sps-third-parties-models-telegram-message-contracts-extended";
+} from "@sps/sps-third-parties/models/telegram-message/contracts/extended";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}

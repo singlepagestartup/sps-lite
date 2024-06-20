@@ -1,4 +1,4 @@
-import { models } from "@sps/sps-rbac-backend-models";
+import { models } from "@sps/sps-rbac/backend/models/root";
 
 export class Dumper {
   models: typeof models;

@@ -1,10 +1,10 @@
 import { FindServiceProps, queryBuilder } from "@sps/shared-backend-api";
-import { db } from "@sps/startup-backend-db";
+import { db } from "@sps/startup/backend/db/root";
 import {
   populate,
   schemaName,
   Table,
-} from "@sps/startup-models-widget-backend-schema";
+} from "@sps/startup/models/widget/backend/schema/root";
 
 export async function service(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({

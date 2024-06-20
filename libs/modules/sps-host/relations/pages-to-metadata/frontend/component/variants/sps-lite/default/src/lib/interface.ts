@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-host-relations-pages-to-metadata-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-host-relations-pages-to-metadata-contracts-extended";
+import { IRelation } from "@sps/sps-host/relations/pages-to-metadata/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-host/relations/pages-to-metadata/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

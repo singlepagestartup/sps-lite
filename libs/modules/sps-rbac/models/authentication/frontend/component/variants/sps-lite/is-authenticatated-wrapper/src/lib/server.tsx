@@ -4,9 +4,9 @@ import "server-only";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/sps-rbac-models-authentication-frontend-api-server";
+import { api } from "@sps/sps-rbac/models/authentication/frontend/api/server";
 import { Component } from "./Component";
-import { Component as AuthenticationSpsLiteSelectMethod } from "@sps/sps-rbac-models-authentication-frontend-component-variants-sps-lite-select-method";
+import { Component as AuthenticationSpsLiteSelectMethod } from "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/select-method";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {

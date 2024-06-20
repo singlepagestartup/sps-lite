@@ -2,7 +2,7 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-host-relations-pages-to-widgets-frontend-api-client";
+import { api } from "@sps/sps-host/relations/pages-to-widgets/frontend/api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,

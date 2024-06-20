@@ -1,7 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { App as SpsFileStorageApp } from "@sps/sps-file-storage-frontend";
+import { App as SpsFileStorageApp } from "@sps/sps-file-storage/frontend/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

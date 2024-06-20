@@ -1,4 +1,4 @@
-import { model as telegramMessageModel } from "@sps/sps-third-parties-models-telegram-message-backend-model";
+import { model as telegramMessageModel } from "@sps/sps-third-parties/models/telegram-message/backend/model/root";
 import { Context, NarrowedContext, Telegram } from "telegraf";
 import { CallbackQuery, Message, Update } from "telegraf/types";
 import { getResponse as buttonClickedResponse } from "../../../response-getters/button-clicked";

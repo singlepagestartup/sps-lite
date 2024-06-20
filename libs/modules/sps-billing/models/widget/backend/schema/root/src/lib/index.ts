@@ -4,8 +4,8 @@ export {
   selectSchema,
   modelName,
   schemaName,
-} from "@sps/sps-billing-models-widget-backend-schema-table";
+} from "@sps/sps-billing/models/widget/backend/schema/table";
 export {
   Relations,
   populate,
-} from "@sps/sps-billing-models-widget-backend-schema-relations";
+} from "@sps/sps-billing/models/widget/backend/schema/relations/root";

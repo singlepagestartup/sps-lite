@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Modal } from "@sps/sps-website-builder-models-modal-frontend-component-variants-sps-lite-default";
+import { Component as Modal } from "@sps/sps-website-builder/models/modal/frontend/component/variants/sps-lite/default";
 
 export function Component(props: IComponentPropsExtended) {
   const query = useSearchParams();
@@ -45,7 +45,6 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-website-builder"
       data-model="modal"
-      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className=""
     >

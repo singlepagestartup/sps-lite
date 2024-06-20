@@ -1,5 +1,5 @@
-import { IRelation } from "@sps/sps-website-builder-relations-footers-to-widgets-contracts";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder-relations-footers-to-widgets-contracts-extended";
+import { IRelation } from "@sps/sps-website-builder/relations/footers-to-widgets/contracts/root";
+import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/footers-to-widgets/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "default" as const;

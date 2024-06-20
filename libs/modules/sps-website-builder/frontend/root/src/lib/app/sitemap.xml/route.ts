@@ -1,5 +1,5 @@
 import { HOST_URL } from "@sps/shared-utils";
-import { api } from "@sps/sps-website-builder-models-page-frontend-api-server";
+import { api } from "@sps/sps-website-builder/models/page/frontend/api/server";
 
 async function generateSiteMap() {
   const pages = await api.fetch.find();

@@ -8,8 +8,8 @@ import { ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/hooks";
-import { api } from "@sps/sps-file-storage-relations-widgets-to-files-frontend-api-client";
-import { Component as AdminSelectInput } from "@sps/sps-file-storage-models-file-frontend-component-variants-sps-lite-admin-select-input";
+import { api } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/api/client";
+import { Component as AdminSelectInput } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({
   widgetId: z.string().min(1),

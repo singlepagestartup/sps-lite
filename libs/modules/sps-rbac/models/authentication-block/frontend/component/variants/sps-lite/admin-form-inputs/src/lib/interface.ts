@@ -1,5 +1,5 @@
-import { IModel } from "@sps/sps-rbac-models-authentication-block-contracts";
-import { IModel as IModelExtended } from "@sps/sps-rbac-models-authentication-block-contracts-extended";
+import { IModel } from "@sps/sps-rbac/models/authentication-block/contracts/root";
+import { IModel as IModelExtended } from "@sps/sps-rbac/models/authentication-block/contracts/extended";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
