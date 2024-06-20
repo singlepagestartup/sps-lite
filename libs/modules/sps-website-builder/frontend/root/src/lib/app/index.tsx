@@ -15,7 +15,6 @@ export function App(props: IComponentProps) {
         hostUrl={props.hostUrl}
         variant="get-by-url"
         url={props.hostUrl}
-        hostChildren={props.hostChildren}
       >
         {({ data: page }) => {
           if (!page) {
@@ -28,7 +27,6 @@ export function App(props: IComponentProps) {
               hostUrl={props.hostUrl}
               variant={page?.variant}
               data={page}
-              hostChildren={props.hostChildren}
             />
           );
         }}

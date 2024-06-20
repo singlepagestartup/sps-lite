@@ -15,10 +15,6 @@ export function App(props: IComponentProps) {
       >
         {({ data: page }) => {
           if (!page) {
-            if (props.hostChildren) {
-              return props.hostChildren;
-            }
-
             return;
           }
 
@@ -28,7 +24,6 @@ export function App(props: IComponentProps) {
               hostUrl={props.hostUrl}
               variant={page?.variant}
               data={page}
-              hostChildren={props.hostChildren}
             />
           );
         }}

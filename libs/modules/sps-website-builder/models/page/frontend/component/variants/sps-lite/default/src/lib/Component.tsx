@@ -25,7 +25,6 @@ export function Component(props: IComponentPropsExtended) {
                 hostUrl={props.hostUrl}
                 variant="default"
                 data={widget}
-                hostChildren={props.hostChildren}
               />
             );
           })}

@@ -1,7 +1,7 @@
 "use client";
 
 import { fonts } from "./fonts";
-import { GlobalError as SpsWebsiteBuilderGlobalError } from "@sps/sps-website-builder/frontend/root";
+import { GlobalError as SpsHostGlobalError } from "@sps/sps-host/frontend/root";
 
 export default function GlobalError({
   error,
@@ -10,7 +10,5 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  return (
-    <SpsWebsiteBuilderGlobalError error={error} reset={reset} fonts={fonts} />
-  );
+  return <SpsHostGlobalError error={error} reset={reset} fonts={fonts} />;
 }

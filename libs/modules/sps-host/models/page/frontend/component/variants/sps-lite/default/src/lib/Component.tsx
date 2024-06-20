@@ -21,7 +21,6 @@ export function Component(props: IComponentPropsExtended) {
             variant="default"
             hostUrl={props.hostUrl}
             data={entity}
-            hostChildren={props.hostChildren}
           >
             {props.data.pagesToWidgets?.map((entity, index) => {
               return (
@@ -31,7 +30,6 @@ export function Component(props: IComponentPropsExtended) {
                   hostUrl={props.hostUrl}
                   variant="default"
                   data={entity}
-                  hostChildren={props.hostChildren}
                 />
               );
             })}

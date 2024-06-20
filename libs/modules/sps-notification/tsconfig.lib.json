@@ -1,8 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["node"],
+    "types": ["node", "jest"],
     "composite": true
   },
-  "include": ["**/*"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

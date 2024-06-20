@@ -17,7 +17,6 @@ export function Component(props: IComponentPropsExtended) {
         hostUrl={props.hostUrl}
         variant={props.data.layout.variant}
         data={props.data.layout}
-        hostChildren={props.hostChildren}
       >
         {props.children}
       </Layout>
