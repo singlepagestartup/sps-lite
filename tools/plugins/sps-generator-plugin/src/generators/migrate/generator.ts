@@ -239,7 +239,12 @@ export async function migrateGenerator(
     },
   });
 
-  await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.migrate(
+  // await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.migrate(
+  //   {
+  //     version: "0.1.0",
+  //   },
+  // );
+  await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.backend.migrate(
     {
       version: "0.1.0",
     },
