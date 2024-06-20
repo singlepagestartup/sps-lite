@@ -95,6 +95,57 @@ export class Migrator {
 
     this.parent.coder.tree.write(stylesPath, newStylesImportPathContent);
 
+    const oldReduxImportPath = `${this.parent.coder.parent.parent.project.redux.baseName}`;
+    const newReduxImportPath = `${this.parent.coder.parent.parent.project.redux.absoluteName}`;
+
+    const indexFile = this.parent.coder.tree
+      .read(`${baseDirectory}/src/lib/index.tsx`)
+      .toString("utf8");
+
+    const newIndexFile = indexFile.replace(
+      new RegExp(oldReduxImportPath, "g"),
+      newReduxImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${baseDirectory}/src/lib/index.tsx`,
+      newIndexFile,
+    );
+
+    const oldRtkApiImportPath = `${this.parent.coder.parent.parent.project.api.project.client.baseName}`;
+    const newRtkApiImportPath = `${this.parent.coder.parent.parent.project.api.project.client.absoluteName}`;
+
+    const clientFile = this.parent.coder.tree
+      .read(`${baseDirectory}/src/lib/client.tsx`)
+      .toString("utf8");
+
+    const newClientFile = clientFile.replace(
+      new RegExp(oldRtkApiImportPath, "g"),
+      newRtkApiImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${baseDirectory}/src/lib/client.tsx`,
+      newClientFile,
+    );
+
+    const oldServerFetchImportPath = `${this.parent.coder.parent.parent.project.api.project.server.baseName}`;
+    const newServerFetchImportPath = `${this.parent.coder.parent.parent.project.api.project.server.absoluteName}`;
+
+    const serverFile = this.parent.coder.tree
+      .read(`${baseDirectory}/src/lib/server.tsx`)
+      .toString("utf8");
+
+    const newServerFile = serverFile.replace(
+      new RegExp(oldServerFetchImportPath, "g"),
+      newServerFetchImportPath,
+    );
+
+    this.parent.coder.tree.write(
+      `${baseDirectory}/src/lib/server.tsx`,
+      newServerFile,
+    );
+
     updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
       const updatedJson = { ...json };
       const project = updatedJson.compilerOptions.paths[`${baseName}`];
