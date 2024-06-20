@@ -41,18 +41,16 @@ export class Migrator {
       if (isFile) {
         const content = this.parent.coder.tree.read(pathToFile);
 
-        const newFile = this.parent.coder.tree.write(
-          baseDirectory + "/" + libFile,
-          content,
-        );
+        this.parent.coder.tree.write(baseDirectory + "/" + libFile, content);
       }
     }
 
-    const legacySrc = this.parent.coder.tree.delete(baseDirectory + "/src");
+    this.parent.coder.tree.delete(baseDirectory + "/src");
 
+    // variants.ts
     const variantsPath =
       this.parent.coder.parent.project.root.baseDirectory +
-      "/src/lib/sps-lite/variants.ts";
+      `/src/lib/${this.parent.coder.level}/variants.ts`;
 
     const newVariantImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}`;
 
@@ -66,6 +64,42 @@ export class Migrator {
     );
 
     this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
+
+    // interface.ts
+    const interfacesPath =
+      this.parent.coder.parent.project.root.baseDirectory +
+      `/src/lib/${this.parent.coder.level}/interface.ts`;
+
+    const newInterfaceImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}`;
+
+    const interfacesContent = this.parent.coder.tree
+      .read(interfacesPath)
+      .toString("utf8");
+
+    const newInterfaceImportPathContent = interfacesContent.replace(
+      new RegExp(`"${this.parent.coder.baseName}"`, "g"),
+      `"${newInterfaceImportPath}"`,
+    );
+
+    this.parent.coder.tree.write(interfacesPath, newInterfaceImportPathContent);
+
+    // _index.scss
+    const stylesPath =
+      this.parent.coder.parent.project.root.baseDirectory +
+      `/src/lib/${this.parent.coder.level}/_index.scss`;
+
+    const stylesContent = this.parent.coder.tree
+      .read(stylesPath)
+      .toString("utf8");
+
+    const newStylesImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}/_index.scss`;
+
+    const newStylesImportPathContent = stylesContent.replace(
+      new RegExp(`"${this.parent.coder.baseName}"`, "g"),
+      `"${newStylesImportPath}"`,
+    );
+
+    this.parent.coder.tree.write(stylesPath, newStylesImportPathContent);
 
     updateJson(this.parent.coder.tree, `tsconfig.base.json`, (json) => {
       const updatedJson = { ...json };
