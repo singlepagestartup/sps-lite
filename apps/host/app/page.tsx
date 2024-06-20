@@ -12,12 +12,22 @@ export async function generateMetadata(props: any) {
 export default async function Page(props: { params: { url?: string[] } }) {
   const url = props.params.url?.join("/") || "/";
   const slashedUrl = url.startsWith("/") ? url : `/${url}`;
+  const hostChildren = <HostApp />;
 
   return (
-    <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl}>
-      <div className="w-full py-20 bg-red-500 flex items-center justify-center">
-        HOST APP FROM NEXT
-      </div>
-    </SpsHostApp>
+    <SpsHostApp
+      isServer={true}
+      variant="default"
+      hostUrl={slashedUrl}
+      hostChildren={hostChildren}
+    />
+  );
+}
+
+function HostApp() {
+  return (
+    <div className="w-full py-20 bg-red-500 flex items-center justify-center">
+      HOST APP FROM NEXT
+    </div>
   );
 }

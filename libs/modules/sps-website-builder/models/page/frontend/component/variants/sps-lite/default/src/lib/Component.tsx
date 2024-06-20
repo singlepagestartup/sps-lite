@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-website-builder"
       data-model="page"
       data-variant="default"
-      className="flex flex-col"
+      className="flex flex-col w-full"
     >
       {props.data.pagesToLayouts?.length ? (
         <PagesToLayouts
@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
                 hostUrl={props.hostUrl}
                 variant="default"
                 data={widget}
+                hostChildren={props.hostChildren}
               />
             );
           })}

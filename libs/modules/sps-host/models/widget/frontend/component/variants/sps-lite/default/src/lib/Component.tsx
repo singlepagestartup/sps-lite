@@ -1,19 +1,30 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
+import { Component as WidgetsToExternalModules } from "@sps/sps-host-relations-widgets-to-external-modules-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
+  console.log(`🚀 ~ Component ~ props:`, props);
   return (
     <div
       data-module="sps-host"
       data-model="widget"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex-col", props.data.className || "")}
+      className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: widget</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      {props.data.widgetsToExternalModules.map((entity, index) => {
+        return (
+          <WidgetsToExternalModules
+            key={index}
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant={entity.variant}
+            data={entity}
+            hostChildren={props.hostChildren}
+          />
+        );
+      })}
     </div>
   );
 }

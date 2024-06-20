@@ -1,5 +1,7 @@
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
+import { App as SpsWebsiteBuilder } from "@sps/sps-website-builder-frontend";
+import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,13 +10,16 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="widgets-to-external-modules"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">
-        Relation: widgets-to-external-modules
-      </p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      {props.data.externalModule === "sps-website-builder" ? (
+        <SpsWebsiteBuilder
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="default"
+          hostChildren={props.hostChildren}
+        />
+      ) : null}
     </div>
   );
 }

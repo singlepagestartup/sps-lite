@@ -1,4 +1,8 @@
 export {
+  Table as SPSHLayoutsToWidgets,
+  Relations as SPSHLayoutsToWidgetsRelations,
+} from "@sps/sps-host-relations-layouts-to-widgets-backend-schema";
+export {
   Table as SPSHWidgetsToExternalModules,
   Relations as SPSHWidgetsToExternalModulesRelations,
 } from "@sps/sps-host-relations-widgets-to-external-modules-backend-schema";

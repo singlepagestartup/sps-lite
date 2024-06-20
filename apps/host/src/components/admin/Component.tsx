@@ -41,7 +41,7 @@ export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();
   const adminQueryParams = params.get("admin");
 
-  const [widget, setWidget] = useState<string>("sps-website-builder");
+  const [widget, setWidget] = useState<string>("sps-host");
 
   if (!adminQueryParams) {
     return null;

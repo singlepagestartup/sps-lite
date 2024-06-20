@@ -71,13 +71,13 @@ export async function customGenerator(
 
   const leftModel: IModelGeneratorProps = {
     model: {
-      name: "widget",
+      name: "layout",
       backend: {
         schema: {
           relations: {
             relations: [
               {
-                name: "widgets-to-external-modules",
+                name: "layouts-to-widgets",
               },
             ],
           },
@@ -88,14 +88,13 @@ export async function customGenerator(
 
   const rightModel: IModelGeneratorProps = {
     model: {
-      name: "external-module",
-      isExternal: true,
+      name: "widget",
       backend: {
         schema: {
           relations: {
             relations: [
               {
-                name: "widgets-to-external-modules",
+                name: "layouts-to-widgets",
               },
             ],
           },
@@ -106,7 +105,7 @@ export async function customGenerator(
 
   const relation: IRelationGeneratorProps = {
     relation: {
-      name: "widgets-to-external-modules",
+      name: "layouts-to-widgets",
       frontend: {
         component: {
           variants: relationAdminVariants,

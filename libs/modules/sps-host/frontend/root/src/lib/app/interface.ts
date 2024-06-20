@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 export interface IComponentProps extends ISpsComponentBase {
   className?: string;
   variant: string;
-  children?: ReactNode;
   props?: string;
 }
 

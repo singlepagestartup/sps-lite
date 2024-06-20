@@ -2,8 +2,9 @@
 
 import React from "react";
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-host-models-layout-contracts";
+import { Component as LayoutsToWidgets } from "@sps/sps-host-relations-layouts-to-widgets-frontend-component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -32,6 +33,29 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+        <ModelEntitiesListCard title="layouts-to-widgets">
+          <div className="flex flex-col gap-6">
+            {props.data?.layoutsToWidgets.map((entity, index) => {
+              return (
+                <LayoutsToWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="select-right"
+                  layoutId={props.data?.id}
+                  data={entity}
+                />
+              );
+            })}
+            <LayoutsToWidgets
+              isServer={props.isServer}
+              hostUrl={props.hostUrl}
+              variant="select-right"
+              layoutId={props.data?.id}
+              data={undefined}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );

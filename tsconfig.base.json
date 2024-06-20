@@ -393,6 +393,9 @@
       "@sps/sps-host-models-layout-backend-schema-relations": [
         "libs/modules/sps-host/models/layout/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-host-models-layout-backend-schema-relations-layouts-to-widgets": [
+        "libs/modules/sps-host/models/layout/backend/schema/relations/layouts-to-widgets/src/index.ts"
+      ],
       "@sps/sps-host-models-layout-backend-schema-relations-pages-to-layouts": [
         "libs/modules/sps-host/models/layout/backend/schema/relations/pages-to-layouts/src/index.ts"
       ],
@@ -594,6 +597,9 @@
       "@sps/sps-host-models-widget-backend-schema-relations": [
         "libs/modules/sps-host/models/widget/backend/schema/relations/root/src/index.ts"
       ],
+      "@sps/sps-host-models-widget-backend-schema-relations-layouts-to-widgets": [
+        "libs/modules/sps-host/models/widget/backend/schema/relations/layouts-to-widgets/src/index.ts"
+      ],
       "@sps/sps-host-models-widget-backend-schema-relations-pages-to-widgets": [
         "libs/modules/sps-host/models/widget/backend/schema/relations/pages-to-widgets/src/index.ts"
       ],
@@ -647,6 +653,42 @@
       ],
       "@sps/sps-host-models-widget-frontend-redux": [
         "libs/modules/sps-host/models/widget/frontend/redux/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-backend-app": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/backend/app/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-backend-model": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/backend/model/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-backend-schema": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/backend/schema/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-contracts": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/contracts/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-contracts-extended": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/contracts/extended/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-api-client": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/api/client/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-api-model": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/api/model/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-api-server": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/api/server/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-component": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/component/root/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-component-variants-sps-lite-default": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/component/variants/sps-lite/default/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-component-variants-sps-lite-select-right": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/component/variants/sps-lite/select-right/src/index.ts"
+      ],
+      "@sps/sps-host-relations-layouts-to-widgets-frontend-redux": [
+        "libs/modules/sps-host/relations/layouts-to-widgets/frontend/redux/src/index.ts"
       ],
       "@sps/sps-host-relations-pages-to-layouts-backend-app": [
         "libs/modules/sps-host/relations/pages-to-layouts/backend/app/root/src/index.ts"

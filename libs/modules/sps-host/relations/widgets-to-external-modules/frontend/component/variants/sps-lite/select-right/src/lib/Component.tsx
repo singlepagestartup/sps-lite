@@ -16,7 +16,6 @@ import {
 
 const formSchema = z.object({
   widgetId: z.string().min(1),
-  externalModuleId: z.string().min(1),
   variant: z.enum(variants).default("default"),
   externalModule: z.enum(externalModules).default("sps-website-builder"),
   className: z.string().optional(),
@@ -45,7 +44,7 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.widgetId || !data.externalModuleId) {
+    if (!data.widgetId || !data.externalModule) {
       return;
     }
 
@@ -72,6 +71,8 @@ export function Component(props: IComponentPropsExtended) {
       if (action.payload.id) {
         form.setValue("widgetId", action.payload.id);
       }
+
+      console.log(`🚀 ~ callbackFunction: ~ form:`, form);
 
       form.handleSubmit(onSubmit)();
     },
@@ -108,7 +109,7 @@ export function Component(props: IComponentPropsExtended) {
               ui="shadcn"
               type="select"
               label="External module"
-              name="executeMutation"
+              name="externalModule"
               form={form}
               placeholder="Select external module"
               options={externalModules.map((externalModule) => [
@@ -177,7 +178,7 @@ export function Component(props: IComponentPropsExtended) {
               ui="shadcn"
               type="select"
               label="External module"
-              name="executeMutation"
+              name="externalModule"
               form={form}
               placeholder="Select external module"
               options={externalModules.map((externalModule) => [
