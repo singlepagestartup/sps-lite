@@ -157,12 +157,12 @@ export class Migrator {
 
     const newInterfaceFile = interfaceFile
       .replace(
-        new RegExp(oldRootContractsImportPath, "g"),
-        newRootContractsImportPath,
-      )
-      .replace(
         new RegExp(oldExtendedContractsImportPath, "g"),
         newExtendedContractsImportPath,
+      )
+      .replace(
+        new RegExp(oldRootContractsImportPath, "g"),
+        newRootContractsImportPath,
       );
 
     this.parent.coder.tree.write(
