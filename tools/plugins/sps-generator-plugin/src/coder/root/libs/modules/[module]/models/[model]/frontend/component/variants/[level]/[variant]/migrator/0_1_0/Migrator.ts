@@ -58,17 +58,18 @@ export class Migrator {
     const variantsPath =
       this.parent.coder.parent.project.root.baseDirectory +
       "/src/lib/sps-lite/variants.ts";
-    const interfacePath =
-      this.parent.coder.parent.project.root.baseDirectory +
-      "/src/lib/sps-lite/interface.ts";
-    const indexScssPath =
-      this.parent.coder.parent.project.root.baseDirectory +
-      "/src/lib/sps-lite/index.scss";
 
-    this.parent.coder.detach({
-      variantsPath,
-      interfacePath,
-      indexScssPath,
-    });
+    const newVariantImportPath = `../variants/${this.parent.coder.level}/${this.parent.coder.name}`;
+
+    const variantsContent = this.parent.coder.tree
+      .read(variantsPath)
+      .toString("utf8");
+
+    const newVariantImportPathContent = variantsContent.replace(
+      new RegExp(`"${this.parent.coder.name}"`, "g"),
+      `"${newVariantImportPath}"`,
+    );
+
+    this.parent.coder.tree.write(variantsPath, newVariantImportPathContent);
   }
 }
