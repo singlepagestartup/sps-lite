@@ -31,7 +31,7 @@ export class Migrator {
       const isFile = this.parent.coder.tree.isFile(pathToFile);
 
       if (isFile) {
-        this.parent.coder.tree.delete(rootFile);
+        this.parent.coder.tree.delete(pathToFile);
       }
     }
 
@@ -55,7 +55,7 @@ export class Migrator {
 
     const legacySrc = this.parent.coder.tree.delete(baseDirectory + "/src");
 
-    this.parent.coder.tree.delete(baseDirectory + "/package.json");
-    this.parent.coder.tree.delete(baseDirectory + "/project.json");
+    // this.parent.coder.tree.delete(baseDirectory + "/package.json");
+    // this.parent.coder.tree.delete(baseDirectory + "/project.json");
   }
 }
