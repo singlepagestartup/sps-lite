@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { App as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/root";
+import { App as Startup } from "@sps/startup/frontend/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
@@ -15,7 +16,16 @@ export function Component(props: IComponentPropsExtended) {
         <SpsWebsiteBuilder
           isServer={props.isServer}
           hostUrl={props.hostUrl}
-          variant="default"
+          variant={props.data.variant}
+          props={props.data.externalModuleProps}
+        />
+      ) : null}
+      {props.data.externalModule === "startup" ? (
+        <Startup
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant={props.data.variant}
+          props={props.data.externalModuleProps}
         />
       ) : null}
     </div>

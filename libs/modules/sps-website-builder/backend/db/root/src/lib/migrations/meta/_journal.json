@@ -127,6 +127,13 @@
       "when": 1718447084858,
       "tag": "0017_black_king_bedlam",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1718981666854,
+      "tag": "0018_mighty_domino",
+      "breakpoints": true
     }
   ]
 }

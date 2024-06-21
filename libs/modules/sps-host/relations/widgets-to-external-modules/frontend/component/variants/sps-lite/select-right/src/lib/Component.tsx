@@ -19,7 +19,7 @@ const formSchema = z.object({
   externalModule: z.enum(externalModules).default("sps-website-builder"),
   className: z.string().optional(),
   orderIndex: z.number().default(0),
-  externalModuleProps: z.string().optional(),
+  externalModuleProps: z.string().default("{}"),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -36,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
       className: props.data?.className || "",
       orderIndex: props.data?.orderIndex || 0,
       variant: props.data?.variant || "default",
-      externalModuleProps: props.data?.externalModuleProps || "",
+      externalModuleProps: props.data?.externalModuleProps || "{}",
     },
   });
 

@@ -26,7 +26,7 @@ export const Table = pgTable(table, {
   externalModuleProps: pgCore
     .text("external_module_props")
     .notNull()
-    .default(""),
+    .default("{}"),
 });
 
 export const insertSchema = createInsertSchema(Table);

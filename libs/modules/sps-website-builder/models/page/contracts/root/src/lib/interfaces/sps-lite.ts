@@ -8,4 +8,5 @@ export interface IModel {
   updatedAt: string;
   variant: (typeof variants)[number];
   urls?: { url: string; locale: string }[] | null;
+  className: string | null;
 }
