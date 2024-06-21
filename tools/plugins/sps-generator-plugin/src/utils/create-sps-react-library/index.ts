@@ -1,17 +1,4 @@
-import {
-  Tree,
-  formatFiles,
-  generateFiles,
-  offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
-} from "@nx/devkit";
-import { Linter } from "@nx/eslint";
-import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
-import {
-  libraryGenerator as reactLibraryGenerator,
-  SupportedStyles,
-} from "@nx/react";
+import { Tree, formatFiles, generateFiles, offsetFromRoot } from "@nx/devkit";
 
 export const util = async ({
   root,
@@ -29,28 +16,6 @@ export const util = async ({
   };
 }) => {
   const offsetFromRootProject = offsetFromRoot(root);
-
-  await reactLibraryGenerator(tree, {
-    name,
-    directory: root,
-    component: false,
-    linter: "none" as Linter.EsLint,
-    minimal: true,
-    style: "none" as SupportedStyles,
-    projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
-    strict: true,
-    unitTestRunner: "none",
-  });
-
-  updateProjectConfiguration(tree, name, {
-    root,
-    sourceRoot: `${root}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      "tsc:build": {},
-    },
-  });
 
   generateFiles(tree, generateFilesPath, root, {
     ...templateParams,

@@ -51,12 +51,6 @@
     "production": [],
     "sharedGlobals": []
   },
-  "generators": {
-    "@nx/react": {
-      "library": {
-        "unitTestRunner": "none"
-      }
-    }
-  },
+  "generators": {},
   "plugins": []
 }
