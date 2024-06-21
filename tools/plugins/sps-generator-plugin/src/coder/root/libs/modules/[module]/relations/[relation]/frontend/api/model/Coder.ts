@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ApiCoder } from "../Coder";
 import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";

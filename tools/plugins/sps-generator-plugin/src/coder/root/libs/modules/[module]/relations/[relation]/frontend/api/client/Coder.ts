@@ -49,7 +49,7 @@ export class Coder {
       return;
     }
 
-    const apiModelImportPath = this.parent.project.model.baseName;
+    const apiModelImportPath = this.parent.project.model.importPath;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,

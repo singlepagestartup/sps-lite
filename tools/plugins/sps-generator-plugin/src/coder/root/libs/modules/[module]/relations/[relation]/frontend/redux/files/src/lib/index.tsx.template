@@ -6,7 +6,7 @@ import { api } from "<%= client_api_import_path %>";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/shared-store";
+} from "@sps/shared-frontend-client-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `<%= module_name %>/${api.rtk.reducerPath}`;
