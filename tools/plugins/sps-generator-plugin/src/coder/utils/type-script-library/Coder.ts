@@ -1,6 +1,5 @@
 import {
   Tree,
-  formatFiles,
   generateFiles,
   updateJson,
   updateProjectConfiguration,
@@ -37,7 +36,12 @@ export class Coder {
     });
 
     if (generateFilesPath) {
-      generateFiles(tree, generateFilesPath, this.directory, templateParams);
+      generateFiles(
+        tree,
+        generateFilesPath,
+        this.directory,
+        templateParams || {},
+      );
     } else {
       generateFiles(tree, `${__dirname}/files`, this.directory, {});
     }

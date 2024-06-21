@@ -1,4 +1,4 @@
-import { Tree, formatFiles } from "@nx/devkit";
+import { Tree } from "@nx/devkit";
 import {
   Coder as LibsCoder,
   IGeneratorProps as ILibsCoderGeneratorProps,

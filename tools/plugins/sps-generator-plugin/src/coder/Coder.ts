@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  formatFiles,
-  getProjects,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import {
   Coder as RootCoder,
   IGeneratorProps as IRootCoderGeneratorProps,
