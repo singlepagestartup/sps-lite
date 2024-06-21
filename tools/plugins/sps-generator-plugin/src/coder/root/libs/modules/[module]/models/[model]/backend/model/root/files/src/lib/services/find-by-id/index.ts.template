@@ -3,7 +3,7 @@ import {
   Table,
   populate,
   schemaName,
-} from "<%= schema_module_lib_name %>";
+} from "<%= schema_module_import_path %>";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

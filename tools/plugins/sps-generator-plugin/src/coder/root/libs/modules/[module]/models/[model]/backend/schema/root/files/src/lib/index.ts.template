@@ -4,8 +4,8 @@ export {
   selectSchema,
   modelName,
   schemaName,
-} from "<%= table_library_name %>";
+} from "<%= table_import_path %>";
 export {
   Relations,
   populate,
-} from "<%= relations_library_name %>";
+} from "<%= relations_import_path %>";

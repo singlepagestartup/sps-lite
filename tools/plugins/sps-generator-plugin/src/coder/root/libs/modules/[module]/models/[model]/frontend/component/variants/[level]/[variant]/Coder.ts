@@ -42,7 +42,7 @@ export class Coder {
   exportVariant: ExportVariant;
   importInterface: ImportInterface;
   exportInterface: ExportInterface;
-  template: string;
+  template?: string;
   level: string;
 
   constructor({
@@ -242,7 +242,7 @@ export class Coder {
         regex: new RegExp(`[|](\\s+)+?[|]`),
         content: "|",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -261,7 +261,7 @@ export class Coder {
         regex: this.importVariant.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -274,7 +274,7 @@ export class Coder {
         regex: this.exportVariant.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -287,7 +287,7 @@ export class Coder {
         regex: this.importInterface.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -300,7 +300,7 @@ export class Coder {
         regex: this.exportInterface.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }

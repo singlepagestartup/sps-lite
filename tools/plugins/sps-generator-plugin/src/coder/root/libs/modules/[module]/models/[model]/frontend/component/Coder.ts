@@ -59,22 +59,28 @@ export class Coder {
   async migrate(props: { version: string }) {
     await this.project.root.migrate(props);
 
-    for (const variant of this.project.variants) {
-      await variant.migrate(props);
+    if (this.project.variants) {
+      for (const variant of this.project.variants) {
+        await variant.migrate(props);
+      }
     }
   }
 
   async create() {
     await this.project.root.create();
 
-    for (const variant of this.project.variants) {
-      await variant.create();
+    if (this.project.variants) {
+      for (const variant of this.project.variants) {
+        await variant.create();
+      }
     }
   }
 
   async remove() {
-    for (const variant of this.project.variants) {
-      await variant.remove();
+    if (this.project.variants) {
+      for (const variant of this.project.variants) {
+        await variant.remove();
+      }
     }
 
     await this.project.root.remove();

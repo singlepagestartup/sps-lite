@@ -11,7 +11,7 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { Coder as BackendCoder } from "../../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: BackendCoder;
@@ -62,7 +62,7 @@ export class Coder {
       return;
     }
 
-    const modelLibName = this.parent.project.model.baseName;
+    const modelImportPath = this.parent.project.model.absoluteName;
     const modelSchemaLibName = this.parent.project.schema.baseName;
     const moduleAppPath =
       this.parent.parent.parent.parent.project.backend.project.app.project.root
@@ -75,7 +75,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_lib_name: modelLibName,
+        model_import_path: modelImportPath,
         model_schema_lib_name: modelSchemaLibName,
       },
     });
@@ -132,7 +132,7 @@ export class Coder {
         regex: this.exportRoute.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -145,7 +145,7 @@ export class Coder {
         regex: this.importAppAsAsPropertyModelName.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }

@@ -28,10 +28,10 @@ export class Coder {
   absoluteName: string;
   project?: ProjectConfiguration;
   nameStyles: ReturnType<typeof getNameStyles>;
-  importPopulate: ImportPopulate;
-  exportPopulate: ExportPopulate;
-  importRelation: ImportRelation;
-  exportRelation: ExportRelation;
+  importPopulate?: ImportPopulate;
+  exportPopulate?: ExportPopulate;
+  importRelation?: ImportRelation;
+  exportRelation?: ExportRelation;
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -52,14 +52,14 @@ export class Coder {
   async setReplacers() {
     this.importPopulate = new ImportPopulate({
       namePropertyCased: this.nameStyles.propertyCased.base,
-      libName: this.baseName,
+      importPath: this.absoluteName,
     });
     this.exportPopulate = new ExportPopulate({
       namePropertyCased: this.nameStyles.propertyCased.base,
     });
     this.importRelation = new ImportRelation({
       leftProjectRelationNamePropertyCased: this.nameStyles.propertyCased.base,
-      libName: this.baseName,
+      importPath: this.absoluteName,
     });
     this.exportRelation = new ExportRelation({
       leftProjectRelationNamePropertyCased: this.nameStyles.propertyCased.base,
@@ -85,7 +85,7 @@ export class Coder {
       this.parent.parent.parent.parent.parent.parent.project.relations[0];
 
     const relationsSchemaProjectImportPath =
-      relation.project.relation.project.backend.project.schema.baseName;
+      relation.project.relation.project.backend.project.schema.absoluteName;
 
     const relationsPopulatePath = path.join(
       this.parent.parent.parent.project.schema.project.relations.project.root
@@ -131,6 +131,15 @@ export class Coder {
   }) {
     await this.setReplacers();
 
+    if (
+      !this.importPopulate ||
+      !this.exportPopulate ||
+      !this.importRelation ||
+      !this.exportRelation
+    ) {
+      throw new Error(`Replacers not set`);
+    }
+
     await addToFile({
       toTop: true,
       pathToFile: populatePath,
@@ -168,6 +177,14 @@ export class Coder {
     schemaPath: string;
   }) {
     await this.setReplacers();
+    if (
+      !this.importPopulate ||
+      !this.exportPopulate ||
+      !this.importRelation ||
+      !this.exportRelation
+    ) {
+      throw new Error(`Replacers not set`);
+    }
 
     try {
       await replaceInFile({
@@ -176,7 +193,7 @@ export class Coder {
         regex: this.importPopulate.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -189,7 +206,7 @@ export class Coder {
         regex: this.exportPopulate.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -202,7 +219,7 @@ export class Coder {
         regex: this.importRelation.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -215,7 +232,7 @@ export class Coder {
         regex: this.exportRelation.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -256,19 +273,13 @@ export class Coder {
 }
 
 export class ImportPopulate extends RegexCreator {
-  constructor({
-    libName,
-    namePropertyCased,
-  }: {
-    libName: string;
-    namePropertyCased: string;
-  }) {
+  constructor(props: { importPath: string; namePropertyCased: string }) {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `import { populate as ${namePropertyCased} } from "${libName}";`;
+    const content = `import { populate as ${props.namePropertyCased} } from "${props.importPath}";`;
     const contentRegex = new RegExp(
-      `import${space}{${space}populate${space}as${space}${namePropertyCased}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}populate${space}as${space}${props.namePropertyCased}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({
@@ -300,19 +311,16 @@ export class ExportPopulate extends RegexCreator {
 }
 
 export class ImportRelation extends RegexCreator {
-  constructor({
-    libName,
-    leftProjectRelationNamePropertyCased,
-  }: {
-    libName: string;
+  constructor(props: {
+    importPath: string;
     leftProjectRelationNamePropertyCased: string;
   }) {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `import { relation as ${leftProjectRelationNamePropertyCased} } from "${libName}";`;
+    const content = `import { relation as ${props.leftProjectRelationNamePropertyCased} } from "${props.importPath}";`;
     const contentRegex = new RegExp(
-      `import${space}{${space}relation${space}as${space}${leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}relation${space}as${space}${props.leftProjectRelationNamePropertyCased}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({

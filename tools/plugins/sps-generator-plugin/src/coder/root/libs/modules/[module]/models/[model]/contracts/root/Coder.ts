@@ -14,7 +14,7 @@ import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -24,6 +24,7 @@ export class Coder {
   baseDirectory: string;
   absoluteName: string;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
@@ -32,6 +33,8 @@ export class Coder {
     this.baseName = `${props.parent.baseName}`;
     this.baseDirectory = `${props.parent.baseDirectory}/root`;
     this.absoluteName = `${props.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -117,7 +120,7 @@ export class Coder {
         regex: exportInterfaceField.onRemove.regex,
         content: exportInterfaceField.onRemove.content,
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -140,12 +143,7 @@ export class Coder {
 }
 
 export class ExportInterfaceField extends RegexCreator {
-  constructor({
-    name,
-    type,
-    level,
-    isRequired,
-  }: {
+  constructor(props: {
     name: string;
     type: string;
     level: string;
@@ -153,7 +151,7 @@ export class ExportInterfaceField extends RegexCreator {
   }) {
     let place = `export interface IModel extends Omit<IParentModel, "variant"> {`;
 
-    if (level === "sps-lite") {
+    if (props.level === "sps-lite") {
       place = `export interface IModel {`;
     }
 
@@ -161,15 +159,16 @@ export class ExportInterfaceField extends RegexCreator {
       `export interface IModel${space}(extends Omit<IParentModel, \\"variant\\">)?${space}{`,
     );
 
-    if (level === "sps-lite") {
+    if (props.level === "sps-lite") {
       placeRegex = new RegExp(`export interface IModel${space}{`);
     }
 
-    const propertyCaseName = getNameStyles({ name }).propertyCased.base;
-    const content = `${propertyCaseName}${isRequired ? "" : "?"}: ${type};`;
+    const propertyCaseName = getNameStyles({ name: props.name }).propertyCased
+      .base;
+    const content = `${propertyCaseName}${props.isRequired ? "" : "?"}: ${props.type};`;
 
     const contentRegex = new RegExp(
-      `${propertyCaseName}${isRequired ? "" : "\\?"}: ${type};`,
+      `${propertyCaseName}${props.isRequired ? "" : "\\?"}: ${props.type};`,
     );
 
     super({

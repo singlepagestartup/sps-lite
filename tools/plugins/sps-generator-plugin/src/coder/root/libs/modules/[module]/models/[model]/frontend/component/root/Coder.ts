@@ -1,24 +1,11 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  generateFiles,
-  getProjects,
-  offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ComponentCoder } from "../Coder";
 import * as nxWorkspace from "@nx/workspace";
-import {
-  libraryGenerator as reactLibraryGenerator,
-  SupportedStyles,
-} from "@nx/react";
-import { Linter } from "@nx/eslint";
-import { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import path from "path";
 import { Migrator } from "./migrator/Migrator";
+import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ComponentCoder;
@@ -28,6 +15,7 @@ export class Coder {
   name: string;
   absoluteName: string;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
@@ -36,6 +24,8 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.tree = props.tree;
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -54,49 +44,15 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
-    const libraryOptions = {
-      name: this.baseName,
-      directory: this.baseDirectory,
-      linter: "none" as Linter.EsLint,
-      minimal: true,
-      style: "none" as SupportedStyles,
-      projectNameAndRootFormat: "as-provided" as ProjectNameAndRootFormat,
-      strict: true,
-    };
-
-    await reactLibraryGenerator(this.tree, libraryOptions);
-
-    updateProjectConfiguration(this.tree, this.baseName, {
+    await createSpsReactLibrary({
       root: this.baseDirectory,
-      sourceRoot: `${this.baseDirectory}/src`,
-      projectType: "library",
-      tags: [],
-      targets: {
-        lint: {},
-      },
-    });
-
-    generateFiles(
-      this.tree,
-      path.join(__dirname, `files`),
-      this.baseDirectory,
-      {
+      name: this.baseName,
+      tree: this.tree,
+      generateFilesPath: path.join(__dirname, `files`),
+      templateParams: {
         template: "",
-        offset_from_root: offsetFromRootProject,
       },
-    );
-
-    updateJson(this.tree, `${this.baseDirectory}/tsconfig.json`, (json) => {
-      json.references = [];
-      delete json.files;
-      delete json.include;
-
-      return json;
     });
-
-    this.tree.delete(`${this.baseDirectory}/tsconfig.lib.json`);
 
     this.project = getProjects(this.tree).get(this.baseName);
   }

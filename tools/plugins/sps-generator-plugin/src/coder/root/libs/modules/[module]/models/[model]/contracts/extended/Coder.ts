@@ -10,7 +10,7 @@ import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -20,6 +20,7 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
   absoluteName: string;
+  importPath: string;
 
   constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
@@ -28,6 +29,8 @@ export class Coder {
     this.baseName = `${props.parent.baseName}-extended`;
     this.baseDirectory = `${props.parent.baseDirectory}/extended`;
     this.absoluteName = `${props.parent.absoluteName}/extended`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -46,7 +49,7 @@ export class Coder {
       return;
     }
 
-    const rootContractsImportPath = this.parent.project.root.baseName;
+    const rootContractsImportPath = this.parent.project.root.absoluteName;
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     await createSpsTSLibrary({

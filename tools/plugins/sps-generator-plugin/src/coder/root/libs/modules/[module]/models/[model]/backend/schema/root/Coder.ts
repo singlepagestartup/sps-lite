@@ -11,7 +11,7 @@ import { util as getModuleCuttedStyles } from "../../../../../../../../../utils/
 import { Coder as SchemaCoder } from "../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: SchemaCoder;
@@ -22,6 +22,7 @@ export class Coder {
   project?: ProjectConfiguration;
   absoluteName: string;
   exportTableAndVaritantEnumTable: ExportTableAndVaritantEnumTable;
+  importPath: string;
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -30,6 +31,8 @@ export class Coder {
     this.tree = props.tree;
     this.name = "schema";
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const moduleNameCuttedAndPascalCased = getModuleCuttedStyles({
@@ -42,7 +45,7 @@ export class Coder {
     this.exportTableAndVaritantEnumTable = new ExportTableAndVaritantEnumTable({
       moduleName: moduleNameCuttedAndPascalCased,
       modelNamePascalCased,
-      libName: this.baseName,
+      importPath: this.importPath,
     });
 
     this.project = getProjects(this.tree).get(this.baseName);
@@ -74,7 +77,7 @@ export class Coder {
         regex: this.exportTableAndVaritantEnumTable.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -86,8 +89,8 @@ export class Coder {
       return;
     }
 
-    const tableLibraryName = this.parent.project.table.baseName;
-    const relationsLibraryName = this.parent.project.relations.baseName;
+    const tableImportPath = this.parent.project.table.absoluteName;
+    const relationsImportPath = this.parent.project.relations.absoluteName;
     const moduleBackendSchemaRootDirectory =
       this.parent.parent.parent.parent.parent.project.backend.project.schema
         .project.root.baseDirectory;
@@ -99,8 +102,8 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        table_library_name: tableLibraryName,
-        relations_library_name: relationsLibraryName,
+        table_import_path: tableImportPath,
+        relations_import_path: relationsImportPath,
       },
     });
 
@@ -140,27 +143,20 @@ export class Coder {
 }
 
 export class ExportTableAndVaritantEnumTable extends RegexCreator {
-  string: string;
-  regex: RegExp;
-
-  constructor({
-    moduleName,
-    modelNamePascalCased,
-    libName,
-  }: {
+  constructor(props: {
     moduleName: string;
     modelNamePascalCased: string;
-    libName: string;
+    importPath: string;
   }) {
     const place = ``;
     const placeRegex = new RegExp(``);
     const content = `export {
-      Table as ${moduleName}${modelNamePascalCased},\n
-      Relations as ${moduleName}${modelNamePascalCased}Relations,\n
-    } from "${libName}";`;
+      Table as ${props.moduleName}${props.modelNamePascalCased},\n
+      Relations as ${props.moduleName}${props.modelNamePascalCased}Relations,\n
+    } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `export {([\\s]+?)?Table as ${moduleName}${modelNamePascalCased}([,]?)([\\s]+?)?Relations as ${moduleName}${modelNamePascalCased}Relations([,]?)([\\s]+?)?} from "${libName}";`,
+      `export {([\\s]+?)?Table as ${props.moduleName}${props.modelNamePascalCased}([,]?)([\\s]+?)?Relations as ${props.moduleName}${props.modelNamePascalCased}Relations([,]?)([\\s]+?)?} from "${props.importPath}";`,
     );
 
     super({

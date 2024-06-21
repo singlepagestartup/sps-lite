@@ -38,7 +38,6 @@ export class Coder {
     this.absoluteName = `${props.parent.absoluteName}/relations`;
 
     this.project.root = new RootCoder({
-      ...props.root,
       parent: this,
       tree: this.tree,
     });

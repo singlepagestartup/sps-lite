@@ -52,13 +52,11 @@ export class Coder {
     });
 
     this.project.model = new ModelRootCoder({
-      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
     this.project.app = new AppRootCoder({
-      ...props.app,
       tree: this.tree,
       parent: this,
     });

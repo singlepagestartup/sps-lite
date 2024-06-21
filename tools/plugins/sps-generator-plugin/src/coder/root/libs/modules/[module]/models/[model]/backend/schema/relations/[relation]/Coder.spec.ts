@@ -8,12 +8,12 @@ import {
 describe("Coder", () => {
   describe(`ImportPopulate`, () => {
     const namePropertyCased = "pagesToLayouts";
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
 
     const exportRoute = new ImportPopulate({
       namePropertyCased,
-      libName,
+      importPath,
     });
 
     it(`should match the regex 1`, () => {
@@ -71,12 +71,12 @@ describe("Coder", () => {
 
   describe(`ImportRelation`, () => {
     const leftProjectRelationNamePropertyCased = "pages";
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";
 
     const exportRoute = new ImportRelation({
       leftProjectRelationNamePropertyCased,
-      libName,
+      importPath,
     });
 
     it(`should match the regex 1`, () => {

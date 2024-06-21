@@ -10,7 +10,7 @@ import path from "path";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ApiCoder;
@@ -21,6 +21,7 @@ export class Coder {
   absoluteName: string;
   project?: ProjectConfiguration;
   moduleName: string;
+  importPath: string;
 
   constructor({
     parent,
@@ -32,6 +33,8 @@ export class Coder {
     this.absoluteName = `${parent.absoluteName}/client`;
     this.tree = tree;
     this.parent = parent;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
@@ -55,7 +58,7 @@ export class Coder {
     }
 
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-    const apiModelImportPath = this.parent.project.model.baseName;
+    const apiModelImportPath = this.parent.project.model.importPath;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,

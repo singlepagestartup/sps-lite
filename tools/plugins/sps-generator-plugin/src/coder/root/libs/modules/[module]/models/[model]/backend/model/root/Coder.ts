@@ -10,7 +10,7 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { Coder as BackendCoder } from "../../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -18,17 +18,12 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  libName: string;
-  rootAppProject: ProjectConfiguration;
   absoluteName: string;
-  rootSchemaProject: ProjectConfiguration;
-  root: string;
   modelName: string;
   schemaModelName: string;
   moduleName: string;
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
-  schemaModuleLibName: string;
   project?: ProjectConfiguration;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
@@ -51,10 +46,13 @@ export class Coder {
     this.moduleName = moduleName;
     this.schemaModelName = schemaModelName;
     this.modelName = modelName;
+
+    const importPath = this.absoluteName;
+
     this.importModelAsAsPropertyModelName =
       new ImportModelAsAsPropertyModelName({
         asPropertyModelName,
-        libName: this.baseName,
+        importPath,
       });
     this.exportModel = new ExportModel({
       asPropertyModelName,
@@ -78,8 +76,9 @@ export class Coder {
     }
 
     const moduleDbImportPath =
-      this.parent.parent.parent.parent.project.backend.project.db.baseName;
-    const schemaModuleLibName = this.parent.project.schema.baseName;
+      this.parent.parent.parent.parent.project.backend.project.db.absoluteName;
+    const schemaModuleImportPath = this.parent.project.schema.absoluteName;
+
     const moduleBackendModelsRootPath =
       this.parent.parent.parent.parent.project.backend.project.models.project
         .root.baseDirectory;
@@ -92,7 +91,7 @@ export class Coder {
       templateParams: {
         template: "",
         module_db_import_path: moduleDbImportPath,
-        schema_module_lib_name: schemaModuleLibName,
+        schema_module_import_path: schemaModuleImportPath,
         model_name: this.modelName,
         module_name: this.moduleName,
         schema_model_name: this.schemaModelName,
@@ -130,7 +129,7 @@ export class Coder {
         regex: this.exportModel.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -143,7 +142,7 @@ export class Coder {
         regex: this.importModelAsAsPropertyModelName.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -173,20 +172,14 @@ export class Coder {
 }
 
 export class ImportModelAsAsPropertyModelName extends RegexCreator {
-  constructor({
-    asPropertyModelName,
-    libName,
-  }: {
-    asPropertyModelName: string;
-    libName: string;
-  }) {
+  constructor(props: { asPropertyModelName: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { model as ${asPropertyModelName} } from "${libName}";`;
+    const content = `import { model as ${props.asPropertyModelName} } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import { model as ${asPropertyModelName} } from "${libName}";`,
+      `import { model as ${props.asPropertyModelName} } from "${props.importPath}";`,
     );
 
     super({

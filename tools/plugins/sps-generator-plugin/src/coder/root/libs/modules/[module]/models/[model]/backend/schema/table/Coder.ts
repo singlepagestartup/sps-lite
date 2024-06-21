@@ -9,7 +9,7 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { Coder as SchemaCoder } from "../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export interface IEditFieldProps {
   name: string;
@@ -36,9 +36,6 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   tree: Tree;
-  modelName: string;
-  modelNameSnakeCased: string;
-  moduleAndModelNamePascalCased: string;
   moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
   project?: ProjectConfiguration;
   tableName: string;
@@ -156,7 +153,7 @@ export class Coder {
         regex: fieldToAdd.onRemove.regex,
         content: fieldToAdd.onRemove.content,
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -179,11 +176,7 @@ export class Coder {
 }
 
 export class Field extends RegexCreator {
-  constructor({
-    name,
-    pgCoreType,
-    isRequired,
-  }: {
+  constructor(props: {
     name: string;
     pgCoreType: string;
     isRequired: boolean;
@@ -191,11 +184,11 @@ export class Field extends RegexCreator {
     const place = `export const fields = {`;
     const placeRegex = new RegExp(`export const fields = {`);
 
-    const fieldNameCamelCase = names(name).propertyName;
-    const content = `${fieldNameCamelCase}: pgCore.${pgCoreType}("${name}")${isRequired ? ".notNull()" : ""},`;
+    const fieldNameCamelCase = names(props.name).propertyName;
+    const content = `${fieldNameCamelCase}: pgCore.${props.pgCoreType}("${props.name}")${props.isRequired ? ".notNull()" : ""},`;
 
     const contentRegex = new RegExp(
-      `${fieldNameCamelCase}: pgCore.${pgCoreType}\\("${name}"\\)${isRequired ? ".notNull\\(\\)" : ""},`,
+      `${fieldNameCamelCase}: pgCore.${props.pgCoreType}\\("${props.name}"\\)${props.isRequired ? ".notNull\\(\\)" : ""},`,
     );
 
     super({

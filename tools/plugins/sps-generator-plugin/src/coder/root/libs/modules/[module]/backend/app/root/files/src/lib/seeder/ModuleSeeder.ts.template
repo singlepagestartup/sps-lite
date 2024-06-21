@@ -1,4 +1,4 @@
-import { models } from "@sps/<%= module_name_kebab_case %>-backend-models";
+import { models } from "@sps/<%= module_name_kebab_case %>/backend/models/root";
 import { config } from "./config";
 import { ModuleSeeder as ParentModuleSeeder } from "@sps/shared-backend-api";
 

@@ -4,11 +4,11 @@ describe("Coder", () => {
   describe(`ExportTableAndVaritantEnumTable`, () => {
     const moduleName = "SPSWB";
     const modelNamePascalCased = "Slide";
-    const libName = "@sps/sps-website-builder-models-slide-backend-schema";
+    const importPath = "@sps/sps-website-builder-models-slide-backend-schema";
     const exportSchema = new ExportTableAndVaritantEnumTable({
       moduleName,
       modelNamePascalCased,
-      libName,
+      importPath,
     });
 
     it(`should match the regex 1`, () => {

@@ -4,7 +4,7 @@ import {
   populate,
   schemaName,
   Table,
-} from "<%= schema_module_lib_name %>";
+} from "<%= schema_module_import_path %>";
 
 export async function service(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({

@@ -2,7 +2,7 @@ import { Tree } from "@nx/devkit";
 import { Coder as BackendCoder } from "../Coder";
 import { Coder as RootCoder } from "./root/Coder";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;

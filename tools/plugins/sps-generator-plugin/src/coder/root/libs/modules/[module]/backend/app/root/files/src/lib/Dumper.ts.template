@@ -1,4 +1,4 @@
-import { models } from "@sps/<%= module_name_kebab_case %>-backend-models";
+import { models } from "@sps/<%= module_name_kebab_case %>/backend/models/root";
 
 export class Dumper {
   models: typeof models;

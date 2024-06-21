@@ -30,15 +30,15 @@ describe("Coder", () => {
   });
 
   describe(`ImportModelAsAsPropertyModelName`, () => {
-    const libName = "@sps/sps-website-builder-models-slide-backend-model";
+    const importPath = "@sps/sps-website-builder-models-slide-backend-model";
     const asPropertyModelName = "wideSlideRoute";
-    const importPath = new ImportModelAsAsPropertyModelName({
-      libName,
+    const importModel = new ImportModelAsAsPropertyModelName({
+      importPath,
       asPropertyModelName,
     });
 
     it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importModel.onRemove.regex;
 
       const string = `import { model as layout } from "@sps/sps-website-builder-models-layout-backend-model";
       import { model as wideSlideRoute } from "@sps/sps-website-builder-models-slide-backend-model";

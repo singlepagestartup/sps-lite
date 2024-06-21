@@ -6,7 +6,7 @@ import { util as createSpsTSLibrary } from "../../../../../../../../../../../uti
 import { Coder as RelationsCoder } from "../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: RelationsCoder;
@@ -69,7 +69,8 @@ export class Coder {
       return;
     }
 
-    const parentModelLibrary = this.parent.parent.project.table.baseName;
+    const parentModelImportPath =
+      this.parent.parent.project.table.parent.absoluteName;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -80,7 +81,7 @@ export class Coder {
         template: "",
         model: this.modelName,
         pluralized_model: this.snakeCasePluralizedModelName,
-        parent_model_library: parentModelLibrary,
+        parent_model_import_path: parentModelImportPath,
       },
     });
 

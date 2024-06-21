@@ -11,7 +11,7 @@ import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ApiCoder;
@@ -24,6 +24,7 @@ export class Coder {
   modelName: string;
   modelNamePluralized: string;
   moduleName: string;
+  importPath: string;
 
   constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
@@ -32,6 +33,8 @@ export class Coder {
     this.absoluteName = `${props.parent.absoluteName}/model`;
     this.tree = props.tree;
     this.parent = props.parent;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
@@ -60,9 +63,9 @@ export class Coder {
     }
 
     const rootContractsImportPath =
-      this.parent.parent.parent.project.contracts.project.root.baseName;
+      this.parent.parent.parent.project.contracts.project.root.importPath;
     const extendedContractsImportPath =
-      this.parent.parent.parent.project.contracts.project.extended.baseName;
+      this.parent.parent.parent.project.contracts.project.extended.importPath;
 
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 

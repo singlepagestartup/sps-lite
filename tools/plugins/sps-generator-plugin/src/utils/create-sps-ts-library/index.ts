@@ -61,26 +61,18 @@ export const util = async ({
   });
 
   updateJson(tree, `${root}/tsconfig.json`, (json) => {
-    json.references = [
-      {
-        path: "./tsconfig.lib.json",
-      },
-    ];
+    delete json.references;
 
     return json;
   });
 
   const defaultFileName = `${name}.ts`.replace("@sps/", "");
 
-  updateJson(tree, `${root}/package.json`, (json) => {
-    delete json.type;
-
-    return json;
-  });
-
   tree.delete(`${root}/src/lib/${defaultFileName}`);
   tree.delete(`${root}/jest.config.ts`);
+  tree.delete(`${root}/package.json`);
   tree.delete(`${root}/tsconfig.spec.json`);
+  tree.delete(`${root}/tsconfig.lib.json`);
   tree.delete(`${root}/.babelrc`);
   tree.delete(`${root}/.eslintrc.json`);
 

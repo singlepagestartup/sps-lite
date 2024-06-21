@@ -12,7 +12,7 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   tree: Tree;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
 

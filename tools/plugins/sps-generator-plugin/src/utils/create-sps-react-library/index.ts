@@ -64,26 +64,9 @@ export const util = async ({
   });
 
   updateJson(tree, `${root}/tsconfig.json`, (json) => {
-    json.files = [];
-    json.include = [];
-
-    json.references = [
-      {
-        path: "./tsconfig.lib.json",
-      },
-    ];
-
-    return json;
-  });
-
-  updateJson(tree, `${root}/package.json`, (json) => {
-    json.singlepagestartup = {
-      version: "0.0.156",
-    };
-
-    if (templateParams?.["template_name"]) {
-      json.singlepagestartup.template = templateParams["template_name"];
-    }
+    delete json.files;
+    delete json.include;
+    delete json.references;
 
     return json;
   });
@@ -91,5 +74,7 @@ export const util = async ({
   tree.delete(`${root}/.babelrc`);
   tree.delete(`${root}/.eslintrc.json`);
   tree.delete(`${root}/jest.config.ts`);
+  tree.delete(`${root}/tsconfig.lib.json`);
   tree.delete(`${root}/tsconfig.spec.json`);
+  tree.delete(`${root}/package.json`);
 };

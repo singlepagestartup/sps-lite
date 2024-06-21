@@ -43,12 +43,6 @@ export class Coder {
     await this.project.root.migrate(props);
   }
 
-  /**
-   * @todo
-   * Attach to
-   * libs/providers/sps-db-provider/src/lib/drizzle/index.ts
-   * libs/providers/sps-db-provider/src/lib/drizzle/schema.ts
-   */
   async create() {
     await this.project.root.create();
   }
