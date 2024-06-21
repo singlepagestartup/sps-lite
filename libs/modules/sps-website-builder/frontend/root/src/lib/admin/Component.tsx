@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@sps/shadcn";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronDown } from "lucide-react";
 const FeaturesSpsLiteAdminTable = dynamic(() =>
   import(
     "@sps/sps-website-builder/models/feature/frontend/component/variants/sps-lite/admin-table"

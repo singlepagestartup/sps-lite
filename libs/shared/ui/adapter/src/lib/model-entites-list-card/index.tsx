@@ -10,7 +10,7 @@ import {
   CardHeader,
   Button,
 } from "@sps/shadcn";
-import { ChevronUpDownIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ChevronsUpDown, Plus } from "lucide-react";
 
 interface IComponentProps {
   adminForm?: ReactNode;
@@ -33,7 +33,7 @@ export function Component(props: IComponentProps) {
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button variant="outline" size="sm" className="gap-2">
-                  <PlusIcon className="h-3 w-3" /> Add new
+                  <Plus className="h-3 w-3" /> Add new
                 </Button>
               </DialogTrigger>
               <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
@@ -56,7 +56,7 @@ export function Component(props: IComponentProps) {
             size="sm"
             className="gap-2"
           >
-            <ChevronUpDownIcon className="h-3 w-3" /> {show ? "Hide" : "Show"}
+            <ChevronsUpDown className="h-3 w-3" /> {show ? "Hide" : "Show"}
           </Button>
         </div>
       </div>

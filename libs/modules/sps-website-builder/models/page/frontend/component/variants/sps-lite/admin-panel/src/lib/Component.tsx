@@ -22,7 +22,7 @@ import { Component as SliderBlockSpsLiteAdminTable } from "@sps/sps-website-buil
 import { Component as SliderSpsLiteAdminTable } from "@sps/sps-website-builder/models/slider/frontend/component/variants/sps-lite/admin-table";
 import { Component as SlideSpsLiteAdminTable } from "@sps/sps-website-builder/models/slide/frontend/component/variants/sps-lite/admin-table";
 import { Component as FeaturesSectionBlockSpsLiteAdminTable } from "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-table";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronsUpDownIcon } from "lucide-react";
 
 export function Component(props: IComponentPropsExtended) {
   const [showModels, setShowModels] = useState(true);
@@ -227,7 +227,7 @@ export function Component(props: IComponentPropsExtended) {
                   className="text-left justify-start gap-3 py-0 text-secondary-foreground"
                 >
                   Not finished models
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ChevronsUpDownIcon className="w-4 h-4" />
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>

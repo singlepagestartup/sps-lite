@@ -1,8 +1,0 @@
-{
-  "name": "@sps/shared-bdd-utils",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/bdd/utils/src",
-  "projectType": "library",
-  "tags": [],
-  "targets": {}
-}

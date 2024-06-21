@@ -1,6 +1,6 @@
 import React from "react";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { IComponentProps } from "./interface";
+import { Pencil, Trash } from "lucide-react";
 
 export function Skeleton(props: IComponentProps) {
   return (
@@ -11,12 +11,12 @@ export function Skeleton(props: IComponentProps) {
         </div>
         <div className="flex items-center gap-3">
           <button className="pill-button">
-            <PencilIcon className="h-3 w-3" />
+            <Pencil className="h-3 w-3" />
             <p className="hidden lg:inline">Edit</p>
           </button>
 
           <button className="destructive-pill-button">
-            <TrashIcon className="h-3 w-3" />
+            <Trash className="h-3 w-3" />
             <p className="hidden lg:inline">Delete</p>
           </button>
         </div>

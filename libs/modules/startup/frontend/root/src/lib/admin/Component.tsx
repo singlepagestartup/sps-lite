@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronsUpDownIcon } from "lucide-react";
 import {
   Button,
   Collapsible,
@@ -100,7 +100,7 @@ export function Component(props: IComponentProps) {
                   className="text-left justify-start gap-3 py-0 text-secondary-foreground"
                 >
                   Not finished models
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ChevronsUpDownIcon className="w-4 h-4" />
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>

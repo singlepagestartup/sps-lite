@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +19,7 @@ import {
   DialogTitle,
 } from "@sps/shadcn";
 import { IComponentProps } from "./interface";
+import { Pencil, Trash } from "lucide-react";
 
 export function Component(props: IComponentProps) {
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ export function Component(props: IComponentProps) {
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <button className="pill-button">
-                  <PencilIcon className="h-3 w-3" />
+                  <Pencil className="h-3 w-3" />
                   <p className="hidden lg:inline">Edit</p>
                 </button>
               </DialogTrigger>
@@ -51,7 +51,7 @@ export function Component(props: IComponentProps) {
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <button className="destructive-pill-button">
-                <TrashIcon className="h-3 w-3" />
+                <Trash className="h-3 w-3" />
                 <p className="hidden lg:inline">Delete</p>
               </button>
             </AlertDialogTrigger>

@@ -9,7 +9,7 @@ import {
   CollapsibleTrigger,
 } from "@sps/shadcn";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-billing/models/widget/frontend/component/variants/sps-lite/admin-table";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronsUpDown } from "lucide-react";
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -95,7 +95,7 @@ export function Component(props: IComponentProps) {
                   className="text-left justify-start gap-3 py-0 text-secondary-foreground"
                 >
                   Not finished models
-                  <ChevronUpDownIcon className="w-4 h-4" />
+                  <ChevronsUpDown className="w-4 h-4" />
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent>
