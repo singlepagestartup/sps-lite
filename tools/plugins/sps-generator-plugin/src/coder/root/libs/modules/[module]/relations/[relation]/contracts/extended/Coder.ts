@@ -45,7 +45,7 @@ export class Coder {
       return;
     }
 
-    const rootContractsImportPath = this.parent.project.root.baseName;
+    const rootContractsImportPath = this.parent.project.root.importPath;
 
     const leftModelContractsImportPath =
       this.parent.parent.parent.parent.project.models[0].project.model.project
