@@ -213,8 +213,6 @@ export async function migrateGenerator(
   //   // });
   // }
 
-  // await formatFiles(tree);
-
   const relations = [
     {
       name: "buttons-arrays-to-buttons",

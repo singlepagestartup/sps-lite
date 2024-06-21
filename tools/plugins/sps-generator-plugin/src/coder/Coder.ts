@@ -54,13 +54,9 @@ export class Coder {
 
   async addField(props: IEditFieldProps) {
     await this.project.root.addField(props);
-
-    await formatFiles(this.tree);
   }
 
   async removeField(props: IEditFieldProps) {
     await this.project.root.removeField(props);
-
-    await formatFiles(this.tree);
   }
 }

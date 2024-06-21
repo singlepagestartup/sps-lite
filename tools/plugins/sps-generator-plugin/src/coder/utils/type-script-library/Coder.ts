@@ -69,8 +69,6 @@ export class Coder {
     });
 
     tree.delete(`${this.directory}/src/lib/${defaultFileName}`);
-
-    await formatFiles(tree);
   }
 
   async delete({ tree }: { tree: Tree }) {
@@ -79,7 +77,5 @@ export class Coder {
       skipFormat: true,
       forceRemove: false,
     });
-
-    await formatFiles(tree);
   }
 }

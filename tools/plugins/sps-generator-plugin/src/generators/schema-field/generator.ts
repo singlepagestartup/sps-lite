@@ -43,8 +43,6 @@ export async function schemaFieldGenerator(
       isRequired: options.is_required,
     });
   }
-
-  await formatFiles(tree);
 }
 
 export default schemaFieldGenerator;

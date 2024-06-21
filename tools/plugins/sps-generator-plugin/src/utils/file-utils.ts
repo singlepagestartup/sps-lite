@@ -23,8 +23,6 @@ export const addToFile = async ({
     tree.write(pathToFile, `${fileContent}\n${content}`);
   }
 
-  await formatFiles(tree);
-
   fileContent = tree.read(pathToFile)?.toString();
 
   if (!fileContent) {

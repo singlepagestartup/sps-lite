@@ -124,8 +124,6 @@ export async function frontendComponentVariantGenerator(
       await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants?.[0].create();
     }
   }
-
-  await formatFiles(tree);
 }
 
 export default frontendComponentVariantGenerator;

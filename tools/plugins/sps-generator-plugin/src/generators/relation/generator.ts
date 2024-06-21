@@ -123,8 +123,6 @@ export async function relationGenerator(
       }
     }
   }
-
-  await formatFiles(tree);
 }
 
 export default relationGenerator;

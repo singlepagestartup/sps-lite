@@ -77,8 +77,6 @@ export async function moduleGenerator(
   } else {
     await coder.project.root.project.libs.project.modules[0].create();
   }
-
-  await formatFiles(tree);
 }
 
 export default moduleGenerator;
