@@ -134,6 +134,13 @@
       "when": 1718981666854,
       "tag": "0018_mighty_domino",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1719012643359,
+      "tag": "0019_fantastic_shinko_yamashiro",
+      "breakpoints": true
     }
   ]
 }

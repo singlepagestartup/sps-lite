@@ -1,4 +1,4 @@
-import { Tree, getProjects } from "@nx/devkit";
+import { Tree, formatFiles, getProjects } from "@nx/devkit";
 import { MigrateGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 
@@ -207,6 +207,8 @@ export async function migrateGenerator(
       version: "0.1.0",
     });
   }
+
+  await formatFiles(tree);
 }
 
 export default migrateGenerator;

@@ -1,3 +1,4 @@
+import { model as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/model/root";
 import { model as pagesToMetadata } from "@sps/sps-website-builder/relations/pages-to-metadata/backend/model/root";
 import { model as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/model/root";
 import { model as metadata } from "@sps/sps-website-builder/models/metadata/backend/model/root";
@@ -46,6 +47,7 @@ import { model as layout } from "@sps/sps-website-builder/models/layout/backend/
 import { model as page } from "@sps/sps-website-builder/models/page/backend/model/root";
 
 export const models = {
+  featuresToSpsFileStorageModuleFiles,
   pagesToMetadata,
   metadataToSpsFileStorageModuleFiles,
   metadata,

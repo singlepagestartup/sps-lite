@@ -1,3 +1,4 @@
+import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/app/root";
 import { app as pagesToMetadata } from "@sps/sps-website-builder/relations/pages-to-metadata/backend/app/root";
 import { app as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/app/root";
 import { app as metadata } from "@sps/sps-website-builder/models/metadata/backend/app/root";
@@ -46,6 +47,8 @@ import { app as layout } from "@sps/sps-website-builder/models/layout/backend/ap
 import { app as pages } from "@sps/sps-website-builder/models/page/backend/app/root";
 
 export const routes = {
+  "/features-to-sps-file-storage-module-files":
+    featuresToSpsFileStorageModuleFiles,
   "/pages-to-metadata": pagesToMetadata,
   "/metadata-to-sps-file-storage-module-files":
     metadataToSpsFileStorageModuleFiles,
