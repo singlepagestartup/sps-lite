@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-rbac/models/authentication-block/frontend/api/client";
-import { invalidateServerTag } from "@sps/shared-store";
+import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-form";

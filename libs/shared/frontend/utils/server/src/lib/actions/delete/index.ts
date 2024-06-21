@@ -7,6 +7,9 @@ import {
 } from "@sps/shared-utils";
 import { cookies } from "next/headers";
 
+/**
+ * @deprecated Use `@sps/shared-frontend-server-api` instead of that function
+ */
 export async function action<T>(params: {
   id: string;
   model: string;

@@ -4,7 +4,7 @@ import React, { Suspense, useEffect } from "react";
 import { ErrorBoundary, ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-file-storage/models/file/frontend/api/client";
-import { invalidateServerTag } from "@sps/shared-store";
+import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-form";

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useActionTrigger } from "@sps/shared-hooks";
+import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import { api } from "@sps/sps-host/relations/pages-to-widgets/frontend/api/client";
 import { Component as AdminSelectInput } from "@sps/sps-host/models/widget/frontend/component/root";
 import { variants } from "@sps/sps-host/relations/pages-to-widgets/contracts/root";

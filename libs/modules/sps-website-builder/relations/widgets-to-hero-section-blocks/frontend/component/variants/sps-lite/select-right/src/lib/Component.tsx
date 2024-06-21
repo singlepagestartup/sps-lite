@@ -11,7 +11,7 @@ import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/h
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useActionTrigger } from "@sps/shared-hooks";
+import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import { api } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/api/client";
 import { FormField, ModelEntityCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/contracts/root";

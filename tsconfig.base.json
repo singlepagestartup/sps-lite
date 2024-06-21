@@ -23,8 +23,28 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "declaration": true,
+    "types": ["node", "jest"],
     "paths": {
       "@sps/shared-hooks": ["libs/shared/hooks/src/index.ts"],
+      "@sps/shared-frontend-server-api": [
+        "libs/shared/frontend/server/api/src/index.ts"
+      ],
+      "@sps/shared-frontend-server-utils": [
+        "libs/shared/frontend/server/utils/src/index.ts"
+      ],
+      "@sps/shared-frontend-client-api": [
+        "libs/shared/frontend/client/api/src/index.ts"
+      ],
+      "@sps/shared-frontend-client-utils": [
+        "libs/shared/frontend/client/utils/src/index.ts"
+      ],
+      "@sps/shared-frontend-components": [
+        "libs/shared/frontend/components/src/index.ts"
+      ],
+      "@sps/shared-frontend-client-store": [
+        "libs/shared/frontend/client/store/src/index.ts"
+      ],
+      "@sps/shared-frontend-hooks": ["libs/shared/frontend/hooks/src/index.ts"],
       "@sps/shared-ui-shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shared-backend-api": ["libs/shared/backend/api/src/index.ts"],
       "@sps/shared-backend-database-config": [

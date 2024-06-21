@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, Form } from "@sps/shared-ui-shadcn";
 import { Button } from "@sps/ui-adapter";
-import { useActionTrigger } from "@sps/shared-hooks";
+import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import { z } from "zod";
 import { variants } from "@sps/sps-website-builder/models/layout/contracts/root";
 import { Component as LayoutSpsLiteAdminFormInputs } from "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-form-inputs";
 import { useDispatch } from "react-redux";
-import { invalidateServerTag } from "@sps/shared-store";
+import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),

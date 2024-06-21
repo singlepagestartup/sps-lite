@@ -7,6 +7,9 @@ export interface IHookProps {
   callbackFunction: (action: RtkAction) => void;
 }
 
+/**
+ * @deprecated Use "@sps/shared-frontend-hooks" instead
+ */
 export function useHook(props: IHookProps) {
   const renderTimestamp = useMemo(() => Date.now(), []);
 

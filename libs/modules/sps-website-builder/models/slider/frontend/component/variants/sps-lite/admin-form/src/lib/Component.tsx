@@ -10,7 +10,7 @@ import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
-import { invalidateServerTag } from "@sps/shared-store";
+import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder/models/slider/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-website-builder/models/slider/contracts/root";
 

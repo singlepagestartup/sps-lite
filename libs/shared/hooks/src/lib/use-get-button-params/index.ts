@@ -3,6 +3,9 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { ButtonHTMLAttributes, useMemo } from "react";
 
+/**
+ * @deprecated Use "@sps/shared-frontend-hooks" instead
+ */
 export function useGetButtonParams(props: {
   additionalAttributes?: any;
   url?: string | null;

@@ -6,7 +6,7 @@ import { api } from "@sps/sps-website-builder/models/widget/frontend/api/client"
 import { Component as AdminForm } from "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-form";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { invalidateServerTag } from "@sps/shared-store";
+import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {

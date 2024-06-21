@@ -4,7 +4,7 @@ import { IComponentPropsExtended } from "./interface";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useActionTrigger } from "@sps/shared-hooks";
+import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import {
   Card,
   CardContent,

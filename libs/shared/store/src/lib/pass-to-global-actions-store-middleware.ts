@@ -1,6 +1,9 @@
 import { createListenerMiddleware } from "@reduxjs/toolkit";
 import { RtkAction, globalActionsStore } from "./global-actions-store";
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const create = ({ name }: { name: string }) => {
   const passToGlobalActionsStoreMiddleware = createListenerMiddleware();
 

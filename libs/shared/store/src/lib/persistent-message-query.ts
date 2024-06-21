@@ -20,6 +20,9 @@ export type StoreWithPersist = Mutate<
 
 const name = "persistent-message-query";
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const persistentMessageQuery = create(
   devtools(
     persist(
@@ -46,6 +49,9 @@ export const persistentMessageQuery = create(
   ),
 );
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   if (typeof window === "undefined") return;
 

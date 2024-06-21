@@ -53,6 +53,9 @@ const initialState: State = {
 
 const name = "global-actions-store";
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const globalActionsStore = create<State & Actions>()(
   devtools(
     immer(
@@ -111,8 +114,14 @@ export const globalActionsStore = create<State & Actions>()(
   ),
 );
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const useGlobalActionsStore = globalActionsStore;
 
+/**
+ * @deprecated Use "@sps/shared-frontend-client-store" instead
+ */
 export const withStorageDOMEvents = (store: StoreWithPersist) => {
   if (typeof window === "undefined") return;
 
