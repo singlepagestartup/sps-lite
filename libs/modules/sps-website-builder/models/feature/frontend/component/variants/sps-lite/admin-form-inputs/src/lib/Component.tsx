@@ -34,11 +34,11 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
-          type="text"
+          type="tiptap"
           label="Description"
           name="description"
           form={props.form}
-          placeholder="Enter description"
+          placeholder="Type description"
         />
 
         <FormField

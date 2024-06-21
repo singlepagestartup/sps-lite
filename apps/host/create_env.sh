@@ -22,6 +22,7 @@ echo "Created /.env.local file"
 NODE_ENV=local
 add_env "NODE_ENV" $NODE_ENV
 
+add_env "SPS_HOST_SEED" true
 add_env "SPS_WEBSITE_BUILDER_SEED" true
 add_env "SPS_FILE_STORAGE_SEED" true
 add_env "STARTUP_SEED" true

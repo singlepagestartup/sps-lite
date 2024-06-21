@@ -13,6 +13,7 @@ import { variants } from "@sps/sps-website-builder/relations/features-section-bl
 
 const formSchema = z.object({
   featuresSectionBlockId: z.string().min(1),
+  orderIndex: z.number().default(0),
   featureId: z.string().min(1),
   variant: z.enum(variants).default("default"),
   className: z.string().optional(),
@@ -29,6 +30,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       featuresSectionBlockId:
         props.data?.featuresSectionBlockId || props.featuresSectionBlockId,
+      orderIndex: props.data?.orderIndex || 0,
       featureId: props.data?.featureId,
       variant: props.data?.variant || "default",
       className: props.data?.className || "",
@@ -92,6 +94,15 @@ export function Component(props: IComponentPropsExtended) {
           <div className="flex flex-col col-span-3 gap-0.5">
             <FormField
               ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
               type="text"
               label="Class name"
               name="className"
@@ -100,19 +111,18 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
-              type="select"
-              label="Variant"
-              name="variant"
+              type="number"
+              label="Order index"
+              name="orderIndex"
               form={form}
-              placeholder="Select variant of relation"
-              options={variants.map((variant) => [variant, variant])}
+              placeholder="Type order index"
             />
             <AdminSelectInput
               isServer={false}
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
-              formFieldName="featureId"
+              formFieldName="buttonId"
             />
           </div>
         </ModelEntityCard>
@@ -124,6 +134,15 @@ export function Component(props: IComponentPropsExtended) {
           <CardContent className="flex flex-col gap-6">
             <FormField
               ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant of relation"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <FormField
+              ui="shadcn"
               type="text"
               label="Class name"
               name="className"
@@ -132,19 +151,18 @@ export function Component(props: IComponentPropsExtended) {
             />
             <FormField
               ui="shadcn"
-              type="select"
-              label="Variant"
-              name="variant"
+              type="number"
+              label="Order index"
+              name="orderIndex"
               form={form}
-              placeholder="Select variant of relation"
-              options={variants.map((variant) => [variant, variant])}
+              placeholder="Type order index"
             />
             <AdminSelectInput
               isServer={false}
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
-              formFieldName="featureId"
+              formFieldName="buttonId"
             />
           </CardContent>
         </Card>
