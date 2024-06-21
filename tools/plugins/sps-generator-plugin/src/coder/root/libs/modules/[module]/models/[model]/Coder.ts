@@ -31,7 +31,7 @@ export class Coder {
   tree: Tree;
   parent: ModelsCoder;
   baseName: string;
-  isExternal: boolean;
+  isExternal: boolean | undefined;
   absoluteName: string;
   baseDirectory: string;
   nameStyles: ReturnType<typeof getNameStyles>;
@@ -53,7 +53,7 @@ export class Coder {
   ) {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-${props.name}`;
-    this.isExternal = props.isExternal || false;
+    this.isExternal = props.isExternal;
     this.baseDirectory = `${this.parent.baseDirectory}/${props.name}`;
     this.absoluteName = `${this.parent.absoluteName}/${props.name}`;
     this.name = props.name;

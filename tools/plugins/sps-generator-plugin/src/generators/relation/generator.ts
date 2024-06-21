@@ -78,6 +78,10 @@ export async function relationGenerator(
         .models;
 
     for (const model of models) {
+      if (model.project.model.isExternal) {
+        continue;
+      }
+
       const relations =
         model.project.model.project.backend.project.schema.project.relations
           .project.relations;
@@ -103,6 +107,10 @@ export async function relationGenerator(
         .models;
 
     for (const model of models) {
+      if (model.project.model.isExternal) {
+        continue;
+      }
+
       const relations =
         model.project.model.project.backend.project.schema.project.relations
           .project.relations;
@@ -117,6 +125,7 @@ export async function relationGenerator(
     const relations =
       coder.project.root.project.libs.project.modules[0].project.module.project
         .relations;
+
     if (relations) {
       for (const relation of relations) {
         await relation.project.relation.create();

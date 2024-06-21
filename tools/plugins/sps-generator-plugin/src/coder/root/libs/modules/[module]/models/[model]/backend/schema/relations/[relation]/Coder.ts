@@ -84,6 +84,7 @@ export class Coder {
     }
 
     await this.setReplacers();
+
     const relation =
       this.parent.parent.parent.parent.parent.parent.project.relations[0];
 
