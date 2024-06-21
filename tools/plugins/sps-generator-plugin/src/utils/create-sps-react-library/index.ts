@@ -63,19 +63,12 @@ export const util = async ({
     offset_from_root: offsetFromRootProject,
   });
 
-  updateJson(tree, `${root}/tsconfig.json`, (json) => {
-    delete json.files;
-    delete json.include;
-    delete json.references;
-
-    return json;
-  });
-
   tree.delete(`${root}/.babelrc`);
   tree.delete(`${root}/.eslintrc.json`);
   tree.delete(`${root}/jest.config.ts`);
   tree.delete(`${root}/tsconfig.lib.json`);
   tree.delete(`${root}/tsconfig.spec.json`);
+  tree.delete(`${root}/tsconfig.json`);
   tree.delete(`${root}/package.json`);
   tree.delete(`${root}/project.json`);
 };
