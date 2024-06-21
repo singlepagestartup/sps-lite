@@ -142,7 +142,7 @@ export class Coder {
 
     const rightModelRootFrontendComponentImportPath =
       rightModel.project.model.project.frontend.project.component.project.root
-        .baseName;
+        .importPath;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)

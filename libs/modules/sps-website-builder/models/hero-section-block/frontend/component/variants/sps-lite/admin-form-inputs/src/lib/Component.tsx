@@ -112,6 +112,7 @@ export function Component(props: IComponentPropsExtended) {
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="select-right"
+            heroSectionBlockId={props.data?.id}
           />
         </div>
       </ModelEntitiesListCard>

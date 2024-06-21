@@ -1,8 +1,9 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
-import { FormField } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder/models/feature/contracts/root";
+import { Component as FeaturesToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -59,6 +60,29 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+        <ModelEntitiesListCard title="features-to-sps-file-storage-module-files">
+          <div className="flex flex-col gap-6">
+            {props.data?.featuresToSpsFileStorageModuleFiles.map(
+              (entity, index) => {
+                return (
+                  <FeaturesToSpsFileStorageModuleFiles
+                    key={index}
+                    data={entity}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant="select-right"
+                  />
+                );
+              },
+            )}
+            <FeaturesToSpsFileStorageModuleFiles
+              isServer={props.isServer}
+              hostUrl={props.hostUrl}
+              variant="select-right"
+              featureId={props.data?.id}
+            />
+          </div>
+        </ModelEntitiesListCard>
       </div>
     </div>
   );
