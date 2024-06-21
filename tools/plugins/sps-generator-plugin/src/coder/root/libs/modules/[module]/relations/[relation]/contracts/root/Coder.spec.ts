@@ -3,12 +3,12 @@ import { ImportContracts, ExportNamedInterface } from "./Coder";
 describe("Coder", () => {
   describe(`ImportContracts`, () => {
     const relationNamePascalCased = "WidgetsToModules";
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-relations-widgets-to-modules-contracts";
 
     const exportRoute = new ImportContracts({
       relationNamePascalCased,
-      libName,
+      importPath,
     });
 
     it(`should match the regex 1`, () => {

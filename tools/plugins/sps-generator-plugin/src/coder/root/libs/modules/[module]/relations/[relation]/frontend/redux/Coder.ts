@@ -11,7 +11,7 @@ import { util as createSpsReactLibrary } from "../../../../../../../../../utils/
 import * as nxWorkspace from "@nx/workspace";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: FrontendCoder;
@@ -24,6 +24,7 @@ export class Coder {
   modelName: string;
   absoluteName: string;
   modelNamePluralized: string;
+  importPath: string;
 
   constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "redux";
@@ -31,6 +32,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-redux`;
     this.baseDirectory = `${this.parent.baseDirectory}/redux`;
     this.absoluteName = `${this.parent.absoluteName}/redux`;
+
+    this.importPath = this.absoluteName;
 
     this.tree = props.tree;
 

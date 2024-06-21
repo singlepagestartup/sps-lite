@@ -12,7 +12,7 @@ import {
 import { Coder as SchemaCoder } from "../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -21,20 +21,16 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   project?: ProjectConfiguration;
-  libName: string;
-  root: string;
-  rootRelationsSchemaProject: ProjectConfiguration;
-  leftProjectImportPath: string;
-  rightProjectImportPath: string;
-  leftModelStyles: ReturnType<typeof getNameStyles>;
-  rightModelStyles: ReturnType<typeof getNameStyles>;
-  moduleNameStyles: ReturnType<typeof getModuleCuttedStyles>;
-  relationNameStyles: ReturnType<typeof getNameStyles>;
-  exportAll: ExportNamedVariables;
+  leftModelStyles?: ReturnType<typeof getNameStyles>;
+  rightModelStyles?: ReturnType<typeof getNameStyles>;
+  moduleNameStyles?: ReturnType<typeof getModuleCuttedStyles>;
+  relationNameStyles?: ReturnType<typeof getNameStyles>;
+  exportAll?: ExportNamedVariables;
   absoluteName: string;
-  tableName: string;
-  leftModelTableUuidName: string;
-  rightModelTableUuidName: string;
+  tableName?: string;
+  leftModelTableUuidName?: string;
+  rightModelTableUuidName?: string;
+  importPath: string;
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.name = "schema";
@@ -43,6 +39,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -98,7 +96,7 @@ export class Coder {
     }_id`;
 
     this.exportAll = new ExportNamedVariables({
-      libName: this.baseName,
+      importPath: this.importPath,
       moduleNamePascalCased: this.moduleNameStyles.pascalCased,
       relationNamePascalCased: this.relationNameStyles.pascalCased.base,
     });
@@ -122,10 +120,10 @@ export class Coder {
 
     const leftProjectSchemaTableImportPath =
       this.parent.parent.parent.parent.parent.project.models[0].project.model
-        .project.backend.project.schema.project.table.baseName;
+        .project.backend.project.schema.project.table.importPath;
     const rightProjectSchemaImportPath =
       this.parent.parent.parent.parent.parent.project.models[1].project.model
-        .project.backend.project.schema.project.table.baseName;
+        .project.backend.project.schema.project.table.importPath;
 
     const leftModelIsExternal =
       this.parent.parent.parent.parent.parent.project.models[0].project.model
@@ -142,26 +140,26 @@ export class Coder {
       templateParams: {
         template: "",
         left_schema_project_import_path: leftProjectSchemaTableImportPath,
-        left_schema_table_name: this.leftModelStyles.pascalCased.base,
-        left_schema_model_name: this.leftModelStyles.propertyCased.base,
+        left_schema_table_name: this.leftModelStyles?.pascalCased.base,
+        left_schema_model_name: this.leftModelStyles?.propertyCased.base,
         left_schema_model_name_snake_cased:
-          this.leftModelStyles.snakeCased.base,
+          this.leftModelStyles?.snakeCased.base,
         left_model_is_external: leftModelIsExternal,
         right_model_is_external: rightModelIsExternal,
         left_model_table_uuid_name: this.leftModelTableUuidName,
         right_model_table_uuid_name: this.rightModelTableUuidName,
         right_schema_project_import_path: rightProjectSchemaImportPath,
-        right_schema_table_name: this.rightModelStyles.pascalCased.base,
-        right_schema_model_name: this.rightModelStyles.propertyCased.base,
+        right_schema_table_name: this.rightModelStyles?.pascalCased.base,
+        right_schema_model_name: this.rightModelStyles?.propertyCased.base,
         right_schema_model_name_snake_cased:
-          this.rightModelStyles.snakeCased.base,
-        module_name_cutted_snake_cased: this.moduleNameStyles.snakeCased,
-        module_name_cutted_pascal_cased: this.moduleNameStyles.pascalCased,
-        relation_name_snake_cased: this.relationNameStyles.snakeCased.base,
+          this.rightModelStyles?.snakeCased.base,
+        module_name_cutted_snake_cased: this.moduleNameStyles?.snakeCased,
+        module_name_cutted_pascal_cased: this.moduleNameStyles?.pascalCased,
+        relation_name_snake_cased: this.relationNameStyles?.snakeCased.base,
         table_name: this.tableName,
-        relation_name_pascal_cased: this.relationNameStyles.pascalCased.base,
+        relation_name_pascal_cased: this.relationNameStyles?.pascalCased.base,
         relation_name_property_cased:
-          this.relationNameStyles.propertyCased.base,
+          this.relationNameStyles?.propertyCased.base,
       },
     });
 
@@ -176,6 +174,10 @@ export class Coder {
         .project.root.baseDirectory,
       "/src/lib/index.ts",
     );
+
+    if (!this.exportAll) {
+      throw new Error(`ExportAll is not defined`);
+    }
 
     await addToFile({
       toTop: true,
@@ -192,6 +194,10 @@ export class Coder {
       "/src/lib/index.ts",
     );
 
+    if (!this.exportAll) {
+      throw new Error(`ExportAll is not defined`);
+    }
+
     try {
       await replaceInFile({
         tree: this.tree,
@@ -199,7 +205,7 @@ export class Coder {
         regex: this.exportAll.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -226,21 +232,17 @@ export class Coder {
 }
 
 export class ExportNamedVariables extends RegexCreator {
-  constructor({
-    libName,
-    moduleNamePascalCased,
-    relationNamePascalCased,
-  }: {
-    libName: string;
+  constructor(props: {
+    importPath: string;
     moduleNamePascalCased: string;
     relationNamePascalCased: string;
   }) {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `export { Table as ${moduleNamePascalCased}${relationNamePascalCased}, Relations as ${moduleNamePascalCased}${relationNamePascalCased}Relations } from "${libName}";`;
+    const content = `export { Table as ${props.moduleNamePascalCased}${props.relationNamePascalCased}, Relations as ${props.moduleNamePascalCased}${props.relationNamePascalCased}Relations } from "${props.importPath}";`;
     const contentRegex = new RegExp(
-      `export([\\s]+?)?{([\\s]+?)?Table([\\s]+?)?as([\\s]+?)?${moduleNamePascalCased}${relationNamePascalCased},([\\s]+?)?Relations as ${moduleNamePascalCased}${relationNamePascalCased}Relations([,]?)([\\s]+?)?}([\\s]+?)?from([\\s]+?)?"${libName}";`,
+      `export([\\s]+?)?{([\\s]+?)?Table([\\s]+?)?as([\\s]+?)?${props.moduleNamePascalCased}${props.relationNamePascalCased},([\\s]+?)?Relations as ${props.moduleNamePascalCased}${props.relationNamePascalCased}Relations([,]?)([\\s]+?)?}([\\s]+?)?from([\\s]+?)?"${props.importPath}";`,
     );
 
     super({

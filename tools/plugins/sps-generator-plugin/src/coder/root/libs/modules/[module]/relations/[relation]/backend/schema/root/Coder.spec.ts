@@ -4,13 +4,13 @@ describe("Coder", () => {
   describe(`ExportNamedVariables`, () => {
     const moduleNamePascalCased = "SPSWB";
     const relationNamePascalCased = "SlidesToPages";
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";
 
     const exportRoute = new ExportNamedVariables({
       moduleNamePascalCased,
       relationNamePascalCased,
-      libName,
+      importPath,
     });
 
     it(`should match the regex 1`, () => {

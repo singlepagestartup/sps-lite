@@ -24,8 +24,10 @@ export class Coder {
   type: "modules" | "providers" | "shared";
   name: string;
   project: {
-    module?: ModuleCoder;
-  } = {};
+    module: ModuleCoder;
+  } = {} as {
+    module: ModuleCoder;
+  };
 
   constructor(
     props: {
@@ -40,6 +42,7 @@ export class Coder {
     this.tree = props.tree;
     this.parent = props.parent;
     this.absoluteName = `${props.parent.baseName}`;
+    this.type = "modules";
 
     this.project.module = new ModuleCoder({
       ...props.module,

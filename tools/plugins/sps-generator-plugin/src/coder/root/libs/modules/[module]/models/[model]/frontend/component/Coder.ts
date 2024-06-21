@@ -35,7 +35,6 @@ export class Coder {
     this.parent = props.parent;
 
     const root = new RootCoder({
-      ...props.root,
       tree: this.tree,
       parent: this,
     });

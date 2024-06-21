@@ -11,7 +11,11 @@ export const addToFile = async ({
   content: string;
   tree: Tree;
 }): Promise<string> => {
-  let fileContent = tree.read(pathToFile).toString();
+  let fileContent = tree.read(pathToFile)?.toString();
+
+  if (!fileContent) {
+    throw new Error(`File "${pathToFile}" not found`);
+  }
 
   if (toTop) {
     tree.write(pathToFile, `${content}\n${fileContent}`);
@@ -21,7 +25,11 @@ export const addToFile = async ({
 
   await formatFiles(tree);
 
-  fileContent = tree.read(pathToFile).toString();
+  fileContent = tree.read(pathToFile)?.toString();
+
+  if (!fileContent) {
+    throw new Error(`File "${pathToFile}" not found`);
+  }
 
   return fileContent;
 };
@@ -43,11 +51,17 @@ export const replaceInFile = async ({
     throw new Error("Either regex or toReplaceString should be provided");
   }
 
-  let fileContent = tree.read(pathToFile).toString();
+  const fileContent = tree.read(pathToFile)?.toString();
+
+  if (!fileContent) {
+    throw new Error(`File "${pathToFile}" not found`);
+  }
 
   const prevValue = regex
     ? fileContent.match(regex)
-    : fileContent.match(toReplaceString);
+    : toReplaceString
+      ? fileContent.match(toReplaceString)
+      : null;
 
   if (!prevValue) {
     throw new Error(
@@ -59,5 +73,11 @@ export const replaceInFile = async ({
 
   tree.write(pathToFile, updatedContent);
 
-  return tree.read(pathToFile).toString();
+  const fileContentAfter = tree.read(pathToFile)?.toString();
+
+  if (!fileContentAfter) {
+    throw new Error(`File "${pathToFile}" not found`);
+  }
+
+  return fileContentAfter;
 };

@@ -45,9 +45,15 @@ export class Migrator {
       this.parent.coder.tree,
       baseDirectory,
       (filePath) => {
-        const file = this.parent.coder.tree.read(filePath).toString("utf8");
+        const fileContent = this.parent.coder.tree
+          .read(filePath)
+          ?.toString("utf8");
 
-        const newFile = file.replace(
+        if (!fileContent) {
+          return;
+        }
+
+        const newFile = fileContent.replace(
           new RegExp(oldRelationSchemaImportPath, "g"),
           newRelationSchemaImportPath,
         );

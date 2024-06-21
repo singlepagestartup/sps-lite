@@ -1,5 +1,5 @@
 import { services as modelServices } from "..";
-import { Table } from "<%= schema_module_lib_name %>";
+import { Table } from "<%= schema_module_import_path %>";
 import { Dumper as SpsDumper } from "@sps/shared-backend-api";
 
 export class Dumper extends SpsDumper<typeof modelServices, typeof Table> {

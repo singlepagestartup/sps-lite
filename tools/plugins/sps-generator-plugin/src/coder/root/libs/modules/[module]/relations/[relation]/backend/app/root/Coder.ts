@@ -11,7 +11,7 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { Coder as BackendCoder } from "../../Coder";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: BackendCoder;
@@ -23,6 +23,7 @@ export class Coder {
   absoluteName: string;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
+  importPath: string;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -32,13 +33,15 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/app/root`;
     this.absoluteName = `${this.parent.absoluteName}/app/root`;
 
+    this.importPath = this.absoluteName;
+
     const pluralNameModelName = pluralize(
       names(this.parent.parent.name).fileName,
     );
     const asPropertyModelName = names(this.parent.parent.name).propertyName;
     this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
-      libName: this.baseName,
       asPropertyModelName,
+      importPath: this.importPath,
     });
     this.exportRoute = new ExportRoute({
       route: `/${pluralNameModelName}`,
@@ -134,7 +137,7 @@ export class Coder {
         regex: this.exportRoute.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -147,7 +150,7 @@ export class Coder {
         regex: this.importAppAsAsPropertyModelName.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -156,20 +159,14 @@ export class Coder {
 }
 
 export class ImportAppAsAsPropertyModelName extends RegexCreator {
-  constructor({
-    asPropertyModelName,
-    libName,
-  }: {
-    asPropertyModelName: string;
-    libName: string;
-  }) {
+  constructor(props: { asPropertyModelName: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { app as ${asPropertyModelName} } from "${libName}";`;
+    const content = `import { app as ${props.asPropertyModelName} } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import { app as ${asPropertyModelName} } from "${libName}";`,
+      `import { app as ${props.asPropertyModelName} } from "${props.importPath}";`,
     );
 
     super({

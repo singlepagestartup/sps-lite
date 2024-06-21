@@ -37,7 +37,7 @@ export class Migrator {
     this.parent.coder.tree.delete(`${baseDirectory}/tsconfig.spec.json`);
 
     updateProjectConfiguration(this.parent.coder.tree, baseName, {
-      ...this.parent.coder.project,
+      ...(this.parent.coder.project as ProjectConfiguration),
       targets: {
         "tsc:build": {},
       },

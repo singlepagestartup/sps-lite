@@ -10,7 +10,7 @@ import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ApiCoder;
@@ -21,6 +21,7 @@ export class Coder {
   project?: ProjectConfiguration;
   absoluteName: string;
   moduleName: string;
+  importPath: string;
 
   constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.tree = props.tree;
@@ -29,6 +30,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-client`;
     this.baseDirectory = `${this.parent.baseDirectory}/client`;
     this.absoluteName = `${this.parent.absoluteName}/client`;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 

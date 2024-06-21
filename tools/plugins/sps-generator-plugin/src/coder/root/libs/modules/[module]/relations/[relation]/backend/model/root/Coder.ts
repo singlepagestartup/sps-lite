@@ -10,8 +10,9 @@ import { RegexCreator } from "../../../../../../../../../../utils/regex-utils/Re
 import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { Coder as BackendCoder } from "../../Coder";
 import { Migrator } from "./migrator/Migrator";
+import { comma } from "tools/plugins/sps-generator-plugin/src/utils/regex-utils/regex-elements";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -19,18 +20,14 @@ export class Coder {
   tree: Tree;
   baseName: string;
   baseDirectory: string;
-  libName: string;
-  rootAppProject: ProjectConfiguration;
-  rootSchemaProject: ProjectConfiguration;
-  root: string;
   modelName: string;
   schemaModelName: string;
   moduleName: string;
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
-  schemaModuleLibName: string;
   absoluteName: string;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
@@ -40,6 +37,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-model`;
     this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
     this.absoluteName = `${this.parent.absoluteName}/model/root`;
+
+    this.importPath = this.absoluteName;
 
     const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
@@ -55,7 +54,7 @@ export class Coder {
     this.importModelAsAsPropertyModelName =
       new ImportModelAsAsPropertyModelName({
         asPropertyModelName,
-        libName: this.baseName,
+        importPath: this.importPath,
       });
     this.exportModel = new ExportModel({
       asPropertyModelName,
@@ -78,7 +77,8 @@ export class Coder {
       return;
     }
 
-    const schemaModuleLibName = this.parent.project.schema.baseName;
+    const schemaModuleImportPath =
+      this.parent.project.schema.project.root.absoluteName;
 
     const leftModel = this.parent.parent.parent.parent.project.models[0];
     const rightModel = this.parent.parent.parent.parent.project.models[1];
@@ -97,7 +97,8 @@ export class Coder {
       this.parent.parent.parent.parent.project.backend.project.models.project
         .root.baseDirectory;
     const moduleDbImportPath =
-      this.parent.parent.parent.parent.project.backend.project.db.baseName;
+      this.parent.parent.parent.parent.project.backend.project.db.project.root
+        .importPath;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -116,7 +117,7 @@ export class Coder {
           .propertyCased.base,
         module_lib_name: moduleLibName,
         module_db_import_path: moduleDbImportPath,
-        schema_module_lib_name: schemaModuleLibName,
+        schema_module_import_path: schemaModuleImportPath,
         model_name: this.modelName,
         module_name: this.moduleName,
         schema_model_name: this.schemaModelName,
@@ -154,7 +155,7 @@ export class Coder {
         regex: this.exportModel.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -167,7 +168,7 @@ export class Coder {
         regex: this.importModelAsAsPropertyModelName.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -198,20 +199,14 @@ export class Coder {
 }
 
 export class ImportModelAsAsPropertyModelName extends RegexCreator {
-  constructor({
-    asPropertyModelName,
-    libName,
-  }: {
-    asPropertyModelName: string;
-    libName: string;
-  }) {
+  constructor(props: { asPropertyModelName: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { model as ${asPropertyModelName} } from "${libName}";`;
+    const content = `import { model as ${props.asPropertyModelName} } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import { model as ${asPropertyModelName} } from "${libName}";`,
+      `import { model as ${props.asPropertyModelName} } from "${props.importPath}";`,
     );
 
     super({
@@ -224,12 +219,12 @@ export class ImportModelAsAsPropertyModelName extends RegexCreator {
 }
 
 export class ExportModel extends RegexCreator {
-  constructor({ asPropertyModelName }: { asPropertyModelName: string }) {
+  constructor(props: { asPropertyModelName: string }) {
     const place = `export const models = {`;
     const placeRegex = new RegExp(`export const models = {`);
 
-    const content = `${asPropertyModelName},`;
-    const contentRegex = new RegExp(`${asPropertyModelName},`);
+    const content = `${props.asPropertyModelName},`;
+    const contentRegex = new RegExp(`${props.asPropertyModelName}${comma}`);
 
     super({
       place,

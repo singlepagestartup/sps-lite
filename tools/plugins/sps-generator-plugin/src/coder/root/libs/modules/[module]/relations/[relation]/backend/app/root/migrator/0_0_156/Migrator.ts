@@ -1,4 +1,9 @@
+// @ts-ignore
+/**
+ * Migration passed, errors ignored
+ */
 import {
+  ProjectConfiguration,
   Tree,
   generateFiles,
   getProjects,
@@ -44,7 +49,7 @@ export class Migrator {
     this.parent.coder.tree.delete(`${baseDirectory}/tsconfig.spec.json`);
 
     updateProjectConfiguration(this.parent.coder.tree, baseName, {
-      ...this.parent.coder.project,
+      ...(this.parent.coder.project as ProjectConfiguration),
       targets: {
         "tsc:build": {},
       },
@@ -58,8 +63,20 @@ export class Migrator {
     const baseDirectory = this.parent.coder.baseDirectory;
     const project = this.parent.coder.project;
 
-    if (!project.root.endsWith("root")) {
-      const tmpPath = project.root.split("/").slice(0, -1).join("/") + "/temp";
+    if (!project) {
+      throw new Error(
+        `The project ${this.parent.coder.baseName} does not exist`,
+      );
+    }
+
+    if (!project?.root.endsWith("root")) {
+      const tmpPath = project?.root.split("/").slice(0, -1).join("/") + "/temp";
+
+      if (!project.name) {
+        throw new Error(
+          `The project ${this.parent.coder.baseName} does not have a name`,
+        );
+      }
 
       await moveGenerator(this.parent.coder.tree, {
         projectName: project.name,

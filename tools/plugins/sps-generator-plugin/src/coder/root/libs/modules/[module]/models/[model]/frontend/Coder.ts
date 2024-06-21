@@ -53,7 +53,6 @@ export class Coder {
     });
 
     const redux = new ReduxCoder({
-      ...props.redux,
       tree: this.tree,
       parent: this,
     });

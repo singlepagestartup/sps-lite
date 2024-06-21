@@ -10,7 +10,7 @@ import path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ComponentCoder;
@@ -20,6 +20,7 @@ export class Coder {
   absoluteName: string;
   name: string;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
     this.tree = props.tree;
@@ -28,6 +29,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -46,8 +49,6 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
@@ -55,7 +56,6 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        offset_from_root: offsetFromRootProject,
       },
     });
 

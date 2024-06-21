@@ -11,7 +11,7 @@ import { util as getNameStyles } from "../../../../../../../../utils/get-name-st
 import { util as createSpsReactLibrary } from "../../../../../../../../../utils/create-sps-react-library";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: FrontendCoder;
@@ -24,6 +24,7 @@ export class Coder {
   moduleName: string;
   modelName: string;
   modelNamePluralized: string;
+  importPath: string;
 
   constructor(props: { parent: FrontendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "redux";
@@ -32,6 +33,8 @@ export class Coder {
     this.absoluteName = `${props.parent.absoluteName}/redux`;
     this.tree = props.tree;
     this.parent = props.parent;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.name;
@@ -61,6 +64,9 @@ export class Coder {
 
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
+    const apiClientImportPath =
+      this.parent.project.api.project.client.importPath;
+
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
@@ -71,6 +77,7 @@ export class Coder {
         module_name: this.moduleName,
         model_name: this.modelName,
         offset_from_root: offsetFromRootProject,
+        api_client_import_path: apiClientImportPath,
       },
     });
 

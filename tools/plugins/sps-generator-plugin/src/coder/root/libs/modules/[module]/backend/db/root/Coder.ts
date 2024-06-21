@@ -12,9 +12,10 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   tree: Tree;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   absoluteName: string;
   moduleNameStyles: ReturnType<typeof getNameStyles>;
+  importPath: string;
 
   constructor({ tree, parent }: { tree: Tree; parent: AppCoder }) {
     this.name = "root";
@@ -23,6 +24,8 @@ export class Coder {
     this.absoluteName = `${parent.absoluteName}/root`;
     this.tree = tree;
     this.parent = parent;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.name;
     const moduleNameStyles = getNameStyles({ name: moduleName });

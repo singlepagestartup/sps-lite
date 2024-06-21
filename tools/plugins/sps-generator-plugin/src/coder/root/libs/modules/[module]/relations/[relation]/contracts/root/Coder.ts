@@ -17,7 +17,7 @@ import { RegexCreator } from "../../../../../../../../../utils/regex-utils/Regex
 import { space } from "../../../../../../../../../utils/regex-utils/regex-elements";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -26,9 +26,10 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   project?: ProjectConfiguration;
-  importContracts: ImportContracts;
-  exportNamedInterface: ExportNamedInterface;
+  importContracts?: ImportContracts;
+  exportNamedInterface?: ExportNamedInterface;
   absoluteName: string;
+  importPath: string;
 
   constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
@@ -37,6 +38,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}`;
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -54,7 +57,7 @@ export class Coder {
     const relationNameStyles = this.parent.parent.name;
 
     this.importContracts = new ImportContracts({
-      libName: this.baseName,
+      importPath: this.importPath,
       relationNamePascalCased: getNameStyles({
         name: relationNameStyles,
       }).pascalCased.base,
@@ -71,6 +74,10 @@ export class Coder {
 
   async attach() {
     await this.setReplacers();
+
+    if (!this.importContracts || !this.exportNamedInterface) {
+      throw new Error(`The replacers are not set`);
+    }
 
     const models = this.parent.parent.parent.parent.project.models;
 
@@ -103,6 +110,10 @@ export class Coder {
   async detach() {
     await this.setReplacers();
 
+    if (!this.importContracts || !this.exportNamedInterface) {
+      throw new Error(`The replacers are not set`);
+    }
+
     const models = this.parent.parent.parent.parent.project.models;
 
     for (const model of models) {
@@ -122,7 +133,7 @@ export class Coder {
           regex: this.exportNamedInterface.onRemove.regex,
           content: "",
         });
-      } catch (error) {
+      } catch (error: any) {
         if (!error.message.includes(`No expected value`)) {
           throw error;
         }
@@ -135,7 +146,7 @@ export class Coder {
           regex: this.importContracts.onRemove.regex,
           content: "",
         });
-      } catch (error) {
+      } catch (error: any) {
         if (!error.message.includes(`No expected value`)) {
           throw error;
         }
@@ -202,19 +213,13 @@ export class Coder {
 }
 
 export class ImportContracts extends RegexCreator {
-  constructor({
-    libName,
-    relationNamePascalCased,
-  }: {
-    libName: string;
-    relationNamePascalCased: string;
-  }) {
+  constructor(props: { importPath: string; relationNamePascalCased: string }) {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `import { IRelation as I${relationNamePascalCased} } from "${libName}";`;
+    const content = `import { IRelation as I${props.relationNamePascalCased} } from "${props.importPath}";`;
     const contentRegex = new RegExp(
-      `import${space}{${space}IRelation${space}as${space}I${relationNamePascalCased}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}IRelation${space}as${space}I${props.relationNamePascalCased}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({

@@ -45,19 +45,16 @@ export class Coder {
     this.absoluteName = `${this.parent.absoluteName}/api`;
 
     this.project.model = new ModelCoder({
-      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
     this.project.client = new ClientCoder({
-      ...props.client,
       tree: this.tree,
       parent: this,
     });
 
     this.project.server = new ServerCoder({
-      ...props.server,
       tree: this.tree,
       parent: this,
     });

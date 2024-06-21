@@ -6,7 +6,7 @@ import {
 } from "./[relation]/Coder";
 
 export type IGeneratorProps = {
-  relation?: IRelationCoderGeneratorProps;
+  relation: IRelationCoderGeneratorProps;
 };
 
 /**

@@ -11,7 +11,7 @@ import * as nxWorkspace from "@nx/workspace";
 import * as path from "path";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -21,6 +21,7 @@ export class Coder {
   baseDirectory: string;
   project?: ProjectConfiguration;
   absoluteName: string;
+  importPath: string;
 
   constructor(props: { parent: ContractsCoder; tree: Tree } & IGeneratorProps) {
     this.name = "extended";
@@ -29,6 +30,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-extended`;
     this.baseDirectory = `${this.parent.baseDirectory}/extended`;
     this.absoluteName = `${this.parent.absoluteName}/extended`;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -52,7 +55,7 @@ export class Coder {
 
     const leftModelContractsImportPath =
       this.parent.parent.parent.parent.project.models[0].project.model.project
-        .contracts.project.root.baseName;
+        .contracts.project.root.importPath;
     const leftModelIsExternal =
       this.parent.parent.parent.parent.project.models[0].project.model
         .isExternal;
@@ -61,7 +64,7 @@ export class Coder {
 
     const rightModelContractsImportPath =
       this.parent.parent.parent.parent.project.models[1].project.model.project
-        .contracts.project.root.baseName;
+        .contracts.project.root.importPath;
     const rightModelIsExternal =
       this.parent.parent.parent.parent.project.models[1].project.model
         .isExternal;

@@ -41,6 +41,7 @@ export class Coder {
   tableName: string;
   absoluteName: string;
   modelNameStyles: ReturnType<typeof getNameStyles>;
+  importPath: string;
 
   constructor(props: { parent: SchemaCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -48,6 +49,8 @@ export class Coder {
     this.baseDirectory = `${props.parent.baseDirectory}/table`;
     this.tree = props.tree;
     this.absoluteName = `${props.parent.absoluteName}/table`;
+
+    this.importPath = this.absoluteName;
 
     const modelName = this.parent.parent.parent.name;
 

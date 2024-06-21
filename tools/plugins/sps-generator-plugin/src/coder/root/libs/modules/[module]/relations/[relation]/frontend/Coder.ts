@@ -57,7 +57,6 @@ export class Coder {
     });
 
     this.project.redux = new ReduxCoder({
-      ...props.redux,
       tree: this.tree,
       parent: this,
     });

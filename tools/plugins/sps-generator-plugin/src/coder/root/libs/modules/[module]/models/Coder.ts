@@ -8,7 +8,7 @@ import {
 import { IEditFieldProps } from "./[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  model?: IModelCoderGeneratorProps;
+  model: IModelCoderGeneratorProps;
 };
 
 /**

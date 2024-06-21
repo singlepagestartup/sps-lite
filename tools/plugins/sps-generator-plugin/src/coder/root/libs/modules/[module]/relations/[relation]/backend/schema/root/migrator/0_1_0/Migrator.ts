@@ -52,35 +52,39 @@ export class Migrator {
 
     const moduleRoot = this.parent.coder.tree
       .read(`${moduleRootSchema}/src/lib/index.ts`)
-      .toString("utf8");
+      ?.toString("utf8");
 
-    const newModuleRoot = moduleRoot.replace(
+    const newModuleRoot = moduleRoot?.replace(
       new RegExp(oldImportPath, "g"),
       newImportPath,
     );
 
-    this.parent.coder.tree.write(
-      `${moduleRootSchema}/src/lib/index.ts`,
-      newModuleRoot,
-    );
+    if (newModuleRoot) {
+      this.parent.coder.tree.write(
+        `${moduleRootSchema}/src/lib/index.ts`,
+        newModuleRoot,
+      );
+    }
 
     const files = visitAllFiles(
       this.parent.coder.tree,
       baseDirectory,
       (filePath) => {
-        const file = this.parent.coder.tree.read(filePath).toString("utf8");
+        const file = this.parent.coder.tree.read(filePath)?.toString("utf8");
 
         const newFile = file
-          .replace(
+          ?.replace(
             new RegExp(leftModelSchemaTableOldImportPath, "g"),
             leftModelSchemaTableNewImportPath,
           )
-          .replace(
+          ?.replace(
             new RegExp(rightModelSchemaTableOldImportPath, "g"),
             rightModelSchemaTableNewImportPath,
           );
 
-        this.parent.coder.tree.write(filePath, newFile);
+        if (newFile) {
+          this.parent.coder.tree.write(filePath, newFile);
+        }
       },
     );
 

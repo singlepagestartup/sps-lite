@@ -38,13 +38,11 @@ export class Coder {
     this.absoluteName = `${this.parent.absoluteName}/contracts`;
 
     this.project.root = new RootCoder({
-      ...props.root,
       tree: this.tree,
       parent: this,
     });
 
     this.project.extended = new ExtendedCoder({
-      ...props.extended,
       tree: this.tree,
       parent: this,
     });

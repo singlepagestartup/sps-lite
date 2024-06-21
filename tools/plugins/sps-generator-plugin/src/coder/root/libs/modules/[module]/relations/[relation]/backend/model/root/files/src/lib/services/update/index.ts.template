@@ -2,7 +2,7 @@ import { db } from "<%= module_db_import_path %>";
 import {
   Table,
   insertSchema,
-} from "<%= schema_module_lib_name %>";
+} from "<%= schema_module_import_path %>";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

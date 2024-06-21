@@ -38,15 +38,15 @@ describe("Coder", () => {
   });
 
   describe(`ImportPath`, () => {
-    const libName = "@sps/sps-website-builder-models-slide-backend-app";
+    const importPath = "@sps/sps-website-builder-models-slide-backend-app";
     const asPropertyModelName = "wideSlideRoute";
-    const importPath = new ImportAppAsAsPropertyModelName({
-      libName,
+    const importPathApp = new ImportAppAsAsPropertyModelName({
+      importPath,
       asPropertyModelName,
     });
 
     it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importPathApp.onRemove.regex;
 
       const string = `import { app as wideSlideRoute } from "@sps/sps-website-builder-models-slide-backend-app";
       import { app as layouts } from "@sps/sps-website-builder-models-layout-backend-app";`;

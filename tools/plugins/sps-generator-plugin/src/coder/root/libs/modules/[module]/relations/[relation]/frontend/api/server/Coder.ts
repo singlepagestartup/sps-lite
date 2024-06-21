@@ -10,7 +10,7 @@ import * as nxWorkspace from "@nx/workspace";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ApiCoder;
@@ -21,6 +21,7 @@ export class Coder {
   project?: ProjectConfiguration;
   moduleName: string;
   absoluteName: string;
+  importPath: string;
 
   constructor(props: { parent: ApiCoder; tree: Tree } & IGeneratorProps) {
     this.tree = props.tree;
@@ -29,6 +30,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-server`;
     this.baseDirectory = `${this.parent.baseDirectory}/server`;
     this.absoluteName = `${this.parent.absoluteName}/server`;
+
+    this.importPath = this.absoluteName;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
 
@@ -51,8 +54,7 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-    const apiModelImportPath = this.parent.project.model.baseName;
+    const apiModelImportPath = this.parent.project.model.importPath;
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -63,7 +65,6 @@ export class Coder {
         template: "",
         module_name: this.moduleName,
         api_model_import_path: apiModelImportPath,
-        offset_from_root: offsetFromRootProject,
       },
     });
 

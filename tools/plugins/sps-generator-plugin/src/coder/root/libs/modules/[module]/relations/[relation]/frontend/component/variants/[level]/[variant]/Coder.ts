@@ -36,21 +36,21 @@ export class Coder {
   baseDirectory: string;
   name: string;
   project?: ProjectConfiguration;
-  moduleName: string;
-  relationName: string;
-  importVariant: ImportVariant;
-  exportVariant: ExportVariant;
-  importInterface: ImportInterface;
-  exportInterface: ExportInterface;
-  importStyles: ImportStyles;
+  moduleName?: string;
+  relationName?: string;
+  importVariant?: ImportVariant;
+  exportVariant?: ExportVariant;
+  importInterface?: ImportInterface;
+  exportInterface?: ExportInterface;
   absoluteName: string;
-  apiClientImportPath: string;
-  apiServerImportPath: string;
-  reduxImportPath: string;
-  rootContractsImportPath: string;
-  extendedContractsImportPath: string;
-  template: string;
+  apiClientImportPath?: string;
+  apiServerImportPath?: string;
+  reduxImportPath?: string;
+  rootContractsImportPath?: string;
+  extendedContractsImportPath?: string;
+  template?: string;
   level: string;
+  importPath: string;
 
   constructor(
     props: {
@@ -67,19 +67,21 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/variants/${props.level}/${this.name}`;
     this.absoluteName = `${this.parent.absoluteName}/variants/${props.level}/${this.name}`;
 
+    this.importPath = this.absoluteName;
+
     this.project = getProjects(this.tree).get(this.baseName);
   }
 
   async setReplacers() {
     const apiClientImportPath =
-      this.parent.parent?.project.api.project.client.baseName;
+      this.parent.parent?.project.api.project.client.importPath;
     const apiServerImportPath =
-      this.parent.parent.project.api.project.server.baseName;
-    const reduxImportPath = this.parent.parent.project.redux.baseName;
+      this.parent.parent.project.api.project.server.importPath;
+    const reduxImportPath = this.parent.parent.project.redux.importPath;
     const rootContractsImportPath =
-      this.parent.parent.parent.project.contracts.project.root.baseName;
+      this.parent.parent.parent.project.contracts.project.root.importPath;
     const extendedContractsImportPath =
-      this.parent.parent.parent.project.contracts.project.extended.baseName;
+      this.parent.parent.parent.project.contracts.project.extended.importPath;
 
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const relationName = this.parent.parent.parent.name;
@@ -96,7 +98,7 @@ export class Coder {
     this.relationName = relationName;
     this.importVariant = new ImportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
-      libName: this.baseName,
+      importPath: this.importPath,
     });
     this.exportVariant = new ExportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
@@ -104,14 +106,10 @@ export class Coder {
     });
     this.importInterface = new ImportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
-      libName: this.baseName,
+      importPath: this.importPath,
     });
     this.exportInterface = new ExportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
-    });
-    this.importStyles = new ImportStyles({
-      level: this.level,
-      kebabCasedVariant: nameStyles.kebabCased.base,
     });
   }
 
@@ -126,6 +124,16 @@ export class Coder {
 
   async create() {
     await this.setReplacers();
+
+    if (
+      !this.apiClientImportPath ||
+      !this.apiServerImportPath ||
+      !this.reduxImportPath ||
+      !this.rootContractsImportPath ||
+      !this.extendedContractsImportPath
+    ) {
+      throw new Error(`The replacers are not set`);
+    }
 
     if (this.project) {
       return;
@@ -149,6 +157,10 @@ export class Coder {
       : path.join(__dirname, `files`);
 
     await stat(templateDirectory);
+
+    if (!this.moduleName) {
+      throw new Error(`Module name is not defined`);
+    }
 
     await createSpsReactLibrary({
       root: this.baseDirectory,
@@ -177,19 +189,17 @@ export class Coder {
         redux_import_path: this.reduxImportPath,
         root_contracts_import_path: this.rootContractsImportPath,
         extended_contracts_import_path: this.extendedContractsImportPath,
-        relation_name: this.relationName,
+        relation_name: this.relationName || "",
         offset_from_root: offsetFromRootProject,
       },
     });
 
     const rootVariantsPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/variants.ts`;
     const rootInterfacePath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/interface.ts`;
-    const rootScssPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/_index.scss`;
 
     await this.attach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
-      indexScssPath: rootScssPath,
     });
 
     this.project = getProjects(this.tree).get(this.baseName);
@@ -206,12 +216,10 @@ export class Coder {
 
     const rootVariantsPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/variants.ts`;
     const rootInterfacePath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/interface.ts`;
-    const rootScssPath = `${this.parent.baseDirectory}/root/src/lib/${this.level}/_index.scss`;
 
     await this.detach({
       variantsPath: rootVariantsPath,
       interfacePath: rootInterfacePath,
-      indexScssPath: rootScssPath,
     });
 
     await nxWorkspace.removeGenerator(this.tree, {
@@ -224,13 +232,20 @@ export class Coder {
   async attach({
     variantsPath,
     interfacePath,
-    indexScssPath,
   }: {
     variantsPath: string;
     interfacePath: string;
-    indexScssPath: string;
   }) {
     this.setReplacers();
+
+    if (
+      !this.importVariant ||
+      !this.importInterface ||
+      !this.exportVariant ||
+      !this.exportInterface
+    ) {
+      throw new Error(`The replacers are not set`);
+    }
 
     await addToFile({
       toTop: true,
@@ -267,30 +282,30 @@ export class Coder {
         regex: new RegExp(`[|](\\s+)+?[|]`),
         content: "|",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
     }
-
-    await addToFile({
-      toTop: true,
-      pathToFile: indexScssPath,
-      content: this.importStyles.onCreate.content,
-      tree: this.tree,
-    });
   }
 
   async detach({
     variantsPath,
     interfacePath,
-    indexScssPath,
   }: {
     variantsPath: string;
     interfacePath: string;
-    indexScssPath: string;
   }) {
     this.setReplacers();
+
+    if (
+      !this.importVariant ||
+      !this.importInterface ||
+      !this.exportVariant ||
+      !this.exportInterface
+    ) {
+      throw new Error(`The replacers are not set`);
+    }
 
     try {
       await replaceInFile({
@@ -299,7 +314,7 @@ export class Coder {
         regex: this.importVariant.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -312,7 +327,7 @@ export class Coder {
         regex: this.exportVariant.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -325,7 +340,7 @@ export class Coder {
         regex: this.importInterface.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
@@ -338,61 +353,23 @@ export class Coder {
         regex: this.exportInterface.onRemove.regex,
         content: "",
       });
-    } catch (error) {
+    } catch (error: any) {
       if (!error.message.includes(`No expected value`)) {
         throw error;
       }
     }
-
-    try {
-      await replaceInFile({
-        tree: this.tree,
-        pathToFile: indexScssPath,
-        regex: this.importStyles.onRemove.regex,
-        content: "",
-      });
-    } catch (error) {
-      if (!error.message.includes(`No expected value`)) {
-        throw error;
-      }
-    }
-  }
-
-  async addStylesToRoot({
-    projectRoot,
-    tree,
-    type,
-    variant,
-  }: {
-    projectRoot: string[];
-    tree: Tree;
-    type: string;
-    variant: string;
-  }) {
-    const rootProjectStylesPath =
-      projectRoot.join("/") + `/src/lib/${type}/_index.scss`;
-
-    let rootProjectStyles = tree.read(rootProjectStylesPath).toString();
-    const importStyles = `${rootProjectStyles}\n@import "../../../../variants/${type}/${variant}/src/index";`;
-    tree.write(rootProjectStylesPath, importStyles);
   }
 }
 
 export class ImportVariant extends RegexCreator {
-  constructor({
-    pascalCasedVariant,
-    libName,
-  }: {
-    pascalCasedVariant: string;
-    libName: string;
-  }) {
+  constructor(props: { pascalCasedVariant: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { Component as ${pascalCasedVariant} } from "${libName}";`;
+    const content = `import { Component as ${props.pascalCasedVariant} } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import${space}{${space}Component${space}as${space}${pascalCasedVariant}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}Component${space}as${space}${props.pascalCasedVariant}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({
@@ -405,19 +382,16 @@ export class ImportVariant extends RegexCreator {
 }
 
 export class ExportVariant extends RegexCreator {
-  constructor({
-    pascalCasedVariant,
-    kebabCasedVariant,
-  }: {
+  constructor(props: {
     pascalCasedVariant: string;
     kebabCasedVariant: string;
   }) {
     const place = `export const variants = {`;
     const placeRegex = new RegExp(`export const variants = {`);
 
-    const content = `"${kebabCasedVariant}":${pascalCasedVariant},`;
+    const content = `"${props.kebabCasedVariant}":${props.pascalCasedVariant},`;
     const contentRegex = new RegExp(
-      `${doubleQuote}${kebabCasedVariant}${doubleQuote}:${space}${pascalCasedVariant}${comma}`,
+      `${doubleQuote}${props.kebabCasedVariant}${doubleQuote}:${space}${props.pascalCasedVariant}${comma}`,
     );
 
     super({
@@ -430,20 +404,14 @@ export class ExportVariant extends RegexCreator {
 }
 
 export class ImportInterface extends RegexCreator {
-  constructor({
-    pascalCasedVariant,
-    libName,
-  }: {
-    pascalCasedVariant: string;
-    libName: string;
-  }) {
+  constructor(props: { pascalCasedVariant: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { IComponentProps as I${pascalCasedVariant}ComponentProps } from "${libName}";`;
+    const content = `import { IComponentProps as I${props.pascalCasedVariant}ComponentProps } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import${space}{${space}IComponentProps${space}as${space}I${pascalCasedVariant}ComponentProps }${space}from${space}"${libName}";`,
+      `import${space}{${space}IComponentProps${space}as${space}I${props.pascalCasedVariant}ComponentProps }${space}from${space}"${props.importPath}";`,
     );
 
     super({
@@ -456,13 +424,13 @@ export class ImportInterface extends RegexCreator {
 }
 
 export class ExportInterface extends RegexCreator {
-  constructor({ pascalCasedVariant }: { pascalCasedVariant: string }) {
+  constructor(props: { pascalCasedVariant: string }) {
     const place = `export type IComponentProps =`;
     const placeRegex = new RegExp(`export type IComponentProps =${space}[|]?`);
 
-    const content = `I${pascalCasedVariant}ComponentProps |`;
+    const content = `I${props.pascalCasedVariant}ComponentProps |`;
     const contentRegex = new RegExp(
-      `I${pascalCasedVariant}ComponentProps${space}[|]`,
+      `I${props.pascalCasedVariant}ComponentProps${space}[|]`,
     );
 
     super({
@@ -470,32 +438,6 @@ export class ExportInterface extends RegexCreator {
       placeRegex,
       content,
       contentRegex,
-    });
-  }
-}
-
-export class ImportStyles extends RegexCreator {
-  constructor({
-    level,
-    kebabCasedVariant,
-  }: {
-    level: string;
-    kebabCasedVariant: string;
-  }) {
-    const place = "";
-    const placeRegex = new RegExp("");
-
-    const content = `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`;
-
-    const contentRegex = new RegExp(
-      `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      contentRegex,
-      content,
     });
   }
 }

@@ -54,13 +54,11 @@ export class Coder {
     });
 
     this.project.model = new ModelCoder({
-      ...props.model,
       tree: this.tree,
       parent: this,
     });
 
     this.project.app = new AppCoder({
-      ...props.app,
       tree: this.tree,
       parent: this,
     });
