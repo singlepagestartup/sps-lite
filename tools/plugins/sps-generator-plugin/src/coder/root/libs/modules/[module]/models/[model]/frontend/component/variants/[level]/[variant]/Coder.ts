@@ -44,6 +44,7 @@ export class Coder {
   exportInterface: ExportInterface;
   template?: string;
   level: string;
+  importPath: string;
 
   constructor({
     parent,
@@ -64,6 +65,8 @@ export class Coder {
     this.template = template;
     this.level = level;
 
+    this.importPath = this.absoluteName;
+
     const moduleName = this.parent.parent.parent.parent.parent.name;
     const modelName = this.parent.parent.parent.name;
     const nameStyles = getNameStyles({
@@ -74,16 +77,19 @@ export class Coder {
     this.modelName = modelName;
     this.importVariant = new ImportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
-      libName: this.baseName,
+      importPath: this.importPath,
     });
+
     this.exportVariant = new ExportVariant({
       pascalCasedVariant: nameStyles.pascalCased.base,
       kebabCasedVariant: nameStyles.kebabCased.base,
     });
+
     this.importInterface = new ImportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
-      libName: this.baseName,
+      importPath: this.importPath,
     });
+
     this.exportInterface = new ExportInterface({
       pascalCasedVariant: nameStyles.pascalCased.base,
     });
@@ -308,20 +314,14 @@ export class Coder {
 }
 
 export class ImportVariant extends RegexCreator {
-  constructor({
-    pascalCasedVariant,
-    libName,
-  }: {
-    pascalCasedVariant: string;
-    libName: string;
-  }) {
+  constructor(props: { pascalCasedVariant: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { Component as ${pascalCasedVariant} } from "${libName}";`;
+    const content = `import { Component as ${props.pascalCasedVariant} } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import${space}{${space}Component${space}as${space}${pascalCasedVariant}${space}}${space}from${space}"${libName}";`,
+      `import${space}{${space}Component${space}as${space}${props.pascalCasedVariant}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({
@@ -359,20 +359,14 @@ export class ExportVariant extends RegexCreator {
 }
 
 export class ImportInterface extends RegexCreator {
-  constructor({
-    pascalCasedVariant,
-    libName,
-  }: {
-    pascalCasedVariant: string;
-    libName: string;
-  }) {
+  constructor(props: { pascalCasedVariant: string; importPath: string }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { IComponentProps as I${pascalCasedVariant}ComponentProps } from "${libName}";`;
+    const content = `import { IComponentProps as I${props.pascalCasedVariant}ComponentProps } from "${props.importPath}";`;
 
     const contentRegex = new RegExp(
-      `import${space}{${space}IComponentProps${space}as${space}I${pascalCasedVariant}ComponentProps }${space}from${space}"${libName}";`,
+      `import${space}{${space}IComponentProps${space}as${space}I${props.pascalCasedVariant}ComponentProps }${space}from${space}"${props.importPath}";`,
     );
 
     super({
@@ -385,13 +379,13 @@ export class ImportInterface extends RegexCreator {
 }
 
 export class ExportInterface extends RegexCreator {
-  constructor({ pascalCasedVariant }: { pascalCasedVariant: string }) {
+  constructor(props: { pascalCasedVariant: string }) {
     const place = `export type IComponentProps =`;
     const placeRegex = new RegExp(`export type IComponentProps =${space}[|]?`);
 
-    const content = `I${pascalCasedVariant}ComponentProps |`;
+    const content = `I${props.pascalCasedVariant}ComponentProps |`;
     const contentRegex = new RegExp(
-      `I${pascalCasedVariant}ComponentProps${space}[|]`,
+      `I${props.pascalCasedVariant}ComponentProps${space}[|]`,
     );
 
     super({

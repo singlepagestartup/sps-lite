@@ -8,16 +8,16 @@ import {
 
 describe("Coder", () => {
   describe(`ImportVariant`, () => {
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
     const pascalCasedVariant = "AdminTable";
-    const importPath = new ImportVariant({
-      libName,
+    const importVariant = new ImportVariant({
+      importPath,
       pascalCasedVariant,
     });
 
     it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importVariant.onRemove.regex;
 
       const string = `import { Component as Simple } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { Component as AdminTable } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
@@ -76,16 +76,16 @@ describe("Coder", () => {
   });
 
   describe(`ImportInterface`, () => {
-    const libName =
+    const importPath =
       "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
     const pascalCasedVariant = "AdminTable";
-    const importPath = new ImportInterface({
-      libName,
+    const importInterface = new ImportInterface({
+      importPath,
       pascalCasedVariant,
     });
 
     it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importInterface.onRemove.regex;
 
       const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";
@@ -99,7 +99,7 @@ describe("Coder", () => {
     });
 
     it(`should match the regex 2`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importInterface.onRemove.regex;
 
       const string = `import { IComponentProps as ISimpleComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-default";
       import { IComponentProps as IAdminTableComponentProps } from "@sps/sps-website-builder-models-page-frontend-component-variants-sps-lite-admin-table";

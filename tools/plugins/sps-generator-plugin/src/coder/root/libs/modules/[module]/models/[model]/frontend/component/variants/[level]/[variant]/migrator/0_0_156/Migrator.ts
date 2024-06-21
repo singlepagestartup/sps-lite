@@ -1,6 +1,7 @@
 import {
   generateFiles,
   offsetFromRoot,
+  ProjectConfiguration,
   updateProjectConfiguration,
 } from "@nx/devkit";
 import { Migrator as ParentMigrator } from "../Migrator";
