@@ -5,7 +5,7 @@ import SpsAdminButton, {
   IComponentProps as ISpsAdminButtonComponentProps,
 } from "./sps-admin";
 import Shadcn, { Props as ShadcnProps } from "./shadcn";
-import { useGetButtonParams } from "@sps/hooks";
+import { useGetButtonParams } from "@sps/shared-hooks";
 import Link from "next/link";
 
 export type Props =

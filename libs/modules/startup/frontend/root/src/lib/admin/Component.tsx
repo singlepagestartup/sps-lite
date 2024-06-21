@@ -9,7 +9,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 const WidgetSpsLiteAdminTable = dynamic(() =>
   import(
     "@sps/startup/models/widget/frontend/component/variants/sps-lite/admin-table"

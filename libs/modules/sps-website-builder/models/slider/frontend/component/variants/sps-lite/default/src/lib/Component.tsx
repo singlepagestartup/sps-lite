@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselApi,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { IComponentPropsExtended } from "./interface";
 import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/root";
 import Autoplay from "embla-carousel-autoplay";

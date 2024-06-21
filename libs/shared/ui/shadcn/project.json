@@ -1,5 +1,5 @@
 {
-  "name": "@sps/shadcn",
+  "name": "@sps/shared-ui-shadcn",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/shadcn/src",
   "projectType": "library",

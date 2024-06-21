@@ -7,7 +7,7 @@ import {
   tag,
   IModelExtended,
 } from "@sps/sps-host/models/page/frontend/api/model";
-import { globalActionsStore, invalidateServerTag } from "@sps/store";
+import { globalActionsStore, invalidateServerTag } from "@sps/shared-store";
 import QueryString from "qs";
 
 export const api = createApi({

@@ -5,12 +5,12 @@ import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-host/models/page/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent, CardFooter } from "@sps/shadcn";
+import { Form, Card, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
-import { invalidateServerTag } from "@sps/store";
+import { invalidateServerTag } from "@sps/shared-store";
 import { Component as AdminFormInputs } from "@sps/sps-host/models/page/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-host/models/page/contracts/root";
 

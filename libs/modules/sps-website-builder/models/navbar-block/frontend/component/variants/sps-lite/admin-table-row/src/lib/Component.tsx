@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/navbar-block/frontend/api/client";
-import { invalidateServerTag } from "@sps/store";
+import { invalidateServerTag } from "@sps/shared-store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/navbar-block/frontend/component/variants/sps-lite/admin-form";

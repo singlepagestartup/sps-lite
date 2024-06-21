@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
 import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder/models/features-section-block/frontend/component/root";

@@ -6,7 +6,7 @@ import { api } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-website-builder/${api.rtk.reducerPath}`;

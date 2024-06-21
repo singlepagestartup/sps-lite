@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as AdminTableRow } from "@sps/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table-row";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-form";

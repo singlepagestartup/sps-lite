@@ -6,7 +6,7 @@ import { api } from "@sps/sps-rbac/models/permission/frontend/api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-rbac/${api.rtk.reducerPath}`;

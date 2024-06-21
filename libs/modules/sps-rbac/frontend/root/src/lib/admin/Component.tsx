@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { ChevronsUpDownIcon } from "lucide-react";
 import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-table";
 import { Component as SubjectSpsLiteAdminTable } from "@sps/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-table";

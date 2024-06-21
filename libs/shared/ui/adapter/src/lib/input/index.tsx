@@ -11,9 +11,8 @@ import {
   SelectValue,
   FileInputRoot,
   TipTap,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
-import React from "react";
 
 const Placeholder = () => {
   return (

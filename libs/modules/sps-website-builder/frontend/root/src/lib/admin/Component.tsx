@@ -8,7 +8,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { ChevronDown } from "lucide-react";
 const FeaturesSpsLiteAdminTable = dynamic(() =>
   import(

@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as WidgetsToFiles } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/component/root";
 

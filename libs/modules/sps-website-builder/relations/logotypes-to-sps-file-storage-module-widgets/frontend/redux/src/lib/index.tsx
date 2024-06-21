@@ -6,7 +6,7 @@ import { api } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-st
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-website-builder/${api.rtk.reducerPath}`;

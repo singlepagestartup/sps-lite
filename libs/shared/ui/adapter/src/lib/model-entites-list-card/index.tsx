@@ -9,7 +9,7 @@ import {
   Card,
   CardHeader,
   Button,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { ChevronsUpDown, Plus } from "lucide-react";
 
 interface IComponentProps {

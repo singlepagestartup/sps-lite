@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-third-parties/models/widget/contracts/root";

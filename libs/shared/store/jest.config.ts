@@ -1,5 +1,5 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/store",
+  displayName: "@sps/shared-store",
   preset: "../../../jest.client-preset.js",
 };

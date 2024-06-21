@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/ui-adapter";
 // import { Component as File } from "@sps/sps-file-storage/models/file/frontend/component/root";

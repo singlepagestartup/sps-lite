@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentProps } from "./interface";
 import { Component as Page } from "@sps/sps-host/models/page/frontend/component/root";
 

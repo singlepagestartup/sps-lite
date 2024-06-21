@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
 import { Component as PagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/frontend/component/root";

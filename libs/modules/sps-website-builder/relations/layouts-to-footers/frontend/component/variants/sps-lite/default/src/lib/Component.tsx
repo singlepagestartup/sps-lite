@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";

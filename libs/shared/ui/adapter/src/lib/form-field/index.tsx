@@ -1,6 +1,11 @@
 "use client";
 
-import { FormField, FormItem, FormLabel, FormMessage } from "@sps/shadcn";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
 import { Component as Input } from "../input";
 

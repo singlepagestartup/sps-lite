@@ -1,5 +1,5 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/shadcn",
+  displayName: "@sps/shared-ui-shadcn",
   preset: "../../../../jest.client-preset.js",
 };

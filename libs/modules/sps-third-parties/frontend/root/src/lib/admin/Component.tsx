@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-third-parties/models/widget/frontend/component/variants/sps-lite/admin-table";
 import { Component as TelegarmSpsLiteAdminTable } from "@sps/sps-third-parties/models/telegram/frontend/component/variants/sps-lite/admin-table";
 import { ChevronsUpDownIcon } from "lucide-react";

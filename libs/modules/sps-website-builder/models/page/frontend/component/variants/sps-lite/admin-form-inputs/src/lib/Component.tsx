@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { Component as PagesToWidgetsSpsLiteSelectRight } from "@sps/sps-website-builder/relations/pages-to-widgets/frontend/component/variants/sps-lite/select-right";

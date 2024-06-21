@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-kv-provider",
+  "name": "@sps/providers-kv",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/providers/sps-kv-provider/src",
+  "sourceRoot": "libs/providers/kv/src",
   "projectType": "library",
   "targets": {
     "tsc:build": {}

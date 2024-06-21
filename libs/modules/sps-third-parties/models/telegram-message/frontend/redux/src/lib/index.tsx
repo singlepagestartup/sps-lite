@@ -6,7 +6,7 @@ import { api } from "@sps/sps-third-parties/models/telegram-message/frontend/api
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-third-parties/${api.rtk.reducerPath}`;

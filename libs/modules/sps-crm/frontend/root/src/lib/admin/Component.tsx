@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-crm/models/widget/frontend/component/variants/sps-lite/admin-table";
 import { ChevronDown } from "lucide-react";
 

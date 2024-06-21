@@ -1,4 +1,4 @@
-import { RtkAction, useGlobalActionsStore } from "@sps/store";
+import { RtkAction, useGlobalActionsStore } from "@sps/shared-store";
 import { useEffect, useMemo, useState } from "react";
 
 export interface IHookProps {

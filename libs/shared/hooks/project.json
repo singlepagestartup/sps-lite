@@ -1,5 +1,5 @@
 {
-  "name": "@sps/hooks",
+  "name": "@sps/shared-hooks",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/hooks/src",
   "projectType": "library",

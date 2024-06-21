@@ -6,7 +6,7 @@ import { api } from "@sps/sps-host/relations/pages-to-widgets/frontend/api/clien
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-host/${api.rtk.reducerPath}`;

@@ -1,3 +1,3 @@
-import { db, schema, seed } from "@sps/sps-db-provider";
+import { db, schema, seed } from "@sps/providers-db";
 
 export { db, schema, seed };

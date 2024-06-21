@@ -7,7 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { Component as PageSpsLiteAdminTable } from "@sps/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table";
 import { Component as LayoutSpsLiteAdminTable } from "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table";

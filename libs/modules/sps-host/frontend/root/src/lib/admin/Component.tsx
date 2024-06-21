@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
-import { Button } from "@sps/shadcn";
+import { Button } from "@sps/shared-ui-shadcn";
 const Widget = dynamic(() =>
   import("@sps/sps-host/models/widget/frontend/component/root").then(
     (mod) => mod.Component,

@@ -1,7 +1,7 @@
 {
-  "name": "@sps/sps-db-provider",
+  "name": "@sps/providers-db",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/providers/sps-db-provider/src",
+  "sourceRoot": "libs/providers/db/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -10,7 +10,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/providers/sps-db-provider",
+        "cwd": "libs/providers/db",
         "commands": [
           {
             "command": "bun drizzle-kit studio --port 3002 --config src/lib/drizzle/config.ts --verbose"

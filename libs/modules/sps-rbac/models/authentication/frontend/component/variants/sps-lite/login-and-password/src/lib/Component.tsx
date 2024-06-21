@@ -14,7 +14,7 @@ import {
   Button,
   CardFooter,
   CardHeader,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { FormField } from "@sps/ui-adapter";
 
 const formSchema = z.object({

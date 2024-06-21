@@ -1,8 +1,7 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/root";
 import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component/root";
-import { TipTap } from "@sps/shadcn";
+import { TipTap } from "@sps/shared-ui-shadcn";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {

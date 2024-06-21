@@ -1,4 +1,3 @@
-import React from "react";
 import { ModelEntitiesListCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { Component as AdminForm } from "@sps/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-form";

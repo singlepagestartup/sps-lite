@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as LayoutsToNavbars } from "@sps/sps-website-builder/relations/layouts-to-navbars/frontend/component/root";
 import { Component as LayoutsToFooters } from "@sps/sps-website-builder/relations/layouts-to-footers/frontend/component/root";

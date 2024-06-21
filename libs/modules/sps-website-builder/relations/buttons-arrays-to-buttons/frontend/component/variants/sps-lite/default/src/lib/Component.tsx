@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Buttons } from "@sps/sps-website-builder/models/button/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";

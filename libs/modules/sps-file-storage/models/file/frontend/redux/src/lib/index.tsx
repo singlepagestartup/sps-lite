@@ -6,7 +6,7 @@ import { api } from "@sps/sps-file-storage/models/file/frontend/api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-file-storage/${api.rtk.reducerPath}`;

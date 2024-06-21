@@ -12,7 +12,7 @@ import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root"
 import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { setRoutes } from "@sps/sps-kv-provider";
+import { setRoutes } from "@sps/providers-kv";
 import { BlankSchema } from "hono/types";
 
 export const dynamic = "force-dynamic";

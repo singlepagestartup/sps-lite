@@ -1,5 +1,5 @@
 /* eslint-disable */
 export default {
-  displayName: "@sps/sps-kv-provider",
+  displayName: "@sps/providers-db",
   preset: "../../../jest.server-preset.js",
 };

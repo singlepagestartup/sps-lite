@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentProps } from "./interface";
 import { Pencil, Trash } from "lucide-react";
 

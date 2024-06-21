@@ -1,4 +1,3 @@
-import React from "react";
 import { IComponentPropsExtended } from "./interface";
 import { variants } from "@sps/sps-website-builder/models/slider-block/contracts/root";
 import { Component as SliderBlocksToSlidersSpsLiteSelectRight } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component/variants/sps-lite/select-right";

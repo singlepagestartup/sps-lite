@@ -6,7 +6,7 @@ import { api } from "@sps/sps-notification/models/notification/frontend/api/clie
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
-} from "@sps/store";
+} from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
 const name = `sps-notification/${api.rtk.reducerPath}`;

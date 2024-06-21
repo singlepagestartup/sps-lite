@@ -17,7 +17,7 @@ import {
   Card,
   CardHeader,
   DialogTitle,
-} from "@sps/shadcn";
+} from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
 import { Pencil, Trash } from "lucide-react";
 
