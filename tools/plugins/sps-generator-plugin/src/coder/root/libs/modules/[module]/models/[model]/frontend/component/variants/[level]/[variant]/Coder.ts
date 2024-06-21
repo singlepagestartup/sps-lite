@@ -110,7 +110,7 @@ export class Coder {
     const apiClientImportPath =
       this.parent.parent.project.api.project.client.importPath;
     const apiServerImportPath =
-      this.parent.parent.project.api.project.server.baseName;
+      this.parent.parent.project.api.project.server.importPath;
     const reduxImportPath = this.parent.parent.project.redux.importPath;
     const modelNamePluralized =
       this.parent.parent.project.api.project.model.modelName;
@@ -135,7 +135,6 @@ export class Coder {
       templateParams: {
         template: "",
         template_name: this.template ?? "default",
-        lib_name: this.baseName,
         variant: this.name,
         module_name: this.moduleName,
         model_name: this.modelName,
