@@ -1,10 +1,10 @@
 {
-  "id": "e7fe5f06-5260-4244-893e-58ba59908425",
+  "id": "9d7a7209-0551-4483-8c9e-d23d993f8b8b",
   "variant": "default",
-  "orderIndex": 1,
+  "orderIndex": 0,
   "className": "",
   "pageId": "aed53a27-6a69-4cbe-b22f-719a23c071c8",
-  "widgetId": "5baca306-fa26-44cd-88c3-3998c541408c",
+  "widgetId": "aef70ed4-dd9f-4987-ae91-d617efdd32e4",
   "page": {
     "id": "aed53a27-6a69-4cbe-b22f-719a23c071c8",
     "title": "Main page",
@@ -17,10 +17,10 @@
     "className": null
   },
   "widget": {
-    "title": "Sps Website Builder Page",
-    "id": "5baca306-fa26-44cd-88c3-3998c541408c",
-    "createdAt": "2024-06-19T20:19:55.884Z",
-    "updatedAt": "2024-06-19T20:19:55.884Z",
+    "title": "Startup App",
+    "id": "aef70ed4-dd9f-4987-ae91-d617efdd32e4",
+    "createdAt": "2024-06-21T14:58:49.337Z",
+    "updatedAt": "2024-06-21T14:58:49.337Z",
     "variant": "default",
     "className": "",
     "orderIndex": null

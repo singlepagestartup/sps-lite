@@ -12,7 +12,8 @@
     "description": "Description",
     "createdAt": "2024-06-01T09:27:08.515Z",
     "updatedAt": "2024-06-01T09:27:08.515Z",
-    "variant": "default"
+    "variant": "default",
+    "className": ""
   },
   "layout": {
     "title": "Public page layout",

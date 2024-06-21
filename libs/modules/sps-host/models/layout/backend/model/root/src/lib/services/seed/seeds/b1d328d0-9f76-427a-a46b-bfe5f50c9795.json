@@ -6,7 +6,16 @@
   "title": "Public page",
   "orderIndex": null,
   "className": null,
-  "layoutsToWidgets": [],
+  "layoutsToWidgets": [
+    {
+      "id": "b5121fea-0524-465c-bf81-a3a601d3dba1",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "layoutId": "b1d328d0-9f76-427a-a46b-bfe5f50c9795",
+      "widgetId": "ce5f94ca-7909-4e51-a374-e50f1126c5c1"
+    }
+  ],
   "pagesToLayouts": [
     {
       "id": "d3a46b49-31a0-44d2-aef5-38d7f0e1b39e",

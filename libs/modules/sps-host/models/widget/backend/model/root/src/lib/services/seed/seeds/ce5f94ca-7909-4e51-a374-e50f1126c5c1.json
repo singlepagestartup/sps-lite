@@ -1,0 +1,31 @@
+{
+  "title": "Sps Website Builder Navbar",
+  "id": "ce5f94ca-7909-4e51-a374-e50f1126c5c1",
+  "createdAt": "2024-06-21T15:15:56.282Z",
+  "updatedAt": "2024-06-21T15:15:56.282Z",
+  "variant": "default",
+  "className": "",
+  "orderIndex": null,
+  "layoutsToWidgets": [
+    {
+      "id": "b5121fea-0524-465c-bf81-a3a601d3dba1",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "layoutId": "b1d328d0-9f76-427a-a46b-bfe5f50c9795",
+      "widgetId": "ce5f94ca-7909-4e51-a374-e50f1126c5c1"
+    }
+  ],
+  "widgetsToExternalModules": [
+    {
+      "id": "2608f8ab-2220-4583-88fe-816e6b7d3adf",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "widgetId": "ce5f94ca-7909-4e51-a374-e50f1126c5c1",
+      "externalModule": "sps-website-builder",
+      "externalModuleProps": "{\"model\":\"navbar\"}"
+    }
+  ],
+  "pagesToWidgets": []
+}
