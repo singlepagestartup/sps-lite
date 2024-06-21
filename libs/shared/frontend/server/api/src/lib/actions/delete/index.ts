@@ -14,7 +14,7 @@ export interface IActionProps {
   path: string;
   tag?: string;
   revalidate?: number;
-  params: {
+  params?: {
     [key: string]: any;
   };
   options?: NextRequestOptions;

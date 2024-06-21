@@ -1,24 +1,21 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { actions } from "@sps/shared-frontend-server-api";
 import {
-  populate,
   route,
   IModelExtended,
 } from "@sps/sps-host/models/layout/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
+    return await actions.findById<IModelExtended>({
       id,
       model: route,
-      populate,
-      rootPath: "/api/sps-host",
+      path: "/api/sps-host",
     });
   },
   find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
+    return await actions.find<IModelExtended>({
       model: route,
-      populate,
-      rootPath: "/api/sps-host",
+      path: "/api/sps-host",
     });
   },
 };

@@ -6,7 +6,6 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
-import { cookies } from "next/headers";
 
 export interface IActionProps {
   id: string;
@@ -14,7 +13,7 @@ export interface IActionProps {
   path: string;
   tag?: string;
   revalidate?: number;
-  params: {
+  params?: {
     [key: string]: any;
   };
   options?: NextRequestOptions;
@@ -28,7 +27,6 @@ export async function action<T>(props: IActionProps): Promise<T> {
   });
 
   const requestOptions: NextRequestOptions = {
-    headers: { Cookie: cookies().toString() },
     credentials: "include",
     ...options,
     next: {

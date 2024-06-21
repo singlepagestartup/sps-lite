@@ -1,4 +1,4 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { actions } from "@sps/shared-frontend-server-api";
 import { action as findByUrl } from "./actions/find-by-url";
 import { action as urls } from "./actions/urls";
 import { action as urlSegmentValue } from "./actions/url-segment-value";
@@ -14,19 +14,23 @@ export interface Params {
 
 export const api = {
   findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
+    return await actions.findById<IModelExtended>({
       id,
-      rootPath: "/api/sps-host",
+      path: "/api/sps-host",
       model: route,
-      populate,
+      params: {
+        populate,
+      },
     });
   },
   find: async (params: any = {}) => {
-    return await utilsFetch.api.find<IModelExtended>({
+    return await actions.find<IModelExtended>({
       model: route,
-      rootPath: "/api/sps-host",
-      populate,
-      ...params,
+      path: "/api/sps-host",
+      params: {
+        ...params,
+        populate,
+      },
     });
   },
   findByUrl,

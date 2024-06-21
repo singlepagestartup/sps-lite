@@ -102,7 +102,7 @@ input[type="number"] {
   }
 
   .pill-button {
-    @apply bg-foreground hover:bg-muted w-fit flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2 py-1 lg:py-0;
+    @apply bg-foreground hover:bg-muted flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2 py-1 lg:py-0;
   }
 
   .entity-container {
@@ -110,7 +110,7 @@ input[type="number"] {
   }
 
   .entity-legend {
-    @apply px-2 text-sm font-medium font-medium bg-muted-foreground text-muted rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
+    @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
   }
 
   .entity-header-block {
@@ -120,14 +120,4 @@ input[type="number"] {
   .destructive-pill-button {
     @apply pill-button hover:text-destructive hover:border-destructive hover:bg-red-100 bg-white;
   }
-
-  // // @import "../../../libs/shared/ui/adapter/src/index";
-  // // @import "../../../libs/modules/sps-website-builder/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-billing/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-crm/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-ecommerce/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-file-storage/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-rbac/frontend/root/src/index";
-  // // @import "../../../libs/modules/sps-subscription/frontend/root/src/index";
-  // // @import "../../../libs/modules/startup/frontend/root/src/index";
 }
