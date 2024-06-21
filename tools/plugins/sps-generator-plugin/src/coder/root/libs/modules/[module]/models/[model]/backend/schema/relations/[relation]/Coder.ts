@@ -88,8 +88,9 @@ export class Coder {
     const relation =
       this.parent.parent.parent.parent.parent.parent.project.relations[0];
 
-    const relationsSchemaProjectImportPath =
-      relation.project.relation.project.backend.project.schema.absoluteName;
+    const relationsSchemaImportPath =
+      relation.project.relation.project.backend.project.schema.project.root
+        .importPath;
 
     const relationsPopulatePath = path.join(
       this.parent.parent.parent.project.schema.project.relations.project.root
@@ -102,7 +103,7 @@ export class Coder {
       "/src/lib/schema.ts",
     );
 
-    if (!relationsSchemaProjectImportPath) {
+    if (!relationsSchemaImportPath) {
       throw new Error(`No relationsSchemaProjectImportPath found`);
     }
 
@@ -113,8 +114,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        module_schema_relations_project_import_path:
-          relationsSchemaProjectImportPath,
+        relation_schema_import_path: relationsSchemaImportPath,
       },
     });
 
