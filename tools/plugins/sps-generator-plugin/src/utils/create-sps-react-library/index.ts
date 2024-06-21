@@ -77,4 +77,5 @@ export const util = async ({
   tree.delete(`${root}/tsconfig.lib.json`);
   tree.delete(`${root}/tsconfig.spec.json`);
   tree.delete(`${root}/package.json`);
+  tree.delete(`${root}/project.json`);
 };

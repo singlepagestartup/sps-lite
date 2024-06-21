@@ -75,6 +75,7 @@ export const util = async ({
   tree.delete(`${root}/tsconfig.lib.json`);
   tree.delete(`${root}/.babelrc`);
   tree.delete(`${root}/.eslintrc.json`);
+  tree.delete(`${root}/project.json`);
 
   await formatFiles(tree);
 
