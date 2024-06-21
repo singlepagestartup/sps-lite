@@ -5,12 +5,12 @@
   "variant": "default",
   "subjectsToSessions": [
     {
-      "id": "34e75d1b-a5b1-433e-b0cb-8dd16492166c",
+      "id": "fb8b4346-0ad7-4a87-a18e-3e5b77a83afd",
       "variant": "default",
       "orderIndex": 0,
       "className": null,
       "subjectId": "458fa7b1-2bce-4577-96cd-d819af633c69",
-      "sessionId": "42be4d2d-420e-48f3-b0ea-48c8282c265f"
+      "sessionId": "b99d7ac6-76ac-4046-aad8-a959a6dee041"
     }
   ],
   "subjectsToIdentities": [
