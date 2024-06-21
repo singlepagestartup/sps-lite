@@ -71,6 +71,7 @@ export const util = async ({
   tree.delete(`${root}/.babelrc`);
   tree.delete(`${root}/.eslintrc.json`);
   tree.delete(`${root}/project.json`);
+  tree.delete(`${root}/README.md`);
 
   await formatFiles(tree);
 

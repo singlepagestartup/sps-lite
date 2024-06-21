@@ -1,5 +1,6 @@
 import {
   Tree,
+  formatFiles,
   generateFiles,
   offsetFromRoot,
   updateJson,
@@ -71,4 +72,7 @@ export const util = async ({
   tree.delete(`${root}/tsconfig.json`);
   tree.delete(`${root}/package.json`);
   tree.delete(`${root}/project.json`);
+  tree.delete(`${root}/README.md`);
+
+  await formatFiles(tree);
 };
