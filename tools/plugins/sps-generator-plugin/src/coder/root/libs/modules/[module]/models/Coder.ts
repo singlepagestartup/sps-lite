@@ -1,6 +1,5 @@
 import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "../Coder";
-import { readdir } from "fs/promises";
 import {
   Coder as ModelCoder,
   IGeneratorProps as IModelCoderGeneratorProps,

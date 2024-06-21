@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ApiCoder } from "../Coder";
 import path from "path";
 import * as nxWorkspace from "@nx/workspace";

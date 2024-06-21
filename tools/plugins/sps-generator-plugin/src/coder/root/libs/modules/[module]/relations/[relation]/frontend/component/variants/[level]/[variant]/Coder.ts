@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import * as path from "path";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ComponentCoder } from "../../../Coder";
@@ -20,7 +15,6 @@ import {
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
 import { stat } from "fs/promises";
-import pluralize from "pluralize";
 import { Migrator } from "./migrator/Migrator";
 
 export type IGeneratorProps = {
@@ -139,8 +133,6 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     const leftModelName =
       this.parent.parent.parent.parent.parent.project.models[0].project.model
         .name;
@@ -190,7 +182,6 @@ export class Coder {
         root_contracts_import_path: this.rootContractsImportPath,
         extended_contracts_import_path: this.extendedContractsImportPath,
         relation_name: this.relationName || "",
-        offset_from_root: offsetFromRootProject,
       },
     });
 

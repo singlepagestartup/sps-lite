@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as ApiCoder } from "../Coder";
 import path from "path";
@@ -54,7 +49,6 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
     const apiModelImportPath = this.parent.project.model.importPath;
 
     await createSpsReactLibrary({
@@ -66,7 +60,6 @@ export class Coder {
         template: "",
         module_name: this.moduleName,
         api_model_import_path: apiModelImportPath,
-        offset_from_root: offsetFromRootProject,
       },
     });
 

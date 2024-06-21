@@ -33,7 +33,6 @@ export type IGeneratorProps = {
  */
 export class Coder {
   name: string;
-  root: string;
   baseName: string;
   baseDirectory: string;
   absoluteName: string;

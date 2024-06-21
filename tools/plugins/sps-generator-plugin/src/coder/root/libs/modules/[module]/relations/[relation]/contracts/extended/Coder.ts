@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
 import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
@@ -51,14 +46,10 @@ export class Coder {
     }
 
     const rootContractsImportPath = this.parent.project.root.baseName;
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     const leftModelContractsImportPath =
       this.parent.parent.parent.parent.project.models[0].project.model.project
         .contracts.project.root.importPath;
-    const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[0].project.model
-        .isExternal;
     const leftModelName =
       this.parent.parent.parent.parent.project.models[0].project.model.name;
 
@@ -82,7 +73,6 @@ export class Coder {
           .pascalCased.base,
         left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
-        left_model_is_external: leftModelIsExternal,
         left_model_contracts_import_path: leftModelContractsImportPath,
         right_model_name_pascal_cased: getNameStyles({ name: rightModelName })
           .pascalCased.base,
@@ -90,7 +80,6 @@ export class Coder {
           .propertyCased.base,
         right_model_is_external: rightModelIsExternal,
         right_model_contracts_import_path: rightModelContractsImportPath,
-        offset_from_root: offsetFromRootProject,
         root_contracts_import_path: rootContractsImportPath,
       },
     });

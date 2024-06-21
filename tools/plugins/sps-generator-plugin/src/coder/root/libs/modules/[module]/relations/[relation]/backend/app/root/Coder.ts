@@ -65,8 +65,7 @@ export class Coder {
       return;
     }
 
-    const modelLibName = this.parent.project.model.baseName;
-    const modelSchemaLibName = this.parent.project.schema.baseName;
+    const modelImportPath = this.parent.project.model.importPath;
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -75,8 +74,7 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        model_lib_name: modelLibName,
-        model_schema_lib_name: modelSchemaLibName,
+        model_import_path: modelImportPath,
       },
     });
 
@@ -179,19 +177,13 @@ export class ImportAppAsAsPropertyModelName extends RegexCreator {
 }
 
 export class ExportRoute extends RegexCreator {
-  constructor({
-    route,
-    asPropertyModelName,
-  }: {
-    route: string;
-    asPropertyModelName: string;
-  }) {
+  constructor(props: { route: string; asPropertyModelName: string }) {
     const place = `export const routes = {`;
     const placeRegex = new RegExp(`export const routes = {`);
 
-    const content = `"${route}": ${asPropertyModelName},`;
+    const content = `"${props.route}": ${props.asPropertyModelName},`;
     const contentRegex = new RegExp(
-      `"${route}":([\\s]+?)${asPropertyModelName},`,
+      `"${props.route}":([\\s]+?)${props.asPropertyModelName},`,
     );
 
     super({

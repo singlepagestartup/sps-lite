@@ -23,6 +23,7 @@ export class Coder {
   project?: ProjectConfiguration;
   importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
   exportRoute: ExportRoute;
+  importPath: string;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -31,6 +32,8 @@ export class Coder {
     this.absoluteName = `${this.parent.absoluteName}/app/root`;
     this.tree = props.tree;
     this.name = "app";
+
+    this.importPath = this.absoluteName;
 
     const pluralNameModelName = pluralize(
       names(this.parent.parent.name).fileName,

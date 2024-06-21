@@ -50,7 +50,6 @@ export class Coder {
     }
 
     const rootContractsImportPath = this.parent.project.root.absoluteName;
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
     await createSpsTSLibrary({
       tree: this.tree,
@@ -59,7 +58,6 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        offset_from_root: offsetFromRootProject,
         root_contracts_import_path: rootContractsImportPath,
       },
     });

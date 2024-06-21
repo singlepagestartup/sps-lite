@@ -6,7 +6,7 @@ import {
 import { IEditFieldProps } from "./libs/modules/[module]/models/[model]/backend/schema/table/Coder";
 
 export type IGeneratorProps = {
-  libs?: ILibsCoderGeneratorProps;
+  libs: ILibsCoderGeneratorProps;
 };
 
 /**

@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ApiCoder } from "../Coder";
 import { util as getNameStyles } from "../../../../../../../../../utils/get-name-styles";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../utils/create-sps-react-library";
@@ -67,8 +62,6 @@ export class Coder {
     const extendedContractsImportPath =
       this.parent.parent.parent.project.contracts.project.extended.importPath;
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
@@ -76,12 +69,10 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        module_name: this.moduleName,
         model_name: this.modelName,
         root_contracts_import_path: rootContractsImportPath,
         extended_contracts_import_path: extendedContractsImportPath,
         model_name_pluralized: this.modelNamePluralized,
-        offset_from_root: offsetFromRootProject,
       },
     });
 

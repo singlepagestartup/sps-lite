@@ -38,7 +38,6 @@ export class Coder {
     this.absoluteName = `${this.parent.absoluteName}/component`;
 
     const root = new RootCoder({
-      ...props.root,
       tree: this.tree,
       parent: this,
     });

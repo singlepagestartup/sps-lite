@@ -25,6 +25,7 @@ export class Coder {
   importModelAsAsPropertyModelName: ImportModelAsAsPropertyModelName;
   exportModel: ExportModel;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: BackendCoder; tree: Tree } & IGeneratorProps) {
     this.name = "model";
@@ -34,6 +35,8 @@ export class Coder {
     this.baseName = `${this.parent.baseName}-model`;
     this.baseDirectory = `${this.parent.baseDirectory}/model/root`;
     this.absoluteName = `${this.parent.absoluteName}/model/root`;
+
+    this.importPath = this.absoluteName;
 
     const modelName = this.parent.parent.name;
     const asPropertyModelName = names(modelName).propertyName;
@@ -92,9 +95,6 @@ export class Coder {
         template: "",
         module_db_import_path: moduleDbImportPath,
         schema_module_import_path: schemaModuleImportPath,
-        model_name: this.modelName,
-        module_name: this.moduleName,
-        schema_model_name: this.schemaModelName,
       },
     });
 

@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as ContractsCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../../utils/create-sps-ts-library";
 import { util as getNameStyles } from "../../../../../../../../utils/get-name-styles";
@@ -159,16 +154,11 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     const leftModelName =
       this.parent.parent.parent.parent.project.models[0].project.model.name;
     const rightModelName =
       this.parent.parent.parent.parent.project.models[1].project.model.name;
 
-    const leftModelIsExternal =
-      this.parent.parent.parent.parent.project.models[0].project.model
-        .isExternal;
     const rightModelIsExternal =
       this.parent.parent.parent.parent.project.models[1].project.model
         .isExternal;
@@ -180,8 +170,6 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        offset_from_root: offsetFromRootProject,
-        left_model_is_external: leftModelIsExternal,
         left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
         right_model_is_external: rightModelIsExternal,

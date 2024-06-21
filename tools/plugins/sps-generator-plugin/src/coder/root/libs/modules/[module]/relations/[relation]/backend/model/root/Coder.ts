@@ -83,7 +83,6 @@ export class Coder {
     const leftModel = this.parent.parent.parent.parent.project.models[0];
     const rightModel = this.parent.parent.parent.parent.project.models[1];
 
-    const leftModelIsExternal = leftModel.project.model.isExternal;
     const rightModelIsExternal = rightModel.project.model.isExternal;
 
     const leftModelName = leftModel.project.model.name;
@@ -107,7 +106,6 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        left_model_is_external: leftModelIsExternal,
         right_model_is_external: rightModelIsExternal,
         left_model_name_property_cased: getNameStyles({ name: leftModelName })
           .propertyCased.base,
@@ -115,12 +113,8 @@ export class Coder {
           .propertyCased.base,
         module_lib_name_property_cased: getNameStyles({ name: moduleLibName })
           .propertyCased.base,
-        module_lib_name: moduleLibName,
         module_db_import_path: moduleDbImportPath,
         schema_module_import_path: schemaModuleImportPath,
-        model_name: this.modelName,
-        module_name: this.moduleName,
-        schema_model_name: this.schemaModelName,
       },
     });
 

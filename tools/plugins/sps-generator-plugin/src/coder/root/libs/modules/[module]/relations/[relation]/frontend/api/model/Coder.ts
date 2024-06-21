@@ -67,8 +67,6 @@ export class Coder {
     const extendedContractsImportPath =
       this.parent.parent.parent.project.contracts.project.extended.importPath;
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     await createSpsReactLibrary({
       root: this.baseDirectory,
       name: this.baseName,
@@ -76,12 +74,10 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        module_name: this.moduleName,
         relation_name: this.relationName,
         root_contracts_import_path: rootContractsImportPath,
         extended_contracts_import_path: extendedContractsImportPath,
         relation_name_pluralized: this.relationNamePluralized,
-        offset_from_root: offsetFromRootProject,
       },
     });
 

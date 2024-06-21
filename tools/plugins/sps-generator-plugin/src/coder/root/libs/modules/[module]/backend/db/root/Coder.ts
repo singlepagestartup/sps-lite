@@ -6,6 +6,8 @@ import * as nxWorkspace from "@nx/workspace";
 import path from "path";
 import { Migrator } from "./migrator/Migrator";
 
+export type IGeneratorProps = unknown;
+
 export class Coder {
   name: string;
   parent: AppCoder;
@@ -54,13 +56,9 @@ export class Coder {
       name: this.baseName,
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
-        lib_name: this.baseName,
         template: "",
-        module_name_snake_cased_uppercase:
-          this.moduleNameStyles.snakeCased.base.toUpperCase(),
         module_name_kebab_case: this.moduleNameStyles.kebabCased.base,
         module_name_snake_cased: this.moduleNameStyles.snakeCased.base,
-        module_name_property_cased: this.moduleNameStyles.propertyCased.base,
       },
     });
 

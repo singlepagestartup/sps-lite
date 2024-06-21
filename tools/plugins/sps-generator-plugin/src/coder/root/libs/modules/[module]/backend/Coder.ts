@@ -71,7 +71,6 @@ export class Coder {
     });
 
     const app = new AppCoder({
-      ...props.app,
       tree: this.tree,
       parent: this,
     });

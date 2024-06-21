@@ -1,12 +1,11 @@
 import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import { Coder as SchemaCoder } from "../Coder";
 import { util as createSpsTSLibrary } from "../../../../../../../../utils/create-sps-ts-library";
-import { util as getNameStyles } from "../../../../../../../utils/get-name-styles";
 import * as nxWorkspace from "@nx/workspace";
 import path from "path";
 import { Migrator } from "./migrator/Migrator";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   name: string;
@@ -14,9 +13,9 @@ export class Coder {
   baseName: string;
   baseDirectory: string;
   tree: Tree;
-  project: ProjectConfiguration;
+  project?: ProjectConfiguration;
   absoluteName: string;
-  moduleNameStyles: ReturnType<typeof getNameStyles>;
+  importPath: string;
 
   constructor(props: { tree: Tree; parent: SchemaCoder } & IGeneratorProps) {
     this.name = "root";
@@ -26,9 +25,7 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.absoluteName = `${this.parent.absoluteName}/root`;
 
-    const moduleName = this.parent.parent.parent.name;
-    const moduleNameStyles = getNameStyles({ name: moduleName });
-    this.moduleNameStyles = moduleNameStyles;
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -54,8 +51,6 @@ export class Coder {
       generateFilesPath: path.join(__dirname, `files`),
       templateParams: {
         template: "",
-        lib_name: this.baseName,
-        module_name_kebab_case: this.moduleNameStyles.kebabCased.base,
       },
     });
 

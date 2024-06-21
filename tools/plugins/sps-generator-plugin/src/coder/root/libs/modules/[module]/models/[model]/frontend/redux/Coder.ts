@@ -1,9 +1,4 @@
-import {
-  ProjectConfiguration,
-  Tree,
-  getProjects,
-  offsetFromRoot,
-} from "@nx/devkit";
+import { ProjectConfiguration, Tree, getProjects } from "@nx/devkit";
 import * as nxWorkspace from "@nx/workspace";
 import { Coder as FrontendCoder } from "../Coder";
 import path from "path";
@@ -62,8 +57,6 @@ export class Coder {
       return;
     }
 
-    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
-
     const apiClientImportPath =
       this.parent.project.api.project.client.importPath;
 
@@ -75,8 +68,6 @@ export class Coder {
       templateParams: {
         template: "",
         module_name: this.moduleName,
-        model_name: this.modelName,
-        offset_from_root: offsetFromRootProject,
         api_client_import_path: apiClientImportPath,
       },
     });

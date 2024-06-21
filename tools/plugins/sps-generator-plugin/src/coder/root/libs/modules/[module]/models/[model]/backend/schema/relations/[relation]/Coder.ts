@@ -32,6 +32,7 @@ export class Coder {
   exportPopulate?: ExportPopulate;
   importRelation?: ImportRelation;
   exportRelation?: ExportRelation;
+  importPath: string;
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -41,6 +42,8 @@ export class Coder {
     this.baseName = `${props.parent.baseName}-${this.name}`;
     this.baseDirectory = `${props.parent.baseDirectory}/${this.name}`;
     this.absoluteName = `${props.parent.absoluteName}/${this.name}`;
+
+    this.importPath = this.absoluteName;
 
     const nameStyles = getNameStyles({ name: this.name });
 

@@ -125,9 +125,6 @@ export class Coder {
       this.parent.parent.parent.parent.parent.project.models[1].project.model
         .project.backend.project.schema.project.table.importPath;
 
-    const leftModelIsExternal =
-      this.parent.parent.parent.parent.parent.project.models[0].project.model
-        .isExternal;
     const rightModelIsExternal =
       this.parent.parent.parent.parent.parent.project.models[1].project.model
         .isExternal;
@@ -142,20 +139,14 @@ export class Coder {
         left_schema_project_import_path: leftProjectSchemaTableImportPath,
         left_schema_table_name: this.leftModelStyles?.pascalCased.base,
         left_schema_model_name: this.leftModelStyles?.propertyCased.base,
-        left_schema_model_name_snake_cased:
-          this.leftModelStyles?.snakeCased.base,
-        left_model_is_external: leftModelIsExternal,
         right_model_is_external: rightModelIsExternal,
         left_model_table_uuid_name: this.leftModelTableUuidName,
         right_model_table_uuid_name: this.rightModelTableUuidName,
         right_schema_project_import_path: rightProjectSchemaImportPath,
         right_schema_table_name: this.rightModelStyles?.pascalCased.base,
         right_schema_model_name: this.rightModelStyles?.propertyCased.base,
-        right_schema_model_name_snake_cased:
-          this.rightModelStyles?.snakeCased.base,
         module_name_cutted_snake_cased: this.moduleNameStyles?.snakeCased,
         module_name_cutted_pascal_cased: this.moduleNameStyles?.pascalCased,
-        relation_name_snake_cased: this.relationNameStyles?.snakeCased.base,
         table_name: this.tableName,
         relation_name_pascal_cased: this.relationNameStyles?.pascalCased.base,
         relation_name_property_cased:

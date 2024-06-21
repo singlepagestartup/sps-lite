@@ -18,6 +18,7 @@ export class Coder {
   modelName: string;
   snakeCasePluralizedModelName: string;
   absoluteName: string;
+  importPath: string;
 
   constructor(props: { parent: RelationsCoder; tree: Tree } & IGeneratorProps) {
     this.parent = props.parent;
@@ -26,6 +27,8 @@ export class Coder {
     this.tree = props.tree;
     this.name = "relations";
     this.absoluteName = `${this.parent.absoluteName}/root`;
+
+    this.importPath = this.absoluteName;
 
     const modelName = this.parent.parent.parent.name;
     const modelNameSplitted = names(modelName).fileName.split("-");

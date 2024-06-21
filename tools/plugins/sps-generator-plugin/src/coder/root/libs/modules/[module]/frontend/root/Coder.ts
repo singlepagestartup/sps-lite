@@ -5,7 +5,7 @@ import path from "path";
 import { Migrator } from "./migrator/Migrator";
 import { util as createSpsReactLibrary } from "../../../../../../../utils/create-sps-react-library";
 
-export type IGeneratorProps = {};
+export type IGeneratorProps = unknown;
 
 export class Coder {
   parent: ComponentCoder;
@@ -15,6 +15,7 @@ export class Coder {
   absoluteName: string;
   name: string;
   project?: ProjectConfiguration;
+  importPath: string;
 
   constructor(props: { parent: ComponentCoder; tree: Tree } & IGeneratorProps) {
     this.name = "root";
@@ -23,6 +24,8 @@ export class Coder {
     this.baseDirectory = `${this.parent.baseDirectory}/root`;
     this.absoluteName = `${this.parent.absoluteName}/root`;
     this.tree = props.tree;
+
+    this.importPath = this.absoluteName;
 
     this.project = getProjects(this.tree).get(this.baseName);
   }
@@ -49,7 +52,6 @@ export class Coder {
       root: this.baseDirectory,
       templateParams: {
         module_name: moduleName,
-        lib_name: this.baseName,
       },
       tree: this.tree,
     });
