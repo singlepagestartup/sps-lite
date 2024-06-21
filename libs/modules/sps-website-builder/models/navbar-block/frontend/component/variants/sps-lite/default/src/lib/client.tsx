@@ -7,7 +7,8 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder/models/navbar-block/frontend/api/client";
-import { Component as AssetsComponent } from "./assets/component";
+import { Component as Logotype } from "./assets/logotype";
+import { Component as Content } from "./assets/content";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } =
@@ -19,11 +20,12 @@ export default function Client(props: IComponentProps) {
     return <Skeleton {...props} />;
   }
 
+  const logotype = <Logotype {...props} data={data} />;
+  const content = <Content {...props} data={data} />;
+
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data}>
-        <AssetsComponent {...props} data={data} />
-      </Component>
+      <Component {...props} data={data} content={content} logotype={logotype} />
     </ErrorBoundary>
   );
 }

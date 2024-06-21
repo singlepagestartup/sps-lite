@@ -1,60 +1,41 @@
 "use client";
 
-import React, { useEffect } from "react";
-// import { Disclosure } from "@headlessui/react";
-import { usePathname, useSearchParams } from "next/navigation";
+import React, { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
-  // return (
-  //   <Disclosure
-  //     data-module="sps-website-builder"
-  //     data-model="navbar-block"
-  //     data-id={props.data?.id || ""}
-  //     data-variant={props.variant}
-  //     as="div"
-  //     className="w-full"
-  //   >
-  //     {(disclosure) => {
-  //       return <DisclosureInner disclosure={disclosure} props={props} />;
-  //     }}
-  //   </Disclosure>
-  // );
-  return <></>;
-}
+  const [open, setOpen] = useState(false);
 
-function DisclosureInner({
-  disclosure,
-  props,
-}: {
-  disclosure: any;
-  props: IComponentPropsExtended;
-}) {
-  // const pathname = usePathname();
-  // const searchParams = useSearchParams();
-  // useEffect(() => {
-  //   if (disclosure?.close) {
-  //     disclosure.close();
-  //   }
-  // }, [pathname, searchParams, disclosure.close]);
-  // return (
-  //   <>
-  //     <div className="mx-auto flex flex-row w-full overflow-hidden">
-  //       {props.children}
-  //       <div className="flex flex-shrink-0 items-center lg:hidden pr-2">
-  //         <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
-  //           <span className="sr-only">Open main menu</span>
-  //           {disclosure.open ? (
-  //             <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-  //           ) : (
-  //             <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-  //           )}
-  //         </Disclosure.Button>
-  //       </div>
-  //     </div>
-  //     <Disclosure.Panel className="lg:hidden py-2">
-  //       {props.children}
-  //     </Disclosure.Panel>
-  //   </>
-  // );
+  return (
+    <div className="w-full">
+      <div className="mx-auto flex flex-row w-full overflow-hidden px-2 py-3 gap-2">
+        <div className="flex items-center">{props.logotype}</div>
+        <div
+          data-open={open}
+          className="data-[open=false]:hidden data-[open=false]:lg:flex absolute data-[open=true]:w-screen data-[open=true]:h-screen inset-0 lg:relative data-[open=true]:flex items-center bg-background lg:bg-transparent"
+        >
+          {props.content}
+        </div>
+        <div className="ml-auto flex flex-shrink-0 items-center lg:hidden">
+          <button
+            onClick={() => {
+              setOpen((prev) => !prev);
+            }}
+            className="bg-background border border-foreground rounded-xl w-[50px] h-[50px] flex flex-shrink-0 lg:hidden z-30 items-center justify-center text-foreground hover:text-foreground focus:outline-none focus:ring-inset focus:ring-transparent gap-3 flex-col"
+          >
+            <div
+              className={`w-[30px] h-[2px] bg-foreground transform duration-200 ${
+                open ? "rotate-45 translate-y-2.5 -mt-1.5" : "mt-0"
+              }`}
+            ></div>
+            <div
+              className={`w-[30px] h-[2px] bg-foreground transform duration-200 ${
+                open ? "-rotate-45 -translate-y-1" : ""
+              }`}
+            ></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }

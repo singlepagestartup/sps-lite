@@ -9,10 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-model="navbar"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn(
-        "bg-white border-b border-input w-screen z-30 fixed",
-        props.data.className,
-      )}
+      className={cn("w-screen z-30 fixed", props.data.className)}
     >
       <div className="w-full mx-auto max-w-7xl">
         {props.data.navbarsToWidgets.map((entity, index) => {

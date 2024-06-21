@@ -12,5 +12,6 @@ export interface IComponentProps extends ISpsComponentBase {
 
 export interface IComponentPropsExtended extends IComponentProps {
   data: IModelExtended;
-  children?: ReactNode;
+  content?: ReactNode;
+  logotype?: ReactNode;
 }

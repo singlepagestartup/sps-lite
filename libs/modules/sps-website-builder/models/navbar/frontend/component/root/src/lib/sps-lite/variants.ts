@@ -1,4 +1,4 @@
-import { Component as Find } from "@sps/sps-website-builder-models-navbar-frontend-component-variants-sps-lite-find";
+import { Component as Find } from "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/find";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-select-input";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-form";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-form-inputs";

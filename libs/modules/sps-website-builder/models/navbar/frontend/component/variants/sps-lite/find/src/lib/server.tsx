@@ -9,21 +9,11 @@ import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  if (!props.data.id) {
-    return <></>;
+  const data = await api.fetch.find();
+
+  if (props.children) {
+    return props.children({ data });
   }
 
-  const data = await api.fetch.findById({
-    id: props.data.id,
-  });
-
-  if (!data) {
-    return <></>;
-  }
-
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
-  );
+  return <></>;
 }
