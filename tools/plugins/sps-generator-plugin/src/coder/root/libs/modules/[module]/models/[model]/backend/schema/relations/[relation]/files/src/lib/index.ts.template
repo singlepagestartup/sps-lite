@@ -1,7 +1,7 @@
 import {
   Table,
   modelName,
-} from "<%= module_schema_relations_project_import_path %>";
+} from "<%= relation_schema_import_path %>";
 import { TableRelationsHelpers } from "drizzle-orm";
 import {
   PopulateQueryBuilderProps,
