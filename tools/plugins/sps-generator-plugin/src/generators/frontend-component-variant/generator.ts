@@ -3,7 +3,7 @@ import { Coder } from "../../coder/Coder";
 import { Tree, formatFiles } from "@nx/devkit";
 import pluralize from "pluralize";
 
-// npx nx generate @sps/sps-generator-plugin:frontend-component-variant --name=get-layout --entity_name=pages-to-layouts --action=create --level=sps-lite --module_name=sps-website-builder --type=relation --no-interactive --dry-run
+// npx nx generate @sps/sps-generator-plugin:frontend-component-variant --name=main-feature --entity_name=widget --action=create --level=startup --module_name=startup --type=model --no-interactive --dry-run
 export async function frontendComponentVariantGenerator(
   tree: Tree,
   options: FrontendComponentVariantGeneratorSchema,
@@ -49,9 +49,9 @@ export async function frontendComponentVariantGenerator(
     });
 
     if (options.action === "remove") {
-      await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.project.variants[0].remove();
+      await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.project.variants?.[0].remove();
     } else {
-      await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.project.variants[0].create();
+      await coder.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.project.frontend.project.component.project.variants?.[0].create();
     }
   } else if (options.type === "relation") {
     const leftModelPluralized = options.entity_name.split("-to-")[0];
@@ -119,9 +119,9 @@ export async function frontendComponentVariantGenerator(
     });
 
     if (options.action === "remove") {
-      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants[0].remove();
+      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants?.[0].remove();
     } else {
-      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants[0].create();
+      await coder.project.root.project.libs.project.modules[0].project.module.project.relations[0].project.relation.project.frontend.project.component.project.variants?.[0].create();
     }
   }
 
