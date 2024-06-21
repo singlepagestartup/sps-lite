@@ -1,4 +1,4 @@
-import { Tree, formatFiles, generateFiles, offsetFromRoot } from "@nx/devkit";
+import { Tree, generateFiles, offsetFromRoot } from "@nx/devkit";
 
 export const util = async ({
   root,
@@ -38,6 +38,4 @@ export const util = async ({
   tree.delete(`${root}/package.json`);
   tree.delete(`${root}/project.json`);
   tree.delete(`${root}/README.md`);
-
-  await formatFiles(tree);
 };
