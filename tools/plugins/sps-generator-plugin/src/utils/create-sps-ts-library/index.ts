@@ -1,12 +1,4 @@
-import {
-  Tree,
-  formatFiles,
-  generateFiles,
-  offsetFromRoot,
-  updateJson,
-  updateProjectConfiguration,
-} from "@nx/devkit";
-import { libraryGenerator as jsLibraryGenerator } from "@nx/js";
+import { Tree, formatFiles, generateFiles, offsetFromRoot } from "@nx/devkit";
 
 export const util = async ({
   root,
@@ -23,17 +15,6 @@ export const util = async ({
     [key: string]: string | boolean | number | undefined;
   };
 }) => {
-  const createdLibrary = await jsLibraryGenerator(tree, {
-    name,
-    bundler: "tsc",
-    projectNameAndRootFormat: "as-provided",
-    directory: root,
-    minimal: true,
-    linter: "none",
-    unitTestRunner: "none",
-    strict: true,
-  });
-
   if (generateFilesPath) {
     generateFiles(tree, generateFilesPath, root, {
       ...templateParams,
@@ -50,16 +31,6 @@ export const util = async ({
     offset_from_root: offsetFromRootProject,
   });
 
-  updateProjectConfiguration(tree, name, {
-    root,
-    sourceRoot: `${root}/src`,
-    projectType: "library",
-    tags: [],
-    targets: {
-      "tsc:build": {},
-    },
-  });
-
   const defaultFileName = `${name}.ts`.replace("@sps/", "");
 
   tree.delete(`${root}/src/lib/${defaultFileName}`);
@@ -74,6 +45,4 @@ export const util = async ({
   tree.delete(`${root}/README.md`);
 
   await formatFiles(tree);
-
-  return createdLibrary;
 };
