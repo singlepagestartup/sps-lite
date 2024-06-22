@@ -122,7 +122,7 @@ export function Component(props: IComponentPropsExtended) {
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
-              formFieldName="buttonId"
+              formFieldName="featureId"
             />
           </div>
         </ModelEntityCard>
@@ -162,7 +162,7 @@ export function Component(props: IComponentPropsExtended) {
               hostUrl={props.hostUrl}
               form={form}
               variant="admin-select-input"
-              formFieldName="buttonId"
+              formFieldName="featureId"
             />
           </CardContent>
         </Card>
