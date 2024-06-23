@@ -10,14 +10,14 @@ export const api = {
     return await actions.findById<IModelExtended>({
       id,
       model: route,
-      path: "/api/startup",
+      path: "/api/sps-website-builder",
       tag,
     });
   },
   find: async (params?: any) => {
     return await actions.find<IModelExtended>({
       model: route,
-      path: "/api/startup",
+      path: "/api/sps-website-builder",
       tag,
       params,
     });
