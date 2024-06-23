@@ -2,6 +2,7 @@ import { IComponentProps } from "./interface";
 import { Component as Page } from "@sps/sps-website-builder/models/page/frontend/component/root";
 import { Component as Navbar } from "@sps/sps-website-builder/models/navbar/frontend/component/root";
 import { Component as Widget } from "@sps/sps-website-builder/models/widget/frontend/component/root";
+import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component/root";
 
 import { cn } from "@sps/shared-frontend-utils-client";
 
@@ -123,13 +124,61 @@ export function App(props: IComponentProps) {
                     key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant="default"
+                    variant={navbar.variant}
                     data={navbar}
                   />
                 );
               });
           }}
         </Navbar>
+      </div>
+    );
+  } else if (model === "footer") {
+    return (
+      <div
+        data-module="sps-website-builder"
+        className={cn("w-full flex", props.className)}
+      >
+        <Footer
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="find"
+          query={
+            title
+              ? {
+                  filters: {
+                    and: [
+                      {
+                        column: "title",
+                        method: "eq",
+                        value: title,
+                      },
+                    ],
+                  },
+                }
+              : {}
+          }
+        >
+          {({ data: footers }) => {
+            if (!footers.length) {
+              return;
+            }
+
+            return footers
+              .filter((footer) => footer.variant === variant)
+              .map((footer, index) => {
+                return (
+                  <Footer
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant={footer.variant}
+                    data={footer}
+                  />
+                );
+              });
+          }}
+        </Footer>
       </div>
     );
   }
