@@ -1,6 +1,6 @@
 import { IComponentProps } from "./interface";
 import { cn } from "@sps/shared-frontend-utils-client";
-import { Component as Widgets } from "@sps/startup/models/widget/frontend/component/root";
+import { Component as Widget } from "@sps/startup/models/widget/frontend/component/root";
 
 export function App(props: IComponentProps) {
   const parsedProps = JSON.parse(props.props || "{}");
@@ -14,40 +14,42 @@ export function App(props: IComponentProps) {
         data-module="startup"
         className={cn("w-full flex flex-col", props.className)}
       >
-        {title ? (
-          <Widgets
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="find"
-            query={{
-              filters: {
-                and: [
-                  {
-                    column: "title",
-                    method: "eq",
-                    value: title,
+        <Widget
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="find"
+          query={
+            title
+              ? {
+                  filters: {
+                    and: [
+                      {
+                        column: "title",
+                        method: "eq",
+                        value: title,
+                      },
+                    ],
                   },
-                ],
-              },
-            }}
-          >
-            {({ data: widgets }) => {
-              return widgets
-                .filter((widget) => widget.variant === variant)
-                .map((widget) => {
-                  return (
-                    <Widgets
-                      key={widget.id}
-                      isServer={props.isServer}
-                      hostUrl={props.hostUrl}
-                      data={widget}
-                      variant={widget.variant}
-                    />
-                  );
-                });
-            }}
-          </Widgets>
-        ) : null}
+                }
+              : {}
+          }
+        >
+          {({ data: widgets }) => {
+            return widgets
+              .filter((widget) => widget.variant === variant)
+              .map((widget) => {
+                return (
+                  <Widget
+                    key={widget.id}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    data={widget}
+                    variant={widget.variant}
+                  />
+                );
+              });
+          }}
+        </Widget>
       </div>
     );
   }

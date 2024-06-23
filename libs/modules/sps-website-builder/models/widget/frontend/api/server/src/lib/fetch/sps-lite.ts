@@ -1,24 +1,25 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { actions } from "@sps/shared-frontend-server-api";
 import {
-  populate,
   route,
+  tag,
   IModelExtended,
 } from "@sps/sps-website-builder/models/widget/frontend/api/model";
 
 export const api = {
   findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
+    return await actions.findById<IModelExtended>({
       id,
       model: route,
-      populate,
-      rootPath: "/api/sps-website-builder",
+      path: "/api/startup",
+      tag,
     });
   },
-  find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
+  find: async (params?: any) => {
+    return await actions.find<IModelExtended>({
       model: route,
-      populate,
-      rootPath: "/api/sps-website-builder",
+      path: "/api/startup",
+      tag,
+      params,
     });
   },
 };

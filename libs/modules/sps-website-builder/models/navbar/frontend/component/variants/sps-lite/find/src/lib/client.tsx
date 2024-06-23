@@ -11,7 +11,9 @@ import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading, isUninitialized } = api.rtk.useFindQuery(
-    {},
+    {
+      ...(props.query || {}),
+    },
   );
 
   useEffect(() => {

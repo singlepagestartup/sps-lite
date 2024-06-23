@@ -9,6 +9,7 @@ export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   set?: Dispatch<SetStateAction<IModelExtended[] | undefined>>;
   children?: ({ data }: { data: IModelExtended[] }) => any;
+  query?: any;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
