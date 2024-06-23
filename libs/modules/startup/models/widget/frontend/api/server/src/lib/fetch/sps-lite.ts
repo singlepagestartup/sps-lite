@@ -1,5 +1,6 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { actions } from "@sps/shared-frontend-server-api";
 import {
+  tag,
   populate,
   route,
   IModelExtended,
@@ -7,18 +8,19 @@ import {
 
 export const api = {
   findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
+    return await actions.findById<IModelExtended>({
       id,
       model: route,
-      populate,
-      rootPath: "/api/startup",
+      path: "/api/startup",
+      tag,
     });
   },
-  find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
+  find: async (params?: any) => {
+    return await actions.find<IModelExtended>({
       model: route,
-      populate,
-      rootPath: "/api/startup",
+      path: "/api/startup",
+      tag,
+      params,
     });
   },
 };

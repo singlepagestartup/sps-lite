@@ -5,7 +5,8 @@ import { cn } from "@sps/shared-frontend-utils-client";
 
 export function App(props: IComponentProps) {
   const parsedProps = JSON.parse(props.props || "{}");
-  const model = parsedProps.model || "page";
+  const model = parsedProps.model || "";
+  const variant = parsedProps.variant || "";
 
   if (props.variant === "default") {
     if (model === "page") {
@@ -53,9 +54,10 @@ export function App(props: IComponentProps) {
                 return;
               }
 
-              return navbars.map((navbar) => {
+              return navbars.map((navbar, index) => {
                 return (
                   <Navbar
+                    key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
                     variant="default"
