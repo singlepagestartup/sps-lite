@@ -1,4 +1,4 @@
-export const variants = ["default"] as const;
+export const variants = ["primary", "default"] as const;
 export const externalModules = ["sps-website-builder", "startup"] as const;
 
 export interface IRelation {

@@ -1,21 +1,3 @@
-import { actions } from "@sps/shared-frontend-server-api";
-import { tag, route, IModelExtended } from "../model";
+import { api as parentApi } from "./sps-lite";
 
-export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await actions.findById<IModelExtended>({
-      id,
-      model: route,
-      path: "/api/startup",
-      tag,
-    });
-  },
-  find: async (params?: any) => {
-    return await actions.find<IModelExtended>({
-      model: route,
-      path: "/api/startup",
-      tag,
-      params,
-    });
-  },
-};
+export const api = parentApi;

@@ -53,20 +53,4 @@ export function App(props: IComponentProps) {
       </div>
     );
   }
-
-  return (
-    <div
-      data-module="startup"
-      className={cn("w-full flex flex-col", props.className)}
-    >
-      <div className="px-2">
-        <div className="w-full flex flex-col gap-3 font-bold text-sm p-5 rounded-lg bg-muted text-center">
-          <p>Startup Module</p>
-          <p>Model: {model}</p>
-          <p>Variant: {variant}</p>
-          <p>Title: {title}</p>
-        </div>
-      </div>
-    </div>
-  );
 }

@@ -43,7 +43,11 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!data.widgetId || !data.externalModule) {
+    if (
+      !data.widgetId ||
+      !data.externalModule ||
+      data.externalModuleProps === "{}"
+    ) {
       return;
     }
 

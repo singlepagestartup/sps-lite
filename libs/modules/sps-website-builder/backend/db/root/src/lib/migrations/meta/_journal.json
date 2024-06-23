@@ -141,6 +141,13 @@
       "when": 1719012643359,
       "tag": "0019_fantastic_shinko_yamashiro",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1719184808884,
+      "tag": "0020_next_blue_marvel",
+      "breakpoints": true
     }
   ]
 }
