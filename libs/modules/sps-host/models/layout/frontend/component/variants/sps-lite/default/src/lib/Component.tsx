@@ -12,19 +12,36 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex flex-col", props.data.className)}
     >
       {props.data.layoutsToWidgets.length
-        ? props.data.layoutsToWidgets?.map((entity, index) => {
-            return (
-              <LayoutsToWidgets
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant="default"
-                data={entity}
-              />
-            );
-          })
+        ? props.data.layoutsToWidgets
+            ?.filter((entity) => entity.variant === "default")
+            .map((entity, index) => {
+              return (
+                <LayoutsToWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                  data={entity}
+                />
+              );
+            })
         : null}
       {props.children}
+      {props.data.layoutsToWidgets.length
+        ? props.data.layoutsToWidgets
+            ?.filter((entity) => entity.variant === "primary")
+            .map((entity, index) => {
+              return (
+                <LayoutsToWidgets
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                  data={entity}
+                />
+              );
+            })
+        : null}
     </div>
   );
 }
