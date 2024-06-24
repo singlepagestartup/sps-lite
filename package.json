@@ -16,6 +16,7 @@
     "@next/bundle-analyzer": "^14.2.1",
     "@nx/devkit": "19.2.2",
     "@paralleldrive/cuid2": "^2.2.2",
+    "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.0-rc.7",
     "@radix-ui/react-checkbox": "^1.1.0-rc.6",
     "@radix-ui/react-collapsible": "^1.1.0-rc.6",
