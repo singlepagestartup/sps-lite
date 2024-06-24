@@ -2,28 +2,37 @@ import { HOST_URL } from "@sps/shared-utils";
 import { api } from "@sps/sps-host/models/page/frontend/api/server";
 
 async function generateSiteMap() {
-  const pages = await api.fetch.find();
+  try {
+    const pages = await api.fetch.find();
 
-  if (!pages) {
+    if (!pages) {
+      return `<?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+      </urlset>
+    `;
+    }
+
+    return `<?xml version="1.0" encoding="UTF-8"?>
+     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+       ${pages
+         ?.map((page) => {
+           return `
+             <url>
+                 <loc>${`${HOST_URL}${page.url}`}</loc>
+             </url>
+           `;
+         })
+         .join("")}
+     </urlset>
+   `;
+  } catch (error) {
+    console.log(`generateSiteMap ~ error:`, error);
+
     return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
     </urlset>
   `;
   }
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-     ${pages
-       ?.map((page) => {
-         return `
-           <url>
-               <loc>${`${HOST_URL}${page.url}`}</loc>
-           </url>
-         `;
-       })
-       .join("")}
-   </urlset>
- `;
 }
 
 export async function GET() {
