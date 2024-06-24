@@ -6,7 +6,6 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
-import { cookies } from "next/headers";
 
 /**
  * @deprecated Use `@sps/shared-frontend-server-api` instead of that function
@@ -41,7 +40,6 @@ export async function action<T>(params: {
     next: {
       revalidate,
     },
-    headers: { Cookie: cookies().toString() },
     credentials: "include",
   };
 

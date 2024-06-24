@@ -53,4 +53,6 @@ export function App(props: IComponentProps) {
       </div>
     );
   }
+
+  return;
 }
