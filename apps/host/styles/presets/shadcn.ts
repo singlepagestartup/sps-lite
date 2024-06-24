@@ -127,6 +127,8 @@ const shadcnPlugin = plugin(
         },
         fontFamily: {
           sans: ["var(--font-sans)", ...fontFamily.sans],
+          default: ["var(--font-default)", ...fontFamily.sans],
+          primary: ["var(--font-primary)", ...fontFamily.sans],
         },
         keyframes: {
           "accordion-down": {
