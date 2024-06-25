@@ -43,7 +43,7 @@ export class Coder {
     this.tree = props.tree;
     this.baseName = `${props.parent.baseName}-schema`;
     this.baseDirectory = `${props.parent.baseDirectory}/schema`;
-    this.absoluteName = `${props.parent.absoluteName}/schema/root`;
+    this.absoluteName = `${props.parent.absoluteName}/schema`;
 
     this.project.table = new TableCoder({
       parent: this,
