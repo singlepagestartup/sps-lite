@@ -19,23 +19,71 @@ export class RedisStoreAdapter {
   }
 
   async clearByPrefix(prefix: string): Promise<void> {
-    const keys = await this.RedisClient.keys(prefix + "*");
+    try {
+      const connected = this.RedisClient.status === "ready";
 
-    if (keys.length > 0) {
-      await this.RedisClient.del(keys);
+      if (!connected) {
+        await this.RedisClient.connect();
+      }
+
+      const keys = await this.RedisClient.keys(prefix + "*");
+
+      if (keys.length > 0) {
+        await this.RedisClient.del(keys);
+      }
+    } catch (error) {
+      console.log(`redis ~ clearByPrefix ~ error:`, error);
     }
   }
 
   async find(key: string): Promise<string | null | undefined> {
-    return this.RedisClient.get(key);
+    try {
+      const connected = this.RedisClient.status === "ready";
+
+      if (!connected) {
+        await this.RedisClient.connect();
+      }
+
+      return await this.RedisClient.get(key);
+    } catch (error) {
+      // console.log(`redis ~ find ~ error:`, error);
+      return;
+    }
   }
 
-  async create(key: string, ttl = 10, value: string): Promise<string> {
-    return this.RedisClient.setex(key, ttl, value);
+  async create(
+    key: string,
+    ttl = 10,
+    value: string,
+  ): Promise<string | undefined> {
+    try {
+      const connected = this.RedisClient.status === "ready";
+
+      if (!connected) {
+        await this.RedisClient.connect();
+      }
+
+      return this.RedisClient.setex(key, ttl, value);
+    } catch (error) {
+      console.log(`redis ~ create ~ error:`, error);
+
+      return;
+    }
   }
 
-  async remove(key: string): Promise<number> {
-    return this.RedisClient.del(key);
+  async remove(key: string): Promise<number | undefined> {
+    try {
+      const connected = this.RedisClient.status === "ready";
+
+      if (!connected) {
+        await this.RedisClient.connect();
+      }
+
+      return this.RedisClient.del(key);
+    } catch (error) {
+      console.log(`redis ~ remove ~ error:`, error);
+      return;
+    }
   }
 
   async getSessionById(
