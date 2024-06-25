@@ -59,6 +59,6 @@ export const NEXT_PUBLIC_HOST_METADATA_KEYWORDS =
 export const KV_HOST = process.env["KV_HOST"] || "localhost";
 export const KV_PORT = Number(process.env["KV_PORT"]) || 80;
 export const KV_SSL = process.env["KV_SSL"] || "true";
-export const KV_URL = process.env["KV_URL"];
+export const KV_URL = process.env["KV_URL"]?.replace("redis://", "rediss://");
 export const KV_USERNAME = process.env["KV_USERNAME"] || "default";
 export const KV_PASSWORD = process.env["KV_PASSWORD"];

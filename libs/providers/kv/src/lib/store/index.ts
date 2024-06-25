@@ -27,7 +27,7 @@ try {
     redis = new Redis(connectionParams);
   } else if (KV_URL) {
     redis = new Redis(KV_URL, {
-      maxRetriesPerRequest: 1,
+      maxRetriesPerRequest: 10,
       commandTimeout: 5000,
     });
   }
