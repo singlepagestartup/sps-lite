@@ -44,9 +44,8 @@ try {
     });
 
     setTimeout(() => {
-      console.log("redis ~ disconnecting");
       redis.disconnect();
-    }, 5000);
+    }, 7000);
   }
 } catch (error: any) {
   console.log(`redis store ~ error:`, error.message);
