@@ -21,6 +21,10 @@ export function middleware() {
       const cachedValue = await store.find(path);
 
       if (cachedValue) {
+        console.log(
+          `🚀 ~ returncreateMiddleware<MiddlewareGeneric> ~ cachedValue:`,
+          cachedValue,
+        );
         const response = new Response(cachedValue, {
           status: 200,
           headers: {

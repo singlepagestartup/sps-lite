@@ -12,6 +12,10 @@ export const handler = async (
   const sanitizedUrl = queryUrl?.split("?")[0];
   let url = sanitizedUrl;
 
+  if (url === "/favicon.ico") {
+    return c.json({});
+  }
+
   // Vercel changes url "/" to "index" so we need to change it back
   if (!url || url === "/index") {
     url = "/";

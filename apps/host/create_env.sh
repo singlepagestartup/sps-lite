@@ -66,10 +66,10 @@ add_env "DATABASE_PORT" $DATABASE_PORT
 
 add_env "DATABASE_NO_SSL" true
 
-REDIS_PORT=$(get_env REDIS_PORT ../redis/.env)
-add_env "REDIS_PORT" $REDIS_PORT
+KV_PORT=$(get_env REDIS_PORT ../redis/.env)
+add_env "KV_PORT" $KV_PORT
 
-REDIS_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
-add_env "REDIS_PASSWORD" $REDIS_PASSWORD
+KV_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
+add_env "KV_PASSWORD" $KV_PASSWORD
 
 SPS_RBAC_COOKIE_SESSION_SECRET=$(generate_random_string)
