@@ -7,6 +7,6 @@ export async function middleware(request: any) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next, images, sitemap, robots)
-    "/((?!_next|images|sitemap|robots|api|favicon).*)/",
+    "/((?!_next|images|sitemap|robots|api|favicon).*)",
   ],
 };
