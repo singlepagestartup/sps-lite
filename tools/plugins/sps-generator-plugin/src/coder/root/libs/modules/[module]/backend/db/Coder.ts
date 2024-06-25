@@ -26,7 +26,7 @@ export class Coder {
     this.parent = props.parent;
     this.baseName = `${this.parent.baseName}-db`;
     this.baseDirectory = `${this.parent.baseDirectory}/db`;
-    this.absoluteName = `${this.parent.absoluteName}/db`;
+    this.absoluteName = `${this.parent.absoluteName}/db/root`;
 
     const root = new RootCoder({
       tree: this.tree,

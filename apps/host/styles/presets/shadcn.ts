@@ -125,6 +125,9 @@ const shadcnPlugin = plugin(
           md: "calc(var(--radius) - 2px)",
           sm: "calc(var(--radius) - 4px)",
         },
+        transitionProperty: {
+          width: "width",
+        },
         fontFamily: {
           sans: ["var(--font-sans)", ...fontFamily.sans],
           default: ["var(--font-default)", ...fontFamily.sans],
@@ -168,6 +171,10 @@ export const preset = {
     {
       pattern: /aspect-h-(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20)/,
       variants: ["sm", "md", "lg", "xl"],
+    },
+    {
+      pattern: /font-(default|primary)/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
     },
   ],
   plugins: [typographyPlugin, aspectRatioPlugin, animatePlugin, shadcnPlugin],
