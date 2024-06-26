@@ -73,7 +73,7 @@ export class Coder {
     }
 
     const parentModelImportPath =
-      this.parent.parent.project.table.parent.absoluteName;
+      this.parent.parent.project.table.parent.project.table.absoluteName;
 
     await createSpsTSLibrary({
       tree: this.tree,
