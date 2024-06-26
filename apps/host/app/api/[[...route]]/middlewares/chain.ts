@@ -9,7 +9,7 @@ export function chain(app: any) {
   app.use(middlewares.logger());
   app.use(spsRbacSdk.middlewares.isAuthenticated() as any);
   app.use(middlewares.parseBody());
-  // app.use(kvMiddlewares.httpCache());
+  app.use(kvMiddlewares.httpCache());
 
   if (process.env["MIDDLEWARE_LOGGER"]) {
     app.use(logger());

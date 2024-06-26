@@ -1,9 +1,11 @@
 import { Hono } from "hono";
-import { store } from "../store";
 import { HTTPException } from "hono/http-exception";
+import { Store } from "../store";
 
 export function setRoutes<T extends Hono>(app: T) {
   app.get("/cache/clear", async (c) => {
+    const store = new Store();
+
     if (!store) {
       throw new HTTPException(500, {
         message: "Cache store not initialized",

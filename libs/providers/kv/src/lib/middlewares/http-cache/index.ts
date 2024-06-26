@@ -1,5 +1,5 @@
 import { createMiddleware } from "hono/factory";
-import { store } from "../../store";
+import { Store } from "../../store";
 
 export type MiddlewareGeneric = {
   Variables: {
@@ -10,6 +10,8 @@ export type MiddlewareGeneric = {
 
 export function middleware() {
   return createMiddleware<MiddlewareGeneric>(async (c, next) => {
+    const store = new Store();
+
     const path = c.req.url;
     const method = c.req.method;
 
