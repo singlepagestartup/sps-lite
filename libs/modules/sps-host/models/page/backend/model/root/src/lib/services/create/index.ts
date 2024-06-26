@@ -10,6 +10,5 @@ export async function service(props: { data: any }) {
   const plainData = insertSchema.parse(data);
 
   const [entity] = await db.insert(Table).values(plainData).returning();
-
   return entity;
 }
