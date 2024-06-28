@@ -51,6 +51,11 @@ function makeConfig() {
           protocol: "https",
           hostname: "**.amazonaws.com",
         },
+        {
+          protocol: "https",
+          hostname: "**.telebit.io",
+        },
+        { protocol: "https", hostname: "**.vercel-storage.com" },
       ],
     },
   };

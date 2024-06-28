@@ -124,16 +124,21 @@ export const Component = (props: IComponentProps) => {
       <Select
         onValueChange={props.field.onChange}
         defaultValue={props.field.value}
+        disabled={props.disabled}
       >
         <FormControl>
           <SelectTrigger className={props.className}>
             <SelectValue placeholder={props.placeholder} />
           </SelectTrigger>
         </FormControl>
-        <SelectContent>
+        <SelectContent className={props.selectContentClassName}>
           {props.options.map((option, index) => {
             return (
-              <SelectItem key={index} value={option[0]}>
+              <SelectItem
+                key={index}
+                value={option[0]}
+                className={props.selectItemClassName}
+              >
                 {typeof option[1] === "function"
                   ? option[1](option)
                   : option[1]}

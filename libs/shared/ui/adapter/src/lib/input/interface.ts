@@ -9,6 +9,7 @@ type IUniversalProps = {
   label?: string;
   ref?: LegacyRef<HTMLInputElement>;
   form: UseFormReturn<any>;
+  disabled?: boolean;
   className?: string;
 };
 
@@ -46,6 +47,8 @@ export type TTypedProps =
   | {
       type: "radio" | "select";
       options: [value: string, title: string | TRenderComponent][];
+      selectContentClassName?: string;
+      selectItemClassName?: string;
     };
 
 export type IComponentProps = IUniversalProps & TTypedProps;
