@@ -11,7 +11,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { Component as AdminFormInputs } from "@sps/<%= module_name %>-models-<%= model_name %>-frontend-component-variants-<%= level %>-admin-form-inputs";
+import { Component as AdminFormInputs } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-form-inputs";
 import { variants } from "<%= root_contracts_import_path %>";
 
 const formSchema = z.object({

@@ -21,7 +21,7 @@ export class Coder {
   baseDirectory: string;
   absoluteName: string;
   project?: ProjectConfiguration;
-  importAppAsAsPropertyModelName: ImportAppAsAsPropertyModelName;
+  importApp: ImportApp;
   exportRoute: ExportRoute;
   importPath: string;
 
@@ -39,8 +39,8 @@ export class Coder {
       names(this.parent.parent.name).fileName,
     );
     const asPropertyModelName = names(this.parent.parent.name).propertyName;
-    this.importAppAsAsPropertyModelName = new ImportAppAsAsPropertyModelName({
-      libName: this.baseName,
+    this.importApp = new ImportApp({
+      importPath: this.importPath,
       asPropertyModelName,
     });
     this.exportRoute = new ExportRoute({
@@ -115,7 +115,7 @@ export class Coder {
     await addToFile({
       toTop: true,
       pathToFile: routesPath,
-      content: this.importAppAsAsPropertyModelName.onCreate.content,
+      content: this.importApp.onCreate.content,
       tree: this.tree,
     });
 
@@ -145,7 +145,7 @@ export class Coder {
       const replaceImportRoutes = await replaceInFile({
         tree: this.tree,
         pathToFile: routesPath,
-        regex: this.importAppAsAsPropertyModelName.onRemove.regex,
+        regex: this.importApp.onRemove.regex,
         content: "",
       });
     } catch (error: any) {
@@ -156,21 +156,21 @@ export class Coder {
   }
 }
 
-export class ImportAppAsAsPropertyModelName extends RegexCreator {
+export class ImportApp extends RegexCreator {
   constructor({
     asPropertyModelName,
-    libName,
+    importPath,
   }: {
     asPropertyModelName: string;
-    libName: string;
+    importPath: string;
   }) {
     const place = "";
     const placeRegex = new RegExp("");
 
-    const content = `import { app as ${asPropertyModelName} } from "${libName}";`;
+    const content = `import { app as ${asPropertyModelName} } from "${importPath}";`;
 
     const contentRegex = new RegExp(
-      `import { app as ${asPropertyModelName} } from "${libName}";`,
+      `import { app as ${asPropertyModelName} } from "${importPath}";`,
     );
 
     super({

@@ -1,4 +1,4 @@
-import { ExportRoute, ImportAppAsAsPropertyModelName } from "./Coder";
+import { ExportRoute, ImportApp } from "./Coder";
 
 describe("Coder", () => {
   describe(`ExportRoute`, () => {
@@ -38,17 +38,17 @@ describe("Coder", () => {
   });
 
   describe(`ImportPath`, () => {
-    const libName = "@sps/sps-website-builder-models-slide-backend-app";
+    const importPath = "@sps/sps-website-builder/models/slide/backend/app/root";
     const asPropertyModelName = "wideSlideRoute";
-    const importPath = new ImportAppAsAsPropertyModelName({
-      libName,
+    const importApp = new ImportApp({
+      importPath,
       asPropertyModelName,
     });
 
     it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
+      const regex = importApp.onRemove.regex;
 
-      const string = `import { app as wideSlideRoute } from "@sps/sps-website-builder-models-slide-backend-app";
+      const string = `import { app as wideSlideRoute } from "@sps/sps-website-builder/models/slide/backend/app/root";
       import { app as layouts } from "@sps/sps-website-builder-models-layout-backend-app";`;
 
       expect(string).toMatch(regex);
