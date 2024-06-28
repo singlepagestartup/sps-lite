@@ -17,6 +17,9 @@ import { variants } from "@sps/sps-website-builder/models/navbar/contracts/root"
 const formSchema = z.object({
   variant: z.enum(variants),
   className: z.string().optional(),
+  title: z.string(),
+  subtitle: z.string().optional(),
+  description: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -31,6 +34,9 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       className: props.data?.className || "",
+      title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      description: props.data?.description || "",
     },
   });
 
