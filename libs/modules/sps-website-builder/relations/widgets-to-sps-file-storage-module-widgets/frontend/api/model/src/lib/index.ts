@@ -10,6 +10,6 @@ export interface IRelationExtended extends IParentRelationExtended {}
 
 export const tag = "widgets-to-sps-file-storage-module-widgets";
 export const route =
-  "/api/sps-website/builder/widgets-to-sps-file-storage-module-widgets";
+  "/api/sps-website-builder/widgets-to-sps-file-storage-module-widgets";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;

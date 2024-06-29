@@ -1,25 +1,11 @@
 import { actions } from "@sps/shared-frontend-server-api";
-import { populate, route, IRelationExtended } from "<%= api_model_import_path %>";
+import {
+  host,
+  route,
+  IRelationExtended
+} from "<%= api_model_import_path %>";
 
-export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await actions.findById<IRelationExtended>({
-      id,
-      path: "/api/<%= module_name %>",
-      model: route,
-      params: {
-        populate,
-      },
-    });
-  },
-  find: async (params: any = {}) => {
-    return await actions.find<IRelationExtended>({
-      model: route,
-      path: "/api/<%= module_name %>",
-      params: {
-        ...params,
-        populate,
-      },
-    });
-  },
-};
+export const api = factory<IRelationExtended>({
+  route,
+  host,
+});

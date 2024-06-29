@@ -5,12 +5,9 @@ import {
   populate,
   route,
   IModelExtended,
+  host,
 } from "@sps/sps-host/models/page/frontend/api/model";
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
 
 interface Params {
@@ -38,7 +35,7 @@ export async function action({ url, catchError = false }: Params) {
     );
 
     const res = await fetch(
-      `${BACKEND_URL}${route}/find-by-url?${stringifiedQuery}`,
+      `${host}${route}/find-by-url?${stringifiedQuery}`,
       options,
     );
 

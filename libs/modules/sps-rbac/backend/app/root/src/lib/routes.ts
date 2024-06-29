@@ -22,9 +22,7 @@ export const routes = {
   "/widgets-to-authentication-blocks": widgetsToAuthenticationBlocks,
   "/widgets": widget,
   "/authentication-blocks": authenticationBlock,
-
   "/identities": identity,
-
   "/authentications": authentication,
   "/roles": role,
 };

@@ -26,7 +26,7 @@ export default async function Server(props: IComponentProps) {
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} />
     </ErrorBoundary>
   );
 }

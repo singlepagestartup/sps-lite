@@ -1,11 +1,10 @@
 "use server";
 
-import { route } from "@sps/sps-website-builder/models/page/frontend/api/model";
 import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+  route,
+  host,
+} from "@sps/sps-website-builder/models/page/frontend/api/model";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
 
 interface Params {
@@ -32,7 +31,7 @@ export async function action(props: Params) {
   );
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-website-builder/pages/url-segment-value?${stringifiedQuery}`,
+    `${host}${route}/url-segment-value?${stringifiedQuery}`,
     options,
   );
 

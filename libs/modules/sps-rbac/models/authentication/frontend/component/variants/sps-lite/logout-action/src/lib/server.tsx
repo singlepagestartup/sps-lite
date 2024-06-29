@@ -12,13 +12,9 @@ import { redirect } from "next/navigation";
 export default async function Server(props: IComponentProps) {
   const data = await api.fetch.isAuthenticated();
 
-  if (!data) {
-    redirect("/login");
-  }
-
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} />
     </ErrorBoundary>
   );
 }

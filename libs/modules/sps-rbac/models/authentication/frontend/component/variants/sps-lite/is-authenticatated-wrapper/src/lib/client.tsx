@@ -31,7 +31,7 @@ export default function Client(props: IComponentProps) {
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} />
     </ErrorBoundary>
   );
 }

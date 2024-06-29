@@ -16,8 +16,8 @@ export function Component(props: IComponentPropsExtended) {
     }
 
     if (logoutData.isSuccess) {
-      router.refresh();
-      router.push("/login");
+      // router.refresh();
+      // router.push("/login");
     }
   }, [logoutData]);
 
@@ -25,7 +25,6 @@ export function Component(props: IComponentPropsExtended) {
     <div
       data-module="sps-rbac"
       data-model="authentication"
-      data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn("w-full py-10 text-center flex flex-col gap-1")}
     >

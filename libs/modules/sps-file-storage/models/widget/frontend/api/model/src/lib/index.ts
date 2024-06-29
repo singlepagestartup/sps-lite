@@ -9,6 +9,6 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "widget";
-export const route = "widgets";
+export const route = "/api/sps-file-storage/widgets";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;

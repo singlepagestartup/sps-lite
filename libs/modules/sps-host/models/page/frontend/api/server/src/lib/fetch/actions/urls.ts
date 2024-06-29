@@ -3,13 +3,10 @@
 import {
   route,
   IModel,
+  host,
   tag,
 } from "@sps/sps-host/models/page/frontend/api/model";
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 
 export async function action() {
   try {
@@ -20,7 +17,7 @@ export async function action() {
       },
     };
 
-    const res = await fetch(`${BACKEND_URL}${route}/urls`, options);
+    const res = await fetch(`${host}${route}/urls`, options);
 
     if (!res.ok) {
       const error = new Error(res.statusText);

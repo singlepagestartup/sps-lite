@@ -3,12 +3,9 @@
 import {
   route,
   IModelExtended,
+  host,
 } from "@sps/sps-rbac/models/authentication/frontend/api/model";
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import { cookies } from "next/headers";
 
 export async function action() {
@@ -22,10 +19,7 @@ export async function action() {
     },
   };
 
-  const request = await fetch(
-    `${BACKEND_URL}/api/sps-rbac/authentications/is-authenticatated`,
-    options,
-  );
+  const request = await fetch(`${host}${route}/is-authenticatated`, options);
 
   if (!request.ok) {
     // throw new Error(request.statusText);

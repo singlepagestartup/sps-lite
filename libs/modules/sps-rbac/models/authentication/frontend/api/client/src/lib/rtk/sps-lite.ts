@@ -57,7 +57,7 @@ export const api = createApi({
         const formData = prepareFormDataToSend(params);
 
         return {
-          url: `/authentications/providers/login-and-password`,
+          url: `${route}/providers/login-and-password`,
           method: "POST",
           params: {
             populate,
@@ -81,7 +81,7 @@ export const api = createApi({
         const formData = prepareFormDataToSend(params);
 
         return {
-          url: `/authentications/logout`,
+          url: `${route}/logout`,
           method: "POST",
           params: {
             populate,

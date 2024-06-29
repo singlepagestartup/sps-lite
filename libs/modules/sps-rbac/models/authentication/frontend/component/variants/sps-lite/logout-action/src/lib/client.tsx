@@ -20,14 +20,14 @@ export default function Client(props: IComponentProps) {
   }
 
   if (!data) {
-    router.push("/login");
+    // router.push("/login");
 
     return null;
   }
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} />
     </ErrorBoundary>
   );
 }

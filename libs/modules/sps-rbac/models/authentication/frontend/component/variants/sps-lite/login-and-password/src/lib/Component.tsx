@@ -44,6 +44,11 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useEffect(() => {
+    console.log(
+      `🚀 ~ useEffect ~ loginAndPasswordResult:`,
+      loginAndPasswordResult,
+    );
+
     if (loginAndPasswordResult.isSuccess) {
       router.push("/");
     }

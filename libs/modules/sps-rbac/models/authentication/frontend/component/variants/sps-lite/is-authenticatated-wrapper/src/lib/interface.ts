@@ -10,6 +10,4 @@ export interface IComponentProps extends ISpsComponentBase {
   children: ReactNode;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended;
-}
+export interface IComponentPropsExtended extends IComponentProps {}

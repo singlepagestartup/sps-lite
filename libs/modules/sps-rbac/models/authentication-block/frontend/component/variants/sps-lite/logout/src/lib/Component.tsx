@@ -10,11 +10,11 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full py-10 text-center flex flex-col gap-1"
     >
-      <LogoutAction
+      {/* <LogoutAction
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="logout-action"
-      />
+      /> */}
     </div>
   );
 }
