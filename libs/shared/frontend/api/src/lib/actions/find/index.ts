@@ -1,16 +1,9 @@
-"use server";
-
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
 
 export interface IActionProps {
-  id: string;
-  model: string;
-  path: string;
+  route: string;
+  host: string;
   tag?: string;
   revalidate?: number;
   params?: {
@@ -19,8 +12,8 @@ export interface IActionProps {
   options?: NextRequestOptions;
 }
 
-export async function action<T>(props: IActionProps): Promise<T> {
-  const { id, params, model, path, tag, options } = props;
+export async function action<T>(props: IActionProps): Promise<T[]> {
+  const { params, route, tag, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -36,7 +29,7 @@ export async function action<T>(props: IActionProps): Promise<T> {
   };
 
   const res = await fetch(
-    `${BACKEND_URL}${path}/${model}/${id}?${stringifiedQuery}`,
+    `${host}${route}?${stringifiedQuery}`,
     requestOptions,
   );
 
@@ -50,7 +43,7 @@ export async function action<T>(props: IActionProps): Promise<T> {
     throw new Error(json.error.message || "Failed to fetch data");
   }
 
-  const transformedData = transformResponseItem<T>(json);
+  const transformedData = transformResponseItem<T[]>(json);
 
   return transformedData;
 }

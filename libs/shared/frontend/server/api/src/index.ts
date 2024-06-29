@@ -1,1 +1,1 @@
-export { actions } from "./lib/actions";
+export * from "./lib/factory";

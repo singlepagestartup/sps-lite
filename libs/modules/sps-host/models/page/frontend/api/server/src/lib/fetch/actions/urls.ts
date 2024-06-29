@@ -1,6 +1,10 @@
 "use server";
 
-import { route, IModel } from "@sps/sps-host/models/page/frontend/api/model";
+import {
+  route,
+  IModel,
+  tag,
+} from "@sps/sps-host/models/page/frontend/api/model";
 import {
   BACKEND_URL,
   NextRequestOptions,
@@ -12,11 +16,11 @@ export async function action() {
     const options: NextRequestOptions = {
       next: {
         revalidate: 0,
-        tags: [route],
+        tags: [tag],
       },
     };
 
-    const res = await fetch(`${BACKEND_URL}/api/sps-host/pages/urls`, options);
+    const res = await fetch(`${BACKEND_URL}${route}/urls`, options);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");

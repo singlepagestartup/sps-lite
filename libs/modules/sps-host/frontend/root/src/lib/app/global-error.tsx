@@ -27,14 +27,16 @@ export function Component({
   useEffect(() => {
     api.fetch
       .find({
-        filters: {
-          and: [
-            {
-              column: "url",
-              method: "eq",
-              value: "/500",
-            },
-          ],
+        params: {
+          filters: {
+            and: [
+              {
+                column: "url",
+                method: "eq",
+                value: "/500",
+              },
+            ],
+          },
         },
       })
       .then((pages) => {

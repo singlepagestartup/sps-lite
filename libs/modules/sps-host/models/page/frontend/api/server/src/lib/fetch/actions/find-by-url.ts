@@ -1,6 +1,7 @@
 "use server";
 
 import {
+  tag,
   populate,
   route,
   IModelExtended,
@@ -22,7 +23,7 @@ export async function action({ url, catchError = false }: Params) {
     const options: NextRequestOptions = {
       next: {
         revalidate: 0,
-        tags: [route],
+        tags: [tag],
       },
     };
 
@@ -37,7 +38,7 @@ export async function action({ url, catchError = false }: Params) {
     );
 
     const res = await fetch(
-      `${BACKEND_URL}/api/sps-host/pages/find-by-url?${stringifiedQuery}`,
+      `${BACKEND_URL}${route}/find-by-url?${stringifiedQuery}`,
       options,
     );
 

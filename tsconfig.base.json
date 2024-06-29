@@ -47,6 +47,7 @@
       "@sps/shared-frontend-server-api": [
         "libs/shared/frontend/server/api/src/index.ts"
       ],
+      "@sps/shared-frontend-api": ["libs/shared/frontend/api/src/index.ts"],
       "@sps/shared-frontend-server-utils": [
         "libs/shared/frontend/server/utils/src/index.ts"
       ],

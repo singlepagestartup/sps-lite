@@ -1,6 +1,6 @@
 "use server";
 
-import { route } from "@sps/sps-host/models/page/frontend/api/model";
+import { route, tag } from "@sps/sps-host/models/page/frontend/api/model";
 import {
   BACKEND_URL,
   NextRequestOptions,
@@ -17,7 +17,7 @@ export async function action(props: Params) {
   const options: NextRequestOptions = {
     next: {
       revalidate: 0,
-      tags: [route],
+      tags: [tag],
     },
   };
 
@@ -32,7 +32,7 @@ export async function action(props: Params) {
   );
 
   const res = await fetch(
-    `${BACKEND_URL}/api/sps-host/pages/url-segment-value?${stringifiedQuery}`,
+    `${BACKEND_URL}${route}/url-segment-value?${stringifiedQuery}`,
     options,
   );
 

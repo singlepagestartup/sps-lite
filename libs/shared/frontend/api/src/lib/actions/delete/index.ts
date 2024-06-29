@@ -1,17 +1,10 @@
-"use server";
-
-import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
-import { cookies } from "next/headers";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
 
 export interface IActionProps {
   id: string;
-  model: string;
-  path: string;
+  route: string;
+  host: string;
   tag?: string;
   revalidate?: number;
   params?: {
@@ -22,14 +15,13 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {
-  const { id, params, model, path, tag, options } = props;
+  const { id, params, route, tag, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
   });
 
   const requestOptions: NextRequestOptions = {
-    headers: { Cookie: cookies().toString() },
     credentials: "include",
     method: "DELETE",
     ...options,
@@ -40,7 +32,7 @@ export async function action<T>(props: IActionProps): Promise<T> {
   };
 
   const res = await fetch(
-    `${BACKEND_URL}${path}/${model}/${id}?${stringifiedQuery}`,
+    `${host}${route}/${id}?${stringifiedQuery}`,
     requestOptions,
   );
 
