@@ -9,6 +9,6 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "widget";
-export const route = "/api/sps-website-builer/widgets";
+export const route = "/api/sps-website-builder/widgets";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;

@@ -18,7 +18,7 @@ export function query({
     const res = await actions.findById<IModelExtended>({
       id,
       host: BACKEND_URL,
-      route: "/api/sps-website-builder",
+      route: "/api/sps-website-builder/hero-section-blocks",
       params,
       options,
     });

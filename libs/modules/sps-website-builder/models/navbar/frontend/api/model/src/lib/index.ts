@@ -9,6 +9,6 @@ export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "navbar";
-export const route = "/api/sps-website-builer/navbars";
+export const route = "/api/sps-website-builder/navbars";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;

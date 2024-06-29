@@ -25,7 +25,9 @@ export async function action() {
     );
 
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      const error = new Error(res.statusText);
+
+      throw new Error(error.message || "Failed to fetch data");
     }
 
     const json = await res.json();
