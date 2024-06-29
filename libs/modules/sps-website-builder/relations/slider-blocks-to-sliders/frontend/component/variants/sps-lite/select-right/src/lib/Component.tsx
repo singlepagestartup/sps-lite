@@ -53,9 +53,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/slider-blocks",
+    storeName: "sps-website-builder/slider-block",
     actionFilter: (action) => {
-      return action.type === "slider-blocks/executeMutation/fulfilled";
+      return action.type === "slider-block/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

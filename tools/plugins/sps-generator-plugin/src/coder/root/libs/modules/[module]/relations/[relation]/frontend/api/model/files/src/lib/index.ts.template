@@ -3,10 +3,12 @@ import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
 } from "<%= extended_contracts_import_path %>";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}
 
 export const tag = "<%= relation_name %>";
-export const route = "<%= relation_name_pluralized %>";
+export const route = "/api/<%= module_name %>/<%= relation_name_pluralized %>";
 export const populate = relationPopulate;
+export const host = BACKEND_URL;

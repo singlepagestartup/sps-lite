@@ -52,9 +52,9 @@ export function Component(props: IComponentPropsExtended) {
 
   useActionTrigger({
     // replace with actual schema name
-    storeName: "sps-file-storage/widgets",
+    storeName: "sps-file-storage/widget",
     actionFilter: (action) => {
-      return action.type === "widgets/executeMutation/fulfilled";
+      return action.type === "widget/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

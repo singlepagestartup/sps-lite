@@ -58,9 +58,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/widgets",
+    storeName: "sps-website-builder/widget",
     actionFilter: (action) => {
-      return action.type === "widgets/executeMutation/fulfilled";
+      return action.type === "widget/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

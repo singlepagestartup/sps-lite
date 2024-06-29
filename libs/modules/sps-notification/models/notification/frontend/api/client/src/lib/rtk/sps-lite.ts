@@ -13,7 +13,7 @@ export const api = createApi({
     `${BACKEND_URL}/api/sps-notification`,
   ),
   tagTypes: [tag],
-  reducerPath: route,
+  reducerPath: tag,
   endpoints: (build) => ({
     findById: rtk.api.findById<IModelExtended>({
       serviceApi: this,

@@ -58,9 +58,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-host/layouts",
+    storeName: "sps-host/layout",
     actionFilter: (action) => {
-      return action.type === "layouts/executeMutation/fulfilled";
+      return action.type === "layout/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

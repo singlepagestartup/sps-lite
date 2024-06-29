@@ -3,10 +3,12 @@ import {
   IModel as IParentModelExtended,
   populate as modelPopulate,
 } from "@sps/sps-rbac/models/authentication/contracts/extended";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
 export const tag = "authentication";
-export const route = "authentications";
+export const route = "/api/sps-rbac/authentications";
 export const populate = modelPopulate;
+export const host = BACKEND_URL;

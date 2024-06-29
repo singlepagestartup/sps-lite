@@ -1,7 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
 import {
-  BACKEND_URL,
   prepareFormDataToSend,
   transformResponseItem,
 } from "@sps/shared-utils";
@@ -10,12 +9,13 @@ import {
   route,
   tag,
   populate,
+  host,
 } from "@sps/sps-rbac/models/authentication/frontend/api/model";
 
 export const api = createApi({
-  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-rbac`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(host),
   tagTypes: [tag],
-  reducerPath: route,
+  reducerPath: tag,
   endpoints: (build) => ({
     findById: rtk.api.findById<IModelExtended>({
       serviceApi: this,
@@ -57,7 +57,7 @@ export const api = createApi({
         const formData = prepareFormDataToSend(params);
 
         return {
-          url: `${route}/providers/login-and-password`,
+          url: `/authentications/providers/login-and-password`,
           method: "POST",
           params: {
             populate,
@@ -81,7 +81,7 @@ export const api = createApi({
         const formData = prepareFormDataToSend(params);
 
         return {
-          url: `${route}/logout`,
+          url: `/authentications/logout`,
           method: "POST",
           params: {
             populate,

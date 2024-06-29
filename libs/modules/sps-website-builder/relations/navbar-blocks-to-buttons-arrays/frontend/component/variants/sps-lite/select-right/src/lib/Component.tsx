@@ -60,9 +60,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/navbar-blocks",
+    storeName: "sps-website-builder/navbar-block",
     actionFilter: (action) => {
-      return action.type === "navbar-blocks/executeMutation/fulfilled";
+      return action.type === "navbar-block/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

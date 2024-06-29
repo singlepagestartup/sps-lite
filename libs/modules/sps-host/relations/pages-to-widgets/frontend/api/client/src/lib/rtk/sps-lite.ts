@@ -1,17 +1,17 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL } from "@sps/shared-utils";
 import {
   IRelationExtended,
   route,
   tag,
   populate,
+  host,
 } from "@sps/sps-host/relations/pages-to-widgets/frontend/api/model";
 
 export const api = createApi({
-  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-host`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(host),
   tagTypes: [tag],
-  reducerPath: route,
+  reducerPath: tag,
   endpoints: (build) => ({
     findById: rtk.api.findById<IRelationExtended>({
       serviceApi: this,

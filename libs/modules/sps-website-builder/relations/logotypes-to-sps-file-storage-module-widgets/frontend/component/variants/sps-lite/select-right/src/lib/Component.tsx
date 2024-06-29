@@ -58,9 +58,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/logotypes",
+    storeName: "sps-website-builder/logotype",
     actionFilter: (action) => {
-      return action.type === "logotypes/executeMutation/fulfilled";
+      return action.type === "logotype/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

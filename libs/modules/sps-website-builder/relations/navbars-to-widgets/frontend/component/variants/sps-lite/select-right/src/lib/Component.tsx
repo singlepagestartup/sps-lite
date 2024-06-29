@@ -53,9 +53,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/navbars",
+    storeName: "sps-website-builder/navbar",
     actionFilter: (action) => {
-      return action.type === "navbars/executeMutation/fulfilled";
+      return action.type === "navbar/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

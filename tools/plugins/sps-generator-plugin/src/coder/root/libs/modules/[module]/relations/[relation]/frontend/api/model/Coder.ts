@@ -73,6 +73,7 @@ export class Coder {
         root_contracts_import_path: rootContractsImportPath,
         extended_contracts_import_path: extendedContractsImportPath,
         relation_name_pluralized: this.relationNamePluralized,
+        module_name: this.moduleName,
       },
     });
 

@@ -62,7 +62,7 @@ export function App(props: IComponentProps) {
         data-module="sps-website-builder"
         className={cn("w-full flex", props.className)}
       >
-        <Page
+        {/* <Page
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="get-by-url"
@@ -82,7 +82,7 @@ export function App(props: IComponentProps) {
               />
             );
           }}
-        </Page>
+        </Page> */}
       </div>
     );
   } else if (model === "navbar") {

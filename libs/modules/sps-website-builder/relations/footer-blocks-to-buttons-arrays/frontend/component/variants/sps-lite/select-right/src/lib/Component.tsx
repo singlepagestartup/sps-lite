@@ -60,9 +60,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/footer-blocks",
+    storeName: "sps-website-builder/footer-block",
     actionFilter: (action) => {
-      return action.type === "footer-blocks/executeMutation/fulfilled";
+      return action.type === "footer-block/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

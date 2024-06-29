@@ -59,11 +59,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/features-section-blocks",
+    storeName: "sps-website-builder/features-section-block",
     actionFilter: (action) => {
-      return (
-        action.type === "features-section-blocks/executeMutation/fulfilled"
-      );
+      return action.type === "features-section-block/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

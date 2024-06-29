@@ -58,9 +58,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-rbac/subjects",
+    storeName: "sps-rbac/subject",
     actionFilter: (action) => {
-      return action.type === "subjects/executeMutation/fulfilled";
+      return action.type === "subject/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

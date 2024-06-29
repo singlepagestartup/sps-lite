@@ -3,10 +3,12 @@ import {
   IRelation as IParentRelationExtended,
   populate as relationPopulate,
 } from "@sps/sps-host/relations/layouts-to-widgets/contracts/extended";
+import { BACKEND_URL } from "@sps/shared-utils";
 
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}
 
 export const tag = "layouts-to-widgets";
-export const route = "layouts-to-widgets";
+export const route = "/api/sps-host/layouts-to-widgets";
 export const populate = relationPopulate;
+export const host = BACKEND_URL;

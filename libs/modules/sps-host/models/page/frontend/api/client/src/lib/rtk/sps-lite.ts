@@ -1,19 +1,20 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
+import { transformResponseItem } from "@sps/shared-utils";
 import {
   populate,
   route,
   tag,
   IModelExtended,
+  host,
 } from "@sps/sps-host/models/page/frontend/api/model";
 import { globalActionsStore, invalidateServerTag } from "@sps/shared-store";
 import QueryString from "qs";
 
 export const api = createApi({
-  baseQuery: rtk.api.fetchBaseQueryBuilder(`${BACKEND_URL}/api/sps-host`),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(host),
   tagTypes: [tag],
-  reducerPath: route,
+  reducerPath: tag,
   endpoints: (build) => {
     return {
       find: rtk.api.find<IModelExtended>({

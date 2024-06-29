@@ -58,9 +58,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-rbac/roles",
+    storeName: "sps-rbac/role",
     actionFilter: (action) => {
-      return action.type === "roles/executeMutation/fulfilled";
+      return action.type === "role/executeMutation/fulfilled";
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {

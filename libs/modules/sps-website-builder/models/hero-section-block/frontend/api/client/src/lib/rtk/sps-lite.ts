@@ -1,6 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { rtk } from "@sps/shared-frontend-utils-client";
-import { BACKEND_URL } from "@sps/shared-utils";
 import {
   route,
   IModelExtended,
@@ -10,11 +9,9 @@ import {
 } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/model";
 
 export const api = createApi({
-  baseQuery: rtk.api.fetchBaseQueryBuilder(
-    `${BACKEND_URL}/api/sps-website-builder`,
-  ),
+  baseQuery: rtk.api.fetchBaseQueryBuilder(host),
   tagTypes: [tag],
-  reducerPath: route,
+  reducerPath: tag,
   endpoints: (build) => ({
     findById: rtk.api.findById<IModelExtended>({
       serviceApi: this,
