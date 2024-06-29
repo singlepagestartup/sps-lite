@@ -1,31 +1,16 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { factory } from "@sps/shared-frontend-server-api";
+import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import {
-  BACKEND_URL,
-  NextRequestOptions,
-  transformResponseItem,
-} from "@sps/shared-utils";
-import {
-  populate,
+  host,
   route,
   IModelExtended,
 } from "@sps/sps-rbac/models/session/frontend/api/model";
 
 export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
-      id,
-      model: route,
-      populate,
-      rootPath: "/api/sps-rbac",
-    });
-  },
-  find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
-      model: route,
-      populate,
-      rootPath: "/api/sps-rbac",
-    });
-  },
+  ...factory<IModelExtended>({
+    route,
+    host,
+  }),
   init: async () => {
     const options: NextRequestOptions = {
       next: {
@@ -33,10 +18,7 @@ export const api = {
       },
     };
 
-    const res = await fetch(
-      `${BACKEND_URL}/api/sps-rbac/${route}/init`,
-      options,
-    );
+    const res = await fetch(`${host}${route}/init`, options);
 
     if (!res.ok) {
       const error = new Error(res.statusText);

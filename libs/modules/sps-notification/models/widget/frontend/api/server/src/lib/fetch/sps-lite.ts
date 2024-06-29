@@ -1,24 +1,11 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
+import { factory } from "@sps/shared-frontend-server-api";
 import {
-  populate,
   route,
   IModelExtended,
+  host,
 } from "@sps/sps-notification/models/widget/frontend/api/model";
 
-export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
-      id,
-      model: route,
-      populate,
-      rootPath: "/api/sps-notification",
-    });
-  },
-  find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
-      model: route,
-      populate,
-      rootPath: "/api/sps-notification",
-    });
-  },
-};
+export const api = factory<IModelExtended>({
+  route,
+  host,
+});
