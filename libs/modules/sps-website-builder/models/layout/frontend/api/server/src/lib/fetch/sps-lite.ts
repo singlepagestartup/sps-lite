@@ -1,22 +1,18 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
-import { populate, route, IModelExtended } from "../model";
+import { factory } from "@sps/shared-frontend-server-api";
 import QueryString from "qs";
 import { BACKEND_URL, transformResponseItem } from "@sps/shared-utils";
+import {
+  route,
+  IModelExtended,
+  populate,
+  host,
+} from "@sps/sps-website-builder/models/layout/frontend/api/model";
 
 export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
-      id,
-      model: route,
-      populate,
-    });
-  },
-  find: async () => {
-    return await utilsFetch.api.find<IModelExtended>({
-      model: route,
-      populate,
-    });
-  },
+  ...factory<IModelExtended>({
+    route,
+    host,
+  }),
   getByPageUrl: async (params: any = {}) => {
     const { url } = params;
 
@@ -31,7 +27,7 @@ export const api = {
     );
 
     const res = await fetch(
-      `${BACKEND_URL}/api/sps-website-builder/${route}/by-page-url?${stringifiedQuery}`,
+      `${BACKEND_URL}${route}/by-page-url?${stringifiedQuery}`,
       { next: { revalidate: 3600 } } as any,
     );
 

@@ -1,5 +1,9 @@
-import { fetch as utilsFetch } from "@sps/shared-frontend-utils-server";
-import { populate, route, IModelExtended } from "../model";
+import { factory } from "@sps/shared-frontend-server-api";
+import {
+  route,
+  IModelExtended,
+  host,
+} from "@sps/sps-website-builder/models/page/frontend/api/model";
 import { action as findByUrl } from "./actions/find-by-url";
 import { action as urls } from "./actions/urls";
 import { action as generateMetadata } from "./actions/generate-metadata";
@@ -10,20 +14,10 @@ export interface Params {
 }
 
 export const api = {
-  findById: async ({ id }: { id: string }) => {
-    return await utilsFetch.api.findById<IModelExtended>({
-      id,
-      model: route,
-      populate,
-    });
-  },
-  find: async (params: any = {}) => {
-    return await utilsFetch.api.find<IModelExtended>({
-      model: route,
-      populate,
-      ...params,
-    });
-  },
+  ...factory<IModelExtended>({
+    route,
+    host,
+  }),
   findByUrl,
   generateMetadata,
   urls,
