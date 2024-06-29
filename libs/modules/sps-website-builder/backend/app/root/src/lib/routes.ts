@@ -3,7 +3,6 @@ import { app as pagesToMetadata } from "@sps/sps-website-builder/relations/pages
 import { app as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/app/root";
 import { app as metadata } from "@sps/sps-website-builder/models/metadata/backend/app/root";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/root";
-import { app as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/app/root";
 import { app as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/app/root";
@@ -14,7 +13,6 @@ import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/rel
 import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/app/root";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
 import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/app/root";
-import { app as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/backend/app/root";
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/root";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/app/root";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
@@ -54,7 +52,6 @@ export const routes = {
     metadataToSpsFileStorageModuleFiles,
   "/metadata": metadata,
   "/slides-to-buttons-arrays": slidesToButtonsArrays,
-  "/widgets-to-sps-rbac-module-widgets": widgetsToSpsRbacModuleWidgets,
   "/slides-to-sps-file-storage-module-widgets": slidesToSpsFileStorageWidgets,
   "/hero-section-blocks-to-sps-file-storage-module-widgets":
     heroSectionBlocksToSpsFileStorageWidgets,
@@ -66,11 +63,8 @@ export const routes = {
   "/navbar-blocks-to-buttons-arrays": navbarBlocksToButtonsArrays,
   "/buttons-arrays": buttonsArray,
   "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
-
   "/widgets-to-sps-file-storage-module-widgets":
     widgetsToSpsFileStorageModuleWidgets,
-  "/widgets-to-startup-module-widgets": widgetsToStartupModuleWidgets,
-
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,

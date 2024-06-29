@@ -3,7 +3,6 @@ import { model as pagesToMetadata } from "@sps/sps-website-builder/relations/pag
 import { model as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/model/root";
 import { model as metadata } from "@sps/sps-website-builder/models/metadata/backend/model/root";
 import { model as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/model/root";
-import { model as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/model/root";
 import { model as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/model/root";
 import { model as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/model/root";
 import { model as logotypesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/model/root";
@@ -14,7 +13,6 @@ import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/r
 import { model as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/model/root";
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/model/root";
 import { model as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/model/root";
-import { model as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/backend/model/root";
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/model/root";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/model/root";
 import { model as feature } from "@sps/sps-website-builder/models/feature/backend/model/root";
@@ -52,7 +50,6 @@ export const models = {
   metadataToSpsFileStorageModuleFiles,
   metadata,
   slidesToButtonsArrays,
-  widgetsToSpsRbacModuleWidgets,
   slidesToSpsFileStorageWidgets,
   heroSectionBlocksToSpsFileStorageWidgets,
   logotypesToSpsFileStorageWidgets,
@@ -62,17 +59,13 @@ export const models = {
   navbarBlocksToButtonsArrays,
   buttonsArray,
   footerBlocksToLogotypes,
-
   widgetsToSpsFileStorageModuleWidgets,
-  widgetsToStartupModuleWidgets,
-
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,
   feature,
   featuresSectionBlock,
   navbarBlocksToLogotypes,
   logotype,
-
   button,
   slidersToSlides,
   sliderBlocksToSliders,

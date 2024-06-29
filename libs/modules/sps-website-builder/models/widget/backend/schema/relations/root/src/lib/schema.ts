@@ -1,7 +1,4 @@
-import { relation as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-rbac-module-widgets";
 import { relation as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-file-storage-module-widgets";
-import { relation as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-startup-module-widgets";
-
 import { relation as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-features-section-blocks";
 import { relation as widgetsToSliderBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-slider-blocks";
 import { relation as widgetsToFooterBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-footer-blocks";
@@ -15,9 +12,7 @@ import { Table } from "@sps/sps-website-builder/models/widget/backend/schema/tab
 
 export const Relations = relations(Table, (helpers) => {
   return {
-    ...widgetsToSpsRbacModuleWidgets(helpers),
     ...widgetsToSpsFileStorageModuleWidgets(helpers),
-    ...widgetsToStartupModuleWidgets(helpers),
     ...widgetsToFeaturesSectionBlocks(helpers),
     ...widgetsToSliderBlocks(helpers),
     ...widgetsToFooterBlocks(helpers),

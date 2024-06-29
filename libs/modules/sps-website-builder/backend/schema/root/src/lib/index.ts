@@ -19,10 +19,6 @@ export {
   Relations as SPSWBSlidesToButtonsArraysRelations,
 } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/schema/root";
 export {
-  Table as SPSWBWidgetsToSpsRbacModuleWidgets,
-  Relations as SPSWBWidgetsToSpsRbacModuleWidgetsRelations,
-} from "@sps/sps-website-builder/relations/widgets-to-sps-rbac-module-widgets/backend/schema/root";
-export {
   Table as SPSWBSlidesToSpsFileStorageWidgets,
   Relations as SPSWBSlidesToSpsFileStorageWidgetsRelations,
 } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/schema/root";
@@ -63,11 +59,6 @@ export {
   Table as SPSWBWidgetsToSpsFileStorageModuleWidgets,
   Relations as SPSWBWidgetsToSpsFileStorageModuleWidgetsRelations,
 } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/schema/root";
-export {
-  Table as SPSWBWidgetsToStartupModuleWidgets,
-  Relations as SPSWBWidgetsToStartupModuleWidgetsRelations,
-} from "@sps/sps-website-builder/relations/widgets-to-startup-module-widgets/backend/schema/root";
-
 export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,

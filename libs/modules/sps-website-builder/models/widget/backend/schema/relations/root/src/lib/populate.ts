@@ -1,7 +1,4 @@
-import { populate as widgetsToSpsRbacModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-rbac-module-widgets";
 import { populate as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-file-storage-module-widgets";
-import { populate as widgetsToStartupModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-startup-module-widgets";
-
 import { populate as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-features-section-blocks";
 import { populate as widgetsToSliderBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-slider-blocks";
 import { populate as widgetsToFooterBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-footer-blocks";
@@ -13,10 +10,8 @@ import { populate as pagesToWidgets } from "@sps/sps-website-builder/models/widg
 
 export const populate = (params: any) => {
   return {
-    widgetsToSpsRbacModuleWidgets: widgetsToSpsRbacModuleWidgets(params),
     widgetsToSpsFileStorageModuleWidgets:
       widgetsToSpsFileStorageModuleWidgets(params),
-    widgetsToStartupModuleWidgets: widgetsToStartupModuleWidgets(params),
     widgetsToFeaturesSectionBlocks: widgetsToFeaturesSectionBlocks(params),
     widgetsToSliderBlocks: widgetsToSliderBlocks(params),
     widgetsToFooterBlocks: widgetsToFooterBlocks(params),
