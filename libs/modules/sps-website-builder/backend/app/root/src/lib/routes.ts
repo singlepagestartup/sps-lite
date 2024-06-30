@@ -1,6 +1,4 @@
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/app/root";
-import { app as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/app/root";
-import { app as metadata } from "@sps/sps-website-builder/models/metadata/backend/app/root";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/root";
 import { app as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/app/root";
@@ -40,9 +38,6 @@ import { app as widget } from "@sps/sps-website-builder/models/widget/backend/ap
 export const routes = {
   "/features-to-sps-file-storage-module-files":
     featuresToSpsFileStorageModuleFiles,
-  "/metadata-to-sps-file-storage-module-files":
-    metadataToSpsFileStorageModuleFiles,
-  "/metadata": metadata,
   "/slides-to-buttons-arrays": slidesToButtonsArrays,
   "/slides-to-sps-file-storage-module-widgets": slidesToSpsFileStorageWidgets,
   "/hero-section-blocks-to-sps-file-storage-module-widgets":

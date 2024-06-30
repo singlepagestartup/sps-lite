@@ -1,6 +1,4 @@
 import { model as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/model/root";
-import { model as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/model/root";
-import { model as metadata } from "@sps/sps-website-builder/models/metadata/backend/model/root";
 import { model as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/model/root";
 import { model as slidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/model/root";
 import { model as heroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/model/root";
@@ -39,8 +37,6 @@ import { model as widget } from "@sps/sps-website-builder/models/widget/backend/
 
 export const models = {
   featuresToSpsFileStorageModuleFiles,
-  metadataToSpsFileStorageModuleFiles,
-  metadata,
   slidesToButtonsArrays,
   slidesToSpsFileStorageWidgets,
   heroSectionBlocksToSpsFileStorageWidgets,

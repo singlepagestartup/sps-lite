@@ -16,5 +16,4 @@ export const configModels: IModuleSeedConfig<typeof models>["models"] = [
   { name: "slider" },
   { name: "sliderBlock" },
   { name: "widget" },
-  { name: "metadata" },
 ];

@@ -80,11 +80,6 @@ const WidgetSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
-const MetadataSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/metadata/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -97,10 +92,6 @@ export function Component(props: IComponentProps) {
       {
         name: "widget",
         Comp: WidgetSpsLiteAdminTable,
-      },
-      {
-        name: "metadata",
-        Comp: MetadataSpsLiteAdminTable,
       },
       {
         name: "button",
