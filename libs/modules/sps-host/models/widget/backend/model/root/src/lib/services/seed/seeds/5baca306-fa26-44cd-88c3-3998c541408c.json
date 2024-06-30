@@ -1,5 +1,5 @@
 {
-  "title": "Sps Website Builder Page",
+  "title": "Welcome Hero Section Block",
   "id": "5baca306-fa26-44cd-88c3-3998c541408c",
   "createdAt": "2024-06-19T20:19:55.884Z",
   "updatedAt": "2024-06-19T20:19:55.884Z",
@@ -15,16 +15,7 @@
       "className": "",
       "widgetId": "5baca306-fa26-44cd-88c3-3998c541408c",
       "externalModule": "sps-website-builder",
-      "externalModuleProps": ""
-    },
-    {
-      "id": "abc04e98-d880-4b59-ac5b-283bb383fea8",
-      "variant": "default",
-      "orderIndex": 0,
-      "className": "",
-      "widgetId": "5baca306-fa26-44cd-88c3-3998c541408c",
-      "externalModule": "sps-website-builder",
-      "externalModuleProps": "{\"model\":\"page\"}"
+      "externalModuleProps": "{\"model\":\"widget\",\"variant\":\"default\",\"title\":\"welcome-hero-section block\"}"
     }
   ],
   "pagesToWidgets": [

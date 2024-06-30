@@ -5,9 +5,7 @@
   "updatedAt": "2024-05-25T20:01:49.343Z",
   "variant": "default",
   "className": null,
-  "widgetsToSpsRbacModuleWidgets": [],
   "widgetsToSpsFileStorageModuleWidgets": [],
-  "widgetsToStartupModuleWidgets": [],
   "widgetsToFeaturesSectionBlocks": [],
   "widgetsToSliderBlocks": [],
   "widgetsToFooterBlocks": [],
@@ -32,6 +30,5 @@
       "widgetId": "5008b279-24e0-42b9-98c8-8e214821e7c1"
     }
   ],
-  "widgetsToHeroSectionBlocks": [],
-  "pagesToWidgets": []
+  "widgetsToHeroSectionBlocks": []
 }

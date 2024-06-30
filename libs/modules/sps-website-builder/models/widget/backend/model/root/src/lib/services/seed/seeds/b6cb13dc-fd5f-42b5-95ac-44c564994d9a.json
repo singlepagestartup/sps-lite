@@ -5,9 +5,7 @@
   "updatedAt": "2024-05-25T20:45:11.809Z",
   "variant": "default",
   "className": null,
-  "widgetsToSpsRbacModuleWidgets": [],
   "widgetsToSpsFileStorageModuleWidgets": [],
-  "widgetsToStartupModuleWidgets": [],
   "widgetsToFeaturesSectionBlocks": [],
   "widgetsToSliderBlocks": [],
   "widgetsToFooterBlocks": [],
@@ -22,24 +20,6 @@
       "className": null,
       "widgetId": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a",
       "heroSectionBlockId": "8e62f337-1efa-4048-966e-f12e4bd3df20"
-    }
-  ],
-  "pagesToWidgets": [
-    {
-      "id": "a41cfe85-5d98-44fa-9bb3-a937d96aeb43",
-      "variant": "default",
-      "orderIndex": 0,
-      "className": null,
-      "pageId": "579f6b19-7c05-4d56-aeb1-5ea0245178f7",
-      "widgetId": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a"
-    },
-    {
-      "id": "e4a08496-e98e-4d28-9206-eccf733222be",
-      "variant": "default",
-      "orderIndex": 2,
-      "className": null,
-      "pageId": "5e8eed3d-ad8f-458e-a47e-5e9132141cce",
-      "widgetId": "b6cb13dc-fd5f-42b5-95ac-44c564994d9a"
     }
   ]
 }

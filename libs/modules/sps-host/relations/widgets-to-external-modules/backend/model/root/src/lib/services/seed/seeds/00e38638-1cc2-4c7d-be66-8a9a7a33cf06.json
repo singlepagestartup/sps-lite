@@ -1,0 +1,18 @@
+{
+  "id": "00e38638-1cc2-4c7d-be66-8a9a7a33cf06",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "widgetId": "0311e692-06f8-4b6c-b5a7-25916046a5db",
+  "externalModule": "sps-website-builder",
+  "externalModuleProps": "{\"model\":\"footer\",\"variant\":\"default\"}",
+  "widget": {
+    "title": "Footer",
+    "id": "0311e692-06f8-4b6c-b5a7-25916046a5db",
+    "createdAt": "2024-06-30T00:27:11.348Z",
+    "updatedAt": "2024-06-30T00:27:11.348Z",
+    "variant": "default",
+    "className": "",
+    "orderIndex": null
+  }
+}

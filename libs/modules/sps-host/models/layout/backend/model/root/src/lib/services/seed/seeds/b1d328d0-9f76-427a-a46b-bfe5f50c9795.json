@@ -8,6 +8,14 @@
   "className": null,
   "layoutsToWidgets": [
     {
+      "id": "de6bdd80-6c63-42ff-8d28-7bba6b9dbb0b",
+      "variant": "primary",
+      "orderIndex": 0,
+      "className": "",
+      "layoutId": "b1d328d0-9f76-427a-a46b-bfe5f50c9795",
+      "widgetId": "0311e692-06f8-4b6c-b5a7-25916046a5db"
+    },
+    {
       "id": "b5121fea-0524-465c-bf81-a3a601d3dba1",
       "variant": "default",
       "orderIndex": 0,

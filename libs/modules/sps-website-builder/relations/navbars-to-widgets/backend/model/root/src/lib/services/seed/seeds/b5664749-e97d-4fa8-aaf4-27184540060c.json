@@ -10,7 +10,11 @@
     "createdAt": "2024-05-25T19:59:56.713Z",
     "updatedAt": "2024-05-25T19:59:56.713Z",
     "variant": "default",
-    "className": null
+    "className": null,
+    "title": null,
+    "subtitle": null,
+    "description": null,
+    "uid": null
   },
   "widget": {
     "title": "Navbar block widget",
