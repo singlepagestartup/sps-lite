@@ -5,7 +5,6 @@ import { actions, ICreateActionProps } from "@sps/shared-frontend-api";
 export interface IMutationProps {
   options?: ICreateActionProps["options"];
   params?: ICreateActionProps["params"];
-  data: ICreateActionProps["data"];
   host: string;
   route: string;
 }

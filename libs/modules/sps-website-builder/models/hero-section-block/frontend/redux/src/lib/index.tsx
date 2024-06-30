@@ -2,15 +2,15 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
+import { rtk } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
 import {
   createPassToGlobalActionsStoreMiddleware,
   globalActionsStore,
 } from "@sps/shared-store";
 import { rtkQueryErrorLogger } from "@sps/ui-adapter";
 
-const name = `sps-website-builder/${api.rtk.reducerPath}`;
-const middlewares = [api.rtk.middleware];
+const name = `sps-website-builder/${rtk.api.reducerPath}`;
+const middlewares = [rtk.api.middleware];
 const passToGlobalActionsStoreMiddleware =
   createPassToGlobalActionsStoreMiddleware({ name });
 
@@ -19,7 +19,7 @@ const store: any = configureStore({
     name,
   },
   reducer: {
-    [api.rtk.reducerPath]: api.rtk.reducer,
+    [rtk.api.reducerPath]: rtk.api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -34,9 +34,9 @@ if (typeof window !== "undefined") {
     actions: [],
   });
 
-  if (typeof api.subscription === "function") {
-    api.subscription(store);
-  }
+  // if (typeof subscription === "function") {
+  //   subscription(store);
+  // }
 }
 
 export default store;

@@ -32,13 +32,15 @@ export interface IFactoryProps {
 export function factory<T>(factoryProps: IFactoryProps) {
   const api = {
     findById: (props: {
-      id: IFindByIdQueryProps["id"];
+      id?: IFindByIdQueryProps["id"];
       params?: IFindByIdQueryProps["params"];
       options?: IFindByIdQueryProps["options"];
     }) => {
       return useQuery<T>({
         queryKey: [`${factoryProps.route}/${props.id}`],
-        queryFn: findByIdQuery({ ...factoryProps, ...props }),
+        queryFn: props.id
+          ? findByIdQuery({ ...factoryProps, ...props, id: props.id })
+          : undefined,
         enabled: props.id ? true : false,
       });
     },
@@ -51,8 +53,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
         queryFn: findQuery({ ...factoryProps, ...props }),
       });
     },
-    create: (props: {
-      data: ICreateMutationProps["data"];
+    create: (props?: {
       params?: ICreateMutationProps["params"];
       options?: ICreateMutationProps["options"];
     }) => {

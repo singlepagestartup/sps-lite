@@ -27,11 +27,10 @@ export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const updateEntity = api.update({
+  const update = api.update({
     id: props.data?.id || "",
   });
-
-  // const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const create = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -47,20 +46,20 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      updateEntity.mutate({
+      update.mutate({
         id: props.data.id,
         data,
       });
       return;
     }
 
-    // await createEntity({
-    //   data,
-    // });
+    create.mutate({
+      data,
+    });
   }
 
   useEffect(() => {
-    if (updateEntity.data) {
+    if (update.data || create.data) {
       // dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
       // invalidateServerTag({ tag: "hero-section-block" });
       // if (props.setOpen) {
@@ -68,7 +67,7 @@ export function Component(props: IComponentPropsExtended) {
       // }
       // router.refresh();
     }
-  }, [updateEntity.data]);
+  }, [update.data, create.data]);
 
   return (
     <div
