@@ -11,8 +11,7 @@ export interface IActionProps {
   host: string;
   tag?: string;
   revalidate?: number;
-  params: {
-    data: any;
+  params?: {
     [key: string]: any;
   };
   options?: NextRequestOptions;
@@ -20,9 +19,9 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {
-  const { id, params, route, tag, options, host } = props;
+  const { id, params, data, route, tag, options, host } = props;
 
-  const formData = prepareFormDataToSend(params.data);
+  const formData = prepareFormDataToSend(data);
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,

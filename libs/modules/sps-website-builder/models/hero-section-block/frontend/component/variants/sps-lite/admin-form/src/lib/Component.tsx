@@ -27,8 +27,11 @@ export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
-  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const updateEntity = api.update({
+    id: props.data?.id || "",
+  });
+
+  // const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,27 +47,28 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      await updateEntity({ id: props.data?.id, data });
+      updateEntity.mutate({
+        id: props.data.id,
+        data,
+      });
       return;
     }
 
-    await createEntity({
-      data,
-    });
+    // await createEntity({
+    //   data,
+    // });
   }
 
   useEffect(() => {
-    if (updateEntityResult.data || createEntityResult.data) {
-      dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
-      invalidateServerTag({ tag: "hero-section-block" });
-
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      router.refresh();
+    if (updateEntity.data) {
+      // dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
+      // invalidateServerTag({ tag: "hero-section-block" });
+      // if (props.setOpen) {
+      //   props.setOpen(false);
+      // }
+      // router.refresh();
     }
-  }, [updateEntityResult, createEntityResult]);
+  }, [updateEntity.data]);
 
   return (
     <div

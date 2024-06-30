@@ -11,7 +11,6 @@ export interface IActionProps {
     [key: string]: any;
   };
   options?: NextRequestOptions;
-  data: any;
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {

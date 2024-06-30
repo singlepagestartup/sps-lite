@@ -6,13 +6,11 @@ import {
 import QueryString from "qs";
 
 export interface IActionProps {
-  id: string;
   route: string;
   host: string;
   tag?: string;
   revalidate?: number;
-  params: {
-    data: any;
+  params?: {
     [key: string]: any;
   };
   options?: NextRequestOptions;
@@ -20,9 +18,9 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {
-  const { params, route, tag, options, host } = props;
+  const { data, params, route, tag, options, host } = props;
 
-  const formData = prepareFormDataToSend(params.data);
+  const formData = prepareFormDataToSend(data);
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
