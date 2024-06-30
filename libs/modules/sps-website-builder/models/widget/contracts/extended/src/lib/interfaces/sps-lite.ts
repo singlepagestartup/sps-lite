@@ -7,7 +7,6 @@ import { IRelation as IWidgetToSliderBlock } from "@sps/sps-website-builder/rela
 import { IRelation as IWidgetToFeaturesSectionBlock } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/contracts/root";
 import { IRelation as IFooterToWidget } from "@sps/sps-website-builder/relations/footers-to-widgets/contracts/root";
 import { IRelation as INavbarToWidget } from "@sps/sps-website-builder/relations/navbars-to-widgets/contracts/root";
-import { IRelation as IPageToWidget } from "@sps/sps-website-builder/relations/pages-to-widgets/contracts/root";
 
 export interface IModel extends IParentModel {
   widgetsToSpsFileStorageModuleWidgets: IWidgetsToSpsFileStorageModuleWidgets[];
@@ -15,7 +14,6 @@ export interface IModel extends IParentModel {
   widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
   footersToWidgets: IFooterToWidget[];
   navbarsToWidgets: INavbarToWidget[];
-  pagesToWidgets: IPageToWidget[];
   widgetsToFooterBlocks: IWidgetToFooterBlock[];
   widgetsToSliderBlocks: IWidgetToSliderBlock[];
   widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];

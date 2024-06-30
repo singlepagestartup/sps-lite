@@ -1,5 +1,4 @@
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/app/root";
-import { app as pagesToMetadata } from "@sps/sps-website-builder/relations/pages-to-metadata/backend/app/root";
 import { app as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/app/root";
 import { app as metadata } from "@sps/sps-website-builder/models/metadata/backend/app/root";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/root";
@@ -32,22 +31,15 @@ import { app as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations
 import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
 import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/root";
 import { app as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/app/root";
-import { app as layoutsToNavbars } from "@sps/sps-website-builder/relations/layouts-to-navbars/backend/app/root";
-import { app as layoutsToFooters } from "@sps/sps-website-builder/relations/layouts-to-footers/backend/app/root";
 import { app as footer } from "@sps/sps-website-builder/models/footer/backend/app/root";
 import { app as navbar } from "@sps/sps-website-builder/models/navbar/backend/app/root";
 import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/root";
 import { app as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/app/root";
-import { app as pagesToWidgets } from "@sps/sps-website-builder/relations/pages-to-widgets/backend/app/root";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/root";
-import { app as pagesToLayouts } from "@sps/sps-website-builder/relations/pages-to-layouts/backend/app/root";
-import { app as layout } from "@sps/sps-website-builder/models/layout/backend/app/root";
-import { app as pages } from "@sps/sps-website-builder/models/page/backend/app/root";
 
 export const routes = {
   "/features-to-sps-file-storage-module-files":
     featuresToSpsFileStorageModuleFiles,
-  "/pages-to-metadata": pagesToMetadata,
   "/metadata-to-sps-file-storage-module-files":
     metadataToSpsFileStorageModuleFiles,
   "/metadata": metadata,
@@ -84,15 +76,9 @@ export const routes = {
   "/footer-blocks": footerBlock,
   "/navbar-blocks": navbarBlock,
   "/navbars-to-widgets": navbarsToWidgets,
-  "/layouts-to-navbars": layoutsToNavbars,
-  "/layouts-to-footers": layoutsToFooters,
   "/footers": footer,
   "/navbars": navbar,
   "/widgets-to-hero-section-blocks": widgetsToHeroSectionBlocks,
   "/hero-section-blocks": heroSectionBlock,
-  "/pages-to-widgets": pagesToWidgets,
   "/widgets": widget,
-  "/pages-to-layouts": pagesToLayouts,
-  "/layouts": layout,
-  "/pages": pages,
 };

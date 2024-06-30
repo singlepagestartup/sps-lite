@@ -1,5 +1,4 @@
 import { model as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/model/root";
-import { model as pagesToMetadata } from "@sps/sps-website-builder/relations/pages-to-metadata/backend/model/root";
 import { model as metadataToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/model/root";
 import { model as metadata } from "@sps/sps-website-builder/models/metadata/backend/model/root";
 import { model as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/model/root";
@@ -32,21 +31,14 @@ import { model as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relatio
 import { model as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/model/root";
 import { model as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/model/root";
 import { model as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/model/root";
-import { model as layoutsToNavbars } from "@sps/sps-website-builder/relations/layouts-to-navbars/backend/model/root";
-import { model as layoutsToFooters } from "@sps/sps-website-builder/relations/layouts-to-footers/backend/model/root";
 import { model as footer } from "@sps/sps-website-builder/models/footer/backend/model/root";
 import { model as navbar } from "@sps/sps-website-builder/models/navbar/backend/model/root";
 import { model as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/model/root";
 import { model as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/model/root";
-import { model as pagesToWidgets } from "@sps/sps-website-builder/relations/pages-to-widgets/backend/model/root";
 import { model as widget } from "@sps/sps-website-builder/models/widget/backend/model/root";
-import { model as pagesToLayouts } from "@sps/sps-website-builder/relations/pages-to-layouts/backend/model/root";
-import { model as layout } from "@sps/sps-website-builder/models/layout/backend/model/root";
-import { model as page } from "@sps/sps-website-builder/models/page/backend/model/root";
 
 export const models = {
   featuresToSpsFileStorageModuleFiles,
-  pagesToMetadata,
   metadataToSpsFileStorageModuleFiles,
   metadata,
   slidesToButtonsArrays,
@@ -79,15 +71,9 @@ export const models = {
   footerBlock,
   navbarBlock,
   navbarsToWidgets,
-  layoutsToNavbars,
-  layoutsToFooters,
   footer,
   navbar,
   widgetsToHeroSectionBlocks,
   heroSectionBlock,
-  pagesToWidgets,
   widget,
-  pagesToLayouts,
-  layout,
-  page,
 };

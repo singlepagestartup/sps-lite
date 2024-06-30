@@ -6,7 +6,6 @@ import { populate as footersToWidgets } from "@sps/sps-website-builder/models/wi
 import { populate as widgetsToNavbarBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-navbar-blocks";
 import { populate as navbarsToWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/navbars-to-widgets";
 import { populate as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-hero-section-blocks";
-import { populate as pagesToWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/pages-to-widgets";
 
 export const populate = (params: any) => {
   return {
@@ -19,6 +18,5 @@ export const populate = (params: any) => {
     widgetsToNavbarBlocks: widgetsToNavbarBlocks(params),
     navbarsToWidgets: navbarsToWidgets(params),
     widgetsToHeroSectionBlocks: widgetsToHeroSectionBlocks(params),
-    pagesToWidgets: pagesToWidgets(params),
   } as const;
 };

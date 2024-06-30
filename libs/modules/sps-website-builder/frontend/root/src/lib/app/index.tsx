@@ -1,5 +1,4 @@
 import { IComponentProps } from "./interface";
-import { Component as Page } from "@sps/sps-website-builder/models/page/frontend/component/root";
 import { Component as Navbar } from "@sps/sps-website-builder/models/navbar/frontend/component/root";
 import { Component as Widget } from "@sps/sps-website-builder/models/widget/frontend/component/root";
 import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component/root";
@@ -54,35 +53,6 @@ export function App(props: IComponentProps) {
               });
           }}
         </Widget>
-      </div>
-    );
-  } else if (model === "page") {
-    return (
-      <div
-        data-module="sps-website-builder"
-        className={cn("w-full flex", props.className)}
-      >
-        {/* <Page
-          isServer={props.isServer}
-          hostUrl={props.hostUrl}
-          variant="get-by-url"
-          url={props.hostUrl}
-        >
-          {({ data: page }) => {
-            if (!page) {
-              return;
-            }
-
-            return (
-              <Page
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant={page?.variant}
-                data={page}
-              />
-            );
-          }}
-        </Page> */}
       </div>
     );
   } else if (model === "navbar") {

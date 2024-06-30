@@ -3,10 +3,6 @@ export {
   Relations as SPSWBFeaturesToSpsFileStorageModuleFilesRelations,
 } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/schema/root";
 export {
-  Table as SPSWBPagesToMetadata,
-  Relations as SPSWBPagesToMetadataRelations,
-} from "@sps/sps-website-builder/relations/pages-to-metadata/backend/schema/root";
-export {
   Table as SPSWBMetadataToSpsFileStorageModuleFiles,
   Relations as SPSWBMetadataToSpsFileStorageModuleFilesRelations,
 } from "@sps/sps-website-builder/relations/metadata-to-sps-file-storage-module-files/backend/schema/root";
@@ -137,14 +133,6 @@ export {
   Relations as SPSWBNavbarsToWidgetsRelations,
 } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/schema/root";
 export {
-  Table as SPSWBLayoutsToNavbars,
-  Relations as SPSWBLayoutsToNavbarsRelations,
-} from "@sps/sps-website-builder/relations/layouts-to-navbars/backend/schema/root";
-export {
-  Table as SPSWBLayoutsToFooters,
-  Relations as SPSWBLayoutsToFootersRelations,
-} from "@sps/sps-website-builder/relations/layouts-to-footers/backend/schema/root";
-export {
   Table as SPSWBFooter,
   Relations as SPSWBFooterRelations,
 } from "@sps/sps-website-builder/models/footer/backend/schema/root";
@@ -161,22 +149,6 @@ export {
   Relations as SPSWBHeroSectionBlockRelations,
 } from "@sps/sps-website-builder/models/hero-section-block/backend/schema/root";
 export {
-  Table as SPSWBPagesToWidgets,
-  Relations as SPSWBPagesToWidgetsRelations,
-} from "@sps/sps-website-builder/relations/pages-to-widgets/backend/schema/root";
-export {
   Table as SPSWBWidget,
   Relations as SPSWBWidgetRelations,
 } from "@sps/sps-website-builder/models/widget/backend/schema/root";
-export {
-  Table as SPSWBPagesToLayouts,
-  Relations as SPSWBPagesToLayoutsRelations,
-} from "@sps/sps-website-builder/relations/pages-to-layouts/backend/schema/root";
-export {
-  Table as SPSWBLayout,
-  Relations as SPSWBLayoutRelations,
-} from "@sps/sps-website-builder/models/layout/backend/schema/root";
-export {
-  Table as SPSWBPage,
-  Relations as SPSWBPageRelations,
-} from "@sps/sps-website-builder/models/page/backend/schema/root";

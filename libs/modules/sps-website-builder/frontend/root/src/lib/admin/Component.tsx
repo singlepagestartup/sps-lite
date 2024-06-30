@@ -80,16 +80,6 @@ const WidgetSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
-const LayoutSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/layout/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
-const PageSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/page/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
 const MetadataSpsLiteAdminTable = dynamic(() =>
   import(
     "@sps/sps-website-builder/models/metadata/frontend/component/variants/sps-lite/admin-table"
@@ -141,10 +131,6 @@ export function Component(props: IComponentProps) {
         Comp: HeroSectionBlockSpsLiteAdminTable,
       },
       {
-        name: "layout",
-        Comp: LayoutSpsLiteAdminTable,
-      },
-      {
         name: "logotype",
         Comp: LogotypeSpsLiteAdminTable,
       },
@@ -158,10 +144,6 @@ export function Component(props: IComponentProps) {
       {
         name: "navbar-block",
         Comp: NavbarBlockSpsLiteAdminTable,
-      },
-      {
-        name: "page",
-        Comp: PageSpsLiteAdminTable,
       },
       {
         name: "slide",
