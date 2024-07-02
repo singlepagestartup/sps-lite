@@ -65,3 +65,5 @@ export const KV_PASSWORD = process.env["KV_PASSWORD"];
 
 export const MIDDLEWARE_LOGGER = process.env["MIDDLEWARE_LOGGER"];
 export const MIDDLEWARE_HTTP_CACHE = process.env["MIDDLEWARE_HTTP_CACHE"];
+
+export const STALE_TIME = Number(process.env["STALE_TIME"]) || 60 * 1000;

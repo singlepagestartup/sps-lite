@@ -1,10 +1,13 @@
-import { RtkAction, useGlobalActionsStore } from "@sps/shared-store";
+import {
+  Action,
+  useGlobalActionsStore,
+} from "@sps/shared-frontend-client-store";
 import { useEffect, useMemo, useState } from "react";
 
 export interface IHookProps {
   storeName: string;
-  actionFilter: (action: RtkAction) => boolean;
-  callbackFunction: (action: RtkAction) => void;
+  actionFilter: (action: Action) => boolean;
+  callbackFunction: (action: Action) => void;
 }
 
 export function useHook(props: IHookProps) {
@@ -17,19 +20,25 @@ export function useHook(props: IHookProps) {
   );
 
   useEffect(() => {
-    globalActionsByName.forEach(async (action) => {
-      if (action.meta.fulfilledTimeStamp < renderTimestamp) {
+    globalActionsByName?.forEach(async (action) => {
+      if (
+        action.meta?.["fulfilledTimeStamp"] &&
+        action.meta?.["fulfilledTimeStamp"] < renderTimestamp
+      ) {
         return;
       }
 
       if (
         props.actionFilter(action) &&
-        !triggeredActions?.includes(action.meta.requestId)
+        !triggeredActions?.includes(action.meta?.["requestId"] || action.id)
       ) {
         if (triggeredActions) {
-          setTriggeredActions([...triggeredActions, action.meta.requestId]);
+          setTriggeredActions([
+            ...triggeredActions,
+            action.meta?.["requestId"] || action.id,
+          ]);
         } else {
-          setTriggeredActions([action.meta.requestId]);
+          setTriggeredActions([action.meta?.["requestId"] || action.id]);
         }
 
         props.callbackFunction(action);

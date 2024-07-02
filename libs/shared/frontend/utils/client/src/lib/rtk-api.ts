@@ -7,7 +7,6 @@ import {
   fetchBaseQuery,
   EndpointBuilder,
 } from "@reduxjs/toolkit/query";
-import { QueryLifecycleApi } from "@reduxjs/toolkit/dist/query/endpointDefinitions";
 import QueryString from "qs";
 import {
   TransformedApiArray,
@@ -35,10 +34,7 @@ export type TRTKBuild = EndpointBuilder<
   string
 >;
 
-export type TRTKOnQueryStarted = (
-  arg: any,
-  api: QueryLifecycleApi<any, any, any, any>,
-) => any;
+export type TRTKOnQueryStarted = (arg: any, api: any) => any;
 
 export function fetchBaseQueryBuilder(baseUrl: string) {
   return async (args: any, api: any, extraOptions: any) => {

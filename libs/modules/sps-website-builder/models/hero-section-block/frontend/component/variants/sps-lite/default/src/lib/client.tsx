@@ -10,14 +10,6 @@ import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend
 
 export default function Client(props: IComponentProps) {
   const { data, isLoading } = api.findById({ id: props.data.id });
-  const { data: findRes } = api.find();
-  console.log(`🚀 ~ Client ~ findRes:`, findRes);
-
-  // const { data, isLoading } = useQuery<IModelExtended>({
-  //   queryKey: [tag],
-  //   queryFn: query({ id: props.data.id || "" }),
-  //   enabled: props.data.id ? true : false,
-  // });
 
   if (isLoading || !data) {
     return <Skeleton {...props} />;

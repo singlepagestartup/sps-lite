@@ -1,4 +1,4 @@
-export function prepareFormDataToSend(params: any) {
+export function prepareFormDataToSend(params: { data: any }) {
   const { data } = params;
 
   const formData = new FormData();

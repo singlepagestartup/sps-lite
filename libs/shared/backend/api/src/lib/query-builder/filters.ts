@@ -86,7 +86,9 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
       method === "notLike" ||
       method === "ne"
     ) {
-      resultQueries.push(queryFunctions[method](tableColumn, filterValue));
+      resultQueries.push(
+        queryFunctions[method](tableColumn, filterValue) as SQL<any>,
+      );
     }
 
     if (

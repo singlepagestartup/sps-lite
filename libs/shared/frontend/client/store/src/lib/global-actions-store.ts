@@ -1,6 +1,7 @@
 import { Mutate, StoreApi, create } from "zustand";
 import { devtools, persist, createJSONStorage } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
+import { UseQueryOptions, UseMutationOptions } from "@tanstack/react-query";
 
 export type StoreWithPersist = Mutate<
   StoreApi<State & Actions>,
@@ -19,17 +20,32 @@ export interface RtkAction {
       type: string;
     };
   };
+  id?: string;
+  timestamp?: number;
   payload: any;
 }
 
-export interface RtkStore {
+export interface ReactQueryAction {
+  type: string;
+  module: string;
+  meta:
+    | UseQueryOptions<any, any, any, any>
+    | UseMutationOptions<any, any, any, any>;
+  id: string;
+  timestamp?: number;
+  payload: any;
+}
+
+export type Action = RtkAction | ReactQueryAction;
+
+export interface ActionsStore {
   name: string;
-  actions: RtkAction[];
+  actions: Action[];
 }
 
 export interface State {
   stores: {
-    [key in string]: RtkStore;
+    [key in string]: ActionsStore;
   };
   revalidatePromises: {
     [key in string]: string[];
@@ -37,12 +53,12 @@ export interface State {
 }
 
 export interface Actions {
-  addStore: (store: RtkStore) => void;
-  addAction: (action: RtkAction) => void;
+  addStore: (store: ActionsStore) => void;
+  addAction: (action: Action) => void;
   addRevalidatePromise: (promise: string) => void;
   removeRevalidatePromise: (promise: string) => void;
   revalidatePromisesSusscess: () => boolean;
-  getActionsFromStoreByName: (name: string) => RtkStore["actions"];
+  getActionsFromStoreByName: (name: string) => ActionsStore["actions"];
   reset: () => void;
 }
 
@@ -69,7 +85,7 @@ export const globalActionsStore = create<State & Actions>()(
               delete state.revalidatePromises[promise];
             });
           },
-          addStore: (store: RtkStore) => {
+          addStore: (store: ActionsStore) => {
             set((state: State) => {
               state["stores"][store.name] = store;
             });
@@ -82,7 +98,7 @@ export const globalActionsStore = create<State & Actions>()(
 
             return Object.keys(revalidatePromises).length === 0;
           },
-          addAction: (action: RtkAction) => {
+          addAction: (action: Action) => {
             set((state: State) => {
               state.stores[action.module] = {
                 ...state.stores[action.module],

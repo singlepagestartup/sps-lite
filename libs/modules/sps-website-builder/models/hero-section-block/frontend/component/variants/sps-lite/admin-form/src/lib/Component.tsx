@@ -9,7 +9,6 @@ import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-website-builder/models/hero-section-block/contracts/root";
@@ -25,10 +24,9 @@ const formSchema = z.object({
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const dispatch = useDispatch();
 
   const update = api.update({
-    id: props.data?.id || "",
+    id: props.data?.id,
   });
   const create = api.create();
 
@@ -62,10 +60,11 @@ export function Component(props: IComponentPropsExtended) {
     if (update.data || create.data) {
       // dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
       // invalidateServerTag({ tag: "hero-section-block" });
-      // if (props.setOpen) {
-      //   props.setOpen(false);
-      // }
-      // router.refresh();
+      if (props.setOpen) {
+        props.setOpen(false);
+      }
+
+      router.refresh();
     }
   }, [update.data, create.data]);
 

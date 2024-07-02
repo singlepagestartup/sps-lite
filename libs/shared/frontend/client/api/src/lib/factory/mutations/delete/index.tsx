@@ -3,21 +3,35 @@
 import { actions, IDeleteActionProps } from "@sps/shared-frontend-api";
 
 export interface IMutationProps {
-  id: IDeleteActionProps["id"];
+  id?: IDeleteActionProps["id"];
   options?: IDeleteActionProps["options"];
   params?: IDeleteActionProps["params"];
   host: string;
   route: string;
 }
 
-export function mutation<T>(props: IMutationProps): () => Promise<T> {
-  return async () => {
+export interface IMutationFunctionProps {
+  id?: IDeleteActionProps["id"];
+  options?: IDeleteActionProps["options"];
+  params?: IDeleteActionProps["params"];
+}
+
+export function mutation<T>(
+  props: IMutationProps,
+): (mutationFunctionProps: IMutationFunctionProps) => Promise<T> {
+  return async (mutationFunctionProps: IMutationFunctionProps) => {
+    const id = mutationFunctionProps.id || props.id;
+
+    if (!id) {
+      throw new Error("id is required");
+    }
+
     const res = await actions.delete<T>({
-      id: props.id,
+      id,
       host: props.host,
       route: props.route,
-      params: props.params,
-      options: props.options,
+      params: mutationFunctionProps.params || props.params,
+      options: mutationFunctionProps.options || props.options,
     });
 
     return res;

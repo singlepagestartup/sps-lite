@@ -12,16 +12,20 @@ import { ModelEntityCard } from "@sps/ui-adapter";
 export function Component(props: IComponentPropsExtended) {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
+  const deleteEntity = api.delete();
+
+  // useEffect(() => {
+  //   console.log(`🚀 ~ useEffect ~ props:`, props);
+  // }, []);
 
   useEffect(() => {
-    if (deleteEntityResult.isSuccess) {
-      dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
-      invalidateServerTag({ tag: "hero-section-block" }).then(() => {
-        router.refresh();
-      });
+    if (deleteEntity.data) {
+      // dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
+      // invalidateServerTag({ tag: "hero-section-block" }).then(() => {
+      //   router.refresh();
+      // });
     }
-  }, [deleteEntityResult]);
+  }, [deleteEntity.data]);
 
   return (
     <div
@@ -33,7 +37,7 @@ export function Component(props: IComponentPropsExtended) {
       <ModelEntityCard
         onDeleteEntity={() => {
           if (props.data?.id) {
-            deleteEntity({ id: props.data.id });
+            deleteEntity.mutate({ id: props.data.id });
           }
         }}
         data={props.data}

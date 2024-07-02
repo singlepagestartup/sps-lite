@@ -112,7 +112,13 @@ export const api = createApi({
 export const subscription = (reduxStore: any) => {
   const triggeredActions: string[] = [];
   return globalActionsStore.subscribe((state) => {
-    // const startupTaskState = state.stores["sps-host/pages"];
+    const hsbState =
+      state.stores["/api/sps-website-builder/hero-section-blocks"];
+    // console.log(
+    //   `🚀 ~ returnglobalActionsStore.subscribe ~ hsbState:`,
+    //   hsbState,
+    // );
+
     // startupTaskState?.actions?.forEach(async (action: any) => {
     //   if (
     //     action.type === "pages/executeMutation/fulfilled" &&

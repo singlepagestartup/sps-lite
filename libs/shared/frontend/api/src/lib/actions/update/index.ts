@@ -21,7 +21,7 @@ export interface IActionProps {
 export async function action<T>(props: IActionProps): Promise<T> {
   const { id, params, data, route, tag, options, host } = props;
 
-  const formData = prepareFormDataToSend(data);
+  const formData = prepareFormDataToSend({ data });
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,

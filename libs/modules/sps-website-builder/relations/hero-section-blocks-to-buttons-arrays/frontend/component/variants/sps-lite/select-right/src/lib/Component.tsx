@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import { api } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/api/client";
+import { route } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/model";
 import { Component as AdminSelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
 import { variants } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root";
 
@@ -59,9 +60,9 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useActionTrigger({
-    storeName: "sps-website-builder/hero-section-block",
+    storeName: route,
     actionFilter: (action) => {
-      return action.type === "hero-section-block/executeMutation/fulfilled";
+      return ["create", "update"].includes(action.type);
     },
     callbackFunction: async (action) => {
       if (action.payload.id) {
