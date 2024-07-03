@@ -10,10 +10,9 @@ import { api } from "@sps/sps-rbac/models/authentication/frontend/api/client";
 import { Component as AuthenticationSpsLiteSelectMethod } from "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/select-method";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useIsAuthenticatedQuery({});
+  const { data, isFetching, isLoading } = api.isAuthenticated();
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <Skeleton {...props} />;
   }
 

@@ -12,10 +12,9 @@ import { useRouter } from "next/navigation";
 export default function Client(props: IComponentProps) {
   const router = useRouter();
 
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useIsAuthenticatedQuery({});
+  const { data, isFetching, isLoading } = api.isAuthenticated({});
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <Skeleton {...props} />;
   }
 

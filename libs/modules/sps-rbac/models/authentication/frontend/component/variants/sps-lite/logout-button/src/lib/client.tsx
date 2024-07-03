@@ -9,10 +9,9 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-rbac/models/authentication/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useIsAuthenticatedQuery({});
+  const { data, isFetching, isLoading } = api.isAuthenticated({});
 
-  if (isFetching || isLoading || isUninitialized || !data) {
+  if (isFetching || isLoading || !data) {
     return <Skeleton {...props} />;
   }
 

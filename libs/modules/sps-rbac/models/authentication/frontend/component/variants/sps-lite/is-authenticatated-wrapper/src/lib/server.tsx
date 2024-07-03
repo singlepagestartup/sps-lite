@@ -10,7 +10,7 @@ import { Component as AuthenticationSpsLiteSelectMethod } from "@sps/sps-rbac/mo
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.fetch.isAuthenticated();
+  const data = await api.isAuthenticated();
 
   if (!data) {
     return (

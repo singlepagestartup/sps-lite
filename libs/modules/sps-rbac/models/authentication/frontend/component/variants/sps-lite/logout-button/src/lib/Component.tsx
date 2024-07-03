@@ -9,10 +9,10 @@ import { useRouter } from "next/navigation";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const [logout, logoutData] = api.rtk.useLogoutMutation({});
+  const logout = api.logout();
 
   useEffect(() => {
-    if (logoutData.isSuccess) {
+    if (logout.isSuccess) {
       router.push("/");
     }
   }, []);
@@ -24,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
       data-model="authentication"
       data-variant={props.variant}
       onClick={() => {
-        logout({});
+        logout.mutate({});
       }}
       className={cn("w-full py-10 text-center flex flex-col gap-1")}
     >

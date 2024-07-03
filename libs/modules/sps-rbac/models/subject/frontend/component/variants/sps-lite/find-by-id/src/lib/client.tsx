@@ -10,10 +10,9 @@ import { api } from "@sps/sps-rbac/models/subject/frontend/api/client";
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByIdQuery({
-      id: props.id,
-    });
+  const { data, isFetching, isLoading } = api.findById({
+    id: props.id,
+  });
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {
@@ -21,7 +20,7 @@ export default function Client(props: IComponentProps) {
     }
   }, [data, props]);
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <></>;
   }
 

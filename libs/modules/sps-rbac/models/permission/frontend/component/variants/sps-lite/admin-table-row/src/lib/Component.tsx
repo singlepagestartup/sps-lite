@@ -6,22 +6,20 @@ import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-rbac/models/permission/frontend/api/client";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-rbac/models/permission/frontend/component/variants/sps-lite/admin-form";
 
 export function Component(props: IComponentPropsExtended) {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
+  const deleteEntity = api.delete();
 
   useEffect(() => {
-    if (deleteEntityResult.isSuccess) {
-      dispatch(api.rtk.util.invalidateTags(["permission"]));
-      invalidateServerTag({ tag: "permission" }).then(() => {
-        router.refresh();
-      });
+    if (deleteEntity.isSuccess) {
+      // dispatch(api.rtk.util.invalidateTags(["permission"]));
+      // invalidateServerTag({ tag: "permission" }).then(() => {
+      //   router.refresh();
+      // });
     }
-  }, [deleteEntityResult]);
+  }, [deleteEntity]);
 
   return (
     <div
@@ -34,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
       <ModelEntityCard
         onDeleteEntity={() => {
           if (props.data?.id) {
-            deleteEntity({ id: props.data.id });
+            deleteEntity.mutate({ id: props.data.id });
           }
         }}
         data={props.data}

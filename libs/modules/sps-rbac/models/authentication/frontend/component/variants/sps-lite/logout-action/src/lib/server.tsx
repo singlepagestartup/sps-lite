@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.fetch.isAuthenticated();
+  const data = await api.isAuthenticated();
 
   return (
     <ErrorBoundary fallback={Error}>

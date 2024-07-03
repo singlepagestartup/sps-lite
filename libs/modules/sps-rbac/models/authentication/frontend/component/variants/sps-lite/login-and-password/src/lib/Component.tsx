@@ -18,25 +18,24 @@ import {
 import { FormField } from "@sps/ui-adapter";
 
 const formSchema = z.object({
-  email: z.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+  login: z.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
   password: z.string().min(8),
 });
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const [loginAndPassword, loginAndPasswordResult] =
-    api.rtk.useLoginAndPasswordMutation();
+  const loginAndPassword = api.loginAndPassword();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      login: "",
       password: "",
     },
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    loginAndPassword({
+    loginAndPassword.mutate({
       data,
     });
 
@@ -44,15 +43,12 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useEffect(() => {
-    console.log(
-      `🚀 ~ useEffect ~ loginAndPasswordResult:`,
-      loginAndPasswordResult,
-    );
+    console.log(`🚀 ~ useEffect ~ loginAndPassword:`, loginAndPassword);
 
-    if (loginAndPasswordResult.isSuccess) {
+    if (loginAndPassword.isSuccess) {
       router.push("/");
     }
-  }, [loginAndPasswordResult]);
+  }, [loginAndPassword]);
 
   return (
     <div
@@ -65,17 +61,17 @@ export function Component(props: IComponentPropsExtended) {
         <Card className="flex flex-col gap-6">
           <CardHeader>
             <h1 className="text-4xl font-bold">
-              Login with email and password
+              Login with login and password
             </h1>
           </CardHeader>
           <CardContent className="flex flex-col gap-3 pb-10">
             <FormField
               ui="shadcn"
               type="text"
-              label="Email"
-              name="email"
+              label="login"
+              name="login"
               form={form}
-              placeholder="Enter your email"
+              placeholder="Enter your login"
             />
             <FormField
               ui="shadcn"

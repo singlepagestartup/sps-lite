@@ -10,12 +10,11 @@ import { api } from "@sps/sps-rbac/relations/subjects-to-sessions/frontend/api/c
 
 export default function Client(props: IComponentProps) {
   if (props.data) {
-    const { data, isFetching, isLoading, isUninitialized } =
-      api.rtk.useFindByIdQuery({
-        id: props.data.id,
-      });
+    const { data, isFetching, isLoading } = api.findById({
+      id: props.data.id,
+    });
 
-    if (isFetching || isLoading || isUninitialized || !data) {
+    if (isFetching || isLoading || !data) {
       return <Skeleton {...props} />;
     }
 
