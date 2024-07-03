@@ -2,15 +2,12 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-host/models/layout/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
-import { Button } from "@sps/ui-adapter";
+import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
+import { Button, FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { Component as AdminFormInputs } from "@sps/sps-host/models/layout/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-host/models/layout/contracts/root";
 
 const formSchema = z.object({
@@ -19,8 +16,6 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
-
   const updateEntity = api.update();
   const createEntity = api.create();
 
@@ -45,14 +40,7 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (updateEntity.data || createEntity.data) {
-      // dispatch(api.rtk.util.invalidateTags(["layout"]));
-      // invalidateServerTag({ tag: "layout" });
-
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      // router.refresh();
+      //
     }
   }, [updateEntity, createEntity]);
 
@@ -66,13 +54,25 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Form {...form}>
         <CardContent>
-          <AdminFormInputs
-            isServer={false}
-            hostUrl={props.hostUrl}
-            variant="admin-form-inputs"
-            data={props.data}
-            form={form}
-          />
+          <div className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="text"
+              name="title"
+              label="Title"
+              form={form}
+              placeholder="Type title"
+            />
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Type title"
+              options={variants.map((variant) => [variant, variant])}
+            />
+          </div>
         </CardContent>
         <CardFooter>
           <Button

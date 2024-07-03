@@ -7,7 +7,6 @@ import { Component as Login } from "@sps/sps-rbac/models/authentication-block/fr
 import { Component as AdminTableRow } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table-row";
 import { Component as AdminTable } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table";
 import { Component as AdminSelectInput } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-select-input";
-import { Component as AdminFormInputs } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-form-inputs";
 import { Component as AdminForm } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-form";
 
 export const variants = {
@@ -20,6 +19,5 @@ export const variants = {
   "admin-table-row": AdminTableRow,
   "admin-table": AdminTable,
   "admin-select-input": AdminSelectInput,
-  "admin-form-inputs": AdminFormInputs,
   "admin-form": AdminForm,
 };

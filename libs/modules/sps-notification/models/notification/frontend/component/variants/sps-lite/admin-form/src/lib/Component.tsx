@@ -2,15 +2,12 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-notification/models/notification/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
-import { Button } from "@sps/ui-adapter";
+import { Button, FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { Component as AdminFormInputs } from "@sps/sps-notification/models/notification/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-notification/models/notification/contracts/root";
 
 const formSchema = z.object({
@@ -18,8 +15,6 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
-
   const updateEntity = api.update();
   const createEntity = api.create();
 
@@ -43,14 +38,7 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (updateEntity.data || createEntity.data) {
-      // dispatch(api.rtk.util.invalidateTags(["notification"]));
-      // invalidateServerTag({ tag: "notification" });
-
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      // router.refresh();
+      //
     }
   }, [updateEntity, createEntity]);
 
@@ -68,13 +56,17 @@ export function Component(props: IComponentPropsExtended) {
             {props.data?.id ? "Edit" : "Create"} notification
           </h1>
           <CardContent className="flex flex-col gap-6 pb-10">
-            <AdminFormInputs
-              isServer={false}
-              hostUrl={props.hostUrl}
-              variant="admin-form-inputs"
-              data={props.data}
-              form={form}
-            />
+            <div className="flex flex-col gap-6">
+              <FormField
+                ui="shadcn"
+                type="select"
+                label="Variant"
+                name="variant"
+                form={form}
+                placeholder="Select variant"
+                options={variants.map((variant) => [variant, variant])}
+              />
+            </div>
           </CardContent>
           <div className="admin-edit-card-button-container">
             <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
