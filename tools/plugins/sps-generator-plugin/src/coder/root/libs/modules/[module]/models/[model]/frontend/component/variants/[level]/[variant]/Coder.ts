@@ -182,8 +182,6 @@ export class Coder {
       name: this.baseName,
     });
 
-    console.log(`🚀 ~ remove ~ existed:`, existed);
-
     if (!existed) {
       return;
     }

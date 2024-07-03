@@ -1,0 +1,34 @@
+
+import { ModelEntitiesListCard } from "@sps/ui-adapter";
+import { IComponentPropsExtended } from "./interface";
+import { Component as AdminForm } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-form";
+import { Component as AdminTableRow } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-table-row";
+
+export function Component(props: IComponentPropsExtended) {
+  return (
+    <div
+      data-module="<%= module_name %>"
+      data-relation="<%= relation_name %>"
+      data-variant={props.variant}
+      className={`w-full ${props.className || ""}`}
+    >
+     <ModelEntitiesListCard
+        title="<%= model_name_kebab_cased_pluralized %>"
+        adminForm={<AdminForm isServer={props.isServer}
+                hostUrl={props.hostUrl} variant="admin-form" />}
+      >
+        {props.data.map((entity, index) => {
+          return (
+            <AdminTableRow
+              key={index}
+              isServer={props.isServer}
+                hostUrl={props.hostUrl}
+              variant="admin-table-row"
+              data={entity}
+            />
+          );
+        })}
+      </ModelEntitiesListCard>
+    </div>
+  );
+}

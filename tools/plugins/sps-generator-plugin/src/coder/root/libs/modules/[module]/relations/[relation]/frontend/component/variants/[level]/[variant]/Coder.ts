@@ -144,6 +144,10 @@ export class Coder {
       rightModel.project.model.project.frontend.project.component.project.root
         .importPath;
 
+    const apiModelImportPath =
+      this.parent.parent.parent.project.frontend.project.api.project.model
+        .importPath;
+
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
       : path.join(__dirname, `files`);
@@ -182,6 +186,7 @@ export class Coder {
         root_contracts_import_path: this.rootContractsImportPath,
         extended_contracts_import_path: this.extendedContractsImportPath,
         relation_name: this.relationName || "",
+        api_model_import_path: apiModelImportPath,
       },
     });
 
