@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-static";
 
 export async function generateMetadata(props: any) {
-  return metadataApi.fetch.generate({ catchError: true, ...props });
+  return metadataApi.generate({ catchError: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {

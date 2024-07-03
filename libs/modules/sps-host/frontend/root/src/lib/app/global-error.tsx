@@ -25,7 +25,7 @@ export function Component({
   }, [error]);
 
   useEffect(() => {
-    api.fetch
+    api
       .find({
         params: {
           filters: {

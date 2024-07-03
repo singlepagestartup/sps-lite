@@ -3,7 +3,7 @@ import { api } from "@sps/sps-host/models/page/frontend/api/server";
 
 async function generateSiteMap() {
   try {
-    const pages = await api.fetch.find();
+    const pages = await api.find();
 
     if (!pages) {
       return `<?xml version="1.0" encoding="UTF-8"?>

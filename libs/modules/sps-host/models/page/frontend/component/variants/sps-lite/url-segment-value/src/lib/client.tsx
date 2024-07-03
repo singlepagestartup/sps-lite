@@ -10,13 +10,12 @@ import { api } from "@sps/sps-host/models/page/frontend/api/client";
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useUrlSegmentValueQuery({
-      segment: props.segment,
-      url: props.hostUrl,
-    });
+  const { data, isFetching, isLoading } = api.urlSegmentValue({
+    segment: props.segment,
+    url: props.hostUrl,
+  });
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <Skeleton {...props} />;
   }
 

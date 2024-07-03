@@ -9,12 +9,11 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-host/models/page/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByUrlQuery({
-      url: props.url,
-    });
+  const { data, isFetching, isLoading } = api.findByUrl({
+    url: props.url,
+  });
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <Skeleton {...props} />;
   }
 

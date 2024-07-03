@@ -9,7 +9,7 @@ import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.fetch.urlSegmentValue({
+  const data = await api.urlSegmentValue({
     segment: props.segment,
     url: props.hostUrl,
   });

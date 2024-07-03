@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 export const runtime = "nodejs";
 
 export async function generateStaticParams() {
-  const urls = await spsHostPageApi.fetch.urls();
+  const urls = await spsHostPageApi.urls();
 
   return urls.filter((url) => {
     if (url.url.length === 0) {
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: any) {
-  return metadataApi.fetch.generate({ catchError: true, ...props });
+  return metadataApi.generate({ catchError: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {
