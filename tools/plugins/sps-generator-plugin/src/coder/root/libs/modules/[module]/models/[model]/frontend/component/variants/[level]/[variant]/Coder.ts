@@ -19,6 +19,7 @@ import {
   replaceInFile,
 } from "tools/plugins/sps-generator-plugin/src/utils/file-utils";
 import { util as createSpsReactLibrary } from "../../../../../../../../../../../../utils/create-sps-react-library";
+import { util as removeProject } from "../../../../../../../../../../../../utils/remove-project";
 import { stat } from "fs/promises";
 import { Migrator } from "./migrator/Migrator";
 
@@ -175,7 +176,18 @@ export class Coder {
   }
 
   async remove() {
-    const project = getProjects(this.tree).get(this.baseName);
+    const existed = await removeProject({
+      tree: this.tree,
+      root: this.baseDirectory,
+      name: this.baseName,
+    });
+
+    console.log(`🚀 ~ remove ~ existed:`, existed);
+
+    if (!existed) {
+      return;
+    }
+
     const componentRootPath =
       this.parent.parent.project.component.project.root.baseDirectory;
 
@@ -188,16 +200,6 @@ export class Coder {
         componentRootPath,
         `/src/lib/${this.level}/interface.ts`,
       ),
-    });
-
-    if (!project) {
-      return;
-    }
-
-    await nxWorkspace.removeGenerator(this.tree, {
-      projectName: this.baseName,
-      skipFormat: true,
-      forceRemove: true,
     });
   }
 
