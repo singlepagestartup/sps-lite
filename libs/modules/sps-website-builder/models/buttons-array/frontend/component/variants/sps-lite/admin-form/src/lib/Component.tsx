@@ -5,10 +5,11 @@ import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/buttons-array/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
-import { Button, FormField } from "@sps/ui-adapter";
+import { Button, FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
+import { Component as ButtonsArraysToButtonsAdminTableRow } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table-row";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -99,6 +100,19 @@ export function Component(props: IComponentPropsExtended) {
                 form={form}
                 placeholder="Type description"
               />
+              <ModelEntitiesListCard title="buttons-arrays-to-buttons">
+                {props.data?.buttonsArraysToButtons.map((entity, index) => {
+                  return (
+                    <ButtonsArraysToButtonsAdminTableRow
+                      key={index}
+                      data={entity}
+                      hostUrl={props.hostUrl}
+                      isServer={false}
+                      variant="admin-table-row"
+                    />
+                  );
+                })}
+              </ModelEntitiesListCard>
             </div>
           </CardContent>
           <div className="admin-edit-card-button-container">
