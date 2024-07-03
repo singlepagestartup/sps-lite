@@ -10,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
 import { Component as ButtonsArraysToButtonsAdminTableRow } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table-row";
+import { Component as ButtonsArraysToButtonsAdminForm } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-form";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -100,7 +101,17 @@ export function Component(props: IComponentPropsExtended) {
                 form={form}
                 placeholder="Type description"
               />
-              <ModelEntitiesListCard title="buttons-arrays-to-buttons">
+
+              <ModelEntitiesListCard
+                adminForm={
+                  <ButtonsArraysToButtonsAdminForm
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant="admin-form"
+                  />
+                }
+                title="buttons-arrays-to-buttons"
+              >
                 {props.data?.buttonsArraysToButtons.map((entity, index) => {
                   return (
                     <ButtonsArraysToButtonsAdminTableRow

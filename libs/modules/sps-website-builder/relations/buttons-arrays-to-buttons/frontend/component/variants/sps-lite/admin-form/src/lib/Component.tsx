@@ -18,7 +18,9 @@ import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  orderIndex: z.number().optional(),
   buttonsArrayId: z.string().optional(),
+  className: z.string().optional(),
   buttonId: z.string().optional(),
 });
 
@@ -31,7 +33,9 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       buttonsArrayId: props.data?.buttonsArrayId || "",
+      orderIndex: props.data?.orderIndex || 0,
       buttonId: props.data?.buttonId || "",
+      className: props.data?.className || "",
     },
   });
 
@@ -67,6 +71,22 @@ export function Component(props: IComponentPropsExtended) {
       <Form {...form}>
         <CardContent>
           <div className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Order index"
+              name="orderIndex"
+              form={form}
+              placeholder="Order index"
+            />
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Class name"
+            />
             <FormField
               ui="shadcn"
               type="select"
