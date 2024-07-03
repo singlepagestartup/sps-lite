@@ -6,14 +6,14 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "<%= api_client_import_path %>";
+import { api } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.findById({
-    id: props.data.id,
+    id: props.data?.id,
   });
 
-  if (isFetching || isLoading || !data) {
+  if (isFetching || isLoading || (!data && props.data?.id)) {
     return <Skeleton {...props} />;
   }
 
