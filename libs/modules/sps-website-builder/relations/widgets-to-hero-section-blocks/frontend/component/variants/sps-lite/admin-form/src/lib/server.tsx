@@ -10,6 +10,10 @@ import { Component } from "./Component";
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
   if (props.data) {
+    if (!props.data.id) {
+      return <></>;
+    }
+
     const data = await api.findById({
       id: props.data.id,
     });
@@ -27,7 +31,7 @@ export default async function Server(props: IComponentProps) {
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={props.data} />
+      <Component {...props} data={undefined} />
     </ErrorBoundary>
   );
 }

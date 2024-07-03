@@ -1,15 +1,15 @@
+import { ModelEntitiesListCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { Component as AdminForm } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-form";
 import { Component as AdminTableRow } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table-row";
-import { ModelEntitiesListCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
-      data-model="widget-to-hero-section-block"
+      data-relation="widgets-to-hero-section-blocks"
       data-variant={props.variant}
-      className={`${props.className || "w-full"}`}
+      className={`w-full ${props.className || ""}`}
     >
       <ModelEntitiesListCard
         title="widgets-to-hero-section-blocks"

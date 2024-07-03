@@ -8,6 +8,7 @@ import { IGeneratorProps as IModelFrontendComponentVariantGeneratorProps } from 
 import { IGeneratorProps as IRelationGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/Coder";
 import { IGeneratorProps as IRelationFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
 
+const relations = [];
 /**
  * Custom logic inside the generator
  *

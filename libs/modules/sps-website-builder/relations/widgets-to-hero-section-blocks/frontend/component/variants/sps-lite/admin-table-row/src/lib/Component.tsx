@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/api/client";
 import { Component as AdminForm } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-form";
-import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
@@ -18,9 +18,10 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-website-builder"
-      data-model="widget-to-hero-section-block"
+      data-relation="widgets-to-hero-section-blocks"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
+      className="w-full"
     >
       <ModelEntityCard
         onDeleteEntity={() => {

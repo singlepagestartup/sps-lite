@@ -7,7 +7,7 @@ export const variant = "admin-form" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   className?: string;
-  data?: IRelation;
+  data?: Partial<IRelation>;
   setOpen?: (open: boolean) => void;
 }
 
