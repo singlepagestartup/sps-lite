@@ -17,9 +17,11 @@ export default function Client(props: IComponentProps) {
     return <Skeleton {...props} />;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
-  );
+  return <Skeleton {...props} />;
+
+  // return (
+  //   <ErrorBoundary fallback={Error}>
+  //     <Component {...props} data={data} />
+  //   </ErrorBoundary>
+  // );
 }
