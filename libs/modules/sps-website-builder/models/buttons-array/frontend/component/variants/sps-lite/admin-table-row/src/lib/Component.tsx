@@ -6,11 +6,9 @@ import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/buttons-array/frontend/api/client";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-form";
 
 export function Component(props: IComponentPropsExtended) {
-  const dispatch = useDispatch();
   const router = useRouter();
   const deleteEntity = api.delete();
 

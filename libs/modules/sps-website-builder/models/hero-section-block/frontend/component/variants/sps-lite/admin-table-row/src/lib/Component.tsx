@@ -5,12 +5,10 @@ import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form";
 import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const dispatch = useDispatch();
   const router = useRouter();
   const deleteEntity = api.delete();
 

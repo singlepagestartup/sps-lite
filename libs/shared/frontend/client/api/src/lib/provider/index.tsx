@@ -5,11 +5,17 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const queryClient = new QueryClient();
 
-export function Provider({ children }: { children: React.ReactNode }) {
+export function Provider({
+  children,
+  showDevTools = false,
+}: {
+  children: React.ReactNode;
+  showDevTools?: boolean;
+}) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      <ReactQueryDevtools initialIsOpen={false} />
+      {showDevTools ? <ReactQueryDevtools initialIsOpen={false} /> : null}
     </QueryClientProvider>
   );
 }

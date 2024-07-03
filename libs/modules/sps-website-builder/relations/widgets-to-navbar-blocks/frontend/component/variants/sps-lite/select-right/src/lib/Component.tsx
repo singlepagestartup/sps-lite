@@ -25,9 +25,9 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
-  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
-  const [deleteEntity, deleteEntityResult] = api.rtk.useDeleteMutation();
+  const updateEntity = api.update();
+  const createEntity = api.create();
+  const deleteEntity = api.delete();
 
   const form = useForm<z.infer<typeof formSchema>>({
     mode: "all",
@@ -48,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
     }
 
     if (props.data?.id) {
-      await updateEntity({
+      updateEntity.mutate({
         id: props.data.id,
         data,
       });
@@ -56,7 +56,7 @@ export function Component(props: IComponentPropsExtended) {
       return;
     }
 
-    await createEntity({
+    createEntity.mutate({
       data,
     });
   }
@@ -87,7 +87,7 @@ export function Component(props: IComponentPropsExtended) {
         <ModelEntityCard
           onDeleteEntity={() => {
             if (props.data?.id) {
-              deleteEntity({ id: props.data.id });
+              deleteEntity.mutate({ id: props.data.id });
             }
           }}
           data={props.data}
