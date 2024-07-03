@@ -1,5 +1,5 @@
-import { IModel } from "<%= root_contracts_import_path %>";
-import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { IRelation } from "<%= root_contracts_import_path %>";
+import { IRelation as IRelationExtended } from "<%= extended_contracts_import_path %>";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
@@ -9,10 +9,10 @@ export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   formFieldName: string;
   form: UseFormReturn<any>;
-  renderField?: keyof IModel;
+  renderField?: keyof IRelation;
   className?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended[];
+  data: IRelationExtended[];
 }

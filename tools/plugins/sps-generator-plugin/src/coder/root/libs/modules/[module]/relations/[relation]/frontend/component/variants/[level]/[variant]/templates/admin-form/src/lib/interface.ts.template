@@ -1,5 +1,5 @@
-import { IModel } from "<%= root_contracts_import_path %>";
-import { IModel as IModelExtended } from "<%= extended_contracts_import_path %>";
+import { IRelation } from "<%= root_contracts_import_path %>";
+import { IRelation as IRelationExtended } from "<%= extended_contracts_import_path %>";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 
 export const variant = "<%= variant %>" as const;
@@ -7,10 +7,10 @@ export const variant = "<%= variant %>" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   className?: string;
-  data?: Partial<IModel>;
+  data?: Partial<IRelation>;
   setOpen?: (open: boolean) => void;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data?: IModelExtended;
+  data?: IRelationExtended;
 }
