@@ -3,7 +3,6 @@ import {
   ExportVariant,
   ImportInterface,
   ExportInterface,
-  ImportStyles,
 } from "./Coder";
 
 describe("Coder", () => {
@@ -133,25 +132,6 @@ describe("Coder", () => {
 
       const string = `
       export type IComponentProps = IAdminTableComponentProps | IAdminSelectInputComponentProps | IAdminFormComponentProps;`;
-
-      expect(string).toMatch(regex);
-    });
-  });
-
-  describe(`ImportStyles`, () => {
-    const level = "sps-lite";
-    const kebabCasedVariant = "admin-table";
-    const importPath = new ImportStyles({
-      level,
-      kebabCasedVariant,
-    });
-
-    it(`should match the regex 1`, () => {
-      const regex = importPath.onRemove.regex;
-
-      const string = `@import "../../../../variants/sps-lite/simple/src/index";
-
-      @import "../../../../variants/sps-lite/admin-table/src/index";`;
 
       expect(string).toMatch(regex);
     });

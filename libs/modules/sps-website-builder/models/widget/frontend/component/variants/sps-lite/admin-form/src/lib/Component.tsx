@@ -47,6 +47,7 @@ export function Component(props: IComponentPropsExtended) {
   useEffect(() => {
     if (updateEntity.data || createEntity.data) {
       const id = updateEntity.data?.id || createEntity.data?.id;
+
       queryClient.invalidateQueries({
         queryKey: [`${route}/${id}`],
       });
@@ -91,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
               label="Variant"
               name="variant"
               form={form}
-              placeholder="Type title"
+              placeholder="Select variant"
               options={variants.map((variant) => [variant, variant])}
             />
           </CardContent>

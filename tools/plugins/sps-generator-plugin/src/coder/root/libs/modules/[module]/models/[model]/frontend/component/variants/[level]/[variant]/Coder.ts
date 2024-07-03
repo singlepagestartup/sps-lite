@@ -117,7 +117,6 @@ export class Coder {
       this.parent.parent.project.api.project.client.importPath;
     const apiServerImportPath =
       this.parent.parent.project.api.project.server.importPath;
-    const reduxImportPath = this.parent.parent.project.redux.importPath;
     const modelNamePluralized =
       this.parent.parent.project.api.project.model.modelName;
     const rootContractsImportPath =
@@ -126,6 +125,9 @@ export class Coder {
       this.parent.parent.parent.project.contracts.project.extended.importPath;
     const componentRootPath =
       this.parent.parent.project.component.project.root.baseDirectory;
+
+    const apiModelImportPath =
+      this.parent.parent.project.api.project.model.importPath;
 
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
@@ -147,7 +149,6 @@ export class Coder {
         level: this.level,
         api_client_import_path: apiClientImportPath,
         api_server_import_path: apiServerImportPath,
-        redux_import_path: reduxImportPath,
         offset_from_root: offsetFromRootProject,
         model_name_kebab_cased_pluralized: getNameStyles({
           name: this.modelName,
@@ -155,6 +156,7 @@ export class Coder {
         model_name_pluralized: modelNamePluralized,
         root_contracts_import_path: rootContractsImportPath,
         extended_contracts_import_path: extendedContractsImportPath,
+        api_model_import_path: apiModelImportPath,
       },
     });
 
@@ -166,10 +168,6 @@ export class Coder {
       interfacePath: path.join(
         componentRootPath,
         `/src/lib/${this.level}/interface.ts`,
-      ),
-      indexScssPath: path.join(
-        componentRootPath,
-        `/src/lib/${this.level}/_index.scss`,
       ),
     });
 
@@ -190,10 +188,6 @@ export class Coder {
         componentRootPath,
         `/src/lib/${this.level}/interface.ts`,
       ),
-      indexScssPath: path.join(
-        componentRootPath,
-        `/src/lib/${this.level}/_index.scss`,
-      ),
     });
 
     if (!project) {
@@ -207,11 +201,7 @@ export class Coder {
     });
   }
 
-  async attach(props: {
-    variantsPath: string;
-    interfacePath: string;
-    indexScssPath: string;
-  }) {
+  async attach(props: { variantsPath: string; interfacePath: string }) {
     await addToFile({
       toTop: true,
       pathToFile: props.variantsPath,
@@ -254,11 +244,7 @@ export class Coder {
     }
   }
 
-  async detach(props: {
-    variantsPath: string;
-    interfacePath: string;
-    indexScssPath: string;
-  }) {
+  async detach(props: { variantsPath: string; interfacePath: string }) {
     try {
       await replaceInFile({
         tree: this.tree,
@@ -393,32 +379,6 @@ export class ExportInterface extends RegexCreator {
       placeRegex,
       content,
       contentRegex,
-    });
-  }
-}
-
-export class ImportStyles extends RegexCreator {
-  constructor({
-    level,
-    kebabCasedVariant,
-  }: {
-    level: string;
-    kebabCasedVariant: string;
-  }) {
-    const place = "";
-    const placeRegex = new RegExp("");
-
-    const content = `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`;
-
-    const contentRegex = new RegExp(
-      `@import "../../../../variants/${level}/${kebabCasedVariant}/src/index";`,
-    );
-
-    super({
-      place,
-      placeRegex,
-      contentRegex,
-      content,
     });
   }
 }

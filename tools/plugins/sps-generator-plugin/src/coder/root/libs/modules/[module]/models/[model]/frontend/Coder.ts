@@ -8,15 +8,10 @@ import {
   Coder as ApiCoder,
   IGeneratorProps as IApiCoderGeneratorProps,
 } from "./api/Coder";
-import {
-  Coder as ReduxCoder,
-  IGeneratorProps as IReduxCoderGeneratorProps,
-} from "./redux/Coder";
 
 export type IGeneratorProps = {
   component?: IComponentCoderGeneratorProps;
   api?: IApiCoderGeneratorProps;
-  redux?: IReduxCoderGeneratorProps;
 };
 
 export class Coder {
@@ -29,7 +24,6 @@ export class Coder {
   project: {
     component: ComponentCoder;
     api: ApiCoder;
-    redux: ReduxCoder;
   };
 
   constructor(props: { parent: ModelCoder; tree: Tree } & IGeneratorProps) {
@@ -52,33 +46,24 @@ export class Coder {
       parent: this,
     });
 
-    const redux = new ReduxCoder({
-      tree: this.tree,
-      parent: this,
-    });
-
     this.project = {
       component,
       api,
-      redux,
     };
   }
 
   async migrate(props: { version: string }) {
     await this.project.api.migrate(props);
-    await this.project.redux.migrate(props);
     await this.project.component.migrate(props);
   }
 
   async create() {
     await this.project.api.create();
-    await this.project.redux.create();
     await this.project.component.create();
   }
 
   async remove() {
     await this.project.component.remove();
-    await this.project.redux.remove();
     await this.project.api.remove();
   }
 }

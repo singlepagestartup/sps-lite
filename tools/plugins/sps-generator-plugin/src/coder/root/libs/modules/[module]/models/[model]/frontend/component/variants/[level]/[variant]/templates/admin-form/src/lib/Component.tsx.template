@@ -3,15 +3,18 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useRouter } from "next/navigation";
-import { api } from "<%= api_client_import_path %>";
+import { route } from "<%= api_model_import_path %>";
+import {
+  api,
+  queryClient
+} from "<%= api_client_import_path %>";
 import { useForm } from "react-hook-form";
 import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
-import { Button } from "@sps/ui-adapter";
+import { Button, FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { Component as AdminFormInputs } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-form-inputs";
 import { variants } from "<%= root_contracts_import_path %>";
 
 const formSchema = z.object({
@@ -22,8 +25,8 @@ export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
-  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const updateEntity = api.update();
+  const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -34,27 +37,24 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      await updateEntity({ id: props.data?.id, data });
+      updateEntity.mutate({ id: props.data?.id, data });
       return;
     }
 
-    await createEntity({
+    createEntity.mutate({
       data,
     });
   }
 
   useEffect(() => {
-    if (updateEntityResult.data || createEntityResult.data) {
-      dispatch(api.rtk.util.invalidateTags(["<%= model_name %>"]));
-      invalidateServerTag({ tag: "<%= model_name %>" });
+    if (updateEntity.data || createEntity.data) {
+      const id = updateEntity.data?.id || createEntity.data?.id;
 
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      router.refresh();
+      queryClient.invalidateQueries({
+        queryKey: [`${route}/${id}`],
+      });
     }
-  }, [updateEntityResult, createEntityResult]);
+  }, [updateEntity, createEntity]);
 
   return (
     <div
@@ -66,12 +66,14 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Form {...form}>
         <CardContent>
-          <AdminFormInputs
-            isServer={false}
-            hostUrl={props.hostUrl}
-            variant="admin-form-inputs"
-            data={props.data}
+          <FormField
+            ui="shadcn"
+            type="select"
+            label="Variant"
+            name="variant"
             form={form}
+            placeholder="Select variant"
+            options={variants.map((variant) => [variant, variant])}
           />
         </CardContent>
         <CardFooter>
