@@ -26,7 +26,7 @@ export function Component(props: IComponentPropsExtended) {
       <ModelEntityCard
         onDeleteEntity={() => {
           if (props.data?.id) {
-            deleteEntity({ id: props.data.id });
+            deleteEntity.mutate({ id: props.data.id });
           }
         }}
         data={props.data}
