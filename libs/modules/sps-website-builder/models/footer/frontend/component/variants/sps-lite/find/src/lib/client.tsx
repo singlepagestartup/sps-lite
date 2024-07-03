@@ -10,11 +10,9 @@ import { api } from "@sps/sps-website-builder/models/footer/frontend/api/client"
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } = api.rtk.useFindQuery(
-    {
-      ...(props.query || {}),
-    },
-  );
+  const { data, isFetching, isLoading } = api.find({
+    ...(props.query || {}),
+  });
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {
@@ -22,7 +20,7 @@ export default function Client(props: IComponentProps) {
     }
   }, [data, props]);
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <></>;
   }
 

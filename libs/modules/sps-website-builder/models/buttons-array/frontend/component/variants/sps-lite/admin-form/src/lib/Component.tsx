@@ -25,8 +25,8 @@ export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
-  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const updateEntity = api.update();
+  const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,19 +40,19 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      await updateEntity({ id: props.data?.id, data });
+      await updateEntity.mutate({ id: props.data?.id, data });
       return;
     }
 
-    await createEntity({
+    await createEntity.mutate({
       data,
     });
   }
 
   useEffect(() => {
-    if (updateEntityResult.data || createEntityResult.data) {
-      dispatch(api.rtk.util.invalidateTags(["buttons-array"]));
-      invalidateServerTag({ tag: "buttons-array" });
+    if (updateEntity.data || createEntity.data) {
+      // dispatch(api.rtk.util.invalidateTags(["buttons-array"]));
+      // invalidateServerTag({ tag: "buttons-array" });
 
       if (props.setOpen) {
         props.setOpen(false);
@@ -60,7 +60,7 @@ export function Component(props: IComponentPropsExtended) {
 
       router.refresh();
     }
-  }, [updateEntityResult, createEntityResult]);
+  }, [updateEntity, createEntity]);
 
   return (
     <div

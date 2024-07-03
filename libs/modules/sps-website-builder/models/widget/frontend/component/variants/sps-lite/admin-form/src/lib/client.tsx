@@ -9,12 +9,9 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder/models/widget/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.rtk.useFindByIdQuery(
-    {
-      id: props.data?.id,
-    },
-    { skip: !props?.data?.id },
-  );
+  const { data, isFetching, isLoading } = api.findById({
+    id: props.data?.id,
+  });
 
   if (isFetching || isLoading || (!data && props.data?.id)) {
     return <Skeleton {...props} />;

@@ -10,7 +10,7 @@ import { api } from "@sps/sps-website-builder/models/footer/frontend/api/server"
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
   if (props.data) {
-    const data = await api.fetch.findById({
+    const data = await api.findById({
       id: props.data.id,
     });
 

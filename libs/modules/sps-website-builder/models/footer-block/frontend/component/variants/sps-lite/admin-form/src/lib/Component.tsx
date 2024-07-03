@@ -9,7 +9,6 @@ import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
 import { Button } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useDispatch } from "react-redux";
 import { invalidateServerTag } from "@sps/shared-frontend-client-store";
 import { Component as AdminFormInputs } from "@sps/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-website-builder/models/footer-block/contracts/root";
@@ -23,10 +22,9 @@ const formSchema = z.object({
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const dispatch = useDispatch();
 
-  const [updateEntity, updateEntityResult] = api.rtk.useUpdateMutation();
-  const [createEntity, createEntityResult] = api.rtk.useCreateMutation();
+  const updateEntity = api.update();
+  const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -40,19 +38,19 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      await updateEntity({ id: props.data?.id, data });
+      updateEntity.mutate({ id: props.data?.id, data });
       return;
     }
 
-    await createEntity({
+    createEntity.mutate({
       data,
     });
   }
 
   useEffect(() => {
-    if (updateEntityResult.data || createEntityResult.data) {
-      dispatch(api.rtk.util.invalidateTags(["footer-block"]));
-      invalidateServerTag({ tag: "footer-block" });
+    if (updateEntity.data || createEntity.data) {
+      // dispatch(api.rtk.util.invalidateTags(["footer-block"]));
+      // invalidateServerTag({ tag: "footer-block" });
 
       if (props.setOpen) {
         props.setOpen(false);
@@ -60,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
 
       router.refresh();
     }
-  }, [updateEntityResult, createEntityResult]);
+  }, [updateEntity, createEntity]);
 
   return (
     <div

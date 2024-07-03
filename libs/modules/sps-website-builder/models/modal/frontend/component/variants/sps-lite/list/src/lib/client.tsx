@@ -9,10 +9,9 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder/models/modal/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindManyQuery({});
+  const { data, isFetching, isLoading } = api.find();
 
-  if (isFetching || isLoading || isUninitialized || !data) {
+  if (isFetching || isLoading || !data) {
     return <Skeleton {...props} />;
   }
 

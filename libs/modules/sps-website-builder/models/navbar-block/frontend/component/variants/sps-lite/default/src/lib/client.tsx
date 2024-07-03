@@ -11,12 +11,11 @@ import { Component as Logotype } from "./assets/logotype";
 import { Component as Content } from "./assets/content";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } =
-    api.rtk.useFindByIdQuery({
-      id: props.data.id,
-    });
+  const { data, isFetching, isLoading } = api.findById({
+    id: props.data.id,
+  });
 
-  if (isFetching || isLoading || isUninitialized || !data) {
+  if (isFetching || isLoading || !data) {
     return <Skeleton {...props} />;
   }
 
