@@ -10,9 +10,7 @@ import { api } from "@sps/sps-notification/models/notification/frontend/api/clie
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isUninitialized } = api.rtk.useFindQuery(
-    {},
-  );
+  const { data, isFetching, isLoading } = api.find();
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {
@@ -20,7 +18,7 @@ export default function Client(props: IComponentProps) {
     }
   }, [data, props]);
 
-  if (isFetching || isLoading || isUninitialized) {
+  if (isFetching || isLoading) {
     return <></>;
   }
 
