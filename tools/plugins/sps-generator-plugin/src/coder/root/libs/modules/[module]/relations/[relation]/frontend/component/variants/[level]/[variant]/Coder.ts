@@ -148,6 +148,10 @@ export class Coder {
       this.parent.parent.parent.project.frontend.project.api.project.model
         .importPath;
 
+    const relationNameStyles = getNameStyles({
+      name: this.parent.parent.parent.name,
+    });
+
     const templateDirectory = this.template
       ? path.join(__dirname, `templates/${this.template}`)
       : path.join(__dirname, `files`);
@@ -167,6 +171,8 @@ export class Coder {
         template: "",
         variant: this.name,
         module_name: this.moduleName,
+        relation_name_kebab_cased_pluralized:
+          relationNameStyles.kebabCased.pluralized,
         left_model_name_kebab_cased_pluralized: getNameStyles({
           name: leftModelName,
         }).kebabCased.pluralized,
@@ -187,6 +193,7 @@ export class Coder {
         extended_contracts_import_path: this.extendedContractsImportPath,
         relation_name: this.relationName || "",
         api_model_import_path: apiModelImportPath,
+        level: this.level,
       },
     });
 

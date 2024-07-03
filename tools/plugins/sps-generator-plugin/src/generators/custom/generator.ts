@@ -18,6 +18,11 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
+  const moduleName = "sps-website-builder";
+  const leftModelName = "buttons-array";
+  const rightModelName = "button";
+  const relationName = "buttons-arrays-to-buttons";
+
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     {
       name: "default",
@@ -26,11 +31,6 @@ export async function customGenerator(
     {
       template: "admin-form",
       name: "admin-form",
-      level: "sps-lite",
-    },
-    {
-      template: "admin-form-inputs",
-      name: "admin-form-inputs",
       level: "sps-lite",
     },
     {
@@ -63,21 +63,36 @@ export async function customGenerator(
         level: "sps-lite",
       },
       {
-        name: "select-right",
+        template: "admin-form",
+        name: "admin-form",
         level: "sps-lite",
-        template: "select-right",
+      },
+      {
+        template: "admin-select-input",
+        name: "admin-select-input",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-table",
+        name: "admin-table",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-table-row",
+        name: "admin-table-row",
+        level: "sps-lite",
       },
     ];
 
   const leftModel: IModelGeneratorProps = {
     model: {
-      name: "layout",
+      name: leftModelName,
       backend: {
         schema: {
           relations: {
             relations: [
               {
-                name: "layouts-to-widgets",
+                name: relationName,
               },
             ],
           },
@@ -88,13 +103,13 @@ export async function customGenerator(
 
   const rightModel: IModelGeneratorProps = {
     model: {
-      name: "widget",
+      name: rightModelName,
       backend: {
         schema: {
           relations: {
             relations: [
               {
-                name: "layouts-to-widgets",
+                name: relationName,
               },
             ],
           },
@@ -105,7 +120,7 @@ export async function customGenerator(
 
   const relation: IRelationGeneratorProps = {
     relation: {
-      name: "layouts-to-widgets",
+      name: relationName,
       frontend: {
         component: {
           variants: relationAdminVariants,
@@ -116,7 +131,7 @@ export async function customGenerator(
 
   const generateModule: IModuleGeneratorProps = {
     module: {
-      name: "sps-host",
+      name: moduleName,
       models: [leftModel, rightModel],
       relations: [relation],
     },
@@ -134,7 +149,18 @@ export async function customGenerator(
   });
 
   // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.create();
-  await coder.create();
+  // await coder.create();
+
+  const relationComponentVariants =
+    coder.project.root.project.libs.project.modules[0].project.module.project
+      .relations[0].project.relation.project.frontend.project.component.project
+      .variants;
+
+  if (relationComponentVariants) {
+    for (const variant of relationComponentVariants) {
+      await variant.create();
+    }
+  }
 
   // await createSpsTsLibrary({
   //   root: "libs/third-parties/telegram",

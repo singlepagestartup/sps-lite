@@ -16,9 +16,9 @@ export function Component(props: IComponentPropsExtended) {
         ui="shadcn"
         type="select"
         name={props.formFieldName}
-        label="<%= model_name %>"
+        label="<%= relation_name %>"
         form={props.form}
-        placeholder="Select <%= model_name %>"
+        placeholder="Select <%= relation_name %>"
         options={props.data.map((entity) => {
           if (props.renderField && entity[props.renderField]) {
             const renderValue = entity[props.renderField];

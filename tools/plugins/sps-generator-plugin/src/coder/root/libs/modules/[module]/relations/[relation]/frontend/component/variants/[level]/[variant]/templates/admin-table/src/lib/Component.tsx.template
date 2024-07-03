@@ -1,8 +1,8 @@
 
 import { ModelEntitiesListCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminForm } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-form";
-import { Component as AdminTableRow } from "@sps/<%= module_name %>/models/<%= model_name %>/frontend/component/variants/<%= level %>/admin-table-row";
+import { Component as AdminForm } from "@sps/<%= module_name %>/relations/<%= relation_name %>/frontend/component/variants/<%= level %>/admin-form";
+import { Component as AdminTableRow } from "@sps/<%= module_name %>/relations/<%= relation_name %>/frontend/component/variants/<%= level %>/admin-table-row";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
       className={`w-full ${props.className || ""}`}
     >
      <ModelEntitiesListCard
-        title="<%= model_name_kebab_cased_pluralized %>"
+        title="<%= relation_name_kebab_cased_pluralized %>"
         adminForm={<AdminForm isServer={props.isServer}
                 hostUrl={props.hostUrl} variant="admin-form" />}
       >
