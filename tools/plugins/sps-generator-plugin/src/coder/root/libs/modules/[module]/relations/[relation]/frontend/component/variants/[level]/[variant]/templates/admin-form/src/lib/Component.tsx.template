@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { route } from "<%= api_model_import_path %>";
 import {
   api,
-  queryClient
+  queryClient,
 } from "<%= api_client_import_path %>";
 import { useForm } from "react-hook-form";
 import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
