@@ -39,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
 
-    router.refresh();
+    // router.refresh();
   }
 
   useEffect(() => {

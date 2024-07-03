@@ -64,7 +64,7 @@ export function Component(props: IComponentPropsExtended) {
         props.setOpen(false);
       }
 
-      router.refresh();
+      // router.refresh();
     }
   }, [update.data, create.data]);
 

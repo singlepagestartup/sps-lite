@@ -52,7 +52,7 @@ export function Component(props: IComponentPropsExtended) {
         props.setOpen(false);
       }
 
-      router.refresh();
+      // router.refresh();
     }
   }, [updateEntity, createEntity]);
 

@@ -19,7 +19,7 @@ export async function service(props: {
           {
             column: "email",
             method: "eq",
-            value: props.data.email,
+            value: props.data.login,
           },
           {
             column: "password",
