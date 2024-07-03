@@ -9,13 +9,17 @@ import {
 } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
-import { Button, FormField } from "@sps/ui-adapter";
+import { Button, FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
+import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  buttonsArrayId: z.string().optional(),
+  buttonId: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -26,6 +30,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      buttonsArrayId: props.data?.buttonsArrayId || "",
+      buttonId: props.data?.buttonId || "",
     },
   });
 
@@ -60,15 +66,39 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Form {...form}>
         <CardContent>
-          <FormField
-            ui="shadcn"
-            type="select"
-            label="Variant"
-            name="variant"
-            form={form}
-            placeholder="Select variant"
-            options={variants.map((variant) => [variant, variant])}
-          />
+          <div className="flex flex-col gap-6">
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Select variant"
+              options={variants.map((variant) => [variant, variant])}
+            />
+            <ModelEntitiesListCard title="buttons-array">
+              <div className="flex flex-col gap-6">
+                <ButtonsArraySelectInput
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="admin-select-input"
+                  formFieldName="buttonsArrayId"
+                  form={form}
+                />
+              </div>
+            </ModelEntitiesListCard>
+            <ModelEntitiesListCard title="button">
+              <div className="flex flex-col gap-6">
+                <ButtonSelectInput
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant="admin-select-input"
+                  formFieldName="buttonId"
+                  form={form}
+                />
+              </div>
+            </ModelEntitiesListCard>
+          </div>
         </CardContent>
         <CardFooter>
           <Button

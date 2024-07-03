@@ -2,15 +2,12 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
-import { Button } from "@sps/ui-adapter";
+import { Button, FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { Component as AdminFormInputs } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form-inputs";
 import { variants } from "@sps/sps-website-builder/models/hero-section-block/contracts/root";
 
 const formSchema = z.object({
@@ -23,8 +20,6 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
-
   const update = api.update({
     id: props.data?.id,
   });
@@ -58,13 +53,7 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (update.data || create.data) {
-      // dispatch(api.rtk.util.invalidateTags(["hero-section-block"]));
-      // invalidateServerTag({ tag: "hero-section-block" });
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      // router.refresh();
+      //
     }
   }, [update.data, create.data]);
 
@@ -82,13 +71,65 @@ export function Component(props: IComponentPropsExtended) {
             {props.data?.id ? "Edit" : "Create"} hero-section-block
           </h1>
           <CardContent className="flex flex-col gap-6 pb-10">
-            <AdminFormInputs
-              isServer={false}
-              hostUrl={props.hostUrl}
-              variant="admin-form-inputs"
-              data={props.data}
-              form={form}
-            />
+            <div className="flex flex-col gap-6">
+              <FormField
+                ui="shadcn"
+                type="text"
+                name="title"
+                label="Title"
+                form={form}
+                placeholder="Type title"
+              />
+              <FormField
+                ui="shadcn"
+                type="text"
+                name="anchor"
+                label="Anchor"
+                form={form}
+                placeholder="Type anchor"
+              />
+              <FormField
+                ui="shadcn"
+                type="text"
+                name="subtitle"
+                label="Subitle"
+                form={form}
+                placeholder="Type subtitle"
+              />
+              <FormField
+                ui="shadcn"
+                type="tiptap"
+                label="Description"
+                name="description"
+                form={form}
+                placeholder="Type description"
+              />
+              <FormField
+                ui="shadcn"
+                type="text"
+                name="className"
+                label="Class name"
+                form={form}
+                placeholder="Type class name"
+              />
+              <FormField
+                ui="shadcn"
+                type="text"
+                name="className"
+                label="Class name"
+                form={form}
+                placeholder="Type class name"
+              />
+              <FormField
+                ui="shadcn"
+                type="select"
+                label="Variant"
+                name="variant"
+                form={form}
+                placeholder="Select variant"
+                options={variants.map((variant) => [variant, variant])}
+              />
+            </div>
           </CardContent>
           <div className="admin-edit-card-button-container">
             <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>

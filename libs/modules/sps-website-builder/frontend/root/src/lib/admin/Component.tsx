@@ -85,6 +85,11 @@ const WidgetsToHeroSectionBlocks = dynamic(() =>
     "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
+const ButtonsArraysToButtons = dynamic(() =>
+  import(
+    "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -113,6 +118,10 @@ export function Component(props: IComponentProps) {
       {
         name: "features-section-block",
         Comp: FeaturesSectionBlockSpsLiteAdminTable,
+      },
+      {
+        name: "buttons-arrays-to-buttons",
+        Comp: ButtonsArraysToButtons,
       },
       {
         name: "footer",
