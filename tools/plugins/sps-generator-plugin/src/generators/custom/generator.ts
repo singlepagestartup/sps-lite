@@ -19,9 +19,9 @@ export async function customGenerator(
   options: CustomGeneratorSchema,
 ) {
   const moduleName = "sps-website-builder";
-  const leftModelName = "buttons-array";
-  const rightModelName = "button";
-  const relationName = "buttons-arrays-to-buttons";
+  const leftModelName = "features-section-block";
+  const rightModelName = "feature";
+  const relationName = "features-section-blocks-to-features";
 
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     {
@@ -58,10 +58,10 @@ export async function customGenerator(
 
   const relationAdminVariants: IRelationFrontendComponentVariantGeneratorProps[] =
     [
-      {
-        name: "default",
-        level: "sps-lite",
-      },
+      // {
+      //   name: "default",
+      //   level: "sps-lite",
+      // },
       {
         template: "admin-form",
         name: "admin-form",
