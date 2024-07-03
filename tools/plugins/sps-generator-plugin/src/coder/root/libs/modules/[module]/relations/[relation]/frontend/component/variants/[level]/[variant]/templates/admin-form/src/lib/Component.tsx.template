@@ -2,7 +2,6 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
 import { route } from "<%= api_model_import_path %>";
 import {
   api,
@@ -20,8 +19,6 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
-
   const updateEntity = api.update();
   const createEntity = api.create();
 

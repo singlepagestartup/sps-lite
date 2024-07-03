@@ -4,11 +4,9 @@ import React, { useEffect } from "react";
 import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "<%= api_client_import_path %>";
-import { useRouter } from "next/navigation";
 import { Component as AdminForm } from "@sps/<%= module_name %>/relations/<%= relation_name %>/frontend/component/variants/<%= level %>/admin-form";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
   const deleteEntity = api.delete();
 
   useEffect(() => {
