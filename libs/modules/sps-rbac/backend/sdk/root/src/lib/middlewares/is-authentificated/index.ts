@@ -83,11 +83,6 @@ export function middleware() {
       .json()
       .then((data) => {
         if (!data) {
-          console.log(
-            `🚀 ~ returncreateMiddleware<MiddlewareGeneric> ~ reqPath:`,
-            reqPath,
-          );
-
           throw new HTTPException(401, {
             message: "Unauthorized",
           });
@@ -96,11 +91,6 @@ export function middleware() {
         return next();
       })
       .catch((error) => {
-        console.log(
-          `🚀 ~ returncreateMiddleware<MiddlewareGeneric> ~ reqPath:`,
-          reqPath,
-        );
-
         throw new HTTPException(401, {
           message: "Unauthorized",
         });

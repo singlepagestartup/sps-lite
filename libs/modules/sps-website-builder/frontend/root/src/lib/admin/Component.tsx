@@ -80,6 +80,11 @@ const WidgetSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
+const WidgetsToHeroSectionBlocks = dynamic(() =>
+  import(
+    "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -124,6 +129,10 @@ export function Component(props: IComponentProps) {
       {
         name: "logotype",
         Comp: LogotypeSpsLiteAdminTable,
+      },
+      {
+        name: "widgets-to-hero-section-blocks",
+        Comp: WidgetsToHeroSectionBlocks,
       },
       {
         name: "modal",

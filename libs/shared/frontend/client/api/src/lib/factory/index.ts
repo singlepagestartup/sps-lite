@@ -42,6 +42,8 @@ export interface IFactoryProps {
   staleTime?: number;
 }
 
+type SetRequestId = (requestId: string) => void;
+
 export function factory<T>(factoryProps: IFactoryProps) {
   const api = {
     findById: (props: {
@@ -97,6 +99,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
     create: (props?: {
       params?: ICreateMutationProps["params"];
       options?: ICreateMutationProps["options"];
+      setRequestId?: SetRequestId;
     }) => {
       return useMutation<T, DefaultError, ICreateMutationFunctionProps>({
         mutationKey: [`${factoryProps.route}`],
@@ -112,6 +115,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
             type: "create",
             payload: data,
             options: this,
+            setRequestId: props?.setRequestId,
           });
 
           return data;
@@ -122,6 +126,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
       id?: IUpdateMutationProps["id"];
       params?: IUpdateMutationProps["params"];
       options?: IUpdateMutationProps["options"];
+      setRequestId?: SetRequestId;
     }) => {
       return useMutation<T, DefaultError, IUpdateMutationFunctionProps>({
         mutationKey: props?.id
@@ -139,6 +144,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
             type: "update",
             payload: data,
             options: this,
+            setRequestId: props?.setRequestId,
           });
 
           return data;
@@ -184,11 +190,18 @@ function addToGlobalStore(props: {
   options:
     | UseMutationOptions<any, any, any, any>
     | UseQueryOptions<any, any, any, any>;
+  setRequestId?: SetRequestId;
 }) {
+  const requestId = createId();
+
   const state = globalActionsStore.getState();
 
   if (!state.stores[props.name]) {
     globalActionsStore.getState().addStore({ name: props.name, actions: [] });
+  }
+
+  if (props.setRequestId) {
+    props.setRequestId(requestId);
   }
 
   globalActionsStore.getState().addAction({
@@ -197,6 +210,6 @@ function addToGlobalStore(props: {
     meta: props.options,
     payload: props.payload,
     timestamp: Date.now(),
-    id: createId(),
+    requestId,
   });
 }

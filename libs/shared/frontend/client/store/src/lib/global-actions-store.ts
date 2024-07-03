@@ -31,7 +31,7 @@ export interface ReactQueryAction {
   meta:
     | UseQueryOptions<any, any, any, any>
     | UseMutationOptions<any, any, any, any>;
-  id: string;
+  requestId: string;
   timestamp?: number;
   payload: any;
 }

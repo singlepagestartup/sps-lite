@@ -15,9 +15,9 @@ export function useHook(props: IHookProps) {
 
   const [triggeredActions, setTriggeredActions] = useState<string[]>();
 
-  const globalActionsByName = useGlobalActionsStore((store) =>
-    store.getActionsFromStoreByName(props.storeName),
-  );
+  const globalActionsByName = useGlobalActionsStore((store) => {
+    return store.getActionsFromStoreByName(props.storeName);
+  });
 
   useEffect(() => {
     globalActionsByName?.forEach(async (action) => {
@@ -30,15 +30,19 @@ export function useHook(props: IHookProps) {
 
       if (
         props.actionFilter(action) &&
-        !triggeredActions?.includes(action.meta?.["requestId"] || action.id)
+        !triggeredActions?.includes(
+          action.meta?.["requestId"] || action?.["requestId"],
+        )
       ) {
         if (triggeredActions) {
           setTriggeredActions([
             ...triggeredActions,
-            action.meta?.["requestId"] || action.id,
+            action.meta?.["requestId"] || action?.["requestId"],
           ]);
         } else {
-          setTriggeredActions([action.meta?.["requestId"] || action.id]);
+          setTriggeredActions([
+            action.meta?.["requestId"] || action?.["requestId"],
+          ]);
         }
 
         props.callbackFunction(action);

@@ -6,8 +6,10 @@ import { Component as WidgetsToFooterBlocksSpsLiteSelectRight } from "@sps/sps-w
 import { Component as WidgetsToSliderBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/select-right";
 import { Component as WidgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/select-right";
 import { Component as WidgetsToFeaturesSectionBlocksSpsLiteSelectRight } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/variants/sps-lite/select-right";
-
+import { queryClient } from "@sps/sps-website-builder/models/widget/frontend/api/client";
 import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
+import { route } from "@sps/sps-website-builder/models/widget/frontend/api/model";
+import { Button } from "@sps/shared-ui-shadcn";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -19,35 +21,7 @@ export function Component(props: IComponentPropsExtended) {
       className={`${props.className || ""}`}
     >
       <div className="flex flex-col gap-6">
-        <FormField
-          ui="shadcn"
-          type="text"
-          name="title"
-          label="Title"
-          form={props.form}
-          placeholder="Type title"
-        />
-
-        <FormField
-          ui="shadcn"
-          type="text"
-          label="Class name"
-          name="className"
-          form={props.form}
-          placeholder="Type class name"
-        />
-
-        <FormField
-          ui="shadcn"
-          type="select"
-          label="Variant"
-          name="variant"
-          form={props.form}
-          placeholder="Type title"
-          options={variants.map((variant) => [variant, variant])}
-        />
-
-        <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
+        {/* <ModelEntitiesListCard title="widgets-to-hero-section-blocks">
           <div className="flex flex-col gap-6">
             {props.data?.widgetsToHeroSectionBlocks.map((entity, index) => {
               return (
@@ -185,7 +159,7 @@ export function Component(props: IComponentPropsExtended) {
               data={undefined}
             />
           </div>
-        </ModelEntitiesListCard>
+        </ModelEntitiesListCard> */}
       </div>
     </div>
   );

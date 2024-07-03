@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card, CardContent, Form } from "@sps/shared-ui-shadcn";
-import { useActionTrigger } from "@sps/shared-frontend-hooks";
 import { z } from "zod";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { api } from "@sps/sps-website-builder/models/widget/frontend/api/client";
-import { Component as WidgetSpsLiteAdminFormInputs } from "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-form-inputs";
-import { Button } from "@sps/ui-adapter";
+import { route } from "@sps/sps-website-builder/models/widget/frontend/api/model";
+import {
+  api,
+  queryClient,
+} from "@sps/sps-website-builder/models/widget/frontend/api/client";
+import { Button, FormField } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
 
 const formSchema = z.object({
@@ -21,21 +21,6 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  useActionTrigger({
-    storeName: "sps-website-builder/widgets-to-hero-section-blocks",
-    actionFilter: (action) => {
-      return (
-        action.type ===
-        "widgets-to-hero-section-blocks/executeMutation/fulfilled"
-      );
-    },
-    callbackFunction: async (action) => {
-      onFinish();
-    },
-  });
-
-  const router = useRouter();
-
   const updateEntity = api.update();
   const createEntity = api.create();
 
@@ -59,18 +44,14 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  async function onFinish() {
+  useEffect(() => {
     if (updateEntity.data || createEntity.data) {
-      // dispatch(api.rtk.util.invalidateTags(["widget"]));
-      // invalidateServerTag({ tag: "widget" });
-
-      if (props.setOpen) {
-        props.setOpen(false);
-      }
-
-      // router.refresh();
+      const id = updateEntity.data?.id || createEntity.data?.id;
+      queryClient.invalidateQueries({
+        queryKey: [`${route}/${id}`],
+      });
     }
-  }
+  }, [updateEntity, createEntity]);
 
   return (
     <div
@@ -86,12 +67,32 @@ export function Component(props: IComponentPropsExtended) {
             {props.data?.id ? "Edit" : "Create"} widget
           </h1>
           <CardContent className="flex flex-col gap-6 pb-10">
-            <WidgetSpsLiteAdminFormInputs
-              isServer={false}
-              hostUrl={props.hostUrl}
-              variant="admin-form-inputs"
+            <FormField
+              ui="shadcn"
+              type="text"
+              name="title"
+              label="Title"
               form={form}
-              data={props.data}
+              placeholder="Type title"
+            />
+
+            <FormField
+              ui="shadcn"
+              type="text"
+              label="Class name"
+              name="className"
+              form={form}
+              placeholder="Type class name"
+            />
+
+            <FormField
+              ui="shadcn"
+              type="select"
+              label="Variant"
+              name="variant"
+              form={form}
+              placeholder="Type title"
+              options={variants.map((variant) => [variant, variant])}
             />
           </CardContent>
           <div className="admin-edit-card-button-container">

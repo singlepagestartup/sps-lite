@@ -72,7 +72,7 @@ export function Component(props: IComponentPropsExtended) {
         placeholder="Select variant"
         options={variants.map((variant) => [variant, variant])}
       />
-      <ModelEntitiesListCard title="hero-section-block-to-buttons-arrays">
+      {/* <ModelEntitiesListCard title="hero-section-block-to-buttons-arrays">
         <div className="flex flex-col gap-6">
           {props.data?.heroSectionBlocksToButtonsArrays.map((entity, index) => {
             return (
@@ -115,7 +115,7 @@ export function Component(props: IComponentPropsExtended) {
             heroSectionBlockId={props.data?.id}
           />
         </div>
-      </ModelEntitiesListCard>
+      </ModelEntitiesListCard> */}
     </form>
   );
 }

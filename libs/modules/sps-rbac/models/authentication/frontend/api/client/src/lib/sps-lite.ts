@@ -120,7 +120,7 @@ export const api = {
           meta: this,
           payload: data,
           timestamp: Date.now(),
-          id: createId(),
+          requestId: createId(),
         });
 
         return data;
@@ -195,7 +195,7 @@ export const api = {
           meta: this,
           payload: data,
           timestamp: Date.now(),
-          id: createId(),
+          requestId: createId(),
         });
 
         return data;
@@ -257,7 +257,7 @@ export const api = {
           meta: this,
           payload: data,
           timestamp: Date.now(),
-          id: createId(),
+          requestId: createId(),
         });
 
         return data;

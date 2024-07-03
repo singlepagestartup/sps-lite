@@ -62,19 +62,19 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  useActionTrigger({
-    storeName: "sps-website-builder/widget",
-    actionFilter: (action) => {
-      return action.type === "widget/executeMutation/fulfilled";
-    },
-    callbackFunction: async (action) => {
-      if (action.payload.id) {
-        form.setValue("widgetId", action.payload.id);
-      }
+  // useActionTrigger({
+  //   storeName: "sps-website-builder/widget",
+  //   actionFilter: (action) => {
+  //     return action.type === "widget/executeMutation/fulfilled";
+  //   },
+  //   callbackFunction: async (action) => {
+  //     if (action.payload.id) {
+  //       form.setValue("widgetId", action.payload.id);
+  //     }
 
-      form.handleSubmit(onSubmit)();
-    },
-  });
+  //     form.handleSubmit(onSubmit)();
+  //   },
+  // });
 
   return (
     <div
