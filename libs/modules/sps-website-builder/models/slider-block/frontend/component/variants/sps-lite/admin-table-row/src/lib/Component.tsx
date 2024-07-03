@@ -3,21 +3,15 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/slider-block/frontend/api/client";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { useRouter } from "next/navigation";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-form";
 import { ModelEntityCard } from "@sps/ui-adapter";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
   const deleteEntity = api.delete();
 
   useEffect(() => {
     if (deleteEntity.isSuccess) {
-      // dispatch(api.rtk.util.invalidateTags(["slider-block"]));
-      // invalidateServerTag({ tag: "slider-block" }).then(() => {
-      //   router.refresh();
-      // });
+      //
     }
   }, [deleteEntity]);
 

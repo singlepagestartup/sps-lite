@@ -1,25 +1,19 @@
 "use client";
 
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { ErrorBoundary, ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-file-storage/models/file/frontend/api/client";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { useRouter } from "next/navigation";
 import { Component as AdminForm } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-form";
 import { BACKEND_URL } from "@sps/shared-utils";
 import Image from "next/image";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
   const deleteEntity = api.delete();
 
   useEffect(() => {
     if (deleteEntity.isSuccess) {
-      // dispatch(api.rtk.util.invalidateTags(["file"]));
-      // invalidateServerTag({ tag: "file" }).then(() => {
-      //   router.refresh();
-      // });
+      //
     }
   }, [deleteEntity]);
 

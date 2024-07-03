@@ -4,20 +4,14 @@ import React, { useEffect } from "react";
 import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-host/models/metadata/frontend/api/client";
-import { invalidateServerTag } from "@sps/shared-frontend-client-store";
-import { useRouter } from "next/navigation";
 import { Component as AdminForm } from "@sps/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-form";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
   const deleteEntity = api.delete();
 
   useEffect(() => {
     if (deleteEntity.isSuccess) {
-      // dispatch(api.rtk.util.invalidateTags(["metadata"]));
-      // invalidateServerTag({ tag: "metadata" }).then(() => {
-      //   router.refresh();
-      // });
+      //
     }
   }, [deleteEntity]);
 
