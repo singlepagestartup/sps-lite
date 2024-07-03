@@ -90,6 +90,11 @@ const ButtonsArraysToButtons = dynamic(() =>
     "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
+const FeaturesSectionBlockToFeatures = dynamic(() =>
+  import(
+    "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table"
+  ).then((mod) => mod.Component),
+);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -110,6 +115,10 @@ export function Component(props: IComponentProps) {
       {
         name: "buttons-array",
         Comp: ButtonsArraySpsLiteAdminTable,
+      },
+      {
+        name: "features-section-block-to-features",
+        Comp: FeaturesSectionBlockToFeatures,
       },
       {
         name: "feature",
