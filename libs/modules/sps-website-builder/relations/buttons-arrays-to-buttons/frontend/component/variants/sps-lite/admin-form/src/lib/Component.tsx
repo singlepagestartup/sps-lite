@@ -8,13 +8,13 @@ import {
   queryClient,
 } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
-import { Button, FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
+import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
 import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input";
 import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -61,76 +61,64 @@ export function Component(props: IComponentPropsExtended) {
   }, [updateEntity, createEntity]);
 
   return (
-    <div
-      data-module="sps-website-builder"
-      data-relation="buttons-arrays-to-buttons"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-      className={`w-full ${props.className || ""}`}
+    <ParentAdminForm
+      module="sps-website-builder"
+      form={form}
+      id={props.data?.id}
+      onSubmit={onSubmit}
+      variant={props.variant}
+      name="buttons-arrays-to-buttons"
+      type="relation"
     >
-      <Form {...form}>
-        <CardContent>
+      <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Order index"
+          name="orderIndex"
+          form={form}
+          placeholder="Order index"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={form}
+          placeholder="Class name"
+        />
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Variant"
+          name="variant"
+          form={form}
+          placeholder="Select variant"
+          options={variants.map((variant) => [variant, variant])}
+        />
+        <ModelEntitiesListCard title="buttons-array">
           <div className="flex flex-col gap-6">
-            <FormField
-              ui="shadcn"
-              type="text"
-              label="Order index"
-              name="orderIndex"
+            <ButtonsArraySelectInput
+              isServer={props.isServer}
+              hostUrl={props.hostUrl}
+              variant="admin-select-input"
+              formFieldName="buttonsArrayId"
               form={form}
-              placeholder="Order index"
             />
-            <FormField
-              ui="shadcn"
-              type="text"
-              label="Class name"
-              name="className"
-              form={form}
-              placeholder="Class name"
-            />
-            <FormField
-              ui="shadcn"
-              type="select"
-              label="Variant"
-              name="variant"
-              form={form}
-              placeholder="Select variant"
-              options={variants.map((variant) => [variant, variant])}
-            />
-            <ModelEntitiesListCard title="buttons-array">
-              <div className="flex flex-col gap-6">
-                <ButtonsArraySelectInput
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="admin-select-input"
-                  formFieldName="buttonsArrayId"
-                  form={form}
-                />
-              </div>
-            </ModelEntitiesListCard>
-            <ModelEntitiesListCard title="button">
-              <div className="flex flex-col gap-6">
-                <ButtonSelectInput
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="admin-select-input"
-                  formFieldName="buttonId"
-                  form={form}
-                />
-              </div>
-            </ModelEntitiesListCard>
           </div>
-        </CardContent>
-        <CardFooter>
-          <Button
-            ui="shadcn"
-            variant="primary"
-            size="lg"
-            onClick={form.handleSubmit(onSubmit)}
-          >
-            {props.data?.id ? "Update" : "Create"}
-          </Button>
-        </CardFooter>
-      </Form>
-    </div>
+        </ModelEntitiesListCard>
+        <ModelEntitiesListCard title="button">
+          <div className="flex flex-col gap-6">
+            <ButtonSelectInput
+              isServer={props.isServer}
+              hostUrl={props.hostUrl}
+              variant="admin-select-input"
+              formFieldName="buttonId"
+              form={form}
+            />
+          </div>
+        </ModelEntitiesListCard>
+      </div>
+    </ParentAdminForm>
   );
 }

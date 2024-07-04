@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-file-storage/models/file/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
-import { Button, FormField } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-file-storage/models/file/contracts/root";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -49,62 +49,49 @@ export function Component(props: IComponentPropsExtended) {
   }, [updateEntity, createEntity]);
 
   return (
-    <div
-      data-module="sps-file-storage"
-      data-model="file"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-      className={props.className || ""}
+    <ParentAdminForm
+      module="sps-website-builder"
+      form={form}
+      id={props.data?.id}
+      onSubmit={onSubmit}
+      variant={props.variant}
+      name="file"
     >
-      <Form {...form}>
-        <Card className="admin-edit-card">
-          <h1 className="admin-edit-card-heading">
-            {props.data?.id ? "Edit" : "Create"} file
-          </h1>
-          <CardContent className="flex flex-col gap-6 pb-10">
-            <div className="flex flex-col gap-6">
-              <FormField
-                ui="shadcn"
-                type="select"
-                label="Variant"
-                name="variant"
-                form={form}
-                placeholder="Select variant"
-                options={variants.map((variant) => [variant, variant])}
-              />
-              <FormField
-                ui="shadcn"
-                type="file"
-                label="File"
-                name="file"
-                form={form}
-                placeholder="Select file"
-              />
-              <FormField
-                ui="shadcn"
-                type="text"
-                label="Container class name"
-                name="containerClassName"
-                form={form}
-                placeholder="Type container class name"
-              />
-              <FormField
-                ui="shadcn"
-                type="text"
-                label="Class name"
-                name="className"
-                form={form}
-                placeholder="Type class name"
-              />
-            </div>
-          </CardContent>
-          <div className="admin-edit-card-button-container">
-            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
-              {props.data?.id ? "Update" : "Create"}
-            </Button>
-          </div>
-        </Card>
-      </Form>
-    </div>
+      <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Variant"
+          name="variant"
+          form={form}
+          placeholder="Select variant"
+          options={variants.map((variant) => [variant, variant])}
+        />
+        <FormField
+          ui="shadcn"
+          type="file"
+          label="File"
+          name="file"
+          form={form}
+          placeholder="Select file"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Container class name"
+          name="containerClassName"
+          form={form}
+          placeholder="Type container class name"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={form}
+          placeholder="Type class name"
+        />
+      </div>
+    </ParentAdminForm>
   );
 }

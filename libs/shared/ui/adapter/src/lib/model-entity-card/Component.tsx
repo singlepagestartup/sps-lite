@@ -38,12 +38,8 @@ export function Component(props: IComponentProps) {
                 </button>
               </DialogTrigger>
               <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
-                <Card>
-                  <CardHeader>
-                    <DialogTitle>Edit</DialogTitle>
-                  </CardHeader>
-                  {props.adminForm}
-                </Card>
+                <DialogTitle className="hidden">Edit</DialogTitle>
+                {props.adminForm}
               </DialogContent>
             </Dialog>
           ) : null}

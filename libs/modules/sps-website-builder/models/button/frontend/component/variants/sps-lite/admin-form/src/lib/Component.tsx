@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/button/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, Card, CardContent } from "@sps/shared-ui-shadcn";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/button/contracts/root";
-import { FormField, Button } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -52,62 +52,49 @@ export function Component(props: IComponentPropsExtended) {
   }, [updateEntity, createEntity]);
 
   return (
-    <div
-      data-module="sps-website-builder"
-      data-model="button"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-      className={props.className || ""}
+    <ParentAdminForm
+      module="sps-website-builder"
+      form={form}
+      id={props.data?.id}
+      onSubmit={onSubmit}
+      variant={props.variant}
+      name="button"
     >
-      <Form {...form}>
-        <Card className="admin-edit-card">
-          <h1 className="admin-edit-card-heading">
-            {props.data?.id ? "Edit" : "Create"} button
-          </h1>
-          <CardContent className="flex flex-col gap-6 pb-10">
-            <div className="flex flex-col gap-6">
-              <FormField
-                ui="shadcn"
-                type="text"
-                name="title"
-                label="Title"
-                form={form}
-                placeholder="Type title"
-              />
-              <FormField
-                ui="shadcn"
-                type="text"
-                name="url"
-                label="Url"
-                form={form}
-                placeholder="Type url"
-              />
-              <FormField
-                ui="shadcn"
-                type="text"
-                name="className"
-                label="Class Name"
-                form={form}
-                placeholder="Type class name"
-              />
-              <FormField
-                ui="shadcn"
-                type="select"
-                label="Variant"
-                name="variant"
-                form={form}
-                placeholder="Type title"
-                options={variants.map((variant) => [variant, variant])}
-              />
-            </div>
-          </CardContent>
-          <div className="admin-edit-card-button-container">
-            <Button ui="sps-admin" onClick={form.handleSubmit(onSubmit)}>
-              {props.data?.id ? "Update" : "Create"}
-            </Button>
-          </div>
-        </Card>
-      </Form>
-    </div>
+      <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={form}
+          placeholder="Type title"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="url"
+          label="Url"
+          form={form}
+          placeholder="Type url"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="className"
+          label="Class Name"
+          form={form}
+          placeholder="Type class name"
+        />
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Variant"
+          name="variant"
+          form={form}
+          placeholder="Type title"
+          options={variants.map((variant) => [variant, variant])}
+        />
+      </div>
+    </ParentAdminForm>
   );
 }

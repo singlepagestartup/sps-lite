@@ -81,14 +81,6 @@ input[type="number"] {
     @apply font-extrabold leading-none text-2xl lg:text-4xl -tracking-[.065em] text-muted-foreground opacity-40;
   }
 
-  .admin-edit-card {
-    @apply overflow-hidden rounded-lg relative pb-10 lg:pb-14 border-none;
-  }
-
-  .admin-edit-card-button-container {
-    @apply absolute -bottom-[0.45em] inset-x-0;
-  }
-
   .model-legend {
     @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm;
   }

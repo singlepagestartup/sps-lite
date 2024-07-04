@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-host/models/page/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { Form, CardContent, CardFooter } from "@sps/shared-ui-shadcn";
-import { Button, FormField } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-host/models/page/contracts/root";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
@@ -47,54 +47,41 @@ export function Component(props: IComponentPropsExtended) {
   }, [updateEntity, createEntity]);
 
   return (
-    <div
-      data-module="sps-host"
-      data-model="page"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-      className={`w-full ${props.className || ""}`}
+    <ParentAdminForm
+      module="sps-website-builder"
+      form={form}
+      id={props.data?.id}
+      onSubmit={onSubmit}
+      variant={props.variant}
+      name="page"
     >
-      <Form {...form}>
-        <CardContent>
-          <div className="flex flex-col gap-6">
-            <FormField
-              ui="shadcn"
-              type="text"
-              name="title"
-              label="Title"
-              form={form}
-              placeholder="Type title"
-            />
-            <FormField
-              ui="shadcn"
-              type="text"
-              name="url"
-              label="Url"
-              form={form}
-              placeholder="Type url"
-            />
-            <FormField
-              ui="shadcn"
-              type="select"
-              label="Variant"
-              name="variant"
-              form={form}
-              placeholder="Type title"
-              options={variants.map((variant) => [variant, variant])}
-            />
-          </div>
-        </CardContent>
-        <CardFooter>
-          <Button
-            ui="shadcn"
-            variant="primary"
-            size="lg"
-            onClick={form.handleSubmit(onSubmit)}
-          >
-            {props.data?.id ? "Update" : "Create"}
-          </Button>
-        </CardFooter>
-      </Form>
-    </div>
+      <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={form}
+          placeholder="Type title"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="url"
+          label="Url"
+          form={form}
+          placeholder="Type url"
+        />
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Variant"
+          name="variant"
+          form={form}
+          placeholder="Type title"
+          options={variants.map((variant) => [variant, variant])}
+        />
+      </div>
+    </ParentAdminForm>
   );
 }
