@@ -14,6 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
+  Button,
 } from "@sps/shared-ui-shadcn";
 import { Pencil, Trash } from "lucide-react";
 import { cn } from "@sps/shared-frontend-utils-client";
@@ -46,19 +47,21 @@ export function Component(props: IComponentProps) {
             "data-model": props.name,
           })}
     >
-      <div className="relative rounded-lg border border-muted-foreground bg-background">
+      <div className="relative rounded-lg border border-input bg-background">
         <div className="flex items-center px-5 absolute transform -translate-y-1/2 inset-x-0 w-full justify-between">
-          <p className="px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis">
-            {props?.id}
-          </p>
+          <Button variant="outline" size="sm" className="gap-2 w-fit">
+            <p className="max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis text-sm">
+              {props?.id}
+            </p>
+          </Button>
           <div className="flex items-center gap-3">
             {props.adminForm ? (
               <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                  <button className="pill-button">
+                  <Button variant="outline" size="sm" className="gap-2">
                     <Pencil className="h-3 w-3" />
                     <p className="hidden lg:inline">Edit</p>
-                  </button>
+                  </Button>
                 </DialogTrigger>
                 <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
                   <DialogTitle className="hidden">Edit</DialogTitle>
@@ -69,10 +72,10 @@ export function Component(props: IComponentProps) {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <button className="destructive-pill-button">
+                <Button variant="outline" size="sm" className="gap-2">
                   <Trash className="h-3 w-3" />
                   <p className="hidden lg:inline">Delete</p>
-                </button>
+                </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
