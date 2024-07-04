@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { ModelEntityCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "<%= api_client_import_path %>";
 import { Component as AdminForm } from "@sps/<%= module_name %>/relations/<%= relation_name %>/frontend/component/variants/<%= level %>/admin-form";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
@@ -16,30 +16,31 @@ export function Component(props: IComponentPropsExtended) {
   }, [deleteEntity]);
 
   return (
-    <div
-      data-module="<%= module_name %>"
-      data-relation="<%= relation_name %>"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-      className="w-full"
-    >
-      <ModelEntityCard
-        onDeleteEntity={() => {
-          if (props.data?.id) {
-            deleteEntity.mutate({ id: props.data.id });
-          }
-        }}
-        data={props.data}
-        adminForm={
-          <AdminForm isServer={false}
-              hostUrl={props.hostUrl} variant="admin-form" data={props.data} />
+    <ParentComponent
+      id={props.data.id}
+      module="<%= module_name %>"
+      name="<%= relation_name %>"
+      type="relation"
+      adminForm={
+        <AdminForm
+          isServer={false}
+          hostUrl={props.hostUrl}
+          variant="admin-form"
+          data={props.data}
+        />
+      }
+      onDelete={() => {
+        if (props.data?.id) {
+          deleteEntity.mutate({ id: props.data.id });
         }
-      >
+      }}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-4 pt-6">
         <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Variant</p>
           <p className="truncate">{props.data.variant}</p>
         </div>
-      </ModelEntityCard>
-    </div>
+      </div>
+    </ParentComponent>
   );
 }
