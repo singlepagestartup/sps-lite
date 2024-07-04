@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/features-section-block/frontend/api/client";
 import { Component as AdminForm } from "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-form";
-import { ModelEntityCard } from "@sps/ui-adapter";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
@@ -16,28 +16,25 @@ export function Component(props: IComponentPropsExtended) {
   }, [deleteEntity]);
 
   return (
-    <div
-      data-module="sps-website-builder"
-      data-model="features-section-block"
-      data-id={props.data?.id || ""}
-      data-variant={props.variant}
-    >
-      <ModelEntityCard
-        onDeleteEntity={() => {
-          if (props.data?.id) {
-            deleteEntity.mutate({ id: props.data.id });
-          }
-        }}
-        data={props.data}
-        adminForm={
-          <AdminForm
-            isServer={false}
-            hostUrl={props.hostUrl}
-            variant="admin-form"
-            data={props.data}
-          />
+    <ParentComponent
+      id={props.data.id}
+      module="sps-website-builder"
+      name="features-section-block"
+      adminForm={
+        <AdminForm
+          isServer={false}
+          hostUrl={props.hostUrl}
+          variant="admin-form"
+          data={props.data}
+        />
+      }
+      onDelete={() => {
+        if (props.data?.id) {
+          deleteEntity.mutate({ id: props.data.id });
         }
-      >
+      }}
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-4 pt-6">
         <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Title</p>
           <p className="truncate">{props.data.title}</p>
@@ -46,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
           <p className="text-xs text-muted-foreground">Variant</p>
           <p className="truncate">{props.data.variant}</p>
         </div>
-      </ModelEntityCard>
-    </div>
+      </div>
+    </ParentComponent>
   );
 }
