@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Buttons } from "@sps/sps-website-builder/models/button/frontend/component/root";
+import { Component as Button } from "@sps/sps-website-builder/models/button/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <Buttons
+      <Button
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant={props.data.button.variant}

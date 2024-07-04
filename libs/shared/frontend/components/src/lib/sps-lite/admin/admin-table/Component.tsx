@@ -31,7 +31,7 @@ export function Component(props: IComponentProps) {
       data-module={props.module}
       data-variant={props.variant}
       className={cn(
-        "relative gap-6 rounded-lg border border-input w-full",
+        "relative gap-6 rounded-lg border border-input w-full bg-input",
         props.className,
       )}
       {...(props.type === "relation"
