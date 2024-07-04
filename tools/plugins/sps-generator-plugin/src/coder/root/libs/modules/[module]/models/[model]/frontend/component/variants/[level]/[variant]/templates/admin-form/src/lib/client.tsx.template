@@ -9,17 +9,26 @@ import { IComponentProps } from "./interface";
 import { api } from "<%= api_client_import_path %>";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.findById({
-    id: props.data?.id,
-  });
+  if (props.data) {
+    const { data, isFetching, isLoading } = api.findById({
+      id: props.data?.id,
+      ...props.apiProps,
+    });
 
-  if (isFetching || isLoading || (!data && props.data?.id)) {
-    return <Skeleton {...props} />;
+    if (isFetching || isLoading || (!data && props.data?.id)) {
+      return <Skeleton {...props} />;
+    }
+
+    return (
+      <ErrorBoundary fallback={Error}>
+        <Component {...props} data={data} />
+      </ErrorBoundary>
+    );
   }
 
   return (
     <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
+      <Component {...props} data={undefined} />
     </ErrorBoundary>
   );
 }

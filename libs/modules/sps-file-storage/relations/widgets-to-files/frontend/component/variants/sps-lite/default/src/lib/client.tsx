@@ -11,6 +11,7 @@ import { api } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/a
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.findById({
     id: props.data.id,
+    ...props.apiProps,
   });
 
   if (isFetching || isLoading || !data) {

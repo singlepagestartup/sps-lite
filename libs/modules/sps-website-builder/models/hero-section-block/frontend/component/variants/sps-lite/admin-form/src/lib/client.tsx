@@ -11,6 +11,7 @@ import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.findById({
     id: props.data?.id,
+    ...props.apiProps,
   });
 
   if (isFetching || isLoading || (props.data?.id && !data)) {

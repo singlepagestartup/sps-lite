@@ -11,6 +11,7 @@ import { api } from "@sps/sps-host/relations/widgets-to-external-modules/fronten
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.findById({
     id: props.data.id,
+    ...props.apiProps,
   });
 
   if (isFetching || isLoading || !data) {

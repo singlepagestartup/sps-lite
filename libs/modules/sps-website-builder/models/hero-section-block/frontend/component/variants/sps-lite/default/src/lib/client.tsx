@@ -9,7 +9,10 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isLoading } = api.findById({ id: props.data.id });
+  const { data, isLoading } = api.findById({
+    id: props.data.id,
+    ...props.apiProps,
+  });
 
   if (isLoading || !data) {
     return <Skeleton {...props} />;
