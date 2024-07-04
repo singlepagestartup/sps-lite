@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/feature/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as FeatureToSpsFileStorageModuleFileAdminTable } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/frontend/component/variants/sps-lite/admin-table";
+import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -105,6 +107,48 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <FeaturesSectionBlocksToFeaturesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "featuresSectionBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <FeatureToSpsFileStorageModuleFileAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "featureId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

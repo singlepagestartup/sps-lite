@@ -63,7 +63,7 @@ export function Component(props: IComponentProps) {
                     <p className="hidden lg:inline">Edit</p>
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
+                <DialogContent className="p-0 lg:w-full lg:max-w-screen-lg max-h-[80vh] overflow-y-scroll">
                   <DialogTitle className="hidden">Edit</DialogTitle>
                   {props.adminForm}
                 </DialogContent>

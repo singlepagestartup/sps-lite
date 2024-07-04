@@ -8,7 +8,7 @@ import {
   queryClient,
 } from "<%= api_client_import_path %>";
 import { useForm } from "react-hook-form";
-import { Button, FormField } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "<%= root_contracts_import_path %>";
@@ -16,6 +16,8 @@ import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sp
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  orderIndex: z.number().optional(),
+  className: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -26,6 +28,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      orderIndex: props.data?.orderIndex || 0,
+      className: props.data?.className || "",
     },
   });
 
@@ -61,6 +65,22 @@ export function Component(props: IComponentPropsExtended) {
       type="relation"
     >
       <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Order index"
+          name="orderIndex"
+          form={form}
+          placeholder="Order index"
+        />
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={form}
+          placeholder="Class name"
+        />
         <FormField
           ui="shadcn"
           type="select"

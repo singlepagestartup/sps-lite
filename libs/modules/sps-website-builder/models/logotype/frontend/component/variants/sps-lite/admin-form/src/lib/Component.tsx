@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/logotype/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
+import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -65,6 +67,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -73,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type url"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -81,6 +85,48 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
+        {props.data?.id ? (
+          <FooterBlocksToLogotypesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "logotypeId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <NavbarBlocksToLogotypesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "logotypeId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

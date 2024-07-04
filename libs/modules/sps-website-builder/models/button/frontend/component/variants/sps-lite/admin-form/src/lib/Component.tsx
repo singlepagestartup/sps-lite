@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/button/contracts/root";
 import { FormField } from "@sps/ui-adapter";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -69,6 +70,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -77,6 +79,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type url"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -85,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -94,6 +98,27 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <ButtonsArraysToButtonsAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

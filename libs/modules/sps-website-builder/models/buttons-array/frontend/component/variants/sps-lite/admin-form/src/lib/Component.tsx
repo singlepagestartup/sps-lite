@@ -10,6 +10,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
 import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as NavbarBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -96,28 +100,110 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type description"
         />
 
-        <ButtonsArraysToButtonsAdminTable
-          variant="admin-table"
-          hostUrl={props.hostUrl}
-          isServer={props.isServer}
-          apiProps={
-            props.data?.id
-              ? {
-                  params: {
-                    filters: {
-                      and: [
-                        {
-                          column: "buttonsArrayId",
-                          method: "eq",
-                          value: props.data.id,
-                        },
-                      ],
+        {props.data?.id ? (
+          <ButtonsArraysToButtonsAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonsArrayId",
+                      method: "eq",
+                      value: props.data.id,
                     },
-                  },
-                }
-              : undefined
-          }
-        />
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <FooterBlocksToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonsArrayId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <HeroSectionBlocksToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonsArrayId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <NavbarBlocksToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonsArrayId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <SlidesToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "buttonsArrayId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

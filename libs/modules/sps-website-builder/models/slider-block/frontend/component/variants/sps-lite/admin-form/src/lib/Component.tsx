@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/slider-block/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as SliderBlocksToSlidersAdminTable } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToSliderBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -70,6 +72,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -78,6 +81,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type subtitle"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -86,6 +90,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type description"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -94,6 +99,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type anchor"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -102,6 +108,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -111,6 +118,48 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <SliderBlocksToSlidersAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "sliderBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToSliderBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "sliderBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

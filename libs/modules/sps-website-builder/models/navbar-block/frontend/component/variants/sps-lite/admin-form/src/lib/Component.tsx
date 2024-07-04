@@ -9,6 +9,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/navbar-block/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as NavbarBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToNavbarBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants).default("default"),
@@ -105,6 +108,69 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
+        {props.data?.id ? (
+          <NavbarBlocksToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "navbarBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <NavbarBlocksToLogotypesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "navbarBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToNavbarBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "navbarBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

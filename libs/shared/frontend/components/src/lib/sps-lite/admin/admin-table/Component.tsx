@@ -54,7 +54,7 @@ export function Component(props: IComponentProps) {
                   <Plus className="h-3 w-3" /> Add new
                 </Button>
               </DialogTrigger>
-              <DialogContent className="p-0 xl:min-w-lg max-h-[80vh] overflow-y-scroll">
+              <DialogContent className="p-0 lg:w-full lg:max-w-screen-lg max-h-[80vh] overflow-y-scroll">
                 <DialogTitle className="hidden">{props.title}</DialogTitle>
                 {props.adminForm}
               </DialogContent>

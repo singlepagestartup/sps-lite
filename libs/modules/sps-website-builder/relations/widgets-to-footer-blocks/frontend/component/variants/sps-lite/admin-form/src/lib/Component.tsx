@@ -13,9 +13,15 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as WidgetAdminSlectInput } from "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as FooterBlockAdminSelectInput } from "@sps/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({
   variant: z.enum(variants),
+  className: z.string().optional(),
+  orderIndex: z.number().optional(),
+  widgetId: z.string().optional(),
+  footerBlockId: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -26,6 +32,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
+      orderIndex: props.data?.orderIndex || 0,
+      widgetId: props.data?.widgetId || "",
+      footerBlockId: props.data?.footerBlockId || "",
     },
   });
 
@@ -63,12 +73,46 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          label="Order index"
+          name="orderIndex"
+          form={form}
+          placeholder="Order index"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class name"
+          name="className"
+          form={form}
+          placeholder="Class name"
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
           form={form}
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
+        />
+
+        <WidgetAdminSlectInput
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="widgetId"
+          form={form}
+        />
+
+        <FooterBlockAdminSelectInput
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="footerBlockId"
+          form={form}
         />
       </div>
     </ParentAdminForm>

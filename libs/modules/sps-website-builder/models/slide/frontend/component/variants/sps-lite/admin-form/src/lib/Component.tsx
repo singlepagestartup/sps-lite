@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/slide/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/variants/sps-lite/admin-table";
+import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -68,6 +70,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -76,6 +79,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type subtitle"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -84,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type description"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -92,6 +97,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -101,6 +107,48 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <SlidersToSlidesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "slideId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <SlidesToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "slideId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

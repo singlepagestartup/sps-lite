@@ -9,6 +9,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/hero-section-block/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -75,6 +77,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -83,6 +86,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type anchor"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -91,6 +95,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type subtitle"
         />
+
         <FormField
           ui="shadcn"
           type="tiptap"
@@ -99,6 +104,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type description"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -107,6 +113,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -115,6 +122,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -124,6 +132,48 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <HeroSectionBlocksToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "heroSectionBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToHeroSectionBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "heroSectionBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

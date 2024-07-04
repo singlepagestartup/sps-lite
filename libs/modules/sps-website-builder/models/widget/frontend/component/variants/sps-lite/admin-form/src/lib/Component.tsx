@@ -13,6 +13,13 @@ import {
 import { FormField } from "@sps/ui-adapter";
 import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as FootersToWidgetsAdminTable } from "@sps/sps-website-builder/relations/footers-to-widgets/frontend/component/variants/sps-lite/admin-table";
+import { Component as NavbarsToWidgetsAdminTable } from "@sps/sps-website-builder/relations/navbars-to-widgets/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToFeaturesSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToFooterBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToNavbarBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToSliderBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   title: z.string(),
@@ -91,6 +98,152 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <FootersToWidgetsAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <NavbarsToWidgetsAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+        {props.data?.id ? (
+          <WidgetsToFeaturesSectionBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToFooterBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToHeroSectionBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToNavbarBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <WidgetsToSliderBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "widgetId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );
