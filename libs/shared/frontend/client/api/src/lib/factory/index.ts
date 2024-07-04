@@ -34,6 +34,7 @@ import {
 import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { STALE_TIME } from "@sps/shared-utils";
 import { createId } from "@paralleldrive/cuid2";
+import QueryString from "qs";
 
 export interface IFactoryProps {
   route: string;
@@ -52,7 +53,16 @@ export function factory<T>(factoryProps: IFactoryProps) {
       options?: IFindByIdQueryProps["options"];
     }) => {
       return useQuery<T>({
-        queryKey: props.id ? [`${factoryProps.route}/${props.id}`] : [],
+        queryKey: props.id
+          ? [
+              `${factoryProps.route}/${props.id}`,
+              props?.params
+                ? QueryString.stringify(props.params, {
+                    encodeValuesOnly: true,
+                  })
+                : undefined,
+            ]
+          : [],
         queryFn: props.id
           ? findByIdQuery({ ...factoryProps, ...props, id: props.id })
           : undefined,
@@ -78,7 +88,14 @@ export function factory<T>(factoryProps: IFactoryProps) {
       options?: IFindQueryProps["options"];
     }) => {
       return useQuery<T[]>({
-        queryKey: [`${factoryProps.route}`],
+        queryKey: [
+          `${factoryProps.route}`,
+          props?.params
+            ? QueryString.stringify(props.params, {
+                encodeValuesOnly: true,
+              })
+            : undefined,
+        ],
         queryFn: findQuery({ ...factoryProps, ...props }),
         select(data) {
           addToGlobalStore({

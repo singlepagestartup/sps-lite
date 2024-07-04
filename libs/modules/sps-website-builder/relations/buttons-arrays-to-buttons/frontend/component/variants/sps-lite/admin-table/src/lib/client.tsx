@@ -9,7 +9,7 @@ import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.find();
+  const { data, isFetching, isLoading } = api.find(props.apiProps);
 
   if (isFetching || isLoading || !data) {
     return <Skeleton {...props} />;

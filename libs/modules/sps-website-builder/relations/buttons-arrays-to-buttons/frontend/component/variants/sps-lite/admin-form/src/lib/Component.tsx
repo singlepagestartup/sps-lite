@@ -8,7 +8,7 @@ import {
   queryClient,
 } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
@@ -96,28 +96,20 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
-        <ModelEntitiesListCard title="buttons-array">
-          <div className="flex flex-col gap-6">
-            <ButtonsArraySelectInput
-              isServer={props.isServer}
-              hostUrl={props.hostUrl}
-              variant="admin-select-input"
-              formFieldName="buttonsArrayId"
-              form={form}
-            />
-          </div>
-        </ModelEntitiesListCard>
-        <ModelEntitiesListCard title="button">
-          <div className="flex flex-col gap-6">
-            <ButtonSelectInput
-              isServer={props.isServer}
-              hostUrl={props.hostUrl}
-              variant="admin-select-input"
-              formFieldName="buttonId"
-              form={form}
-            />
-          </div>
-        </ModelEntitiesListCard>
+        <ButtonsArraySelectInput
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="buttonsArrayId"
+          form={form}
+        />
+        <ButtonSelectInput
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="buttonId"
+          form={form}
+        />
       </div>
     </ParentAdminForm>
   );

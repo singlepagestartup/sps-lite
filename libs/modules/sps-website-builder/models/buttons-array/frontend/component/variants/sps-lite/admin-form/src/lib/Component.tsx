@@ -4,12 +4,11 @@ import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/buttons-array/frontend/api/client";
 import { useForm } from "react-hook-form";
-import { FormField, ModelEntitiesListCard } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/buttons-array/contracts/root";
-import { Component as ButtonsArraysToButtonsAdminTableRow } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table-row";
-import { Component as ButtonsArraysToButtonsAdminForm } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-form";
+import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({
@@ -35,11 +34,11 @@ export function Component(props: IComponentPropsExtended) {
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (props.data?.id) {
-      await updateEntity.mutate({ id: props.data?.id, data });
+      updateEntity.mutate({ id: props.data?.id, data });
       return;
     }
 
-    await createEntity.mutate({
+    createEntity.mutate({
       data,
     });
   }
@@ -97,28 +96,28 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type description"
         />
 
-        <ModelEntitiesListCard
-          adminForm={
-            <ButtonsArraysToButtonsAdminForm
-              isServer={props.isServer}
-              hostUrl={props.hostUrl}
-              variant="admin-form"
-            />
+        <ButtonsArraysToButtonsAdminTable
+          variant="admin-table"
+          hostUrl={props.hostUrl}
+          isServer={props.isServer}
+          apiProps={
+            props.data?.id
+              ? {
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "buttonsArrayId",
+                          method: "eq",
+                          value: props.data.id,
+                        },
+                      ],
+                    },
+                  },
+                }
+              : undefined
           }
-          title="buttons-arrays-to-buttons"
-        >
-          {props.data?.buttonsArraysToButtons.map((entity, index) => {
-            return (
-              <ButtonsArraysToButtonsAdminTableRow
-                key={index}
-                data={entity}
-                hostUrl={props.hostUrl}
-                isServer={false}
-                variant="admin-table-row"
-              />
-            );
-          })}
-        </ModelEntitiesListCard>
+        />
       </div>
     </ParentAdminForm>
   );

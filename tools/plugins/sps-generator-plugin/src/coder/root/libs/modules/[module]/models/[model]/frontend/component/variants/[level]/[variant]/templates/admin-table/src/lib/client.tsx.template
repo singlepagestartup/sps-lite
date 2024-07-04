@@ -9,7 +9,7 @@ import { IComponentProps } from "./interface";
 import { api } from "<%= api_client_import_path %>";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.find();
+  const { data, isFetching, isLoading } = api.find(props.apiProps);
 
   if (isFetching || isLoading || isUninitialized || !data) {
     return <Skeleton {...props} />;

@@ -1,10 +1,10 @@
 "use client";
 
-import { actions, IFindByIdActionProps } from "@sps/shared-frontend-api";
+import { actions, IFindActionsProps } from "@sps/shared-frontend-api";
 
 export interface IQueryProps {
-  params?: IFindByIdActionProps["params"];
-  options?: IFindByIdActionProps["options"];
+  params?: IFindActionsProps["params"];
+  options?: IFindActionsProps["options"];
   host: string;
   route: string;
 }
