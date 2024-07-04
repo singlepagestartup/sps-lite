@@ -12,6 +12,7 @@ export default function Client(props: IComponentProps) {
   if (props.data) {
     const { data, isFetching, isLoading } = api.findById({
       id: props.data?.id,
+      ...props.apiProps,
     });
 
     if (isFetching || isLoading || !data) {
