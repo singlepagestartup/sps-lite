@@ -1,26 +1,23 @@
-import { ModelEntitiesListCard } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { Component as AdminForm } from "@sps/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-form";
 import { Component as AdminTableRow } from "@sps/sps-host/models/metadata/frontend/component/variants/sps-lite/admin-table-row";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <div
-      data-module="sps-host"
-      data-model="metadata"
-      data-variant={props.variant}
-      className={`w-full ${props.className || ""}`}
+    <ParentComponent
+      module="sps-host"
+      name="metadata"
+      variant={props.variant}
+      adminForm={
+        <AdminForm
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-form"
+        />
+      }
     >
-      <ModelEntitiesListCard
-        title="metadata"
-        adminForm={
-          <AdminForm
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="admin-form"
-          />
-        }
-      >
+      <div className="flex flex-col gap-6 pt-8 p-4">
         {props.data.map((entity, index) => {
           return (
             <AdminTableRow
@@ -32,7 +29,7 @@ export function Component(props: IComponentPropsExtended) {
             />
           );
         })}
-      </ModelEntitiesListCard>
-    </div>
+      </div>
+    </ParentComponent>
   );
 }
