@@ -11,6 +11,7 @@ import { api } from "@sps/sps-third-parties/models/telegram/frontend/api/client"
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.findById({
     id: props.data.id,
+    ...props.apiProps,
   });
 
   if (isFetching || isLoading || !data) {
