@@ -3,13 +3,7 @@
 import dynamic from "next/dynamic";
 import React, { useMemo, useState } from "react";
 import { IComponentProps } from "./interface";
-import {
-  Button,
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@sps/shared-ui-shadcn";
-import { ChevronDown } from "lucide-react";
+import { Button } from "@sps/shared-ui-shadcn";
 const FeaturesSpsLiteAdminTable = dynamic(() =>
   import(
     "@sps/sps-website-builder/models/feature/frontend/component/variants/sps-lite/admin-table"
@@ -80,21 +74,6 @@ const WidgetSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
-const WidgetsToHeroSectionBlocks = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
-const ButtonsArraysToButtons = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
-const FeaturesSectionBlockToFeatures = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
 
 export function Component(props: IComponentProps) {
   const [showModels, setShowModels] = useState(true);
@@ -117,20 +96,12 @@ export function Component(props: IComponentProps) {
         Comp: ButtonsArraySpsLiteAdminTable,
       },
       {
-        name: "features-section-block-to-features",
-        Comp: FeaturesSectionBlockToFeatures,
-      },
-      {
         name: "feature",
         Comp: FeaturesSpsLiteAdminTable,
       },
       {
         name: "features-section-block",
         Comp: FeaturesSectionBlockSpsLiteAdminTable,
-      },
-      {
-        name: "buttons-arrays-to-buttons",
-        Comp: ButtonsArraysToButtons,
       },
       {
         name: "footer",
@@ -147,10 +118,6 @@ export function Component(props: IComponentProps) {
       {
         name: "logotype",
         Comp: LogotypeSpsLiteAdminTable,
-      },
-      {
-        name: "widgets-to-hero-section-blocks",
-        Comp: WidgetsToHeroSectionBlocks,
       },
       {
         name: "modal",

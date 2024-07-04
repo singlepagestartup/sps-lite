@@ -20,9 +20,9 @@ export async function customGenerator(
   options: CustomGeneratorSchema,
 ) {
   const moduleName = "sps-website-builder";
-  const leftModelName = "features-section-block";
-  const rightModelName = "feature";
-  const relationName = "features-section-blocks-to-features";
+  const leftModelName = "feature";
+  const rightModelName = "sps-file-storage-module-file";
+  const relationName = "features-to-sps-file-storage-module-files";
 
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     {

@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/models/features-section-block/contracts/root";
 import { FormField } from "@sps/ui-adapter";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -115,6 +116,29 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
           options={variants.map((variant) => [variant, variant])}
+        />
+
+        <FeaturesSectionBlocksToFeaturesAdminTable
+          variant="admin-table"
+          hostUrl={props.hostUrl}
+          isServer={props.isServer}
+          apiProps={
+            props.data?.id
+              ? {
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "featuresSectionBlockId",
+                          method: "eq",
+                          value: props.data.id,
+                        },
+                      ],
+                    },
+                  },
+                }
+              : undefined
+          }
         />
       </div>
     </ParentAdminForm>
