@@ -1,1 +1,1 @@
-export { Component as Error } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Error";
+export { Component as Error } from "@sps/shared-frontend-components/sps-lite/errors/default";
