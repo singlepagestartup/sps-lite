@@ -44,7 +44,9 @@
       "@sps/shared-frontend-components/*": [
         "libs/shared/frontend/components/src/lib/*"
       ],
-      "@sps/shared-frontend-hooks": ["libs/shared/frontend/hooks/src/index.ts"],
+      "@sps/shared-frontend-client-hooks": [
+        "libs/shared/frontend/client/hooks/src/index.ts"
+      ],
       "@sps/shared-frontend-server-api": [
         "libs/shared/frontend/server/api/src/index.ts"
       ],
