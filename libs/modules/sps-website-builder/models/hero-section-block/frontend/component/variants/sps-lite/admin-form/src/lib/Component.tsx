@@ -11,6 +11,7 @@ import { variants } from "@sps/sps-website-builder/models/hero-section-block/con
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as HeroSectionBlocksToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -156,6 +157,27 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.data?.id ? (
           <WidgetsToHeroSectionBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "heroSectionBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <HeroSectionBlocksToSpsFileStorageModuleWidgetsAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
             isServer={props.isServer}

@@ -3,7 +3,7 @@ import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/s
 
 export const revalidate = 3600;
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export async function generateMetadata(props: any) {
   return metadataApi.generate({ catchError: true, ...props });

@@ -11,6 +11,7 @@ import { variants } from "@sps/sps-website-builder/models/logotype/contracts/roo
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
 import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
+import { Component as LogotypesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -109,6 +110,27 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.data?.id ? (
           <NavbarBlocksToLogotypesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "logotypeId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <LogotypesToSpsFileStorageModuleWidgetsAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
             isServer={props.isServer}

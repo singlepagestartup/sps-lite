@@ -73,6 +73,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Order index"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -81,6 +82,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Class name"
         />
+        
         <FormField
           ui="shadcn"
           type="select"

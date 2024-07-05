@@ -11,6 +11,7 @@ import { variants } from "@sps/sps-website-builder/models/slide/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/variants/sps-lite/admin-table";
 import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as SlidesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -131,6 +132,27 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.data?.id ? (
           <SlidesToButtonsArraysAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "slideId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
+
+        {props.data?.id ? (
+          <SlidesToSpsFileStorageModuleWidgetsAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
             isServer={props.isServer}
