@@ -39,7 +39,6 @@ export class Coder {
   absoluteName: string;
   apiClientImportPath?: string;
   apiServerImportPath?: string;
-  reduxImportPath?: string;
   rootContractsImportPath?: string;
   extendedContractsImportPath?: string;
   template?: string;
@@ -71,7 +70,6 @@ export class Coder {
       this.parent.parent?.project.api.project.client.importPath;
     const apiServerImportPath =
       this.parent.parent.project.api.project.server.importPath;
-    const reduxImportPath = this.parent.parent.project.redux.importPath;
     const rootContractsImportPath =
       this.parent.parent.parent.project.contracts.project.root.importPath;
     const extendedContractsImportPath =
@@ -85,7 +83,6 @@ export class Coder {
 
     this.apiClientImportPath = apiClientImportPath;
     this.apiServerImportPath = apiServerImportPath;
-    this.reduxImportPath = reduxImportPath;
     this.rootContractsImportPath = rootContractsImportPath;
     this.extendedContractsImportPath = extendedContractsImportPath;
     this.moduleName = moduleName;
@@ -122,7 +119,6 @@ export class Coder {
     if (
       !this.apiClientImportPath ||
       !this.apiServerImportPath ||
-      !this.reduxImportPath ||
       !this.rootContractsImportPath ||
       !this.extendedContractsImportPath
     ) {
@@ -188,7 +184,6 @@ export class Coder {
           rightModelRootFrontendComponentImportPath,
         api_client_import_path: this.apiClientImportPath,
         api_server_import_path: this.apiServerImportPath,
-        redux_import_path: this.reduxImportPath,
         root_contracts_import_path: this.rootContractsImportPath,
         extended_contracts_import_path: this.extendedContractsImportPath,
         relation_name: this.relationName || "",
