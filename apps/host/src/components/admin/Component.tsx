@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 const IsAuthenticatatedWrapper = dynamic(() =>
   import(
     "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper"
@@ -61,10 +61,7 @@ export function Component(props: IComponentPropsExtended) {
       isServer={false}
       hostUrl={props.hostUrl}
     >
-      <section
-        data-module="frontend"
-        className="w-full py-2 lg:py-10 bg-dotted"
-      >
+      <section data-module="frontend" className="w-full py-2 lg:py-10 bg-input">
         <div className="w-full mx-auto max-w-7xl px-2">
           <div className="p-5">
             <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
@@ -224,9 +221,9 @@ function Button(props: {
         props.onClick();
       }}
       data-active={props.active}
-      className="w-full lg:w-fit bg-white lg:rounded-t-md overflow-hidden font-bold text-2xl leading-none -tracking-[.08em] group text-muted-foreground"
+      className="w-full lg:w-fit bg-white lg:rounded-t-md overflow-hidden font-bold text-xl whitespace-nowrap leading-none -tracking-[.08em] group"
     >
-      <p className="group-data-[active=true]:opacity-100 group-hover:opacity-100 opacity-30 transition duration-300">
+      <p className="group-data-[active=true]:text-primary group-data-[active=false]:text-input group-hover:opacity-100 transition duration-300">
         {props.title}
       </p>
     </button>

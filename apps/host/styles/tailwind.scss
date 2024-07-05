@@ -60,48 +60,4 @@ input[type="number"] {
   .skeleton {
     @apply bg-input animate-pulse rounded-md;
   }
-
-  .bg-dotted {
-    // --muted
-    background: hsl(210 40% 96.1%);
-    // --muted-foreground
-    background-image: radial-gradient(
-      hsl(215.4 16.3% 46.9%) 1px,
-      transparent 0
-    );
-    background-size: 4px 4px;
-    background-position: 0px 0px;
-  }
-
-  .admin-heading-h1 {
-    @apply font-extrabold leading-none text-4xl lg:text-6xl -tracking-[.075em] text-muted-foreground opacity-40;
-  }
-
-  .admin-heading-h3 {
-    @apply font-extrabold leading-none text-2xl lg:text-4xl -tracking-[.065em] text-muted-foreground opacity-40;
-  }
-
-  .model-legend {
-    @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm;
-  }
-
-  .pill-button {
-    @apply bg-foreground hover:bg-muted flex items-center px-2 w-fit border border-muted-foreground rounded-full transition duration-200 text-sm font-medium bg-white gap-2 py-1 lg:py-0;
-  }
-
-  .entity-container {
-    @apply grid gap-6 pt-5 relative rounded-lg border border-muted-foreground bg-white;
-  }
-
-  .entity-legend {
-    @apply px-2 text-sm font-medium bg-muted-foreground text-muted rounded-sm max-w-40 overflow-hidden whitespace-nowrap overflow-ellipsis;
-  }
-
-  .entity-header-block {
-    @apply flex items-center px-5 absolute transform -translate-y-1/2 inset-x-0 w-full justify-between;
-  }
-
-  .destructive-pill-button {
-    @apply pill-button hover:text-destructive hover:border-destructive hover:bg-red-100 bg-white;
-  }
 }
