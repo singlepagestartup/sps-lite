@@ -12,3 +12,6 @@ export const tag = "pages-to-widgets";
 export const route = "/api/sps-host/pages-to-widgets";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

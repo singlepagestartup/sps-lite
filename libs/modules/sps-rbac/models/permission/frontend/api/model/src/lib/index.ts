@@ -12,3 +12,6 @@ export const tag = "permission";
 export const route = "/api/sps-rbac/permissions";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

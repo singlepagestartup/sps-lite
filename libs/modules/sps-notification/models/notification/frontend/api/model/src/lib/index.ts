@@ -12,3 +12,6 @@ export const tag = "notification";
 export const route = "/api/sps-notification/notifications";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

@@ -12,3 +12,6 @@ export const tag = "file";
 export const route = "/api/sps-file-storage/files";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

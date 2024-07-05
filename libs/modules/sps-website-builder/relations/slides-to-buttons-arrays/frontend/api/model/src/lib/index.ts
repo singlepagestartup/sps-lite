@@ -12,3 +12,6 @@ export const tag = "slides-to-buttons-arrays";
 export const route = "/api/sps-website-builder/slides-to-buttons-arrays";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

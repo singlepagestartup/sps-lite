@@ -12,3 +12,6 @@ export const tag = "<%= model_name %>";
 export const route = "/api/<%= module_name %>/<%= model_name_pluralized %>";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

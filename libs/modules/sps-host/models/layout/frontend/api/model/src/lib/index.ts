@@ -12,3 +12,6 @@ export const tag = "layout";
 export const route = "/api/sps-host/layouts";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

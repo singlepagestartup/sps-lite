@@ -12,3 +12,6 @@ export const tag = "widgets-to-footer-blocks";
 export const route = "/api/sps-website-builder/widgets-to-footer-blocks";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

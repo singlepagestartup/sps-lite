@@ -12,3 +12,6 @@ export const tag = "widget";
 export const route = "/api/sps-host/widgets";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

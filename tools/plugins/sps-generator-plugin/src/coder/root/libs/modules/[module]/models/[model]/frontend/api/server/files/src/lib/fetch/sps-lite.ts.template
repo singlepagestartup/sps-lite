@@ -3,9 +3,11 @@ import {
   route,
   IModelExtended,
   host,
+query,
 } from "<%= api_model_import_path %>";
 
 export const api = factory<IModelExtended>({
   route,
   host,
+query
 });

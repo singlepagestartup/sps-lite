@@ -4,12 +4,14 @@ import {
   host,
   route,
   IModelExtended,
+  query,
 } from "@sps/sps-rbac/models/authentication/frontend/api/model";
 
 export const api = {
   ...factory<IModelExtended>({
     route,
     host,
+    params: query,
   }),
   isAuthenticated,
 };

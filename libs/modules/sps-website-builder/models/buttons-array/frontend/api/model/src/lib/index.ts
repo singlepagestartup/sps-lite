@@ -12,3 +12,6 @@ export const tag = "buttons-array";
 export const route = "/api/sps-website-builder/buttons-arrays";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

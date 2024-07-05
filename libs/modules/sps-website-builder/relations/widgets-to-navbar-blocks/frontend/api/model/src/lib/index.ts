@@ -12,3 +12,6 @@ export const tag = "widgets-to-navbar-blocks";
 export const route = "/api/sps-website-builder/widgets-to-navbar-blocks";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

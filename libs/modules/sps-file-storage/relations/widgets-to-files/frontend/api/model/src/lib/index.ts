@@ -12,3 +12,6 @@ export const tag = "widgets-to-files";
 export const route = "/api/sps-file-storage/widgets-to-files";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

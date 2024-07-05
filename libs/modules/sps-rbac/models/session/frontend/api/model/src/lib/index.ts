@@ -12,3 +12,6 @@ export const tag = "session";
 export const route = "/api/sps-rbac/sessions";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

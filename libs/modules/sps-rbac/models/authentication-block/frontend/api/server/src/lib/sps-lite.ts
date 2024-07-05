@@ -3,9 +3,11 @@ import {
   route,
   IModelExtended,
   host,
+  query,
 } from "@sps/sps-rbac/models/authentication-block/frontend/api/model";
 
 export const api = factory<IModelExtended>({
   route,
   host,
+  params: query,
 });

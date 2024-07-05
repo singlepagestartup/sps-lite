@@ -12,3 +12,6 @@ export const tag = "subjects-to-identities";
 export const route = "/api/sps-rbac/subjects-to-identities";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

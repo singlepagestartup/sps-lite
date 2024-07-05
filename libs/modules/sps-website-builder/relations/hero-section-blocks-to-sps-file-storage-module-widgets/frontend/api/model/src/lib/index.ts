@@ -13,3 +13,6 @@ export const route =
   "/api/sps-website-builder/hero-section-blocks-to-sps-file-storage-module-widgets";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

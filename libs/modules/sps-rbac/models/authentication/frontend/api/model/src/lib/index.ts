@@ -12,3 +12,6 @@ export const tag = "authentication";
 export const route = "/api/sps-rbac/authentications";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

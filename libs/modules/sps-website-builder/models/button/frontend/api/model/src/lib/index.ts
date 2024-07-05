@@ -12,3 +12,6 @@ export const tag = "button";
 export const route = "/api/sps-website-builder/buttons";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

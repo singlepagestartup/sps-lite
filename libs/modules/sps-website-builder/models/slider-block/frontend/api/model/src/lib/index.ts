@@ -12,3 +12,6 @@ export const tag = "slider-block";
 export const route = "/api/sps-website-builder/slider-blocks";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

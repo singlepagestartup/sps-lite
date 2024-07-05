@@ -12,3 +12,6 @@ export const tag = "navbar";
 export const route = "/api/sps-website-builder/navbars";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

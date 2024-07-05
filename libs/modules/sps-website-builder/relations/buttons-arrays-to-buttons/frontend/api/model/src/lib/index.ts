@@ -12,3 +12,6 @@ export const tag = "buttons-arrays-to-buttons";
 export const route = "/api/sps-website-builder/buttons-arrays-to-buttons";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

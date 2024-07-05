@@ -12,3 +12,6 @@ export const tag = "widgets-to-external-modules";
 export const route = "/api/sps-host/widgets-to-external-modules";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

@@ -12,3 +12,6 @@ export const tag = "<%= relation_name %>";
 export const route = "/api/<%= module_name %>/<%= relation_name_pluralized %>";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

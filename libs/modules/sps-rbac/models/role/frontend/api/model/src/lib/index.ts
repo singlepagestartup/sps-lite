@@ -12,3 +12,6 @@ export const tag = "role";
 export const route = "/api/sps-rbac/roles";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

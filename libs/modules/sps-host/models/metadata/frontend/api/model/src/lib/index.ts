@@ -12,3 +12,6 @@ export const tag = "metadata";
 export const route = "/api/sps-host/metadata";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

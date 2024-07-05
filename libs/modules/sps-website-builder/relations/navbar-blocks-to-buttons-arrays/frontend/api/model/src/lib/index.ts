@@ -12,3 +12,6 @@ export const tag = "navbar-blocks-to-buttons-arrays";
 export const route = "/api/sps-website-builder/navbar-blocks-to-buttons-arrays";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

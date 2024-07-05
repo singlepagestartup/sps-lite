@@ -12,3 +12,6 @@ export const tag = "hero-section-block";
 export const route = "/api/sps-website-builder/hero-section-blocks";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

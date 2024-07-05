@@ -12,3 +12,6 @@ export const tag = "telegram";
 export const route = "/api/sps-third-parties/telegrams";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

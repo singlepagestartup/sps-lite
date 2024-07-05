@@ -13,3 +13,6 @@ export const route =
   "/api/sps-website-builder/widgets-to-features-section-blocks";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

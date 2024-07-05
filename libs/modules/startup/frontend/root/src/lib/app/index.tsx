@@ -21,14 +21,16 @@ export function App(props: IComponentProps) {
           query={
             title
               ? {
-                  filters: {
-                    and: [
-                      {
-                        column: "title",
-                        method: "eq",
-                        value: title,
-                      },
-                    ],
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "title",
+                          method: "eq",
+                          value: title,
+                        },
+                      ],
+                    },
                   },
                 }
               : {}

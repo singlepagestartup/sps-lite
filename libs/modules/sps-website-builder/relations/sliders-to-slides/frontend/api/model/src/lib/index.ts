@@ -12,3 +12,6 @@ export const tag = "sliders-to-slides";
 export const route = "/api/sps-website-builder/sliders-to-slides";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

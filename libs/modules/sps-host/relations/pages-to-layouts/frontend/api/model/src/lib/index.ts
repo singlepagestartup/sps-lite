@@ -12,3 +12,6 @@ export const tag = "pages-to-layouts";
 export const route = "/api/sps-host/pages-to-layouts";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

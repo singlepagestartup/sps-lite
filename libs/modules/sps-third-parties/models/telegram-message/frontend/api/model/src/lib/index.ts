@@ -12,3 +12,6 @@ export const tag = "telegram-message";
 export const route = "/api/sps-third-parties/telegram-messages";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

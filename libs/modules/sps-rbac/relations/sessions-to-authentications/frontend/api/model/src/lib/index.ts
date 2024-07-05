@@ -12,3 +12,6 @@ export const tag = "sessions-to-authentications";
 export const route = "/api/sps-rbac/sessions-to-authentications";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

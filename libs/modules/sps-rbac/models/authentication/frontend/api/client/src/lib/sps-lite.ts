@@ -4,6 +4,7 @@ import {
   IModelExtended,
   route,
   host,
+  query,
 } from "@sps/sps-rbac/models/authentication/frontend/api/model";
 import { factory, queryClient } from "@sps/shared-frontend-client-api";
 import { DefaultError, useMutation, useQuery } from "@tanstack/react-query";
@@ -48,6 +49,7 @@ export const api = {
     queryClient,
     route,
     host,
+    params: query,
   }),
   loginAndPassword: (props?: {
     params?: {

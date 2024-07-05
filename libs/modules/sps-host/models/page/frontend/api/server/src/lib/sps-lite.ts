@@ -6,6 +6,7 @@ import {
   IModelExtended,
   host,
   route,
+  query,
 } from "@sps/sps-host/models/page/frontend/api/model";
 
 export interface Params {
@@ -16,6 +17,7 @@ export const api = {
   ...factory<IModelExtended>({
     route,
     host,
+    params: query,
   }),
   findByUrl,
   urls,

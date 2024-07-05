@@ -12,3 +12,6 @@ export const tag = "modal";
 export const route = "/api/sps-website-builder/modals";
 export const populate = modelPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

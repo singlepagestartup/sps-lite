@@ -4,6 +4,7 @@ import {
   IModelExtended,
   route,
   host,
+  query,
 } from "@sps/sps-host/models/page/frontend/api/model";
 import { factory, queryClient } from "@sps/shared-frontend-client-api";
 import {
@@ -39,6 +40,7 @@ export const api = {
     queryClient,
     route,
     host,
+    params: query,
   }),
   findByUrl: (props: IFindByUrlProps) => {
     return useQuery<IModelExtended>({

@@ -12,3 +12,6 @@ export const tag = "roles-to-permissions";
 export const route = "/api/sps-rbac/roles-to-permissions";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

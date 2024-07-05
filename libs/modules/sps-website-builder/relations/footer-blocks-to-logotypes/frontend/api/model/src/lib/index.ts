@@ -12,3 +12,6 @@ export const tag = "footer-blocks-to-logotypes";
 export const route = "/api/sps-website-builder/footer-blocks-to-logotypes";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};

@@ -12,3 +12,6 @@ export const tag = "navbar-blocks-to-logotypes";
 export const route = "/api/sps-website-builder/navbar-blocks-to-logotypes";
 export const populate = relationPopulate;
 export const host = BACKEND_URL;
+export const query = {
+  populate,
+};
