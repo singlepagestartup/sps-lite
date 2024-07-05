@@ -1,4 +1,3 @@
-import { populate as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-sps-file-storage-module-widgets";
 import { populate as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-features-section-blocks";
 import { populate as widgetsToSliderBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-slider-blocks";
 import { populate as widgetsToFooterBlocks } from "@sps/sps-website-builder/models/widget/backend/schema/relations/widgets-to-footer-blocks";
@@ -9,8 +8,6 @@ import { populate as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder
 
 export const populate = (params: any) => {
   return {
-    widgetsToSpsFileStorageModuleWidgets:
-      widgetsToSpsFileStorageModuleWidgets(params),
     widgetsToFeaturesSectionBlocks: widgetsToFeaturesSectionBlocks(params),
     widgetsToSliderBlocks: widgetsToSliderBlocks(params),
     widgetsToFooterBlocks: widgetsToFooterBlocks(params),

@@ -162,6 +162,13 @@
       "when": 1719706560606,
       "tag": "0022_dusty_corsair",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1720138967625,
+      "tag": "0023_public_vertigo",
+      "breakpoints": true
     }
   ]
 }

@@ -42,11 +42,6 @@ export {
   Table as SPSWBFooterBlocksToLogotypes,
   Relations as SPSWBFooterBlocksToLogotypesRelations,
 } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/schema/root";
-
-export {
-  Table as SPSWBWidgetsToSpsFileStorageModuleWidgets,
-  Relations as SPSWBWidgetsToSpsFileStorageModuleWidgetsRelations,
-} from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/schema/root";
 export {
   Table as SPSWBFSBTF,
   Relations as SPSWBFSBTFRelations,

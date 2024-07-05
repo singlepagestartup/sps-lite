@@ -4,7 +4,6 @@ import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/rel
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/root";
 import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/root";
 import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/root";
-import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/frontend/component/root";
 import { cn } from "@sps/shared-frontend-utils-client";
 
 export function Component(props: IComponentPropsExtended) {
@@ -75,17 +74,6 @@ export function Component(props: IComponentPropsExtended) {
           );
         },
       )}
-      {props.data.widgetsToSpsFileStorageModuleWidgets.map((entity, index) => {
-        return (
-          <WidgetsToSpsFileStorageWidgets
-            key={index}
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="default"
-            data={entity}
-          />
-        );
-      })}
     </div>
   );
 }

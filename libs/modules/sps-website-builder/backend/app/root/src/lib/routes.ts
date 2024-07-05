@@ -9,7 +9,6 @@ import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builde
 import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/root";
 import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/app/root";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
-import { app as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/root";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/app/root";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
@@ -50,8 +49,6 @@ export const routes = {
   "/navbar-blocks-to-buttons-arrays": navbarBlocksToButtonsArrays,
   "/buttons-arrays": buttonsArray,
   "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
-  "/widgets-to-sps-file-storage-module-widgets":
-    widgetsToSpsFileStorageModuleWidgets,
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
   "/features": feature,

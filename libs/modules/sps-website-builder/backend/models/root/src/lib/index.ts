@@ -9,7 +9,6 @@ import { model as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-buil
 import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/model/root";
 import { model as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/model/root";
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/model/root";
-import { model as widgetsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/widgets-to-sps-file-storage-module-widgets/backend/model/root";
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/model/root";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/model/root";
 import { model as feature } from "@sps/sps-website-builder/models/feature/backend/model/root";
@@ -47,7 +46,6 @@ export const models = {
   navbarBlocksToButtonsArrays,
   buttonsArray,
   footerBlocksToLogotypes,
-  widgetsToSpsFileStorageModuleWidgets,
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,
   feature,
