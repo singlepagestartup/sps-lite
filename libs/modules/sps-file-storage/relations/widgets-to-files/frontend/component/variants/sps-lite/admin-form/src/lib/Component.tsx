@@ -2,26 +2,26 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { route } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/model";
+import { route } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/api/model";
 import {
   api,
   queryClient,
-} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
+} from "@sps/sps-file-storage/relations/widgets-to-files/frontend/api/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
-import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input";
-import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-select-input";
+import { variants } from "@sps/sps-file-storage/relations/widgets-to-files/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as WidgetSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as FileSelectInput } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({
   variant: z.enum(variants),
   orderIndex: z.number().optional(),
   className: z.string().optional(),
-  buttonsArrayId: z.string().optional(),
-  buttonId: z.string().optional(),
+  widgetId: z.string().optional(),
+  fileId: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -32,10 +32,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      buttonsArrayId: props.data?.buttonsArrayId || "",
       orderIndex: props.data?.orderIndex || 0,
-      buttonId: props.data?.buttonId || "",
       className: props.data?.className || "",
+      widgetId: props.data?.widgetId || "",
+      fileId: props.data?.fileId || "",
     },
   });
 
@@ -62,12 +62,12 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <ParentAdminForm
-      module="sps-website-builder"
+      module="sps-file-storage"
       form={form}
       id={props.data?.id}
       onSubmit={onSubmit}
       variant={props.variant}
-      name="buttons-arrays-to-buttons"
+      name="widgets-to-files"
       type="relation"
     >
       <div className="flex flex-col gap-6">
@@ -79,6 +79,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Order index"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -87,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -96,18 +98,20 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
-        <ButtonsArraySelectInput
+
+        <WidgetSelectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="buttonsArrayId"
+          formFieldName="widgetId"
           form={form}
         />
-        <ButtonSelectInput
+
+        <FileSelectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="buttonId"
+          formFieldName="fileId"
           form={form}
         />
       </div>

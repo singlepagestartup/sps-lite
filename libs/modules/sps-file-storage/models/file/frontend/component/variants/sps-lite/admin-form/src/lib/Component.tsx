@@ -9,6 +9,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-file-storage/models/file/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as WidgetsToFilesAdminTable } from "@sps/sps-file-storage/relations/widgets-to-files/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -67,6 +68,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
         <FormField
           ui="shadcn"
           type="file"
@@ -75,6 +77,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Select file"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -83,6 +86,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type container class name"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -91,6 +95,27 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
+        {props.data?.id ? (
+          <WidgetsToFilesAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "fileId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );
