@@ -21,17 +21,19 @@ export function App(props: IComponentProps) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
-          query={
+          apiProps={
             title
               ? {
-                  filters: {
-                    and: [
-                      {
-                        column: "title",
-                        method: "eq",
-                        value: title,
-                      },
-                    ],
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "title",
+                          method: "eq",
+                          value: title,
+                        },
+                      ],
+                    },
                   },
                 }
               : {}
@@ -65,17 +67,19 @@ export function App(props: IComponentProps) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
-          query={
+          apiProps={
             title
               ? {
-                  filters: {
-                    and: [
-                      {
-                        column: "title",
-                        method: "eq",
-                        value: title,
-                      },
-                    ],
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "title",
+                          method: "eq",
+                          value: title,
+                        },
+                      ],
+                    },
                   },
                 }
               : {}
@@ -113,17 +117,19 @@ export function App(props: IComponentProps) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
-          query={
+          apiProps={
             title
               ? {
-                  filters: {
-                    and: [
-                      {
-                        column: "title",
-                        method: "eq",
-                        value: title,
-                      },
-                    ],
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "title",
+                          method: "eq",
+                          value: title,
+                        },
+                      ],
+                    },
                   },
                 }
               : {}

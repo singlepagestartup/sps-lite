@@ -10,9 +10,7 @@ import { api } from "@sps/sps-website-builder/models/widget/frontend/api/client"
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.find({
-    ...(props.query || {}),
-  });
+  const { data, isFetching, isLoading } = api.find(props.apiProps);
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {

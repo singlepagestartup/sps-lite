@@ -10,7 +10,7 @@ import { api } from "@sps/sps-notification/models/notification/frontend/api/clie
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.find();
+  const { data, isFetching, isLoading } = api.find(props.apiProps);
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {

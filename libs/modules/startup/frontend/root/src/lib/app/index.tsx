@@ -18,7 +18,7 @@ export function App(props: IComponentProps) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
-          query={
+          apiProps={
             title
               ? {
                   params: {
