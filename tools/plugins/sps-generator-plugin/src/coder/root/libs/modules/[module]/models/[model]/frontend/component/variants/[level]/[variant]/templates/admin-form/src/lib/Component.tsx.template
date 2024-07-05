@@ -8,7 +8,7 @@ import {
   queryClient
 } from "<%= api_client_import_path %>";
 import { useForm } from "react-hook-form";
-import { Button, FormField } from "@sps/ui-adapter";
+import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "<%= root_contracts_import_path %>";

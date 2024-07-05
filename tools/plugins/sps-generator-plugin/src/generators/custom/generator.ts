@@ -19,16 +19,16 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const moduleName = "sps-host";
-  const leftModelName = "widget";
-  const rightModelName = "external-module";
-  const relationName = "widgets-to-external-modules";
+  const moduleName = "sps-rbac";
+  const leftModelName = "session";
+  const rightModelName = "authentication";
+  const relationName = "sessions-to-authentications";
 
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
-    {
-      name: "default",
-      level: "sps-lite",
-    },
+    // {
+    //   name: "default",
+    //   level: "sps-lite",
+    // },
     {
       template: "admin-form",
       name: "admin-form",
@@ -49,12 +49,12 @@ export async function customGenerator(
       name: "admin-table-row",
       level: "sps-lite",
     },
-    { template: "find", name: "find", level: "sps-lite" },
-    {
-      template: "find-by-id",
-      name: "find-by-id",
-      level: "sps-lite",
-    },
+    // { template: "find", name: "find", level: "sps-lite" },
+    // {
+    //   template: "find-by-id",
+    //   name: "find-by-id",
+    //   level: "sps-lite",
+    // },
   ];
 
   const relationAdminVariants: IRelationFrontendComponentVariantGeneratorProps[] =
@@ -88,15 +88,20 @@ export async function customGenerator(
   const leftModel: IModelGeneratorProps = {
     model: {
       name: leftModelName,
-      backend: {
-        schema: {
-          relations: {
-            relations: [
-              {
-                name: relationName,
-              },
-            ],
-          },
+      // backend: {
+      //   schema: {
+      //     relations: {
+      //       relations: [
+      //         {
+      //           name: relationName,
+      //         },
+      //       ],
+      //     },
+      //   },
+      // },
+      frontend: {
+        component: {
+          variants: modelAdminVariants,
         },
       },
     },
@@ -114,6 +119,11 @@ export async function customGenerator(
               },
             ],
           },
+        },
+      },
+      frontend: {
+        component: {
+          variants: modelAdminVariants,
         },
       },
     },
@@ -152,13 +162,24 @@ export async function customGenerator(
   // await additions.project.root.project.libs.project.modules[0].project.module.project.models[0].project.model.create();
   // await coder.create();
 
-  const relationComponentVariants =
+  // const relationComponentVariants =
+  //   coder.project.root.project.libs.project.modules[0].project.module.project
+  //     .relations[0].project.relation.project.frontend.project.component.project
+  //     .variants;
+
+  // if (relationComponentVariants) {
+  //   for (const variant of relationComponentVariants) {
+  //     await variant.create();
+  //   }
+  // }
+
+  const leftModelComponentVariants =
     coder.project.root.project.libs.project.modules[0].project.module.project
-      .relations[0].project.relation.project.frontend.project.component.project
+      .models[1].project.model.project.frontend.project.component.project
       .variants;
 
-  if (relationComponentVariants) {
-    for (const variant of relationComponentVariants) {
+  if (leftModelComponentVariants) {
+    for (const variant of leftModelComponentVariants) {
       await variant.create();
     }
   }

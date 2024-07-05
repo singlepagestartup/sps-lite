@@ -11,7 +11,7 @@ import { api } from "<%= api_client_import_path %>";
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.find(props.apiProps);
 
-  if (isFetching || isLoading || isUninitialized || !data) {
+  if (isFetching || isLoading || !data) {
     return <Skeleton {...props} />;
   }
 

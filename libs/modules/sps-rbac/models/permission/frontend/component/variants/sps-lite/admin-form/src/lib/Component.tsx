@@ -13,6 +13,7 @@ import {
   methods,
 } from "@sps/sps-rbac/models/permission/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as RolesToPermissionsAdminTable } from "@sps/sps-rbac/relations/roles-to-permissions/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -71,6 +72,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select type"
           options={types.map((type) => [type, type])}
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -80,6 +82,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select method"
           options={methods.map((method) => [method, method])}
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -88,6 +91,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter path"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -97,6 +101,27 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <RolesToPermissionsAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "premissionId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

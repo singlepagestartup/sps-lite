@@ -9,6 +9,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-rbac/models/authentication-block/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
+import { Component as WidgetsToAuthenticationBlocksAdminTable } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/frontend/component/variants/sps-lite/admin-table";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -70,6 +71,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter title"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -78,6 +80,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter class name"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -86,6 +89,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter anchor"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -94,6 +98,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter description"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -102,6 +107,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Enter subtitle"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -111,6 +117,27 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.data?.id ? (
+          <WidgetsToAuthenticationBlocksAdminTable
+            variant="admin-table"
+            hostUrl={props.hostUrl}
+            isServer={props.isServer}
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "authenticationBlockId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          />
+        ) : null}
       </div>
     </ParentAdminForm>
   );
