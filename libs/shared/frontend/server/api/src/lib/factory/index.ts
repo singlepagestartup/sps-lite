@@ -10,6 +10,12 @@ import {
 export interface IFactoryProps {
   route: string;
   host: string;
+  params?:
+    | IFindByIdActionProps["params"]
+    | IFindActionsProps["params"]
+    | IUpdateActionProps["params"]
+    | ICreateActionProps["params"]
+    | IDeleteActionProps["params"];
 }
 
 export function factory<T>(params: IFactoryProps) {
@@ -18,45 +24,50 @@ export function factory<T>(params: IFactoryProps) {
       props: Omit<IFindByIdActionProps, "model" | "route" | "host">,
     ) => {
       return await actions.findById<T>({
-        ...props,
+        params: params.params,
         route: params.route,
         host: params.host,
+        ...props,
       });
     },
     find: async (
       props?: Omit<IFindActionsProps, "model" | "route" | "host">,
     ) => {
       return await actions.find<T>({
-        ...props,
+        params: params.params,
         route: params.route,
         host: params.host,
+        ...props,
       });
     },
     update: async (
       props: Omit<IUpdateActionProps, "model" | "route" | "host">,
     ) => {
       return await actions.update<T>({
-        ...props,
+        params: params.params,
         route: params.route,
         host: params.host,
+        ...props,
       });
     },
     create: async (
       props: Omit<ICreateActionProps, "model" | "route" | "host">,
     ) => {
       return await actions.create<T>({
-        ...props,
+        params: params.params,
         route: params.route,
         host: params.host,
+        ...props,
       });
     },
     delete: async (
       props: Omit<IDeleteActionProps, "model" | "route" | "host">,
     ) => {
       return await actions.delete<T>({
-        ...props,
+        params: params.params,
         route: params.route,
         host: params.host,
+        ...props,
       });
     },
   };

@@ -41,6 +41,12 @@ export interface IFactoryProps {
   host: string;
   queryClient: QueryClient;
   staleTime?: number;
+  params?:
+    | IFindByIdQueryProps["params"]
+    | IFindQueryProps["params"]
+    | IUpdateMutationProps["params"]
+    | ICreateMutationProps["params"]
+    | IDeleteMutationProps["params"];
 }
 
 type SetRequestId = (requestId: string) => void;
@@ -64,7 +70,7 @@ export function factory<T>(factoryProps: IFactoryProps) {
             ]
           : [],
         queryFn: props.id
-          ? findByIdQuery({ ...factoryProps, ...props, id: props.id })
+          ? findByIdQuery({ ...factoryProps, id: props.id, ...props })
           : undefined,
         select(data) {
           addToGlobalStore({
