@@ -19,10 +19,10 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const moduleName = "sps-file-storage";
+  const moduleName = "sps-host";
   const leftModelName = "widget";
-  const rightModelName = "file";
-  const relationName = "widgets-to-files";
+  const rightModelName = "external-module";
+  const relationName = "widgets-to-external-modules";
 
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     {

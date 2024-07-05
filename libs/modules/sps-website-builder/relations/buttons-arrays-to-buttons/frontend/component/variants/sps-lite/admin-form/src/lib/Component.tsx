@@ -79,6 +79,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Order index"
         />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -87,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -96,6 +98,7 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
         <ButtonsArraySelectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
@@ -103,6 +106,7 @@ export function Component(props: IComponentPropsExtended) {
           formFieldName="buttonsArrayId"
           form={form}
         />
+
         <ButtonSelectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
