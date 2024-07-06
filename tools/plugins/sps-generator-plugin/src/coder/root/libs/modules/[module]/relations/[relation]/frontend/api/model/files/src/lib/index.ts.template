@@ -16,8 +16,7 @@ export const query = {
   populate,
 };
 export const options = {
-  next: {
-    tag,
+next: {
     revalidate: REVALIDATE,
   },
 };

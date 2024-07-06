@@ -33,7 +33,6 @@ export async function action<T>(props: IActionProps): Promise<T> {
     body: formData,
     ...options,
     next: {
-      tags: [...(options?.next?.["tag"] || []), id, stringifiedQuery],
       ...options?.next,
     },
   };

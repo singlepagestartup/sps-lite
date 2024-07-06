@@ -8,6 +8,9 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}
 
+/**
+ * @deprecated
+ */
 export const tag = "features-to-sps-file-storage-module-files";
 export const route =
   "/api/sps-website-builder/features-to-sps-file-storage-module-files";
@@ -18,7 +21,6 @@ export const query = {
 };
 export const options = {
   next: {
-    tag,
     revalidate: REVALIDATE,
   },
 };

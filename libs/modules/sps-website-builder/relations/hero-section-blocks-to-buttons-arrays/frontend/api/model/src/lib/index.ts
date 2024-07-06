@@ -8,6 +8,9 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}
 
+/**
+ * @deprecated
+ */
 export const tag = "hero-section-blocks-to-buttons-arrays";
 export const route =
   "/api/sps-website-builder/hero-section-blocks-to-buttons-arrays";
@@ -18,7 +21,6 @@ export const query = {
 };
 export const options = {
   next: {
-    tag,
     revalidate: REVALIDATE,
   },
 };

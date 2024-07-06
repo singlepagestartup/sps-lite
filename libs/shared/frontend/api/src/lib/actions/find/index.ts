@@ -23,7 +23,7 @@ export async function action<T>(props: IActionProps): Promise<T[]> {
     credentials: "include",
     ...options,
     next: {
-      tags: [...(options?.next?.["tag"] || []), stringifiedQuery],
+      tags: [route],
       ...options?.next,
     },
   };

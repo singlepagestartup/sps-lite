@@ -8,6 +8,9 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export interface IRelation extends IParentRelation {}
 export interface IRelationExtended extends IParentRelationExtended {}
 
+/**
+ * @deprecated
+ */
 export const tag = "roles-to-permissions";
 export const route = "/api/sps-rbac/roles-to-permissions";
 export const populate = relationPopulate;
@@ -17,7 +20,6 @@ export const query = {
 };
 export const options = {
   next: {
-    tag,
     revalidate: REVALIDATE,
   },
 };

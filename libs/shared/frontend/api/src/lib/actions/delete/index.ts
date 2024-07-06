@@ -25,7 +25,6 @@ export async function action<T>(props: IActionProps): Promise<T> {
     method: "DELETE",
     ...options,
     next: {
-      tags: [...(options?.next?.["tag"] || []), id, stringifiedQuery],
       ...options?.next,
     },
   };

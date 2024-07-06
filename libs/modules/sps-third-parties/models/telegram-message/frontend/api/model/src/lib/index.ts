@@ -8,6 +8,9 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export interface IModel extends IParentModel {}
 export interface IModelExtended extends IParentModelExtended {}
 
+/**
+ * @deprecated
+ */
 export const tag = "telegram-message";
 export const route = "/api/sps-third-parties/telegram-messages";
 export const populate = modelPopulate;
@@ -17,7 +20,6 @@ export const query = {
 };
 export const options = {
   next: {
-    tag,
     revalidate: REVALIDATE,
   },
 };
