@@ -5,6 +5,7 @@ import {
   route,
   host,
   query,
+  options,
 } from "@sps/sps-notification/models/widget/frontend/api/model";
 import { factory, queryClient } from "@sps/shared-frontend-client-api";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
@@ -14,4 +15,5 @@ export const api = factory<IModelExtended>({
   route,
   host,
   params: query,
+  options,
 });

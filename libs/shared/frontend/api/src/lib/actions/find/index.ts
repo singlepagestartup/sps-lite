@@ -13,7 +13,7 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T[]> {
-  const { params, route, tag, options, host } = props;
+  const { params, route, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -23,7 +23,6 @@ export async function action<T>(props: IActionProps): Promise<T[]> {
     credentials: "include",
     ...options,
     next: {
-      tags: tag ? [tag] : [],
       ...options?.next,
     },
   };

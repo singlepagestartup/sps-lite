@@ -3,9 +3,11 @@ import {
   route,
   IRelationExtended,
   host,
+  options,
 } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/api/model";
 
 export const api = factory<IRelationExtended>({
   route,
   host,
+  options,
 });

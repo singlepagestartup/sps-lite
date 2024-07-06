@@ -7,7 +7,11 @@ import {
   IModelExtended,
   host,
 } from "@sps/sps-host/models/page/frontend/api/model";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  REVALIDATE,
+  NextRequestOptions,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 
 interface Params {
@@ -19,7 +23,7 @@ export async function action({ url, catchError = false }: Params) {
   try {
     const options: NextRequestOptions = {
       next: {
-        revalidate: 0,
+        revalidate: REVALIDATE,
         tags: [tag],
       },
     };

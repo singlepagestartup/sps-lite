@@ -1,13 +1,15 @@
 import { factory } from "@sps/shared-frontend-server-api";
 import {
+  host,
   route,
   IModelExtended,
-  host,
   query,
+  options,
 } from "@sps/sps-website-builder/models/features-section-block/frontend/api/model";
 
 export const api = factory<IModelExtended>({
   route,
   host,
+  options,
   params: query,
 });

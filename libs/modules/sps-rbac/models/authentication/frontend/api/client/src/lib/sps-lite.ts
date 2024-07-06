@@ -5,6 +5,7 @@ import {
   route,
   host,
   query,
+  options,
 } from "@sps/sps-rbac/models/authentication/frontend/api/model";
 import { factory, queryClient } from "@sps/shared-frontend-client-api";
 import { DefaultError, useMutation, useQuery } from "@tanstack/react-query";
@@ -50,6 +51,7 @@ export const api = {
     route,
     host,
     params: query,
+    options,
   }),
   loginAndPassword: (props?: {
     params?: {

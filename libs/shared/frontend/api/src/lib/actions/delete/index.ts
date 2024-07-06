@@ -14,7 +14,7 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {
-  const { id, params, route, tag, options, host } = props;
+  const { id, params, route, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -25,7 +25,6 @@ export async function action<T>(props: IActionProps): Promise<T> {
     method: "DELETE",
     ...options,
     next: {
-      tags: tag ? [tag] : [],
       ...options?.next,
     },
   };

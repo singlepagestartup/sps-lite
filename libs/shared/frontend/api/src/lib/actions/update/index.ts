@@ -19,7 +19,7 @@ export interface IActionProps {
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {
-  const { id, params, data, route, tag, options, host } = props;
+  const { id, params, data, route, options, host } = props;
 
   const formData = prepareFormDataToSend({ data });
 
@@ -33,7 +33,6 @@ export async function action<T>(props: IActionProps): Promise<T> {
     body: formData,
     ...options,
     next: {
-      tags: tag ? [tag] : [],
       ...options?.next,
     },
   };

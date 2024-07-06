@@ -1,7 +1,11 @@
 "use server";
 
 import { route, tag, host } from "@sps/sps-host/models/page/frontend/api/model";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  REVALIDATE,
+  NextRequestOptions,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 
 interface Params {
@@ -12,7 +16,7 @@ interface Params {
 export async function action(props: Params) {
   const options: NextRequestOptions = {
     next: {
-      revalidate: 0,
+      revalidate: REVALIDATE,
       tags: [tag],
     },
   };

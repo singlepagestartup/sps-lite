@@ -4,10 +4,12 @@ import {
   route,
   IModelExtended,
   query,
+  options,
 } from "@sps/sps-host/models/widget/frontend/api/model";
 
 export const api = factory<IModelExtended>({
   route,
   host,
+  options,
   params: query,
 });

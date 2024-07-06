@@ -6,13 +6,17 @@ import {
   host,
   tag,
 } from "@sps/sps-host/models/page/frontend/api/model";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  REVALIDATE,
+  NextRequestOptions,
+  transformResponseItem,
+} from "@sps/shared-utils";
 
 export async function action() {
   try {
     const options: NextRequestOptions = {
       next: {
-        revalidate: 0,
+        revalidate: REVALIDATE,
         tags: [tag],
       },
     };

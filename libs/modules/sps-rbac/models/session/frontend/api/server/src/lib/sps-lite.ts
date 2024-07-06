@@ -5,6 +5,7 @@ import {
   route,
   IModelExtended,
   query,
+  options,
 } from "@sps/sps-rbac/models/session/frontend/api/model";
 
 export const api = {
@@ -12,6 +13,7 @@ export const api = {
     route,
     host,
     params: query,
+    options,
   }),
   init: async () => {
     const options: NextRequestOptions = {

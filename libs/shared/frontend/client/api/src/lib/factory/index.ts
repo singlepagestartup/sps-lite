@@ -47,6 +47,12 @@ export interface IFactoryProps {
     | IUpdateMutationProps["params"]
     | ICreateMutationProps["params"]
     | IDeleteMutationProps["params"];
+  options?:
+    | IFindByIdQueryProps["options"]
+    | IFindQueryProps["options"]
+    | IUpdateMutationProps["options"]
+    | ICreateMutationProps["options"]
+    | IDeleteMutationProps["options"];
 }
 
 type SetRequestId = (requestId: string) => void;

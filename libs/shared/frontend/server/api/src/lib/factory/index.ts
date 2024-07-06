@@ -16,6 +16,12 @@ export interface IFactoryProps {
     | IUpdateActionProps["params"]
     | ICreateActionProps["params"]
     | IDeleteActionProps["params"];
+  options?:
+    | IFindByIdActionProps["options"]
+    | IFindActionsProps["options"]
+    | IUpdateActionProps["options"]
+    | ICreateActionProps["options"]
+    | IDeleteActionProps["options"];
 }
 
 export function factory<T>(params: IFactoryProps) {
@@ -25,6 +31,7 @@ export function factory<T>(params: IFactoryProps) {
     ) => {
       return await actions.findById<T>({
         params: params.params,
+        options: params.options,
         route: params.route,
         host: params.host,
         ...props,
@@ -35,6 +42,7 @@ export function factory<T>(params: IFactoryProps) {
     ) => {
       return await actions.find<T>({
         params: params.params,
+        options: params.options,
         route: params.route,
         host: params.host,
         ...props,
@@ -45,6 +53,7 @@ export function factory<T>(params: IFactoryProps) {
     ) => {
       return await actions.update<T>({
         params: params.params,
+        options: params.options,
         route: params.route,
         host: params.host,
         ...props,
@@ -55,6 +64,7 @@ export function factory<T>(params: IFactoryProps) {
     ) => {
       return await actions.create<T>({
         params: params.params,
+        options: params.options,
         route: params.route,
         host: params.host,
         ...props,
@@ -65,6 +75,7 @@ export function factory<T>(params: IFactoryProps) {
     ) => {
       return await actions.delete<T>({
         params: params.params,
+        options: params.options,
         route: params.route,
         host: params.host,
         ...props,
