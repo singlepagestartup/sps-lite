@@ -10,4 +10,9 @@ if [[ $migrate == *"NEW_MIGRATIONS=true"* ]]; then
 fi
 
 npx nx run host:db:seed
-npm run host:build
+
+if [[ $VERCEL_ENV == "production"  ]] ; then
+  npm run host:build
+else
+  npm run host:build
+fi
