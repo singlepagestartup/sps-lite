@@ -16,7 +16,7 @@ export const migrate = async () => {
 
     const getMigrations = await db.execute(
       sql`SELECT *
-      FROM drizzle.${migrationsTable}
+      FROM drizzle.sps_host
       WHERE
         to_timestamp(created_at::BIGINT / 1000) >
         CURRENT_TIMESTAMP - INTERVAL '5 minutes'
