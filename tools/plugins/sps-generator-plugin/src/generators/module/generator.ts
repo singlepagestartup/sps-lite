@@ -20,7 +20,7 @@ export async function moduleGenerator(
               models: [
                 {
                   model: {
-                    name: "widget",
+                    name: "channel",
                     frontend: {
                       component: {
                         variants: [

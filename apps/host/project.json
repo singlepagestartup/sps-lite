@@ -14,6 +14,12 @@
             "command": "nx run host:db:migrate"
           },
           {
+            "command": "nx run host:db:sps-host-generate"
+          },
+          {
+            "command": "nx run host:db:sps-broadcast-generate"
+          },
+          {
             "command": "nx run host:db:sps-website-builder-generate"
           },
           {
@@ -87,6 +93,33 @@
       "options": {
         "parallel": false,
         "cwd": "libs/modules/sps-host/backend/db/root",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-broadcast-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-broadcast/backend/db/root",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "db:sps-broadcast-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-broadcast/backend/db/root",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -290,6 +323,12 @@
         "cwd": "apps/host",
         "commands": [
           {
+            "command": "nx run host:db:sps-host-migrate"
+          },
+          {
+            "command": "nx run host:db:sps-broadcast-migrate"
+          },
+          {
             "command": "nx run host:db:sps-website-builder-migrate"
           },
           {
@@ -297,9 +336,6 @@
           },
           {
             "command": "nx run host:db:sps-rbac-migrate"
-          },
-          {
-            "command": "nx run host:db:sps-host-migrate"
           },
           {
             "command": "nx run host:db:sps-crm-migrate"

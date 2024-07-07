@@ -12,6 +12,9 @@ const IsAuthenticatatedWrapper = dynamic(() =>
 const SpsHost = dynamic(() =>
   import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),
 );
+const SpsBroadcast = dynamic(() =>
+  import("@sps/sps-boradcast/frontend/root").then((mod) => mod.AdminComponent),
+);
 const SpsWebsiteAdminComponent = dynamic(() =>
   import("@sps/sps-website-builder/frontend/root").then(
     (mod) => mod.AdminComponent,
@@ -73,6 +76,13 @@ export function Component(props: IComponentPropsExtended) {
                 active={widget === "sps-host"}
               />
               <Button
+                title="sps-broradcast"
+                onClick={() => {
+                  setWidget("sps-broradcast");
+                }}
+                active={widget === "sps-broradcast"}
+              />
+              <Button
                 title="sps-website-builder"
                 onClick={() => {
                   setWidget("sps-website-builder");
@@ -132,6 +142,14 @@ export function Component(props: IComponentPropsExtended) {
             <div className="bg-white rounded-b-lg">
               {widget === "sps-host" ? (
                 <SpsHost
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-broradcast" ? (
+                <SpsBroadcast
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}

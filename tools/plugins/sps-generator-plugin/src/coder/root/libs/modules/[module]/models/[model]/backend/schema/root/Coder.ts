@@ -90,7 +90,8 @@ export class Coder {
     }
 
     const tableImportPath = this.parent.project.table.absoluteName;
-    const relationsImportPath = this.parent.project.relations.absoluteName;
+    const relationsImportPath =
+      this.parent.project.relations.project.root.importPath;
     const moduleBackendSchemaRootDirectory =
       this.parent.parent.parent.parent.parent.project.backend.project.schema
         .project.root.baseDirectory;

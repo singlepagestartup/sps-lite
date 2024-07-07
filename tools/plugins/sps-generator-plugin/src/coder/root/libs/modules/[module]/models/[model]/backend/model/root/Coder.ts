@@ -79,7 +79,8 @@ export class Coder {
     }
 
     const moduleDbImportPath =
-      this.parent.parent.parent.parent.project.backend.project.db.absoluteName;
+      this.parent.parent.parent.parent.project.backend.project.db.project.root
+        .importPath;
     const schemaModuleImportPath =
       this.parent.project.schema.project.root.absoluteName;
 

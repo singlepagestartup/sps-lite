@@ -35,6 +35,9 @@
       "@sps/shared-frontend-client-api": [
         "libs/shared/frontend/client/api/src/index.ts"
       ],
+      "@sps/shared-frontend-client-hooks": [
+        "libs/shared/frontend/client/hooks/src/index.ts"
+      ],
       "@sps/shared-frontend-client-store": [
         "libs/shared/frontend/client/store/src/index.ts"
       ],
@@ -43,9 +46,6 @@
       ],
       "@sps/shared-frontend-components/*": [
         "libs/shared/frontend/components/src/lib/*"
-      ],
-      "@sps/shared-frontend-client-hooks": [
-        "libs/shared/frontend/client/hooks/src/index.ts"
       ],
       "@sps/shared-frontend-server-api": [
         "libs/shared/frontend/server/api/src/index.ts"
@@ -75,6 +75,7 @@
       "@sps/sps-rbac/*": ["libs/modules/sps-rbac/*"],
       "@sps/sps-third-parties/*": ["libs/modules/sps-third-parties/*"],
       "@sps/sps-website-builder/*": ["libs/modules/sps-website-builder/*"],
+      "@sps/sps-boradcast/*": ["libs/modules/sps-boradcast/*"],
       "@sps/startup/*": ["libs/modules/startup/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
