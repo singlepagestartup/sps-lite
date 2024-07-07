@@ -65,6 +65,7 @@
       "@sps/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@sps/sps-backend-utils": ["libs/shared/backend/utils/src/index.ts"],
       "@sps/sps-billing/*": ["libs/modules/sps-billing/*"],
+      "@sps/sps-broadcast/*": ["libs/modules/sps-broadcast/*"],
       "@sps/sps-crm/*": ["libs/modules/sps-crm/*"],
       "@sps/sps-file-storage/*": ["libs/modules/sps-file-storage/*"],
       "@sps/sps-generator-plugin": [
@@ -75,7 +76,6 @@
       "@sps/sps-rbac/*": ["libs/modules/sps-rbac/*"],
       "@sps/sps-third-parties/*": ["libs/modules/sps-third-parties/*"],
       "@sps/sps-website-builder/*": ["libs/modules/sps-website-builder/*"],
-      "@sps/sps-broadcast/*": ["libs/modules/sps-broadcast/*"],
       "@sps/startup/*": ["libs/modules/startup/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
