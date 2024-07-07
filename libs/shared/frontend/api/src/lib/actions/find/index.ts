@@ -36,13 +36,19 @@ export async function action<T>(props: IActionProps): Promise<T[]> {
   if (!res.ok) {
     const error = new Error(res.statusText);
 
-    throw new Error(error.message || "Failed to fetch data");
+    throw new Error(
+      `${error.message} | ${host}${route}` ||
+        `Failed to fetch data ${host}${route}`,
+    );
   }
 
   const json = await res.json();
 
   if (json.error) {
-    throw new Error(json.error.message || "Failed to fetch data");
+    throw new Error(
+      `${json.error.message} | ${host}${route}` ||
+        `Failed to fetch data ${host}${route}`,
+    );
   }
 
   const transformedData = transformResponseItem<T[]>(json);

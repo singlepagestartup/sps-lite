@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
   "installCommand": "npm ci --legacy-peer-deps",
-  "buildCommand": "npx nx run host:db:migrate && npx nx run host:db:seed && npm run host:build",
+  "buildCommand": "sh vercel.sh",
   "outputDirectory": "apps/host/.next"
 }
