@@ -2,6 +2,7 @@ import { Tree, formatFiles } from "@nx/devkit";
 import { RelationGeneratorSchema } from "./schema";
 import { Coder } from "../../coder/Coder";
 import pluralize from "pluralize";
+import { IGeneratorProps as IRelationFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
 
 // npx nx generate @sps/sps-generator-plugin:relation --action=create --left_model_name=page --right_model_name=layout --left_model_is_external=false --right_model_is_external=false --module=sps-host --dry-run
 export async function relationGenerator(
@@ -13,6 +14,34 @@ export async function relationGenerator(
   const rightModelName = pluralize(options.right_model_name);
 
   const name = `${leftModelName}-to-${rightModelName}`;
+
+  const relationAdminVariants: IRelationFrontendComponentVariantGeneratorProps[] =
+    [
+      {
+        name: "default",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-form",
+        name: "admin-form",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-select-input",
+        name: "admin-select-input",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-table",
+        name: "admin-table",
+        level: "sps-lite",
+      },
+      {
+        template: "admin-table-row",
+        name: "admin-table-row",
+        level: "sps-lite",
+      },
+    ];
 
   const coder = new Coder({
     tree,
@@ -62,6 +91,11 @@ export async function relationGenerator(
                 {
                   relation: {
                     name,
+                    frontend: {
+                      component: {
+                        variants: relationAdminVariants,
+                      },
+                    },
                   },
                 },
               ],
