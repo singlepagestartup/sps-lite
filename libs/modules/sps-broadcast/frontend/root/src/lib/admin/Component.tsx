@@ -6,12 +6,21 @@ const Channel = dynamic(() =>
     (mod) => mod.Component,
   ),
 );
+const Message = dynamic(() =>
+  import("@sps/sps-broadcast/models/message/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
+);
 
 export function Component(props: IComponentProps) {
   const models = [
     {
       name: "channel",
       Comp: Channel,
+    },
+    {
+      name: "message",
+      Comp: Message,
     },
   ];
 

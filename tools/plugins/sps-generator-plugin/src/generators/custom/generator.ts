@@ -19,10 +19,10 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const moduleName = "sps-rbac";
-  const leftModelName = "session";
-  const rightModelName = "authentication";
-  const relationName = "sessions-to-authentications";
+  const moduleName = "sps-broadcast";
+  const leftModelName = "channel";
+  const rightModelName = "message";
+  const relationName = "channels-to-messages";
 
   const modelAdminVariants: IModelFrontendComponentVariantGeneratorProps[] = [
     // {
@@ -173,13 +173,13 @@ export async function customGenerator(
   //   }
   // }
 
-  const leftModelComponentVariants =
+  const rightModelComponentVariants =
     coder.project.root.project.libs.project.modules[0].project.module.project
       .models[1].project.model.project.frontend.project.component.project
       .variants;
 
-  if (leftModelComponentVariants) {
-    for (const variant of leftModelComponentVariants) {
+  if (rightModelComponentVariants) {
+    for (const variant of rightModelComponentVariants) {
       await variant.create();
     }
   }
