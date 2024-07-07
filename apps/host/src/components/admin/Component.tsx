@@ -13,7 +13,7 @@ const SpsHost = dynamic(() =>
   import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsBroadcast = dynamic(() =>
-  import("@sps/sps-boradcast/frontend/root").then((mod) => mod.AdminComponent),
+  import("@sps/sps-broadcast/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsWebsiteAdminComponent = dynamic(() =>
   import("@sps/sps-website-builder/frontend/root").then(

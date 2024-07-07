@@ -7,7 +7,7 @@ import { app as spsFileStorageApp } from "@sps/sps-file-storage/backend/app/root
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
 import { app as startupApp } from "@sps/startup/backend/app/root";
 import { app as spsBilling } from "@sps/sps-billing/backend/app/root";
-import { app as spsBroadcast } from "@sps/sps-boradcast/backend/app/root";
+import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/root";
 import { app as spsCrm } from "@sps/sps-crm/backend/app/root";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
 import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
@@ -31,7 +31,7 @@ middlewaresChain(app);
 setRoutes(app as any);
 
 app.route("/sps-host", spsHostApp as any);
-app.route("/sps-boradcast", spsBroadcast as any);
+app.route("/sps-broadcast", spsBroadcast as any);
 app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
 app.route("/sps-file-storage", spsFileStorageApp as any);
 app.route("/sps-rbac", spsRbacApp as any);

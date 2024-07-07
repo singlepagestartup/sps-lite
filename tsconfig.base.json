@@ -75,7 +75,7 @@
       "@sps/sps-rbac/*": ["libs/modules/sps-rbac/*"],
       "@sps/sps-third-parties/*": ["libs/modules/sps-third-parties/*"],
       "@sps/sps-website-builder/*": ["libs/modules/sps-website-builder/*"],
-      "@sps/sps-boradcast/*": ["libs/modules/sps-boradcast/*"],
+      "@sps/sps-broadcast/*": ["libs/modules/sps-broadcast/*"],
       "@sps/startup/*": ["libs/modules/startup/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
