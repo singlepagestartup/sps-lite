@@ -1,15 +1,13 @@
-import { actions } from "@sps/shared-frontend-server-api";
+import { factory } from "@sps/shared-frontend-server-api";
 import {
   host,
   route,
   IRelationExtended,
-  query,
   options,
 } from "<%= api_model_import_path %>";
 
 export const api = factory<IRelationExtended>({
   route,
   host,
-  query,
   options,
 });
