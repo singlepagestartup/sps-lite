@@ -1,0 +1,19 @@
+"use client";
+
+import {
+  IRelationExtended,
+  route,
+  host,
+  query,
+  options,
+} from "<%= api_model_import_path %>";
+import { factory, queryClient } from "@sps/shared-frontend-client-api";
+export { Provider, queryClient } from "@sps/shared-frontend-client-api";
+
+export const api = factory<IModelExtended>({
+  queryClient,
+  route,
+  host,
+  params: query,
+  options,
+});
