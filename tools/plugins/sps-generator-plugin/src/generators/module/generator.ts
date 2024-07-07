@@ -34,11 +34,6 @@ export async function moduleGenerator(
                             level: "sps-lite",
                           },
                           {
-                            template: "admin-form-inputs",
-                            name: "admin-form-inputs",
-                            level: "sps-lite",
-                          },
-                          {
                             template: "admin-select-input",
                             name: "admin-select-input",
                             level: "sps-lite",
