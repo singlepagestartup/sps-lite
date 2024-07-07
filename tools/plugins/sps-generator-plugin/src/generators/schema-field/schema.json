@@ -53,12 +53,14 @@
         "default": "sps-website-builder",
         "items": [
           { "value": "sps-billing" },
+          { "value": "sps-broadcast" },
           { "value": "sps-crm" },
           { "value": "sps-file-storage" },
+          { "value": "sps-host" },
           { "value": "sps-notification" },
           { "value": "sps-rbac" },
-          { "value": "sps-website-builder" },
           { "value": "sps-third-parties" },
+          { "value": "sps-website-builder" },
           { "value": "startup" }
         ]
       }
