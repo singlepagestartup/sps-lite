@@ -110,7 +110,7 @@ export class Coder {
 
     const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
 
-    generateFiles(this.tree, `${__dirname}/files`, this.baseName, {
+    generateFiles(this.tree, `${__dirname}/files`, this.baseDirectory, {
       template: "",
       lib_name: this.baseName,
       offset_from_root: offsetFromRootProject,
