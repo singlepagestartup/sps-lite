@@ -1,0 +1,4 @@
+{
+  "include": ["**/*.ts", "**/*.tsx"],
+  "extends": "<%= offset_from_root %>/tsconfig.base.json"
+}

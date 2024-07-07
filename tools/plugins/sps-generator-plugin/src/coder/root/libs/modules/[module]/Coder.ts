@@ -1,4 +1,4 @@
-import { Tree } from "@nx/devkit";
+import { generateFiles, offsetFromRoot, Tree } from "@nx/devkit";
 import {
   Coder as ModelsCoder,
   IGeneratorProps as IModelsCoderGeneratorProps,
@@ -107,6 +107,15 @@ export class Coder {
     for (const relation of this.project.relations) {
       await relation.create();
     }
+
+    const offsetFromRootProject = offsetFromRoot(this.baseDirectory);
+
+    generateFiles(this.tree, `${__dirname}/files`, this.baseName, {
+      template: "",
+      lib_name: this.baseName,
+      offset_from_root: offsetFromRootProject,
+      directory: this.baseDirectory,
+    });
   }
 
   async migrate(props: { version: string }) {

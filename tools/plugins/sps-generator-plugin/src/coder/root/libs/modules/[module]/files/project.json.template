@@ -1,0 +1,11 @@
+{
+  "name": "<%= lib_name %>",
+  "$schema": "<%= offset_from_root %>/node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "<%= directory %>",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {},
+    "tsc:build": {}
+  }
+}
