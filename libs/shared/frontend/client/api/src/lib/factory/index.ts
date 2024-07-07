@@ -31,38 +31,41 @@ import {
   useQuery,
   UseQueryOptions,
 } from "@tanstack/react-query";
-import { globalActionsStore } from "@sps/shared-frontend-client-store";
+import {
+  globalActionsStore,
+  TRevalidationQueueItem,
+} from "@sps/shared-frontend-client-store";
 import { STALE_TIME } from "@sps/shared-utils";
 import { createId } from "@paralleldrive/cuid2";
 import QueryString from "qs";
 
-export interface IFactoryProps {
+export interface IFactoryProps<T> {
   route: string;
   host: string;
   queryClient: QueryClient;
   staleTime?: number;
   params?:
-    | IFindByIdQueryProps["params"]
-    | IFindQueryProps["params"]
-    | IUpdateMutationProps["params"]
-    | ICreateMutationProps["params"]
-    | IDeleteMutationProps["params"];
+    | IFindByIdQueryProps<T>["params"]
+    | IFindQueryProps<T>["params"]
+    | IUpdateMutationProps<T>["params"]
+    | ICreateMutationProps<T>["params"]
+    | IDeleteMutationProps<T>["params"];
   options?:
-    | IFindByIdQueryProps["options"]
-    | IFindQueryProps["options"]
-    | IUpdateMutationProps["options"]
-    | ICreateMutationProps["options"]
-    | IDeleteMutationProps["options"];
+    | IFindByIdQueryProps<T>["options"]
+    | IFindQueryProps<T>["options"]
+    | IUpdateMutationProps<T>["options"]
+    | ICreateMutationProps<T>["options"]
+    | IDeleteMutationProps<T>["options"];
 }
 
 type SetRequestId = (requestId: string) => void;
 
-export function factory<T>(factoryProps: IFactoryProps) {
+export function factory<T>(factoryProps: IFactoryProps<T>) {
   const api = {
     findById: (props: {
-      id?: IFindByIdQueryProps["id"];
-      params?: IFindByIdQueryProps["params"];
-      options?: IFindByIdQueryProps["options"];
+      id?: IFindByIdQueryProps<T>["id"];
+      params?: IFindByIdQueryProps<T>["params"];
+      options?: IFindByIdQueryProps<T>["options"];
     }) => {
       return useQuery<T>({
         queryKey: props.id
@@ -76,18 +79,20 @@ export function factory<T>(factoryProps: IFactoryProps) {
             ]
           : [],
         queryFn: props.id
-          ? findByIdQuery({ ...factoryProps, id: props.id, ...props })
+          ? findByIdQuery({
+              ...factoryProps,
+              id: props.id,
+              cb: (data) => {
+                addToGlobalStore({
+                  name: factoryProps.route,
+                  type: "findById",
+                  payload: data,
+                  options: {},
+                });
+              },
+              ...props,
+            })
           : undefined,
-        select(data) {
-          addToGlobalStore({
-            name: factoryProps.route,
-            type: "findById",
-            payload: data,
-            options: this,
-          });
-
-          return data;
-        },
         enabled: props.id ? true : false,
         staleTime:
           factoryProps.staleTime !== undefined
@@ -96,8 +101,8 @@ export function factory<T>(factoryProps: IFactoryProps) {
       });
     },
     find: (props?: {
-      params?: IFindQueryProps["params"];
-      options?: IFindQueryProps["options"];
+      params?: IFindQueryProps<T>["params"];
+      options?: IFindQueryProps<T>["options"];
     }) => {
       return useQuery<T[]>({
         queryKey: [
@@ -108,17 +113,18 @@ export function factory<T>(factoryProps: IFactoryProps) {
               })
             : undefined,
         ],
-        queryFn: findQuery({ ...factoryProps, ...props }),
-        select(data) {
-          addToGlobalStore({
-            name: factoryProps.route,
-            type: "find",
-            payload: data,
-            options: this,
-          });
-
-          return data;
-        },
+        queryFn: findQuery({
+          ...factoryProps,
+          cb: (data) => {
+            addToGlobalStore({
+              name: factoryProps.route,
+              type: "find",
+              payload: data,
+              options: {},
+            });
+          },
+          ...props,
+        }),
         staleTime:
           factoryProps.staleTime !== undefined
             ? factoryProps.staleTime
@@ -126,8 +132,8 @@ export function factory<T>(factoryProps: IFactoryProps) {
       });
     },
     create: (props?: {
-      params?: ICreateMutationProps["params"];
-      options?: ICreateMutationProps["options"];
+      params?: ICreateMutationProps<T>["params"];
+      options?: ICreateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
     }) => {
       return useMutation<T, DefaultError, ICreateMutationFunctionProps>({
@@ -135,26 +141,24 @@ export function factory<T>(factoryProps: IFactoryProps) {
         mutationFn: (mutationFunctionProps: ICreateMutationFunctionProps) => {
           return createMutation<T>({
             ...factoryProps,
+            cb: (data) => {
+              addToGlobalStore({
+                name: factoryProps.route,
+                type: "create",
+                payload: data,
+                options: {},
+                setRequestId: props?.setRequestId,
+              });
+            },
             ...props,
           })(mutationFunctionProps);
-        },
-        onSuccess(data) {
-          addToGlobalStore({
-            name: factoryProps.route,
-            type: "create",
-            payload: data,
-            options: this,
-            setRequestId: props?.setRequestId,
-          });
-
-          return data;
         },
       });
     },
     update: (props?: {
-      id?: IUpdateMutationProps["id"];
-      params?: IUpdateMutationProps["params"];
-      options?: IUpdateMutationProps["options"];
+      id?: IUpdateMutationProps<T>["id"];
+      params?: IUpdateMutationProps<T>["params"];
+      options?: IUpdateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
     }) => {
       return useMutation<T, DefaultError, IUpdateMutationFunctionProps>({
@@ -164,26 +168,27 @@ export function factory<T>(factoryProps: IFactoryProps) {
         mutationFn: (mutationFunctionProps: IUpdateMutationFunctionProps) => {
           return updateMutation<T>({
             ...factoryProps,
+            cb: (data) => {
+              addToGlobalStore({
+                name: factoryProps.route,
+                type: "update",
+                payload: data,
+                options: {},
+                setRequestId: props?.setRequestId,
+              });
+            },
             ...props,
           })(mutationFunctionProps);
         },
         onSuccess(data) {
-          addToGlobalStore({
-            name: factoryProps.route,
-            type: "update",
-            payload: data,
-            options: this,
-            setRequestId: props?.setRequestId,
-          });
-
           return data;
         },
       });
     },
     delete: (props?: {
-      id?: IDeleteMutationProps["id"];
-      params?: IDeleteMutationProps["params"];
-      options?: IDeleteMutationProps["options"];
+      id?: IDeleteMutationProps<T>["id"];
+      params?: IDeleteMutationProps<T>["params"];
+      options?: IDeleteMutationProps<T>["options"];
     }) => {
       return useMutation<T, DefaultError, IDeleteMutationFunctionProps>({
         mutationKey: props?.id
@@ -192,22 +197,52 @@ export function factory<T>(factoryProps: IFactoryProps) {
         mutationFn: (mutationFunctionProps: IDeleteMutationFunctionProps) => {
           return deleteMutation<T>({
             ...factoryProps,
+            cb: (data) => {
+              addToGlobalStore({
+                name: factoryProps.route,
+                type: "delete",
+                payload: data,
+                options: {},
+              });
+            },
             ...props,
           })(mutationFunctionProps);
-        },
-        onSuccess(data) {
-          addToGlobalStore({
-            name: factoryProps.route,
-            type: "delete",
-            payload: data,
-            options: this,
-          });
-
-          return data;
         },
       });
     },
   };
+
+  function subscription() {
+    const triggeredActions: TRevalidationQueueItem[] = [];
+
+    globalActionsStore.subscribe((state) => {
+      const revalidationQueue = state.revalidationQueue;
+
+      revalidationQueue.forEach((revalidationItem) => {
+        const isTriggered = triggeredActions.some((triggeredAction) => {
+          return (
+            JSON.stringify(triggeredAction) === JSON.stringify(revalidationItem)
+          );
+        });
+
+        if (!isTriggered) {
+          triggeredActions.push(revalidationItem);
+
+          if (
+            revalidationItem.tags.some((tag) =>
+              tag.includes(factoryProps.route),
+            )
+          ) {
+            factoryProps.queryClient.invalidateQueries({
+              queryKey: revalidationItem.tags,
+            });
+          }
+        }
+      });
+    });
+  }
+
+  subscription();
 
   return api;
 }
@@ -226,14 +261,14 @@ function addToGlobalStore(props: {
   const state = globalActionsStore.getState();
 
   if (!state.stores[props.name]) {
-    globalActionsStore.getState().addStore({ name: props.name, actions: [] });
+    state.addStore({ name: props.name, actions: [] });
   }
 
   if (props.setRequestId) {
     props.setRequestId(requestId);
   }
 
-  globalActionsStore.getState().addAction({
+  state.addAction({
     type: props.type,
     module: props.name,
     meta: props.options,

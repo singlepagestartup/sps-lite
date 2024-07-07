@@ -2,11 +2,12 @@
 
 import { actions, ICreateActionProps } from "@sps/shared-frontend-api";
 
-export interface IMutationProps {
+export interface IMutationProps<T> {
   options?: ICreateActionProps["options"];
   params?: ICreateActionProps["params"];
   host: string;
   route: string;
+  cb?: (data: T) => void;
 }
 
 export interface IMutationFunctionProps {
@@ -16,7 +17,7 @@ export interface IMutationFunctionProps {
 }
 
 export function mutation<T>(
-  props: IMutationProps,
+  props: IMutationProps<T>,
 ): (mutationFunctionProps: IMutationFunctionProps) => Promise<T> {
   return async (mutationFunctionProps: IMutationFunctionProps) => {
     const res = await actions.create<T>({
@@ -26,6 +27,10 @@ export function mutation<T>(
       options: mutationFunctionProps.options || props.options,
       data: mutationFunctionProps.data,
     });
+
+    if (props.cb) {
+      props.cb(res);
+    }
 
     return res;
   };

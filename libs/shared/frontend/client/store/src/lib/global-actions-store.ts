@@ -43,6 +43,11 @@ export interface ActionsStore {
   actions: Action[];
 }
 
+export type TRevalidationQueueItem = {
+  tags: string[];
+  timestamp: number;
+};
+
 export interface State {
   stores: {
     [key in string]: ActionsStore;
@@ -50,6 +55,7 @@ export interface State {
   revalidatePromises: {
     [key in string]: string[];
   };
+  revalidationQueue: TRevalidationQueueItem[];
 }
 
 export interface Actions {
@@ -59,12 +65,14 @@ export interface Actions {
   removeRevalidatePromise: (promise: string) => void;
   revalidatePromisesSusscess: () => boolean;
   getActionsFromStoreByName: (name: string) => ActionsStore["actions"];
+  addRevalidationQueueItem: (revalidationItem: TRevalidationQueueItem) => void;
   reset: () => void;
 }
 
 const initialState: State = {
   stores: {},
   revalidatePromises: {},
+  revalidationQueue: [],
 };
 
 const name = "global-actions-store";
@@ -87,7 +95,7 @@ export const globalActionsStore = create<State & Actions>()(
           },
           addStore: (store: ActionsStore) => {
             set((state: State) => {
-              state["stores"][store.name] = store;
+              state.stores[store.name] = store;
             });
           },
           getActionsFromStoreByName: (name: string) => {
@@ -100,16 +108,28 @@ export const globalActionsStore = create<State & Actions>()(
           },
           addAction: (action: Action) => {
             set((state: State) => {
-              state.stores[action.module] = {
-                ...state.stores[action.module],
-                actions: [
-                  ...state.stores[action.module].actions.slice(-2),
-                  action,
-                ],
-              };
+              if (!state.stores[action.module]) {
+                state.stores[action.module] = {
+                  name: action.module,
+                  actions: [],
+                };
+              }
+
+              state.stores[action.module].actions.push(action);
+              // = [
+              //   ...state.stores[action.module].actions.slice(-2),
+              //   action,
+              // ];
             });
 
             window.dispatchEvent(new StorageEvent("storage", { key: name }));
+          },
+          addRevalidationQueueItem: (
+            revalidationItem: TRevalidationQueueItem,
+          ) => {
+            set((state: State) => {
+              state.revalidationQueue.push(revalidationItem);
+            });
           },
           reset: () => {
             set(initialState);

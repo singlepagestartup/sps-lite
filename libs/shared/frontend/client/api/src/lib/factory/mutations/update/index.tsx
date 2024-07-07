@@ -2,12 +2,13 @@
 
 import { actions, IUpdateActionProps } from "@sps/shared-frontend-api";
 
-export interface IMutationProps {
+export interface IMutationProps<T> {
   host: string;
   route: string;
   id?: IUpdateActionProps["id"];
   options?: IUpdateActionProps["options"];
   params?: IUpdateActionProps["params"];
+  cb?: (data: T) => void;
 }
 
 export interface IMutationFunctionProps {
@@ -18,7 +19,7 @@ export interface IMutationFunctionProps {
 }
 
 export function mutation<T>(
-  props: IMutationProps,
+  props: IMutationProps<T>,
 ): (mutationFunctionProps: IMutationFunctionProps) => Promise<T> {
   return async (mutationFunctionProps: IMutationFunctionProps) => {
     const id = mutationFunctionProps.id || props.id;
@@ -35,6 +36,10 @@ export function mutation<T>(
       options: mutationFunctionProps.options || props.options,
       data: mutationFunctionProps.data,
     });
+
+    if (props.cb) {
+      props.cb(res);
+    }
 
     return res;
   };
