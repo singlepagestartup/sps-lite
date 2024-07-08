@@ -1,10 +1,10 @@
 {
-  "id": "3e6ff685-474c-4df3-baf1-5cd13c3b2912",
+  "id": "11f4acec-9aa4-44fd-ad70-e5f8769ea749",
   "variant": "default",
   "orderIndex": 0,
   "className": null,
   "subjectId": "458fa7b1-2bce-4577-96cd-d819af633c69",
-  "sessionId": "8fbc56a5-766a-444b-a205-536f593663ae",
+  "sessionId": "14f21461-e0f2-4126-83ca-10db931c9f8d",
   "subject": {
     "id": "458fa7b1-2bce-4577-96cd-d819af633c69",
     "createdAt": "2024-06-14T02:17:36.587Z",
@@ -12,11 +12,11 @@
     "variant": "default"
   },
   "session": {
-    "id": "8fbc56a5-766a-444b-a205-536f593663ae",
-    "createdAt": "2024-06-29T20:23:55.950Z",
-    "updatedAt": "2024-06-29T20:23:55.950Z",
+    "id": "14f21461-e0f2-4126-83ca-10db931c9f8d",
+    "createdAt": "2024-07-07T22:19:27.952Z",
+    "updatedAt": "2024-07-07T22:19:27.952Z",
     "variant": "default",
-    "expiresAt": "2024-06-30T01:28:15.720Z",
+    "expiresAt": "2024-07-08T02:01:07.119Z",
     "options": "{}"
   }
 }

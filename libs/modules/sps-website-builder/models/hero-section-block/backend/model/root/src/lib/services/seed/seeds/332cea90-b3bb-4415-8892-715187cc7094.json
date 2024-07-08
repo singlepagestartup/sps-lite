@@ -1,0 +1,23 @@
+{
+  "title": "New hsb",
+  "subtitle": "",
+  "description": "",
+  "anchor": "",
+  "className": "",
+  "id": "332cea90-b3bb-4415-8892-715187cc7094",
+  "createdAt": "2024-07-02T19:52:57.901Z",
+  "updatedAt": "2024-07-02T19:52:57.901Z",
+  "variant": "default",
+  "heroSectionBlocksToSpsFileStorageWidgets": [],
+  "heroSectionBlocksToButtonsArrays": [
+    {
+      "id": "0dc10adb-121c-408c-9b04-511177a2442b",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "heroSectionBlockId": "332cea90-b3bb-4415-8892-715187cc7094",
+      "buttonsArrayId": "236c1d00-1001-4454-8013-13ba98afd81f"
+    }
+  ],
+  "widgetsToHeroSectionBlocks": []
+}

@@ -1,4 +1,5 @@
 import { ModuleSeeder as SpsHostModuleSeeder } from "@sps/sps-host/backend/app/root";
+import { ModuleSeeder as SpsBroadcastModuleSeeder } from "@sps/sps-broadcast/backend/app/root";
 import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
 import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
 import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
@@ -12,6 +13,11 @@ import { exit } from "process";
   const seedConfig = {};
 
   const spsHostModuleSeeder = new SpsHostModuleSeeder({
+    seedResults,
+    seedConfig,
+  });
+
+  const spsBroadcastModuleSeeder = new SpsBroadcastModuleSeeder({
     seedResults,
     seedConfig,
   });
@@ -39,6 +45,9 @@ import { exit } from "process";
   if (spsHostModuleSeeder.config.seed || seedAll) {
     await spsHostModuleSeeder.seedModels();
   }
+  if (spsBroadcastModuleSeeder.config.seed || seedAll) {
+    await spsBroadcastModuleSeeder.seedModels();
+  }
   if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
     await spsWebsiteBuilderModuleSeeder.seedModels();
   }
@@ -54,6 +63,9 @@ import { exit } from "process";
 
   if (spsHostModuleSeeder.config.seed || seedAll) {
     await spsHostModuleSeeder.seedRelations();
+  }
+  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
+    await spsWebsiteBuilderModuleSeeder.seedRelations();
   }
   if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
     await spsWebsiteBuilderModuleSeeder.seedRelations();

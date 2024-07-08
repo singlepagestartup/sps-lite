@@ -1,0 +1,26 @@
+{
+  "id": "664faa96-f9ee-4c2c-a3e3-1b125420aa11",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "buttonsArrayId": "3dcf9b2a-70a4-47bd-8b5e-8dc5a7caae55",
+  "buttonId": "492d0d25-ac02-4a4a-b57c-af73fbd579d8",
+  "buttonsArray": {
+    "id": "3dcf9b2a-70a4-47bd-8b5e-8dc5a7caae55",
+    "createdAt": "2024-05-25T20:41:06.349Z",
+    "updatedAt": "2024-05-25T20:41:06.349Z",
+    "variant": "default",
+    "title": "Additional navbar buttons",
+    "className": "",
+    "description": ""
+  },
+  "button": {
+    "title": "Logout",
+    "url": "/logout",
+    "className": "",
+    "id": "492d0d25-ac02-4a4a-b57c-af73fbd579d8",
+    "createdAt": "2024-06-01T09:28:32.266Z",
+    "updatedAt": "2024-06-01T09:28:32.266Z",
+    "variant": "ghost"
+  }
+}

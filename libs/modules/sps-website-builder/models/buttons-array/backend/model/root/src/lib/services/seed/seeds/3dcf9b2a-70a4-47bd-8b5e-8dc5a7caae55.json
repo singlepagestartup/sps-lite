@@ -15,6 +15,14 @@
       "className": null,
       "buttonsArrayId": "3dcf9b2a-70a4-47bd-8b5e-8dc5a7caae55",
       "buttonId": "64778d10-f1dd-4158-9028-2074b813b76b"
+    },
+    {
+      "id": "664faa96-f9ee-4c2c-a3e3-1b125420aa11",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": "",
+      "buttonsArrayId": "3dcf9b2a-70a4-47bd-8b5e-8dc5a7caae55",
+      "buttonId": "492d0d25-ac02-4a4a-b57c-af73fbd579d8"
     }
   ]
 }

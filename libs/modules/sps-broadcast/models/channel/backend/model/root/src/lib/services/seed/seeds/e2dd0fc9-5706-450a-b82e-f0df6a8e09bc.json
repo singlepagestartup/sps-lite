@@ -1,0 +1,18 @@
+{
+  "id": "e2dd0fc9-5706-450a-b82e-f0df6a8e09bc",
+  "createdAt": "2024-07-07T21:31:51.431Z",
+  "updatedAt": "2024-07-07T21:31:51.431Z",
+  "variant": "default",
+  "title": "revalidation",
+  "channelsToMessages": [
+    {
+      "id": "775e9e78-964d-4cc9-a388-2791f56bea95",
+      "variant": "default",
+      "orderIndex": 0,
+      "className": null,
+      "channelId": "e2dd0fc9-5706-450a-b82e-f0df6a8e09bc",
+      "messageId": "52f35fce-c0ff-4c8d-bc2d-23c26511136c",
+      "createdAt": "2024-07-08T01:26:14.346Z"
+    }
+  ]
+}

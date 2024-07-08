@@ -4,7 +4,7 @@
   "orderIndex": 0,
   "className": null,
   "buttonsArrayId": "01997a02-d7eb-4ae6-b7eb-9ac6ce79b5be",
-  "buttonId": "90f93fb8-029b-4ef3-b312-10c05eafa266",
+  "buttonId": "64778d10-f1dd-4158-9028-2074b813b76b",
   "buttonsArray": {
     "id": "01997a02-d7eb-4ae6-b7eb-9ac6ce79b5be",
     "createdAt": "2024-05-25T20:07:20.168Z",
@@ -15,12 +15,12 @@
     "description": ""
   },
   "button": {
-    "title": "Privacy policy",
-    "url": "/privacy-policy",
+    "title": "GitHub",
+    "url": "https://github.com/singlepagestartup/sps-lite",
     "className": "",
-    "id": "90f93fb8-029b-4ef3-b312-10c05eafa266",
-    "createdAt": "2024-05-25T20:07:09.068Z",
-    "updatedAt": "2024-05-25T20:07:09.068Z",
-    "variant": "link"
+    "id": "64778d10-f1dd-4158-9028-2074b813b76b",
+    "createdAt": "2024-05-25T20:40:30.077Z",
+    "updatedAt": "2024-05-25T20:40:30.077Z",
+    "variant": "primary"
   }
 }
