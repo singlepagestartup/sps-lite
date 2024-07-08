@@ -1,4 +1,4 @@
-import { service as createEntity } from "../../../../../../../../message/backend/model/root/src/lib/services/create";
+import { model as messageModel } from "@sps/sps-broadcast/models/message/backend/model/root";
 import { model as channelModel } from "@sps/sps-broadcast/models/channel/backend/model/root";
 import { model as channelsToMessagesModel } from "@sps/sps-broadcast/relations/channels-to-messages/backend/model/root";
 
@@ -10,7 +10,7 @@ export async function service(props: {
 }) {
   const { data } = props;
 
-  const [channel] = await channelModel.services.find({
+  let [channel] = await channelModel.services.find({
     params: {
       filters: {
         and: [
@@ -25,10 +25,28 @@ export async function service(props: {
   });
 
   if (!channel) {
-    throw new Error("Channel not found");
+    await channelModel.services.create({
+      data: {
+        title: data.channelName,
+      },
+    });
+
+    [channel] = await channelModel.services.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "title",
+              method: "eq",
+              value: data.channelName,
+            },
+          ],
+        },
+      },
+    });
   }
 
-  const entity = await createEntity({
+  const entity = await messageModel.services.create({
     data: {
       payload: data.payload,
     },
