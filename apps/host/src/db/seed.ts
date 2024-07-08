@@ -64,8 +64,8 @@ import { exit } from "process";
   if (spsHostModuleSeeder.config.seed || seedAll) {
     await spsHostModuleSeeder.seedRelations();
   }
-  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-    await spsWebsiteBuilderModuleSeeder.seedRelations();
+  if (spsBroadcastModuleSeeder.config.seed || seedAll) {
+    await spsBroadcastModuleSeeder.seedRelations();
   }
   if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
     await spsWebsiteBuilderModuleSeeder.seedRelations();
