@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 export const dynamic =
   process.env.NEW_MIGRATIONS === "true" || process.env.DYNAMIC === "true"
     ? "force-dynamic"
-    : "auto";
+    : "force-static";
 
 export async function generateMetadata(props: any) {
   return metadataApi.generate({ catchError: true, ...props });
