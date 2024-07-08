@@ -25,7 +25,7 @@ export default async function RootLayout({
             hostUrl="/"
             variant="set-session-wrapper"
           >
-            {/* <SpsBroadcast hostUrl="/" isServer={true} /> */}
+            <SpsBroadcast hostUrl="/" isServer={true} />
             <Admin hostUrl="/" isServer={true} />
             <div className="relative">
               {children}

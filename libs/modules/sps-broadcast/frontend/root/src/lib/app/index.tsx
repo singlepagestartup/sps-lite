@@ -27,6 +27,10 @@ export function App(props: IComponentProps) {
         }}
       >
         {({ data: channels }) => {
+          if (!channels) {
+            return;
+          }
+
           return channels.map((channel, index) => {
             return (
               <Channel
