@@ -2,13 +2,12 @@ import { api as spsHostPageApi } from "@sps/sps-host/models/page/frontend/api/se
 import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
 import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
 
-console.log(`🚀 ~ process.env:`, process.env);
-console.log(`🚀 ~ process.env ~ NEW_MIGRATIONS:`, process.env.NEW_MIGRATIONS);
-
 export const revalidate = 3600;
 export const dynamicParams = true;
 export const dynamic =
-  process.env.NEW_MIGRATIONS === "true" ? "force-dynamic" : "auto";
+  process.env.NEW_MIGRATIONS === "true" || process.env.DYNAMIC === "true"
+    ? "force-dynamic"
+    : "auto";
 export const runtime = "nodejs";
 
 export async function generateStaticParams() {
