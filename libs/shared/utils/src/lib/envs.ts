@@ -10,6 +10,7 @@ export const SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS =
   process.env["SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS"] || "3600";
 export const SPS_RBAC_COOKIE_SESSION_NAME =
   process.env["SPS_RBAC_COOKIE_SESSION_NAME"] || "sps_rbac_ce_sn";
+export const SPS_RBAC_SECRET_KEY = process.env["SPS_RBAC_SECRET_KEY"];
 
 export const DATABASE_HOST = `${process.env["DATABASE_HOST"] || process.env["POSTGRES_HOST"] || "localhost"}`;
 
@@ -70,6 +71,6 @@ export const MIDDLEWARE_LOGGER = process.env["MIDDLEWARE_LOGGER"];
 export const MIDDLEWARE_HTTP_CACHE = process.env["MIDDLEWARE_HTTP_CACHE"];
 
 export const STALE_TIME =
-  Number(process.env["NEXT_PUBLIC_STALE_TIME"]) || 60 * 1000;
+  Number(process.env["NEXT_PUBLIC_STALE_TIME"]) || 5 * 1000;
 
 export const REVALIDATE = Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || 0;

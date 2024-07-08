@@ -127,6 +127,18 @@ export const globalActionsStore = create<State & Actions>()(
           addRevalidationQueueItem: (
             revalidationItem: TRevalidationQueueItem,
           ) => {
+            const exists = get().revalidationQueue.find(
+              (item: TRevalidationQueueItem) => {
+                return (
+                  JSON.stringify(item) === JSON.stringify(revalidationItem)
+                );
+              },
+            );
+
+            if (exists) {
+              return;
+            }
+
             set((state: State) => {
               state.revalidationQueue.push(revalidationItem);
             });

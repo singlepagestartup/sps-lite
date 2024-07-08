@@ -5,7 +5,7 @@ import {
   IModelExtended,
   query,
   options,
-} from "@sps/sps-crm/models/widget/frontend/api/model";
+} from "@sps/sps-broadcast/models/channel/frontend/api/model";
 
 export const api = factory<IModelExtended>({
   route,

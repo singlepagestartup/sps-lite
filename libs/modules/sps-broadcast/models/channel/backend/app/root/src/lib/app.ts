@@ -16,6 +16,10 @@ app.post("/", async (c, next) => {
   return handlers.create(c, next);
 });
 
+app.post("/push-message", async (c, next) => {
+  return handlers.pushMessage(c, next);
+});
+
 app.patch("/:uuid", async (c, next) => {
   return handlers.update(c, next);
 });

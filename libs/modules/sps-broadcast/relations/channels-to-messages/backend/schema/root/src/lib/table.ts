@@ -21,11 +21,11 @@ export const Table = pgTable(table, {
     .uuid("cl_id")
     .notNull()
     .references(() => Channel.id, { onDelete: "cascade" }),
-
   messageId: pgCore
     .uuid("me_id")
     .notNull()
     .references(() => Message.id, { onDelete: "cascade" }),
+  createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
 });
 
 export const insertSchema = createInsertSchema(Table);

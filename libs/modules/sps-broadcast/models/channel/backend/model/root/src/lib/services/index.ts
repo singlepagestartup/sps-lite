@@ -5,6 +5,7 @@ import { service as findByIdEntity } from "./find-by-id";
 import { service as updateEntity } from "./update";
 import { service as seedEntities } from "./seed";
 import { service as dumpEntities } from "./dump";
+import { service as pushMessage } from "./push-message";
 
 export const services = {
   create: createEntity,
@@ -14,4 +15,5 @@ export const services = {
   update: updateEntity,
   seed: seedEntities,
   dump: dumpEntities,
+  pushMessage,
 };

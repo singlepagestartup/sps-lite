@@ -1,0 +1,1 @@
+ALTER TABLE "sps_b_cs_to_ms_34z" ADD COLUMN "created_at" timestamp DEFAULT now() NOT NULL;

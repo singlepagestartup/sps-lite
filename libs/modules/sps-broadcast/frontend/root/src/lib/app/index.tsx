@@ -4,15 +4,42 @@ import { cn } from "@sps/shared-frontend-utils-client";
 
 export function App(props: IComponentProps) {
   return (
-    <div data-module="startup" className={cn("w-full flex", props.className)}>
+    <div
+      data-module="sps-broadcast"
+      className={cn("w-full flex", props.className)}
+    >
       <Channel
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant="default"
-        data={{
-          id: props.widgetId,
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "title",
+                  method: "eq",
+                  value: "revalidation",
+                },
+              ],
+            },
+          },
         }}
-      />
+      >
+        {({ data: channels }) => {
+          return channels.map((channel, index) => {
+            return (
+              <Channel
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="subscription"
+                data={channel}
+              />
+            );
+          });
+        }}
+      </Channel>
     </div>
   );
 }
