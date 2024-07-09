@@ -1,7 +1,7 @@
 import {
   actions,
   IFindByIdActionProps,
-  IFindActionsProps,
+  IFindActionProps,
   IUpdateActionProps,
   ICreateActionProps,
   IDeleteActionProps,
@@ -12,13 +12,13 @@ export interface IFactoryProps {
   host: string;
   params?:
     | IFindByIdActionProps["params"]
-    | IFindActionsProps["params"]
+    | IFindActionProps["params"]
     | IUpdateActionProps["params"]
     | ICreateActionProps["params"]
     | IDeleteActionProps["params"];
   options?:
     | IFindByIdActionProps["options"]
-    | IFindActionsProps["options"]
+    | IFindActionProps["options"]
     | IUpdateActionProps["options"]
     | ICreateActionProps["options"]
     | IDeleteActionProps["options"];
@@ -38,7 +38,7 @@ export function factory<T>(params: IFactoryProps) {
       });
     },
     find: async (
-      props?: Omit<IFindActionsProps, "model" | "route" | "host">,
+      props?: Omit<IFindActionProps, "model" | "route" | "host">,
     ) => {
       return await actions.find<T>({
         params: params.params,

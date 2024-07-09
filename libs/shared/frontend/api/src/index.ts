@@ -2,7 +2,7 @@ export { actions } from "./lib/actions";
 export type {
   ICreateActionProps,
   IDeleteActionProps,
-  IFindActionsProps,
+  IFindActionProps,
   IFindByIdActionProps,
   IUpdateActionProps,
 } from "./lib/actions";

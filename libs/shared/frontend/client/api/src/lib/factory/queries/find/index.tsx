@@ -1,10 +1,10 @@
 "use client";
 
-import { actions, IFindActionsProps } from "@sps/shared-frontend-api";
+import { actions, IFindActionProps } from "@sps/shared-frontend-api";
 
 export interface IQueryProps<T> {
-  params?: IFindActionsProps["params"];
-  options?: IFindActionsProps["options"];
+  params?: IFindActionProps["params"];
+  options?: IFindActionProps["options"];
   host: string;
   route: string;
   cb?: (data: T[]) => void;
