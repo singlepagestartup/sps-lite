@@ -71,6 +71,6 @@ export const MIDDLEWARE_LOGGER = process.env["MIDDLEWARE_LOGGER"];
 export const MIDDLEWARE_HTTP_CACHE = process.env["MIDDLEWARE_HTTP_CACHE"];
 
 export const STALE_TIME =
-  Number(process.env["NEXT_PUBLIC_STALE_TIME"]) || 5 * 1000;
+  Number(process.env["NEXT_PUBLIC_STALE_TIME"]) || 60 * 1000;
 
 export const REVALIDATE = Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || 0;
