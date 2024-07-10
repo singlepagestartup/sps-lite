@@ -1,18 +1,12 @@
 import { Hono } from "hono";
-import { HTTPException } from "hono/http-exception";
-import { Store } from "../store";
+import { Provider as StoreProvider } from "../provider";
+import { KV_PROVIDER } from "@sps/shared-utils";
 
 export function setRoutes<T extends Hono>(app: T) {
   app.get("/cache/clear", async (c) => {
-    const store = new Store();
-
-    if (!store) {
-      throw new HTTPException(500, {
-        message: "Cache store not initialized",
-      });
-    }
-
-    await store.RedisClient.flushall();
+    await new StoreProvider({
+      type: KV_PROVIDER,
+    }).flushall();
 
     return c.json({ message: "Cache cleared" });
   });

@@ -107,4 +107,14 @@ export class Provider implements IProvider {
 
     return;
   }
+
+  async flushall(): Promise<void> {
+    await this.connect();
+
+    await this.client.flushall();
+
+    await this.disconnect();
+
+    return;
+  }
 }

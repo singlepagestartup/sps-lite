@@ -9,4 +9,5 @@ export interface IProvider {
     options: { ttl: number };
   }) => Promise<string | undefined | null>;
   del: (props: { key: string }) => Promise<void>;
+  flushall: () => Promise<void>;
 }

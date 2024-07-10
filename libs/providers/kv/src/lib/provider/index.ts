@@ -43,4 +43,8 @@ export class Provider implements IProvider {
   async del(props: { key: string }) {
     return await this.client.del(props);
   }
+
+  async flushall() {
+    return await this.client.flushall();
+  }
 }
