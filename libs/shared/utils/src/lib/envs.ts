@@ -58,7 +58,7 @@ export const NEXT_PUBLIC_HOST_METADATA_KEYWORDS =
   "nextjs,startup,sps,singlepagestartup,nx";
 
 export const KV_PROVIDER: "redis" | "vercel-kv" =
-  process.env["KV_PROVIDER"] === "vercel-kv" ? "vercel-kv" : "redis";
+  process.env["KV_PROVIDER"] === "redis" ? "redis" : "vercel-kv";
 export const KV_HOST = process.env["KV_HOST"] || "localhost";
 export const KV_PORT = Number(process.env["KV_PORT"]) || 80;
 export const KV_SSL = process.env["KV_SSL"] || "true";
