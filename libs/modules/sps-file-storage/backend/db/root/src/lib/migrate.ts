@@ -9,21 +9,20 @@ const migrationsTable = "sps_file_storage";
 
 export const migrate = async () => {
   try {
+    const beforeMigrations = await db.execute(
+      sql`SELECT * FROM drizzle.sps_file_storage`,
+    );
+
     await drizzleMigrator(db, {
       migrationsFolder,
       migrationsTable,
     });
 
-    const getMigrations = await db.execute(
-      sql`SELECT *
-      FROM drizzle.sps_file_storage
-      WHERE
-        to_timestamp(created_at::BIGINT / 1000) >
-        CURRENT_TIMESTAMP - INTERVAL '5 minutes'
-      `,
+    const afterMigrations = await db.execute(
+      sql`SELECT * FROM drizzle.sps_file_storage`,
     );
 
-    if (getMigrations.length > 0) {
+    if (beforeMigrations.length !== afterMigrations.length) {
       console.log("NEW_MIGRATIONS=true");
     }
 

@@ -9,21 +9,20 @@ const migrationsTable = "sps_rbac";
 
 export const migrate = async () => {
   try {
+    const beforeMigrations = await db.execute(
+      sql`SELECT * FROM drizzle.sps_rbac`,
+    );
+
     await drizzleMigrator(db, {
       migrationsFolder,
       migrationsTable,
     });
 
-    const getMigrations = await db.execute(
-      sql`SELECT *
-      FROM drizzle.sps_rbac
-      WHERE
-        to_timestamp(created_at::BIGINT / 1000) >
-        CURRENT_TIMESTAMP - INTERVAL '5 minutes'
-      `,
+    const afterMigrations = await db.execute(
+      sql`SELECT * FROM drizzle.sps_rbac`,
     );
 
-    if (getMigrations.length > 0) {
+    if (beforeMigrations.length !== afterMigrations.length) {
       console.log("NEW_MIGRATIONS=true");
     }
 
