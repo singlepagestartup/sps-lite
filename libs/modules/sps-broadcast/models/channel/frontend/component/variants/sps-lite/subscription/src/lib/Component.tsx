@@ -57,6 +57,10 @@ export function Component(props: IComponentPropsExtended) {
       messageApi
         .findById({ id: channelToMessage.messageId })
         .then((message) => {
+          if (!message) {
+            return;
+          }
+
           const exists = passedMessages.find((passedMessage) => {
             if (passedMessage.id === message.id) {
               return true;

@@ -40,6 +40,10 @@ export function App(props: IComponentProps) {
           }
         >
           {({ data: widgets }) => {
+            if (!widgets?.length) {
+              return;
+            }
+
             return widgets
               .filter((widget) => widget.variant === variant)
               .map((widget) => {
@@ -86,7 +90,7 @@ export function App(props: IComponentProps) {
           }
         >
           {({ data: navbars }) => {
-            if (!navbars.length) {
+            if (!navbars?.length) {
               return;
             }
 
@@ -136,7 +140,7 @@ export function App(props: IComponentProps) {
           }
         >
           {({ data: footers }) => {
-            if (!footers.length) {
+            if (!footers?.length) {
               return;
             }
 

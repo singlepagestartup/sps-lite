@@ -115,11 +115,10 @@ export const globalActionsStore = create<State & Actions>()(
                 };
               }
 
-              state.stores[action.module].actions.push(action);
-              // = [
-              //   ...state.stores[action.module].actions.slice(-2),
-              //   action,
-              // ];
+              state.stores[action.module].actions = [
+                ...state.stores[action.module].actions.slice(-10),
+                action,
+              ];
             });
 
             window.dispatchEvent(new StorageEvent("storage", { key: name }));
@@ -149,7 +148,7 @@ export const globalActionsStore = create<State & Actions>()(
         }),
         {
           name,
-          storage: createJSONStorage(() => localStorage),
+          storage: createJSONStorage(() => sessionStorage),
         },
       ),
     ),

@@ -57,12 +57,19 @@ export const NEXT_PUBLIC_HOST_METADATA_KEYWORDS =
   process.env["NEXT_PUBLIC_HOST_METADATA_KEYWORDS"] ||
   "nextjs,startup,sps,singlepagestartup,nx";
 
+export const KV_PROVIDER: "redis" | "vercel-kv" =
+  process.env["KV_PROVIDER"] === "vercel-kv" ? "vercel-kv" : "redis";
 export const KV_HOST = process.env["KV_HOST"] || "localhost";
 export const KV_PORT = Number(process.env["KV_PORT"]) || 80;
 export const KV_SSL = process.env["KV_SSL"] || "true";
+export const KV_TTL = Number(process.env["KV_TTL"]) || 30;
 export const KV_URL = process.env["KV_URL"]?.replace("redis://", "rediss://");
 export const KV_USERNAME = process.env["KV_USERNAME"] || "default";
 export const KV_PASSWORD = process.env["KV_PASSWORD"];
+export const KV_REST_API_URL = process.env["KV_REST_API_URL"];
+export const KV_REST_API_TOKEN = process.env["KV_REST_API_TOKEN"];
+export const KV_REST_API_READ_ONLY_TOKEN =
+  process.env["KV_REST_API_READ_ONLY_TOKEN"];
 
 export const WALLET_CONNECT_PROJECT_ID =
   process.env["NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID"] || "";
@@ -73,4 +80,5 @@ export const MIDDLEWARE_HTTP_CACHE = process.env["MIDDLEWARE_HTTP_CACHE"];
 export const STALE_TIME =
   Number(process.env["NEXT_PUBLIC_STALE_TIME"]) || 60 * 1000;
 
-export const REVALIDATE = Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || 0;
+export const REVALIDATE: number | undefined =
+  Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || undefined;

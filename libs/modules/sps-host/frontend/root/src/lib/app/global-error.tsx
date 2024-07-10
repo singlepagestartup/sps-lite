@@ -40,6 +40,10 @@ export function Component({
         },
       })
       .then((pages) => {
+        if (!pages) {
+          return;
+        }
+
         if (pages.length > 0) {
           setPage(pages[0]);
         }

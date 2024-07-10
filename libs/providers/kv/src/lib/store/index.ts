@@ -3,17 +3,14 @@ import { redis } from "../redis";
 
 interface RedisStoreOptions {
   prefix?: string;
-  ttl?: number;
 }
 
 export class Store {
   prefix: string;
-  ttl: number;
   RedisClient: Redis;
 
   constructor(options?: RedisStoreOptions) {
     this.prefix = options?.prefix ? options.prefix : "sps:";
-    this.ttl = options?.ttl ? options?.ttl : 86400;
 
     if (!redis) {
       throw new Error("Redis client not found");
@@ -25,6 +22,7 @@ export class Store {
   async connect(): Promise<void> {
     try {
       const connected = this.RedisClient.status === "ready";
+
       if (connected) {
         return;
       }

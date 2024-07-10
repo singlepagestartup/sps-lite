@@ -7,10 +7,12 @@ export interface IQueryProps<T> {
   options?: IFindActionProps["options"];
   host: string;
   route: string;
-  cb?: (data: T[]) => void;
+  cb?: (data: T[] | undefined) => void;
 }
 
-export function query<T>(props: IQueryProps<T>): () => Promise<T[]> {
+export function query<T>(
+  props: IQueryProps<T>,
+): () => Promise<T[] | undefined> {
   return async () => {
     const res = await actions.find<T>({
       host: props.host,

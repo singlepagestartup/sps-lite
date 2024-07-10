@@ -67,7 +67,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       params?: IFindByIdQueryProps<T>["params"];
       options?: IFindByIdQueryProps<T>["options"];
     }) => {
-      return useQuery<T>({
+      return useQuery<T | undefined>({
         queryKey: props.id
           ? [
               `${factoryProps.route}/${props.id}`,
@@ -104,7 +104,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       params?: IFindQueryProps<T>["params"];
       options?: IFindQueryProps<T>["options"];
     }) => {
-      return useQuery<T[]>({
+      return useQuery<T[] | undefined>({
         queryKey: [
           `${factoryProps.route}`,
           props?.params

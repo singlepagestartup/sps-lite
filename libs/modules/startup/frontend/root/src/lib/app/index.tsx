@@ -37,6 +37,10 @@ export function App(props: IComponentProps) {
           }
         >
           {({ data: widgets }) => {
+            if (!widgets?.length) {
+              return;
+            }
+
             return widgets
               .filter((widget) => widget.variant === variant)
               .map((widget) => {

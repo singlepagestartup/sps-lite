@@ -1,17 +1,15 @@
 import { createMiddleware } from "hono/factory";
-import { Store } from "../../store";
+import { Provider as StoreProvider } from "../../provider";
+import { KV_PROVIDER, KV_TTL } from "@sps/shared-utils";
 
 export type MiddlewareGeneric = {
-  Variables: {
-    setCached: (key: string, value: string) => void;
-    getCached: (key: string) => string | null;
-  };
+  Variables: undefined;
 };
 
 export function middleware() {
-  return createMiddleware<MiddlewareGeneric>(async (c, next) => {
-    const store = new Store();
+  const storeProvider = KV_PROVIDER;
 
+  return createMiddleware<MiddlewareGeneric>(async (c, next) => {
     const path = c.req.url;
     const method = c.req.method;
 
@@ -19,8 +17,12 @@ export function middleware() {
       return await next();
     }
 
-    if (method === "GET" && store) {
-      const cachedValue = await store.find(path);
+    if (method === "GET") {
+      const cachedValue = await new StoreProvider({
+        type: storeProvider,
+      }).get({
+        key: path,
+      });
 
       if (cachedValue) {
         const response = new Response(cachedValue, {
@@ -36,14 +38,24 @@ export function middleware() {
 
     await next();
 
-    if (store && c.res.status >= 200 && c.res.status < 300) {
+    if (c.res.status >= 200 && c.res.status < 300) {
       if (method === "GET") {
         const resJson = await c.res.clone().json();
 
-        store.create(path, 60, JSON.stringify(resJson));
+        await new StoreProvider({
+          type: storeProvider,
+        }).set({
+          key: path,
+          value: JSON.stringify(resJson),
+          options: { ttl: KV_TTL },
+        });
       }
       if (["POST", "PUT", "PATCH"].includes(method)) {
-        store.clearByPrefix(path);
+        await new StoreProvider({
+          type: storeProvider,
+        }).del({
+          key: path,
+        });
       }
     }
 

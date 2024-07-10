@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "installCommand": "npm ci --legacy-peer-deps",
+  "installCommand": "npm ci",
   "buildCommand": "sh vercel.sh",
   "outputDirectory": "apps/host/.next"
 }

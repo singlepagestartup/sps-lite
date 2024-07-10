@@ -41,7 +41,7 @@ export async function action({ url, catchError = false }: Params) {
 
   try {
     const metadataEntites = await api.find();
-    const primaryMetadata = metadataEntites.find(
+    const primaryMetadata = metadataEntites?.find(
       (item) => item.variant === "primary",
     );
 

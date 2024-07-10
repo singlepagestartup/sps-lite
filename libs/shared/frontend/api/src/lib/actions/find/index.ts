@@ -12,7 +12,7 @@ export interface IActionProps {
   options?: NextRequestOptions;
 }
 
-export async function action<T>(props: IActionProps): Promise<T[]> {
+export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
   const { params, route, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
@@ -36,19 +36,17 @@ export async function action<T>(props: IActionProps): Promise<T[]> {
   if (!res.ok) {
     const error = new Error(res.statusText);
 
-    throw new Error(
-      `${error.message} | ${host}${route}` ||
-        `Failed to fetch data ${host}${route}`,
-    );
+    console.error(`${error.message} | ${host}${route} | ${error}`);
+
+    return;
   }
 
   const json = await res.json();
 
   if (json.error) {
-    throw new Error(
-      `${json.error.message} | ${host}${route}` ||
-        `Failed to fetch data ${host}${route}`,
-    );
+    console.error(`${json.error.message} | ${host}${route} | ${json.error}`);
+
+    return;
   }
 
   const transformedData = transformResponseItem<T[]>(json);

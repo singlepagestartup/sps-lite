@@ -5,7 +5,7 @@ import {
   schemaName,
 } from "@sps/sps-broadcast/models/message/backend/schema/root";
 import { service as deleteEntity } from "../delete";
-import { REVALIDATE } from "@sps/shared-utils";
+import { STALE_TIME } from "@sps/shared-utils";
 
 export async function service(props: { data: any }) {
   const { data } = props;
@@ -16,7 +16,7 @@ export async function service(props: { data: any }) {
     where(fields, operators) {
       return operators.lt(
         fields.createdAt,
-        new Date(new Date().getTime() - REVALIDATE),
+        new Date(new Date().getTime() - STALE_TIME),
       );
     },
   });
