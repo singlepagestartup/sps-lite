@@ -1,14 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { api } from "@sps/sps-broadcast/models/channel/frontend/api/client";
-import { api as messageApi } from "@sps/sps-broadcast/models/message/frontend/api/server";
-import { IModel as IMessage } from "@sps/sps-broadcast/models/message/contracts/extended";
-// import { Button } from "@sps/shared-ui-shadcn";
-import { useGlobalActionsStore } from "@sps/shared-frontend-client-store";
 import { useSearchParams } from "next/navigation";
+import { Component as ChannelsToMessages } from "@sps/sps-broadcast/relations/channels-to-messages/frontend/component/root";
 import { STALE_TIME } from "@sps/shared-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -17,14 +14,6 @@ export function Component(props: IComponentPropsExtended) {
 
   const [ping, setPing] = useState<number>(STALE_TIME);
 
-  const mountedAt = useMemo(() => {
-    return new Date(new Date().toISOString()).getTime();
-  }, []);
-  const addRevalidationQueueItem = useGlobalActionsStore(
-    (state) => state.addRevalidationQueueItem,
-  );
-
-  const [passedMessages, setPassedMessages] = useState<IMessage[]>([]);
   const { data, dataUpdatedAt, refetch } = api.findById({ id: props.data.id });
 
   useEffect(() => {
@@ -46,77 +35,25 @@ export function Component(props: IComponentPropsExtended) {
     setPing(1000);
   }, [adminQueryParams]);
 
-  useEffect(() => {
-    data?.channelsToMessages.forEach((channelToMessage) => {
-      const createdAt = new Date(channelToMessage.createdAt).getTime();
-
-      if (createdAt < mountedAt) {
-        return;
-      }
-
-      messageApi
-        .findById({ id: channelToMessage.messageId })
-        .then((message) => {
-          if (!message) {
-            return;
-          }
-
-          const exists = passedMessages.find((passedMessage) => {
-            if (passedMessage.id === message.id) {
-              return true;
-            }
-
-            return false;
-          });
-
-          if (exists) {
-            return;
-          }
-
-          setPassedMessages((prev) => [...prev, message]);
-        });
-    });
-  }, [dataUpdatedAt]);
-
-  useEffect(() => {
-    passedMessages.forEach((message) => {
-      const tags = [message.payload];
-
-      addRevalidationQueueItem({
-        tags,
-        timestamp: new Date().getTime(),
-      });
-    });
-  }, [passedMessages]);
-
   return (
     <div
       data-module="sps-broadcast"
       data-model="channel"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("hidden")}
+      className={cn("flex-col gap-2 mx-auto w-full border hidden")}
     >
-      {/* <div className="flex flex-col gap-4">
-        <div className="flex gap-4">
-          <Button
-            variant="primary"
-            onClick={() => {
-              refetch();
-            }}
-          >
-            Refresh channel
-          </Button>
-          <Button
-            variant="destructive"
-            onClick={() => {
-              setPassedMessages([]);
-            }}
-          >
-            Clear messages
-          </Button>
-        </div>
-      </div> */}
+      {data?.channelsToMessages.map((entity, index) => {
+        return (
+          <ChannelsToMessages
+            key={index}
+            hostUrl={props.hostUrl}
+            isServer={false}
+            data={entity}
+            variant="default"
+          />
+        );
+      })}
     </div>
   );
 }

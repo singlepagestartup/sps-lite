@@ -7,7 +7,7 @@ export type StoreWithPersist = Mutate<
   [["zustand/persist", unknown]]
 >;
 
-export interface Action {
+export interface IAction {
   type: string;
   name: string;
   requestId: string;
@@ -18,31 +18,23 @@ export interface Action {
 
 export interface ActionsStore {
   name: string;
-  actions: Action[];
+  actions: IAction[];
 }
-
-export type TRevalidationQueueItem = {
-  tags: string[];
-  timestamp: number;
-};
 
 export interface State {
   stores: {
     [key in string]: ActionsStore;
   };
-  revalidationQueue: TRevalidationQueueItem[];
 }
 
 export interface Actions {
-  addAction: (action: Action) => void;
+  addAction: (action: IAction) => void;
   getActionsFromStoreByName: (name: string) => ActionsStore["actions"];
-  addRevalidationQueueItem: (revalidationItem: TRevalidationQueueItem) => void;
   reset: () => void;
 }
 
 const initialState: State = {
   stores: {},
-  revalidationQueue: [],
 };
 
 const name = "global-actions-store";
@@ -56,7 +48,7 @@ export const globalActionsStore = create<State & Actions>()(
           getActionsFromStoreByName: (name: string) => {
             return get().stores[name]?.actions;
           },
-          addAction: (action: Action) => {
+          addAction: (action: IAction) => {
             set((state: State) => {
               if (!state.stores[action.name]) {
                 state.stores[action.name] = {
@@ -72,25 +64,6 @@ export const globalActionsStore = create<State & Actions>()(
             });
 
             window.dispatchEvent(new StorageEvent("storage", { key: name }));
-          },
-          addRevalidationQueueItem: (
-            revalidationItem: TRevalidationQueueItem,
-          ) => {
-            const exists = get().revalidationQueue.find(
-              (item: TRevalidationQueueItem) => {
-                return (
-                  JSON.stringify(item) === JSON.stringify(revalidationItem)
-                );
-              },
-            );
-
-            if (exists) {
-              return;
-            }
-
-            set((state: State) => {
-              state.revalidationQueue.push(revalidationItem);
-            });
           },
           reset: () => {
             set(initialState);

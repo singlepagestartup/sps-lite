@@ -1,6 +1,5 @@
 export {
   globalActionsStore,
   useGlobalActionsStore,
-  type Action,
-  type TRevalidationQueueItem,
+  type IAction,
 } from "./lib/global-actions-store";

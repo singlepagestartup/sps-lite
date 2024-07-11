@@ -27,14 +27,9 @@ import {
   DefaultError,
   QueryClient,
   useMutation,
-  UseMutationOptions,
   useQuery,
-  UseQueryOptions,
 } from "@tanstack/react-query";
-import {
-  globalActionsStore,
-  TRevalidationQueueItem,
-} from "@sps/shared-frontend-client-store";
+import { globalActionsStore, IAction } from "@sps/shared-frontend-client-store";
 import { STALE_TIME } from "@sps/shared-utils";
 import { createId } from "@paralleldrive/cuid2";
 import QueryString from "qs";
@@ -213,29 +208,55 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
   };
 
   function subscription() {
-    const triggeredActions: TRevalidationQueueItem[] = [];
+    const triggeredActions: IAction[] = [];
+    let revalidationChannel: any;
 
     globalActionsStore.subscribe((state) => {
-      const revalidationQueue = state.revalidationQueue;
+      const broadcastChannels = state.getActionsFromStoreByName(
+        "/api/sps-broadcast/channels",
+      );
 
-      revalidationQueue.forEach((revalidationItem) => {
-        const isTriggered = triggeredActions.some((triggeredAction) => {
-          return (
-            JSON.stringify(triggeredAction) === JSON.stringify(revalidationItem)
-          );
-        });
+      broadcastChannels?.forEach((channel) => {
+        if (revalidationChannel) {
+          return;
+        }
 
-        if (!isTriggered) {
-          triggeredActions.push(revalidationItem);
+        if (channel.result?.["title"] === "revalidation") {
+          revalidationChannel = channel.result;
+        }
+      });
 
-          if (
-            revalidationItem.tags.some((tag) =>
-              tag.includes(factoryProps.route),
-            )
-          ) {
-            factoryProps.queryClient.invalidateQueries({
-              queryKey: revalidationItem.tags,
-            });
+      const broadcastMessages = state.getActionsFromStoreByName(
+        "/api/sps-broadcast/messages",
+      );
+
+      broadcastMessages?.forEach((message) => {
+        if (!revalidationChannel) {
+          return;
+        }
+
+        if (
+          message.result?.["channelsToMessages"]?.find(
+            (channelToMessage: { channelId: string }) =>
+              channelToMessage?.["channelId"] === revalidationChannel?.["id"],
+          ) !== undefined
+        ) {
+          const isTriggered = triggeredActions.some((triggeredAction) => {
+            return JSON.stringify(triggeredAction) === JSON.stringify(message);
+          });
+
+          if (!isTriggered) {
+            triggeredActions.push(message);
+            if (
+              message.result?.["payload"] &&
+              typeof message.result?.["payload"] === "string"
+            ) {
+              if (message.result["payload"].includes(factoryProps.route)) {
+                factoryProps.queryClient.invalidateQueries({
+                  queryKey: [message.result["payload"]],
+                });
+              }
+            }
           }
         }
       });

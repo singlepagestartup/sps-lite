@@ -1,4 +1,6 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
+import { Component as Message } from "@sps/sps-broadcast/models/message/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +9,14 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="channels-to-messages"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full flex", props.data.className || props.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Relation: channels-to-messages</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Message
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        data={props.data.message}
+        variant="default"
+      />
     </div>
   );
 }
