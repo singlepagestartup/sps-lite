@@ -9,9 +9,15 @@ const migrationsTable = "sps_website_builder";
 
 export const migrate = async () => {
   try {
-    const beforeMigrations = await db.execute(
-      sql`SELECT * FROM drizzle.sps_website_builder`,
-    );
+    let beforeMigrations = [];
+
+    try {
+      beforeMigrations = await db.execute(
+        sql`SELECT * FROM drizzle.sps_website_builder`,
+      );
+    } catch (error) {
+      console.log(`migrate ~ error:`, error);
+    }
 
     await drizzleMigrator(db, {
       migrationsFolder,

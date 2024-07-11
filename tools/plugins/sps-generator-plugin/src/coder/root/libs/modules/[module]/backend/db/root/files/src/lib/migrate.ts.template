@@ -9,9 +9,13 @@ const migrationsTable = "<%= module_name_snake_cased %>";
 
 export const migrate = async () => {
   try {
-    const beforeMigrations = await db.execute(
-      sql`SELECT * FROM drizzle.<%= module_name_snake_cased %>`,
-    );
+    let beforeMigrations = [];
+
+    try {
+      beforeMigrations = await db.execute(sql`SELECT * FROM drizzle.<%= module_name_snake_cased %>`);
+    } catch (error) {
+      console.log(`migrate ~ error:`, error);
+    }
 
     await drizzleMigrator(db, {
       migrationsFolder,
