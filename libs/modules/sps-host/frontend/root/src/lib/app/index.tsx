@@ -1,7 +1,7 @@
 import { IComponentProps } from "./interface";
 import { Component as Page } from "@sps/sps-host/models/page/frontend/component/root";
 
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function App(props: IComponentProps) {
   return (

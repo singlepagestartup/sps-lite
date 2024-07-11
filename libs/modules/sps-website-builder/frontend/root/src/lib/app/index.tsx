@@ -3,7 +3,7 @@ import { Component as Navbar } from "@sps/sps-website-builder/models/navbar/fron
 import { Component as Widget } from "@sps/sps-website-builder/models/widget/frontend/component/root";
 import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component/root";
 
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function App(props: IComponentProps) {
   const parsedProps = JSON.parse(props.props || "{}");

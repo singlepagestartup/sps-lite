@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Component, ErrorInfo, FC, ReactNode } from "react";
+import React, { Component, ErrorInfo, ReactNode } from "react";
 import ErrorComponent from "./error";
 import * as Sentry from "@sentry/browser";
 

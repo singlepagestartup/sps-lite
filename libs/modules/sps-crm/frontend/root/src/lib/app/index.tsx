@@ -1,6 +1,6 @@
 import { IComponentProps } from "./interface";
 import { Component as Widget } from "@sps/sps-crm/models/widget/frontend/component/root";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function App(props: IComponentProps) {
   return (

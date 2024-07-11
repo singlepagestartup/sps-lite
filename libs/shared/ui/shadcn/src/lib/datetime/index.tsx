@@ -2,7 +2,7 @@
 
 import React, { ComponentProps, forwardRef, useEffect, useState } from "react";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { Calendar } from "../calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "../input-otp";

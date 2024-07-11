@@ -1,4 +1,4 @@
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
 // import { Component as File } from "@sps/sps-file-storage/models/file/frontend/component/root";
 

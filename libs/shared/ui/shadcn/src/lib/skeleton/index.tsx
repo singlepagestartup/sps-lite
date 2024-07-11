@@ -1,4 +1,4 @@
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 function Skeleton({
   className,

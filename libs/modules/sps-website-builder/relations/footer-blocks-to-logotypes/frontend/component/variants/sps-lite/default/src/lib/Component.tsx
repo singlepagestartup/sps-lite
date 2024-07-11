@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as Logotype } from "@sps/sps-website-builder/models/logotype/frontend/component/root";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (

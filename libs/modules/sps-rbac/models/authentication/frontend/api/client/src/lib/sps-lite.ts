@@ -109,20 +109,11 @@ export const api = {
         return transformedData;
       },
       onSuccess(data) {
-        const state = globalActionsStore.getState();
-
-        if (!state.stores[`${route}/providers/login-and-password`]) {
-          globalActionsStore.getState().addStore({
-            name: `${route}/providers/login-and-password`,
-            actions: [],
-          });
-        }
-
         globalActionsStore.getState().addAction({
           type: "providers.loginAndPassword",
-          module: `${route}/providers/login-and-password`,
-          meta: this,
-          payload: data,
+          name: `${route}/providers/login-and-password`,
+          props: this,
+          result: data,
           timestamp: Date.now(),
           requestId: createId(),
         });
@@ -185,19 +176,11 @@ export const api = {
         return transformedData;
       },
       onSuccess(data) {
-        const state = globalActionsStore.getState();
-
-        if (!state.stores[`${route}/logout`]) {
-          globalActionsStore
-            .getState()
-            .addStore({ name: `${route}/logout`, actions: [] });
-        }
-
         globalActionsStore.getState().addAction({
           type: "logout",
-          module: `${route}/logout`,
-          meta: this,
-          payload: data,
+          name: `${route}/logout`,
+          props: this,
+          result: data,
           timestamp: Date.now(),
           requestId: createId(),
         });
@@ -247,19 +230,11 @@ export const api = {
         return transformedData;
       },
       select(data) {
-        const state = globalActionsStore.getState();
-
-        if (!state.stores[`${route}/is-authenticatated`]) {
-          globalActionsStore
-            .getState()
-            .addStore({ name: `${route}/is-authenticatated`, actions: [] });
-        }
-
         globalActionsStore.getState().addAction({
           type: "is-authenticatated",
-          module: `${route}/is-authenticatated`,
-          meta: this,
-          payload: data,
+          name: `${route}/is-authenticatated`,
+          props: this,
+          result: data,
           timestamp: Date.now(),
           requestId: createId(),
         });

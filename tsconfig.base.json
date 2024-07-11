@@ -60,7 +60,6 @@
         "libs/shared/frontend/utils/server/src/index.ts"
       ],
       "@sps/shared-hooks": ["libs/shared/hooks/src/index.ts"],
-      "@sps/shared-store": ["libs/shared/store/src/index.ts"],
       "@sps/shared-ui-shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@sps/sps-backend-utils": ["libs/shared/backend/utils/src/index.ts"],

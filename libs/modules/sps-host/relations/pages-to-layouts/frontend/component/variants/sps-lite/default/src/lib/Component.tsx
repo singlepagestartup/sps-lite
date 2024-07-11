@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as Layout } from "@sps/sps-host/models/layout/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {

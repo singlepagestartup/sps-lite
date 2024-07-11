@@ -1,4 +1,4 @@
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { FormField } from "@sps/ui-adapter";
 import { UseFormReturn } from "react-hook-form";
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { api } from "@sps/sps-broadcast/models/channel/frontend/api/client";
 import { api as messageApi } from "@sps/sps-broadcast/models/message/frontend/api/server";
 import { IModel as IMessage } from "@sps/sps-broadcast/models/message/contracts/extended";

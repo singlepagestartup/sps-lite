@@ -87,19 +87,11 @@ export const api = {
         return transformedData;
       },
       select(data) {
-        const state = globalActionsStore.getState();
-
-        if (!state.stores[`${route}/find-by-url`]) {
-          globalActionsStore
-            .getState()
-            .addStore({ name: `${route}/find-by-url`, actions: [] });
-        }
-
         globalActionsStore.getState().addAction({
           type: "find-by-url",
-          module: `${route}/find-by-url`,
-          meta: this,
-          payload: data,
+          name: `${route}/find-by-url`,
+          props: this,
+          result: data,
           timestamp: Date.now(),
           requestId: createId(),
         });
@@ -152,19 +144,11 @@ export const api = {
         return transformedData;
       },
       select(data) {
-        const state = globalActionsStore.getState();
-
-        if (!state.stores[`${route}/url-segment-value`]) {
-          globalActionsStore
-            .getState()
-            .addStore({ name: `${route}/url-segment-value`, actions: [] });
-        }
-
         globalActionsStore.getState().addAction({
           type: "url-segment-value",
-          module: `${route}/url-segment-value`,
-          meta: this,
-          payload: data,
+          name: `${route}/url-segment-value`,
+          props: this,
+          result: data,
           timestamp: Date.now(),
           requestId: createId(),
         });

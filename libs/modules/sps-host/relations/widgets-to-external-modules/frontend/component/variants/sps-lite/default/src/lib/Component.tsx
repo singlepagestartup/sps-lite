@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { App as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/root";
 import { App as Startup } from "@sps/startup/frontend/root";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (

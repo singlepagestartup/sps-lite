@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as Widget } from "@sps/sps-host/models/widget/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {

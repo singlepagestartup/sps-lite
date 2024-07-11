@@ -86,8 +86,8 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
                 addToGlobalStore({
                   name: factoryProps.route,
                   type: "findById",
-                  payload: data,
-                  options: {},
+                  result: data,
+                  props,
                 });
               },
               ...props,
@@ -119,8 +119,8 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             addToGlobalStore({
               name: factoryProps.route,
               type: "find",
-              payload: data,
-              options: {},
+              result: data,
+              props,
             });
           },
           ...props,
@@ -145,8 +145,8 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               addToGlobalStore({
                 name: factoryProps.route,
                 type: "create",
-                payload: data,
-                options: {},
+                result: data,
+                props,
                 setRequestId: props?.setRequestId,
               });
             },
@@ -172,8 +172,8 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               addToGlobalStore({
                 name: factoryProps.route,
                 type: "update",
-                payload: data,
-                options: {},
+                result: data,
+                props,
                 setRequestId: props?.setRequestId,
               });
             },
@@ -201,8 +201,8 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               addToGlobalStore({
                 name: factoryProps.route,
                 type: "delete",
-                payload: data,
-                options: {},
+                result: data,
+                props,
               });
             },
             ...props,
@@ -250,19 +250,13 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
 function addToGlobalStore(props: {
   name: string;
   type: string;
-  payload: any;
-  options:
-    | UseMutationOptions<any, any, any, any>
-    | UseQueryOptions<any, any, any, any>;
+  props: any;
+  result: any;
   setRequestId?: SetRequestId;
 }) {
   const requestId = createId();
 
   const state = globalActionsStore.getState();
-
-  if (!state.stores[props.name]) {
-    state.addStore({ name: props.name, actions: [] });
-  }
 
   if (props.setRequestId) {
     props.setRequestId(requestId);
@@ -270,9 +264,9 @@ function addToGlobalStore(props: {
 
   state.addAction({
     type: props.type,
-    module: props.name,
-    meta: props.options,
-    payload: props.payload,
+    name: props.name,
+    props: props.props,
+    result: props.result,
     timestamp: Date.now(),
     requestId,
   });

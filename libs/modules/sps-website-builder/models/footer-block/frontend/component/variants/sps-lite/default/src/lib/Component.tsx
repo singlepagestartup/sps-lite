@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as FooterBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/root";
 import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/root";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (

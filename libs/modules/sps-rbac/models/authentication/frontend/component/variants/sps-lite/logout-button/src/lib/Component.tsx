@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { Button } from "@sps/ui-adapter";
 import { api } from "@sps/sps-rbac/models/authentication/frontend/api/client";
 import { useRouter } from "next/navigation";

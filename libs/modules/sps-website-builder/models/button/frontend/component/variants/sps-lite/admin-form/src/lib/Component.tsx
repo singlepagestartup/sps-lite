@@ -45,10 +45,7 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (updateEntity.data || createEntity.data) {
-      // dispatch(api.rtk.util.invalidateTags(["button"]));
-      // invalidateServerTag({ tag: "button" }).then(() => {
-      //   router.refresh();
-      // });
+      //
     }
   }, [updateEntity, createEntity]);
 

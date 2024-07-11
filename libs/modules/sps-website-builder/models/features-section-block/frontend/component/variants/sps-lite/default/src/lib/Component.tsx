@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as FeaturesSectionBlocksToFeaturesSpsLiteDefault } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/default";
 
 export function Component(props: IComponentPropsExtended) {

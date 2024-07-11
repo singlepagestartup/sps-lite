@@ -10,7 +10,7 @@ import {
 import { IComponentPropsExtended } from "./interface";
 import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/root";
 import Autoplay from "embla-carousel-autoplay";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   const [api, setApi] = useState<CarouselApi>();

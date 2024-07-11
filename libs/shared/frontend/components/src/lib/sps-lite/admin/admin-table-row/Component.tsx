@@ -17,7 +17,7 @@ import {
   Button,
 } from "@sps/shared-ui-shadcn";
 import { Pencil, Trash } from "lucide-react";
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 interface IComponentProps {
   adminForm?: ReactNode;

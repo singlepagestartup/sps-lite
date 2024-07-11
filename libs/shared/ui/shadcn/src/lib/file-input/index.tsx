@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@sps/shared-frontend-utils-client";
+import { cn } from "@sps/shared-frontend-client-utils";
 import Image from "next/image";
 import React, {
   ChangeEvent,
