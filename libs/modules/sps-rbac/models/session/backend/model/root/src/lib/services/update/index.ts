@@ -11,6 +11,8 @@ export async function service(props: {
 }) {
   const { id, data } = props;
 
+  data.expiresAt = new Date(data.expiresAt);
+
   const plainData = insertSchema.parse(data);
 
   const [entity] = await db

@@ -1,0 +1,10 @@
+{
+  "name": "@sps/middlewares",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/middlewares/src",
+  "projectType": "library",
+  "targets": {
+    "tsc:build": {}
+  },
+  "tags": []
+}

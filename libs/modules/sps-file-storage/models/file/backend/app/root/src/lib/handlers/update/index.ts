@@ -4,7 +4,7 @@ import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 import { getUniqueFileName } from "@sps/sps-backend-utils";
 
 export const handler = async (

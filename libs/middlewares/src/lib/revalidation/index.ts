@@ -8,7 +8,7 @@ export function middleware() {
 
     await next();
 
-    if (path.includes("/api/sps-broadcast")) {
+    if (path.includes("/api/sps-broadcast") || path.includes("/api/sps-rbac")) {
       return;
     }
 

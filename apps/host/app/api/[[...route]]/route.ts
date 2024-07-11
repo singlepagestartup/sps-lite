@@ -12,8 +12,7 @@ import { app as spsCrm } from "@sps/sps-crm/backend/app/root";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
 import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
 import { chain as middlewaresChain } from "./middlewares/chain";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
-import { setRoutes } from "@sps/providers-kv";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 import { BlankSchema } from "hono/types";
 
 export const dynamic = "force-dynamic";
@@ -27,8 +26,6 @@ const app = new Hono<MiddlewaresGeneric, BlankSchema, string>().basePath(
 );
 
 middlewaresChain(app);
-
-setRoutes(app as any);
 
 app.route("/sps-host", spsHostApp as any);
 app.route("/sps-broadcast", spsBroadcast as any);

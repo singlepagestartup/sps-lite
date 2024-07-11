@@ -1,7 +1,7 @@
 import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
 import { MiddlewareGeneric } from "../session";
-import { BACKEND_URL } from "@sps/shared-utils";
+import { BACKEND_URL, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { getCookie } from "hono/cookie";
 
 /**
@@ -59,6 +59,16 @@ export function middleware() {
     const reqPath = c.req.path;
     const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
 
+    if (reqPath.includes("/api/sps-rbac/sessions") && reqMethod === "POST") {
+      if (!secretKey || secretKey !== SPS_RBAC_SECRET_KEY) {
+        throw new HTTPException(401, {
+          message: "Unauthorized",
+        });
+      }
+
+      return next();
+    }
+
     const matchedRoute = allowedRoutes.find((route) => {
       return route.regexPath.test(reqPath);
     });
@@ -82,6 +92,12 @@ export function middleware() {
         },
       },
     );
+
+    if (!check.ok) {
+      throw new HTTPException(401, {
+        message: "Unauthorized",
+      });
+    }
 
     await check
       .json()

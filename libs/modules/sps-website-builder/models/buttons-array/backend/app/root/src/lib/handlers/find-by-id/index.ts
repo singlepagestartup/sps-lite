@@ -3,7 +3,7 @@ import { model } from "@sps/sps-website-builder/models/buttons-array/backend/mod
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import QueryString from "qs";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const handler = async (
   c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,

@@ -1,5 +1,5 @@
 import { createMiddleware } from "hono/factory";
-import { Provider as StoreProvider } from "../../provider";
+import { Provider as StoreProvider } from "@sps/providers-kv";
 import { KV_PROVIDER, KV_TTL } from "@sps/shared-utils";
 
 export type MiddlewareGeneric = {

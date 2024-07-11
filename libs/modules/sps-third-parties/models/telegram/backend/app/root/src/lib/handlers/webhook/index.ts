@@ -5,7 +5,7 @@ import {
 } from "@sps/sps-third-parties/models/telegram/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 import { Update } from "telegraf/types";
 
 export const handler = async (

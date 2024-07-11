@@ -1,4 +1,3 @@
-export { middlewares } from "./lib/middlewares";
 export { queryBuilder } from "./lib/query-builder";
 
 export { Seeder } from "./lib/seeder/Seeder";
@@ -9,7 +8,7 @@ export type {
   FindByIdServiceProps,
   FindServiceProps,
 } from "./lib/services/interfaces";
-export type { MiddlewaresGeneric } from "./lib/middlewares/interfaces";
+
 export type { IModuleSeedConfig } from "./lib/seeder/Seeder";
 export type { QueryBuilderProps as PopulateQueryBuilderProps } from "./lib/query-builder/populate";
 export type { QueryBuilderProps as FiltersQueryBuilderProps } from "./lib/query-builder/filters";

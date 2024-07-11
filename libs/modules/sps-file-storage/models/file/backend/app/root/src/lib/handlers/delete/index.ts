@@ -2,7 +2,7 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-file-storage/models/file/backend/model/root";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 import path from "path";
 import fs from "fs/promises";
 

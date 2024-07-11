@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 import { model } from "@sps/sps-host/models/page/backend/model/root";
 
 /**

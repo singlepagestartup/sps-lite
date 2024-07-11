@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { handlers } from "./handlers/index";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const app = new Hono<MiddlewaresGeneric>();
 

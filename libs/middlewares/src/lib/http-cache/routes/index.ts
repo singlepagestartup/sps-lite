@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { Provider as StoreProvider } from "../provider";
+import { Provider as StoreProvider } from "@sps/providers-kv";
 import { KV_PROVIDER } from "@sps/shared-utils";
 
 export function setRoutes<T extends Hono>(app: T) {

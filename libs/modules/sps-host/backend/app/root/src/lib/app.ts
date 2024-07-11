@@ -1,7 +1,7 @@
 import { HTTPException } from "hono/http-exception";
 import { Hono } from "hono";
 import { routes } from "./routes";
-import { MiddlewaresGeneric } from "@sps/shared-backend-api";
+import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const app = new Hono<MiddlewaresGeneric>();
 
