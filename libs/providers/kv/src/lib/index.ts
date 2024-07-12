@@ -6,16 +6,20 @@ export class Provider implements IProvider {
   prefix: string;
   client: RedisProvider | VercelKVProvider;
 
-  constructor(props: { type: "redis" | "vercel-kv" }) {
-    this.prefix = "";
+  constructor(props: { type: "redis" | "vercel-kv"; prefix?: string }) {
+    this.prefix = props.prefix || "";
 
     if (props.type === "redis") {
-      const redis = new RedisProvider();
+      const redis = new RedisProvider({
+        prefix: this.prefix,
+      });
       this.client = redis;
 
       return;
     } else if (props.type === "vercel-kv") {
-      const vercelKV = new VercelKVProvider();
+      const vercelKV = new VercelKVProvider({
+        prefix: this.prefix,
+      });
       this.client = vercelKV;
 
       return;
@@ -38,6 +42,10 @@ export class Provider implements IProvider {
 
   async set(props: { key: string; value: string; options: { ttl: number } }) {
     return await this.client.set(props);
+  }
+
+  async delByPrefix() {
+    return await this.client.delByPrefix();
   }
 
   async del(props: { key: string }) {

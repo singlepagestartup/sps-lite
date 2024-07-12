@@ -11,13 +11,22 @@ import {
   NextRequestOptions,
   transformResponseItem,
 } from "@sps/shared-utils";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export async function action() {
   try {
+    const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+    const cacheControlOptions: NextRequestOptions["headers"] = noCache
+      ? { "Cache-Control": "no-cache" }
+      : {};
+
     const options: NextRequestOptions = {
+      headers: {
+        ...cacheControlOptions,
+      },
       next: {
-        revalidate: REVALIDATE,
-        tags: [tag],
+        // revalidate: 0,
+        tags: [route],
       },
     };
 

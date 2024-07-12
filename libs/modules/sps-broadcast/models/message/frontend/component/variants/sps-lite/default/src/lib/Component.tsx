@@ -13,11 +13,9 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full py-10 text-center flex flex-col gap-1 border")}
     >
-      {/* <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: message</p>
-      <p className="font-bold text-4xl">Variant: default</p>
-      <p className="font-bold text-4xl">{props.data.payload}</p>
-      <p className="font-bold text-4xl">Mounted: {mountedAt}</p> */}
+      {/* <p className="font-bold text-4xl">Model: message</p>
+      <p className="font-bold text-4xl">Id: {props.data?.id || ""}</p>
+      <p className="font-bold text-4xl">{props.data.payload}</p> */}
     </div>
   );
 }

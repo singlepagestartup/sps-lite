@@ -6,8 +6,8 @@ export class Provider implements IProvider {
   prefix: string;
   client: typeof kv;
 
-  constructor() {
-    this.prefix = "";
+  constructor(props?: { prefix?: string }) {
+    this.prefix = props?.prefix ? `${props?.prefix}:` : "";
 
     this.client = kv;
   }
@@ -27,7 +27,7 @@ export class Provider implements IProvider {
     await this.connect();
 
     const hasedKey = await this.hashKey({ key: props.key });
-    const value = await this.client.get<object>(hasedKey);
+    const value = await this.client.get<object>(`${this.prefix}${hasedKey}`);
 
     if (value) {
       return JSON.stringify(value);
@@ -45,9 +45,30 @@ export class Provider implements IProvider {
 
     const hasedKey = await this.hashKey({ key: props.key });
 
-    return await this.client.set(hasedKey, props.value, {
+    return await this.client.set(`${this.prefix}${hasedKey}`, props.value, {
       ex: props.options.ttl,
     });
+  }
+
+  async delByPrefix(): Promise<void> {
+    await this.connect();
+
+    let cursor = "0";
+
+    do {
+      const reply = await this.client.scan(cursor, {
+        match: `${this.prefix}*`,
+      });
+
+      cursor = reply[0];
+      const keys = reply[1];
+
+      for (const key of keys) {
+        await this.client.del(key);
+      }
+    } while (cursor !== "0");
+
+    return;
   }
 
   async del(props: { key: string }): Promise<void> {
@@ -55,7 +76,7 @@ export class Provider implements IProvider {
 
     const hasedKey = await this.hashKey({ key: props.key });
 
-    await this.client.del(hasedKey);
+    await this.client.del(`${this.prefix}${hasedKey}`);
 
     return;
   }

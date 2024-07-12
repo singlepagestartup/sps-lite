@@ -7,6 +7,7 @@ import {
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 interface Params {
   url: string;
@@ -14,10 +15,18 @@ interface Params {
 }
 
 export async function action(props: Params) {
+  const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+  const cacheControlOptions: NextRequestOptions["headers"] = noCache
+    ? { "Cache-Control": "no-cache" }
+    : {};
+
   const options: NextRequestOptions = {
+    headers: {
+      ...cacheControlOptions,
+    },
     next: {
-      revalidate: REVALIDATE,
-      tags: [tag],
+      // revalidate: 0,
+      tags: [route],
     },
   };
 

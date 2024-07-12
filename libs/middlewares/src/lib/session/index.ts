@@ -47,6 +47,10 @@ export function middleware(options?: SessionOptions) {
     let session: typeof SessionTable.$inferSelect | null | undefined;
     let createNewSession = false;
 
+    if (c.req.header("X-SPS-RBAC-SECRET-KEY")) {
+      return await next();
+    }
+
     if (!SPS_RBAC_SECRET_KEY) {
       throw new Error(
         "SPS_RBAC_SECRET_KEY is required for sessions middleware to work",

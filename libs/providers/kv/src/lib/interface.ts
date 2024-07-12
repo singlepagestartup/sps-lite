@@ -10,4 +10,5 @@ export interface IProvider {
   }) => Promise<string | undefined | null>;
   del: (props: { key: string }) => Promise<void>;
   flushall: () => Promise<void>;
+  delByPrefix: () => Promise<void>;
 }

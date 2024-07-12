@@ -1,5 +1,6 @@
 import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export interface IActionProps {
   id: string;
@@ -20,9 +21,18 @@ export async function action<T>(props: IActionProps): Promise<T | undefined> {
     encodeValuesOnly: true,
   });
 
+  const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+  const cacheControlOptions: NextRequestOptions["headers"] = noCache
+    ? { "Cache-Control": "no-cache" }
+    : {};
+
   const requestOptions: NextRequestOptions = {
     credentials: "include",
     ...options,
+    headers: {
+      ...cacheControlOptions,
+      ...options?.headers,
+    },
     next: {
       tags: [[route, id].join("/")],
       ...options?.next,

@@ -10,18 +10,22 @@ export function middleware() {
   const storeProvider = KV_PROVIDER;
 
   return createMiddleware<MiddlewareGeneric>(async (c, next) => {
-    const path = c.req.url;
+    const params = c.req.url.split("?")?.[1] || "";
+    const path = c.req.url.split("?")?.[0];
+
     const method = c.req.method;
+    const cacheControl = c.req.header("Cache-Control");
 
     if (path.includes("sps-rbac")) {
       return await next();
     }
 
-    if (method === "GET") {
+    if (method === "GET" && cacheControl !== "no-cache") {
       const cachedValue = await new StoreProvider({
         type: storeProvider,
+        prefix: path,
       }).get({
-        key: path,
+        key: params,
       });
 
       if (cachedValue) {
@@ -44,8 +48,9 @@ export function middleware() {
 
         await new StoreProvider({
           type: storeProvider,
+          prefix: path,
         }).set({
-          key: path,
+          key: params,
           value: JSON.stringify(resJson),
           options: { ttl: KV_TTL },
         });
@@ -53,9 +58,8 @@ export function middleware() {
       if (["POST", "PUT", "PATCH"].includes(method)) {
         await new StoreProvider({
           type: storeProvider,
-        }).del({
-          key: path,
-        });
+          prefix: path,
+        }).delByPrefix();
       }
     }
 

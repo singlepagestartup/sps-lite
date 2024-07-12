@@ -78,17 +78,22 @@ export function middleware() {
     }
 
     const cookies = getCookie(c);
-    const cookiesString = Object.keys(cookies)
-      .map((key) => `${key}=${cookies[key]}`)
-      .join("; ");
+    const cookiesString = Object.keys(cookies)?.length
+      ? Object.keys(cookies)
+          .map((key) => `${key}=${cookies[key]}`)
+          .join("; ")
+      : undefined;
 
     const check = await fetch(
       BACKEND_URL + "/api/sps-rbac/authentications/is-authenticatated",
       {
         method: "GET",
         headers: {
-          Cookie: cookiesString,
-          ...(secretKey ? { "X-SPS-RBAC-SECRET-KEY": secretKey } : {}),
+          ...(secretKey
+            ? { "X-SPS-RBAC-SECRET-KEY": secretKey }
+            : cookiesString
+              ? { Cookie: cookiesString }
+              : {}),
         },
       },
     );
