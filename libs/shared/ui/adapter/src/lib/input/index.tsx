@@ -13,6 +13,7 @@ import {
   TipTap,
 } from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 const Placeholder = () => {
   return (
@@ -53,10 +54,13 @@ export const Component = (props: IComponentProps) => {
   if (props.type === "textarea") {
     return (
       <FormControl>
-        <Input
-          placeholder={props.placeholder}
+        <textarea
           {...props.field}
-          className={props.className}
+          placeholder={props.placeholder}
+          className={cn(
+            "flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            props.className,
+          )}
         />
       </FormControl>
     );

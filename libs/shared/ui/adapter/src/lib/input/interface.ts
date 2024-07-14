@@ -25,6 +25,7 @@ export type TTypedProps =
     }
   | {
       type: "textarea";
+      rows?: number;
     }
   | {
       type: "file";

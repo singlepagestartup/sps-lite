@@ -60,6 +60,18 @@ export function middleware() {
           type: storeProvider,
           prefix: path,
         }).delByPrefix();
+
+        const UUIDRegex = new RegExp(
+          /([a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12})/,
+        );
+        const lastItem = path.split("/").pop();
+
+        if (lastItem && UUIDRegex.test(lastItem)) {
+          await new StoreProvider({
+            type: storeProvider,
+            prefix: path.split("/").slice(0, -1).join("/"),
+          }).delByPrefix();
+        }
       }
     }
 
