@@ -77,7 +77,7 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
-          type="text"
+          type="number"
           label="Order index"
           name="orderIndex"
           form={form}
