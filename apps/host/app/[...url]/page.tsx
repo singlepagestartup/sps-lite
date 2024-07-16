@@ -11,7 +11,7 @@ export const dynamicParams = true;
 export const dynamic =
   process.env.NEW_MIGRATIONS === "true" || process.env.DYNAMIC === "true"
     ? "force-dynamic"
-    : "force-static";
+    : "auto";
 export const runtime = "nodejs";
 
 export async function generateStaticParams() {
