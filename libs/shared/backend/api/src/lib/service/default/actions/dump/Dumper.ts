@@ -28,7 +28,7 @@ export class Dumper {
   }
 
   async init() {
-    await this.clearFolder();
+    // await this.clearFolder();
   }
 
   async clearFolder() {

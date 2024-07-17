@@ -65,6 +65,7 @@ export class Service implements IService {
     db: PostgresJsDatabase<any>;
     schemaName: keyof typeof props.db._.fullSchema;
     table: PgTableWithColumns<any>;
+    seedsPath?: string;
   }) {
     return dumpAction(props);
   }
