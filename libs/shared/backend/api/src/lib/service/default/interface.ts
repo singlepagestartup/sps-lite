@@ -36,7 +36,7 @@ export interface IService {
   dump: (props: {
     db: PostgresJsDatabase<any>;
     schemaName: keyof typeof props.db._.fullSchema;
-    table: PgTableWithColumns<any>;
+    Table: PgTableWithColumns<any>;
     seedsPath?: string;
   }) => Promise<any>;
 }

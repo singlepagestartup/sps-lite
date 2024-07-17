@@ -5,7 +5,7 @@ import { Dumper } from "./Dumper";
 export async function action(props: {
   db: PostgresJsDatabase<any>;
   schemaName: keyof typeof props.db._.fullSchema;
-  table: PgTableWithColumns<any>;
+  Table: PgTableWithColumns<any>;
   seedsPath?: string;
 }) {
   const dumper = new Dumper({

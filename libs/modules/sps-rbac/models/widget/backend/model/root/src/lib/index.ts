@@ -51,6 +51,6 @@ export class Model implements IDefaultModel {
   }
 
   async dump() {
-    return this.service.dump({ db, schemaName, table: Table });
+    return this.service.dump({ db, schemaName, Table });
   }
 }

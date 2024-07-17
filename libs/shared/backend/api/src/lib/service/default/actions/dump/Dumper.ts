@@ -12,14 +12,14 @@ export class Dumper {
   schemaName: keyof typeof this.db._.fullSchema;
 
   constructor(props: {
-    table: PgTableWithColumns<any>;
+    Table: PgTableWithColumns<any>;
     db: PostgresJsDatabase<any>;
     schemaName: keyof typeof props.db._.fullSchema;
     seedsPath?: string;
     skip?: boolean;
   }) {
     this.findAction = action;
-    this.table = props.table;
+    this.table = props.Table;
     this.skip = props.skip || false;
 
     if (props.seedsPath) {
