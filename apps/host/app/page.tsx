@@ -1,5 +1,5 @@
-import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
-import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
+// import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
+// import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
 
 export const revalidate = 3600;
 export const runtime = "nodejs";
@@ -13,12 +13,14 @@ export const dynamic =
     : "auto";
 
 export async function generateMetadata(props: any) {
-  return metadataApi.generate({ catchError: true, ...props });
+  // return metadataApi.generate({ catchError: true, ...props });
+  return {};
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {
   const url = props.params.url?.join("/") || "/";
   const slashedUrl = url.startsWith("/") ? url : `/${url}`;
 
-  return <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl} />;
+  // return <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl} />;
+  return <div></div>;
 }

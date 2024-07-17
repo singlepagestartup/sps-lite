@@ -6,11 +6,12 @@ import { app as subjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-role
 import { app as subject } from "@sps/sps-rbac/models/subject/backend/app/root";
 import { app as session } from "@sps/sps-rbac/models/session/backend/app/root";
 import { app as widgetsToAuthenticationBlocks } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root";
-import { app as widget } from "@sps/sps-rbac/models/widget/backend/app/root";
+import { app as widgetsApp } from "@sps/sps-rbac/models/widget/backend/app/root";
 import { app as authenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/app/root";
 import { app as identity } from "@sps/sps-rbac/models/identity/backend/app/root";
 import { app as authentication } from "@sps/sps-rbac/models/authentication/backend/app/root";
 import { app as role } from "@sps/sps-rbac/models/role/backend/app/root";
+
 export const routes = {
   "/roles-to-permissions": rolesToPermissions,
   "/permissions": permission,
@@ -20,7 +21,7 @@ export const routes = {
   "/subjects": subject,
   "/sessions": session,
   "/widgets-to-authentication-blocks": widgetsToAuthenticationBlocks,
-  "/widgets": widget,
+  "/widgets": widgetsApp.app,
   "/authentication-blocks": authenticationBlock,
   "/identities": identity,
   "/authentications": authentication,

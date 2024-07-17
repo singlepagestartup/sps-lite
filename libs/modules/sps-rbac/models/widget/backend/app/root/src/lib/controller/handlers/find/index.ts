@@ -1,13 +1,9 @@
 import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-rbac/models/widget/backend/model/root";
 import { Context } from "hono";
-import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+import { Next } from "hono/types";
 
-export const handler = async (
-  c: Context<MiddlewaresGeneric, string, BlankInput>,
-  next: Next,
-) => {
+export const handler = async (c: Context, next: Next) => {
   try {
     const data = await model.services.find({ params: c.var.parsedQuery });
 
