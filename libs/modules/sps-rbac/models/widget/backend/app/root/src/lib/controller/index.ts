@@ -22,6 +22,11 @@ export class Controller extends DefaultController {
       },
       {
         method: "GET",
+        path: "/dump",
+        handler: this.dump,
+      },
+      {
+        method: "GET",
         path: "/:uuid",
         handler: this.findById,
         middlewares: [
@@ -30,11 +35,6 @@ export class Controller extends DefaultController {
             await next();
           }),
         ],
-      },
-      {
-        method: "GET",
-        path: "/dump",
-        handler: this.dump,
       },
       {
         method: "POST",
