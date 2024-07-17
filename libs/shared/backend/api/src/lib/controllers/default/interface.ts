@@ -11,7 +11,7 @@ export interface IRoute {
 }
 
 export interface IController {
-  routes: RouterRoute[];
+  routes: IRoute[];
   ok: <T>(c: Context<any, any, any>, data: T) => Response | Promise<Response>;
   send: <T>(
     c: Context<any, any, any>,

@@ -30,7 +30,7 @@ export class Dumper {
   }
 
   async init() {
-    // await this.clearFolder();
+    await this.clearFolder();
   }
 
   async clearFolder() {
@@ -49,8 +49,6 @@ export class Dumper {
     }
 
     await this.init();
-
-    console.log(`🚀 ~ dump ~ this.db:`, this.db);
 
     const entities = await this.findAction({
       db: this.db,

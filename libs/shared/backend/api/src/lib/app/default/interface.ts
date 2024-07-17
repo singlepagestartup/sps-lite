@@ -1,10 +1,10 @@
 import { Env, Hono } from "hono";
-import { DefaultController } from "../../controllers";
+import { IDefaultController } from "../../controllers";
 import { IExceptionFilter } from "../../filters";
 
 export interface IApp<T extends Env> {
   hono: Hono<T>;
-  controller?: DefaultController;
+  controller?: IDefaultController;
   exceptionFilter: IExceptionFilter;
   init: () => Promise<void>;
   useRoutes: () => void;

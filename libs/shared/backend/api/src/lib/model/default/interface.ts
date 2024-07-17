@@ -7,4 +7,5 @@ export interface IModel {
   update: (props: any) => Promise<any>;
   delete: (props: any) => Promise<any>;
   dump: () => Promise<any>;
+  seed: () => Promise<any>;
 }

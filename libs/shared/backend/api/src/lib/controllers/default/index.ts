@@ -2,8 +2,8 @@ import "reflect-metadata";
 import { Context } from "hono";
 import { StatusCode } from "hono/utils/http-status";
 export { type IRoute, type IController } from "./interface";
-import { IController, IRoute } from "./interface";
-import { injectable } from "inversify";
+import { type IController, type IRoute } from "./interface";
+import { inject, injectable } from "inversify";
 import {
   FindHandler,
   FindByIdHandler,
@@ -13,14 +13,47 @@ import {
   DumpHandler,
 } from "../../handler";
 import { type IDefaultModel } from "../../model";
+import { DI } from "../../di";
 
 @injectable()
 export class Controller implements IController {
   private _routes: IRoute[] = [];
   private _model: IDefaultModel;
 
-  constructor(model: IDefaultModel) {
+  constructor(@inject(DI.IModel) model: IDefaultModel) {
     this._model = model;
+    this.bindRoutes([
+      {
+        method: "GET",
+        path: "/",
+        handler: this.find,
+      },
+      {
+        method: "GET",
+        path: "/dump",
+        handler: this.dump,
+      },
+      {
+        method: "GET",
+        path: "/:uuid",
+        handler: this.findById,
+      },
+      {
+        method: "POST",
+        path: "/",
+        handler: this.create,
+      },
+      {
+        method: "PATCH",
+        path: "/:uuid",
+        handler: this.update,
+      },
+      {
+        method: "DELETE",
+        path: "/:uuid",
+        handler: this.delete,
+      },
+    ]);
   }
 
   get routes() {

@@ -9,6 +9,7 @@ import {
   updateAction,
   deleteAction,
   dumpAction,
+  seedAction,
 } from "./actions";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
@@ -68,5 +69,19 @@ export class Service implements IService {
     seedsPath?: string;
   }) {
     return dumpAction(props);
+  }
+
+  seed(props: {
+    db: PostgresJsDatabase<any>;
+    schemaName: keyof typeof props.db._.fullSchema;
+    Table: PgTableWithColumns<any>;
+    seedsPath?: string;
+    insertSchema: any;
+    seedResults?: any;
+    seedConfig: {
+      [key: string]: any;
+    };
+  }) {
+    return seedAction(props);
   }
 }

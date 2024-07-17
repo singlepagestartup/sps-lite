@@ -1,1 +1,1 @@
-export { type IApp as IDefaultApp } from "./default";
+export { type IApp as IDefaultApp, App as DefaultApp } from "./default";
