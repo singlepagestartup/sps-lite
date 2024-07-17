@@ -6,34 +6,51 @@ import { type IDefaultModel } from "../../model";
 import { injectable } from "inversify";
 
 @injectable()
-export class Handler<T extends Context> {
+export class Handler<
+  D,
+  C extends Context<{
+    Variables: {
+      parsedBody: D;
+    };
+  }>,
+> {
   constructor(private model: IDefaultModel) {
     this.model = model;
   }
 
-  async execute(c: T, next: Next) {
+  async execute(c: C, next: Next) {
     try {
       const uuid = c.req.param("uuid");
+      const body = await c.req.parseBody();
 
       if (!uuid) {
-        throw new HTTPException(400, {
-          message: "Invalid id",
-        });
-      }
-
-      const data = await this.model.findById({ id: uuid });
-
-      if (!data || !Object.keys(data).length) {
         return c.json(
           {
-            message: "Not found",
+            message: "Invalid id",
           },
-          404,
+          {
+            status: 400,
+          },
         );
       }
 
+      if (typeof body["data"] !== "string") {
+        return c.json(
+          {
+            message: "Invalid body",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const data = JSON.parse(body["data"]);
+
+      const entity = await this.model.update({ id: uuid, data });
+
       return c.json({
-        data,
+        data: entity,
       });
     } catch (error: any) {
       throw new HTTPException(400, {

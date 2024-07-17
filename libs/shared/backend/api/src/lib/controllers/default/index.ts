@@ -4,7 +4,14 @@ import { StatusCode } from "hono/utils/http-status";
 export { type IRoute, type IController } from "./interface";
 import { IController, IRoute } from "./interface";
 import { injectable } from "inversify";
-import { FindHandler, FindByIdHandler, CreateHandler } from "../../handler";
+import {
+  FindHandler,
+  FindByIdHandler,
+  CreateHandler,
+  UpdateHandler,
+  DeleteHandler,
+  DumpHandler,
+} from "../../handler";
 import { type IDefaultModel } from "../../model";
 
 @injectable()
@@ -52,6 +59,21 @@ export class Controller implements IController {
 
   public async create(c: Context, next: any): Promise<Response> {
     const handler = new CreateHandler<any, Context>(this._model);
+    return handler.execute(c, next);
+  }
+
+  public async update(c: Context, next: any): Promise<Response> {
+    const handler = new UpdateHandler<any, Context>(this._model);
+    return handler.execute(c, next);
+  }
+
+  public async delete(c: Context, next: any): Promise<Response> {
+    const handler = new DeleteHandler<Context>(this._model);
+    return handler.execute(c, next);
+  }
+
+  public async dump(c: Context, next: any): Promise<Response> {
+    const handler = new DumpHandler<Context>(this._model);
     return handler.execute(c, next);
   }
 

@@ -21,4 +21,7 @@ export interface IController {
   find: (c: Context, next: any) => Response | Promise<Response>;
   findById: (c: Context, next: any) => Response | Promise<Response>;
   create: (c: Context, next: any) => Response | Promise<Response>;
+  update: (c: Context, next: any) => Response | Promise<Response>;
+  delete: (c: Context, next: any) => Response | Promise<Response>;
+  dump: (c: Context, next: any) => Response | Promise<Response>;
 }

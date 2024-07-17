@@ -32,9 +32,24 @@ export class Controller extends DefaultController {
         ],
       },
       {
+        method: "GET",
+        path: "/dump",
+        handler: this.dump,
+      },
+      {
         method: "POST",
         path: "/",
         handler: this.create,
+      },
+      {
+        method: "PATCH",
+        path: "/:uuid",
+        handler: this.update,
+      },
+      {
+        method: "DELETE",
+        path: "/:uuid",
+        handler: this.delete,
       },
     ]);
   }
