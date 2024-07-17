@@ -6,7 +6,7 @@ import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 export class Dumper {
   findAction: typeof action;
   table: PgTableWithColumns<any>;
-  seedsPath = `${__dirname}/../seed/seeds`;
+  seedsPath = `${__dirname}`;
   skip: boolean;
   db: PostgresJsDatabase<any>;
   schemaName: keyof typeof this.db._.fullSchema;
