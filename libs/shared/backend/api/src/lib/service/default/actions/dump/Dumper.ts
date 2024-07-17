@@ -18,9 +18,11 @@ export class Dumper {
     seedsPath?: string;
     skip?: boolean;
   }) {
+    this.db = props.db;
     this.findAction = action;
     this.table = props.Table;
     this.skip = props.skip || false;
+    this.schemaName = props.schemaName;
 
     if (props.seedsPath) {
       this.seedsPath = props.seedsPath;
@@ -47,6 +49,8 @@ export class Dumper {
     }
 
     await this.init();
+
+    console.log(`🚀 ~ dump ~ this.db:`, this.db);
 
     const entities = await this.findAction({
       db: this.db,
