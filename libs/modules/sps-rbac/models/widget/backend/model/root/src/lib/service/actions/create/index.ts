@@ -4,7 +4,7 @@ import {
   Table,
 } from "@sps/sps-rbac/models/widget/backend/schema/root";
 
-export async function service(props: { data: any }) {
+export async function action(props: { data: any }) {
   const { data } = props;
 
   const plainData = insertSchema.parse(data);

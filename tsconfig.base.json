@@ -23,6 +23,7 @@
     "skipDefaultLibCheck": true,
     "noImplicitAny": false,
     "declaration": true,
+    "strictPropertyInitialization": false,
     "types": ["node", "jest"],
     "paths": {
       "@sps/providers-db": ["libs/providers/db/src/index.ts"],

@@ -10,14 +10,14 @@ import { Container, ContainerModule, interfaces } from "inversify";
 
 const bindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IExceptionFilter>(DI.IExceptionFilter).to(ExceptionFilter);
-  bind<IDefaultApp<MiddlewaresGeneric>>(DI.App).to(App);
+  bind<IDefaultApp<MiddlewaresGeneric>>(DI.IApp).to(App);
 });
 
 export async function bootstrap() {
   const container = new Container();
   container.load(bindings);
 
-  const app = container.get<IDefaultApp<MiddlewaresGeneric>>(DI.App);
+  const app = container.get<IDefaultApp<MiddlewaresGeneric>>(DI.IApp);
   await app.init();
 
   return { app };

@@ -6,9 +6,6 @@ export const configModels: IModuleSeedConfig<typeof models>["models"] = [
     name: "authenticationBlock",
   },
   {
-    name: "widget",
-  },
-  {
     name: "role",
   },
 ];

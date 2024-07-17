@@ -6,7 +6,7 @@ import {
   Table,
 } from "@sps/sps-rbac/models/widget/backend/schema/root";
 
-export async function service(props?: FindServiceProps) {
+export async function action(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({
     with: populate(props?.params?.populate),
     orderBy(table, queryFunctions) {

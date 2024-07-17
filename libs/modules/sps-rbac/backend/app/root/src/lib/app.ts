@@ -1,7 +1,5 @@
 import "reflect-metadata";
-import { Hono } from "hono";
-import { routes } from "./routes";
-import { app as widgetsApp } from "@sps/sps-rbac/models/widget/backend/app/root";
+import { Context, Hono, Next } from "hono";
 import { MiddlewaresGeneric } from "@sps/middlewares";
 import {
   DI,
@@ -9,26 +7,32 @@ import {
   type IExceptionFilter,
 } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
+import { app as widgetsApp } from "@sps/sps-rbac/models/widget/backend/app/root";
 
 @injectable()
 export class App implements IDefaultApp<MiddlewaresGeneric> {
-  app: Hono<MiddlewaresGeneric>;
+  hono: Hono<MiddlewaresGeneric>;
   exceptionFilter: IExceptionFilter;
 
   constructor(@inject(DI.IExceptionFilter) exceptionFilter: IExceptionFilter) {
-    this.app = new Hono<MiddlewaresGeneric>();
+    this.hono = new Hono<MiddlewaresGeneric>();
     this.exceptionFilter = exceptionFilter;
   }
 
   public async init() {
+    this.hono.use(async (c: Context, next: Next) => {
+      const path = c.req.path;
+      console.log("RBAC Middleware", path);
+      await next();
+    });
     this.useRoutes();
-    this.app.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
+    this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
   useRoutes() {
-    // for (const route in routes) {
-    //   this.app.route(route, routes[route as keyof typeof routes]);
-    // }
-    this.app.mount("/widgets", widgetsApp.app.fetch);
+    this.hono.mount("/widgets", widgetsApp.hono.fetch);
+    // this.controller2.routes.map((route) => {
+    //   this.app.on(route.method, route.path, route.handler);
+    // });
   }
 }
