@@ -1,1 +1,1 @@
-export { model } from "./lib";
+export { Model } from "./lib";

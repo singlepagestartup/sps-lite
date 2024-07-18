@@ -20,7 +20,10 @@ export class Service implements IService {
     db: PostgresJsDatabase<any>;
     schemaName: keyof typeof props.db._.fullSchema;
   }) {
-    return findAction(props);
+    return findAction({
+      db: props.db,
+      schemaName: props.schemaName,
+    });
   }
 
   findById(props: {

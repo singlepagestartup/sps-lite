@@ -111,6 +111,8 @@ export class Controller implements IController {
   }
 
   protected bindRoutes(routes: IRoute[]) {
+    this._routes = [];
+
     for (const route of routes) {
       const handler = route.handler.bind(this);
       this._routes.push({

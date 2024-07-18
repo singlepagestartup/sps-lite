@@ -1,6 +1,26 @@
-import { services } from "./services";
+import "reflect-metadata";
+import {
+  DI,
+  DefaultModel,
+  type IDefaultService,
+} from "@sps/shared-backend-api";
+import { inject, injectable } from "inversify";
+import { db } from "@sps/sps-rbac/backend/db/root";
+import {
+  schemaName,
+  Table,
+  insertSchema,
+} from "@sps/sps-rbac/models/authentication-block/backend/schema/root";
 
-export const model = {
-  type: "model",
-  services,
-};
+@injectable()
+export class Model extends DefaultModel {
+  constructor(@inject(DI.IService) service: IDefaultService) {
+    super({
+      service,
+      db,
+      schemaName,
+      Table,
+      insertSchema,
+    });
+  }
+}

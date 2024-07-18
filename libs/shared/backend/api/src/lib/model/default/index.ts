@@ -1,13 +1,12 @@
 import "reflect-metadata";
 export { type IModel } from "./interface";
-import { inject, injectable } from "inversify";
+import { injectable } from "inversify";
 import { type IModel } from "./interface";
 import { IDefaultService } from "../../service";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { FindByIdServiceProps } from "../../services/interfaces";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { ZodObject } from "zod";
-import { DI } from "../../di";
 
 @injectable()
 export class Model implements IModel {
