@@ -15,7 +15,8 @@ export type { QueryBuilderProps as FiltersQueryBuilderProps } from "./lib/query-
 export * from "./lib/filters";
 export * from "./lib/controllers";
 export * from "./lib/app";
-export * from "./lib/di";
-export * from "./lib/model";
+export * from "./lib/di/constants";
 export * from "./lib/handler";
 export * from "./lib/service";
+export * from "./lib/repository";
+export * from "./lib/data-store";

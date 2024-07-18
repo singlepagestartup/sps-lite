@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import {
   DI,
-  DefaultModel,
   DefaultService,
   FindServiceProps,
   type IDefaultService,
@@ -19,16 +18,8 @@ import { HTTPException } from "hono/http-exception";
 import { eq } from "drizzle-orm";
 
 @injectable()
-export class Model extends DefaultModel {
-  constructor(@inject(DI.IService) service: IDefaultService) {
-    super({
-      service,
-      db,
-      schemaName,
-      Table,
-      insertSchema,
-    });
-  }
+export class Model {
+  constructor(@inject(DI.IService) service: IDefaultService) {}
 
   async providers(props: {
     data: any;

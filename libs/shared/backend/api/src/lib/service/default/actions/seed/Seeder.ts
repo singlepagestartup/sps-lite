@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { action } from "../create";
+import { Action } from "../create";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { ZodObject } from "zod";
 
@@ -13,7 +13,7 @@ export class Seeder {
   seeds = [] as any[];
   entites = [] as any[];
   seedResult = [] as any[];
-  create: typeof action;
+  create: typeof Action;
   insertSchema: ZodObject<any, any>;
   Table: PgTableWithColumns<any>;
   db: PostgresJsDatabase<any>;
@@ -36,7 +36,7 @@ export class Seeder {
       [key: string]: string;
     };
   }) {
-    this.create = action;
+    this.create = Action;
     this.Table = props.Table;
     this.db = props.db;
     this.insertSchema = props.insertSchema;
@@ -89,13 +89,14 @@ export class Seeder {
         continue;
       }
 
-      const createdEntity = await this.create({
-        data: preparedSeed,
-        db: this.db,
-        insertSchema: this.insertSchema,
-        Table: this.Table,
-        schemaName: this.schemaName,
-      });
+      // const createdEntity = await this.create({
+      //   data: preparedSeed,
+      //   db: this.db,
+      //   insertSchema: this.insertSchema,
+      //   Table: this.Table,
+      //   schemaName: this.schemaName,
+      // });
+      const createdEntity = {};
 
       this.entites.push(createdEntity);
       this.seedResult.push({

@@ -1,9 +1,5 @@
 import "reflect-metadata";
-import {
-  DI,
-  DefaultModel,
-  type IDefaultService,
-} from "@sps/shared-backend-api";
+import { DI, type IDefaultService } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
 import { db } from "@sps/sps-rbac/backend/db/root";
 import {
@@ -13,15 +9,15 @@ import {
 } from "@sps/sps-rbac/models/session/backend/schema/root";
 
 @injectable()
-export class Model extends DefaultModel {
+export class Model {
   constructor(@inject(DI.IService) service: IDefaultService) {
-    super({
-      service,
-      db,
-      schemaName,
-      Table,
-      insertSchema,
-    });
+    // super({
+    //   service,
+    //   db,
+    //   schemaName,
+    //   Table,
+    //   insertSchema,
+    // });
   }
 
   async create(props: { data: typeof Table.$inferInsert }) {

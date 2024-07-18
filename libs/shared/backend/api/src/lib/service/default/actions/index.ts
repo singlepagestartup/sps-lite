@@ -1,7 +1,7 @@
-export { action as findAction } from "./find";
-export { action as findByIdAction } from "./find-by-id";
-export { action as createAction } from "./create";
-export { action as updateAction } from "./update";
-export { action as deleteAction } from "./delete";
+export { Action as FindAction } from "./find";
+export { Action as FindByIdAction } from "./find-by-id";
+export { Action as CreateAction } from "./create";
+export { Action as UpdateAction } from "./update";
+export { Action as DeleteAction } from "./delete";
 export { action as dumpAction } from "./dump";
 export { action as seedAction } from "./seed";

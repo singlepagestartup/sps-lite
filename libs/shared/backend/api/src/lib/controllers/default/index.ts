@@ -1,8 +1,6 @@
 import "reflect-metadata";
 import { Context } from "hono";
 import { StatusCode } from "hono/utils/http-status";
-export { type IRoute, type IController } from "./interface";
-import { type IController, type IRoute } from "./interface";
 import { inject, injectable } from "inversify";
 import {
   FindHandler,
@@ -12,27 +10,74 @@ import {
   DeleteHandler,
   DumpHandler,
 } from "../../handler";
-import { type IDefaultModel } from "../../model";
-import { DI } from "../../di";
+import { type IDefaultService } from "../../service";
+import { DI } from "../../di/constants";
+import { BlankInput, Handler, HandlerResponse, RouterRoute } from "hono/types";
+import { createMiddleware } from "hono/factory";
+import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { PgTableWithColumns } from "drizzle-orm/pg-core";
+import { Placeholder, SQL } from "drizzle-orm";
+
+export interface IRoute {
+  path: string;
+  handler: Handler<any, string, BlankInput, HandlerResponse<any>>;
+  method: "GET" | "POST" | "DELETE" | "PATCH";
+  middlewares?: ReturnType<typeof createMiddleware>[];
+}
+
+export interface IController<
+  D extends PostgresJsDatabase<any>,
+  T extends PgTableWithColumns<any>,
+  E extends {
+    [Key in keyof T["$inferInsert"]]:
+      | SQL<unknown>
+      | Placeholder<string, any>
+      | T["$inferInsert"][Key];
+  },
+> {
+  routes: IRoute[];
+  ok: <T>(c: Context<any, any, any>, data: T) => Response | Promise<Response>;
+  send: <T>(
+    c: Context<any, any, any>,
+    code: StatusCode,
+    data: T,
+  ) => Response | Promise<Response>;
+  find: (c: Context, next: any) => Response | Promise<Response>;
+  findById: (c: Context, next: any) => Response | Promise<Response>;
+  create: (c: Context, next: any) => Response | Promise<Response>;
+  update: (c: Context, next: any) => Response | Promise<Response>;
+  delete: (c: Context, next: any) => Response | Promise<Response>;
+  // dump: (c: Context, next: any) => Response | Promise<Response>;
+}
 
 @injectable()
-export class Controller implements IController {
+export class Controller<
+  D extends PostgresJsDatabase<any>,
+  T extends PgTableWithColumns<any>,
+  E extends {
+    [Key in keyof T["$inferInsert"]]:
+      | SQL<unknown>
+      | Placeholder<string, any>
+      | T["$inferInsert"][Key];
+  },
+> implements IController<D, T, E>
+{
   private _routes: IRoute[] = [];
-  private _model: IDefaultModel;
+  private _service: IDefaultService<D, T, E>;
 
-  constructor(@inject(DI.IModel) model: IDefaultModel) {
-    this._model = model;
+  constructor(@inject(DI.IService) service: IDefaultService<D, T, E>) {
+    this._service = service;
     this.bindRoutes([
       {
         method: "GET",
         path: "/",
         handler: this.find,
       },
-      {
-        method: "GET",
-        path: "/dump",
-        handler: this.dump,
-      },
+      // {
+      //   method: "GET",
+      //   path: "/dump",
+      //   handler: this.dump,
+      // },
       {
         method: "GET",
         path: "/:uuid",
@@ -81,34 +126,34 @@ export class Controller implements IController {
   }
 
   public async find(c: Context, next: any): Promise<Response> {
-    const handler = new FindHandler<Context>(this._model);
+    const handler = new FindHandler<Context, D, T, E>(this._service);
     return handler.execute(c, next);
   }
 
   public async findById(c: Context, next: any): Promise<Response> {
-    const handler = new FindByIdHandler<Context>(this._model);
+    const handler = new FindByIdHandler<Context, D, T, E>(this._service);
     return handler.execute(c, next);
   }
 
   public async create(c: Context, next: any): Promise<Response> {
-    const handler = new CreateHandler<any, Context>(this._model);
+    const handler = new CreateHandler<Context, D, T, E>(this._service);
     return handler.execute(c, next);
   }
 
   public async update(c: Context, next: any): Promise<Response> {
-    const handler = new UpdateHandler<any, Context>(this._model);
+    const handler = new UpdateHandler<Context, D, T, E>(this._service);
     return handler.execute(c, next);
   }
 
   public async delete(c: Context, next: any): Promise<Response> {
-    const handler = new DeleteHandler<Context>(this._model);
+    const handler = new DeleteHandler<Context, D, T, E>(this._service);
     return handler.execute(c, next);
   }
 
-  public async dump(c: Context, next: any): Promise<Response> {
-    const handler = new DumpHandler<Context>(this._model);
-    return handler.execute(c, next);
-  }
+  // public async dump(c: Context, next: any): Promise<Response> {
+  //   const handler = new DumpHandler<Context>(this._service);
+  //   return handler.execute(c, next);
+  // }
 
   protected bindRoutes(routes: IRoute[]) {
     this._routes = [];

@@ -4,7 +4,7 @@ import { IApp } from "./interface";
 import { type IDefaultController } from "../../controllers";
 import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
-import { DI } from "../../di";
+import { DI } from "../../di/constants";
 export { type IApp } from "./interface";
 
 @injectable()

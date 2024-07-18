@@ -1,90 +1,125 @@
 import "reflect-metadata";
-export { type IService } from "./interface";
-import { injectable } from "inversify";
-import { type IService } from "./interface";
+import { inject, injectable } from "inversify";
 import {
-  findAction,
-  findByIdAction,
-  createAction,
-  updateAction,
-  deleteAction,
+  FindAction,
+  FindByIdAction,
+  CreateAction,
+  UpdateAction,
+  DeleteAction,
   dumpAction,
   seedAction,
 } from "./actions";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
+import { type IDefaultRepository } from "../../repository";
+import { DI } from "../../di/constants";
+import { Placeholder, SQL } from "drizzle-orm";
+import { IModuleSeedConfig } from "./actions/seed/Seeder";
+import { ZodObject } from "zod";
+
+export interface IService<
+  D extends PostgresJsDatabase<any>,
+  T extends PgTableWithColumns<any>,
+  E extends {
+    [Key in keyof T["$inferInsert"]]:
+      | SQL<unknown>
+      | Placeholder<string, any>
+      | T["$inferInsert"][Key];
+  },
+> {
+  find: () => Promise<T["$inferSelect"][]>;
+  findById: (props: { id: string }) => Promise<T["$inferSelect"] | null>;
+  create: (props: { data: any }) => Promise<T["$inferSelect"] | null>;
+  delete: (props: { id: string }) => Promise<T["$inferSelect"] | null>;
+  update: (props: {
+    id: string;
+    data: any;
+  }) => Promise<T["$inferSelect"] | null>;
+  // dump: (props: {
+  //   db: PostgresJsDatabase<any>;
+  //   schemaName: keyof typeof props.db._.fullSchema;
+  //   Table: PgTableWithColumns<any>;
+  //   seedsPath?: string;
+  // }) => Promise<any>;
+  // seed: (props: {
+  //   db: PostgresJsDatabase<any>;
+  //   schemaName: keyof typeof props.db._.fullSchema;
+  //   Table: PgTableWithColumns<any>;
+  //   seedsPath?: string;
+  //   insertSchema: ZodObject<any, any>;
+  //   seedResults?: any;
+  //   seedConfig: {
+  //     [key: string]: IModuleSeedConfig<any>;
+  //   };
+  // }) => Promise<any>;
+}
 
 @injectable()
-export class Service implements IService {
-  find(props: {
-    db: PostgresJsDatabase<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-  }) {
-    return findAction({
-      db: props.db,
-      schemaName: props.schemaName,
-    });
+export class Service<
+  D extends PostgresJsDatabase<any>,
+  T extends PgTableWithColumns<any>,
+  E extends {
+    [Key in keyof T["$inferInsert"]]:
+      | SQL<unknown>
+      | Placeholder<string, any>
+      | T["$inferInsert"][Key];
+  },
+> implements IService<D, T, E>
+{
+  repository: IDefaultRepository<D, T, E>;
+
+  constructor(@inject(DI.IRepository) repository: IDefaultRepository<D, T, E>) {
+    this.repository = repository;
   }
 
-  findById(props: {
+  async find(): Promise<T["$inferSelect"][]> {
+    const action = new FindAction(this.repository);
+    return action.execute();
+  }
+
+  async findById(props: { id: string }): Promise<T["$inferSelect"] | null> {
+    const action = new FindByIdAction(this.repository);
+    return action.execute(props);
+  }
+
+  async create(props: { data: any }): Promise<T["$inferSelect"] | null> {
+    const action = new CreateAction(this.repository);
+    return action.execute(props);
+  }
+
+  async delete(props: { id: string }): Promise<T["$inferSelect"]> {
+    const action = new DeleteAction(this.repository);
+    return action.execute(props);
+  }
+
+  async update(props: {
     id: string;
-    db: PostgresJsDatabase<any>;
-    Table: PgTableWithColumns<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-  }) {
-    return findByIdAction(props);
-  }
-
-  create(props: {
     data: any;
-    db: PostgresJsDatabase<any>;
-    insertSchema: any;
-    Table: PgTableWithColumns<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-  }) {
-    return createAction(props);
+  }): Promise<T["$inferSelect"] | null> {
+    const action = new UpdateAction(this.repository);
+    return action.execute(props);
   }
 
-  update(props: {
-    id: string;
-    data: any;
-    db: PostgresJsDatabase<any>;
-    insertSchema: any;
-    Table: PgTableWithColumns<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-  }) {
-    return updateAction(props);
-  }
+  // dump(props: {
+  //   db: PostgresJsDatabase<any>;
+  //   schemaName: keyof typeof props.db._.fullSchema;
+  //   Table: PgTableWithColumns<any>;
+  //   seedsPath?: string;
+  // }) {
+  //   return dumpAction(props);
+  // }
 
-  delete(props: {
-    id: string;
-    db: PostgresJsDatabase<any>;
-    Table: PgTableWithColumns<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-  }) {
-    return deleteAction(props);
-  }
-
-  dump(props: {
-    db: PostgresJsDatabase<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-    Table: PgTableWithColumns<any>;
-    seedsPath?: string;
-  }) {
-    return dumpAction(props);
-  }
-
-  seed(props: {
-    db: PostgresJsDatabase<any>;
-    schemaName: keyof typeof props.db._.fullSchema;
-    Table: PgTableWithColumns<any>;
-    seedsPath?: string;
-    insertSchema: any;
-    seedResults?: any;
-    seedConfig: {
-      [key: string]: any;
-    };
-  }) {
-    return seedAction(props);
-  }
+  // seed(props: {
+  //   db: PostgresJsDatabase<any>;
+  //   schemaName: keyof typeof props.db._.fullSchema;
+  //   Table: PgTableWithColumns<any>;
+  //   seedsPath?: string;
+  //   insertSchema: any;
+  //   seedResults?: any;
+  //   seedConfig: {
+  //     [key: string]: any;
+  //   };
+  // }) {
+  //   return seedAction(props);
+  // }
 }

@@ -1,22 +1,31 @@
+import { Placeholder, SQL } from "drizzle-orm";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { ZodObject } from "zod";
+import { injectable } from "inversify";
+import { IDefaultRepository } from "../../../../repository";
 
-export async function action(props: {
-  data: any;
-  db: PostgresJsDatabase<any>;
-  insertSchema: ZodObject<any, any>;
-  Table: PgTableWithColumns<any>;
-  schemaName: keyof typeof props.db._.fullSchema;
-}) {
-  const { data } = props;
+@injectable()
+export class Action<
+  D extends PostgresJsDatabase<any>,
+  T extends PgTableWithColumns<any>,
+  E extends {
+    [Key in keyof T["$inferInsert"]]:
+      | SQL<unknown>
+      | Placeholder<string, any>
+      | T["$inferInsert"][Key];
+  },
+> {
+  repository: IDefaultRepository<D, T, E>;
 
-  const plainData = props.insertSchema.parse(data);
+  constructor(repository: IDefaultRepository<D, T, E>) {
+    this.repository = repository;
+  }
 
-  const [entity] = await props.db
-    .insert(props.Table)
-    .values(plainData)
-    .returning();
+  async execute(props: { data: any }) {
+    const { data } = props;
 
-  return entity;
+    const result = await this.repository.create(data);
+
+    return result;
+  }
 }
