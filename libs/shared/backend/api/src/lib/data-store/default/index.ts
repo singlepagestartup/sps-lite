@@ -1,6 +1,5 @@
-import { eq, ExtractTablesWithRelations } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { RelationalQueryBuilder } from "drizzle-orm/pg-core/query-builders/query";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { injectable } from "inversify";
 import { ZodObject } from "zod";

@@ -23,7 +23,9 @@ import { Env } from "hono";
 
 const bindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IExceptionFilter>(DI.IExceptionFilter).to(ExceptionFilter);
-  bind<IDefaultApp<Env>>(DI.IApp).to(DefaultApp);
+  bind<IDefaultApp<Env, typeof db, typeof Table, Entity>>(DI.IApp).to(
+    DefaultApp,
+  );
   bind<IDefaultController<typeof db, typeof Table, Entity>>(DI.IController).to(
     DefaultController,
   );
@@ -41,7 +43,9 @@ export async function bootstrap() {
     skipBaseClassChecks: true,
   });
   container.load(bindings);
-  const app = container.get<IDefaultApp<Env>>(DI.IApp);
+  const app = container.get<IDefaultApp<Env, typeof db, typeof Table, Entity>>(
+    DI.IApp,
+  );
   await app.init();
 
   return { app };
