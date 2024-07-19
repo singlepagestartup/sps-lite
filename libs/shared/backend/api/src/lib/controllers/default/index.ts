@@ -62,11 +62,9 @@ export class Controller<
   },
 > implements IController<D, T, E>
 {
-  private _routes: IRoute[] = [];
-  private _service: IDefaultService<D, T, E>;
+  routes: IRoute[] = [];
 
-  constructor(@inject(DI.IService) service: IDefaultService<D, T, E>) {
-    this._service = service;
+  constructor(@inject(DI.IService) private service: IDefaultService<D, T, E>) {
     this.bindRoutes([
       {
         method: "GET",
@@ -101,10 +99,6 @@ export class Controller<
     ]);
   }
 
-  get routes() {
-    return this._routes;
-  }
-
   public send<T>(
     c: Context<any, any, any>,
     code: StatusCode,
@@ -126,27 +120,27 @@ export class Controller<
   }
 
   public async find(c: Context, next: any): Promise<Response> {
-    const handler = new FindHandler<Context, D, T, E>(this._service);
+    const handler = new FindHandler<Context, D, T, E>(this.service);
     return handler.execute(c, next);
   }
 
   public async findById(c: Context, next: any): Promise<Response> {
-    const handler = new FindByIdHandler<Context, D, T, E>(this._service);
+    const handler = new FindByIdHandler<Context, D, T, E>(this.service);
     return handler.execute(c, next);
   }
 
   public async create(c: Context, next: any): Promise<Response> {
-    const handler = new CreateHandler<Context, D, T, E>(this._service);
+    const handler = new CreateHandler<Context, D, T, E>(this.service);
     return handler.execute(c, next);
   }
 
   public async update(c: Context, next: any): Promise<Response> {
-    const handler = new UpdateHandler<Context, D, T, E>(this._service);
+    const handler = new UpdateHandler<Context, D, T, E>(this.service);
     return handler.execute(c, next);
   }
 
   public async delete(c: Context, next: any): Promise<Response> {
-    const handler = new DeleteHandler<Context, D, T, E>(this._service);
+    const handler = new DeleteHandler<Context, D, T, E>(this.service);
     return handler.execute(c, next);
   }
 
@@ -156,11 +150,11 @@ export class Controller<
   // }
 
   protected bindRoutes(routes: IRoute[]) {
-    this._routes = [];
+    this.routes = [];
 
     for (const route of routes) {
       const handler = route.handler.bind(this);
-      this._routes.push({
+      this.routes.push({
         ...route,
         handler,
       });

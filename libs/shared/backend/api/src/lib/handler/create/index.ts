@@ -2,11 +2,12 @@ import "reflect-metadata";
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
 import { Next } from "hono/types";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import { IDefaultService } from "../../service";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { Placeholder, SQL } from "drizzle-orm";
+import { DI } from "../../di/constants";
 
 @injectable()
 export class Handler<
@@ -20,9 +21,7 @@ export class Handler<
       | T["$inferInsert"][Key];
   },
 > {
-  constructor(private service: IDefaultService<D, T, E>) {
-    this.service = service;
-  }
+  constructor(@inject(DI.IService) private service: IDefaultService<D, T, E>) {}
 
   async execute(c: C, next: Next) {
     const body = await c.req.parseBody();

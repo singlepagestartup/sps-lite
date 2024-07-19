@@ -9,20 +9,14 @@ import { type IDefaultDataStore } from "../../data-store";
 export interface IRepository<
   D extends PostgresJsDatabase<any>,
   T extends PgTableWithColumns<any>,
-  E extends {
-    [Key in keyof T["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | T["$inferInsert"][Key];
-  },
 > {
   find: () => Promise<T["$inferSelect"][]>;
-  create: (data: E) => Promise<T["$inferSelect"]>;
+  create: (data: T["$inferInsert"]) => Promise<T["$inferSelect"]>;
   findById: (props: { id: string }) => Promise<T["$inferSelect"] | null>;
   delete: (props: { id: string }) => Promise<T["$inferSelect"]>;
   updateById: (props: {
     id: string;
-    data: any;
+    data: T["$inferInsert"];
   }) => Promise<T["$inferSelect"] | null>;
 }
 
@@ -30,33 +24,20 @@ export interface IRepository<
 export class Repository<
   D extends PostgresJsDatabase<any>,
   T extends PgTableWithColumns<any>,
-  E extends {
-    [Key in keyof T["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | T["$inferInsert"][Key];
-  },
-> implements IRepository<D, T, E>
+> implements IRepository<D, T>
 {
-  dataStore: IDefaultDataStore<D, T>;
+  constructor(
+    @inject(DI.IDataStore) private dataStore: IDefaultDataStore<T, D>,
+  ) {}
 
-  constructor(@inject(DI.IDataStore) dataStore: IDefaultDataStore<D, T>) {
-    this.dataStore = dataStore;
-  }
-
-  async create(data: E) {
-    const result = await this.dataStore.insert(data);
+  async create(entity: T["$inferInsert"]): Promise<T["$inferSelect"]> {
+    const result = await this.dataStore.insert(entity);
 
     return result;
   }
 
   async find(): Promise<T["$inferSelect"][]> {
-    // const result =
-    //   await this.dataStore.db.query[this.dataStore.schemaName].findMany();
-    const result = await this.dataStore.db
-      .select()
-      .from(this.dataStore.Table)
-      .execute();
+    const result = await this.dataStore.find();
 
     return result;
   }
@@ -79,7 +60,7 @@ export class Repository<
 
   async updateById(props: {
     id: string;
-    data: any;
+    data: T["$inferInsert"];
   }): Promise<T["$inferSelect"] | null> {
     const result = await this.dataStore.updateFirstByField(
       "id",

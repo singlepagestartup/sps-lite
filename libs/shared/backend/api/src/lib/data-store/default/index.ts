@@ -1,18 +1,10 @@
-import { eq } from "drizzle-orm";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { injectable } from "inversify";
-import { ZodObject } from "zod";
+import { inject, injectable } from "inversify";
+import { DI } from "../../di/constants";
+import { IDefaultDatabase } from "../../database";
 
-export interface IDataStore<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-> {
-  db: D;
-  schemaName: D["_"]["tableNamesMap"][keyof D["_"]["tableNamesMap"]];
-  insertSchema: ZodObject<any, any>;
-  // schemaName: keyof ExtractTablesWithRelations<T>;
-  Table: T;
+export interface IDataStore<T extends PgTableWithColumns<any>, SCH> {
+  store: IDefaultDatabase<SCH, T>;
   find: () => Promise<T["$inferSelect"][]>;
   findByField: (field: string, value: any) => Promise<T["$inferSelect"][]>;
   insert: (data: T["$inferInsert"]) => Promise<T["$inferSelect"]>;
@@ -25,57 +17,29 @@ export interface IDataStore<
 }
 
 @injectable()
-export class DataStore<
-  T extends PgTableWithColumns<any>,
-  D extends PostgresJsDatabase<any>,
-> implements IDataStore<D, T>
+export class DataStore<T extends PgTableWithColumns<any>, SCH>
+  implements IDataStore<T, SCH>
 {
-  db: D;
-  schemaName: IDataStore<D, T>["schemaName"];
-  Table: IDataStore<D, T>["Table"];
-  insertSchema: IDataStore<D, T>["insertSchema"];
+  store: IDefaultDatabase<SCH, T>;
 
-  constructor(
-    db: D,
-    schemaName: IDataStore<D, T>["schemaName"],
-    Table: IDataStore<D, T>["Table"],
-    insertSchema: IDataStore<D, T>["insertSchema"],
-  ) {
-    this.db = db;
-    this.Table = Table;
-    this.schemaName = schemaName;
-    this.insertSchema = insertSchema;
+  constructor(@inject(DI.IDatabase) db: IDefaultDatabase<SCH, T>) {
+    this.store = db;
   }
 
   async find(): Promise<T["$inferSelect"][]> {
-    // const result = await this.db.query[this.schemaName].findMany();
-    const record = await this.db.select(this.Table).from(this.Table).execute();
+    const record = await this.store.find();
 
     return record;
   }
 
   async findByField(field: string, value: any): Promise<T["$inferSelect"][]> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
-    }
-
-    const record = await this.db
-      .select()
-      .from(this.Table)
-      .where(eq(this.Table[field], value))
-      .execute();
+    const record = await this.store.findByField(field, value);
 
     return record;
   }
 
   async insert(data: T["$inferInsert"]): Promise<T["$inferSelect"]> {
-    const plainData = this.insertSchema.parse(data);
-
-    const [record] = await this.db
-      .insert(this.Table)
-      .values(data)
-      .returning()
-      .execute();
+    const record = await this.store.insert(data);
 
     return record;
   }
@@ -84,17 +48,7 @@ export class DataStore<
     field: string,
     value: any,
   ): Promise<T["$inferSelect"]> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
-    }
-
-    const [record] = await this.findByField(field, value);
-
-    const [result] = await this.db
-      .delete(this.Table)
-      .where(eq(this.Table[field], record[field]))
-      .returning()
-      .execute();
+    const result = await this.store.deleteFirstByField(field, value);
 
     return result;
   }
@@ -104,18 +58,7 @@ export class DataStore<
     value: any,
     data: T["$inferInsert"],
   ): Promise<T["$inferSelect"]> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
-    }
-
-    const [record] = await this.findByField(field, value);
-
-    const [result] = await this.db
-      .update(this.Table)
-      .set(data)
-      .where(eq(this.Table[field], record[field]))
-      .returning()
-      .execute();
+    const result = await this.store.updateFirstByField(field, value, data);
 
     return result;
   }

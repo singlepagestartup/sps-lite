@@ -1,1 +1,3 @@
-export { Model } from "./lib";
+export { Entity } from "./lib/entity";
+export { DataStore } from "./lib/data-store";
+export { Database } from "./lib/database";

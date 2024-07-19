@@ -2,7 +2,7 @@ import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { Placeholder, SQL } from "drizzle-orm";
 import { injectable } from "inversify";
-import { type IDefaultRepository } from "../../../../repository";
+import { type IDefaultEntity } from "../../../../entity";
 
 @injectable()
 export class Action<
@@ -15,14 +15,14 @@ export class Action<
       | T["$inferInsert"][Key];
   },
 > {
-  repository: IDefaultRepository<D, T, E>;
+  entity: IDefaultEntity<D, T, E>;
 
-  constructor(repository: IDefaultRepository<D, T, E>) {
-    this.repository = repository;
+  constructor(entity: IDefaultEntity<D, T, E>) {
+    this.entity = entity;
   }
 
   async execute(props: { id: string; data: any }) {
-    const result = await this.repository.updateById(props);
+    const result = await this.entity.updateById(props);
 
     return result;
   }
