@@ -3,15 +3,17 @@ import { DefaultController, DI } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { Model } from "@sps/sps-rbac/models/authentication/backend/model/root";
+import { type SCHEMA } from "@sps/sps-rbac/models/authentication/backend/model/root";
+import { type IService } from "../service";
 
 @injectable()
-export class Controller extends DefaultController {
-  model: Model;
+export class Controller extends DefaultController<SCHEMA> {
+  service: IService<SCHEMA>;
 
-  constructor(@inject(DI.IModel) model: Model) {
-    super(model);
-    this.model = model;
+  constructor(@inject(DI.IService) service: IService<SCHEMA>) {
+    super(service);
+    this.service = service;
+
     this.bindRoutes([
       {
         method: "GET",
@@ -32,11 +34,6 @@ export class Controller extends DefaultController {
         method: "POST",
         path: "/providers/:provider",
         handler: this.providers,
-      },
-      {
-        method: "GET",
-        path: "/dump",
-        handler: this.dump,
       },
       {
         method: "GET",
@@ -89,9 +86,7 @@ export class Controller extends DefaultController {
         }
       }
 
-      const data = await this.model.isAuthenticatated({
-        session,
-      });
+      const data = await this.service.isAuthenticatated();
 
       return c.json({
         data,
@@ -115,9 +110,7 @@ export class Controller extends DefaultController {
         }
       }
 
-      const data = await this.model.logout({
-        session,
-      });
+      const data = await this.service.logout();
 
       return c.json({
         data,
@@ -161,11 +154,7 @@ export class Controller extends DefaultController {
         });
       }
 
-      const entity = await this.model.providers({
-        data,
-        session,
-        provider,
-      });
+      const entity = await this.service.providers();
 
       return c.json(
         {

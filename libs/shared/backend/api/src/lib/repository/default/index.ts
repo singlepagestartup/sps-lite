@@ -4,6 +4,7 @@ import { DI } from "../../di/constants";
 import { type IDefaultStore } from "../../store";
 
 export interface IRepository<SCHEMA extends Record<string, unknown>> {
+  store: IDefaultStore<SCHEMA>;
   find: () => Promise<SCHEMA[]>;
   create: (data: SCHEMA) => Promise<SCHEMA>;
   findById: (props: { id: string }) => Promise<SCHEMA | null>;
@@ -15,7 +16,11 @@ export interface IRepository<SCHEMA extends Record<string, unknown>> {
 export class Repository<SCHEMA extends Record<string, unknown>>
   implements IRepository<SCHEMA>
 {
-  constructor(@inject(DI.IStore) private store: IDefaultStore<SCHEMA>) {}
+  store: IDefaultStore<SCHEMA>;
+
+  constructor(@inject(DI.IStore) store: IDefaultStore<SCHEMA>) {
+    this.store = store;
+  }
 
   async create(entity: SCHEMA): Promise<SCHEMA> {
     const result = await this.store.insert(entity);

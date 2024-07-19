@@ -21,4 +21,4 @@ export * from "./lib/service";
 export * from "./lib/repository";
 export * from "./lib/store";
 export * from "./lib/entity";
-export * from "./lib/database";
+export * from "./lib/store-client";

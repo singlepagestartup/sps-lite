@@ -1,6 +1,6 @@
 export const DI = {
   IExceptionFilter: Symbol.for("IExceptionFilter"),
-  IDatabase: Symbol.for("IDatabase"),
+  IStoreClient: Symbol.for("IStoreClient"),
   IApp: Symbol.for("IApp"),
   IController: Symbol.for("IController"),
   IService: Symbol.for("IService"),

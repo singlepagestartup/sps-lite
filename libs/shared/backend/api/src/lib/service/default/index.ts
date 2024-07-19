@@ -11,6 +11,7 @@ import { DI } from "../../di/constants";
 import { type IDefaultEntity } from "../../entity";
 
 export interface IService<SCHEMA extends Record<string, unknown>> {
+  entity: IDefaultEntity<SCHEMA>;
   find: () => Promise<SCHEMA[]>;
   findById: (props: { id: string }) => Promise<SCHEMA | null>;
   create: (props: { data: SCHEMA }) => Promise<SCHEMA | null>;
@@ -22,7 +23,11 @@ export interface IService<SCHEMA extends Record<string, unknown>> {
 export class Service<SCHEMA extends Record<string, unknown>>
   implements IService<SCHEMA>
 {
-  constructor(@inject(DI.IEntity) private entity: IDefaultEntity<SCHEMA>) {}
+  entity: IDefaultEntity<SCHEMA>;
+
+  constructor(@inject(DI.IEntity) entity: IDefaultEntity<SCHEMA>) {
+    this.entity = entity;
+  }
 
   async find(): Promise<SCHEMA[]> {
     const action = new FindAction(this.entity);

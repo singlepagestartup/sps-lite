@@ -3,6 +3,7 @@ import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
 
 export interface IEntity<SCHEMA extends Record<string, unknown>> {
+  repository: IDefaultRepository<SCHEMA>;
   find: () => Promise<SCHEMA[]>;
   create: (data: SCHEMA) => Promise<SCHEMA>;
   findById: (props: { id: string }) => Promise<SCHEMA | null>;
@@ -14,10 +15,14 @@ export interface IEntity<SCHEMA extends Record<string, unknown>> {
 export class Entity<SCHEMA extends Record<string, unknown>>
   implements IEntity<SCHEMA>
 {
+  repository: IDefaultRepository<SCHEMA>;
+
   constructor(
     @inject(DI.IRepository)
-    private repository: IDefaultRepository<SCHEMA>,
-  ) {}
+    repository: IDefaultRepository<SCHEMA>,
+  ) {
+    this.repository = repository;
+  }
 
   async find() {
     const result = await this.repository.find();

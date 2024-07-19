@@ -2,26 +2,23 @@ import "reflect-metadata";
 import {
   DefaultController,
   DI,
-  type IDefaultModel,
+  type IDefaultService,
 } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 
 @injectable()
-export class Controller extends DefaultController {
-  constructor(@inject(DI.IModel) model: IDefaultModel) {
-    super(model);
+export class Controller<
+  SCHEMA extends Record<string, unknown>,
+> extends DefaultController<SCHEMA> {
+  constructor(@inject(DI.IService) service: IDefaultService<SCHEMA>) {
+    super(service);
     this.bindRoutes([
       {
         method: "GET",
         path: "/",
         handler: this.find,
-      },
-      {
-        method: "GET",
-        path: "/dump",
-        handler: this.dump,
       },
       {
         method: "GET",

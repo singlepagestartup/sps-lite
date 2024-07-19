@@ -6,8 +6,7 @@ import {
   DefaultController,
   DefaultService,
   DefaultRepository,
-  type IDefaultDatabase,
-  DefaultEntity,
+  type IDatabaseStoreClient,
   type IDefaultEntity,
   type IDefaultApp,
   type IExceptionFilter,
@@ -20,21 +19,20 @@ import { schema } from "@sps/sps-rbac/backend/db/root";
 import { Table } from "@sps/sps-rbac/models/role/backend/schema/root";
 import {
   Entity,
-  DataStore,
+  Store,
   Database,
+  type SCHEMA,
 } from "@sps/sps-rbac/models/role/backend/model/root";
 import { Env } from "hono";
-
-type SCHEMA = (typeof Table)["$inferInsert"];
 
 const bindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IExceptionFilter>(DI.IExceptionFilter).to(ExceptionFilter);
   bind<IDefaultApp<Env, SCHEMA>>(DI.IApp).to(DefaultApp);
-  bind<IDefaultDatabase<SCHEMA, typeof schema, typeof Table>>(DI.IDatabase).to(
-    Database,
-  );
+  bind<IDatabaseStoreClient<SCHEMA, typeof schema, typeof Table>>(
+    DI.IStoreClient,
+  ).to(Database);
   bind<IDefaultController<SCHEMA>>(DI.IController).to(DefaultController);
-  bind<IDefaultStore<SCHEMA>>(DI.IStore).to(DataStore);
+  bind<IDefaultStore<SCHEMA>>(DI.IStore).to(Store);
   bind<IDefaultRepository<SCHEMA>>(DI.IRepository).to(
     DefaultRepository<SCHEMA>,
   );
@@ -51,8 +49,8 @@ export async function bootstrap() {
   await app.init();
 
   const database = container.get<
-    IDefaultDatabase<SCHEMA, typeof schema, typeof Table>
-  >(DI.IDatabase);
+    IDatabaseStoreClient<SCHEMA, typeof schema, typeof Table>
+  >(DI.IStoreClient);
   const r = await database.find();
 
   const store = container.get<IDefaultStore<SCHEMA>>(DI.IStore);

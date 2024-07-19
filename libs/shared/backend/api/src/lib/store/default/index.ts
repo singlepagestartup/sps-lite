@@ -1,9 +1,9 @@
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
-import { type IDefaultDatabase } from "../../database";
+import { type IDatabaseStoreClient } from "../../store-client";
 
 export interface IStore<SCHEMA extends Record<any, any>> {
-  client: IDefaultDatabase<SCHEMA, any, any>;
+  client: IDatabaseStoreClient<SCHEMA, any, any>;
   find: () => Promise<SCHEMA[]>;
   findByField: (field: string, value: keyof SCHEMA) => Promise<SCHEMA>;
   insert: (data: SCHEMA) => Promise<SCHEMA>;
@@ -13,9 +13,11 @@ export interface IStore<SCHEMA extends Record<any, any>> {
 
 @injectable()
 export class Store<SCHEMA extends Record<any, any>> implements IStore<SCHEMA> {
-  client: IDefaultDatabase<SCHEMA, any, any>;
+  client: IDatabaseStoreClient<SCHEMA, any, any>;
 
-  constructor(@inject(DI.IDatabase) db: IDefaultDatabase<SCHEMA, any, any>) {
+  constructor(
+    @inject(DI.IStoreClient) db: IDatabaseStoreClient<SCHEMA, any, any>,
+  ) {
     this.client = db;
   }
 

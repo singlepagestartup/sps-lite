@@ -22,6 +22,7 @@ export interface IRoute {
 }
 
 export interface IController<SCHEMA extends Record<string, unknown>> {
+  service: IDefaultService<SCHEMA>;
   routes: IRoute[];
   ok: <T>(c: Context<any, any, any>, data: T) => Response | Promise<Response>;
   send: <T>(
@@ -41,8 +42,10 @@ export class Controller<SCHEMA extends Record<string, unknown>>
   implements IController<SCHEMA>
 {
   routes: IRoute[] = [];
+  service: IDefaultService<SCHEMA>;
 
-  constructor(@inject(DI.IService) private service: IDefaultService<SCHEMA>) {
+  constructor(@inject(DI.IService) service: IDefaultService<SCHEMA>) {
+    this.service = service;
     this.bindRoutes([
       {
         method: "GET",
