@@ -1,37 +1,22 @@
 import { Container, ContainerModule, interfaces } from "inversify";
 import {
   DI,
-  DefaultApp,
   ExceptionFilter,
-  DefaultController,
-  DefaultService,
-  type IDefaultEntity,
-  type IDefaultApp,
   type IExceptionFilter,
-  type IDefaultController,
-  type IDefaultService,
-  type IDefaultRepository,
-  type IDefaultStore,
-  IDatabaseStoreClient,
 } from "@sps/shared-backend-api";
-import {
-  Store,
-  Entity,
-  Database,
-  Repository,
-  type SCHEMA,
-} from "@sps/sps-rbac/models/widget/backend/model/root";
-import { Env } from "hono";
+import { Configuration } from "./configuration";
+import { Repository } from "./repository";
+import { Controller } from "./controller";
+import { Service } from "./service";
+import { App } from "./app";
 
 const bindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IExceptionFilter>(DI.IExceptionFilter).to(ExceptionFilter);
-  bind<IDefaultApp<Env, SCHEMA>>(DI.IApp).to(DefaultApp);
-  bind<IDefaultController<SCHEMA>>(DI.IController).to(DefaultController);
-  bind<IDefaultStore<SCHEMA>>(DI.IStore).to(Store);
-  bind<IDefaultRepository<SCHEMA>>(DI.IRepository).to(Repository<SCHEMA>);
-  bind<IDefaultService<SCHEMA>>(DI.IService).to(DefaultService<SCHEMA>);
-  bind<IDefaultEntity<SCHEMA>>(DI.IEntity).to(Entity);
-  bind<IDatabaseStoreClient<SCHEMA, any, any>>(DI.IStoreClient).to(Database);
+  bind<App>(DI.IApp).to(App);
+  bind<Controller>(DI.IController).to(Controller);
+  bind<Repository>(DI.IRepository).to(Repository);
+  bind<Service>(DI.IService).to(Service);
+  bind<Configuration>(DI.IConfiguration).to(Configuration);
 });
 
 export async function bootstrap() {
@@ -39,27 +24,7 @@ export async function bootstrap() {
     skipBaseClassChecks: true,
   });
   container.load(bindings);
-  const app = container.get<IDefaultApp<Env, SCHEMA>>(DI.IApp);
-  // const controller = container.get<
-  //   IDefaultController<
-  //     typeof db,
-  //     typeof Table,
-  //     Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-  //   >
-  // >(DI.IController);
-  // const entity = container.get<
-  //   IDefaultEntity<
-  //     typeof db,
-  //     typeof Table,
-  //     Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-  //   >
-  // >(DI.IEntity);
-  // const r = await entity.find();
-  // controller.routes
-  // const newEntity = new Entity("lupa");
-  // const newItem = repository.create({
-  //   sdfs: "sdf",
-  // });
+  const app = container.get<App>(DI.IApp);
 
   await app.init();
 

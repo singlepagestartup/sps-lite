@@ -1,3 +1,3 @@
-import { Table } from "@sps/sps-rbac/models/authentication/backend/schema/root";
+// import { Table } from "@sps/sps-rbac/models/authentication/backend/schema/root";
 
-export type SCHEMA = (typeof Table)["$inferSelect"];
+// export type SCHEMA = (typeof Table)["$inferSelect"];

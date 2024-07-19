@@ -1,4 +1,2 @@
-export {
-  Repository as DefaultRepository,
-  type IRepository as IDefaultRepository,
-} from "./default";
+export { type IRepository } from "./interface";
+export { Database as DatabaseRepository } from "./database";

@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Env, Hono } from "hono";
-import { type IDefaultController } from "../../controllers";
+import { type IController } from "../../controllers";
 import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
@@ -10,7 +10,7 @@ export interface IApp<
   SCHEMA extends Record<string, unknown> = {},
 > {
   hono: Hono<ENV>;
-  controller?: IDefaultController<SCHEMA>;
+  controller?: IController<SCHEMA>;
   exceptionFilter: IExceptionFilter;
   init: () => Promise<void>;
   useRoutes: () => void;
@@ -21,12 +21,12 @@ export class App<SCHEMA extends Record<string, unknown>>
   implements IApp<Env, SCHEMA>
 {
   hono: Hono<Env>;
-  controller: IDefaultController<SCHEMA>;
+  controller: IController<SCHEMA>;
   exceptionFilter: IExceptionFilter;
 
   constructor(
     @inject(DI.IExceptionFilter) exceptionFilter: IExceptionFilter,
-    @inject(DI.IController) controller: IDefaultController<SCHEMA>,
+    @inject(DI.IController) controller: IController<SCHEMA>,
   ) {
     this.hono = new Hono<Env>();
     this.exceptionFilter = exceptionFilter;

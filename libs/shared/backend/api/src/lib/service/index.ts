@@ -1,4 +1,2 @@
-export {
-  type IService as IDefaultService,
-  Service as DefaultService,
-} from "./default";
+export { Service as CRUDService } from "./crud";
+export { type IService } from "./interface";
