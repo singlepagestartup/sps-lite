@@ -1,4 +1,4 @@
 export {
   Database as DefaultDatabase,
-  IDatabase as IDefaultDatabase,
+  type IDatabase as IDefaultDatabase,
 } from "./default";

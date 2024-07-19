@@ -12,6 +12,7 @@ import { DI } from "../../di/constants";
 @injectable()
 export class Handler<
   C extends Context,
+  SCHEMA extends Record<string, unknown>,
   D extends PostgresJsDatabase<any>,
   T extends PgTableWithColumns<any>,
   E extends {
@@ -21,9 +22,9 @@ export class Handler<
       | T["$inferInsert"][Key];
   },
 > {
-  service: IDefaultService<D, T, E>;
+  service: IDefaultService<SCHEMA>;
 
-  constructor(@inject(DI.IService) service: IDefaultService<D, T, E>) {
+  constructor(@inject(DI.IService) service: IDefaultService<SCHEMA>) {
     this.service = service;
   }
 

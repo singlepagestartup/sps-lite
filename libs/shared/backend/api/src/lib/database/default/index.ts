@@ -4,11 +4,16 @@ import { injectable } from "inversify";
 import { postgres } from "@sps/shared-backend-database-config";
 import { eq } from "drizzle-orm";
 
-export interface IDatabase<SCH, T extends PgTableWithColumns<any>> {
+export interface IDatabase<
+  SCHEMA,
+  PGSCHEMA,
+  T extends PgTableWithColumns<any>,
+> {
   db: PostgresJsDatabase<any>;
-  schema: SCH;
+  schema: PGSCHEMA;
   Table: T;
-  find: () => Promise<T["$inferSelect"][]>;
+  find: () => Promise<SCHEMA[]>;
+  findFirstByField: (field: string, value: any) => Promise<T["$inferSelect"]>;
   findByField: (field: string, value: any) => Promise<T["$inferSelect"][]>;
   insert: (data: T["$inferInsert"]) => Promise<T["$inferSelect"]>;
   deleteFirstByField: (field: string, value: any) => Promise<T["$inferSelect"]>;
@@ -21,21 +26,22 @@ export interface IDatabase<SCH, T extends PgTableWithColumns<any>> {
 
 @injectable()
 export class Database<
-  SCH extends Record<string, unknown>,
+  SCHEMA extends Record<string, unknown>,
+  PGSCHEMA extends Record<string, unknown>,
   T extends PgTableWithColumns<any>,
-> implements IDatabase<SCH, T>
+> implements IDatabase<SCHEMA, PGSCHEMA, T>
 {
   db: PostgresJsDatabase<any>;
-  schema: SCH;
+  schema: PGSCHEMA;
   Table: T;
 
-  constructor(schema: SCH, Table: T) {
+  constructor(schema: PGSCHEMA, Table: T) {
     this.schema = schema;
     this.Table = Table;
     this.db = drizzle(postgres, { schema: this.schema });
   }
 
-  async find(): Promise<T["$inferSelect"][]> {
+  async find(): Promise<SCHEMA[]> {
     const record = await this.db.select(this.Table).from(this.Table).execute();
 
     return record;
@@ -51,6 +57,15 @@ export class Database<
       .from(this.Table)
       .where(eq(this.Table[field], value))
       .execute();
+
+    return record;
+  }
+
+  async findFirstByField(
+    field: string,
+    value: any,
+  ): Promise<T["$inferSelect"]> {
+    const [record] = await this.findByField(field, value);
 
     return record;
   }

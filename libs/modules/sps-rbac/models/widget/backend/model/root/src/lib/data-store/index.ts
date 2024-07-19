@@ -1,15 +1,22 @@
-import { DefaultDataStore } from "@sps/shared-backend-api";
-import { db } from "@sps/sps-rbac/backend/db/root";
 import {
-  insertSchema,
-  schemaName,
-  Table,
-} from "@sps/sps-rbac/models/widget/backend/schema/table";
-import { injectable } from "inversify";
+  DefaultStore,
+  DI,
+  type IDefaultDatabase,
+} from "@sps/shared-backend-api";
+import { schema } from "@sps/sps-rbac/backend/db/root";
+import { Table } from "@sps/sps-rbac/models/widget/backend/schema/table";
+import { inject, injectable } from "inversify";
 
 @injectable()
-export class DataStore extends DefaultDataStore<typeof Table, typeof db> {
-  constructor() {
-    super(db, schemaName, Table, insertSchema);
+export class DataStore extends DefaultStore<(typeof Table)["$inferSelect"]> {
+  constructor(
+    @inject(DI.IDatabase)
+    db: IDefaultDatabase<
+      (typeof Table)["$inferSelect"],
+      typeof schema,
+      typeof Table
+    >,
+  ) {
+    super(db);
   }
 }

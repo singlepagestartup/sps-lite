@@ -4,47 +4,29 @@ import { type IDefaultController } from "../../controllers";
 import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { Placeholder, SQL } from "drizzle-orm";
 
 export interface IApp<
-  ENV extends Env,
-  PGDB extends PostgresJsDatabase<any>,
-  PGTB extends PgTableWithColumns<any>,
-  ENT extends {
-    [Key in keyof PGTB["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | PGTB["$inferInsert"][Key];
-  },
+  ENV extends Env = {},
+  SCHEMA extends Record<string, unknown> = {},
 > {
   hono: Hono<ENV>;
-  controller?: IDefaultController<PGDB, PGTB, ENT>;
+  controller?: IDefaultController<SCHEMA>;
   exceptionFilter: IExceptionFilter;
   init: () => Promise<void>;
   useRoutes: () => void;
 }
 
 @injectable()
-export class App<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  E extends {
-    [Key in keyof T["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | T["$inferInsert"][Key];
-  },
-> implements IApp<Env, D, T, E>
+export class App<SCHEMA extends Record<string, unknown>>
+  implements IApp<Env, SCHEMA>
 {
   hono: Hono<Env>;
-  controller: IDefaultController<D, T, E>;
+  controller: IDefaultController<SCHEMA>;
   exceptionFilter: IExceptionFilter;
 
   constructor(
     @inject(DI.IExceptionFilter) exceptionFilter: IExceptionFilter,
-    @inject(DI.IController) controller: IDefaultController<D, T, E>,
+    @inject(DI.IController) controller: IDefaultController<SCHEMA>,
   ) {
     this.hono = new Hono<Env>();
     this.exceptionFilter = exceptionFilter;

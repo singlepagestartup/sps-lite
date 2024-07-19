@@ -19,6 +19,6 @@ export * from "./lib/di/constants";
 export * from "./lib/handler";
 export * from "./lib/service";
 export * from "./lib/repository";
-export * from "./lib/data-store";
+export * from "./lib/store";
 export * from "./lib/entity";
 export * from "./lib/database";

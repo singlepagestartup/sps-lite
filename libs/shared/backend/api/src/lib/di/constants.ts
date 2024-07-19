@@ -4,7 +4,7 @@ export const DI = {
   IApp: Symbol.for("IApp"),
   IController: Symbol.for("IController"),
   IService: Symbol.for("IService"),
-  IDataStore: Symbol.for("IDataStore"),
+  IStore: Symbol.for("IStore"),
   IRepository: Symbol.for("IRepository"),
   IEntity: Symbol.for("IEntity"),
 };

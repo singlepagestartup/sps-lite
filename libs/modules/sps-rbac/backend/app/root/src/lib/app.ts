@@ -6,8 +6,6 @@ import {
   type IExceptionFilter,
 } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
-import { db } from "@sps/sps-rbac/backend/db/root";
-import { Table } from "@sps/sps-rbac/models/widget/backend/schema/root";
 import { app as widget } from "@sps/sps-rbac/models/widget/backend/app/root";
 import { app as role } from "@sps/sps-rbac/models/role/backend/app/root";
 // import { app as subject } from "@sps/sps-rbac/models/subject/backend/app/root";
@@ -17,10 +15,7 @@ import { app as role } from "@sps/sps-rbac/models/role/backend/app/root";
 // import { app as authentication } from "@sps/sps-rbac/models/authentication/backend/app/root";
 
 @injectable()
-export class App
-  implements
-    IDefaultApp<Env, typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-{
+export class App implements IDefaultApp<Env> {
   hono: Hono<Env>;
   exceptionFilter: IExceptionFilter;
 
@@ -40,7 +35,7 @@ export class App
   }
 
   useRoutes() {
-    // this.hono.mount("/widgets", widget.hono.fetch);
+    this.hono.mount("/widgets", widget.hono.fetch);
     this.hono.mount("/roles", role.hono.fetch);
     // this.hono.mount("/subjects", subject.hono.fetch);
     // this.hono.mount("/sessions", session.hono.fetch);

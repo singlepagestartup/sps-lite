@@ -8,15 +8,11 @@ import {
   CreateHandler,
   UpdateHandler,
   DeleteHandler,
-  DumpHandler,
 } from "../../handler";
 import { type IDefaultService } from "../../service";
 import { DI } from "../../di/constants";
-import { BlankInput, Handler, HandlerResponse, RouterRoute } from "hono/types";
+import { BlankInput, Handler, HandlerResponse } from "hono/types";
 import { createMiddleware } from "hono/factory";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { Placeholder, SQL } from "drizzle-orm";
 
 export interface IRoute {
   path: string;
@@ -25,16 +21,7 @@ export interface IRoute {
   middlewares?: ReturnType<typeof createMiddleware>[];
 }
 
-export interface IController<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  E extends {
-    [Key in keyof T["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | T["$inferInsert"][Key];
-  },
-> {
+export interface IController<SCHEMA extends Record<string, unknown>> {
   routes: IRoute[];
   ok: <T>(c: Context<any, any, any>, data: T) => Response | Promise<Response>;
   send: <T>(
@@ -47,24 +34,15 @@ export interface IController<
   create: (c: Context, next: any) => Response | Promise<Response>;
   update: (c: Context, next: any) => Response | Promise<Response>;
   delete: (c: Context, next: any) => Response | Promise<Response>;
-  // dump: (c: Context, next: any) => Response | Promise<Response>;
 }
 
 @injectable()
-export class Controller<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  E extends {
-    [Key in keyof T["$inferInsert"]]:
-      | SQL<unknown>
-      | Placeholder<string, any>
-      | T["$inferInsert"][Key];
-  },
-> implements IController<D, T, E>
+export class Controller<SCHEMA extends Record<string, unknown>>
+  implements IController<SCHEMA>
 {
   routes: IRoute[] = [];
 
-  constructor(@inject(DI.IService) private service: IDefaultService<D, T, E>) {
+  constructor(@inject(DI.IService) private service: IDefaultService<SCHEMA>) {
     this.bindRoutes([
       {
         method: "GET",
@@ -120,27 +98,27 @@ export class Controller<
   }
 
   public async find(c: Context, next: any): Promise<Response> {
-    const handler = new FindHandler<Context, D, T, E>(this.service);
+    const handler = new FindHandler<Context, SCHEMA>(this.service);
     return handler.execute(c, next);
   }
 
   public async findById(c: Context, next: any): Promise<Response> {
-    const handler = new FindByIdHandler<Context, D, T, E>(this.service);
+    const handler = new FindByIdHandler<Context, SCHEMA>(this.service);
     return handler.execute(c, next);
   }
 
   public async create(c: Context, next: any): Promise<Response> {
-    const handler = new CreateHandler<Context, D, T, E>(this.service);
+    const handler = new CreateHandler<Context, SCHEMA>(this.service);
     return handler.execute(c, next);
   }
 
   public async update(c: Context, next: any): Promise<Response> {
-    const handler = new UpdateHandler<Context, D, T, E>(this.service);
+    const handler = new UpdateHandler<Context, SCHEMA>(this.service);
     return handler.execute(c, next);
   }
 
   public async delete(c: Context, next: any): Promise<Response> {
-    const handler = new DeleteHandler<Context, D, T, E>(this.service);
+    const handler = new DeleteHandler<Context, SCHEMA>(this.service);
     return handler.execute(c, next);
   }
 

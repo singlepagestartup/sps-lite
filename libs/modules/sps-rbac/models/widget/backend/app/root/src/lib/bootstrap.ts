@@ -9,70 +9,37 @@ import {
   FindByIdHandler,
   FindHandler,
   DefaultEntity,
+  DefaultDatabase,
   type IDefaultEntity,
   type IDefaultApp,
   type IExceptionFilter,
   type IDefaultController,
   type IDefaultService,
   type IDefaultRepository,
-  type IDefaultDataStore,
+  type IDefaultStore,
+  IDefaultDatabase,
 } from "@sps/shared-backend-api";
 import { db } from "@sps/sps-rbac/backend/db/root";
 import { Table } from "@sps/sps-rbac/models/widget/backend/schema/root";
 import {
   DataStore,
   Entity,
+  Database,
   Repository,
 } from "@sps/sps-rbac/models/widget/backend/model/root";
 import { Env } from "hono";
 
+type SCHEMA = (typeof Table)["$inferInsert"];
+
 const bindings = new ContainerModule((bind: interfaces.Bind) => {
   bind<IExceptionFilter>(DI.IExceptionFilter).to(ExceptionFilter);
-  bind<
-    IDefaultApp<
-      Env,
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >
-  >(DI.IApp).to(DefaultApp);
-  bind<
-    IDefaultController<
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >
-  >(DI.IController).to(DefaultController);
-  bind<IDefaultDataStore<typeof db, typeof Table>>(DI.IDataStore).to(DataStore);
-  bind<IDefaultRepository<typeof db, typeof Table>>(DI.IRepository).to(
-    Repository<typeof db, typeof Table>,
-  );
-  bind<
-    IDefaultService<
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >
-  >(DI.IService).to(
-    DefaultService<
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >,
-  );
-  bind<
-    IDefaultEntity<
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >
-  >(DI.IEntity).to(
-    DefaultEntity<
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >,
-  );
+  bind<IDefaultApp<Env, SCHEMA>>(DI.IApp).to(DefaultApp);
+  bind<IDefaultController<SCHEMA>>(DI.IController).to(DefaultController);
+  bind<IDefaultStore<SCHEMA>>(DI.IStore).to(DataStore);
+  bind<IDefaultRepository<SCHEMA>>(DI.IRepository).to(Repository<SCHEMA>);
+  bind<IDefaultService<SCHEMA>>(DI.IService).to(DefaultService<SCHEMA>);
+  bind<IDefaultEntity<SCHEMA>>(DI.IEntity).to(Entity);
+  bind<IDefaultDatabase<SCHEMA, any, any>>(DI.IDatabase).to(Database);
 });
 
 export async function bootstrap() {
@@ -80,14 +47,7 @@ export async function bootstrap() {
     skipBaseClassChecks: true,
   });
   container.load(bindings);
-  const app = container.get<
-    IDefaultApp<
-      Env,
-      typeof db,
-      typeof Table,
-      Entity<typeof db, typeof Table, (typeof Table)["$inferInsert"]>
-    >
-  >(DI.IApp);
+  const app = container.get<IDefaultApp<Env, SCHEMA>>(DI.IApp);
   // const controller = container.get<
   //   IDefaultController<
   //     typeof db,

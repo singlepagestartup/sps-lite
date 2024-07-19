@@ -1,17 +1,17 @@
-import { DefaultEntity, DI, IDefaultRepository } from "@sps/shared-backend-api";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import {
+  DefaultEntity,
+  DI,
+  type IDefaultRepository,
+} from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
 
 @injectable()
 export class Entity<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  DTO extends T["$inferInsert"],
-> extends DefaultEntity<D, T, DTO> {
+  SCHEMA extends Record<string, unknown>,
+> extends DefaultEntity<SCHEMA> {
   title: string;
 
-  constructor(@inject(DI.IRepository) private r: IDefaultRepository<D, T>) {
+  constructor(@inject(DI.IRepository) private r: IDefaultRepository<SCHEMA>) {
     super(r);
   }
 }

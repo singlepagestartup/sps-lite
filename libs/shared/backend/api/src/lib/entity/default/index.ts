@@ -1,35 +1,22 @@
-import { Placeholder, SQL } from "drizzle-orm";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { IDefaultRepository } from "../../repository";
+import { type IDefaultRepository } from "../../repository";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
 
-export interface IEntity<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  DTO extends T["$inferInsert"],
-> {
-  find: () => Promise<T["$inferSelect"][]>;
-  create: (data: DTO) => Promise<T["$inferSelect"]>;
-  findById: (props: { id: string }) => Promise<T["$inferSelect"] | null>;
-  delete: (props: { id: string }) => Promise<T["$inferSelect"]>;
-  updateById: (props: {
-    id: string;
-    data: any;
-  }) => Promise<T["$inferSelect"] | null>;
+export interface IEntity<SCHEMA extends Record<string, unknown>> {
+  find: () => Promise<SCHEMA[]>;
+  create: (data: SCHEMA) => Promise<SCHEMA>;
+  findById: (props: { id: string }) => Promise<SCHEMA | null>;
+  delete: (props: { id: string }) => Promise<SCHEMA>;
+  updateById: (props: { id: string; data: SCHEMA }) => Promise<SCHEMA | null>;
 }
 
 @injectable()
-export class Entity<
-  D extends PostgresJsDatabase<any>,
-  T extends PgTableWithColumns<any>,
-  DTO extends T["$inferInsert"],
-> implements IEntity<D, T, DTO>
+export class Entity<SCHEMA extends Record<string, unknown>>
+  implements IEntity<SCHEMA>
 {
   constructor(
     @inject(DI.IRepository)
-    private repository: IDefaultRepository<D, T>,
+    private repository: IDefaultRepository<SCHEMA>,
   ) {}
 
   async find() {
@@ -38,7 +25,7 @@ export class Entity<
     return result;
   }
 
-  async create(data: DTO) {
+  async create(data: SCHEMA) {
     const result = await this.repository.create(data);
 
     return result;
@@ -56,7 +43,7 @@ export class Entity<
     return result;
   }
 
-  async updateById(props: { id: string; data: DTO }) {
+  async updateById(props: { id: string; data: SCHEMA }) {
     const result = await this.repository.updateById(props);
 
     return result;
