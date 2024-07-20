@@ -7,6 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   Button,
+  DialogDescription,
 } from "@sps/shared-ui-shadcn";
 import { ChevronsUpDown, Plus } from "lucide-react";
 import { cn } from "@sps/shared-frontend-client-utils";
@@ -56,6 +57,9 @@ export function Component(props: IComponentProps) {
               </DialogTrigger>
               <DialogContent className="p-0 lg:w-full lg:max-w-screen-lg max-h-[80vh] overflow-y-scroll">
                 <DialogTitle className="hidden">{props.title}</DialogTitle>
+                <DialogDescription className="hidden">
+                  {props.title}
+                </DialogDescription>
                 {props.adminForm}
               </DialogContent>
             </Dialog>

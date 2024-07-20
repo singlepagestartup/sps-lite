@@ -61,16 +61,12 @@ const NavbarSpsLiteAdminTable = dynamic(() =>
     "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
-const HeroSectionBlockSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
-);
 const WidgetSpsLiteAdminTable = dynamic(() =>
   import(
     "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
   ).then((mod) => mod.Component),
 );
+import { Component as HeroSectionBlockAdmin } from "./hero-section-block-admin/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -104,7 +100,7 @@ export function Component(props: IComponentProps) {
     },
     {
       name: "hero-section-block",
-      Comp: HeroSectionBlockSpsLiteAdminTable,
+      Comp: HeroSectionBlockAdmin,
     },
     {
       name: "logotype",

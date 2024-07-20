@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as HeroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/root";
+import { Component as HeroSectionBlocksToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component/root";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -16,7 +17,47 @@ export function Component(props: IComponentPropsExtended) {
         hostUrl={props.hostUrl}
         variant={props.data.heroSectionBlock.variant}
         data={props.data.heroSectionBlock}
-      />
+        fileStorageWidgets={
+          <HeroSectionBlocksToSpsFileStorageWidgets
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "heroSectionBlockId",
+                      method: "eq",
+                      value: props.data.heroSectionBlock.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data: heroSectionBlocksToSpsFileStorageWidgets }) => {
+              if (!heroSectionBlocksToSpsFileStorageWidgets) {
+                return;
+              }
+
+              return heroSectionBlocksToSpsFileStorageWidgets.map(
+                (entity, index) => {
+                  return (
+                    <HeroSectionBlocksToSpsFileStorageWidgets
+                      key={index}
+                      isServer={props.isServer}
+                      hostUrl={props.hostUrl}
+                      variant={entity.variant}
+                      data={entity}
+                    />
+                  );
+                },
+              );
+            }}
+          </HeroSectionBlocksToSpsFileStorageWidgets>
+        }
+      ></HeroSectionBlock>
     </div>
   );
 }

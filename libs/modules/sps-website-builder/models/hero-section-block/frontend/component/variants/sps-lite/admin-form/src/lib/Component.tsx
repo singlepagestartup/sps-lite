@@ -133,8 +133,11 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+        {props.widgetsToHeroSectionBlocks
+          ? props.widgetsToHeroSectionBlocks(props)
+          : null}
 
-        {props.data?.id ? (
+        {/* {props.data?.id ? (
           <HeroSectionBlocksToButtonsArraysAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
@@ -153,9 +156,9 @@ export function Component(props: IComponentPropsExtended) {
               },
             }}
           />
-        ) : null}
+        ) : null} */}
 
-        {props.data?.id ? (
+        {/* {props.data?.id ? (
           <WidgetsToHeroSectionBlocksAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
@@ -174,9 +177,9 @@ export function Component(props: IComponentPropsExtended) {
               },
             }}
           />
-        ) : null}
+        ) : null} */}
 
-        {props.data?.id ? (
+        {/* {props.data?.id ? (
           <HeroSectionBlocksToSpsFileStorageModuleWidgetsAdminTable
             variant="admin-table"
             hostUrl={props.hostUrl}
@@ -195,7 +198,7 @@ export function Component(props: IComponentPropsExtended) {
               },
             }}
           />
-        ) : null}
+        ) : null} */}
       </div>
     </ParentAdminForm>
   );

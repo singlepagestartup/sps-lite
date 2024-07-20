@@ -15,13 +15,13 @@ export function chain(app: any) {
   app.use(new LoggerMiddleware().init());
   // app.use(middlewares.isAuthenticated() as any);
 
-  if (MIDDLEWARE_HTTP_CACHE) {
-    app.use(middlewares.httpCache());
-  }
+  // if (MIDDLEWARE_HTTP_CACHE) {
+  //   app.use(middlewares.httpCache());
+  // }
 
-  if (MIDDLEWARE_LOGGER) {
-    app.use(logger());
-  }
+  // if (MIDDLEWARE_LOGGER) {
+  //   app.use(logger());
+  // }
 
   return app;
 }

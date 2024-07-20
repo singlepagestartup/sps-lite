@@ -18,6 +18,7 @@ import {
 } from "@sps/shared-ui-shadcn";
 import { Pencil, Trash } from "lucide-react";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 interface IComponentProps {
   adminForm?: ReactNode;
@@ -65,6 +66,7 @@ export function Component(props: IComponentProps) {
                 </DialogTrigger>
                 <DialogContent className="p-0 lg:w-full lg:max-w-screen-lg max-h-[80vh] overflow-y-scroll">
                   <DialogTitle className="hidden">Edit</DialogTitle>
+                  <DialogDescription className="hidden">Edit</DialogDescription>
                   {props.adminForm}
                 </DialogContent>
               </Dialog>

@@ -142,15 +142,19 @@ export class Database<T extends PgTableWithColumns<any>>
 
       const [record] = await this.findByField(field, value);
 
-      const [result] = await this.db
-        .delete(this.Table)
-        .where(methods.eq(this.Table[field], record[field]))
-        .returning()
-        .execute();
+      if (record) {
+        const [result] = await this.db
+          .delete(this.Table)
+          .where(methods.eq(this.Table[field], record[field]))
+          .returning()
+          .execute();
 
-      const sanitizedRecord = this.selectSchema.parse(result);
+        if (result) {
+          const sanitizedRecord = this.selectSchema.parse(result);
 
-      return sanitizedRecord;
+          return sanitizedRecord;
+        }
+      }
     } catch (error: any) {
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));

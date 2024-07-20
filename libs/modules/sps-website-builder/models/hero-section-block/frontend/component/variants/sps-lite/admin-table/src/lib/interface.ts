@@ -2,6 +2,7 @@ import { IModel } from "@sps/sps-website-builder/models/hero-section-block/contr
 import { IModel as IModelExtended } from "@sps/sps-website-builder/models/hero-section-block/contracts/extended";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
+import { ReactNode } from "react";
 
 export const variant = "admin-table" as const;
 
@@ -12,6 +13,7 @@ export interface IComponentProps extends ISpsComponentBase {
     params?: IFindActionProps["params"];
     options?: IFindActionProps["options"];
   };
+  adminForm?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

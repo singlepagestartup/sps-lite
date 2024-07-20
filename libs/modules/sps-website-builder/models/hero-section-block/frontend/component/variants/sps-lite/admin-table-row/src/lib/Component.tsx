@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/frontend/api/client";
-import { Component as AdminForm } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-form";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -20,14 +19,7 @@ export function Component(props: IComponentPropsExtended) {
       id={props.data.id}
       module="sps-website-builder"
       name="hero-section-block"
-      adminForm={
-        <AdminForm
-          isServer={false}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-          data={props.data}
-        />
-      }
+      adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });

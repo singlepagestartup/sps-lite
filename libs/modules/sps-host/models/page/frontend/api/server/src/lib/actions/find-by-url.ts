@@ -40,7 +40,6 @@ export async function action({ url, catchError = false }: Params) {
     const stringifiedQuery = QueryString.stringify(
       {
         url,
-        populate,
       },
       {
         encodeValuesOnly: true,

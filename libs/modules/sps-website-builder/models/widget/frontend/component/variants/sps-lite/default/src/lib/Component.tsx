@@ -15,7 +15,8 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      {props.data.widgetsToHeroSectionBlocks?.map(
+      {props.children}
+      {/* {props.data.widgetsToHeroSectionBlocks?.map(
         (widgetToHeroSectionBlock, index) => {
           return (
             <WidgetsToHeroSectionBlocks
@@ -73,7 +74,7 @@ export function Component(props: IComponentPropsExtended) {
             />
           );
         },
-      )}
+      )} */}
     </div>
   );
 }

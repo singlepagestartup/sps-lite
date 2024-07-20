@@ -2,6 +2,7 @@ import { IComponentProps } from "./interface";
 import { Component as Navbar } from "@sps/sps-website-builder/models/navbar/frontend/component/root";
 import { Component as Widget } from "@sps/sps-website-builder/models/widget/frontend/component/root";
 import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component/root";
+import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/root";
 
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -54,7 +55,42 @@ export function App(props: IComponentProps) {
                     hostUrl={props.hostUrl}
                     data={widget}
                     variant={widget.variant}
-                  />
+                  >
+                    <WidgetsToHeroSectionBlocks
+                      isServer={props.isServer}
+                      hostUrl={props.hostUrl}
+                      variant="find"
+                      apiProps={{
+                        params: {
+                          filters: {
+                            and: [
+                              {
+                                column: "widgetId",
+                                method: "eq",
+                                value: widget.id,
+                              },
+                            ],
+                          },
+                        },
+                      }}
+                    >
+                      {({ data: widgetsToHeroSectionBlocks }) => {
+                        return widgetsToHeroSectionBlocks?.map(
+                          (entity, index) => {
+                            return (
+                              <WidgetsToHeroSectionBlocks
+                                key={index}
+                                isServer={props.isServer}
+                                hostUrl={props.hostUrl}
+                                variant="default"
+                                data={entity}
+                              ></WidgetsToHeroSectionBlocks>
+                            );
+                          },
+                        );
+                      }}
+                    </WidgetsToHeroSectionBlocks>
+                  </Widget>
                 );
               });
           }}
