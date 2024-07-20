@@ -12,18 +12,6 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/hero-section-block/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table";
-import { Component as HeroSectionBlocksToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
-
-// const formSchema = z.object({
-//   variant: z.enum(variants),
-//   title: z.string(),
-//   subtitle: z.string().optional(),
-//   description: z.string().optional(),
-//   className: z.string().optional(),
-//   anchor: z.string().optional(),
-// });
 
 export function Component(props: IComponentPropsExtended) {
   const update = api.update({
@@ -136,72 +124,18 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
         {props.widgetsToHeroSectionBlocks
           ? props.widgetsToHeroSectionBlocks(props)
           : null}
 
-        {/* {props.data?.id ? (
-          <HeroSectionBlocksToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "heroSectionBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null} */}
+        {props.heroSectionBlocksToButtonsArrays
+          ? props.heroSectionBlocksToButtonsArrays(props)
+          : null}
 
-        {/* {props.data?.id ? (
-          <WidgetsToHeroSectionBlocksAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "heroSectionBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null} */}
-
-        {/* {props.data?.id ? (
-          <HeroSectionBlocksToSpsFileStorageModuleWidgetsAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "heroSectionBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null} */}
+        {props.heroSectionBlocksToSpsFileStorageModuleWidgets
+          ? props.heroSectionBlocksToSpsFileStorageModuleWidgets(props)
+          : null}
       </div>
     </ParentAdminForm>
   );

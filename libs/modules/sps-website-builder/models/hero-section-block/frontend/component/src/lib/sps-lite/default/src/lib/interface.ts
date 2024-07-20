@@ -13,6 +13,7 @@ export interface IComponentProps extends ISpsComponentBase {
     options?: IFindByIdActionProps["options"];
   };
   fileStorageWidgets?: ReactNode;
+  buttonsArrays?: ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

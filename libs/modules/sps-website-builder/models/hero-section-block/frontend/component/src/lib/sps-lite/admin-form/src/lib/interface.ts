@@ -17,6 +17,12 @@ export interface IComponentProps extends ISpsComponentBase {
   widgetsToHeroSectionBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  heroSectionBlocksToButtonsArrays?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  heroSectionBlocksToSpsFileStorageModuleWidgets?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

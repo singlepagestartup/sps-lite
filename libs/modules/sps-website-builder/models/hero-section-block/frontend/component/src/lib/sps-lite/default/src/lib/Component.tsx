@@ -1,5 +1,4 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/root";
 import { TipTap } from "@sps/shared-ui-shadcn";
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -24,19 +23,9 @@ export function Component(props: IComponentPropsExtended) {
         {props.data.description ? (
           <TipTap value={props.data.description} />
         ) : null}
-        {/* <div className="mx-auto mt-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
-          {props.data.heroSectionBlocksToButtonsArrays.map((entity, index) => {
-            return (
-              <HeroSectionBlocksToButtonsArrays
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                data={entity}
-                variant="default"
-              />
-            );
-          })}
-        </div> */}
+        <div className="mx-auto my-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
+          {props.buttonsArrays}
+        </div>
         <div className="w-full">{props.fileStorageWidgets}</div>
       </div>
     </div>
