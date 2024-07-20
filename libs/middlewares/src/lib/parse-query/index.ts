@@ -1,7 +1,8 @@
+import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
 import QueryString from "qs";
 
-export type MiddlewareGeneric = {
+export type IMiddlewareGeneric = {
   Variables: {
     parsedQuery: {
       populate: any;
@@ -13,37 +14,41 @@ export type MiddlewareGeneric = {
   };
 };
 
-export function middleware() {
-  return createMiddleware(async (c, next) => {
-    const query = c.req.query();
+export class Middleware {
+  constructor() {}
 
-    const parsedQuery: {
-      populate: any;
-      filters: any;
-      orderBy: any;
-      offset: any;
-      limit: any;
-    } = {
-      populate: undefined,
-      filters: undefined,
-      orderBy: undefined,
-      offset: undefined,
-      limit: undefined,
-    };
+  init(): MiddlewareHandler<any, any, {}> {
+    return createMiddleware(async (c, next) => {
+      const query = c.req.query();
 
-    if (query) {
-      const { populate, filters, orderBy, offset, limit } =
-        QueryString.parse(query);
+      const parsedQuery: {
+        populate: any;
+        filters: any;
+        orderBy: any;
+        offset: any;
+        limit: any;
+      } = {
+        populate: undefined,
+        filters: undefined,
+        orderBy: undefined,
+        offset: undefined,
+        limit: undefined,
+      };
 
-      parsedQuery.populate = populate;
-      parsedQuery.filters = filters;
-      parsedQuery.orderBy = orderBy;
-      parsedQuery.offset = offset;
-      parsedQuery.limit = limit;
-    }
+      if (query) {
+        const { populate, filters, orderBy, offset, limit } =
+          QueryString.parse(query);
 
-    c.set("parsedQuery", parsedQuery);
+        parsedQuery.populate = populate;
+        parsedQuery.filters = filters;
+        parsedQuery.orderBy = orderBy;
+        parsedQuery.offset = offset;
+        parsedQuery.limit = limit;
+      }
 
-    return next();
-  });
+      c.set("parsedQuery", parsedQuery);
+
+      return next();
+    });
+  }
 }

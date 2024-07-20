@@ -16,7 +16,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       data.expiresAt.setHours(data.expiresAt.getHours() + 1);
     }
 
-    const superResult = super.create(data);
+    const superResult = super.create({ data });
 
     const expiredSessions = await this.repository.find({
       params: {
@@ -24,7 +24,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           and: [
             {
               column: "expiresAt",
-              method: "gt",
+              method: "lg",
               value: new Date(),
             },
           ],

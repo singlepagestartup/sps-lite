@@ -2,10 +2,9 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-rbac/relations/subjects-to-identities/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   try {

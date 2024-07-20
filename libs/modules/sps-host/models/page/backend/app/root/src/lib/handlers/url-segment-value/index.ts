@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import { model } from "@sps/sps-host/models/page/backend/model/root";
 
 /**
@@ -14,7 +14,7 @@ import { model } from "@sps/sps-host/models/page/backend/model/root";
  * return 967b7cb1-5409-43ad-b2a6-8773ed1455f3
  */
 export const handler = async (
-  c: Context<MiddlewaresGeneric, string, BlankInput>,
+  c: Context<any, string, BlankInput>,
   next: Next,
 ) => {
   const queryUrl = c.req.query("url");

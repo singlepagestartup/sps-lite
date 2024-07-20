@@ -1,6 +1,5 @@
 import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
-import { MiddlewareGeneric } from "../session";
 import { BACKEND_URL, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { getCookie } from "hono/cookie";
 
@@ -54,7 +53,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
 ];
 
 export function middleware() {
-  return createMiddleware<MiddlewareGeneric>(async (c, next) => {
+  return createMiddleware(async (c, next) => {
     const reqMethod = c.req.method;
     const reqPath = c.req.path;
     const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");

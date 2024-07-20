@@ -5,11 +5,11 @@ import {
 } from "@sps/sps-third-parties/models/telegram/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import { Update } from "telegraf/types";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");

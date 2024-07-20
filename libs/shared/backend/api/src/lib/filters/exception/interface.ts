@@ -1,9 +1,9 @@
 import { Context } from "hono";
-import { HTTPException } from "hono/http-exception";
+import { HTTPResponseError } from "hono/types";
 
 export interface IFilter {
   catch: (
-    error: Error | HTTPException,
-    c: Context,
+    error: Error | HTTPResponseError,
+    c: Context<any>,
   ) => Response | Promise<Response>;
 }

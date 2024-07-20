@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import { model } from "@sps/sps-host/models/page/backend/model/root";
 
 /**
@@ -11,7 +11,7 @@ import { model } from "@sps/sps-host/models/page/backend/model/root";
  * /route/[sps-website-builder.category.id]/[sps-website-builder.slide.id]
  */
 export const handler = async (
-  c: Context<MiddlewaresGeneric, string, BlankInput>,
+  c: Context<any, string, BlankInput>,
   next: Next,
 ) => {
   const urls = await model.services.urls();

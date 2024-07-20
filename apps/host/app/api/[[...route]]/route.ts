@@ -13,37 +13,35 @@ import { app as spsCrm } from "@sps/sps-crm/backend/app/root";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
 import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
 import { chain as middlewaresChain } from "./middlewares/chain";
-import { MiddlewaresGeneric } from "@sps/middlewares";
-import { BlankSchema, Next } from "hono/types";
+import { ExceptionFilter } from "@sps/shared-backend-api";
+import { ErrorHandler } from "hono/types";
 
 export const dynamic = "force-dynamic";
 
-// declare module "hono" {
-//   interface ContextVariableMap extends MiddlewaresGeneric {}
-// }
-
 const app = new Hono<any, any, any>().basePath("/api");
 
-// middlewaresChain(app);
+app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
+middlewaresChain(app);
 
 app.use(
-  createMiddleware<MiddlewaresGeneric>(async (c, next) => {
+  createMiddleware(async (c, next) => {
     const path = c.req.path;
     console.log("Host App Middleware", path);
+
     await next();
   }),
 );
 
-// app.route("/sps-host", spsHostApp as any);
-// app.route("/sps-broadcast", spsBroadcast as any);
-// app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
-// app.route("/sps-file-storage", spsFileStorageApp as any);
+app.route("/sps-host", spsHostApp as any);
+app.route("/sps-broadcast", spsBroadcast as any);
+app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
+app.route("/sps-file-storage", spsFileStorageApp as any);
 app.mount("/sps-rbac", spsRbacApp.hono.fetch);
-// app.route("/sps-billing", spsBilling as any);
-// app.route("/sps-third-parties", spsThirdParties as any);
-// app.route("/sps-crm", spsCrm as any);
-// app.route("/sps-notification", spsNotification as any);
-// app.route("/startup", startupApp as any);
+app.route("/sps-billing", spsBilling as any);
+app.route("/sps-third-parties", spsThirdParties as any);
+app.route("/sps-crm", spsCrm as any);
+app.route("/sps-notification", spsNotification as any);
+app.route("/startup", startupApp as any);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

@@ -1,6 +1,7 @@
 import { inject, injectable } from "inversify";
 import { DI } from "../../../../di/constants";
 import { type IRepository } from "../../../../repository";
+import { FindServiceProps } from "../../../../services/interfaces";
 
 @injectable()
 export class Action {
@@ -10,8 +11,8 @@ export class Action {
     this.repository = repository;
   }
 
-  async execute() {
-    const result = await this.repository.find();
+  async execute(props?: FindServiceProps) {
+    const result = await this.repository.find(props);
 
     return result;
   }

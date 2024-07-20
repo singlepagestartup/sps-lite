@@ -10,6 +10,7 @@ import {
 import { DI } from "../../di/constants";
 import { type IRepository } from "../../repository/interface";
 import { IService } from "../interface";
+import { FindServiceProps } from "../../services/interfaces";
 
 @injectable()
 export class Service<DTO extends Record<string, unknown>>
@@ -21,9 +22,9 @@ export class Service<DTO extends Record<string, unknown>>
     this.repository = repository;
   }
 
-  async find(): Promise<DTO[]> {
+  async find(props?: FindServiceProps): Promise<DTO[]> {
     const action = new FindAction(this.repository);
-    return action.execute();
+    return action.execute(props);
   }
 
   async findById(props: { id: string }): Promise<DTO | null> {

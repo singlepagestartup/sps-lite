@@ -1,4 +1,3 @@
-import { MiddlewaresGeneric } from "@sps/middlewares";
 import { App } from "./app";
 import {
   DI,
@@ -17,7 +16,7 @@ export async function bootstrap() {
   const container = new Container();
   container.load(bindings);
 
-  const app = container.get<IDefaultApp<MiddlewaresGeneric>>(DI.IApp);
+  const app = container.get<IDefaultApp>(DI.IApp);
   await app.init();
 
   return { app };

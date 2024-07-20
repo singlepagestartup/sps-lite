@@ -3,10 +3,9 @@ import { model } from "@sps/sps-website-builder/models/buttons-array/backend/mod
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import QueryString from "qs";
-import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");

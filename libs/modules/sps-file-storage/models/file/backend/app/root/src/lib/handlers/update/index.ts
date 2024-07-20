@@ -4,11 +4,11 @@ import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import { getUniqueFileName } from "@sps/sps-backend-utils";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   try {
@@ -56,7 +56,7 @@ export const handler = async (
 
       const buffer = await (file as File).arrayBuffer();
 
-      const extension = file.name.split(".").pop();
+      const extension = (file as File).name.split(".").pop();
 
       if (!extension) {
         throw new Error("Invalid file extension");

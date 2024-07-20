@@ -8,6 +8,7 @@ import { queryBuilder } from "../../query-builder/filters";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../interface";
 import { type IConfiguration } from "../../configuration";
+import { ZodDate, ZodError, ZodObject } from "zod";
 
 @injectable()
 export class Database<T extends PgTableWithColumns<any>>
@@ -16,89 +17,187 @@ export class Database<T extends PgTableWithColumns<any>>
   db: PostgresJsDatabase<any>;
   schema: any;
   Table: T;
+  insertSchema: ZodObject<any>;
+  selectSchema: ZodObject<any>;
 
   constructor(@inject(DI.IConfiguration) config: IConfiguration) {
     this.schema = config.repository.schema;
     this.Table = config.repository.Table;
     this.db = drizzle(postgres, { schema: this.schema });
+    this.insertSchema = config.repository.insertSchema;
+    this.selectSchema = config.repository.selectSchema;
   }
 
   async find(props?: FindServiceProps): Promise<T["$inferSelect"][]> {
-    const filters = queryBuilder({
-      table: this.Table,
-      filters: props?.params?.filters,
-      queryFunctions: methods,
-    });
+    try {
+      const filters = queryBuilder({
+        table: this.Table,
+        filters: props?.params?.filters,
+        queryFunctions: methods,
+      });
 
-    const record = await this.db
-      .select(this.Table)
-      .from(this.Table)
-      .where(filters)
-      .execute();
+      const records = await this.db
+        .select(this.Table)
+        .from(this.Table)
+        .where(filters)
+        .execute();
 
-    return record;
+      const sanitizedRecords = records.map((record) => {
+        const sanitizedRecord = this.selectSchema.parse(record);
+        return sanitizedRecord;
+      });
+
+      return sanitizedRecords;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
+    }
   }
 
   async findByField(field: string, value: any): Promise<any> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+    try {
+      if (!this.Table[field]) {
+        throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+      }
+
+      const records = await this.db
+        .select()
+        .from(this.Table)
+        .where(methods.eq(this.Table[field], value))
+        .execute();
+
+      const sanitizedRecords = records.map((record) => {
+        const sanitizedRecord = this.selectSchema.parse(record);
+        return sanitizedRecord;
+      });
+
+      return sanitizedRecords;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
     }
-
-    const record = await this.db
-      .select()
-      .from(this.Table)
-      .where(methods.eq(this.Table[field], value))
-      .execute();
-
-    return record;
   }
 
   async findFirstByField(field: string, value: any): Promise<any> {
-    const [record] = await this.findByField(field, value);
+    try {
+      const [record] = await this.findByField(field, value);
 
-    return record;
+      const sanitizedRecord = this.selectSchema.parse(record);
+
+      return sanitizedRecord;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
+    }
   }
 
   async insert(data: any): Promise<any> {
-    const [record] = await this.db
-      .insert(this.Table)
-      .values(data)
-      .returning()
-      .execute();
+    try {
+      const shape = this.insertSchema.shape;
 
-    return record;
+      Object.entries(shape).forEach(([key, value]) => {
+        if (value instanceof ZodDate && data[key]) {
+          data[key] = new Date(data[key]);
+        }
+
+        if (key === "updatedAt" && value instanceof ZodDate) {
+          data[key] = new Date();
+        }
+      });
+
+      const plainData: T["$inferInsert"] = this.insertSchema.parse(data);
+
+      const [record] = await this.db
+        .insert(this.Table)
+        .values(plainData)
+        .returning()
+        .execute();
+
+      const sanitizedRecord = this.selectSchema.parse(record);
+
+      return sanitizedRecord;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
+    }
   }
 
   async deleteFirstByField(field: string, value: any): Promise<any> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+    try {
+      if (!this.Table[field]) {
+        throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+      }
+
+      const [record] = await this.findByField(field, value);
+
+      const [result] = await this.db
+        .delete(this.Table)
+        .where(methods.eq(this.Table[field], record[field]))
+        .returning()
+        .execute();
+
+      const sanitizedRecord = this.selectSchema.parse(result);
+
+      return sanitizedRecord;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
     }
-
-    const [record] = await this.findByField(field, value);
-
-    const [result] = await this.db
-      .delete(this.Table)
-      .where(methods.eq(this.Table[field], record[field]))
-      .returning()
-      .execute();
-
-    return result;
   }
 
   async updateFirstByField(field: string, value: any, data: any): Promise<any> {
-    if (!this.Table[field]) {
-      throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+    try {
+      if (!this.Table[field]) {
+        throw new Error(`Field ${field} does not exist on table ${this.Table}`);
+      }
+
+      const [record] = await this.findByField(field, value);
+
+      const shape = this.insertSchema.shape;
+
+      Object.entries(shape).forEach(([key, value]) => {
+        if (value instanceof ZodDate && data[key]) {
+          data[key] = new Date(data[key]);
+        }
+
+        if (key === "updatedAt" && value instanceof ZodDate) {
+          data[key] = new Date();
+        }
+      });
+
+      const plainData: T["$inferInsert"] = this.insertSchema.parse(data);
+
+      const [result] = await this.db
+        .update(this.Table)
+        .set(plainData)
+        .where(methods.eq(this.Table[field], record[field]))
+        .returning()
+        .execute();
+
+      const sanitizedRecord = this.selectSchema.parse(result);
+
+      return sanitizedRecord;
+    } catch (error: any) {
+      if (error instanceof ZodError) {
+        throw new Error(JSON.stringify({ zodError: error.issues }));
+      }
+
+      throw error;
     }
-
-    const [record] = await this.findByField(field, value);
-
-    const [result] = await this.db
-      .update(this.Table)
-      .set(data)
-      .where(methods.eq(this.Table[field], record[field]))
-      .returning()
-      .execute();
-
-    return result;
   }
 }

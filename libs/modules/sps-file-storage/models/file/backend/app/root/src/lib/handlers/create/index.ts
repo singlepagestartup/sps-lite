@@ -4,12 +4,12 @@ import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
 import path from "path";
 import fs from "fs/promises";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import process from "process";
 import { getUniqueFileName } from "@sps/sps-backend-utils";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, string, BlankInput>,
+  c: Context<any, string, BlankInput>,
   next: Next,
 ) => {
   try {
@@ -51,7 +51,7 @@ export const handler = async (
       data[name] = "";
       const createdEntity = await model.services.create({ data });
 
-      const extension = file.name.split(".").pop();
+      const extension = (file as File).name.split(".").pop();
 
       if (!extension) {
         throw new Error("Invalid file extension");

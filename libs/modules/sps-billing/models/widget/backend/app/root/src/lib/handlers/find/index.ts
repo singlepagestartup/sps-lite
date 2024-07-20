@@ -2,10 +2,9 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-billing/models/widget/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, string, BlankInput>,
+  c: Context<any, string, BlankInput>,
   next: Next,
 ) => {
   try {

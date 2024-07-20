@@ -4,31 +4,52 @@ import { HTTPException } from "hono/http-exception";
 export { type IFilter } from "./interface";
 import { IFilter } from "./interface";
 import { injectable } from "inversify";
+import { HTTPResponseError } from "hono/types";
 
 @injectable()
 export class Filter implements IFilter {
   constructor() {}
 
   catch(
-    error: Error | HTTPException,
-    c: Context,
+    error: Error | HTTPResponseError,
+    c: Context<any>,
   ): Response | Promise<Response> {
     console.log("exception filter", error.message);
 
     if (error instanceof HTTPException) {
-      return c.json(
-        {
-          data: error.message,
-        },
-        error.status,
-      );
+      try {
+        const parsedError = JSON.parse(error.message);
+        return c.json(
+          {
+            data: parsedError,
+          },
+          error.status,
+        );
+      } catch (e) {
+        return c.json(
+          {
+            data: error.message,
+          },
+          error.status,
+        );
+      }
     } else {
-      return c.json(
-        {
-          data: error.message,
-        },
-        500,
-      );
+      try {
+        const parsedError = JSON.parse(error.message);
+        return c.json(
+          {
+            data: parsedError,
+          },
+          500,
+        );
+      } catch (e) {
+        return c.json(
+          {
+            data: error.message,
+          },
+          500,
+        );
+      }
     }
   }
 }

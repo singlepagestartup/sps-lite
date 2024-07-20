@@ -2,10 +2,9 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/model/root";
 import { Context } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const body = await c.req.parseBody();

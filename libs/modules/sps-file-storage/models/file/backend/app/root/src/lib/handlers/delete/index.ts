@@ -2,12 +2,12 @@ import { HTTPException } from "hono/http-exception";
 import { model } from "@sps/sps-file-storage/models/file/backend/model/root";
 import { Context, Env } from "hono";
 import { BlankInput, Next } from "hono/types";
-import { MiddlewaresGeneric } from "@sps/middlewares";
+
 import path from "path";
 import fs from "fs/promises";
 
 export const handler = async (
-  c: Context<MiddlewaresGeneric, `${string}/:uuid`, BlankInput>,
+  c: Context<any, `${string}/:uuid`, BlankInput>,
   next: Next,
 ) => {
   const uuid = c.req.param("uuid");
