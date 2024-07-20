@@ -31,7 +31,6 @@ import { app as navbarsToWidgets } from "@sps/sps-website-builder/relations/navb
 import { app as footer } from "@sps/sps-website-builder/models/footer/backend/app/root";
 import { app as navbar } from "@sps/sps-website-builder/models/navbar/backend/app/root";
 import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/root";
-import { app as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/app/root";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/root";
 
 export const routes = {
@@ -71,6 +70,5 @@ export const routes = {
   "/footers": footer,
   "/navbars": navbar,
   "/widgets-to-hero-section-blocks": widgetsToHeroSectionBlocks,
-  "/hero-section-blocks": heroSectionBlock,
   "/widgets": widget,
 };

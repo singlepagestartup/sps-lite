@@ -8,7 +8,6 @@ export const configModels: IModuleSeedConfig<typeof models>["models"] = [
   { name: "featuresSectionBlock" },
   { name: "footer" },
   { name: "footerBlock" },
-  { name: "heroSectionBlock" },
   { name: "logotype" },
   { name: "navbar" },
   { name: "navbarBlock" },

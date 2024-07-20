@@ -13,7 +13,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as HeroSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as HeroSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
 import { Component as ButtonsArrayAdminSelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input";
 
 const formSchema = z.object({

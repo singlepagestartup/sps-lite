@@ -1,4 +1,4 @@
-import { Component as HeroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/frontend/component/root";
+import { Component as HeroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
 import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/root";
 
 export function Component() {

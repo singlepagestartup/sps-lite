@@ -15,6 +15,7 @@ import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
+import { app as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/app/root";
 
 export const dynamic = "force-dynamic";
 
@@ -42,6 +43,11 @@ app.route("/sps-third-parties", spsThirdParties as any);
 app.route("/sps-crm", spsCrm as any);
 app.route("/sps-notification", spsNotification as any);
 app.route("/startup", startupApp as any);
+
+app.mount(
+  "/sps-website-builder/hero-section-blocks",
+  heroSectionBlock.hono.fetch,
+);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);
