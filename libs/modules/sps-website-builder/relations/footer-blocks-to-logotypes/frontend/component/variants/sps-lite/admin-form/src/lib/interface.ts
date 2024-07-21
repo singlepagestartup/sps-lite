@@ -1,5 +1,4 @@
-import { IRelation } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/contracts/root";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/contracts/extended";
+import { IRelation } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 
@@ -17,5 +16,5 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data?: IRelationExtended;
+  data?: IRelation;
 }

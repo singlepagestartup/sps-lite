@@ -1,10 +1,6 @@
-import { IRelation } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/extended";
+import { IRelation } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
-import {
-  IFindActionProps,
-  IFindByIdActionProps,
-} from "@sps/shared-frontend-api";
+import { IFindActionProps } from "@sps/shared-frontend-api";
 import { Dispatch, SetStateAction } from "react";
 
 export const variant = "find" as const;

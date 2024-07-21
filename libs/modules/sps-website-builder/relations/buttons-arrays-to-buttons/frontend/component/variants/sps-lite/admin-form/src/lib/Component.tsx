@@ -2,34 +2,25 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { route } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/model";
 import {
-  api,
-  queryClient,
-} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/api/client";
+  variants,
+  insertSchema,
+} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/sdk/model";
+import { api } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
 import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-
-const formSchema = z.object({
-  variant: z.enum(variants),
-  orderIndex: z.number().optional(),
-  className: z.string().optional(),
-  buttonsArrayId: z.string().optional(),
-  buttonId: z.string().optional(),
-});
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
   const createEntity = api.create();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof insertSchema>>({
+    resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
       buttonsArrayId: props.data?.buttonsArrayId || "",
@@ -39,7 +30,7 @@ export function Component(props: IComponentPropsExtended) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof insertSchema>) {
     if (props.data?.id) {
       updateEntity.mutate({ id: props.data?.id, data });
       return;
@@ -49,16 +40,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      const id = updateEntity.data?.id || createEntity.data?.id;
-
-      queryClient.invalidateQueries({
-        queryKey: [`${route}/${id}`],
-      });
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm

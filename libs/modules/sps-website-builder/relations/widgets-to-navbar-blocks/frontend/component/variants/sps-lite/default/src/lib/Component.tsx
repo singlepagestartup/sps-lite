@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/frontend/component/root";
+// import { Component as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/frontend/component/root";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,12 +11,12 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <NavbarBlock
+      {/* <NavbarBlock
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant={props.data.navbarBlock.variant}
         data={props.data.navbarBlock}
-      />
+      /> */}
     </div>
   );
 }

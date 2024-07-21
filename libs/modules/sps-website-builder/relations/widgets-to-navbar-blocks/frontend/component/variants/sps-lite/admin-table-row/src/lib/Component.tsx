@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/api/client";
+import { api } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/sdk/client";
 import { Component as AdminForm } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/admin-form";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table-row/Component";
 

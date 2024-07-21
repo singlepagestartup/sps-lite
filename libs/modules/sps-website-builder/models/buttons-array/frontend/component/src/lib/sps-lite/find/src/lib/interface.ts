@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 export const variant = "find" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
-  variant: IModel["variant"];
+  variant: typeof variant;
   set?: Dispatch<SetStateAction<IModel[] | undefined>>;
   children?: ({ data }: { data: IModel[] | undefined }) => any;
   apiProps?: {

@@ -11,12 +11,12 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <Slide
+      {/* <Slide
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant={props.data.slide.variant as any}
         data={props.data.slide}
-      />
+      /> */}
     </div>
   );
 }

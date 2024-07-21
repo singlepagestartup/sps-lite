@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/api/client";
+import { api } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/client";
 
 export default function Client(props: IComponentProps) {
   if (props.data) {

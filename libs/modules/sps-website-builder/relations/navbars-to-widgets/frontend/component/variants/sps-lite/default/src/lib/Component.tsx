@@ -11,12 +11,12 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <Widget
+      {/* <Widget
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="default"
         data={props.data.widget}
-      />
+      /> */}
     </div>
   );
 }

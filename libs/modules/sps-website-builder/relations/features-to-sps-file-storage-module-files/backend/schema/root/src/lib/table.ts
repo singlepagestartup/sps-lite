@@ -24,3 +24,5 @@ export const Table = pgTable(table, {
 
 export const insertSchema = createInsertSchema(Table);
 export const selectSchema = createSelectSchema(Table);
+export type ISelectSchema = typeof Table.$inferSelect;
+export type IInsertSchema = typeof Table.$inferInsert;

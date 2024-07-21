@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/api/client";
+import { api } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/sdk/client";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.find(props.apiProps);

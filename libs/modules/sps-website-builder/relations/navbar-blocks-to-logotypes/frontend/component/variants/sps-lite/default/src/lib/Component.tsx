@@ -11,12 +11,12 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <Logotype
+      {/* <Logotype
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant={props.data.logotype.variant as any}
         data={props.data.logotype}
-      />
+      /> */}
     </div>
   );
 }

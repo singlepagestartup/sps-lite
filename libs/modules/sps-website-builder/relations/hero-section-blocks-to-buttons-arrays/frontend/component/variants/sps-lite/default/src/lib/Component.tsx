@@ -37,7 +37,7 @@ export function Component(props: IComponentPropsExtended) {
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
-                variant={entity.variant}
+                variant={entity.variant as any}
                 data={entity}
                 buttons={
                   <ButtonsArraysToButtons
@@ -65,7 +65,7 @@ export function Component(props: IComponentPropsExtended) {
                             key={index}
                             isServer={props.isServer}
                             hostUrl={props.hostUrl}
-                            variant={entity.variant}
+                            variant={entity.variant as any}
                             data={entity}
                           />
                         );

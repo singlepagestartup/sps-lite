@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/api/client";
+import { api } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/sdk/client";
 import { useEffect } from "react";
 
 export default function Client(props: IComponentProps) {

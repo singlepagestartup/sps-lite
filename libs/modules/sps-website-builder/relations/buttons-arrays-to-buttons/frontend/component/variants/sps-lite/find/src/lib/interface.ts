@@ -1,5 +1,4 @@
-import { IRelation } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/extended";
+import { IRelation } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
 import { Dispatch, SetStateAction } from "react";

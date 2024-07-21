@@ -1,5 +1,4 @@
-import { IRelation } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/contracts/root";
-import { IRelation as IRelationExtended } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/contracts/extended";
+import { IRelation } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/sdk/model";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
@@ -19,5 +18,5 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IRelationExtended[];
+  data: IRelation[];
 }

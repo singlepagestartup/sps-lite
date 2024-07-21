@@ -1,6 +1,6 @@
 import { ModuleSeeder as SpsHostModuleSeeder } from "@sps/sps-host/backend/app/root";
 import { ModuleSeeder as SpsBroadcastModuleSeeder } from "@sps/sps-broadcast/backend/app/root";
-import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
+// import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
 import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
 import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
 import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
@@ -22,10 +22,10 @@ import { exit } from "process";
     seedConfig,
   });
 
-  const spsWebsiteBuilderModuleSeeder = new SpsWebsiteBuilderModuleSeeder({
-    seedResults,
-    seedConfig,
-  });
+  // const spsWebsiteBuilderModuleSeeder = new SpsWebsiteBuilderModuleSeeder({
+  //   seedResults,
+  //   seedConfig,
+  // });
 
   const spsFileStorageModuleSeeder = new SpsFileStorageModuleSeeder({
     seedResults,
@@ -48,9 +48,9 @@ import { exit } from "process";
   if (spsBroadcastModuleSeeder.config.seed || seedAll) {
     await spsBroadcastModuleSeeder.seedModels();
   }
-  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-    await spsWebsiteBuilderModuleSeeder.seedModels();
-  }
+  // if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
+  //   await spsWebsiteBuilderModuleSeeder.seedModels();
+  // }
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedModels();
   }
@@ -67,9 +67,9 @@ import { exit } from "process";
   if (spsBroadcastModuleSeeder.config.seed || seedAll) {
     await spsBroadcastModuleSeeder.seedRelations();
   }
-  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-    await spsWebsiteBuilderModuleSeeder.seedRelations();
-  }
+  // if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
+  //   await spsWebsiteBuilderModuleSeeder.seedRelations();
+  // }
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedRelations();
   }
