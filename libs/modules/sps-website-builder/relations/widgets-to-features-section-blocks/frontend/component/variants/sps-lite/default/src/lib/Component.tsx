@@ -14,9 +14,35 @@ export function Component(props: IComponentPropsExtended) {
       <FeaturesSectionBlock
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.featuresSectionBlock.variant}
-        data={props.data.featuresSectionBlock}
-      />
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.featuresSectionBlockId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <FeaturesSectionBlock
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </FeaturesSectionBlock>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { IRelation } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/contracts/root";
+import { IModel } from "@sps/sps-website-builder/models/feature/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
 import { Dispatch, SetStateAction } from "react";
@@ -6,9 +6,9 @@ import { Dispatch, SetStateAction } from "react";
 export const variant = "find" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  set?: Dispatch<SetStateAction<IRelation[] | undefined>>;
-  children?: ({ data }: { data: IRelation[] | undefined }) => any;
+  variant: typeof variant | IModel["variant"];
+  set?: Dispatch<SetStateAction<IModel[] | undefined>>;
+  children?: ({ data }: { data: IModel[] | undefined }) => any;
   apiProps?: {
     params?: IFindActionProps["params"];
     options?: IFindActionProps["options"];

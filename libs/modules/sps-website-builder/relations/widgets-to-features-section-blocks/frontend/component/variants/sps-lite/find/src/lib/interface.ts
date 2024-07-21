@@ -1,4 +1,4 @@
-import { IRelation } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/contracts/root";
+import { IRelation } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/contracts/root";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
 import { Dispatch, SetStateAction } from "react";

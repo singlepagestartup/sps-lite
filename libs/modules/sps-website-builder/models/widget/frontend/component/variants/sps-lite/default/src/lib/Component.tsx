@@ -43,20 +43,7 @@ export function Component(props: IComponentPropsExtended) {
             data={widgetToSliderBlock}
           />
         );
-      })}
-      {props.data.widgetsToFeaturesSectionBlocks.map(
-        (widgetToFeaturesSectionBlock, index) => {
-          return (
-            <WidgetToFeaturesSectionBlock
-              key={index}
-              isServer={props.isServer}
-              hostUrl={props.hostUrl}
-              variant="default"
-              data={widgetToFeaturesSectionBlock}
-            />
-          );
-        },
-      )} */}
+      })} */}
     </div>
   );
 }
