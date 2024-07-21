@@ -13,8 +13,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as NavbarBlockAdminSlectInput } from "@sps/sps-website-builder/models/navbar-block/frontend/component/root";
-import { Component as LogotypeAdminSelectInput } from "@sps/sps-website-builder/models/logotype/frontend/component/root";
+import { Component as NavbarBlockAdminSlectInput } from "@sps/sps-website-builder/models/navbar-block/frontend/component";
+import { Component as LogotypeAdminSelectInput } from "@sps/sps-website-builder/models/logotype/frontend/component";
 
 const formSchema = z.object({
   variant: z.enum(variants),

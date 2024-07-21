@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
+import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root";
 

@@ -1,4 +1,4 @@
-import { IComponentProps as IFindComponentProps } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root/src/lib/sps-lite/find";
+import { IComponentProps as IFindComponentProps } from "@sps/sps-website-builder/models/buttons-array/frontend/component/src/lib/sps-lite/find";
 import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-row";
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-select-input";

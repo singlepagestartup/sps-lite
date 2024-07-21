@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as HeroSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
-import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
+import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 
 const formSchema = z.object({
   variant: z.enum(variants),

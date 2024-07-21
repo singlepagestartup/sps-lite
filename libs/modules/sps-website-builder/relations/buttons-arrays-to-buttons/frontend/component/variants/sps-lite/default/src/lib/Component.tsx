@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Button } from "@sps/sps-website-builder/models/button/frontend/component/root";
+import { Component as Button } from "@sps/sps-website-builder/models/button/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {

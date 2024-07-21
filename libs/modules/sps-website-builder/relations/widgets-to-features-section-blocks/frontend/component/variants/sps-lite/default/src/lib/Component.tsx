@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder/models/features-section-block/frontend/component/root";
+import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder/models/features-section-block/frontend/component";
 import { Component as FeaturesSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {

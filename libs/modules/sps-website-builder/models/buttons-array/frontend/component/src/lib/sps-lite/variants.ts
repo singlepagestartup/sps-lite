@@ -1,4 +1,4 @@
-import { Component as Find } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root/src/lib/sps-lite/find";
+import { Component as Find } from "@sps/sps-website-builder/models/buttons-array/frontend/component/src/lib/sps-lite/find";
 import { Component as AdminTableRow } from "./admin-table-row";
 import { Component as AdminTable } from "./admin-table";
 import { Component as AdminSelectInput } from "./admin-select-input";
