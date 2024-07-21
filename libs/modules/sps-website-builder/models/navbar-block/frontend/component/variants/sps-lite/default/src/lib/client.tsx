@@ -6,7 +6,7 @@ import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder/models/navbar-block/frontend/api/client";
+import { api } from "@sps/sps-website-builder/models/navbar-block/sdk/client";
 import { Component as Logotype } from "./assets/logotype";
 import { Component as Content } from "./assets/content";
 

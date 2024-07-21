@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { IModel } from "@sps/sps-website-builder/models/navbar-block/contracts/root";
-import { IModel as IModelExtended } from "@sps/sps-website-builder/models/navbar-block/contracts/extended";
+import { IModel } from "@sps/sps-website-builder/models/navbar-block/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 
@@ -16,7 +15,7 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended;
+  data: IModel;
   content?: ReactNode;
   logotype?: ReactNode;
 }

@@ -1,5 +1,4 @@
-import { IModel } from "@sps/sps-website-builder/models/navbar/contracts/root";
-import { IModel as IModelExtended } from "@sps/sps-website-builder/models/navbar/contracts/extended";
+import { IModel } from "@sps/sps-website-builder/models/navbar/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
 
@@ -15,5 +14,5 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended[];
+  data: IModel[];
 }

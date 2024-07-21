@@ -5,13 +5,12 @@ import { IComponentPropsExtended } from "./interface";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { route } from "@sps/sps-website-builder/models/widget/frontend/api/model";
 import {
-  api,
-  queryClient,
-} from "@sps/sps-website-builder/models/widget/frontend/api/client";
+  variants,
+  insertSchema,
+} from "@sps/sps-website-builder/models/widget/sdk/model";
+import { api } from "@sps/sps-website-builder/models/widget/sdk/client";
 import { FormField } from "@sps/ui-adapter";
-import { variants } from "@sps/sps-website-builder/models/widget/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as FootersToWidgetsAdminTable } from "@sps/sps-website-builder/relations/footers-to-widgets/frontend/component/variants/sps-lite/admin-table";
 import { Component as NavbarsToWidgetsAdminTable } from "@sps/sps-website-builder/relations/navbars-to-widgets/frontend/component/variants/sps-lite/admin-table";
@@ -21,18 +20,12 @@ import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-webs
 import { Component as WidgetsToNavbarBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetsToSliderBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/admin-table";
 
-const formSchema = z.object({
-  title: z.string(),
-  variant: z.enum(variants).default("default"),
-  className: z.string().optional(),
-});
-
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
   const createEntity = api.create();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof insertSchema>>({
+    resolver: zodResolver(insertSchema),
     defaultValues: {
       title: props.data?.title || "",
       variant: props.data?.variant || "default",
@@ -40,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof insertSchema>) {
     if (props.data?.id) {
       updateEntity.mutate({ id: props.data?.id, data });
       return;
@@ -51,15 +44,15 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      const id = updateEntity.data?.id || createEntity.data?.id;
+  // useEffect(() => {
+  //   if (updateEntity.data || createEntity.data) {
+  //     const id = updateEntity.data?.id || createEntity.data?.id;
 
-      queryClient.invalidateQueries({
-        queryKey: [`${route}/${id}`],
-      });
-    }
-  }, [updateEntity, createEntity]);
+  //     queryClient.invalidateQueries({
+  //       queryKey: [`${route}/${id}`],
+  //     });
+  //   }
+  // }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm

@@ -4,7 +4,7 @@ import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder/relati
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="w-fit">
-      {props.data.navbarBlocksToLogotypes.map((entity, index) => {
+      {/* {props.data.navbarBlocksToLogotypes.map((entity, index) => {
         return (
           <NavbarsToLogotypes
             key={index}
@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
             data={entity}
           />
         );
-      })}
+      })} */}
     </div>
   );
 }

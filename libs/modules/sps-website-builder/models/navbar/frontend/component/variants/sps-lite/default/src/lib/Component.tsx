@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-screen z-30 fixed", props.data.className)}
     >
       <div className="w-full mx-auto max-w-7xl">
-        {props.data.navbarsToWidgets.map((entity, index) => {
+        {/* {props.data.navbarsToWidgets.map((entity, index) => {
           return (
             <NavbarsToWidgets
               key={index}
@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
               data={entity}
             />
           );
-        })}
+        })} */}
       </div>
     </div>
   );

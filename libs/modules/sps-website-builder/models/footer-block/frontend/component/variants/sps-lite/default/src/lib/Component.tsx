@@ -15,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
         props.data.className || "pb-4 pt-12 px-4 lg:pb-6 lg:pt-16 lg:px-2",
       )}
     >
-      <div className="mx-auto w-full max-w-7xl flex flex-col gap-4">
+      {/* <div className="mx-auto w-full max-w-7xl flex flex-col gap-4">
         <div className="w-full flex flex-col lg:grid lg:grid-cols-4 justify-end gap-12">
           <div className="w-fit flex flex-col gap-2">
             {props.data.footerBlocksToLogotypes.map((entity, index) => {
@@ -89,7 +89,7 @@ export function Component(props: IComponentPropsExtended) {
               })}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

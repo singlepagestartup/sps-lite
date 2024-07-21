@@ -2,29 +2,26 @@
 
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/sps-website-builder/models/logotype/frontend/api/client";
+import { api } from "@sps/sps-website-builder/models/logotype/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { variants } from "@sps/sps-website-builder/models/logotype/contracts/root";
+import {
+  variants,
+  insertSchema,
+} from "@sps/sps-website-builder/models/logotype/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
 import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
 import { Component as LogotypesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
 
-const formSchema = z.object({
-  variant: z.enum(variants),
-  url: z.string().optional(),
-  className: z.string().optional(),
-});
-
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
   const createEntity = api.create();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof insertSchema>>({
+    resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
       url: props.data?.url || "",
@@ -32,7 +29,7 @@ export function Component(props: IComponentPropsExtended) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof formSchema>) {
+  async function onSubmit(data: z.infer<typeof insertSchema>) {
     if (props.data?.id) {
       updateEntity.mutate({ id: props.data?.id, data });
       return;

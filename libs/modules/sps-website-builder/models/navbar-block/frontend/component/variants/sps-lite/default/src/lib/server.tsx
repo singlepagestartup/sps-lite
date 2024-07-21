@@ -4,7 +4,7 @@ import "server-only";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/sps-website-builder/models/navbar-block/frontend/api/server";
+import { api } from "@sps/sps-website-builder/models/navbar-block/sdk/server";
 import { Component } from "./Component";
 import { Component as Logotype } from "./assets/logotype";
 import { Component as Content } from "./assets/content";

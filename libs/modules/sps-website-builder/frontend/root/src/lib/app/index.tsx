@@ -55,7 +55,7 @@ export function App(props: IComponentProps) {
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
                     data={widget}
-                    variant={widget.variant}
+                    variant={widget.variant as any}
                   >
                     <WidgetsToHeroSectionBlocks
                       isServer={props.isServer}
@@ -169,7 +169,7 @@ export function App(props: IComponentProps) {
                     key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant={navbar.variant}
+                    variant={navbar.variant as any}
                     data={navbar}
                   />
                 );

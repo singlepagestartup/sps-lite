@@ -4,7 +4,7 @@ import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder/re
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex flex-col lg:flex-row w-full px-2 lg:px-0 items-center justify-between gap-2">
-      <div className="flex w-full flex-col lg:flex-row items-center gap-2">
+      {/* <div className="flex w-full flex-col lg:flex-row items-center gap-2">
         {props.data.navbarBlocksToButtonsArrays
           .filter((entity) => entity.position === "default")
           .map((entity, index) => {
@@ -33,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
               />
             );
           })}
-      </div>
+      </div> */}
     </div>
   );
 }

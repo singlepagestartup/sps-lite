@@ -1,5 +1,4 @@
-import { IModel } from "@sps/sps-website-builder/models/widget/contracts/root";
-import { IModel as IModelExtended } from "@sps/sps-website-builder/models/widget/contracts/extended";
+import { IModel } from "@sps/sps-website-builder/models/widget/sdk/model";
 import { UseFormReturn } from "react-hook-form";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindActionProps } from "@sps/shared-frontend-api";
@@ -19,5 +18,5 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IModelExtended[];
+  data: IModel[];
 }

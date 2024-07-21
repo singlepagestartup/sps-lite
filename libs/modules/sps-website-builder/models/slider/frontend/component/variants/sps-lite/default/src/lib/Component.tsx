@@ -51,7 +51,7 @@ export function Component(props: IComponentPropsExtended) {
         className="relative w-full flex"
       >
         <CarouselContent className="w-full flex">
-          {props.data.slidersToSlides.map((entity, index) => {
+          {/* {props.data.slidersToSlides.map((entity, index) => {
             return (
               <CarouselItem key={index} className="basis-auto flex w-full">
                 <SlidersToSlides
@@ -63,7 +63,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               </CarouselItem>
             );
-          })}
+          })} */}
         </CarouselContent>
         <div
           className="w-2/12 inset-y-0 absolute cursor-pointer"
