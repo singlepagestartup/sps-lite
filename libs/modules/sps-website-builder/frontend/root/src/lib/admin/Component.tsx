@@ -17,28 +17,28 @@ const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
   ).then((mod) => mod.Component),
 );
 const SlideSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/slide/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/slide/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 const SliderSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/slider/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/slider/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 const SliderBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/slider-block/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/slider-block/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const FooterBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/footer-block/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/footer-block/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const NavbarBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/navbar-block/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/navbar-block/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const ButtonSpsLiteAdminTable = dynamic(() =>
@@ -48,7 +48,7 @@ const ButtonSpsLiteAdminTable = dynamic(() =>
 );
 const LogotypeSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/logotype/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/logotype/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const FooterSpsLiteAdminTable = dynamic(() =>
@@ -57,14 +57,14 @@ const FooterSpsLiteAdminTable = dynamic(() =>
   ),
 );
 const NavbarSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/navbar/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/navbar/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 const WidgetSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/widget/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/widget/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 import { Component as HeroSectionBlockAdmin } from "./hero-section-block-admin/Component";
 

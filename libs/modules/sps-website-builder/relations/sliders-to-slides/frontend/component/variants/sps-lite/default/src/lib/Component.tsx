@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       <Slide
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.slide.variant}
+        variant={props.data.slide.variant as any}
         data={props.data.slide}
       />
     </div>
