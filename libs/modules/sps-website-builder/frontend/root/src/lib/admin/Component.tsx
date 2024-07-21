@@ -3,7 +3,7 @@ import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
 const FeaturesSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/feature/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/feature/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const ButtonsArraySpsLiteAdminTable = dynamic(() =>

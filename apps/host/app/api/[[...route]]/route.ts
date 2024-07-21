@@ -18,6 +18,7 @@ import { ErrorHandler } from "hono/types";
 import { app as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/app/root";
 import { app as buttonsArrat } from "@sps/sps-website-builder/models/buttons-array/backend/app/root";
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/root";
+import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
 
 export const dynamic = "force-dynamic";
 
@@ -52,6 +53,7 @@ app.mount(
 );
 app.mount("/sps-website-builder/buttons-arrays", buttonsArrat.hono.fetch);
 app.mount("/sps-website-builder/buttons", button.hono.fetch);
+app.mount("/sps-website-builder/features", feature.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);
