@@ -12,8 +12,8 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/feature/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FeatureToSpsFileStorageModuleFileAdminTable } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/frontend/component/variants/sps-lite/admin-table";
-import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table";
+import { Component as FeatureToSpsFileStorageModuleFileAdminTable } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/frontend/component";
+import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

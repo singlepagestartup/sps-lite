@@ -12,7 +12,7 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/footer/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FootersToWidgetsAdminTable } from "@sps/sps-website-builder/relations/footers-to-widgets/frontend/component/variants/sps-lite/admin-table";
+import { Component as FootersToWidgetsAdminTable } from "@sps/sps-website-builder/relations/footers-to-widgets/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

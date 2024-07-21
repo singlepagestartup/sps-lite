@@ -12,8 +12,8 @@ import {
 } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import { FormField } from "@sps/ui-adapter";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/variants/sps-lite/admin-table";
-import { Component as WidgetsToFeaturesSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component";
+import { Component as WidgetsToFeaturesSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

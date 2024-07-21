@@ -12,8 +12,8 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/slider/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as SliderBlocksToSlidersAdminTable } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component/variants/sps-lite/admin-table";
-import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/variants/sps-lite/admin-table";
+import { Component as SliderBlocksToSlidersAdminTable } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component";
+import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

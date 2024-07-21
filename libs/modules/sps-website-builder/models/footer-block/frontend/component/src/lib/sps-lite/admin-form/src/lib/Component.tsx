@@ -12,9 +12,9 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/footer-block/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
-import { Component as WidgetsToFooterBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component";
+import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component";
+import { Component as WidgetsToFooterBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "../../interface";
-import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/root";
+// import { Component as NavbarsToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (

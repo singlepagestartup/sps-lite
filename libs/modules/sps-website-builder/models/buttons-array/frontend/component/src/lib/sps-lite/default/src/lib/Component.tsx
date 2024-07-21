@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as ButtonsArrayToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root";
+// import { Component as ButtonsArrayToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {

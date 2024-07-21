@@ -11,12 +11,12 @@ import {
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/models/buttons-array/sdk/model";
-import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/variants/sps-lite/admin-table";
+import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as NavbarBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
+import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component";
+import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component";
+import { Component as NavbarBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component";
+import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
 
 // const formSchema = z.object({
 //   variant: z.enum(variants),

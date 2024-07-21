@@ -12,9 +12,9 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/logotype/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
-import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component/variants/sps-lite/admin-table";
-import { Component as LogotypesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
+import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component";
+import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component";
+import { Component as LogotypesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

@@ -12,9 +12,9 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/slide/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/variants/sps-lite/admin-table";
-import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/variants/sps-lite/admin-table";
-import { Component as SlidesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component/variants/sps-lite/admin-table";
+import { Component as SlidersToSlidesAdminTable } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component";
+import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
+import { Component as SlidesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "../../interface";
-import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/root";
+// import { Component as NavbarsToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
