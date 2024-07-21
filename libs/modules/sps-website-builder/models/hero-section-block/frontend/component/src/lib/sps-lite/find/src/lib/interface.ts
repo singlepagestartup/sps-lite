@@ -1,21 +1,18 @@
 import { IModel } from "@sps/sps-website-builder/models/hero-section-block/sdk/model";
+import { Dispatch, SetStateAction } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
-import { ReactNode } from "react";
 
-export const variant = "default" as const;
+export const variant = "find" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
-  data: Partial<IModel>;
+  set?: Dispatch<SetStateAction<IModel[] | undefined>>;
+  children?: ({ data }: { data: IModel[] | undefined }) => any;
   apiProps?: {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
-  fileStorageWidgets?: ReactNode;
-  buttonsArrays?: ReactNode;
 }
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModel;
-}
+export interface IComponentPropsExtended extends IComponentProps {}

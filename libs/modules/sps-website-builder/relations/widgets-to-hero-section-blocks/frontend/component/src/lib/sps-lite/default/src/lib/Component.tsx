@@ -14,80 +14,106 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      {/* <HeroSectionBlock
+      <HeroSectionBlock
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.heroSectionBlock.variant}
-        data={props.data.heroSectionBlock}
-        fileStorageWidgets={
-          <HeroSectionBlocksToSpsFileStorageWidgets
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="find"
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "heroSectionBlockId",
-                      method: "eq",
-                      value: props.data.heroSectionBlock.id,
-                    },
-                  ],
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.heroSectionBlockId,
                 },
-              },
-            }}
-          >
-            {({ data }) => {
-              return data?.map((entity, index) => {
-                return (
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <HeroSectionBlock
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+                fileStorageWidgets={
                   <HeroSectionBlocksToSpsFileStorageWidgets
-                    key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant={entity.variant}
-                    data={entity}
-                  />
-                );
-              });
-            }}
-          </HeroSectionBlocksToSpsFileStorageWidgets>
-        }
-        buttonsArrays={
-          <HeroSectionBlocksToButtonsArrays
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="find"
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "heroSectionBlockId",
-                      method: "eq",
-                      value: props.data.heroSectionBlockId,
-                    },
-                  ],
-                },
-              },
-            }}
-          >
-            {({ data }) => {
-              return data?.map((entity, index) => {
-                return (
+                    variant="find"
+                    apiProps={{
+                      params: {
+                        filters: {
+                          and: [
+                            {
+                              column: "heroSectionBlockId",
+                              method: "eq",
+                              value: entity.id,
+                            },
+                          ],
+                        },
+                      },
+                    }}
+                  >
+                    {({ data }) => {
+                      return data?.map((entity, index) => {
+                        return (
+                          <HeroSectionBlocksToSpsFileStorageWidgets
+                            key={index}
+                            isServer={props.isServer}
+                            hostUrl={props.hostUrl}
+                            variant={entity.variant}
+                            data={entity}
+                          />
+                        );
+                      });
+                    }}
+                  </HeroSectionBlocksToSpsFileStorageWidgets>
+                }
+                buttonsArrays={
                   <HeroSectionBlocksToButtonsArrays
-                    key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant={entity.variant}
-                    data={entity}
-                  />
-                );
-              });
-            }}
-          </HeroSectionBlocksToButtonsArrays>
-        }
-      ></HeroSectionBlock> */}
+                    variant="find"
+                    apiProps={{
+                      params: {
+                        filters: {
+                          and: [
+                            {
+                              column: "heroSectionBlockId",
+                              method: "eq",
+                              value: props.data.heroSectionBlockId,
+                            },
+                          ],
+                        },
+                      },
+                    }}
+                  >
+                    {({ data }) => {
+                      return data?.map((entity, index) => {
+                        return (
+                          <HeroSectionBlocksToButtonsArrays
+                            key={index}
+                            isServer={props.isServer}
+                            hostUrl={props.hostUrl}
+                            variant={entity.variant}
+                            data={entity}
+                          />
+                        );
+                      });
+                    }}
+                  </HeroSectionBlocksToButtonsArrays>
+                }
+              ></HeroSectionBlock>
+            );
+          });
+        }}
+      </HeroSectionBlock>
     </div>
   );
 }

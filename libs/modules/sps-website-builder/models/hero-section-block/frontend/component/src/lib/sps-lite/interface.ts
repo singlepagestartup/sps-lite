@@ -1,3 +1,4 @@
+import { IComponentProps as IFindComponentProps } from "./find";
 import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-select-input";
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
@@ -5,6 +6,7 @@ import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-r
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 
 export type IComponentProps =
+  | IFindComponentProps
   | IDefaultComponentProps
   | IAdminSelectInputComponentProps
   | IAdminFormComponentProps
