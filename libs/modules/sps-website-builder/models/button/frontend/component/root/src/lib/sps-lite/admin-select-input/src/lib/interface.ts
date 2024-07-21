@@ -6,7 +6,7 @@ import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 export const variant = "admin-select-input" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant | IModel["variant"];
+  variant: typeof variant;
   formFieldName: string;
   form: UseFormReturn<any>;
   renderField?: keyof IModel;

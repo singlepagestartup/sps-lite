@@ -13,7 +13,7 @@ const ButtonsArraySpsLiteAdminTable = dynamic(() =>
 );
 const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/features-section-block/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/features-section-block/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const SlideSpsLiteAdminTable = dynamic(() =>

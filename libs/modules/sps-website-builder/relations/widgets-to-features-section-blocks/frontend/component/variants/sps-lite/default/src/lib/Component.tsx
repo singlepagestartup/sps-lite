@@ -1,6 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as FeaturesSectionBlock } from "@sps/sps-website-builder/models/features-section-block/frontend/component/root";
+import { Component as FeaturesSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -36,8 +37,44 @@ export function Component(props: IComponentPropsExtended) {
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
-                variant={entity.variant}
+                variant={entity.variant as any}
                 data={entity}
+                features={(componentProps) => {
+                  return (
+                    <FeaturesSectionBlocksToFeatures
+                      variant="find"
+                      isServer={componentProps.isServer}
+                      hostUrl={props.hostUrl}
+                      apiProps={{
+                        params: {
+                          filters: {
+                            and: [
+                              {
+                                column: "featuresSectionBlockId",
+                                method: "eq",
+                                value: entity.id,
+                              },
+                            ],
+                          },
+                        },
+                      }}
+                    >
+                      {({ data }) => {
+                        return data?.map((entity, index) => {
+                          return (
+                            <FeaturesSectionBlocksToFeatures
+                              key={index}
+                              isServer={props.isServer}
+                              hostUrl={props.hostUrl}
+                              variant={entity.variant}
+                              data={entity}
+                            />
+                          );
+                        });
+                      }}
+                    </FeaturesSectionBlocksToFeatures>
+                  );
+                }}
               />
             );
           });

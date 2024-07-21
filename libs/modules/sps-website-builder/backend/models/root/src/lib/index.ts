@@ -10,7 +10,6 @@ import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/r
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/model/root";
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/model/root";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/model/root";
-import { model as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/model/root";
 import { model as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/model/root";
 import { model as logotype } from "@sps/sps-website-builder/models/logotype/backend/model/root";
 import { model as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/model/root";
@@ -43,7 +42,6 @@ export const models = {
   footerBlocksToLogotypes,
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,
-  featuresSectionBlock,
   navbarBlocksToLogotypes,
   logotype,
   slidersToSlides,

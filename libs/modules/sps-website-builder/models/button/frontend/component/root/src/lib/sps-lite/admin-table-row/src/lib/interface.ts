@@ -5,7 +5,7 @@ import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 export const variant = "admin-table-row" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant | IModel["variant"];
+  variant: typeof variant;
   data: Partial<IModel>;
   apiProps?: {
     params?: IFindByIdActionProps["params"];

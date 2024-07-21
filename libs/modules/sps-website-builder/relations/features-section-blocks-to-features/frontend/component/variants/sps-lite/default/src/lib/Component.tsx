@@ -14,9 +14,35 @@ export function Component(props: IComponentPropsExtended) {
       <Feature
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.feature.variant}
-        data={props.data.feature}
-      />
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data?.featureId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <Feature
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </Feature>
     </div>
   );
 }

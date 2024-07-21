@@ -10,7 +10,6 @@ import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/rel
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/root";
 import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/app/root";
-import { app as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/app/root";
 import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/root";
 import { app as logotype } from "@sps/sps-website-builder/models/logotype/backend/app/root";
 import { app as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/app/root";
@@ -46,7 +45,6 @@ export const routes = {
   "/footer-blocks-to-logotypes": footerBlocksToLogotypes,
   "/features-section-blocks-to-features": featuresSectionBlocksToFeatures,
   "/widgets-to-features-section-blocks": widgetsToFeaturesSectionBlocks,
-  "/features-section-blocks": featuresSectionBlock,
   "/navbar-blocks-to-logotypes": navbarBlocksToLogotypes,
   "/logotypes": logotype,
   "/sliders-to-slides": slidersToSlides,

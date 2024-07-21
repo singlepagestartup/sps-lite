@@ -4,7 +4,7 @@ import { ISpsComponentBase } from "@sps/ui-adapter";
 export const variant = "outline" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant | IModel["variant"];
+  variant: typeof variant;
   data: Partial<IModel>;
   onClick?: () => void;
 }
