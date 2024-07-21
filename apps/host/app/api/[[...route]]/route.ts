@@ -21,6 +21,14 @@ import { app as button } from "@sps/sps-website-builder/models/button/backend/ap
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
 import { app as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/app/root";
 import { app as footer } from "@sps/sps-website-builder/models/footer/backend/app/root";
+import { app as logotype } from "@sps/sps-website-builder/models/logotype/backend/app/root";
+import { app as slide } from "@sps/sps-website-builder/models/slide/backend/app/root";
+import { app as slider } from "@sps/sps-website-builder/models/slider/backend/app/root";
+import { app as sliderBlock } from "@sps/sps-website-builder/models/slider-block/backend/app/root";
+import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
+import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/root";
+import { app as navbar } from "@sps/sps-website-builder/models/navbar/backend/app/root";
+import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/root";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +69,15 @@ app.mount(
   featuresSectionBlock.hono.fetch,
 );
 app.mount("/sps-website-builder/footers", footer.hono.fetch);
+
+app.mount("/sps-website-builder/logotypes", logotype.hono.fetch);
+app.mount("/sps-website-builder/slides", slide.hono.fetch);
+app.mount("/sps-website-builder/sliders", slider.hono.fetch);
+app.mount("/sps-website-builder/slider-blocks", sliderBlock.hono.fetch);
+app.mount("/sps-website-builder/footer-blocks", footerBlock.hono.fetch);
+app.mount("/sps-website-builder/navbar-blocks", navbarBlock.hono.fetch);
+app.mount("/sps-website-builder/navbars", navbar.hono.fetch);
+app.mount("/sps-website-builder/widgets", widget.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);
