@@ -1,7 +1,7 @@
 import type { IModel as IParentModel } from "@sps/sps-website-builder/models/modal/contracts/root";
-import type { IModel as IHeroSectionBlock } from "@sps/sps-website-builder/models/button/contracts/root";
+import type { IModel as IButton } from "@sps/sps-website-builder/models/button/sdk/model";
 
-type IPageBlock = IHeroSectionBlock;
+type IPageBlock = IButton;
 
 export interface IModel extends IParentModel {
   pageBlocks?: IPageBlock[] | null;

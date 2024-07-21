@@ -1,5 +1,7 @@
+import { FindServiceProps } from "../services/interfaces";
+
 export interface IService<DTO extends Record<string, unknown>> {
-  find: () => Promise<DTO[]>;
+  find: (props?: FindServiceProps) => Promise<DTO[]>;
   findById: (props: { id: string }) => Promise<DTO | null>;
   create: (props: { data: DTO }) => Promise<DTO | null>;
   delete: (props: { id: string }) => Promise<DTO | null>;

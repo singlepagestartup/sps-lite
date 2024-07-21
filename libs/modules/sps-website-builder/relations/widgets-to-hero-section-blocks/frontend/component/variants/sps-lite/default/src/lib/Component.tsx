@@ -38,24 +38,18 @@ export function Component(props: IComponentPropsExtended) {
               },
             }}
           >
-            {({ data: heroSectionBlocksToSpsFileStorageWidgets }) => {
-              if (!heroSectionBlocksToSpsFileStorageWidgets) {
-                return;
-              }
-
-              return heroSectionBlocksToSpsFileStorageWidgets.map(
-                (entity, index) => {
-                  return (
-                    <HeroSectionBlocksToSpsFileStorageWidgets
-                      key={index}
-                      isServer={props.isServer}
-                      hostUrl={props.hostUrl}
-                      variant={entity.variant}
-                      data={entity}
-                    />
-                  );
-                },
-              );
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <HeroSectionBlocksToSpsFileStorageWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant={entity.variant}
+                    data={entity}
+                  />
+                );
+              });
             }}
           </HeroSectionBlocksToSpsFileStorageWidgets>
         }
@@ -71,19 +65,15 @@ export function Component(props: IComponentPropsExtended) {
                     {
                       column: "heroSectionBlockId",
                       method: "eq",
-                      value: props.data.heroSectionBlock.id,
+                      value: props.data.heroSectionBlockId,
                     },
                   ],
                 },
               },
             }}
           >
-            {({ data: buttonsArrays }) => {
-              if (!buttonsArrays) {
-                return;
-              }
-
-              return buttonsArrays.map((entity, index) => {
+            {({ data }) => {
+              return data?.map((entity, index) => {
                 return (
                   <HeroSectionBlocksToButtonsArrays
                     key={index}

@@ -8,7 +8,7 @@ const FeaturesSpsLiteAdminTable = dynamic(() =>
 );
 const ButtonsArraySpsLiteAdminTable = dynamic(() =>
   import(
-    "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-table"
+    "@sps/sps-website-builder/models/buttons-array/frontend/component/root"
   ).then((mod) => mod.Component),
 );
 const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
@@ -42,9 +42,9 @@ const NavbarBlockSpsLiteAdminTable = dynamic(() =>
   ).then((mod) => mod.Component),
 );
 const ButtonSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/button/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 const LogotypeSpsLiteAdminTable = dynamic(() =>
   import(

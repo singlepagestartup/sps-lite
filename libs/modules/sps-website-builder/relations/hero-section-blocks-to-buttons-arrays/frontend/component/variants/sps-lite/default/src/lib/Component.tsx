@@ -1,6 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as ButtonsArrays } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
+import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,12 +12,72 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <ButtonsArrays
+      <ButtonsArray
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.buttonsArray.variant}
-        data={props.data.buttonsArray}
-      />
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.buttonsArrayId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <ButtonsArray
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant}
+                data={entity}
+                buttons={
+                  <ButtonsArraysToButtons
+                    variant="find"
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    apiProps={{
+                      params: {
+                        filters: {
+                          and: [
+                            {
+                              column: "buttonsArrayId",
+                              method: "eq",
+                              value: entity.id,
+                            },
+                          ],
+                        },
+                      },
+                    }}
+                  >
+                    {({ data }) => {
+                      return data?.map((entity, index) => {
+                        return (
+                          <ButtonsArraysToButtons
+                            key={index}
+                            isServer={props.isServer}
+                            hostUrl={props.hostUrl}
+                            variant={entity.variant}
+                            data={entity}
+                          />
+                        );
+                      });
+                    }}
+                  </ButtonsArraysToButtons>
+                }
+              />
+            );
+          });
+        }}
+      </ButtonsArray>
     </div>
   );
 }

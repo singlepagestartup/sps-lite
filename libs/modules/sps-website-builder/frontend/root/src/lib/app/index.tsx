@@ -82,7 +82,7 @@ export function App(props: IComponentProps) {
                                 key={index}
                                 isServer={props.isServer}
                                 hostUrl={props.hostUrl}
-                                variant="default"
+                                variant={entity.variant}
                                 data={entity}
                               ></WidgetsToHeroSectionBlocks>
                             );

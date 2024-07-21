@@ -4,6 +4,7 @@ import { type IController } from "../../controllers";
 import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
+import { ParseQueryMiddleware } from "@sps/middlewares";
 
 export interface IApp<
   ENV extends Env = {},
@@ -35,6 +36,7 @@ export class App<SCHEMA extends Record<string, unknown>>
 
   public async init() {
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
+    this.hono.use(new ParseQueryMiddleware().init());
     this.useRoutes();
   }
 

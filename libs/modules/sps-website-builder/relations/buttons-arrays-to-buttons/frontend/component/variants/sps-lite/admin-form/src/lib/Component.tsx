@@ -12,8 +12,8 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { variants } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/contracts/root";
-import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/variants/sps-lite/admin-select-input";
-import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as ButtonsArraySelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component/root";
+import { Component as ButtonSelectInput } from "@sps/sps-website-builder/models/button/frontend/component/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 
 const formSchema = z.object({

@@ -5,6 +5,7 @@ import { Next } from "hono/types";
 import { inject, injectable } from "inversify";
 import { DI } from "../../../../di/constants";
 import { type IService } from "../../../../service";
+import { type IParseQueryMiddlewareGeneric } from "@sps/middlewares";
 
 @injectable()
 export class Handler<
@@ -13,9 +14,12 @@ export class Handler<
 > {
   constructor(@inject(DI.IService) private service: IService<SCHEMA>) {}
 
-  async execute(c: C, next: Next): Promise<Response> {
+  async execute(
+    c: Context<IParseQueryMiddlewareGeneric>,
+    next: Next,
+  ): Promise<Response> {
     try {
-      const data = await this.service.find();
+      const data = await this.service.find({ params: c.var.parsedQuery });
 
       return c.json({
         data,

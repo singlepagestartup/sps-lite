@@ -1,0 +1,18 @@
+import { IModel } from "@sps/sps-website-builder/models/buttons-array/sdk/model";
+import { ISpsComponentBase } from "@sps/ui-adapter";
+import { IFindByIdActionProps } from "@sps/shared-frontend-api";
+
+export const variant = "admin-table-row" as const;
+
+export interface IComponentProps extends ISpsComponentBase {
+  variant: IModel["variant"];
+  data: Partial<IModel>;
+  apiProps?: {
+    params?: IFindByIdActionProps["params"];
+    options?: IFindByIdActionProps["options"];
+  };
+}
+
+export interface IComponentPropsExtended extends IComponentProps {
+  data: IModel;
+}

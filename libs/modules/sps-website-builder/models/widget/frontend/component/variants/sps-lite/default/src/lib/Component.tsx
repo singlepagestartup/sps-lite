@@ -1,9 +1,4 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/root";
-import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/root";
-import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/root";
-import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/root";
-import { Component as WidgetToFeaturesSectionBlock } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/root";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -16,20 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex flex-col", props.data.className)}
     >
       {props.children}
-      {/* {props.data.widgetsToHeroSectionBlocks?.map(
-        (widgetToHeroSectionBlock, index) => {
-          return (
-            <WidgetsToHeroSectionBlocks
-              key={index}
-              isServer={props.isServer}
-              hostUrl={props.hostUrl}
-              variant="default"
-              data={widgetToHeroSectionBlock}
-            />
-          );
-        },
-      )}
-      {props.data.widgetsToNavbarBlocks.map((widgetToNavbarBlock, index) => {
+      {/* {props.data.widgetsToNavbarBlocks.map((widgetToNavbarBlock, index) => {
         return (
           <WidgetsToNavbarBlocks
             key={index}

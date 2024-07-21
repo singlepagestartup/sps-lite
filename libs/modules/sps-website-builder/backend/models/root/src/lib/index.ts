@@ -7,7 +7,6 @@ import { model as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/r
 import { model as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/model/root";
 import { model as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/model/root";
 import { model as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/model/root";
-import { model as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/model/root";
 import { model as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/model/root";
 import { model as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/model/root";
 import { model as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/model/root";
@@ -15,7 +14,6 @@ import { model as feature } from "@sps/sps-website-builder/models/feature/backen
 import { model as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/model/root";
 import { model as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/model/root";
 import { model as logotype } from "@sps/sps-website-builder/models/logotype/backend/model/root";
-import { model as button } from "@sps/sps-website-builder/models/button/backend/model/root";
 import { model as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/model/root";
 import { model as sliderBlocksToSliders } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/backend/model/root";
 import { model as slide } from "@sps/sps-website-builder/models/slide/backend/model/root";
@@ -43,7 +41,6 @@ export const models = {
   buttonsArraysToButtons,
   heroSectionBlocksToButtonsArrays,
   navbarBlocksToButtonsArrays,
-  buttonsArray,
   footerBlocksToLogotypes,
   featuresSectionBlocksToFeatures,
   widgetsToFeaturesSectionBlocks,
@@ -51,7 +48,6 @@ export const models = {
   featuresSectionBlock,
   navbarBlocksToLogotypes,
   logotype,
-  button,
   slidersToSlides,
   sliderBlocksToSliders,
   slide,
