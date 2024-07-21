@@ -18,7 +18,6 @@ import { model as widgetsToFooterBlocks } from "@sps/sps-website-builder/relatio
 import { model as footersToWidgets } from "@sps/sps-website-builder/relations/footers-to-widgets/backend/model/root";
 import { model as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/backend/model/root";
 import { model as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/model/root";
-import { model as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/model/root";
 
 export const models = {
   featuresToSpsFileStorageModuleFiles,
@@ -41,5 +40,4 @@ export const models = {
   footersToWidgets,
   widgetsToNavbarBlocks,
   navbarsToWidgets,
-  widgetsToHeroSectionBlocks,
 };

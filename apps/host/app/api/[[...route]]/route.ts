@@ -29,6 +29,7 @@ import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block
 import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/root";
 import { app as navbar } from "@sps/sps-website-builder/models/navbar/backend/app/root";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/root";
+import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/root";
 
 export const dynamic = "force-dynamic";
 
@@ -78,6 +79,10 @@ app.mount("/sps-website-builder/footer-blocks", footerBlock.hono.fetch);
 app.mount("/sps-website-builder/navbar-blocks", navbarBlock.hono.fetch);
 app.mount("/sps-website-builder/navbars", navbar.hono.fetch);
 app.mount("/sps-website-builder/widgets", widget.hono.fetch);
+app.mount(
+  "/sps-website-builder/widgets-to-hero-section-blocks",
+  widgetsToHeroSectionBlocks.hono.fetch,
+);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

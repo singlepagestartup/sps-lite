@@ -2,7 +2,7 @@ import { IComponentProps } from "./interface";
 import { Component as Navbar } from "@sps/sps-website-builder/models/navbar/frontend/component";
 import { Component as Widget } from "@sps/sps-website-builder/models/widget/frontend/component";
 import { Component as Footer } from "@sps/sps-website-builder/models/footer/frontend/component";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/root";
+import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
 import { Component as WidgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/root";
 
 import { cn } from "@sps/shared-frontend-client-utils";
@@ -82,7 +82,7 @@ export function App(props: IComponentProps) {
                               key={index}
                               isServer={props.isServer}
                               hostUrl={props.hostUrl}
-                              variant={entity.variant}
+                              variant={entity.variant as any}
                               data={entity}
                             ></WidgetsToHeroSectionBlocks>
                           );

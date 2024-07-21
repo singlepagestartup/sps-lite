@@ -18,7 +18,6 @@ import { app as widgetsToFooterBlocks } from "@sps/sps-website-builder/relations
 import { app as footersToWidgets } from "@sps/sps-website-builder/relations/footers-to-widgets/backend/app/root";
 import { app as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/backend/app/root";
 import { app as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/app/root";
-import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/root";
 
 export const routes = {
   "/features-to-sps-file-storage-module-files":
@@ -44,5 +43,4 @@ export const routes = {
   "/footers-to-widgets": footersToWidgets,
   "/widgets-to-navbar-blocks": widgetsToNavbarBlocks,
   "/navbars-to-widgets": navbarsToWidgets,
-  "/widgets-to-hero-section-blocks": widgetsToHeroSectionBlocks,
 };

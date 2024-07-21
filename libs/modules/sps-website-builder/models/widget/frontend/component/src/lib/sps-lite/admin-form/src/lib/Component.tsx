@@ -16,7 +16,7 @@ import { Component as FootersToWidgetsAdminTable } from "@sps/sps-website-builde
 import { Component as NavbarsToWidgetsAdminTable } from "@sps/sps-website-builder/relations/navbars-to-widgets/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetsToFeaturesSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetsToFooterBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component/variants/sps-lite/admin-table";
-import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component/variants/sps-lite/admin-table";
+import { Component as WidgetsToHeroSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component/variants/sps-lite/admin-table";
 import { Component as WidgetsToSliderBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component/variants/sps-lite/admin-table";
 
