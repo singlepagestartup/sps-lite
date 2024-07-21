@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-// import { Component as SliderBlocksToSliders } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component/root";
+import { Component as SliderBlocksToSliders } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,19 +11,38 @@ export function Component(props: IComponentPropsExtended) {
       className={`w-full ${props.data.className || ""}`}
     >
       <div className="px-2 w-full max-w-7xl mx-auto">
-        {/* {props.data.sliderBlocksToSliders.map(
-          (sliderBlocksToSliders, index) => {
-            return (
-              <SliderBlocksToSliders
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant="default"
-                data={sliderBlocksToSliders}
-              />
-            );
-          },
-        )} */}
+        <SliderBlocksToSliders
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="find"
+          apiProps={{
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "sliderBlockId",
+                    method: "eq",
+                    value: props.data.id,
+                  },
+                ],
+              },
+            },
+          }}
+        >
+          {({ data }) => {
+            return data?.map((entity, index) => {
+              return (
+                <SliderBlocksToSliders
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant={entity.variant as any}
+                  data={entity}
+                />
+              );
+            });
+          }}
+        </SliderBlocksToSliders>
       </div>
     </div>
   );

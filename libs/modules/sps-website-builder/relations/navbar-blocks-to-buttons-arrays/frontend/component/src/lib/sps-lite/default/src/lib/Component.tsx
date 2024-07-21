@@ -11,12 +11,38 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      {/* <ButtonsArray
+      <ButtonsArray
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.buttonsArray.variant}
-        data={props.data.buttonsArray}
-      /> */}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.buttonsArrayId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <ButtonsArray
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </ButtonsArray>
     </div>
   );
 }

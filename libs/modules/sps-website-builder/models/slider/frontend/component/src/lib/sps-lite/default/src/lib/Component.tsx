@@ -8,7 +8,7 @@ import {
   CarouselApi,
 } from "@sps/shared-ui-shadcn";
 import { IComponentPropsExtended } from "./interface";
-// import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component/root";
+import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component";
 import Autoplay from "embla-carousel-autoplay";
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -51,19 +51,38 @@ export function Component(props: IComponentPropsExtended) {
         className="relative w-full flex"
       >
         <CarouselContent className="w-full flex">
-          {/* {props.data.slidersToSlides.map((entity, index) => {
-            return (
-              <CarouselItem key={index} className="basis-auto flex w-full">
-                <SlidersToSlides
-                  key={index}
-                  isServer={false}
-                  hostUrl={props.hostUrl}
-                  variant="default"
-                  data={entity}
-                />
-              </CarouselItem>
-            );
-          })} */}
+          <SlidersToSlides
+            isServer={false}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "sliderId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <SlidersToSlides
+                    key={index}
+                    isServer={false}
+                    hostUrl={props.hostUrl}
+                    variant={entity.variant as any}
+                    data={entity}
+                  />
+                );
+              });
+            }}
+          </SlidersToSlides>
         </CarouselContent>
         <div
           className="w-2/12 inset-y-0 absolute cursor-pointer"

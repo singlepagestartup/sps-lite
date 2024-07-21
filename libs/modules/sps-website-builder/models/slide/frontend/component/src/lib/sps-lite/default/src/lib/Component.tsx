@@ -1,7 +1,7 @@
 import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
-// import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component/root";
-// import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component/root";
+import { Component as SlidesToSpsFileStorageWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component";
+import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -13,17 +13,38 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="relative min-h-80 w-full flex flex-col items-center justify-center gap-10">
         <div className="absolute inset-0 flex">
-          {/* {props.data.slidesToSpsFileStorageWidgets.map((entity, index) => {
-            return (
-              <SlidesToSpsFileStorageWidgets
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant="default"
-                data={entity}
-              />
-            );
-          })} */}
+          <SlidesToSpsFileStorageWidgets
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "slideId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <SlidesToSpsFileStorageWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant={entity.variant as any}
+                    data={entity}
+                  />
+                );
+              });
+            }}
+          </SlidesToSpsFileStorageWidgets>
         </div>
         <div className="flex flex-col gap-12 items-center">
           <div className="relative p-10">
@@ -32,21 +53,38 @@ export function Component(props: IComponentPropsExtended) {
             </h3>
           </div>
 
-          {/* {props.data.slidesToButtonsArrays.length ? (
-            <div className="relative flex gap-6">
-              {props.data.slidesToButtonsArrays.map((entity, index) => {
+          <SlidesToButtonsArrays
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "slideId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
                 return (
                   <SlidesToButtonsArrays
                     key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant="default"
+                    variant={entity.variant as any}
                     data={entity}
                   />
                 );
-              })}
-            </div>
-          ) : null} */}
+              });
+            }}
+          </SlidesToButtonsArrays>
         </div>
       </div>
     </div>
