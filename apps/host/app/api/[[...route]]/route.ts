@@ -20,6 +20,7 @@ import { app as buttonsArrat } from "@sps/sps-website-builder/models/buttons-arr
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/root";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
 import { app as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/app/root";
+import { app as footer } from "@sps/sps-website-builder/models/footer/backend/app/root";
 
 export const dynamic = "force-dynamic";
 
@@ -59,6 +60,7 @@ app.mount(
   "/sps-website-builder/features-section-blocks",
   featuresSectionBlock.hono.fetch,
 );
+app.mount("/sps-website-builder/footers", footer.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

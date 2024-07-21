@@ -24,7 +24,6 @@ import { model as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relatio
 import { model as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/model/root";
 import { model as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/model/root";
 import { model as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/model/root";
-import { model as footer } from "@sps/sps-website-builder/models/footer/backend/model/root";
 import { model as navbar } from "@sps/sps-website-builder/models/navbar/backend/model/root";
 import { model as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/model/root";
 import { model as widget } from "@sps/sps-website-builder/models/widget/backend/model/root";
@@ -56,7 +55,6 @@ export const models = {
   footerBlock,
   navbarBlock,
   navbarsToWidgets,
-  footer,
   navbar,
   widgetsToHeroSectionBlocks,
   widget,

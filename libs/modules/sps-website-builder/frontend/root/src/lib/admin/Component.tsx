@@ -52,9 +52,9 @@ const LogotypeSpsLiteAdminTable = dynamic(() =>
   ).then((mod) => mod.Component),
 );
 const FooterSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/footer/frontend/component/variants/sps-lite/admin-table"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-website-builder/models/footer/frontend/component/root").then(
+    (mod) => mod.Component,
+  ),
 );
 const NavbarSpsLiteAdminTable = dynamic(() =>
   import(

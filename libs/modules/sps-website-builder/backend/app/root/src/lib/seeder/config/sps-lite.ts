@@ -2,7 +2,6 @@ import { IModuleSeedConfig } from "@sps/shared-backend-api";
 import { models } from "@sps/sps-website-builder/backend/models/root";
 
 export const configModels: IModuleSeedConfig<typeof models>["models"] = [
-  { name: "footer" },
   { name: "footerBlock" },
   { name: "logotype" },
   { name: "navbar" },

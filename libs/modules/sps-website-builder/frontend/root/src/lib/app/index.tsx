@@ -219,7 +219,7 @@ export function App(props: IComponentProps) {
                     key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    variant={footer.variant}
+                    variant={footer.variant as any}
                     data={footer}
                   />
                 );
