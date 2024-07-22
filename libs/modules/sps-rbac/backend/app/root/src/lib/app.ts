@@ -14,6 +14,12 @@ import { app as permission } from "@sps/sps-rbac/models/permission/backend/app/r
 import { app as identity } from "@sps/sps-rbac/models/identity/backend/app/root";
 import { app as authentication } from "@sps/sps-rbac/models/authentication/backend/app/root";
 import { app as authenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/app/root";
+import { app as rolesToPermissions } from "@sps/sps-rbac/relations/roles-to-permissions/backend/app/root";
+import { app as sessionsToAuthentications } from "@sps/sps-rbac/relations/sessions-to-authentications/backend/app/root";
+import { app as subjectsToIdentities } from "@sps/sps-rbac/relations/subjects-to-identities/backend/app/root";
+import { app as subjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/backend/app/root";
+import { app as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/app/root";
+import { app as widgetsToAuthenticationBlocks } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root";
 
 @injectable()
 export class App implements IDefaultApp<Env> {
@@ -44,5 +50,17 @@ export class App implements IDefaultApp<Env> {
     this.hono.mount("/permissions", permission.hono.fetch);
     this.hono.mount("/identities", identity.hono.fetch);
     this.hono.mount("/authentications", authentication.hono.fetch);
+    this.hono.mount("/roles-to-permissions", rolesToPermissions.hono.fetch);
+    this.hono.mount(
+      "/sessions-to-authentications",
+      sessionsToAuthentications.hono.fetch,
+    );
+    this.hono.mount("/subjects-to-identities", subjectsToIdentities.hono.fetch);
+    this.hono.mount("/subjects-to-roles", subjectsToRoles.hono.fetch);
+    this.hono.mount("/subjects-to-sessions", subjectsToSessions.hono.fetch);
+    this.hono.mount(
+      "/widgets-to-authentication-blocks",
+      widgetsToAuthenticationBlocks.hono.fetch,
+    );
   }
 }

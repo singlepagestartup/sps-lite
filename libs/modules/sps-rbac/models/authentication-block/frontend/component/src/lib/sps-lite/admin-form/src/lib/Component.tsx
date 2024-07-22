@@ -11,7 +11,6 @@ import {
   insertSchema,
 } from "@sps/sps-rbac/models/authentication-block/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as WidgetsToAuthenticationBlocksAdminTable } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -105,26 +104,13 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.data?.id ? (
-          <WidgetsToAuthenticationBlocksAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "authenticationBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.widgetsToAuthenticationBlocks
+          ? props.widgetsToAuthenticationBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

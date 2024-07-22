@@ -3,7 +3,7 @@ import { Dumper as SpsBroadcastDumper } from "@sps/sps-broadcast/backend/app/roo
 // import { Dumper as SpsWebsiteBuilderDumper } from "@sps/sps-website-builder/backend/app/root";
 import { Dumper as StartupDumper } from "@sps/startup/backend/app/root";
 import { Dumper as SpsFileStorageDumper } from "@sps/sps-file-storage/backend/app/root";
-import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
+// import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
 import { exit } from "process";
 
 (async () => {
@@ -15,8 +15,8 @@ import { exit } from "process";
   // await spsWebsiteBuilderSeeder.dumpModels();
   const spsFileStorageSeeder = new SpsFileStorageDumper();
   await spsFileStorageSeeder.dumpModels();
-  const spsRbacSeeder = new SpsRbacDumper();
-  await spsRbacSeeder.dumpModels();
+  // const spsRbacSeeder = new SpsRbacDumper();
+  // await spsRbacSeeder.dumpModels();
   const startupSeeder = new StartupDumper();
   await startupSeeder.dumpModels();
 })()

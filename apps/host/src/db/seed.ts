@@ -3,7 +3,7 @@ import { ModuleSeeder as SpsBroadcastModuleSeeder } from "@sps/sps-broadcast/bac
 // import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
 import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
 import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
-import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
+// import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { exit } from "process";
 
 (async () => {
@@ -32,10 +32,10 @@ import { exit } from "process";
     seedConfig,
   });
 
-  const spsRbacModuleSeeder = new SpsRbacModuleSeeder({
-    seedResults,
-    seedConfig,
-  });
+  // const spsRbacModuleSeeder = new SpsRbacModuleSeeder({
+  //   seedResults,
+  //   seedConfig,
+  // });
 
   const startupModuleSeeder = new StartupModuleSeeder({
     seedResults,
@@ -54,9 +54,9 @@ import { exit } from "process";
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedModels();
   }
-  if (spsRbacModuleSeeder.config.seed || seedAll) {
-    await spsRbacModuleSeeder.seedModels();
-  }
+  // if (spsRbacModuleSeeder.config.seed || seedAll) {
+  //   await spsRbacModuleSeeder.seedModels();
+  // }
   if (startupModuleSeeder.config.seed || seedAll) {
     await startupModuleSeeder.seedModels();
   }
@@ -73,9 +73,9 @@ import { exit } from "process";
   if (spsFileStorageModuleSeeder.config.seed || seedAll) {
     await spsFileStorageModuleSeeder.seedRelations();
   }
-  if (spsRbacModuleSeeder.config.seed || seedAll) {
-    await spsRbacModuleSeeder.seedRelations();
-  }
+  // if (spsRbacModuleSeeder.config.seed || seedAll) {
+  //   await spsRbacModuleSeeder.seedRelations();
+  // }
   if (startupModuleSeeder.config.seed || seedAll) {
     await startupModuleSeeder.seedRelations();
   }

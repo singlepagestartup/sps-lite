@@ -1,32 +1,47 @@
 import { IComponentProps } from "./interface";
-import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac/models/role/frontend/component";
-import { Component as SubjectSpsLiteAdminTable } from "@sps/sps-rbac/models/subject/frontend/component";
-import { Component as IdentitySpsLiteAdminTable } from "@sps/sps-rbac/models/identity/frontend/component";
-import { Component as AuthenticationBlockSpsLiteAdminTable } from "@sps/sps-rbac/models/authentication-block/frontend/component";
-import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-rbac/models/widget/frontend/component";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
+import { Component as Authentication } from "./authentication/Component";
+import { Component as AuthenticationBlock } from "./authentication-block/Component";
+import { Component as Identity } from "./identity/Component";
+import { Component as Permission } from "./permission/Component";
+import { Component as Role } from "./role/Component";
+import { Component as Session } from "./session/Component";
+import { Component as Subject } from "./subject/Component";
+import { Component as Widget } from "./widget/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
     {
-      name: "role",
-      Comp: RoleSpsLiteAdminTable,
-    },
-    {
-      name: "subject",
-      Comp: SubjectSpsLiteAdminTable,
-    },
-    {
-      name: "identity",
-      Comp: IdentitySpsLiteAdminTable,
+      name: "authentication",
+      Comp: Authentication,
     },
     {
       name: "authentication-block",
-      Comp: AuthenticationBlockSpsLiteAdminTable,
+      Comp: AuthenticationBlock,
+    },
+    {
+      name: "identity",
+      Comp: Identity,
+    },
+    {
+      name: "permission",
+      Comp: Permission,
+    },
+    {
+      name: "role",
+      Comp: Role,
+    },
+    {
+      name: "session",
+      Comp: Session,
+    },
+    {
+      name: "subject",
+      Comp: Subject,
     },
     {
       name: "widget",
-      Comp: WidgetSpsLiteAdminTable,
+      Comp: Widget,
     },
   ];
 
