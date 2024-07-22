@@ -1,9 +1,9 @@
 import { IComponentProps } from "./interface";
-import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac/models/role/frontend/component/variants/sps-lite/admin-table";
-import { Component as SubjectSpsLiteAdminTable } from "@sps/sps-rbac/models/subject/frontend/component/variants/sps-lite/admin-table";
-import { Component as IdentitySpsLiteAdminTable } from "@sps/sps-rbac/models/identity/frontend/component/variants/sps-lite/admin-table";
-import { Component as AuthenticationBlockSpsLiteAdminTable } from "@sps/sps-rbac/models/authentication-block/frontend/component/variants/sps-lite/admin-table";
-import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-rbac/models/widget/frontend/component/variants/sps-lite/admin-table";
+import { Component as RoleSpsLiteAdminTable } from "@sps/sps-rbac/models/role/frontend/component";
+import { Component as SubjectSpsLiteAdminTable } from "@sps/sps-rbac/models/subject/frontend/component";
+import { Component as IdentitySpsLiteAdminTable } from "@sps/sps-rbac/models/identity/frontend/component";
+import { Component as AuthenticationBlockSpsLiteAdminTable } from "@sps/sps-rbac/models/authentication-block/frontend/component";
+import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-rbac/models/widget/frontend/component";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
 
 export function Component(props: IComponentProps) {

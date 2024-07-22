@@ -5,9 +5,9 @@ import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
 const IsAuthenticatatedWrapper = dynamic(() =>
-  import(
-    "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper"
-  ).then((mod) => mod.Component),
+  import("@sps/sps-rbac/models/authentication/frontend/component").then(
+    (mod) => mod.Component,
+  ),
 );
 const SpsHost = dynamic(() =>
   import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),

@@ -17,6 +17,7 @@ import {
 } from "@sps/sps-host/relations/widgets-to-external-modules/contracts/root";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/sps-host/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as SpsWebsiteBuilderWidget } from "@sps/sps-website-builder/models/widget/frontend/component";
 
 const formSchema = z.object({
   variant: z.enum(variants),
@@ -121,6 +122,16 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="External module props"
         />
+
+        <div className="border p-2">
+          <SpsWebsiteBuilderWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="spsWebsiteBuilderWidgetId"
+          />
+        </div>
 
         <WidgetSelectInput
           isServer={props.isServer}
