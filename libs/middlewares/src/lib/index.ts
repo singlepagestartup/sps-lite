@@ -17,7 +17,7 @@ export {
   Middleware as RevalidationMiddleware,
   type IMiddlewareGeneric as IRevalidationMiddlewareGeneric,
 } from "./revalidation";
-import { middleware as isAuthenticated } from "./is-authentificated";
+export { Middleware as IsAllowedMiddleware } from "./is-allowed";
 export {
   Middleware as SessionMiddleware,
   type IMiddlewareGeneric as ISessionMiddlewareGeneric,
@@ -29,5 +29,4 @@ export const middlewares = {
   httpCache,
   checkIsStringFormDataBodyHasData,
   checkIsFormDataExists,
-  isAuthenticated,
 };

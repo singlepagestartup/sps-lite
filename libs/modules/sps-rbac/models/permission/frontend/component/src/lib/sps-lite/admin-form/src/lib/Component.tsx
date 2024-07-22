@@ -23,7 +23,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       type: props.data?.type || "http",
-      method: props.data?.method || "GET",
+      method: props.data?.method || "get",
       path: props.data?.path || "/",
     },
   });
@@ -56,7 +56,7 @@ export function Component(props: IComponentPropsExtended) {
           name="type"
           form={form}
           placeholder="Select type"
-          options={types.map((type) => [type, type])}
+          options={types.map((type) => [type, type.toUpperCase()])}
         />
 
         <FormField
@@ -66,7 +66,7 @@ export function Component(props: IComponentPropsExtended) {
           name="method"
           form={form}
           placeholder="Select method"
-          options={methods.map((method) => [method, method])}
+          options={methods.map((method) => [method, method.toUpperCase()])}
         />
 
         <FormField

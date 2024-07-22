@@ -11,6 +11,15 @@ export const SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS =
 export const SPS_RBAC_COOKIE_SESSION_NAME =
   process.env["SPS_RBAC_COOKIE_SESSION_NAME"] || "sps_rbac_ce_sn";
 export const SPS_RBAC_SECRET_KEY = process.env["SPS_RBAC_SECRET_KEY"];
+export const SPS_RBAC_SESSION_LIFETIME_IN_SECONDS =
+  Number(process.env["SPS_RBAC_SESSION_LIFETIME_IN_SECONDS"]) || Number("3600");
+export const SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS =
+  Number(process.env["SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS"]) ||
+  Number("3600");
+export const SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS =
+  Number(process.env["SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS"]) ||
+  Number("86400");
+export const SPS_RBAC_JWT_SECRET = process.env["SPS_RBAC_JWT_SECRET"];
 
 export const DATABASE_HOST = `${process.env["DATABASE_HOST"] || process.env["POSTGRES_HOST"] || "localhost"}`;
 

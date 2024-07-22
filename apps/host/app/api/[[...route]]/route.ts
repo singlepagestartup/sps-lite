@@ -23,14 +23,14 @@ const app = new Hono<any, any, any>().basePath("/api");
 app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
 middlewaresChain(app);
 
-app.use(
-  createMiddleware(async (c, next) => {
-    const path = c.req.path;
-    console.log("Host App Middleware", path);
+// app.use(
+//   createMiddleware(async (c, next) => {
+//     const path = c.req.path;
+//     console.log("Host App Middleware", path);
 
-    await next();
-  }),
-);
+//     await next();
+//   }),
+// );
 
 app.route("/sps-host", spsHostApp as any);
 app.route("/sps-broadcast", spsBroadcast as any);

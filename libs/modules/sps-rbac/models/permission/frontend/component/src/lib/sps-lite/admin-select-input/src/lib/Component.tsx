@@ -11,7 +11,9 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       form={props.form}
       variant={props.variant}
-      renderField={props.renderField}
+      renderFunction={(entity) => {
+        return `${entity.path} | ${entity.method} | ${entity.type}`;
+      }}
     />
   );
 }

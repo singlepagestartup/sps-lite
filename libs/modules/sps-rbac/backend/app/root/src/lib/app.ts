@@ -20,6 +20,7 @@ import { app as subjectsToIdentities } from "@sps/sps-rbac/relations/subjects-to
 import { app as subjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/backend/app/root";
 import { app as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/app/root";
 import { app as widgetsToAuthenticationBlocks } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root";
+import { SessionMiddleware } from "@sps/middlewares";
 
 @injectable()
 export class App implements IDefaultApp<Env> {
@@ -32,11 +33,11 @@ export class App implements IDefaultApp<Env> {
   }
 
   public async init() {
-    this.hono.use(async (c: Context, next: Next) => {
-      const path = c.req.path;
-      console.log("RBAC Middleware", path);
-      await next();
-    });
+    // this.hono.use(async (c: Context, next: Next) => {
+    //   const path = c.req.path;
+    //   console.log("RBAC Middleware", path);
+    //   await next();
+    // });
     this.useRoutes();
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }

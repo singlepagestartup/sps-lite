@@ -1,10 +1,11 @@
+"use server";
+
+import { host, route } from "@sps/sps-rbac/models/authentication/sdk/model";
 import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
 import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export interface IActionProps {
-  route: string;
-  host: string;
   catchErrors?: boolean;
   tag?: string;
   revalidate?: number;
@@ -14,8 +15,10 @@ export interface IActionProps {
   options?: NextRequestOptions;
 }
 
-export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
-  const { params, route, options, host, catchErrors } = props;
+export async function action(
+  props: IActionProps,
+): Promise<{ ok: true } | undefined> {
+  const { params, options, catchErrors } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -40,7 +43,7 @@ export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
   };
 
   const res = await fetch(
-    `${host}${route}?${stringifiedQuery}`,
+    `${host}${route}/is-allowed?${stringifiedQuery}`,
     requestOptions,
   );
 
@@ -63,7 +66,7 @@ export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
 
         return;
       } else {
-        throw requestError;
+        throw error;
       }
     }
   }
@@ -80,7 +83,7 @@ export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
     }
   }
 
-  const transformedData = transformResponseItem<T[]>(json);
+  const transformedData = transformResponseItem<{ ok: true }>(json);
 
   return transformedData;
 }

@@ -21,8 +21,16 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-4 pt-6">
         <div className="flex flex-col gap-0.5 overflow-hidden">
-          <p className="text-xs text-muted-foreground">Variant</p>
-          <p className="truncate">{props.data.variant}</p>
+          <p className="text-xs text-muted-foreground">Path</p>
+          <p className="truncate">{props.data.path}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Method</p>
+          <p className="truncate">{props.data.method.toUpperCase()}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Type</p>
+          <p className="truncate">{props.data.type.toUpperCase()}</p>
         </div>
       </div>
     </ParentComponent>

@@ -8,8 +8,8 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-rbac/permissions";
 export const variants = ["default"];
-export const types = [];
-export const methods = [];
+export const types = ["http"];
+export const methods = ["get", "post", "patch", "delete"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

@@ -49,6 +49,8 @@ export class Database<T extends PgTableWithColumns<any>>
 
       return sanitizedRecords;
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }
@@ -76,6 +78,8 @@ export class Database<T extends PgTableWithColumns<any>>
 
       return sanitizedRecords;
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }
@@ -92,6 +96,8 @@ export class Database<T extends PgTableWithColumns<any>>
 
       return sanitizedRecord;
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }
@@ -126,6 +132,8 @@ export class Database<T extends PgTableWithColumns<any>>
 
       return sanitizedRecord;
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }
@@ -156,6 +164,8 @@ export class Database<T extends PgTableWithColumns<any>>
         }
       }
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }
@@ -197,6 +207,8 @@ export class Database<T extends PgTableWithColumns<any>>
 
       return sanitizedRecord;
     } catch (error: any) {
+      console.error(error);
+
       if (error instanceof ZodError) {
         throw new Error(JSON.stringify({ zodError: error.issues }));
       }

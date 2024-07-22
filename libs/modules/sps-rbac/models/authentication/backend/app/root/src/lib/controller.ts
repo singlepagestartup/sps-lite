@@ -21,8 +21,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       {
         method: "GET",
-        path: "/is-authenticatated",
-        handler: this.isAuthenticatated,
+        path: "/is-allowed",
+        handler: this.isAllowed,
       },
       {
         method: "POST",
@@ -57,7 +57,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     ]);
   }
 
-  async isAuthenticatated(c: Context, next: any): Promise<Response> {
+  async isAllowed(c: Context, next: any): Promise<Response> {
     try {
       const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
 
@@ -75,17 +75,29 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const session = c.var.session;
+      const route = c.req.query("route");
+      const method = c.req.query("method");
+      const authorization = c.req.header("Authorization");
 
-      if (!session) {
-        if (!session) {
-          throw new HTTPException(401, {
-            message: "Unauthorized",
-          });
-        }
+      if (!route) {
+        throw new HTTPException(400, {
+          message: "No route provided in query",
+        });
       }
 
-      const data = await this.service.isAuthenticatated();
+      if (!method) {
+        throw new HTTPException(400, {
+          message: "No method provided in query",
+        });
+      }
+
+      const data = await this.service.isAllowed({
+        route,
+        method,
+        authorization: {
+          value: authorization,
+        },
+      });
 
       return c.json({
         data,
@@ -131,14 +143,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const data = JSON.parse(body["data"]);
 
     try {
-      const session = c.var.session;
-
-      if (!session) {
-        throw new HTTPException(401, {
-          message: "No session provided",
-        });
-      }
-
       const provider = c.req.param("provider").replaceAll("-", "_");
 
       if (!provider) {
@@ -153,7 +157,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const entity = await this.service.providers();
+      const entity = await this.service.providers({
+        data,
+        provider,
+      });
 
       return c.json(
         {
