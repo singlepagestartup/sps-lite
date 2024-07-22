@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/footer-block/sdk/client";
 import { useForm } from "react-hook-form";
@@ -12,9 +11,6 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/footer-block/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component";
-import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component";
-import { Component as WidgetsToFooterBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -40,12 +36,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -94,68 +84,29 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.data?.id ? (
-          <FooterBlocksToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "footerBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.footerBlocksToButtonsArrays
+          ? props.footerBlocksToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <FooterBlocksToLogotypesAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "footerBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.footerBlocksToLogotypes
+          ? props.footerBlocksToLogotypes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <WidgetsToFooterBlocksAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "footerBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.widgetsToFooterBlocks
+          ? props.widgetsToFooterBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

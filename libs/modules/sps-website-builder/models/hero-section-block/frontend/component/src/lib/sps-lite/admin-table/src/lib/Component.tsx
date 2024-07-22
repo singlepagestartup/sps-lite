@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminTableRow } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
+import { Component as AdminTableRow } from "../../../admin-table-row";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,8 +11,8 @@ export function Component(props: IComponentPropsExtended) {
       adminForm={
         props.adminForm
           ? props.adminForm({
-              isServer: props.isServer,
               hostUrl: props.hostUrl,
+              isServer: props.isServer,
             })
           : null
       }

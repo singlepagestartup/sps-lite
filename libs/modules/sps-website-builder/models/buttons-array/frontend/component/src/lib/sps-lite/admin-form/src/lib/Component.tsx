@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/buttons-array/sdk/client";
 import { useForm } from "react-hook-form";
@@ -11,19 +10,7 @@ import {
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/models/buttons-array/sdk/model";
-import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component";
-import { Component as HeroSectionBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component";
-import { Component as NavbarBlocksToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component";
-import { Component as SlidesToButtonsArraysAdminTable } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
-
-// const formSchema = z.object({
-//   variant: z.enum(variants),
-//   title: z.string().optional(),
-//   className: z.string().optional(),
-//   description: z.string().optional(),
-// });
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -49,12 +36,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -103,110 +84,45 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type description"
         />
 
-        {props.data?.id ? (
-          <ButtonsArraysToButtonsAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonsArrayId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.buttonsArraysToButtons
+          ? props.buttonsArraysToButtons({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <FooterBlocksToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonsArrayId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.footerBlocksToButtonsArrays
+          ? props.footerBlocksToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <HeroSectionBlocksToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonsArrayId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.heroSectionBlocksToButtonsArrays
+          ? props.heroSectionBlocksToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <NavbarBlocksToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonsArrayId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.navbarBlocksToButtonsArrays
+          ? props.navbarBlocksToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <SlidesToButtonsArraysAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonsArrayId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.slidesToButtonsArrays
+          ? props.slidesToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

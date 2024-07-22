@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/slider-block/sdk/client";
 import { useForm } from "react-hook-form";
@@ -12,8 +11,6 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/slider-block/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as SliderBlocksToSlidersAdminTable } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/frontend/component";
-import { Component as WidgetsToSliderBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -41,12 +38,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -113,47 +104,21 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.data?.id ? (
-          <SliderBlocksToSlidersAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "sliderBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.sliderBlocksToSliders
+          ? props.sliderBlocksToSliders({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <WidgetsToSliderBlocksAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "sliderBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.widgetsToSliderBlocks
+          ? props.widgetsToSliderBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

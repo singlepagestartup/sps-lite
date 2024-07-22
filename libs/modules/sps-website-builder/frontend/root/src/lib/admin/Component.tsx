@@ -1,130 +1,77 @@
-import dynamic from "next/dynamic";
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
-const FeaturesSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/feature/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const ButtonsArraySpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/buttons-array/frontend/component"
-  ).then((mod) => mod.Component),
-);
-const FeaturesSectionBlockSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/features-section-block/frontend/component"
-  ).then((mod) => mod.Component),
-);
-const SlideSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/slide/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const SliderSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/slider/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const SliderBlockSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/slider-block/frontend/component"
-  ).then((mod) => mod.Component),
-);
-const FooterBlockSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/footer-block/frontend/component"
-  ).then((mod) => mod.Component),
-);
-const NavbarBlockSpsLiteAdminTable = dynamic(() =>
-  import(
-    "@sps/sps-website-builder/models/navbar-block/frontend/component"
-  ).then((mod) => mod.Component),
-);
-const ButtonSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/button/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const LogotypeSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/logotype/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const FooterSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/footer/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const NavbarSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/navbar/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const WidgetSpsLiteAdminTable = dynamic(() =>
-  import("@sps/sps-website-builder/models/widget/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-import { Component as HeroSectionBlockAdmin } from "./hero-section-block-admin/Component";
+import { Component as HeroSectionBlock } from "./hero-section-block/Component";
+import { Component as Button } from "./button/Component";
+import { Component as ButtonsArray } from "./buttons-array/Component";
+import { Component as Feature } from "./feature/Component";
+import { Component as FeaturesSectionBlock } from "./features-section-block/Component";
+import { Component as Footer } from "./footer/Component";
+import { Component as FooterBlock } from "./footer-block/Component";
+import { Component as Logotype } from "./logotype/Component";
+import { Component as Navbar } from "./navbar/Component";
+import { Component as NavbarBlock } from "./navbar-block/Component";
+import { Component as Slide } from "./slide/Component";
+import { Component as Slider } from "./slider/Component";
+import { Component as SliderBlock } from "./slider-block/Component";
+import { Component as Widget } from "./widget/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
     {
       name: "widget",
-      Comp: WidgetSpsLiteAdminTable,
+      Comp: Widget,
     },
     {
       name: "button",
-      Comp: ButtonSpsLiteAdminTable,
+      Comp: Button,
     },
     {
       name: "buttons-array",
-      Comp: ButtonsArraySpsLiteAdminTable,
+      Comp: ButtonsArray,
     },
     {
       name: "feature",
-      Comp: FeaturesSpsLiteAdminTable,
+      Comp: Feature,
     },
     {
       name: "features-section-block",
-      Comp: FeaturesSectionBlockSpsLiteAdminTable,
+      Comp: FeaturesSectionBlock,
     },
     {
       name: "footer",
-      Comp: FooterSpsLiteAdminTable,
+      Comp: Footer,
     },
     {
       name: "footer-block",
-      Comp: FooterBlockSpsLiteAdminTable,
+      Comp: FooterBlock,
     },
     {
       name: "hero-section-block",
-      Comp: HeroSectionBlockAdmin,
+      Comp: HeroSectionBlock,
     },
     {
       name: "logotype",
-      Comp: LogotypeSpsLiteAdminTable,
+      Comp: Logotype,
     },
     {
       name: "navbar",
-      Comp: NavbarSpsLiteAdminTable,
+      Comp: Navbar,
     },
     {
       name: "navbar-block",
-      Comp: NavbarBlockSpsLiteAdminTable,
+      Comp: NavbarBlock,
     },
     {
       name: "slide",
-      Comp: SlideSpsLiteAdminTable,
+      Comp: Slide,
     },
     {
       name: "slider",
-      Comp: SliderSpsLiteAdminTable,
+      Comp: Slider,
     },
     {
       name: "slider-block",
-      Comp: SliderBlockSpsLiteAdminTable,
+      Comp: SliderBlock,
     },
   ];
 

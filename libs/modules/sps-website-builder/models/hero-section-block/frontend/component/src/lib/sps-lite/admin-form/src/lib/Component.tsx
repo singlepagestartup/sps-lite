@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
 import { useForm } from "react-hook-form";
@@ -44,12 +43,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (update.data || create.data) {
-      //
-    }
-  }, [update.data, create.data]);
 
   return (
     <ParentAdminForm
@@ -126,15 +119,27 @@ export function Component(props: IComponentPropsExtended) {
         />
 
         {props.widgetsToHeroSectionBlocks
-          ? props.widgetsToHeroSectionBlocks(props)
+          ? props.widgetsToHeroSectionBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
           : null}
 
         {props.heroSectionBlocksToButtonsArrays
-          ? props.heroSectionBlocksToButtonsArrays(props)
+          ? props.heroSectionBlocksToButtonsArrays({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
           : null}
 
         {props.heroSectionBlocksToSpsFileStorageModuleWidgets
-          ? props.heroSectionBlocksToSpsFileStorageModuleWidgets(props)
+          ? props.heroSectionBlocksToSpsFileStorageModuleWidgets({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
           : null}
       </div>
     </ParentAdminForm>

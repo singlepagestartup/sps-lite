@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/button/sdk/client";
 import { useForm } from "react-hook-form";
@@ -12,7 +11,6 @@ import {
 } from "@sps/sps-website-builder/models/button/sdk/model";
 import { FormField } from "@sps/ui-adapter";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as ButtonsArraysToButtonsAdminTable } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -38,12 +36,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -92,26 +84,13 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.data?.id ? (
-          <ButtonsArraysToButtonsAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "buttonId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.buttonsArraysToButtons
+          ? props.buttonsArraysToButtons({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

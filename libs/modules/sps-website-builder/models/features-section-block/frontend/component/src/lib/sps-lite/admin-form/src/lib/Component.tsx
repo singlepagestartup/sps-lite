@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/features-section-block/sdk/client";
 import { useForm } from "react-hook-form";
@@ -12,8 +11,6 @@ import {
 } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import { FormField } from "@sps/ui-adapter";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FeaturesSectionBlocksToFeaturesAdminTable } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component";
-import { Component as WidgetsToFeaturesSectionBlocksAdminTable } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -41,12 +38,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -113,47 +104,21 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.data?.id ? (
-          <FeaturesSectionBlocksToFeaturesAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "featuresSectionBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.featuresSectionBlocksToFeatures
+          ? props.featuresSectionBlocksToFeatures({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <WidgetsToFeaturesSectionBlocksAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "featuresSectionBlockId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.widgetsToFeaturesSectionBlocks
+          ? props.widgetsToFeaturesSectionBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

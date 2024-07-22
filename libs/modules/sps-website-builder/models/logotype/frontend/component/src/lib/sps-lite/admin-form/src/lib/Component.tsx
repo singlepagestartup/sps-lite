@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/logotype/sdk/client";
 import { useForm } from "react-hook-form";
@@ -12,9 +11,6 @@ import {
   insertSchema,
 } from "@sps/sps-website-builder/models/logotype/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
-import { Component as FooterBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/frontend/component";
-import { Component as NavbarBlocksToLogotypesAdminTable } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/frontend/component";
-import { Component as LogotypesToSpsFileStorageModuleWidgetsAdminTable } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -39,12 +35,6 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
-
-  useEffect(() => {
-    if (updateEntity.data || createEntity.data) {
-      //
-    }
-  }, [updateEntity, createEntity]);
 
   return (
     <ParentAdminForm
@@ -84,68 +74,29 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type class name"
         />
 
-        {props.data?.id ? (
-          <FooterBlocksToLogotypesAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "logotypeId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.footerBlocksToLogotypes
+          ? props.footerBlocksToLogotypes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <NavbarBlocksToLogotypesAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "logotypeId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.logotypesToSpsFileStorageModuleWidgets
+          ? props.logotypesToSpsFileStorageModuleWidgets({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
 
-        {props.data?.id ? (
-          <LogotypesToSpsFileStorageModuleWidgetsAdminTable
-            variant="admin-table"
-            hostUrl={props.hostUrl}
-            isServer={props.isServer}
-            apiProps={{
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "logotypeId",
-                      method: "eq",
-                      value: props.data.id,
-                    },
-                  ],
-                },
-              },
-            }}
-          />
-        ) : null}
+        {props.navbarBlocksToLogotypes
+          ? props.navbarBlocksToLogotypes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

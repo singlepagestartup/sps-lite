@@ -12,9 +12,7 @@ export interface IComponentProps extends ISpsComponentBase {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
-  adminForm?: (
-    props: Pick<IComponentProps, "hostUrl" | "isServer"> & { data?: IModel },
-  ) => ReactNode;
+  adminForm?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

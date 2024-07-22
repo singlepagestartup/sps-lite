@@ -1,28 +1,28 @@
 "use client";
 
-import { Component as HeroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
-import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component";
-import { Component as HeroSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component";
+import { Component as ParentComponent } from "@sps/sps-website-builder/models/slide/frontend/component";
+import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component";
+import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
+import { Component as SlidesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component() {
   return (
-    <HeroSectionBlock
+    <ParentComponent
       hostUrl="/"
       isServer={false}
       variant="admin-table"
       adminForm={(props) => {
         return (
-          <HeroSectionBlock
+          <ParentComponent
             {...props}
             variant="admin-form"
-            widgetsToHeroSectionBlocks={({ data, hostUrl, isServer }) => {
+            slidersToSlides={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <WidgetsToHeroSectionBlocks
+                <SlidersToSlides
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -31,7 +31,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "heroSectionBlockId",
+                            column: "slideId",
                             method: "eq",
                             value: data.id,
                           },
@@ -42,13 +42,13 @@ export function Component() {
                 />
               );
             }}
-            heroSectionBlocksToButtonsArrays={({ data, hostUrl, isServer }) => {
+            slidesToButtonsArrays={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <HeroSectionBlocksToButtonsArrays
+                <SlidesToButtonsArrays
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -57,7 +57,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "heroSectionBlockId",
+                            column: "slideId",
                             method: "eq",
                             value: data.id,
                           },
@@ -68,7 +68,7 @@ export function Component() {
                 />
               );
             }}
-            heroSectionBlocksToSpsFileStorageModuleWidgets={({
+            slidesToSpsFileStorageModuleWidgets={({
               data,
               hostUrl,
               isServer,
@@ -78,7 +78,7 @@ export function Component() {
               }
 
               return (
-                <HeroSectionBlocksToSpsFileStorageModuleWidgets
+                <SlidesToSpsFileStorageModuleWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -87,7 +87,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "heroSectionBlockId",
+                            column: "slideId",
                             method: "eq",
                             value: data.id,
                           },
