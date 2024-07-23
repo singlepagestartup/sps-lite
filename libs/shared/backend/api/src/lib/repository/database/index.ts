@@ -21,10 +21,10 @@ export class Database<T extends PgTableWithColumns<any>>
   Table: T;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;
-  configuration: IConfiguration;
+  configuration: ReturnType<IConfiguration["getConfiguration"]>;
 
   constructor(@inject(DI.IConfiguration) configuration: IConfiguration) {
-    const config = configuration;
+    const config = configuration.getConfiguration();
 
     this.schema = config.repository.schema;
     this.Table = config.repository.Table;
@@ -368,7 +368,6 @@ export class Database<T extends PgTableWithColumns<any>>
     }
 
     result.seeds = insertedEntities;
-    console.log(`🚀 ~ seed ~ insertedEntities:`, insertedEntities);
 
     return result;
   }

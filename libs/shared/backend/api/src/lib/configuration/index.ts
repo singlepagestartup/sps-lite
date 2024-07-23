@@ -55,7 +55,9 @@ export interface IRepositoryConfiguration {
 
 export interface IConfiguration {
   repository: IRepositoryConfiguration;
-  get: () => IConfiguration;
+  getConfiguration: () => {
+    repository: IRepositoryConfiguration;
+  };
 }
 
 @injectable()
@@ -66,7 +68,9 @@ export class Configuration implements IConfiguration {
     this.repository = props.repository;
   }
 
-  get() {
-    return this;
+  getConfiguration() {
+    return {
+      repository: this.repository,
+    };
   }
 }
