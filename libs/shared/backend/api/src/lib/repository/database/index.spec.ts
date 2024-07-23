@@ -34,6 +34,11 @@ describe("Database", () => {
         directory: "test",
         type: "json",
       },
+      seed: {
+        module: "sps-website-builder",
+        name: "widget",
+        type: "model",
+      },
     },
   } as IConfiguration;
 
@@ -56,19 +61,54 @@ describe("Database", () => {
       fs.unlink = jest.fn().mockReturnValueOnce(undefined);
       fs.writeFile = jest.fn().mockReturnValue(undefined);
 
-      repository.find = jest.fn().mockReturnValueOnce([
-        {
-          id: 2,
-        },
-      ]);
+      const repositoryEntity = {
+        id: 2,
+      };
+
+      repository.find = jest.fn().mockReturnValueOnce([repositoryEntity]);
 
       const dumpResult = await repository.dump();
 
-      console.log(`🚀 ~ it ~ dumpResult:`, dumpResult);
-
       expect(true).toBe(true);
       expect(fs.unlink).toHaveBeenCalledWith("test/1.json");
-      expect(fs.writeFile).toHaveBeenCalledWith("test/2.json", '{"id": 2 }');
+      expect(fs.writeFile).toHaveBeenCalledWith(
+        "test/2.json",
+        JSON.stringify(repositoryEntity, null, 2),
+      );
+      expect(dumpResult).toEqual([repositoryEntity]);
+    });
+  });
+
+  describe("seed", () => {
+    it("should create entities from files in config.repository.directory", async () => {
+      const dumpEntity = { id: 2 };
+      fs.readdir = jest.fn().mockReturnValueOnce(["2.json"]);
+      fs.readFile = jest.fn().mockReturnValueOnce(JSON.stringify(dumpEntity));
+
+      repository.deleteFirstByField = jest.fn().mockReturnValueOnce(undefined);
+      repository.find = jest.fn().mockReturnValueOnce([
+        {
+          id: 1,
+        },
+      ]);
+      repository.insert = jest.fn().mockResolvedValue(dumpEntity);
+
+      const expectedResult = {
+        module: "sps-website-builder",
+        name: "widget",
+        type: "model",
+        seeds: [
+          {
+            new: dumpEntity,
+          },
+        ],
+      };
+
+      const seedResult = await repository.seed();
+      console.log(`🚀 ~ it ~ seedResult:`, seedResult);
+
+      expect(true).toBe(true);
+      expect(seedResult).toEqual(expectedResult);
     });
   });
 });

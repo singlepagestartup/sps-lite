@@ -11,6 +11,16 @@ import { type IConfiguration } from "../../configuration";
 import { ZodDate, ZodError, ZodObject } from "zod";
 import fs from "fs/promises";
 
+interface ISeedResult<T extends PgTableWithColumns<any>> {
+  module: string;
+  name: string;
+  type: "model" | "relation";
+  seeds: {
+    new: T["$inferInsert"];
+    old?: T["$inferSelect"];
+  }[];
+}
+
 @injectable()
 export class Database<T extends PgTableWithColumns<any>>
   implements IRepository
@@ -20,7 +30,7 @@ export class Database<T extends PgTableWithColumns<any>>
   Table: T;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;
-  dumpConfig: IConfiguration["repository"]["dump"];
+  configuration: IConfiguration;
 
   constructor(@inject(DI.IConfiguration) config: IConfiguration) {
     this.schema = config.repository.schema;
@@ -28,7 +38,7 @@ export class Database<T extends PgTableWithColumns<any>>
     this.db = drizzle(postgres, { schema: this.schema });
     this.insertSchema = config.repository.insertSchema;
     this.selectSchema = config.repository.selectSchema;
-    this.dumpConfig = config.repository.dump;
+    this.configuration = config;
   }
 
   async find(props?: FindServiceProps): Promise<T["$inferSelect"][]> {
@@ -109,7 +119,7 @@ export class Database<T extends PgTableWithColumns<any>>
     }
   }
 
-  async insert(data: any): Promise<any> {
+  async insert(data: any): Promise<T["$inferInsert"]> {
     try {
       const shape = this.insertSchema.shape;
 
@@ -223,7 +233,7 @@ export class Database<T extends PgTableWithColumns<any>>
   async dump(): Promise<T["$inferSelect"][]> {
     const entities = await this.find();
 
-    const directory = this.dumpConfig.directory;
+    const directory = this.configuration.repository.dump.directory;
 
     const seedFiles = await fs.readdir(directory);
 
@@ -243,7 +253,8 @@ export class Database<T extends PgTableWithColumns<any>>
   }
 
   async seed(props?: any): Promise<any> {
-    const directory = this.dumpConfig.directory;
+    console.log(`🚀 ~ seed ~ props:`, props);
+    const directory = this.configuration.repository.dump.directory;
 
     const getEntities = async (): Promise<T["$inferSelect"][]> => {
       const entities: T["$inferSelect"][] = [];
@@ -266,7 +277,35 @@ export class Database<T extends PgTableWithColumns<any>>
     };
 
     const entities = await getEntities();
+    const dbEntities = await this.find();
 
-    return entities;
+    if (dbEntities.length) {
+      for (const dbEntity of dbEntities) {
+        await this.deleteFirstByField("id", dbEntity.id);
+      }
+    }
+
+    const result: ISeedResult<T> = {
+      module: this.configuration.repository.seed.module,
+      name: this.configuration.repository.seed.name,
+      type: this.configuration.repository.seed.type as "model" | "relation",
+      seeds: [],
+    };
+
+    if (!this.configuration.repository.seed.compare) {
+      const insertedEntities: ISeedResult<T>["seeds"] = [];
+
+      for (const entity of entities) {
+        const insertedEntity = await this.insert(entity);
+        const seedResult = {
+          new: insertedEntity,
+        };
+        insertedEntities.push(seedResult);
+      }
+
+      result.seeds = insertedEntities;
+    }
+
+    return result;
   }
 }

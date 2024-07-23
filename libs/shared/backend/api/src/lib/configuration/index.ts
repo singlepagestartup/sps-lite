@@ -12,5 +12,14 @@ export interface IConfiguration {
       type: "json";
       directory: string;
     };
+    seed: {
+      module: string;
+      name: string;
+      type: "model" | "relation";
+      compare?: {
+        type: "field";
+        value: string;
+      };
+    };
   };
 }
