@@ -10,7 +10,7 @@ import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
 import { Component as AuthenticationSpsLiteSelectMethod } from "../../../select-method";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.isAuthenticated();
+  const { data, isFetching, isLoading } = api.isAllowed();
 
   if (isFetching || isLoading) {
     return <Skeleton {...props} />;

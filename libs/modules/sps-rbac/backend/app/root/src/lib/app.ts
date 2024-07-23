@@ -42,6 +42,10 @@ export class App implements IDefaultApp<Env> {
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
+  async dump() {
+    return {} as any;
+  }
+
   useRoutes() {
     this.hono.mount("/widgets", widget.hono.fetch);
     this.hono.mount("/roles", role.hono.fetch);

@@ -185,12 +185,12 @@ export const api = {
       },
     });
   },
-  isAuthenticated: (props?: {
+  isAllowed: (props?: {
     params?: IIsAuthenticatedProps["params"];
     options?: IIsAuthenticatedProps["options"];
   }) => {
     return useQuery<IModel>({
-      queryKey: [`${route}/is-authenticatated`],
+      queryKey: [`${route}/is-allowed`],
       queryFn: async () => {
         const stringifiedQuery = QueryString.stringify(props?.params, {
           encodeValuesOnly: true,
@@ -227,8 +227,8 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "is-authenticatated",
-          name: `${route}/is-authenticatated`,
+          type: "is-allowed",
+          name: `${route}/is-allowed`,
           props: this,
           result: data,
           timestamp: Date.now(),

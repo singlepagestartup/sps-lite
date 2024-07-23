@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 export default function Client(props: IComponentProps) {
   const router = useRouter();
 
-  const { data, isFetching, isLoading } = api.isAuthenticated({});
+  const { data, isFetching, isLoading } = api.isAllowed({});
 
   if (isFetching || isLoading) {
     return <Skeleton {...props} />;

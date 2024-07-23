@@ -16,7 +16,7 @@ export interface IActionProps {
 }
 
 export async function action(
-  props: IActionProps,
+  props: IActionProps = {},
 ): Promise<{ ok: true } | undefined> {
   const { params, options, catchErrors } = props;
 

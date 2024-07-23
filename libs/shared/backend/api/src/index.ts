@@ -1,6 +1,7 @@
 export { queryBuilder } from "./lib/query-builder";
 
 export { Seeder } from "./lib/seeder/Seeder";
+export { Dumper } from "./lib/dumper/Dumper";
 export { ModuleSeeder } from "./lib/seeder/ModuleSeeder";
 
 export type {

@@ -9,7 +9,7 @@ import { Component } from "./Component";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.isAuthenticated();
+  const data = await api.isAllowed();
 
   if (!data) {
     return <></>;

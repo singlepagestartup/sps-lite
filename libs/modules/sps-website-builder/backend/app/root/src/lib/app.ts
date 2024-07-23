@@ -61,6 +61,10 @@ export class App implements IDefaultApp<Env> {
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
+  async dump() {
+    return {} as any;
+  }
+
   useRoutes() {
     this.hono.mount("/hero-section-blocks", heroSectionBlock.hono.fetch);
     this.hono.mount("/buttons-arrays", buttonsArrat.hono.fetch);
