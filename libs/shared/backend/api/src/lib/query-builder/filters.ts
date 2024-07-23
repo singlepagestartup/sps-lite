@@ -3,7 +3,7 @@ import { PgTableWithColumns } from "drizzle-orm/pg-core";
 
 interface QueryBuilderFilterMethods extends ReturnType<typeof getOperators> {}
 
-interface Filter {
+export interface IFilter {
   column: string;
   method: keyof QueryBuilderFilterMethods;
   value: any;
@@ -13,7 +13,7 @@ export interface QueryBuilderProps<T extends PgTableWithColumns<any>> {
   table: Partial<T>;
   queryFunctions: QueryBuilderFilterMethods;
   filters: {
-    ["and"]: Filter[];
+    ["and"]: IFilter[];
   };
 }
 

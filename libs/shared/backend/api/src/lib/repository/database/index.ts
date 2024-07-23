@@ -7,19 +7,9 @@ import { FindServiceProps } from "../../services/interfaces";
 import { queryBuilder } from "../../query-builder/filters";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../interface";
-import { type IConfiguration } from "../../configuration";
+import { ISeedResult, type IConfiguration } from "../../configuration";
 import { ZodDate, ZodError, ZodObject } from "zod";
 import fs from "fs/promises";
-
-interface ISeedResult<T extends PgTableWithColumns<any>> {
-  module: string;
-  name: string;
-  type: "model" | "relation";
-  seeds: {
-    new: T["$inferInsert"];
-    old?: T["$inferSelect"];
-  }[];
-}
 
 @injectable()
 export class Database<T extends PgTableWithColumns<any>>
@@ -252,11 +242,10 @@ export class Database<T extends PgTableWithColumns<any>>
     return entities;
   }
 
-  async seed(props?: any): Promise<any> {
-    console.log(`🚀 ~ seed ~ props:`, props);
+  async seed(props?: { seeds: ISeedResult[] }): Promise<any> {
     const directory = this.configuration.repository.dump.directory;
 
-    const getEntities = async (): Promise<T["$inferSelect"][]> => {
+    const getDumpEntities = async (): Promise<T["$inferSelect"][]> => {
       const entities: T["$inferSelect"][] = [];
 
       const seedFiles = await fs.readdir(directory);
@@ -276,7 +265,7 @@ export class Database<T extends PgTableWithColumns<any>>
       return entities;
     };
 
-    const entities = await getEntities();
+    const dumpEntities = await getDumpEntities();
     const dbEntities = await this.find();
 
     if (dbEntities.length) {
@@ -285,20 +274,62 @@ export class Database<T extends PgTableWithColumns<any>>
       }
     }
 
-    const result: ISeedResult<T> = {
+    const result: ISeedResult = {
       module: this.configuration.repository.seed.module,
       name: this.configuration.repository.seed.name,
       type: this.configuration.repository.seed.type as "model" | "relation",
       seeds: [],
     };
 
-    if (!this.configuration.repository.seed.compare) {
-      const insertedEntities: ISeedResult<T>["seeds"] = [];
+    if (!this.configuration.repository.seed.transformers) {
+      const insertedEntities: ISeedResult["seeds"] = [];
 
-      for (const entity of entities) {
+      for (const entity of dumpEntities) {
         const insertedEntity = await this.insert(entity);
         const seedResult = {
           new: insertedEntity,
+          dump: entity,
+        };
+        insertedEntities.push(seedResult);
+      }
+
+      result.seeds = insertedEntities;
+    } else {
+      const insertedEntities: ISeedResult["seeds"] = [];
+
+      if (!props?.seeds) {
+        throw new Error("You need to pass seeds to compare");
+      }
+
+      for (const dumpEntity of dumpEntities) {
+        const transformers = this.configuration.repository.seed.transformers;
+
+        let transformedEntity: T["$inferInsert"] = dumpEntity;
+
+        if (transformers) {
+          for (const transformer of transformers) {
+            const { field, transform } = transformer;
+
+            const transformedValue = transform({
+              seeds: props.seeds,
+              entity: {
+                dump: dumpEntity,
+              },
+            });
+
+            if (transformedValue) {
+              transformedEntity = {
+                ...transformedEntity,
+                [field]: transformedValue,
+              };
+            }
+          }
+        }
+
+        const insertedEntity = await this.insert(transformedEntity);
+        const seedResult = {
+          new: insertedEntity,
+          dump: dumpEntity,
         };
         insertedEntities.push(seedResult);
       }
