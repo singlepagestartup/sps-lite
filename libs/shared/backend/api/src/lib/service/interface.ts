@@ -7,4 +7,5 @@ export interface IService<DTO extends Record<string, unknown>> {
   delete: (props: { id: string }) => Promise<DTO | null>;
   update: (props: { id: string; data: DTO }) => Promise<DTO | null>;
   dump: () => Promise<DTO[]>;
+  seed: () => Promise<DTO[]>;
 }

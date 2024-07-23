@@ -243,6 +243,30 @@ export class Database<T extends PgTableWithColumns<any>>
   }
 
   async seed(props?: any): Promise<any> {
-    return "dump";
+    const directory = this.dumpConfig.directory;
+
+    const getEntities = async (): Promise<T["$inferSelect"][]> => {
+      const entities: T["$inferSelect"][] = [];
+
+      const seedFiles = await fs.readdir(directory);
+
+      const sanitizedFiles = seedFiles.filter((file) => file.endsWith(".json"));
+
+      for (const sanitizedFile of sanitizedFiles) {
+        const seed = await fs.readFile(`${directory}/${sanitizedFile}`, {
+          encoding: "utf-8",
+        });
+
+        const parsedSeedFile = JSON.parse(seed);
+
+        entities.push(parsedSeedFile as T["$inferSelect"]);
+      }
+
+      return entities;
+    };
+
+    const entities = await getEntities();
+
+    return entities;
   }
 }

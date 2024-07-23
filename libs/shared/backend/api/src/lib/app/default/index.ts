@@ -51,6 +51,12 @@ export class App<SCHEMA extends Record<string, unknown>>
     return dumpResult;
   }
 
+  async seed(props?: any): Promise<any> {
+    const seedResult = await this.controller.service.seed();
+
+    return seedResult;
+  }
+
   useRoutes() {
     this.controller.routes.map((route) => {
       if (route.middlewares) {

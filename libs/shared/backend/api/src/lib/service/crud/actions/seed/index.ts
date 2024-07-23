@@ -1,23 +1,18 @@
-import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
-import { IModuleSeedConfig, Seeder } from "./Seeder";
-import { ZodObject } from "zod";
+import { inject, injectable } from "inversify";
+import { type IRepository } from "../../../../repository";
+import { DI } from "../../../../di/constants";
 
-export async function action(props: {
-  db: PostgresJsDatabase<any>;
-  schemaName: keyof typeof props.db._.fullSchema;
-  Table: PgTableWithColumns<any>;
-  seedsPath?: string;
-  insertSchema: ZodObject<any, any>;
-  seedResults?: any;
-  seedConfig: {
-    [key: string]: IModuleSeedConfig<any>;
-  };
-}) {
-  const seeder = new Seeder(props);
+@injectable()
+export class Action {
+  repository: IRepository;
 
-  const seedResult = await seeder.seed({
-    seedResults: props.seedResults,
-    seedConfig: props.seedConfig,
-  });
+  constructor(@inject(DI.IRepository) repository: IRepository) {
+    this.repository = repository;
+  }
+
+  async execute() {
+    const result = await this.repository.seed();
+
+    return result;
+  }
 }

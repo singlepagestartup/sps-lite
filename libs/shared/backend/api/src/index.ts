@@ -2,7 +2,6 @@ export { queryBuilder } from "./lib/query-builder";
 
 export { Seeder } from "./lib/seeder/Seeder";
 export { ModuleSeeder } from "./lib/seeder/ModuleSeeder";
-export { Dumper } from "./lib/dumper/Dumper";
 
 export type {
   FindByIdServiceProps,

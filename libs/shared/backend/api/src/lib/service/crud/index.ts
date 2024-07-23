@@ -7,6 +7,7 @@ import {
   UpdateAction,
   DeleteAction,
   DumpAction,
+  SeedAction,
 } from "./actions";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../../repository/interface";
@@ -50,6 +51,11 @@ export class Service<DTO extends Record<string, unknown>>
 
   async dump(): Promise<DTO[]> {
     const action = new DumpAction(this.repository);
+    return action.execute();
+  }
+
+  async seed(): Promise<DTO[]> {
+    const action = new SeedAction(this.repository);
     return action.execute();
   }
 }

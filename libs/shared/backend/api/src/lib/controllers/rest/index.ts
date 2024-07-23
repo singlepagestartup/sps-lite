@@ -9,6 +9,7 @@ import {
   UpdateHandler,
   DeleteHandler,
   DumpHandler,
+  SeedHandler,
 } from "./handler";
 import { type IService } from "../../service";
 import { DI } from "../../di/constants";
@@ -104,6 +105,11 @@ export class Controller<DTO extends Record<string, unknown>>
 
   public async dump(c: Context, next: any): Promise<Response> {
     const handler = new DumpHandler<Context, DTO>(this.service);
+    return handler.execute(c, next);
+  }
+
+  public async seed(c: Context, next: any): Promise<Response> {
+    const handler = new SeedHandler<Context, DTO>(this.service);
     return handler.execute(c, next);
   }
 
