@@ -1,6 +1,8 @@
+import "reflect-metadata";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { ZodObject } from "zod";
 import { getOperators } from "drizzle-orm";
+import { injectable } from "inversify";
 
 export interface QueryBuilderFilterMethods
   extends ReturnType<typeof getOperators> {}
@@ -16,7 +18,7 @@ export interface ISeedResult {
   }[];
 }
 
-export interface ICompare {
+export interface ITransform {
   field: string;
   transform: (data: {
     seeds: ISeedResult[];
@@ -26,22 +28,45 @@ export interface ICompare {
   }) => any;
 }
 
-export interface IConfiguration {
-  repository: {
-    type: "database";
-    schema: any;
-    Table: PgTableWithColumns<any>;
-    insertSchema: ZodObject<any>;
-    selectSchema: ZodObject<any>;
-    dump: {
-      type: "json";
-      directory: string;
-    };
-    seed: {
-      module: string;
-      name: string;
-      type: "model" | "relation";
-      transformers?: ICompare[];
-    };
+export interface IFilter {
+  column: string;
+  method: keyof QueryBuilderFilterMethods;
+  transformer: ITransform["transform"];
+}
+
+export interface IRepositoryConfiguration {
+  type: "database";
+  schema: any;
+  Table: PgTableWithColumns<any>;
+  insertSchema: ZodObject<any>;
+  selectSchema: ZodObject<any>;
+  dump: {
+    type: "json";
+    directory: string;
   };
+  seed: {
+    module: string;
+    name: string;
+    type: "model" | "relation";
+    transformers?: ITransform[];
+    filters?: IFilter[];
+  };
+}
+
+export interface IConfiguration {
+  repository: IRepositoryConfiguration;
+  get: () => IConfiguration;
+}
+
+@injectable()
+export class Configuration implements IConfiguration {
+  repository: IRepositoryConfiguration;
+
+  constructor(props: { repository: IRepositoryConfiguration }) {
+    this.repository = props.repository;
+  }
+
+  get() {
+    return this;
+  }
 }

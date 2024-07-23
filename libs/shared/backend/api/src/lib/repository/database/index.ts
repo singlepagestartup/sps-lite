@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { inject, injectable } from "inversify";
@@ -22,7 +23,9 @@ export class Database<T extends PgTableWithColumns<any>>
   selectSchema: ZodObject<any>;
   configuration: IConfiguration;
 
-  constructor(@inject(DI.IConfiguration) config: IConfiguration) {
+  constructor(@inject(DI.IConfiguration) configuration: IConfiguration) {
+    const config = configuration;
+
     this.schema = config.repository.schema;
     this.Table = config.repository.Table;
     this.db = drizzle(postgres, { schema: this.schema });
@@ -269,8 +272,10 @@ export class Database<T extends PgTableWithColumns<any>>
     const dbEntities = await this.find();
 
     if (dbEntities.length) {
-      for (const dbEntity of dbEntities) {
-        await this.deleteFirstByField("id", dbEntity.id);
+      if (!this.configuration.repository.seed.filters) {
+        for (const dbEntity of dbEntities) {
+          await this.deleteFirstByField("id", dbEntity.id);
+        }
       }
     }
 
@@ -281,51 +286,78 @@ export class Database<T extends PgTableWithColumns<any>>
       seeds: [],
     };
 
-    if (!this.configuration.repository.seed.transformers) {
-      const insertedEntities: ISeedResult["seeds"] = [];
+    const insertedEntities: ISeedResult["seeds"] = [];
 
-      for (const entity of dumpEntities) {
-        const insertedEntity = await this.insert(entity);
-        const seedResult = {
-          new: insertedEntity,
-          dump: entity,
-        };
-        insertedEntities.push(seedResult);
+    for (const dumpEntity of dumpEntities) {
+      const transformers = this.configuration.repository.seed.transformers;
+
+      let transformedEntity: T["$inferInsert"] = dumpEntity;
+
+      if (transformers) {
+        for (const transformer of transformers) {
+          const { field, transform } = transformer;
+
+          if (!props?.seeds) {
+            throw new Error("You need to pass seeds to compare");
+          }
+
+          const transformedValue = transform({
+            seeds: props.seeds,
+            entity: {
+              dump: dumpEntity,
+            },
+          });
+
+          if (transformedValue) {
+            transformedEntity = {
+              ...transformedEntity,
+              [field]: transformedValue,
+            };
+          }
+        }
       }
 
-      result.seeds = insertedEntities;
-    } else {
-      const insertedEntities: ISeedResult["seeds"] = [];
-
-      if (!props?.seeds) {
-        throw new Error("You need to pass seeds to compare");
-      }
-
-      for (const dumpEntity of dumpEntities) {
-        const transformers = this.configuration.repository.seed.transformers;
-
-        let transformedEntity: T["$inferInsert"] = dumpEntity;
-
-        if (transformers) {
-          for (const transformer of transformers) {
-            const { field, transform } = transformer;
-
-            const transformedValue = transform({
-              seeds: props.seeds,
+      const filledFilters = this.configuration.repository.seed.filters?.map(
+        (filter) => {
+          return {
+            column: filter.column,
+            method: filter.method,
+            value: filter.transformer({
+              seeds: props?.seeds || [],
               entity: {
                 dump: dumpEntity,
               },
-            });
+            }),
+          };
+        },
+      );
 
-            if (transformedValue) {
-              transformedEntity = {
-                ...transformedEntity,
-                [field]: transformedValue,
-              };
-            }
+      if (filledFilters) {
+        const filteredEntities = await this.find({
+          params: {
+            filters: {
+              and: filledFilters,
+            },
+          },
+        });
+
+        if (filteredEntities.length) {
+          for (const filteredEntity of filteredEntities) {
+            const updatedEntity = await this.updateFirstByField(
+              "id",
+              filteredEntity.id,
+              transformedEntity,
+            );
+
+            const seedResult = {
+              new: updatedEntity,
+              old: filteredEntity,
+              dump: dumpEntity,
+            };
+            insertedEntities.push(seedResult);
           }
         }
-
+      } else {
         const insertedEntity = await this.insert(transformedEntity);
         const seedResult = {
           new: insertedEntity,
@@ -333,9 +365,10 @@ export class Database<T extends PgTableWithColumns<any>>
         };
         insertedEntities.push(seedResult);
       }
-
-      result.seeds = insertedEntities;
     }
+
+    result.seeds = insertedEntities;
+    console.log(`🚀 ~ seed ~ insertedEntities:`, insertedEntities);
 
     return result;
   }

@@ -5,7 +5,7 @@ import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
 import { ParseQueryMiddleware } from "@sps/middlewares";
-import { IConfiguration } from "../../configuration";
+import { type IConfiguration } from "../../configuration";
 
 export interface IApp<
   ENV extends Env = {},

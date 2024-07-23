@@ -1,38 +1,38 @@
-import { IConfiguration } from "@sps/shared-backend-api";
+import {
+  IConfiguration,
+  Configuration as ParentConfiguration,
+} from "@sps/shared-backend-api";
 import { schema } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   insertSchema,
   selectSchema,
 } from "@sps/sps-website-builder/models/widget/backend/schema/table";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { injectable } from "inversify";
 
 @injectable()
-export class Configuration implements IConfiguration {
-  repository: {
-    type: "database";
-    schema: any;
-    Table: PgTableWithColumns<any>;
-    insertSchema: any;
-    selectSchema: any;
-    dump: {
-      type: "json";
-      directory: string;
-    };
-  };
-
+export class Configuration
+  extends ParentConfiguration
+  implements IConfiguration
+{
   constructor() {
-    this.repository = {
-      type: "database",
-      schema: schema,
-      Table: Table,
-      insertSchema,
-      selectSchema,
-      dump: {
-        type: "json",
-        directory: `${__dirname}/data`,
+    super({
+      repository: {
+        type: "database",
+        schema: schema,
+        Table: Table,
+        insertSchema,
+        selectSchema,
+        dump: {
+          type: "json",
+          directory: `${__dirname}/data`,
+        },
+        seed: {
+          module: "sps-website-builder",
+          name: "widget",
+          type: "model",
+        },
       },
-    };
+    });
   }
 }
