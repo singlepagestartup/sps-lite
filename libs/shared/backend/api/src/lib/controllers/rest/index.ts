@@ -8,6 +8,7 @@ import {
   CreateHandler,
   UpdateHandler,
   DeleteHandler,
+  DumpHandler,
 } from "./handler";
 import { type IService } from "../../service";
 import { DI } from "../../di/constants";
@@ -28,11 +29,11 @@ export class Controller<DTO extends Record<string, unknown>>
         path: "/",
         handler: this.find,
       },
-      // {
-      //   method: "GET",
-      //   path: "/dump",
-      //   handler: this.dump,
-      // },
+      {
+        method: "GET",
+        path: "/dump",
+        handler: this.dump,
+      },
       {
         method: "GET",
         path: "/:uuid",
@@ -101,10 +102,10 @@ export class Controller<DTO extends Record<string, unknown>>
     return handler.execute(c, next);
   }
 
-  // public async dump(c: Context, next: any): Promise<Response> {
-  //   const handler = new DumpHandler<Context>(this._service);
-  //   return handler.execute(c, next);
-  // }
+  public async dump(c: Context, next: any): Promise<Response> {
+    const handler = new DumpHandler<Context, DTO>(this.service);
+    return handler.execute(c, next);
+  }
 
   protected bindRoutes(routes: IController<DTO>["routes"]) {
     this.routes = [];

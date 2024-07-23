@@ -58,8 +58,7 @@ export class Dumper {
     const entities = [];
 
     for (const entity of entities) {
-      const fileContent = JSON.stringify(entity, null, 2);
-
+      // const fileContent = JSON.stringify(entity, null, 2);
       // await fs.writeFile(`${this.seedsPath}/${entity.id}.json`, fileContent);
     }
   }

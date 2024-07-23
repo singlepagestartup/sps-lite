@@ -6,6 +6,7 @@ import {
   CreateAction,
   UpdateAction,
   DeleteAction,
+  DumpAction,
 } from "./actions";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../../repository/interface";
@@ -44,6 +45,11 @@ export class Service<DTO extends Record<string, unknown>>
 
   async update(props: { id: string; data: DTO }): Promise<DTO | null> {
     const action = new UpdateAction(this.repository);
+    return action.execute(props);
+  }
+
+  async dump(props: any): Promise<any> {
+    const action = new DumpAction(this.repository);
     return action.execute(props);
   }
 }

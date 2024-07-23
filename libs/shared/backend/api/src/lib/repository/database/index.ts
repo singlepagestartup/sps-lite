@@ -9,6 +9,7 @@ import { DI } from "../../di/constants";
 import { type IRepository } from "../interface";
 import { type IConfiguration } from "../../configuration";
 import { ZodDate, ZodError, ZodObject } from "zod";
+import fs from "fs/promises";
 
 @injectable()
 export class Database<T extends PgTableWithColumns<any>>
@@ -19,6 +20,7 @@ export class Database<T extends PgTableWithColumns<any>>
   Table: T;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;
+  dumpConfig: IConfiguration["repository"]["dump"];
 
   constructor(@inject(DI.IConfiguration) config: IConfiguration) {
     this.schema = config.repository.schema;
@@ -26,6 +28,7 @@ export class Database<T extends PgTableWithColumns<any>>
     this.db = drizzle(postgres, { schema: this.schema });
     this.insertSchema = config.repository.insertSchema;
     this.selectSchema = config.repository.selectSchema;
+    this.dumpConfig = config.repository.dump;
   }
 
   async find(props?: FindServiceProps): Promise<T["$inferSelect"][]> {
@@ -215,5 +218,31 @@ export class Database<T extends PgTableWithColumns<any>>
 
       throw error;
     }
+  }
+
+  async dump(props?: any): Promise<any> {
+    const entities = await this.find();
+
+    const directory = this.dumpConfig.directory;
+
+    const seedFiles = await fs.readdir(directory);
+
+    const sanitizedFiles = seedFiles.filter((file) => file.endsWith(".json"));
+
+    for (const sanitizedFile of sanitizedFiles) {
+      await fs.unlink(`${directory}/${sanitizedFile}`);
+    }
+
+    for (const entity of entities) {
+      const fileContent = JSON.stringify(entity, null, 2);
+
+      await fs.writeFile(`${directory}/${entity.id}.json`, fileContent);
+    }
+
+    return entities;
+  }
+
+  async seed(props?: any): Promise<any> {
+    return "dump";
   }
 }

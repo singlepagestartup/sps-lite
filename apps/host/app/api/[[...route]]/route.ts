@@ -21,7 +21,7 @@ export const dynamic = "force-dynamic";
 const app = new Hono<any, any, any>().basePath("/api");
 
 app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
-middlewaresChain(app);
+// middlewaresChain(app);
 
 // app.use(
 //   createMiddleware(async (c, next) => {
@@ -32,16 +32,16 @@ middlewaresChain(app);
 //   }),
 // );
 
-app.route("/sps-host", spsHostApp as any);
-app.route("/sps-broadcast", spsBroadcast as any);
+// app.route("/sps-host", spsHostApp as any);
+// app.route("/sps-broadcast", spsBroadcast as any);
 app.mount("/sps-website-builder", spsWebsiteBuilderApp.hono.fetch);
-app.route("/sps-file-storage", spsFileStorageApp as any);
-app.mount("/sps-rbac", spsRbacApp.hono.fetch);
-app.route("/sps-billing", spsBilling as any);
-app.route("/sps-third-parties", spsThirdParties as any);
-app.route("/sps-crm", spsCrm as any);
-app.route("/sps-notification", spsNotification as any);
-app.route("/startup", startupApp as any);
+// app.route("/sps-file-storage", spsFileStorageApp as any);
+// app.mount("/sps-rbac", spsRbacApp.hono.fetch);
+// app.route("/sps-billing", spsBilling as any);
+// app.route("/sps-third-parties", spsThirdParties as any);
+// app.route("/sps-crm", spsCrm as any);
+// app.route("/sps-notification", spsNotification as any);
+// app.route("/startup", startupApp as any);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

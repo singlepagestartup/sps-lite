@@ -5,6 +5,7 @@ import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
 import { ParseQueryMiddleware } from "@sps/middlewares";
+import { IConfiguration } from "../../configuration";
 
 export interface IApp<
   ENV extends Env = {},
@@ -24,14 +25,17 @@ export class App<SCHEMA extends Record<string, unknown>>
   hono: Hono<Env>;
   controller: IController<SCHEMA>;
   exceptionFilter: IExceptionFilter;
+  configuration: IConfiguration;
 
   constructor(
     @inject(DI.IExceptionFilter) exceptionFilter: IExceptionFilter,
     @inject(DI.IController) controller: IController<SCHEMA>,
+    @inject(DI.IConfiguration) configuration: IConfiguration,
   ) {
     this.hono = new Hono<Env>();
     this.exceptionFilter = exceptionFilter;
     this.controller = controller;
+    this.configuration = configuration;
   }
 
   public async init() {

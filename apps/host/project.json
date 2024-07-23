@@ -372,14 +372,11 @@
     },
     "db:dump": {
       "executor": "nx:run-commands",
-      "dependsOn": ["db:prepare"],
+      "dependsOn": [],
       "options": {
         "parallel": false,
         "cwd": "apps/host",
         "commands": [
-          {
-            "command": "nx run host:db:migrate"
-          },
           {
             "command": "bun run src/db/dump.ts"
           }

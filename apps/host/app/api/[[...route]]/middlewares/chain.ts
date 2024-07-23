@@ -11,7 +11,7 @@ export function chain(app: any) {
   app.use(new RevalidationMiddleware().init());
   app.use(new ParseQueryMiddleware().init());
   app.use(new LoggerMiddleware().init());
-  app.use(new IsAllowedMiddleware().init());
+  // app.use(new IsAllowedMiddleware().init());
 
   // if (MIDDLEWARE_HTTP_CACHE) {
   //   app.use(middlewares.httpCache());

@@ -8,5 +8,9 @@ export interface IConfiguration {
     Table: PgTableWithColumns<any>;
     insertSchema: ZodObject<any>;
     selectSchema: ZodObject<any>;
+    dump: {
+      type: "json";
+      directory: string;
+    };
   };
 }
