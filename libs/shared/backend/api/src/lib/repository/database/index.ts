@@ -116,12 +116,16 @@ export class Database<T extends PgTableWithColumns<any>>
     try {
       const shape = this.insertSchema.shape;
 
+      delete data.id;
+      delete data.createdAt;
+      delete data.updatedAt;
+
       Object.entries(shape).forEach(([key, value]) => {
         if (value instanceof ZodDate && data[key]) {
           data[key] = new Date(data[key]);
         }
 
-        if (key === "updatedAt" && value instanceof ZodDate) {
+        if (["updatedAt", "createdAt"].includes(key)) {
           data[key] = new Date();
         }
       });
@@ -199,6 +203,9 @@ export class Database<T extends PgTableWithColumns<any>>
           data[key] = new Date();
         }
       });
+
+      delete data.createdAt;
+      data.updatedAt = new Date();
 
       const plainData: T["$inferInsert"] = this.insertSchema.parse(data);
 

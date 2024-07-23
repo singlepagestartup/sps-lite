@@ -21,8 +21,8 @@ import { exit } from "process";
   // await spsRbacSeeder.dumpModels();
   // const startupSeeder = new StartupDumper();
   // await startupSeeder.dumpModels();
-  const dumpingWidget = await footerBlockApp.dump();
-  console.log(`🚀 ~ dumpingWidget:`, dumpingWidget);
+  const dumpFooterBlock = await footerBlockApp.dump();
+  console.log(`🚀 ~ dumpFooterBlock:`, dumpFooterBlock);
 })()
   .then(() => {
     exit(0);
