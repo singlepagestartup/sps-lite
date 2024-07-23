@@ -16,6 +16,7 @@ export interface IApp<
   exceptionFilter: IExceptionFilter;
   init: () => Promise<void>;
   useRoutes: () => void;
+  dump: () => Promise<SCHEMA[]>;
 }
 
 @injectable()
@@ -42,6 +43,12 @@ export class App<SCHEMA extends Record<string, unknown>>
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
     this.hono.use(new ParseQueryMiddleware().init());
     this.useRoutes();
+  }
+
+  async dump() {
+    const dumpResult = await this.controller.service.dump();
+
+    return dumpResult;
   }
 
   useRoutes() {

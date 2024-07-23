@@ -220,7 +220,7 @@ export class Database<T extends PgTableWithColumns<any>>
     }
   }
 
-  async dump(props?: any): Promise<any> {
+  async dump(): Promise<T["$inferSelect"][]> {
     const entities = await this.find();
 
     const directory = this.dumpConfig.directory;

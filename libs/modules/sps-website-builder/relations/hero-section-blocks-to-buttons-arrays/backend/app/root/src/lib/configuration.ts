@@ -16,6 +16,10 @@ export class Configuration implements IConfiguration {
     Table: PgTableWithColumns<any>;
     insertSchema: any;
     selectSchema: any;
+    dump: {
+      type: "json";
+      directory: string;
+    };
   };
 
   constructor() {
@@ -25,6 +29,10 @@ export class Configuration implements IConfiguration {
       Table: Table,
       insertSchema,
       selectSchema,
+      dump: {
+        type: "json",
+        directory: `${__dirname}/data`,
+      },
     };
   }
 }

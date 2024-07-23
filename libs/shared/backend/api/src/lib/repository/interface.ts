@@ -1,8 +1,8 @@
 import { FindServiceProps } from "../services/interfaces";
 
 export interface ITransferable {
-  dump: (props?: any) => Promise<any>;
-  seed: (props?: any) => Promise<any>;
+  dump: (props?: any) => Promise<any[]>;
+  seed: (props?: any) => Promise<any[]>;
 }
 
 interface IDefaultRepository extends ITransferable {

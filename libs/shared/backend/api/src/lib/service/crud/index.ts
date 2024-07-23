@@ -48,8 +48,8 @@ export class Service<DTO extends Record<string, unknown>>
     return action.execute(props);
   }
 
-  async dump(props: any): Promise<any> {
+  async dump(): Promise<DTO[]> {
     const action = new DumpAction(this.repository);
-    return action.execute(props);
+    return action.execute();
   }
 }
