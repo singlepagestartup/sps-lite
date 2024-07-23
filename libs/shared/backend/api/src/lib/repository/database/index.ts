@@ -43,7 +43,7 @@ export class Database<T extends PgTableWithColumns<any>>
       });
 
       const records = await this.db
-        .select(this.Table)
+        .select()
         .from(this.Table)
         .where(filters)
         .execute();

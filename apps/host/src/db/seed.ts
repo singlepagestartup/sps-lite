@@ -5,6 +5,8 @@
 // import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
 // import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { app as footerBlockApp } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
+import { app as logotypeApp } from "@sps/sps-website-builder/models/logotype/backend/app/root";
+
 import { exit } from "process";
 
 (async () => {
@@ -15,6 +17,9 @@ import { exit } from "process";
 
   const seedingWidget = await footerBlockApp.seed();
   console.log(`🚀 ~ seedingWidget:`, seedingWidget);
+
+  const seedingLogotype = await logotypeApp.seed();
+  console.log(`🚀 ~ seedingLogotype:`, seedingLogotype);
 
   // const spsHostModuleSeeder = new SpsHostModuleSeeder({
   //   seedResults,
