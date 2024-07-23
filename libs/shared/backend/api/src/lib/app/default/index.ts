@@ -5,7 +5,11 @@ import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
 import { ParseQueryMiddleware } from "@sps/middlewares";
-import { type IConfiguration } from "../../configuration";
+import {
+  IDumpResult,
+  ISeedResult,
+  type IConfiguration,
+} from "../../configuration";
 
 export interface IApp<
   ENV extends Env = {},
@@ -16,7 +20,14 @@ export interface IApp<
   exceptionFilter: IExceptionFilter;
   init: () => Promise<void>;
   useRoutes: () => void;
-  dump: () => Promise<SCHEMA[]>;
+  seed: (props?: {
+    type?: "model" | "relation";
+    seeds: ISeedResult[];
+  }) => Promise<ISeedResult | ISeedResult[]>;
+  dump: (props?: {
+    type?: "model" | "relation";
+    dumps: IDumpResult[];
+  }) => Promise<IDumpResult | IDumpResult[]>;
 }
 
 @injectable()
@@ -45,14 +56,14 @@ export class App<SCHEMA extends Record<string, unknown>>
     this.useRoutes();
   }
 
-  async dump() {
-    const dumpResult = await this.controller.service.dump();
+  async dump(props?: { dumps: IDumpResult[] }) {
+    const dumpResult = await this.controller.service.dump(props);
 
     return dumpResult;
   }
 
-  async seed(props?: any): Promise<any> {
-    const seedResult = await this.controller.service.seed();
+  async seed(props?: { seeds: ISeedResult[] }): Promise<ISeedResult> {
+    const seedResult = await this.controller.service.seed(props);
 
     return seedResult;
   }

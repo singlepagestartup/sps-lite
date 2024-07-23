@@ -1,6 +1,7 @@
 import { inject, injectable } from "inversify";
 import { type IRepository } from "../../../../repository";
 import { DI } from "../../../../di/constants";
+import { ISeedResult } from "../../../../configuration";
 
 @injectable()
 export class Action {
@@ -10,8 +11,8 @@ export class Action {
     this.repository = repository;
   }
 
-  async execute() {
-    const result = await this.repository.seed();
+  async execute(props?: { seeds: ISeedResult[] }) {
+    const result = await this.repository.seed(props);
 
     return result;
   }

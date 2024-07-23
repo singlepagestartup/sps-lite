@@ -1,5 +1,9 @@
 import { Container } from "inversify";
-import { Configuration, IConfiguration } from "../../configuration";
+import {
+  Configuration,
+  IConfiguration,
+  ISeedResult,
+} from "../../configuration";
 import { DI } from "../../di/constants";
 import { Database } from ".";
 import { IRepository } from "../interface";
@@ -236,7 +240,7 @@ describe("Database", () => {
           .mockResolvedValueOnce({ ...dumpEntity, widgetId: 5 }),
       ];
 
-      const seedResults = [
+      const seedResults: ISeedResult[] = [
         {
           module: "sps-website-builder",
           name: "widget",

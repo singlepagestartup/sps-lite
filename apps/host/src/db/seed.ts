@@ -4,8 +4,10 @@
 // import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
 // import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
 // import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
+import { ISeedResult } from "@sps/shared-backend-api";
 import { app as footerBlockApp } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
 import { app as logotypeApp } from "@sps/sps-website-builder/models/logotype/backend/app/root";
+import { app as footerBlocksToLogotypesApp } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
 
 import { exit } from "process";
 
@@ -15,11 +17,22 @@ import { exit } from "process";
   const seedResults = {};
   const seedConfig = {};
 
-  const seedingWidget = await footerBlockApp.seed();
-  console.log(`🚀 ~ seedingWidget:`, seedingWidget);
+  const seeds: ISeedResult[] = [];
 
-  const seedingLogotype = await logotypeApp.seed();
-  console.log(`🚀 ~ seedingLogotype:`, seedingLogotype);
+  const seedingWidget = await footerBlockApp.seed({ seeds });
+
+  seeds.push(seedingWidget);
+  // console.log(`🚀 ~ seedingWidget:`, seedingWidget);
+
+  const seedingLogotype = await logotypeApp.seed({ seeds });
+  // console.log(`🚀 ~ seedingLogotype:`, seedingLogotype);
+  seeds.push(seedingLogotype);
+
+  const seedingFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.seed({
+    seeds,
+  });
+
+  seeds.push(seedingFooterBlocksToLogotypes);
 
   // const spsHostModuleSeeder = new SpsHostModuleSeeder({
   //   seedResults,

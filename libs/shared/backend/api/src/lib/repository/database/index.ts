@@ -8,7 +8,11 @@ import { FindServiceProps } from "../../services/interfaces";
 import { queryBuilder } from "../../query-builder/filters";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../interface";
-import { ISeedResult, type IConfiguration } from "../../configuration";
+import {
+  IDumpResult,
+  ISeedResult,
+  type IConfiguration,
+} from "../../configuration";
 import { ZodDate, ZodError, ZodObject } from "zod";
 import fs from "fs/promises";
 
@@ -230,7 +234,7 @@ export class Database<T extends PgTableWithColumns<any>>
     }
   }
 
-  async dump(): Promise<T["$inferSelect"][]> {
+  async dump(): Promise<IDumpResult> {
     const entities = await this.find();
 
     const directory = this.configuration.repository.dump.directory;
@@ -249,10 +253,17 @@ export class Database<T extends PgTableWithColumns<any>>
       await fs.writeFile(`${directory}/${entity.id}.json`, fileContent);
     }
 
-    return entities;
+    const result: IDumpResult = {
+      module: this.configuration.repository.seed.module,
+      name: this.configuration.repository.seed.name,
+      type: this.configuration.repository.seed.type as "model" | "relation",
+      dumps: entities,
+    };
+
+    return result;
   }
 
-  async seed(props?: { seeds: ISeedResult[] }): Promise<any> {
+  async seed(props?: { seeds: ISeedResult[] }): Promise<ISeedResult> {
     const directory = this.configuration.repository.dump.directory;
 
     const getDumpEntities = async (): Promise<T["$inferSelect"][]> => {

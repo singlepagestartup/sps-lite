@@ -1,3 +1,4 @@
+import { IDumpResult, ISeedResult } from "../configuration";
 import { FindServiceProps } from "../services/interfaces";
 
 export interface IService<DTO extends Record<string, unknown>> {
@@ -6,6 +7,6 @@ export interface IService<DTO extends Record<string, unknown>> {
   create: (props: { data: DTO }) => Promise<DTO | null>;
   delete: (props: { id: string }) => Promise<DTO | null>;
   update: (props: { id: string; data: DTO }) => Promise<DTO | null>;
-  dump: () => Promise<DTO[]>;
-  seed: () => Promise<DTO[]>;
+  dump: (props?: { dumps: IDumpResult[] }) => Promise<IDumpResult>;
+  seed: (props?: { seeds: ISeedResult[] }) => Promise<ISeedResult>;
 }

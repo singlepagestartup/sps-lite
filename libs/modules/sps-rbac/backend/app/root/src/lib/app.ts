@@ -43,7 +43,11 @@ export class App implements IDefaultApp<Env> {
   }
 
   async dump() {
-    return {} as any;
+    return [];
+  }
+
+  async seed() {
+    return [];
   }
 
   useRoutes() {

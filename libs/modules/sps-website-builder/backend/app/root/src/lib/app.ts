@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { Context, Env, Hono, Next } from "hono";
 import {
   DI,
+  IDumpResult,
   type IDefaultApp,
   type IExceptionFilter,
 } from "@sps/shared-backend-api";
@@ -61,8 +62,21 @@ export class App implements IDefaultApp<Env> {
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
 
-  async dump() {
-    return {} as any;
+  async dump(props?: { type?: "model" | "relation"; dumps: IDumpResult[] }) {
+    const dumps: IDumpResult[] = [];
+
+    if (props?.type === "model") {
+      const logotypesDumps = await logotype.dump();
+      dumps.push(logotypesDumps);
+    }
+
+    return dumps;
+  }
+
+  async seed() {
+    console.log("seed");
+
+    return [];
   }
 
   useRoutes() {

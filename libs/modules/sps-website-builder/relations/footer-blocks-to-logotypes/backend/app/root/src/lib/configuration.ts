@@ -25,6 +25,42 @@ export class Configuration extends ParentConfiguration {
           module: "sps-website-builder",
           name: "footer-blocks-to-logotypes",
           type: "relation",
+          transformers: [
+            {
+              field: "footerBlockId",
+              transform: (data) => {
+                const relationEntites = data.seeds
+                  .find(
+                    (seed) =>
+                      seed.name === "footer-block" &&
+                      seed.type === "model" &&
+                      seed.module === "sps-website-builder",
+                  )
+                  ?.seeds?.filter(
+                    (seed) => seed.dump.id === data.entity.dump.widgetId,
+                  );
+
+                return relationEntites?.[0].new.id;
+              },
+            },
+            {
+              field: "logotypeId",
+              transform: (data) => {
+                const relationEntites = data.seeds
+                  .find(
+                    (seed) =>
+                      seed.name === "logotype" &&
+                      seed.type === "model" &&
+                      seed.module === "sps-website-builder",
+                  )
+                  ?.seeds?.filter(
+                    (seed) => seed.dump.id === data.entity.dump.widgetId,
+                  );
+
+                return relationEntites?.[0].new.id;
+              },
+            },
+          ],
         },
       },
     });

@@ -18,6 +18,13 @@ export interface ISeedResult {
   }[];
 }
 
+export interface IDumpResult {
+  module: string;
+  name: string;
+  type: "model" | "relation";
+  dumps: any[];
+}
+
 export interface ITransform {
   field: string;
   transform: (data: {

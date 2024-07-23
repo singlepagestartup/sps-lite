@@ -1,8 +1,9 @@
+import { IDumpResult, ISeedResult } from "../configuration";
 import { FindServiceProps } from "../services/interfaces";
 
 export interface ITransferable {
-  dump: (props?: any) => Promise<any[]>;
-  seed: (props?: any) => Promise<any[]>;
+  dump: (props?: any) => Promise<IDumpResult>;
+  seed: (props?: { seeds: ISeedResult[] }) => Promise<ISeedResult>;
 }
 
 interface IDefaultRepository extends ITransferable {

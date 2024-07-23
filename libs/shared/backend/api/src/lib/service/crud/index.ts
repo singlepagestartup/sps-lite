@@ -13,6 +13,7 @@ import { DI } from "../../di/constants";
 import { type IRepository } from "../../repository/interface";
 import { IService } from "../interface";
 import { FindServiceProps } from "../../services/interfaces";
+import { IDumpResult, ISeedResult } from "../../configuration";
 
 @injectable()
 export class Service<DTO extends Record<string, unknown>>
@@ -49,13 +50,13 @@ export class Service<DTO extends Record<string, unknown>>
     return action.execute(props);
   }
 
-  async dump(): Promise<DTO[]> {
+  async dump(): Promise<IDumpResult> {
     const action = new DumpAction(this.repository);
     return action.execute();
   }
 
-  async seed(): Promise<DTO[]> {
+  async seed(props?: { seeds: ISeedResult[] }): Promise<ISeedResult> {
     const action = new SeedAction(this.repository);
-    return action.execute();
+    return action.execute(props);
   }
 }

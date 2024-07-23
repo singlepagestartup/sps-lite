@@ -25,4 +25,6 @@ export interface IController<DTO extends Record<string, unknown>> {
   create: (c: Context, next: any) => Response | Promise<Response>;
   update: (c: Context, next: any) => Response | Promise<Response>;
   delete: (c: Context, next: any) => Response | Promise<Response>;
+  dump: (c: Context, next: any) => Response | Promise<Response>;
+  seed: (c: Context, next: any) => Response | Promise<Response>;
 }
