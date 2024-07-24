@@ -31,20 +31,19 @@ import { exit } from "process";
 
   // const dumpFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.dump();
   // console.log(`🚀 ~ dumpFooterBlocksToLogotypes:`, dumpFooterBlocksToLogotypes);
-  // const models = await spsWebsiteBuilderApp.dump({
-  //   type: "model",
-  //   dumps: [],
-  // });
 
-  // console.log(`🚀 ~ models:`, models);
+  const models = await spsWebsiteBuilderApp.dump({
+    type: "model",
+    dumps: [],
+  });
 
-  // const relations = await spsWebsiteBuilderApp.dump({
-  //   type: "relation",
-  //   dumps: [],
-  // });
+  const relations = await spsWebsiteBuilderApp.dump({
+    type: "relation",
+    dumps: [],
+  });
 
-  const logotypeDump = await logotype.dump();
-  console.log(`🚀 ~ logotypeDump:`, logotypeDump);
+  // const logotypeDump = await logotype.dump();
+  // console.log(`🚀 ~ logotypeDump:`, logotypeDump);
 
   // console.log(`🚀 ~ relations:`, relations);
 })()
