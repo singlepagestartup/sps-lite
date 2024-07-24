@@ -8,7 +8,6 @@ import {
   type IExceptionFilter,
 } from "@sps/shared-backend-api";
 import { inject, injectable } from "inversify";
-
 import { Apps } from "./apps";
 
 @injectable()

@@ -19,10 +19,12 @@ export class Configuration extends ParentConfiguration {
         insertSchema,
         selectSchema,
         dump: {
+          active: false,
           type: "json",
           directory: dataDirectory,
         },
         seed: {
+          active: false,
           module: "sps-rbac",
           name: "subjects-to-roles",
           type: "relation",

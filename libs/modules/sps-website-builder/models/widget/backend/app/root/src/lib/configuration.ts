@@ -25,10 +25,12 @@ export class Configuration
         insertSchema,
         selectSchema,
         dump: {
+          active: true,
           type: "json",
           directory: dataDirectory,
         },
         seed: {
+          active: true,
           module: "sps-website-builder",
           name: "widget",
           type: "model",

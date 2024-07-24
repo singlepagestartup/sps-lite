@@ -33,8 +33,7 @@ import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/
 import { app as widgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/backend/app/root";
 import { app as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/backend/app/root";
 import { app as widgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/backend/app/root";
-import { Env } from "hono";
-import { DefaultApp, IDefaultApp } from "@sps/shared-backend-api";
+import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =

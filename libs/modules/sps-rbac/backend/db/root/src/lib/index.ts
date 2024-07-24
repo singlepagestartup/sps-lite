@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import * as drizzleSchema from "./schema";
 import { postgres } from "@sps/shared-backend-database-config";

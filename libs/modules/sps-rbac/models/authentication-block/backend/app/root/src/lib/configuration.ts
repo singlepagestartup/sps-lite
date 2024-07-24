@@ -19,10 +19,12 @@ export class Configuration extends ParentConfiguration {
         insertSchema,
         selectSchema,
         dump: {
+          active: true,
           type: "json",
           directory: dataDirectory,
         },
         seed: {
+          active: true,
           module: "sps-rbac",
           name: "authentication-block",
           type: "model",
