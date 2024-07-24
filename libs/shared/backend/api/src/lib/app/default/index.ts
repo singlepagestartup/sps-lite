@@ -4,12 +4,12 @@ import { type IController } from "../../controllers";
 import { type IExceptionFilter } from "../../filters";
 import { inject, injectable } from "inversify";
 import { DI } from "../../di/constants";
-import { ParseQueryMiddleware } from "@sps/middlewares";
 import {
   IDumpResult,
   ISeedResult,
   type IConfiguration,
 } from "../../configuration";
+import { ParseQueryMiddleware } from "../../middleware";
 
 export interface IApp<
   ENV extends Env = {},

@@ -53,7 +53,7 @@
         "cwd": "libs/modules/sps-website-builder/backend/db/root",
         "commands": [
           {
-            "command": "bunx drizzle-kit up --config=./src/lib/index.ts"
+            "command": "drizzle-kit up --config=./src/lib/index.ts"
           },
           {
             "command": "drizzle-kit generate --config=./src/lib/index.ts"

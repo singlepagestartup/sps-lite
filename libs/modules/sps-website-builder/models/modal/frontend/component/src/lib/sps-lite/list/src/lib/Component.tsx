@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Modal } from "@sps/sps-website-builder/models/modal/frontend/component/variants/sps-lite/default";
+import { Component as Modal } from "../../../default";
 
 export function Component(props: IComponentPropsExtended) {
   const query = useSearchParams();
@@ -17,9 +17,9 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     for (const modal of props.data) {
-      if (openedModal === modal.uid) {
-        setModal(modal);
-      }
+      // if (openedModal === modal?.uid) {
+      //   setModal(modal);
+      // }
     }
   }, [openedModal]);
 

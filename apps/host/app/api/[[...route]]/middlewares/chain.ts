@@ -1,11 +1,11 @@
 import { logger } from "hono/logger";
 import {
   IsAllowedMiddleware,
-  ParseQueryMiddleware,
   LoggerMiddleware,
   RevalidationMiddleware,
 } from "@sps/middlewares";
 import { MIDDLEWARE_HTTP_CACHE, MIDDLEWARE_LOGGER } from "@sps/shared-utils";
+import { ParseQueryMiddleware } from "@sps/shared-backend-api";
 
 export function chain(app: any) {
   app.use(new RevalidationMiddleware().init());

@@ -1,19 +1,15 @@
 import "reflect-metadata";
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config as DrizzleConfig, defineConfig } from "drizzle-kit";
-import path from "path";
-import { cwd } from "process";
 
-export class Migrate {
+export class Config {
   out: string;
   schemaPaths: string[];
   drizzleConfig: DrizzleConfig;
 
-  constructor() {
-    const modulesSchemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
-
-    this.out = "./src/lib/migrations2";
-    this.schemaPaths = modulesSchemaPaths;
+  constructor(props: { schemaPaths: string[] }) {
+    this.out = "./src/lib/migrations";
+    this.schemaPaths = props.schemaPaths;
   }
 
   init() {

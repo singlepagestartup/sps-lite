@@ -19,3 +19,4 @@ export * from "./lib/di/constants";
 export * from "./lib/service";
 export * from "./lib/repository";
 export * from "./lib/configuration";
+export * from "./lib/middleware";

@@ -5,7 +5,7 @@ import { Next } from "hono/types";
 import { inject, injectable } from "inversify";
 import { DI } from "../../../../di/constants";
 import { type IService } from "../../../../service";
-import { type IParseQueryMiddlewareGeneric } from "@sps/middlewares";
+import { type IParseQueryMiddlewareGeneric } from "../../../../middleware";
 
 @injectable()
 export class Handler<
