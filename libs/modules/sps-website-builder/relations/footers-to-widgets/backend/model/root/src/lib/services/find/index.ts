@@ -4,7 +4,7 @@ import {
   populate,
   schemaName,
   Table,
-} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/schema/root";
+} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/repository/database";
 
 export async function service(props?: FindServiceProps) {
   const result = await db.query[schemaName].findMany({

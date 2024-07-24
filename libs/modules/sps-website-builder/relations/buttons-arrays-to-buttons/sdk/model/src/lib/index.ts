@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/schema/root";
+} from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-website-builder/buttons-arrays-to-buttons";

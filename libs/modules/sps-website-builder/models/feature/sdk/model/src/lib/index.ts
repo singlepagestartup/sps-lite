@@ -3,7 +3,7 @@ export {
   type ISelectSchema as IModel,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/models/feature/backend/schema/table";
+} from "@sps/sps-website-builder/models/feature/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-website-builder/features";

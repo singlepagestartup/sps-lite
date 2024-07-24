@@ -4,7 +4,7 @@ import {
   Table,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/models/feature/backend/schema/table";
+} from "@sps/sps-website-builder/models/feature/backend/repository/database";
 import { injectable } from "inversify";
 
 @injectable()

@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/schema/root";
+} from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route =

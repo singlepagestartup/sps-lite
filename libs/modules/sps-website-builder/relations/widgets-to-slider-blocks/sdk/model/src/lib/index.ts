@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/backend/schema/root";
+} from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const tag = "widgets-to-slider-blocks";

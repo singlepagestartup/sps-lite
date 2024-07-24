@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/relations/sliders-to-slides/backend/schema/root";
+} from "@sps/sps-website-builder/relations/sliders-to-slides/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-website-builder/sliders-to-slides";

@@ -3,7 +3,7 @@ import {
   Table,
   populate,
   schemaName,
-} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/schema/root";
+} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/repository/database";
 import { eq } from "drizzle-orm";
 import { FindByIdServiceProps } from "@sps/shared-backend-api";
 

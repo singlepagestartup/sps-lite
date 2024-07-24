@@ -1,5 +1,5 @@
 import { services as modelServices } from "..";
-import { Table } from "@sps/sps-website-builder/relations/footers-to-widgets/backend/schema/root";
+import { Table } from "@sps/sps-website-builder/relations/footers-to-widgets/backend/repository/database";
 import { Seeder as SpsSeeder } from "@sps/shared-backend-api";
 import { config } from "../../config";
 

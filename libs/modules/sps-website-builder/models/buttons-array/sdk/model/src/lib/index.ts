@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/models/buttons-array/backend/schema/table";
+} from "@sps/sps-website-builder/models/buttons-array/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const variants = ["default"] as const;

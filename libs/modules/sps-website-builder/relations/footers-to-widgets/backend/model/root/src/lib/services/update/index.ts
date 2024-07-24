@@ -2,7 +2,7 @@ import { db } from "@sps/sps-website-builder/backend/db/root";
 import {
   Table,
   insertSchema,
-} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/schema/root";
+} from "@sps/sps-website-builder/relations/footers-to-widgets/backend/repository/database";
 import { eq } from "drizzle-orm";
 
 export async function service(props: { id: string; data: any }) {

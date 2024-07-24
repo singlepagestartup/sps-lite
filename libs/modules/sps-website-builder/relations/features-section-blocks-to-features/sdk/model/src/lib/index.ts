@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/schema/root";
+} from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route =
