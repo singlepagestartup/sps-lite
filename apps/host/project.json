@@ -46,21 +46,6 @@
         ]
       }
     },
-    "db:sps-website-builder-button-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/models/button/backend/repository/database",
-        "commands": [
-          {
-            "command": "echo drizzle-kit up --config=./src/lib/index.ts"
-          },
-          {
-            "command": "echo 'drizzle-kit generate --config=./src/lib/index.ts'"
-          }
-        ]
-      }
-    },
     "db:sps-website-builder-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -80,7 +65,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/db/root",
+        "cwd": "libs/modules/sps-website-builder/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

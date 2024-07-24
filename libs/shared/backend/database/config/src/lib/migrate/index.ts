@@ -46,13 +46,17 @@ export class Config {
 
   async migrate() {
     try {
+      if (!process.env["DATABASE_HOST"] || !process.env["DATABASE_NAME"]) {
+        throw new Error("Database credentials are missing");
+      }
+
       let beforeMigrations = [];
 
       const db = drizzle(pg, { schema: this.schema });
 
       try {
         beforeMigrations = await db.execute(
-          sql`SELECT * FROM drizzle.sps_website_builder`,
+          sql`SELECT * FROM drizzle.${sql.raw(this.migrationsTable)}`,
         );
       } catch (error) {
         console.log(`migrate ~ error:`, error);
@@ -64,7 +68,7 @@ export class Config {
       });
 
       const afterMigrations = await db.execute(
-        sql`SELECT * FROM drizzle.sps_website_builder`,
+        sql`SELECT * FROM drizzle.${sql.raw(this.migrationsTable)}`,
       );
 
       if (beforeMigrations.length !== afterMigrations.length) {

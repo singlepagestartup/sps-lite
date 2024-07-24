@@ -1,4 +1,5 @@
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+export * from "./schema";
 import { Table } from "./schema";
 
 export const insertSchema = createInsertSchema(Table);

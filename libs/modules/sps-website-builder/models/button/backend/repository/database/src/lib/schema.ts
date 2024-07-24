@@ -1,6 +1,8 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { fields } from "./fields";
-import { table, moduleName } from "./config";
+
+export const moduleName = "sps_w_b";
+export const table = "button";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 
