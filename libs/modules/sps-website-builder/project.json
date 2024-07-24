@@ -14,6 +14,51 @@
         "commands": [
           {
             "command": "nx run @sps/sps-website-builder:models:button:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:button:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:buttons-array:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:feature:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:features-section-block:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:footer:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:footer-block:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:hero-section-block:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:logotype:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:modal:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:navbar:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:navbar-block:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slide:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slider:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slider-block:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:widget:repository-generate"
           }
         ]
       }
@@ -25,6 +70,51 @@
         "commands": [
           {
             "command": "nx run @sps/sps-website-builder:models:button:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:button:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:buttons-array:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:feature:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:features-section-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:footer:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:footer-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:hero-section-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:logotype:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:modal:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:navbar:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:navbar-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slide:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slider:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:slider-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:models:widget:repository-migrate"
           }
         ]
       }
