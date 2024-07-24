@@ -1,37 +1,10 @@
-export {
-  Table as SPSHLayoutsToWidgets,
-  Relations as SPSHLayoutsToWidgetsRelations,
-} from "@sps/sps-host/relations/layouts-to-widgets/backend/schema/root";
-export {
-  Table as SPSHWidgetsToExternalModules,
-  Relations as SPSHWidgetsToExternalModulesRelations,
-} from "@sps/sps-host/relations/widgets-to-external-modules/backend/repository/database";
-export {
-  Table as SPSHPagesToWidgets,
-  Relations as SPSHPagesToWidgetsRelations,
-} from "@sps/sps-host/relations/pages-to-widgets/backend/repository/database";
-export {
-  Table as SPSHPagesToMetadata,
-  Relations as SPSHPagesToMetadataRelations,
-} from "@sps/sps-host/relations/pages-to-metadata/backend/repository/database";
-export {
-  Table as SPSHPagesToLayouts,
-  Relations as SPSHPagesToLayoutsRelations,
-} from "@sps/sps-host/relations/pages-to-layouts/backend/schema/root";
-export {
-  Table as SPSHMetadata,
-  Relations as SPSHMetadataRelations,
-} from "@sps/sps-host/models/metadata/backend/schema/root";
-export {
-  Table as SPSHLayout,
-  Relations as SPSHLayoutRelations,
-} from "@sps/sps-host/models/layout/backend/schema/root";
-export {
-  Table as SPSHPage,
-  Relations as SPSHPageRelations,
-} from "@sps/sps-host/models/page/backend/schema/root";
-export {
-  Table as SPSHWidget,
-  Relations as SPSHWidgetRelations,
-} from "@sps/sps-host/models/widget/backend/schema/root";
+export { Table as SPSHLayoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/backend/repository/database";
+export { Table as SPSHWidgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-modules/backend/repository/database";
+export { Table as SPSHPagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/backend/repository/database";
+export { Table as SPSHPagesToMetadata } from "@sps/sps-host/relations/pages-to-metadata/backend/repository/database";
+export { Table as SPSHPagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/backend/repository/database";
+export { Table as SPSHMetadata } from "@sps/sps-host/models/metadata/backend/repository/database";
+export { Table as SPSHLayout } from "@sps/sps-host/models/layout/backend/repository/database";
+export { Table as SPSHPage } from "@sps/sps-host/models/page/backend/repository/database";
+export { Table as SPSHWidget } from "@sps/sps-host/models/widget/backend/repository/database";
 export {};

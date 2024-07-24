@@ -12,8 +12,8 @@ export function App(props: IComponentProps) {
         variant="find-by-url"
         url={props.hostUrl}
       >
-        {({ data: page }) => {
-          if (!page) {
+        {({ data }) => {
+          if (!data) {
             return;
           }
 
@@ -21,8 +21,8 @@ export function App(props: IComponentProps) {
             <Page
               isServer={props.isServer}
               hostUrl={props.hostUrl}
-              variant={page?.variant as any}
-              data={page}
+              variant={data?.variant as any}
+              data={data}
             />
           );
         }}
