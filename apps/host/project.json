@@ -50,7 +50,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/db/root",
+        "cwd": "libs/modules/sps-website-builder/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/index.ts"
