@@ -15,7 +15,7 @@ export { Table as SPSWBFeature } from "@sps/sps-website-builder/models/feature/b
 export { Table as SPSWBFeaturesSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/repository/database";
 export { Table as SPSWBNavbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/repository/database";
 export { Table as SPSWBLogotype } from "@sps/sps-website-builder/models/logotype/backend/repository/database";
-export { Table as SPSWBButton } from "@sps/sps-website-builder/models/button/backend/repository/database";
+export * from "@sps/sps-website-builder/models/button/backend/repository/database";
 export { Table as SPSWBSlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/repository/database";
 export { Table as SPSWBSliderBlocksToSliders } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/backend/repository/database";
 export { Table as SPSWBSlide } from "@sps/sps-website-builder/models/slide/backend/repository/database";

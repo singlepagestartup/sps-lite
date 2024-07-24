@@ -4,12 +4,13 @@ import { cwd } from "process";
 
 const schemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
 const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");
-const migrationsTable = "sps_website_builder";
+export const moduleName = "sps_w_b";
+export const table = "button";
 
 export const migrate = new MigrateConfig({
   schemaPaths,
   migrationsFolder,
-  migrationsTable,
+  migrationsTable: `${moduleName}_${table}`,
   schema: require("./schema"),
 });
 
