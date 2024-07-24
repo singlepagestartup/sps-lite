@@ -54,11 +54,6 @@ export class App implements IDefaultApp<Env> {
   }
 
   public async init() {
-    this.hono.use(async (c: Context, next: Next) => {
-      const path = c.req.path;
-      console.log("RBAC Middleware", path);
-      await next();
-    });
     this.useRoutes();
     this.hono.onError(this.exceptionFilter.catch.bind(this.exceptionFilter));
   }
@@ -69,6 +64,11 @@ export class App implements IDefaultApp<Env> {
     if (props?.type === "model") {
       const logotypesDumps = await logotype.dump();
       dumps.push(logotypesDumps);
+      const footerBlocksDumps = await footerBlock.dump();
+      dumps.push(footerBlocksDumps);
+    } else if (props?.type === "relation") {
+      const footerBlocksToLogotypesDumps = await footerBlocksToLogotypes.dump();
+      dumps.push(footerBlocksToLogotypesDumps);
     }
 
     return dumps;

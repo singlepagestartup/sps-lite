@@ -33,11 +33,14 @@ import { exit } from "process";
 
   // const dumpFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.dump();
   // console.log(`🚀 ~ dumpFooterBlocksToLogotypes:`, dumpFooterBlocksToLogotypes);
-  const spsWbDumps = await spsWebsiteBuilderApp.dump({
+  await spsWebsiteBuilderApp.dump({
     type: "model",
     dumps: [],
   });
-  console.log(`🚀 ~ spsWbDumps:`, spsWbDumps);
+  await spsWebsiteBuilderApp.dump({
+    type: "relation",
+    dumps: [],
+  });
 })()
   .then(() => {
     exit(0);
