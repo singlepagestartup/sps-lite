@@ -48,10 +48,12 @@ export interface IRepositoryConfiguration {
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;
   dump: {
+    active: boolean;
     type: "json";
     directory: string;
   };
   seed: {
+    active: boolean;
     module: string;
     name: string;
     type: "model" | "relation";

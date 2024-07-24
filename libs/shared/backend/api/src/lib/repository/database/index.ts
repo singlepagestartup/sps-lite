@@ -235,6 +235,17 @@ export class Database<T extends PgTableWithColumns<any>>
   }
 
   async dump(): Promise<IDumpResult> {
+    const result: IDumpResult = {
+      module: this.configuration.repository.seed.module,
+      name: this.configuration.repository.seed.name,
+      type: this.configuration.repository.seed.type as "model" | "relation",
+      dumps: [],
+    };
+
+    if (!this.configuration.repository.dump.active) {
+      return result;
+    }
+
     const entities = await this.find();
 
     const directory = this.configuration.repository.dump.directory;
@@ -253,17 +264,23 @@ export class Database<T extends PgTableWithColumns<any>>
       await fs.writeFile(`${directory}/${entity.id}.json`, fileContent);
     }
 
-    const result: IDumpResult = {
-      module: this.configuration.repository.seed.module,
-      name: this.configuration.repository.seed.name,
-      type: this.configuration.repository.seed.type as "model" | "relation",
-      dumps: entities,
-    };
+    result.dumps = entities;
 
     return result;
   }
 
   async seed(props?: { seeds: ISeedResult[] }): Promise<ISeedResult> {
+    const result: ISeedResult = {
+      module: this.configuration.repository.seed.module,
+      name: this.configuration.repository.seed.name,
+      type: this.configuration.repository.seed.type as "model" | "relation",
+      seeds: [],
+    };
+
+    if (!this.configuration.repository.seed.active) {
+      return result;
+    }
+
     const directory = this.configuration.repository.dump.directory;
 
     const getDumpEntities = async (): Promise<T["$inferSelect"][]> => {
@@ -296,13 +313,6 @@ export class Database<T extends PgTableWithColumns<any>>
         }
       }
     }
-
-    const result: ISeedResult = {
-      module: this.configuration.repository.seed.module,
-      name: this.configuration.repository.seed.name,
-      type: this.configuration.repository.seed.type as "model" | "relation",
-      seeds: [],
-    };
 
     const insertedEntities: ISeedResult["seeds"] = [];
 

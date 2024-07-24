@@ -16,10 +16,12 @@ const baseConfiguration: IConfiguration["repository"] = {
   selectSchema: {} as any,
   insertSchema: {} as any,
   dump: {
+    active: true,
     directory: "test",
     type: "json",
   },
   seed: {
+    active: true,
     module: "sps-website-builder",
     name: "widget",
     type: "model",
@@ -67,9 +69,95 @@ describe("Database", () => {
       });
       spys.forEach((spy) => spy.mockClear());
     });
+    it("should not create files in config.repository.directory if passed seed=false", async () => {
+      const configuration = new Configuration({
+        repository: {
+          ...baseConfiguration,
+          dump: {
+            ...baseConfiguration.dump,
+            active: false,
+          },
+        },
+      });
+
+      const container = new Container();
+      container
+        .bind<IConfiguration>(DI.IConfiguration)
+        .toConstantValue(configuration);
+      container.bind<IRepository>(DI.IRepository).to(Database);
+
+      const repository = container.get<IRepository>(DI.IRepository);
+
+      const spys = [
+        jest.spyOn(fs, "readdir").mockResolvedValueOnce(["1.json"] as any),
+        jest.spyOn(fs, "unlink").mockResolvedValueOnce(undefined as any),
+        jest.spyOn(fs, "writeFile").mockResolvedValueOnce(undefined as any),
+      ];
+
+      const repositoryEntity = {
+        id: 2,
+      };
+
+      repository.find = jest.fn().mockReturnValueOnce([repositoryEntity]);
+
+      const dumpResult = await repository.dump();
+
+      expect(fs.unlink).not.toHaveBeenCalled();
+      expect(fs.writeFile).not.toHaveBeenCalled();
+      expect(dumpResult).toEqual({
+        dumps: [],
+        module: "sps-website-builder",
+        name: "widget",
+        type: "model",
+      });
+      spys.forEach((spy) => spy.mockClear());
+    });
   });
 
   describe("seed", () => {
+    it("should not create entities from files in config.repository.directory if passed active=false", async () => {
+      const configuration = new Configuration({
+        repository: {
+          ...baseConfiguration,
+          seed: {
+            ...baseConfiguration.seed,
+            active: false,
+          },
+        },
+      });
+
+      const container = new Container();
+      container
+        .bind<IConfiguration>(DI.IConfiguration)
+        .toConstantValue(configuration);
+      container.bind<IRepository>(DI.IRepository).to(Database);
+
+      const repository = container.get<IRepository>(DI.IRepository);
+
+      const spys = [
+        jest.spyOn(fs, "readdir"),
+        jest.spyOn(fs, "readFile"),
+        jest.spyOn(repository, "find").mockResolvedValueOnce([]),
+        jest.spyOn(repository, "find").mockResolvedValueOnce([]),
+        jest.spyOn(repository, "insert"),
+        jest.spyOn(repository, "deleteFirstByField"),
+      ];
+
+      const expectedResult = {
+        module: "sps-website-builder",
+        name: "widget",
+        type: "model",
+        seeds: [],
+      };
+
+      const seedResult = await repository.seed();
+      expect(seedResult).toEqual(expectedResult);
+      expect(fs.readdir).not.toHaveBeenCalled();
+      expect(fs.readFile).not.toHaveBeenCalled();
+
+      spys.forEach((spy) => spy.mockClear());
+    });
+
     it("seeding model should create entities from files in config.repository.directory", async () => {
       const configuration = new Configuration({
         repository: {
