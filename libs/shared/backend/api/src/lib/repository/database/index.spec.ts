@@ -59,7 +59,12 @@ describe("Database", () => {
         "test/2.json",
         JSON.stringify(repositoryEntity, null, 2),
       );
-      expect(dumpResult).toEqual([repositoryEntity]);
+      expect(dumpResult).toEqual({
+        dumps: [repositoryEntity],
+        module: "sps-website-builder",
+        name: "widget",
+        type: "model",
+      });
       spys.forEach((spy) => spy.mockClear());
     });
   });

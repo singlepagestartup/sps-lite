@@ -32,12 +32,12 @@ import { exit } from "process";
   // const dumpFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.dump();
   // console.log(`🚀 ~ dumpFooterBlocksToLogotypes:`, dumpFooterBlocksToLogotypes);
 
-  const models = await spsWebsiteBuilderApp.dump({
+  await spsWebsiteBuilderApp.dump({
     type: "model",
     dumps: [],
   });
 
-  const relations = await spsWebsiteBuilderApp.dump({
+  await spsWebsiteBuilderApp.dump({
     type: "relation",
     dumps: [],
   });
