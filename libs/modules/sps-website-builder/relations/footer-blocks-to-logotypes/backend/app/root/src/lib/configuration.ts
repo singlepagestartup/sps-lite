@@ -37,7 +37,7 @@ export class Configuration extends ParentConfiguration {
                       seed.module === "sps-website-builder",
                   )
                   ?.seeds?.filter(
-                    (seed) => seed.dump.id === data.entity.dump.widgetId,
+                    (seed) => seed.dump.id === data.entity.dump.footerBlockId,
                   );
 
                 return relationEntites?.[0].new.id;
@@ -54,7 +54,7 @@ export class Configuration extends ParentConfiguration {
                       seed.module === "sps-website-builder",
                   )
                   ?.seeds?.filter(
-                    (seed) => seed.dump.id === data.entity.dump.widgetId,
+                    (seed) => seed.dump.id === data.entity.dump.logotypeId,
                   );
 
                 return relationEntites?.[0].new.id;

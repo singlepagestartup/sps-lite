@@ -309,7 +309,7 @@ export class Database<T extends PgTableWithColumns<any>>
     for (const dumpEntity of dumpEntities) {
       const transformers = this.configuration.repository.seed.transformers;
 
-      let transformedEntity: T["$inferInsert"] = dumpEntity;
+      let transformedEntity: T["$inferInsert"] = { ...dumpEntity };
 
       if (transformers) {
         for (const transformer of transformers) {

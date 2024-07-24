@@ -3,6 +3,7 @@ import { Context, Env, Hono, Next } from "hono";
 import {
   DI,
   IDumpResult,
+  ISeedResult,
   type IDefaultApp,
   type IExceptionFilter,
 } from "@sps/shared-backend-api";
@@ -73,10 +74,22 @@ export class App implements IDefaultApp<Env> {
     return dumps;
   }
 
-  async seed() {
-    console.log("seed");
+  async seed(props?: { type?: "model" | "relation"; seeds: ISeedResult[] }) {
+    const seeds: ISeedResult[] = [];
 
-    return [];
+    if (props?.type === "model") {
+      const footerBlocksSeeds = await footerBlock.seed(props);
+      seeds.push(footerBlocksSeeds);
+
+      const logotypesSeeds = await logotype.seed(props);
+      seeds.push(logotypesSeeds);
+    } else if (props?.type === "relation") {
+      const footerBlocksToLogotypesSeeds =
+        await footerBlocksToLogotypes.seed(props);
+      seeds.push(footerBlocksToLogotypesSeeds);
+    }
+
+    return seeds;
   }
 
   useRoutes() {
