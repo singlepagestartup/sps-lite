@@ -4,6 +4,7 @@ import {
   Table,
   insertSchema,
   selectSchema,
+  dataDirectory,
 } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/repository/database";
 import { injectable } from "inversify";
 
@@ -19,7 +20,7 @@ export class Configuration extends ParentConfiguration {
         selectSchema,
         dump: {
           type: "json",
-          directory: `${__dirname}/data`,
+          directory: dataDirectory,
         },
         seed: {
           module: "sps-website-builder",
