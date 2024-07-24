@@ -11,14 +11,40 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      {/* <Layout
+      <Layout
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.layout.variant}
-        data={props.data.layout}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.layoutId,
+                },
+              ],
+            },
+          },
+        }}
       >
-        {props.children}
-      </Layout> */}
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <Layout
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              >
+                {props.children}
+              </Layout>
+            );
+          });
+        }}
+      </Layout>
     </div>
   );
 }

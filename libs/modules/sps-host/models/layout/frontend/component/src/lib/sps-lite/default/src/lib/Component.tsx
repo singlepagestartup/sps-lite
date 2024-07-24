@@ -11,37 +11,81 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      {/* {props.data.layoutsToWidgets.length
-        ? props.data.layoutsToWidgets
-            ?.filter((entity) => entity.variant === "default")
-            .map((entity, index) => {
-              return (
-                <LayoutsToWidgets
-                  key={index}
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="default"
-                  data={entity}
-                />
-              );
-            })
-        : null} */}
+      <LayoutsToWidgets
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "layoutId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+                {
+                  column: "variant",
+                  method: "eq",
+                  value: "default",
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <LayoutsToWidgets
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </LayoutsToWidgets>
       {props.children}
-      {/* {props.data.layoutsToWidgets.length
-        ? props.data.layoutsToWidgets
-            ?.filter((entity) => entity.variant === "primary")
-            .map((entity, index) => {
-              return (
-                <LayoutsToWidgets
-                  key={index}
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="default"
-                  data={entity}
-                />
-              );
-            })
-        : null} */}
+      <LayoutsToWidgets
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "layoutId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+                {
+                  column: "variant",
+                  method: "eq",
+                  value: "primary",
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <LayoutsToWidgets
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </LayoutsToWidgets>
     </div>
   );
 }

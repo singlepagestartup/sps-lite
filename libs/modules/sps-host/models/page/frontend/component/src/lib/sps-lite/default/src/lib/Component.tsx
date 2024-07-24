@@ -12,29 +12,71 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      {/* {props.data.pagesToLayouts?.map((entity, index) => {
-        return (
-          <PagesToLayouts
-            key={index}
-            isServer={props.isServer}
-            variant="default"
-            hostUrl={props.hostUrl}
-            data={entity}
-          >
-            {props.data.pagesToWidgets?.map((entity, index) => {
-              return (
+      <PagesToLayouts
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "pageId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <PagesToLayouts
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              >
                 <PagesToWidgets
-                  key={index}
                   isServer={props.isServer}
                   hostUrl={props.hostUrl}
-                  variant="default"
-                  data={entity}
-                />
-              );
-            })}
-          </PagesToLayouts>
-        );
-      })} */}
+                  variant="find"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "pageId",
+                            method: "eq",
+                            value: props.data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                >
+                  {({ data }) => {
+                    return data?.map((entity, index) => {
+                      return (
+                        <PagesToWidgets
+                          key={index}
+                          isServer={props.isServer}
+                          hostUrl={props.hostUrl}
+                          variant={entity.variant as any}
+                          data={entity}
+                        />
+                      );
+                    });
+                  }}
+                </PagesToWidgets>
+              </PagesToLayouts>
+            );
+          });
+        }}
+      </PagesToLayouts>
     </div>
   );
 }

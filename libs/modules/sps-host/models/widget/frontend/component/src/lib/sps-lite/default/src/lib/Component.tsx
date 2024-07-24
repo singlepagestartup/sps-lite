@@ -11,17 +11,38 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {/* {props.data.widgetsToExternalModules.map((entity, index) => {
-        return (
-          <WidgetsToExternalModules
-            key={index}
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant={entity.variant}
-            data={entity}
-          />
-        );
-      })} */}
+      <WidgetsToExternalModules
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "widgetId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <WidgetsToExternalModules
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant={entity.variant as any}
+                data={entity}
+              />
+            );
+          });
+        }}
+      </WidgetsToExternalModules>
     </div>
   );
 }
