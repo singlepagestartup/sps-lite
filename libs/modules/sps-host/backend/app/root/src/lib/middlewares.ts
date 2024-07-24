@@ -1,8 +1,6 @@
 import { Hono } from "hono";
 import { BlankSchema } from "hono/types";
 
-export function middlewaresChain(
-  app: Hono<MiddlewaresGeneric, BlankSchema, "/">,
-) {
+export function middlewaresChain(app: Hono) {
   return app;
 }

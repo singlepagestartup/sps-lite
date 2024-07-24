@@ -1,6 +1,6 @@
-import { api as spsHostPageApi } from "@sps/sps-host/models/page/frontend/api/server";
+import { api as spsHostPageApi } from "@sps/sps-host/models/page/sdk/server";
 import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
-import { api as metadataApi } from "@sps/sps-host/models/metadata/frontend/api/server";
+import { api as metadataApi } from "@sps/sps-host/models/metadata/sdk/server";
 
 export const revalidate = 3600;
 export const dynamicParams = true;

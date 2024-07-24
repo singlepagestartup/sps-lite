@@ -32,7 +32,7 @@ middlewaresChain(app);
 //   }),
 // );
 
-app.route("/sps-host", spsHostApp as any);
+app.mount("/sps-host", spsHostApp.hono.fetch);
 app.route("/sps-broadcast", spsBroadcast as any);
 app.mount("/sps-website-builder", spsWebsiteBuilderApp.hono.fetch);
 app.route("/sps-file-storage", spsFileStorageApp as any);

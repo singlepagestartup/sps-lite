@@ -1,21 +1,9 @@
-import dynamic from "next/dynamic";
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
-const Widget = dynamic(() =>
-  import("@sps/sps-host/models/widget/frontend/component/root").then(
-    (mod) => mod.Component,
-  ),
-);
-const Page = dynamic(() =>
-  import("@sps/sps-host/models/page/frontend/component/root").then(
-    (mod) => mod.Component,
-  ),
-);
-const Layout = dynamic(() =>
-  import("@sps/sps-host/models/layout/frontend/component/root").then(
-    (mod) => mod.Component,
-  ),
-);
+import { Component as Widget } from "@sps/sps-host/models/widget/frontend/component";
+import { Component as Page } from "@sps/sps-host/models/page/frontend/component";
+import { Component as Layout } from "@sps/sps-host/models/layout/frontend/component";
+import { Component as Metadata } from "@sps/sps-host/models/metadata/frontend/component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -30,6 +18,10 @@ export function Component(props: IComponentProps) {
     {
       name: "layout",
       Comp: Layout,
+    },
+    {
+      name: "metadata",
+      Comp: Metadata,
     },
   ];
 

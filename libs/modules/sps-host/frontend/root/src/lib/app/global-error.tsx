@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Component as Page } from "@sps/sps-host/models/page/frontend/component/root";
-import { api } from "@sps/sps-host/models/page/frontend/api/server";
+import { Component as Page } from "@sps/sps-host/models/page/frontend/component";
+import { api } from "@sps/sps-host/models/page/sdk/server";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font";
-import { IModel } from "@sps/sps-host/models/page/contracts/extended";
+import { IModel } from "@sps/sps-host/models/page/sdk/model";
 
 export function Component({
   error,

@@ -1,5 +1,5 @@
 import { IComponentProps } from "./interface";
-import { Component as Page } from "@sps/sps-host/models/page/frontend/component/root";
+import { Component as Page } from "@sps/sps-host/models/page/frontend/component";
 
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -21,7 +21,7 @@ export function App(props: IComponentProps) {
             <Page
               isServer={props.isServer}
               hostUrl={props.hostUrl}
-              variant={page?.variant}
+              variant={page?.variant as any}
               data={page}
             />
           );
