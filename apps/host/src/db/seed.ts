@@ -6,6 +6,7 @@
 // import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { ISeedResult } from "@sps/shared-backend-api";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/root";
+import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
 
 import { exit } from "process";
 
@@ -25,6 +26,19 @@ import { exit } from "process";
     seeds.push(spsWebsiteBuilderModelsSeeds);
   }
 
+  const spsRbacModelsSeeds = await spsRbacApp.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(spsRbacModelsSeeds)) {
+    spsRbacModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsRbacModelsSeeds);
+  }
+
   const spsWebsiteBuilderRelationsSeeds = await spsWebsiteBuilderApp.seed({
     type: "relation",
     seeds,
@@ -36,6 +50,19 @@ import { exit } from "process";
     });
   } else {
     seeds.push(spsWebsiteBuilderRelationsSeeds);
+  }
+
+  const spsRbacRelationsSeeds = await spsRbacApp.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(spsRbacRelationsSeeds)) {
+    spsRbacRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsRbacRelationsSeeds);
   }
 
   // console.log(`🚀 ~ seeds:`, seeds);
