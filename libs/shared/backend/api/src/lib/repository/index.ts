@@ -1,2 +1,5 @@
 export { type IRepository } from "./interface";
-export { Database as DatabaseRepository } from "./database";
+export {
+  Database as DatabaseRepository,
+  Migrate as DatabaseRepositoryMigrate,
+} from "./database";

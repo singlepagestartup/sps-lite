@@ -15,6 +15,7 @@ import {
 } from "../../configuration";
 import { ZodDate, ZodError, ZodObject } from "zod";
 import fs from "fs/promises";
+export { Migrate } from "./migrate";
 
 @injectable()
 export class Database<T extends PgTableWithColumns<any>>

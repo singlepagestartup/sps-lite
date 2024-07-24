@@ -1,12 +1,13 @@
+import "reflect-metadata";
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config as DrizzleConfig, defineConfig } from "drizzle-kit";
 import path from "path";
 import { cwd } from "process";
 
-export class Config {
+export class Migrate {
   out: string;
   schemaPaths: string[];
-  config: DrizzleConfig;
+  drizzleConfig: DrizzleConfig;
 
   constructor() {
     const modulesSchemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
@@ -16,7 +17,7 @@ export class Config {
   }
 
   init() {
-    const config = defineConfig({
+    this.drizzleConfig = defineConfig({
       schema: this.schemaPaths,
       out: this.out,
       dialect: "postgresql",
@@ -24,22 +25,11 @@ export class Config {
       verbose: true,
       strict: true,
     }) satisfies DrizzleConfig;
-
-    this.config = config;
   }
 
-  getConfig() {
-    return this.config;
+  config() {
+    this.init();
+
+    return this.drizzleConfig;
   }
 }
-
-function bootstrap() {
-  const config = new Config();
-  config.init();
-  const exportedConfig = config.getConfig();
-
-  return exportedConfig;
-}
-
-const config = bootstrap();
-export default config;

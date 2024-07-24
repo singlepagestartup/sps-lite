@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { DI } from "../../../../di/constants";
 import { type IRepository } from "../../../../repository";
