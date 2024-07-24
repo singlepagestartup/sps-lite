@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI } from "@sps/shared-backend-api";
-import { Table } from "@sps/sps-rbac/models/session/backend/schema/table";
+import { Table } from "@sps/sps-rbac/models/session/backend/repository/database";
 import { Repository } from "./repository";
 
 @injectable()

@@ -4,7 +4,8 @@ import {
   Table,
   insertSchema,
   selectSchema,
-} from "@sps/sps-rbac/models/identity/backend/schema/table";
+  dataDirectory,
+} from "@sps/sps-rbac/models/identity/backend/repository/database";
 import { injectable } from "inversify";
 
 @injectable()
@@ -19,7 +20,7 @@ export class Configuration extends ParentConfiguration {
         selectSchema,
         dump: {
           type: "json",
-          directory: `${__dirname}/data`,
+          directory: dataDirectory,
         },
         seed: {
           module: "sps-rbac",

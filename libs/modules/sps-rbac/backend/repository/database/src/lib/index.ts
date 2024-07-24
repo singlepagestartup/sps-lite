@@ -1,0 +1,15 @@
+export { Table as SPSRRolesToPermissions } from "@sps/sps-rbac/relations/roles-to-permissions/backend/repository/database";
+export { Table as SPSRPermission } from "@sps/sps-rbac/models/permission/backend/repository/database";
+export { Table as SPSRSubjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/repository/database";
+export { Table as SPSRSubjectsToIdentities } from "@sps/sps-rbac/relations/subjects-to-identities/backend/repository/database";
+export { Table as SPSRSubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/backend/repository/database";
+export { Table as SPSRSubject } from "@sps/sps-rbac/models/subject/backend/repository/database";
+export { Table as SPSRSessionsToAuthentications } from "@sps/sps-rbac/relations/sessions-to-authentications/backend/repository/database";
+export { Table as SPSRSession } from "@sps/sps-rbac/models/session/backend/repository/database";
+export { Table as SPSRWidgetsToAuthenticationBlocks } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/backend/repository/database";
+export { Table as SPSRWidget } from "@sps/sps-rbac/models/widget/backend/repository/database";
+export { Table as SPSRAuthenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/repository/database";
+export { Table as SPSRIdentity } from "@sps/sps-rbac/models/identity/backend/repository/database";
+export { Table as SPSRAuthentication } from "@sps/sps-rbac/models/authentication/backend/repository/database";
+export { Table as SPSRRole } from "@sps/sps-rbac/models/role/backend/repository/database";
+export {};

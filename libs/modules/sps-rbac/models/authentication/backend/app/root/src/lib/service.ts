@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI, type IRepository } from "@sps/shared-backend-api";
-import { Table } from "@sps/sps-rbac/models/authentication/backend/schema/table";
+import { Table } from "@sps/sps-rbac/models/authentication/backend/repository/database";
 import { HTTPException } from "hono/http-exception";
 import { api as identityApi } from "@sps/sps-rbac/models/identity/sdk/server";
 import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";

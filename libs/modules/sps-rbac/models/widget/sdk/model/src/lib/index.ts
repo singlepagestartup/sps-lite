@@ -3,7 +3,7 @@ export {
   type ISelectSchema as IModel,
   insertSchema,
   selectSchema,
-} from "@sps/sps-rbac/models/widget/backend/schema/table";
+} from "@sps/sps-rbac/models/widget/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-rbac/widgets";

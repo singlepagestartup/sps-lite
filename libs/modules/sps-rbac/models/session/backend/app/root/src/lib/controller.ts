@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { DI, type IService, RESTController } from "@sps/shared-backend-api";
-import { Table } from "@sps/sps-rbac/models/session/backend/schema/table";
+import { Table } from "@sps/sps-rbac/models/session/backend/repository/database";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 

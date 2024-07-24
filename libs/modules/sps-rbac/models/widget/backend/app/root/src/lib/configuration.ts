@@ -4,8 +4,8 @@ import {
   Table,
   insertSchema,
   selectSchema,
-} from "@sps/sps-rbac/models/widget/backend/schema/table";
-import { PgTableWithColumns } from "drizzle-orm/pg-core";
+  dataDirectory,
+} from "@sps/sps-rbac/models/widget/backend/repository/database";
 import { injectable } from "inversify";
 
 @injectable()
@@ -20,7 +20,7 @@ export class Configuration extends ParentConfiguration {
         selectSchema,
         dump: {
           type: "json",
-          directory: `${__dirname}/data`,
+          directory: dataDirectory,
         },
         seed: {
           module: "sps-rbac",

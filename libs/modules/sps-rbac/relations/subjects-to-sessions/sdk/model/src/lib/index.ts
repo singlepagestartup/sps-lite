@@ -3,7 +3,7 @@ export {
   type IInsertSchema,
   insertSchema,
   selectSchema,
-} from "@sps/sps-rbac/relations/subjects-to-sessions/backend/schema/root";
+} from "@sps/sps-rbac/relations/subjects-to-sessions/backend/repository/database";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-rbac/subjects-to-sessions";
