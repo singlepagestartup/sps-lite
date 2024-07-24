@@ -38,6 +38,8 @@ import { exit } from "process";
     seeds.push(spsWebsiteBuilderRelationsSeeds);
   }
 
+  // console.log(`🚀 ~ seeds:`, seeds);
+
   // const seedingWidget = await footerBlockApp.seed({ seeds });
 
   // seeds.push(seedingWidget);

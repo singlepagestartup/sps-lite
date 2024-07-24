@@ -4,9 +4,6 @@
 // import { Dumper as StartupDumper } from "@sps/startup/backend/app/root";
 // import { Dumper as SpsFileStorageDumper } from "@sps/sps-file-storage/backend/app/root";
 // import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
-import { app as footerBlockApp } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
-import { app as logotypeApp } from "@sps/sps-website-builder/models/logotype/backend/app/root";
-import { app as footerBlocksToLogotypesApp } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/root";
 
 import { exit } from "process";
@@ -33,14 +30,19 @@ import { exit } from "process";
 
   // const dumpFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.dump();
   // console.log(`🚀 ~ dumpFooterBlocksToLogotypes:`, dumpFooterBlocksToLogotypes);
-  await spsWebsiteBuilderApp.dump({
+  const models = await spsWebsiteBuilderApp.dump({
     type: "model",
     dumps: [],
   });
-  await spsWebsiteBuilderApp.dump({
+
+  // console.log(`🚀 ~ models:`, models);
+
+  const relations = await spsWebsiteBuilderApp.dump({
     type: "relation",
     dumps: [],
   });
+
+  // console.log(`🚀 ~ relations:`, relations);
 })()
   .then(() => {
     exit(0);
