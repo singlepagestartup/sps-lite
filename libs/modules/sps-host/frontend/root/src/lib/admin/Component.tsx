@@ -1,9 +1,9 @@
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
-import { Component as Widget } from "@sps/sps-host/models/widget/frontend/component";
-import { Component as Page } from "@sps/sps-host/models/page/frontend/component";
-import { Component as Layout } from "@sps/sps-host/models/layout/frontend/component";
-import { Component as Metadata } from "@sps/sps-host/models/metadata/frontend/component";
+import { Component as Widget } from "./widget/Component";
+import { Component as Page } from "./page/Component";
+import { Component as Layout } from "./layout/Component";
+import { Component as Metadata } from "./metadata/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
