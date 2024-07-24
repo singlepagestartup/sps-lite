@@ -1,19 +1,21 @@
 import "reflect-metadata";
-import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
-import * as drizzleSchema from "./schema";
-import { postgres } from "@sps/shared-backend-database-config";
-import { injectable } from "inversify";
+import { MigrateConfig } from "@sps/shared-backend-database-config";
+import path from "path";
+import { cwd } from "process";
 
-export const db = drizzle(postgres, { schema: drizzleSchema });
-export const schema = drizzleSchema;
+const schemaPaths = [path.resolve(cwd(), __dirname, "./schema.ts")];
+const migrationsFolder = path.resolve(cwd(), __dirname, "./migrations");
+const migrationsTable = "sps_rbac";
 
-@injectable()
-export class Database {
-  db: PostgresJsDatabase<any>;
-  schema: typeof drizzleSchema;
+export const migrate = new MigrateConfig({
+  schemaPaths,
+  migrationsFolder,
+  migrationsTable,
+  schema: require("./schema"),
+});
 
-  constructor() {
-    this.db = db;
-    this.schema = schema;
-  }
-}
+const config = migrate.config();
+
+export const schema = require("./schema");
+
+export default config;

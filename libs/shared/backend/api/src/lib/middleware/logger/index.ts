@@ -1,5 +1,6 @@
 import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
+import { logger } from "hono/logger";
 
 export type IMiddlewareGeneric = {
   Variables: {
@@ -9,11 +10,10 @@ export type IMiddlewareGeneric = {
 
 export class Middleware {
   constructor() {}
+
   init(): MiddlewareHandler<any, any, {}> {
     return createMiddleware(async (c, next) => {
-      c.set("log", (...messages: string[]) => {
-        console.log("Logger middleware", ...messages);
-      });
+      logger();
 
       return next();
     });

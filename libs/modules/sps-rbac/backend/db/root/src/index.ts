@@ -1,1 +1,1 @@
-export { db, Database, schema } from "./lib";
+export * from "./lib";
