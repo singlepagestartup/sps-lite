@@ -1,9 +1,0 @@
-{
-  "id": "479fcba3-1cd3-4dd4-816d-abbc7da13d3a",
-  "createdAt": "2024-07-22T19:35:39.006Z",
-  "updatedAt": "2024-07-22T19:35:39.006Z",
-  "variant": "default",
-  "type": "http",
-  "method": "get",
-  "path": "/api/sps-rbac/roles"
-}

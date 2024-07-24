@@ -5,6 +5,7 @@
 // import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
 // import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { ISeedResult } from "@sps/shared-backend-api";
+import { app as spsHostApp } from "@sps/sps-host/backend/app/root";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/root";
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
 
@@ -12,6 +13,19 @@ import { exit } from "process";
 
 (async () => {
   const seeds: ISeedResult[] = [];
+
+  const spsHostModelsSeeds = await spsHostApp.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(spsHostModelsSeeds)) {
+    spsHostModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsHostModelsSeeds);
+  }
 
   const spsWebsiteBuilderModelsSeeds = await spsWebsiteBuilderApp.seed({
     type: "model",
@@ -37,6 +51,19 @@ import { exit } from "process";
     });
   } else {
     seeds.push(spsRbacModelsSeeds);
+  }
+
+  const spsHostRelationsSeeds = await spsHostApp.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(spsHostRelationsSeeds)) {
+    spsHostRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsHostRelationsSeeds);
   }
 
   const spsWebsiteBuilderRelationsSeeds = await spsWebsiteBuilderApp.seed({

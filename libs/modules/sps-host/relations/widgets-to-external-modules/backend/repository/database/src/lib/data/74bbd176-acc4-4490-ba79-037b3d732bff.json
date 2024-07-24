@@ -1,0 +1,9 @@
+{
+  "id": "74bbd176-acc4-4490-ba79-037b3d732bff",
+  "variant": "default",
+  "orderIndex": 0,
+  "className": "",
+  "widgetId": "5baca306-fa26-44cd-88c3-3998c541408c",
+  "externalModule": "sps-website-builder",
+  "externalModuleProps": "{\"model\":\"widget\",\"variant\":\"default\",\"title\":\"welcome-hero-section-block\"}"
+}

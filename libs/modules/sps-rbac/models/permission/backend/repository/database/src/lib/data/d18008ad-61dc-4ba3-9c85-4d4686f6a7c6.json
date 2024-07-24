@@ -1,9 +1,0 @@
-{
-  "id": "d18008ad-61dc-4ba3-9c85-4d4686f6a7c6",
-  "createdAt": "2024-07-22T20:08:56.950Z",
-  "updatedAt": "2024-07-22T20:08:56.950Z",
-  "variant": "default",
-  "type": "http",
-  "method": "get",
-  "path": "/api/sps-rbac/sessions"
-}
