@@ -11,17 +11,13 @@ import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/fro
 import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast/frontend/component";
 import { AdminComponent as SpsCrmAdminComponent } from "@sps/sps-crm/frontend/component";
 import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage/frontend/component";
+import { AdminComponent as SpsNotificationAdminComponent } from "@sps/sps-notification/frontend/component";
 
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsRbacAdminComponent = dynamic(() =>
   import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsNotificationAdminComponent = dynamic(() =>
-  import("@sps/sps-notification/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
 );
 const SpsThirdPartiesAdminComponent = dynamic(() =>
   import("@sps/sps-third-parties/frontend/root").then(

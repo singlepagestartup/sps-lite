@@ -11,7 +11,6 @@ export const schema = drizzleSchema;
 
 const modulesSchemaPaths = [
   path.resolve(__dirname, "./schema.ts"),
-  path.resolve(__dirname, "./sps-notification.ts"),
   path.resolve(__dirname, "./sps-third-parties.ts"),
   path.resolve(__dirname, "./startup.ts"),
 ];

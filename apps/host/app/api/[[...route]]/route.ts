@@ -11,7 +11,7 @@ import { app as spsBillingApp } from "@sps/sps-billing/backend/app/api";
 import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/api";
 import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
-import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
+import { app as spsNotification } from "@sps/sps-notification/backend/app/api";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
@@ -40,7 +40,7 @@ app.mount("/sps-rbac", spsRbacApp.hono.fetch);
 app.mount("/sps-billing", spsBillingApp.hono.fetch);
 app.route("/sps-third-parties", spsThirdParties as any);
 app.mount("/sps-crm", spsCrm.hono.fetch);
-app.route("/sps-notification", spsNotification as any);
+app.mount("/sps-notification", spsNotification.hono.fetch);
 app.route("/startup", startupApp as any);
 
 export async function POST(request: NextRequest, params: any) {
