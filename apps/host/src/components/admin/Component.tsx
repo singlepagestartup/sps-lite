@@ -4,21 +4,13 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
-const IsAuthenticatatedWrapper = dynamic(() =>
-  import("@sps/sps-rbac/models/authentication/frontend/component").then(
-    (mod) => mod.Component,
-  ),
-);
-const SpsHost = dynamic(() =>
-  import("@sps/sps-host/frontend/component").then((mod) => mod.AdminComponent),
-);
+import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { AdminComponent as SpsHostAdminComponent } from "@sps/sps-host/frontend/component";
+import { AdminComponent as SpsWebsiteBuilderAdminComponent } from "@sps/sps-website-builder/frontend/component";
+import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/frontend/component";
+
 const SpsBroadcast = dynamic(() =>
   import("@sps/sps-broadcast/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsWebsiteAdminComponent = dynamic(() =>
-  import("@sps/sps-website-builder/frontend/component").then(
-    (mod) => mod.AdminComponent,
-  ),
 );
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
@@ -27,9 +19,6 @@ const SpsFileStorageAdminComponent = dynamic(() =>
   import("@sps/sps-file-storage/frontend/root").then(
     (mod) => mod.AdminComponent,
   ),
-);
-const SpsBillingAdminComponent = dynamic(() =>
-  import("@sps/sps-billing/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsRbacAdminComponent = dynamic(() =>
   import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
@@ -59,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <IsAuthenticatatedWrapper
+    <SpsRbacAuthentication
       variant="is-authenticatated-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
@@ -141,7 +130,7 @@ export function Component(props: IComponentPropsExtended) {
             </div>
             <div className="bg-white rounded-b-lg">
               {widget === "sps-host" ? (
-                <SpsHost
+                <SpsHostAdminComponent
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -157,7 +146,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-website-builder" ? (
-                <SpsWebsiteAdminComponent
+                <SpsWebsiteBuilderAdminComponent
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -224,7 +213,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </section>
-    </IsAuthenticatatedWrapper>
+    </SpsRbacAuthentication>
   );
 }
 

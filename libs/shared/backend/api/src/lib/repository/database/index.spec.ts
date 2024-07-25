@@ -11,7 +11,6 @@ import fs from "fs/promises";
 
 const baseConfiguration: IConfiguration["repository"] = {
   type: "database",
-  schema: {} as any,
   Table: {} as any,
   selectSchema: {} as any,
   insertSchema: {} as any,

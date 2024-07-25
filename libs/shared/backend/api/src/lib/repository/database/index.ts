@@ -21,7 +21,6 @@ export class Database<T extends PgTableWithColumns<any>>
   implements IRepository
 {
   db: PostgresJsDatabase<any>;
-  schema: any;
   Table: T;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;

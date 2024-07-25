@@ -44,7 +44,6 @@ export interface IFilter {
 
 export interface IRepositoryConfiguration {
   type: "database";
-  // config: DrizzleConfig;
   Table: PgTableWithColumns<any>;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;

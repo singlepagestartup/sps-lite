@@ -38,7 +38,7 @@
             "command": "nx run host:db:sps-notification-generate"
           },
           {
-            "command": "nx run host:db:sps-billing-generate"
+            "command": "npx nx run @sps/sps-billing:repository-generate"
           },
           {
             "command": "nx run host:db:startup-generate"
@@ -66,33 +66,6 @@
       "options": {
         "parallel": false,
         "cwd": "libs/modules/sps-broadcast/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-billing-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-billing/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-billing-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-billing/backend/db/root",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -260,7 +233,7 @@
             "command": "nx run host:db:sps-crm-migrate"
           },
           {
-            "command": "nx run host:db:sps-billing-migrate"
+            "command": "npx nx run @sps/sps-billing:repository-migrate"
           },
           {
             "command": "nx run host:db:sps-third-parties-migrate"
