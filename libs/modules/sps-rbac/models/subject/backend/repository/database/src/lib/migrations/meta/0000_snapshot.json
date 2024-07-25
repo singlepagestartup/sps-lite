@@ -1,11 +1,11 @@
 {
-  "id": "101eaab1-f991-4bcd-ad4c-46ab084af42d",
+  "id": "77a43fbd-455f-4231-a941-2be8c7d88852",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_subject": {
-      "name": "sps_r_subject",
+    "public.sps_rc_subject": {
+      "name": "sps_rc_subject",
       "schema": "",
       "columns": {
         "id": {

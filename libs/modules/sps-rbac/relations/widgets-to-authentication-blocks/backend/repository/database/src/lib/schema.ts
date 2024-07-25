@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { Table as Widget } from "@sps/sps-rbac/models/widget/backend/repository/database";
 import { Table as AuthenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/repository/database";
 
-export const moduleName = "sps_r";
+export const moduleName = "sps_rc";
 export const table = "ws_to_an_bs_7t6";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);

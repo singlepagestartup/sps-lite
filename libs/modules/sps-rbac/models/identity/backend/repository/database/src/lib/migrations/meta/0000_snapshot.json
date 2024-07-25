@@ -1,11 +1,11 @@
 {
-  "id": "6b6e2d14-9bb1-4ff2-b216-9bd6fa15cb0a",
+  "id": "29e6cd02-d559-4486-94e1-4cd6e89d953a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_identity": {
-      "name": "sps_r_identity",
+    "public.sps_rc_identity": {
+      "name": "sps_rc_identity",
       "schema": "",
       "columns": {
         "password": {

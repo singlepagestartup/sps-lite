@@ -1,11 +1,11 @@
 {
-  "id": "e9b2ee99-ba27-4027-95b2-8adea83eb04c",
+  "id": "c6db06ac-ba3e-43eb-8219-60aea3d17da1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_an_bk_iht": {
-      "name": "sps_r_an_bk_iht",
+    "public.sps_rc_an_bk_iht": {
+      "name": "sps_rc_an_bk_iht",
       "schema": "",
       "columns": {
         "class_name": {

@@ -1,11 +1,11 @@
 {
-  "id": "a9b7b90f-54cb-4a5c-8c76-9b6a8500da3a",
+  "id": "c750377d-3da0-4861-90f0-d2b6570d6720",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_role": {
-      "name": "sps_r_role",
+    "public.sps_rc_role": {
+      "name": "sps_rc_role",
       "schema": "",
       "columns": {
         "title": {
@@ -47,8 +47,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "sps_r_role_title_unique": {
-          "name": "sps_r_role_title_unique",
+        "sps_rc_role_title_unique": {
+          "name": "sps_rc_role_title_unique",
           "nullsNotDistinct": false,
           "columns": ["title"]
         }

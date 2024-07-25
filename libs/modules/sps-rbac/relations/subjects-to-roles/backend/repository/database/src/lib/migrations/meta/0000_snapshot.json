@@ -1,11 +1,11 @@
 {
-  "id": "afc7631f-8181-4af6-ba72-5bc8942fcd91",
+  "id": "97fc78ae-1dc6-4bfe-89ec-e9f5153c7867",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_ss_to_rs_3nw": {
-      "name": "sps_r_ss_to_rs_3nw",
+    "public.sps_rc_ss_to_rs_3nw": {
+      "name": "sps_rc_ss_to_rs_3nw",
       "schema": "",
       "columns": {
         "id": {
@@ -50,19 +50,19 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "sps_r_ss_to_rs_3nw_st_id_sps_r_subject_id_fk": {
-          "name": "sps_r_ss_to_rs_3nw_st_id_sps_r_subject_id_fk",
-          "tableFrom": "sps_r_ss_to_rs_3nw",
-          "tableTo": "sps_r_subject",
+        "sps_rc_ss_to_rs_3nw_st_id_sps_rc_subject_id_fk": {
+          "name": "sps_rc_ss_to_rs_3nw_st_id_sps_rc_subject_id_fk",
+          "tableFrom": "sps_rc_ss_to_rs_3nw",
+          "tableTo": "sps_rc_subject",
           "columnsFrom": ["st_id"],
           "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "sps_r_ss_to_rs_3nw_re_id_sps_r_role_id_fk": {
-          "name": "sps_r_ss_to_rs_3nw_re_id_sps_r_role_id_fk",
-          "tableFrom": "sps_r_ss_to_rs_3nw",
-          "tableTo": "sps_r_role",
+        "sps_rc_ss_to_rs_3nw_re_id_sps_rc_role_id_fk": {
+          "name": "sps_rc_ss_to_rs_3nw_re_id_sps_rc_role_id_fk",
+          "tableFrom": "sps_rc_ss_to_rs_3nw",
+          "tableTo": "sps_rc_role",
           "columnsFrom": ["re_id"],
           "columnsTo": ["id"],
           "onDelete": "cascade",

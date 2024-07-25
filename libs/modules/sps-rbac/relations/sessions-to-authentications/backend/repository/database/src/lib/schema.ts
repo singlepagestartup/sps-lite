@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { Table as Session } from "@sps/sps-rbac/models/session/backend/repository/database";
 import { Table as Authentication } from "@sps/sps-rbac/models/authentication/backend/repository/database";
 
-export const moduleName = "sps_r";
+export const moduleName = "sps_rc";
 export const table = "ss_to_as_2il";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);

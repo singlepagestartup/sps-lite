@@ -8,10 +8,7 @@ import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authent
 import { AdminComponent as SpsHostAdminComponent } from "@sps/sps-host/frontend/component";
 import { AdminComponent as SpsWebsiteBuilderAdminComponent } from "@sps/sps-website-builder/frontend/component";
 import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/frontend/component";
-
-const SpsBroadcast = dynamic(() =>
-  import("@sps/sps-broadcast/frontend/root").then((mod) => mod.AdminComponent),
-);
+import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast/frontend/component";
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
 );
@@ -138,7 +135,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-broradcast" ? (
-                <SpsBroadcast
+                <SpsBroadcastAdminComponent
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}

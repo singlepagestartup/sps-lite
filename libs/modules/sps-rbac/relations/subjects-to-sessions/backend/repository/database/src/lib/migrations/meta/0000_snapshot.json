@@ -1,11 +1,11 @@
 {
-  "id": "eddb0edb-b05f-44b3-beae-4f5ef02478f9",
+  "id": "d41bc62f-e61a-43b0-b42a-e3555931ccc6",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_ss_to_ss_1eh": {
-      "name": "sps_r_ss_to_ss_1eh",
+    "public.sps_rc_ss_to_ss_1eh": {
+      "name": "sps_rc_ss_to_ss_1eh",
       "schema": "",
       "columns": {
         "id": {
@@ -50,19 +50,19 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "sps_r_ss_to_ss_1eh_st_id_sps_r_subject_id_fk": {
-          "name": "sps_r_ss_to_ss_1eh_st_id_sps_r_subject_id_fk",
-          "tableFrom": "sps_r_ss_to_ss_1eh",
-          "tableTo": "sps_r_subject",
+        "sps_rc_ss_to_ss_1eh_st_id_sps_rc_subject_id_fk": {
+          "name": "sps_rc_ss_to_ss_1eh_st_id_sps_rc_subject_id_fk",
+          "tableFrom": "sps_rc_ss_to_ss_1eh",
+          "tableTo": "sps_rc_subject",
           "columnsFrom": ["st_id"],
           "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "sps_r_ss_to_ss_1eh_sn_id_sps_r_session_id_fk": {
-          "name": "sps_r_ss_to_ss_1eh_sn_id_sps_r_session_id_fk",
-          "tableFrom": "sps_r_ss_to_ss_1eh",
-          "tableTo": "sps_r_session",
+        "sps_rc_ss_to_ss_1eh_sn_id_sps_rc_session_id_fk": {
+          "name": "sps_rc_ss_to_ss_1eh_sn_id_sps_rc_session_id_fk",
+          "tableFrom": "sps_rc_ss_to_ss_1eh",
+          "tableTo": "sps_rc_session",
           "columnsFrom": ["sn_id"],
           "columnsTo": ["id"],
           "onDelete": "cascade",

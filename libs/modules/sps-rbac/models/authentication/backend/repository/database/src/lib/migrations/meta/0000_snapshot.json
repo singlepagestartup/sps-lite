@@ -1,11 +1,11 @@
 {
-  "id": "083282c6-1202-4023-9c2d-d298314e29b6",
+  "id": "78a94311-c8dd-4059-8b31-e09ab791e7d0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_r_an_hgl": {
-      "name": "sps_r_an_hgl",
+    "public.sps_rc_an_hgl": {
+      "name": "sps_rc_an_hgl",
       "schema": "",
       "columns": {
         "id": {

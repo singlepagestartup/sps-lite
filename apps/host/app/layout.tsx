@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import { Toaster } from "@sps/shared-ui-shadcn";
 import { Component as Admin } from "../src/components/admin";
 import { Component as SpsLiteRbacSetSessionWrapper } from "@sps/sps-rbac/models/authentication/frontend/component";
-import { App as SpsBroadcast } from "@sps/sps-broadcast/frontend/root";
+import { App as SpsBroadcast } from "@sps/sps-broadcast/frontend/component";
 import Loading from "./loading";
 
 export default async function RootLayout({
