@@ -12,17 +12,11 @@ import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast
 import { AdminComponent as SpsCrmAdminComponent } from "@sps/sps-crm/frontend/component";
 import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage/frontend/component";
 import { AdminComponent as SpsNotificationAdminComponent } from "@sps/sps-notification/frontend/component";
+import { AdminComponent as SpsThirdPartiesAdminComponent } from "@sps/sps-third-parties/frontend/component";
+import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac/frontend/component";
 
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsRbacAdminComponent = dynamic(() =>
-  import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsThirdPartiesAdminComponent = dynamic(() =>
-  import("@sps/sps-third-parties/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
 );
 
 export function Component(props: IComponentPropsExtended) {

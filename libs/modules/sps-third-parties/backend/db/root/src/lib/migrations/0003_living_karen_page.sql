@@ -1,1 +1,0 @@
-ALTER TABLE "sps_t_p_telegram" ADD COLUMN "username" text NOT NULL;
