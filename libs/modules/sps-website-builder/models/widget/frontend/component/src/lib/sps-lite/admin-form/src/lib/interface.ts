@@ -14,12 +14,6 @@ export interface IComponentProps extends ISpsComponentBase {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
-  footersToWidgets?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
-  navbarsToWidgets?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
   widgetsToFeaturesSectionBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;

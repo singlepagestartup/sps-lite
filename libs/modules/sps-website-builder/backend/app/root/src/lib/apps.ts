@@ -3,14 +3,12 @@ import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-arr
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/root";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/root";
 import { app as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/app/root";
-import { app as footer } from "@sps/sps-website-builder/models/footer/backend/app/root";
 import { app as logotype } from "@sps/sps-website-builder/models/logotype/backend/app/root";
 import { app as slide } from "@sps/sps-website-builder/models/slide/backend/app/root";
 import { app as slider } from "@sps/sps-website-builder/models/slider/backend/app/root";
 import { app as sliderBlock } from "@sps/sps-website-builder/models/slider-block/backend/app/root";
 import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/app/root";
 import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/root";
-import { app as navbar } from "@sps/sps-website-builder/models/navbar/backend/app/root";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/root";
 import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/root";
 import { app as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/root";
@@ -18,13 +16,11 @@ import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/app/root";
 import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/root";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/root";
-import { app as footersFoWidgets } from "@sps/sps-website-builder/relations/footers-to-widgets/backend/app/root";
 import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/app/root";
 import { app as heroSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as logotypesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/app/root";
 import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/root";
 import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/root";
-import { app as navbarsToWidgets } from "@sps/sps-website-builder/relations/navbars-to-widgets/backend/app/root";
 import { app as sliderBlocksToSliders } from "@sps/sps-website-builder/relations/slider-blocks-to-sliders/backend/app/root";
 import { app as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/app/root";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/root";
@@ -86,11 +82,6 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
-      route: "/footers",
-      app: footer,
-    });
-    this.apps.push({
-      type: "model",
       route: "/slides",
       app: slide,
     });
@@ -108,11 +99,6 @@ export class Apps {
       type: "model",
       route: "/navbar-blocks",
       app: navbarBlock,
-    });
-    this.apps.push({
-      type: "model",
-      route: "/navbars",
-      app: navbar,
     });
     this.apps.push({
       type: "model",
@@ -146,11 +132,6 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/footers-to-widgets",
-      app: footersFoWidgets,
-    });
-    this.apps.push({
-      type: "relation",
       route: "/hero-section-blocks-to-buttons-arrays",
       app: heroSectionBlocksToButtonsArrays,
     });
@@ -173,11 +154,6 @@ export class Apps {
       type: "relation",
       route: "/navbar-blocks-to-logotypes",
       app: navbarBlocksToLogotypes,
-    });
-    this.apps.push({
-      type: "relation",
-      route: "/navbars-to-widgets",
-      app: navbarsToWidgets,
     });
     this.apps.push({
       type: "relation",

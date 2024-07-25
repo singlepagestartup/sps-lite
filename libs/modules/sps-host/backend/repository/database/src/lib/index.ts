@@ -1,5 +1,5 @@
 export { Table as SPSHLayoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/backend/repository/database";
-export { Table as SPSHWidgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-modules/backend/repository/database";
+export { Table as SPSHWidgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-widgets/backend/repository/database";
 export { Table as SPSHPagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/backend/repository/database";
 export { Table as SPSHPagesToMetadata } from "@sps/sps-host/relations/pages-to-metadata/backend/repository/database";
 export { Table as SPSHPagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/backend/repository/database";

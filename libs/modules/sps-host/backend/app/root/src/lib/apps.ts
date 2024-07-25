@@ -6,7 +6,7 @@ import { app as layoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widg
 import { app as pagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/backend/app/root";
 import { app as pagesToMetadata } from "@sps/sps-host/relations/pages-to-metadata/backend/app/root";
 import { app as pagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/backend/app/root";
-import { app as widgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-modules/backend/app/root";
+import { app as widgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-widgets/backend/app/root";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -60,7 +60,7 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/widgets-to-external-modules",
+      route: "/widgets-to-external-widgets",
       app: widgetsToExternalModules,
     });
   }

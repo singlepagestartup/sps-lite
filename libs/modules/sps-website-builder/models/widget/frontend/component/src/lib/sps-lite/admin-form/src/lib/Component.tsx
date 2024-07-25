@@ -74,22 +74,6 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.footersToWidgets
-          ? props.footersToWidgets({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.navbarsToWidgets
-          ? props.navbarsToWidgets({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
         {props.widgetsToFeaturesSectionBlocks
           ? props.widgetsToFeaturesSectionBlocks({
               data: props.data,

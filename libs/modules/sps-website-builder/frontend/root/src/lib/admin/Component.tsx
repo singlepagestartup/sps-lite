@@ -5,10 +5,8 @@ import { Component as Button } from "./button/Component";
 import { Component as ButtonsArray } from "./buttons-array/Component";
 import { Component as Feature } from "./feature/Component";
 import { Component as FeaturesSectionBlock } from "./features-section-block/Component";
-import { Component as Footer } from "./footer/Component";
 import { Component as FooterBlock } from "./footer-block/Component";
 import { Component as Logotype } from "./logotype/Component";
-import { Component as Navbar } from "./navbar/Component";
 import { Component as NavbarBlock } from "./navbar-block/Component";
 import { Component as Slide } from "./slide/Component";
 import { Component as Slider } from "./slider/Component";
@@ -38,10 +36,6 @@ export function Component(props: IComponentProps) {
       Comp: FeaturesSectionBlock,
     },
     {
-      name: "footer",
-      Comp: Footer,
-    },
-    {
       name: "footer-block",
       Comp: FooterBlock,
     },
@@ -52,10 +46,6 @@ export function Component(props: IComponentProps) {
     {
       name: "logotype",
       Comp: Logotype,
-    },
-    {
-      name: "navbar",
-      Comp: Navbar,
     },
     {
       name: "navbar-block",
