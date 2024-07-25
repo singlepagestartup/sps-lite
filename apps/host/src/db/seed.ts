@@ -5,8 +5,8 @@
 // import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
 // import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { ISeedResult } from "@sps/shared-backend-api";
-import { app as spsHostApp } from "@sps/sps-host/backend/app/root";
-import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/root";
+import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
+import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
 
 import { exit } from "process";

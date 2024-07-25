@@ -1,12 +1,12 @@
-import { app as layout } from "@sps/sps-host/models/layout/backend/app/root";
-import { app as metadata } from "@sps/sps-host/models/metadata/backend/app/root";
-import { app as page } from "@sps/sps-host/models/page/backend/app/root";
-import { app as widget } from "@sps/sps-host/models/widget/backend/app/root";
-import { app as layoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/backend/app/root";
-import { app as pagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/backend/app/root";
-import { app as pagesToMetadata } from "@sps/sps-host/relations/pages-to-metadata/backend/app/root";
-import { app as pagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/backend/app/root";
-import { app as widgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-widgets/backend/app/root";
+import { app as layout } from "@sps/sps-host/models/layout/backend/app/api";
+import { app as metadata } from "@sps/sps-host/models/metadata/backend/app/api";
+import { app as page } from "@sps/sps-host/models/page/backend/app/api";
+import { app as widget } from "@sps/sps-host/models/widget/backend/app/api";
+import { app as layoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/backend/app/api";
+import { app as pagesToLayouts } from "@sps/sps-host/relations/pages-to-layouts/backend/app/api";
+import { app as pagesToMetadata } from "@sps/sps-host/relations/pages-to-metadata/backend/app/api";
+import { app as pagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/backend/app/api";
+import { app as widgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-widgets/backend/app/api";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
