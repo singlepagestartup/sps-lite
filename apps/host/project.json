@@ -20,7 +20,7 @@
             "command": "nx run host:db:sps-broadcast-generate"
           },
           {
-            "command": "nx run host:db:sps-website-builder-generate"
+            "command": "npx nx run @sps/sps-website-builder:repository-generate"
           },
           {
             "command": "nx run host:db:sps-file-storage-generate"
@@ -42,33 +42,6 @@
           },
           {
             "command": "nx run host:db:startup-generate"
-          }
-        ]
-      }
-    },
-    "db:sps-website-builder-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/index.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/index.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-website-builder-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
           }
         ]
       }
@@ -329,7 +302,7 @@
             "command": "nx run host:db:sps-broadcast-migrate"
           },
           {
-            "command": "nx run host:db:sps-website-builder-migrate"
+            "command": "npx nx run @sps/sps-website-builder:repository-migrate"
           },
           {
             "command": "nx run host:db:sps-file-storage-migrate"

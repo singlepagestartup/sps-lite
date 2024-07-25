@@ -1,1 +1,0 @@
-ALTER TABLE "sps_w_b_pages" ADD COLUMN "class_name" text DEFAULT '';

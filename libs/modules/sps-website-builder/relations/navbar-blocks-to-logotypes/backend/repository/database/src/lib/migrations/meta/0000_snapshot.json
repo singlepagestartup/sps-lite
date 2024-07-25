@@ -1,0 +1,83 @@
+{
+  "id": "237eb2e4-3ee9-4dab-ad75-743b05be0dbe",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.sps_w_b_nr_bs_to_ls": {
+      "name": "sps_w_b_nr_bs_to_ls",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "order_index": {
+          "name": "order_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nk_id": {
+          "name": "nk_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "le_id": {
+          "name": "le_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sps_w_b_nr_bs_to_ls_nk_id_sps_w_b_nr_bk_id_fk": {
+          "name": "sps_w_b_nr_bs_to_ls_nk_id_sps_w_b_nr_bk_id_fk",
+          "tableFrom": "sps_w_b_nr_bs_to_ls",
+          "tableTo": "sps_w_b_nr_bk",
+          "columnsFrom": ["nk_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "sps_w_b_nr_bs_to_ls_le_id_sps_w_b_logotype_id_fk": {
+          "name": "sps_w_b_nr_bs_to_ls_le_id_sps_w_b_logotype_id_fk",
+          "tableFrom": "sps_w_b_nr_bs_to_ls",
+          "tableTo": "sps_w_b_logotype",
+          "columnsFrom": ["le_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

@@ -1,2 +1,0 @@
-ALTER TABLE "sps_w_b_fr_bs_to_bs_as_d3j" ADD COLUMN IF NOT EXISTS "position" text DEFAULT 'default' NOT NULL;--> statement-breakpoint
-ALTER TABLE "sps_w_b_fr_bs_to_bs_as_d3j" ADD COLUMN IF NOT EXISTS "class_name" text;
