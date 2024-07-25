@@ -26,7 +26,7 @@
             "command": "nx run host:db:sps-file-storage-generate"
           },
           {
-            "command": "nx run host:db:sps-rbac-generate"
+            "command": "npx nx run @sps/sps-rbac:repository-generate"
           },
           {
             "command": "nx run host:db:sps-crm-generate"
@@ -120,33 +120,6 @@
       "options": {
         "parallel": false,
         "cwd": "libs/modules/sps-file-storage/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-rbac-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-rbac-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/backend/db/root",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -281,7 +254,7 @@
             "command": "nx run host:db:sps-file-storage-migrate"
           },
           {
-            "command": "nx run host:db:sps-rbac-migrate"
+            "command": "npx nx run @sps/sps-rbac:repository-migrate"
           },
           {
             "command": "nx run host:db:sps-crm-migrate"

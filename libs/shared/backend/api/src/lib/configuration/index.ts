@@ -3,6 +3,7 @@ import { PgTableWithColumns } from "drizzle-orm/pg-core";
 import { ZodObject } from "zod";
 import { getOperators } from "drizzle-orm";
 import { injectable } from "inversify";
+// import { Config as DrizzleConfig } from "drizzle-kit";
 
 export interface QueryBuilderFilterMethods
   extends ReturnType<typeof getOperators> {}
@@ -43,7 +44,7 @@ export interface IFilter {
 
 export interface IRepositoryConfiguration {
   type: "database";
-  schema: any;
+  // config: DrizzleConfig;
   Table: PgTableWithColumns<any>;
   insertSchema: ZodObject<any>;
   selectSchema: ZodObject<any>;

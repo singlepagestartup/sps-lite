@@ -30,9 +30,10 @@ export class Database<T extends PgTableWithColumns<any>>
   constructor(@inject(DI.IConfiguration) configuration: IConfiguration) {
     const config = configuration.getConfiguration();
 
-    this.schema = config.repository.schema;
     this.Table = config.repository.Table;
-    this.db = drizzle(postgres, { schema: this.schema });
+    this.db = drizzle(postgres, {
+      schema: config.repository.Table,
+    });
     this.insertSchema = config.repository.insertSchema;
     this.selectSchema = config.repository.selectSchema;
     this.configuration = config;

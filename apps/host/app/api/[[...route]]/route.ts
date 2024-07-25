@@ -5,7 +5,7 @@ import { type NextRequest } from "next/server";
 import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
 import { app as spsFileStorageApp } from "@sps/sps-file-storage/backend/app/root";
-import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
+import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
 import { app as startupApp } from "@sps/startup/backend/app/root";
 import { app as spsBilling } from "@sps/sps-billing/backend/app/root";
 import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/root";

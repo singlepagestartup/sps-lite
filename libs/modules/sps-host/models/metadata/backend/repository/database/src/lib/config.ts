@@ -14,6 +14,6 @@ export const migrate = new MigrateConfig({
   schema,
 });
 
-const config = migrate.config();
+export const config = migrate.config();
 
 export default config;

@@ -1,5 +1,4 @@
 import { Configuration as ParentConfiguration } from "@sps/shared-backend-api";
-import { schema } from "@sps/sps-rbac/backend/db/root";
 import {
   Table,
   insertSchema,
@@ -14,7 +13,6 @@ export class Configuration extends ParentConfiguration {
     super({
       repository: {
         type: "database",
-        schema: schema,
         Table: Table,
         insertSchema,
         selectSchema,

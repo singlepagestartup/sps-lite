@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { DATABASE_OPTIONS } from "@sps/shared-utils";
 import { Config as DrizzleConfig, defineConfig } from "drizzle-kit";
 import { drizzle } from "drizzle-orm/postgres-js";

@@ -1,0 +1,83 @@
+{
+  "id": "43b2649d-953e-4f21-bb2e-5a3a5e610f77",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.sps_r_rs_to_ps_xbk": {
+      "name": "sps_r_rs_to_ps_xbk",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "order_index": {
+          "name": "order_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "re_id": {
+          "name": "re_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pn_id": {
+          "name": "pn_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sps_r_rs_to_ps_xbk_re_id_sps_r_role_id_fk": {
+          "name": "sps_r_rs_to_ps_xbk_re_id_sps_r_role_id_fk",
+          "tableFrom": "sps_r_rs_to_ps_xbk",
+          "tableTo": "sps_r_role",
+          "columnsFrom": ["re_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "sps_r_rs_to_ps_xbk_pn_id_sps_r_permission_id_fk": {
+          "name": "sps_r_rs_to_ps_xbk_pn_id_sps_r_permission_id_fk",
+          "tableFrom": "sps_r_rs_to_ps_xbk",
+          "tableTo": "sps_r_permission",
+          "columnsFrom": ["pn_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
