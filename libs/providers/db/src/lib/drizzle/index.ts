@@ -14,7 +14,6 @@ const modulesSchemaPaths = [
   path.resolve(__dirname, "./sps-file-storage.ts"),
   path.resolve(__dirname, "./sps-notification.ts"),
   path.resolve(__dirname, "./sps-third-parties.ts"),
-  path.resolve(__dirname, "./sps-crm.ts"),
   path.resolve(__dirname, "./startup.ts"),
 ];
 

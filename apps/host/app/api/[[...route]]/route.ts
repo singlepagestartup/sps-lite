@@ -9,7 +9,7 @@ import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
 import { app as startupApp } from "@sps/startup/backend/app/root";
 import { app as spsBillingApp } from "@sps/sps-billing/backend/app/api";
 import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/api";
-import { app as spsCrm } from "@sps/sps-crm/backend/app/root";
+import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
 import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
 import { chain as middlewaresChain } from "./middlewares/chain";
@@ -39,7 +39,7 @@ app.route("/sps-file-storage", spsFileStorageApp as any);
 app.mount("/sps-rbac", spsRbacApp.hono.fetch);
 app.mount("/sps-billing", spsBillingApp.hono.fetch);
 app.route("/sps-third-parties", spsThirdParties as any);
-app.route("/sps-crm", spsCrm as any);
+app.mount("/sps-crm", spsCrm.hono.fetch);
 app.route("/sps-notification", spsNotification as any);
 app.route("/startup", startupApp as any);
 

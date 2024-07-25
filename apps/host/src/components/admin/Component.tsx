@@ -9,6 +9,7 @@ import { AdminComponent as SpsHostAdminComponent } from "@sps/sps-host/frontend/
 import { AdminComponent as SpsWebsiteBuilderAdminComponent } from "@sps/sps-website-builder/frontend/component";
 import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/frontend/component";
 import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast/frontend/component";
+import { AdminComponent as SpsCrmAdminComponent } from "@sps/sps-crm/frontend/component";
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
 );
@@ -24,9 +25,6 @@ const SpsNotificationAdminComponent = dynamic(() =>
   import("@sps/sps-notification/frontend/root").then(
     (mod) => mod.AdminComponent,
   ),
-);
-const SpsCrmAdminComponent = dynamic(() =>
-  import("@sps/sps-crm/frontend/root").then((mod) => mod.AdminComponent),
 );
 const SpsThirdPartiesAdminComponent = dynamic(() =>
   import("@sps/sps-third-parties/frontend/root").then(
