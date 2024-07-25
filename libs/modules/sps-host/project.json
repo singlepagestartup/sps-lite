@@ -13,31 +13,31 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-website-builder:models:layout:repository-generate"
+            "command": "nx run @sps/sps-host:models:layout:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:metadata:repository-generate"
+            "command": "nx run @sps/sps-host:models:metadata:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:page:repository-generate"
+            "command": "nx run @sps/sps-host:models:page:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:widget:repository-generate"
+            "command": "nx run @sps/sps-host:models:widget:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:layouts-to-widgets:repository-generate"
+            "command": "nx run @sps/sps-host:relations:layouts-to-widgets:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-layouts:repository-generate"
+            "command": "nx run @sps/sps-host:relations:pages-to-layouts:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-metadata:repository-generate"
+            "command": "nx run @sps/sps-host:relations:pages-to-metadata:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-widgets:repository-generate"
+            "command": "nx run @sps/sps-host:relations:pages-to-widgets:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:widgets-to-external-widgets:repository-generate"
+            "command": "nx run @sps/sps-host:relations:widgets-to-external-widgets:repository-generate"
           }
         ]
       }
@@ -48,31 +48,31 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-website-builder:models:layout:repository-migrate"
+            "command": "nx run @sps/sps-host:models:layout:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:metadata:repository-migrate"
+            "command": "nx run @sps/sps-host:models:metadata:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:page:repository-migrate"
+            "command": "nx run @sps/sps-host:models:page:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:widget:repository-migrate"
+            "command": "nx run @sps/sps-host:models:widget:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:layouts-to-widgets:repository-migrate"
+            "command": "nx run @sps/sps-host:relations:layouts-to-widgets:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-layouts:repository-migrate"
+            "command": "nx run @sps/sps-host:relations:pages-to-layouts:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-metadata:repository-migrate"
+            "command": "nx run @sps/sps-host:relations:pages-to-metadata:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:pages-to-widgets:repository-migrate"
+            "command": "nx run @sps/sps-host:relations:pages-to-widgets:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:widgets-to-external-widgets:repository-migrate"
+            "command": "nx run @sps/sps-host:relations:widgets-to-external-widgets:repository-migrate"
           }
         ]
       }
@@ -81,6 +81,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/layout/backend/repository/database",
         "commands": [
           {
@@ -96,6 +97,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/metadata/backend/repository/database",
         "commands": [
           {
@@ -111,6 +113,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/page/backend/repository/database",
         "commands": [
           {
@@ -126,6 +129,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/widget/backend/repository/database",
         "commands": [
           {
@@ -141,6 +145,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/layout/backend/repository/database",
         "commands": [
           {
@@ -153,6 +158,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/metadata/backend/repository/database",
         "commands": [
           {
@@ -165,6 +171,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/page/backend/repository/database",
         "commands": [
           {
@@ -177,6 +184,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/models/widget/backend/repository/database",
         "commands": [
           {
@@ -189,6 +197,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/layouts-to-widgets/backend/repository/database",
         "commands": [
           {
@@ -204,6 +213,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-layouts/backend/repository/database",
         "commands": [
           {
@@ -219,6 +229,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-metadata/backend/repository/database",
         "commands": [
           {
@@ -234,6 +245,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-widgets/backend/repository/database",
         "commands": [
           {
@@ -249,6 +261,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/widgets-to-external-widgets/backend/repository/database",
         "commands": [
           {
@@ -264,6 +277,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/layouts-to-widgets/backend/repository/database",
         "commands": [
           {
@@ -276,6 +290,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-layouts/backend/repository/database",
         "commands": [
           {
@@ -288,6 +303,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-metadata/backend/repository/database",
         "commands": [
           {
@@ -300,6 +316,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/pages-to-widgets/backend/repository/database",
         "commands": [
           {
@@ -312,6 +329,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
+        "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-host/relations/widgets-to-external-widgets/backend/repository/database",
         "commands": [
           {

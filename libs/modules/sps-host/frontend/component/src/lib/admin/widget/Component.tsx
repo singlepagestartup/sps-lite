@@ -3,7 +3,7 @@
 import { Component as ParentComponent } from "@sps/sps-host/models/widget/frontend/component";
 import { Component as PagesToWidgets } from "@sps/sps-host/relations/pages-to-widgets/frontend/component";
 import { Component as LayoutsToWidgets } from "@sps/sps-host/relations/layouts-to-widgets/frontend/component";
-import { Component as WidgetsToExternalModules } from "@sps/sps-host/relations/widgets-to-external-widgets/frontend/component";
+import { Component as WidgetsToExternalWidgets } from "@sps/sps-host/relations/widgets-to-external-widgets/frontend/component";
 
 export function Component() {
   return (
@@ -74,7 +74,7 @@ export function Component() {
               }
 
               return (
-                <WidgetsToExternalModules
+                <WidgetsToExternalWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

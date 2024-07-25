@@ -27,7 +27,7 @@ export function Component(props: IComponentPropsExtended) {
       className: props.data?.className || "",
       widgetId: props.data?.widgetId || "",
       externalModule: props.data?.externalModule || "sps-website-builder",
-      externalModuleProps: props.data?.externalModuleProps || "{}",
+      externalWidgetId: props.data?.externalWidgetId || "",
     },
   });
 
@@ -41,6 +41,8 @@ export function Component(props: IComponentPropsExtended) {
       data,
     });
   }
+
+  const watchData = form.watch();
 
   return (
     <ParentAdminForm
@@ -81,6 +83,14 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
+        <WidgetSelectInput
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="widgetId"
+          form={form}
+        />
+
         <FormField
           ui="shadcn"
           type="select"
@@ -90,33 +100,15 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select external module"
           options={externalModules.map((module) => [module, module])}
         />
-
-        <FormField
-          ui="shadcn"
-          type="text"
-          label="External module props"
-          name="externalModuleProps"
-          form={form}
-          placeholder="External module props"
-        />
-
-        <div className="border p-2">
+        {watchData.externalModule === "sps-website-builder" ? (
           <SpsWebsiteBuilderWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"
             form={form}
-            formFieldName="spsWebsiteBuilderWidgetId"
+            formFieldName="externalWidgetId"
           />
-        </div>
-
-        <WidgetSelectInput
-          isServer={props.isServer}
-          hostUrl={props.hostUrl}
-          variant="admin-select-input"
-          formFieldName="widgetId"
-          form={form}
-        />
+        ) : null}
       </div>
     </ParentAdminForm>
   );

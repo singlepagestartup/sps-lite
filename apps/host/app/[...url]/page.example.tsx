@@ -1,5 +1,5 @@
 import { api as spsHostPageApi } from "@sps/sps-host/models/page/sdk/server";
-import { App as SpsHostApp } from "@sps/sps-host/frontend/root";
+import { App as SpsHostApp } from "@sps/sps-host/frontend/component";
 import { api as metadataApi } from "@sps/sps-host/models/metadata/sdk/server";
 
 export const revalidate = 3600;
