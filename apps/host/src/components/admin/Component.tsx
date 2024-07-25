@@ -10,13 +10,10 @@ import { AdminComponent as SpsWebsiteBuilderAdminComponent } from "@sps/sps-webs
 import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/frontend/component";
 import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast/frontend/component";
 import { AdminComponent as SpsCrmAdminComponent } from "@sps/sps-crm/frontend/component";
+import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage/frontend/component";
+
 const StartupAdminComponent = dynamic(() =>
   import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsFileStorageAdminComponent = dynamic(() =>
-  import("@sps/sps-file-storage/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
 );
 const SpsRbacAdminComponent = dynamic(() =>
   import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),

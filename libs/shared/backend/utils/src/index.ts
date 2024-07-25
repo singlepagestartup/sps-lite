@@ -1,1 +1,1 @@
-export { getUniqueFileName } from "./lib/index";
+export * from "./lib";

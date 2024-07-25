@@ -13,7 +13,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as FeatureAdminSlectInput } from "@sps/sps-website-builder/models/feature/frontend/component";
-import { Component as FileAdminSelectInput } from "@sps/sps-file-storage/models/file/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as FileAdminSelectInput } from "@sps/sps-file-storage/models/file/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

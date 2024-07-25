@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { App as SpsFileStorage } from "@sps/sps-file-storage/frontend/root";
+import { App as SpsFileStorage } from "@sps/sps-file-storage/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {

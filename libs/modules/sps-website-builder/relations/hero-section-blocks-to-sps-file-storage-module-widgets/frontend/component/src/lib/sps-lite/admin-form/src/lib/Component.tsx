@@ -1,22 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import {
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/model";
-import {
-  api,
-  queryClient,
-} from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/client";
+import { api } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/sps-lite/admin/admin-form/Component";
 import { Component as HeroSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
-import { Component as SpsFileStorageModuleWidgetArrayAdminSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component/variants/sps-lite/admin-select-input";
+import { Component as SpsFileStorageModuleWidgetArrayAdminSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
