@@ -6,7 +6,7 @@
 // import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
 import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
-import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
+import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
 
 import { exit } from "process";
 
