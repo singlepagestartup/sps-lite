@@ -14,10 +14,7 @@ import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-st
 import { AdminComponent as SpsNotificationAdminComponent } from "@sps/sps-notification/frontend/component";
 import { AdminComponent as SpsThirdPartiesAdminComponent } from "@sps/sps-third-parties/frontend/component";
 import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac/frontend/component";
-
-const StartupAdminComponent = dynamic(() =>
-  import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
-);
+import { AdminComponent as StartupAdminComponent } from "@sps/startup/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();
