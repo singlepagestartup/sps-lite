@@ -1,6 +1,6 @@
 import { IComponentProps } from "./interface";
 import { Component as WidgetSpsLiteAdminTable } from "@sps/sps-crm/models/widget/frontend/component";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-panel/Component";
 
 export function Component(props: IComponentProps) {
   const models = [

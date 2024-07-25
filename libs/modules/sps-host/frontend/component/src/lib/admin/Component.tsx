@@ -1,5 +1,5 @@
 import { IComponentProps } from "./interface";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-panel/Component";
 import { Component as Widget } from "./widget/Component";
 import { Component as Page } from "./page/Component";
 import { Component as Layout } from "./layout/Component";

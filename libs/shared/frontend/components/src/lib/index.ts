@@ -1,1 +1,1 @@
-export * from "./sps-lite";
+export * from "./singlepage";

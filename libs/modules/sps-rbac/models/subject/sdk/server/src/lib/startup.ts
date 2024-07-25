@@ -1,3 +1,3 @@
-import { api as parentApi } from "./sps-lite";
+import { api as parentApi } from "./singlepage";
 
 export const api = parentApi;

@@ -1,5 +1,5 @@
 import { IComponentProps } from "./interface";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/sps-lite/admin/admin-panel/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-panel/Component";
 import { Component as HeroSectionBlock } from "./hero-section-block/Component";
 import { Component as Button } from "./button/Component";
 import { Component as ButtonsArray } from "./buttons-array/Component";
