@@ -18,7 +18,9 @@ export interface IActionProps {
 export async function action(
   props: IActionProps = {},
 ): Promise<{ ok: true } | undefined> {
-  const { params, options, catchErrors } = props;
+  const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+
+  const { params, options } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -51,7 +53,7 @@ export async function action(
     try {
       const json = await res.json();
 
-      if (catchErrors) {
+      if (props.catchErrors || productionBuild) {
         console.error(json.error);
 
         return;
@@ -61,12 +63,12 @@ export async function action(
     } catch (error) {
       const requestError = new Error(`${res.status} | ${res.statusText}`);
 
-      if (catchErrors) {
+      if (props.catchErrors || productionBuild) {
         console.error(`${requestError.message} | ${host}${route} | ${error}`);
 
         return;
       } else {
-        throw error;
+        throw requestError;
       }
     }
   }
@@ -74,7 +76,7 @@ export async function action(
   const json = await res.json();
 
   if (json.error) {
-    if (catchErrors) {
+    if (props.catchErrors || productionBuild) {
       console.error(json.error);
 
       return;

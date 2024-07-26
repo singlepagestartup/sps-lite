@@ -7,66 +7,83 @@ import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 interface Params {
   url: string;
-  catchError?: boolean;
+  catchErrors?: boolean;
 }
 
-export async function action({ url, catchError = false }: Params) {
-  try {
-    const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
-    const cacheControlOptions: NextRequestOptions["headers"] = noCache
-      ? { "Cache-Control": "no-cache" }
-      : {};
+export async function action({ url, catchErrors = false }: Params) {
+  const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
-    const options: NextRequestOptions = {
-      headers: {
-        ...cacheControlOptions,
-      },
-      next: {
-        // revalidate: 0,
-        tags: [route],
-      },
-    };
+  const noCache = productionBuild;
 
-    const stringifiedQuery = QueryString.stringify(
-      {
-        url,
-      },
-      {
-        encodeValuesOnly: true,
-      },
-    );
+  const cacheControlOptions: NextRequestOptions["headers"] = noCache
+    ? { "Cache-Control": "no-cache" }
+    : {};
 
-    const res = await fetch(
-      `${host}${route}/find-by-url?${stringifiedQuery}`,
-      options,
-    );
+  const options: NextRequestOptions = {
+    headers: {
+      ...cacheControlOptions,
+    },
+    next: {
+      // revalidate: 0,
+      tags: [route],
+    },
+  };
 
-    if (!res.ok) {
-      const error = new Error(res.statusText);
+  const stringifiedQuery = QueryString.stringify(
+    {
+      url,
+    },
+    {
+      encodeValuesOnly: true,
+    },
+  );
 
-      throw new Error(error.message || "Failed to fetch data");
-    }
+  const res = await fetch(
+    `${host}${route}/find-by-url?${stringifiedQuery}`,
+    options,
+  );
 
-    const json = await res.json();
+  if (!res.ok) {
+    try {
+      const json = await res.json();
 
-    if (json.error) {
-      throw new Error(json.error.message || "Failed to fetch data");
-    }
+      if (catchErrors || productionBuild) {
+        console.error(json.error);
 
-    const transformedData = transformResponseItem<IModel>(json);
+        return;
+      } else {
+        throw new Error(JSON.stringify(json.data));
+      }
+    } catch (error) {
+      const requestError = new Error(`${res.status} | ${res.statusText}`);
 
-    if (!transformedData?.id) {
-      return;
-    }
+      if (catchErrors || productionBuild) {
+        console.error(`${requestError.message} | ${host}${route} | ${error}`);
 
-    return transformedData;
-  } catch (error) {
-    console.log(`find-by-url ~ action ~ error:`, error);
-
-    if (!catchError) {
-      throw error;
+        return;
+      } else {
+        throw requestError;
+      }
     }
   }
 
-  return;
+  const json = await res.json();
+
+  if (json.error) {
+    if (catchErrors || productionBuild) {
+      console.error(json.error);
+
+      return;
+    } else {
+      throw new Error(json.error.message);
+    }
+  }
+
+  const transformedData = transformResponseItem<IModel>(json);
+
+  if (!transformedData?.id) {
+    return;
+  }
+
+  return transformedData;
 }

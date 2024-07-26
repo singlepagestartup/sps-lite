@@ -12,10 +12,10 @@ import { Metadata } from "next/types";
 
 interface Params {
   url: string;
-  catchError?: boolean;
+  catchErrors?: boolean;
 }
 
-export async function action({ url, catchError = false }: Params) {
+export async function action({ url, catchErrors = false }: Params) {
   const metadata = {
     title: NEXT_PUBLIC_HOST_METADATA_TITLE || "",
     description: NEXT_PUBLIC_HOST_METADATA_DESCRIPTION || "",
@@ -93,7 +93,7 @@ export async function action({ url, catchError = false }: Params) {
     }
   } catch (error) {
     console.log(`metadata ~ generate ~ action ~ error:`, error);
-    if (!catchError) {
+    if (!catchErrors) {
       throw error;
     }
   }

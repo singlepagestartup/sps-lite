@@ -5,7 +5,7 @@ import { inject, injectable } from "inversify";
 import { postgres } from "@sps/shared-backend-database-config";
 import * as methods from "drizzle-orm";
 import { FindServiceProps } from "../../services/interfaces";
-import { queryBuilder } from "../../query-builder/filters";
+import { queryBuilder } from "../../query-builder";
 import { DI } from "../../di/constants";
 import { type IRepository } from "../interface";
 import {
@@ -40,16 +40,34 @@ export class Database<T extends PgTableWithColumns<any>>
 
   async find(props?: FindServiceProps): Promise<T["$inferSelect"][]> {
     try {
-      const filters = queryBuilder({
+      const filters = queryBuilder.filters({
         table: this.Table,
         filters: props?.params?.filters,
         queryFunctions: methods,
       });
 
+      if (props?.params?.orderBy?.and && !props.params.orderBy.and?.[0]) {
+        throw new Error(
+          "You need to pass an orderBy array with column and method",
+        );
+      }
+
+      const order =
+        props?.params?.orderBy?.and?.length &&
+        props.params.orderBy.and[0].method
+          ? methods[props.params.orderBy.and[0].method as any](
+              this.Table[props.params.orderBy.and[0].column],
+            )
+          : "orderIndex" in this.Table
+            ? methods.asc(this.Table.orderIndex)
+            : null;
+
       const records = await this.db
         .select()
         .from(this.Table)
         .where(filters)
+        .limit(props?.params?.limit as number)
+        .orderBy(order)
         .execute();
 
       const sanitizedRecords = records.map((record) => {

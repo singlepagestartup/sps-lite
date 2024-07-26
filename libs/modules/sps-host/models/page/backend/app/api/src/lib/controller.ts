@@ -26,6 +26,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       {
         method: "GET",
+        path: "/urls",
+        handler: this.urls,
+      },
+      {
+        method: "GET",
         path: "/:uuid",
         handler: this.findById,
       },
@@ -43,11 +48,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "DELETE",
         path: "/:uuid",
         handler: this.delete,
-      },
-      {
-        method: "GET",
-        path: "/urls",
-        handler: this.urls,
       },
       {
         method: "GET",

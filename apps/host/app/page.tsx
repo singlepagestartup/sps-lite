@@ -13,7 +13,7 @@ export const dynamic =
     : "auto";
 
 export async function generateMetadata(props: any) {
-  return metadataApi.generate({ catchError: true, ...props });
+  return metadataApi.generate({ catchErrors: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {

@@ -15,19 +15,21 @@ export const dynamic =
 export const runtime = "nodejs";
 
 export async function generateStaticParams() {
-  const urls = await spsHostPageApi.urls();
+  const urls = await spsHostPageApi.urls({ catchErrors: true });
 
-  return urls.filter((url) => {
-    if (url.url.length === 0) {
-      return false;
-    }
+  return (
+    urls?.filter((url) => {
+      if (url.url.length === 0) {
+        return false;
+      }
 
-    return true;
-  });
+      return true;
+    }) || []
+  );
 }
 
 export async function generateMetadata(props: any) {
-  return metadataApi.generate({ catchError: true, ...props });
+  return metadataApi.generate({ catchErrors: true, ...props });
 }
 
 export default async function Page(props: { params: { url?: string[] } }) {

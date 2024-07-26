@@ -20,8 +20,12 @@ export interface QueryBuilderProps<T extends PgTableWithColumns<any>> {
 /**
  * {
  *   "orderBy": {
- *      "column": "orderIndex",
- *      "method": "asc"
+ *      and: [
+ *          {
+ *            "column": "orderIndex",
+ *            "method": "asc"
+ *          }
+ *      ]
  *   }
  * }
  */

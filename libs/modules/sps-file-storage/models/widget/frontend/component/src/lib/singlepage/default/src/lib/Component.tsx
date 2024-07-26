@@ -10,17 +10,38 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full flex"
     >
-      {/* {props.data.widgetsToFiles.map((entity, index) => {
-        return (
-          <WidgetsToFiles
-            key={index}
-            isServer={props.isServer}
-            hostUrl={props.hostUrl}
-            variant="default"
-            data={entity}
-          />
-        );
-      })} */}
+      <WidgetsToFiles
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "widgetId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <WidgetsToFiles
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                data={entity}
+                variant={entity.variant as any}
+              />
+            );
+          });
+        }}
+      </WidgetsToFiles>
     </div>
   );
 }

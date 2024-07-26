@@ -9,7 +9,18 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export const route = "/api/sps-host/pages-to-widgets";
 export const variants = ["default"];
 export const host = BACKEND_URL;
-export const query = {};
+export const query = {
+  params: {
+    orderBy: {
+      and: [
+        {
+          column: "orderIndex",
+          method: "asc",
+        },
+      ],
+    },
+  },
+};
 export const options = {
   next: {
     revalidate: REVALIDATE,

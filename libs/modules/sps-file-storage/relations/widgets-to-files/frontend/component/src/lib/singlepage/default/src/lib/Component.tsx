@@ -1,3 +1,4 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
 import { Component as File } from "@sps/sps-file-storage/models/file/frontend/component";
 
@@ -8,14 +9,40 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="widgets-to-files"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full flex"
+      className={cn("w-full flex", props.data.className || "")}
     >
-      {/* <File
+      <File
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.file.variant}
-        data={props.data.file}
-      /> */}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.fileId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <File
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                data={entity}
+                variant={entity.variant as any}
+              />
+            );
+          });
+        }}
+      </File>
     </div>
   );
 }

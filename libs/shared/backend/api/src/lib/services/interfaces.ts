@@ -1,10 +1,22 @@
+import { QueryBuilderFilterMethods } from "../configuration";
+
 export interface FindServiceProps {
   params?: {
-    populate?: any;
-    filters?: any;
-    orderBy?: any;
-    offset?: any;
-    limit?: any;
+    filters?: {
+      and: {
+        column: string;
+        method: keyof QueryBuilderFilterMethods;
+        value: string | Date | number | boolean | [number, number];
+      }[];
+    };
+    orderBy?: {
+      and: {
+        column: string;
+        method: "asc" | "desc";
+      }[];
+    };
+    offset?: number;
+    limit?: number;
   };
 }
 

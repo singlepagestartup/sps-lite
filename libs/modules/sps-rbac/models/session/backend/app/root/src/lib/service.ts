@@ -24,7 +24,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           and: [
             {
               column: "expiresAt",
-              method: "lg",
+              method: "lt",
               value: new Date(),
             },
           ],

@@ -7,7 +7,7 @@ export {
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-host/layouts-to-widgets";
-export const variants = ["default"];
+export const variants = ["default", "primary"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

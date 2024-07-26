@@ -1,18 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/button/sdk/client";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
-
-  useEffect(() => {
-    if (deleteEntity.isSuccess) {
-      //
-    }
-  }, [deleteEntity]);
 
   return (
     <ParentComponent

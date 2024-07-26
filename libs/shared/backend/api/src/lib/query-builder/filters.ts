@@ -12,7 +12,7 @@ export interface IFilter {
 export interface QueryBuilderProps<T extends PgTableWithColumns<any>> {
   table: Partial<T>;
   queryFunctions: QueryBuilderFilterMethods;
-  filters: {
+  filters?: {
     ["and"]: IFilter[];
   };
 }

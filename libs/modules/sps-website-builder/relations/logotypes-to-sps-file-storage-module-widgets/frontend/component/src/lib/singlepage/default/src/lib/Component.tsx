@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { App as SpsFileStorage } from "@sps/sps-file-storage/frontend/component";
+import { Component as SpsFileStorageWidget } from "@sps/sps-file-storage/models/widget/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <SpsFileStorage
+      <SpsFileStorageWidget
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="default"
