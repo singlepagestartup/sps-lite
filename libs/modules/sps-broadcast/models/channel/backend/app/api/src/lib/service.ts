@@ -2,7 +2,10 @@ import "reflect-metadata";
 import { injectable } from "inversify";
 import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-broadcast/models/channel/backend/repository/database";
-import { BACKEND_URL, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { api as channelApi } from "@sps/sps-broadcast/models/channel/sdk/server";
+import { api as messageApi } from "@sps/sps-broadcast/models/message/sdk/server";
+import { api as channelsToMessagesApi } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/server";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -28,92 +31,50 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     });
 
     if (!channel) {
-      const body = new FormData();
-
-      body.append(
-        "data",
-        JSON.stringify({
+      channel = await channelApi.create({
+        data: {
           title: data.channelName,
-        }),
-      );
-
-      channel = await fetch(`${BACKEND_URL}/api/sps-broadcast/channels`, {
-        method: "POST",
-        headers: {
-          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
-        body,
-      }).then(async (res) => {
-        const json = await res.json();
-        return json.data;
-      });
-    } else {
-      const body = new FormData();
-
-      body.append(
-        "data",
-        JSON.stringify({
-          title: channel.title,
-        }),
-      );
-
-      channel = await fetch(
-        `${BACKEND_URL}/api/sps-broadcast/channels/${channel.id}`,
-        {
-          method: "PATCH",
+        options: {
           headers: {
             "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
-          body,
+          next: {
+            cache: "no-store",
+          },
         },
-      ).then(async (res) => {
-        const json = await res.json();
-        return json.data;
       });
     }
 
-    const messageBody = new FormData();
-    messageBody.append(
-      "data",
-      JSON.stringify({
+    const message = await messageApi.create({
+      data: {
         payload: data.payload,
-      }),
-    );
-
-    const message = await fetch(`${BACKEND_URL}/api/sps-broadcast/messages`, {
-      method: "POST",
-      headers: {
-        "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
       },
-      body: messageBody,
-    }).then(async (res) => {
-      const json = await res.json();
-      return json.data;
-    });
-
-    const channelToMessageBody = new FormData();
-    channelToMessageBody.append(
-      "data",
-      JSON.stringify({
-        channelId: channel.id,
-        messageId: message.id,
-      }),
-    );
-
-    const channelToMessage = await fetch(
-      `${BACKEND_URL}/api/sps-broadcast/channels-to-messages`,
-      {
-        method: "POST",
+      options: {
         headers: {
           "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
-        body: channelToMessageBody,
+        next: {
+          cache: "no-store",
+        },
       },
-    ).then(async (res) => {
-      const json = await res.json();
-      return json.data;
     });
 
-    return message;
+    await channelsToMessagesApi.create({
+      data: {
+        channelId: channel.id,
+        messageId: message.id,
+      },
+      options: {
+        headers: {
+          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    return channel;
   }
 }

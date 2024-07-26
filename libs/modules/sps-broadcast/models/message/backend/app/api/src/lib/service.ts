@@ -15,8 +15,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           and: [
             {
               column: "createdAt",
-              method: "gt",
-              value: new Date(new Date().getTime() - STALE_TIME),
+              method: "lt",
+              value: new Date(new Date().getTime() - STALE_TIME * 5),
             },
           ],
         },

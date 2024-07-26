@@ -26,19 +26,15 @@ export function App(props: IComponentProps) {
           },
         }}
       >
-        {({ data: channels }) => {
-          if (!channels) {
-            return;
-          }
-
-          return channels.map((channel, index) => {
+        {({ data }) => {
+          return data?.map((entity, index) => {
             return (
               <Channel
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
                 variant="subscription"
-                data={channel}
+                data={entity}
               />
             );
           });

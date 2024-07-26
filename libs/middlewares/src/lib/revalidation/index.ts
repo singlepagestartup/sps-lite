@@ -1,6 +1,7 @@
-import { BACKEND_URL, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
+import { api as channelApi } from "@sps/sps-broadcast/models/channel/sdk/server";
 
 export type IMiddlewareGeneric = unknown;
 
@@ -30,54 +31,31 @@ export class Middleware {
           }
 
           if (["POST", "PUT", "PATCH"].includes(method)) {
-            const body = new FormData();
-
-            body.append(
-              "data",
-              JSON.stringify({ channelName: "revalidation", payload: path }),
-            );
-
-            const pushMessage = await fetch(
-              BACKEND_URL + "/api/sps-broadcast/channels/push-message",
-              {
-                method: "POST",
+            await channelApi.pushMessage({
+              data: { channelName: "revalidation", payload: path },
+              options: {
                 headers: {
                   "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
-                body,
+                next: {
+                  cache: "no-store",
+                },
               },
-            );
-
-            await pushMessage.json().then((data) => {
-              // console.log(`🚀 ~ awaitcheck.json ~ data:`, data);
             });
           }
           if (["DELETE"].includes(method)) {
             const pathWithoutId = path.replace(/\/[a-zA-Z0-9-]+$/, "");
 
-            const body = new FormData();
-
-            body.append(
-              "data",
-              JSON.stringify({
-                channelName: "revalidation",
-                payload: pathWithoutId,
-              }),
-            );
-
-            const pushMessage = await fetch(
-              BACKEND_URL + "/api/sps-broadcast/channels/push-message",
-              {
-                method: "POST",
+            await channelApi.pushMessage({
+              data: { channelName: "revalidation", payload: pathWithoutId },
+              options: {
                 headers: {
                   "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
-                body,
+                next: {
+                  cache: "no-store",
+                },
               },
-            );
-
-            await pushMessage.json().then((data) => {
-              // console.log(`🚀 ~ awaitcheck.json ~ data:`, data);
             });
           }
         }

@@ -21,7 +21,6 @@ export const variants = {
   ghost: Ghost,
   outline: Outline,
   destructive: Destructive,
-
   secondary: Secondary,
   primary: Primary,
   default: Default,

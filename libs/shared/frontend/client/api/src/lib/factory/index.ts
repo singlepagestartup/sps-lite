@@ -210,6 +210,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
   function subscription() {
     const triggeredActions: IAction[] = [];
     let revalidationChannel: any;
+    const mountTime = Date.now();
 
     globalActionsStore.subscribe((state) => {
       const broadcastChannels = state.getActionsFromStoreByName(
@@ -230,17 +231,15 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
         "/api/sps-broadcast/messages",
       );
 
-      broadcastMessages?.forEach((message) => {
-        if (!revalidationChannel) {
-          return;
-        }
+      broadcastMessages
+        ?.filter((message) => {
+          return new Date(message.result["createdAt"]).getTime() > mountTime;
+        })
+        .forEach((message) => {
+          if (!revalidationChannel) {
+            return;
+          }
 
-        if (
-          message.result?.["channelsToMessages"]?.find(
-            (channelToMessage: { channelId: string }) =>
-              channelToMessage?.["channelId"] === revalidationChannel?.["id"],
-          ) !== undefined
-        ) {
           const isTriggered = triggeredActions.some((triggeredAction) => {
             return JSON.stringify(triggeredAction) === JSON.stringify(message);
           });
@@ -258,8 +257,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               }
             }
           }
-        }
-      });
+        });
     });
   }
 
