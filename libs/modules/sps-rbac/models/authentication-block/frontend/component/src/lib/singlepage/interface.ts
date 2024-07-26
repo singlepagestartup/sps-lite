@@ -1,3 +1,4 @@
+import { IComponentProps as IFindComponentProps } from "./find";
 import { IComponentProps as IResetPasswordComponentProps } from "./reset-password";
 import { IComponentProps as IForgotPasswordComponentProps } from "./forgot-password";
 import { IComponentProps as IChangePasswordComponentProps } from "./change-password";
@@ -10,6 +11,7 @@ import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-sele
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 
 export type IComponentProps =
+  | IFindComponentProps
   | IResetPasswordComponentProps
   | IForgotPasswordComponentProps
   | IChangePasswordComponentProps

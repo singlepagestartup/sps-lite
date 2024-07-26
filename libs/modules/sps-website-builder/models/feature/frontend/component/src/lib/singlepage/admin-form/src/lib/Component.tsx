@@ -102,8 +102,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.featuresToSpsFileStorageModuleFiles
-          ? props.featuresToSpsFileStorageModuleFiles({
+        {props.featuresToSpsFileStorageModuleWidgets
+          ? props.featuresToSpsFileStorageModuleWidgets({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

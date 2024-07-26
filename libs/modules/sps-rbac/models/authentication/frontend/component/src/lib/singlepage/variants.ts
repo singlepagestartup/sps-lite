@@ -1,3 +1,4 @@
+import { Component as Find } from "./find";
 import { Component as AdminTableRow } from "./admin-table-row";
 import { Component as AdminTable } from "./admin-table";
 import { Component as AdminSelectInput } from "./admin-select-input";
@@ -11,6 +12,7 @@ import { Component as LoginAndPassword } from "./login-and-password";
 import { Component as SelectMethod } from "./select-method";
 
 export const variants = {
+  find: Find,
   "admin-table-row": AdminTableRow,
   "admin-table": AdminTable,
   "admin-select-input": AdminSelectInput,
@@ -19,7 +21,6 @@ export const variants = {
   "logout-button": LogoutButton,
   "is-authenticatated-wrapper": IsAuthenticatatedWrapper,
   "set-session-wrapper": SetSessionWrapper,
-
   "login-and-password": LoginAndPassword,
   "select-method": SelectMethod,
 };

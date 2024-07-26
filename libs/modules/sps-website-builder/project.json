@@ -61,7 +61,7 @@
             "command": "nx run @sps/sps-website-builder:relations:features-section-blocks-to-features:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-files:repository-generate"
+            "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-widgets:repository-generate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-buttons-arrays:repository-generate"
@@ -168,7 +168,7 @@
             "command": "nx run @sps/sps-website-builder:relations:features-section-blocks-to-features:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-files:repository-migrate"
+            "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-widgets:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-buttons-arrays:repository-migrate"
@@ -641,11 +641,11 @@
         ]
       }
     },
-    "relations:features-to-sps-file-storage-module-files:repository-generate": {
+    "relations:features-to-sps-file-storage-module-widgets:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -656,12 +656,12 @@
         ]
       }
     },
-    "relations:features-to-sps-file-storage-module-files:repository-migrate": {
+    "relations:features-to-sps-file-storage-module-widgets:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

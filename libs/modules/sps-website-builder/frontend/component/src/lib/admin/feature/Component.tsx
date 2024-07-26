@@ -2,7 +2,7 @@
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/feature/frontend/component";
 import { Component as FeaturesSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/frontend/component";
-import { Component as FeaturesToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/frontend/component";
+import { Component as FeaturesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component() {
   return (
@@ -41,7 +41,7 @@ export function Component() {
                 />
               );
             }}
-            featuresToSpsFileStorageModuleFiles={({
+            featuresToSpsFileStorageModuleWidgets={({
               data,
               hostUrl,
               isServer,
@@ -51,7 +51,7 @@ export function Component() {
               }
 
               return (
-                <FeaturesToSpsFileStorageModuleFiles
+                <FeaturesToSpsFileStorageModuleWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

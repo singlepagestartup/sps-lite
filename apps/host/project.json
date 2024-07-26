@@ -17,7 +17,7 @@
             "command": "npx nx run @sps/sps-host:repository-generate"
           },
           {
-            "command": "nx run host:db:sps-broadcast-generate"
+            "command": "npx nx run @sps/sps-broadcast:repository-generate"
           },
           {
             "command": "npx nx run @sps/sps-website-builder:repository-generate"
@@ -32,7 +32,7 @@
             "command": "npx nx run @sps/sps-crm:repository-generate"
           },
           {
-            "command": "nx run host:db:sps-third-parties-generate"
+            "command": "npx nx run @sps/sps-third-parties:repository-generate"
           },
           {
             "command": "npx nx run @sps/sps-notification:repository-generate"
@@ -56,7 +56,7 @@
             "command": "npx nx run @sps/sps-host:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-broadcast-migrate"
+            "command": "npx nx run @sps/sps-broadcast:repository-migrate"
           },
           {
             "command": "npx nx run @sps/sps-website-builder:repository-migrate"
@@ -74,7 +74,7 @@
             "command": "npx nx run @sps/sps-billing:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-third-parties-migrate"
+            "command": "npx nx run @sps/sps-third-parties:repository-migrate"
           },
           {
             "command": "npx nx run @sps/sps-notification:repository-migrate"

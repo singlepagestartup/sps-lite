@@ -1,3 +1,4 @@
+import { Component as Find } from "./find";
 import { Component as ResetPassword } from "./reset-password";
 import { Component as ForgotPassword } from "./forgot-password";
 import { Component as ChangePassword } from "./change-password";
@@ -10,6 +11,7 @@ import { Component as AdminSelectInput } from "./admin-select-input";
 import { Component as AdminForm } from "./admin-form";
 
 export const variants = {
+  find: Find,
   "reset-password": ResetPassword,
   "forgot-password": ForgotPassword,
   "change-password": ChangePassword,

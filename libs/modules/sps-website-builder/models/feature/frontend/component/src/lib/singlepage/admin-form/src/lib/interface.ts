@@ -14,7 +14,7 @@ export interface IComponentProps extends ISpsComponentBase {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
-  featuresToSpsFileStorageModuleFiles?: (
+  featuresToSpsFileStorageModuleWidgets?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
   featuresSectionBlocksToFeatures?: (

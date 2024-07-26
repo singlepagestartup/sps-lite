@@ -13,7 +13,7 @@ import { app as widget } from "@sps/sps-website-builder/models/widget/backend/ap
 import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/api";
 import { app as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/api";
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/api";
-import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-files/backend/app/api";
+import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/api";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/api";
 import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/app/api";
@@ -122,7 +122,7 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/features-to-sps-file-storage-module-files",
+      route: "/features-to-sps-file-storage-module-widgets",
       app: featuresToSpsFileStorageModuleFiles,
     });
     this.apps.push({
