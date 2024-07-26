@@ -1,5 +1,4 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as AdminForm } from "../../../admin-form";
 import { Component as AdminTableRow } from "../../../admin-table-row";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table/Component";
 
@@ -10,11 +9,12 @@ export function Component(props: IComponentPropsExtended) {
       name="widget"
       variant={props.variant}
       adminForm={
-        <AdminForm
-          isServer={props.isServer}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-        />
+        props.adminForm
+          ? props.adminForm({
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null
       }
     >
       <div className="flex flex-col gap-6 pt-8 p-4">
@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="admin-table-row"
+              adminForm={props.adminForm}
               data={entity}
             />
           );

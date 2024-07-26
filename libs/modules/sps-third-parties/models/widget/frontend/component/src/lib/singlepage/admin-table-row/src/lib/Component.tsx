@@ -2,7 +2,6 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-third-parties/models/widget/sdk/client";
-import { Component as AdminForm } from "../../../admin-form";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -13,14 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       id={props.data.id}
       module="sps-third-parties"
       name="widget"
-      adminForm={
-        <AdminForm
-          isServer={false}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-          data={props.data}
-        />
-      }
+      adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });

@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-file-storage/models/file/sdk/client";
-import { Component as AdminForm } from "../../../admin-form";
 import { BACKEND_URL } from "@sps/shared-utils";
 import Image from "next/image";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table-row/Component";
@@ -12,25 +10,12 @@ import { Component as ParentComponent } from "@sps/shared-frontend-components/si
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
 
-  useEffect(() => {
-    if (deleteEntity.isSuccess) {
-      //
-    }
-  }, [deleteEntity]);
-
   return (
     <ParentComponent
       id={props.data.id}
       module="sps-file-storage"
       name="file"
-      adminForm={
-        <AdminForm
-          isServer={false}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-          data={props.data}
-        />
-      }
+      adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });

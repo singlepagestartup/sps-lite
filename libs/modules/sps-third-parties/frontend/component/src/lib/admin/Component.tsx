@@ -1,8 +1,8 @@
 import { IComponentProps } from "./interface";
-import { Component as Widget } from "@sps/sps-third-parties/models/widget/frontend/component";
-import { Component as Telegarm } from "@sps/sps-third-parties/models/telegram/frontend/component";
-import { Component as TelegarmMessage } from "@sps/sps-third-parties/models/telegram-message/frontend/component";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-panel/Component";
+import { Component as Widget } from "./widget/Component";
+import { Component as Telegarm } from "./telegram/Component";
+import { Component as TelegarmMessage } from "./telegram-message/Component";
 
 export function Component(props: IComponentProps) {
   const models = [

@@ -1,7 +1,7 @@
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-panel/Component";
-import { Component as Channel } from "@sps/sps-broadcast/models/channel/frontend/component";
-import { Component as Message } from "@sps/sps-broadcast/models/message/frontend/component";
+import { Component as Channel } from "./channel/Component";
+import { Component as Message } from "./message/Component";
 
 export function Component(props: IComponentProps) {
   const models = [

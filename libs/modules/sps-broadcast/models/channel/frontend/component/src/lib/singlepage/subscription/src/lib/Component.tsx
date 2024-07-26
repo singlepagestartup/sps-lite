@@ -5,7 +5,7 @@ import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { api } from "@sps/sps-broadcast/models/channel/sdk/client";
 import { useSearchParams } from "next/navigation";
-import { Component as ChannelsToMessages } from "@sps/sps-broadcast/relations/channels-to-messages/frontend/component/root";
+import { Component as ChannelsToMessages } from "@sps/sps-broadcast/relations/channels-to-messages/frontend/component";
 import { STALE_TIME } from "@sps/shared-utils";
 
 export function Component(props: IComponentPropsExtended) {

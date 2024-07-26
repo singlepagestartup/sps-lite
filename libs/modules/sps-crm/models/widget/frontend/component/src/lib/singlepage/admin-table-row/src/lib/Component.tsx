@@ -1,33 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-crm/models/widget/sdk/client";
-import { Component as AdminForm } from "@sps/sps-crm/models/widget/frontend/component/src/lib/singlepage/admin-form";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
-
-  useEffect(() => {
-    if (deleteEntity.isSuccess) {
-      //
-    }
-  }, [deleteEntity]);
 
   return (
     <ParentComponent
       id={props.data.id}
       module="sps-website-builder"
       name="widget"
-      adminForm={
-        <AdminForm
-          isServer={false}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-          data={props.data}
-        />
-      }
+      adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });
