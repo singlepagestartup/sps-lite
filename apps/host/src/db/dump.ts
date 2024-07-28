@@ -7,6 +7,7 @@
 import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
+import { app as startupApp } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
 
@@ -26,6 +27,11 @@ import { exit } from "process";
     dumps: [],
   });
 
+  await startupApp.dump({
+    type: "model",
+    dumps: [],
+  });
+
   await spsHostApp.dump({
     type: "relation",
     dumps: [],
@@ -37,6 +43,11 @@ import { exit } from "process";
   });
 
   await spsRbacApp.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await startupApp.dump({
     type: "relation",
     dumps: [],
   });

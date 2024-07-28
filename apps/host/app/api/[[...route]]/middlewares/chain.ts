@@ -1,5 +1,5 @@
 import {
-  IsAllowedMiddleware,
+  IsAuthorizedMiddleware,
   RevalidationMiddleware,
   HTTPCacheMiddleware,
 } from "@sps/middlewares";
@@ -9,7 +9,7 @@ import { ParseQueryMiddleware } from "@sps/shared-backend-api";
 export function chain(app: any) {
   app.use(new RevalidationMiddleware().init());
   app.use(new ParseQueryMiddleware().init());
-  // app.use(new IsAllowedMiddleware().init());
+  app.use(new IsAuthorizedMiddleware().init());
 
   if (MIDDLEWARE_HTTP_CACHE) {
     app.use(new HTTPCacheMiddleware().init());

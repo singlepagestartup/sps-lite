@@ -23,6 +23,7 @@ export function Component(props: IComponentPropsExtended) {
       description: props.data?.description || "",
       subtitle: props.data?.subtitle || "",
       title: props.data?.title || "",
+      className: props.data?.className || "",
     },
   });
 
@@ -67,11 +68,20 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
-          type="text"
+          type="tiptap"
           label="Description"
           name="description"
           form={form}
           placeholder="Enter description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Class Name"
+          name="className"
+          form={form}
+          placeholder="Enter class name"
         />
 
         <FormField

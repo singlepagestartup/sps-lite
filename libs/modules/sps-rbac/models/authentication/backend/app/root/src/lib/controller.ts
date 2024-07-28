@@ -21,8 +21,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       {
         method: "GET",
-        path: "/is-allowed",
-        handler: this.isAllowed,
+        path: "/is-authorized",
+        handler: this.isAuthorized,
       },
       {
         method: "POST",
@@ -31,8 +31,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       {
         method: "POST",
-        path: "/providers/:provider",
-        handler: this.providers,
+        path: "/registration/:provider",
+        handler: this.registraion,
+      },
+      {
+        method: "POST",
+        path: "/authentication/:provider",
+        handler: this.authentication,
       },
       {
         method: "GET",
@@ -57,7 +62,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     ]);
   }
 
-  async isAllowed(c: Context, next: any): Promise<Response> {
+  async isAuthorized(c: Context, next: any): Promise<Response> {
     try {
       const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
 
@@ -91,7 +96,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const data = await this.service.isAllowed({
+      const data = await this.service.isAuthorized({
         route,
         method,
         authorization: {
@@ -133,7 +138,51 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
   }
 
-  async providers(c: Context, next: any): Promise<Response> {
+  async registraion(c: Context, next: any): Promise<Response> {
+    const body = await c.req.parseBody();
+    console.log(`🚀 ~ registraion ~ body:`, body);
+
+    if (typeof body["data"] !== "string") {
+      return next();
+    }
+
+    const data = JSON.parse(body["data"]);
+
+    try {
+      const provider = c.req.param("provider").replaceAll("-", "_");
+
+      if (!provider) {
+        throw new HTTPException(400, {
+          message: "No provider provided",
+        });
+      }
+
+      if (provider !== "login_and_password") {
+        throw new HTTPException(400, {
+          message: "Invalid provider",
+        });
+      }
+
+      const entity = await this.service.providers({
+        data,
+        provider,
+        type: "registration",
+      });
+
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  async authentication(c: Context, next: any): Promise<Response> {
     const body = await c.req.parseBody();
 
     if (typeof body["data"] !== "string") {
@@ -160,6 +209,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const entity = await this.service.providers({
         data,
         provider,
+        type: "authentication",
       });
 
       return c.json(

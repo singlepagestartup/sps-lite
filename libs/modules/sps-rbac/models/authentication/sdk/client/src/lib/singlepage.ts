@@ -54,6 +54,7 @@ export const api = {
     options,
   }),
   loginAndPassword: (props?: {
+    type?: "authentication" | "registration";
     params?: {
       [key: string]: any;
     };
@@ -64,7 +65,9 @@ export const api = {
       DefaultError,
       ILoginAndPasswordMutationFunctionProps
     >({
-      mutationKey: [`${route}/providers/login-and-password`],
+      mutationKey: [
+        `${route}/${props?.type ?? "authentication"}/login-and-password`,
+      ],
       mutationFn: async (
         mutationFunctionProps: ILoginAndPasswordMutationFunctionProps,
       ) => {
@@ -89,7 +92,7 @@ export const api = {
           },
         };
         const res = await fetch(
-          `${host}${route}/providers/login-and-password?${stringifiedQuery}`,
+          `${host}${route}/${props?.type ?? "authentication"}/login-and-password?${stringifiedQuery}`,
           requestOptions,
         );
 
@@ -110,8 +113,8 @@ export const api = {
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
-          type: "providers.loginAndPassword",
-          name: `${route}/providers/login-and-password`,
+          type: "authentication.loginAndPassword",
+          name: `${route}/${props?.type ?? "authentication"}/login-and-password`,
           props: this,
           result: data,
           timestamp: Date.now(),
@@ -185,22 +188,33 @@ export const api = {
       },
     });
   },
-  isAllowed: (props?: {
+  isAuthorized: (props?: {
     params?: IIsAuthenticatedProps["params"];
     options?: IIsAuthenticatedProps["options"];
   }) => {
     return useQuery<IModel>({
-      queryKey: [`${route}/is-allowed`],
+      queryKey: [`${route}/is-authorized`],
       queryFn: async () => {
+        const authorization = localStorage.getItem("authorization");
+        console.log(`🚀 ~ queryFn: ~ authorization:`, authorization);
+        const options: Partial<NextRequestOptions> = props?.options || {};
+
+        if (authorization) {
+          options.headers = {
+            ...options.headers,
+            Authorization: authorization,
+          };
+        }
+
         const stringifiedQuery = QueryString.stringify(props?.params, {
           encodeValuesOnly: true,
         });
 
         const requestOptions: NextRequestOptions = {
           credentials: "include",
-          ...props?.options,
+          ...options,
           next: {
-            ...props?.options?.next,
+            ...options?.next,
           },
         };
 
@@ -227,8 +241,8 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "is-allowed",
-          name: `${route}/is-allowed`,
+          type: "is-authorized",
+          name: `${route}/is-authorized`,
           props: this,
           result: data,
           timestamp: Date.now(),

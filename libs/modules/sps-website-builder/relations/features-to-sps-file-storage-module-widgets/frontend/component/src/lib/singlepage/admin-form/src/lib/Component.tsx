@@ -12,7 +12,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
 import { Component as FeatureAdminSlectInput } from "@sps/sps-website-builder/models/feature/frontend/component";
-import { Component as FileAdminSelectInput } from "@sps/sps-file-storage/models/file/frontend/component";
+import { Component as Widget } from "@sps/sps-file-storage/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -88,7 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <FileAdminSelectInput
+        <Widget
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"

@@ -8,6 +8,7 @@ import { ISeedResult } from "@sps/shared-backend-api";
 import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
 import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
+import { app as startupApp } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
 
@@ -53,6 +54,19 @@ import { exit } from "process";
     seeds.push(spsRbacModelsSeeds);
   }
 
+  const startupModelsSeeds = await startupApp.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(startupModelsSeeds)) {
+    startupModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(startupModelsSeeds);
+  }
+
   const spsHostRelationsSeeds = await spsHostApp.seed({
     type: "relation",
     seeds,
@@ -90,6 +104,19 @@ import { exit } from "process";
     });
   } else {
     seeds.push(spsRbacRelationsSeeds);
+  }
+
+  const startupRelationsSeeds = await startupApp.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(startupRelationsSeeds)) {
+    startupRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(startupRelationsSeeds);
   }
 
   // console.log(`🚀 ~ seeds:`, seeds);

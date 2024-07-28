@@ -24,7 +24,9 @@ const formSchema = z.object({
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const loginAndPassword = api.loginAndPassword();
+  const loginAndPassword = api.loginAndPassword({
+    type: props.type,
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

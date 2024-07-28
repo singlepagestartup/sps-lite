@@ -45,7 +45,7 @@ export async function action(
   };
 
   const res = await fetch(
-    `${host}${route}/is-allowed?${stringifiedQuery}`,
+    `${host}${route}/is-authorized?${stringifiedQuery}`,
     requestOptions,
   );
 

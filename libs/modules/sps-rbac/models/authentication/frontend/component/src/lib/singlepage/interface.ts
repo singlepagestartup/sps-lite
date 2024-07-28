@@ -5,7 +5,7 @@ import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-sele
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as ILogoutActionComponentProps } from "./logout-action";
 import { IComponentProps as ILogoutButtonComponentProps } from "./logout-button";
-import { IComponentProps as IIsAuthenticatatedWrapperComponentProps } from "./is-authenticatated-wrapper";
+import { IComponentProps as IIsAllowedWrapperComponentProps } from "./is-authorized-wrapper";
 import { IComponentProps as ISetSessionWrapperComponentProps } from "./set-session-wrapper";
 
 import { IComponentProps as ILoginAndPasswordComponentProps } from "./login-and-password";
@@ -19,7 +19,7 @@ export type IComponentProps =
   | IAdminFormComponentProps
   | ILogoutActionComponentProps
   | ILogoutButtonComponentProps
-  | IIsAuthenticatatedWrapperComponentProps
+  | IIsAllowedWrapperComponentProps
   | ISetSessionWrapperComponentProps
   | ILoginAndPasswordComponentProps
   | ISelectMethodComponentProps

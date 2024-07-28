@@ -1,5 +1,5 @@
 import { factory } from "@sps/shared-frontend-server-api";
-import { action as isAllowed } from "./actions/is-allowed";
+import { action as isAuthorized } from "./actions/is-authorized";
 import {
   host,
   route,
@@ -15,5 +15,5 @@ export const api = {
     params: query,
     options,
   }),
-  isAllowed,
+  isAuthorized,
 };

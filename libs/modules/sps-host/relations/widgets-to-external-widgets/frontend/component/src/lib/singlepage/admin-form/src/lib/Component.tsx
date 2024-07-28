@@ -14,6 +14,7 @@ import {
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/sps-host/models/widget/frontend/component";
 import { Component as SpsWebsiteBuilderWidget } from "@sps/sps-website-builder/models/widget/frontend/component";
+import { Component as StartupWidget } from "@sps/startup/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -100,8 +101,19 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select external module"
           options={externalModules.map((module) => [module, module])}
         />
+
         {watchData.externalModule === "sps-website-builder" ? (
           <SpsWebsiteBuilderWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="externalWidgetId"
+          />
+        ) : null}
+
+        {watchData.externalModule === "startup" ? (
+          <StartupWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"

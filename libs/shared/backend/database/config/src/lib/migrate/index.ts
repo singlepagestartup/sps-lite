@@ -45,7 +45,7 @@ export class Config {
 
   async migrate() {
     try {
-      if (!process.env["DATABASE_HOST"] || !process.env["DATABASE_NAME"]) {
+      if (Object.keys(DATABASE_OPTIONS).length < 2) {
         throw new Error("Database credentials are missing");
       }
 

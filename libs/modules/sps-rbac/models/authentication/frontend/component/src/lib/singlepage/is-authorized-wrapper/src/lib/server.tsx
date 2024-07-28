@@ -1,26 +1,22 @@
-"use client";
-import "client-only";
+"use server";
+import "server-only";
 
-import { Component } from "./Component";
 import { ErrorBoundary } from "@sps/ui-adapter";
-import { Skeleton } from "./Skeleton";
-import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
+import { Error } from "./Error";
+import { api } from "@sps/sps-rbac/models/authentication/sdk/server";
+import { Component } from "./Component";
 import { Component as AuthenticationSpsLiteSelectMethod } from "../../../select-method";
 
-export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.isAllowed();
-
-  if (isFetching || isLoading) {
-    return <Skeleton {...props} />;
-  }
+// default is required for dynamic import
+export default async function Server(props: IComponentProps) {
+  const data = await api.isAuthorized();
 
   if (!data) {
     return (
       <div className="w-full max-w-7xl mx-auto py-20">
         <AuthenticationSpsLiteSelectMethod
-          isServer={false}
+          isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="select-method"
         />

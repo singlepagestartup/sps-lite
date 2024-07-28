@@ -16,12 +16,14 @@ import {
   SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
+import bcrypt from "bcrypt";
 
 export interface ILoginAndPasswordDTO {
   data: {
     login: string;
     password: string;
   };
+  type: "registration" | "authentication";
   provider: "login_and_password";
 }
 
@@ -39,7 +41,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     super(repository);
   }
 
-  async isAllowed(props: IIsAllowedDTO): Promise<any> {
+  async isAuthorized(props: IIsAllowedDTO): Promise<any> {
     if (!SPS_RBAC_JWT_SECRET) {
       throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
     }
@@ -231,6 +233,83 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
     }
 
+    if (props.type === "registration") {
+      const identities = await identityApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "email",
+                method: "eq",
+                value: props.data.login,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!identities?.length) {
+        throw new Error("Identity already exists");
+      }
+
+      const salt = await bcrypt.genSalt(10);
+
+      const saltedPassword = await bcrypt.hash(props.data.password, salt);
+
+      const identity = await identityApi.create({
+        data: {
+          email: props.data.login,
+          password: saltedPassword,
+          salt,
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const subject = await subjectApi.create({
+        data: {
+          name: props.data.login,
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const subjectsToIdentities = await subjectsToIdentitiesApi.create({
+        data: {
+          identityId: identity.id,
+          subjectId: subject.id,
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+    }
+
     const identities = await identityApi.find({
       params: {
         filters: {
@@ -239,11 +318,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               column: "email",
               method: "eq",
               value: props.data.login,
-            },
-            {
-              column: "password",
-              method: "eq",
-              value: props.data.password,
             },
           ],
         },
@@ -267,6 +341,19 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }
 
     const identity = identities[0];
+
+    if (!identity.salt) {
+      throw new Error("No salt found for this identity");
+    }
+
+    const saltedPassword = await bcrypt.hash(
+      props.data.password,
+      identity.salt,
+    );
+
+    if (saltedPassword !== identity.password) {
+      throw new Error("Invalid credentials");
+    }
 
     const subjectsToIdentities = await subjectsToIdentitiesApi.find({
       params: {

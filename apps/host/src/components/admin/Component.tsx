@@ -28,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <SpsRbacAuthentication
-      variant="is-authenticatated-wrapper"
+      variant="is-authorized-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
     >

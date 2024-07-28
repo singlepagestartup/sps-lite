@@ -14,7 +14,7 @@ import { api as authenticationApi } from "@sps/sps-rbac/models/authentication/sd
  */
 const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   {
-    regexPath: /\/api\/sps-rbac\/authentications\/is-allowed/,
+    regexPath: /\/api\/sps-rbac\/authentications\/is-authorized/,
     methods: ["GET"],
   },
   {
@@ -22,7 +22,8 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/authentications\/providers\/(\w+)?/,
+    regexPath:
+      /\/api\/sps-rbac\/authentications\/(authentication|registration)\/(\w+)?/,
     methods: ["POST"],
   },
   {
@@ -87,7 +88,7 @@ export class Middleware {
             ? { Authorization: authorizationHeader }
             : ({} as HeadersInit);
 
-        const allowed = await authenticationApi.isAllowed({
+        const allowed = await authenticationApi.isAuthorized({
           params: {
             route: reqPath.toLowerCase(),
             method: reqMethod.toLowerCase(),
