@@ -45,19 +45,19 @@ export class Configuration extends ParentConfiguration {
               },
             },
             {
-              field: "spsFileStorageModuleFileId",
+              field: "spsFileStorageModuleWidgetId",
               transform: (data) => {
                 const relationEntites = data.seeds
                   .find(
                     (seed) =>
-                      seed.name === "file" &&
+                      seed.name === "widget" &&
                       seed.type === "model" &&
                       seed.module === "sps-file-storage",
                   )
                   ?.seeds?.filter(
                     (seed) =>
                       seed.dump.id ===
-                      data.entity.dump.spsFileStorageModuleFileId,
+                      data.entity.dump.spsFileStorageModuleWidgetId,
                   );
 
                 return relationEntites?.[0].new.id;
