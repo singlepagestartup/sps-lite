@@ -561,7 +561,7 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/models/slider-block/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/models/widget/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -577,7 +577,7 @@
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/models/slider-block/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/models/widget/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

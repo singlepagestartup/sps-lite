@@ -31,6 +31,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       {
         method: "GET",
+        path: "/url-segment-value",
+        handler: this.urlSegmentValue,
+      },
+      {
+        method: "GET",
         path: "/:uuid",
         handler: this.findById,
       },
@@ -48,11 +53,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "DELETE",
         path: "/:uuid",
         handler: this.delete,
-      },
-      {
-        method: "GET",
-        path: "/url-segment-value",
-        handler: this.urlSegmentValue,
       },
     ]);
   }
