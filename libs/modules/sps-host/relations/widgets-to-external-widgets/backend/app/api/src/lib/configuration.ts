@@ -44,6 +44,24 @@ export class Configuration extends ParentConfiguration {
                 return relationEntites?.[0].new.id;
               },
             },
+            {
+              field: "externalWidgetId",
+              transform: (data) => {
+                const relationEntites = data.seeds
+                  .find(
+                    (seed) =>
+                      seed.name === "widget" &&
+                      seed.type === "model" &&
+                      seed.module === data.entity.dump.externalModule,
+                  )
+                  ?.seeds?.filter(
+                    (seed) =>
+                      seed.dump.id === data.entity.dump.externalWidgetId,
+                  );
+
+                return relationEntites?.[0].new.id;
+              },
+            },
           ],
         },
       },

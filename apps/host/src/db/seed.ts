@@ -1,21 +1,16 @@
-// import { ModuleSeeder as SpsHostModuleSeeder } from "@sps/sps-host/backend/app/root";
-// import { ModuleSeeder as SpsBroadcastModuleSeeder } from "@sps/sps-broadcast/backend/app/root";
-// import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
-// import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
-// import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
-// import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
 import { ISeedResult } from "@sps/shared-backend-api";
-import { app as spsHostApp } from "@sps/sps-host/backend/app/api";
-import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/api";
-import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
-import { app as startupApp } from "@sps/startup/backend/app/api";
+import { app as spsHost } from "@sps/sps-host/backend/app/api";
+import { app as spsWebsiteBuilder } from "@sps/sps-website-builder/backend/app/api";
+import { app as spsRbac } from "@sps/sps-rbac/backend/app/api";
+import { app as spsFileStorage } from "@sps/sps-file-storage/backend/app/api";
+import { app as startup } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
 
 (async () => {
   const seeds: ISeedResult[] = [];
 
-  const spsHostModelsSeeds = await spsHostApp.seed({
+  const spsHostModelsSeeds = await spsHost.seed({
     type: "model",
     seeds,
   });
@@ -28,7 +23,7 @@ import { exit } from "process";
     seeds.push(spsHostModelsSeeds);
   }
 
-  const spsWebsiteBuilderModelsSeeds = await spsWebsiteBuilderApp.seed({
+  const spsWebsiteBuilderModelsSeeds = await spsWebsiteBuilder.seed({
     type: "model",
     seeds,
   });
@@ -41,7 +36,7 @@ import { exit } from "process";
     seeds.push(spsWebsiteBuilderModelsSeeds);
   }
 
-  const spsRbacModelsSeeds = await spsRbacApp.seed({
+  const spsRbacModelsSeeds = await spsRbac.seed({
     type: "model",
     seeds,
   });
@@ -54,7 +49,20 @@ import { exit } from "process";
     seeds.push(spsRbacModelsSeeds);
   }
 
-  const startupModelsSeeds = await startupApp.seed({
+  const spsFileStorageModelsSeeds = await spsFileStorage.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(spsFileStorageModelsSeeds)) {
+    spsFileStorageModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsFileStorageModelsSeeds);
+  }
+
+  const startupModelsSeeds = await startup.seed({
     type: "model",
     seeds,
   });
@@ -67,7 +75,7 @@ import { exit } from "process";
     seeds.push(startupModelsSeeds);
   }
 
-  const spsHostRelationsSeeds = await spsHostApp.seed({
+  const spsHostRelationsSeeds = await spsHost.seed({
     type: "relation",
     seeds,
   });
@@ -80,7 +88,7 @@ import { exit } from "process";
     seeds.push(spsHostRelationsSeeds);
   }
 
-  const spsWebsiteBuilderRelationsSeeds = await spsWebsiteBuilderApp.seed({
+  const spsWebsiteBuilderRelationsSeeds = await spsWebsiteBuilder.seed({
     type: "relation",
     seeds,
   });
@@ -93,7 +101,7 @@ import { exit } from "process";
     seeds.push(spsWebsiteBuilderRelationsSeeds);
   }
 
-  const spsRbacRelationsSeeds = await spsRbacApp.seed({
+  const spsRbacRelationsSeeds = await spsRbac.seed({
     type: "relation",
     seeds,
   });
@@ -106,7 +114,20 @@ import { exit } from "process";
     seeds.push(spsRbacRelationsSeeds);
   }
 
-  const startupRelationsSeeds = await startupApp.seed({
+  const spsFileStorageRelationsSeeds = await spsFileStorage.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(spsFileStorageRelationsSeeds)) {
+    spsFileStorageRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsFileStorageRelationsSeeds);
+  }
+
+  const startupRelationsSeeds = await startup.seed({
     type: "relation",
     seeds,
   });
@@ -118,91 +139,6 @@ import { exit } from "process";
   } else {
     seeds.push(startupRelationsSeeds);
   }
-
-  // console.log(`🚀 ~ seeds:`, seeds);
-
-  // const seedingWidget = await footerBlockApp.seed({ seeds });
-
-  // seeds.push(seedingWidget);
-  // // console.log(`🚀 ~ seedingWidget:`, seedingWidget);
-
-  // const seedingLogotype = await logotypeApp.seed({ seeds });
-  // // console.log(`🚀 ~ seedingLogotype:`, seedingLogotype);
-  // seeds.push(seedingLogotype);
-
-  // const seedingFooterBlocksToLogotypes = await footerBlocksToLogotypesApp.seed({
-  //   seeds,
-  // });
-
-  // seeds.push(seedingFooterBlocksToLogotypes);
-
-  // const spsHostModuleSeeder = new SpsHostModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // const spsBroadcastModuleSeeder = new SpsBroadcastModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // const spsWebsiteBuilderModuleSeeder = new SpsWebsiteBuilderModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // const spsFileStorageModuleSeeder = new SpsFileStorageModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // const spsRbacModuleSeeder = new SpsRbacModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // const startupModuleSeeder = new StartupModuleSeeder({
-  //   seedResults,
-  //   seedConfig,
-  // });
-
-  // if (spsHostModuleSeeder.config.seed || seedAll) {
-  //   await spsHostModuleSeeder.seedModels();
-  // }
-  // if (spsBroadcastModuleSeeder.config.seed || seedAll) {
-  //   await spsBroadcastModuleSeeder.seedModels();
-  // }
-  // // if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-  // //   await spsWebsiteBuilderModuleSeeder.seedModels();
-  // // }
-  // if (spsFileStorageModuleSeeder.config.seed || seedAll) {
-  //   await spsFileStorageModuleSeeder.seedModels();
-  // }
-  // // if (spsRbacModuleSeeder.config.seed || seedAll) {
-  // //   await spsRbacModuleSeeder.seedModels();
-  // // }
-  // if (startupModuleSeeder.config.seed || seedAll) {
-  //   await startupModuleSeeder.seedModels();
-  // }
-
-  // if (spsHostModuleSeeder.config.seed || seedAll) {
-  //   await spsHostModuleSeeder.seedRelations();
-  // }
-  // if (spsBroadcastModuleSeeder.config.seed || seedAll) {
-  //   await spsBroadcastModuleSeeder.seedRelations();
-  // }
-  // // if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-  // //   await spsWebsiteBuilderModuleSeeder.seedRelations();
-  // // }
-  // if (spsFileStorageModuleSeeder.config.seed || seedAll) {
-  //   await spsFileStorageModuleSeeder.seedRelations();
-  // }
-  // // if (spsRbacModuleSeeder.config.seed || seedAll) {
-  // //   await spsRbacModuleSeeder.seedRelations();
-  // // }
-  // if (startupModuleSeeder.config.seed || seedAll) {
-  //   await startupModuleSeeder.seedRelations();
-  // }
 })()
   .then(() => {
     exit(0);
