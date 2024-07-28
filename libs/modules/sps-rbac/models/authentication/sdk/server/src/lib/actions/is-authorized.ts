@@ -9,14 +9,16 @@ export interface IActionProps {
   catchErrors?: boolean;
   tag?: string;
   revalidate?: number;
-  params?: {
-    [key: string]: any;
+  params: {
+    route: string;
+    method: string;
+    type?: "http";
   };
   options?: NextRequestOptions;
 }
 
 export async function action(
-  props: IActionProps = {},
+  props: IActionProps,
 ): Promise<{ ok: true } | undefined> {
   const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
@@ -61,7 +63,9 @@ export async function action(
         throw new Error(JSON.stringify(json.data));
       }
     } catch (error) {
-      const requestError = new Error(`${res.status} | ${res.statusText}`);
+      const requestError = new Error(
+        `${res.status} | ${res.statusText} | ${error?.["message"]}`,
+      );
 
       if (props.catchErrors || productionBuild) {
         console.error(`${requestError.message} | ${host}${route} | ${error}`);

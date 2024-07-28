@@ -1,6 +1,7 @@
 "use client";
 
 import { actions, IUpdateActionProps } from "@sps/shared-frontend-api";
+import { authorization } from "@sps/shared-frontend-client-utils";
 
 export interface IMutationProps<T> {
   host: string;
@@ -28,12 +29,18 @@ export function mutation<T>(
       throw new Error("id is required");
     }
 
+    const headers = authorization.headers();
+
     const res = await actions.update<T>({
       id,
       host: props.host,
       route: props.route,
       params: mutationFunctionProps.params || props.params,
-      options: mutationFunctionProps.options || props.options,
+      options: {
+        headers,
+        ...mutationFunctionProps.options,
+        ...props.options,
+      },
       data: mutationFunctionProps.data,
     });
 

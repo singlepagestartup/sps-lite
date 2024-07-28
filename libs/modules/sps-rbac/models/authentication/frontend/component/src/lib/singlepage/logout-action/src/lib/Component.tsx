@@ -8,18 +8,18 @@ import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
+
   const logout = api.logout();
 
   useEffect(() => {
-    if (logout.isIdle) {
-      logout.mutate({});
-    }
+    logout.mutate({});
+  }, []);
 
+  useEffect(() => {
     if (logout.isSuccess) {
-      // router.refresh();
-      // router.push("/login");
+      router.push("/login");
     }
-  }, [logout]);
+  }, [logout.isSuccess]);
 
   return (
     <div

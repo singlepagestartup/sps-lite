@@ -13,8 +13,7 @@ export function Component(props: IComponentPropsExtended) {
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="login-and-password"
-        type="authentication"
-        // type="registration"
+        type={props.type}
       />
     </div>
   );

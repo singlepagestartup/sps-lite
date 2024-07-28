@@ -1,5 +1,3 @@
-import { RequestOptions } from "https";
-
 export interface IBackendPagination {
   pagination: {
     page: number;

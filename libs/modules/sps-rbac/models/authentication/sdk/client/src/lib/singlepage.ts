@@ -18,6 +18,7 @@ import {
 import QueryString from "qs";
 import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { createId } from "@paralleldrive/cuid2";
+import { authorization } from "@sps/shared-frontend-client-utils";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
 
 export interface ILoginAndPasswordMutationFunctionProps {
@@ -38,9 +39,11 @@ export interface ILogoutMutationFunctionProps {
   options?: NextRequestOptions;
 }
 
-export interface IIsAuthenticatedProps {
-  params?: {
-    [key: string]: any;
+export interface IIsAuthorizedProps {
+  params: {
+    route: string;
+    method: string;
+    type?: "http";
   };
   options?: NextRequestOptions;
 }
@@ -61,7 +64,7 @@ export const api = {
     options?: NextRequestOptions;
   }) => {
     return useMutation<
-      IModel,
+      { jwt: string; refresh: string },
       DefaultError,
       ILoginAndPasswordMutationFunctionProps
     >({
@@ -107,7 +110,10 @@ export const api = {
         if (json.error) {
           throw new Error(json.error.message || "Failed to fetch data");
         }
-        const transformedData = transformResponseItem<IModel>(json);
+        const transformedData = transformResponseItem<{
+          jwt: string;
+          refresh: string;
+        }>(json);
 
         return transformedData;
       },
@@ -131,7 +137,11 @@ export const api = {
     };
     options?: NextRequestOptions;
   }) => {
-    return useMutation<IModel, DefaultError, ILogoutMutationFunctionProps>({
+    return useMutation<
+      { ok: true },
+      DefaultError,
+      ILogoutMutationFunctionProps
+    >({
       mutationKey: [`${route}/logout`],
       mutationFn: async (
         mutationFunctionProps?: ILogoutMutationFunctionProps,
@@ -154,6 +164,7 @@ export const api = {
             ...(mutationFunctionProps?.options?.next || props?.options?.next),
           },
         };
+
         const res = await fetch(
           `${host}${route}/logout?${stringifiedQuery}`,
           requestOptions,
@@ -170,7 +181,7 @@ export const api = {
         if (json.error) {
           throw new Error(json.error.message || "Failed to fetch data");
         }
-        const transformedData = transformResponseItem<IModel>(json);
+        const transformedData = transformResponseItem<{ ok: true }>(json);
 
         return transformedData;
       },
@@ -188,23 +199,14 @@ export const api = {
       },
     });
   },
-  isAuthorized: (props?: {
-    params?: IIsAuthenticatedProps["params"];
-    options?: IIsAuthenticatedProps["options"];
+  isAuthorized: (props: {
+    params: IIsAuthorizedProps["params"];
+    options?: IIsAuthorizedProps["options"];
   }) => {
     return useQuery<IModel>({
       queryKey: [`${route}/is-authorized`],
       queryFn: async () => {
-        const authorization = localStorage.getItem("authorization");
-        console.log(`🚀 ~ queryFn: ~ authorization:`, authorization);
-        const options: Partial<NextRequestOptions> = props?.options || {};
-
-        if (authorization) {
-          options.headers = {
-            ...options.headers,
-            Authorization: authorization,
-          };
-        }
+        const headers = authorization.headers();
 
         const stringifiedQuery = QueryString.stringify(props?.params, {
           encodeValuesOnly: true,
@@ -212,6 +214,7 @@ export const api = {
 
         const requestOptions: NextRequestOptions = {
           credentials: "include",
+          headers,
           ...options,
           next: {
             ...options?.next,
@@ -219,7 +222,7 @@ export const api = {
         };
 
         const res = await fetch(
-          `${host}${route}?${stringifiedQuery}`,
+          `${host}${route}/is-authorized?${stringifiedQuery}`,
           requestOptions,
         );
 

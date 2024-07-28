@@ -7,10 +7,10 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
-import { Component as AuthenticationSpsLiteSelectMethod } from "../../../select-method";
+import { Component as SelectMethod } from "../../../select-method";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.isAuthorized();
+  const { data, isFetching, isLoading } = api.isAuthorized(props.apiProps);
 
   if (isFetching || isLoading) {
     return <Skeleton {...props} />;
@@ -19,10 +19,11 @@ export default function Client(props: IComponentProps) {
   if (!data) {
     return (
       <div className="w-full max-w-7xl mx-auto py-20">
-        <AuthenticationSpsLiteSelectMethod
+        <SelectMethod
           isServer={false}
           hostUrl={props.hostUrl}
           variant="select-method"
+          type="authentication"
         />
       </div>
     );

@@ -15,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
     if (logout.isSuccess) {
       router.push("/");
     }
-  }, []);
+  }, [logout.isSuccess]);
 
   return (
     <Button

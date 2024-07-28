@@ -16,6 +16,7 @@ export function Component(props: IComponentPropsExtended) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="select-method"
+          type="authentication"
         />
       </div>
     </div>

@@ -140,7 +140,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
   async registraion(c: Context, next: any): Promise<Response> {
     const body = await c.req.parseBody();
-    console.log(`🚀 ~ registraion ~ body:`, body);
 
     if (typeof body["data"] !== "string") {
       return next();

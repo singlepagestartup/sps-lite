@@ -10,7 +10,7 @@ export interface IActionProps {
   params?: {
     [key: string]: any;
   };
-  options?: NextRequestOptions;
+  options?: Partial<NextRequestOptions>;
 }
 
 export async function action<T>(props: IActionProps): Promise<T> {

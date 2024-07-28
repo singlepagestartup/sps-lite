@@ -1,6 +1,7 @@
 "use client";
 
 import { actions, ICreateActionProps } from "@sps/shared-frontend-api";
+import { authorization } from "@sps/shared-frontend-client-utils";
 
 export interface IMutationProps<T> {
   options?: ICreateActionProps["options"];
@@ -20,11 +21,17 @@ export function mutation<T>(
   props: IMutationProps<T>,
 ): (mutationFunctionProps: IMutationFunctionProps) => Promise<T> {
   return async (mutationFunctionProps: IMutationFunctionProps) => {
+    const headers = authorization.headers();
+
     const res = await actions.create<T>({
       host: props.host,
       route: props.route,
       params: mutationFunctionProps.params || props.params,
-      options: mutationFunctionProps.options || props.options,
+      options: {
+        headers,
+        ...mutationFunctionProps.options,
+        ...props.options,
+      },
       data: mutationFunctionProps.data,
     });
 

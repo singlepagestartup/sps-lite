@@ -31,6 +31,12 @@ export function Component(props: IComponentPropsExtended) {
       variant="is-authorized-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
+      apiProps={{
+        params: {
+          route: "/admin",
+          method: "GET",
+        },
+      }}
     >
       <section data-module="frontend" className="w-full py-2 lg:py-10 bg-input">
         <div className="w-full mx-auto max-w-7xl px-2">
