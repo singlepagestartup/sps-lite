@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { App as SpsFileStorageApp } from "@sps/sps-file-storage/frontend/component";
+import { Component as SpsFileStorageWidget } from "@sps/sps-file-storage/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,14 +11,38 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      {/* <SpsFileStorageApp
+      <SpsFileStorageWidget
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant="default"
-        data={{
-          id: props.data.spsFileStorageModuleWidgetId,
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.spsFileStorageModuleWidgetId,
+                },
+              ],
+            },
+          },
         }}
-      /> */}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <SpsFileStorageWidget
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                data={entity}
+                variant={entity.variant as any}
+              />
+            );
+          });
+        }}
+      </SpsFileStorageWidget>
     </div>
   );
 }
