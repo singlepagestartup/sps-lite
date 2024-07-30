@@ -1,4 +1,8 @@
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  NextRequestOptions,
+  responsePipe,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
@@ -44,21 +48,9 @@ export async function action<T>(props: IActionProps): Promise<T | undefined> {
     requestOptions,
   );
 
-  if (!res.ok) {
-    const error = new Error(res.statusText);
-
-    console.error(`${error.message} | ${host}${route} | ${error}`);
-
-    return;
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    console.error(`${json.error.message} | ${host}${route} | ${json.error}`);
-
-    return;
-  }
+  const json = await responsePipe<{ data: T }>({
+    res,
+  });
 
   const transformedData = transformResponseItem<T>(json);
 

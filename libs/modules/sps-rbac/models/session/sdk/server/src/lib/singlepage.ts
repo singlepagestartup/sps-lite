@@ -1,5 +1,9 @@
 import { factory } from "@sps/shared-frontend-server-api";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  NextRequestOptions,
+  responsePipe,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import {
   host,
   route,
@@ -30,13 +34,15 @@ export const api = {
       throw new Error(error.message || "Failed to fetch data");
     }
 
-    const json = await res.json();
+    const json = await responsePipe<{
+      data: {
+        ok: true;
+      };
+    }>({
+      res,
+    });
 
-    if (json.error) {
-      throw new Error(json.error.message || "Failed to fetch data");
-    }
-
-    const transformedData = transformResponseItem<{ data: { ok: true } }>(json);
+    const transformedData = transformResponseItem<{ ok: true }>(json);
 
     return transformedData;
   },

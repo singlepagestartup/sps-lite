@@ -1,7 +1,11 @@
 "use server";
 
 import { route, IModel, host } from "@sps/sps-host/models/page/sdk/model";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  NextRequestOptions,
+  responsePipe,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
@@ -43,40 +47,13 @@ export async function action({ url, catchErrors = false }: Params) {
     options,
   );
 
-  if (!res.ok) {
-    try {
-      const json = await res.json();
+  const json = await responsePipe<{ data: IModel }>({
+    res,
+    catchErrors: catchErrors || productionBuild,
+  });
 
-      if (catchErrors || productionBuild) {
-        console.error(json.error);
-
-        return;
-      } else {
-        throw new Error(JSON.stringify(json.data));
-      }
-    } catch (error) {
-      const requestError = new Error(`${res.status} | ${res.statusText}`);
-
-      if (catchErrors || productionBuild) {
-        console.error(`${requestError.message} | ${host}${route} | ${error}`);
-
-        return;
-      } else {
-        throw requestError;
-      }
-    }
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    if (catchErrors || productionBuild) {
-      console.error(json.error);
-
-      return;
-    } else {
-      throw new Error(json.error.message);
-    }
+  if (!json) {
+    return;
   }
 
   const transformedData = transformResponseItem<IModel>(json);

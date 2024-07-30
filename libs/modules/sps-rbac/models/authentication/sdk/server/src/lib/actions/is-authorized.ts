@@ -1,7 +1,11 @@
 "use server";
 
 import { host, route } from "@sps/sps-rbac/models/authentication/sdk/model";
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  NextRequestOptions,
+  responsePipe,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
@@ -51,42 +55,13 @@ export async function action(
     requestOptions,
   );
 
-  if (!res.ok) {
-    try {
-      const json = await res.json();
+  const json = await responsePipe<{ data: { ok: true } }>({
+    res,
+    catchErrors: props.catchErrors || productionBuild,
+  });
 
-      if (props.catchErrors || productionBuild) {
-        console.error(json.error);
-
-        return;
-      } else {
-        throw new Error(JSON.stringify(json.data));
-      }
-    } catch (error) {
-      const requestError = new Error(
-        `${res.status} | ${res.statusText} | ${error?.["message"]}`,
-      );
-
-      if (props.catchErrors || productionBuild) {
-        console.error(`${requestError.message} | ${host}${route} | ${error}`);
-
-        return;
-      } else {
-        throw requestError;
-      }
-    }
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    if (props.catchErrors || productionBuild) {
-      console.error(json.error);
-
-      return;
-    } else {
-      throw new Error(json.error.message);
-    }
+  if (!json) {
+    return;
   }
 
   const transformedData = transformResponseItem<{ ok: true }>(json);

@@ -76,46 +76,52 @@ export const api = {
       mutationFn: async (
         mutationFunctionProps: ILoginAndPasswordMutationFunctionProps,
       ) => {
-        const { data } = mutationFunctionProps;
+        try {
+          const { data } = mutationFunctionProps;
 
-        const formData = prepareFormDataToSend({ data });
+          const formData = prepareFormDataToSend({ data });
 
-        const stringifiedQuery = QueryString.stringify(
-          mutationFunctionProps.params || props?.params,
-          {
-            encodeValuesOnly: true,
-          },
-        );
+          const stringifiedQuery = QueryString.stringify(
+            mutationFunctionProps.params || props?.params,
+            {
+              encodeValuesOnly: true,
+            },
+          );
 
-        const requestOptions: NextRequestOptions = {
-          credentials: "include",
-          method: "POST",
-          body: formData,
-          ...(mutationFunctionProps.options || props?.options),
-          next: {
-            ...(mutationFunctionProps.options?.next || props?.options?.next),
-          },
-        };
-        const res = await fetch(
-          `${host}${route}/${props?.type ?? "authentication"}/login-and-password?${stringifiedQuery}`,
-          requestOptions,
-        );
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            method: "POST",
+            body: formData,
+            ...(mutationFunctionProps.options || props?.options),
+            next: {
+              ...(mutationFunctionProps.options?.next || props?.options?.next),
+            },
+          };
+          const res = await fetch(
+            `${host}${route}/${props?.type ?? "authentication"}/login-and-password?${stringifiedQuery}`,
+            requestOptions,
+          );
 
-        const json = await responsePipe<{
-          data: {
+          const json = await responsePipe<{
+            data: {
+              jwt: string;
+              refresh: string;
+            };
+          }>({
+            res,
+          });
+
+          const transformedData = transformResponseItem<{
             jwt: string;
             refresh: string;
-          };
-        }>({
-          res,
-        });
+          }>(json);
 
-        const transformedData = transformResponseItem<{
-          jwt: string;
-          refresh: string;
-        }>(json);
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
 
-        return transformedData;
+          throw error;
+        }
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
@@ -128,10 +134,6 @@ export const api = {
         });
 
         return data;
-      },
-      onError(error) {
-        toast.error(error.message);
-        return error;
       },
     });
   },
@@ -150,44 +152,43 @@ export const api = {
       mutationFn: async (
         mutationFunctionProps?: ILogoutMutationFunctionProps,
       ) => {
-        const formData = prepareFormDataToSend({ data: {} });
+        try {
+          const formData = prepareFormDataToSend({ data: {} });
 
-        const stringifiedQuery = QueryString.stringify(
-          mutationFunctionProps?.params || props?.params,
-          {
-            encodeValuesOnly: true,
-          },
-        );
+          const stringifiedQuery = QueryString.stringify(
+            mutationFunctionProps?.params || props?.params,
+            {
+              encodeValuesOnly: true,
+            },
+          );
 
-        const requestOptions: NextRequestOptions = {
-          credentials: "include",
-          method: "POST",
-          body: formData,
-          ...(mutationFunctionProps?.options || props?.options),
-          next: {
-            ...(mutationFunctionProps?.options?.next || props?.options?.next),
-          },
-        };
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            method: "POST",
+            body: formData,
+            ...(mutationFunctionProps?.options || props?.options),
+            next: {
+              ...(mutationFunctionProps?.options?.next || props?.options?.next),
+            },
+          };
 
-        const res = await fetch(
-          `${host}${route}/logout?${stringifiedQuery}`,
-          requestOptions,
-        );
+          const res = await fetch(
+            `${host}${route}/logout?${stringifiedQuery}`,
+            requestOptions,
+          );
 
-        if (!res.ok) {
-          const error = new Error(res.statusText);
+          const json = await responsePipe<{ data: { ok: true } }>({
+            res,
+          });
 
-          throw new Error(error.message || "Failed to fetch data");
+          const transformedData = transformResponseItem<{ ok: true }>(json);
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
         }
-
-        const json = await res.json();
-
-        if (json.error) {
-          throw new Error(json.error.message || "Failed to fetch data");
-        }
-        const transformedData = transformResponseItem<{ ok: true }>(json);
-
-        return transformedData;
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
@@ -210,41 +211,39 @@ export const api = {
     return useQuery<IModel>({
       queryKey: [`${route}/is-authorized`],
       queryFn: async () => {
-        const headers = authorization.headers();
+        try {
+          const headers = authorization.headers();
 
-        const stringifiedQuery = QueryString.stringify(props?.params, {
-          encodeValuesOnly: true,
-        });
+          const stringifiedQuery = QueryString.stringify(props?.params, {
+            encodeValuesOnly: true,
+          });
 
-        const requestOptions: NextRequestOptions = {
-          credentials: "include",
-          headers,
-          ...options,
-          next: {
-            ...options?.next,
-          },
-        };
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            headers,
+            ...options,
+            next: {
+              ...options?.next,
+            },
+          };
 
-        const res = await fetch(
-          `${host}${route}/is-authorized?${stringifiedQuery}`,
-          requestOptions,
-        );
+          const res = await fetch(
+            `${host}${route}/is-authorized?${stringifiedQuery}`,
+            requestOptions,
+          );
 
-        if (!res.ok) {
-          const error = new Error(res.statusText);
+          const json = await responsePipe<{ data: IModel }>({
+            res,
+          });
 
-          throw new Error(error.message || "Failed to fetch data");
+          const transformedData = transformResponseItem<IModel>(json);
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
         }
-
-        const json = await res.json();
-
-        if (json.error) {
-          throw new Error(json.error.message || "Failed to fetch data");
-        }
-
-        const transformedData = transformResponseItem<IModel>(json);
-
-        return transformedData;
       },
       select(data) {
         globalActionsStore.getState().addAction({

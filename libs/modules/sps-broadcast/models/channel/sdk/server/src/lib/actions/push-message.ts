@@ -8,6 +8,7 @@ import {
 import {
   NextRequestOptions,
   prepareFormDataToSend,
+  responsePipe,
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
@@ -24,7 +25,7 @@ export interface IActionProps {
 }
 
 export async function action(props: IActionProps): Promise<IModel | undefined> {
-  const { params, options, catchErrors, data } = props;
+  const { params, options, data } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -47,40 +48,13 @@ export async function action(props: IActionProps): Promise<IModel | undefined> {
     requestOptions,
   );
 
-  if (!res.ok) {
-    try {
-      const json = await res.json();
+  const json = await responsePipe<{ data: IModel }>({
+    res,
+    catchErrors: props.catchErrors || false,
+  });
 
-      if (catchErrors) {
-        console.error(json.error);
-
-        return;
-      } else {
-        throw new Error(JSON.stringify(json.data));
-      }
-    } catch (error) {
-      const requestError = new Error(`${res.status} | ${res.statusText}`);
-
-      if (catchErrors) {
-        console.error(`${requestError.message} | ${host}${route} | ${error}`);
-
-        return;
-      } else {
-        throw error;
-      }
-    }
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    if (catchErrors) {
-      console.error(json.error);
-
-      return;
-    } else {
-      throw new Error(json.error.message);
-    }
+  if (!json) {
+    return;
   }
 
   const transformedData = transformResponseItem<IModel>(json);

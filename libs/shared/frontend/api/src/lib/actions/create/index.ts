@@ -1,6 +1,7 @@
 import {
   NextRequestOptions,
   prepareFormDataToSend,
+  responsePipe,
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
@@ -41,17 +42,10 @@ export async function action<T>(props: IActionProps): Promise<T> {
     requestOptions,
   );
 
-  if (!res.ok) {
-    const error = new Error(res.statusText);
+  const json = await responsePipe<{ data: T }>({
+    res,
+  });
 
-    throw new Error(error.message || "Failed to fetch data");
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    throw new Error(json.error.message || "Failed to fetch data");
-  }
   const transformedData = transformResponseItem<T>(json);
 
   return transformedData;
