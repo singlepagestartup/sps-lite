@@ -55,9 +55,12 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
   for (const filter of filterArrays) {
     const filterMethod: keyof QueryBuilderFilterMethods = filter?.method;
     const filterColumn: keyof T["$inferSelect"] = filter?.column;
-    const filterValue = filter?.value;
-
     const tableColumn = table[filterColumn];
+
+    const filterValue =
+      tableColumn?.["dataType"] === "date"
+        ? new Date(filter?.value)
+        : filter?.value;
 
     if (!tableColumn) {
       throw new Error(`You are missing a column in the filter object`);

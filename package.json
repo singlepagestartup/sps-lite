@@ -51,6 +51,7 @@
     "client-only": "^0.0.1",
     "clsx": "^2.1.0",
     "crypto-js": "^4.2.0",
+    "date-fns": "^3.6.0",
     "dayjs": "^1.11.5",
     "dotenv-cli": "^7.3.0",
     "drizzle-orm": "^0.31.0",
