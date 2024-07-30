@@ -33,8 +33,14 @@ export function Component(props: IComponentPropsExtended) {
       hostUrl={props.hostUrl}
       apiProps={{
         params: {
-          route: "/admin",
-          method: "GET",
+          access: {
+            type: "or",
+            params: [
+              {
+                role: "admin",
+              },
+            ],
+          },
         },
       }}
     >

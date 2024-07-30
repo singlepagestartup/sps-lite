@@ -4,9 +4,11 @@ import { CRUDService, DI, type IRepository } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-rbac/models/authentication/backend/repository/database";
 import { HTTPException } from "hono/http-exception";
 import { api as identityApi } from "@sps/sps-rbac/models/identity/sdk/server";
+import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
 import { api as permissionApi } from "@sps/sps-rbac/models/permission/sdk/server";
 import { api as subjectsToRolesApi } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/server";
+import { IRelation as ISubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/model";
 import { api as subjectsToIdentitiesApi } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/server";
 import { api as rolesToPermissionsApi } from "@sps/sps-rbac/relations/roles-to-permissions/sdk/server";
 import {
@@ -27,13 +29,24 @@ export interface ILoginAndPasswordDTO {
   provider: "login_and_password";
 }
 
-export interface IIsAllowedDTO {
-  method: string;
-  route: string;
+export type IAccessParams =
+  | {
+      method: string;
+      route: string;
+    }
+  | {
+      role: string;
+    };
+
+export type IIsAllowedDTO = {
+  access: {
+    type: "and" | "or";
+    params: IAccessParams[];
+  };
   authorization: {
     value?: string;
   };
-}
+};
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -42,6 +55,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   }
 
   async isAuthorized(props: IIsAllowedDTO): Promise<any> {
+    let authorized = false;
+
     if (!SPS_RBAC_JWT_SECRET) {
       throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
     }
@@ -52,76 +67,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const authorization = props.authorization.value;
 
-    const permissions = await permissionApi.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "method",
-              method: "eq",
-              value: props.method,
-            },
-            {
-              column: "path",
-              method: "eq",
-              value: props.route,
-            },
-            {
-              column: "type",
-              method: "eq",
-              value: "http",
-            },
-          ],
-        },
-      },
-      options: {
-        headers: {
-          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-        },
-        next: {
-          cache: "no-store",
-        },
-      },
-    });
-
-    if (!permissions?.length) {
-      throw new HTTPException(401, {
-        message: "No permissions found for the route",
-      });
-    }
-
-    const permission = permissions[0];
-
-    const permissionsToRoles = await rolesToPermissionsApi.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "permissionId",
-              method: "eq",
-              value: permission.id,
-            },
-          ],
-        },
-      },
-      options: {
-        headers: {
-          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-        },
-        next: {
-          cache: "no-store",
-        },
-      },
-    });
-
-    /**
-     * Permissions without roles are public
-     */
-    if (!permissionsToRoles?.length) {
-      return {
-        ok: true,
-      };
-    }
+    let subjectsToRoles: ISubjectsToRoles[] | undefined;
 
     if (authorization?.includes("Bearer")) {
       const token = authorization.split(" ")[1];
@@ -134,7 +80,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           });
         }
 
-        const subjectsToRoles = await subjectsToRolesApi.find({
+        subjectsToRoles = await subjectsToRolesApi.find({
           params: {
             filters: {
               and: [
@@ -161,16 +107,57 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             message: "No roles found for this subject",
           });
         }
+      } catch (error) {
+        throw new HTTPException(401, {
+          message: error?.["message"] || "Invalid authorization token provided",
+        });
+      }
+    }
 
-        const rolesToPermissions = await rolesToPermissionsApi.find({
+    for (const accessParam of props.access.params) {
+      if ("method" in accessParam && "route" in accessParam) {
+        const permissions = await permissionApi.find({
           params: {
             filters: {
               and: [
                 {
-                  column: "roleId",
+                  column: "method",
                   method: "eq",
-                  value: subjectsToRoles[0].roleId,
+                  value: accessParam.method,
                 },
+                {
+                  column: "path",
+                  method: "eq",
+                  value: accessParam.route,
+                },
+                {
+                  column: "type",
+                  method: "eq",
+                  value: "http",
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (!permissions?.length) {
+          continue;
+        }
+
+        const permission = permissions[0];
+
+        const permissionsToRoles = await rolesToPermissionsApi.find({
+          params: {
+            filters: {
+              and: [
                 {
                   column: "permissionId",
                   method: "eq",
@@ -189,23 +176,91 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
         });
 
-        if (!rolesToPermissions?.length) {
-          throw new HTTPException(401, {
-            message: "No permissions found for this role",
-          });
+        /**
+         * Permissions without roles are public
+         */
+        if (!permissionsToRoles?.length) {
+          authorized = true;
         }
 
-        return { ok: true };
-      } catch (error) {
-        throw new HTTPException(401, {
-          message: error?.["message"] || "Invalid authorization token provided",
+        if (subjectsToRoles?.length) {
+          const rolesToPermissions = await rolesToPermissionsApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "roleId",
+                    method: "eq",
+                    value: subjectsToRoles[0].roleId,
+                  },
+                  {
+                    column: "permissionId",
+                    method: "eq",
+                    value: permission.id,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (rolesToPermissions?.length) {
+            authorized = true;
+          }
+        }
+      } else {
+        const roles = await roleApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "uid",
+                  method: "eq",
+                  value: accessParam.role,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
         });
+
+        if (!subjectsToRoles?.length) {
+          continue;
+        }
+
+        const roleExists = roles?.find(
+          (role) => role.id === subjectsToRoles[0].roleId,
+        );
+
+        if (roleExists) {
+          authorized = true;
+        }
       }
     }
 
-    throw new HTTPException(401, {
-      message: "Invalid authorization token provided",
-    });
+    if (!authorized) {
+      throw new HTTPException(401, {
+        message: "Authorization error",
+      });
+    } else {
+      return {
+        ok: true,
+      };
+    }
   }
 
   async logout(): Promise<any> {

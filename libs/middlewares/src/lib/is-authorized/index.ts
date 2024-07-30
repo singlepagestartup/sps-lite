@@ -90,9 +90,19 @@ export class Middleware {
 
         const allowed = await authenticationApi.isAuthorized({
           params: {
-            route: reqPath.toLowerCase(),
-            method: reqMethod.toLowerCase(),
-            type: "http",
+            access: {
+              type: "or",
+              params: [
+                {
+                  route: reqPath.toLowerCase(),
+                  method: reqMethod.toLowerCase(),
+                  type: "http",
+                },
+                {
+                  role: "admin",
+                },
+              ],
+            },
           },
           options: {
             headers,

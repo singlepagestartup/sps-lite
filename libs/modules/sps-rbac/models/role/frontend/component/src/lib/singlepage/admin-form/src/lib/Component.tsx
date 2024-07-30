@@ -18,6 +18,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       title: props.data?.title || "",
+      uid: props.data?.uid || "",
     },
   });
 
@@ -49,6 +50,15 @@ export function Component(props: IComponentPropsExtended) {
           name="title"
           form={form}
           placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Uid"
+          name="uid"
+          form={form}
+          placeholder="Type uid"
         />
 
         <FormField

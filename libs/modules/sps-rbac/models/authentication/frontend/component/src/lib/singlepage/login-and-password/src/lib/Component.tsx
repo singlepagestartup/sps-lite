@@ -7,14 +7,7 @@ import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  Card,
-  CardContent,
-  Button,
-  CardFooter,
-  CardHeader,
-} from "@sps/shared-ui-shadcn";
+import { Form, Button } from "@sps/shared-ui-shadcn";
 import { FormField } from "@sps/ui-adapter";
 import { toast } from "sonner";
 

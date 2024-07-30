@@ -3,8 +3,9 @@ import { inject, injectable } from "inversify";
 import { DI, RESTController } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-rbac/models/authentication/backend/repository/database";
 import { Context } from "hono";
-import { Service } from "./service";
+import { IIsAllowedDTO, Service } from "./service";
 import { HTTPException } from "hono/http-exception";
+import QueryString from "qs";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -80,29 +81,59 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const route = c.req.query("route");
-      const method = c.req.query("method");
+      const params = c.req.query();
+      const parsedQuery = QueryString.parse(params);
+
+      if (!parsedQuery?.["access"]) {
+        throw new HTTPException(400, {
+          message: "No access params provided in query",
+        });
+      }
+
+      if (!parsedQuery?.["access"]?.["type"]) {
+        throw new HTTPException(400, {
+          message: "No access type provided in query",
+        });
+      }
+
+      if (
+        !parsedQuery?.["access"]?.["params"] ||
+        parsedQuery?.["access"]?.["params"].length === 0
+      ) {
+        throw new HTTPException(400, {
+          message: "No access params provided in query",
+        });
+      }
+
+      parsedQuery.access["params"]?.forEach((param: any) => {
+        if (!param.route && !param.role) {
+          throw new HTTPException(400, {
+            message: "No route or role provided in query",
+          });
+        }
+
+        if (param.route && !param.method) {
+          throw new HTTPException(400, {
+            message: "No method provided in query",
+          });
+        }
+      });
+
       const authorization = c.req.header("Authorization");
 
-      if (!route) {
-        throw new HTTPException(400, {
-          message: "No route provided in query",
-        });
-      }
-
-      if (!method) {
-        throw new HTTPException(400, {
-          message: "No method provided in query",
-        });
-      }
-
-      const data = await this.service.isAuthorized({
-        route,
-        method,
+      const isAuthorizedProps = {
+        access: {
+          type: parsedQuery.access["type"] as IIsAllowedDTO["access"]["type"],
+          params: parsedQuery.access[
+            "params"
+          ] as IIsAllowedDTO["access"]["params"],
+        },
         authorization: {
           value: authorization,
         },
-      });
+      };
+
+      const data = await this.service.isAuthorized(isAuthorizedProps);
 
       return c.json({
         data,
