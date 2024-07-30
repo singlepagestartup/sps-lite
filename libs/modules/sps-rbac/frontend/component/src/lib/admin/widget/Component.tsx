@@ -29,7 +29,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "subjectId",
+                            column: "widgetId",
                             method: "eq",
                             value: data.id,
                           },

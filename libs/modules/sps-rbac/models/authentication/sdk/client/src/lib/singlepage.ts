@@ -13,12 +13,14 @@ import {
   NextRequestOptions,
   prepareFormDataToSend,
   STALE_TIME,
+  responsePipe,
   transformResponseItem,
 } from "@sps/shared-utils";
 import QueryString from "qs";
 import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { createId } from "@paralleldrive/cuid2";
 import { authorization } from "@sps/shared-frontend-client-utils";
+import { toast } from "sonner";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
 
 export interface ILoginAndPasswordMutationFunctionProps {
@@ -99,17 +101,15 @@ export const api = {
           requestOptions,
         );
 
-        if (!res.ok) {
-          const error = new Error(res.statusText);
+        const json = await responsePipe<{
+          data: {
+            jwt: string;
+            refresh: string;
+          };
+        }>({
+          res,
+        });
 
-          throw new Error(error.message || "Failed to fetch data");
-        }
-
-        const json = await res.json();
-
-        if (json.error) {
-          throw new Error(json.error.message || "Failed to fetch data");
-        }
         const transformedData = transformResponseItem<{
           jwt: string;
           refresh: string;
@@ -128,6 +128,10 @@ export const api = {
         });
 
         return data;
+      },
+      onError(error) {
+        toast.error(error.message);
+        return error;
       },
     });
   },

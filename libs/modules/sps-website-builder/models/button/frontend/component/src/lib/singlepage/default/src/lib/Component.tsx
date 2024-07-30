@@ -2,6 +2,8 @@
 
 import { Button } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
+import Link from "next/link";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,10 +13,11 @@ export function Component(props: IComponentPropsExtended) {
       data-model="elements.button"
       data-id={props.data?.id || ""}
       data-variant={props.data.variant}
+      className={cn("w-full", props.data.className)}
       variant="default"
-      {...(props.data.url ? { url: props.data.url } : {})}
+      asChild={true}
     >
-      {props.data.title}
+      <Link href={props.data.url || "/"}>{props.data.title}</Link>
     </Button>
   );
 }

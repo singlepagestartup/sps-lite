@@ -1,5 +1,7 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
 import { Button } from "@sps/ui-adapter";
+import Link from "next/link";
 // import { Component as File } from "@sps/sps-file-storage/models/file/frontend/component/root";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,12 +13,12 @@ export function Component(props: IComponentPropsExtended) {
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       data-ui-variant={props.variant}
-      className={`${props.data.className || "w-full"}`}
-      {...(props.data.url ? { url: props.data.url } : {})}
-      {...(props.onClick ? { onClick: props.onClick } : {})}
+      className={cn("w-full", props.data.className)}
+      asChild={true}
     >
-      <div className="button-container">
-        {/* {props.data.media ? (
+      <Link href={props.data.url || "/"}>
+        <div className="button-container">
+          {/* {props.data.media ? (
           <div
             className="media-container"
             data-has-hover={props.data.media?.length > 1}
@@ -43,8 +45,8 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
           </div>
         ) : null} */}
-        {props.data.title}
-        {/* {props.data.additionalMedia ? (
+          {props.data.title}
+          {/* {props.data.additionalMedia ? (
           <div
             className="media-container"
             data-has-hover={props.data.additionalMedia?.length > 1}
@@ -71,7 +73,8 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
           </div>
         ) : null} */}
-      </div>
+        </div>
+      </Link>
     </Button>
   );
 }

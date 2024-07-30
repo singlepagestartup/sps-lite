@@ -9,3 +9,4 @@ export type {
   TransformedApiArray,
   NextRequestOptions,
 } from "./lib/types";
+export { util as responsePipe } from "./lib/response-pipe";

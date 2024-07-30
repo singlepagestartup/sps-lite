@@ -15,6 +15,7 @@ import { Component as ParentAdminForm } from "@sps/shared-frontend-components/si
 import { Component as WidgetSelectInput } from "@sps/sps-host/models/widget/frontend/component";
 import { Component as SpsWebsiteBuilderWidget } from "@sps/sps-website-builder/models/widget/frontend/component";
 import { Component as StartupWidget } from "@sps/startup/models/widget/frontend/component";
+import { Component as SpsRbacWidget } from "@sps/sps-rbac/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -114,6 +115,16 @@ export function Component(props: IComponentPropsExtended) {
 
         {watchData.externalModule === "startup" ? (
           <StartupWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="externalWidgetId"
+          />
+        ) : null}
+
+        {watchData.externalModule === "sps-rbac" ? (
+          <SpsRbacWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"

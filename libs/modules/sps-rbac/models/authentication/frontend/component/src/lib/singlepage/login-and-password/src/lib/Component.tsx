@@ -16,6 +16,7 @@ import {
   CardHeader,
 } from "@sps/shared-ui-shadcn";
 import { FormField } from "@sps/ui-adapter";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   login: z.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
@@ -68,36 +69,28 @@ export function Component(props: IComponentPropsExtended) {
       className="w-full"
     >
       <Form {...form}>
-        <Card className="flex flex-col gap-6">
-          <CardHeader>
-            <h1 className="text-4xl font-bold">
-              Login with login and password
-            </h1>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-3 pb-10">
-            <FormField
-              ui="shadcn"
-              type="text"
-              label="login"
-              name="login"
-              form={form}
-              placeholder="Enter your login"
-            />
-            <FormField
-              ui="shadcn"
-              type="password"
-              label="Password"
-              name="password"
-              form={form}
-              placeholder="Enter your password"
-            />
-          </CardContent>
-          <CardFooter>
-            <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
-              Login
-            </Button>
-          </CardFooter>
-        </Card>
+        <div className="w-full flex flex-col gap-6">
+          <FormField
+            ui="shadcn"
+            type="text"
+            label="login"
+            name="login"
+            form={form}
+            placeholder="Enter your login"
+          />
+          <FormField
+            ui="shadcn"
+            type="password"
+            label="Password"
+            name="password"
+            form={form}
+            placeholder="Enter your password"
+          />
+
+          <Button variant="primary" onClick={form.handleSubmit(onSubmit)}>
+            Login
+          </Button>
+        </div>
       </Form>
     </div>
   );

@@ -11,12 +11,38 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full", props.data.className)}
     >
-      {/* <AuthenticationBlock
+      <AuthenticationBlock
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant={props.data.authenticationBlock.variant}
-        data={props.data.authenticationBlock}
-      /> */}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.authenticationBlockId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <AuthenticationBlock
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                data={entity}
+                variant={entity.variant as any}
+              />
+            );
+          });
+        }}
+      </AuthenticationBlock>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-host/widgets-to-external-widgets";
 export const variants = ["default"];
-export const externalModules = ["sps-website-builder", "startup"];
+export const externalModules = ["sps-website-builder", "sps-rbac", "startup"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {
