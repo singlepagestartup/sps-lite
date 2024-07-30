@@ -5,7 +5,7 @@ export function util() {
   const headers: HeadersInit = {};
 
   if (authorization) {
-    headers.Authorization = authorization;
+    headers.Authorization = "Bearer " + authorization;
   }
 
   if (secretKey) {

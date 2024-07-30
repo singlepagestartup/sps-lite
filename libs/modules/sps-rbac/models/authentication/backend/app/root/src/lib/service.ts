@@ -256,7 +256,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      if (!identities?.length) {
+      if (identities?.length) {
         throw new Error("Identity already exists");
       }
 
