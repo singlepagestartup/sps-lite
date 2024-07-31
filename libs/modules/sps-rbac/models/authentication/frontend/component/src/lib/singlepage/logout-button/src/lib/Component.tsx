@@ -9,7 +9,11 @@ import { useRouter } from "next/navigation";
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const logout = api.logout();
+  const logout = api.logout({
+    reactQueryOptions: {
+      enabled: false,
+    },
+  });
 
   useEffect(() => {
     if (logout.isSuccess) {
@@ -24,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
       data-model="authentication"
       data-variant={props.variant}
       onClick={() => {
-        logout.mutate({});
+        logout.refetch();
       }}
       className={cn("w-full py-10 text-center flex flex-col gap-1")}
     >

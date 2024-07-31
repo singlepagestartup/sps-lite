@@ -9,15 +9,19 @@ import { api } from "@sps/sps-rbac/models/authentication/sdk/client";
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
 
-  const logout = api.logout();
+  const logout = api.logout({
+    reactQueryOptions: {
+      enabled: false,
+    },
+  });
 
   useEffect(() => {
-    logout.mutate({});
+    logout.refetch();
   }, []);
 
   useEffect(() => {
     if (logout.isSuccess) {
-      router.push("/login");
+      router.push(props.redirectUrl || "/");
     }
   }, [logout.isSuccess]);
 
@@ -26,9 +30,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="sps-rbac"
       data-model="authentication"
       data-variant={props.variant}
-      className={cn("w-full py-10 text-center flex flex-col gap-1")}
-    >
-      <p className="font-bold">Generated variant</p>
-    </div>
+      className={cn("")}
+    ></div>
   );
 }

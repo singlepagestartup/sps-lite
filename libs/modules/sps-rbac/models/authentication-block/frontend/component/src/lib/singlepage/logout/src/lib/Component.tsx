@@ -1,5 +1,6 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
-import { Component as LogoutAction } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as Authentication } from "@sps/sps-rbac/models/authentication/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,13 +9,13 @@ export function Component(props: IComponentPropsExtended) {
       data-model="authentication-block"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {/* <LogoutAction
+      <Authentication
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="logout-action"
-      /> */}
+      />
     </div>
   );
 }

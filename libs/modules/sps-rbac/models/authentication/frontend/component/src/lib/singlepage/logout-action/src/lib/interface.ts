@@ -5,6 +5,7 @@ export const variant = "logout-action" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
+  redirectUrl?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}

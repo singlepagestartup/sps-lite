@@ -61,6 +61,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       id?: IFindByIdQueryProps<T>["id"];
       params?: IFindByIdQueryProps<T>["params"];
       options?: IFindByIdQueryProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useQuery<T | undefined>({
         queryKey: props.id
@@ -93,11 +94,13 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           factoryProps.staleTime !== undefined
             ? factoryProps.staleTime
             : STALE_TIME,
+        ...props?.reactQueryOptions,
       });
     },
     find: (props?: {
       params?: IFindQueryProps<T>["params"];
       options?: IFindQueryProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useQuery<T[] | undefined>({
         queryKey: [
@@ -124,12 +127,14 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           factoryProps.staleTime !== undefined
             ? factoryProps.staleTime
             : STALE_TIME,
+        ...props?.reactQueryOptions,
       });
     },
     create: (props?: {
       params?: ICreateMutationProps<T>["params"];
       options?: ICreateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, ICreateMutationFunctionProps>({
         mutationKey: [`${factoryProps.route}`],
@@ -148,6 +153,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
+        ...props?.reactQueryOptions,
       });
     },
     update: (props?: {
@@ -155,6 +161,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       params?: IUpdateMutationProps<T>["params"];
       options?: IUpdateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, IUpdateMutationFunctionProps>({
         mutationKey: props?.id
@@ -175,15 +182,14 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
-        onSuccess(data) {
-          return data;
-        },
+        ...props?.reactQueryOptions,
       });
     },
     delete: (props?: {
       id?: IDeleteMutationProps<T>["id"];
       params?: IDeleteMutationProps<T>["params"];
       options?: IDeleteMutationProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, IDeleteMutationFunctionProps>({
         mutationKey: props?.id
@@ -203,6 +209,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
+        ...props?.reactQueryOptions,
       });
     },
   };

@@ -88,7 +88,7 @@ export class Middleware {
             ? { Authorization: authorizationHeader }
             : ({} as HeadersInit);
 
-        const allowed = await authenticationApi.isAuthorized({
+        const isAuthorized = await authenticationApi.isAuthorized({
           params: {
             access: {
               type: "or",

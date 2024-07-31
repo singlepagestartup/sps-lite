@@ -40,16 +40,6 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (loginAndPassword.isSuccess) {
-      if (loginAndPassword.data?.jwt && loginAndPassword.data?.refresh) {
-        localStorage.setItem(
-          "sps-rbac.authentication.jwt",
-          loginAndPassword.data.jwt,
-        );
-        localStorage.setItem(
-          "sps-rbac.authentication.refresh",
-          loginAndPassword.data.refresh,
-        );
-      }
       router.push("/");
     }
   }, [loginAndPassword]);

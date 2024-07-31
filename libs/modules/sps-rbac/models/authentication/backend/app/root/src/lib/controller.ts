@@ -27,7 +27,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         handler: this.isAuthorized,
       },
       {
-        method: "POST",
+        method: "GET",
         path: "/logout",
         handler: this.logout,
       },
@@ -148,16 +148,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
   async logout(c: Context, next: any): Promise<Response> {
     try {
-      const session = c.var.session;
-
-      if (!session) {
-        if (!session) {
-          throw new HTTPException(401, {
-            message: "Unauthorized",
-          });
-        }
-      }
-
       const data = await this.service.logout();
 
       return c.json({

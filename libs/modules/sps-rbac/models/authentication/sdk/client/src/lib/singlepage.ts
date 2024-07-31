@@ -74,6 +74,7 @@ export const api = {
       [key: string]: any;
     };
     options?: NextRequestOptions;
+    reactQueryOptions?: any;
   }) => {
     return useMutation<
       { jwt: string; refresh: string },
@@ -126,6 +127,16 @@ export const api = {
             refresh: string;
           }>(json);
 
+          localStorage.setItem(
+            "sps-rbac.authentication.jwt",
+            transformedData.jwt,
+          );
+
+          localStorage.setItem(
+            "sps-rbac.authentication.refresh",
+            transformedData.refresh,
+          );
+
           return transformedData;
         } catch (error: any) {
           toast.error(error.message);
@@ -145,6 +156,7 @@ export const api = {
 
         return data;
       },
+      ...props?.reactQueryOptions,
     });
   },
   logout: (props?: {
@@ -152,33 +164,26 @@ export const api = {
       [key: string]: any;
     };
     options?: NextRequestOptions;
+    reactQueryOptions?: any;
   }) => {
-    return useMutation<
-      { ok: true },
-      DefaultError,
-      ILogoutMutationFunctionProps
-    >({
-      mutationKey: [`${route}/logout`],
-      mutationFn: async (
-        mutationFunctionProps?: ILogoutMutationFunctionProps,
-      ) => {
+    return useQuery<IModel>({
+      queryKey: [`${route}/logout`],
+      queryFn: async () => {
         try {
-          const formData = prepareFormDataToSend({ data: {} });
+          const headers = authorization.headers();
 
-          const stringifiedQuery = QueryString.stringify(
-            mutationFunctionProps?.params || props?.params,
-            {
-              encodeValuesOnly: true,
-            },
-          );
+          const stringifiedQuery = QueryString.stringify(props?.params, {
+            encodeValuesOnly: true,
+          });
 
           const requestOptions: NextRequestOptions = {
             credentials: "include",
-            method: "POST",
-            body: formData,
-            ...(mutationFunctionProps?.options || props?.options),
+            headers,
+            ...options,
+            cache: "no-cache",
             next: {
-              ...(mutationFunctionProps?.options?.next || props?.options?.next),
+              ...options?.next,
+              cache: "no-store",
             },
           };
 
@@ -187,11 +192,15 @@ export const api = {
             requestOptions,
           );
 
-          const json = await responsePipe<{ data: { ok: true } }>({
+          const json = await responsePipe<{ data: IModel }>({
             res,
           });
 
-          const transformedData = transformResponseItem<{ ok: true }>(json);
+          const transformedData = transformResponseItem<IModel>(json);
+
+          localStorage.removeItem("sps-rbac.authentication.jwt");
+
+          localStorage.removeItem("sps-rbac.authentication.refresh");
 
           return transformedData;
         } catch (error: any) {
@@ -200,7 +209,7 @@ export const api = {
           throw error;
         }
       },
-      onSuccess(data) {
+      select(data) {
         globalActionsStore.getState().addAction({
           type: "logout",
           name: `${route}/logout`,
@@ -212,11 +221,14 @@ export const api = {
 
         return data;
       },
+      staleTime: STALE_TIME,
+      ...props?.reactQueryOptions,
     });
   },
   isAuthorized: (props: {
     params: IIsAuthorizedProps["params"];
     options?: IIsAuthorizedProps["options"];
+    reactQueryOptions?: any;
   }) => {
     return useQuery<IModel>({
       queryKey: [`${route}/is-authorized`],
@@ -268,6 +280,7 @@ export const api = {
         return data;
       },
       staleTime: STALE_TIME,
+      ...props.reactQueryOptions,
     });
   },
 };
