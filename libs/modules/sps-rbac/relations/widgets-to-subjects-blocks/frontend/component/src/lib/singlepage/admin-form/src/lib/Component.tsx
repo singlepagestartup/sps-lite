@@ -4,15 +4,15 @@ import { IComponentPropsExtended } from "./interface";
 import {
   variants,
   insertSchema,
-} from "@sps/sps-rbac/relations/widgets-to-identities-blocks/sdk/model";
-import { api } from "@sps/sps-rbac/relations/widgets-to-identities-blocks/sdk/client";
+} from "@sps/sps-rbac/relations/widgets-to-subjects-blocks/sdk/model";
+import { api } from "@sps/sps-rbac/relations/widgets-to-subjects-blocks/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/sps-rbac/models/widget/frontend/component";
-import { Component as IdentitiesBlockSelectInput } from "@sps/sps-rbac/models/identities-block/frontend/component";
+import { Component as SubjectsBlockSelectInput } from "@sps/sps-rbac/models/subjects-block/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -25,7 +25,7 @@ export function Component(props: IComponentPropsExtended) {
       orderIndex: props.data?.orderIndex || 0,
       className: props.data?.className || "",
       widgetId: props.data?.widgetId || "",
-      identitiesBlockId: props.data?.identitiesBlockId || "",
+      subjectsBlockId: props.data?.subjectsBlockId || "",
     },
   });
 
@@ -47,7 +47,7 @@ export function Component(props: IComponentPropsExtended) {
       id={props.data?.id}
       onSubmit={onSubmit}
       variant={props.variant}
-      name="widgets-to-identities-blocks"
+      name="widgets-to-subjects-blocks"
       type="relation"
     >
       <div className="flex flex-col gap-6">
@@ -87,11 +87,11 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <IdentitiesBlockSelectInput
+        <SubjectsBlockSelectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="identitiesBlockId"
+          formFieldName="subjectsBlockId"
           form={form}
         />
       </div>

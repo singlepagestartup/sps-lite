@@ -14,6 +14,8 @@ import { app as subjectsToIdentities } from "@sps/sps-rbac/relations/subjects-to
 import { app as subjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/backend/app/root";
 import { app as subjectsToSessions } from "@sps/sps-rbac/relations/subjects-to-sessions/backend/app/root";
 import { app as widgetsToAuthenticationBlocks } from "@sps/sps-rbac/relations/widgets-to-authentication-blocks/backend/app/root";
+import { app as widgetsToSubjectsBlocks } from "@sps/sps-rbac/relations/widgets-to-subjects-blocks/backend/app/root";
+import { app as widgetsToIdentitiesBlocks } from "@sps/sps-rbac/relations/widgets-to-identities-blocks/backend/app/root";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -49,6 +51,16 @@ export class Apps {
       type: "model",
       route: "/subjects-blocks",
       app: subjectsBlock,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-subjects-blocks",
+      app: widgetsToSubjectsBlocks,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-identities-blocks",
+      app: widgetsToIdentitiesBlocks,
     });
     this.apps.push({
       type: "model",

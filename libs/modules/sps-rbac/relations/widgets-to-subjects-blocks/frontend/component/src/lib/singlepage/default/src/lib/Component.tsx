@@ -1,17 +1,17 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as IdentitiesBlock } from "@sps/sps-rbac/models/identities-block/frontend/component";
+import { Component as SubjectsBlock } from "@sps/sps-rbac/models/authentication-block/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-rbac"
-      data-relation="widgets-to-identities-blocks"
+      data-relation="widgets-to-subjects-blocks"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn("w-full", props.data.className)}
     >
-      <IdentitiesBlock
+      <SubjectsBlock
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="find"
@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
                 {
                   column: "id",
                   method: "eq",
-                  value: props.data.identitiesBlockId,
+                  value: props.data.subjectsBlockId,
                 },
               ],
             },
@@ -32,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <IdentitiesBlock
+              <SubjectsBlock
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </IdentitiesBlock>
+      </SubjectsBlock>
     </div>
   );
 }
