@@ -39,7 +39,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/authentication-blocks\/?/,
+    regexPath: /\/api\/sps-rbac\/[a-zA-Z0-9-]+-blocks\/?/,
     methods: ["GET"],
   },
   {

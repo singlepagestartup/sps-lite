@@ -19,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
   const form = useForm<z.infer<typeof insertSchema>>({
     resolver: zodResolver(insertSchema),
     defaultValues: {
-      variant: props.data?.variant || "login",
+      variant: props.data?.variant || "default",
       title: props.data?.title || "",
       className: props.data?.className || "",
       anchor: props.data?.anchor || "",

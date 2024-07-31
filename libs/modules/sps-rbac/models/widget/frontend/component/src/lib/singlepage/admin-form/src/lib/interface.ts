@@ -17,6 +17,12 @@ export interface IComponentProps extends ISpsComponentBase {
   widgetsToAuthenticationBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  widgetsToIdentitiesBlocks?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  widgetsToSubjectsBlocks?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
