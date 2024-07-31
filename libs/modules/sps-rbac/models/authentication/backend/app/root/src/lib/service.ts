@@ -43,6 +43,7 @@ export type IAccessParams =
   | {
       method: string;
       route: string;
+      type?: string;
     }
   | {
       role: string;
@@ -143,7 +144,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
                 {
                   column: "type",
                   method: "eq",
-                  value: "http",
+                  value: accessParam.type ?? "HTTP",
                 },
               ],
             },

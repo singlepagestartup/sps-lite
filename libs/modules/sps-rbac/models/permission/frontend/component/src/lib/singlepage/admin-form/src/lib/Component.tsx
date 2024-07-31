@@ -22,8 +22,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      type: props.data?.type || "http",
-      method: props.data?.method || "get",
+      type: props.data?.type || "HTTP",
+      method: props.data?.method || "GET",
       path: props.data?.path || "/",
     },
   });
