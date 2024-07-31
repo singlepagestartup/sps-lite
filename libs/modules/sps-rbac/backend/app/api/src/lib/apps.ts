@@ -4,6 +4,7 @@ import { app as subject } from "@sps/sps-rbac/models/subject/backend/app/root";
 import { app as session } from "@sps/sps-rbac/models/session/backend/app/root";
 import { app as permission } from "@sps/sps-rbac/models/permission/backend/app/root";
 import { app as identity } from "@sps/sps-rbac/models/identity/backend/app/root";
+import { app as identitiesBlock } from "@sps/sps-rbac/models/identities-block/backend/app/root";
 import { app as authentication } from "@sps/sps-rbac/models/authentication/backend/app/root";
 import { app as authenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/app/root";
 import { app as rolesToPermissions } from "@sps/sps-rbac/relations/roles-to-permissions/backend/app/root";
@@ -52,6 +53,11 @@ export class Apps {
       type: "model",
       route: "/permissions",
       app: permission,
+    });
+    this.apps.push({
+      type: "model",
+      route: "/identities-blocks",
+      app: identitiesBlock,
     });
     this.apps.push({
       type: "model",
