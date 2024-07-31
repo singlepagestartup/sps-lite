@@ -25,6 +25,9 @@
             "command": "nx run @sps/sps-rbac:models:identities-block:repository-generate"
           },
           {
+            "command": "nx run @sps/sps-rbac:relations:widgets-to-identities-blocks:repository-generate"
+          },
+          {
             "command": "nx run @sps/sps-rbac:models:permission:repository-generate"
           },
           {
@@ -79,6 +82,9 @@
           },
           {
             "command": "nx run @sps/sps-rbac:models:identities-block:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-rbac:relations:widgets-to-identities-blocks:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-rbac:models:permission:repository-migrate"
@@ -169,6 +175,21 @@
       "options": {
         "parallel": false,
         "cwd": "libs/modules/sps-rbac/models/identities-block/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-identities-blocks:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-rbac/relations/widgets-to-identities-blocks/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -314,6 +335,19 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-rbac/models/identities-block/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-identities-blocks:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-rbac/relations/widgets-to-identities-blocks/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
