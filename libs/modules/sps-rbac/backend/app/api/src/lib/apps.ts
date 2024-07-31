@@ -1,6 +1,7 @@
 import { app as widget } from "@sps/sps-rbac/models/widget/backend/app/root";
 import { app as role } from "@sps/sps-rbac/models/role/backend/app/root";
 import { app as subject } from "@sps/sps-rbac/models/subject/backend/app/root";
+import { app as subjectsBlock } from "@sps/sps-rbac/models/subjects-block/backend/app/root";
 import { app as session } from "@sps/sps-rbac/models/session/backend/app/root";
 import { app as permission } from "@sps/sps-rbac/models/permission/backend/app/root";
 import { app as identity } from "@sps/sps-rbac/models/identity/backend/app/root";
@@ -43,6 +44,11 @@ export class Apps {
       type: "model",
       route: "/subjects",
       app: subject,
+    });
+    this.apps.push({
+      type: "model",
+      route: "/subjects-blocks",
+      app: subjectsBlock,
     });
     this.apps.push({
       type: "model",
