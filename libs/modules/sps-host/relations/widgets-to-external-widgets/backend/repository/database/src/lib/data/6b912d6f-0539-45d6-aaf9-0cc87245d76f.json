@@ -1,9 +1,0 @@
-{
-  "id": "6b912d6f-0539-45d6-aaf9-0cc87245d76f",
-  "variant": "default",
-  "orderIndex": 0,
-  "className": "",
-  "widgetId": "ce5f94ca-7909-4e51-a374-e50f1126c5c1",
-  "externalModule": "sps-website-builder",
-  "externalModuleProps": "{\"model\":\"navbar\",\"variant\":\"default\",\"title\":\"navbar\"}"
-}
