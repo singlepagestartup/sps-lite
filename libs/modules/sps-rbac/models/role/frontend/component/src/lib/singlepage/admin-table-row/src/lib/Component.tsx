@@ -28,6 +28,14 @@ export function Component(props: IComponentPropsExtended) {
           <p className="text-xs text-muted-foreground">Variant</p>
           <p className="truncate">{props.data.variant}</p>
         </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">
+            Available On Registration
+          </p>
+          <p className="truncate">
+            {props.data.availableOnRegistration ? "Yes" : "No"}
+          </p>
+        </div>
       </div>
     </ParentComponent>
   );

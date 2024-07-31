@@ -20,14 +20,24 @@ import {
 import * as jwt from "hono/jwt";
 import bcrypt from "bcrypt";
 
-export interface ILoginAndPasswordDTO {
-  data: {
-    login: string;
-    password: string;
-  };
-  type: "registration" | "authentication";
-  provider: "login_and_password";
+export interface ILoginAndPassword {
+  login: string;
+  password: string;
 }
+
+export interface IRegistrationLoginAndPasswordDTO {
+  type: "registration";
+  roles: [{ uid: string }];
+}
+
+export interface IAuthenticationLoginAndPasswordDTO {
+  type: "authentication";
+}
+
+export type ILoginAndPasswordDTO = { data: ILoginAndPassword } & (
+  | IRegistrationLoginAndPasswordDTO
+  | IAuthenticationLoginAndPasswordDTO
+);
 
 export type IAccessParams =
   | {
@@ -269,7 +279,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     };
   }
 
-  async providers(props: ILoginAndPasswordDTO): Promise<any> {
+  async providers(
+    props: { provider: string } & ILoginAndPasswordDTO,
+  ): Promise<any> {
     if (props.provider === "login_and_password") {
       return this.loginAndPassowrd(props);
     }
@@ -363,6 +375,52 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
         },
       });
+
+      const rolesFilters = props.roles.length
+        ? [
+            {
+              column: "uid",
+              method: "in",
+              value: props.roles?.map((role) => role.uid),
+            },
+          ]
+        : [];
+
+      const roles = await roleApi.find({
+        params: {
+          filters: {
+            and: [
+              ...rolesFilters,
+              {
+                column: "availableOnRegistration",
+                method: "eq",
+                value: "true",
+              },
+            ],
+          },
+        },
+      });
+
+      if (!roles?.length) {
+        throw new Error("No roles found");
+      }
+
+      for (const role of roles) {
+        const subjectsToRoles = await subjectsToRolesApi.create({
+          data: {
+            roleId: role.id,
+            subjectId: subject.id,
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+      }
     }
 
     const identities = await identityApi.find({

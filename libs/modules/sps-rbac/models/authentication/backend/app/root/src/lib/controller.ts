@@ -6,6 +6,7 @@ import { Context } from "hono";
 import { IIsAllowedDTO, Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import QueryString from "qs";
+import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -197,6 +198,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         data,
         provider,
         type: "registration",
+        roles: data.roles || [],
       });
 
       return c.json(

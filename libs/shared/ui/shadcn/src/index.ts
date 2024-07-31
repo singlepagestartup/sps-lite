@@ -23,3 +23,4 @@ export * from "./lib/tiptap";
 export * from "./lib/toggle";
 export * from "./lib/toggle-group";
 export * from "./lib/accordion";
+export * from "./lib/checkbox";

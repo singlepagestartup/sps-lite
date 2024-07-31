@@ -17,8 +17,13 @@ export function Component(props: IComponentProps) {
       render={({ field }) => {
         return (
           <FormItem className={props.className}>
-            {props.label ? <FormLabel>{props.label}</FormLabel> : null}
+            {props.label && props.type !== "checkbox" ? (
+              <FormLabel>{props.label}</FormLabel>
+            ) : null}
             <Input field={field} {...props} className={props.inputClassName} />
+            {props.label && props.type === "checkbox" ? (
+              <FormLabel>{props.label}</FormLabel>
+            ) : null}
             <FormMessage />
           </FormItem>
         );

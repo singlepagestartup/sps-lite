@@ -19,6 +19,7 @@ export function Component(props: IComponentPropsExtended) {
       variant: props.data?.variant || "default",
       title: props.data?.title || "",
       uid: props.data?.uid || "",
+      availableOnRegistration: props.data?.availableOnRegistration || false,
     },
   });
 
@@ -59,6 +60,15 @@ export function Component(props: IComponentPropsExtended) {
           name="uid"
           form={form}
           placeholder="Type uid"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="checkbox"
+          label="Available on registration"
+          name="availableOnRegistration"
+          form={form}
+          placeholder="Available on registration"
         />
 
         <FormField

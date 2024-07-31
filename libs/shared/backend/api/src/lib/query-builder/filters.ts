@@ -57,10 +57,24 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     const filterColumn: keyof T["$inferSelect"] = filter?.column;
     const tableColumn = table[filterColumn];
 
-    const filterValue =
-      tableColumn?.["dataType"] === "date"
-        ? new Date(filter?.value)
-        : filter?.value;
+    let filterValue: any;
+
+    switch (tableColumn?.["dataType"]) {
+      case "date":
+        filterValue = new Date(filter?.value);
+        break;
+      case "integer":
+        filterValue = parseInt(filter?.value);
+        break;
+      case "boolean":
+        filterValue = filter?.value === "true";
+        break;
+      case "json":
+        filterValue = JSON.parse(filter?.value);
+        break;
+      default:
+        filterValue = filter?.value;
+    }
 
     if (!tableColumn) {
       throw new Error(`You are missing a column in the filter object`);
