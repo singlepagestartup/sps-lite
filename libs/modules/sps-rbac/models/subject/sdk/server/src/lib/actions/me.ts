@@ -1,46 +1,22 @@
 "use server";
 
-import { host, route } from "@sps/sps-rbac/models/authentication/sdk/model";
+import { host, route, IModel } from "@sps/sps-rbac/models/subject/sdk/model";
 import {
   NextRequestOptions,
   responsePipe,
   transformResponseItem,
 } from "@sps/shared-utils";
-import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export interface IActionProps {
   catchErrors?: boolean;
-  tag?: string;
-  revalidate?: number;
-  params: {
-    access: {
-      type: "and" | "or";
-      params: (
-        | {
-            route: string;
-            method: string;
-            type?: "HTTP";
-          }
-        | {
-            role: string;
-          }
-      )[];
-    };
-  };
   options?: NextRequestOptions;
 }
 
-export async function action(
-  props: IActionProps,
-): Promise<{ ok: true } | undefined> {
+export async function action(props: IActionProps): Promise<IModel | undefined> {
   const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
-  const { params, options } = props;
-
-  const stringifiedQuery = QueryString.stringify(params, {
-    encodeValuesOnly: true,
-  });
+  const { options } = props;
 
   const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
   const cacheControlOptions: NextRequestOptions["headers"] = noCache
@@ -60,12 +36,9 @@ export async function action(
     },
   };
 
-  const res = await fetch(
-    `${host}${route}/is-authorized?${stringifiedQuery}`,
-    requestOptions,
-  );
+  const res = await fetch(`${host}${route}/me`, requestOptions);
 
-  const json = await responsePipe<{ data: { ok: true } }>({
+  const json = await responsePipe<{ data: IModel }>({
     res,
     catchErrors: props.catchErrors || productionBuild,
   });
@@ -74,7 +47,7 @@ export async function action(
     return;
   }
 
-  const transformedData = transformResponseItem<{ ok: true }>(json);
+  const transformedData = transformResponseItem<IModel>(json);
 
   return transformedData;
 }

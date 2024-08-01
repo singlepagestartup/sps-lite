@@ -49,7 +49,7 @@ export interface IIsAuthorizedProps {
         | {
             route: string;
             method: string;
-            type?: "http";
+            type?: "HTTP";
           }
         | {
             role: string;

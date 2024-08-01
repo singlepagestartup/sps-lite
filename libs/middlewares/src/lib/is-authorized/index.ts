@@ -43,6 +43,10 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
+    regexPath: /\/api\/sps-rbac\/subjects\/me/,
+    methods: ["GET"],
+  },
+  {
     regexPath: /\/api\/sps-third-parties\/telegrams\/[a-zA-Z0-9-]+\/webhook/,
     methods: ["POST"],
   },
@@ -96,7 +100,7 @@ export class Middleware {
                 {
                   route: reqPath.toLowerCase(),
                   method: reqMethod.toLowerCase(),
-                  type: "http",
+                  type: "HTTP",
                 },
                 {
                   role: "admin",
