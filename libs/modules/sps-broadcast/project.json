@@ -13,11 +13,33 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-broadcast:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-broadcast:relations:repository-generate"
+          }
+        ]
+      }
+    },
+    "models:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-broadcast:models:channel:repository-generate"
           },
           {
             "command": "nx run @sps/sps-broadcast:models:message:repository-generate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-broadcast:relations:channels-to-messages:repository-generate"
           }
@@ -30,11 +52,36 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-broadcast:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-broadcast:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-broadcast:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "models:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-broadcast:models:channel:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-broadcast:models:message:repository-migrate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-broadcast:relations:channels-to-messages:repository-migrate"
           }

@@ -3,12 +3,12 @@ import { app as role } from "@sps/sps-rbac/models/role/backend/app/root";
 import { app as subject } from "@sps/sps-rbac/models/subject/backend/app/root";
 import { app as subjectsBlock } from "@sps/sps-rbac/models/subjects-block/backend/app/root";
 import { app as session } from "@sps/sps-rbac/models/session/backend/app/root";
-import { app as permission } from "@sps/sps-rbac/models/permission/backend/app/root";
+import { app as policy } from "@sps/sps-rbac/models/policy/backend/app/root";
 import { app as identity } from "@sps/sps-rbac/models/identity/backend/app/root";
 import { app as identitiesBlock } from "@sps/sps-rbac/models/identities-block/backend/app/root";
 import { app as authentication } from "@sps/sps-rbac/models/authentication/backend/app/root";
 import { app as authenticationBlock } from "@sps/sps-rbac/models/authentication-block/backend/app/root";
-import { app as rolesToPermissions } from "@sps/sps-rbac/relations/roles-to-permissions/backend/app/root";
+import { app as rolesToPolicies } from "@sps/sps-rbac/relations/roles-to-policies/backend/app/root";
 import { app as sessionsToAuthentications } from "@sps/sps-rbac/relations/sessions-to-authentications/backend/app/root";
 import { app as subjectsToIdentities } from "@sps/sps-rbac/relations/subjects-to-identities/backend/app/root";
 import { app as subjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/backend/app/root";
@@ -69,8 +69,8 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
-      route: "/permissions",
-      app: permission,
+      route: "/policies",
+      app: policy,
     });
     this.apps.push({
       type: "model",
@@ -89,8 +89,8 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/roles-to-permissions",
-      app: rolesToPermissions,
+      route: "/roles-to-policies",
+      app: rolesToPolicies,
     });
     this.apps.push({
       type: "relation",

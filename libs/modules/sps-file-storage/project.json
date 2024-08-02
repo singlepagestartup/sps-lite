@@ -13,11 +13,33 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-file-storage:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-file-storage:relations:repository-generate"
+          }
+        ]
+      }
+    },
+    "models:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-file-storage:models:file:repository-generate"
           },
           {
             "command": "nx run @sps/sps-file-storage:models:widget:repository-generate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-file-storage:relations:widgets-to-files:repository-generate"
           }
@@ -30,11 +52,36 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-file-storage:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-file-storage:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-file-storage:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "models:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-file-storage:models:file:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-file-storage:models:widget:repository-migrate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-file-storage:relations:widgets-to-files:repository-migrate"
           }

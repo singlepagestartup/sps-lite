@@ -14,9 +14,7 @@ export interface IComponentProps extends ISpsComponentBase {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
-  rolesToPermissions?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
+  rolesToPolicies?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
   subjectsToRoles?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
 }
 

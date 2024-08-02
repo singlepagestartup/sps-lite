@@ -13,6 +13,20 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-notification:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-notification:relations:repository-generate"
+          }
+        ]
+      }
+    },
+    "models:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-notification:models:notification:repository-generate"
           },
           {
@@ -21,7 +35,31 @@
         ]
       }
     },
+    "relations:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": []
+      }
+    },
     "repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/sps-notification:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-notification:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-notification:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "models:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
@@ -33,6 +71,13 @@
             "command": "nx run @sps/sps-notification:models:widget:repository-migrate"
           }
         ]
+      }
+    },
+    "relations:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": []
       }
     },
     "models:notification:repository-generate": {

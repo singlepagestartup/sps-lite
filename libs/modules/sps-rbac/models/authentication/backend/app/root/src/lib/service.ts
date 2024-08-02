@@ -6,11 +6,11 @@ import { HTTPException } from "hono/http-exception";
 import { api as identityApi } from "@sps/sps-rbac/models/identity/sdk/server";
 import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
-import { api as permissionApi } from "@sps/sps-rbac/models/permission/sdk/server";
+import { api as policyApi } from "@sps/sps-rbac/models/policy/sdk/server";
 import { api as subjectsToRolesApi } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/server";
 import { IRelation as ISubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/model";
 import { api as subjectsToIdentitiesApi } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/server";
-import { api as rolesToPermissionsApi } from "@sps/sps-rbac/relations/roles-to-permissions/sdk/server";
+import { api as rolesToPoliciesApi } from "@sps/sps-rbac/relations/roles-to-policies/sdk/server";
 import {
   SPS_RBAC_SECRET_KEY,
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
@@ -127,7 +127,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     for (const accessParam of props.access.params) {
       if ("method" in accessParam && "route" in accessParam) {
-        const permissions = await permissionApi.find({
+        const policies = await policyApi.find({
           params: {
             filters: {
               and: [
@@ -159,20 +159,20 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
         });
 
-        if (!permissions?.length) {
+        if (!policies?.length) {
           continue;
         }
 
-        const permission = permissions[0];
+        const policy = policies[0];
 
-        const permissionsToRoles = await rolesToPermissionsApi.find({
+        const policiesToRoles = await rolesToPoliciesApi.find({
           params: {
             filters: {
               and: [
                 {
-                  column: "permissionId",
+                  column: "policyId",
                   method: "eq",
-                  value: permission.id,
+                  value: policy.id,
                 },
               ],
             },
@@ -188,14 +188,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         });
 
         /**
-         * Permissions without roles are public
+         * policies without roles are public
          */
-        if (!permissionsToRoles?.length) {
+        if (!policiesToRoles?.length) {
           authorized = true;
         }
 
         if (subjectsToRoles?.length) {
-          const rolesToPermissions = await rolesToPermissionsApi.find({
+          const rolesToPolicies = await rolesToPoliciesApi.find({
             params: {
               filters: {
                 and: [
@@ -205,9 +205,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
                     value: subjectsToRoles[0].roleId,
                   },
                   {
-                    column: "permissionId",
+                    column: "policyId",
                     method: "eq",
-                    value: permission.id,
+                    value: policy.id,
                   },
                 ],
               },
@@ -222,7 +222,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             },
           });
 
-          if (rolesToPermissions?.length) {
+          if (rolesToPolicies?.length) {
             authorized = true;
           }
         }

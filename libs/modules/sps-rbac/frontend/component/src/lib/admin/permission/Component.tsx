@@ -1,7 +1,7 @@
 "use client";
 
-import { Component as ParentComponent } from "@sps/sps-rbac/models/permission/frontend/component";
-import { Component as RolesToPermissions } from "@sps/sps-rbac/relations/roles-to-permissions/frontend/component";
+import { Component as ParentComponent } from "@sps/sps-rbac/models/policy/frontend/component";
+import { Component as RolesToPolicies } from "@sps/sps-rbac/relations/roles-to-policies/frontend/component";
 
 export function Component() {
   return (
@@ -14,13 +14,13 @@ export function Component() {
           <ParentComponent
             {...props}
             variant="admin-form"
-            rolesToPermissions={({ data, hostUrl, isServer }) => {
+            rolesToPolicies={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <RolesToPermissions
+                <RolesToPolicies
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -29,7 +29,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "permissionId",
+                            column: "policyId",
                             method: "eq",
                             value: data.id,
                           },

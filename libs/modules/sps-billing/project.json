@@ -13,9 +13,30 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-billing:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:relations:repository-generate"
+          }
+        ]
+      }
+    },
+    "models:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-billing:models:widget:repository-generate"
           }
         ]
+      }
+    },
+    "relations:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": []
       }
     },
     "repository-migrate": {
@@ -24,9 +45,33 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-billing:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "models:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-billing:models:widget:repository-migrate"
           }
         ]
+      }
+    },
+    "relations:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": []
       }
     },
     "models:widget:repository-generate": {
