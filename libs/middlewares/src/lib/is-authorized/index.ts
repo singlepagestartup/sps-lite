@@ -51,8 +51,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["POST"],
   },
   {
-    regexPath:
-      /\/api\/(sps-host|sps-website-builder|startup|sps-file-storage)\/.*/,
+    regexPath: /\/api\/(sps-host|sps-website-builder|sps-file-storage)\/.*/,
     methods: ["GET"],
   },
 ];
@@ -99,7 +98,7 @@ export class Middleware {
               params: [
                 {
                   route: reqPath.toLowerCase(),
-                  method: reqMethod.toLowerCase(),
+                  method: reqMethod.toUpperCase(),
                   type: "HTTP",
                 },
                 {

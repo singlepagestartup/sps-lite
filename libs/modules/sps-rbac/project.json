@@ -39,7 +39,7 @@
             "command": "nx run @sps/sps-rbac:models:identities-block:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:policy:repository-generate"
+            "command": "nx run @sps/sps-rbac:models:action:repository-generate"
           },
           {
             "command": "nx run @sps/sps-rbac:models:role:repository-generate"
@@ -71,7 +71,7 @@
             "command": "nx run @sps/sps-rbac:relations:widgets-to-subjects-blocks:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-rbac:relations:roles-to-policies:repository-generate"
+            "command": "nx run @sps/sps-rbac:relations:roles-to-actions:repository-generate"
           },
           {
             "command": "nx run @sps/sps-rbac:relations:sessions-to-authentications:repository-generate"
@@ -126,7 +126,7 @@
             "command": "nx run @sps/sps-rbac:models:identities-block:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:policy:repository-migrate"
+            "command": "nx run @sps/sps-rbac:models:action:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-rbac:models:role:repository-migrate"
@@ -158,7 +158,7 @@
             "command": "nx run @sps/sps-rbac:relations:widgets-to-subjects-blocks:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-rbac:relations:roles-to-policies:repository-migrate"
+            "command": "nx run @sps/sps-rbac:relations:roles-to-actions:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-rbac:relations:sessions-to-authentications:repository-migrate"
@@ -253,11 +253,11 @@
         ]
       }
     },
-    "models:policy:repository-generate": {
+    "models:action:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-rbac/models/policy/backend/repository/database",
+        "cwd": "libs/modules/sps-rbac/models/action/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -423,12 +423,12 @@
         ]
       }
     },
-    "models:policy:repository-migrate": {
+    "models:action:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/models/policy/backend/repository/database",
+        "cwd": "libs/modules/sps-rbac/models/action/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -514,11 +514,11 @@
         ]
       }
     },
-    "relations:roles-to-policies:repository-generate": {
+    "relations:roles-to-actions:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-rbac/relations/roles-to-policies/backend/repository/database",
+        "cwd": "libs/modules/sps-rbac/relations/roles-to-actions/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -604,12 +604,12 @@
         ]
       }
     },
-    "relations:roles-to-policies:repository-migrate": {
+    "relations:roles-to-actions:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/relations/roles-to-policies/backend/repository/database",
+        "cwd": "libs/modules/sps-rbac/relations/roles-to-actions/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

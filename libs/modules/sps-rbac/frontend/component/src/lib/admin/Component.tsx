@@ -4,7 +4,7 @@ import { Component as Authentication } from "./authentication/Component";
 import { Component as AuthenticationBlock } from "./authentication-block/Component";
 import { Component as IdentitiesBlock } from "./identities-block/Component";
 import { Component as Identity } from "./identity/Component";
-import { Component as policy } from "./policy/Component";
+import { Component as Action } from "./action/Component";
 import { Component as Role } from "./role/Component";
 import { Component as Session } from "./session/Component";
 import { Component as Subject } from "./subject/Component";
@@ -34,8 +34,8 @@ export function Component(props: IComponentProps) {
       Comp: Identity,
     },
     {
-      name: "policy",
-      Comp: policy,
+      name: "action",
+      Comp: Action,
     },
     {
       name: "role",

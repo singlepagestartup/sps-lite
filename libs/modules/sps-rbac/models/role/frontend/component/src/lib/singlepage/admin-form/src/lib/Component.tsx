@@ -81,8 +81,8 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.rolesToPolicies
-          ? props.rolesToPolicies({
+        {props.rolesToActions
+          ? props.rolesToActions({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

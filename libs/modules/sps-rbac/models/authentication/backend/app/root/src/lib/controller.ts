@@ -77,7 +77,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
         return c.json({
           data: {
-            message: "policy granted.",
+            message: "action granted.",
           },
         });
       }

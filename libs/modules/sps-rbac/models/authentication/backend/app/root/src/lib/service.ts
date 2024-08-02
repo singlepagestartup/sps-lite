@@ -6,11 +6,11 @@ import { HTTPException } from "hono/http-exception";
 import { api as identityApi } from "@sps/sps-rbac/models/identity/sdk/server";
 import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
-import { api as policyApi } from "@sps/sps-rbac/models/policy/sdk/server";
+import { api as actionApi } from "@sps/sps-rbac/models/action/sdk/server";
 import { api as subjectsToRolesApi } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/server";
 import { IRelation as ISubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/model";
 import { api as subjectsToIdentitiesApi } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/server";
-import { api as rolesToPoliciesApi } from "@sps/sps-rbac/relations/roles-to-policies/sdk/server";
+import { api as rolesToActionsApi } from "@sps/sps-rbac/relations/roles-to-actions/sdk/server";
 import {
   SPS_RBAC_SECRET_KEY,
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
@@ -43,7 +43,7 @@ export type IAccessParams =
   | {
       method: string;
       route: string;
-      type?: string;
+      type?: "HTTP";
     }
   | {
       role: string;
@@ -127,87 +127,37 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     for (const accessParam of props.access.params) {
       if ("method" in accessParam && "route" in accessParam) {
-        const policies = await policyApi.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "method",
-                  method: "eq",
-                  value: accessParam.method,
-                },
-                {
-                  column: "path",
-                  method: "eq",
-                  value: accessParam.route,
-                },
-                {
-                  column: "type",
-                  method: "eq",
-                  value: accessParam.type ?? "HTTP",
-                },
-              ],
+        try {
+          const action = await actionApi.findByRoute({
+            params: {
+              action: {
+                method: accessParam.method,
+                route: accessParam.route,
+                type: accessParam.type ?? "HTTP",
+              },
             },
-          },
-          options: {
-            headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            options: {
+              headers: {
+                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
             },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
+          });
 
-        if (!policies?.length) {
-          continue;
-        }
+          if (!action) {
+            continue;
+          }
 
-        const policy = policies[0];
-
-        const policiesToRoles = await rolesToPoliciesApi.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "policyId",
-                  method: "eq",
-                  value: policy.id,
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
-
-        /**
-         * policies without roles are public
-         */
-        if (!policiesToRoles?.length) {
-          authorized = true;
-        }
-
-        if (subjectsToRoles?.length) {
-          const rolesToPolicies = await rolesToPoliciesApi.find({
+          const actionsToRoles = await rolesToActionsApi.find({
             params: {
               filters: {
                 and: [
                   {
-                    column: "roleId",
+                    column: "actionId",
                     method: "eq",
-                    value: subjectsToRoles[0].roleId,
-                  },
-                  {
-                    column: "policyId",
-                    method: "eq",
-                    value: policy.id,
+                    value: action.id,
                   },
                 ],
               },
@@ -222,9 +172,47 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             },
           });
 
-          if (rolesToPolicies?.length) {
+          /**
+           * actions without roles are public
+           */
+          if (!actionsToRoles?.length) {
             authorized = true;
           }
+
+          if (subjectsToRoles?.length) {
+            const rolesToActions = await rolesToActionsApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "roleId",
+                      method: "eq",
+                      value: subjectsToRoles[0].roleId,
+                    },
+                    {
+                      column: "actionId",
+                      method: "eq",
+                      value: action.id,
+                    },
+                  ],
+                },
+              },
+              options: {
+                headers: {
+                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+
+            if (rolesToActions?.length) {
+              authorized = true;
+            }
+          }
+        } catch (error) {
+          console.error(`isAuthorized ~ error:`, error);
         }
       } else {
         const roles = await roleApi.find({

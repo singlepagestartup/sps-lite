@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-rbac/models/role/frontend/component";
-import { Component as RolesToPolicies } from "@sps/sps-rbac/relations/roles-to-policies/frontend/component";
+import { Component as RolesToActions } from "@sps/sps-rbac/relations/roles-to-actions/frontend/component";
 import { Component as SubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/frontend/component";
 
 export function Component() {
@@ -15,13 +15,13 @@ export function Component() {
           <ParentComponent
             {...props}
             variant="admin-form"
-            rolesToPolicies={({ data, hostUrl, isServer }) => {
+            rolesToActions={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <RolesToPolicies
+                <RolesToActions
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

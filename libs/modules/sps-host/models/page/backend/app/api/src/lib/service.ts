@@ -2,8 +2,7 @@ import "reflect-metadata";
 import { injectable } from "inversify";
 import { CRUDService, FindByIdServiceProps } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-host/models/page/backend/repository/database";
-import { BACKEND_URL } from "@sps/shared-utils";
-import { util as buildTreePaths } from "./build-tree-paths";
+import { BACKEND_URL, buildTreePaths } from "@sps/shared-utils";
 
 export type EntityWithUrls = typeof Table.$inferSelect & {
   urls: { url: string }[];

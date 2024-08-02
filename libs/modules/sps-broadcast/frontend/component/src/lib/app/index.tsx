@@ -1,3 +1,5 @@
+"use client";
+
 import { IComponentProps } from "./interface";
 import { Component as Channel } from "@sps/sps-broadcast/models/channel/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
@@ -9,7 +11,7 @@ export function App(props: IComponentProps) {
       className={cn("w-full flex", props.className)}
     >
       <Channel
-        isServer={props.isServer}
+        isServer={false}
         hostUrl={props.hostUrl}
         variant="find"
         apiProps={{
@@ -31,7 +33,7 @@ export function App(props: IComponentProps) {
             return (
               <Channel
                 key={index}
-                isServer={props.isServer}
+                isServer={false}
                 hostUrl={props.hostUrl}
                 variant="subscription"
                 data={entity}
