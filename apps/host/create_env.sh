@@ -74,3 +74,4 @@ add_env "KV_PASSWORD" $KV_PASSWORD
 
 SPS_RBAC_COOKIE_SESSION_SECRET=$(generate_random_string)
 SPS_RBAC_JWT_SECRET=$(generate_random_string)
+SPS_RBAC_SECRET_KEY=$(generate_random_string)

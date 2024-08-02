@@ -13,6 +13,37 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-host:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-host:relations:repository-generate"
+          }
+        ]
+      }
+    },
+    "repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/sps-host:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-host:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-host:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "models:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
             "command": "nx run @sps/sps-host:models:layout:repository-generate"
           },
           {
@@ -23,7 +54,15 @@
           },
           {
             "command": "nx run @sps/sps-host:models:widget:repository-generate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-host:relations:layouts-to-widgets:repository-generate"
           },
@@ -42,7 +81,8 @@
         ]
       }
     },
-    "repository-migrate": {
+
+    "models:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
@@ -58,7 +98,15 @@
           },
           {
             "command": "nx run @sps/sps-host:models:widget:repository-migrate"
-          },
+          }
+        ]
+      }
+    },
+    "relations:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
           {
             "command": "nx run @sps/sps-host:relations:layouts-to-widgets:repository-migrate"
           },
