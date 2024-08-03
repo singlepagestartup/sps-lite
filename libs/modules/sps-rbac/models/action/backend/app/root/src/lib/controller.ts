@@ -1,15 +1,15 @@
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
-import {
-  DI,
-  IParseQueryMiddlewareGeneric,
-  RESTController,
-} from "@sps/shared-backend-api";
+import { DI, RESTController } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-rbac/models/action/backend/repository/database";
 import { Service } from "./service";
 import { Context } from "hono";
 import QueryString from "qs";
-import { BACKEND_URL, buildTreePaths } from "@sps/shared-utils";
+import {
+  BACKEND_URL,
+  buildTreePaths,
+  SPS_RBAC_SECRET_KEY,
+} from "@sps/shared-utils";
 import { HTTPException } from "hono/http-exception";
 
 type ActionWithSaturatedRoutes = typeof Table.$inferSelect & {
@@ -194,6 +194,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async withRoutes(props: { id: string }) {
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new Error("SPS_RBAC_SECRET_KEY not found");
+    }
+
     const result = await this.service.findById({
       id: props.id,
     });
@@ -217,6 +221,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
           const moduleData = await fetch(
             `${BACKEND_URL}/api/${moduleName}/${modelName}`,
+            {
+              headers: {
+                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+            },
           ).then((res) => res.json());
 
           if (moduleData?.data?.length) {

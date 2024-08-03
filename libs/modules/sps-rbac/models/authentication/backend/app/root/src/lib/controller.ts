@@ -3,10 +3,15 @@ import { inject, injectable } from "inversify";
 import { DI, RESTController } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-rbac/models/authentication/backend/repository/database";
 import { Context } from "hono";
-import { IIsAllowedDTO, Service } from "./service";
+import { Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import QueryString from "qs";
-import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
+import { setCookie, deleteCookie, getCookie } from "hono/cookie";
+import {
+  SPS_RBAC_JWT_SECRET,
+  SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+} from "@sps/shared-utils";
+import * as jwt from "hono/jwt";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -85,49 +90,34 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const params = c.req.query();
       const parsedQuery = QueryString.parse(params);
 
-      if (!parsedQuery?.["access"]) {
+      if (!parsedQuery?.["action"]) {
         throw new HTTPException(400, {
-          message: "No access params provided in query",
+          message: "No action provided in query",
         });
       }
 
-      if (!parsedQuery?.["access"]?.["type"]) {
+      if (!parsedQuery?.["action"]?.["route"]) {
         throw new HTTPException(400, {
-          message: "No access type provided in query",
+          message: "No route provided in 'action' query",
         });
       }
 
-      if (
-        !parsedQuery?.["access"]?.["params"] ||
-        parsedQuery?.["access"]?.["params"].length === 0
-      ) {
+      if (!parsedQuery?.["action"]?.["method"]) {
         throw new HTTPException(400, {
-          message: "No access params provided in query",
+          message: "No method provided in 'action' query",
         });
       }
 
-      parsedQuery.access["params"]?.forEach((param: any) => {
-        if (!param.route && !param.role) {
-          throw new HTTPException(400, {
-            message: "No route or role provided in query",
-          });
-        }
-
-        if (param.route && !param.method) {
-          throw new HTTPException(400, {
-            message: "No method provided in query",
-          });
-        }
-      });
-
-      const authorization = c.req.header("Authorization");
+      const authorizationCookie = getCookie(c, "sps-rbac.authentication.jwt");
+      const authorizationHeader = c.req.header("Authorization");
+      const authorization =
+        authorizationCookie || authorizationHeader?.replace("Bearer ", "");
 
       const isAuthorizedProps = {
-        access: {
-          type: parsedQuery.access["type"] as IIsAllowedDTO["access"]["type"],
-          params: parsedQuery.access[
-            "params"
-          ] as IIsAllowedDTO["access"]["params"],
+        action: {
+          route: parsedQuery["action"]["route"],
+          method: parsedQuery["action"]["method"],
+          type: parsedQuery["action"]["type"] || "HTTP",
         },
         authorization: {
           value: authorization,
@@ -150,6 +140,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     try {
       const data = await this.service.logout();
 
+      deleteCookie(c, "sps-rbac.authentication.jwt");
+
       return c.json({
         data,
       });
@@ -161,6 +153,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async registraion(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_SECRET not set",
+      });
+    }
+
     const body = await c.req.parseBody();
 
     if (typeof body["data"] !== "string") {
@@ -191,6 +189,22 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         roles: data.roles || [],
       });
 
+      const decodedJwt = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+
+      if (!decodedJwt.exp) {
+        throw new HTTPException(400, {
+          message: "Invalid token issued",
+        });
+      }
+
+      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+        path: "/",
+        secure: true,
+        httpOnly: true,
+        expires: new Date(decodedJwt.exp),
+        sameSite: "Strict",
+      });
+
       return c.json(
         {
           data: entity,
@@ -205,6 +219,18 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async authentication(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_SECRET not set",
+      });
+    }
+
+    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+      });
+    }
+
     const body = await c.req.parseBody();
 
     if (typeof body["data"] !== "string") {
@@ -232,6 +258,23 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         data,
         provider,
         type: "authentication",
+      });
+
+      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+
+      if (!decoded.exp) {
+        throw new HTTPException(400, {
+          message: "Invalid token issued",
+        });
+      }
+
+      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+        path: "/",
+        secure: true,
+        httpOnly: true,
+        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        expires: new Date(decoded.exp),
+        sameSite: "Strict",
       });
 
       return c.json(

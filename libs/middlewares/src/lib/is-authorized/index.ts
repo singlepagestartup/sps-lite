@@ -3,6 +3,7 @@ import { HTTPException } from "hono/http-exception";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { api as authenticationApi } from "@sps/sps-rbac/models/authentication/sdk/server";
+import { getCookie } from "hono/cookie";
 /**
  * Routes that are allowed to be accessed without authentication
  * @type {Array<{ regexPath: RegExp; methods: string[] }>}
@@ -64,7 +65,10 @@ export class Middleware {
       const reqMethod = c.req.method;
       const reqPath = c.req.path;
       const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
+      const authorizationCookie = getCookie(c, "sps-rbac.authentication.jwt");
       const authorizationHeader = c.req.header("Authorization");
+      const authorization =
+        authorizationCookie || authorizationHeader?.replace("Bearer ", "");
 
       if (reqPath.includes("/api/sps-rbac/sessions") && reqMethod === "POST") {
         if (!secretKey || secretKey !== SPS_RBAC_SECRET_KEY) {
@@ -87,24 +91,16 @@ export class Middleware {
       try {
         const headers = secretKey
           ? { "X-SPS-RBAC-SECRET-KEY": secretKey }
-          : authorizationHeader
-            ? { Authorization: authorizationHeader }
+          : authorization
+            ? { Authorization: authorization }
             : ({} as HeadersInit);
 
         const isAuthorized = await authenticationApi.isAuthorized({
           params: {
-            access: {
-              type: "or",
-              params: [
-                {
-                  route: reqPath.toLowerCase(),
-                  method: reqMethod.toUpperCase(),
-                  type: "HTTP",
-                },
-                {
-                  role: "admin",
-                },
-              ],
+            action: {
+              route: reqPath.toLowerCase(),
+              method: reqMethod.toUpperCase(),
+              type: "HTTP",
             },
           },
           options: {

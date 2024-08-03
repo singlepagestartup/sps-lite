@@ -2,7 +2,11 @@ import "reflect-metadata";
 import { injectable } from "inversify";
 import { CRUDService, FindByIdServiceProps } from "@sps/shared-backend-api";
 import { Table } from "@sps/sps-host/models/page/backend/repository/database";
-import { BACKEND_URL, buildTreePaths } from "@sps/shared-utils";
+import {
+  BACKEND_URL,
+  buildTreePaths,
+  SPS_RBAC_SECRET_KEY,
+} from "@sps/shared-utils";
 
 export type EntityWithUrls = typeof Table.$inferSelect & {
   urls: { url: string }[];
@@ -75,6 +79,10 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   }
 
   async withUrls(props: { id: string }) {
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new Error("SPS_RBAC_SECRET_KEY not found");
+    }
+
     const result = await this.findById({
       id: props.id,
     });
@@ -98,6 +106,11 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
           const moduleData = await fetch(
             `${BACKEND_URL}/api/${moduleName}/${modelName}`,
+            {
+              headers: {
+                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+            },
           ).then((res) => res.json());
 
           if (moduleData?.data?.length) {

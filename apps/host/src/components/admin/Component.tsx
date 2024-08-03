@@ -33,13 +33,10 @@ export function Component(props: IComponentPropsExtended) {
       hostUrl={props.hostUrl}
       apiProps={{
         params: {
-          access: {
-            type: "or",
-            params: [
-              {
-                role: "admin",
-              },
-            ],
+          action: {
+            route: "*",
+            method: "*",
+            type: "HTTP",
           },
         },
       }}

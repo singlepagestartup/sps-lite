@@ -43,18 +43,10 @@ export interface ILogoutMutationFunctionProps {
 
 export interface IIsAuthorizedProps {
   params: {
-    access: {
-      type: "and" | "or";
-      params: (
-        | {
-            route: string;
-            method: string;
-            type?: "HTTP";
-          }
-        | {
-            role: string;
-          }
-      )[];
+    action: {
+      route: string;
+      method: string;
+      type?: "HTTP";
     };
   };
   options?: NextRequestOptions;

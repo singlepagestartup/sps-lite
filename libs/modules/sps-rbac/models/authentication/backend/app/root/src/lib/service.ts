@@ -39,20 +39,11 @@ export type ILoginAndPasswordDTO = { data: ILoginAndPassword } & (
   | IAuthenticationLoginAndPasswordDTO
 );
 
-export type IAccessParams =
-  | {
-      method: string;
-      route: string;
-      type?: "HTTP";
-    }
-  | {
-      role: string;
-    };
-
 export type IIsAllowedDTO = {
-  access: {
-    type: "and" | "or";
-    params: IAccessParams[];
+  action: {
+    route: string;
+    method: string;
+    type: "HTTP";
   };
   authorization: {
     value?: string;
@@ -80,10 +71,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     let subjectsToRoles: ISubjectsToRoles[] | undefined;
 
-    if (authorization?.includes("Bearer")) {
-      const token = authorization.split(" ")[1];
+    if (authorization) {
       try {
-        const decoded = await jwt.verify(token, SPS_RBAC_JWT_SECRET);
+        const decoded = await jwt.verify(authorization, SPS_RBAC_JWT_SECRET);
 
         if (!decoded.subject?.["id"]) {
           throw new HTTPException(401, {
@@ -125,15 +115,64 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       }
     }
 
-    for (const accessParam of props.access.params) {
-      if ("method" in accessParam && "route" in accessParam) {
-        try {
-          const action = await actionApi.findByRoute({
+    try {
+      const rootAction = await actionApi.findByRoute({
+        params: {
+          action: {
+            method: "*",
+            route: "*",
+            type: "HTTP",
+          },
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (rootAction) {
+        const actionsToRoles = await rolesToActionsApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "actionId",
+                  method: "eq",
+                  value: rootAction.id,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (subjectsToRoles?.length) {
+          const rolesToActions = await rolesToActionsApi.find({
             params: {
-              action: {
-                method: accessParam.method,
-                route: accessParam.route,
-                type: accessParam.type ?? "HTTP",
+              filters: {
+                and: [
+                  {
+                    column: "roleId",
+                    method: "eq",
+                    value: subjectsToRoles[0].roleId,
+                  },
+                  {
+                    column: "actionId",
+                    method: "eq",
+                    value: rootAction.id,
+                  },
+                ],
               },
             },
             options: {
@@ -146,14 +185,74 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             },
           });
 
-          if (!action) {
-            continue;
+          if (rolesToActions?.length) {
+            authorized = true;
           }
+        }
+      }
+    } catch (error) {
+      console.error(`isAuthorized ~ error:`, error);
+    }
 
-          const actionsToRoles = await rolesToActionsApi.find({
+    try {
+      const action = await actionApi.findByRoute({
+        params: {
+          action: {
+            method: props.action.method,
+            route: props.action.route,
+            type: props.action.type,
+          },
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (action) {
+        const actionsToRoles = await rolesToActionsApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "actionId",
+                  method: "eq",
+                  value: action.id,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        /**
+         * actions without roles are public
+         */
+        if (!actionsToRoles?.length) {
+          authorized = true;
+        }
+
+        if (subjectsToRoles?.length) {
+          const rolesToActions = await rolesToActionsApi.find({
             params: {
               filters: {
                 and: [
+                  {
+                    column: "roleId",
+                    method: "eq",
+                    value: subjectsToRoles[0].roleId,
+                  },
                   {
                     column: "actionId",
                     method: "eq",
@@ -172,88 +271,18 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             },
           });
 
-          /**
-           * actions without roles are public
-           */
-          if (!actionsToRoles?.length) {
+          if (rolesToActions?.length) {
             authorized = true;
           }
-
-          if (subjectsToRoles?.length) {
-            const rolesToActions = await rolesToActionsApi.find({
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "roleId",
-                      method: "eq",
-                      value: subjectsToRoles[0].roleId,
-                    },
-                    {
-                      column: "actionId",
-                      method: "eq",
-                      value: action.id,
-                    },
-                  ],
-                },
-              },
-              options: {
-                headers: {
-                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-
-            if (rolesToActions?.length) {
-              authorized = true;
-            }
-          }
-        } catch (error) {
-          console.error(`isAuthorized ~ error:`, error);
-        }
-      } else {
-        const roles = await roleApi.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "uid",
-                  method: "eq",
-                  value: accessParam.role,
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
-
-        if (!subjectsToRoles?.length) {
-          continue;
-        }
-
-        const roleExists = roles?.find(
-          (role) => role.id === subjectsToRoles[0].roleId,
-        );
-
-        if (roleExists) {
-          authorized = true;
         }
       }
+    } catch (error) {
+      console.error(`isAuthorized ~ error:`, error);
     }
 
     if (!authorized) {
       throw new HTTPException(401, {
-        message: "Authorization error",
+        message: `Authorization error. You don't have access to this resource: ${JSON.stringify(props.action)}`,
       });
     } else {
       return {
@@ -270,7 +299,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async providers(
     props: { provider: string } & ILoginAndPasswordDTO,
-  ): Promise<any> {
+  ): Promise<{ jwt: string; refresh: string }> {
     if (props.provider === "login_and_password") {
       return this.loginAndPassowrd(props);
     }
@@ -280,7 +309,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     });
   }
 
-  async loginAndPassowrd(props: ILoginAndPasswordDTO): Promise<any> {
+  async loginAndPassowrd(
+    props: ILoginAndPasswordDTO,
+  ): Promise<{ jwt: string; refresh: string }> {
     if (!SPS_RBAC_SECRET_KEY) {
       throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
     }

@@ -14,18 +14,10 @@ export interface IActionProps {
   tag?: string;
   revalidate?: number;
   params: {
-    access: {
-      type: "and" | "or";
-      params: (
-        | {
-            route: string;
-            method: string;
-            type?: "HTTP";
-          }
-        | {
-            role: string;
-          }
-      )[];
+    action: {
+      route: string;
+      method: string;
+      type?: "HTTP";
     };
   };
   options?: NextRequestOptions;
