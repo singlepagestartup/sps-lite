@@ -64,7 +64,9 @@ export class Middleware {
     return createMiddleware(async (c, next) => {
       const reqMethod = c.req.method;
       const reqPath = c.req.path;
-      const secretKey = c.req.header("X-SPS-RBAC-SECRET-KEY");
+      const secretKeyHeaders = c.req.header("X-SPS-RBAC-SECRET-KEY");
+      const secretKeyCookie = getCookie(c, "sps-rbac.secret-key");
+      const secretKey = secretKeyHeaders || secretKeyCookie;
       const authorizationCookie = getCookie(c, "sps-rbac.authentication.jwt");
       const authorizationHeader = c.req.header("Authorization");
       const authorization =
