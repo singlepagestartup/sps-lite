@@ -119,11 +119,6 @@ export const api = {
           }>(json);
 
           localStorage.setItem(
-            "sps-rbac.authentication.jwt",
-            transformedData.jwt,
-          );
-
-          localStorage.setItem(
             "sps-rbac.authentication.refresh",
             transformedData.refresh,
           );
@@ -185,8 +180,6 @@ export const api = {
           });
 
           const transformedData = transformResponseItem<IModel>(json);
-
-          localStorage.removeItem("sps-rbac.authentication.jwt");
 
           localStorage.removeItem("sps-rbac.authentication.refresh");
 
