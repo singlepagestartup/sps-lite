@@ -202,7 +202,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
         path: "/",
         secure: true,
-        httpOnly: true,
+        httpOnly: false,
         expires: new Date(decodedJwt.exp),
         sameSite: "Strict",
       });
@@ -273,7 +273,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
         path: "/",
         secure: true,
-        httpOnly: true,
+        httpOnly: false,
         maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         expires: new Date(decoded.exp),
         sameSite: "Strict",

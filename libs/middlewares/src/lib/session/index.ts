@@ -190,7 +190,7 @@ export class Middleware {
       setCookie(c, this.cookieSessionName, cookieData, {
         path: "/",
         secure: true,
-        httpOnly: true,
+        httpOnly: false,
         maxAge: this.cookieSessionExpirationSeconds,
         expires: new Date(session.expiresAt),
         sameSite: "Strict",
