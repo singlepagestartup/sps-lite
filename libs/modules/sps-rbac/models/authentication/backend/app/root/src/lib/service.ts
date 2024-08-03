@@ -158,35 +158,37 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         });
 
         if (subjectsToRoles?.length) {
-          const rolesToActions = await rolesToActionsApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "roleId",
-                    method: "eq",
-                    value: subjectsToRoles[0].roleId,
-                  },
-                  {
-                    column: "actionId",
-                    method: "eq",
-                    value: rootAction.id,
-                  },
-                ],
+          for (const subjectToRole of subjectsToRoles) {
+            const rolesToActions = await rolesToActionsApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "roleId",
+                      method: "eq",
+                      value: subjectToRole.roleId,
+                    },
+                    {
+                      column: "actionId",
+                      method: "eq",
+                      value: rootAction.id,
+                    },
+                  ],
+                },
               },
-            },
-            options: {
-              headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              options: {
+                headers: {
+                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
               },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
+            });
 
-          if (rolesToActions?.length) {
-            authorized = true;
+            if (rolesToActions?.length) {
+              authorized = true;
+            }
           }
         }
       }
@@ -244,35 +246,37 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         }
 
         if (subjectsToRoles?.length) {
-          const rolesToActions = await rolesToActionsApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "roleId",
-                    method: "eq",
-                    value: subjectsToRoles[0].roleId,
-                  },
-                  {
-                    column: "actionId",
-                    method: "eq",
-                    value: action.id,
-                  },
-                ],
+          for (const subjectToRole of subjectsToRoles) {
+            const rolesToActions = await rolesToActionsApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "roleId",
+                      method: "eq",
+                      value: subjectToRole.roleId,
+                    },
+                    {
+                      column: "actionId",
+                      method: "eq",
+                      value: action.id,
+                    },
+                  ],
+                },
               },
-            },
-            options: {
-              headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              options: {
+                headers: {
+                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
               },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
+            });
 
-          if (rolesToActions?.length) {
-            authorized = true;
+            if (rolesToActions?.length) {
+              authorized = true;
+            }
           }
         }
       }
