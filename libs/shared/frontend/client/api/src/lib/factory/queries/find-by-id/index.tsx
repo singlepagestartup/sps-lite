@@ -1,6 +1,5 @@
 "use client";
 
-import { authorization } from "@sps/shared-frontend-client-utils";
 import { actions, IFindByIdActionProps } from "@sps/shared-frontend-api";
 import { toast } from "sonner";
 
@@ -16,15 +15,12 @@ export interface IQueryProps<T> {
 export function query<T>(props: IQueryProps<T>): () => Promise<T | undefined> {
   return async () => {
     try {
-      const headers = authorization.headers();
-
       const res = await actions.findById<T>({
         id: props.id,
         host: props.host,
         route: props.route,
         params: props.params,
         options: {
-          headers,
           ...props.options,
         },
       });

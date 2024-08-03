@@ -19,7 +19,6 @@ import {
 import QueryString from "qs";
 import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { createId } from "@paralleldrive/cuid2";
-import { authorization } from "@sps/shared-frontend-client-utils";
 import { toast } from "sonner";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
 
@@ -162,15 +161,12 @@ export const api = {
       queryKey: [`${route}/logout`],
       queryFn: async () => {
         try {
-          const headers = authorization.headers();
-
           const stringifiedQuery = QueryString.stringify(props?.params, {
             encodeValuesOnly: true,
           });
 
           const requestOptions: NextRequestOptions = {
             credentials: "include",
-            headers,
             ...options,
             cache: "no-cache",
             next: {
@@ -226,15 +222,12 @@ export const api = {
       queryKey: [`${route}/is-authorized`],
       queryFn: async () => {
         try {
-          const headers = authorization.headers();
-
           const stringifiedQuery = QueryString.stringify(props?.params, {
             encodeValuesOnly: true,
           });
 
           const requestOptions: NextRequestOptions = {
             credentials: "include",
-            headers,
             ...options,
             next: {
               ...options?.next,

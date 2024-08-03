@@ -1,7 +1,6 @@
 "use client";
 
 import { actions, IDeleteActionProps } from "@sps/shared-frontend-api";
-import { authorization } from "@sps/shared-frontend-client-utils";
 import { toast } from "sonner";
 
 export interface IMutationProps<T> {
@@ -30,15 +29,12 @@ export function mutation<T>(
         throw new Error("id is required");
       }
 
-      const headers = authorization.headers();
-
       const res = await actions.delete<T>({
         id,
         host: props.host,
         route: props.route,
         params: mutationFunctionProps.params || props.params,
         options: {
-          headers,
           ...mutationFunctionProps.options,
           ...props.options,
         },

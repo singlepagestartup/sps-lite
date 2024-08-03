@@ -1,7 +1,6 @@
 "use client";
 
 import { actions, ICreateActionProps } from "@sps/shared-frontend-api";
-import { authorization } from "@sps/shared-frontend-client-utils";
 import { toast } from "sonner";
 
 export interface IMutationProps<T> {
@@ -23,14 +22,11 @@ export function mutation<T>(
 ): (mutationFunctionProps: IMutationFunctionProps) => Promise<T> {
   return async (mutationFunctionProps: IMutationFunctionProps) => {
     try {
-      const headers = authorization.headers();
-
       const res = await actions.create<T>({
         host: props.host,
         route: props.route,
         params: mutationFunctionProps.params || props.params,
         options: {
-          headers,
           ...mutationFunctionProps.options,
           ...props.options,
         },
