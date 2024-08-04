@@ -4,15 +4,7 @@ import { api as metadataApi } from "@sps/sps-host/models/metadata/sdk/server";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
-/**
- * Running migrations that delete fields in database may cause errors in the application. Such as some_fields_missing error.
- * Dynamic mode helps to run project without building static pages.
- */
-export const dynamic =
-  process.env.NEW_MIGRATIONS === "true" || process.env.DYNAMIC === "true"
-    ? "force-dynamic"
-    : "auto";
-export const runtime = "nodejs";
+export const experimental_ppr = true;
 
 export async function generateStaticParams() {
   const urls = await spsHostPageApi.urls({ catchErrors: true });

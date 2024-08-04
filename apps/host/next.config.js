@@ -80,6 +80,9 @@ function makeConfig() {
       ];
     },
     trailingSlash: false,
+    experimental: {
+      ppr: "incremental",
+    },
   };
 
   return withBundleAnalyzer(config);

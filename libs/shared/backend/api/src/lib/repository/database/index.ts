@@ -368,10 +368,11 @@ export class Database<T extends PgTableWithColumns<any>>
           return {
             column: filter.column,
             method: filter.method,
-            value: filter.transformer({
+            value: filter.value({
               seeds: props?.seeds || [],
               entity: {
                 dump: dumpEntity,
+                db: dbEntities,
               },
             }),
           };
@@ -388,7 +389,15 @@ export class Database<T extends PgTableWithColumns<any>>
         });
 
         if (filteredEntities.length) {
+          if (filteredEntities.length > 1) {
+            throw new Error(
+              "You need to pass a filter that returns more than one entity",
+            );
+          }
+
           for (const filteredEntity of filteredEntities) {
+            delete transformedEntity.id;
+
             const updatedEntity = await this.updateFirstByField(
               "id",
               filteredEntity.id,

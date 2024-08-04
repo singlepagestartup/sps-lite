@@ -26,6 +26,15 @@ export class Configuration extends ParentConfiguration {
           module: "sps-rbac",
           name: "role",
           type: "model",
+          filters: [
+            {
+              column: "uid",
+              method: "eq",
+              value: (data) => {
+                return data.entity.dump.uid;
+              },
+            },
+          ],
         },
       },
     });

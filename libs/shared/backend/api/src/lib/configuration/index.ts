@@ -31,6 +31,7 @@ export interface ITransform {
   transform: (data: {
     seeds: ISeedResult[];
     entity: {
+      db?: any[];
       dump: any;
     };
   }) => any;
@@ -39,7 +40,13 @@ export interface ITransform {
 export interface IFilter {
   column: string;
   method: keyof QueryBuilderFilterMethods;
-  transformer: ITransform["transform"];
+  value: (data: {
+    seeds: ISeedResult[];
+    entity: {
+      db?: any[];
+      dump: any;
+    };
+  }) => any;
 }
 
 export interface IRepositoryConfiguration {
