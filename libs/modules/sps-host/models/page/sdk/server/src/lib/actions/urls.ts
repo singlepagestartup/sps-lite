@@ -23,7 +23,6 @@ export async function action(props: { catchErrors?: boolean }) {
         ...cacheControlOptions,
       },
       next: {
-        // revalidate: 0,
         tags: [route],
       },
     };

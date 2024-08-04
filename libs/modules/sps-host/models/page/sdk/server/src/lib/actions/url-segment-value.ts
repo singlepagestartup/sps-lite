@@ -29,7 +29,6 @@ export async function action(props: Params) {
       ...cacheControlOptions,
     },
     next: {
-      // revalidate: 0,
       tags: [route],
     },
   };

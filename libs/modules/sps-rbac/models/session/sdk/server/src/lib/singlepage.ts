@@ -21,8 +21,12 @@ export const api = {
   }),
   init: async () => {
     const options: NextRequestOptions = {
+      headers: {
+        "Cache-Control": "no-cache",
+      },
       next: {
-        revalidate: 0,
+        cache: "no-store",
+        tags: [route],
       },
     };
 

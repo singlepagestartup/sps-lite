@@ -28,7 +28,6 @@ export async function action({ url, catchErrors = false }: Params) {
       ...cacheControlOptions,
     },
     next: {
-      // revalidate: 0,
       tags: [route],
     },
   };
