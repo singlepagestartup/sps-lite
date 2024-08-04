@@ -72,6 +72,14 @@ export class Middleware {
       const authorization =
         authorizationCookie || authorizationHeader?.replace("Bearer ", "");
 
+      /**
+       * Vercel doesn't to call equal endpoint, throws 508 Loop detected
+       * But it't not a loop, because controller checks if secret key is present
+       */
+      if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
+        return next();
+      }
+
       if (reqPath.includes("/api/sps-rbac/sessions") && reqMethod === "POST") {
         if (!secretKey || secretKey !== SPS_RBAC_SECRET_KEY) {
           throw new HTTPException(401, {

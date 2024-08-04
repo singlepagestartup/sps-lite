@@ -7,6 +7,7 @@ import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import * as jwt from "hono/jwt";
 import { SPS_RBAC_JWT_SECRET } from "@sps/shared-utils";
+import { authorization } from "@sps/sps-backend-utils";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -55,9 +56,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async me(c: Context, next: any): Promise<Response> {
-    const authorization = c.req.header("Authorization");
+    const token = authorization(c);
 
-    if (!authorization) {
+    if (!token) {
       return c.json(
         {
           data: null,
@@ -74,33 +75,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    if (authorization?.includes("Bearer")) {
-      const token = authorization.split(" ")[1];
-      try {
-        const decoded = await jwt.verify(token, SPS_RBAC_JWT_SECRET);
+    try {
+      const decoded = await jwt.verify(token, SPS_RBAC_JWT_SECRET);
 
-        if (!decoded.subject?.["id"]) {
-          throw new HTTPException(401, {
-            message: "No subject provided in the token",
-          });
-        }
-
-        const entity = await this.service.findById({
-          id: decoded.subject?.["id"],
-        });
-
-        return c.json({
-          data: entity,
-        });
-      } catch (error) {
+      if (!decoded.subject?.["id"]) {
         throw new HTTPException(401, {
-          message: error?.["message"] || "Invalid authorization token provided",
+          message: "No subject provided in the token",
         });
       }
-    }
 
-    return c.json({
-      data: authorization,
-    });
+      const entity = await this.service.findById({
+        id: decoded.subject?.["id"],
+      });
+
+      return c.json({
+        data: entity,
+      });
+    } catch (error) {
+      throw new HTTPException(401, {
+        message: error?.["message"] || "Invalid authorization token provided",
+      });
+    }
   }
 }

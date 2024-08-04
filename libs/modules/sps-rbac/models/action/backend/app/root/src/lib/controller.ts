@@ -153,7 +153,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const targetAction = filledActions.find((action) => {
       if (
         action.routes.find((route) => {
-          if (route === routeParameter) {
+          if (
+            route === routeParameter &&
+            query.action?.["method"] === action.method
+          ) {
             return true;
           }
 
