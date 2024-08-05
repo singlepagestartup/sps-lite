@@ -1,6 +1,5 @@
-import { IComponentProps } from "./interface";
-import { Component as ParentSkeleton } from "@sps/shared-frontend-components/singlepage/skeletons/default";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find/Skeleton";
 
-export function Skeleton(props: IComponentProps) {
-  return <ParentSkeleton<IComponentProps> {...props} />;
+export function Skeleton() {
+  return <ParentComponent />;
 }

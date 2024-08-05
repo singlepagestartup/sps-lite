@@ -12,7 +12,7 @@ export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.find(props.apiProps);
 
   if (isFetching || isLoading || !data) {
-    return <Skeleton {...props} />;
+    return <Skeleton />;
   }
 
   return (

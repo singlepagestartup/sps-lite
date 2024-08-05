@@ -1,23 +1,16 @@
 "use server";
 import "server-only";
 
-import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "./interface";
-import { Error } from "./Error";
+import { IComponentProps, variant } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/server";
-import { Component } from "./Component";
+import { IModel } from "@sps/sps-website-builder/models/hero-section-block/sdk/model";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find/server";
 
-// default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  const data = await api.find(props.apiProps);
-
-  if (!data) {
-    return <></>;
-  }
-
-  if (props.children) {
-    return props.children({ data });
-  }
-
-  return <></>;
+  return (
+    <ParentComponent<IModel, typeof variant, any, IComponentProps>
+      {...props}
+      api={api}
+    />
+  );
 }

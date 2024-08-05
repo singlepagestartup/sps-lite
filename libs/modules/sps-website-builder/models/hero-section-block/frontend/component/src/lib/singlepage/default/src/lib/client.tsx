@@ -1,26 +1,22 @@
 "use client";
 import "client-only";
 
-import { Component } from "./Component";
-import { ErrorBoundary } from "@sps/ui-adapter";
+import { IComponentProps, variant } from "./interface";
+import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
+import { IModel } from "@sps/sps-website-builder/models/hero-section-block/sdk/model";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default/client";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
-import { IComponentProps } from "./interface";
-import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
+import { Component } from "./Component";
 
 export default function Client(props: IComponentProps) {
-  const { data, isLoading } = api.findById({
-    id: props.data.id,
-    ...props.apiProps,
-  });
-
-  if (isLoading || !data) {
-    return <Skeleton {...props} />;
-  }
-
   return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} isServer={false} data={data} />
-    </ErrorBoundary>
+    <ParentComponent<IModel, typeof variant, any, IComponentProps>
+      Error={Error}
+      Skeleton={Skeleton}
+      Component={Component}
+      api={api}
+      {...props}
+    />
   );
 }

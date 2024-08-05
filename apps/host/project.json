@@ -5,47 +5,6 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "db:generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run host:db:migrate"
-          },
-          {
-            "command": "npx nx run @sps/sps-host:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-broadcast:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-website-builder:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-file-storage:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-rbac:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-crm:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-third-parties:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-notification:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/sps-billing:repository-generate"
-          },
-          {
-            "command": "npx nx run @sps/startup:repository-generate"
-          }
-        ]
-      }
-    },
     "db:migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -53,19 +12,10 @@
         "cwd": "apps/host",
         "commands": [
           {
-            "command": "npx nx run @sps/sps-host:repository-migrate"
-          },
-          {
-            "command": "npx nx run @sps/sps-broadcast:repository-migrate"
-          },
-          {
-            "command": "npx nx run @sps/sps-website-builder:repository-migrate"
-          },
-          {
             "command": "npx nx run @sps/sps-file-storage:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-rbac:repository-migrate"
+            "command": "npx nx run @sps/sps-broadcast:repository-migrate"
           },
           {
             "command": "npx nx run @sps/sps-crm:repository-migrate"
@@ -80,22 +30,16 @@
             "command": "npx nx run @sps/sps-notification:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/startup:repository-migrate"
-          }
-        ]
-      }
-    },
-    "db:drop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "apps/host",
-        "commands": [
-          {
-            "command": "drizzle-kit drop --config=./src/db/config.ts"
+            "command": "npx nx run @sps/sps-website-builder:repository-migrate"
           },
           {
-            "command": "bun run ./src/db/drop.ts"
+            "command": "npx nx run @sps/startup:repository-migrate"
+          },
+          {
+            "command": "npx nx run @sps/sps-rbac:repository-migrate"
+          },
+          {
+            "command": "npx nx run @sps/sps-host:repository-migrate"
           }
         ]
       }

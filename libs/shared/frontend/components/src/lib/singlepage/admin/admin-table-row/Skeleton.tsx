@@ -1,4 +1,4 @@
-export function Component<T>(props: T) {
+export function Component() {
   return (
     <div className="relative rounded-lg border border-input bg-background">
       <div className="flex items-center px-5 absolute transform -translate-y-1/2 inset-x-0 w-full justify-between">

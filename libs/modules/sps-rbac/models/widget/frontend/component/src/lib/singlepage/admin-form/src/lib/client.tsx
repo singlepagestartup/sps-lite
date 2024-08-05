@@ -16,7 +16,7 @@ export default function Client(props: IComponentProps) {
     });
 
     if (isFetching || isLoading || !data) {
-      return <Skeleton {...props} />;
+      return <Skeleton />;
     }
 
     return (

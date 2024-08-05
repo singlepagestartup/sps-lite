@@ -13,7 +13,7 @@ export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.isAuthorized(props.apiProps);
 
   if (isFetching || isLoading) {
-    return <Skeleton {...props} />;
+    return <Skeleton />;
   }
 
   if (!data) {
