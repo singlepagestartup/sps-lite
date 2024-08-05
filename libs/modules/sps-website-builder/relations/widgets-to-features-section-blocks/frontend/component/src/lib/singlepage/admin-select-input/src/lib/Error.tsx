@@ -1,1 +1,1 @@
-export { Component as Error } from "@sps/shared-frontend-components/singlepage/errors/default";
+export { Error } from "@sps/shared-frontend-components/singlepage/admin-select-input/Error";

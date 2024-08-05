@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table-row/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();

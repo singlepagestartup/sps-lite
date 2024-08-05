@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as AdminForm } from "../../../admin-form";
 import { Component as AdminTableRow } from "../../../admin-table-row";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin/admin-table/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (

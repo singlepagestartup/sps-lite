@@ -1,16 +1,17 @@
 "use client";
 
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, variant } from "./interface";
 import {
   variants,
   insertSchema,
+  IRelation,
 } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/model";
 import { api } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component";
 import { Component as FileSelectInput } from "@sps/sps-file-storage/models/file/frontend/component";
 
@@ -41,7 +42,8 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm
+    <ParentAdminForm<IRelation, typeof variant>
+      {...props}
       module="sps-file-storage"
       form={form}
       id={props.data?.id}

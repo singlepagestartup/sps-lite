@@ -12,7 +12,9 @@ export function Component<
     api: ReturnType<typeof factory<M>>;
     Error: React.ComponentType;
     Skeleton: React.ComponentType;
-    Component: React.ComponentType<IComponentPropsExtended<M, V>>;
+    Component: React.ComponentType<
+      IComponentPropsExtended<M, V, IComponentProps<M, V>>
+    >;
   },
   CP extends IComponentProps<M, V>,
 >(props: CP & A) {

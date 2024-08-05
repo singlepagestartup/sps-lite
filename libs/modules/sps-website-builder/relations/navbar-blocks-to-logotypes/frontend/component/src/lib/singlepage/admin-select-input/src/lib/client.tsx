@@ -2,22 +2,21 @@
 import "client-only";
 
 import { Component } from "./Component";
-import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
-import { IComponentProps } from "./interface";
+import { IComponentProps, variant } from "./interface";
 import { api } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/sdk/client";
+import { IRelation } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/sdk/model";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-select-input/client";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading } = api.find(props.apiProps);
-
-  if (isFetching || isLoading || !data) {
-    return <Skeleton />;
-  }
-
   return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} />
-    </ErrorBoundary>
+    <ParentComponent<IRelation, typeof variant, any, IComponentProps>
+      Error={Error}
+      Skeleton={Skeleton}
+      Component={Component}
+      api={api}
+      {...props}
+    />
   );
 }

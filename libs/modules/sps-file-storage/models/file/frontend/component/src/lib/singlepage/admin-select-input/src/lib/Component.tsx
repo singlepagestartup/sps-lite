@@ -1,6 +1,6 @@
 "use client";
 
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import { FormField } from "@sps/ui-adapter";
 import Image from "next/image";
 import { BACKEND_URL } from "@sps/shared-utils";

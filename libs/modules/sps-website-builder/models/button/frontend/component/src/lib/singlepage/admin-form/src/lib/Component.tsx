@@ -1,16 +1,17 @@
 "use client";
 
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, variant } from "./interface";
 import { api } from "@sps/sps-website-builder/models/button/sdk/client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/models/button/sdk/model";
 import { FormField } from "@sps/ui-adapter";
-import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -38,7 +39,8 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm
+    <ParentAdminForm<IModel, typeof variant>
+      {...props}
       module="sps-website-builder"
       form={form}
       id={props.data?.id}

@@ -12,4 +12,10 @@ export interface IComponentProps<M, V> extends ISpsComponentBase {
   };
 }
 
-export interface IComponentPropsExtended<M, V> extends IComponentProps<M, V> {}
+export type IComponentPropsExtended<
+  M extends { id: string },
+  V,
+  IComponentProps,
+> = IComponentProps & {
+  data: M;
+};

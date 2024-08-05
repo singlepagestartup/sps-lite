@@ -1,6 +1,3 @@
-import { Component as ParentSkeleton } from "@sps/shared-frontend-components/singlepage/skeletons/default";
+export { Component as Skeleton } from "@sps/shared-frontend-components/singlepage/admin-select-input/Skeleton";
 
-export function Skeleton() {
-  return <ParentSkeleton />;
-}
 

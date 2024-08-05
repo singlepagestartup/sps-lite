@@ -10,4 +10,8 @@ export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {}
 
 export interface IComponentPropsExtended
-  extends IParentComponentPropsExtended<IModel, typeof variant> {}
+  extends IParentComponentPropsExtended<
+    IModel,
+    typeof variant,
+    IComponentProps
+  > {}

@@ -1,5 +1,3 @@
-import React, { ReactNode } from "react";
-import { UseFormReturn } from "react-hook-form";
 import {
   Form,
   Card,
@@ -8,20 +6,21 @@ import {
   CardFooter,
   CardHeader,
 } from "@sps/shared-ui-shadcn";
+import { IComponentPropsExtended, IComponentProps } from "./interface";
+import { UseFormReturn } from "react-hook-form";
+import { ReactNode } from "react";
 
-export interface IComponentProps {
-  className?: string;
-  variant: string;
-  id?: string;
-  module: string;
-  form: UseFormReturn<any>;
-  name: string;
-  children: ReactNode;
-  onSubmit: (data: any) => void;
-  type?: "model" | "relation";
-}
-
-export function Component(props: IComponentProps) {
+export function Component<M extends { id: string }, V>(
+  props: IComponentPropsExtended<M, V, IComponentProps<M, V>> & {
+    id?: string;
+    module: string;
+    form: UseFormReturn<any>;
+    name: string;
+    children: ReactNode;
+    onSubmit: (data: any) => void;
+    type?: "model" | "relation";
+  },
+) {
   return (
     <div
       data-module={props.module}

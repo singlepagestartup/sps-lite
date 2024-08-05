@@ -1,38 +1,23 @@
 "use server";
 import "server-only";
 
-import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "./interface";
+import { IComponentProps, variant } from "./interface";
 import { Error } from "./Error";
-import { api } from "@sps/sps-broadcast/models/channel/sdk/server";
 import { Component } from "./Component";
+import { api } from "@sps/sps-broadcast/models/channel/sdk/server";
+import { IModel } from "@sps/sps-broadcast/models/channel/sdk/model";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/server";
+import { Skeleton } from "./Skeleton";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
-  if (props.data) {
-    if (!props.data.id) {
-      return <></>;
-    }
-
-    const data = await api.findById({
-      id: props.data.id,
-      ...props.apiProps,
-    });
-
-    if (!data) {
-      return <></>;
-    }
-
-    return (
-      <ErrorBoundary fallback={Error}>
-        <Component {...props} data={data} />
-      </ErrorBoundary>
-    );
-  }
-
   return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={undefined} />
-    </ErrorBoundary>
+    <ParentComponent<IModel, typeof variant, any, IComponentProps>
+      Error={Error}
+      Skeleton={Skeleton}
+      Component={Component}
+      api={api}
+      {...props}
+    />
   );
 }

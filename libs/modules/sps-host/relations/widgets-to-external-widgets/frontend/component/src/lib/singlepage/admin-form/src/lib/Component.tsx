@@ -1,17 +1,18 @@
 "use client";
 
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, variant } from "./interface";
 import { api } from "@sps/sps-host/relations/widgets-to-external-widgets/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  variants,
   externalModules,
+  IRelation,
+  variants,
   insertSchema,
 } from "@sps/sps-host/relations/widgets-to-external-widgets/sdk/model";
-import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/sps-host/models/widget/frontend/component";
 import { Component as SpsWebsiteBuilderWidget } from "@sps/sps-website-builder/models/widget/frontend/component";
 import { Component as StartupWidget } from "@sps/startup/models/widget/frontend/component";
@@ -47,7 +48,8 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   return (
-    <ParentAdminForm
+    <ParentAdminForm<IRelation, typeof variant>
+      {...props}
       module="sps-host"
       form={form}
       id={props.data?.id}

@@ -1,22 +1,18 @@
+export { type IModel } from "@sps/sps-website-builder/models/slider/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/slider/sdk/model";
-import { UseFormReturn } from "react-hook-form";
-import { ISpsComponentBase } from "@sps/ui-adapter";
-import { IFindActionProps } from "@sps/shared-frontend-api";
+import {
+  IComponentProps as IParentComponentProps,
+  IComponentPropsExtended as IParentComponentPropsExtended,
+} from "@sps/shared-frontend-components/singlepage/admin-select-input/interface";
 
 export const variant = "admin-select-input" as const;
 
-export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  formFieldName: string;
-  form: UseFormReturn<any>;
-  renderField?: keyof IModel;
-  className?: string;
-  apiProps?: {
-    params?: IFindActionProps["params"];
-    options?: IFindActionProps["options"];
-  };
-}
+export interface IComponentProps
+  extends IParentComponentProps<IModel, typeof variant> {}
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModel[];
-}
+export interface IComponentPropsExtended
+  extends IParentComponentPropsExtended<
+    IModel,
+    typeof variant,
+    IComponentProps
+  > {}

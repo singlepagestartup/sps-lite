@@ -1,7 +1,8 @@
 "use client";
 
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, variant } from "./interface";
 import {
+  IRelation,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/sdk/model";
@@ -10,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin/admin-form/Component";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 import { Component as NavbarBlockAdminSlectInput } from "@sps/sps-website-builder/models/navbar-block/frontend/component";
 import { Component as ButtonsArrayAdminSelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 
@@ -41,7 +42,8 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm
+    <ParentAdminForm<IRelation, typeof variant>
+      {...props}
       module="sps-website-builder"
       form={form}
       id={props.data?.id}

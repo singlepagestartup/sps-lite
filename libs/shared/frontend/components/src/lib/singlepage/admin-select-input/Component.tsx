@@ -1,22 +1,16 @@
 import { cn } from "@sps/shared-frontend-client-utils";
 import { FormField } from "@sps/ui-adapter";
-import { UseFormReturn } from "react-hook-form";
+import { IComponentPropsExtended, IComponentProps } from "./interface";
 
-interface IComponentProps<T> {
-  label?: string;
-  className?: string;
-  variant?: string;
-  module: string;
-  name: string;
-  type?: "model" | "relation";
-  form: UseFormReturn<any>;
-  formFieldName: string;
-  data: T[];
-  renderField?: keyof T;
-  renderFunction?: (entity: T) => string;
-}
-
-export function Component<T extends { id: string }>(props: IComponentProps<T>) {
+export function Component<M extends { id: string }, V>(
+  props: IComponentPropsExtended<M, V, IComponentProps<M, V>> & {
+    label?: string;
+    module: string;
+    name: string;
+    type?: "model" | "relation";
+    renderFunction?: (entity: M) => string;
+  },
+) {
   return (
     <div
       data-module={props.module}
