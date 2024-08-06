@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-broadcast/models/channel/sdk/model";
 import { IModel } from "@sps/sps-broadcast/models/channel/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

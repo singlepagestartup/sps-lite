@@ -8,7 +8,7 @@ import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
 import { api as actionApi } from "@sps/sps-rbac/models/action/sdk/server";
 import { api as subjectsToRolesApi } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/server";
-import { IRelation as ISubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/model";
+import { IModel as ISubjectsToRoles } from "@sps/sps-rbac/relations/subjects-to-roles/sdk/model";
 import { api as subjectsToIdentitiesApi } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/server";
 import { api as rolesToActionsApi } from "@sps/sps-rbac/relations/roles-to-actions/sdk/server";
 import {

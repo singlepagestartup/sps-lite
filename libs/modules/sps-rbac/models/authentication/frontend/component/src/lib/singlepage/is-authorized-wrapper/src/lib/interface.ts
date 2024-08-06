@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-rbac/models/authentication/sdk/model";
 import { IModel } from "@sps/sps-rbac/models/authentication/sdk/model";
 import { ReactNode } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";

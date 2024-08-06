@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  IRelation,
+  IModel,
   route,
   host,
   options,
@@ -9,7 +9,7 @@ import {
 import { factory, queryClient } from "@sps/shared-frontend-client-api";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
 
-export const api = factory<IRelation>({
+export const api = factory<IModel>({
   queryClient,
   route,
   host,

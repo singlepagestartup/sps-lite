@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { IComponentPropsExtended, variant } from "./interface";
 import {
-  IRelation,
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/sdk/model";
@@ -43,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-website-builder"
       form={form}

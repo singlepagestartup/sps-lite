@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended, variant } from "./interface";
 import {
-  IRelation,
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/sdk/model";
@@ -52,7 +52,7 @@ export function Component(props: IComponentPropsExtended) {
   // }, [updateEntity, createEntity]);
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-website-builder"
       form={form}

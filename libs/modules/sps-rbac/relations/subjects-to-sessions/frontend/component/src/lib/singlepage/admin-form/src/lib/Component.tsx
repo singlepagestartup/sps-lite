@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended, variant } from "./interface";
 import {
-  IRelation,
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-rbac/relations/subjects-to-sessions/sdk/model";
@@ -40,7 +40,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-rbac"
       form={form}

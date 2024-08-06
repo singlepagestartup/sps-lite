@@ -1,5 +1,5 @@
 export {
-  type ISelectSchema as IRelation,
+  type ISelectSchema as IModel,
   type IInsertSchema,
   insertSchema,
   selectSchema,

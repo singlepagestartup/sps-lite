@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-notification/models/widget/sdk/model";
 import { IModel } from "@sps/sps-notification/models/widget/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

@@ -1,6 +1,6 @@
 export {
   type IInsertSchema,
-  type ISelectSchema as IRelation,
+  type ISelectSchema as IModel,
   insertSchema,
   selectSchema,
 } from "@sps/sps-host/relations/widgets-to-external-widgets/backend/repository/database";

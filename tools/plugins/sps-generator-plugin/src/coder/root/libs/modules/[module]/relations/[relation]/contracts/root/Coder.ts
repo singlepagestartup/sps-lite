@@ -205,9 +205,9 @@ export class ImportContracts extends RegexCreator {
     const place = ``;
     const placeRegex = new RegExp(``);
 
-    const content = `import { IRelation as I${props.relationNamePascalCased} } from "${props.importPath}";`;
+    const content = `import { IModel as I${props.relationNamePascalCased} } from "${props.importPath}";`;
     const contentRegex = new RegExp(
-      `import${space}{${space}IRelation${space}as${space}I${props.relationNamePascalCased}${space}}${space}from${space}"${props.importPath}";`,
+      `import${space}{${space}IModel${space}as${space}I${props.relationNamePascalCased}${space}}${space}from${space}"${props.importPath}";`,
     );
 
     super({

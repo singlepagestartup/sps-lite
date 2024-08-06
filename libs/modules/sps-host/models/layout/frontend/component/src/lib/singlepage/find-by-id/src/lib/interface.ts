@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-host/models/layout/sdk/model";
 import { IModel } from "@sps/sps-host/models/layout/sdk/model";
 import { Dispatch, SetStateAction } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";

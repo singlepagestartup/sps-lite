@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-third-parties/models/telegram-message/sdk/model";
 import { IModel } from "@sps/sps-third-parties/models/telegram-message/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

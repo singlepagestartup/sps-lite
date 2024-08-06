@@ -1,4 +1,4 @@
-import { IRelation } from "@sps/sps-rbac/relations/roles-to-actions/sdk/model";
+import { IModel } from "@sps/sps-rbac/relations/roles-to-actions/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 
@@ -6,7 +6,7 @@ export const variant = "default" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
-  data: Partial<IRelation>;
+  data: Partial<IModel>;
   apiProps?: {
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
@@ -14,5 +14,5 @@ export interface IComponentProps extends ISpsComponentBase {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {
-  data: IRelation;
+  data: IModel;
 }

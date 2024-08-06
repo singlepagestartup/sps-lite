@@ -2,11 +2,11 @@ import { Tree } from "@nx/devkit";
 import { Coder as ModuleCoder } from "../Coder";
 import {
   Coder as RelationCoder,
-  IGeneratorProps as IRelationCoderGeneratorProps,
+  IGeneratorProps as IModelCoderGeneratorProps,
 } from "./[relation]/Coder";
 
 export type IGeneratorProps = {
-  relation: IRelationCoderGeneratorProps;
+  relation: IModelCoderGeneratorProps;
 };
 
 /**

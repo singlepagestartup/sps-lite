@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

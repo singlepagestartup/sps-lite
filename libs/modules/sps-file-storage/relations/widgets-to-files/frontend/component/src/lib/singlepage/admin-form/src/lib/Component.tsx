@@ -4,7 +4,7 @@ import { IComponentPropsExtended, variant } from "./interface";
 import {
   variants,
   insertSchema,
-  IRelation,
+  IModel,
 } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/model";
 import { api } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/client";
 import { useForm } from "react-hook-form";
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-file-storage"
       form={form}

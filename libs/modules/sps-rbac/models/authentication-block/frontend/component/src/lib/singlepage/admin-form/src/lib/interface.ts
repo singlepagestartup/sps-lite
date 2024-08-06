@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-rbac/models/authentication-block/sdk/model";
 import { IModel } from "@sps/sps-rbac/models/authentication-block/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

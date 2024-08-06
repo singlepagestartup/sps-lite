@@ -1,11 +1,11 @@
-import { IComponentPropsExtended, IRelation, variant } from "./interface";
+import { IComponentPropsExtended, IModel, variant } from "./interface";
 import { Component as AdminForm } from "../../../admin-form";
 import { Component as AdminTableRow } from "../../../admin-table-row";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <ParentComponent<IRelation, typeof variant>
+    <ParentComponent<IModel, typeof variant>
       {...props}
       module="sps-website-builder"
       name="footer-blocks-to-buttons-arrays"

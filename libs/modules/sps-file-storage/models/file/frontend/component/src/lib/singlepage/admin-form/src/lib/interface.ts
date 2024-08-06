@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-file-storage/models/file/sdk/model";
 import { IModel } from "@sps/sps-file-storage/models/file/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

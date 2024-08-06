@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/features-section-block/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";

@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-rbac/models/subject/sdk/model";
 import { IModel } from "@sps/sps-rbac/models/subject/sdk/model";
 import {
   IComponentProps as IParentComponentProps,

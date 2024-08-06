@@ -8,7 +8,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   externalModules,
-  IRelation,
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-host/relations/widgets-to-external-widgets/sdk/model";
@@ -48,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
   const watchData = form.watch();
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-host"
       form={form}

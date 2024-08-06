@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-rbac/models/session/sdk/model";
 import { IModel } from "@sps/sps-rbac/models/session/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";

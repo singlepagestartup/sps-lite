@@ -2,7 +2,7 @@
 
 import { IComponentPropsExtended, variant } from "./interface";
 import {
-  IRelation,
+  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/model";
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <ParentAdminForm<IRelation, typeof variant>
+    <ParentAdminForm<IModel, typeof variant>
       {...props}
       module="sps-broadcast"
       form={form}

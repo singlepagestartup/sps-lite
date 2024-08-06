@@ -1,12 +1,12 @@
-import type { IRelation as IParentRelation } from "<%= root_contracts_import_path %>";
+import type { IModel as IParentRelation } from "<%= root_contracts_import_path %>";
 import {
-  IRelation as IParentRelationExtended,
+  IModel as IParentRelationExtended,
   populate as relationPopulate,
 } from "<%= extended_contracts_import_path %>";
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
-export interface IRelation extends IParentRelation {}
-export interface IRelationExtended extends IParentRelationExtended {}
+export interface IModel extends IParentRelation {}
+export interface IModelExtended extends IParentRelationExtended {}
 
 export const tag = "<%= relation_name %>";
 export const route = "/api/<%= module_name %>/<%= relation_name_pluralized %>";

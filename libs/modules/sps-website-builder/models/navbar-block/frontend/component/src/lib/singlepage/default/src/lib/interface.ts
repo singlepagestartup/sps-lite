@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+export { type IModel } from "@sps/sps-website-builder/models/navbar-block/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/navbar-block/sdk/model";
+import { ReactNode } from "react";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 

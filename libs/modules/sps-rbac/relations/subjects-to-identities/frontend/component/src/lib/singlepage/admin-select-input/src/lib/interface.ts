@@ -1,5 +1,5 @@
-export { type IRelation } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/model";
-import { IRelation } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/model";
+export { type IModel } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/model";
+import { IModel } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/model";
 import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
@@ -8,11 +8,11 @@ import {
 export const variant = "admin-select-input" as const;
 
 export interface IComponentProps
-  extends IParentComponentProps<IRelation, typeof variant> {}
+  extends IParentComponentProps<IModel, typeof variant> {}
 
 export interface IComponentPropsExtended
   extends IParentComponentPropsExtended<
-    IRelation,
+    IModel,
     typeof variant,
     IComponentProps
   > {}
