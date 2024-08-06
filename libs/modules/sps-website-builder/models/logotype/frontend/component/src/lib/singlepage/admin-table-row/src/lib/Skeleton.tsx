@@ -1,5 +1,1 @@
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row/Skeleton";
-
-export function Skeleton() {
-  return <ParentComponent />;
-}
+export { Component as Skeleton } from "@sps/shared-frontend-components/singlepage/admin-table-row/Skeleton";

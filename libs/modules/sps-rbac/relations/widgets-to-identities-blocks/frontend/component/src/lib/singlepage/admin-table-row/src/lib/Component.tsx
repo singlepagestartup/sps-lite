@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <ParentComponent
+      {...props}
       id={props.data.id}
       module="sps-rbac"
       name="widgets-to-identities-blocks"

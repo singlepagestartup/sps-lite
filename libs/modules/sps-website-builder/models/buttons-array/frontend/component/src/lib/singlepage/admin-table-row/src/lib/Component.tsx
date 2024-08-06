@@ -9,6 +9,7 @@ export function Component(props: IComponentPropsExtended) {
 
   return (
     <ParentComponent
+      {...props}
       id={props.data.id}
       module="sps-website-builder"
       name="buttons-array"

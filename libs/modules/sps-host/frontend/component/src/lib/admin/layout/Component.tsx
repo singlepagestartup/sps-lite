@@ -13,7 +13,9 @@ export function Component() {
       adminForm={(props) => {
         return (
           <ParentComponent
-            {...props}
+            isServer={false}
+            hostUrl={props.hostUrl}
+            data={props.data}
             variant="admin-form"
             layoutsToWidgets={({ data, hostUrl, isServer }) => {
               if (!data) {

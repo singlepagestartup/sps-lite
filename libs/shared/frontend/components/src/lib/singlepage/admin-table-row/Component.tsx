@@ -19,20 +19,22 @@ import {
 import { Pencil, Trash } from "lucide-react";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { DialogDescription } from "@radix-ui/react-dialog";
+import { IComponentPropsExtended, IComponentProps } from "./interface";
 
-interface IComponentProps {
-  adminForm?: ReactNode;
-  children: ReactNode;
-  className?: string;
-  variant?: string;
-  module: string;
-  name: string;
-  type?: "model" | "relation";
-  id: string;
-  onDelete?: (e: any) => void;
-}
-
-export function Component(props: IComponentProps) {
+export function Component<M extends { id: string }, V>(
+  props: Omit<
+    IComponentPropsExtended<M, V, IComponentProps<M, V>>,
+    "adminForm"
+  > & {
+    adminForm?: ReactNode;
+    children: ReactNode;
+    module: string;
+    name: string;
+    type?: "model" | "relation";
+    id: string;
+    onDelete?: (e: any) => void;
+  },
+) {
   const [open, setOpen] = useState(false);
 
   return (

@@ -1,3 +1,4 @@
+export { type IModel } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/model";
 import { IModel } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/model";
 import { ISpsComponentBase } from "@sps/ui-adapter";
 import { IFindByIdActionProps } from "@sps/shared-frontend-api";
