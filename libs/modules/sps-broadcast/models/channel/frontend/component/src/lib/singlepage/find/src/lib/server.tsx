@@ -1,8 +1,7 @@
 "use server";
 import "server-only";
 
-import { ErrorBoundary } from "@sps/ui-adapter";
-import { IComponentProps } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { Error } from "./Error";
 import { api } from "@sps/sps-broadcast/models/channel/sdk/server";
 import { Component } from "./Component";

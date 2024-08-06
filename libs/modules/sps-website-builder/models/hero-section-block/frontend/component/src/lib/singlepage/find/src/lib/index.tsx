@@ -1,8 +1,8 @@
+import { Provider as ApiProvider } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
 import { IComponentProps } from "./interface";
 import Client from "./client";
 import Server from "./server";
 import { Skeleton } from "./Skeleton";
-import { Provider as ApiProvider } from "@sps/sps-website-builder/models/hero-section-block/sdk/client";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find";
 
 export function Component(props: IComponentProps) {

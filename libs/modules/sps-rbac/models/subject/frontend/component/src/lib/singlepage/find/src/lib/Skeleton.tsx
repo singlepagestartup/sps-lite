@@ -1,5 +1,1 @@
-import { Component as ParentSkeleton } from "@sps/shared-frontend-components/singlepage/skeletons/default";
-
-export function Skeleton() {
-  return <ParentSkeleton />;
-}
+export { Component as Skeleton } from "@sps/shared-frontend-components/singlepage/find/Skeleton";
