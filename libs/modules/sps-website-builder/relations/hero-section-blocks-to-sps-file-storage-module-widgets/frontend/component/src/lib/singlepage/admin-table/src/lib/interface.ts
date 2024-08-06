@@ -1,18 +1,18 @@
+export { type IRelation } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/model";
 import { IRelation } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/sdk/model";
-import { ISpsComponentBase } from "@sps/ui-adapter";
-import { IFindActionProps } from "@sps/shared-frontend-api";
+import {
+  IComponentProps as IParentComponentProps,
+  IComponentPropsExtended as IParentComponentPropsExtended,
+} from "@sps/shared-frontend-components/singlepage/admin-table/interface";
 
 export const variant = "admin-table" as const;
 
-export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  className?: string;
-  apiProps?: {
-    params?: IFindActionProps["params"];
-    options?: IFindActionProps["options"];
-  };
-}
+export interface IComponentProps
+  extends IParentComponentProps<IRelation, typeof variant> {}
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IRelation[];
-}
+export interface IComponentPropsExtended
+  extends IParentComponentPropsExtended<
+    IRelation,
+    typeof variant,
+    IComponentProps
+  > {}

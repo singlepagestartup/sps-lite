@@ -1,11 +1,12 @@
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, IRelation, variant } from "./interface";
 import { Component as AdminForm } from "../../../admin-form";
 import { Component as AdminTableRow } from "../../../admin-table-row";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <ParentComponent
+    <ParentComponent<IRelation, typeof variant>
+      {...props}
       module="sps-host"
       name="layouts-to-widgets"
       type="relation"

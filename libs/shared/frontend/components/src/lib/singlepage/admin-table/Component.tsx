@@ -11,19 +11,21 @@ import {
 } from "@sps/shared-ui-shadcn";
 import { ChevronsUpDown, Plus } from "lucide-react";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { IComponentPropsExtended, IComponentProps } from "./interface";
 
-interface IComponentProps {
-  adminForm?: ReactNode;
-  children: ReactNode;
-  title?: string;
-  className?: string;
-  variant?: string;
-  module: string;
-  name: string;
-  type?: "model" | "relation";
-}
-
-export function Component(props: IComponentProps) {
+export function Component<M extends { id: string }, V>(
+  props: Omit<
+    IComponentPropsExtended<M, V, IComponentProps<M, V>>,
+    "adminForm"
+  > & {
+    adminForm?: ReactNode;
+    children: ReactNode;
+    title?: string;
+    module: string;
+    name: string;
+    type?: "model" | "relation";
+  },
+) {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(true);
 

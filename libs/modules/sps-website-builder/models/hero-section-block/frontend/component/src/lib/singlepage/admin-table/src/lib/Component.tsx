@@ -1,10 +1,11 @@
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, IModel, variant } from "./interface";
 import { Component as AdminTableRow } from "../../../admin-table-row";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
-    <ParentComponent
+    <ParentComponent<IModel, typeof variant>
+      {...props}
       module="sps-website-builder"
       name="hero-section-block"
       variant={props.variant}
@@ -14,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
               hostUrl: props.hostUrl,
               isServer: props.isServer,
             })
-          : null
+          : undefined
       }
     >
       <div className="flex flex-col gap-6 pt-8 p-4">

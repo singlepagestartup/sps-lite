@@ -1,20 +1,18 @@
+export { type IModel } from "@sps/sps-website-builder/models/button/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/button/sdk/model";
-import { ISpsComponentBase } from "@sps/ui-adapter";
-import { IFindActionProps } from "@sps/shared-frontend-api";
-import { ReactNode } from "react";
+import {
+  IComponentProps as IParentComponentProps,
+  IComponentPropsExtended as IParentComponentPropsExtended,
+} from "@sps/shared-frontend-components/singlepage/admin-table/interface";
 
 export const variant = "admin-table" as const;
 
-export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  className?: string;
-  apiProps?: {
-    params?: IFindActionProps["params"];
-    options?: IFindActionProps["options"];
-  };
-  adminForm?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
-}
+export interface IComponentProps
+  extends IParentComponentProps<IModel, typeof variant> {}
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModel[];
-}
+export interface IComponentPropsExtended
+  extends IParentComponentPropsExtended<
+    IModel,
+    typeof variant,
+    IComponentProps
+  > {}
