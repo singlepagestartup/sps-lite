@@ -1,22 +1,22 @@
 export { type IModel } from "@sps/sps-website-builder/models/navbar-block/sdk/model";
 import { IModel } from "@sps/sps-website-builder/models/navbar-block/sdk/model";
+import {
+  IComponentProps as IParentComponentProps,
+  IComponentPropsExtended as IParentComponentPropsExtended,
+} from "@sps/shared-frontend-components/singlepage/default/interface";
 import { ReactNode } from "react";
-import { ISpsComponentBase } from "@sps/ui-adapter";
-import { IFindByIdActionProps } from "@sps/shared-frontend-api";
 
 export const variant = "default" as const;
 
-export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  data: Partial<IModel>;
-  apiProps?: {
-    params?: IFindByIdActionProps["params"];
-    options?: IFindByIdActionProps["options"];
-  };
-}
+export interface IComponentProps
+  extends IParentComponentProps<IModel, typeof variant> {}
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModel;
+export interface IComponentPropsExtended
+  extends IParentComponentPropsExtended<
+    IModel,
+    typeof variant,
+    IComponentProps
+  > {
   content?: ReactNode;
   logotype?: ReactNode;
 }
