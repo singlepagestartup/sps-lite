@@ -4,9 +4,8 @@ import "client-only";
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
-import { IComponentProps, variant } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { api } from "@sps/sps-rbac/relations/subjects-to-sessions/sdk/client";
-import { IModel } from "@sps/sps-rbac/relations/subjects-to-sessions/sdk/model";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-select-input/client";
 
 export default function Client(props: IComponentProps) {
