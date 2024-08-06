@@ -1,10 +1,9 @@
 "use client";
 
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import {
   variants,
   insertSchema,
-  IModel,
 } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/model";
 import { api } from "@sps/sps-file-storage/relations/widgets-to-files/sdk/client";
 import { useForm } from "react-hook-form";

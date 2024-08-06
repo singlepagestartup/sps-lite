@@ -4,9 +4,8 @@ import "client-only";
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
-import { IComponentProps, variant } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { api } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/client";
-import { IModel } from "@sps/sps-broadcast/relations/channels-to-messages/sdk/model";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/client";
 
 // default is required for dynamic import

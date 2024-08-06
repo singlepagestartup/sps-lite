@@ -1,11 +1,10 @@
 "use client";
 
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
-  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/models/widget/sdk/model";

@@ -1,6 +1,6 @@
 "use client";
 
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import { api } from "@sps/sps-rbac/models/action/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   types,
   methods,
-  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-rbac/models/action/sdk/model";

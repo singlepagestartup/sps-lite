@@ -1,10 +1,9 @@
 "use server";
 import "server-only";
 
-import { IComponentProps, variant } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { api } from "@sps/sps-website-builder/models/hero-section-block/sdk/server";
 import { Error } from "./Error";
-import { IModel } from "@sps/sps-website-builder/models/hero-section-block/sdk/model";
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/server";

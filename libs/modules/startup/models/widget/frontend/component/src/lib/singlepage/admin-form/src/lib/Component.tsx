@@ -1,16 +1,12 @@
 "use client";
 
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import { api } from "@sps/startup/models/widget/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  IModel,
-  variants,
-  insertSchema,
-} from "@sps/startup/models/widget/sdk/model";
+import { variants, insertSchema } from "@sps/startup/models/widget/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
 export function Component(props: IComponentPropsExtended) {

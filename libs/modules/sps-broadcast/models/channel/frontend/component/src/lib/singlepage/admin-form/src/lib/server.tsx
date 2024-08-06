@@ -1,11 +1,10 @@
 "use server";
 import "server-only";
 
-import { IComponentProps, variant } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { Error } from "./Error";
 import { Component } from "./Component";
 import { api } from "@sps/sps-broadcast/models/channel/sdk/server";
-import { IModel } from "@sps/sps-broadcast/models/channel/sdk/model";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/server";
 import { Skeleton } from "./Skeleton";
 

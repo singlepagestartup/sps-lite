@@ -1,9 +1,8 @@
 "use server";
 import "server-only";
 
-import { IComponentProps, variant } from "./interface";
+import { IComponentProps, variant, IModel } from "./interface";
 import { api } from "@sps/sps-billing/models/widget/sdk/server";
-import { IModel } from "@sps/sps-billing/models/widget/sdk/model";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/server";
 import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";

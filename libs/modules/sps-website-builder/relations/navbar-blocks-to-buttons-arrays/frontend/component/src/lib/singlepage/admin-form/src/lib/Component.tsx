@@ -1,8 +1,7 @@
 "use client";
 
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import {
-  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/sdk/model";

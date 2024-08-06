@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { IComponentPropsExtended, variant } from "./interface";
+import { IComponentPropsExtended, variant, IModel } from "./interface";
 import {
-  IModel,
   variants,
   insertSchema,
 } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/sdk/model";
