@@ -1,5 +1,3 @@
-import { IComponentProps } from "./interface";
-
-export function Skeleton(props: IComponentProps) {
-  return <div className={`skeleton ${props.data.className || "w-full"}`}></div>;
+export function Skeleton() {
+  return <div className="skeleton w-full"></div>;
 }

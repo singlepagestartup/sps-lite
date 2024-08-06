@@ -1,13 +1,13 @@
 "use server";
 import "server-only";
 
-import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
 import { Error } from "./Error";
 import { api } from "@sps/sps-website-builder/models/navbar-block/sdk/server";
 import { Component } from "./Component";
 import { Component as Logotype } from "./assets/logotype";
 import { Component as Content } from "./assets/content";
+import { ErrorBoundary } from "@sps/ui-adapter";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
