@@ -1,9 +1,9 @@
 "use client";
 
-import { Component as ParentComponent } from "@sps/sps-website-builder/models/hero-section-block/frontend/component";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
-import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component";
-import { Component as HeroSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/frontend/component";
+import { Component as ParentComponent } from "@sps/sps-website-builder/models/content-section-block/frontend/component";
+import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
+import { Component as ContentSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/frontend/component";
+import { Component as ContentSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/content-section-blocks-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component() {
   return (
@@ -18,13 +18,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            widgetsToHeroSectionBlocks={({ data, hostUrl, isServer }) => {
+            widgetsToContentSectionBlocks={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <WidgetsToHeroSectionBlocks
+                <WidgetsToContentSectionBlocks
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -33,7 +33,7 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "heroSectionBlockId",
+                            column: "contentSectionBlockId",
                             method: "eq",
                             value: data.id,
                           },
@@ -44,33 +44,7 @@ export function Component() {
                 />
               );
             }}
-            heroSectionBlocksToButtonsArrays={({ data, hostUrl, isServer }) => {
-              if (!data) {
-                return;
-              }
-
-              return (
-                <HeroSectionBlocksToButtonsArrays
-                  isServer={isServer}
-                  hostUrl={hostUrl}
-                  variant="admin-table"
-                  apiProps={{
-                    params: {
-                      filters: {
-                        and: [
-                          {
-                            column: "heroSectionBlockId",
-                            method: "eq",
-                            value: data.id,
-                          },
-                        ],
-                      },
-                    },
-                  }}
-                />
-              );
-            }}
-            heroSectionBlocksToSpsFileStorageModuleWidgets={({
+            contentSectionBlocksToButtonsArrays={({
               data,
               hostUrl,
               isServer,
@@ -80,7 +54,7 @@ export function Component() {
               }
 
               return (
-                <HeroSectionBlocksToSpsFileStorageModuleWidgets
+                <ContentSectionBlocksToButtonsArrays
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -89,7 +63,37 @@ export function Component() {
                       filters: {
                         and: [
                           {
-                            column: "heroSectionBlockId",
+                            column: "contentSectionBlockId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            contentSectionBlocksToSpsFileStorageModuleWidgets={({
+              data,
+              hostUrl,
+              isServer,
+            }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <ContentSectionBlocksToSpsFileStorageModuleWidgets
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "contentSectionBlockId",
                             method: "eq",
                             value: data.id,
                           },

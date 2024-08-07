@@ -78,7 +78,7 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
-          type="text"
+          type="tiptap"
           label="Description"
           name="description"
           form={form}
@@ -101,8 +101,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.heroSectionBlocksToButtonsArrays
-          ? props.heroSectionBlocksToButtonsArrays({
+        {props.contentSectionBlocksToButtonsArrays
+          ? props.contentSectionBlocksToButtonsArrays({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

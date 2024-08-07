@@ -4,7 +4,7 @@ import { Component as ParentComponent } from "@sps/sps-website-builder/models/wi
 import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component";
 import { Component as WidgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component";
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
+import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component";
 
 export function Component() {
@@ -98,13 +98,13 @@ export function Component() {
                 />
               );
             }}
-            widgetsToHeroSectionBlocks={({ data, hostUrl, isServer }) => {
+            widgetsToContentSectionBlocks={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <WidgetsToHeroSectionBlocks
+                <WidgetsToContentSectionBlocks
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

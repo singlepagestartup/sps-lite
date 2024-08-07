@@ -91,8 +91,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.widgetsToHeroSectionBlocks
-          ? props.widgetsToHeroSectionBlocks({
+        {props.widgetsToContentSectionBlocks
+          ? props.widgetsToContentSectionBlocks({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

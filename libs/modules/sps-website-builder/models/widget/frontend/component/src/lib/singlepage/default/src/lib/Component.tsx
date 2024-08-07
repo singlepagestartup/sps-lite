@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as WidgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/frontend/component";
+import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
 import { Component as WidgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component";
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
@@ -15,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      <WidgetsToHeroSectionBlocks
+      <WidgetsToContentSectionBlocks
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="find"
@@ -36,17 +36,17 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <WidgetsToHeroSectionBlocks
+              <WidgetsToContentSectionBlocks
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
                 variant={entity.variant as any}
                 data={entity}
-              ></WidgetsToHeroSectionBlocks>
+              ></WidgetsToContentSectionBlocks>
             );
           });
         }}
-      </WidgetsToHeroSectionBlocks>
+      </WidgetsToContentSectionBlocks>
       <WidgetsToFeaturesSectionBlocks
         isServer={props.isServer}
         hostUrl={props.hostUrl}

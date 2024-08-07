@@ -53,7 +53,7 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToHeroSectionBlocks: IWidgetToHeroSectionBlock[];
+        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];
@@ -71,7 +71,7 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToHeroSectionBlocks: IWidgetToHeroSectionBlock[];
+        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];

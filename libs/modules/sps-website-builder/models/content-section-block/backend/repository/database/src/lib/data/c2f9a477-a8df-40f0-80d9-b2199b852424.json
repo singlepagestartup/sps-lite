@@ -1,0 +1,11 @@
+{
+  "title": "Welcome to Single Page Startup!!!!!",
+  "subtitle": "",
+  "description": "{\"type\":\"doc\",\"content\":[{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Tip top\"},{\"type\":\"text\",\"text\":\" \"},{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"again\"}]},{\"type\":\"heading\",\"attrs\":{\"level\":1},\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"},{\"type\":\"strike\"}],\"text\":\"content-section-block\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"italic\"}],\"text\":\"Hello italic!\"}]},{\"type\":\"paragraph\"},{\"type\":\"paragraph\",\"content\":[{\"type\":\"text\",\"marks\":[{\"type\":\"bold\"}],\"text\":\"Bold \"},{\"type\":\"text\",\"text\":\"text\"}]}]}",
+  "anchor": "",
+  "className": "",
+  "id": "c2f9a477-a8df-40f0-80d9-b2199b852424",
+  "createdAt": "2024-07-24T13:31:19.422Z",
+  "updatedAt": "2024-07-26T03:46:38.538Z",
+  "variant": "default"
+}

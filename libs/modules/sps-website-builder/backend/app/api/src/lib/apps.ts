@@ -1,4 +1,4 @@
-import { app as heroSectionBlock } from "@sps/sps-website-builder/models/hero-section-block/backend/app/api";
+import { app as contentSectionBlock } from "@sps/sps-website-builder/models/content-section-block/backend/app/api";
 import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/app/api";
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/api";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/api";
@@ -10,14 +10,14 @@ import { app as sliderBlock } from "@sps/sps-website-builder/models/slider-block
 import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/app/api";
 import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/api";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/api";
-import { app as widgetsToHeroSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/app/api";
+import { app as widgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/backend/app/api";
 import { app as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/api";
 import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/api";
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/api";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/api";
-import { app as heroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/app/api";
-import { app as heroSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/app/api";
+import { app as contentSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/backend/app/api";
+import { app as contentSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/content-section-blocks-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as logotypesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/api";
 import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/api";
@@ -47,8 +47,8 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
-      route: "/hero-section-blocks",
-      app: heroSectionBlock,
+      route: "/content-section-blocks",
+      app: contentSectionBlock,
     });
     this.apps.push({
       type: "model",
@@ -107,8 +107,8 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/widgets-to-hero-section-blocks",
-      app: widgetsToHeroSectionBlocks,
+      route: "/widgets-to-content-section-blocks",
+      app: widgetsToContentSectionBlocks,
     });
     this.apps.push({
       type: "relation",
@@ -132,13 +132,13 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/hero-section-blocks-to-buttons-arrays",
-      app: heroSectionBlocksToButtonsArrays,
+      route: "/content-section-blocks-to-buttons-arrays",
+      app: contentSectionBlocksToButtonsArrays,
     });
     this.apps.push({
       type: "relation",
-      route: "/hero-section-blocks-to-sps-file-storage-module-widgets",
-      app: heroSectionBlocksToSpsFileStorageModuleWidgets,
+      route: "/content-section-blocks-to-sps-file-storage-module-widgets",
+      app: contentSectionBlocksToSpsFileStorageModuleWidgets,
     });
     this.apps.push({
       type: "relation",

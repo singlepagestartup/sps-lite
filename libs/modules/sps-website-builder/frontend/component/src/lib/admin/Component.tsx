@@ -1,6 +1,6 @@
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-panel/Component";
-import { Component as HeroSectionBlock } from "./hero-section-block/Component";
+import { Component as ContentSectionBlock } from "./content-section-block/Component";
 import { Component as Button } from "./button/Component";
 import { Component as ButtonsArray } from "./buttons-array/Component";
 import { Component as Feature } from "./feature/Component";
@@ -40,8 +40,8 @@ export function Component(props: IComponentProps) {
       Comp: FooterBlock,
     },
     {
-      name: "hero-section-block",
-      Comp: HeroSectionBlock,
+      name: "content-section-block",
+      Comp: ContentSectionBlock,
     },
     {
       name: "logotype",

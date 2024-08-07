@@ -271,13 +271,13 @@ describe("Database", () => {
     });
 
     it("seeding relation should create entities from files in config.repository.directory if passed transform parameter", async () => {
-      const dumpEntity = { id: 4, widgetId: 4, heroSectionBlockId: 6 };
+      const dumpEntity = { id: 4, widgetId: 4, contentSectionBlockId: 6 };
       const configuration = new Configuration({
         repository: {
           ...baseConfiguration,
           seed: {
             ...baseConfiguration.seed,
-            name: "widgets-to-hero-section-blocks",
+            name: "widgets-to-content-section-blocks",
             module: "sps-website-builder",
             type: "relation",
             transformers: [
@@ -318,7 +318,7 @@ describe("Database", () => {
           {
             id: 1,
             widgetId: 2,
-            heroSectionBlockId: 3,
+            contentSectionBlockId: 3,
           },
         ] as any),
         jest
@@ -354,7 +354,7 @@ describe("Database", () => {
       ];
       const expectedResult = {
         module: "sps-website-builder",
-        name: "widgets-to-hero-section-blocks",
+        name: "widgets-to-content-section-blocks",
         type: "relation",
         seeds: [
           {

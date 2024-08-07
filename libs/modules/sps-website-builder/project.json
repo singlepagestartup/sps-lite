@@ -45,7 +45,7 @@
             "command": "nx run @sps/sps-website-builder:models:footer-block:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:hero-section-block:repository-generate"
+            "command": "nx run @sps/sps-website-builder:models:content-section-block:repository-generate"
           },
           {
             "command": "nx run @sps/sps-website-builder:models:logotype:repository-generate"
@@ -92,10 +92,10 @@
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-logotypes:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:hero-section-blocks-to-buttons-arrays:repository-generate"
+            "command": "nx run @sps/sps-website-builder:relations:content-section-blocks-to-buttons-arrays:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:hero-section-blocks-to-sps-file-storage-module-widgets:repository-generate"
+            "command": "nx run @sps/sps-website-builder:relations:content-section-blocks-to-sps-file-storage-module-widgets:repository-generate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:logotypes-to-sps-file-storage-module-widgets:repository-generate"
@@ -125,7 +125,7 @@
             "command": "nx run @sps/sps-website-builder:relations:widgets-to-footer-blocks:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:widgets-to-hero-section-blocks:repository-generate"
+            "command": "nx run @sps/sps-website-builder:relations:widgets-to-content-section-blocks:repository-generate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:widgets-to-navbar-blocks:repository-generate"
@@ -177,7 +177,7 @@
             "command": "nx run @sps/sps-website-builder:models:footer-block:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:models:hero-section-block:repository-migrate"
+            "command": "nx run @sps/sps-website-builder:models:content-section-block:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-website-builder:models:logotype:repository-migrate"
@@ -224,10 +224,10 @@
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-logotypes:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:hero-section-blocks-to-buttons-arrays:repository-migrate"
+            "command": "nx run @sps/sps-website-builder:relations:content-section-blocks-to-buttons-arrays:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:hero-section-blocks-to-sps-file-storage-module-widgets:repository-migrate"
+            "command": "nx run @sps/sps-website-builder:relations:content-section-blocks-to-sps-file-storage-module-widgets:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:logotypes-to-sps-file-storage-module-widgets:repository-migrate"
@@ -257,7 +257,7 @@
             "command": "nx run @sps/sps-website-builder:relations:widgets-to-footer-blocks:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-website-builder:relations:widgets-to-hero-section-blocks:repository-migrate"
+            "command": "nx run @sps/sps-website-builder:relations:widgets-to-content-section-blocks:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:widgets-to-navbar-blocks:repository-migrate"
@@ -408,11 +408,11 @@
         ]
       }
     },
-    "models:hero-section-block:repository-generate": {
+    "models:content-section-block:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/models/hero-section-block/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/models/content-section-block/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -423,12 +423,12 @@
         ]
       }
     },
-    "models:hero-section-block:repository-migrate": {
+    "models:content-section-block:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/models/hero-section-block/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/models/content-section-block/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -772,11 +772,11 @@
         ]
       }
     },
-    "relations:hero-section-blocks-to-buttons-arrays:repository-generate": {
+    "relations:content-section-blocks-to-buttons-arrays:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -787,12 +787,12 @@
         ]
       }
     },
-    "relations:hero-section-blocks-to-buttons-arrays:repository-migrate": {
+    "relations:content-section-blocks-to-buttons-arrays:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -800,11 +800,11 @@
         ]
       }
     },
-    "relations:hero-section-blocks-to-sps-file-storage-module-widgets:repository-generate": {
+    "relations:content-section-blocks-to-sps-file-storage-module-widgets:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/content-section-blocks-to-sps-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -815,12 +815,12 @@
         ]
       }
     },
-    "relations:hero-section-blocks-to-sps-file-storage-module-widgets:repository-migrate": {
+    "relations:content-section-blocks-to-sps-file-storage-module-widgets:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/relations/hero-section-blocks-to-sps-file-storage-module-widgets/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/content-section-blocks-to-sps-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -1080,11 +1080,11 @@
         ]
       }
     },
-    "relations:widgets-to-hero-section-blocks:repository-generate": {
+    "relations:widgets-to-content-section-blocks:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/widgets-to-content-section-blocks/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -1095,12 +1095,12 @@
         ]
       }
     },
-    "relations:widgets-to-hero-section-blocks:repository-migrate": {
+    "relations:widgets-to-content-section-blocks:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-website-builder/relations/widgets-to-hero-section-blocks/backend/repository/database",
+        "cwd": "libs/modules/sps-website-builder/relations/widgets-to-content-section-blocks/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

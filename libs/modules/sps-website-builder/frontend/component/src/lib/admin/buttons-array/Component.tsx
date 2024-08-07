@@ -3,7 +3,7 @@
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
 import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/frontend/component";
-import { Component as HeroSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/hero-section-blocks-to-buttons-arrays/frontend/component";
+import { Component as ContentSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/frontend/component";
 import { Component as NavbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component";
 import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
 
@@ -72,13 +72,17 @@ export function Component() {
                 />
               );
             }}
-            heroSectionBlocksToButtonsArrays={({ data, hostUrl, isServer }) => {
+            contentSectionBlocksToButtonsArrays={({
+              data,
+              hostUrl,
+              isServer,
+            }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <HeroSectionBlocksToButtonsArrays
+                <ContentSectionBlocksToButtonsArrays
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
