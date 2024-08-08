@@ -2,7 +2,6 @@ import { app as contentSectionBlock } from "@sps/sps-website-builder/models/cont
 import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/app/api";
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/api";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/api";
-import { app as featuresSectionBlock } from "@sps/sps-website-builder/models/features-section-block/backend/app/api";
 import { app as logotype } from "@sps/sps-website-builder/models/logotype/backend/app/api";
 import { app as slide } from "@sps/sps-website-builder/models/slide/backend/app/api";
 import { app as slider } from "@sps/sps-website-builder/models/slider/backend/app/api";
@@ -12,7 +11,7 @@ import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/api";
 import { app as widgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/backend/app/api";
 import { app as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/api";
-import { app as featuresSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/features-section-blocks-to-features/backend/app/api";
+import { app as contentSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/content-section-blocks-to-features/backend/app/api";
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/api";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/api";
@@ -25,7 +24,6 @@ import { app as sliderBlocksToSliders } from "@sps/sps-website-builder/relations
 import { app as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/app/api";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/api";
 import { app as slidesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/app/api";
-import { app as widgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-features-section-blocks/backend/app/api";
 import { app as widgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/backend/app/api";
 import { app as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/backend/app/api";
 import { app as widgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/backend/app/api";
@@ -77,11 +75,6 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
-      route: "/features-section-blocks",
-      app: featuresSectionBlock,
-    });
-    this.apps.push({
-      type: "model",
       route: "/slides",
       app: slide,
     });
@@ -117,8 +110,8 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/features-section-blocks-to-features",
-      app: featuresSectionBlocksToFeatures,
+      route: "/content-section-blocks-to-features",
+      app: contentSectionBlocksToFeatures,
     });
     this.apps.push({
       type: "relation",
@@ -174,11 +167,6 @@ export class Apps {
       type: "relation",
       route: "/slides-to-sps-file-storage-module-widgets",
       app: slidesToSpsFileStorageModuleWidgets,
-    });
-    this.apps.push({
-      type: "relation",
-      route: "/widgets-to-features-section-blocks",
-      app: widgetsToFeaturesSectionBlocks,
     });
     this.apps.push({
       type: "relation",
