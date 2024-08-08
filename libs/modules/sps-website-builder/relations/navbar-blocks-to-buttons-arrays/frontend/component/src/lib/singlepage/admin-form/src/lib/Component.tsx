@@ -11,8 +11,8 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
-import { Component as NavbarBlockAdminSlectInput } from "@sps/sps-website-builder/models/navbar-block/frontend/component";
-import { Component as ButtonsArrayAdminSelectInput } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
+import { Component as NavbarBlock } from "@sps/sps-website-builder/models/navbar-block/frontend/component";
+import { Component as ButtonsArray } from "@sps/sps-website-builder/models/buttons-array/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -80,7 +80,7 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <NavbarBlockAdminSlectInput
+        <NavbarBlock
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
@@ -88,7 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <ButtonsArrayAdminSelectInput
+        <ButtonsArray
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"

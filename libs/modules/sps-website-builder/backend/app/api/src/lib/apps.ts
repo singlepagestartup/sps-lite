@@ -25,6 +25,8 @@ import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations
 import { app as slidesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as widgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/backend/app/api";
 import { app as widgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/backend/app/api";
+import { app as buttonsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/buttons-to-sps-file-storage-module-widgets/backend/app/api";
+import { app as featuresToButtonsArrays } from "@sps/sps-website-builder/relations/features-to-buttons-arrays/backend/app/api";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -170,6 +172,16 @@ export class Apps {
       type: "relation",
       route: "/widgets-to-navbar-blocks",
       app: widgetsToNavbarBlocks,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/buttons-to-sps-file-storage-module-widgets",
+      app: buttonsToSpsFileStorageModuleWidgets,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/features-to-buttons-arrays",
+      app: featuresToButtonsArrays,
     });
   }
 }

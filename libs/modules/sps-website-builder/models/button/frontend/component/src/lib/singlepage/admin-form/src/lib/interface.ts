@@ -14,6 +14,9 @@ export interface IComponentProps
   buttonsArraysToButtons?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  buttonsSpsFileStorageModuleWidgets?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

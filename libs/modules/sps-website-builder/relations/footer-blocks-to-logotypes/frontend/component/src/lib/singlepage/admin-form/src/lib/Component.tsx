@@ -11,8 +11,8 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
-import { Component as FooterBlockAdminSelectInput } from "@sps/sps-website-builder/models/footer-block/frontend/component";
-import { Component as LogotypeAdminSelectInput } from "@sps/sps-website-builder/models/logotype/frontend/component";
+import { Component as FooterBlock } from "@sps/sps-website-builder/models/footer-block/frontend/component";
+import { Component as Logotype } from "@sps/sps-website-builder/models/logotype/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -80,7 +80,7 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <FooterBlockAdminSelectInput
+        <FooterBlock
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
@@ -88,7 +88,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <LogotypeAdminSelectInput
+        <Logotype
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"

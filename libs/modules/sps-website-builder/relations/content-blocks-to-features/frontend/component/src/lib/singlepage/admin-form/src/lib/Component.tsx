@@ -12,8 +12,8 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
-import { Component as ContentBlockAdminSlectInput } from "@sps/sps-website-builder/models/content-block/frontend/component";
-import { Component as FeatureAdminSlectInput } from "@sps/sps-website-builder/models/feature/frontend/component";
+import { Component as ContentBlock } from "@sps/sps-website-builder/models/content-block/frontend/component";
+import { Component as Feature } from "@sps/sps-website-builder/models/feature/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -81,7 +81,7 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <ContentBlockAdminSlectInput
+        <ContentBlock
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
@@ -89,7 +89,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <FeatureAdminSlectInput
+        <Feature
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           formFieldName="featureId"

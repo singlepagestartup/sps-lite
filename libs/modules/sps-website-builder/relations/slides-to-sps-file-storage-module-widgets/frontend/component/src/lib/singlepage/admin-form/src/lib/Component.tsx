@@ -11,8 +11,8 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
-import { Component as SlideAdminSlectInput } from "@sps/sps-website-builder/models/slide/frontend/component";
-import { Component as SpsFileStorageModuleWidgetArrayAdminSelectInput } from "@sps/sps-file-storage/models/widget/frontend/component";
+import { Component as Slide } from "@sps/sps-website-builder/models/slide/frontend/component";
+import { Component as SpsFileStorageModuleWidget } from "@sps/sps-file-storage/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -81,7 +81,7 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <SlideAdminSlectInput
+        <Slide
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
@@ -89,7 +89,7 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
         />
 
-        <SpsFileStorageModuleWidgetArrayAdminSelectInput
+        <SpsFileStorageModuleWidget
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"

@@ -3,6 +3,7 @@
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/feature/frontend/component";
 import { Component as ContentBlocksToFeatures } from "@sps/sps-website-builder/relations/content-blocks-to-features/frontend/component";
 import { Component as FeaturesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/frontend/component";
+import { Component as FeaturesToButtonsArrays } from "@sps/sps-website-builder/relations/features-to-buttons-arrays/frontend/component";
 
 export function Component() {
   return (
@@ -54,6 +55,32 @@ export function Component() {
 
               return (
                 <FeaturesToSpsFileStorageModuleWidgets
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "featureId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            featuresToButtonsArrays={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <FeaturesToButtonsArrays
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

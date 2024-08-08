@@ -80,6 +80,12 @@
             "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-widgets:repository-generate"
           },
           {
+            "command": "nx run @sps/sps-website-builder:relations:features-to-buttons-arrays:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:relations:buttons-to-sps-file-storage-module-widgets:repository-generate"
+          },
+          {
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-buttons-arrays:repository-generate"
           },
           {
@@ -198,6 +204,12 @@
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:features-to-sps-file-storage-module-widgets:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:relations:features-to-buttons-arrays:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-website-builder:relations:buttons-to-sps-file-storage-module-widgets:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-website-builder:relations:footer-blocks-to-buttons-arrays:repository-migrate"
@@ -629,6 +641,62 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:features-to-buttons-arrays:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-website-builder/relations/features-to-buttons-arrays/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:features-to-buttons-arrays:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-website-builder/relations/features-to-buttons-arrays/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:buttons-to-sps-file-storage-module-widgets:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-website-builder/relations/buttons-to-sps-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:buttons-to-sps-file-storage-module-widgets:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-website-builder/relations/buttons-to-sps-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

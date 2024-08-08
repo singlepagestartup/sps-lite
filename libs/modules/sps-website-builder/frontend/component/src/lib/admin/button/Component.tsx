@@ -2,6 +2,7 @@
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/button/frontend/component";
 import { Component as ButtonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/frontend/component";
+import { Component as ButtonsToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/buttons-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component() {
   return (
@@ -23,6 +24,36 @@ export function Component() {
 
               return (
                 <ButtonsArraysToButtons
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "buttonId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            buttonsSpsFileStorageModuleWidgets={({
+              data,
+              hostUrl,
+              isServer,
+            }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <ButtonsToSpsFileStorageModuleWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

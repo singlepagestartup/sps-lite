@@ -14,6 +14,9 @@ export interface IComponentProps
   featuresToSpsFileStorageModuleWidgets?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  featuresToButtonsArrays?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
   contentBlocksToFeatures?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;

@@ -8,7 +8,7 @@ export function Component<M extends { id: string }, V>(
     module: string;
     name: string;
     type?: "model" | "relation";
-    renderFunction?: (entity: M) => string;
+    renderFunction?: (entity: M) => any;
   },
 ) {
   return (

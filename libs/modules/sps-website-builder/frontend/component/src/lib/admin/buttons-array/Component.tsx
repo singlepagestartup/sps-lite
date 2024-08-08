@@ -6,6 +6,7 @@ import { Component as FooterBlocksToButtonsArrays } from "@sps/sps-website-build
 import { Component as ContentBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-blocks-to-buttons-arrays/frontend/component";
 import { Component as NavbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/frontend/component";
 import { Component as SlidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/frontend/component";
+import { Component as FeaturesToButtonsArrays } from "@sps/sps-website-builder/relations/features-to-buttons-arrays/frontend/component";
 
 export function Component() {
   return (
@@ -131,6 +132,32 @@ export function Component() {
 
               return (
                 <SlidesToButtonsArrays
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "buttonsArrayId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            featuresToButtonsArrays={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <FeaturesToButtonsArrays
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
