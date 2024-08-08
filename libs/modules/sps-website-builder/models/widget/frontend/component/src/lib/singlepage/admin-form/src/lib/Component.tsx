@@ -75,14 +75,6 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.widgetsToFeaturesSectionBlocks
-          ? props.widgetsToFeaturesSectionBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
         {props.widgetsToFooterBlocks
           ? props.widgetsToFooterBlocks({
               data: props.data,
@@ -101,14 +93,6 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.widgetsToNavbarBlocks
           ? props.widgetsToNavbarBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToSliderBlocks
-          ? props.widgetsToSliderBlocks({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

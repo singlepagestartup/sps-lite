@@ -48,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className=""
     >
-      {modal ? (
+      {/* {modal ? (
         <Modal
           isOpen={isOpen}
           close={() => {
@@ -59,7 +59,7 @@ export function Component(props: IComponentPropsExtended) {
           data={modal}
           variant="default"
         />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

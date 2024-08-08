@@ -1,4 +1,4 @@
-import { util as buildTreePath } from "../../../../../modules/sps-host/models/page/backend/app/api/src/lib/build-tree-paths";
+import { util as buildTreePath } from "./";
 
 describe("build-tree-path", () => {
   it("should return ['/']", () => {

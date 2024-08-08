@@ -11,5 +11,6 @@ export function Component(props: IComponentProps) {
   // type guards works on component rendering
   // as any here is required for dynamic import
   // or you can use switch case, but it's not recommended
-  return <Comp {...(props as any)} />;
+  // return <Comp {...(props as any)} />;
+  return <></>;
 }

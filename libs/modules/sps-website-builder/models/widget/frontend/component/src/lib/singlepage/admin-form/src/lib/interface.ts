@@ -11,9 +11,6 @@ export const variant = "admin-form" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  widgetsToFeaturesSectionBlocks?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
   widgetsToFooterBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
@@ -21,9 +18,6 @@ export interface IComponentProps
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
   widgetsToNavbarBlocks?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
-  widgetsToSliderBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
 }

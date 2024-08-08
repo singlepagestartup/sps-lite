@@ -1,10 +1,8 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/widget/frontend/component";
-import { Component as WidgetsToSliderBlocks } from "@sps/sps-website-builder/relations/widgets-to-slider-blocks/frontend/component";
-import { Component as WidgetsToFeaturesSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
-import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
+import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component";
 
 export function Component() {
@@ -20,39 +18,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            widgetsToSliderBlocks={({ data, hostUrl, isServer }) => {
+            widgetsToContentSectionBlocks={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <WidgetsToSliderBlocks
-                  isServer={isServer}
-                  hostUrl={hostUrl}
-                  variant="admin-table"
-                  apiProps={{
-                    params: {
-                      filters: {
-                        and: [
-                          {
-                            column: "widgetId",
-                            method: "eq",
-                            value: data.id,
-                          },
-                        ],
-                      },
-                    },
-                  }}
-                />
-              );
-            }}
-            widgetsToFeaturesSectionBlocks={({ data, hostUrl, isServer }) => {
-              if (!data) {
-                return;
-              }
-
-              return (
-                <WidgetsToFeaturesSectionBlocks
+                <WidgetsToContentSectionBlocks
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -79,32 +51,6 @@ export function Component() {
 
               return (
                 <WidgetsToFooterBlocks
-                  isServer={isServer}
-                  hostUrl={hostUrl}
-                  variant="admin-table"
-                  apiProps={{
-                    params: {
-                      filters: {
-                        and: [
-                          {
-                            column: "widgetId",
-                            method: "eq",
-                            value: data.id,
-                          },
-                        ],
-                      },
-                    },
-                  }}
-                />
-              );
-            }}
-            widgetsToContentSectionBlocks={({ data, hostUrl, isServer }) => {
-              if (!data) {
-                return;
-              }
-
-              return (
-                <WidgetsToContentSectionBlocks
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

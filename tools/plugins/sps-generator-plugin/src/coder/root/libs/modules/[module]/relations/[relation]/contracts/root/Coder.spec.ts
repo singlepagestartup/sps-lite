@@ -59,7 +59,7 @@ describe("Coder", () => {
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
         widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToSliderBlocks: IWidgetToSliderBlock[];
+        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules: IWidgetsToModules[];
       }`;
@@ -77,7 +77,7 @@ describe("Coder", () => {
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
         widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToSliderBlocks: IWidgetToSliderBlock[];
+        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules:
           IWidgetsToModules[];

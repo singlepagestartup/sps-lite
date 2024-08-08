@@ -217,7 +217,7 @@ describe("Database", () => {
               {
                 column: "title",
                 method: "eq",
-                transformer: (data) => {
+                value: (data) => {
                   return data.entity.dump.title;
                 },
               },

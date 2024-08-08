@@ -12,7 +12,7 @@ import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
-import { Component as FeaturesSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/content-section-block/frontend/component";
+import { Component as ContentSectionBlockAdminSlectInput } from "@sps/sps-website-builder/models/content-section-block/frontend/component";
 import { Component as FeatureAdminSlectInput } from "@sps/sps-website-builder/models/feature/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -81,7 +81,7 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <FeaturesSectionBlockAdminSlectInput
+        <ContentSectionBlockAdminSlectInput
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"

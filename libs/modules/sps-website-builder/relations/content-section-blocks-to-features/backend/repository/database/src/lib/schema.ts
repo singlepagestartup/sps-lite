@@ -1,5 +1,5 @@
 import * as pgCore from "drizzle-orm/pg-core";
-import { Table as FeaturesSectionBlock } from "@sps/sps-website-builder/models/content-section-block/backend/repository/database";
+import { Table as ContentSectionBlock } from "@sps/sps-website-builder/models/content-section-block/backend/repository/database";
 import { Table as Feature } from "@sps/sps-website-builder/models/feature/backend/repository/database";
 
 export const moduleName = "sps_w_b";
@@ -15,7 +15,7 @@ export const Table = pgTable(table, {
   contentSectionBlockId: pgCore
     .uuid("ct_sn_bk_id")
     .notNull()
-    .references(() => FeaturesSectionBlock.id, { onDelete: "cascade" }),
+    .references(() => ContentSectionBlock.id, { onDelete: "cascade" }),
   featureId: pgCore
     .uuid("fe_id")
     .notNull()
