@@ -80,6 +80,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^19.0.0-beta-26f2496093-20240514",
     "react-hook-form": "^7.52.0",
+    "react-jwt": "^1.2.2",
     "react-router-dom": "^5.3.4",
     "react-table": "^7.8.0",
     "reflect-metadata": "^0.2.2",

@@ -5,7 +5,7 @@ import { fonts } from "./fonts";
 import { Suspense } from "react";
 import { Toaster } from "@sps/shared-ui-shadcn";
 import { Component as Admin } from "../src/components/admin";
-import { Component as SpsLiteRbacSetSessionWrapper } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authentication/frontend/component";
 import { App as SpsBroadcast } from "@sps/sps-broadcast/frontend/component";
 import Loading from "./loading";
 
@@ -20,18 +20,24 @@ export default async function RootLayout({
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
         <Suspense fallback={<Loading />}>
-          <SpsLiteRbacSetSessionWrapper
+          <SpsRbacAuthentication
             isServer={false}
             hostUrl="/"
             variant="set-session-wrapper"
           >
-            <SpsBroadcast hostUrl="/" isServer={true} />
-            <Admin hostUrl="/" isServer={true} />
-            <div className="relative">
-              {children}
-              <Toaster />
-            </div>
-          </SpsLiteRbacSetSessionWrapper>
+            <SpsRbacAuthentication
+              isServer={false}
+              hostUrl="/"
+              variant="jwt-provider"
+            >
+              <SpsBroadcast hostUrl="/" isServer={true} />
+              <Admin hostUrl="/" isServer={true} />
+              <div className="relative">
+                {children}
+                <Toaster />
+              </div>
+            </SpsRbacAuthentication>
+          </SpsRbacAuthentication>
         </Suspense>
       </body>
     </html>

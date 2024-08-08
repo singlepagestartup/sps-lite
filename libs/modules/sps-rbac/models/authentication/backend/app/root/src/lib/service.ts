@@ -313,6 +313,70 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     });
   }
 
+  async refresh(props: {
+    refresh: string;
+  }): Promise<{ jwt: string; refresh: string }> {
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    }
+
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    }
+
+    const decoded = await jwt.verify(props.refresh, SPS_RBAC_JWT_SECRET);
+
+    const subjectId = decoded.subject?.["id"];
+
+    if (!subjectId) {
+      throw new Error("No subject provided in the token");
+    }
+
+    const subject = await subjectApi.findById({
+      id: subjectId,
+      options: {
+        headers: {
+          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!subject) {
+      throw new Error("No subject found");
+    }
+
+    const jwtToken = await jwt.sign(
+      {
+        exp:
+          Math.floor(Date.now() / 1000) +
+          SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        iat: Math.floor(Date.now() / 1000),
+        subject: {
+          id: subject.id,
+        },
+      },
+      SPS_RBAC_JWT_SECRET,
+    );
+
+    const refreshToken = await jwt.sign(
+      {
+        exp:
+          Math.floor(Date.now() / 1000) +
+          SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+        iat: Math.floor(Date.now() / 1000),
+        subject: {
+          id: subject.id,
+        },
+      },
+      SPS_RBAC_JWT_SECRET,
+    );
+
+    return { jwt: jwtToken, refresh: refreshToken };
+  }
+
   async loginAndPassowrd(
     props: ILoginAndPasswordDTO,
   ): Promise<{ jwt: string; refresh: string }> {

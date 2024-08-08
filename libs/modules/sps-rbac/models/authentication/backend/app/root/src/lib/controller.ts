@@ -12,6 +12,7 @@ import {
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
+import { authorization } from "@sps/sps-backend-utils";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -40,6 +41,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "POST",
         path: "/registration/:provider",
         handler: this.registraion,
+      },
+      {
+        method: "POST",
+        path: "/authentication/refresh",
+        handler: this.refresh,
       },
       {
         method: "POST",
@@ -260,6 +266,81 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         data,
         provider,
         type: "authentication",
+      });
+
+      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+
+      if (!decoded.exp) {
+        throw new HTTPException(400, {
+          message: "Invalid token issued",
+        });
+      }
+
+      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+        path: "/",
+        secure: true,
+        httpOnly: false,
+        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        expires: new Date(decoded.exp),
+        sameSite: "Strict",
+      });
+
+      return c.json(
+        {
+          data: entity,
+        },
+        201,
+      );
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  async refresh(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_SECRET not set",
+      });
+    }
+
+    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+      });
+    }
+
+    const token = authorization(c);
+
+    if (!token) {
+      return c.json(
+        {
+          data: null,
+        },
+        {
+          status: 401,
+        },
+      );
+    }
+
+    const body = await c.req.parseBody();
+
+    if (typeof body["data"] !== "string") {
+      return next();
+    }
+
+    const data = JSON.parse(body["data"]);
+
+    if (!data["refresh"]) {
+      throw new HTTPException(400, {
+        message: "No refresh token provided",
+      });
+    }
+
+    try {
+      const entity = await this.service.refresh({
+        refresh: data["refresh"],
       });
 
       const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);

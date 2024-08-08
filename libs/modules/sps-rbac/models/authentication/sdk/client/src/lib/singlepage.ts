@@ -33,6 +33,16 @@ export interface ILoginAndPasswordMutationFunctionProps {
   options?: NextRequestOptions;
 }
 
+export interface IRefreshMutationFunctionProps {
+  data: {
+    refresh: string;
+  };
+  params?: {
+    [key: string]: any;
+  };
+  options?: NextRequestOptions;
+}
+
 export interface ILogoutMutationFunctionProps {
   params?: {
     [key: string]: any;
@@ -134,6 +144,89 @@ export const api = {
         globalActionsStore.getState().addAction({
           type: "authentication.loginAndPassword",
           name: `${route}/${props?.type ?? "authentication"}/login-and-password`,
+          props: this,
+          result: data,
+          timestamp: Date.now(),
+          requestId: createId(),
+        });
+
+        return data;
+      },
+      ...props?.reactQueryOptions,
+    });
+  },
+  refresh: (props?: {
+    params?: {
+      [key: string]: any;
+    };
+    options?: NextRequestOptions;
+    reactQueryOptions?: any;
+  }) => {
+    return useMutation<
+      { jwt: string; refresh: string },
+      DefaultError,
+      IRefreshMutationFunctionProps
+    >({
+      mutationKey: [`${route}/authentication/refresh`],
+      mutationFn: async (
+        mutationFunctionProps: IRefreshMutationFunctionProps,
+      ) => {
+        try {
+          const { data } = mutationFunctionProps;
+
+          const formData = prepareFormDataToSend({ data });
+
+          const stringifiedQuery = QueryString.stringify(
+            mutationFunctionProps.params || props?.params,
+            {
+              encodeValuesOnly: true,
+            },
+          );
+
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            method: "POST",
+            body: formData,
+            ...(mutationFunctionProps.options || props?.options),
+            next: {
+              ...(mutationFunctionProps.options?.next || props?.options?.next),
+            },
+          };
+          const res = await fetch(
+            `${host}${route}/authentication/refresh?${stringifiedQuery}`,
+            requestOptions,
+          );
+
+          const json = await responsePipe<{
+            data: {
+              jwt: string;
+              refresh: string;
+            };
+          }>({
+            res,
+          });
+
+          const transformedData = transformResponseItem<{
+            jwt: string;
+            refresh: string;
+          }>(json);
+
+          localStorage.setItem(
+            "sps-rbac.authentication.refresh",
+            transformedData.refresh,
+          );
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
+        }
+      },
+      onSuccess(data) {
+        globalActionsStore.getState().addAction({
+          type: "authentication.refresh",
+          name: `${route}/authentication/refresh`,
           props: this,
           result: data,
           timestamp: Date.now(),

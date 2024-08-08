@@ -9,6 +9,7 @@ import { Component as IsAllowedWrapper } from "./is-authorized-wrapper";
 import { Component as SetSessionWrapper } from "./set-session-wrapper";
 import { Component as LoginAndPassword } from "./login-and-password";
 import { Component as SelectMethod } from "./select-method";
+import { Component as JwtProvider } from "./jwt-provider";
 
 export const variants = {
   find: Find,
@@ -22,4 +23,5 @@ export const variants = {
   "set-session-wrapper": SetSessionWrapper,
   "login-and-password": LoginAndPassword,
   "select-method": SelectMethod,
+  "jwt-provider": JwtProvider,
 };

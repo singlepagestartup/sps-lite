@@ -7,9 +7,9 @@ import { IComponentProps as ILogoutActionComponentProps } from "./logout-action"
 import { IComponentProps as ILogoutButtonComponentProps } from "./logout-button";
 import { IComponentProps as IIsAllowedWrapperComponentProps } from "./is-authorized-wrapper";
 import { IComponentProps as ISetSessionWrapperComponentProps } from "./set-session-wrapper";
-
 import { IComponentProps as ILoginAndPasswordComponentProps } from "./login-and-password";
 import { IComponentProps as ISelectMethodComponentProps } from "./select-method";
+import { IComponentProps as IJwtProviderComponentProps } from "./jwt-provider";
 
 export type IComponentProps =
   | IFindComponentProps
@@ -23,4 +23,5 @@ export type IComponentProps =
   | ISetSessionWrapperComponentProps
   | ILoginAndPasswordComponentProps
   | ISelectMethodComponentProps
+  | IJwtProviderComponentProps
   | never;
