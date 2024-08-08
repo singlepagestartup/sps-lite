@@ -95,8 +95,8 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.contentSectionBlocksToFeatures
-          ? props.contentSectionBlocksToFeatures({
+        {props.contentBlocksToFeatures
+          ? props.contentBlocksToFeatures({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

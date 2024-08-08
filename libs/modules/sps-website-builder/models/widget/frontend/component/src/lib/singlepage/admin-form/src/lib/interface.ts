@@ -14,7 +14,7 @@ export interface IComponentProps
   widgetsToFooterBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
-  widgetsToContentSectionBlocks?: (
+  widgetsToContentBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
   widgetsToNavbarBlocks?: (

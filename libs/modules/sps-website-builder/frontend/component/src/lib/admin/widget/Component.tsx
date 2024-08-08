@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/widget/frontend/component";
-import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
+import { Component as WidgetsToContentBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-blocks/frontend/component";
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component";
 
@@ -18,13 +18,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            widgetsToContentSectionBlocks={({ data, hostUrl, isServer }) => {
+            widgetsToContentBlocks={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <WidgetsToContentSectionBlocks
+                <WidgetsToContentBlocks
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

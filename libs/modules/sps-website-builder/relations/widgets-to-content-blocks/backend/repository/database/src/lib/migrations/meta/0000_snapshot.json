@@ -1,0 +1,83 @@
+{
+  "id": "e1903005-fe13-43b3-8e82-36f47a427433",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.sps_w_b_ws_to_ct_bs": {
+      "name": "sps_w_b_ws_to_ct_bs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "order_index": {
+          "name": "order_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "wt_id": {
+          "name": "wt_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "ct_bk_id": {
+          "name": "ct_bk_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sps_w_b_ws_to_ct_bs_wt_id_sps_w_b_widgets_id_fk": {
+          "name": "sps_w_b_ws_to_ct_bs_wt_id_sps_w_b_widgets_id_fk",
+          "tableFrom": "sps_w_b_ws_to_ct_bs",
+          "tableTo": "sps_w_b_widgets",
+          "columnsFrom": ["wt_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "sps_w_b_ws_to_ct_bs_ct_bk_id_sps_w_b_ct_bs_c2s_id_fk": {
+          "name": "sps_w_b_ws_to_ct_bs_ct_bk_id_sps_w_b_ct_bs_c2s_id_fk",
+          "tableFrom": "sps_w_b_ws_to_ct_bs",
+          "tableTo": "sps_w_b_ct_bs_c2s",
+          "columnsFrom": ["ct_bk_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

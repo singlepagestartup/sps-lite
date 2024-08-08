@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/feature/frontend/component";
-import { Component as ContentSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/content-section-blocks-to-features/frontend/component";
+import { Component as ContentBlocksToFeatures } from "@sps/sps-website-builder/relations/content-blocks-to-features/frontend/component";
 import { Component as FeaturesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/frontend/component";
 
 export function Component() {
@@ -17,13 +17,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            contentSectionBlocksToFeatures={({ data, hostUrl, isServer }) => {
+            contentBlocksToFeatures={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <ContentSectionBlocksToFeatures
+                <ContentBlocksToFeatures
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

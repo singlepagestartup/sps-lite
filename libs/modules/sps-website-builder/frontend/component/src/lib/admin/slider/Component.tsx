@@ -2,7 +2,7 @@
 
 import { Component as ParentComponent } from "@sps/sps-website-builder/models/slider/frontend/component";
 import { Component as SlidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/frontend/component";
-import { Component as ContentSectionBlocksToSliders } from "@sps/sps-website-builder/relations/content-section-blocks-to-sliders/frontend/component";
+import { Component as ContentBlocksToSliders } from "@sps/sps-website-builder/relations/content-blocks-to-sliders/frontend/component";
 
 export function Component() {
   return (
@@ -49,7 +49,7 @@ export function Component() {
               }
 
               return (
-                <ContentSectionBlocksToSliders
+                <ContentBlocksToSliders
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as WidgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/frontend/component";
+import { Component as WidgetsToContentBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-blocks/frontend/component";
 import { Component as WidgetsToNavbarBlocks } from "@sps/sps-website-builder/relations/widgets-to-navbar-blocks/frontend/component";
 import { Component as WidgetsToFooterBlocks } from "@sps/sps-website-builder/relations/widgets-to-footer-blocks/frontend/component";
 
@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className)}
     >
-      <WidgetsToContentSectionBlocks
+      <WidgetsToContentBlocks
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="find"
@@ -34,17 +34,17 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <WidgetsToContentSectionBlocks
+              <WidgetsToContentBlocks
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
                 variant={entity.variant as any}
                 data={entity}
-              ></WidgetsToContentSectionBlocks>
+              ></WidgetsToContentBlocks>
             );
           });
         }}
-      </WidgetsToContentSectionBlocks>
+      </WidgetsToContentBlocks>
       <WidgetsToNavbarBlocks
         isServer={props.isServer}
         hostUrl={props.hostUrl}
@@ -109,38 +109,6 @@ export function Component(props: IComponentPropsExtended) {
           });
         }}
       </WidgetsToFooterBlocks>
-      <WidgetsToContentSectionBlocks
-        isServer={props.isServer}
-        hostUrl={props.hostUrl}
-        variant="find"
-        apiProps={{
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "widgetId",
-                  method: "eq",
-                  value: props.data.id,
-                },
-              ],
-            },
-          },
-        }}
-      >
-        {({ data }) => {
-          return data?.map((entity, index) => {
-            return (
-              <WidgetsToContentSectionBlocks
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant={entity.variant as any}
-                data={entity}
-              ></WidgetsToContentSectionBlocks>
-            );
-          });
-        }}
-      </WidgetsToContentSectionBlocks>
     </div>
   );
 }

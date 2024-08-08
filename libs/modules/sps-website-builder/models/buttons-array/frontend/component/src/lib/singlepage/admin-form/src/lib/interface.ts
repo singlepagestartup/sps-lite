@@ -17,7 +17,7 @@ export interface IComponentProps
   footerBlocksToButtonsArrays?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
-  contentSectionBlocksToButtonsArrays?: (
+  contentBlocksToButtonsArrays?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
   navbarBlocksToButtonsArrays?: (

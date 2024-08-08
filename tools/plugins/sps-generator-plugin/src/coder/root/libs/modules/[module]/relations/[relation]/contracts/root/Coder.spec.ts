@@ -53,13 +53,13 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
         widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules: IWidgetsToModules[];
       }`;
@@ -71,13 +71,13 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
         widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToContentSectionBlocks: IWidgetToContentSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules:
           IWidgetsToModules[];

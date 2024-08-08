@@ -1,0 +1,74 @@
+{
+  "id": "1bcda237-cb26-4aa2-a30f-f82ff79a4f56",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.sps_w_b_ct_bs_to_ss_fe_se_ws_a0n": {
+      "name": "sps_w_b_ct_bs_to_ss_fe_se_ws_a0n",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "variant": {
+          "name": "variant",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
+        "order_index": {
+          "name": "order_index",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "class_name": {
+          "name": "class_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ct_bk_id": {
+          "name": "ct_bk_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sps_fe_se_wt_id": {
+          "name": "sps_fe_se_wt_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sps_w_b_ct_bs_to_ss_fe_se_ws_a0n_ct_bk_id_sps_w_b_ct_bs_c2s_id_fk": {
+          "name": "sps_w_b_ct_bs_to_ss_fe_se_ws_a0n_ct_bk_id_sps_w_b_ct_bs_c2s_id_fk",
+          "tableFrom": "sps_w_b_ct_bs_to_ss_fe_se_ws_a0n",
+          "tableTo": "sps_w_b_ct_bs_c2s",
+          "columnsFrom": ["ct_bk_id"],
+          "columnsTo": ["id"],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

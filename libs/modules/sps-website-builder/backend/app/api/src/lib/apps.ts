@@ -1,4 +1,4 @@
-import { app as contentSectionBlock } from "@sps/sps-website-builder/models/content-section-block/backend/app/api";
+import { app as contentBlock } from "@sps/sps-website-builder/models/content-block/backend/app/api";
 import { app as buttonsArray } from "@sps/sps-website-builder/models/buttons-array/backend/app/api";
 import { app as button } from "@sps/sps-website-builder/models/button/backend/app/api";
 import { app as feature } from "@sps/sps-website-builder/models/feature/backend/app/api";
@@ -8,18 +8,18 @@ import { app as slider } from "@sps/sps-website-builder/models/slider/backend/ap
 import { app as footerBlock } from "@sps/sps-website-builder/models/footer-block/backend/app/api";
 import { app as navbarBlock } from "@sps/sps-website-builder/models/navbar-block/backend/app/api";
 import { app as widget } from "@sps/sps-website-builder/models/widget/backend/app/api";
-import { app as widgetsToContentSectionBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-section-blocks/backend/app/api";
+import { app as widgetsToContentBlocks } from "@sps/sps-website-builder/relations/widgets-to-content-blocks/backend/app/api";
 import { app as buttonsArraysToButtons } from "@sps/sps-website-builder/relations/buttons-arrays-to-buttons/backend/app/api";
-import { app as contentSectionBlocksToFeatures } from "@sps/sps-website-builder/relations/content-section-blocks-to-features/backend/app/api";
+import { app as contentBlocksToFeatures } from "@sps/sps-website-builder/relations/content-blocks-to-features/backend/app/api";
 import { app as featuresToSpsFileStorageModuleFiles } from "@sps/sps-website-builder/relations/features-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as footerBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/footer-blocks-to-buttons-arrays/backend/app/api";
 import { app as footerBlocksToLogotypes } from "@sps/sps-website-builder/relations/footer-blocks-to-logotypes/backend/app/api";
-import { app as contentSectionBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-section-blocks-to-buttons-arrays/backend/app/api";
-import { app as contentSectionBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/content-section-blocks-to-sps-file-storage-module-widgets/backend/app/api";
+import { app as contentBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/content-blocks-to-buttons-arrays/backend/app/api";
+import { app as contentBlocksToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/content-blocks-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as logotypesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/logotypes-to-sps-file-storage-module-widgets/backend/app/api";
 import { app as navbarBlocksToButtonsArrays } from "@sps/sps-website-builder/relations/navbar-blocks-to-buttons-arrays/backend/app/api";
 import { app as navbarBlocksToLogotypes } from "@sps/sps-website-builder/relations/navbar-blocks-to-logotypes/backend/app/api";
-import { app as sliderBlocksToSliders } from "@sps/sps-website-builder/relations/content-section-blocks-to-sliders/backend/app/api";
+import { app as sliderBlocksToSliders } from "@sps/sps-website-builder/relations/content-blocks-to-sliders/backend/app/api";
 import { app as slidersToSlides } from "@sps/sps-website-builder/relations/sliders-to-slides/backend/app/api";
 import { app as slidesToButtonsArrays } from "@sps/sps-website-builder/relations/slides-to-buttons-arrays/backend/app/api";
 import { app as slidesToSpsFileStorageModuleWidgets } from "@sps/sps-website-builder/relations/slides-to-sps-file-storage-module-widgets/backend/app/api";
@@ -43,8 +43,8 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
-      route: "/content-section-blocks",
-      app: contentSectionBlock,
+      route: "/content-blocks",
+      app: contentBlock,
     });
     this.apps.push({
       type: "model",
@@ -93,8 +93,8 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/widgets-to-content-section-blocks",
-      app: widgetsToContentSectionBlocks,
+      route: "/widgets-to-content-blocks",
+      app: widgetsToContentBlocks,
     });
     this.apps.push({
       type: "relation",
@@ -103,8 +103,8 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/content-section-blocks-to-features",
-      app: contentSectionBlocksToFeatures,
+      route: "/content-blocks-to-features",
+      app: contentBlocksToFeatures,
     });
     this.apps.push({
       type: "relation",
@@ -118,13 +118,13 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/content-section-blocks-to-buttons-arrays",
-      app: contentSectionBlocksToButtonsArrays,
+      route: "/content-blocks-to-buttons-arrays",
+      app: contentBlocksToButtonsArrays,
     });
     this.apps.push({
       type: "relation",
-      route: "/content-section-blocks-to-sps-file-storage-module-widgets",
-      app: contentSectionBlocksToSpsFileStorageModuleWidgets,
+      route: "/content-blocks-to-sps-file-storage-module-widgets",
+      app: contentBlocksToSpsFileStorageModuleWidgets,
     });
     this.apps.push({
       type: "relation",
@@ -143,7 +143,7 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/content-section-blocks-to-sliders",
+      route: "/content-blocks-to-sliders",
       app: sliderBlocksToSliders,
     });
     this.apps.push({

@@ -101,8 +101,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.contentSectionBlocksToButtonsArrays
-          ? props.contentSectionBlocksToButtonsArrays({
+        {props.contentBlocksToButtonsArrays
+          ? props.contentBlocksToButtonsArrays({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
