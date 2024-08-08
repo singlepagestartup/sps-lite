@@ -53,10 +53,6 @@ export function Component(props: IComponentProps) {
       name: "slider",
       Comp: Slider,
     },
-    {
-      name: "content-block",
-      Comp: ContentBlock,
-    },
   ];
 
   return (
