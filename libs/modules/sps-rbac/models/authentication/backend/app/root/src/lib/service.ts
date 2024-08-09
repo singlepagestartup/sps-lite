@@ -396,7 +396,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               {
                 column: "email",
                 method: "eq",
-                value: props.data.login,
+                value: props.data.login.toLowerCase(),
               },
             ],
           },
@@ -421,7 +421,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       const identity = await identityApi.create({
         data: {
-          email: props.data.login,
+          email: props.data.login.toLowerCase(),
           password: saltedPassword,
           salt,
         },
@@ -437,7 +437,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       const subject = await subjectApi.create({
         data: {
-          name: props.data.login,
+          name: props.data.login.toLowerCase(),
         },
         options: {
           headers: {
@@ -518,7 +518,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             {
               column: "email",
               method: "eq",
-              value: props.data.login,
+              value: props.data.login.toLowerCase(),
             },
           ],
         },

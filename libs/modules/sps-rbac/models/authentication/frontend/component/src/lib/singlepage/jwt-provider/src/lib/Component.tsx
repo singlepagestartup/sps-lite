@@ -19,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
 
     if (
       new Date(token.decodedToken?.["exp"] * 1000).getTime() -
-        SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS * 0.9 * 1000 <
+        SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS * 0.1 * 1000 <
       Date.now()
     ) {
       const refreshToken = localStorage.getItem(
