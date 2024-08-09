@@ -68,14 +68,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       }
 
       // Vercel changes url "/" to "index" so we need to change it back
-      if (!url || url === "/index") {
+      if (
+        !url ||
+        ["index"].includes(url.split("/").filter((u) => u !== "")?.[0])
+      ) {
         url = "/";
-      }
-
-      if (url === "favicon.ico") {
-        return c.json({
-          ok: true,
-        });
       }
 
       const entity = await this.service.findByUrl({
