@@ -63,6 +63,9 @@
         "commands": [
           {
             "command": "nx run @sps/sps-billing:models:widget:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:models:payment-intent:repository-migrate"
           }
         ]
       }
@@ -95,6 +98,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-billing/models/widget/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "models:payment-intent:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/models/payment-intent/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "payment-intent:widget:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-billing/payment-intent/widget/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

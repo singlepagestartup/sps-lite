@@ -1,4 +1,5 @@
 import { app as widgetApp } from "@sps/sps-billing/models/widget/backend/app/api";
+import { app as paymentIntentApp } from "@sps/sps-billing/models/payment-intent/backend/app/api";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -14,6 +15,11 @@ export class Apps {
       type: "model",
       route: "/widgets",
       app: widgetApp,
+    });
+    this.apps.push({
+      type: "model",
+      route: "/payment-intents",
+      app: paymentIntentApp,
     });
   }
 }
