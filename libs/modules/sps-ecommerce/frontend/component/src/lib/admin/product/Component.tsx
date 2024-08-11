@@ -2,6 +2,7 @@
 
 import { Component as ParentComponent } from "@sps/sps-ecommerce/models/product/frontend/component";
 import { Component as ProductsToAttributes } from "@sps/sps-ecommerce/relations/products-to-attributes/frontend/component";
+import { Component as OrdersToProducts } from "@sps/sps-ecommerce/relations/orders-to-products/frontend/component";
 
 export function Component() {
   return (
@@ -23,6 +24,32 @@ export function Component() {
 
               return (
                 <ProductsToAttributes
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "productId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            ordersToProducts={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <OrdersToProducts
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
