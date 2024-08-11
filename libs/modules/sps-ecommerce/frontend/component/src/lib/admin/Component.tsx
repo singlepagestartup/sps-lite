@@ -4,6 +4,7 @@ import { Component as Widget } from "./widget/Component";
 import { Component as Product } from "./product/Component";
 import { Component as Attribute } from "./attribute/Component";
 import { Component as AttributeKey } from "./attribute-key/Component";
+import { Component as Order } from "./order/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -22,6 +23,10 @@ export function Component(props: IComponentProps) {
     {
       name: "attribute-key",
       Comp: AttributeKey,
+    },
+    {
+      name: "order",
+      Comp: Order,
     },
   ];
 

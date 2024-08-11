@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as ParentComponent } from "@sps/sps-ecommerce/models/widget/frontend/component";
+import { Component as ParentComponent } from "@sps/sps-ecommerce/models/order/frontend/component";
 
 export function Component() {
   return (
