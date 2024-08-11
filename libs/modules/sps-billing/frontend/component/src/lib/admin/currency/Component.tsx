@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as ParentComponent } from "@sps/sps-billing/models/widget/frontend/component";
+import { Component as ParentComponent } from "@sps/sps-billing/models/currency/frontend/component";
 
 export function Component() {
   return (

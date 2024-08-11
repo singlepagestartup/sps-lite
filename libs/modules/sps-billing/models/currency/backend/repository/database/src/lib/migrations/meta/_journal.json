@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1723408069461,
+      "tag": "0000_sharp_kid_colt",
+      "breakpoints": true
+    }
+  ]
+}

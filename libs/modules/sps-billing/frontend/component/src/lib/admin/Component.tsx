@@ -5,6 +5,7 @@ import { Component as ParentComponent } from "@sps/shared-frontend-components/si
 import { Component as Widget } from "./widget/Component";
 import { Component as PaymentIntent } from "./payment-intent/Component";
 import { Component as Invoice } from "./invoice/Component";
+import { Component as Currency } from "./currency/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -19,6 +20,10 @@ export function Component(props: IComponentProps) {
     {
       name: "invoice",
       Comp: Invoice,
+    },
+    {
+      name: "currency",
+      Comp: Currency,
     },
   ];
 
