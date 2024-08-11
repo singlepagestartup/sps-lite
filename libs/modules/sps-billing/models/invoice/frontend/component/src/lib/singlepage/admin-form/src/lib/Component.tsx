@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   variants,
   insertSchema,
+  statuses,
 } from "@sps/sps-billing/models/invoice/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -20,6 +21,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      status: props.data?.status || "draft",
     },
   });
 
@@ -48,6 +50,16 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="select"
+          label="Status"
+          name="status"
+          form={form}
+          placeholder="Select status"
+          options={statuses.map((status) => [status, status])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
           label="Variant"
           name="variant"
           form={form}
@@ -55,8 +67,8 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.invoicesToCurrencies
-          ? props.invoicesToCurrencies({
+        {props.paymentIntentsToInvoices
+          ? props.paymentIntentsToInvoices({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

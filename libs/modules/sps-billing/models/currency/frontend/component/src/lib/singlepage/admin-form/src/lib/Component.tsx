@@ -20,6 +20,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      isDefault: props.data?.isDefault || false,
+      symbol: props.data?.symbol || "",
+      slug: props.data?.slug || "",
+      title: props.data?.title || "",
     },
   });
 
@@ -47,6 +51,41 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          name="symbol"
+          label="Symbol"
+          form={form}
+          placeholder="Type symbol"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="slug"
+          label="Slug"
+          form={form}
+          placeholder="Type slug"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={form}
+          placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="checkbox"
+          name="isDefault"
+          label="Is default"
+          form={form}
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -55,8 +94,8 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.invoicesToCurrencies
-          ? props.invoicesToCurrencies({
+        {props.paymentIntentsToCurrencies
+          ? props.paymentIntentsToCurrencies({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

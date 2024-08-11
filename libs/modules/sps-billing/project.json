@@ -21,6 +21,23 @@
         ]
       }
     },
+    "repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/sps-billing:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:relations:repository-migrate"
+          }
+        ]
+      }
+    },
     "models:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -45,26 +62,17 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
-      }
-    },
-    "repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-billing:repository-generate"
+            "command": "nx run @sps/sps-billing:relations:payment-intents-to-invoices:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-billing:models:repository-migrate"
-          },
-          {
-            "command": "nx run @sps/sps-billing:relations:repository-migrate"
+            "command": "nx run @sps/sps-billing:relations:payment-intents-to-currencies:repository-generate"
           }
         ]
       }
     },
+
     "models:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -89,7 +97,14 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
+        "commands": [
+          {
+            "command": "nx run @sps/sps-billing:relations:payment-intents-to-invoices:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:relations:payment-intents-to-currencies:repository-migrate"
+          }
+        ]
       }
     },
     "models:widget:repository-generate": {
@@ -141,6 +156,62 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-billing/models/currency/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:payment-intents-to-invoices:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/relations/payment-intents-to-invoices/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:payment-intents-to-invoices:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-billing/relations/payment-intents-to-invoices/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:payment-intents-to-currencies:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/relations/payment-intents-to-currencies/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:payment-intents-to-currencies:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-billing/relations/payment-intents-to-currencies/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

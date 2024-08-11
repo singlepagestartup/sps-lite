@@ -4,11 +4,20 @@ import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
 } from "@sps/shared-frontend-components/singlepage/admin-form/interface";
+import { ISpsComponentBase } from "@sps/ui-adapter";
+import { ReactNode } from "react";
 
 export const variant = "admin-form" as const;
 
 export interface IComponentProps
-  extends IParentComponentProps<IModel, typeof variant> {}
+  extends IParentComponentProps<IModel, typeof variant> {
+  paymentIntentsToInvoices?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  paymentIntentsToCurrencies?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+}
 
 export interface IComponentPropsExtended
   extends IParentComponentPropsExtended<

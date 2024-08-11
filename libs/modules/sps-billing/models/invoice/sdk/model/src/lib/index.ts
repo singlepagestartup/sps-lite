@@ -8,6 +8,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-billing/invoices";
 export const variants = ["default"];
+export const statuses = ["draft", "open", "paid", "uncollectible", "void"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   variants,
   insertSchema,
+  statuses,
 } from "@sps/sps-billing/models/payment-intent/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -20,6 +21,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      amount: props.data?.amount || 0,
+      status: props.data?.status || "requires_payment_method",
     },
   });
 
@@ -47,6 +50,25 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="number"
+          label="Amount"
+          name="amount"
+          form={form}
+          placeholder="Type amount"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Status"
+          name="status"
+          form={form}
+          placeholder="Select status"
+          options={statuses.map((status) => [status, status])}
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -54,6 +76,22 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.paymentIntentsToInvoices
+          ? props.paymentIntentsToInvoices({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.paymentIntentsToCurrencies
+          ? props.paymentIntentsToCurrencies({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

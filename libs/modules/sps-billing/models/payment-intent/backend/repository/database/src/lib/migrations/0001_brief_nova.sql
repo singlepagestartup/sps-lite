@@ -1,0 +1,1 @@
+ALTER TABLE "sps_bg_pt_it" ADD COLUMN "amount" integer DEFAULT 0 NOT NULL;

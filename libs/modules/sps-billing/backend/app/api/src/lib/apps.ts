@@ -3,6 +3,8 @@ import { app as widgetApp } from "@sps/sps-billing/models/widget/backend/app/api
 import { app as paymentIntentApp } from "@sps/sps-billing/models/payment-intent/backend/app/api";
 import { app as invoiceApp } from "@sps/sps-billing/models/invoice/backend/app/api";
 import { app as currencyApp } from "@sps/sps-billing/models/currency/backend/app/api";
+import { app as paymentIntentsToCurrenciesApp } from "@sps/sps-billing/relations/payment-intents-to-currencies/backend/app/api";
+import { app as paymentIntentsToInvoicesApp } from "@sps/sps-billing/relations/payment-intents-to-invoices/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -32,6 +34,16 @@ export class Apps {
       type: "model",
       route: "/currencies",
       app: currencyApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/payment-intents-to-currencies",
+      app: paymentIntentsToCurrenciesApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/payment-intents-to-invoices",
+      app: paymentIntentsToInvoicesApp,
     });
   }
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-billing/models/payment-intent/frontend/component";
+import { Component as PaymentIntentsToInvoices } from "@sps/sps-billing/relations/payment-intents-to-invoices/frontend/component";
+import { Component as PaymentIntentsToCurrencies } from "@sps/sps-billing/relations/payment-intents-to-currencies/frontend/component";
 
 export function Component() {
   return (
@@ -15,6 +17,58 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
+            paymentIntentsToCurrencies={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <PaymentIntentsToCurrencies
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "paymentIntentId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            paymentIntentsToInvoices={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <PaymentIntentsToInvoices
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "paymentIntentId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
           />
         );
       }}

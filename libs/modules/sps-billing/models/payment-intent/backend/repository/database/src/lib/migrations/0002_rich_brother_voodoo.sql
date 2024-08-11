@@ -1,0 +1,1 @@
+ALTER TABLE "sps_bg_pt_it" ADD COLUMN "status" text DEFAULT 'processing' NOT NULL;

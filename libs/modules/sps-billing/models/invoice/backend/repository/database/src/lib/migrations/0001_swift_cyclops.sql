@@ -1,0 +1,1 @@
+ALTER TABLE "sps_bg_invoice" ALTER COLUMN "status" SET DEFAULT 'draft';

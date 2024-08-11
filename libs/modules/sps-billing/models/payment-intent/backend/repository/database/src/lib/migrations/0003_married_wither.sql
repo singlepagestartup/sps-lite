@@ -1,0 +1,1 @@
+ALTER TABLE "sps_bg_pt_it" ALTER COLUMN "status" SET DEFAULT 'requires_payment_method';

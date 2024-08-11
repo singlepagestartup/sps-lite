@@ -1,7 +1,8 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/sps-billing/models/invoice/frontend/component";
-import { Component as InvoicesToCurrencies } from "@sps/sps-billing/relations/invoices-to-currencies/frontend/component";
+import { Component as PaymentIntentsToInvoices } from "@sps/sps-billing/relations/payment-intents-to-invoices/frontend/component";
+
 export function Component() {
   return (
     <ParentComponent
@@ -15,13 +16,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            invoicesToCurrencies={({ data, hostUrl, isServer }) => {
+            paymentIntentsToInvoices={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <InvoicesToCurrencies
+                <PaymentIntentsToInvoices
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
