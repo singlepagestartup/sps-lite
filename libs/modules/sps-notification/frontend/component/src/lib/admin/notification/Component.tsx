@@ -9,7 +9,14 @@ export function Component() {
       isServer={false}
       variant="admin-table"
       adminForm={(props) => {
-        return <ParentComponent {...props} variant="admin-form" />;
+        return (
+          <ParentComponent
+            isServer={false}
+            hostUrl={props.hostUrl}
+            data={props.data}
+            variant="admin-form"
+          />
+        );
       }}
     />
   );

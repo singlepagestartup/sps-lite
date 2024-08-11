@@ -21,6 +21,23 @@
         ]
       }
     },
+    "repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/sps-crm:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-crm:models:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-crm:relations:repository-migrate"
+          }
+        ]
+      }
+    },
     "models:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -40,23 +57,6 @@
       "options": {
         "parallel": false,
         "commands": []
-      }
-    },
-    "repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/sps-crm:repository-generate"
-          },
-          {
-            "command": "nx run @sps/sps-crm:models:repository-migrate"
-          },
-          {
-            "command": "nx run @sps/sps-crm:relations:repository-migrate"
-          }
-        ]
       }
     },
     "models:repository-migrate": {

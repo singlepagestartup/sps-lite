@@ -5,4 +5,8 @@ export const fields = {
   createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
+  email: pgCore.text("email").default(""),
+  firstName: pgCore.text("first_name").default(""),
+  lastName: pgCore.text("last_name").default(""),
+  phone: pgCore.text("phone").default(""),
 };

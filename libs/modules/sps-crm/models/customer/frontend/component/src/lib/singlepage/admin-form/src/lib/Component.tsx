@@ -17,6 +17,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      email: props.data?.email || "",
+      firstName: props.data?.firstName || "",
+      lastName: props.data?.lastName || "",
+      phone: props.data?.phone || "",
     },
   });
 
@@ -42,6 +46,42 @@ export function Component(props: IComponentPropsExtended) {
       name="customer"
     >
       <div className="flex flex-col gap-6">
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="email"
+          label="Email"
+          form={form}
+          placeholder="Type email"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="firstName"
+          label="First Name"
+          form={form}
+          placeholder="Type firstname"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="lastName"
+          label="Last Name"
+          form={form}
+          placeholder="Type lastname"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="phone"
+          label="Phone"
+          form={form}
+          placeholder="Type phone"
+        />
+
         <FormField
           ui="shadcn"
           type="select"
