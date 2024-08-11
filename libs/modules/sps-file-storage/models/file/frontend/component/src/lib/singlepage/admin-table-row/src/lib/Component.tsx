@@ -35,7 +35,7 @@ export function Component(props: IComponentPropsExtended) {
             <ErrorBoundary>
               <div className="w-full relative aspect-w-1 aspect-h-1">
                 <Image
-                  src={`${BACKEND_URL}${props.data.file}`}
+                  src={props.data.file}
                   alt=""
                   className="object-contain"
                   fill={true}

@@ -5,8 +5,8 @@ import { Table } from "@sps/sps-file-storage/models/file/backend/repository/data
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
 import { Service } from "./service";
-import path from "path";
-import fs from "fs/promises";
+import { Provider } from "@sps/providers-file-storage";
+import { FILE_STORAGE_PROVIDER } from "@sps/shared-utils";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -109,34 +109,19 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const buffer = await (file as File).arrayBuffer();
-
-      const root = process.cwd();
-      const cuttedStoragePath = "images";
-      const storagePath = `public/${cuttedStoragePath}`;
-
       const data: any = parsedBody.data ?? {};
       data[name] = "";
       const createdEntity = await this.service.create({ data });
 
-      const extension = (file as File).name.split(".").pop();
+      const fileStorage = new Provider({
+        type: FILE_STORAGE_PROVIDER,
+        folder: "sps-file-storage",
+      });
+      const uploadedFileUrl = await fileStorage.uploadFile({
+        file: file,
+      });
 
-      if (!extension) {
-        throw new Error("Invalid file extension");
-      }
-
-      const fileName = await this.service.getUniqueFileName({ extension });
-      const filePath = path.join(root, storagePath, fileName + "." + extension);
-
-      await fs.writeFile(filePath, Buffer.from(buffer));
-
-      const createdFileUrl = path.join(
-        "/",
-        cuttedStoragePath,
-        fileName + "." + extension,
-      );
-
-      data[name] = createdFileUrl;
+      data[name] = uploadedFileUrl;
 
       const entity = await this.service.update({
         id: createdEntity.id,
@@ -234,44 +219,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const buffer = await (file as File).arrayBuffer();
-
-      const extension = file.name.split(".").pop();
-
-      if (!extension) {
-        throw new Error("Invalid file extension");
-      }
-
-      const root = process.cwd();
-      const cuttedStoragePath = "images";
-      const storagePath = `public/${cuttedStoragePath}`;
-
-      const fileName = await this.service.getUniqueFileName({ extension });
-      const filePath = path.join(root, storagePath, fileName + "." + extension);
-
-      await fs.writeFile(filePath, Buffer.from(buffer));
-
-      const createdFileUrl = path.join(
-        "/",
-        cuttedStoragePath,
-        fileName + "." + extension,
-      );
+      const fileStorage = new Provider({
+        type: FILE_STORAGE_PROVIDER,
+        folder: "sps-file-storage",
+      });
+      const uploadedFileUrl = await fileStorage.uploadFile({
+        file: file,
+      });
 
       const data: any = parsedBody.data ?? {};
-      data[name] = createdFileUrl;
+      data[name] = uploadedFileUrl;
 
       const previous = await this.service.findById({ id: uuid });
 
       const entity = await this.service.update({ id: uuid, data });
 
       if (previous?.file) {
-        const root = process.cwd();
-        const filePath = path.join(root, "public", previous.file);
+        const fileName = previous.file.split("/").pop();
 
-        try {
-          await fs.unlink(filePath);
-        } catch (error: any) {
-          console.error("error", error.toString());
+        if (fileName) {
+          await fileStorage.deleteFile({ name: fileName });
         }
       }
 
@@ -286,6 +253,36 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     throw new HTTPException(400, {
       message: "Invalid file",
     });
+  }
+
+  async delete(c: Context, next: any): Promise<Response> {
+    const uuid = c.req.param("uuid");
+
+    if (!uuid) {
+      return c.json(
+        {
+          message: "Invalid id",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
+
+    const previous = await this.service.findById({ id: uuid });
+    if (previous?.file) {
+      const fileName = previous.file.split("/").pop();
+
+      if (fileName) {
+        const fileStorage = new Provider({
+          type: FILE_STORAGE_PROVIDER,
+          folder: "sps-file-storage",
+        });
+        await fileStorage.deleteFile({ name: fileName });
+      }
+    }
+
+    return await super.delete(c, next);
   }
 
   catch(error: any) {

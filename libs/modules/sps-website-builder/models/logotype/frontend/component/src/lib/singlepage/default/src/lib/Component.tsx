@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       className={`relative ${props.data.className || "w-full"}`}
     >
       <Link
-        href={props.data.url || ""}
+        href={props.data.url || "/"}
         className="flex items-center justify-center"
       >
         <LogotypesToSpsFileStorageWidgets

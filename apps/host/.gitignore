@@ -29,9 +29,3 @@ coverage
 # Sentry
 ############################
 .sentryclirc
-
-############################
-# Uploads
-############################
-/public/sps-file-storage/*
-!/public/sps-file-storage/.gitkeep

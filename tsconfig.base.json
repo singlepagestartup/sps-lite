@@ -29,6 +29,9 @@
       "@sps/middlewares": ["libs/middlewares/src/index.ts"],
       "@sps/providers-db": ["libs/providers/db/src/index.ts"],
       "@sps/providers-kv": ["libs/providers/kv/src/index.ts"],
+      "@sps/providers-file-storage": [
+        "libs/providers/file-storage/src/index.ts"
+      ],
       "@sps/shared-backend-api": ["libs/shared/backend/api/src/index.ts"],
       "@sps/shared-backend-database-config": [
         "libs/shared/backend/database/config/src/index.ts"
