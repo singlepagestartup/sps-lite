@@ -8,6 +8,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-ecommerce/attribute-keys";
 export const variants = ["default"];
+export const types = ["feature", "price"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

@@ -22,6 +22,22 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 p-4 pt-6">
         <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">String</p>
+          <p className="truncate">{props.data.string}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Number</p>
+          <p className="truncate">{props.data.number}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Boolean</p>
+          <p className="truncate">{props.data.boolean}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
+          <p className="text-xs text-muted-foreground">Datetime</p>
+          <p className="truncate">{props.data.datetime?.toLocaleString()}</p>
+        </div>
+        <div className="flex flex-col gap-0.5 overflow-hidden">
           <p className="text-xs text-muted-foreground">Variant</p>
           <p className="truncate">{props.data.variant}</p>
         </div>

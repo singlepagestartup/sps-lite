@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   variants,
   insertSchema,
+  types,
 } from "@sps/sps-ecommerce/models/product/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -20,6 +21,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      title: props.data?.title || "",
+      description: props.data?.description || "",
+      shortDescription: props.data?.shortDescription || "",
+      type: props.data?.type || "one_off",
     },
   });
 
@@ -47,6 +52,43 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={form}
+          placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="description"
+          label="Description"
+          form={form}
+          placeholder="Type description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="shortDescription"
+          label="Short description"
+          form={form}
+          placeholder="Type short description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Type"
+          name="type"
+          form={form}
+          placeholder="Select type"
+          options={types.map((type) => [type, type])}
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -54,6 +96,14 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.productsToAttributes
+          ? props.productsToAttributes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

@@ -13,6 +13,9 @@ export function Component(props: IComponentPropsExtended) {
       form={props.form}
       variant={props.variant}
       renderField={props.renderField}
+      renderFunction={(entity) => {
+        return `String: ${entity.string} | Number: ${entity.number} | Boolean: ${entity.boolean} | ${entity.datetime}`;
+      }}
     />
   );
 }

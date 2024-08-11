@@ -20,6 +20,11 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      boolean: props.data?.boolean || null,
+      date: props.data?.date || null,
+      datetime: props.data?.datetime || null,
+      number: props.data?.number || null,
+      string: props.data?.string || "",
     },
   });
 
@@ -47,6 +52,51 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          name="string"
+          label="String"
+          form={form}
+          placeholder="Type string"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="number"
+          label="Number"
+          form={form}
+          placeholder="Type number"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="datetime"
+          name="datetime"
+          label="Datetime"
+          form={form}
+          placeholder="Select datetime"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="datetime"
+          name="date"
+          label="Date"
+          form={form}
+          placeholder="Select date"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="checkbox"
+          name="boolean"
+          label="Boolean"
+          form={form}
+          placeholder="Select boolean"
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -54,6 +104,22 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.attributesToAttributeKeys
+          ? props.attributesToAttributeKeys({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.productsToAttributes
+          ? props.productsToAttributes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

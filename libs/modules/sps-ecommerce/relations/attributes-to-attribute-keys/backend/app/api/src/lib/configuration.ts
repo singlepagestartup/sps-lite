@@ -33,7 +33,7 @@ export class Configuration extends ParentConfiguration {
                 const relationEntites = data.seeds
                   .find(
                     (seed) =>
-                      seed.name === "buttons-array" &&
+                      seed.name === "attribute" &&
                       seed.type === "model" &&
                       seed.module === "sps-ecommerce",
                   )
