@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
     <ParentComponent
       {...props}
       id={props.data.id}
-      module="sps-website-builder"
+      module="sps-ecommerce"
       name="product"
       adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {

@@ -62,7 +62,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
+        "commands": [
+          {
+            "command": "nx run @sps/sps-ecommerce:relations:attributes-to-attribute-keys:repository-generate"
+          }
+        ]
       }
     },
     "models:repository-migrate": {
@@ -89,7 +93,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
+        "commands": [
+          {
+            "command": "nx run @sps/sps-ecommerce:relations:attributes-to-attribute-keys:repository-migrate"
+          }
+        ]
       }
     },
     "models:widget:repository-generate": {
@@ -197,6 +205,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-ecommerce/models/attribute-key/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:attributes-to-attribute-keys:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:attributes-to-attribute-keys:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
