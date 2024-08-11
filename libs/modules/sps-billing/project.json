@@ -27,6 +27,12 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-billing:models:payment-intent:repository-generate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:models:invoice:repository-generate"
+          },
+          {
             "command": "nx run @sps/sps-billing:models:widget:repository-generate"
           }
         ]
@@ -62,10 +68,13 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/sps-billing:models:widget:repository-migrate"
+            "command": "nx run @sps/sps-billing:models:payment-intent:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-billing:models:payment-intent:repository-migrate"
+            "command": "nx run @sps/sps-billing:models:invoice:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/sps-billing:models:widget:repository-migrate"
           }
         ]
       }
@@ -120,12 +129,40 @@
         ]
       }
     },
-    "payment-intent:widget:repository-migrate": {
+    "models:payment-intent:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-billing/payment-intent/widget/backend/repository/database",
+        "cwd": "libs/modules/sps-billing/models/payment-intent/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "models:invoice:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-billing/models/invoice/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "models:invoice:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-billing/models/invoice/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

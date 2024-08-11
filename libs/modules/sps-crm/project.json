@@ -27,6 +27,9 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-crm:models:customer:repository-generate"
+          },
+          {
             "command": "nx run @sps/sps-crm:models:widget:repository-generate"
           }
         ]
@@ -62,6 +65,9 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/sps-crm:models:customer:repository-migrate"
+          },
+          {
             "command": "nx run @sps/sps-crm:models:widget:repository-migrate"
           }
         ]
@@ -95,6 +101,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-crm/models/widget/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "models:customer:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/sps-crm/models/customer/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "models:customer:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/sps-crm/models/customer/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

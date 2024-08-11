@@ -5,16 +5,17 @@ import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
 import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authentication/frontend/component";
-import { AdminComponent as SpsHostAdminComponent } from "@sps/sps-host/frontend/component";
-import { AdminComponent as SpsWebsiteBuilderAdminComponent } from "@sps/sps-website-builder/frontend/component";
-import { AdminComponent as SpsBillingAdminComponent } from "@sps/sps-billing/frontend/component";
-import { AdminComponent as SpsBroadcastAdminComponent } from "@sps/sps-broadcast/frontend/component";
-import { AdminComponent as SpsCrmAdminComponent } from "@sps/sps-crm/frontend/component";
-import { AdminComponent as SpsFileStorageAdminComponent } from "@sps/sps-file-storage/frontend/component";
-import { AdminComponent as SpsNotificationAdminComponent } from "@sps/sps-notification/frontend/component";
-import { AdminComponent as SpsThirdPartiesAdminComponent } from "@sps/sps-third-parties/frontend/component";
-import { AdminComponent as SpsRbacAdminComponent } from "@sps/sps-rbac/frontend/component";
-import { AdminComponent as StartupAdminComponent } from "@sps/startup/frontend/component";
+import { AdminComponent as SpsHost } from "@sps/sps-host/frontend/component";
+import { AdminComponent as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/component";
+import { AdminComponent as SpsBilling } from "@sps/sps-billing/frontend/component";
+import { AdminComponent as SpsBroadcast } from "@sps/sps-broadcast/frontend/component";
+import { AdminComponent as SpsCrm } from "@sps/sps-crm/frontend/component";
+import { AdminComponent as SpsEcommerce } from "@sps/sps-ecommerce/frontend/component";
+import { AdminComponent as SpsFileStorage } from "@sps/sps-file-storage/frontend/component";
+import { AdminComponent as SpsNotification } from "@sps/sps-notification/frontend/component";
+import { AdminComponent as SpsThirdParties } from "@sps/sps-third-parties/frontend/component";
+import { AdminComponent as SpsRbac } from "@sps/sps-rbac/frontend/component";
+import { AdminComponent as Startup } from "@sps/startup/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();
@@ -46,49 +47,49 @@ export function Component(props: IComponentPropsExtended) {
           <div className="p-5">
             <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
               <Button
-                title="sps-host"
+                title="host"
                 onClick={() => {
                   setWidget("sps-host");
                 }}
                 active={widget === "sps-host"}
               />
               <Button
-                title="sps-broradcast"
+                title="broradcast"
                 onClick={() => {
                   setWidget("sps-broradcast");
                 }}
                 active={widget === "sps-broradcast"}
               />
               <Button
-                title="sps-website-builder"
+                title="website-builder"
                 onClick={() => {
                   setWidget("sps-website-builder");
                 }}
                 active={widget === "sps-website-builder"}
               />
               <Button
-                title="sps-file-storage"
+                title="file-storage"
                 onClick={() => {
                   setWidget("sps-file-storage");
                 }}
                 active={widget === "sps-file-storage"}
               />
               <Button
-                title="sps-rbac"
+                title="rbac"
                 onClick={() => {
                   setWidget("sps-rbac");
                 }}
                 active={widget === "sps-rbac"}
               />
               <Button
-                title="sps-notification"
+                title="notification"
                 onClick={() => {
                   setWidget("sps-notification");
                 }}
                 active={widget === "sps-notification"}
               />
               <Button
-                title="sps-billing"
+                title="billing"
                 onClick={() => {
                   setWidget("sps-billing");
                 }}
@@ -102,14 +103,21 @@ export function Component(props: IComponentPropsExtended) {
                 active={widget === "startup"}
               />
               <Button
-                title="sps-crm"
+                title="crm"
                 onClick={() => {
                   setWidget("sps-crm");
                 }}
                 active={widget === "sps-crm"}
               />
               <Button
-                title="sps-third-parties"
+                title="ecommerce"
+                onClick={() => {
+                  setWidget("sps-ecommerce");
+                }}
+                active={widget === "sps-ecommerce"}
+              />
+              <Button
+                title="third-parties"
                 onClick={() => {
                   setWidget("sps-third-parties");
                 }}
@@ -118,7 +126,7 @@ export function Component(props: IComponentPropsExtended) {
             </div>
             <div className="bg-white rounded-b-lg">
               {widget === "sps-host" ? (
-                <SpsHostAdminComponent
+                <SpsHost
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -126,7 +134,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-broradcast" ? (
-                <SpsBroadcastAdminComponent
+                <SpsBroadcast
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -134,7 +142,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-website-builder" ? (
-                <SpsWebsiteBuilderAdminComponent
+                <SpsWebsiteBuilder
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -142,7 +150,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-file-storage" ? (
-                <SpsFileStorageAdminComponent
+                <SpsFileStorage
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -150,7 +158,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "startup" ? (
-                <StartupAdminComponent
+                <Startup
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -158,7 +166,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-rbac" ? (
-                <SpsRbacAdminComponent
+                <SpsRbac
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -166,7 +174,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-notification" ? (
-                <SpsNotificationAdminComponent
+                <SpsNotification
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -174,7 +182,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-billing" ? (
-                <SpsBillingAdminComponent
+                <SpsBilling
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -182,7 +190,15 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-crm" ? (
-                <SpsCrmAdminComponent
+                <SpsCrm
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "sps-ecommerce" ? (
+                <SpsEcommerce
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -190,7 +206,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-third-parties" ? (
-                <SpsThirdPartiesAdminComponent
+                <SpsThirdParties
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}

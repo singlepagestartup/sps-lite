@@ -10,6 +10,7 @@ import { app as startupApp } from "@sps/startup/backend/app/api";
 import { app as spsBillingApp } from "@sps/sps-billing/backend/app/api";
 import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/api";
 import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
+import { app as spsEcommerce } from "@sps/sps-ecommerce/backend/app/api";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/api";
 import { app as spsNotification } from "@sps/sps-notification/backend/app/api";
 import { chain as middlewaresChain } from "./middlewares/chain";
@@ -17,6 +18,7 @@ import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const app = new Hono<any, any, any>().basePath("/api");
 
@@ -40,6 +42,7 @@ app.mount("/sps-rbac", spsRbacApp.hono.fetch);
 app.mount("/sps-billing", spsBillingApp.hono.fetch);
 app.mount("/sps-third-parties", spsThirdParties.hono.fetch);
 app.mount("/sps-crm", spsCrm.hono.fetch);
+app.mount("/sps-ecommerce", spsEcommerce.hono.fetch);
 app.mount("/sps-notification", spsNotification.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
 

@@ -65,6 +65,7 @@
       "@sps/sps-billing/*": ["libs/modules/sps-billing/*"],
       "@sps/sps-broadcast/*": ["libs/modules/sps-broadcast/*"],
       "@sps/sps-crm/*": ["libs/modules/sps-crm/*"],
+      "@sps/sps-ecommerce/*": ["libs/modules/sps-ecommerce/*"],
       "@sps/sps-file-storage/*": ["libs/modules/sps-file-storage/*"],
       "@sps/sps-generator-plugin": [
         "tools/plugins/sps-generator-plugin/src/index.ts"

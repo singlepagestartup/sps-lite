@@ -2,6 +2,8 @@ import { ISeedResult } from "@sps/shared-backend-api";
 import { app as spsHost } from "@sps/sps-host/backend/app/api";
 import { app as spsWebsiteBuilder } from "@sps/sps-website-builder/backend/app/api";
 import { app as spsRbac } from "@sps/sps-rbac/backend/app/api";
+import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
+import { app as spsEcommerce } from "@sps/sps-ecommerce/backend/app/api";
 import { app as spsFileStorage } from "@sps/sps-file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
@@ -34,6 +36,32 @@ import { exit } from "process";
     });
   } else {
     seeds.push(spsWebsiteBuilderModelsSeeds);
+  }
+
+  const spsCrmModelsSeeds = await spsCrm.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(spsCrmModelsSeeds)) {
+    spsCrmModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsCrmModelsSeeds);
+  }
+
+  const spsEcommerceModelsSeeds = await spsEcommerce.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(spsEcommerceModelsSeeds)) {
+    spsEcommerceModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsEcommerceModelsSeeds);
   }
 
   const spsRbacModelsSeeds = await spsRbac.seed({
@@ -99,6 +127,32 @@ import { exit } from "process";
     });
   } else {
     seeds.push(spsWebsiteBuilderRelationsSeeds);
+  }
+
+  const spsCrmRelationsSeeds = await spsCrm.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(spsCrmRelationsSeeds)) {
+    spsCrmRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsCrmRelationsSeeds);
+  }
+
+  const spsEcommerceRelationsSeeds = await spsEcommerce.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(spsEcommerceRelationsSeeds)) {
+    spsEcommerceRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(spsEcommerceRelationsSeeds);
   }
 
   const spsRbacRelationsSeeds = await spsRbac.seed({
