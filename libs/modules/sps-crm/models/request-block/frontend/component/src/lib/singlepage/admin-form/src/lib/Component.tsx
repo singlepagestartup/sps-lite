@@ -95,24 +95,8 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type class name"
         />
 
-        {props.navbarBlocksToButtonsArrays
-          ? props.navbarBlocksToButtonsArrays({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.navbarBlocksToLogotypes
-          ? props.navbarBlocksToLogotypes({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToNavbarBlocks
-          ? props.widgetsToNavbarBlocks({
+        {props.widgetsToRequestBlocks
+          ? props.widgetsToRequestBlocks({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
