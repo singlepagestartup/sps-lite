@@ -20,6 +20,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      className: props.data?.className || "",
+      title: props.data?.title || "",
     },
   });
 
@@ -47,6 +49,24 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          name="title"
+          label="Title"
+          form={form}
+          placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="className"
+          label="Class name"
+          form={form}
+          placeholder="Type class name"
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -54,6 +74,22 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.widgetsToProductsListBlocks
+          ? props.widgetsToProductsListBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.widgetsToProductOverviewBlocks
+          ? props.widgetsToProductOverviewBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

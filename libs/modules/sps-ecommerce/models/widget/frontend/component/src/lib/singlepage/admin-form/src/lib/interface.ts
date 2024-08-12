@@ -10,7 +10,14 @@ import { ISpsComponentBase } from "@sps/ui-adapter";
 export const variant = "admin-form" as const;
 
 export interface IComponentProps
-  extends IParentComponentProps<IModel, typeof variant> {}
+  extends IParentComponentProps<IModel, typeof variant> {
+  widgetsToProductsListBlocks?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  widgetsToProductOverviewBlocks?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+}
 
 export interface IComponentPropsExtended
   extends IParentComponentPropsExtended<

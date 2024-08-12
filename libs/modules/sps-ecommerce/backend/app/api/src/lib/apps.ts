@@ -9,6 +9,8 @@ import { app as attributeKeyApp } from "@sps/sps-ecommerce/models/attribute-key/
 import { app as attributesToAttributeKeysApp } from "@sps/sps-ecommerce/relations/attributes-to-attribute-keys/backend/app/api";
 import { app as productsToAttributesApp } from "@sps/sps-ecommerce/relations/products-to-attributes/backend/app/api";
 import { app as ordersToProductsApp } from "@sps/sps-ecommerce/relations/orders-to-products/backend/app/api";
+import { app as widgetsToProductOverviewBlocksApp } from "@sps/sps-ecommerce/relations/widgets-to-product-overview-blocks/backend/app/api";
+import { app as widgetsToProductsListBlocksApp } from "@sps/sps-ecommerce/relations/widgets-to-products-list-blocks/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -68,6 +70,16 @@ export class Apps {
       type: "relation",
       route: "/orders-to-products",
       app: ordersToProductsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-product-overview-blocks",
+      app: widgetsToProductOverviewBlocksApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-products-list-blocks",
+      app: widgetsToProductsListBlocksApp,
     });
   }
 }

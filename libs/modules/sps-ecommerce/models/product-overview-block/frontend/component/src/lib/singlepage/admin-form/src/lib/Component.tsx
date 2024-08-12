@@ -95,8 +95,8 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type class name"
         />
 
-        {props.widgetsToRequestBlocks
-          ? props.widgetsToRequestBlocks({
+        {props.widgetsToProductOverviewBlocks
+          ? props.widgetsToProductOverviewBlocks({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
