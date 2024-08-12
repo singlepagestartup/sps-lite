@@ -22,7 +22,7 @@ export class Middleware {
       const method = c.req.method;
       const cacheControl = c.req.header("Cache-Control");
 
-      if (path.includes("sps-rbac")) {
+      if (path.includes("rbac")) {
         return await next();
       }
 

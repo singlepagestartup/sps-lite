@@ -1,4 +1,4 @@
-import { sitemap } from "@sps/sps-host/frontend/component";
+import { sitemap } from "@sps/host/frontend/component";
 
 export async function GET() {
   return sitemap.GET();

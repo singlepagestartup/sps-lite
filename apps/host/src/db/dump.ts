@@ -1,9 +1,9 @@
-import { app as spsHost } from "@sps/sps-host/backend/app/api";
-import { app as spsWebsiteBuilder } from "@sps/sps-website-builder/backend/app/api";
-import { app as spsRbac } from "@sps/sps-rbac/backend/app/api";
-import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
-import { app as spsEcommerce } from "@sps/sps-ecommerce/backend/app/api";
-import { app as spsFileStorage } from "@sps/sps-file-storage/backend/app/api";
+import { app as spsHost } from "@sps/host/backend/app/api";
+import { app as spsWebsiteBuilder } from "@sps/website-builder/backend/app/api";
+import { app as spsRbac } from "@sps/rbac/backend/app/api";
+import { app as spsCrm } from "@sps/crm/backend/app/api";
+import { app as spsEcommerce } from "@sps/ecommerce/backend/app/api";
+import { app as spsFileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";

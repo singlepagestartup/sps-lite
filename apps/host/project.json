@@ -12,16 +12,16 @@
         "cwd": "apps/host",
         "commands": [
           {
-            "command": "npx nx run @sps/sps-file-storage:repository-migrate"
+            "command": "npx nx run @sps/file-storage:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-broadcast:repository-migrate"
+            "command": "npx nx run @sps/broadcast:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-crm:repository-migrate"
+            "command": "npx nx run @sps/crm:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-ecommerce:repository-migrate"
+            "command": "npx nx run @sps/ecommerce:repository-migrate"
           },
           {
             "command": "npx nx run @sps/billing:repository-migrate"
@@ -30,19 +30,19 @@
             "command": "npx nx run @sps/sps-third-parties:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-notification:repository-migrate"
+            "command": "npx nx run @sps/notification:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-website-builder:repository-migrate"
+            "command": "npx nx run @sps/website-builder:repository-migrate"
           },
           {
             "command": "npx nx run @sps/startup:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-rbac:repository-migrate"
+            "command": "npx nx run @sps/rbac:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-host:repository-migrate"
+            "command": "npx nx run @sps/host:repository-migrate"
           }
         ]
       }

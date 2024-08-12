@@ -36,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <ParentAdminForm<IModel, typeof variant>
       {...props}
-      module="sps-website-builder"
+      module="website-builder"
       form={form}
       id={props.data?.id}
       onSubmit={onSubmit}

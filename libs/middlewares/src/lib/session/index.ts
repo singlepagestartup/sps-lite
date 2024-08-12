@@ -9,8 +9,8 @@ import {
 import { getCookie, setCookie } from "hono/cookie";
 import * as Iron from "iron-webcrypto";
 import { MiddlewareHandler } from "hono";
-import { api } from "@sps/sps-rbac/models/session/sdk/server";
-import { IModel } from "@sps/sps-rbac/models/session/sdk/model";
+import { api } from "@sps/rbac/models/session/sdk/server";
+import { IModel } from "@sps/rbac/models/session/sdk/model";
 
 export type IMiddlewareGeneric = {
   Variables: {
@@ -62,7 +62,7 @@ export class Middleware {
       let session: IModel | null | undefined;
       let createNewSession = false;
 
-      if (c.req.header("X-SPS-RBAC-SECRET-KEY")) {
+      if (c.req.header("X-rbac-SECRET-KEY")) {
         return await next();
       }
 
@@ -74,7 +74,7 @@ export class Middleware {
 
       const sessionCookie = getCookie(c, this.cookieSessionName);
 
-      if (c.req.url.includes("/api/sps-rbac/sessions")) {
+      if (c.req.url.includes("/api/rbac/sessions")) {
         return await next();
       }
 
@@ -105,7 +105,7 @@ export class Middleware {
             },
             options: {
               headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -132,7 +132,7 @@ export class Middleware {
               id: session.id,
               options: {
                 headers: {
-                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -158,7 +158,7 @@ export class Middleware {
           },
           options: {
             headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

@@ -2,53 +2,52 @@ import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
-import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { getCookie } from "hono/cookie";
 /**
  * Routes that are allowed to be accessed without authentication
  * @type {Array<{ regexPath: RegExp; methods: string[] }>}
  *
  * [..., {
- *   regexPath: /\/api\/sps-rbac\/identities\/[a-zA-Z0-9-]+/,
+ *   regexPath: /\/api\/rbac\/identities\/[a-zA-Z0-9-]+/,
  *   methods: ["GET"],
  * }]
  */
 const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   {
-    regexPath: /\/api\/sps-rbac\/subjects\/is-authorized/,
+    regexPath: /\/api\/rbac\/subjects\/is-authorized/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/subjects\/init/,
+    regexPath: /\/api\/rbac\/subjects\/init/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-broadcast\/(channels|messages)/,
+    regexPath: /\/api\/broadcast\/(channels|messages)/,
     methods: ["GET"],
   },
   {
-    regexPath:
-      /\/api\/sps-rbac\/subjects\/(authentication|registration)\/(\w+)?/,
+    regexPath: /\/api\/rbac\/subjects\/(authentication|registration)\/(\w+)?/,
     methods: ["POST"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/sessions\/init/,
+    regexPath: /\/api\/rbac\/sessions\/init/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/subjects\/logout/,
+    regexPath: /\/api\/rbac\/subjects\/logout/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/widgets\/?/,
+    regexPath: /\/api\/rbac\/widgets\/?/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/[a-zA-Z0-9-]+-blocks\/?/,
+    regexPath: /\/api\/rbac\/[a-zA-Z0-9-]+-blocks\/?/,
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/subjects\/me/,
+    regexPath: /\/api\/rbac\/subjects\/me/,
     methods: ["GET"],
   },
   {
@@ -56,7 +55,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["POST"],
   },
   {
-    regexPath: /\/api\/(sps-host|sps-website-builder|sps-file-storage)\/.*/,
+    regexPath: /\/api\/(host|website-builder|file-storage)\/.*/,
     methods: ["GET"],
   },
 ];
@@ -68,10 +67,10 @@ export class Middleware {
     return createMiddleware(async (c, next) => {
       const reqMethod = c.req.method;
       const reqPath = c.req.path;
-      const secretKeyHeaders = c.req.header("X-SPS-RBAC-SECRET-KEY");
-      const secretKeyCookie = getCookie(c, "sps-rbac.secret-key");
+      const secretKeyHeaders = c.req.header("X-rbac-SECRET-KEY");
+      const secretKeyCookie = getCookie(c, "rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
-      const authorizationCookie = getCookie(c, "sps-rbac.subject.jwt");
+      const authorizationCookie = getCookie(c, "rbac.subject.jwt");
       const authorizationHeader = c.req.header("Authorization");
       const authorization =
         authorizationCookie || authorizationHeader?.replace("Bearer ", "");
@@ -84,7 +83,7 @@ export class Middleware {
         return next();
       }
 
-      if (reqPath.includes("/api/sps-rbac/sessions") && reqMethod === "POST") {
+      if (reqPath.includes("/api/rbac/sessions") && reqMethod === "POST") {
         if (!secretKey || secretKey !== SPS_RBAC_SECRET_KEY) {
           throw new HTTPException(401, {
             message: "Unauthorized",
@@ -104,7 +103,7 @@ export class Middleware {
 
       try {
         const headers = secretKey
-          ? { "X-SPS-RBAC-SECRET-KEY": secretKey }
+          ? { "X-rbac-SECRET-KEY": secretKey }
           : authorization
             ? { Authorization: authorization }
             : ({} as HeadersInit);

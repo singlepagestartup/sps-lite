@@ -19,7 +19,7 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const moduleName = "sps-broadcast";
+  const moduleName = "broadcast";
   const leftModelName = "channel";
   const rightModelName = "message";
   const relationName = "channels-to-messages";

@@ -21,7 +21,7 @@ const baseConfiguration: IConfiguration["repository"] = {
   },
   seed: {
     active: true,
-    module: "sps-website-builder",
+    module: "website-builder",
     name: "widget",
     type: "model",
   },
@@ -62,7 +62,7 @@ describe("Database", () => {
       );
       expect(dumpResult).toEqual({
         dumps: [repositoryEntity],
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widget",
         type: "model",
       });
@@ -105,7 +105,7 @@ describe("Database", () => {
       expect(fs.writeFile).not.toHaveBeenCalled();
       expect(dumpResult).toEqual({
         dumps: [],
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widget",
         type: "model",
       });
@@ -143,7 +143,7 @@ describe("Database", () => {
       ];
 
       const expectedResult = {
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widget",
         type: "model",
         seeds: [],
@@ -187,7 +187,7 @@ describe("Database", () => {
       ];
 
       const expectedResult = {
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widget",
         type: "model",
         seeds: [
@@ -250,7 +250,7 @@ describe("Database", () => {
       ];
 
       const expectedResult = {
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widget",
         type: "model",
         seeds: [
@@ -278,7 +278,7 @@ describe("Database", () => {
           seed: {
             ...baseConfiguration.seed,
             name: "widgets-to-content-blocks",
-            module: "sps-website-builder",
+            module: "website-builder",
             type: "relation",
             transformers: [
               {
@@ -289,7 +289,7 @@ describe("Database", () => {
                       (seed) =>
                         seed.name === "widget" &&
                         seed.type === "model" &&
-                        seed.module === "sps-website-builder",
+                        seed.module === "website-builder",
                     )
                     ?.seeds?.filter(
                       (seed) => seed.dump.id === data.entity.dump.widgetId,
@@ -334,7 +334,7 @@ describe("Database", () => {
 
       const seedResults: ISeedResult[] = [
         {
-          module: "sps-website-builder",
+          module: "website-builder",
           name: "widget",
           type: "model",
           seeds: [
@@ -353,7 +353,7 @@ describe("Database", () => {
         },
       ];
       const expectedResult = {
-        module: "sps-website-builder",
+        module: "website-builder",
         name: "widgets-to-content-blocks",
         type: "relation",
         seeds: [

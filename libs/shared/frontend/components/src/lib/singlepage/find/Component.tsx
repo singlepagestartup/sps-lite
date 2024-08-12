@@ -5,7 +5,7 @@ export function Component<M extends { id: string }, V>(
 ) {
   return (
     <div
-      data-module="sps-website-builder"
+      data-module="website-builder"
       data-model="content-block"
       data-variant={props.variant}
       className="w-full py-10 text-center flex flex-col gap-1"

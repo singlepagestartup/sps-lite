@@ -37,7 +37,7 @@ export function Component(props: IComponentProps) {
 
   return (
     <div
-      data-module="sps-website-builder"
+      data-module="website-builder"
       data-component="admin"
       className="w-full flex flex-col lg:flex-row"
     >

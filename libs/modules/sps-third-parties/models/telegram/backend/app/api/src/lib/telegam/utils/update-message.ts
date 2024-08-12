@@ -51,7 +51,7 @@ export async function util({
     },
     options: {
       headers: {
-        "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
       },
       next: {
         cache: "no-store",
@@ -102,7 +102,7 @@ export async function util({
           },
           options: {
             headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

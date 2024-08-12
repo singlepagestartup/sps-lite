@@ -30,7 +30,7 @@ describe("Coder", () => {
   });
 
   describe(`ImportModelAsAsPropertyModelName`, () => {
-    const importPath = "@sps/sps-website-builder-models-slide-backend-model";
+    const importPath = "@sps/website-builder-models-slide-backend-model";
     const asPropertyModelName = "wideSlideRoute";
     const importModel = new ImportModelAsAsPropertyModelName({
       importPath,
@@ -40,9 +40,9 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = importModel.onRemove.regex;
 
-      const string = `import { model as layout } from "@sps/sps-website-builder-models-layout-backend-model";
-      import { model as wideSlideRoute } from "@sps/sps-website-builder-models-slide-backend-model";
-      import { model as page } from "@sps/sps-website-builder-models-page-backend-model";`;
+      const string = `import { model as layout } from "@sps/website-builder-models-layout-backend-model";
+      import { model as wideSlideRoute } from "@sps/website-builder-models-slide-backend-model";
+      import { model as page } from "@sps/website-builder-models-page-backend-model";`;
 
       expect(string).toMatch(regex);
     });

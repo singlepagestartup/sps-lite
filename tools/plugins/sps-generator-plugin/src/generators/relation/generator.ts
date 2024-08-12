@@ -4,7 +4,7 @@ import { Coder } from "../../coder/Coder";
 import pluralize from "pluralize";
 import { IGeneratorProps as IModelFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
 
-// npx nx generate @sps/sps-generator-plugin:relation --action=create --left_model_name=page --right_model_name=layout --left_model_is_external=false --right_model_is_external=false --module=sps-host --dry-run
+// npx nx generate @sps/sps-generator-plugin:relation --action=create --left_model_name=page --right_model_name=layout --left_model_is_external=false --right_model_is_external=false --module=host --dry-run
 export async function relationGenerator(
   tree: Tree,
   options: RelationGeneratorSchema,

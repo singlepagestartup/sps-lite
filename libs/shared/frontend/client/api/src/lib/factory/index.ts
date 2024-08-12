@@ -221,7 +221,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
 
     globalActionsStore.subscribe((state) => {
       const broadcastChannels = state.getActionsFromStoreByName(
-        "/api/sps-broadcast/channels",
+        "/api/broadcast/channels",
       );
 
       broadcastChannels?.forEach((channel) => {
@@ -235,7 +235,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       });
 
       const broadcastMessages = state.getActionsFromStoreByName(
-        "/api/sps-broadcast/messages",
+        "/api/broadcast/messages",
       );
 
       broadcastMessages

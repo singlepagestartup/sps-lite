@@ -1,6 +1,6 @@
 export function util() {
-  const authorization = localStorage.getItem("sps-rbac.subject.jwt");
-  const secretKey = localStorage.getItem("sps-rbac.secret-key");
+  const authorization = localStorage.getItem("rbac.subject.jwt");
+  const secretKey = localStorage.getItem("rbac.secret-key");
 
   const headers: HeadersInit = {};
 
@@ -9,7 +9,7 @@ export function util() {
   }
 
   if (secretKey) {
-    headers["X-SPS-RBAC-SECRET-KEY"] = secretKey;
+    headers["X-rbac-SECRET-KEY"] = secretKey;
   }
 
   return headers;

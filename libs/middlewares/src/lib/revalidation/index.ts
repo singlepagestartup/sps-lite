@@ -1,7 +1,7 @@
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
-import { api as channelApi } from "@sps/sps-broadcast/models/channel/sdk/server";
+import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
 
 export type IMiddlewareGeneric = unknown;
 
@@ -15,7 +15,7 @@ export class Middleware {
 
       await next();
 
-      if (path.includes("/api/sps-broadcast")) {
+      if (path.includes("/api/broadcast")) {
         return;
       }
 
@@ -23,7 +23,7 @@ export class Middleware {
         if (["POST", "PUT", "PATCH", "DELETE"].includes(method)) {
           if (!SPS_RBAC_SECRET_KEY) {
             throw Error(
-              "SPS_RBAC_SECRET_KEY is not defined, sps-broadcast middleware 'revalidation' can't request to service.",
+              "SPS_RBAC_SECRET_KEY is not defined, broadcast middleware 'revalidation' can't request to service.",
             );
           }
 
@@ -32,7 +32,7 @@ export class Middleware {
               data: { channelName: "revalidation", payload: path },
               options: {
                 headers: {
-                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -47,7 +47,7 @@ export class Middleware {
               data: { channelName: "revalidation", payload: pathWithoutId },
               options: {
                 headers: {
-                  "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",

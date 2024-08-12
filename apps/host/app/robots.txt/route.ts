@@ -1,4 +1,4 @@
-import { robots } from "@sps/sps-host/frontend/component";
+import { robots } from "@sps/host/frontend/component";
 
 export async function GET() {
   return robots.GET();

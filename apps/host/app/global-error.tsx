@@ -1,7 +1,7 @@
 "use client";
 
 import { fonts } from "./fonts";
-import { GlobalError as SpsHostGlobalError } from "@sps/sps-host/frontend/component";
+import { GlobalError as SpsHostGlobalError } from "@sps/host/frontend/component";
 
 export default function GlobalError({
   error,

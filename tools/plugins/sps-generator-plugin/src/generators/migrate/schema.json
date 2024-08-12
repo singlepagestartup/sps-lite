@@ -10,14 +10,14 @@
       "x-prompt": {
         "message": "Select module for creating model",
         "type": "list",
-        "default": "sps-website-builder",
+        "default": "website-builder",
         "items": [
           { "value": "billing" },
-          { "value": "sps-crm" },
-          { "value": "sps-file-storage" },
-          { "value": "sps-notification" },
-          { "value": "sps-rbac" },
-          { "value": "sps-website-builder" },
+          { "value": "crm" },
+          { "value": "file-storage" },
+          { "value": "notification" },
+          { "value": "rbac" },
+          { "value": "website-builder" },
           { "value": "sps-third-parties" },
           { "value": "startup" }
         ],
@@ -26,7 +26,7 @@
     },
     "right_external_models": {
       "type": "string",
-      "description": "External models for relations, by space separated: sps-file-storage-widgets sps-file-storage-module-widgets. For example for 'content-blocks-to-sps-file-storage-module-widgets' in 'sps-website-builder', the exernal model is 'sps-file-storage-widgets'.",
+      "description": "External models for relations, by space separated: file-storage-widgets file-storage-module-widgets. For example for 'content-blocks-to-file-storage-module-widgets' in 'website-builder', the exernal model is 'file-storage-widgets'.",
       "$default": {
         "$source": "argv",
         "index": 0
@@ -34,7 +34,7 @@
     },
     "left_external_models": {
       "type": "string",
-      "description": "External models for relations, by space separated: sps-file-storage-widgets sps-file-storage-module-widgets",
+      "description": "External models for relations, by space separated: file-storage-widgets file-storage-module-widgets",
       "$default": {
         "$source": "argv",
         "index": 0
