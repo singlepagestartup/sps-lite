@@ -90,7 +90,7 @@
         "type": "list",
         "default": "sps-website-builder",
         "items": [
-          { "value": "sps-billing" },
+          { "value": "billing" },
           { "value": "sps-broadcast" },
           { "value": "sps-crm" },
           { "value": "sps-file-storage" },

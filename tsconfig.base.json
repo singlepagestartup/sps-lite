@@ -65,7 +65,7 @@
       "@sps/shared-ui-shadcn": ["libs/shared/ui/shadcn/src/index.ts"],
       "@sps/shared-utils": ["libs/shared/utils/src/index.ts"],
       "@sps/sps-backend-utils": ["libs/shared/backend/utils/src/index.ts"],
-      "@sps/sps-billing/*": ["libs/modules/sps-billing/*"],
+      "@sps/billing/*": ["libs/modules/billing/*"],
       "@sps/sps-broadcast/*": ["libs/modules/sps-broadcast/*"],
       "@sps/sps-crm/*": ["libs/modules/sps-crm/*"],
       "@sps/sps-ecommerce/*": ["libs/modules/sps-ecommerce/*"],

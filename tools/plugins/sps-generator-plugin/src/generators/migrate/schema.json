@@ -12,7 +12,7 @@
         "type": "list",
         "default": "sps-website-builder",
         "items": [
-          { "value": "sps-billing" },
+          { "value": "billing" },
           { "value": "sps-crm" },
           { "value": "sps-file-storage" },
           { "value": "sps-notification" },

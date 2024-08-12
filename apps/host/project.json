@@ -24,7 +24,7 @@
             "command": "npx nx run @sps/sps-ecommerce:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-billing:repository-migrate"
+            "command": "npx nx run @sps/billing:repository-migrate"
           },
           {
             "command": "npx nx run @sps/sps-third-parties:repository-migrate"

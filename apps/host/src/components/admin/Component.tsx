@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { Component as SpsRbacSubject } from "@sps/sps-rbac/models/subject/frontend/component";
 import { AdminComponent as SpsHost } from "@sps/sps-host/frontend/component";
 import { AdminComponent as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/component";
-import { AdminComponent as SpsBilling } from "@sps/sps-billing/frontend/component";
+import { AdminComponent as SpsBilling } from "@sps/billing/frontend/component";
 import { AdminComponent as SpsBroadcast } from "@sps/sps-broadcast/frontend/component";
 import { AdminComponent as SpsCrm } from "@sps/sps-crm/frontend/component";
 import { AdminComponent as SpsEcommerce } from "@sps/sps-ecommerce/frontend/component";
@@ -91,9 +91,9 @@ export function Component(props: IComponentPropsExtended) {
               <Button
                 title="billing"
                 onClick={() => {
-                  setWidget("sps-billing");
+                  setWidget("billing");
                 }}
-                active={widget === "sps-billing"}
+                active={widget === "billing"}
               />
               <Button
                 title="startup"
@@ -181,7 +181,7 @@ export function Component(props: IComponentPropsExtended) {
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-billing" ? (
+              {widget === "billing" ? (
                 <SpsBilling
                   {...props}
                   isServer={false}

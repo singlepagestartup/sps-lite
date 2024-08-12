@@ -7,7 +7,7 @@ import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/ap
 import { app as spsFileStorageApp } from "@sps/sps-file-storage/backend/app/api";
 import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/api";
 import { app as startupApp } from "@sps/startup/backend/app/api";
-import { app as spsBillingApp } from "@sps/sps-billing/backend/app/api";
+import { app as spsBillingApp } from "@sps/billing/backend/app/api";
 import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/api";
 import { app as spsCrm } from "@sps/sps-crm/backend/app/api";
 import { app as spsEcommerce } from "@sps/sps-ecommerce/backend/app/api";
@@ -39,7 +39,7 @@ app.mount("/sps-broadcast", spsBroadcast.hono.fetch);
 app.mount("/sps-website-builder", spsWebsiteBuilderApp.hono.fetch);
 app.mount("/sps-file-storage", spsFileStorageApp.hono.fetch);
 app.mount("/sps-rbac", spsRbacApp.hono.fetch);
-app.mount("/sps-billing", spsBillingApp.hono.fetch);
+app.mount("/billing", spsBillingApp.hono.fetch);
 app.mount("/sps-third-parties", spsThirdParties.hono.fetch);
 app.mount("/sps-crm", spsCrm.hono.fetch);
 app.mount("/sps-ecommerce", spsEcommerce.hono.fetch);
