@@ -3,11 +3,9 @@ import { IModel } from "@sps/sps-rbac/models/widget/sdk/model";
 import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
-} from "@sps/shared-frontend-components/singlepage/admin-form/interface";
-import { ReactNode } from "react";
-import { ISpsComponentBase } from "@sps/ui-adapter";
+} from "@sps/shared-frontend-components/singlepage/default/interface";
 
-export const variant = "admin-form" as const;
+export const variant = "subject-init" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {}

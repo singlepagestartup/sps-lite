@@ -30,13 +30,7 @@
             "command": "nx run @sps/sps-rbac:models:authentication:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:authentication-block:repository-generate"
-          },
-          {
             "command": "nx run @sps/sps-rbac:models:identity:repository-generate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:models:identities-block:repository-generate"
           },
           {
             "command": "nx run @sps/sps-rbac:models:action:repository-generate"
@@ -51,9 +45,6 @@
             "command": "nx run @sps/sps-rbac:models:subject:repository-generate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:subjects-block:repository-generate"
-          },
-          {
             "command": "nx run @sps/sps-rbac:models:widget:repository-generate"
           }
         ]
@@ -64,12 +55,6 @@
       "options": {
         "parallel": false,
         "commands": [
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-identities-blocks:repository-generate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-subjects-blocks:repository-generate"
-          },
           {
             "command": "nx run @sps/sps-rbac:relations:roles-to-actions:repository-generate"
           },
@@ -84,9 +69,6 @@
           },
           {
             "command": "nx run @sps/sps-rbac:relations:subjects-to-sessions:repository-generate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-authentication-blocks:repository-generate"
           }
         ]
       }
@@ -117,13 +99,7 @@
             "command": "nx run @sps/sps-rbac:models:authentication:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:authentication-block:repository-migrate"
-          },
-          {
             "command": "nx run @sps/sps-rbac:models:identity:repository-migrate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:models:identities-block:repository-migrate"
           },
           {
             "command": "nx run @sps/sps-rbac:models:action:repository-migrate"
@@ -138,9 +114,6 @@
             "command": "nx run @sps/sps-rbac:models:subject:repository-migrate"
           },
           {
-            "command": "nx run @sps/sps-rbac:models:subjects-block:repository-migrate"
-          },
-          {
             "command": "nx run @sps/sps-rbac:models:widget:repository-migrate"
           }
         ]
@@ -151,12 +124,6 @@
       "options": {
         "parallel": false,
         "commands": [
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-identities-blocks:repository-migrate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-subjects-blocks:repository-migrate"
-          },
           {
             "command": "nx run @sps/sps-rbac:relations:roles-to-actions:repository-migrate"
           },
@@ -171,9 +138,6 @@
           },
           {
             "command": "nx run @sps/sps-rbac:relations:subjects-to-sessions:repository-migrate"
-          },
-          {
-            "command": "nx run @sps/sps-rbac:relations:widgets-to-authentication-blocks:repository-migrate"
           }
         ]
       }
@@ -193,56 +157,11 @@
         ]
       }
     },
-    "models:authentication-block:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/models/authentication-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
     "models:identity:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "cwd": "libs/modules/sps-rbac/models/identity/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "models:identities-block:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/models/identities-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "relations:widgets-to-identities-blocks:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-identities-blocks/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -313,36 +232,6 @@
         ]
       }
     },
-    "models:subjects-block:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/models/subjects-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "relations:widgets-to-subjects-blocks:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-subjects-blocks/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
     "models:widget:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -371,51 +260,12 @@
         ]
       }
     },
-    "models:authentication-block:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/models/authentication-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
     "models:identity:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-rbac/models/identity/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "models:identities-block:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/models/identities-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "relations:widgets-to-identities-blocks:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-identities-blocks/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -468,32 +318,6 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-rbac/models/subject/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "models:subjects-block:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/models/subjects-block/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "relations:widgets-to-subjects-blocks:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-subjects-blocks/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -589,21 +413,6 @@
         ]
       }
     },
-    "relations:widgets-to-authentication-blocks:repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/repository/database",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
     "relations:roles-to-actions:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -662,19 +471,6 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/sps-rbac/relations/subjects-to-sessions/backend/repository/database",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "relations:widgets-to-authentication-blocks:repository-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/sps-rbac/relations/widgets-to-authentication-blocks/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

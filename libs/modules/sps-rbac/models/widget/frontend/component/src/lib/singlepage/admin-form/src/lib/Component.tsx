@@ -61,30 +61,6 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
-
-        {props.widgetsToAuthenticationBlocks
-          ? props.widgetsToAuthenticationBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToIdentitiesBlocks
-          ? props.widgetsToIdentitiesBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToSubjectsBlocks
-          ? props.widgetsToSubjectsBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
       </div>
     </ParentAdminForm>
   );

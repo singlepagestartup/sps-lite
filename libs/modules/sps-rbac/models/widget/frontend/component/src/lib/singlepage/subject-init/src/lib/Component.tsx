@@ -10,9 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: widget</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <h1 className="py-20 text-5xl">Widget Subject Init</h1>
     </div>
   );
 }

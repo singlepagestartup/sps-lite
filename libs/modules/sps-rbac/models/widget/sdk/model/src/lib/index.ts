@@ -7,7 +7,17 @@ export {
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/sps-rbac/widgets";
-export const variants = ["default"];
+export const variants = [
+  "default",
+  "subject-init",
+  "subject-init",
+  "change-password",
+  "forgot-password",
+  "login",
+  "logout",
+  "registration",
+  "reset-password",
+];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {
