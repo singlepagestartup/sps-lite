@@ -2,6 +2,7 @@ import { DefaultApp } from "@sps/shared-backend-api";
 import { app as widgetApp } from "@sps/sps-ecommerce/models/widget/backend/app/api";
 import { app as productApp } from "@sps/sps-ecommerce/models/product/backend/app/api";
 import { app as productsListBlockApp } from "@sps/sps-ecommerce/models/products-list-block/backend/app/api";
+import { app as ordersListBlockApp } from "@sps/sps-ecommerce/models/orders-list-block/backend/app/api";
 import { app as productOverviewBlockApp } from "@sps/sps-ecommerce/models/product-overview-block/backend/app/api";
 import { app as orderApp } from "@sps/sps-ecommerce/models/order/backend/app/api";
 import { app as attributeApp } from "@sps/sps-ecommerce/models/attribute/backend/app/api";
@@ -11,6 +12,7 @@ import { app as productsToAttributesApp } from "@sps/sps-ecommerce/relations/pro
 import { app as ordersToProductsApp } from "@sps/sps-ecommerce/relations/orders-to-products/backend/app/api";
 import { app as widgetsToProductOverviewBlocksApp } from "@sps/sps-ecommerce/relations/widgets-to-product-overview-blocks/backend/app/api";
 import { app as widgetsToProductsListBlocksApp } from "@sps/sps-ecommerce/relations/widgets-to-products-list-blocks/backend/app/api";
+import { app as widgetsToOrdersListBlocksApp } from "@sps/sps-ecommerce/relations/widgets-to-orders-list-blocks/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -53,6 +55,11 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
+      route: "/orders-list-blocks",
+      app: ordersListBlockApp,
+    });
+    this.apps.push({
+      type: "model",
       route: "/product-overview-blocks",
       app: productOverviewBlockApp,
     });
@@ -80,6 +87,11 @@ export class Apps {
       type: "relation",
       route: "/widgets-to-products-list-blocks",
       app: widgetsToProductsListBlocksApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-orders-list-blocks",
+      app: widgetsToOrdersListBlocksApp,
     });
   }
 }

@@ -17,6 +17,9 @@ export interface IComponentProps
   widgetsToProductOverviewBlocks?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  widgetsToOrdersListBlocks?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

@@ -7,6 +7,7 @@ import { Component as AttributeKey } from "./attribute-key/Component";
 import { Component as Order } from "./order/Component";
 import { Component as ProductsListBlock } from "./products-list-block/Component";
 import { Component as ProductOverviewBlock } from "./product-overview-block/Component";
+import { Component as OrdersListBlock } from "./orders-list-block/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -37,6 +38,10 @@ export function Component(props: IComponentProps) {
     {
       name: "product-overview-block",
       Comp: ProductOverviewBlock,
+    },
+    {
+      name: "orders-list-block",
+      Comp: OrdersListBlock,
     },
   ];
 

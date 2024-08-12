@@ -90,6 +90,14 @@ export function Component(props: IComponentPropsExtended) {
               isServer: props.isServer,
             })
           : null}
+
+        {props.widgetsToOrdersListBlocks
+          ? props.widgetsToOrdersListBlocks({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );
