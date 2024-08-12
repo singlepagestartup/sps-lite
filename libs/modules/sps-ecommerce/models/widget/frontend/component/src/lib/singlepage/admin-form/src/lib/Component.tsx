@@ -74,30 +74,6 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
-
-        {props.widgetsToProductsListBlocks
-          ? props.widgetsToProductsListBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToProductOverviewBlocks
-          ? props.widgetsToProductOverviewBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.widgetsToOrdersListBlocks
-          ? props.widgetsToOrdersListBlocks({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
       </div>
     </ParentAdminForm>
   );
