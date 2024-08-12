@@ -23,6 +23,20 @@ import { createId } from "@paralleldrive/cuid2";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 
+export interface IInitProps {
+  params?: {
+    [key: string]: any;
+  };
+  options?: NextRequestOptions;
+}
+
+export interface IInitMutationFunctionProps {
+  params?: {
+    [key: string]: any;
+  };
+  options?: NextRequestOptions;
+}
+
 export interface ILoginAndPasswordMutationFunctionProps {
   data: {
     login: string;
@@ -70,6 +84,75 @@ export const api = {
     params: query,
     options,
   }),
+  init: (props?: {
+    params?: IInitProps["params"];
+    options?: IInitProps["options"];
+    reactQueryOptions?: any;
+  }) => {
+    return useQuery<{ jwt: string; refresh: string }>({
+      queryKey: [`${route}/init`],
+      queryFn: async () => {
+        try {
+          const stringifiedQuery = QueryString.stringify(props?.params, {
+            encodeValuesOnly: true,
+          });
+
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            ...options,
+            next: {
+              ...options?.next,
+            },
+          };
+
+          const res = await fetch(
+            `${host}${route}/init?${stringifiedQuery}`,
+            requestOptions,
+          );
+
+          const json = await responsePipe<{
+            data: {
+              jwt: string;
+              refresh: string;
+            };
+          }>({
+            res,
+          });
+
+          const transformedData = transformResponseItem<{
+            jwt: string;
+            refresh: string;
+          }>(json);
+
+          localStorage.setItem(
+            "sps-rbac.subject.refresh",
+            transformedData.refresh,
+          );
+          Cookies.set("sps-rbac.subject.jwt", transformedData.jwt);
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
+        }
+      },
+      select(data) {
+        globalActionsStore.getState().addAction({
+          type: "is-authorized",
+          name: `${route}/is-authorized`,
+          props: this,
+          result: data,
+          timestamp: Date.now(),
+          requestId: createId(),
+        });
+
+        return data;
+      },
+      staleTime: STALE_TIME,
+      ...(props ? props.reactQueryOptions : {}),
+    });
+  },
   loginAndPassword: (props?: {
     type?: "authentication" | "registration";
     params?: {

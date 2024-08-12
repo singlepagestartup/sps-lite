@@ -8,6 +8,7 @@ import { HTTPException } from "hono/http-exception";
 import QueryString from "qs";
 import { setCookie, deleteCookie, getCookie } from "hono/cookie";
 import {
+  SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
   SPS_RBAC_JWT_SECRET,
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
@@ -46,6 +47,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "GET",
         path: "/logout",
         handler: this.logout,
+      },
+      {
+        method: "GET",
+        path: "/init",
+        handler: this.init,
       },
       {
         method: "POST",
@@ -269,6 +275,82 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       return c.json(
         {
           data: entity,
+        },
+        201,
+      );
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  async init(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_SECRET not set",
+      });
+    }
+
+    if (!SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS) {
+      throw new HTTPException(400, {
+        message: "SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS not set",
+      });
+    }
+
+    try {
+      const entity = await this.service.create({
+        data: {},
+      });
+
+      const jwtToken = await jwt.sign(
+        {
+          exp:
+            Math.floor(Date.now() / 1000) +
+            SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+          iat: Math.floor(Date.now() / 1000),
+          subject: {
+            id: entity.id,
+          },
+        },
+        SPS_RBAC_JWT_SECRET,
+      );
+
+      const refreshToken = await jwt.sign(
+        {
+          exp:
+            Math.floor(Date.now() / 1000) +
+            SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+          iat: Math.floor(Date.now() / 1000),
+          subject: {
+            id: entity.id,
+          },
+        },
+        SPS_RBAC_JWT_SECRET,
+      );
+
+      const decodedJwt = await jwt.verify(jwtToken, SPS_RBAC_JWT_SECRET);
+
+      if (!decodedJwt.exp) {
+        throw new HTTPException(400, {
+          message: "Invalid token issued",
+        });
+      }
+
+      setCookie(c, "sps-rbac.subject.jwt", entity.jwt, {
+        path: "/",
+        secure: true,
+        httpOnly: false,
+        expires: new Date(decodedJwt.exp),
+        sameSite: "Strict",
+      });
+
+      return c.json(
+        {
+          data: {
+            jwt: jwtToken,
+            refresh: refreshToken,
+          },
         },
         201,
       );

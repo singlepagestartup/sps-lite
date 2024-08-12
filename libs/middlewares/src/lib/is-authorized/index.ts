@@ -19,6 +19,10 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
+    regexPath: /\/api\/sps-rbac\/subjects\/init/,
+    methods: ["GET"],
+  },
+  {
     regexPath: /\/api\/sps-broadcast\/(channels|messages)/,
     methods: ["GET"],
   },
