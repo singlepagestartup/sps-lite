@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 import { api } from "@sps/sps-rbac/models/subject/sdk/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, Button } from "@sps/shared-ui-shadcn";
-import { FormField } from "@sps/ui-adapter";
+import { Form } from "@sps/shared-ui-shadcn";
 import { toast } from "sonner";
 import Cookie from "js-cookie";
 import { useAccount } from "wagmi";
@@ -61,7 +60,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   useEffect(() => {
-    const jwt = Cookie.get("sps-rbac.authentication.jwt");
+    const jwt = Cookie.get("sps-rbac.subject.jwt");
 
     if (account.isConnected && !jwt) {
       form.handleSubmit(onSubmit)();

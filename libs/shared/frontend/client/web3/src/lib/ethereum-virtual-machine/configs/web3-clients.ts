@@ -10,22 +10,25 @@ import { mainnet, sepolia } from "wagmi/chains";
 
 import { injected, walletConnect, safe } from "wagmi/connectors";
 
+const metadata = {
+  name: NEXT_PUBLIC_HOST_METADATA_TITLE,
+  url: HOST_URL,
+  icons: [`${HOST_URL}${NEXT_PUBLIC_HOST_METADATA_ICON}`],
+  description: NEXT_PUBLIC_HOST_METADATA_DESCRIPTION,
+};
+
 export const wagmiConfig = createConfig({
+  chains: [mainnet],
   connectors: [
     injected(),
     safe(),
     walletConnect({
       projectId: WALLET_CONNECT_PROJECT_ID,
       showQrModal: false,
-      metadata: {
-        name: NEXT_PUBLIC_HOST_METADATA_TITLE,
-        url: HOST_URL,
-        icons: [`${HOST_URL}${NEXT_PUBLIC_HOST_METADATA_ICON}`],
-        description: NEXT_PUBLIC_HOST_METADATA_DESCRIPTION,
-      },
+      metadata,
     }),
   ],
-  chains: [mainnet],
+  ssr: true,
   transports: {
     [mainnet.id]: http(),
     [sepolia.id]: http(),

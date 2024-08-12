@@ -1,12 +1,12 @@
 import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
-import { Component as Authentication } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as Subject } from "@sps/sps-rbac/models/subject/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-rbac"
-      data-model="authentication-block"
+      data-model="widget"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn(
@@ -21,7 +21,7 @@ export function Component(props: IComponentPropsExtended) {
           </h1>
         ) : null}
         <div className="w-full lg:w-1/2">
-          <Authentication
+          <Subject
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="select-method"
