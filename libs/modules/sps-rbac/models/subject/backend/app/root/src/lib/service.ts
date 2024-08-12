@@ -19,11 +19,8 @@ import { api as roleApi } from "@sps/sps-rbac/models/role/sdk/server";
 import { api as actionApi } from "@sps/sps-rbac/models/action/sdk/server";
 import { api as rolesToActionsApi } from "@sps/sps-rbac/relations/roles-to-actions/sdk/server";
 import { api as subjectsToIdentitiesApi } from "@sps/sps-rbac/relations/subjects-to-identities/sdk/server";
-
-export interface ILoginAndPassword {
-  login: string;
-  password: string;
-}
+import { createPublicClient, http, Address, Hex } from "viem";
+import { mainnet } from "viem/chains";
 
 export interface IRegistrationLoginAndPasswordDTO {
   type: "registration";
@@ -34,10 +31,12 @@ export interface IAuthenticationLoginAndPasswordDTO {
   type: "authentication";
 }
 
-export type ILoginAndPasswordDTO = { data: ILoginAndPassword } & (
-  | IRegistrationLoginAndPasswordDTO
-  | IAuthenticationLoginAndPasswordDTO
-);
+export type ILoginAndPasswordDTO = { provider: "login_and_password" } & {
+  data: {
+    login: string;
+    password: string;
+  };
+} & (IRegistrationLoginAndPasswordDTO | IAuthenticationLoginAndPasswordDTO);
 
 export type IIsAllowedDTO = {
   action: {
@@ -48,6 +47,17 @@ export type IIsAllowedDTO = {
   authorization: {
     value?: string;
   };
+};
+
+export type IEthereumVirtualMachineSignatureDTO = {
+  provider: "ethereum_virtual_machine";
+  data: {
+    message: string;
+    signature: Hex;
+    address: Address;
+  };
+  roles?: [{ uid: string }];
+  type: "authentication";
 };
 
 @injectable()
@@ -302,10 +312,15 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   }
 
   async providers(
-    props: { provider: string } & ILoginAndPasswordDTO,
+    props: { provider: string } & (
+      | ILoginAndPasswordDTO
+      | IEthereumVirtualMachineSignatureDTO
+    ),
   ): Promise<{ jwt: string; refresh: string }> {
     if (props.provider === "login_and_password") {
       return this.loginAndPassowrd(props);
+    } else if (props.provider === "ethereum_virtual_machine") {
+      return this.ethereumVirtualMachineSignature(props);
     }
 
     throw new HTTPException(400, {
@@ -547,6 +562,256 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     if (saltedPassword !== identity.password) {
       throw new Error("Invalid credentials");
     }
+
+    const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "identityId",
+              method: "eq",
+              value: identity.id,
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!subjectsToIdentities?.length) {
+      throw new Error(
+        "No authentications subjects associated with this identity",
+      );
+    }
+
+    const subject = await this.findById({
+      id: subjectsToIdentities[0].subjectId,
+    });
+
+    if (!subject) {
+      throw new Error("No subject found");
+    }
+
+    const jwtToken = await jwt.sign(
+      {
+        exp:
+          Math.floor(Date.now() / 1000) +
+          SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        iat: Math.floor(Date.now() / 1000),
+        subject: {
+          id: subject.id,
+        },
+      },
+      SPS_RBAC_JWT_SECRET,
+    );
+
+    const refreshToken = await jwt.sign(
+      {
+        exp:
+          Math.floor(Date.now() / 1000) +
+          SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+        iat: Math.floor(Date.now() / 1000),
+        subject: {
+          id: subject.id,
+        },
+      },
+      SPS_RBAC_JWT_SECRET,
+    );
+
+    return { jwt: jwtToken, refresh: refreshToken };
+  }
+
+  async ethereumVirtualMachineSignature(
+    props: IEthereumVirtualMachineSignatureDTO,
+  ): Promise<{ jwt: string; refresh: string }> {
+    const { message, signature, address } = props.data;
+
+    if (!message || !signature) {
+      throw new Error("Invalid message or signature");
+    }
+
+    const isActualDateInMessage =
+      Date.now() - parseInt(message) < 1000 * 60 * 5;
+
+    if (!isActualDateInMessage) {
+      throw new Error("Invalid date in message");
+    }
+
+    const publicClient = createPublicClient({
+      chain: mainnet,
+      transport: http(),
+    });
+
+    const valid = await publicClient.verifyMessage({
+      message,
+      signature,
+      address,
+    });
+
+    if (!valid) {
+      throw new Error("Invalid signature");
+    }
+
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    }
+
+    if (!SPS_RBAC_JWT_SECRET) {
+      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    }
+
+    const identities = await identityApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "account",
+              method: "eq",
+              value: address.toLowerCase(),
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!identities?.length) {
+      const identity = await identityApi.create({
+        data: {
+          account: address.toLowerCase(),
+          provider: "ethereum_virtual_machine",
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const subject = await this.create({
+        data: {
+          name: identity.account,
+        },
+      });
+
+      const subjectsToIdentities = await subjectsToIdentitiesApi.create({
+        data: {
+          identityId: identity.id,
+          subjectId: subject.id,
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const rolesFilters = props.roles?.length
+        ? [
+            {
+              column: "uid",
+              method: "in",
+              value: props.roles?.map((role) => role.uid),
+            },
+          ]
+        : [];
+
+      const roles = await roleApi.find({
+        params: {
+          filters: {
+            and: [
+              ...rolesFilters,
+              {
+                column: "availableOnRegistration",
+                method: "eq",
+                value: "true",
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!roles?.length) {
+        throw new Error("No roles found");
+      }
+
+      for (const role of roles) {
+        const subjectsToRoles = await subjectsToRolesApi.create({
+          data: {
+            roleId: role.id,
+            subjectId: subject.id,
+          },
+          options: {
+            headers: {
+              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+      }
+    }
+
+    const finalIdentities = await identityApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "account",
+              method: "eq",
+              value: address.toLowerCase(),
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!finalIdentities?.length) {
+      throw new Error("Invalid credentials");
+    }
+
+    if (finalIdentities.length > 1) {
+      throw new Error("Multiple identities found");
+    }
+
+    const identity = finalIdentities[0];
 
     const subjectsToIdentities = await subjectsToIdentitiesApi.find({
       params: {

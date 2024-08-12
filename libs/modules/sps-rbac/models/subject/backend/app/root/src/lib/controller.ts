@@ -391,7 +391,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      if (provider !== "login_and_password") {
+      if (
+        provider !== "login_and_password" &&
+        provider !== "ethereum_virtual_machine"
+      ) {
         throw new HTTPException(400, {
           message: "Invalid provider",
         });

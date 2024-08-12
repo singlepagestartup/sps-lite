@@ -4,7 +4,7 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="sps-rbac"
-      data-model="authentication"
+      data-model="subject"
       data-variant={props.variant}
     >
       {props.children}

@@ -22,6 +22,7 @@ import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { createId } from "@paralleldrive/cuid2";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
+import { Address, Hex } from "viem";
 
 export interface IInitProps {
   params?: {
@@ -72,6 +73,18 @@ export interface IIsAuthorizedProps {
       method: string;
       type?: "HTTP";
     };
+  };
+  options?: NextRequestOptions;
+}
+
+export interface IEthereumVirtualMachineMutationFunctionProps {
+  data: {
+    address: Address;
+    message: string;
+    signature: Hex;
+  };
+  params?: {
+    [key: string]: any;
   };
   options?: NextRequestOptions;
 }
@@ -439,6 +452,89 @@ export const api = {
       },
       staleTime: STALE_TIME,
       ...props.reactQueryOptions,
+    });
+  },
+  ethereumVirtualMachine: (props?: {
+    params?: {
+      [key: string]: any;
+    };
+    options?: NextRequestOptions;
+    reactQueryOptions?: any;
+  }) => {
+    return useMutation<
+      { jwt: string; refresh: string },
+      DefaultError,
+      IEthereumVirtualMachineMutationFunctionProps
+    >({
+      mutationKey: [`${route}/authentication/ethereum-virtual-machine`],
+      mutationFn: async (
+        mutationFunctionProps: IEthereumVirtualMachineMutationFunctionProps,
+      ) => {
+        try {
+          const { data } = mutationFunctionProps;
+
+          const formData = prepareFormDataToSend({ data });
+
+          const stringifiedQuery = QueryString.stringify(
+            mutationFunctionProps.params || props?.params,
+            {
+              encodeValuesOnly: true,
+            },
+          );
+
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            method: "POST",
+            body: formData,
+            ...(mutationFunctionProps.options || props?.options),
+            next: {
+              ...(mutationFunctionProps.options?.next || props?.options?.next),
+            },
+          };
+          const res = await fetch(
+            `${host}${route}/authentication/ethereum-virtual-machine?${stringifiedQuery}`,
+            requestOptions,
+          );
+
+          const json = await responsePipe<{
+            data: {
+              jwt: string;
+              refresh: string;
+            };
+          }>({
+            res,
+          });
+
+          const transformedData = transformResponseItem<{
+            jwt: string;
+            refresh: string;
+          }>(json);
+
+          localStorage.setItem(
+            "sps-rbac.subject.refresh",
+            transformedData.refresh,
+          );
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
+        }
+      },
+      onSuccess(data) {
+        globalActionsStore.getState().addAction({
+          type: "authentication.ethereumVirtualMachine",
+          name: `${route}/authentication/ethereum-virtual-machine`,
+          props: this,
+          result: data,
+          timestamp: Date.now(),
+          requestId: createId(),
+        });
+
+        return data;
+      },
+      ...props?.reactQueryOptions,
     });
   },
 };

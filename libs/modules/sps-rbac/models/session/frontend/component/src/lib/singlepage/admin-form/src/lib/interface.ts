@@ -11,9 +11,6 @@ export const variant = "admin-form" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  sessionsToAuthentications?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
   subjectsToSessions?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;

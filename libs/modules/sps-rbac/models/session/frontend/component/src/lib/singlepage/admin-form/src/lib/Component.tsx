@@ -52,14 +52,6 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.sessionsToAuthentications
-          ? props.sessionsToAuthentications({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
         {props.subjectsToSessions
           ? props.subjectsToSessions({
               data: props.data,

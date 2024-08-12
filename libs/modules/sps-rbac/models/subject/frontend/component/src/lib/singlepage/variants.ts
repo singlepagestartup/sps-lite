@@ -12,6 +12,7 @@ import { Component as LogoutButton } from "./logout-button";
 import { Component as IsAllowedWrapper } from "./is-authorized-wrapper";
 import { Component as SetSessionWrapper } from "./set-session-wrapper";
 import { Component as SelectMethod } from "./select-method";
+import { Component as EthereumVirtualMachine } from "./ethereum-virtual-machine";
 
 export const variants = {
   "find-by-id": FindById,
@@ -28,4 +29,5 @@ export const variants = {
   "is-authorized-wrapper": IsAllowedWrapper,
   "set-session-wrapper": SetSessionWrapper,
   "select-method": SelectMethod,
+  "ethereum-virtual-machine": EthereumVirtualMachine,
 };

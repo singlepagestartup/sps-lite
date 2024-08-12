@@ -49,6 +49,9 @@
       "@sps/shared-frontend-client-utils": [
         "libs/shared/frontend/client/utils/src/index.ts"
       ],
+      "@sps/shared-frontend-client-web3": [
+        "libs/shared/frontend/client/web3/src/index.ts"
+      ],
       "@sps/shared-frontend-components/*": [
         "libs/shared/frontend/components/src/lib/*"
       ],

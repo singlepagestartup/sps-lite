@@ -25,7 +25,7 @@ export function Component(props: IComponentPropsExtended) {
     <Button
       ui="shadcn"
       data-module="sps-rbac"
-      data-model="authentication"
+      data-model="subject"
       data-variant={props.variant}
       onClick={() => {
         logout.refetch();
