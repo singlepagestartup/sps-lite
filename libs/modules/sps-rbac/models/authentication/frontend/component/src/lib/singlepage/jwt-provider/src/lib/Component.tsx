@@ -9,7 +9,7 @@ import { SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS } from "@sps/shared-utils";
 
 export function Component(props: IComponentPropsExtended) {
   const refresh = api.refresh();
-  const jwt = Cookie.get("sps-rbac.authentication.jwt");
+  const jwt = Cookie.get("sps-rbac.subject.jwt");
   const token = useJwt(jwt ?? "");
 
   useEffect(() => {
@@ -22,13 +22,11 @@ export function Component(props: IComponentPropsExtended) {
         SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS * 0.1 * 1000 <
       Date.now()
     ) {
-      const refreshToken = localStorage.getItem(
-        "sps-rbac.authentication.refresh",
-      );
+      const refreshToken = localStorage.getItem("sps-rbac.subject.refresh");
 
       if (!refreshToken) {
-        Cookie.remove("sps-rbac.authentication.jwt");
-        localStorage.removeItem("sps-rbac.authentication.refresh");
+        Cookie.remove("sps-rbac.subject.jwt");
+        localStorage.removeItem("sps-rbac.subject.refresh");
 
         return;
       }
@@ -43,8 +41,8 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (refresh.isError) {
-      Cookie.remove("sps-rbac.authentication.jwt");
-      localStorage.removeItem("sps-rbac.authentication.refresh");
+      Cookie.remove("sps-rbac.subject.jwt");
+      localStorage.removeItem("sps-rbac.subject.refresh");
     }
   }, [refresh.isError]);
 

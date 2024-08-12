@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { Toaster } from "@sps/shared-ui-shadcn";
 import { Component as Admin } from "../src/components/admin";
 import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as SpsRbacSubject } from "@sps/sps-rbac/models/subject/frontend/component";
 import { App as SpsBroadcast } from "@sps/sps-broadcast/frontend/component";
 import Loading from "./loading";
 
@@ -20,24 +21,14 @@ export default async function RootLayout({
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
         <Suspense fallback={<Loading />}>
-          <SpsRbacAuthentication
-            isServer={false}
-            hostUrl="/"
-            variant="set-session-wrapper"
-          >
-            <SpsRbacAuthentication
-              isServer={false}
-              hostUrl="/"
-              variant="jwt-provider"
-            >
-              <SpsBroadcast hostUrl="/" isServer={true} />
-              <Admin hostUrl="/" isServer={true} />
-              <div className="relative">
-                {children}
-                <Toaster />
-              </div>
-            </SpsRbacAuthentication>
-          </SpsRbacAuthentication>
+          <SpsRbacSubject isServer={false} hostUrl="/" variant="init">
+            <SpsBroadcast hostUrl="/" isServer={true} />
+            <Admin hostUrl="/" isServer={true} />
+            <div className="relative">
+              {children}
+              <Toaster />
+            </div>
+          </SpsRbacSubject>
         </Suspense>
       </body>
     </html>

@@ -7,6 +7,7 @@ import {
   options,
 } from "@sps/sps-rbac/models/subject/sdk/model";
 import { action as me } from "./actions/me";
+import { action as isAuthorized } from "./actions/is-authorized";
 
 export const api = {
   ...factory<IModel>({
@@ -16,4 +17,5 @@ export const api = {
     params: query,
   }),
   me,
+  isAuthorized,
 };

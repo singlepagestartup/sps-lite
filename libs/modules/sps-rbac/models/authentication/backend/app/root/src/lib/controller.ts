@@ -116,7 +116,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const authorizationCookie = getCookie(c, "sps-rbac.authentication.jwt");
+      const authorizationCookie = getCookie(c, "sps-rbac.subject.jwt");
       const authorizationHeader = c.req.header("Authorization");
       const authorization =
         authorizationCookie || authorizationHeader?.replace("Bearer ", "");
@@ -148,7 +148,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     try {
       const data = await this.service.logout();
 
-      deleteCookie(c, "sps-rbac.authentication.jwt");
+      deleteCookie(c, "sps-rbac.subject.jwt");
 
       return c.json({
         data,
@@ -205,7 +205,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+      setCookie(c, "sps-rbac.subject.jwt", entity.jwt, {
         path: "/",
         secure: true,
         httpOnly: false,
@@ -276,7 +276,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+      setCookie(c, "sps-rbac.subject.jwt", entity.jwt, {
         path: "/",
         secure: true,
         httpOnly: false,
@@ -351,7 +351,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      setCookie(c, "sps-rbac.authentication.jwt", entity.jwt, {
+      setCookie(c, "sps-rbac.subject.jwt", entity.jwt, {
         path: "/",
         secure: true,
         httpOnly: false,

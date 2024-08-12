@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
-import { Component as SpsRbacAuthentication } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as SpsRbacSubject } from "@sps/sps-rbac/models/subject/frontend/component";
 import { AdminComponent as SpsHost } from "@sps/sps-host/frontend/component";
 import { AdminComponent as SpsWebsiteBuilder } from "@sps/sps-website-builder/frontend/component";
 import { AdminComponent as SpsBilling } from "@sps/sps-billing/frontend/component";
@@ -28,7 +28,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <SpsRbacAuthentication
+    <SpsRbacSubject
       variant="is-authorized-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
@@ -217,7 +217,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </section>
-    </SpsRbacAuthentication>
+    </SpsRbacSubject>
   );
 }
 

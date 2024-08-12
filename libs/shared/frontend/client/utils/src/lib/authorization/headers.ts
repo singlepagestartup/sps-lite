@@ -1,5 +1,5 @@
 export function util() {
-  const authorization = localStorage.getItem("sps-rbac.authentication.jwt");
+  const authorization = localStorage.getItem("sps-rbac.subject.jwt");
   const secretKey = localStorage.getItem("sps-rbac.secret-key");
 
   const headers: HeadersInit = {};

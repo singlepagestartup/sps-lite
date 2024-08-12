@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as Authentication } from "@sps/sps-rbac/models/authentication/frontend/component";
+import { Component as Subject } from "@sps/sps-rbac/models/subject/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -21,10 +21,10 @@ export function Component(props: IComponentPropsExtended) {
           </h1>
         ) : null}
         <div className="w-full lg:w-1/2">
-          <Authentication
+          <Subject
             isServer={props.isServer}
             hostUrl={props.hostUrl}
-            variant="select-method"
+            variant="login-and-password"
             type="authentication"
           />
         </div>

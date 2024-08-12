@@ -2,7 +2,7 @@ import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
-import { api as authenticationApi } from "@sps/sps-rbac/models/authentication/sdk/server";
+import { api as subjectApi } from "@sps/sps-rbac/models/subject/sdk/server";
 import { getCookie } from "hono/cookie";
 /**
  * Routes that are allowed to be accessed without authentication
@@ -15,7 +15,7 @@ import { getCookie } from "hono/cookie";
  */
 const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   {
-    regexPath: /\/api\/sps-rbac\/authentications\/is-authorized/,
+    regexPath: /\/api\/sps-rbac\/subjects\/is-authorized/,
     methods: ["GET"],
   },
   {
@@ -24,7 +24,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   },
   {
     regexPath:
-      /\/api\/sps-rbac\/authentications\/(authentication|registration)\/(\w+)?/,
+      /\/api\/sps-rbac\/subjects\/(authentication|registration)\/(\w+)?/,
     methods: ["POST"],
   },
   {
@@ -32,7 +32,7 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/sps-rbac\/authentications\/logout/,
+    regexPath: /\/api\/sps-rbac\/subjects\/logout/,
     methods: ["GET"],
   },
   {
@@ -67,7 +67,7 @@ export class Middleware {
       const secretKeyHeaders = c.req.header("X-SPS-RBAC-SECRET-KEY");
       const secretKeyCookie = getCookie(c, "sps-rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
-      const authorizationCookie = getCookie(c, "sps-rbac.authentication.jwt");
+      const authorizationCookie = getCookie(c, "sps-rbac.subject.jwt");
       const authorizationHeader = c.req.header("Authorization");
       const authorization =
         authorizationCookie || authorizationHeader?.replace("Bearer ", "");
@@ -105,7 +105,7 @@ export class Middleware {
             ? { Authorization: authorization }
             : ({} as HeadersInit);
 
-        const isAuthorized = await authenticationApi.isAuthorized({
+        const isAuthorized = await subjectApi.isAuthorized({
           params: {
             action: {
               route: reqPath.toLowerCase(),

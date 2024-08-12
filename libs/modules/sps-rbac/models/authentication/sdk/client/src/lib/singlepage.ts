@@ -129,7 +129,7 @@ export const api = {
           }>(json);
 
           localStorage.setItem(
-            "sps-rbac.authentication.refresh",
+            "sps-rbac.subject.refresh",
             transformedData.refresh,
           );
 
@@ -212,7 +212,7 @@ export const api = {
           }>(json);
 
           localStorage.setItem(
-            "sps-rbac.authentication.refresh",
+            "sps-rbac.subject.refresh",
             transformedData.refresh,
           );
 
@@ -274,7 +274,7 @@ export const api = {
 
           const transformedData = transformResponseItem<IModel>(json);
 
-          localStorage.removeItem("sps-rbac.authentication.refresh");
+          localStorage.removeItem("sps-rbac.subject.refresh");
 
           return transformedData;
         } catch (error: any) {
