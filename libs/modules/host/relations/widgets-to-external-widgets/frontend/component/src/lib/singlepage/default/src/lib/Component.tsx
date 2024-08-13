@@ -4,6 +4,7 @@ import { Component as WebsiteBuilder } from "@sps/website-builder/models/widget/
 import { Component as Startup } from "@sps/startup/models/widget/frontend/component";
 import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
 import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
+import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -117,38 +118,48 @@ export function Component(props: IComponentPropsExtended) {
         </RbacWidget>
       ) : null}
       {props.data.externalModule === "ecommerce" ? (
-        <EcommerceWidget
+        <RbacSubject
           isServer={props.isServer}
           hostUrl={props.hostUrl}
-          variant="find"
-          apiProps={{
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "id",
-                    method: "eq",
-                    value: props.data.externalWidgetId,
-                  },
-                ],
-              },
-            },
-          }}
+          variant="me"
         >
           {({ data }) => {
-            return data?.map((entity, index) => {
-              return (
-                <EcommerceWidget
-                  key={index}
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant={entity.variant as any}
-                  data={entity}
-                />
-              );
-            });
+            return (
+              <EcommerceWidget
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="find"
+                apiProps={{
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "id",
+                          method: "eq",
+                          value: props.data.externalWidgetId,
+                        },
+                      ],
+                    },
+                  },
+                }}
+              >
+                {({ data }) => {
+                  return data?.map((entity, index) => {
+                    return (
+                      <EcommerceWidget
+                        key={index}
+                        isServer={props.isServer}
+                        hostUrl={props.hostUrl}
+                        variant={entity.variant as any}
+                        data={entity}
+                      />
+                    );
+                  });
+                }}
+              </EcommerceWidget>
+            );
           }}
-        </EcommerceWidget>
+        </RbacSubject>
       ) : null}
     </div>
   );

@@ -13,6 +13,7 @@ import { IComponentProps as IIsAllowedWrapperComponentProps } from "./is-authori
 import { IComponentProps as ISetSessionWrapperComponentProps } from "./set-session-wrapper";
 import { IComponentProps as ISelectMethodComponentProps } from "./select-method";
 import { IComponentProps as IEthereumVirtualMachineComponentProps } from "./ethereum-virtual-machine";
+import { IComponentProps as IMeComponentProps } from "./me";
 
 export type IComponentProps =
   | IFindByIdComponentProps
@@ -30,4 +31,5 @@ export type IComponentProps =
   | ISetSessionWrapperComponentProps
   | ISelectMethodComponentProps
   | IEthereumVirtualMachineComponentProps
+  | IMeComponentProps
   | never;

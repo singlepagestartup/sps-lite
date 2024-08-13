@@ -24,6 +24,13 @@ import { toast } from "sonner";
 import Cookies from "js-cookie";
 import { Address, Hex } from "viem";
 
+export interface IMeProps {
+  params?: {
+    [key: string]: any;
+  };
+  options?: NextRequestOptions;
+}
+
 export interface IInitProps {
   params?: {
     [key: string]: any;
@@ -151,6 +158,63 @@ export const api = {
         globalActionsStore.getState().addAction({
           type: "is-authorized",
           name: `${route}/is-authorized`,
+          props: this,
+          result: data,
+          timestamp: Date.now(),
+          requestId: createId(),
+        });
+
+        return data;
+      },
+      staleTime: STALE_TIME,
+      ...(props ? props.reactQueryOptions : {}),
+    });
+  },
+  me: (props?: {
+    params?: IMeProps["params"];
+    options?: IMeProps["options"];
+    reactQueryOptions?: any;
+  }) => {
+    return useQuery<IModel>({
+      queryKey: [`${route}/me`],
+      queryFn: async () => {
+        try {
+          const stringifiedQuery = QueryString.stringify(props?.params, {
+            encodeValuesOnly: true,
+          });
+
+          const requestOptions: NextRequestOptions = {
+            credentials: "include",
+            ...options,
+            next: {
+              ...options?.next,
+            },
+          };
+
+          const res = await fetch(
+            `${host}${route}/me?${stringifiedQuery}`,
+            requestOptions,
+          );
+
+          const json = await responsePipe<{
+            data: IModel;
+          }>({
+            res,
+          });
+
+          const transformedData = transformResponseItem<IModel>(json);
+
+          return transformedData;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
+        }
+      },
+      select(data) {
+        globalActionsStore.getState().addAction({
+          type: "me",
+          name: `${route}/me`,
           props: this,
           result: data,
           timestamp: Date.now(),

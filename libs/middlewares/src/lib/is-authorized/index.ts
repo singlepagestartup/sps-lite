@@ -15,11 +15,7 @@ import { getCookie } from "hono/cookie";
  */
 const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
   {
-    regexPath: /\/api\/rbac\/subjects\/is-authorized/,
-    methods: ["GET"],
-  },
-  {
-    regexPath: /\/api\/rbac\/subjects\/init/,
+    regexPath: /\/api\/rbac\/subjects\/(is-authorized|me|init)/,
     methods: ["GET"],
   },
   {

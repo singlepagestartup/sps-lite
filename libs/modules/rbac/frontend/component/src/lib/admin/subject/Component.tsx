@@ -3,6 +3,7 @@
 import { Component as ParentComponent } from "@sps/rbac/models/subject/frontend/component";
 import { Component as SubjectsToIdentities } from "@sps/rbac/relations/subjects-to-identities/frontend/component";
 import { Component as SubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/frontend/component";
+import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-orders/frontend/component";
 
 export function Component() {
   return (
@@ -24,6 +25,32 @@ export function Component() {
 
               return (
                 <SubjectsToIdentities
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "subjectId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            subjectsToEcommerceOrders={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <SubjectsToEcommerceOrders
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

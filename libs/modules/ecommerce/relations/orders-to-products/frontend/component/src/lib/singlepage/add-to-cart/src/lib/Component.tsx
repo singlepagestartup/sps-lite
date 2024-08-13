@@ -7,7 +7,6 @@ import { cn } from "@sps/shared-frontend-client-utils";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/client";
-import { insertSchema } from "@sps/ecommerce/relations/orders-to-products/sdk/model";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 import { useEffect } from "react";

@@ -4,6 +4,7 @@ import { api as metadataApi } from "@sps/host/models/metadata/sdk/server";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
+// export const dynamic = "force-dynamic";
 export const experimental_ppr = true;
 
 export async function generateStaticParams() {

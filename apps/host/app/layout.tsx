@@ -22,14 +22,13 @@ export default async function RootLayout({
       >
         <Suspense fallback={<Loading />}>
           <SpsRbacProvider isServer={false} hostUrl="/">
-            <SpsRbacSubject isServer={false} hostUrl="/" variant="init">
-              <SpsBroadcast hostUrl="/" isServer={true} />
-              <Admin hostUrl="/" isServer={true} />
-              <div className="relative">
-                {children}
-                <Toaster />
-              </div>
-            </SpsRbacSubject>
+            <SpsRbacSubject isServer={false} hostUrl="/" variant="init" />
+            <SpsBroadcast hostUrl="/" isServer={true} />
+            <Admin hostUrl="/" isServer={true} />
+            <div className="relative">
+              {children}
+              <Toaster />
+            </div>
           </SpsRbacProvider>
         </Suspense>
       </body>

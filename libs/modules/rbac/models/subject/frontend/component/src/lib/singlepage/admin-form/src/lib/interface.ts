@@ -18,6 +18,9 @@ export interface IComponentProps
   subjectsToSessions?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  subjectsToEcommerceOrders?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

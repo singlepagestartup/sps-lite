@@ -13,6 +13,7 @@ import { Component as IsAllowedWrapper } from "./is-authorized-wrapper";
 import { Component as SetSessionWrapper } from "./set-session-wrapper";
 import { Component as SelectMethod } from "./select-method";
 import { Component as EthereumVirtualMachine } from "./ethereum-virtual-machine";
+import { Component as Me } from "./me";
 
 export const variants = {
   "find-by-id": FindById,
@@ -30,4 +31,5 @@ export const variants = {
   "set-session-wrapper": SetSessionWrapper,
   "select-method": SelectMethod,
   "ethereum-virtual-machine": EthereumVirtualMachine,
+  me: Me,
 };
