@@ -3,12 +3,12 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/client";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { Button } from "@sps/shared-ui-shadcn";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
+  // const router = useRouter();
   const deleteEntity = api.delete();
 
   async function onDelete() {
@@ -17,11 +17,11 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  useEffect(() => {
-    if (deleteEntity.isSuccess) {
-      router.refresh();
-    }
-  }, [deleteEntity.isSuccess]);
+  // useEffect(() => {
+  //   if (deleteEntity.isSuccess) {
+  //     router.refresh();
+  //   }
+  // }, [deleteEntity.isSuccess]);
 
   return (
     <div

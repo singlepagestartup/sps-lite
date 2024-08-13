@@ -24,6 +24,8 @@ export function Component(props: IComponentPropsExtended) {
       variant: props.data?.variant || "default",
       orderIndex: props.data?.orderIndex || 0,
       className: props.data?.className || "",
+      ecommerceOrderId: props.data?.ecommerceOrderId || "",
+      subjectId: props.data?.subjectId || "",
     },
   });
 
@@ -90,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="orderId"
+          formFieldName="ecommerceOrderId"
           form={form}
         />
       </div>

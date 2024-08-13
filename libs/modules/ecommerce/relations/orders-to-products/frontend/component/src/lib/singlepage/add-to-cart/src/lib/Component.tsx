@@ -2,14 +2,14 @@
 
 import { Form, Button } from "@sps/shared-ui-shadcn";
 import { IComponentPropsExtended } from "./interface";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const formSchema = z.object({
   productId: z.string(),
@@ -17,7 +17,7 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
+  // const router = useRouter();
   const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,11 +40,11 @@ export function Component(props: IComponentPropsExtended) {
     });
   }
 
-  useEffect(() => {
-    if (createEntity.isSuccess) {
-      router.refresh();
-    }
-  }, [createEntity.isSuccess]);
+  // useEffect(() => {
+  //   if (createEntity.isSuccess) {
+  //     router.refresh();
+  //   }
+  // }, [createEntity.isSuccess]);
 
   return (
     <div

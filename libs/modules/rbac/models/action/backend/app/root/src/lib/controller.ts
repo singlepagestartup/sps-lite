@@ -171,7 +171,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
     if (!targetAction) {
       throw new HTTPException(404, {
-        message: `Action with route ${routeParameter} not found`,
+        message: `Action with route ${routeParameter} and method ${query.action["method"]} not found`,
       });
     }
 
@@ -183,7 +183,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
     if (targetAction?.type !== query.action["type"]) {
       throw new HTTPException(404, {
-        message: `Action with route ${routeParameter} and type ${query.action["type"]} not found`,
+        message: `Action with route ${routeParameter}, method ${query.action["method"]} and type ${query.action["type"]} not found`,
       });
     }
 

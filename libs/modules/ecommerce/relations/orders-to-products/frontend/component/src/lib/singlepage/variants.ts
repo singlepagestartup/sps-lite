@@ -6,6 +6,7 @@ import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
 import { Component as AddToCart } from "./add-to-cart";
 import { Component as EditInCart } from "./edit-in-cart";
+import { Component as Subscription } from "./subscription";
 
 export const variants = {
   find: Find,
@@ -16,4 +17,5 @@ export const variants = {
   default: Default,
   "add-to-cart": AddToCart,
   "edit-in-cart": EditInCart,
+  subscription: Subscription,
 };

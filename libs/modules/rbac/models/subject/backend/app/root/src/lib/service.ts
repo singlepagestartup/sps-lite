@@ -112,12 +112,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             },
           },
         });
-
-        if (!subjectsToRoles?.length) {
-          throw new HTTPException(401, {
-            message: "No roles found for this subject",
-          });
-        }
       } catch (error) {
         throw new HTTPException(401, {
           message: error?.["message"] || "Invalid authorization token provided",

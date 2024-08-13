@@ -87,7 +87,9 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     }
 
     if (method === "notInArray" || method === "inArray") {
-      return;
+      resultQueries.push(
+        queryFunctions[method](tableColumn, filterValue) as SQL<any>,
+      );
     }
 
     if (

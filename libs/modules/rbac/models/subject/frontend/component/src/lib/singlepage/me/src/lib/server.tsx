@@ -6,15 +6,12 @@ import { api } from "@sps/rbac/models/subject/sdk/server";
 import { cookies } from "next/headers";
 
 async function me(props: IComponentProps) {
-  try {
-    const cook = cookies();
-    const jwt = cook.get("rbac.subject.jwt");
+  const jwt = cookies().get("rbac.subject.jwt")?.value;
 
-    const headers: HeadersInit = jwt
-      ? { Authorization: `Bearer ${jwt.value}` }
-      : {};
+  const headers: HeadersInit = jwt ? { Authorization: `Bearer ${jwt}` } : {};
 
-    const data = await api.me({
+  const data = await api
+    .me({
       ...props.apiProps,
       options: {
         ...props.apiProps?.options,
@@ -24,13 +21,12 @@ async function me(props: IComponentProps) {
           cache: "no-store",
         },
       },
+    })
+    .catch(() => {
+      return;
     });
 
-    return data;
-  } catch (error) {
-    console.error("sps/rbac/models/subject ~ me", error);
-    return;
-  }
+  return data;
 }
 
 // default is required for dynamic import

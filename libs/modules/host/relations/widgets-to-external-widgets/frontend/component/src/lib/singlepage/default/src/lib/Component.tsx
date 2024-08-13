@@ -1,10 +1,11 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as WebsiteBuilder } from "@sps/website-builder/models/widget/frontend/component";
-import { Component as Startup } from "@sps/startup/models/widget/frontend/component";
-import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
-import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
-import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
+// import { Component as WebsiteBuilder } from "@sps/website-builder/models/widget/frontend/component";
+// import { Component as Startup } from "@sps/startup/models/widget/frontend/component";
+// import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
+// import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
+// import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
+import { Component as Ecommerce } from "./ecommerce/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -15,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {props.data.externalModule === "website-builder" ? (
+      {/* {props.data.externalModule === "website-builder" ? (
         <WebsiteBuilder
           isServer={props.isServer}
           hostUrl={props.hostUrl}
@@ -82,8 +83,8 @@ export function Component(props: IComponentPropsExtended) {
             });
           }}
         </Startup>
-      ) : null}
-      {props.data.externalModule === "rbac" ? (
+      ) : null} */}
+      {/* {props.data.externalModule === "rbac" ? (
         <RbacWidget
           isServer={props.isServer}
           hostUrl={props.hostUrl}
@@ -116,50 +117,14 @@ export function Component(props: IComponentPropsExtended) {
             });
           }}
         </RbacWidget>
-      ) : null}
+      ) : null} */}
       {props.data.externalModule === "ecommerce" ? (
-        <RbacSubject
+        <Ecommerce
+          {...props}
           isServer={props.isServer}
           hostUrl={props.hostUrl}
-          variant="me"
-        >
-          {({ data }) => {
-            return (
-              <EcommerceWidget
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant="find"
-                apiProps={{
-                  params: {
-                    filters: {
-                      and: [
-                        {
-                          column: "id",
-                          method: "eq",
-                          value: props.data.externalWidgetId,
-                        },
-                      ],
-                    },
-                  },
-                }}
-              >
-                {({ data }) => {
-                  return data?.map((entity, index) => {
-                    return (
-                      <EcommerceWidget
-                        key={index}
-                        isServer={props.isServer}
-                        hostUrl={props.hostUrl}
-                        variant={entity.variant as any}
-                        data={entity}
-                      />
-                    );
-                  });
-                }}
-              </EcommerceWidget>
-            );
-          }}
-        </RbacSubject>
+          data={props.data}
+        />
       ) : null}
     </div>
   );

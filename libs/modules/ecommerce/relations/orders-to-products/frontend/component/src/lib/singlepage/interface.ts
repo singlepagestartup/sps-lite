@@ -6,6 +6,7 @@ import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as IAddToCartComponentProps } from "./add-to-cart";
 import { IComponentProps as IEditInCartComponentProps } from "./edit-in-cart";
+import { IComponentProps as ISubscriptionComponentProps } from "./subscription";
 
 export type IComponentProps =
   | IFindComponentProps
@@ -17,4 +18,5 @@ export type IComponentProps =
   | IDefaultComponentProps
   | IAddToCartComponentProps
   | IEditInCartComponentProps
+  | ISubscriptionComponentProps
   | never;

@@ -1,21 +1,29 @@
 "use server";
 import "server-only";
 
-import { IComponentProps, variant, IModel } from "./interface";
+import { IComponentProps } from "./interface";
 import { Error } from "./Error";
 import { api } from "@sps/ecommerce/models/widget/sdk/server";
 import { Component } from "./Component";
-import { Skeleton } from "./Skeleton";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default/server";
+import { ErrorBoundary } from "@sps/ui-adapter";
 
 export default async function Server(props: IComponentProps) {
+  if (!props.data.id) {
+    return <></>;
+  }
+
+  const data = await api.findById({
+    id: props.data.id,
+    ...props.apiProps,
+  });
+
+  if (!data) {
+    return <></>;
+  }
+
   return (
-    <ParentComponent<IModel, typeof variant, any, IComponentProps>
-      Error={Error}
-      Skeleton={Skeleton}
-      Component={Component}
-      api={api}
-      {...props}
-    />
+    <ErrorBoundary fallback={Error}>
+      <Component {...props} data={data} />
+    </ErrorBoundary>
   );
 }

@@ -67,8 +67,10 @@ export function Component(props: IComponentPropsExtended) {
   }, [init.data]);
 
   return (
-    <div data-module="rbac" data-model="subject" data-variant={props.variant}>
-      {props.children}
-    </div>
+    <div
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props.variant}
+    ></div>
   );
 }

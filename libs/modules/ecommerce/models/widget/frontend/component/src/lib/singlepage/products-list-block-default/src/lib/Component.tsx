@@ -12,7 +12,10 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      <Product isServer={props.isServer} hostUrl={props.hostUrl} variant="find">
+      <div className="w-full max-w-7xl grid grid-cols-2 gap-12 mx-auto">
+        {props.products}
+      </div>
+      {/* <Product isServer={props.isServer} hostUrl={props.hostUrl} variant="find">
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
@@ -71,7 +74,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </Product>
+      </Product> */}
     </div>
   );
 }

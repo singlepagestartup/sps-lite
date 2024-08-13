@@ -1,11 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import { IComponentPropsExtended } from "./interface";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import Cookie from "js-cookie";
-import { useJwt } from "react-jwt";
-import { SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS } from "@sps/shared-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (
