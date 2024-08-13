@@ -44,9 +44,6 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/ecommerce:models:orders-list-block:repository-generate"
-          },
-          {
             "command": "nx run @sps/ecommerce:models:attribute-key:repository-generate"
           },
           {

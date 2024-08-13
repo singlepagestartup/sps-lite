@@ -10,6 +10,7 @@ import {
   variants,
   insertSchema,
   types,
+  fields,
 } from "@sps/ecommerce/models/attribute-key/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -26,6 +27,7 @@ export function Component(props: IComponentPropsExtended) {
       slug: props.data?.slug || "",
       type: props.data?.type || "",
       title: props.data?.title || "",
+      field: props.data?.field || "string",
     },
   });
 
@@ -95,6 +97,16 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Select type"
           options={types.map((type) => [type, type])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          name="field"
+          label="Field"
+          form={form}
+          placeholder="Select field"
+          options={fields.map((field) => [field, field])}
         />
 
         <FormField

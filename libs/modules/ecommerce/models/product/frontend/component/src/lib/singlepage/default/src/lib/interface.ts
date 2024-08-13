@@ -4,11 +4,15 @@ import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
 } from "@sps/shared-frontend-components/singlepage/default/interface";
+import { ReactNode } from "react";
 
 export const variant = "default" as const;
 
 export interface IComponentProps
-  extends IParentComponentProps<IModel, typeof variant> {}
+  extends IParentComponentProps<IModel, typeof variant> {
+  className?: string;
+  action?: ReactNode;
+}
 
 export interface IComponentPropsExtended
   extends IParentComponentPropsExtended<

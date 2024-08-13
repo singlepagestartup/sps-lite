@@ -2,6 +2,7 @@ import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
 import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
+import { revalidateTag } from "next/cache";
 
 export type IMiddlewareGeneric = unknown;
 
@@ -39,6 +40,7 @@ export class Middleware {
                 },
               },
             });
+            revalidateTag(path);
           }
           if (["DELETE"].includes(method)) {
             const pathWithoutId = path.replace(/\/[a-zA-Z0-9-]+$/, "");
@@ -54,6 +56,7 @@ export class Middleware {
                 },
               },
             });
+            revalidateTag(pathWithoutId);
           }
         }
       }

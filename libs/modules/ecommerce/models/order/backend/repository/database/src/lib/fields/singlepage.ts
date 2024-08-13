@@ -5,6 +5,6 @@ export const fields = {
   createdAt: pgCore.timestamp("created_at").notNull().defaultNow(),
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
-  status: pgCore.text("variant").notNull().default("new"),
-  type: pgCore.text("variant").notNull().default("cart"),
+  status: pgCore.text("status").notNull().default("new"),
+  type: pgCore.text("type").notNull().default("cart"),
 };

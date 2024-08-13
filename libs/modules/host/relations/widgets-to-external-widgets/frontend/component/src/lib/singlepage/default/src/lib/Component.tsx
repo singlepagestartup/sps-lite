@@ -1,8 +1,9 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as SpsWebsiteBuilder } from "@sps/website-builder/models/widget/frontend/component";
+import { Component as WebsiteBuilder } from "@sps/website-builder/models/widget/frontend/component";
 import { Component as Startup } from "@sps/startup/models/widget/frontend/component";
-import { Component as SpsRbacWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -14,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
       {props.data.externalModule === "website-builder" ? (
-        <SpsWebsiteBuilder
+        <WebsiteBuilder
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
@@ -35,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
           {({ data }) => {
             return data?.map((widget) => {
               return (
-                <SpsWebsiteBuilder
+                <WebsiteBuilder
                   key={widget.id}
                   isServer={props.isServer}
                   hostUrl={props.hostUrl}
@@ -45,7 +46,7 @@ export function Component(props: IComponentPropsExtended) {
               );
             });
           }}
-        </SpsWebsiteBuilder>
+        </WebsiteBuilder>
       ) : null}
       {props.data.externalModule === "startup" ? (
         <Startup
@@ -82,7 +83,7 @@ export function Component(props: IComponentPropsExtended) {
         </Startup>
       ) : null}
       {props.data.externalModule === "rbac" ? (
-        <SpsRbacWidget
+        <RbacWidget
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
@@ -103,7 +104,7 @@ export function Component(props: IComponentPropsExtended) {
           {({ data }) => {
             return data?.map((entity, index) => {
               return (
-                <SpsRbacWidget
+                <RbacWidget
                   key={index}
                   isServer={props.isServer}
                   hostUrl={props.hostUrl}
@@ -113,7 +114,41 @@ export function Component(props: IComponentPropsExtended) {
               );
             });
           }}
-        </SpsRbacWidget>
+        </RbacWidget>
+      ) : null}
+      {props.data.externalModule === "ecommerce" ? (
+        <EcommerceWidget
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="find"
+          apiProps={{
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "id",
+                    method: "eq",
+                    value: props.data.externalWidgetId,
+                  },
+                ],
+              },
+            },
+          }}
+        >
+          {({ data }) => {
+            return data?.map((entity, index) => {
+              return (
+                <EcommerceWidget
+                  key={index}
+                  isServer={props.isServer}
+                  hostUrl={props.hostUrl}
+                  variant={entity.variant as any}
+                  data={entity}
+                />
+              );
+            });
+          }}
+        </EcommerceWidget>
       ) : null}
     </div>
   );

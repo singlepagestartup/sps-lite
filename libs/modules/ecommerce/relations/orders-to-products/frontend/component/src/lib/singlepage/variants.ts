@@ -4,6 +4,9 @@ import { Component as AdminTable } from "./admin-table";
 import { Component as AdminSelectInput } from "./admin-select-input";
 import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
+import { Component as AddToCart } from "./add-to-cart";
+import { Component as EditInCart } from "./edit-in-cart";
+
 export const variants = {
   find: Find,
   "admin-table-row": AdminTableRow,
@@ -11,4 +14,6 @@ export const variants = {
   "admin-select-input": AdminSelectInput,
   "admin-form": AdminForm,
   default: Default,
+  "add-to-cart": AddToCart,
+  "edit-in-cart": EditInCart,
 };

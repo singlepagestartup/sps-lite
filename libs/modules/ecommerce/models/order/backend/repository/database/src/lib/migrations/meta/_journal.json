@@ -8,6 +8,13 @@
       "when": 1723403108534,
       "tag": "0000_hot_lockheed",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1723505275153,
+      "tag": "0001_windy_professor_monster",
+      "breakpoints": true
     }
   ]
 }

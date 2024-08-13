@@ -13,9 +13,11 @@ import {
 } from "@sps/host/relations/widgets-to-external-widgets/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 import { Component as WidgetSelectInput } from "@sps/host/models/widget/frontend/component";
-import { Component as SpsWebsiteBuilderWidget } from "@sps/website-builder/models/widget/frontend/component";
+import { Component as WebsiteBuilderWidget } from "@sps/website-builder/models/widget/frontend/component";
 import { Component as StartupWidget } from "@sps/startup/models/widget/frontend/component";
-import { Component as SpsRbacWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as BillingWidget } from "@sps/billing/models/widget/frontend/component";
+import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -105,7 +107,7 @@ export function Component(props: IComponentPropsExtended) {
         />
 
         {watchData.externalModule === "website-builder" ? (
-          <SpsWebsiteBuilderWidget
+          <WebsiteBuilderWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"
@@ -125,7 +127,27 @@ export function Component(props: IComponentPropsExtended) {
         ) : null}
 
         {watchData.externalModule === "rbac" ? (
-          <SpsRbacWidget
+          <RbacWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="externalWidgetId"
+          />
+        ) : null}
+
+        {watchData.externalModule === "billing" ? (
+          <BillingWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="externalWidgetId"
+          />
+        ) : null}
+
+        {watchData.externalModule === "ecommerce" ? (
+          <EcommerceWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"

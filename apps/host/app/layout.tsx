@@ -22,11 +22,6 @@ export default async function RootLayout({
       >
         <Suspense fallback={<Loading />}>
           <SpsRbacProvider isServer={false} hostUrl="/">
-            <SpsRbacSubject
-              isServer={false}
-              hostUrl="/"
-              variant="ethereum-virtual-machine"
-            />
             <SpsRbacSubject isServer={false} hostUrl="/" variant="init">
               <SpsBroadcast hostUrl="/" isServer={true} />
               <Admin hostUrl="/" isServer={true} />

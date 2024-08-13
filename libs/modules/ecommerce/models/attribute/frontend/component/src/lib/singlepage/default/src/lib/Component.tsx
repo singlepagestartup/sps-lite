@@ -1,5 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { Component as AttributeKey } from "@sps/ecommerce/models/attribute-key/frontend/component";
+import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attributes-to-attribute-keys/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -8,11 +10,68 @@ export function Component(props: IComponentPropsExtended) {
       data-model="attribute"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full py-10 text-center flex flex-col gap-1")}
+      className={cn("w-full flex flex-col", props.className || "")}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: attribute</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <AttributesToAttributeKeys
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "attributeId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <AttributeKey
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="find"
+                apiProps={{
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "id",
+                          method: "eq",
+                          value: entity.attributeKeyId,
+                        },
+                      ],
+                    },
+                  },
+                }}
+              >
+                {({ data }) => {
+                  return data?.map((entity, index) => {
+                    return (
+                      <div key={index} className="flex gap-2 w-fit">
+                        <AttributeKey
+                          isServer={props.isServer}
+                          hostUrl={props.hostUrl}
+                          variant={entity.variant as any}
+                          data={entity}
+                        />
+                        <p>{props.data[entity.field]}</p>
+                      </div>
+                    );
+                  });
+                }}
+              </AttributeKey>
+            );
+          });
+        }}
+      </AttributesToAttributeKeys>
     </div>
   );
 }
