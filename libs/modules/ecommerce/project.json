@@ -70,6 +70,9 @@
             "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-generate"
           },
           {
+            "command": "nx run @sps/ecommerce:relations:orders-to-billing-payment-intents:repository-generate"
+          },
+          {
             "command": "nx run @sps/ecommerce:relations:orders-to-products:repository-generate"
           },
           {
@@ -108,6 +111,9 @@
         "commands": [
           {
             "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:orders-to-billing-payment-intents:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-products:repository-migrate"
@@ -335,6 +341,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/ecommerce/relations/orders-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:orders-to-billing-payment-intents:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/orders-to-billing-payment-intents/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:orders-to-billing-payment-intents:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/orders-to-billing-payment-intents/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

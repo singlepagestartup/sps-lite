@@ -6,6 +6,8 @@ import { Component as AdminSelectInput } from "./admin-select-input";
 import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
 import { Component as Create } from "./create";
+import { Component as Cart } from "./cart";
+import { Component as Checkout } from "./checkout";
 
 export const variants = {
   "find-by-id": FindById,
@@ -16,4 +18,6 @@ export const variants = {
   "admin-form": AdminForm,
   default: Default,
   create: Create,
+  cart: Cart,
+  checkout: Checkout,
 };

@@ -59,7 +59,7 @@ export function Component(props: IComponentPropsExtended) {
                                   <SubjectsToEcommerceOrders
                                     isServer={props.isServer}
                                     hostUrl={props.hostUrl}
-                                    variant="product-action"
+                                    variant="ecommerce-order-product-cart"
                                     subject={subject}
                                     product={entity}
                                     apiProps={{
@@ -82,6 +82,40 @@ export function Component(props: IComponentPropsExtended) {
                           });
                         }}
                       </Product>
+                    }
+                    orders={
+                      <SubjectsToEcommerceOrders
+                        isServer={props.isServer}
+                        hostUrl={props.hostUrl}
+                        variant="find"
+                        apiProps={{
+                          params: {
+                            filters: {
+                              and: [
+                                {
+                                  column: "subjectId",
+                                  method: "eq",
+                                  value: subject.id,
+                                },
+                              ],
+                            },
+                          },
+                        }}
+                      >
+                        {({ data }) => {
+                          return data?.map((entity, index) => {
+                            return (
+                              <SubjectsToEcommerceOrders
+                                key={index}
+                                isServer={props.isServer}
+                                hostUrl={props.hostUrl}
+                                variant="default"
+                                data={entity}
+                              />
+                            );
+                          });
+                        }}
+                      </SubjectsToEcommerceOrders>
                     }
                   />
                 );

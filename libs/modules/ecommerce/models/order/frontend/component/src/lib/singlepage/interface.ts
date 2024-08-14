@@ -6,6 +6,8 @@ import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-sele
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as ICreateComponentProps } from "./create";
+import { IComponentProps as ICartComponentProps } from "./cart";
+import { IComponentProps as ICheckoutComponentProps } from "./checkout";
 
 export type IComponentProps =
   | IFindByIdComponentProps
@@ -16,4 +18,6 @@ export type IComponentProps =
   | IAdminFormComponentProps
   | IDefaultComponentProps
   | ICreateComponentProps
+  | ICartComponentProps
+  | ICheckoutComponentProps
   | never;

@@ -9,7 +9,15 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export const route = "/api/ecommerce/orders";
 export const variants = ["default"];
 export const types = ["cart", "order"];
-export const statuses = ["new", "canceled", "completed"];
+export const statuses = [
+  "new",
+  "paying",
+  "approving",
+  "packaging",
+  "delivering",
+  "delivered",
+  "canceled",
+];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

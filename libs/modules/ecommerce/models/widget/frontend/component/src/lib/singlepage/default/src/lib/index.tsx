@@ -1,6 +1,6 @@
 import { Provider } from "@sps/ecommerce/models/widget/sdk/client";
 import { IComponentProps } from "./interface";
-import Client from "./client";
+import Client from "./c";
 import Server from "./server";
 import { Skeleton } from "./Skeleton";
 import { Suspense } from "react";

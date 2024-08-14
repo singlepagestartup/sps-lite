@@ -1,4 +1,7 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
+import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
+import { Component as EcommerceOrderCheckout } from "../../../ecommerce-order-checkout";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,13 +10,48 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="subjects-to-ecommerce-orders"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className={cn("w-full flex flex-col gap-1", props.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">
-        Relation: subjects-to-ecommerce-orders
-      </p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Order
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.ecommerceOrderId,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <Order
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="cart"
+                data={entity}
+                checkout={
+                  <EcommerceOrderCheckout
+                    data={props.data}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant="ecommerce-order-checkout"
+                  />
+                }
+              />
+            );
+          });
+        }}
+      </Order>
     </div>
   );
 }
