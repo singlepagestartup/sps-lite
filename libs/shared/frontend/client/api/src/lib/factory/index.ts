@@ -81,7 +81,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               cb: (data) => {
                 addToGlobalStore({
                   name: factoryProps.route,
-                  type: "findById",
+                  type: "query",
                   result: data,
                   props,
                 });
@@ -116,7 +116,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           cb: (data) => {
             addToGlobalStore({
               name: factoryProps.route,
-              type: "find",
+              type: "query",
               result: data,
               props,
             });
@@ -144,7 +144,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "create",
+                type: "mutation",
                 result: data,
                 props,
                 setRequestId: props?.setRequestId,
@@ -173,7 +173,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "update",
+                type: "mutation",
                 result: data,
                 props,
                 setRequestId: props?.setRequestId,
@@ -201,7 +201,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "delete",
+                type: "mutation",
                 result: data,
                 props,
               });

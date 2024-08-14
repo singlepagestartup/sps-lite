@@ -8,6 +8,8 @@ import { Button, Form } from "@sps/shared-ui-shadcn";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "@sps/rbac/relations/subjects-to-ecommerce-orders/sdk/client";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   productId: z.string().optional(),
@@ -15,6 +17,7 @@ const formSchema = z.object({
 });
 
 export function Component(props: IComponentPropsExtended) {
+  const router = useRouter();
   const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -41,6 +44,12 @@ export function Component(props: IComponentPropsExtended) {
       },
     });
   }
+
+  // useEffect(() => {
+  //   if (createEntity.isSuccess) {
+  //     router.refresh();
+  //   }
+  // }, [createEntity.isSuccess]);
 
   return (
     <Form {...form}>

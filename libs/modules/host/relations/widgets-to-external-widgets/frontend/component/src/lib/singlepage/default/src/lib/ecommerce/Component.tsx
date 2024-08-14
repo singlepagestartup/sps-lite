@@ -57,7 +57,7 @@ export function Component(props: IComponentPropsExtended) {
                                 data={entity}
                                 action={
                                   <SubjectsToEcommerceOrders
-                                    isServer={props.isServer}
+                                    isServer={false}
                                     hostUrl={props.hostUrl}
                                     variant="ecommerce-order-product-cart"
                                     subject={subject}

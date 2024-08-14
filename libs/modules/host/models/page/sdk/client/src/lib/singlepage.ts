@@ -88,7 +88,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "find-by-url",
+          type: "query",
           name: `${route}/find-by-url`,
           props: this,
           result: data,
@@ -143,7 +143,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "url-segment-value",
+          type: "query",
           name: `${route}/url-segment-value`,
           props: this,
           result: data,

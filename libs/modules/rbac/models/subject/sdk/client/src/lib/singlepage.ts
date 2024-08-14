@@ -156,7 +156,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "is-authorized",
+          type: "query",
           name: `${route}/is-authorized`,
           props: this,
           result: data,
@@ -213,7 +213,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "me",
+          type: "query",
           name: `${route}/me`,
           props: this,
           result: data,
@@ -298,7 +298,7 @@ export const api = {
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
-          type: "authentication.loginAndPassword",
+          type: "mutation",
           name: `${route}/${props?.type ?? "authentication"}/login-and-password`,
           props: this,
           result: data,
@@ -379,7 +379,7 @@ export const api = {
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
-          type: "authentication.refresh",
+          type: "mutation",
           name: `${route}/authentication/refresh`,
           props: this,
           result: data,
@@ -440,7 +440,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "logout",
+          type: "mutation",
           name: `${route}/logout`,
           props: this,
           result: data,
@@ -495,7 +495,7 @@ export const api = {
       },
       select(data) {
         globalActionsStore.getState().addAction({
-          type: "is-authorized",
+          type: "query",
           name: `${route}/is-authorized`,
           props: this,
           result: data,
@@ -576,7 +576,7 @@ export const api = {
       },
       onSuccess(data) {
         globalActionsStore.getState().addAction({
-          type: "authentication.ethereumVirtualMachine",
+          type: "mutation",
           name: `${route}/authentication/ethereum-virtual-machine`,
           props: this,
           result: data,

@@ -1,3 +1,5 @@
+"use client";
+
 import { IComponentPropsExtended } from "./interface";
 import { Component as OrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
 import { Component as AddToCart } from "./assets/AddToCart";
@@ -13,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       {props.data.length ? (
         <OrdersToProducts
-          isServer={props.isServer}
+          isServer={false}
           hostUrl={props.hostUrl}
           variant="find"
           apiProps={{
@@ -44,7 +46,7 @@ export function Component(props: IComponentPropsExtended) {
               return (
                 <OrdersToProducts
                   key={index}
-                  isServer={props.isServer}
+                  isServer={false}
                   hostUrl={props.hostUrl}
                   variant="find"
                   apiProps={{

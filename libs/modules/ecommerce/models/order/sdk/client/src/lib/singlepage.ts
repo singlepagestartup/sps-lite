@@ -42,7 +42,7 @@ export const api = {
           cb: (data) => {
             addToGlobalStore({
               name: route,
-              type: "checkout",
+              type: "mutation",
               result: data,
               props,
               setRequestId: props?.setRequestId,
