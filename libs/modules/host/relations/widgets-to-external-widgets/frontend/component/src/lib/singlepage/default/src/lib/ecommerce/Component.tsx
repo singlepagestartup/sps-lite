@@ -3,6 +3,7 @@ import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/comp
 import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
 import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-orders/frontend/component";
 import { Component as Product } from "@sps/ecommerce/models/product/frontend/component";
+import { Component as Orders } from "./Orders";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -83,40 +84,7 @@ export function Component(props: IComponentPropsExtended) {
                         }}
                       </Product>
                     }
-                    orders={
-                      <SubjectsToEcommerceOrders
-                        isServer={props.isServer}
-                        hostUrl={props.hostUrl}
-                        variant="find"
-                        apiProps={{
-                          params: {
-                            filters: {
-                              and: [
-                                {
-                                  column: "subjectId",
-                                  method: "eq",
-                                  value: subject.id,
-                                },
-                              ],
-                            },
-                          },
-                        }}
-                      >
-                        {({ data }) => {
-                          return data?.map((entity, index) => {
-                            return (
-                              <SubjectsToEcommerceOrders
-                                key={index}
-                                isServer={props.isServer}
-                                hostUrl={props.hostUrl}
-                                variant="default"
-                                data={entity}
-                              />
-                            );
-                          });
-                        }}
-                      </SubjectsToEcommerceOrders>
-                    }
+                    orders={<Orders {...props} subject={subject} />}
                   />
                 );
               });

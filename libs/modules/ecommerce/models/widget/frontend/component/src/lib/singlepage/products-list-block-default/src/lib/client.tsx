@@ -3,10 +3,8 @@ import "client-only";
 
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
-import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/ecommerce/models/widget/sdk/client";
-import { ErrorBoundary } from "@sps/ui-adapter";
 
 export default function Client(props: IComponentProps) {
   const { data, isLoading } = api.findById({
@@ -18,9 +16,5 @@ export default function Client(props: IComponentProps) {
     return <Skeleton />;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} isServer={false} data={data} />
-    </ErrorBoundary>
-  );
+  return <Component {...props} isServer={false} data={data} />;
 }

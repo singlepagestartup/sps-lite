@@ -3,19 +3,18 @@ import "client-only";
 
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
-import { Error } from "./Error";
-import { IComponentProps, variant, IModel } from "./interface";
+import { IComponentProps } from "./interface";
 import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/client";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default/client";
 
 export default function Client(props: IComponentProps) {
-  return (
-    <ParentComponent<IModel, typeof variant, any, IComponentProps>
-      Error={Error}
-      Skeleton={Skeleton}
-      Component={Component}
-      api={api}
-      {...props}
-    />
-  );
+  const { data, isLoading } = api.findById({
+    id: props.data.id,
+    ...props.apiProps,
+  });
+
+  if (isLoading || !data) {
+    return <Skeleton />;
+  }
+
+  return <Component {...props} isServer={false} data={data} />;
 }

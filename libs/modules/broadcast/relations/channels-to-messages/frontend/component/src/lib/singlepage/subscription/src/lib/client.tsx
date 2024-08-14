@@ -4,14 +4,10 @@ import "client-only";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/broadcast/relations/channels-to-messages/sdk/client";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { STALE_TIME } from "@sps/shared-utils";
 import { globalActionsStore, IAction } from "@sps/shared-frontend-client-store";
 
 export default function Client(props: IComponentProps) {
-  const params = useSearchParams();
-  const adminQueryParams = params.get("admin");
-
   const [ping, setPing] = useState<number>(STALE_TIME);
 
   const { data, isFetching, isLoading, dataUpdatedAt, refetch } = api.find(
@@ -28,14 +24,6 @@ export default function Client(props: IComponentProps) {
       clearTimeout(refreshTimeout);
     };
   }, [dataUpdatedAt]);
-
-  useEffect(() => {
-    if (!adminQueryParams) {
-      return;
-    }
-
-    setPing(1000);
-  }, [adminQueryParams]);
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {
