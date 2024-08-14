@@ -136,7 +136,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
   async isAuthorized(c: Context, next: any): Promise<Response> {
     try {
-      const secretKeyHeaders = c.req.header("X-rbac-SECRET-KEY");
+      const secretKeyHeaders = c.req.header("X-RBAC-SECRET-KEY");
       const secretKeyCookie = getCookie(c, "rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
 

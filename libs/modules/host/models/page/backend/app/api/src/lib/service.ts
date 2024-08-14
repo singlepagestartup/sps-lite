@@ -108,7 +108,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             `${BACKEND_URL}/api/${moduleName}/${modelName}`,
             {
               headers: {
-                "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
               },
             },
           ).then((res) => res.json());

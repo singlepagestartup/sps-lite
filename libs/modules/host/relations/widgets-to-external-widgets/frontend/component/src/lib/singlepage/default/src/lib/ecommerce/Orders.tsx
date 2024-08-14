@@ -2,10 +2,11 @@
 
 import { IComponentPropsExtended } from "../interface";
 import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-orders/frontend/component";
+import { IModel as ISubject } from "@sps/rbac/models/subject/sdk/model";
 
 export function Component(
   props: IComponentPropsExtended & {
-    subject: any;
+    subject: ISubject;
   },
 ) {
   return (

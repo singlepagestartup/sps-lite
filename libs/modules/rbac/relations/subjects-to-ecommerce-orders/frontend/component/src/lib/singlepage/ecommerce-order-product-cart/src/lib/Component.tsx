@@ -3,6 +3,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as OrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
 import { Component as AddToCart } from "./assets/AddToCart";
+import { Component as DeleteFromCart } from "./assets/DeleteFromCart";
 import { Component as UpdateInCart } from "./assets/UpdateInCart";
 
 export function Component(props: IComponentPropsExtended) {
@@ -71,12 +72,18 @@ export function Component(props: IComponentPropsExtended) {
                   {({ data }) => {
                     return data?.map((orderToProduct, index) => {
                       return (
-                        <UpdateInCart
-                          key={index}
-                          {...props}
-                          orderToProduct={orderToProduct}
-                          data={entity}
-                        />
+                        <div key={index} className="flex flex-col gap-2">
+                          <UpdateInCart
+                            {...props}
+                            orderToProduct={orderToProduct}
+                            data={entity}
+                          />
+                          <DeleteFromCart
+                            {...props}
+                            orderToProduct={orderToProduct}
+                            data={entity}
+                          />
+                        </div>
                       );
                     });
                   }}

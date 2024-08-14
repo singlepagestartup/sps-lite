@@ -13,6 +13,7 @@ import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { api as ordersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-payment-intents/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -127,7 +128,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -162,7 +163,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -181,7 +182,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      const prices: IAttribute[] = [];
+      let amount = 0;
 
       for (const orderToProduct of orderToProducts) {
         const productToAttributes = await productsToAttributes.find({
@@ -198,7 +199,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -239,7 +240,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             },
             options: {
               headers: {
-                "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -266,7 +267,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             id: productPriceAttributes[0].attributeId,
             options: {
               headers: {
-                "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -299,10 +300,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           );
         }
 
-        prices.push(productPrices[0]);
+        amount += Number(productPrices[0].number) * orderToProduct.quantity;
       }
-
-      console.log(`🚀 ~ checkout ~ prices:`, prices);
 
       const entity = await this.service.update({
         id: uuid,
@@ -312,9 +311,38 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
       });
 
+      const paymentIntent = await billingPaymentIntent.create({
+        data: {
+          amount,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const orderToBillingPaymentIntent =
+        await ordersToBillingPaymentIntents.create({
+          data: {
+            orderId: uuid,
+            billingPaymentIntentId: paymentIntent.id,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
       return c.json({
         data: entity,
-        prices,
       });
     } catch (error: any) {
       throw new HTTPException(400, {

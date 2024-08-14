@@ -62,7 +62,7 @@ export class Middleware {
       let session: IModel | null | undefined;
       let createNewSession = false;
 
-      if (c.req.header("X-rbac-SECRET-KEY")) {
+      if (c.req.header("X-RBAC-SECRET-KEY")) {
         return await next();
       }
 
@@ -105,7 +105,7 @@ export class Middleware {
             },
             options: {
               headers: {
-                "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -132,7 +132,7 @@ export class Middleware {
               id: session.id,
               options: {
                 headers: {
-                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -158,7 +158,7 @@ export class Middleware {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

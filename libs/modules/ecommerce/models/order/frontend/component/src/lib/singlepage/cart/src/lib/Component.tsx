@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
     >
       <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row">
         <div className="w-full lg:w-4/12">
-          <OrdersToProducts
+          {/* <OrdersToProducts
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="find"
@@ -44,10 +44,78 @@ export function Component(props: IComponentPropsExtended) {
                 );
               });
             }}
-          </OrdersToProducts>
+          </OrdersToProducts> */}
         </div>
-        <div className="w-full lg:w-8/12 flex flex-col">
+        <div className="w-full lg:w-8/12 flex flex-col gap-2">
           <p>Status: {props.data.status}</p>
+          <OrdersToProducts
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "orderId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <OrdersToProducts
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant="amount"
+                    data={entity}
+                  >
+                    {({ data }) => {
+                      return <p>Amount: {entity.quantity * Number(data)}</p>;
+                    }}
+                  </OrdersToProducts>
+                );
+              });
+            }}
+          </OrdersToProducts>
+          <OrdersToProducts
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "orderId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <OrdersToProducts
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant="quantity"
+                    data={entity}
+                  />
+                );
+              });
+            }}
+          </OrdersToProducts>
           {props.checkout}
         </div>
       </div>

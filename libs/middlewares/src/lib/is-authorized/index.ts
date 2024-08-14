@@ -63,7 +63,7 @@ export class Middleware {
     return createMiddleware(async (c, next) => {
       const reqMethod = c.req.method;
       const reqPath = c.req.path;
-      const secretKeyHeaders = c.req.header("X-rbac-SECRET-KEY");
+      const secretKeyHeaders = c.req.header("X-RBAC-SECRET-KEY");
       const secretKeyCookie = getCookie(c, "rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
       const authorizationCookie = getCookie(c, "rbac.subject.jwt");
@@ -99,7 +99,7 @@ export class Middleware {
 
       try {
         const headers = secretKey
-          ? { "X-rbac-SECRET-KEY": secretKey }
+          ? { "X-RBAC-SECRET-KEY": secretKey }
           : authorization
             ? { Authorization: authorization }
             : ({} as HeadersInit);

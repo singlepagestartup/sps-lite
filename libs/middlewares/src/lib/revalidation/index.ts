@@ -33,7 +33,7 @@ export class Middleware {
               data: { channelName: "revalidation", payload: path },
               options: {
                 headers: {
-                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -49,7 +49,7 @@ export class Middleware {
               data: { channelName: "revalidation", payload: pathWithoutId },
               options: {
                 headers: {
-                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",

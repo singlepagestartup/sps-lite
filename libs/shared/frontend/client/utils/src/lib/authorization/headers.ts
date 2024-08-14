@@ -9,7 +9,7 @@ export function util() {
   }
 
   if (secretKey) {
-    headers["X-rbac-SECRET-KEY"] = secretKey;
+    headers["X-RBAC-SECRET-KEY"] = secretKey;
   }
 
   return headers;

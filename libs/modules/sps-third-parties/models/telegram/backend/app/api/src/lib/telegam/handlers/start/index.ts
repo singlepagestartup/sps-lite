@@ -29,7 +29,7 @@ export async function handler(
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",

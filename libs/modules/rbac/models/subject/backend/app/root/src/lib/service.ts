@@ -105,7 +105,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -130,7 +130,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -153,7 +153,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -182,7 +182,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
               options: {
                 headers: {
-                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -211,7 +211,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -234,7 +234,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -270,7 +270,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
               options: {
                 headers: {
-                  "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -404,7 +404,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -428,7 +428,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -449,7 +449,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -482,7 +482,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -502,7 +502,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -526,7 +526,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -571,7 +571,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -675,7 +675,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -691,7 +691,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -712,7 +712,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -745,7 +745,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -765,7 +765,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -789,7 +789,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -821,7 +821,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-rbac-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
