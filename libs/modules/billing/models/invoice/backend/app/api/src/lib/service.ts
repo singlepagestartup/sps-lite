@@ -76,7 +76,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       const checkout = await stripe.checkout.sessions.create({
         line_items: [{ price: stripeProduct.default_price, quantity: 1 }],
         mode: "payment",
-        success_url: `${HOST_URL}/api/billing/invoices/${superResult.id}/webhook?sign=${signature}`,
+        success_url: `${HOST_URL}/api/billing/invoices/${superResult.id}/webhook?signature=${signature}`,
         cancel_url: `${HOST_URL}`,
       });
 

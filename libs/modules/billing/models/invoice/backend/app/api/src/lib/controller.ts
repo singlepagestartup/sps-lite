@@ -6,7 +6,8 @@ import { Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
 import * as jwt from "hono/jwt";
-import { SPS_RBAC_JWT_SECRET } from "@sps/shared-utils";
+import { SPS_RBAC_JWT_SECRET, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -81,7 +82,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
   async webhook(c: Context, next: any): Promise<Response> {
     const query = c.req.query();
-    if (query.sign) {
+    if (query.signature) {
       if (!SPS_RBAC_JWT_SECRET) {
         return c.json(
           {
@@ -93,7 +94,18 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      const signature = query.sign;
+      if (!SPS_RBAC_SECRET_KEY) {
+        return c.json(
+          {
+            message: "RBAC secret key not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const signature = query.signature;
       const decoded = await jwt.verify(signature, SPS_RBAC_JWT_SECRET);
 
       if (!decoded.invoice) {
@@ -133,17 +145,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      if (invoice.status === "paid") {
-        return c.json(
-          {
-            message: "Invoice already paid",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
       const updated = await this.service.update({
         id: invoiceId,
         data: {
@@ -152,6 +153,48 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           status: "paid",
         },
       });
+
+      const paymentIntentToInvoices = await paymentIntentsToInvoicesApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "invoiceId",
+                method: "eq",
+                value: invoiceId,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (paymentIntentToInvoices?.length) {
+        for (const paymentIntentToInvoice of paymentIntentToInvoices) {
+          await paymentIntentsToInvoicesApi.update({
+            id: paymentIntentToInvoice.id,
+            data: {
+              ...paymentIntentToInvoice,
+              status: "succeeded",
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+        }
+      }
     }
 
     return c.redirect("/", 301);
