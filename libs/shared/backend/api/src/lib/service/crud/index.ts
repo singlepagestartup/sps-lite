@@ -35,7 +35,7 @@ export class Service<DTO extends Record<string, unknown>>
     return action.execute(props);
   }
 
-  async create(props: { data: any }): Promise<any | null> {
+  async create(props: { data: any }): Promise<DTO> {
     const action = new CreateAction(this.repository);
     return action.execute(props);
   }

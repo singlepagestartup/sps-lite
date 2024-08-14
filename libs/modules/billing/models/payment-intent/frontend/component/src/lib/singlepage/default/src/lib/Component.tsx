@@ -1,4 +1,7 @@
+"use client";
+
 import { IComponentPropsExtended } from "./interface";
+import { Component as PaymentIntentsToInvoices } from "@sps/billing/relations/payment-intents-to-invoices/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,11 +10,40 @@ export function Component(props: IComponentPropsExtended) {
       data-model="payment-intent"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className="w-full py-10 text-center flex flex-col gap-1"
+      className="w-full flex flex-col"
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: payment-intent</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <PaymentIntentsToInvoices
+        isServer={false}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "paymentIntentId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((entity, index) => {
+            return (
+              <PaymentIntentsToInvoices
+                key={index}
+                isServer={false}
+                hostUrl={props.hostUrl}
+                variant="default"
+                data={entity}
+              />
+            );
+          });
+        }}
+      </PaymentIntentsToInvoices>
     </div>
   );
 }

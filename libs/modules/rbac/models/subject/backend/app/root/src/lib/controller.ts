@@ -337,7 +337,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      setCookie(c, "rbac.subject.jwt", entity.jwt, {
+      setCookie(c, "rbac.subject.jwt", jwtToken, {
         path: "/",
         secure: true,
         httpOnly: false,

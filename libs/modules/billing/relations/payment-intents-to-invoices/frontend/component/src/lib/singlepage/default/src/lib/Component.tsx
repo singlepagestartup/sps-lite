@@ -36,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
-                variant={entity.variant as any}
+                variant="default"
                 data={entity}
               />
             );

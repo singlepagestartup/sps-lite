@@ -15,6 +15,13 @@
       "when": 1723413703911,
       "tag": "0001_swift_cyclops",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1723661108779,
+      "tag": "0002_daily_kang",
+      "breakpoints": true
     }
   ]
 }

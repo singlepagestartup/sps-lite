@@ -12,6 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       <p className="font-bold">Generated variant</p>
       <p className="font-bold text-4xl">Model: invoice</p>
       <p className="font-bold text-4xl">Variant: default</p>
+      <p className="font-bold text-4xl">{JSON.stringify(props.data)}</p>
     </div>
   );
 }

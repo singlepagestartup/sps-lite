@@ -95,3 +95,7 @@ export const REVALIDATE: number | undefined =
 export const FILE_STORAGE_PROVIDER: "vercel-blob" | "local" =
   process.env["FILE_STORAGE_PROVIDER"] === "local" ? "local" : "vercel-blob";
 export const BLOB_READ_WRITE_TOKEN = process.env["BLOB_READ_WRITE_TOKEN"];
+
+export const STRIPE_PUBLISHABLE_KEY =
+  process.env["NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"];
+export const STRIPE_SECRET_KEY = process.env["STRIPE_SECRET_KEY"];

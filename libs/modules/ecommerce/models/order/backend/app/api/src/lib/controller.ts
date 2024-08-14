@@ -99,6 +99,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       const data = JSON.parse(body["data"]);
 
+      const provider = data["provider"] ?? "stripe";
+
       const existing = await this.service.findById({
         id: uuid,
       });
@@ -314,6 +316,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const paymentIntent = await billingPaymentIntent.create({
         data: {
           amount,
+          provider,
         },
         options: {
           headers: {
