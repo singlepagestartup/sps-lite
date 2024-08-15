@@ -16,9 +16,12 @@ export function Component(props: IComponentPropsExtended) {
   const form = useForm<z.infer<typeof insertSchema>>({
     resolver: zodResolver(insertSchema),
     defaultValues: {
-      variant: props.data?.variant || "default",
-      className: props.data?.className || "",
       title: props.data?.title || "",
+      subtitle: props.data?.subtitle || "",
+      variant: props.data?.variant || "default",
+      description: props.data?.description || "",
+      className: props.data?.className || "",
+      anchor: props.data?.anchor || "",
     },
   });
 
@@ -51,6 +54,42 @@ export function Component(props: IComponentPropsExtended) {
           label="Title"
           form={form}
           placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="anchor"
+          label="Anchor"
+          form={form}
+          placeholder="Type anchor"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="subtitle"
+          label="Subitle"
+          form={form}
+          placeholder="Type subtitle"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="tiptap"
+          label="Description"
+          name="description"
+          form={form}
+          placeholder="Type description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="className"
+          label="Class name"
+          form={form}
+          placeholder="Type class name"
         />
 
         <FormField
