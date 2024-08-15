@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
                 {
                   column: "id",
                   method: "eq",
-                  value: props.data.spsFileStorageModuleWidgetId,
+                  value: props.data.fileStorageModuleWidgetId,
                 },
               ],
             },

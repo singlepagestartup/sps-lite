@@ -1,8 +1,8 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/website-builder/models/feature/frontend/component";
-import { Component as ContentBlocksToFeatures } from "@sps/website-builder/relations/content-blocks-to-features/frontend/component";
-import { Component as FeaturesToSpsFileStorageModuleWidgets } from "@sps/website-builder/relations/features-to-file-storage-module-widgets/frontend/component";
+import { Component as WidgetsToFeatures } from "@sps/website-builder/relations/widgets-to-features/frontend/component";
+import { Component as FeaturesToFileStorageModuleWidgets } from "@sps/website-builder/relations/features-to-file-storage-module-widgets/frontend/component";
 import { Component as FeaturesToButtonsArrays } from "@sps/website-builder/relations/features-to-buttons-arrays/frontend/component";
 
 export function Component() {
@@ -18,13 +18,13 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            contentBlocksToFeatures={({ data, hostUrl, isServer }) => {
+            widgetsToFeatures={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <ContentBlocksToFeatures
+                <WidgetsToFeatures
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -44,7 +44,7 @@ export function Component() {
                 />
               );
             }}
-            featuresToSpsFileStorageModuleWidgets={({
+            featuresToFileStorageModuleWidgets={({
               data,
               hostUrl,
               isServer,
@@ -54,7 +54,7 @@ export function Component() {
               }
 
               return (
-                <FeaturesToSpsFileStorageModuleWidgets
+                <FeaturesToFileStorageModuleWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

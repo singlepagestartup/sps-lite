@@ -4,7 +4,7 @@ import { app as spsWebsiteBuilder } from "@sps/website-builder/backend/app/api";
 import { app as spsRbac } from "@sps/rbac/backend/app/api";
 import { app as spsCrm } from "@sps/crm/backend/app/api";
 import { app as spsEcommerce } from "@sps/ecommerce/backend/app/api";
-import { app as spsFileStorage } from "@sps/file-storage/backend/app/api";
+import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
@@ -77,17 +77,17 @@ import { exit } from "process";
     seeds.push(spsRbacModelsSeeds);
   }
 
-  const spsFileStorageModelsSeeds = await spsFileStorage.seed({
+  const fileStorageModelsSeeds = await fileStorage.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsFileStorageModelsSeeds)) {
-    spsFileStorageModelsSeeds.forEach((seed) => {
+  if (Array.isArray(fileStorageModelsSeeds)) {
+    fileStorageModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsFileStorageModelsSeeds);
+    seeds.push(fileStorageModelsSeeds);
   }
 
   const startupModelsSeeds = await startup.seed({
@@ -168,17 +168,17 @@ import { exit } from "process";
     seeds.push(spsRbacRelationsSeeds);
   }
 
-  const spsFileStorageRelationsSeeds = await spsFileStorage.seed({
+  const fileStorageRelationsSeeds = await fileStorage.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsFileStorageRelationsSeeds)) {
-    spsFileStorageRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(fileStorageRelationsSeeds)) {
+    fileStorageRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsFileStorageRelationsSeeds);
+    seeds.push(fileStorageRelationsSeeds);
   }
 
   const startupRelationsSeeds = await startup.seed({

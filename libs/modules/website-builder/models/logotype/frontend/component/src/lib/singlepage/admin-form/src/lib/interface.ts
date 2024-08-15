@@ -11,13 +11,10 @@ export const variant = "admin-form" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  footerBlocksToLogotypes?: (
+  widgetsToLogotypes?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
-  navbarBlocksToLogotypes?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
-  logotypesToSpsFileStorageModuleWidgets?: (
+  logotypesToFileStorageModuleWidgets?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
 }

@@ -1,8 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as WidgetsToContentBlocks } from "@sps/website-builder/relations/widgets-to-content-blocks/frontend/component";
-import { Component as WidgetsToNavbarBlocks } from "@sps/website-builder/relations/widgets-to-navbar-blocks/frontend/component";
-import { Component as WidgetsToFooterBlocks } from "@sps/website-builder/relations/widgets-to-footer-blocks/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -11,104 +8,11 @@ export function Component(props: IComponentPropsExtended) {
       data-model="widget"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex flex-col", props.data.className)}
+      className={cn("w-full flex", props.data.className)}
     >
-      <WidgetsToContentBlocks
-        isServer={props.isServer}
-        hostUrl={props.hostUrl}
-        variant="find"
-        apiProps={{
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "widgetId",
-                  method: "eq",
-                  value: props.data.id,
-                },
-              ],
-            },
-          },
-        }}
-      >
-        {({ data }) => {
-          return data?.map((entity, index) => {
-            return (
-              <WidgetsToContentBlocks
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant={entity.variant as any}
-                data={entity}
-              ></WidgetsToContentBlocks>
-            );
-          });
-        }}
-      </WidgetsToContentBlocks>
-      <WidgetsToNavbarBlocks
-        isServer={props.isServer}
-        hostUrl={props.hostUrl}
-        variant="find"
-        apiProps={{
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "widgetId",
-                  method: "eq",
-                  value: props.data.id,
-                },
-              ],
-            },
-          },
-        }}
-      >
-        {({ data }) => {
-          return data?.map((entity, index) => {
-            return (
-              <WidgetsToNavbarBlocks
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant={entity.variant as any}
-                data={entity}
-              ></WidgetsToNavbarBlocks>
-            );
-          });
-        }}
-      </WidgetsToNavbarBlocks>
-      <WidgetsToFooterBlocks
-        isServer={props.isServer}
-        hostUrl={props.hostUrl}
-        variant="find"
-        apiProps={{
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "widgetId",
-                  method: "eq",
-                  value: props.data.id,
-                },
-              ],
-            },
-          },
-        }}
-      >
-        {({ data }) => {
-          return data?.map((entity, index) => {
-            return (
-              <WidgetsToFooterBlocks
-                key={index}
-                isServer={props.isServer}
-                hostUrl={props.hostUrl}
-                variant={entity.variant as any}
-                data={entity}
-              ></WidgetsToFooterBlocks>
-            );
-          });
-        }}
-      </WidgetsToFooterBlocks>
+      <p className="font-bold">Generated variant</p>
+      <p className="font-bold text-4xl">Model: widget</p>
+      <p className="font-bold text-4xl">Variant: default</p>
     </div>
   );
 }

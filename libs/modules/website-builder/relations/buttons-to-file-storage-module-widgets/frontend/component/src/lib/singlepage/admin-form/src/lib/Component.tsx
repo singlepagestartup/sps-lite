@@ -25,8 +25,7 @@ export function Component(props: IComponentPropsExtended) {
       className: props.data?.className || "",
       orderIndex: props.data?.orderIndex || 0,
       buttonId: props.data?.buttonId || "",
-      spsFileStorageModuleWidgetId:
-        props.data?.spsFileStorageModuleWidgetId || "",
+      fileStorageModuleWidgetId: props.data?.fileStorageModuleWidgetId || "",
     },
   });
 
@@ -93,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="spsFileStorageModuleWidgetId"
+          formFieldName="fileStorageModuleWidgetId"
           form={form}
         />
       </div>

@@ -2,7 +2,7 @@
 
 import { Component as ParentComponent } from "@sps/website-builder/models/slider/frontend/component";
 import { Component as SlidersToSlides } from "@sps/website-builder/relations/sliders-to-slides/frontend/component";
-import { Component as ContentBlocksToSliders } from "@sps/website-builder/relations/content-blocks-to-sliders/frontend/component";
+import { Component as WidgetsToSliders } from "@sps/website-builder/relations/widgets-to-sliders/frontend/component";
 
 export function Component() {
   return (
@@ -43,13 +43,13 @@ export function Component() {
                 />
               );
             }}
-            sliderBlocksToSliders={({ data, hostUrl, isServer }) => {
+            widgetsToSliders={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <ContentBlocksToSliders
+                <WidgetsToSliders
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

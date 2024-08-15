@@ -11,7 +11,7 @@ export const variant = "admin-form" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  sliderBlocksToSliders?: (
+  widgetsToSliders?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
   slidersToSlides?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;

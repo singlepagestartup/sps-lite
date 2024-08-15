@@ -15,5 +15,5 @@ export const Table = pgTable(table, {
     .uuid("se_id")
     .notNull()
     .references(() => Slide.id, { onDelete: "cascade" }),
-  spsFileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_wt_id").notNull(),
+  fileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_wt_id").notNull(),
 });

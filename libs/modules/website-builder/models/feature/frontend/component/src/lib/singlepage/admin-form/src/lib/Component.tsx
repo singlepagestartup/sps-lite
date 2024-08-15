@@ -95,16 +95,16 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.contentBlocksToFeatures
-          ? props.contentBlocksToFeatures({
+        {props.widgetsToFeatures
+          ? props.widgetsToFeatures({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
             })
           : null}
 
-        {props.featuresToSpsFileStorageModuleWidgets
-          ? props.featuresToSpsFileStorageModuleWidgets({
+        {props.featuresToFileStorageModuleWidgets
+          ? props.featuresToFileStorageModuleWidgets({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

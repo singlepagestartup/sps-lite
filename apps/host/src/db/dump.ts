@@ -3,7 +3,7 @@ import { app as spsWebsiteBuilder } from "@sps/website-builder/backend/app/api";
 import { app as spsRbac } from "@sps/rbac/backend/app/api";
 import { app as spsCrm } from "@sps/crm/backend/app/api";
 import { app as spsEcommerce } from "@sps/ecommerce/backend/app/api";
-import { app as spsFileStorage } from "@sps/file-storage/backend/app/api";
+import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
@@ -34,7 +34,7 @@ import { exit } from "process";
     dumps: [],
   });
 
-  await spsFileStorage.dump({
+  await fileStorage.dump({
     type: "model",
     dumps: [],
   });
@@ -59,7 +59,7 @@ import { exit } from "process";
     dumps: [],
   });
 
-  await spsFileStorage.dump({
+  await fileStorage.dump({
     type: "relation",
     dumps: [],
   });

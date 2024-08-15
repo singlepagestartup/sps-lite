@@ -50,8 +50,8 @@ export async function action({ url, catchErrors = false }: Params) {
 
     // if (primaryMetadata?.metadataToSpsFileStorageModuleFiles?.length) {
     //   for (const metadataToSpsFileStorageModuleFile of primaryMetadata.metadataToSpsFileStorageModuleFiles) {
-    //     const file = await spsFileStorageFileapi.findById({
-    //       id: metadataToSpsFileStorageModuleFile.spsFileStorageModuleFileId,
+    //     const file = await fileStorageFileapi.findById({
+    //       id: metadataToSpsFileStorageModuleFile.fileStorageModuleFileId,
     //     });
 
     //     const fileUrl = `${BACKEND_URL}${file.file}`;

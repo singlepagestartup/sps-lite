@@ -45,7 +45,7 @@ export class Configuration extends ParentConfiguration {
               },
             },
             {
-              field: "spsFileStorageModuleWidgetId",
+              field: "fileStorageModuleWidgetId",
               transform: (data) => {
                 const relationEntites = data.seeds
                   .find(
@@ -57,7 +57,7 @@ export class Configuration extends ParentConfiguration {
                   ?.seeds?.filter(
                     (seed) =>
                       seed.dump.id ===
-                      data.entity.dump.spsFileStorageModuleWidgetId,
+                      data.entity.dump.fileStorageModuleWidgetId,
                   );
 
                 return relationEntites?.[0].new.id;

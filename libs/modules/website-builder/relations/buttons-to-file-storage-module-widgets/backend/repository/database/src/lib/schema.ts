@@ -15,5 +15,5 @@ export const Table = pgTable(table, {
     .uuid("bn_id")
     .notNull()
     .references(() => Button.id, { onDelete: "cascade" }),
-  spsFileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_me_fe_id").notNull(),
+  fileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_me_fe_id").notNull(),
 });

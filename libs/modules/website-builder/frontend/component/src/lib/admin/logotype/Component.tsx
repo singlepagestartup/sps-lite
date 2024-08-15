@@ -1,9 +1,8 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/website-builder/models/logotype/frontend/component";
-import { Component as LogotypesToSpsFileStorageModuleWidgets } from "@sps/website-builder/relations/logotypes-to-file-storage-module-widgets/frontend/component";
-import { Component as FooterBlocksToLogotypes } from "@sps/website-builder/relations/footer-blocks-to-logotypes/frontend/component";
-import { Component as NavbarBlocksToLogotypes } from "@sps/website-builder/relations/navbar-blocks-to-logotypes/frontend/component";
+import { Component as LogotypesToFileStorageModuleWidgets } from "@sps/website-builder/relations/logotypes-to-file-storage-module-widgets/frontend/component";
+import { Component as WidgetsToLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
 
 export function Component() {
   return (
@@ -18,7 +17,7 @@ export function Component() {
             hostUrl={props.hostUrl}
             data={props.data}
             variant="admin-form"
-            logotypesToSpsFileStorageModuleWidgets={({
+            logotypesToFileStorageModuleWidgets={({
               data,
               hostUrl,
               isServer,
@@ -28,7 +27,7 @@ export function Component() {
               }
 
               return (
-                <LogotypesToSpsFileStorageModuleWidgets
+                <LogotypesToFileStorageModuleWidgets
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"
@@ -48,39 +47,13 @@ export function Component() {
                 />
               );
             }}
-            footerBlocksToLogotypes={({ data, hostUrl, isServer }) => {
+            widgetsToLogotypes={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <FooterBlocksToLogotypes
-                  isServer={isServer}
-                  hostUrl={hostUrl}
-                  variant="admin-table"
-                  apiProps={{
-                    params: {
-                      filters: {
-                        and: [
-                          {
-                            column: "logotypeId",
-                            method: "eq",
-                            value: data.id,
-                          },
-                        ],
-                      },
-                    },
-                  }}
-                />
-              );
-            }}
-            navbarBlocksToLogotypes={({ data, hostUrl, isServer }) => {
-              if (!data) {
-                return;
-              }
-
-              return (
-                <NavbarBlocksToLogotypes
+                <WidgetsToLogotypes
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

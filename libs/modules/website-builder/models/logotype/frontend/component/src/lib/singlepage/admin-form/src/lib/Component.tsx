@@ -75,24 +75,16 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Type class name"
         />
 
-        {props.footerBlocksToLogotypes
-          ? props.footerBlocksToLogotypes({
+        {props.widgetsToLogotypes
+          ? props.widgetsToLogotypes({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
             })
           : null}
 
-        {props.logotypesToSpsFileStorageModuleWidgets
-          ? props.logotypesToSpsFileStorageModuleWidgets({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.navbarBlocksToLogotypes
-          ? props.navbarBlocksToLogotypes({
+        {props.logotypesToFileStorageModuleWidgets
+          ? props.logotypesToFileStorageModuleWidgets({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

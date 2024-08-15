@@ -75,24 +75,40 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.widgetsToFooterBlocks
-          ? props.widgetsToFooterBlocks({
+        {props.widgetsToButtonsArrays
+          ? props.widgetsToButtonsArrays({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
             })
           : null}
 
-        {props.widgetsToContentBlocks
-          ? props.widgetsToContentBlocks({
+        {props.widgetsToFeatures
+          ? props.widgetsToFeatures({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
             })
           : null}
 
-        {props.widgetsToNavbarBlocks
-          ? props.widgetsToNavbarBlocks({
+        {props.widgetsToFileStorageModuleWidgets
+          ? props.widgetsToFileStorageModuleWidgets({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.widgetsToLogotypes
+          ? props.widgetsToLogotypes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.widgetsToSliders
+          ? props.widgetsToSliders({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

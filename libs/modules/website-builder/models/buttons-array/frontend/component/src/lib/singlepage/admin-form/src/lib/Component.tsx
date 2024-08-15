@@ -93,24 +93,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.footerBlocksToButtonsArrays
-          ? props.footerBlocksToButtonsArrays({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.contentBlocksToButtonsArrays
-          ? props.contentBlocksToButtonsArrays({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.navbarBlocksToButtonsArrays
-          ? props.navbarBlocksToButtonsArrays({
+        {props.widgetsToButtonsArrays
+          ? props.widgetsToButtonsArrays({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
