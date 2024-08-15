@@ -409,8 +409,16 @@ export class Database<T extends PgTableWithColumns<any>>
               old: filteredEntity,
               dump: dumpEntity,
             };
+
             insertedEntities.push(seedResult);
           }
+        } else {
+          const insertedEntity = await this.insert(transformedEntity);
+          const seedResult = {
+            new: insertedEntity,
+            dump: dumpEntity,
+          };
+          insertedEntities.push(seedResult);
         }
       } else {
         const insertedEntity = await this.insert(transformedEntity);
