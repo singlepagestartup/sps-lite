@@ -8,6 +8,7 @@ import { Context } from "hono";
 import * as jwt from "hono/jwt";
 import { SPS_RBAC_JWT_SECRET, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
+import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -178,10 +179,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       if (paymentIntentToInvoices?.length) {
         for (const paymentIntentToInvoice of paymentIntentToInvoices) {
-          await paymentIntentsToInvoicesApi.update({
-            id: paymentIntentToInvoice.id,
+          const paymentIntent = await paymentIntentApi.findById({
+            id: paymentIntentToInvoice.paymentIntentId,
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!paymentIntent) {
+            continue;
+          }
+
+          await paymentIntentApi.update({
+            id: paymentIntent.id,
             data: {
-              ...paymentIntentToInvoice,
+              ...paymentIntent,
               status: "succeeded",
             },
             options: {

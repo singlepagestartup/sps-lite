@@ -87,8 +87,20 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     }
 
     if (method === "notInArray" || method === "inArray") {
+      const arrayFilter: string[] = [];
+
+      if (Array.isArray(filterValue)) {
+        filterValue.forEach((value) => {
+          arrayFilter.push(value);
+        });
+      } else if (Object.keys(filterValue).length) {
+        Object.values(filterValue).forEach((value: any) => {
+          arrayFilter.push(value);
+        });
+      }
+
       resultQueries.push(
-        queryFunctions[method](tableColumn, filterValue) as SQL<any>,
+        queryFunctions[method](tableColumn, arrayFilter) as SQL<any>,
       );
     }
 
