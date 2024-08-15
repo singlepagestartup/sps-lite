@@ -1,5 +1,6 @@
 import * as pgCore from "drizzle-orm/pg-core";
 import { Table as Button } from "@sps/website-builder/models/button/backend/repository/database";
+import { Table as FileStorageModuleWidget } from "@sps/file-storage/models/widget/backend/repository/database";
 
 export const moduleName = "sps_w_b";
 export const table = "bs_to_ss_fe_se_me_ws_m3s";
@@ -15,5 +16,8 @@ export const Table = pgTable(table, {
     .uuid("bn_id")
     .notNull()
     .references(() => Button.id, { onDelete: "cascade" }),
-  fileStorageModuleWidgetId: pgCore.uuid("sps_fe_se_me_fe_id").notNull(),
+  fileStorageModuleWidgetId: pgCore
+    .uuid("sps_fe_se_me_fe_id")
+    .notNull()
+    .references(() => FileStorageModuleWidget.id, { onDelete: "cascade" }),
 });

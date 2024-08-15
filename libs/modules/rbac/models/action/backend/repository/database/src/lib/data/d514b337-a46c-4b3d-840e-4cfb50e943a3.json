@@ -1,0 +1,9 @@
+{
+  "id": "d514b337-a46c-4b3d-840e-4cfb50e943a3",
+  "createdAt": "2024-08-15T19:47:14.364Z",
+  "updatedAt": "2024-08-15T19:47:14.364Z",
+  "variant": "default",
+  "type": "HTTP",
+  "method": "GET",
+  "path": "/api/ecommerce/orders-to-products"
+}

@@ -9,7 +9,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export const route = "/api/rbac/actions";
 export const variants = ["default"];
 export const types = ["HTTP"];
-export const methods = ["GET", "POST", "PATCH", "DELETE"];
+export const methods = ["*", "GET", "POST", "PATCH", "DELETE"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

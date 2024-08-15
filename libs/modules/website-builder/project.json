@@ -167,7 +167,7 @@
             "command": "nx run @sps/website-builder:relations:features-to-buttons-arrays:repository-migrate"
           },
           {
-            "command": "nx run @sps/website-builder:relations:buttons-to-file-storage-module-widgets:repository-generate"
+            "command": "nx run @sps/website-builder:relations:buttons-to-file-storage-module-widgets:repository-migrate"
           },
           {
             "command": "nx run @sps/website-builder:relations:widgets-to-buttons-arrays:repository-migrate"

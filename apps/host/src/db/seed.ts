@@ -1,9 +1,9 @@
 import { ISeedResult } from "@sps/shared-backend-api";
-import { app as spsHost } from "@sps/host/backend/app/api";
-import { app as spsWebsiteBuilder } from "@sps/website-builder/backend/app/api";
-import { app as spsRbac } from "@sps/rbac/backend/app/api";
-import { app as spsCrm } from "@sps/crm/backend/app/api";
-import { app as spsEcommerce } from "@sps/ecommerce/backend/app/api";
+import { app as host } from "@sps/host/backend/app/api";
+import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
+import { app as rbac } from "@sps/rbac/backend/app/api";
+import { app as crm } from "@sps/crm/backend/app/api";
+import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
 import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
@@ -12,69 +12,69 @@ import { exit } from "process";
 (async () => {
   const seeds: ISeedResult[] = [];
 
-  const spsHostModelsSeeds = await spsHost.seed({
+  const hostModelsSeeds = await host.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsHostModelsSeeds)) {
-    spsHostModelsSeeds.forEach((seed) => {
+  if (Array.isArray(hostModelsSeeds)) {
+    hostModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsHostModelsSeeds);
+    seeds.push(hostModelsSeeds);
   }
 
-  const spsWebsiteBuilderModelsSeeds = await spsWebsiteBuilder.seed({
+  const websiteBuilderModelsSeeds = await websiteBuilder.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsWebsiteBuilderModelsSeeds)) {
-    spsWebsiteBuilderModelsSeeds.forEach((seed) => {
+  if (Array.isArray(websiteBuilderModelsSeeds)) {
+    websiteBuilderModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsWebsiteBuilderModelsSeeds);
+    seeds.push(websiteBuilderModelsSeeds);
   }
 
-  const spsCrmModelsSeeds = await spsCrm.seed({
+  const crmModelsSeeds = await crm.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsCrmModelsSeeds)) {
-    spsCrmModelsSeeds.forEach((seed) => {
+  if (Array.isArray(crmModelsSeeds)) {
+    crmModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsCrmModelsSeeds);
+    seeds.push(crmModelsSeeds);
   }
 
-  const spsEcommerceModelsSeeds = await spsEcommerce.seed({
+  const ecommerceModelsSeeds = await ecommerce.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsEcommerceModelsSeeds)) {
-    spsEcommerceModelsSeeds.forEach((seed) => {
+  if (Array.isArray(ecommerceModelsSeeds)) {
+    ecommerceModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsEcommerceModelsSeeds);
+    seeds.push(ecommerceModelsSeeds);
   }
 
-  const spsRbacModelsSeeds = await spsRbac.seed({
+  const rbacModelsSeeds = await rbac.seed({
     type: "model",
     seeds,
   });
 
-  if (Array.isArray(spsRbacModelsSeeds)) {
-    spsRbacModelsSeeds.forEach((seed) => {
+  if (Array.isArray(rbacModelsSeeds)) {
+    rbacModelsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsRbacModelsSeeds);
+    seeds.push(rbacModelsSeeds);
   }
 
   const fileStorageModelsSeeds = await fileStorage.seed({
@@ -103,69 +103,69 @@ import { exit } from "process";
     seeds.push(startupModelsSeeds);
   }
 
-  const spsHostRelationsSeeds = await spsHost.seed({
+  const hostRelationsSeeds = await host.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsHostRelationsSeeds)) {
-    spsHostRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(hostRelationsSeeds)) {
+    hostRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsHostRelationsSeeds);
+    seeds.push(hostRelationsSeeds);
   }
 
-  const spsWebsiteBuilderRelationsSeeds = await spsWebsiteBuilder.seed({
+  const websiteBuilderRelationsSeeds = await websiteBuilder.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsWebsiteBuilderRelationsSeeds)) {
-    spsWebsiteBuilderRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(websiteBuilderRelationsSeeds)) {
+    websiteBuilderRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsWebsiteBuilderRelationsSeeds);
+    seeds.push(websiteBuilderRelationsSeeds);
   }
 
-  const spsCrmRelationsSeeds = await spsCrm.seed({
+  const crmRelationsSeeds = await crm.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsCrmRelationsSeeds)) {
-    spsCrmRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(crmRelationsSeeds)) {
+    crmRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsCrmRelationsSeeds);
+    seeds.push(crmRelationsSeeds);
   }
 
-  const spsEcommerceRelationsSeeds = await spsEcommerce.seed({
+  const ecommerceRelationsSeeds = await ecommerce.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsEcommerceRelationsSeeds)) {
-    spsEcommerceRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(ecommerceRelationsSeeds)) {
+    ecommerceRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsEcommerceRelationsSeeds);
+    seeds.push(ecommerceRelationsSeeds);
   }
 
-  const spsRbacRelationsSeeds = await spsRbac.seed({
+  const rbacRelationsSeeds = await rbac.seed({
     type: "relation",
     seeds,
   });
 
-  if (Array.isArray(spsRbacRelationsSeeds)) {
-    spsRbacRelationsSeeds.forEach((seed) => {
+  if (Array.isArray(rbacRelationsSeeds)) {
+    rbacRelationsSeeds.forEach((seed) => {
       seeds.push(seed);
     });
   } else {
-    seeds.push(spsRbacRelationsSeeds);
+    seeds.push(rbacRelationsSeeds);
   }
 
   const fileStorageRelationsSeeds = await fileStorage.seed({

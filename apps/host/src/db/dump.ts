@@ -1,40 +1,30 @@
-import { app as spsHost } from "@sps/host/backend/app/api";
-import { app as spsWebsiteBuilder } from "@sps/website-builder/backend/app/api";
-import { app as spsRbac } from "@sps/rbac/backend/app/api";
-import { app as spsCrm } from "@sps/crm/backend/app/api";
-import { app as spsEcommerce } from "@sps/ecommerce/backend/app/api";
+import { app as host } from "@sps/host/backend/app/api";
+import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
+import { app as rbac } from "@sps/rbac/backend/app/api";
+import { app as crm } from "@sps/crm/backend/app/api";
+import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
 import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
 
 (async () => {
-  await spsHost.dump({
-    type: "model",
-    dumps: [],
-  });
-
-  await spsWebsiteBuilder.dump({
-    type: "model",
-    dumps: [],
-  });
-
-  await spsCrm.dump({
-    type: "model",
-    dumps: [],
-  });
-
-  await spsEcommerce.dump({
-    type: "model",
-    dumps: [],
-  });
-
-  await spsRbac.dump({
-    type: "model",
-    dumps: [],
-  });
-
   await fileStorage.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await websiteBuilder.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await crm.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await ecommerce.dump({
     type: "model",
     dumps: [],
   });
@@ -44,18 +34,13 @@ import { exit } from "process";
     dumps: [],
   });
 
-  await spsHost.dump({
-    type: "relation",
+  await rbac.dump({
+    type: "model",
     dumps: [],
   });
 
-  await spsWebsiteBuilder.dump({
-    type: "relation",
-    dumps: [],
-  });
-
-  await spsRbac.dump({
-    type: "relation",
+  await host.dump({
+    type: "model",
     dumps: [],
   });
 
@@ -64,17 +49,32 @@ import { exit } from "process";
     dumps: [],
   });
 
-  await spsCrm.dump({
+  await websiteBuilder.dump({
     type: "relation",
     dumps: [],
   });
 
-  await spsEcommerce.dump({
+  await crm.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await ecommerce.dump({
     type: "relation",
     dumps: [],
   });
 
   await startup.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await rbac.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await host.dump({
     type: "relation",
     dumps: [],
   });
