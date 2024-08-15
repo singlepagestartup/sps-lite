@@ -13,7 +13,7 @@ import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
-import { api as ordersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-payment-intents/sdk/server";
+import { api as ordersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -332,7 +332,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         await ordersToBillingPaymentIntents.create({
           data: {
             orderId: uuid,
-            billingPaymentIntentId: paymentIntent.id,
+            billingModulePaymentIntentId: paymentIntent.id,
           },
           options: {
             headers: {

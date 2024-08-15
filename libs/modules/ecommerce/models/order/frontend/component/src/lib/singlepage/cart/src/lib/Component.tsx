@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as OrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
-import { Component as OrdersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-payment-intents/frontend/component";
+import { Component as OrdersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
