@@ -1,10 +1,10 @@
 import { IComponentPropsExtended } from "../../interface";
-import { Component as NavbarBlocksToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
+import { Component as WidgetsToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="flex flex-col lg:flex-row w-full px-2 lg:px-0 items-center justify-between gap-2">
-      <NavbarBlocksToButtonsArrays
+      <WidgetsToButtonsArrays
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="find"
@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
             filters: {
               and: [
                 {
-                  column: "navbarBlockId",
+                  column: "widgetId",
                   method: "eq",
                   value: props.data.id,
                 },
@@ -25,7 +25,7 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <NavbarBlocksToButtonsArrays
+              <WidgetsToButtonsArrays
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
@@ -35,9 +35,9 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </NavbarBlocksToButtonsArrays>
+      </WidgetsToButtonsArrays>
       {/* <div className="flex w-full flex-col lg:flex-row items-center gap-2">
-        {props.data.navbarBlocksToButtonsArrays
+        {props.data.WidgetsToButtonsArrays
           .filter((entity) => entity.position === "default")
           .map((entity, index) => {
             return (
@@ -52,7 +52,7 @@ export function Component(props: IComponentPropsExtended) {
           })}
       </div>
       <div className="flex flex-col lg:flex-row gap-2 items-center">
-        {props.data.navbarBlocksToButtonsArrays
+        {props.data.WidgetsToButtonsArrays
           .filter((entity) => entity.position === "additional")
           .map((entity, index) => {
             return (

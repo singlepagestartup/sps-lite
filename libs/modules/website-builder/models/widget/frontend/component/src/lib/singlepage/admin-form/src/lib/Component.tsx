@@ -22,6 +22,9 @@ export function Component(props: IComponentPropsExtended) {
       title: props.data?.title || "",
       variant: props.data?.variant || "default",
       className: props.data?.className || "",
+      anchor: props.data?.anchor || "",
+      description: props.data?.description || "",
+      subtitle: props.data?.subtitle || "",
     },
   });
 
@@ -59,8 +62,44 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="text"
-          label="Class name"
+          name="anchor"
+          label="Anchor"
+          form={form}
+          placeholder="Type anchor"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="subtitle"
+          label="Subitle"
+          form={form}
+          placeholder="Type subtitle"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="tiptap"
+          label="Description"
+          name="description"
+          form={form}
+          placeholder="Type description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
           name="className"
+          label="Class name"
+          form={form}
+          placeholder="Type class name"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="className"
+          label="Class name"
           form={form}
           placeholder="Type class name"
         />

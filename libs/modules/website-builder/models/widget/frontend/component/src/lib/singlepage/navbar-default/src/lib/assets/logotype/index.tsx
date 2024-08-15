@@ -1,10 +1,10 @@
 import { IComponentPropsExtended } from "../../interface";
-import { Component as NavbarBlocksToLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
+import { Component as WidgetsToLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div className="w-fit">
-      <NavbarBlocksToLogotypes
+      <WidgetsToLogotypes
         isServer={props.isServer}
         hostUrl={props.hostUrl}
         variant="find"
@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
             filters: {
               and: [
                 {
-                  column: "navbarBlockId",
+                  column: "widgetId",
                   method: "eq",
                   value: props.data.id,
                 },
@@ -25,7 +25,7 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <NavbarBlocksToLogotypes
+              <WidgetsToLogotypes
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
@@ -35,7 +35,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </NavbarBlocksToLogotypes>
+      </WidgetsToLogotypes>
     </div>
   );
 }

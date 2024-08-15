@@ -2,12 +2,10 @@
 import "server-only";
 
 import { IComponentProps } from "./interface";
-import { Error } from "./Error";
 import { api } from "@sps/website-builder/models/widget/sdk/server";
 import { Component } from "./Component";
 import { Component as Logotype } from "./assets/logotype";
 import { Component as Content } from "./assets/content";
-import { ErrorBoundary } from "@sps/ui-adapter";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
@@ -28,8 +26,6 @@ export default async function Server(props: IComponentProps) {
   const content = <Content {...props} data={data} />;
 
   return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} data={data} content={content} logotype={logotype} />
-    </ErrorBoundary>
+    <Component {...props} data={data} content={content} logotype={logotype} />
   );
 }

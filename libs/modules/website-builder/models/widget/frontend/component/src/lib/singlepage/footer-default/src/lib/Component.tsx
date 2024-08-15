@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as FooterBlocksToLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
-import { Component as FooterBlocksToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
+import { Component as WidgetsToLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
+import { Component as WidgetsToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -18,7 +18,7 @@ export function Component(props: IComponentPropsExtended) {
       <div className="mx-auto w-full max-w-7xl flex flex-col gap-4">
         <div className="w-full flex flex-col lg:grid lg:grid-cols-4 justify-end gap-12">
           <div className="w-fit flex flex-col gap-2">
-            <FooterBlocksToLogotypes
+            <WidgetsToLogotypes
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="find"
@@ -39,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
               {({ data }) => {
                 return data?.map((entity, index) => {
                   return (
-                    <FooterBlocksToLogotypes
+                    <WidgetsToLogotypes
                       key={index}
                       variant={entity.variant as any}
                       isServer={props.isServer}
@@ -49,13 +49,13 @@ export function Component(props: IComponentPropsExtended) {
                   );
                 });
               }}
-            </FooterBlocksToLogotypes>
+            </WidgetsToLogotypes>
             {props.data.subtitle ? (
               <p className="text-muted-foreground text-xs">
                 {props.data.subtitle}
               </p>
             ) : null}
-            <FooterBlocksToButtonsArrays
+            <WidgetsToButtonsArrays
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="find"
@@ -69,7 +69,7 @@ export function Component(props: IComponentPropsExtended) {
                         value: props.data.id,
                       },
                       {
-                        column: "position",
+                        column: "variant",
                         method: "eq",
                         value: "additional",
                       },
@@ -81,7 +81,7 @@ export function Component(props: IComponentPropsExtended) {
               {({ data }) => {
                 return data?.map((entity, index) => {
                   return (
-                    <FooterBlocksToButtonsArrays
+                    <WidgetsToButtonsArrays
                       key={index}
                       isServer={props.isServer}
                       hostUrl={props.hostUrl}
@@ -91,10 +91,10 @@ export function Component(props: IComponentPropsExtended) {
                   );
                 });
               }}
-            </FooterBlocksToButtonsArrays>
+            </WidgetsToButtonsArrays>
           </div>
           <div className="flex flex-col col-span-2 col-start-3 lg:grid lg:grid-cols-3 gap-6">
-            <FooterBlocksToButtonsArrays
+            <WidgetsToButtonsArrays
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="find"
@@ -108,7 +108,7 @@ export function Component(props: IComponentPropsExtended) {
                         value: props.data.id,
                       },
                       {
-                        column: "position",
+                        column: "variant",
                         method: "eq",
                         value: "default",
                       },
@@ -120,7 +120,7 @@ export function Component(props: IComponentPropsExtended) {
               {({ data }) => {
                 return data?.map((entity, index) => {
                   return (
-                    <FooterBlocksToButtonsArrays
+                    <WidgetsToButtonsArrays
                       key={index}
                       isServer={props.isServer}
                       hostUrl={props.hostUrl}
@@ -130,7 +130,7 @@ export function Component(props: IComponentPropsExtended) {
                   );
                 });
               }}
-            </FooterBlocksToButtonsArrays>
+            </WidgetsToButtonsArrays>
           </div>
         </div>
         <div className="w-full h-px bg-gray-400"></div>
@@ -143,7 +143,7 @@ export function Component(props: IComponentPropsExtended) {
             ) : null}
           </div>
           <div className="flex items-center flex-wrap gap-4">
-            <FooterBlocksToButtonsArrays
+            <WidgetsToButtonsArrays
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="find"
@@ -157,7 +157,7 @@ export function Component(props: IComponentPropsExtended) {
                         value: props.data.id,
                       },
                       {
-                        column: "position",
+                        column: "variant",
                         method: "eq",
                         value: "extra",
                       },
@@ -169,7 +169,7 @@ export function Component(props: IComponentPropsExtended) {
               {({ data }) => {
                 return data?.map((entity, index) => {
                   return (
-                    <FooterBlocksToButtonsArrays
+                    <WidgetsToButtonsArrays
                       key={index}
                       isServer={props.isServer}
                       hostUrl={props.hostUrl}
@@ -179,7 +179,7 @@ export function Component(props: IComponentPropsExtended) {
                   );
                 });
               }}
-            </FooterBlocksToButtonsArrays>
+            </WidgetsToButtonsArrays>
           </div>
         </div>
       </div>

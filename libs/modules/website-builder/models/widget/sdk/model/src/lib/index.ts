@@ -7,7 +7,12 @@ export {
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/website-builder/widgets";
-export const variants = ["default"] as const;
+export const variants = [
+  "default",
+  "content-block-default",
+  "footer-default",
+  "navbar-default",
+] as const;
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

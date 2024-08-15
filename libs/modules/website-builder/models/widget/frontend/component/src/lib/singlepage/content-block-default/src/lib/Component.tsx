@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { TipTap } from "@sps/shared-ui-shadcn";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as WidgetsToSpsFileStorageWidgets } from "@sps/website-builder/relations/widgets-to-file-storage-module-widgets/frontend/component";
+import { Component as WidgetsToFileStorageWidgets } from "@sps/website-builder/relations/widgets-to-file-storage-module-widgets/frontend/component";
 import { Component as WidgetsToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -59,8 +59,9 @@ export function Component(props: IComponentPropsExtended) {
             }}
           </WidgetsToButtonsArrays>
         </div>
+        {props.children}
         <div className="w-full">
-          <WidgetsToSpsFileStorageWidgets
+          <WidgetsToFileStorageWidgets
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="find"
@@ -81,7 +82,7 @@ export function Component(props: IComponentPropsExtended) {
             {({ data }) => {
               return data?.map((entity, index) => {
                 return (
-                  <WidgetsToSpsFileStorageWidgets
+                  <WidgetsToFileStorageWidgets
                     key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
@@ -91,7 +92,7 @@ export function Component(props: IComponentPropsExtended) {
                 );
               });
             }}
-          </WidgetsToSpsFileStorageWidgets>
+          </WidgetsToFileStorageWidgets>
         </div>
       </div>
     </div>

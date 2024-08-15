@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
     <Button
       ui="shadcn"
       data-module="website-builder"
-      data-model="elements.button"
+      data-model="button"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       data-ui-variant={props.variant}

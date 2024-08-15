@@ -15,6 +15,7 @@ export function Component(props: IComponentPropsExtended) {
           className="data-[open=false]:hidden data-[open=false]:lg:flex absolute data-[open=true]:w-screen data-[open=true]:h-screen inset-0 lg:relative data-[open=true]:flex items-center bg-background lg:bg-transparent"
         >
           {props.content}
+          {props.children}
         </div>
         <div className="ml-auto flex flex-shrink-0 items-center lg:hidden">
           <button
