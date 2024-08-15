@@ -15,6 +15,13 @@
       "when": 1723423383080,
       "tag": "0001_melted_marvel_apes",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1723682150711,
+      "tag": "0002_wonderful_iron_fist",
+      "breakpoints": true
     }
   ]
 }

@@ -18,19 +18,19 @@
             "command": "npx nx run @sps/broadcast:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/crm:repository-migrate"
+            "command": "npx nx run @sps/notification:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/ecommerce:repository-migrate"
+            "command": "npx nx run @sps/crm:repository-migrate"
           },
           {
             "command": "npx nx run @sps/billing:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-third-parties:repository-migrate"
+            "command": "npx nx run @sps/ecommerce:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/notification:repository-migrate"
+            "command": "npx nx run @sps/sps-third-parties:repository-migrate"
           },
           {
             "command": "npx nx run @sps/website-builder:repository-migrate"
