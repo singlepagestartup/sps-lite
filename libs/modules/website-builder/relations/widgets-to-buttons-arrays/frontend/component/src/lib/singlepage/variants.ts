@@ -11,4 +11,5 @@ export const variants = {
   "admin-select-input": AdminSelectInput,
   "admin-form": AdminForm,
   default: Default,
+  additional: Default,
 };

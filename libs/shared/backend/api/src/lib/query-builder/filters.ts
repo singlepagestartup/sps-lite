@@ -89,7 +89,11 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     if (method === "notInArray" || method === "inArray") {
       const arrayFilter: string[] = [];
 
-      if (Array.isArray(filterValue)) {
+      if (!filterValue) {
+        resultQueries.push(queryFunctions.isNull(tableColumn) as SQL<any>);
+
+        continue;
+      } else if (Array.isArray(filterValue)) {
         filterValue.forEach((value) => {
           arrayFilter.push(value);
         });
