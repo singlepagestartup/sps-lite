@@ -26,6 +26,15 @@ export class Configuration extends ParentConfiguration {
           module: "ecommerce",
           name: "product",
           type: "model",
+          filters: [
+            {
+              column: "sku",
+              method: "eq",
+              value: (data) => {
+                return data.entity.dump.sku;
+              },
+            },
+          ],
         },
       },
     });

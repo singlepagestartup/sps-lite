@@ -9,4 +9,5 @@ export const fields = {
   title: pgCore.text("title").notNull(),
   description: pgCore.text("description").notNull(),
   shortDescription: pgCore.text("short_description").default(""),
+  sku: pgCore.text("sku").notNull().unique(),
 };

@@ -25,6 +25,7 @@ export function Component(props: IComponentPropsExtended) {
       description: props.data?.description || "",
       shortDescription: props.data?.shortDescription || "",
       type: props.data?.type || "one_off",
+      sku: props.data?.sku || "",
     },
   });
 
@@ -61,11 +62,20 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
-          type="text"
+          type="tiptap"
           name="description"
           label="Description"
           form={form}
           placeholder="Type description"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="sku"
+          label="SKU"
+          form={form}
+          placeholder="Type sku"
         />
 
         <FormField
