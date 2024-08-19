@@ -11,7 +11,7 @@ export const variant = "products-list-block-default" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  products?: ReactNode;
+  children?: ReactNode;
 }
 
 export interface IComponentPropsExtended

@@ -100,7 +100,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           data: null,
         },
         {
-          status: 401,
+          status: 200,
         },
       );
     }

@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
       <div className="w-full max-w-7xl grid grid-cols-2 gap-12 mx-auto">
-        {props.products}
+        {props.children}
       </div>
     </div>
   );

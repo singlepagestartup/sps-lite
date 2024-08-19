@@ -8,6 +8,7 @@ import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as ICreateComponentProps } from "./create";
 import { IComponentProps as ICartComponentProps } from "./cart";
 import { IComponentProps as ICheckoutComponentProps } from "./checkout";
+import { IComponentProps as IDeleteComponentProps } from "./delete";
 
 export type IComponentProps =
   | IFindByIdComponentProps
@@ -20,4 +21,5 @@ export type IComponentProps =
   | ICreateComponentProps
   | ICartComponentProps
   | ICheckoutComponentProps
+  | IDeleteComponentProps
   | never;

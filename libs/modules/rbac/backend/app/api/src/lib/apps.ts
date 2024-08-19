@@ -8,7 +8,7 @@ import { app as rolesToActions } from "@sps/rbac/relations/roles-to-actions/back
 import { app as subjectsToIdentities } from "@sps/rbac/relations/subjects-to-identities/backend/app/root";
 import { app as subjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/backend/app/root";
 import { app as subjectsToSessions } from "@sps/rbac/relations/subjects-to-sessions/backend/app/root";
-import { app as subjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-orders/backend/app/root";
+import { app as subjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/backend/app/root";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -72,7 +72,7 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/subjects-to-ecommerce-orders",
+      route: "/subjects-to-ecommerce-module-orders",
       app: subjectsToEcommerceOrders,
     });
   }

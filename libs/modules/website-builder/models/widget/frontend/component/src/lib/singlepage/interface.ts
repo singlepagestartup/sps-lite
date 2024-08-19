@@ -4,7 +4,7 @@ import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-r
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 import { IComponentProps as IDefaultComponentProps } from "./default";
-import { IComponentProps as IContentBlockDefaultComponentProps } from "./content-block-default";
+import { IComponentProps as IContentDefaultComponentProps } from "./content-default";
 import { IComponentProps as IFooterDefaultComponentProps } from "./footer-default";
 import { IComponentProps as INavbarDefaultComponentProps } from "./navbar-default";
 export type IComponentProps =
@@ -14,7 +14,7 @@ export type IComponentProps =
   | IAdminFormComponentProps
   | IAdminTableComponentProps
   | IDefaultComponentProps
-  | IContentBlockDefaultComponentProps
+  | IContentDefaultComponentProps
   | IFooterDefaultComponentProps
   | INavbarDefaultComponentProps
   | never;

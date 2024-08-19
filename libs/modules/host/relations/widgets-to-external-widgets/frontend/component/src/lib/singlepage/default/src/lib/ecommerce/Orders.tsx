@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "../interface";
-import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-orders/frontend/component";
+import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
 import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {

@@ -1,26 +1,40 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import Cookie from "js-cookie";
+import { useCookies } from "react-cookie";
 import { useJwt } from "react-jwt";
-import { SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS } from "@sps/shared-utils";
-import { useRouter } from "next/navigation";
 
 export function Component(props: IComponentPropsExtended) {
-  const router = useRouter();
   const refresh = api.refresh();
   const init = api.init({
     reactQueryOptions: {
       enabled: false,
     },
   });
-  const jwt = Cookie.get("rbac.subject.jwt");
-  const token = useJwt(jwt ?? "");
+  const [jwtCookies] = useCookies(["rbac.subject.jwt"]);
+  const refreshStorage = useMemo(() => {
+    if (typeof localStorage === "undefined") {
+      return "";
+    }
+
+    return localStorage.getItem("rbac.subject.refresh");
+  }, []);
+
+  const token = useJwt<{
+    exp: number;
+    iat: number;
+    subject: { id: string };
+  }>(jwtCookies["rbac.subject.jwt"]);
+  const refreshToken = useJwt<{
+    exp: number;
+    iat: number;
+  }>(refreshStorage || "");
 
   useEffect(() => {
-    if (!jwt) {
+    if (!token) {
       init.refetch();
     }
   }, []);
@@ -30,14 +44,15 @@ export function Component(props: IComponentPropsExtended) {
       return;
     }
 
-    if (
-      new Date(token.decodedToken?.["exp"] * 1000).getTime() -
-        SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS * 0.1 * 1000 <
-      Date.now()
-    ) {
-      const refreshToken = localStorage.getItem("rbac.subject.refresh");
-
+    if (token.isExpired) {
       if (!refreshToken) {
+        Cookie.remove("rbac.subject.jwt");
+        localStorage.removeItem("rbac.subject.refresh");
+
+        return;
+      }
+
+      if (refreshToken.isExpired || !refreshStorage) {
         Cookie.remove("rbac.subject.jwt");
         localStorage.removeItem("rbac.subject.refresh");
 
@@ -46,25 +61,18 @@ export function Component(props: IComponentPropsExtended) {
 
       refresh.mutate({
         data: {
-          refresh: refreshToken,
+          refresh: refreshStorage,
         },
       });
     }
-  }, [token.decodedToken]);
+  }, [token.decodedToken, refreshToken.decodedToken]);
 
   useEffect(() => {
     if (refresh.isError) {
       Cookie.remove("rbac.subject.jwt");
       localStorage.removeItem("rbac.subject.refresh");
-      router.refresh();
     }
   }, [refresh]);
-
-  useEffect(() => {
-    if (init.data) {
-      router.refresh();
-    }
-  }, [init.data]);
 
   return (
     <div

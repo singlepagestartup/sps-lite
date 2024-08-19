@@ -4,7 +4,7 @@ import { Component as AdminTableRow } from "./admin-table-row";
 import { Component as AdminForm } from "./admin-form";
 import { Component as AdminTable } from "./admin-table";
 import { Component as Default } from "./default";
-import { Component as ContentBlockDefaultComponent } from "./content-block-default";
+import { Component as ContentBlockDefaultComponent } from "./content-default";
 import { Component as FooterDefaultComponent } from "./footer-default";
 import { Component as NavbarDefaultComponent } from "./navbar-default";
 export const variants = {

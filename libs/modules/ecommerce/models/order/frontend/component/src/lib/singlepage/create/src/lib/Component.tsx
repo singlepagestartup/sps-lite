@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const formSchema = z.object({});
 
@@ -27,6 +28,12 @@ export function Component(props: IComponentPropsExtended) {
 
     router.refresh();
   }
+
+  useEffect(() => {
+    if (createEntity.isSuccess && typeof props.successCallback === "function") {
+      props.successCallback(createEntity.data);
+    }
+  }, [createEntity.isSuccess]);
 
   return (
     <div

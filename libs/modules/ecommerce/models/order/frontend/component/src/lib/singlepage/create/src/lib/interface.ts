@@ -11,6 +11,7 @@ export const variant = "create" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   className?: string;
+  successCallback?: (data: IModel) => void;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}

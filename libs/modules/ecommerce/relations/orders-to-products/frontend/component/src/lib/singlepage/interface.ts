@@ -6,6 +6,8 @@ import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as IQuantityComponentProps } from "./quantity";
 import { IComponentProps as IAmountComponentProps } from "./amount";
+import { IComponentProps as ICreateComponentProps } from "./create";
+import { IComponentProps as IDeleteComponentProps } from "./delete";
 
 export type IComponentProps =
   | IFindComponentProps
@@ -16,4 +18,6 @@ export type IComponentProps =
   | IDefaultComponentProps
   | IQuantityComponentProps
   | IAmountComponentProps
+  | ICreateComponentProps
+  | IDeleteComponentProps
   | never;

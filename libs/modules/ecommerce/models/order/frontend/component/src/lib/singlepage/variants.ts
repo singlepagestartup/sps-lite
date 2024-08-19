@@ -8,6 +8,7 @@ import { Component as Default } from "./default";
 import { Component as Create } from "./create";
 import { Component as Cart } from "./cart";
 import { Component as Checkout } from "./checkout";
+import { Component as Delete } from "./delete";
 
 export const variants = {
   "find-by-id": FindById,
@@ -20,4 +21,5 @@ export const variants = {
   create: Create,
   cart: Cart,
   checkout: Checkout,
+  delete: Delete,
 };

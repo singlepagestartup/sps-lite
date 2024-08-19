@@ -6,6 +6,8 @@ import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
 import { Component as Quantity } from "./quantity";
 import { Component as Amount } from "./amount";
+import { Component as Create } from "./create";
+import { Component as Delete } from "./delete";
 
 export const variants = {
   find: Find,
@@ -16,4 +18,6 @@ export const variants = {
   default: Default,
   quantity: Quantity,
   amount: Amount,
+  create: Create,
+  delete: Delete,
 };

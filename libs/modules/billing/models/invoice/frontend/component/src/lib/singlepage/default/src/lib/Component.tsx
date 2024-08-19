@@ -1,8 +1,20 @@
+"use client";
+
 import { Button } from "@sps/shared-ui-shadcn";
 import { IComponentPropsExtended } from "./interface";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export function Component(props: IComponentPropsExtended) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (props.data.status === "draft") {
+      router.push(props.data.paymentUrl);
+    }
+  }, [props.data.paymentUrl]);
+
   return (
     <div
       data-module="billing"
