@@ -3,7 +3,7 @@
 import { Component as ParentComponent } from "@sps/rbac/models/subject/frontend/component";
 import { Component as SubjectsToIdentities } from "@sps/rbac/relations/subjects-to-identities/frontend/component";
 import { Component as SubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/frontend/component";
-import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
+import { Component as SubjectsToEcommerceModuleOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
 
 export function Component() {
   return (
@@ -44,13 +44,13 @@ export function Component() {
                 />
               );
             }}
-            subjectsToEcommerceOrders={({ data, hostUrl, isServer }) => {
+            subjectsToEcommerceModuleOrders={({ data, hostUrl, isServer }) => {
               if (!data) {
                 return;
               }
 
               return (
-                <SubjectsToEcommerceOrders
+                <SubjectsToEcommerceModuleOrders
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

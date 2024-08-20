@@ -1,7 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "../interface";
-import { Component as SubjectsToEcommerceOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
+import { Component as SubjectsToEcommerceModuleOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
 import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
         }
 
         return (
-          <SubjectsToEcommerceOrders
+          <SubjectsToEcommerceModuleOrders
             isServer={false}
             hostUrl={props.hostUrl}
             variant="find"
@@ -34,7 +34,7 @@ export function Component(props: IComponentPropsExtended) {
             {({ data }) => {
               return data?.map((entity, index) => {
                 return (
-                  <SubjectsToEcommerceOrders
+                  <SubjectsToEcommerceModuleOrders
                     key={index}
                     isServer={false}
                     hostUrl={props.hostUrl}
@@ -44,7 +44,7 @@ export function Component(props: IComponentPropsExtended) {
                 );
               });
             }}
-          </SubjectsToEcommerceOrders>
+          </SubjectsToEcommerceModuleOrders>
         );
       }}
     </RbacSubject>

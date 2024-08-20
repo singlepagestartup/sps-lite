@@ -76,8 +76,8 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
-        {props.subjectsToEcommerceOrders
-          ? props.subjectsToEcommerceOrders({
+        {props.subjectsToEcommerceModuleOrders
+          ? props.subjectsToEcommerceModuleOrders({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,
