@@ -34,7 +34,7 @@ export function Component(props: IComponentPropsExtended) {
   }>(refreshStorage || "");
 
   useEffect(() => {
-    if (!token) {
+    if (!jwtCookies["rbac.subject.jwt"]) {
       init.refetch();
     }
   }, []);
