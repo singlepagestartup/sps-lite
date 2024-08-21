@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
 
   useEffect(() => {
     if (props.data.status === "draft") {
-      router.push(props.data.paymentUrl);
+      // router.push(props.data.paymentUrl);
     }
   }, [props.data.paymentUrl]);
 

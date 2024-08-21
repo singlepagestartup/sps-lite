@@ -44,10 +44,15 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/:uuid",
         handler: this.delete,
       },
+      {
+        method: "POST",
+        path: "/:provider",
+        handler: this.provider,
+      },
     ]);
   }
 
-  public async create(c: Context, next: any): Promise<Response> {
+  public async provider(c: Context, next: any): Promise<Response> {
     if (!SPS_RBAC_SECRET_KEY) {
       return c.json(
         {
@@ -78,10 +83,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const invoice = await invoiceApi.create({
+      const invoice = await invoiceApi.provider({
+        provider: "stripe",
         data: {
           amount: entity.amount,
-          provider: "stripe",
         },
         options: {
           headers: {
@@ -92,6 +97,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         },
       });
+
+      if (!invoice) {
+        throw new HTTPException(400, {
+          message: "Invalid data",
+        });
+      }
 
       const paymentIntentToInvoice = await paymentIntentsToInvoicesApi.create({
         data: {

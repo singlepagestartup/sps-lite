@@ -6,6 +6,8 @@ import { Service } from "./service";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as billingPaymentIntent } from "@sps/billing/models/payment-intent/sdk/server";
+import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
+import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as ordersToProducts } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
 import { api as productsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
 import { api as attributesToAttributeKeys } from "@sps/ecommerce/relations/attributes-to-attribute-keys/sdk/server";
@@ -13,7 +15,7 @@ import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
-import { api as ordersToBillingPaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
+import { api as ordersToBillingPaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -316,7 +318,42 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const paymentIntent = await billingPaymentIntent.create({
         data: {
           amount,
-          provider,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const invoice = await invoiceApi.provider({
+        provider,
+        data: {
+          amount,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoice) {
+        throw new HTTPException(404, {
+          message: "Invoice not found",
+        });
+      }
+
+      const paymentIntentToInvoice = await paymentIntentsToInvoicesApi.create({
+        data: {
+          paymentIntentId: paymentIntent.id,
+          invoiceId: invoice.id,
         },
         options: {
           headers: {
@@ -329,7 +366,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
 
       const orderToBillingPaymentIntent =
-        await ordersToBillingPaymentIntents.create({
+        await ordersToBillingPaymentIntentsApi.create({
           data: {
             orderId: uuid,
             billingModulePaymentIntentId: paymentIntent.id,

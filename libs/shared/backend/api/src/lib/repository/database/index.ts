@@ -120,9 +120,9 @@ export class Database<T extends PgTableWithColumns<any>>
     try {
       const [record] = await this.findByField(field, value);
 
-      const sanitizedRecord = this.selectSchema.parse(record);
+      // const sanitizedRecord = this.selectSchema.parse(record);
 
-      return sanitizedRecord;
+      return record;
     } catch (error: any) {
       console.error(error);
 

@@ -36,6 +36,13 @@
       "when": 1723659222908,
       "tag": "0004_sudden_living_tribunal",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1724256826144,
+      "tag": "0005_complete_arachne",
+      "breakpoints": true
     }
   ]
 }

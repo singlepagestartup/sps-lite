@@ -5,15 +5,23 @@ import { Table } from "@sps/billing/models/invoice/backend/repository/database";
 import { Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
+import {
+  SPS_RBAC_JWT_SECRET,
+  SPS_RBAC_SECRET_KEY,
+  STRIPE_SECRET_KEY,
+} from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
-import { SPS_RBAC_JWT_SECRET, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
-import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
-import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
+import Stripe from "stripe";
+import * as crypto from "crypto";
+import { NextApiRequest } from "next/dist/types";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
+  service: Service;
+
   constructor(@inject(DI.IService) service: Service) {
     super(service);
+    this.service = service;
 
     this.bindRoutes([
       {
@@ -42,20 +50,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         handler: this.update,
       },
       {
-        method: "GET",
-        path: "/:uuid/webhook",
-        handler: this.webhook,
-      },
-      {
         method: "DELETE",
         path: "/:uuid",
         handler: this.delete,
       },
+      {
+        method: "POST",
+        path: "/:provider",
+        handler: this.provider,
+      },
+      {
+        method: "POST",
+        path: "/:provider/webhook",
+        handler: this.providerWebhook,
+      },
     ]);
   }
 
-  async create(c: Context, next: any): Promise<Response> {
+  async provider(c: Context, next: any): Promise<Response> {
     const body = await c.req.parseBody();
+    const provider = c.req.param("provider");
 
     if (typeof body["data"] !== "string") {
       throw new HTTPException(400, {
@@ -66,7 +80,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const data = JSON.parse(body["data"]);
 
     try {
-      const entity = await this.service.create({ data });
+      let entity: (typeof Table)["$inferSelect"] | undefined;
+
+      if (provider === "stripe") {
+        entity = await this.service.stripe({ data, type: "create" });
+      }
 
       return c.json(
         {
@@ -81,139 +99,49 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
   }
 
-  async webhook(c: Context, next: any): Promise<Response> {
-    const query = c.req.query();
-    if (query.signature) {
-      if (!SPS_RBAC_JWT_SECRET) {
-        return c.json(
-          {
-            message: "RBAC secret key not found",
-          },
-          {
-            status: 400,
-          },
-        );
+  async providerWebhook(c: Context, next: any): Promise<Response> {
+    const provider = c.req.param("provider");
+    const contentType = c.req.header("content-type");
+
+    let data;
+    if (contentType?.includes("application/json")) {
+      data = await c.req.json();
+    } else {
+      const body = await c.req.parseBody();
+
+      if (body["data"] instanceof File) {
+        throw new HTTPException(400, {
+          message: "Files are not supported",
+        });
       }
 
-      if (!SPS_RBAC_SECRET_KEY) {
-        return c.json(
-          {
-            message: "RBAC secret key not found",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      const signature = query.signature;
-      const decoded = await jwt.verify(signature, SPS_RBAC_JWT_SECRET);
-
-      if (!decoded.invoice) {
-        return c.json(
-          {
-            message: "Invalid signature",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      const invoiceId = decoded.invoice["id"];
-
-      if (!invoiceId) {
-        return c.json(
-          {
-            message: "Invalid invoice id",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      const invoice = await this.service.findById({ id: invoiceId });
-
-      if (!invoice) {
-        return c.json(
-          {
-            message: "Invoice not found",
-          },
-          {
-            status: 404,
-          },
-        );
-      }
-
-      const updated = await this.service.update({
-        id: invoiceId,
-        data: {
-          ...invoice,
-          paymentUrl: "",
-          status: "paid",
-        },
-      });
-
-      const paymentIntentToInvoices = await paymentIntentsToInvoicesApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "invoiceId",
-                method: "eq",
-                value: invoiceId,
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (paymentIntentToInvoices?.length) {
-        for (const paymentIntentToInvoice of paymentIntentToInvoices) {
-          const paymentIntent = await paymentIntentApi.findById({
-            id: paymentIntentToInvoice.paymentIntentId,
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!paymentIntent) {
-            continue;
-          }
-
-          await paymentIntentApi.update({
-            id: paymentIntent.id,
-            data: {
-              ...paymentIntent,
-              status: "succeeded",
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-        }
+      if (typeof body["data"] !== "string") {
+        data = JSON.parse(body["data"]);
       }
     }
 
-    return c.redirect("/", 301);
+    let entity: (typeof Table)["$inferSelect"] | undefined;
+
+    if (provider === "stripe") {
+      if (!STRIPE_SECRET_KEY) {
+        throw new Error("Stripe secret key not found");
+      }
+
+      const stripe = new Stripe(STRIPE_SECRET_KEY);
+      const event = await stripe.events.retrieve(data.id);
+
+      entity = await this.service.stripe({ data: event, type: "webhook" });
+    }
+
+    if (entity) {
+      await this.service.updatePaymentIntentStatus({ invoice: entity });
+    }
+
+    return c.json(
+      {
+        data: entity,
+      },
+      200,
+    );
   }
 }

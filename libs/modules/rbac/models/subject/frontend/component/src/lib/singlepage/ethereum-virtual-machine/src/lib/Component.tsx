@@ -13,6 +13,7 @@ import { disconnect, signMessage } from "@wagmi/core";
 import { ethereumVirtualMachine } from "@sps/shared-frontend-client-web3";
 import { useCookies } from "react-cookie";
 import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
+import { IModel as ISubjectsToIdenties } from "@sps/rbac/relations/subjects-to-identities/sdk/model";
 
 const formSchema = z.object({
   message: z.string().min(8),
@@ -24,6 +25,8 @@ export function Component(props: IComponentPropsExtended) {
   const [cookies] = useCookies(["rbac.subject.jwt"]);
   const [isClient, setIsClient] = useState(false);
   const { data: meData, refetch } = api.me();
+  const [subjectToIdentites, setSubjectsToIdentities] =
+    useState<ISubjectsToIdenties[]>();
 
   const authenticateEthereumVirtualMachine = api.ethereumVirtualMachine({});
   const logout = api.logout({
@@ -51,32 +54,40 @@ export function Component(props: IComponentPropsExtended) {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    if (!account?.address) {
-      toast.error("No account found");
-      return;
+    try {
+      if (!account?.address) {
+        toast.error("No account found");
+        return;
+      }
+
+      const signedMessage = await signMessage(
+        ethereumVirtualMachine.wagmiConfig.default,
+        {
+          message: data.message,
+        },
+      );
+
+      authenticateEthereumVirtualMachine.mutate({
+        data: {
+          message: data.message,
+          signature: signedMessage,
+          address: account.address,
+        },
+      });
+    } catch (error: any) {
+      toast.error("An error occurred:" + error.message);
     }
-
-    const signedMessage = await signMessage(
-      ethereumVirtualMachine.wagmiConfig.default,
-      {
-        message: data.message,
-      },
-    );
-
-    authenticateEthereumVirtualMachine.mutate({
-      data: {
-        message: data.message,
-        signature: signedMessage,
-        address: account.address,
-      },
-    });
   }
 
   useEffect(() => {
-    if (account.isConnected) {
+    if (!subjectToIdentites) {
+      return;
+    }
+
+    if (meData && account.isConnected && !subjectToIdentites.length) {
       form.handleSubmit(onSubmit)();
     }
-  }, [account.isConnected]);
+  }, [account.isConnected, subjectToIdentites, meData]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -101,12 +112,14 @@ export function Component(props: IComponentPropsExtended) {
           },
         })
         .then((res) => {
+          setSubjectsToIdentities(res);
+
           if (!res?.length && account?.address) {
             logoutAction();
           }
         });
     }
-  }, [meData]);
+  }, [meData, account.isConnected]);
 
   useEffect(() => {
     if (authenticateEthereumVirtualMachine.isError) {
