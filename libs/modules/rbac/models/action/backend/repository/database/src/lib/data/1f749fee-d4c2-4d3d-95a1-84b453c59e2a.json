@@ -1,9 +1,0 @@
-{
-  "id": "1f749fee-d4c2-4d3d-95a1-84b453c59e2a",
-  "createdAt": "2024-08-15T19:45:08.853Z",
-  "updatedAt": "2024-08-15T19:45:08.853Z",
-  "variant": "default",
-  "type": "HTTP",
-  "method": "GET",
-  "path": "/api/ecommerce/attributes-to-attribute-keys"
-}

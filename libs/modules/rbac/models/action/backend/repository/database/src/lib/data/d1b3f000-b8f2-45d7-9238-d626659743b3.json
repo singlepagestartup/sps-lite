@@ -1,9 +1,0 @@
-{
-  "id": "d1b3f000-b8f2-45d7-9238-d626659743b3",
-  "createdAt": "2024-08-15T19:46:19.762Z",
-  "updatedAt": "2024-08-15T19:46:19.762Z",
-  "variant": "default",
-  "type": "HTTP",
-  "method": "POST",
-  "path": "/api/ecommerce/orders"
-}
