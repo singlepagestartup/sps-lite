@@ -5,15 +5,11 @@ import { Table } from "@sps/billing/models/invoice/backend/repository/database";
 import { Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
-import {
-  SPS_RBAC_JWT_SECRET,
-  SPS_RBAC_SECRET_KEY,
-  STRIPE_SECRET_KEY,
-} from "@sps/shared-utils";
-import * as jwt from "hono/jwt";
+import { SPS_RBAC_SECRET_KEY, STRIPE_SECRET_KEY } from "@sps/shared-utils";
 import Stripe from "stripe";
-import * as crypto from "crypto";
-import { NextApiRequest } from "next/dist/types";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
+import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -68,6 +64,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async provider(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new HTTPException(400, {
+        message: "RBAC secret key not found",
+      });
+    }
+
     const body = await c.req.parseBody();
     const provider = c.req.param("provider");
 
@@ -79,11 +81,101 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
     const data = JSON.parse(body["data"]);
 
+    if (!data.subjectId) {
+      throw new HTTPException(400, {
+        message: "data.subjectId is required for that method",
+      });
+    }
+
+    const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "subjectId",
+              method: "eq",
+              value: data.subjectId,
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!subjectsToIdentities?.length) {
+      throw new HTTPException(400, {
+        message: "No subjects-to-identities found for this subject",
+      });
+    }
+
+    const identities = await identityApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "id",
+              method: "inArray",
+              value: subjectsToIdentities.map((item) => item.identityId),
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!identities?.length) {
+      throw new HTTPException(400, {
+        message: "No identity found for this subject",
+      });
+    }
+
+    const identityWithEmail = identities.find(
+      (item) => item.email !== undefined && item.email !== null,
+    );
+
+    if (!identityWithEmail) {
+      throw new HTTPException(400, {
+        message: "No identities with email found for this subject",
+      });
+    }
+
+    if (!identityWithEmail.email) {
+      throw new HTTPException(400, {
+        message: "No email found for this identity",
+      });
+    }
+
     try {
       let entity: (typeof Table)["$inferSelect"] | undefined;
 
       if (provider === "stripe") {
-        entity = await this.service.stripe({ data, type: "create" });
+        entity = await this.service.stripe({
+          data,
+          type: "create",
+          email: identityWithEmail.email,
+          subjectId: data.subjectId,
+        });
+      } else if (provider === "0xprocessing") {
+        entity = await this.service.OxProcessing({
+          data,
+          type: "create",
+          email: identityWithEmail.email,
+          subjectId: data.subjectId,
+        });
       }
 
       return c.json(
@@ -120,6 +212,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       }
     }
 
+    console.log(`🚀 ~ providerWebhook ~ data:`, data);
+
     let entity: (typeof Table)["$inferSelect"] | undefined;
 
     if (provider === "stripe") {
@@ -131,6 +225,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const event = await stripe.events.retrieve(data.id);
 
       entity = await this.service.stripe({ data: event, type: "webhook" });
+    } else if (provider === "0xprocessing") {
+      entity = await this.service.OxProcessing({ data, type: "webhook" });
     }
 
     if (entity) {

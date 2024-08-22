@@ -14,8 +14,10 @@ import { api as attributesToAttributeKeys } from "@sps/ecommerce/relations/attri
 import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { SPS_RBAC_JWT_SECRET, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as ordersToBillingPaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
+import { authorization } from "@sps/sps-backend-utils";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -74,6 +76,52 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
+      if (!SPS_RBAC_JWT_SECRET) {
+        return c.json(
+          {
+            message: "RBAC JWT secret not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const token = authorization(c);
+
+      if (!token) {
+        return c.json(
+          {
+            message: "Unauthorized",
+          },
+          {
+            status: 401,
+          },
+        );
+      }
+
+      const subject = await subjectApi.me({
+        options: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!subject) {
+        return c.json(
+          {
+            message: "Not found",
+          },
+          {
+            status: 404,
+          },
+        );
+      }
+
       const uuid = c.req.param("uuid");
       const body = await c.req.parseBody();
 
@@ -102,6 +150,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const data = JSON.parse(body["data"]);
 
       const provider = data["provider"] ?? "stripe";
+
+      console.log(`🚀 ~ checkout ~ provider:`, provider);
 
       const existing = await this.service.findById({
         id: uuid,
@@ -333,6 +383,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         provider,
         data: {
           amount,
+          subjectId: subject.id,
         },
         options: {
           headers: {

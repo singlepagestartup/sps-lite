@@ -14,6 +14,7 @@ import { Component as SetSessionWrapper } from "./set-session-wrapper";
 import { Component as SelectMethod } from "./select-method";
 import { Component as EthereumVirtualMachine } from "./ethereum-virtual-machine";
 import { Component as Me } from "./me";
+import { Component as GetEmails } from "./get-emails";
 
 export const variants = {
   "find-by-id": FindById,
@@ -32,4 +33,5 @@ export const variants = {
   "select-method": SelectMethod,
   "ethereum-virtual-machine": EthereumVirtualMachine,
   me: Me,
+  "get-emails": GetEmails,
 };

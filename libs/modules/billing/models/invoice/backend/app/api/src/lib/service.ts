@@ -6,11 +6,15 @@ import { Repository } from "./repository";
 import Stripe from "stripe";
 import {
   HOST_URL,
+  O_X_PROCESSING_SHOP_ID,
+  O_X_PROCESSING_TEST_PAYMENTS,
+  O_X_PROCESSING_WEBHOOK_PASSWORD,
   SPS_RBAC_SECRET_KEY,
   STRIPE_SECRET_KEY,
 } from "@sps/shared-utils";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
+import * as crypto from "crypto";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -107,7 +111,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async stripe(
     props:
-      | { data: any; type: "create" }
+      | { data: any; type: "create"; email: string; subjectId: string }
       | {
           type: "webhook";
           data: Stripe.Response<Stripe.Event>;
@@ -151,10 +155,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       const checkout = await stripe.checkout.sessions.create({
         line_items: [{ price: stripeProduct.default_price, quantity: 1 }],
         mode: "payment",
+        customer_email: props.email,
         success_url: `${HOST_URL}`,
         cancel_url: `${HOST_URL}`,
         metadata: {
           invoiceId: superResult.id,
+          subjectId: props.subjectId,
         },
       });
 
@@ -193,6 +199,114 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       }
 
       if (data["status"] === "complete") {
+        invoice = await this.update({
+          id: invoice.id,
+          data: {
+            ...invoice,
+            status: "paid",
+          },
+        });
+
+        if (!invoice) {
+          throw new Error("Invoice not found");
+        }
+      }
+
+      return invoice;
+    }
+  }
+
+  async OxProcessing(
+    props:
+      | { data: any; type: "create"; email: string; subjectId: string }
+      | {
+          type: "webhook";
+          data: {
+            PaymentId: number;
+            MerchantId: string;
+            Amount: number;
+            TotalAmount: number;
+            Currency: string;
+            Email: string;
+            Status: "Success" | "Canceled" | "Insufficient";
+            Signature: string;
+            BillingID: string;
+            AmountUSD: number;
+            TotalAmountUSD: number;
+            Insufficient: boolean;
+            Test: boolean;
+            ClientId: string;
+            TxHashes: string[];
+          };
+        },
+  ): Promise<(typeof Table)["$inferSelect"]> {
+    if (!O_X_PROCESSING_SHOP_ID) {
+      throw new Error("0xProcessing shop id not found");
+    }
+
+    if (!O_X_PROCESSING_WEBHOOK_PASSWORD) {
+      throw new Error("0xProcessing webhook password not found");
+    }
+
+    if (props.type === "create") {
+      const superResult = await super.create(props);
+
+      const formData = new FormData();
+
+      const { currency, amount } = props.data;
+
+      formData.append("currency", currency || "USDT");
+      formData.append("amountusd", `${amount}`);
+      formData.append("BillingId", `${superResult.id}`);
+      formData.append("ClientId", `${props.subjectId}`);
+      formData.append("MerchantId", `${O_X_PROCESSING_SHOP_ID}`);
+      formData.append("email", `${props.email}`);
+      formData.append("ReturnUrl", `${true}`);
+      formData.append("SuccessUrl", `${HOST_URL}`);
+      formData.append("CancelUrl", `${HOST_URL}`);
+
+      if (O_X_PROCESSING_TEST_PAYMENTS) {
+        formData.append("test", `${true}`);
+      }
+
+      const checkout = await fetch("https://app.0xProcessing.com/Payment", {
+        method: "POST",
+        body: formData,
+      }).then((res) => res.json());
+
+      const updated = await this.update({
+        id: superResult.id,
+        data: {
+          ...superResult,
+          status: "open",
+          providerId: `${checkout.id}`,
+          paymentUrl: checkout.redirectUrl,
+        },
+      });
+
+      if (!updated) {
+        throw new Error("Invoice not found");
+      }
+
+      return updated;
+    } else {
+      const { Signature, BillingID, PaymentId, Email, Currency } = props.data;
+
+      let invoice = await this.findById({ id: BillingID });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      const string = `${PaymentId}:${O_X_PROCESSING_SHOP_ID}:${Email}:${Currency}:${O_X_PROCESSING_WEBHOOK_PASSWORD}`;
+
+      const hash = crypto.createHash("md5").update(string).digest("hex");
+
+      if (hash !== Signature) {
+        throw new Error("Signature mismatch");
+      }
+
+      if (props.data.Status === "Success") {
         invoice = await this.update({
           id: invoice.id,
           data: {

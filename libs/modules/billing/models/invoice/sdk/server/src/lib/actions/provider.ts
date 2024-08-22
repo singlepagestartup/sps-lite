@@ -15,7 +15,8 @@ export interface IActionProps {
   tag?: string;
   revalidate?: number;
   params?: {
-    [key: string]: any;
+    amount: number;
+    subjectId: string;
   };
   provider: "stripe";
   options?: NextRequestOptions;

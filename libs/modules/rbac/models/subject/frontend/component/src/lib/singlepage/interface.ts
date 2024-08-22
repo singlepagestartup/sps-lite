@@ -14,6 +14,7 @@ import { IComponentProps as ISetSessionWrapperComponentProps } from "./set-sessi
 import { IComponentProps as ISelectMethodComponentProps } from "./select-method";
 import { IComponentProps as IEthereumVirtualMachineComponentProps } from "./ethereum-virtual-machine";
 import { IComponentProps as IMeComponentProps } from "./me";
+import { IComponentProps as IGetEmailsComponentProps } from "./get-emails";
 
 export type IComponentProps =
   | IFindByIdComponentProps
@@ -32,4 +33,5 @@ export type IComponentProps =
   | ISelectMethodComponentProps
   | IEthereumVirtualMachineComponentProps
   | IMeComponentProps
+  | IGetEmailsComponentProps
   | never;

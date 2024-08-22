@@ -99,3 +99,9 @@ export const BLOB_READ_WRITE_TOKEN = process.env["BLOB_READ_WRITE_TOKEN"];
 export const STRIPE_PUBLISHABLE_KEY =
   process.env["NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"];
 export const STRIPE_SECRET_KEY = process.env["STRIPE_SECRET_KEY"];
+
+export const O_X_PROCESSING_SHOP_ID = process.env["O_X_PROCESSING_SHOP_ID"];
+export const O_X_PROCESSING_TEST_PAYMENTS =
+  process.env["O_X_PROCESSING_TEST_PAYMENTS"];
+export const O_X_PROCESSING_WEBHOOK_PASSWORD =
+  process.env["O_X_PROCESSING_WEBHOOK_PASSWORD"];
