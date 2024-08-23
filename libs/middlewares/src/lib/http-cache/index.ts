@@ -1,80 +1,87 @@
 import { createMiddleware } from "hono/factory";
 import { Provider as StoreProvider } from "@sps/providers-kv";
 import { KV_PROVIDER, KV_TTL } from "@sps/shared-utils";
+import { MiddlewareHandler } from "hono";
 
-export type MiddlewareGeneric = {
+export type IMiddlewareGeneric = {
   Variables: undefined;
 };
 
-export function middleware() {
-  const storeProvider = KV_PROVIDER;
+export class Middleware {
+  storeProvider: typeof KV_PROVIDER;
 
-  return createMiddleware<MiddlewareGeneric>(async (c, next) => {
-    const params = c.req.url.split("?")?.[1] || "";
-    const path = c.req.url.split("?")?.[0];
+  constructor() {
+    this.storeProvider = KV_PROVIDER;
+  }
 
-    const method = c.req.method;
-    const cacheControl = c.req.header("Cache-Control");
+  init(): MiddlewareHandler<any, any, {}> {
+    return createMiddleware(async (c, next) => {
+      const params = c.req.url.split("?")?.[1] || "";
+      const path = c.req.url.split("?")?.[0];
 
-    if (path.includes("sps-rbac")) {
-      return await next();
-    }
+      const method = c.req.method;
+      const cacheControl = c.req.header("Cache-Control");
 
-    if (method === "GET" && cacheControl !== "no-cache") {
-      const cachedValue = await new StoreProvider({
-        type: storeProvider,
-        prefix: path,
-      }).get({
-        key: params,
-      });
-
-      if (cachedValue) {
-        const response = new Response(cachedValue, {
-          status: 200,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
-        return response;
+      if (path.includes("rbac")) {
+        return await next();
       }
-    }
 
-    await next();
-
-    if (c.res.status >= 200 && c.res.status < 300) {
-      if (method === "GET") {
-        const resJson = await c.res.clone().json();
-
-        await new StoreProvider({
-          type: storeProvider,
+      if (method === "GET" && cacheControl !== "no-cache") {
+        const cachedValue = await new StoreProvider({
+          type: this.storeProvider,
           prefix: path,
-        }).set({
+        }).get({
           key: params,
-          value: JSON.stringify(resJson),
-          options: { ttl: KV_TTL },
         });
-      }
-      if (["POST", "PUT", "PATCH"].includes(method)) {
-        await new StoreProvider({
-          type: storeProvider,
-          prefix: path,
-        }).delByPrefix();
 
-        const UUIDRegex = new RegExp(
-          /([a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12})/,
-        );
-        const lastItem = path.split("/").pop();
+        if (cachedValue) {
+          const response = new Response(cachedValue, {
+            status: 200,
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
 
-        if (lastItem && UUIDRegex.test(lastItem)) {
-          await new StoreProvider({
-            type: storeProvider,
-            prefix: path.split("/").slice(0, -1).join("/"),
-          }).delByPrefix();
+          return response;
         }
       }
-    }
 
-    return;
-  });
+      await next();
+
+      if (c.res.status >= 200 && c.res.status < 300) {
+        if (method === "GET") {
+          const resJson = await c.res.clone().json();
+
+          await new StoreProvider({
+            type: this.storeProvider,
+            prefix: path,
+          }).set({
+            key: params,
+            value: JSON.stringify(resJson),
+            options: { ttl: KV_TTL },
+          });
+        }
+        if (["POST", "PUT", "PATCH"].includes(method)) {
+          await new StoreProvider({
+            type: this.storeProvider,
+            prefix: path,
+          }).delByPrefix();
+
+          const UUIDRegex = new RegExp(
+            /([a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12})/,
+          );
+          const lastItem = path.split("/").pop();
+
+          if (lastItem && UUIDRegex.test(lastItem)) {
+            await new StoreProvider({
+              type: this.storeProvider,
+              prefix: path.split("/").slice(0, -1).join("/"),
+            }).delByPrefix();
+          }
+        }
+      }
+
+      return;
+    });
+  }
 }

@@ -1,24 +1,88 @@
-import { Dumper as SpsHostDumper } from "@sps/sps-host/backend/app/root";
-import { Dumper as SpsBroadcastDumper } from "@sps/sps-broadcast/backend/app/root";
-import { Dumper as SpsWebsiteBuilderDumper } from "@sps/sps-website-builder/backend/app/root";
-import { Dumper as StartupDumper } from "@sps/startup/backend/app/root";
-import { Dumper as SpsFileStorageDumper } from "@sps/sps-file-storage/backend/app/root";
-import { Dumper as SpsRbacDumper } from "@sps/sps-rbac/backend/app/root";
+import { app as host } from "@sps/host/backend/app/api";
+import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
+import { app as rbac } from "@sps/rbac/backend/app/api";
+import { app as crm } from "@sps/crm/backend/app/api";
+import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
+import { app as fileStorage } from "@sps/file-storage/backend/app/api";
+import { app as startup } from "@sps/startup/backend/app/api";
+
 import { exit } from "process";
 
 (async () => {
-  const spsHostSeeder = new SpsHostDumper();
-  await spsHostSeeder.dumpModels();
-  const spsBroadcastSeeder = new SpsBroadcastDumper();
-  await spsBroadcastSeeder.dumpModels();
-  const spsWebsiteBuilderSeeder = new SpsWebsiteBuilderDumper();
-  await spsWebsiteBuilderSeeder.dumpModels();
-  const spsFileStorageSeeder = new SpsFileStorageDumper();
-  await spsFileStorageSeeder.dumpModels();
-  const spsRbacSeeder = new SpsRbacDumper();
-  await spsRbacSeeder.dumpModels();
-  const startupSeeder = new StartupDumper();
-  await startupSeeder.dumpModels();
+  await fileStorage.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await websiteBuilder.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await crm.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await ecommerce.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await startup.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await rbac.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await host.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await fileStorage.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await websiteBuilder.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await crm.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await ecommerce.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await startup.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await rbac.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await host.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  // const logotypeDump = await logotype.dump();
+  // console.log(`🚀 ~ logotypeDump:`, logotypeDump);
+
+  // console.log(`🚀 ~ relations:`, relations);
 })()
   .then(() => {
     exit(0);

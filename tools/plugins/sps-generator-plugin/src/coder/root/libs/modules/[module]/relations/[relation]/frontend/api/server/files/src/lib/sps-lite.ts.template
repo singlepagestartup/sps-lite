@@ -2,11 +2,11 @@ import { factory } from "@sps/shared-frontend-server-api";
 import {
   host,
   route,
-  IRelationExtended,
+  IModelExtended,
   options,
 } from "<%= api_model_import_path %>";
 
-export const api = factory<IRelationExtended>({
+export const api = factory<IModelExtended>({
   route,
   host,
   options,

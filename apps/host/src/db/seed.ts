@@ -1,83 +1,197 @@
-import { ModuleSeeder as SpsHostModuleSeeder } from "@sps/sps-host/backend/app/root";
-import { ModuleSeeder as SpsBroadcastModuleSeeder } from "@sps/sps-broadcast/backend/app/root";
-import { ModuleSeeder as SpsWebsiteBuilderModuleSeeder } from "@sps/sps-website-builder/backend/app/root";
-import { ModuleSeeder as StartupModuleSeeder } from "@sps/startup/backend/app/root";
-import { ModuleSeeder as SpsFileStorageModuleSeeder } from "@sps/sps-file-storage/backend/app/root";
-import { ModuleSeeder as SpsRbacModuleSeeder } from "@sps/sps-rbac/backend/app/root";
+import { ISeedResult } from "@sps/shared-backend-api";
+import { app as host } from "@sps/host/backend/app/api";
+import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
+import { app as rbac } from "@sps/rbac/backend/app/api";
+import { app as crm } from "@sps/crm/backend/app/api";
+import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
+import { app as fileStorage } from "@sps/file-storage/backend/app/api";
+import { app as startup } from "@sps/startup/backend/app/api";
+
 import { exit } from "process";
 
 (async () => {
-  const seedAll = process.env["SEED_ALL"] === "true";
+  const seeds: ISeedResult[] = [];
 
-  const seedResults = {};
-  const seedConfig = {};
-
-  const spsHostModuleSeeder = new SpsHostModuleSeeder({
-    seedResults,
-    seedConfig,
+  const hostModelsSeeds = await host.seed({
+    type: "model",
+    seeds,
   });
 
-  const spsBroadcastModuleSeeder = new SpsBroadcastModuleSeeder({
-    seedResults,
-    seedConfig,
+  if (Array.isArray(hostModelsSeeds)) {
+    hostModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(hostModelsSeeds);
+  }
+
+  const websiteBuilderModelsSeeds = await websiteBuilder.seed({
+    type: "model",
+    seeds,
   });
 
-  const spsWebsiteBuilderModuleSeeder = new SpsWebsiteBuilderModuleSeeder({
-    seedResults,
-    seedConfig,
+  if (Array.isArray(websiteBuilderModelsSeeds)) {
+    websiteBuilderModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(websiteBuilderModelsSeeds);
+  }
+
+  const crmModelsSeeds = await crm.seed({
+    type: "model",
+    seeds,
   });
 
-  const spsFileStorageModuleSeeder = new SpsFileStorageModuleSeeder({
-    seedResults,
-    seedConfig,
+  if (Array.isArray(crmModelsSeeds)) {
+    crmModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(crmModelsSeeds);
+  }
+
+  const ecommerceModelsSeeds = await ecommerce.seed({
+    type: "model",
+    seeds,
   });
 
-  const spsRbacModuleSeeder = new SpsRbacModuleSeeder({
-    seedResults,
-    seedConfig,
+  if (Array.isArray(ecommerceModelsSeeds)) {
+    ecommerceModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(ecommerceModelsSeeds);
+  }
+
+  const rbacModelsSeeds = await rbac.seed({
+    type: "model",
+    seeds,
   });
 
-  const startupModuleSeeder = new StartupModuleSeeder({
-    seedResults,
-    seedConfig,
+  if (Array.isArray(rbacModelsSeeds)) {
+    rbacModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(rbacModelsSeeds);
+  }
+
+  const fileStorageModelsSeeds = await fileStorage.seed({
+    type: "model",
+    seeds,
   });
 
-  if (spsHostModuleSeeder.config.seed || seedAll) {
-    await spsHostModuleSeeder.seedModels();
-  }
-  if (spsBroadcastModuleSeeder.config.seed || seedAll) {
-    await spsBroadcastModuleSeeder.seedModels();
-  }
-  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-    await spsWebsiteBuilderModuleSeeder.seedModels();
-  }
-  if (spsFileStorageModuleSeeder.config.seed || seedAll) {
-    await spsFileStorageModuleSeeder.seedModels();
-  }
-  if (spsRbacModuleSeeder.config.seed || seedAll) {
-    await spsRbacModuleSeeder.seedModels();
-  }
-  if (startupModuleSeeder.config.seed || seedAll) {
-    await startupModuleSeeder.seedModels();
+  if (Array.isArray(fileStorageModelsSeeds)) {
+    fileStorageModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(fileStorageModelsSeeds);
   }
 
-  if (spsHostModuleSeeder.config.seed || seedAll) {
-    await spsHostModuleSeeder.seedRelations();
+  const startupModelsSeeds = await startup.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(startupModelsSeeds)) {
+    startupModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(startupModelsSeeds);
   }
-  if (spsBroadcastModuleSeeder.config.seed || seedAll) {
-    await spsBroadcastModuleSeeder.seedRelations();
+
+  const hostRelationsSeeds = await host.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(hostRelationsSeeds)) {
+    hostRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(hostRelationsSeeds);
   }
-  if (spsWebsiteBuilderModuleSeeder.config.seed || seedAll) {
-    await spsWebsiteBuilderModuleSeeder.seedRelations();
+
+  const websiteBuilderRelationsSeeds = await websiteBuilder.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(websiteBuilderRelationsSeeds)) {
+    websiteBuilderRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(websiteBuilderRelationsSeeds);
   }
-  if (spsFileStorageModuleSeeder.config.seed || seedAll) {
-    await spsFileStorageModuleSeeder.seedRelations();
+
+  const crmRelationsSeeds = await crm.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(crmRelationsSeeds)) {
+    crmRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(crmRelationsSeeds);
   }
-  if (spsRbacModuleSeeder.config.seed || seedAll) {
-    await spsRbacModuleSeeder.seedRelations();
+
+  const ecommerceRelationsSeeds = await ecommerce.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(ecommerceRelationsSeeds)) {
+    ecommerceRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(ecommerceRelationsSeeds);
   }
-  if (startupModuleSeeder.config.seed || seedAll) {
-    await startupModuleSeeder.seedRelations();
+
+  const rbacRelationsSeeds = await rbac.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(rbacRelationsSeeds)) {
+    rbacRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(rbacRelationsSeeds);
+  }
+
+  const fileStorageRelationsSeeds = await fileStorage.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(fileStorageRelationsSeeds)) {
+    fileStorageRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(fileStorageRelationsSeeds);
+  }
+
+  const startupRelationsSeeds = await startup.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(startupRelationsSeeds)) {
+    startupRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(startupRelationsSeeds);
   }
 })()
   .then(() => {

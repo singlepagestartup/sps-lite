@@ -6,7 +6,7 @@ import {
 } from "./table/Coder";
 import {
   Coder as RelationsCoder,
-  IGeneratorProps as IRelationsCoderGeneratorProps,
+  IGeneratorProps as IModelsCoderGeneratorProps,
 } from "./relations/Coder";
 import {
   Coder as RootCoder,
@@ -15,7 +15,7 @@ import {
 import { Coder as BackendCoder } from "../Coder";
 
 export type IGeneratorProps = {
-  relations?: IRelationsCoderGeneratorProps;
+  relations?: IModelsCoderGeneratorProps;
   table?: ITableCoderGeneratorProps;
   root?: IRootCoderGeneratorProps;
 };

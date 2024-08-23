@@ -5,317 +5,6 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "db:generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run host:db:migrate"
-          },
-          {
-            "command": "nx run host:db:sps-host-generate"
-          },
-          {
-            "command": "nx run host:db:sps-broadcast-generate"
-          },
-          {
-            "command": "nx run host:db:sps-website-builder-generate"
-          },
-          {
-            "command": "nx run host:db:sps-file-storage-generate"
-          },
-          {
-            "command": "nx run host:db:sps-rbac-generate"
-          },
-          {
-            "command": "nx run host:db:sps-crm-generate"
-          },
-          {
-            "command": "nx run host:db:sps-third-parties-generate"
-          },
-          {
-            "command": "nx run host:db:sps-notification-generate"
-          },
-          {
-            "command": "nx run host:db:sps-billing-generate"
-          },
-          {
-            "command": "nx run host:db:startup-generate"
-          }
-        ]
-      }
-    },
-    "db:sps-website-builder-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-website-builder-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-website-builder/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-host-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-host/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-host-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-host/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-broadcast-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-broadcast/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-broadcast-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-broadcast/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-billing-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-billing/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-billing-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-billing/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-file-storage-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-file-storage/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-file-storage-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-file-storage/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-rbac-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-rbac-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-rbac/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-third-parties-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-third-parties/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-third-parties-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-third-parties/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-crm-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-crm/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-crm-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-crm/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-notification-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-notification/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:sps-notification-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/sps-notification/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
-    "db:startup-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/startup/backend/db/root",
-        "commands": [
-          {
-            "command": "drizzle-kit up --config=./src/lib/config.ts"
-          },
-          {
-            "command": "drizzle-kit generate --config=./src/lib/config.ts"
-          }
-        ]
-      }
-    },
-    "db:startup-migrate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "libs/modules/startup/backend/db/root",
-        "commands": [
-          {
-            "command": "bun run ./src/lib/migrate.ts"
-          }
-        ]
-      }
-    },
     "db:migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -323,49 +12,37 @@
         "cwd": "apps/host",
         "commands": [
           {
-            "command": "nx run host:db:sps-host-migrate"
+            "command": "npx nx run @sps/file-storage:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-broadcast-migrate"
+            "command": "npx nx run @sps/broadcast:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-website-builder-migrate"
+            "command": "npx nx run @sps/notification:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-file-storage-migrate"
+            "command": "npx nx run @sps/crm:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-rbac-migrate"
+            "command": "npx nx run @sps/billing:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-crm-migrate"
+            "command": "npx nx run @sps/ecommerce:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-billing-migrate"
+            "command": "npx nx run @sps/sps-third-parties:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-third-parties-migrate"
+            "command": "npx nx run @sps/website-builder:repository-migrate"
           },
           {
-            "command": "nx run host:db:sps-notification-migrate"
+            "command": "npx nx run @sps/startup:repository-migrate"
           },
           {
-            "command": "nx run host:db:startup-migrate"
-          }
-        ]
-      }
-    },
-    "db:drop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "cwd": "apps/host",
-        "commands": [
-          {
-            "command": "drizzle-kit drop --config=./src/db/config.ts"
+            "command": "npx nx run @sps/rbac:repository-migrate"
           },
           {
-            "command": "bun run ./src/db/drop.ts"
+            "command": "npx nx run @sps/host:repository-migrate"
           }
         ]
       }
@@ -377,9 +54,6 @@
         "parallel": false,
         "cwd": "apps/host",
         "commands": [
-          {
-            "command": "nx run host:db:migrate"
-          },
           {
             "command": "bun run src/db/dump.ts"
           }
@@ -393,9 +67,6 @@
         "parallel": false,
         "cwd": "apps/host",
         "commands": [
-          {
-            "command": "nx run host:db:migrate"
-          },
           {
             "command": "bun run src/db/seed.ts"
           }

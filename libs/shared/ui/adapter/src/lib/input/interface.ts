@@ -46,6 +46,9 @@ export type TTypedProps =
       type: "datetime";
     }
   | {
+      type: "checkbox";
+    }
+  | {
       type: "radio" | "select";
       options: [value: string, title: string | TRenderComponent][];
       selectContentClassName?: string;

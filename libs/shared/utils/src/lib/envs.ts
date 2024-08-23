@@ -11,6 +11,15 @@ export const SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS =
 export const SPS_RBAC_COOKIE_SESSION_NAME =
   process.env["SPS_RBAC_COOKIE_SESSION_NAME"] || "sps_rbac_ce_sn";
 export const SPS_RBAC_SECRET_KEY = process.env["SPS_RBAC_SECRET_KEY"];
+export const SPS_RBAC_SESSION_LIFETIME_IN_SECONDS =
+  Number(process.env["SPS_RBAC_SESSION_LIFETIME_IN_SECONDS"]) || Number("3600");
+export const SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS =
+  Number(process.env["NEXT_PUBLIC_SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS"]) ||
+  Number("3600");
+export const SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS =
+  Number(process.env["SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS"]) ||
+  Number("86400");
+export const SPS_RBAC_JWT_SECRET = process.env["SPS_RBAC_JWT_SECRET"];
 
 export const DATABASE_HOST = `${process.env["DATABASE_HOST"] || process.env["POSTGRES_HOST"] || "localhost"}`;
 
@@ -82,3 +91,17 @@ export const STALE_TIME =
 
 export const REVALIDATE: number | undefined =
   Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || undefined;
+
+export const FILE_STORAGE_PROVIDER: "vercel-blob" | "local" =
+  process.env["FILE_STORAGE_PROVIDER"] === "local" ? "local" : "vercel-blob";
+export const BLOB_READ_WRITE_TOKEN = process.env["BLOB_READ_WRITE_TOKEN"];
+
+export const STRIPE_PUBLISHABLE_KEY =
+  process.env["NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"];
+export const STRIPE_SECRET_KEY = process.env["STRIPE_SECRET_KEY"];
+
+export const O_X_PROCESSING_SHOP_ID = process.env["O_X_PROCESSING_SHOP_ID"];
+export const O_X_PROCESSING_TEST_PAYMENTS =
+  process.env["O_X_PROCESSING_TEST_PAYMENTS"];
+export const O_X_PROCESSING_WEBHOOK_PASSWORD =
+  process.env["O_X_PROCESSING_WEBHOOK_PASSWORD"];

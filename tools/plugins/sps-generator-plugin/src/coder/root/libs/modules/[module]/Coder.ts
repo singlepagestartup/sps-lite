@@ -7,7 +7,7 @@ import { Coder as ModuleCoder } from "../Coder";
 import { IEditFieldProps } from "./models/[model]/backend/schema/table/Coder";
 import {
   Coder as RelationsCoder,
-  IGeneratorProps as IRelationsCoderGeneratorProps,
+  IGeneratorProps as IModelsCoderGeneratorProps,
 } from "./relations/Coder";
 import {
   Coder as BackendCoder,
@@ -21,7 +21,7 @@ import {
 export type IGeneratorProps = {
   name: Coder["name"];
   models?: IModelsCoderGeneratorProps[];
-  relations?: IRelationsCoderGeneratorProps[];
+  relations?: IModelsCoderGeneratorProps[];
   backend?: IBackendCoderGeneratorProps;
   frontend?: IFrontendCoderGeneratorProps;
 };

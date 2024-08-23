@@ -9,7 +9,7 @@ describe("Coder", () => {
   describe(`ImportPopulate`, () => {
     const namePropertyCased = "pagesToLayouts";
     const importPath =
-      "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
+      "@sps/website-builder-backend-schema-relations-pages-to-layouts";
 
     const exportRoute = new ImportPopulate({
       namePropertyCased,
@@ -19,9 +19,9 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { populate as pagesToLayouts } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
+      const string = `import { populate as pagesToLayouts } from "@sps/website-builder-backend-schema-relations-pages-to-layouts";
       import { populate as pagesToSlides }
-      from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
+      from "@sps/website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
     });
@@ -31,8 +31,8 @@ describe("Coder", () => {
 
       const string = `import {
           populate as pagesToLayouts
-        } from "@sps/sps-website-builder-backend-schema-relations-pages-to-layouts";
-      import { populate as pages } from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
+        } from "@sps/website-builder-backend-schema-relations-pages-to-layouts";
+      import { populate as pages } from "@sps/website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
     });
@@ -72,7 +72,7 @@ describe("Coder", () => {
   describe(`ImportRelation`, () => {
     const leftProjectRelationNamePropertyCased = "pages";
     const importPath =
-      "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";
+      "@sps/website-builder-backend-schema-relations-slides-to-pages";
 
     const exportRoute = new ImportRelation({
       leftProjectRelationNamePropertyCased,
@@ -82,9 +82,9 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { relation as layouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-layouts";
+      const string = `import { relation as layouts } from "@sps/website-builder-models-page-backend-schema-relations-layouts";
       import { relation as pages }
-      from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
+      from "@sps/website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
     });
@@ -92,8 +92,8 @@ describe("Coder", () => {
     it(`should match the regex 2`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { relation as layouts } from "@sps/sps-website-builder-models-page-backend-schema-relations-layouts";
-      import { relation as pages } from "@sps/sps-website-builder-backend-schema-relations-slides-to-pages";`;
+      const string = `import { relation as layouts } from "@sps/website-builder-models-page-backend-schema-relations-layouts";
+      import { relation as pages } from "@sps/website-builder-backend-schema-relations-slides-to-pages";`;
 
       expect(string).toMatch(regex);
     });

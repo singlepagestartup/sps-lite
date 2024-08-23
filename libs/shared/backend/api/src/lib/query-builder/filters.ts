@@ -3,7 +3,7 @@ import { PgTableWithColumns } from "drizzle-orm/pg-core";
 
 interface QueryBuilderFilterMethods extends ReturnType<typeof getOperators> {}
 
-interface Filter {
+export interface IFilter {
   column: string;
   method: keyof QueryBuilderFilterMethods;
   value: any;
@@ -12,8 +12,8 @@ interface Filter {
 export interface QueryBuilderProps<T extends PgTableWithColumns<any>> {
   table: Partial<T>;
   queryFunctions: QueryBuilderFilterMethods;
-  filters: {
-    ["and"]: Filter[];
+  filters?: {
+    ["and"]: IFilter[];
   };
 }
 
@@ -55,9 +55,26 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
   for (const filter of filterArrays) {
     const filterMethod: keyof QueryBuilderFilterMethods = filter?.method;
     const filterColumn: keyof T["$inferSelect"] = filter?.column;
-    const filterValue = filter?.value;
-
     const tableColumn = table[filterColumn];
+
+    let filterValue: any;
+
+    switch (tableColumn?.["dataType"]) {
+      case "date":
+        filterValue = new Date(filter?.value);
+        break;
+      case "integer":
+        filterValue = parseInt(filter?.value);
+        break;
+      case "boolean":
+        filterValue = filter?.value === "true";
+        break;
+      case "json":
+        filterValue = JSON.parse(filter?.value);
+        break;
+      default:
+        filterValue = filter?.value;
+    }
 
     if (!tableColumn) {
       throw new Error(`You are missing a column in the filter object`);
@@ -70,7 +87,25 @@ export const queryBuilder = <T extends PgTableWithColumns<any>>(
     }
 
     if (method === "notInArray" || method === "inArray") {
-      return;
+      const arrayFilter: string[] = [];
+
+      if (!filterValue) {
+        resultQueries.push(queryFunctions.isNull(tableColumn) as SQL<any>);
+
+        continue;
+      } else if (Array.isArray(filterValue)) {
+        filterValue.forEach((value) => {
+          arrayFilter.push(value);
+        });
+      } else if (Object.keys(filterValue).length) {
+        Object.values(filterValue).forEach((value: any) => {
+          arrayFilter.push(value);
+        });
+      }
+
+      resultQueries.push(
+        queryFunctions[method](tableColumn, arrayFilter) as SQL<any>,
+      );
     }
 
     if (

@@ -1,42 +1,49 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
+import { createMiddleware } from "hono/factory";
 import { type NextRequest } from "next/server";
-import { app as spsHostApp } from "@sps/sps-host/backend/app/root";
-import { app as spsWebsiteBuilderApp } from "@sps/sps-website-builder/backend/app/root";
-import { app as spsFileStorageApp } from "@sps/sps-file-storage/backend/app/root";
-import { app as spsRbacApp } from "@sps/sps-rbac/backend/app/root";
-import { app as startupApp } from "@sps/startup/backend/app/root";
-import { app as spsBilling } from "@sps/sps-billing/backend/app/root";
-import { app as spsBroadcast } from "@sps/sps-broadcast/backend/app/root";
-import { app as spsCrm } from "@sps/sps-crm/backend/app/root";
-import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/root";
-import { app as spsNotification } from "@sps/sps-notification/backend/app/root";
+import { app as hostApp } from "@sps/host/backend/app/api";
+import { app as websiteBuilderApp } from "@sps/website-builder/backend/app/api";
+import { app as fileStorageApp } from "@sps/file-storage/backend/app/api";
+import { app as rbacApp } from "@sps/rbac/backend/app/api";
+import { app as startupApp } from "@sps/startup/backend/app/api";
+import { app as billingApp } from "@sps/billing/backend/app/api";
+import { app as broadcastApp } from "@sps/broadcast/backend/app/api";
+import { app as crmApp } from "@sps/crm/backend/app/api";
+import { app as ecommerceApp } from "@sps/ecommerce/backend/app/api";
+import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/api";
+import { app as notificationApp } from "@sps/notification/backend/app/api";
 import { chain as middlewaresChain } from "./middlewares/chain";
-import { MiddlewaresGeneric } from "@sps/middlewares";
-import { BlankSchema } from "hono/types";
+import { ExceptionFilter } from "@sps/shared-backend-api";
+import { ErrorHandler } from "hono/types";
 
 export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
-declare module "hono" {
-  interface ContextVariableMap extends MiddlewaresGeneric {}
-}
+const app = new Hono<any, any, any>().basePath("/api");
 
-const app = new Hono<MiddlewaresGeneric, BlankSchema, string>().basePath(
-  "/api",
-);
-
+app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
 middlewaresChain(app);
 
-app.route("/sps-host", spsHostApp as any);
-app.route("/sps-broadcast", spsBroadcast as any);
-app.route("/sps-website-builder", spsWebsiteBuilderApp as any);
-app.route("/sps-file-storage", spsFileStorageApp as any);
-app.route("/sps-rbac", spsRbacApp as any);
-app.route("/sps-billing", spsBilling as any);
-app.route("/sps-third-parties", spsThirdParties as any);
-app.route("/sps-crm", spsCrm as any);
-app.route("/sps-notification", spsNotification as any);
-app.route("/startup", startupApp as any);
+// app.use(
+//   createMiddleware(async (c, next) => {
+//     const path = c.req.path;
+//     console.log("Host App Middleware", path);
+//     await next();
+//   }),
+// );
+
+app.mount("/host", hostApp.hono.fetch);
+app.mount("/broadcast", broadcastApp.hono.fetch);
+app.mount("/website-builder", websiteBuilderApp.hono.fetch);
+app.mount("/file-storage", fileStorageApp.hono.fetch);
+app.mount("/rbac", rbacApp.hono.fetch);
+app.mount("/billing", billingApp.hono.fetch);
+app.mount("/sps-third-parties", spsThirdParties.hono.fetch);
+app.mount("/crm", crmApp.hono.fetch);
+app.mount("/ecommerce", ecommerceApp.hono.fetch);
+app.mount("/notification", notificationApp.hono.fetch);
+app.mount("/startup", startupApp.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

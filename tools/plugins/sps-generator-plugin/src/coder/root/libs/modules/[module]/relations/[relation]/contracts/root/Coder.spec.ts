@@ -4,7 +4,7 @@ describe("Coder", () => {
   describe(`ImportContracts`, () => {
     const relationNamePascalCased = "WidgetsToModules";
     const importPath =
-      "@sps/sps-website-builder-relations-widgets-to-modules-contracts";
+      "@sps/website-builder-relations-widgets-to-modules-contracts";
 
     const exportRoute = new ImportContracts({
       relationNamePascalCased,
@@ -14,9 +14,9 @@ describe("Coder", () => {
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { IRelation as INavbarToWidget } from "@sps/sps-website-builder-relations-navbars-to-widgets-contracts";
-      import { IRelation as IPageToWidget } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
-      import { IRelation as IWidgetsToModules } from "@sps/sps-website-builder-relations-widgets-to-modules-contracts";
+      const string = `import { IModel as INavbarToWidget } from "@sps/website-builder-relations-navbars-to-widgets-contracts";
+      import { IModel as IPageToWidget } from "@sps/website-builder-relations-pages-to-widgets-contracts";
+      import { IModel as IWidgetsToModules } from "@sps/website-builder-relations-widgets-to-modules-contracts";
       
       export interface IModel extends IParentModel {
         widgetsToModules: IWidgetsToModules[];`;
@@ -27,11 +27,11 @@ describe("Coder", () => {
     it(`should match the regex 2`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { IRelation as INavbarToWidget } from "@sps/sps-website-builder-relations-navbars-to-widgets-contracts";
-      import { IRelation as IPageToWidget } from "@sps/sps-website-builder-relations-pages-to-widgets-contracts";
+      const string = `import { IModel as INavbarToWidget } from "@sps/website-builder-relations-navbars-to-widgets-contracts";
+      import { IModel as IPageToWidget } from "@sps/website-builder-relations-pages-to-widgets-contracts";
       import {
-          IRelation as IWidgetsToModules
-      } from "@sps/sps-website-builder-relations-widgets-to-modules-contracts";
+          IModel as IWidgetsToModules
+      } from "@sps/website-builder-relations-widgets-to-modules-contracts";
       
       export interface IModel extends IParentModel {
         widgetsToModules: IWidgetsToModules[];`;
@@ -53,13 +53,13 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToHeroSectionBlocks: IWidgetToHeroSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
-        widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToSliderBlocks: IWidgetToSliderBlock[];
+        widgetsToWidgets: IWidgetToFooterBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules: IWidgetsToModules[];
       }`;
@@ -71,13 +71,13 @@ describe("Coder", () => {
       const regex = exportRoute.onRemove.regex;
 
       const string = `export interface IModel extends IParentModel {
-        widgetsToHeroSectionBlocks: IWidgetToHeroSectionBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToNavbarBlocks: IWidgetToNavbarBlock[];
         footersToWidgets: IFooterToWidget[];
         navbarsToWidgets: INavbarToWidget[];
         pagesToWidgets: IPageToWidget[];
-        widgetsToFooterBlocks: IWidgetToFooterBlock[];
-        widgetsToSliderBlocks: IWidgetToSliderBlock[];
+        widgetsToWidgets: IWidgetToFooterBlock[];
+        widgetsToContentBlocks: IWidgetToContentBlock[];
         widgetsToFeaturesSectionBlocks: IWidgetToFeaturesSectionBlock[];
         widgetsToModules:
           IWidgetsToModules[];

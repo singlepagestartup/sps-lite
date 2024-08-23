@@ -80,6 +80,13 @@ function makeConfig() {
       ];
     },
     trailingSlash: false,
+    experimental: {
+      ppr: "incremental",
+    },
+    webpack: (config) => {
+      config.externals.push("pino-pretty", "lokijs", "encoding");
+      return config;
+    },
   };
 
   return withBundleAnalyzer(config);

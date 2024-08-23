@@ -1,19 +1,20 @@
 import { createMiddleware } from "hono/factory";
-import { Table as SessionTable } from "@sps/sps-rbac/models/session/backend/schema/root";
 import {
-  BACKEND_URL,
   SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
   SPS_RBAC_COOKIE_SESSION_NAME,
   SPS_RBAC_COOKIE_SESSION_SECRET,
   SPS_RBAC_SECRET_KEY,
+  SPS_RBAC_SESSION_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import { getCookie, setCookie } from "hono/cookie";
 import * as Iron from "iron-webcrypto";
-import QueryString from "qs";
+import { MiddlewareHandler } from "hono";
+import { api } from "@sps/rbac/models/session/sdk/server";
+import { IModel } from "@sps/rbac/models/session/sdk/model";
 
-export type MiddlewareGeneric = {
+export type IMiddlewareGeneric = {
   Variables: {
-    session: typeof SessionTable.$inferSelect | null | undefined;
+    session: IModel | null | undefined;
   };
 };
 
@@ -23,164 +24,177 @@ interface SessionOptions {
   cookieSessionName?: string;
 }
 
-export function middleware(options?: SessionOptions) {
-  const cookieSessionSecret = SPS_RBAC_COOKIE_SESSION_SECRET;
+export class Middleware {
+  cookieSessionSecret: string;
+  cookieSessionExpirationSeconds: number;
+  cookieSessionName: string;
 
-  if (!cookieSessionSecret) {
-    throw new Error("Cookie session secret is required");
-  }
+  constructor(options?: SessionOptions) {
+    const cookieSessionSecret = SPS_RBAC_COOKIE_SESSION_SECRET;
 
-  if (cookieSessionSecret.length < 32) {
-    throw new Error(
-      "Cookie session secret must be at least 32 characters long",
-    );
-  }
-
-  const cookieSessionExpirationSeconds = parseInt(
-    SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
-  );
-  const cookieSessionName =
-    options?.cookieSessionName || SPS_RBAC_COOKIE_SESSION_NAME;
-
-  return createMiddleware(async (c, next) => {
-    let sid: string | null | undefined;
-    let session: typeof SessionTable.$inferSelect | null | undefined;
-    let createNewSession = false;
-
-    if (c.req.header("X-SPS-RBAC-SECRET-KEY")) {
-      return await next();
+    if (!cookieSessionSecret) {
+      throw new Error("Cookie session secret is required");
     }
 
-    if (!SPS_RBAC_SECRET_KEY) {
+    if (cookieSessionSecret.length < 32) {
       throw new Error(
-        "SPS_RBAC_SECRET_KEY is required for sessions middleware to work",
+        "Cookie session secret must be at least 32 characters long",
       );
     }
 
-    const sessionCookie = getCookie(c, cookieSessionName);
+    this.cookieSessionSecret = cookieSessionSecret;
 
-    if (c.req.url.includes("/api/sps-rbac/sessions")) {
-      return await next();
-    }
+    const cookieSessionExpirationSeconds = parseInt(
+      SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
+    );
 
-    if (sessionCookie) {
-      const cookieData = await Iron.unseal(
-        globalThis.crypto,
-        sessionCookie,
-        { default: cookieSessionSecret },
-        Iron.defaults,
-      ).catch((error) => {
-        createNewSession = true;
-      });
+    this.cookieSessionExpirationSeconds = cookieSessionExpirationSeconds;
 
-      if (typeof cookieData === "string") {
-        sid = cookieData;
+    const cookieSessionName =
+      options?.cookieSessionName || SPS_RBAC_COOKIE_SESSION_NAME;
 
-        const filters = QueryString.stringify({
-          filters: {
-            and: [
-              {
-                column: "id",
-                method: "eq",
-                value: cookieData,
-              },
-            ],
-          },
-        });
+    this.cookieSessionName = cookieSessionName;
+  }
 
-        const sessionsJson = await fetch(
-          BACKEND_URL + "/api/sps-rbac/sessions?" + filters,
-          {
-            method: "GET",
-            headers: {
-              "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-            },
-          },
-        ).then((res) => res.json());
+  init(): MiddlewareHandler<any, any, {}> {
+    return createMiddleware(async (c, next) => {
+      let sid: string | null | undefined;
+      let session: IModel | null | undefined;
+      let createNewSession = false;
 
-        session = sessionsJson.data?.[0];
+      if (c.req.header("X-RBAC-SECRET-KEY")) {
+        return await next();
       }
 
-      if (session) {
-        if (new Date(session.expiresAt).getTime() > Date.now()) {
-          const data = {
-            expiresAt: new Date(Date.now() + 60 * 1000).toISOString(),
-          };
+      if (!SPS_RBAC_SECRET_KEY) {
+        throw new Error(
+          "SPS_RBAC_SECRET_KEY is required for sessions middleware to work",
+        );
+      }
 
-          const body = new FormData();
+      const sessionCookie = getCookie(c, this.cookieSessionName);
 
-          body.append("data", JSON.stringify(data));
+      if (c.req.url.includes("/api/rbac/sessions")) {
+        return await next();
+      }
 
-          const sessionsJson = await fetch(
-            BACKEND_URL + "/api/sps-rbac/sessions/" + session.id,
-            {
-              method: "PATCH",
-              headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+      if (sessionCookie) {
+        const cookieData = await Iron.unseal(
+          globalThis.crypto,
+          sessionCookie,
+          { default: this.cookieSessionSecret },
+          Iron.defaults,
+        ).catch((error) => {
+          createNewSession = true;
+        });
+
+        if (typeof cookieData === "string") {
+          sid = cookieData;
+
+          const existingSessions = await api.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "id",
+                    method: "eq",
+                    value: cookieData,
+                  },
+                ],
               },
-              body,
             },
-          ).then((res) => res.json());
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
 
-          session = sessionsJson.data;
+          session = existingSessions?.[0];
+        }
+
+        if (session) {
+          const needToProlongate =
+            new Date(session.expiresAt).getTime() > Date.now() &&
+            new Date(session.expiresAt).getTime() - Date.now() <
+              SPS_RBAC_SESSION_LIFETIME_IN_SECONDS * 0.8 * 1000;
+
+          if (needToProlongate) {
+            const prolongatedSession = await api.update({
+              data: {
+                expiresAt: new Date(
+                  Date.now() + SPS_RBAC_SESSION_LIFETIME_IN_SECONDS * 1000,
+                ).toISOString(),
+              },
+              id: session.id,
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+
+            session = prolongatedSession;
+          } else {
+            createNewSession = true;
+          }
         } else {
           createNewSession = true;
         }
       } else {
         createNewSession = true;
       }
-    } else {
-      createNewSession = true;
-    }
 
-    if (createNewSession) {
-      const data = {
-        expiresAt: new Date(Date.now() + 60 * 1000).toISOString(),
-      };
+      if (createNewSession) {
+        const createdSession = await api.create({
+          data: {
+            expiresAt: new Date(Date.now() + 60 * 1000).toISOString(),
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
 
-      const body = new FormData();
+        if (!createdSession) {
+          throw new Error("Session not found");
+        }
 
-      body.append("data", JSON.stringify(data));
+        sid = createdSession.id;
+        session = createdSession;
+      }
 
-      const sessionsJson = await fetch(BACKEND_URL + "/api/sps-rbac/sessions", {
-        method: "POST",
-        headers: {
-          "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-        },
-        body,
-      }).then((res) => res.json());
-
-      session = sessionsJson.data;
+      const cookieData = await Iron.seal(
+        globalThis.crypto,
+        sid,
+        this.cookieSessionSecret,
+        Iron.defaults,
+      );
 
       if (!session) {
         throw new Error("Session not found");
       }
 
-      sid = session.id;
-    }
+      await next();
 
-    const cookieData = await Iron.seal(
-      globalThis.crypto,
-      sid,
-      cookieSessionSecret,
-      Iron.defaults,
-    );
-
-    c.set("session", session);
-
-    if (!session) {
-      throw new Error("Session not found");
-    }
-
-    await next();
-
-    setCookie(c, cookieSessionName, cookieData, {
-      path: "/",
-      secure: true,
-      httpOnly: true,
-      maxAge: cookieSessionExpirationSeconds,
-      expires: new Date(session.expiresAt),
-      sameSite: "Strict",
-    });
-  });
+      setCookie(c, this.cookieSessionName, cookieData, {
+        path: "/",
+        secure: true,
+        httpOnly: false,
+        maxAge: this.cookieSessionExpirationSeconds,
+        expires: new Date(session.expiresAt),
+        sameSite: "Strict",
+      });
+    }).bind(this);
+  }
 }

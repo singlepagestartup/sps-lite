@@ -1,0 +1,8 @@
+{
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../../shared/utils/src/lib/build-tree-paths/build-tree-path.spec.ts"
+  ],
+  "extends": "../../../tsconfig.base.json"
+}

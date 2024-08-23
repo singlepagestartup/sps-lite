@@ -1,79 +1,67 @@
-import { BACKEND_URL, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
+import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
+import { revalidateTag } from "next/cache";
 
-export function middleware() {
-  return createMiddleware(async (c, next) => {
-    const path = c.req.path;
-    const method = c.req.method;
+export type IMiddlewareGeneric = unknown;
 
-    await next();
+export class Middleware {
+  constructor() {}
 
-    if (path.includes("/api/sps-broadcast") || path.includes("/api/sps-rbac")) {
-      return;
-    }
+  init(): MiddlewareHandler<any, any, {}> {
+    return createMiddleware(async (c, next) => {
+      const path = c.req.path;
+      const method = c.req.method;
 
-    if (c.res.status >= 200 && c.res.status < 300) {
-      if (["POST", "PUT", "PATCH", "DELETE"].includes(method)) {
-        if (!SPS_RBAC_SECRET_KEY) {
-          throw Error(
-            "SPS_RBAC_SECRET_KEY is not defined, sps-broadcast middleware 'revalidation' can't request to service.",
-          );
-        }
+      await next();
 
-        if (["POST", "PUT", "PATCH"].includes(method)) {
-          const body = new FormData();
+      if (path.includes("/api/broadcast")) {
+        return;
+      }
 
-          body.append(
-            "data",
-            JSON.stringify({ channelName: "revalidation", payload: path }),
-          );
+      if (c.res.status >= 200 && c.res.status < 300) {
+        if (["POST", "PUT", "PATCH", "DELETE"].includes(method)) {
+          if (!SPS_RBAC_SECRET_KEY) {
+            throw Error(
+              "SPS_RBAC_SECRET_KEY is not defined, broadcast middleware 'revalidation' can't request to service.",
+            );
+          }
 
-          const pushMessage = await fetch(
-            BACKEND_URL + "/api/sps-broadcast/channels/push-message",
-            {
-              method: "POST",
-              headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          if (["POST", "PUT", "PATCH"].includes(method)) {
+            await channelApi.pushMessage({
+              data: { channelName: "revalidation", payload: path },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
               },
-              body,
-            },
-          );
+            });
+            revalidateTag(path);
+          }
+          if (["DELETE"].includes(method)) {
+            const pathWithoutId = path.replace(/\/[a-zA-Z0-9-]+$/, "");
 
-          await pushMessage.json().then((data) => {
-            // console.log(`🚀 ~ awaitcheck.json ~ data:`, data);
-          });
-        }
-        if (["DELETE"].includes(method)) {
-          const pathWithoutId = path.replace(/\/[a-zA-Z0-9-]+$/, "");
-
-          const body = new FormData();
-
-          body.append(
-            "data",
-            JSON.stringify({
-              channelName: "revalidation",
-              payload: pathWithoutId,
-            }),
-          );
-
-          const pushMessage = await fetch(
-            BACKEND_URL + "/api/sps-broadcast/channels/push-message",
-            {
-              method: "POST",
-              headers: {
-                "X-SPS-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            await channelApi.pushMessage({
+              data: { channelName: "revalidation", payload: pathWithoutId },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
               },
-              body,
-            },
-          );
-
-          await pushMessage.json().then((data) => {
-            // console.log(`🚀 ~ awaitcheck.json ~ data:`, data);
-          });
+            });
+            revalidateTag(pathWithoutId);
+          }
         }
       }
-    }
 
-    return;
-  });
+      return;
+    });
+  }
 }

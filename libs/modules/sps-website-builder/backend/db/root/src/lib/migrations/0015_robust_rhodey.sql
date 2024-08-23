@@ -1,1 +1,0 @@
-ALTER TABLE "sps_w_b_widgets" ADD COLUMN IF NOT EXISTS "class_name" text;

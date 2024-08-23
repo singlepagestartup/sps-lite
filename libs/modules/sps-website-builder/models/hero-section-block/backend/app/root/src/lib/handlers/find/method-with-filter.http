@@ -1,2 +1,0 @@
-GET http://localhost:3000/api/sps-website-builder/hero-section-blocks?filters[and][0][column]=title&filters[and][0][method]=ilike&filters[and][0][value]=%aste%&filters[and][1][column]=variant&filters[and][1][method]=eq&filters[and][1][value]=default HTTP/1.1
-content-type: application/json

@@ -5,10 +5,10 @@ import { Coder } from "../../coder/Coder";
 /**
  * Migrate module to the new version
  *
- * sps-website-builder
- * npx nx generate @sps/sps-generator-plugin:migrate --modules=sps-website-builder,startup,sps-file-storage,sps-rbac --right_external_models=sps-file-storage-widgets,sps-file-storage-module-widgets,sps-rbac-module-widgets,startup-module-widgets --no-interactive --dry-run
+ * website-builder
+ * npx nx generate @sps/sps-generator-plugin:migrate --modules=website-builder,startup,file-storage,rbac --right_external_models=file-storage-widgets,file-storage-module-widgets,rbac-module-widgets,startup-module-widgets --no-interactive --dry-run
  *
- * npx nx generate @sps/sps-generator-plugin:migrate --modules=sps-host --no-interactive --dry-run
+ * npx nx generate @sps/sps-generator-plugin:migrate --modules=host --no-interactive --dry-run
  */
 export async function migrateGenerator(
   tree: Tree,

@@ -4,118 +4,96 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
-const IsAuthenticatatedWrapper = dynamic(() =>
-  import(
-    "@sps/sps-rbac/models/authentication/frontend/component/variants/sps-lite/is-authenticatated-wrapper"
-  ).then((mod) => mod.Component),
-);
-const SpsHost = dynamic(() =>
-  import("@sps/sps-host/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsBroadcast = dynamic(() =>
-  import("@sps/sps-broadcast/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsWebsiteAdminComponent = dynamic(() =>
-  import("@sps/sps-website-builder/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
-);
-const StartupAdminComponent = dynamic(() =>
-  import("@sps/startup/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsFileStorageAdminComponent = dynamic(() =>
-  import("@sps/sps-file-storage/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
-);
-const SpsBillingAdminComponent = dynamic(() =>
-  import("@sps/sps-billing/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsRbacAdminComponent = dynamic(() =>
-  import("@sps/sps-rbac/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsNotificationAdminComponent = dynamic(() =>
-  import("@sps/sps-notification/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
-);
-const SpsCrmAdminComponent = dynamic(() =>
-  import("@sps/sps-crm/frontend/root").then((mod) => mod.AdminComponent),
-);
-const SpsThirdPartiesAdminComponent = dynamic(() =>
-  import("@sps/sps-third-parties/frontend/root").then(
-    (mod) => mod.AdminComponent,
-  ),
-);
+import { Component as SpsRbacSubject } from "@sps/rbac/models/subject/frontend/component";
+import { AdminComponent as SpsHost } from "@sps/host/frontend/component";
+import { AdminComponent as SpsWebsiteBuilder } from "@sps/website-builder/frontend/component";
+import { AdminComponent as SpsBilling } from "@sps/billing/frontend/component";
+import { AdminComponent as SpsBroadcast } from "@sps/broadcast/frontend/component";
+import { AdminComponent as SpsCrm } from "@sps/crm/frontend/component";
+import { AdminComponent as SpsEcommerce } from "@sps/ecommerce/frontend/component";
+import { AdminComponent as SpsFileStorage } from "@sps/file-storage/frontend/component";
+import { AdminComponent as SpsNotification } from "@sps/notification/frontend/component";
+import { AdminComponent as SpsThirdParties } from "@sps/sps-third-parties/frontend/component";
+import { AdminComponent as SpsRbac } from "@sps/rbac/frontend/component";
+import { AdminComponent as Startup } from "@sps/startup/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const params = useSearchParams();
   const adminQueryParams = params.get("admin");
 
-  const [widget, setWidget] = useState<string>("sps-host");
+  const [widget, setWidget] = useState<string>("host");
 
   if (!adminQueryParams) {
     return null;
   }
 
   return (
-    <IsAuthenticatatedWrapper
-      variant="is-authenticatated-wrapper"
+    <SpsRbacSubject
+      variant="is-authorized-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
+      apiProps={{
+        params: {
+          action: {
+            route: "*",
+            method: "*",
+            type: "HTTP",
+          },
+        },
+      }}
     >
       <section data-module="frontend" className="w-full py-2 lg:py-10 bg-input">
         <div className="w-full mx-auto max-w-7xl px-2">
           <div className="p-5">
             <div className="flex flex-col lg:flex-row lg:gap-3 w-full lg:w-fit rounded-t-xl lg:rounded-t-none overflow-hidden">
               <Button
-                title="sps-host"
+                title="host"
                 onClick={() => {
-                  setWidget("sps-host");
+                  setWidget("host");
                 }}
-                active={widget === "sps-host"}
+                active={widget === "host"}
               />
               <Button
-                title="sps-broradcast"
+                title="broradcast"
                 onClick={() => {
                   setWidget("sps-broradcast");
                 }}
                 active={widget === "sps-broradcast"}
               />
               <Button
-                title="sps-website-builder"
+                title="website-builder"
                 onClick={() => {
-                  setWidget("sps-website-builder");
+                  setWidget("website-builder");
                 }}
-                active={widget === "sps-website-builder"}
+                active={widget === "website-builder"}
               />
               <Button
-                title="sps-file-storage"
+                title="file-storage"
                 onClick={() => {
-                  setWidget("sps-file-storage");
+                  setWidget("file-storage");
                 }}
-                active={widget === "sps-file-storage"}
+                active={widget === "file-storage"}
               />
               <Button
-                title="sps-rbac"
+                title="rbac"
                 onClick={() => {
-                  setWidget("sps-rbac");
+                  setWidget("rbac");
                 }}
-                active={widget === "sps-rbac"}
+                active={widget === "rbac"}
               />
               <Button
-                title="sps-notification"
+                title="notification"
                 onClick={() => {
-                  setWidget("sps-notification");
+                  setWidget("notification");
                 }}
-                active={widget === "sps-notification"}
+                active={widget === "notification"}
               />
               <Button
-                title="sps-billing"
+                title="billing"
                 onClick={() => {
-                  setWidget("sps-billing");
+                  setWidget("billing");
                 }}
-                active={widget === "sps-billing"}
+                active={widget === "billing"}
               />
               <Button
                 title="startup"
@@ -125,14 +103,21 @@ export function Component(props: IComponentPropsExtended) {
                 active={widget === "startup"}
               />
               <Button
-                title="sps-crm"
+                title="crm"
                 onClick={() => {
-                  setWidget("sps-crm");
+                  setWidget("crm");
                 }}
-                active={widget === "sps-crm"}
+                active={widget === "crm"}
               />
               <Button
-                title="sps-third-parties"
+                title="ecommerce"
+                onClick={() => {
+                  setWidget("ecommerce");
+                }}
+                active={widget === "ecommerce"}
+              />
+              <Button
+                title="third-parties"
                 onClick={() => {
                   setWidget("sps-third-parties");
                 }}
@@ -140,7 +125,7 @@ export function Component(props: IComponentPropsExtended) {
               />
             </div>
             <div className="bg-white rounded-b-lg">
-              {widget === "sps-host" ? (
+              {widget === "host" ? (
                 <SpsHost
                   {...props}
                   isServer={false}
@@ -156,16 +141,16 @@ export function Component(props: IComponentPropsExtended) {
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-website-builder" ? (
-                <SpsWebsiteAdminComponent
+              {widget === "website-builder" ? (
+                <SpsWebsiteBuilder
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-file-storage" ? (
-                <SpsFileStorageAdminComponent
+              {widget === "file-storage" ? (
+                <SpsFileStorage
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -173,39 +158,47 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "startup" ? (
-                <StartupAdminComponent
+                <Startup
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-rbac" ? (
-                <SpsRbacAdminComponent
+              {widget === "rbac" ? (
+                <SpsRbac
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-notification" ? (
-                <SpsNotificationAdminComponent
+              {widget === "notification" ? (
+                <SpsNotification
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-billing" ? (
-                <SpsBillingAdminComponent
+              {widget === "billing" ? (
+                <SpsBilling
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
                   variant="default"
                 />
               ) : null}
-              {widget === "sps-crm" ? (
-                <SpsCrmAdminComponent
+              {widget === "crm" ? (
+                <SpsCrm
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
+              {widget === "ecommerce" ? (
+                <SpsEcommerce
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -213,7 +206,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-third-parties" ? (
-                <SpsThirdPartiesAdminComponent
+                <SpsThirdParties
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -224,7 +217,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </section>
-    </IsAuthenticatatedWrapper>
+    </SpsRbacSubject>
   );
 }
 

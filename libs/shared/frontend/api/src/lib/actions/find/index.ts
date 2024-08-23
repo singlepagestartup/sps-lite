@@ -1,19 +1,26 @@
-import { NextRequestOptions, transformResponseItem } from "@sps/shared-utils";
+import {
+  NextRequestOptions,
+  responsePipe,
+  transformResponseItem,
+} from "@sps/shared-utils";
 import QueryString from "qs";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export interface IActionProps {
   route: string;
   host: string;
+  catchErrors?: boolean;
   tag?: string;
   revalidate?: number;
   params?: {
     [key: string]: any;
   };
-  options?: NextRequestOptions;
+  options?: Partial<NextRequestOptions>;
 }
 
 export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
+  const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+
   const { params, route, options, host } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
@@ -43,19 +50,12 @@ export async function action<T>(props: IActionProps): Promise<T[] | undefined> {
     requestOptions,
   );
 
-  if (!res.ok) {
-    const error = new Error(res.statusText);
+  const json = await responsePipe<{ data: T[] }>({
+    res,
+    catchErrors: props.catchErrors || productionBuild,
+  });
 
-    console.error(`${error.message} | ${host}${route} | ${error}`);
-
-    return;
-  }
-
-  const json = await res.json();
-
-  if (json.error) {
-    console.error(`${json.error.message} | ${host}${route} | ${json.error}`);
-
+  if (!json) {
     return;
   }
 

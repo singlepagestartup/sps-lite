@@ -1,5 +1,7 @@
 #/bin/bash
 
+./create_env.sh vercel
+
 export NEW_MIGRATIONS="false"
 
 migrate=$(npx nx run host:db:migrate)

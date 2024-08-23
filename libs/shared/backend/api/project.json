@@ -5,6 +5,13 @@
   "projectType": "library",
   "tags": [],
   "targets": {
-    "tsc:build": {}
+    "tsc:build": {},
+    "jest": {
+      "executor": "@nx/jest:jest",
+      "options": {
+        "jestConfig": "{projectRoot}/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
   }
 }

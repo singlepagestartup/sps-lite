@@ -61,6 +61,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       id?: IFindByIdQueryProps<T>["id"];
       params?: IFindByIdQueryProps<T>["params"];
       options?: IFindByIdQueryProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useQuery<T | undefined>({
         queryKey: props.id
@@ -80,7 +81,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               cb: (data) => {
                 addToGlobalStore({
                   name: factoryProps.route,
-                  type: "findById",
+                  type: "query",
                   result: data,
                   props,
                 });
@@ -93,11 +94,13 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           factoryProps.staleTime !== undefined
             ? factoryProps.staleTime
             : STALE_TIME,
+        ...props?.reactQueryOptions,
       });
     },
     find: (props?: {
       params?: IFindQueryProps<T>["params"];
       options?: IFindQueryProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useQuery<T[] | undefined>({
         queryKey: [
@@ -113,7 +116,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           cb: (data) => {
             addToGlobalStore({
               name: factoryProps.route,
-              type: "find",
+              type: "query",
               result: data,
               props,
             });
@@ -124,12 +127,14 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
           factoryProps.staleTime !== undefined
             ? factoryProps.staleTime
             : STALE_TIME,
+        ...props?.reactQueryOptions,
       });
     },
     create: (props?: {
       params?: ICreateMutationProps<T>["params"];
       options?: ICreateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, ICreateMutationFunctionProps>({
         mutationKey: [`${factoryProps.route}`],
@@ -139,7 +144,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "create",
+                type: "mutation",
                 result: data,
                 props,
                 setRequestId: props?.setRequestId,
@@ -148,6 +153,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
+        ...props?.reactQueryOptions,
       });
     },
     update: (props?: {
@@ -155,6 +161,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       params?: IUpdateMutationProps<T>["params"];
       options?: IUpdateMutationProps<T>["options"];
       setRequestId?: SetRequestId;
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, IUpdateMutationFunctionProps>({
         mutationKey: props?.id
@@ -166,7 +173,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "update",
+                type: "mutation",
                 result: data,
                 props,
                 setRequestId: props?.setRequestId,
@@ -175,15 +182,14 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
-        onSuccess(data) {
-          return data;
-        },
+        ...props?.reactQueryOptions,
       });
     },
     delete: (props?: {
       id?: IDeleteMutationProps<T>["id"];
       params?: IDeleteMutationProps<T>["params"];
       options?: IDeleteMutationProps<T>["options"];
+      reactQueryOptions?: any;
     }) => {
       return useMutation<T, DefaultError, IDeleteMutationFunctionProps>({
         mutationKey: props?.id
@@ -195,7 +201,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             cb: (data) => {
               addToGlobalStore({
                 name: factoryProps.route,
-                type: "delete",
+                type: "mutation",
                 result: data,
                 props,
               });
@@ -203,6 +209,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
             ...props,
           })(mutationFunctionProps);
         },
+        ...props?.reactQueryOptions,
       });
     },
   };
@@ -210,10 +217,11 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
   function subscription() {
     const triggeredActions: IAction[] = [];
     let revalidationChannel: any;
+    const mountTime = Date.now();
 
     globalActionsStore.subscribe((state) => {
       const broadcastChannels = state.getActionsFromStoreByName(
-        "/api/sps-broadcast/channels",
+        "/api/broadcast/channels",
       );
 
       broadcastChannels?.forEach((channel) => {
@@ -227,20 +235,18 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
       });
 
       const broadcastMessages = state.getActionsFromStoreByName(
-        "/api/sps-broadcast/messages",
+        "/api/broadcast/messages",
       );
 
-      broadcastMessages?.forEach((message) => {
-        if (!revalidationChannel) {
-          return;
-        }
+      broadcastMessages
+        ?.filter((message) => {
+          return new Date(message.result["createdAt"]).getTime() > mountTime;
+        })
+        .forEach((message) => {
+          if (!revalidationChannel) {
+            return;
+          }
 
-        if (
-          message.result?.["channelsToMessages"]?.find(
-            (channelToMessage: { channelId: string }) =>
-              channelToMessage?.["channelId"] === revalidationChannel?.["id"],
-          ) !== undefined
-        ) {
           const isTriggered = triggeredActions.some((triggeredAction) => {
             return JSON.stringify(triggeredAction) === JSON.stringify(message);
           });
@@ -258,8 +264,7 @@ export function factory<T>(factoryProps: IFactoryProps<T>) {
               }
             }
           }
-        }
-      });
+        });
     });
   }
 

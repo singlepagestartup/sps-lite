@@ -1,2 +1,0 @@
-ALTER TABLE "sps_t_p_telegram" ADD CONSTRAINT "sps_t_p_telegram_username_unique" UNIQUE("username");--> statement-breakpoint
-ALTER TABLE "sps_t_p_telegram" ADD CONSTRAINT "sps_t_p_telegram_token_unique" UNIQUE("token");

@@ -6,11 +6,11 @@ import {
 import { Coder as SchemaCoder } from "../Coder";
 import {
   Coder as RelationCoder,
-  IGeneratorProps as IRelationCoderGeneratorProps,
+  IGeneratorProps as IModelCoderGeneratorProps,
 } from "./[relation]/Coder";
 
 export type IGeneratorProps = {
-  relations?: IRelationCoderGeneratorProps[];
+  relations?: IModelCoderGeneratorProps[];
   root?: IRootCoderGeneratorProps;
 };
 

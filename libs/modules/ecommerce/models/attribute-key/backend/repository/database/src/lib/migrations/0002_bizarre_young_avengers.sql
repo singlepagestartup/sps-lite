@@ -1,0 +1,1 @@
+ALTER TABLE "sps_ee_ae_ky" ALTER COLUMN "type" SET DEFAULT 'string';

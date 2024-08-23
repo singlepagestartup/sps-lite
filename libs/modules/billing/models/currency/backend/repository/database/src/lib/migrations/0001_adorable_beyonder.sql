@@ -1,0 +1,1 @@
+ALTER TABLE "sps_bg_currency" ADD COLUMN "is_default" boolean DEFAULT false NOT NULL;

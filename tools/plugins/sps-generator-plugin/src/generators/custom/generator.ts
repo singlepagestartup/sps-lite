@@ -5,8 +5,8 @@ import { util as createSpsTsLibrary } from "../../utils/create-sps-ts-library";
 import { IGeneratorProps as IModuleGeneratorProps } from "../../coder/root/libs/modules/Coder";
 import { IGeneratorProps as IModelGeneratorProps } from "../../coder/root/libs/modules/[module]/models/Coder";
 import { IGeneratorProps as IModelFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/models/[model]/frontend/component/variants/[level]/[variant]/Coder";
-import { IGeneratorProps as IRelationGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/Coder";
-import { IGeneratorProps as IRelationFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
+import { IGeneratorProps as IModelGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/Coder";
+import { IGeneratorProps as IModelFrontendComponentVariantGeneratorProps } from "../../coder/root/libs/modules/[module]/relations/[relation]/frontend/component/variants/[level]/[variant]/Coder";
 
 const relations = [];
 /**
@@ -19,7 +19,7 @@ export async function customGenerator(
   tree: Tree,
   options: CustomGeneratorSchema,
 ) {
-  const moduleName = "sps-broadcast";
+  const moduleName = "broadcast";
   const leftModelName = "channel";
   const rightModelName = "message";
   const relationName = "channels-to-messages";
@@ -57,7 +57,7 @@ export async function customGenerator(
     // },
   ];
 
-  const relationAdminVariants: IRelationFrontendComponentVariantGeneratorProps[] =
+  const relationAdminVariants: IModelFrontendComponentVariantGeneratorProps[] =
     [
       // {
       //   name: "default",
@@ -129,7 +129,7 @@ export async function customGenerator(
     },
   };
 
-  const relation: IRelationGeneratorProps = {
+  const relation: IModelGeneratorProps = {
     relation: {
       name: relationName,
       frontend: {

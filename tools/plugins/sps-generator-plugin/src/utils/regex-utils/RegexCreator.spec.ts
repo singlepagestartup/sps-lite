@@ -34,7 +34,7 @@ describe("RegexCreator", () => {
     it(`should match the regex 1`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { app as layouts } from "@sps/sps-website-builder-models-layout-backend-app";
+      const string = `import { app as layouts } from "@sps/website-builder-models-layout-backend-app";
   
         export const routes = {
           "/pages": pages,
@@ -48,7 +48,7 @@ describe("RegexCreator", () => {
     it(`should match the regex 2`, () => {
       const regex = exportRoute.onRemove.regex;
 
-      const string = `import { app as layouts } from "@sps/sps-website-builder-models-layout-backend-app";
+      const string = `import { app as layouts } from "@sps/website-builder-models-layout-backend-app";
   
         export const routes = {
           "/pages": pages,

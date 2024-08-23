@@ -5,10 +5,6 @@ export type { IActionProps as ICreateActionProps } from "./create";
 import { action as remove } from "./delete";
 export type { IActionProps as IDeleteActionProps } from "./delete";
 import { action as find } from "./find";
-/**
- * @deprecated Use `IFindActionProps` instead.
- */
-export type { IActionProps as IFindActionsProps } from "./find";
 export type { IActionProps as IFindActionProps } from "./find";
 import { action as update } from "./update";
 export type { IActionProps as IUpdateActionProps } from "./update";

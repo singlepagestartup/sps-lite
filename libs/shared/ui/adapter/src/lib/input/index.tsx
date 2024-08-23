@@ -11,6 +11,7 @@ import {
   SelectValue,
   FileInputRoot,
   TipTap,
+  Checkbox,
 } from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
@@ -118,6 +119,19 @@ export const Component = (props: IComponentProps) => {
           disabled={(date) =>
             date > new Date() || date < new Date("1900-01-01")
           }
+        />
+      </FormControl>
+    );
+  }
+
+  if (props.type === "checkbox") {
+    return (
+      <FormControl>
+        <Checkbox
+          {...props.field}
+          className={props.className}
+          checked={props.field.value}
+          onCheckedChange={props.field.onChange}
         />
       </FormControl>
     );
