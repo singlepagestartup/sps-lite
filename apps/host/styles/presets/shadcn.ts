@@ -162,6 +162,8 @@ export const preset = {
     { pattern: /^w\w?-/, variants: ["sm", "md", "lg", "xl", "2xl"] },
     // Save all heights
     { pattern: /^h\w?-/, variants: ["sm", "md", "lg", "xl", "2xl"] },
+    // Save all text sizes
+    { pattern: /^text-\w?/, variants: ["sm", "md", "lg", "xl", "2xl"] },
     { pattern: /grid-cols-(1|2|3|4|5|6|7|8|9|10|11|12)/ },
     { pattern: /col-span-(1|2|3|4|5|6|7|8|9|10|11|12)/ },
     {
