@@ -58,26 +58,6 @@ export class Controller<DTO extends Record<string, unknown>>
     ]);
   }
 
-  public send(
-    c: Context<any, any, any>,
-    code: StatusCode,
-    data: DTO,
-  ): Response | Promise<Response> {
-    return c.json(
-      {
-        data,
-      },
-      code,
-    );
-  }
-
-  public ok<T>(
-    c: Context<any, any, any>,
-    data: DTO,
-  ): Response | Promise<Response> {
-    return this.send(c, 200, data);
-  }
-
   public async find(c: Context, next: any): Promise<Response> {
     const handler = new FindHandler<Context, DTO>(this.service);
     return handler.execute(c, next);

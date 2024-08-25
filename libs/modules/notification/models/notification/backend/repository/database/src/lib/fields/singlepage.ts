@@ -13,4 +13,5 @@ export const fields = {
   description: pgCore.text("description"),
   content: pgCore.text("content"),
   reciever: pgCore.text("reciever").notNull(),
+  attachments: pgCore.text("attachments"),
 };

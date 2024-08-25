@@ -15,6 +15,13 @@
       "when": 1724547275722,
       "tag": "0001_glorious_bastion",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1724608968136,
+      "tag": "0002_colorful_rage",
+      "breakpoints": true
     }
   ]
 }

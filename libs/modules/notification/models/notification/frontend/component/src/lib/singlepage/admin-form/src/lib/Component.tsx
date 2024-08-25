@@ -31,6 +31,7 @@ export function Component(props: IComponentPropsExtended) {
       type: props.data?.type || "text",
       method: props.data?.method || "email",
       reciever: props.data?.reciever || "",
+      attachments: props.data?.attachments || "",
     },
   });
 
@@ -70,6 +71,15 @@ export function Component(props: IComponentPropsExtended) {
           label="Content"
           name="content"
           form={form}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Attachments"
+          name="attachments"
+          form={form}
+          placeholder="Comma separated list of attachments (paths to files)"
         />
 
         <FormField
