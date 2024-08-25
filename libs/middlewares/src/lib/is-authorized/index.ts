@@ -54,6 +54,10 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     regexPath: /\/api\/(host|website-builder|file-storage)\/.*/,
     methods: ["GET"],
   },
+  {
+    regexPath: /\/api\/aws-ses/,
+    methods: ["POST"],
+  },
 ];
 
 export class Middleware {

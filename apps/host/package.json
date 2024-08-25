@@ -10,6 +10,7 @@
     "npm": ">=10.0.0"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "3.637.0",
     "@headlessui/react": "1.7.19",
     "@heroicons/react": "2.1.3",
     "@hookform/resolvers": "3.6.0",
@@ -66,6 +67,7 @@
     "lucide-react": "0.309.0",
     "next": "14.2.3",
     "next-themes": "0.3.0",
+    "nodemailer": "6.9.14",
     "pako": "2.1.0",
     "postgres": "3.4.4",
     "qs": "6.12.1",

@@ -16,6 +16,7 @@ import { app as notificationApp } from "@sps/notification/backend/app/api";
 import { chain as middlewaresChain } from "./middlewares/chain";
 import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
+import { AWS } from "@sps/shared-third-parties";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -44,6 +45,25 @@ app.mount("/crm", crmApp.hono.fetch);
 app.mount("/ecommerce", ecommerceApp.hono.fetch);
 app.mount("/notification", notificationApp.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
+app.post("/aws-ses", async (c) => {
+  const to = c.req.query("to");
+
+  console.log(`🚀 ~ app.post ~ to:`, to);
+
+  if (!to) {
+    return c.json({ message: "Please provide email address" });
+  }
+
+  const aws = new AWS();
+  await aws.ses.sendEmail({
+    to,
+    subject: "Test email from hono",
+    html: "<h1>Test email from hono</h1>",
+    from: "no-reply@mail.singlepagestartup.com",
+  });
+
+  return c.json({ message: "Hello AWS SES" });
+});
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);
