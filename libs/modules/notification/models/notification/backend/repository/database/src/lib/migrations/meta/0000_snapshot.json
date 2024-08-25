@@ -1,11 +1,11 @@
 {
-  "id": "eb99ac74-3afd-44e1-9f2e-7652728b4f0e",
+  "id": "dfd59ff8-5bc3-4450-bf41-5f0f7d709db1",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sps_nn_nn_tbr": {
-      "name": "sps_nn_nn_tbr",
+    "public.sps_nn_notification": {
+      "name": "sps_nn_notification",
       "schema": "",
       "columns": {
         "id": {
@@ -36,12 +36,19 @@
           "notNull": true,
           "default": "'default'"
         },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'new'"
+        },
         "type": {
           "name": "type",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'info'"
+          "default": "'email'"
         },
         "title": {
           "name": "title",
@@ -60,6 +67,18 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reciever": {
+          "name": "reciever",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},

@@ -2,7 +2,7 @@ import * as pgCore from "drizzle-orm/pg-core";
 import { fields } from "./fields";
 
 export const moduleName = "sps_nn";
-export const table = "nn_tbr";
+export const table = "notification";
 
 const pgTable = pgCore.pgTableCreator((name) => `${moduleName}_${name}`);
 

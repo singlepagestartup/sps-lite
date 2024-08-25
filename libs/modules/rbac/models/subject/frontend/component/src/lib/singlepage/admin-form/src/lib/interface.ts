@@ -21,6 +21,9 @@ export interface IComponentProps
   subjectsToEcommerceModuleOrders?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  subjectsToNotificationModuleTopics?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

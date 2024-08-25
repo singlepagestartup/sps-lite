@@ -9,6 +9,7 @@ import { app as subjectsToIdentities } from "@sps/rbac/relations/subjects-to-ide
 import { app as subjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/backend/app/root";
 import { app as subjectsToSessions } from "@sps/rbac/relations/subjects-to-sessions/backend/app/root";
 import { app as subjectsToEcommerceModuleOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/backend/app/root";
+import { app as subjectsToNotificationModuleTopics } from "@sps/rbac/relations/subjects-to-notification-module-topics/backend/app/root";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -74,6 +75,11 @@ export class Apps {
       type: "relation",
       route: "/subjects-to-ecommerce-module-orders",
       app: subjectsToEcommerceModuleOrders,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/subjects-to-notification-module-topics",
+      app: subjectsToNotificationModuleTopics,
     });
   }
 }

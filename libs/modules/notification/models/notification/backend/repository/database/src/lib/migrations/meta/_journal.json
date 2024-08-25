@@ -5,8 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1721929662338,
-      "tag": "0000_reflective_energizer",
+      "when": 1724546593938,
+      "tag": "0000_light_leper_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1724547275722,
+      "tag": "0001_glorious_bastion",
       "breakpoints": true
     }
   ]

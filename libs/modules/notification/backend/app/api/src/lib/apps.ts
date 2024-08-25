@@ -1,5 +1,7 @@
 import { app as notification } from "@sps/notification/models/notification/backend/app/api";
 import { app as widget } from "@sps/notification/models/widget/backend/app/api";
+import { app as topic } from "@sps/notification/models/topic/backend/app/api";
+import { app as topicsToNotifications } from "@sps/notification/relations/topics-to-notifications/backend/app/api";
 import { DefaultApp } from "@sps/shared-backend-api";
 
 export class Apps {
@@ -20,6 +22,16 @@ export class Apps {
       type: "model",
       route: "/widgets",
       app: widget,
+    });
+    this.apps.push({
+      type: "model",
+      route: "/topics",
+      app: topic,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/topics-to-notifications",
+      app: topicsToNotifications,
     });
   }
 }
