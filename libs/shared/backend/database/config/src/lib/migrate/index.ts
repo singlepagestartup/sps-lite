@@ -57,8 +57,10 @@ export class Config {
         beforeMigrations = await db.execute(
           sql`SELECT * FROM drizzle.${sql.raw(this.migrationsTable)}`,
         );
-      } catch (error) {
-        console.log(`migrate ~ error:`, error);
+      } catch (error: any) {
+        if (!error.message.includes("does not exist")) {
+          throw error;
+        }
       }
 
       await drizzleMigrator(db, {
