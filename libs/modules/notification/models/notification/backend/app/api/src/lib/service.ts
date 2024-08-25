@@ -3,11 +3,17 @@ import { injectable } from "inversify";
 import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/notification/models/notification/backend/repository/database";
 import { AWS } from "@sps/shared-third-parties";
+import { api } from "@sps/notification/models/notification/sdk/server";
+import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async provider(props: { provider: "email"; id: string }) {
     try {
+      if (!SPS_RBAC_SECRET_KEY) {
+        throw new Error("Secret key not found");
+      }
+
       const notification = await this.findById({
         id: props.id,
       });
@@ -37,6 +43,22 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         html: notification.content,
         from: "no-reply@mail.singlepagestartup.com",
         filePaths: attachments,
+      });
+
+      await api.update({
+        id: props.id,
+        data: {
+          ...notification,
+          status: "sent",
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
       });
 
       return { ok: true };
