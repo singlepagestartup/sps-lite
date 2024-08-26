@@ -25,8 +25,20 @@ export function Component(props: IComponentPropsExtended) {
           alignItems: "center",
         }}
       >
-        <p tw="text-5xl font-bold">{props.title ?? "Single Page Startup"}</p>
-        <p tw="text-sm font-light italic">
+        <p
+          tw="text-5xl font-bold"
+          style={{
+            fontFamily: "Primary",
+          }}
+        >
+          {props.title ?? "Single Page Startup"}
+        </p>
+        <p
+          tw="text-sm font-normal italic"
+          style={{
+            fontFamily: "Default",
+          }}
+        >
           {props.subtitle ??
             "The fastest way to create full-stack Next.js project"}
         </p>

@@ -133,3 +133,139 @@
   font-display: swap;
   src: url("./fonts/Default/BlackItalic.ttf") format("truetype");
 }
+
+/* Primary */
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 100;
+  font-display: swap;
+  src: url("./fonts/Primary/Thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/ThinItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 200;
+  font-display: swap;
+  src: url("./fonts/Primary/ExtraLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/ExtraLightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 300;
+  font-display: swap;
+  src: url("./fonts/Primary/Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/LightItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/Primary/Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/RegularItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/Primary/Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/MediumItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/SemiBoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/Primary/Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Primary/BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/Primary/ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 800;
+  font-display: swap;
+  src: url("./fonts/Primary/ExtraBoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 900;
+  font-display: swap;
+  src: url("./fonts/Primary/Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Primary";
+  font-weight: 900;
+  font-display: swap;
+  src: url("./fonts/Primary/BlackItalic.ttf") format("truetype");
+}

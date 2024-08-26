@@ -6,7 +6,7 @@ import { createElement } from "react";
 import { Component as ParentComponent } from "./component";
 
 const fontsURLs: {
-  [key in "Default"]: {
+  [key in "Default" | "Primary"]: {
     weight: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
     style: "normal" | "italic";
     url: URL;
@@ -158,6 +158,152 @@ const fontsURLs: {
       ),
     },
   ],
+  Primary: [
+    {
+      weight: 100,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Thin.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 100,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/ThinItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 200,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/ExtraLight.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 200,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/ExtraLightItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 300,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Light.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 300,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/LightItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 400,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Regular.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 400,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/RegularItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 500,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Medium.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 500,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/MediumItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 600,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/SemiBold.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 600,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/SemiBoldItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 700,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Bold.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 700,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/BoldItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 800,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/ExtraBold.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 800,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/ExtraBoldItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 900,
+      style: "normal",
+      url: new URL(
+        `../../../../styles/fonts/Primary/Black.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 900,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Primary/BlackItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+  ],
 };
 
 function Component(props: any) {
@@ -167,7 +313,6 @@ function Component(props: any) {
         height: "100%",
         width: "100%",
         backgroundColor: "white",
-        fontFamily: '"Default"',
         display: "flex",
         flexDirection: "column",
         alignItems: "stretch",
