@@ -1,6 +1,5 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
-import { createMiddleware } from "hono/factory";
 import { type NextRequest } from "next/server";
 import { app as hostApp } from "@sps/host/backend/app/api";
 import { app as websiteBuilderApp } from "@sps/website-builder/backend/app/api";
@@ -13,10 +12,15 @@ import { app as crmApp } from "@sps/crm/backend/app/api";
 import { app as ecommerceApp } from "@sps/ecommerce/backend/app/api";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/api";
 import { app as notificationApp } from "@sps/notification/backend/app/api";
-import { chain as middlewaresChain } from "./middlewares/chain";
 import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
-import { AWS } from "@sps/shared-third-parties";
+import {
+  IsAuthorizedMiddleware,
+  RevalidationMiddleware,
+  HTTPCacheMiddleware,
+} from "@sps/middlewares";
+import { MIDDLEWARE_HTTP_CACHE } from "@sps/shared-utils";
+import { ParseQueryMiddleware } from "@sps/shared-backend-api";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -24,15 +28,14 @@ export const runtime = "nodejs";
 const app = new Hono<any, any, any>().basePath("/api");
 
 app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
-middlewaresChain(app);
 
-// app.use(
-//   createMiddleware(async (c, next) => {
-//     const path = c.req.path;
-//     console.log("Host App Middleware", path);
-//     await next();
-//   }),
-// );
+app.use(new RevalidationMiddleware().init());
+app.use(new ParseQueryMiddleware().init());
+app.use(new IsAuthorizedMiddleware().init());
+
+if (MIDDLEWARE_HTTP_CACHE) {
+  app.use(new HTTPCacheMiddleware().init());
+}
 
 app.mount("/host", hostApp.hono.fetch);
 app.mount("/broadcast", broadcastApp.hono.fetch);
@@ -45,25 +48,6 @@ app.mount("/crm", crmApp.hono.fetch);
 app.mount("/ecommerce", ecommerceApp.hono.fetch);
 app.mount("/notification", notificationApp.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
-app.post("/aws-ses", async (c) => {
-  const to = c.req.query("to");
-
-  console.log(`🚀 ~ app.post ~ to:`, to);
-
-  if (!to) {
-    return c.json({ message: "Please provide email address" });
-  }
-
-  const aws = new AWS();
-  await aws.ses.sendEmail({
-    to,
-    subject: "Test email from hono",
-    html: "<h1>Test email from hono</h1>",
-    from: "no-reply@mail.singlepagestartup.com",
-  });
-
-  return c.json({ message: "Hello AWS SES" });
-});
 
 export async function POST(request: NextRequest, params: any) {
   return handle(app)(request, params);

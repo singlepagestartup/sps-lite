@@ -41,6 +41,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         handler: this.findById,
       },
       {
+        method: "GET",
+        path: "/:uuid/receipt",
+        handler: this.receipt,
+      },
+      {
         method: "POST",
         path: "/",
         handler: this.create,
@@ -63,7 +68,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     ]);
   }
 
-  public async checkout(c: Context, next: any): Promise<Response> {
+  async checkout(c: Context, next: any): Promise<Response> {
     try {
       if (!SPS_RBAC_SECRET_KEY) {
         return c.json(
@@ -434,6 +439,56 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       return c.json({
         data: entity,
+      });
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  async receipt(c: Context, next: any): Promise<Response> {
+    try {
+      if (!SPS_RBAC_SECRET_KEY) {
+        return c.json(
+          {
+            message: "RBAC secret key not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const uuid = c.req.param("uuid");
+
+      if (!uuid) {
+        return c.json(
+          {
+            message: "Invalid id",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const existing = await this.service.findById({
+        id: uuid,
+      });
+
+      if (!existing) {
+        return c.json(
+          {
+            message: "Order not found",
+          },
+          {
+            status: 404,
+          },
+        );
+      }
+      return c.json({
+        ok: true,
       });
     } catch (error: any) {
       throw new HTTPException(400, {

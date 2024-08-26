@@ -1,3 +1,7 @@
+/**
+ * Required for image-generator, without importing fonts.css compilled fonts
+ * have random hash names <hash>.p.ttf, not Bold.<hash>.ttf
+ */
 import "../styles/fonts.css";
 import "../styles/tailwind.scss";
 

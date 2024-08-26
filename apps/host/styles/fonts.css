@@ -2,6 +2,21 @@
 
 @font-face {
   font-family: "Default";
+  font-weight: 100;
+  font-display: swap;
+  src: url("./fonts/Default/Thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Default";
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+  src: url("./fonts/Default/ThinItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Default";
   font-weight: 200;
   font-display: swap;
   src: url("./fonts/Default/ExtraLight.ttf") format("truetype");
@@ -103,4 +118,18 @@
   font-weight: 800;
   font-display: swap;
   src: url("./fonts/Default/ExtraBoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Default";
+  font-weight: 900;
+  font-display: swap;
+  src: url("./fonts/Default/Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Default";
+  font-weight: 900;
+  font-display: swap;
+  src: url("./fonts/Default/BlackItalic.ttf") format("truetype");
 }

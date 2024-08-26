@@ -3,6 +3,26 @@ import localFont from "next/font/local";
 export const defaultFont = localFont({
   src: [
     {
+      path: "../styles/fonts/Default/Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Default/ThinItalic.ttf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../styles/fonts/Default/ExtraLight.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Default/ExtraLightItalic.ttf",
+      weight: "200",
+      style: "italic",
+    },
+    {
       path: "../styles/fonts/Default/Light.ttf",
       weight: "300",
       style: "normal",
@@ -52,6 +72,26 @@ export const defaultFont = localFont({
       weight: "700",
       style: "italic",
     },
+    {
+      path: "../styles/fonts/Default/ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Default/ExtraBoldItalic.ttf",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "../styles/fonts/Default/Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Default/BlackItalic.ttf",
+      weight: "900",
+      style: "italic",
+    },
   ],
   variable: "--font-default",
   display: "swap",
@@ -59,6 +99,26 @@ export const defaultFont = localFont({
 
 export const primaryFont = localFont({
   src: [
+    {
+      path: "../styles/fonts/Primary/Thin.ttf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Primary/ThinItalic.ttf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../styles/fonts/Primary/ExtraLight.ttf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Primary/ExtraLightItalic.ttf",
+      weight: "200",
+      style: "italic",
+    },
     {
       path: "../styles/fonts/Primary/Light.ttf",
       weight: "300",
@@ -107,6 +167,26 @@ export const primaryFont = localFont({
     {
       path: "../styles/fonts/Primary/BoldItalic.ttf",
       weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../styles/fonts/Primary/ExtraBold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Primary/ExtraBoldItalic.ttf",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "../styles/fonts/Primary/Black.ttf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../styles/fonts/Primary/BlackItalic.ttf",
+      weight: "900",
       style: "italic",
     },
   ],
