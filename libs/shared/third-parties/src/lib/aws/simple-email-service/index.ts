@@ -73,14 +73,8 @@ export class Service {
       attachments,
     };
 
-    const rawMessage = await transporter.sendMail(mailOptions);
-
-    const command = new SendRawEmailCommand({
-      RawMessage: { Data: rawMessage.raw },
-    });
-
     try {
-      const result = await this.client.send(command);
+      const result = await transporter.sendMail(mailOptions);
 
       return result;
     } catch (error) {

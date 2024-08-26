@@ -45,14 +45,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         filePaths: attachments,
       });
 
-      await this.update({
-        id: notification.id,
-        data: {
-          ...notification,
-          status: "sent",
-        },
-      });
-
       await api.update({
         id: props.id,
         data: {
