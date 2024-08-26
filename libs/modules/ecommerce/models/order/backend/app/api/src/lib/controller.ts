@@ -14,10 +14,21 @@ import { api as attributesToAttributeKeys } from "@sps/ecommerce/relations/attri
 import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
-import { SPS_RBAC_JWT_SECRET, SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import {
+  HOST_URL,
+  SPS_RBAC_JWT_SECRET,
+  SPS_RBAC_SECRET_KEY,
+} from "@sps/shared-utils";
 import { api as ordersToBillingPaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { authorization } from "@sps/sps-backend-utils";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
+import { api as rbacSubjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/server";
+import { api as rbacSubjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
+import { api as rbacIdentityApi } from "@sps/rbac/models/identity/sdk/server";
+import { api as notificationNotificationsApi } from "@sps/notification/models/notification/sdk/server";
+import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk/server";
+import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -443,6 +454,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async update(c: Context, next: any): Promise<Response> {
+    if (!SPS_RBAC_SECRET_KEY) {
+      throw new HTTPException(400, {
+        message: "RBAC secret key not found",
+      });
+    }
+
     try {
       const uuid = c.req.param("uuid");
       const body = await c.req.parseBody();
@@ -471,11 +488,206 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       const data = JSON.parse(body["data"]);
 
-      const entity = await this.service.update({ id: uuid, data });
+      let entity = await this.service.update({ id: uuid, data });
 
-      if (entity?.status === "approving") {
-        //
+      if (entity?.status === "approving" && HOST_URL) {
+        const receiptFile = await fileStorageFileApi.createFromUrl({
+          data: {
+            url: `${HOST_URL}/api/image-generator/image.png?variant=order-receipt&id=${entity.id}`,
+          },
+          params: {
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          },
+        });
+
+        entity = await this.service.update({
+          id: uuid,
+          data: {
+            ...entity,
+            receipt: receiptFile.file,
+          },
+        });
       }
+
+      const rbacSubjectsToEcommerceModuleOrders =
+        await rbacSubjectsToEcommerceModuleOrdersApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "ecommerceModuleOrderId",
+                  method: "eq",
+                  value: uuid,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+      if (rbacSubjectsToEcommerceModuleOrders?.length) {
+        for (const rbacSubjectToEcommerceModuleOrder of rbacSubjectsToEcommerceModuleOrders) {
+          const subjectsToIdentities = await rbacSubjectsToIdentitiesApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "subjectId",
+                    method: "eq",
+                    value: rbacSubjectToEcommerceModuleOrder.subjectId,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!subjectsToIdentities?.length) {
+            continue;
+          }
+
+          let topics = await notificationTopicsApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "title",
+                    method: "eq",
+                    value: "Information",
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!topics?.length) {
+            topics = [
+              await notificationTopicsApi.create({
+                data: {
+                  title: "Information",
+                },
+                options: {
+                  headers: {
+                    "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  },
+                  next: {
+                    cache: "no-store",
+                  },
+                },
+              }),
+            ];
+          }
+
+          const identities = await rbacIdentityApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "id",
+                    method: "eq",
+                    value: subjectsToIdentities[0].identityId,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!identities?.length) {
+            continue;
+          }
+
+          for (const identity of identities) {
+            if (!identity.email) {
+              continue;
+            }
+
+            const notification = await notificationNotificationsApi.create({
+              data: {
+                subject: "Order status updated",
+                reciever: identity.email,
+                content: "<h1>Order status updated</h1>",
+                attachments: entity?.receipt || "",
+              },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+
+            if (!notification) {
+              continue;
+            }
+
+            const topicToNotification =
+              await notificationTopicsToNotificationsApi.create({
+                data: {
+                  topicId: topics[0].id,
+                  notificationId: notification.id,
+                },
+                options: {
+                  headers: {
+                    "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  },
+                  next: {
+                    cache: "no-store",
+                  },
+                },
+              });
+          }
+        }
+      }
+
+      await notificationTopicsApi.sendAll({
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
 
       return c.json({
         data: entity,

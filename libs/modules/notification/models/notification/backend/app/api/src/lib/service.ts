@@ -45,6 +45,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         filePaths: attachments,
       });
 
+      await this.update({
+        id: notification.id,
+        data: {
+          ...notification,
+          status: "sent",
+        },
+      });
+
       await api.update({
         id: props.id,
         data: {
@@ -74,6 +82,10 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     if (!notification) {
       throw new Error("Notification not found");
+    }
+
+    if (notification.status !== "new") {
+      return { ok: true };
     }
 
     if (notification.method === "email") {

@@ -7,6 +7,7 @@ import {
 import * as fs from "fs";
 import * as path from "path";
 import * as nodemailer from "nodemailer";
+import { Readable } from "stream";
 
 export class Service {
   client: SESClient;
@@ -36,15 +37,24 @@ export class Service {
   }) {
     const attachments: {
       filename: string;
-      content: Buffer;
+      content: string | Buffer | Readable | undefined;
     }[] = [];
     const root = process.cwd();
 
     if (props.filePaths?.length) {
       for (const filePath of props.filePaths) {
-        const fileContent = fs.readFileSync(
-          path.join(root, "public", filePath),
-        );
+        let fileContent: string | Buffer | Readable | undefined;
+        if (filePath.startsWith("http")) {
+          fileContent = await fetch(filePath).then(async (res) => {
+            const buffer = await res.arrayBuffer();
+            const bytes = new Uint8Array(buffer);
+
+            return Buffer.from(bytes);
+          });
+        } else {
+          fileContent = fs.readFileSync(path.join(root, "public", filePath));
+        }
+
         const fileName = path.basename(filePath);
 
         attachments.push({ filename: fileName, content: fileContent });
