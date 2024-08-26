@@ -1,0 +1,1 @@
+ALTER TABLE "sps_ee_order" ADD COLUMN "receipt" text DEFAULT '' NOT NULL;

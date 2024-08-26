@@ -41,11 +41,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         handler: this.findById,
       },
       {
-        method: "GET",
-        path: "/:uuid/receipt",
-        handler: this.receipt,
-      },
-      {
         method: "POST",
         path: "/",
         handler: this.create,
@@ -447,20 +442,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
   }
 
-  async receipt(c: Context, next: any): Promise<Response> {
+  async update(c: Context, next: any): Promise<Response> {
     try {
-      if (!SPS_RBAC_SECRET_KEY) {
-        return c.json(
-          {
-            message: "RBAC secret key not found",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
       const uuid = c.req.param("uuid");
+      const body = await c.req.parseBody();
 
       if (!uuid) {
         return c.json(
@@ -473,22 +458,27 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      const existing = await this.service.findById({
-        id: uuid,
-      });
-
-      if (!existing) {
+      if (typeof body["data"] !== "string") {
         return c.json(
           {
-            message: "Order not found",
+            message: "Invalid body",
           },
           {
-            status: 404,
+            status: 400,
           },
         );
       }
+
+      const data = JSON.parse(body["data"]);
+
+      const entity = await this.service.update({ id: uuid, data });
+
+      if (entity?.status === "approving") {
+        //
+      }
+
       return c.json({
-        ok: true,
+        data: entity,
       });
     } catch (error: any) {
       throw new HTTPException(400, {

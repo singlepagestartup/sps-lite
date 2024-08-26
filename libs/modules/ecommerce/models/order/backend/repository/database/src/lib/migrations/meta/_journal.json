@@ -15,6 +15,13 @@
       "when": 1723505275153,
       "tag": "0001_windy_professor_monster",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1724671419750,
+      "tag": "0002_friendly_kitty_pryde",
+      "breakpoints": true
     }
   ]
 }

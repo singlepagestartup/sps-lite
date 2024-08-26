@@ -32,6 +32,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         handler: this.create,
       },
       {
+        method: "POST",
+        path: "/create-from-url",
+        handler: this.createFromUrl,
+      },
+      {
         method: "PATCH",
         path: "/:uuid",
         handler: this.update,
@@ -139,6 +144,69 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     throw new HTTPException(400, {
       message: "Invalid file",
     });
+  }
+
+  async createFromUrl(c: Context, next: any): Promise<Response> {
+    const body = await c.req.parseBody();
+
+    if (!body) {
+      throw new HTTPException(400, {
+        message: "Invalid body",
+      });
+    }
+
+    if (typeof body["data"] !== "string") {
+      throw new HTTPException(400, {
+        message: "Invalid data",
+      });
+    }
+
+    const data = JSON.parse(body["data"]);
+
+    if (!data.url) {
+      throw new HTTPException(400, {
+        message: "Invalid url",
+      });
+    }
+
+    const file = await fetch(data.url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const fullFileName = data.url.split("?")[0].split("/").pop();
+        const fileName = fullFileName.split(".")[0];
+        const extension = fullFileName.split(".").pop();
+
+        return new File([blob], `${fileName}.${extension}`);
+      });
+
+    if (!file) {
+      throw new HTTPException(400, {
+        message: "Invalid file",
+      });
+    }
+
+    const fileStorage = new Provider({
+      type: FILE_STORAGE_PROVIDER,
+      folder: "file-storage",
+    });
+
+    const uploadedFileUrl = await fileStorage.uploadFile({
+      file: file,
+    });
+
+    const entity = await this.service.create({
+      data: {
+        ...data,
+        file: uploadedFileUrl,
+      },
+    });
+
+    return c.json(
+      {
+        data: entity,
+      },
+      201,
+    );
   }
 
   async update(c: Context, next: any): Promise<Response> {
