@@ -490,7 +490,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       let entity = await this.service.update({ id: uuid, data });
 
-      if (entity?.status === "approving" && HOST_URL) {
+      if (entity?.status === "approving") {
         const receiptFile = await fileStorageFileApi.createFromUrl({
           data: {
             url: `${HOST_URL}/api/image-generator/image.png?variant=order-receipt&id=${entity.id}`,
