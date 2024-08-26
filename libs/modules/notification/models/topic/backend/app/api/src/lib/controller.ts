@@ -109,7 +109,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             }
 
             await notificationApi.send({
-              id: topicToNotification.notificationId,
+              id: notification.id,
               options: {
                 headers: {
                   "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,

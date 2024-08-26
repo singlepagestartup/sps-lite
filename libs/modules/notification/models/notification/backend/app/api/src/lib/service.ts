@@ -14,41 +14,49 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Secret key not found");
       }
 
-      const notification = await this.findById({
+      const entity = await this.findById({
         id: props.id,
       });
 
-      if (!notification) {
+      if (!entity) {
         throw new Error("Notification not found");
       }
 
-      if (!notification.reciever) {
+      if (!entity.reciever) {
         throw new Error("Reciever not found");
       }
 
-      if (!notification.content) {
+      if (!entity.content) {
         throw new Error("Content not found");
       }
 
       const attachments =
-        notification.attachments?.split(",")?.map((attachment) => {
+        entity.attachments?.split(",")?.map((attachment) => {
           return attachment.trim();
         }) || [];
 
       const aws = new AWS();
 
       await aws.ses.sendEmail({
-        to: notification.reciever,
-        subject: notification.title || "Notification from Single Page Startup",
-        html: notification.content,
+        to: entity.reciever,
+        subject: entity.title || "Notification from Single Page Startup",
+        html: entity.content,
         from: "no-reply@mail.singlepagestartup.com",
         filePaths: attachments,
       });
 
-      await api.update({
-        id: props.id,
+      await this.update({
+        id: entity.id,
         data: {
-          ...notification,
+          ...entity,
+          status: "sent",
+        },
+      });
+
+      await api.update({
+        id: entity.id,
+        data: {
+          ...entity,
           status: "sent",
         },
         options: {
