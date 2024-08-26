@@ -3,6 +3,7 @@ import { ImageResponse } from "next/og";
 import { NextRequest, NextResponse } from "next/server";
 import QueryString from "qs";
 import { createElement } from "react";
+import { Component as ParentComponent } from "./component";
 
 const fontsURLs: {
   [key in "Default"]: {
@@ -21,10 +22,26 @@ const fontsURLs: {
       ),
     },
     {
+      weight: 100,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/ThinItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
       weight: 200,
       style: "normal",
       url: new URL(
         `../../../../styles/fonts/Default/ExtraLight.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 200,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/ExtraLightItalic.ttf`,
         import.meta.url,
       ),
     },
@@ -37,10 +54,26 @@ const fontsURLs: {
       ),
     },
     {
+      weight: 300,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/LightItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
       weight: 400,
       style: "normal",
       url: new URL(
         `../../../../styles/fonts/Default/Regular.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 400,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/RegularItalic.ttf`,
         import.meta.url,
       ),
     },
@@ -53,10 +86,26 @@ const fontsURLs: {
       ),
     },
     {
+      weight: 500,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/MediumItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
       weight: 600,
       style: "normal",
       url: new URL(
         `../../../../styles/fonts/Default/SemiBold.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 600,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/SemiBoldItalic.ttf`,
         import.meta.url,
       ),
     },
@@ -69,10 +118,26 @@ const fontsURLs: {
       ),
     },
     {
+      weight: 700,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/BoldItalic.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
       weight: 800,
       style: "normal",
       url: new URL(
         `../../../../styles/fonts/Default/ExtraBold.ttf`,
+        import.meta.url,
+      ),
+    },
+    {
+      weight: 800,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/ExtraBoldItalic.ttf`,
         import.meta.url,
       ),
     },
@@ -84,10 +149,18 @@ const fontsURLs: {
         import.meta.url,
       ),
     },
+    {
+      weight: 900,
+      style: "italic",
+      url: new URL(
+        `../../../../styles/fonts/Default/BlackItalic.ttf`,
+        import.meta.url,
+      ),
+    },
   ],
 };
 
-function Component(props: { id?: string }) {
+function Component(props: any) {
   return (
     <div
       style={{
@@ -100,14 +173,7 @@ function Component(props: { id?: string }) {
         alignItems: "stretch",
       }}
     >
-      <div tw="w-full bg-gray-50 flex flex-col">
-        <img
-          src={new URL("/images/favicon.svg", HOST_URL).href}
-          tw="w-10 h-10"
-        />
-        <h1 tw="text-blue-400 font-normal">Normal: {props.id || "id"}</h1>
-        <h1 tw="text-blue-400 font-bold">Bold: {props.id || "id"}</h1>
-      </div>
+      <ParentComponent {...props} />
     </div>
   );
 }
@@ -156,8 +222,6 @@ export const GET = async (request: NextRequest) => {
         });
       }
     }
-
-    console.log(`🚀 ~ returnnewImageResponse ~ fonts:`, fonts.length);
 
     return new ImageResponse(createElement(Component, parsedParams as any), {
       width,
