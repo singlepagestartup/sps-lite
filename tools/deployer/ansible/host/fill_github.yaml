@@ -1,10 +1,12 @@
 ---
-- name: Delete Backend secrets from GitHub
+- name: Fill host secrets in GitHub
   hosts: all
   become: yes
   vars:
     - github_token: "{{ GITHUB_TOKEN }}"
     - github_repository: "{{ GITHUB_REPOSITORY }}"
+    - portainer_url: "{{ PORTAINER_URL }}"
+    - service_url: "{{ SERVICE_URL }}"
   tasks:
     - name: Delete artifacts
       file:
@@ -21,7 +23,7 @@
         src: "{{ playbook_dir }}/../github/github-node-api/{{ item }}"
         dest: "/home/code/github-node-api/{{ item }}"
       loop:
-        - delete_secret.js
+        - create_secret.js
         - package.json
 
     - name: Install dependencies
@@ -29,14 +31,27 @@
         cmd: "npm install"
         chdir: "/home/code/github-node-api"
 
-    - name: Delete secrets from GitHub
+    - name: Get Portainer host webhook token
+      shell:
+        cmd: "cat /home/code/host_webhook_token"
+      register: host_webhook_token
+
+    - name: Set secrets to GitHub
       no_log: true
       shell:
-        cmd: "node ./delete_secret.js {{ github_token }} {{ github_repository }} {{ item.secret_name }} {{ item.secret_scope }}"
+        cmd: "node ./create_secret.js {{ github_token }} {{ github_repository }} {{ item.secret_name }} {{ item.secret_content }} {{ item.secret_scope }}"
         chdir: "/home/code/github-node-api"
       loop:
-        - { secret_name: PORTAINER_BACKEND_UPDATE_URL, secret_scope: actions }
-        - { secret_name: NEXT_PUBLIC_BACKEND_URL, secret_scope: actions }
+        - {
+            secret_name: PORTAINER_HOST_UPDATE_URL,
+            secret_content: "https://{{ portainer_url }}/api/webhooks/{{ host_webhook_token.stdout }}",
+            secret_scope: actions,
+          }
+        - {
+            secret_name: NEXT_PUBLIC_HOST_URL,
+            secret_content: "https://{{ service_url }}",
+            secret_scope: actions,
+          }
 
     - name: Delete artifacts
       file:

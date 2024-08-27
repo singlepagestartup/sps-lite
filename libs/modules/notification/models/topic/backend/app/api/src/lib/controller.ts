@@ -7,7 +7,7 @@ import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as topicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationApi } from "@sps/notification/models/notification/sdk/server";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -59,9 +59,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
   async sendAll(c: Context, next: any): Promise<Response> {
     try {
-      if (!SPS_RBAC_SECRET_KEY) {
+      if (!RBAC_SECRET_KEY) {
         throw new HTTPException(400, {
-          message: "SPS_RBAC_SECRET_KEY is required",
+          message: "RBAC_SECRET_KEY is required",
         });
       }
 
@@ -82,7 +82,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -96,7 +96,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               id: topicToNotification.notificationId,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -112,7 +112,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               id: notification.id,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",

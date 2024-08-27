@@ -23,8 +23,7 @@
           platform: "{{ platform }}"
         status_code: 200, 201
       # loop:
-      #   - { name: "backend", platform: "node" }
-      #   - { name: "frontend", platform: "javascript-react" }
+      #   - { name: "host", platform: "javascript-react" }
 
     - name: Get sentry project DSN key
       uri:

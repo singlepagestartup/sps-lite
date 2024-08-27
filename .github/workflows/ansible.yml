@@ -48,7 +48,7 @@ jobs:
             "DOCKER_HUB_PASSWORD ${{ secrets.DOCKER_HUB_PASSWORD }}"\
             "ANSIBLE_HOST ${{ secrets.ANSIBLE_HOST }}"\
             "ANSIBLE_PASSWORD ${{ secrets.ANSIBLE_PASSWORD }}"\
-            "ROOT_AWS_ACCESS_KEY ${{ secrets.ROOT_AWS_ACCESS_KEY }}"\
+            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
             "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
             "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
             "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
@@ -56,14 +56,13 @@ jobs:
             "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
             "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
             "DOMAIN ${{ secrets.DOMAIN }}"\
-            "JWT_SECRET ${{ secrets.JWT_SECRET }}"\
-            "ADMIN_JWT_SECRET ${{ secrets.ADMIN_JWT_SECRET }}"\
-            "APP_KEYS ${{ secrets.APP_KEYS }}"\
+            "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
+            "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
+            "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
+            "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
             "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
             "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
-            "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
             "SEED_ENTITIES ${{ secrets.SEED_ENTITIES }}"\
-            "UPLOAD_PROVIDER ${{ secrets.UPLOAD_PROVIDER }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
             "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\

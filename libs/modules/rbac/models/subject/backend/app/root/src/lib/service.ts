@@ -5,9 +5,9 @@ import { Repository } from "./repository";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
 import {
   SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
-  SPS_RBAC_JWT_SECRET,
+  RBAC_JWT_SECRET,
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
-  SPS_RBAC_SECRET_KEY,
+  RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 import { IModel as ISubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/sdk/model";
 import { HTTPException } from "hono/http-exception";
@@ -69,12 +69,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async isAuthorized(props: IIsAllowedDTO): Promise<any> {
     let authorized = false;
 
-    if (!SPS_RBAC_JWT_SECRET) {
-      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    if (!RBAC_JWT_SECRET) {
+      throw new Error("RBAC_JWT_SECRET is not defined in the service");
     }
 
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY is not defined in the service");
     }
 
     const authorization = props.authorization.value;
@@ -83,7 +83,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     if (authorization) {
       try {
-        const decoded = await jwt.verify(authorization, SPS_RBAC_JWT_SECRET);
+        const decoded = await jwt.verify(authorization, RBAC_JWT_SECRET);
 
         if (!decoded.subject?.["id"]) {
           throw new HTTPException(401, {
@@ -105,7 +105,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -130,7 +130,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -153,7 +153,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -182,7 +182,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -211,7 +211,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -234,7 +234,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -270,7 +270,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -325,15 +325,15 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async refresh(props: {
     refresh: string;
   }): Promise<{ jwt: string; refresh: string }> {
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY is not defined in the service");
     }
 
-    if (!SPS_RBAC_JWT_SECRET) {
-      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    if (!RBAC_JWT_SECRET) {
+      throw new Error("RBAC_JWT_SECRET is not defined in the service");
     }
 
-    const decoded = await jwt.verify(props.refresh, SPS_RBAC_JWT_SECRET);
+    const decoded = await jwt.verify(props.refresh, RBAC_JWT_SECRET);
 
     const subjectId = decoded.subject?.["id"];
 
@@ -359,7 +359,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     const refreshToken = await jwt.sign(
@@ -372,7 +372,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     return { jwt: jwtToken, refresh: refreshToken };
@@ -381,12 +381,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async loginAndPassowrd(
     props: ILoginAndPasswordDTO,
   ): Promise<{ jwt: string; refresh: string }> {
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY is not defined in the service");
     }
 
-    if (!SPS_RBAC_JWT_SECRET) {
-      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    if (!RBAC_JWT_SECRET) {
+      throw new Error("RBAC_JWT_SECRET is not defined in the service");
     }
 
     if (props.type === "registration") {
@@ -404,7 +404,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -428,7 +428,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -449,7 +449,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -482,7 +482,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -502,7 +502,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -526,7 +526,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -571,7 +571,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -603,7 +603,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     const refreshToken = await jwt.sign(
@@ -616,7 +616,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     return { jwt: jwtToken, refresh: refreshToken };
@@ -653,12 +653,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Invalid signature");
     }
 
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY is not defined in the service");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY is not defined in the service");
     }
 
-    if (!SPS_RBAC_JWT_SECRET) {
-      throw new Error("SPS_RBAC_JWT_SECRET is not defined in the service");
+    if (!RBAC_JWT_SECRET) {
+      throw new Error("RBAC_JWT_SECRET is not defined in the service");
     }
 
     const identities = await identityApi.find({
@@ -675,7 +675,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -691,7 +691,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -712,7 +712,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -745,7 +745,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -765,7 +765,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",
@@ -789,7 +789,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -821,7 +821,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -853,7 +853,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     const refreshToken = await jwt.sign(
@@ -866,7 +866,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: subject.id,
         },
       },
-      SPS_RBAC_JWT_SECRET,
+      RBAC_JWT_SECRET,
     );
 
     return { jwt: jwtToken, refresh: refreshToken };

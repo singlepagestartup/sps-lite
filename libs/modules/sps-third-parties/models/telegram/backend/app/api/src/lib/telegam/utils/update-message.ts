@@ -1,4 +1,4 @@
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as telegramMessageApi } from "@sps/sps-third-parties/models/telegram-message/sdk/server";
 import { NarrowedContext, Telegram } from "telegraf";
 import {
@@ -23,8 +23,8 @@ export async function util({
     replyMarkup: ReplyKeyboardMarkup | InlineKeyboardMarkup | undefined;
   };
 }) {
-  if (!SPS_RBAC_SECRET_KEY) {
-    throw new Error("SPS_RBAC_SECRET_KEY is not defined");
+  if (!RBAC_SECRET_KEY) {
+    throw new Error("RBAC_SECRET_KEY is not defined");
   }
 
   const dbMessages = await telegramMessageApi.find({
@@ -51,7 +51,7 @@ export async function util({
     },
     options: {
       headers: {
-        "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+        "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
       },
       next: {
         cache: "no-store",
@@ -102,7 +102,7 @@ export async function util({
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

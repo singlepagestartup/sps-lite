@@ -77,20 +77,13 @@ docker stack deploy -c=docker-compose.sps_backend.yaml sps_backend
 
 NODE_ENV=production
 
-APP_KEYS=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-JWT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-ADMIN_JWT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-API_TOKEN_SALT=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RBAC_JWT_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 DATABASE_HOST=postgres_postgres
 DATABASE_PASSWORD=password
 ```
 
-**APP_KEYS** - строка
-
-**JWT_SECRET** - ключ JWT, если его поменять после создания пользователя в сервисе бекенда, то зайти в аккаунт пользователя не получится
-
-**ADMIN_JWT_SECRET** - ключ JWT для администратора, если его поменять после создания пользователя в сервисе бекенда, то зайти в аккаунт администратора не получится. Надо будет удалять пользователя через adminer.
+**RBAC_JWT_SECRET** - ключ JWT, если его поменять после создания пользователя в сервисе бекенда, то зайти в аккаунт пользователя не получится
 
 **DATABASE_PASSWORD** - был установлен в `docker-compose.db.yaml`
 

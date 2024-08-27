@@ -3,7 +3,7 @@
 
 PROJECT_NAME=$(get_env PROJECT_NAME)
 
-AWS_ACCESS_KEY=$(get_env ROOT_AWS_ACCESS_KEY)
+ROOT_AWS_ACCESS_KEY_ID=$(get_env ROOT_AWS_ACCESS_KEY_ID)
 AWS_SECRET_ACCESS_KEY=$(get_env ROOT_AWS_SECRET_ACCESS_KEY)
 
 AWS_S3_REGION=$(get_env AWS_S3_REGION)
@@ -12,9 +12,9 @@ AWS_S3_BUCKET=$(get_env AWS_S3_BUCKET)
 GITHUB_TOKEN=$(get_env GITHUB_TOKEN)
 GITHUB_REPOSITORY=$(get_env GITHUB_REPOSITORY)
 
-if [ -z "$AWS_ACCESS_KEY" ]
+if [ -z "$ROOT_AWS_ACCESS_KEY_ID" ]
 then
-    echo "ROOT_AWS_ACCESS_KEY not passed - skipping AWS IAM, S3 and SES creation/deletion"
+    echo "ROOT_AWS_ACCESS_KEY_ID not passed - skipping AWS IAM, S3 and SES creation/deletion"
     exit 0
 fi
 
@@ -32,13 +32,13 @@ if [ "$1" != "down" ]
 then
     ansible-playbook \
         ./aws/create_iam_user.yaml \
-        -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+        -e "ROOT_AWS_ACCESS_KEY_ID=$ROOT_AWS_ACCESS_KEY_ID \
             AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             PROJECT_NAME=$PROJECT_NAME \
             AWS_S3_BUCKET=$AWS_S3_BUCKET" && \
     ansible-playbook \
         ./aws/create_s3.yaml \
-        -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+        -e "ROOT_AWS_ACCESS_KEY_ID=$ROOT_AWS_ACCESS_KEY_ID \
             AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             AWS_S3_REGION=$AWS_S3_REGION \
             PROJECT_NAME=$PROJECT_NAME \
@@ -57,12 +57,12 @@ else
             GITHUB_REPOSITORY=$GITHUB_REPOSITORY" && \
     ansible-playbook \
         ./aws/delete_iam_user.yaml \
-        -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+        -e "ROOT_AWS_ACCESS_KEY_ID=$ROOT_AWS_ACCESS_KEY_ID \
             AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             PROJECT_NAME=$PROJECT_NAME" && \
     ansible-playbook \
         ./aws/delete_s3.yaml \
-        -e "AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
+        -e "ROOT_AWS_ACCESS_KEY_ID=$ROOT_AWS_ACCESS_KEY_ID \
             AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             PROJECT_NAME=$PROJECT_NAME \
             AWS_S3_BUCKET=$AWS_S3_BUCKET"

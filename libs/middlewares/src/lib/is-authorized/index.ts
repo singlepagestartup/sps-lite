@@ -1,6 +1,6 @@
 import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { getCookie } from "hono/cookie";
@@ -79,12 +79,12 @@ export class Middleware {
        * Vercel doesn't to call equal endpoint, throws 508 Loop detected
        * But it't not a loop, because controller checks if secret key is present
        */
-      if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
+      if (secretKey && secretKey === process.env["RBAC_SECRET_KEY"]) {
         return next();
       }
 
       if (reqPath.includes("/api/rbac/sessions") && reqMethod === "POST") {
-        if (!secretKey || secretKey !== SPS_RBAC_SECRET_KEY) {
+        if (!secretKey || secretKey !== RBAC_SECRET_KEY) {
           throw new HTTPException(401, {
             message: "Unauthorized",
           });

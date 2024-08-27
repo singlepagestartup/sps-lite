@@ -6,7 +6,7 @@ import { Service } from "./service";
 import { Context } from "hono";
 import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { HTTPException } from "hono/http-exception";
 import { api as ecommerceOrdersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { api as ecommerceOrdersApi } from "@sps/ecommerce/models/order/sdk/server";
@@ -55,7 +55,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async provider(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_SECRET_KEY) {
+    if (!RBAC_SECRET_KEY) {
       return c.json(
         {
           message: "RBAC secret key not found",
@@ -92,7 +92,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -113,7 +113,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -135,7 +135,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async update(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_SECRET_KEY) {
+    if (!RBAC_SECRET_KEY) {
       throw new HTTPException(400, {
         message: "RBAC secret key not found",
       });
@@ -187,7 +187,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             },
             options: {
               headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -201,7 +201,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               id: ecommerceOrderToBillingModulePaymentIntent.orderId,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -221,7 +221,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               id: order.id,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",

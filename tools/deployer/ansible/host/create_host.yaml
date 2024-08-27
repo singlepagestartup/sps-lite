@@ -1,5 +1,5 @@
 ---
-- name: Create Backend
+- name: Create host
   hosts: all
   become: yes
   vars:
@@ -8,33 +8,6 @@
     - portainer_password: "{{ PORTAINER_PASSWORD }}"
     - portainer_url: "{{ PORTAINER_URL }}"
   tasks:
-    - name: Read iam.env and set AWS_ACCESS_KEY
-      shell: grep "^AWS_ACCESS_KEY=" /home/code/iam.env | cut -d '=' -f2
-      register: aws_access_key
-
-    - name: Read iam.env and set AWS_SECRET_ACCESS_KEY
-      shell: grep "^AWS_SECRET_ACCESS_KEY=" /home/code/iam.env | cut -d '=' -f2
-      register: aws_secret_access_key
-
-    - name: Read sentry_dsn.env and set SENTRY_DSN
-      shell: "cat /home/code/{{ SERVICE_NAME }}_sentry_dsn.env"
-      register: sentry_dsn
-      ignore_errors: yes
-
-    - name: Create uploads folder
-      file:
-        path: "/home/code/{{ SERVICE_NAME }}_uploads"
-        state: directory
-
-    - name: Create .env file
-      ansible.builtin.template:
-        src: backend.env.j2
-        dest: /home/code/backend.env
-      vars:
-        AWS_ACCESS_KEY: "{{ aws_access_key.stdout }}"
-        AWS_SECRET_ACCESS_KEY: "{{ aws_secret_access_key.stdout }}"
-        SENTRY_DSN: "{{ sentry_dsn.stdout }}"
-
     - name: Copy set-portainer-webhook.js
       copy:
         src: ../portainer/set-portainer-webhook.js
@@ -61,24 +34,24 @@
 
     - name: Copy docker-compose file
       ansible.builtin.template:
-        src: docker-compose.backend.yaml.j2
-        dest: /home/code/docker-compose.backend.yaml
+        src: docker-compose.host.yaml.j2
+        dest: /home/code/docker-compose.host.yaml
 
-    - name: Run Backend service
-      shell: docker stack deploy --compose-file=/home/code/docker-compose.backend.yaml backend
+    - name: Run host service
+      shell: docker stack deploy --compose-file=/home/code/docker-compose.host.yaml host
 
-    - name: Get backend service id
+    - name: Get host service id
       shell:
-        cmd: "docker service ls -f name=backend_backend -q"
-      register: cmd_backend_service_id
+        cmd: "docker service ls -f name=host_host -q"
+      register: cmd_host_service_id
 
-    - name: Set backend_service_id
+    - name: Set host_service_id
       set_fact:
-        backend_service_id: "{{ cmd_backend_service_id.stdout_lines[0] }}"
+        host_service_id: "{{ cmd_host_service_id.stdout_lines[0] }}"
 
     - name: Get service version
       shell:
-        cmd: "docker service inspect {{ backend_service_id }} {%raw%}--format='{{.Version}}'{%endraw%}"
+        cmd: "docker service inspect {{ host_service_id }} {%raw%}--format='{{.Version}}'{%endraw%}"
       register: cmd_service_version
 
     - name: Set service_version
@@ -87,7 +60,7 @@
 
     - name: Get service ID
       shell:
-        cmd: "docker service inspect {{ backend_service_id }} {%raw%}--format='{{.ID}}'{%endraw%}"
+        cmd: "docker service inspect {{ host_service_id }} {%raw%}--format='{{.ID}}'{%endraw%}"
       register: cmd_service_id
 
     - name: Set service_id
@@ -105,17 +78,17 @@
 
     - name: Run set-portainer-webhook.js
       shell:
-        cmd: node /home/code/set-portainer-webhook.js "{{ backend_service_id }}" "{{ cmd_docker_hub_registry_id.stdout }}" "{{ portainer_url }}" "{{ portainer_username }}" "{{ portainer_password }}" "backend_webhook"
-      register: cmd_set_backend_webhook
+        cmd: node /home/code/set-portainer-webhook.js "{{ host_service_id }}" "{{ cmd_docker_hub_registry_id.stdout }}" "{{ portainer_url }}" "{{ portainer_username }}" "{{ portainer_password }}" "host_webhook"
+      register: cmd_set_host_webhook
 
     # - debug:
-    #     msg: "{{ cmd_set_backend_webhook }}"
+    #     msg: "{{ cmd_set_host_webhook }}"
 
     # Passing X-Registry-Auth here helps Portainer to get private repo
     # without that all webhooks will be failed
     - name: Set image
       uri:
-        url: "https://{{ portainer_url }}/api/endpoints/1/docker/services/{{ backend_service_id }}/update?version={{ service_version }}"
+        url: "https://{{ portainer_url }}/api/endpoints/1/docker/services/{{ host_service_id }}/update?version={{ service_version }}"
         method: POST
         body_format: json
         headers:
@@ -126,7 +99,7 @@
 
     - name: Copy webhook info file
       fetch:
-        src: /home/code/backend_webhook.json
+        src: /home/code/host_webhook.json
         dest: "./"
         flat: yes
 

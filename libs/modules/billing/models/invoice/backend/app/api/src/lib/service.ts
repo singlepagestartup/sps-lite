@@ -9,7 +9,7 @@ import {
   O_X_PROCESSING_SHOP_ID,
   O_X_PROCESSING_TEST_PAYMENTS,
   O_X_PROCESSING_WEBHOOK_PASSWORD,
-  SPS_RBAC_SECRET_KEY,
+  RBAC_SECRET_KEY,
   STRIPE_SECRET_KEY,
 } from "@sps/shared-utils";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
@@ -25,7 +25,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async updatePaymentIntentStatus(props: {
     invoice: (typeof Table)["$inferSelect"];
   }) {
-    if (!SPS_RBAC_SECRET_KEY) {
+    if (!RBAC_SECRET_KEY) {
       throw new Error("RBAC secret key not found");
     }
 
@@ -43,7 +43,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -68,7 +68,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -94,7 +94,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",

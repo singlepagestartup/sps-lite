@@ -3,20 +3,33 @@
 
 DOMAIN=$(get_env DOMAIN)
 
-SERVICE_NAME=$(get_env DOCUMENTATION_SERVICE_NAME)
-SERVICE_SUBDOMAIN=$(get_env DOCUMENTATION_SERVICE_SUBDOMAIN)
+BACKEND_SERVICE_SUBDOMAIN=$(get_env BACKEND_SERVICE_SUBDOMAIN)
+
+SERVICE_NAME=$(get_env HOST_SERVICE_NAME)
+SERVICE_SUBDOMAIN=$(get_env HOST_SERVICE_SUBDOMAIN)
 
 PORTAINER_USERNAME=$(get_env PORTAINER_USERNAME)
 PORTAINER_PASSWORD=$(get_env PORTAINER_PASSWORD)
 PORTAINER_SERVICE_SUBDOMAIN=$(get_env PORTAINER_SERVICE_SUBDOMAIN)
 
+DATABASE_NAME=$(get_env DATABASE_NAME)
+DATABASE_USERNAME=$(get_env DATABASE_USERNAME)
+DATABASE_PASSWORD=$(get_env DATABASE_PASSWORD)
+
 DOCKER_HUB_URL=$(get_env DOCKER_HUB_URL)
-DOCKER_HUB_SERVICE_REPOSITORY=$(get_env DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME)
+DOCKER_HUB_SERVICE_REPOSITORY=$(get_env HOST_DOCKER_HUB_REPOSITORY_NAME)
 
 GITHUB_TOKEN=$(get_env GITHUB_TOKEN)
 GITHUB_REPOSITORY=$(get_env GITHUB_REPOSITORY)
 
 PORTAINER_URL=$PORTAINER_SERVICE_SUBDOMAIN.$DOMAIN
+
+if [ -z "$BACKEND_SERVICE_SUBDOMAIN" ]
+then
+    BACKEND_URL=$DOMAIN
+else
+    BACKEND_URL=$BACKEND_SERVICE_SUBDOMAIN.$DOMAIN
+fi
 
 if [ -z "$SERVICE_SUBDOMAIN" ]
 then
@@ -41,30 +54,35 @@ fi
 
 if [ "$1" != "down" ]
 then
+    ./sentry.sh up $SERVICE_NAME javascript-react NEXT_PUBLIC_SENTRY_DSN && \
     ./domain.sh present $SERVICE_URL $SERVICE_A && \
     ansible-playbook \
-        ./documentation/create_documentation.yaml \
+        ./host/create_host.yaml \
         -e "SERVICE_NAME=$SERVICE_NAME \
             PORTAINER_URL=$PORTAINER_URL \
             PORTAINER_USERNAME=$PORTAINER_USERNAME \
             PORTAINER_PASSWORD=$PORTAINER_PASSWORD \
+            DATABASE_NAME=$DATABASE_NAME \
+            DATABASE_USERNAME=$DATABASE_USERNAME \
+            DATABASE_PASSWORD=$DATABASE_PASSWORD \
             DOCKER_HUB_URL=$DOCKER_HUB_URL \
+            BACKEND_URL=$BACKEND_URL \
             DOCKER_HUB_SERVICE_REPOSITORY=$DOCKER_HUB_SERVICE_REPOSITORY \
             SERVICE_URL=$SERVICE_URL" && \
     ansible-playbook \
-        ./documentation/fill_github.yaml \
+        ./host/fill_github.yaml \
         -e "GITHUB_TOKEN=$GITHUB_TOKEN \
             GITHUB_REPOSITORY=$GITHUB_REPOSITORY \
             PORTAINER_URL=$PORTAINER_URL \
             SERVICE_URL=$SERVICE_URL"
 else
     ansible-playbook \
-        ./documentation/clear_github.yaml \
+        ./host/clear_github.yaml \
         -e "GITHUB_TOKEN=$GITHUB_TOKEN \
             GITHUB_REPOSITORY=$GITHUB_REPOSITORY" && \
     ansible-playbook \
-        ./documentation/delete_documentation.yaml \
+        ./host/delete_host.yaml \
         -e "SERVICE_NAME=$SERVICE_NAME" && \
     ./domain.sh down $SERVICE_URL $SERVICE_A && \
-    ./sentry.sh down $SERVICE_NAME
+    ./sentry.sh down $SERVICE_NAME NEXT_PUBLIC_SENTRY_DSN
 fi

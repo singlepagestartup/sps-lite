@@ -5,7 +5,7 @@ import { Table } from "@sps/billing/models/invoice/backend/repository/database";
 import { Service } from "./service";
 import { HTTPException } from "hono/http-exception";
 import { Context } from "hono";
-import { SPS_RBAC_SECRET_KEY, STRIPE_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY, STRIPE_SECRET_KEY } from "@sps/shared-utils";
 import Stripe from "stripe";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
@@ -64,7 +64,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async provider(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_SECRET_KEY) {
+    if (!RBAC_SECRET_KEY) {
       throw new HTTPException(400, {
         message: "RBAC secret key not found",
       });
@@ -101,7 +101,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -129,7 +129,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",

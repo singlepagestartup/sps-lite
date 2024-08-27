@@ -1,7 +1,5 @@
 #!/bin/bash
-./frontend.sh down && \
-    ./documentation.sh down && \
-    ./backend.sh down && \
+./host.sh down && \
     ./postgres.sh down && \
     ./portainer.sh down && \
     ./traefik.sh down && \

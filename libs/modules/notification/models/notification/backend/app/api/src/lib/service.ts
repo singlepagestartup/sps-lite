@@ -4,13 +4,13 @@ import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/notification/models/notification/backend/repository/database";
 import { AWS } from "@sps/shared-third-parties";
 import { api } from "@sps/notification/models/notification/sdk/server";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async provider(props: { provider: "email"; id: string }) {
     try {
-      if (!SPS_RBAC_SECRET_KEY) {
+      if (!RBAC_SECRET_KEY) {
         throw new Error("Secret key not found");
       }
 
@@ -61,7 +61,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",

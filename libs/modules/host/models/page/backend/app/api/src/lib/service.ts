@@ -5,7 +5,7 @@ import { Table } from "@sps/host/models/page/backend/repository/database";
 import {
   BACKEND_URL,
   buildTreePaths,
-  SPS_RBAC_SECRET_KEY,
+  RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 
 export type EntityWithUrls = typeof Table.$inferSelect & {
@@ -79,8 +79,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   }
 
   async withUrls(props: { id: string }) {
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY not found");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY not found");
     }
 
     const result = await this.findById({
@@ -108,7 +108,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             `${BACKEND_URL}/api/${moduleName}/${modelName}`,
             {
               headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
             },
           ).then((res) => res.json());

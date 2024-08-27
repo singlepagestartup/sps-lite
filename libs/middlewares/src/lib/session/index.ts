@@ -2,8 +2,8 @@ import { createMiddleware } from "hono/factory";
 import {
   SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
   SPS_RBAC_COOKIE_SESSION_NAME,
-  SPS_RBAC_COOKIE_SESSION_SECRET,
-  SPS_RBAC_SECRET_KEY,
+  RBAC_COOKIE_SESSION_SECRET,
+  RBAC_SECRET_KEY,
   SPS_RBAC_SESSION_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import { getCookie, setCookie } from "hono/cookie";
@@ -30,7 +30,7 @@ export class Middleware {
   cookieSessionName: string;
 
   constructor(options?: SessionOptions) {
-    const cookieSessionSecret = SPS_RBAC_COOKIE_SESSION_SECRET;
+    const cookieSessionSecret = RBAC_COOKIE_SESSION_SECRET;
 
     if (!cookieSessionSecret) {
       throw new Error("Cookie session secret is required");
@@ -66,9 +66,9 @@ export class Middleware {
         return await next();
       }
 
-      if (!SPS_RBAC_SECRET_KEY) {
+      if (!RBAC_SECRET_KEY) {
         throw new Error(
-          "SPS_RBAC_SECRET_KEY is required for sessions middleware to work",
+          "RBAC_SECRET_KEY is required for sessions middleware to work",
         );
       }
 
@@ -105,7 +105,7 @@ export class Middleware {
             },
             options: {
               headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -132,7 +132,7 @@ export class Middleware {
               id: session.id,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -158,7 +158,7 @@ export class Middleware {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

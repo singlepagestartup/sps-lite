@@ -9,7 +9,7 @@ import QueryString from "qs";
 import { setCookie, deleteCookie, getCookie } from "hono/cookie";
 import {
   SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
-  SPS_RBAC_JWT_SECRET,
+  RBAC_JWT_SECRET,
   SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
@@ -105,14 +105,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       );
     }
 
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(500, {
         message: "JWT secret not provided",
       });
     }
 
     try {
-      const decoded = await jwt.verify(token, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(token, RBAC_JWT_SECRET);
 
       if (!decoded.subject?.["id"]) {
         throw new HTTPException(401, {
@@ -140,13 +140,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const secretKeyCookie = getCookie(c, "rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
 
-      if (secretKey && secretKey !== process.env["SPS_RBAC_SECRET_KEY"]) {
+      if (secretKey && secretKey !== process.env["RBAC_SECRET_KEY"]) {
         throw new HTTPException(401, {
           message: "Unauthorized",
         });
       }
 
-      if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
+      if (secretKey && secretKey === process.env["RBAC_SECRET_KEY"]) {
         return c.json({
           data: {
             message: "action granted.",
@@ -220,9 +220,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async registraion(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
@@ -256,7 +256,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         roles: data.roles || [],
       });
 
-      const decodedJwt = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decodedJwt = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decodedJwt.exp) {
         throw new HTTPException(400, {
@@ -286,9 +286,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async init(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
@@ -313,7 +313,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             id: entity.id,
           },
         },
-        SPS_RBAC_JWT_SECRET,
+        RBAC_JWT_SECRET,
       );
 
       const refreshToken = await jwt.sign(
@@ -326,10 +326,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             id: entity.id,
           },
         },
-        SPS_RBAC_JWT_SECRET,
+        RBAC_JWT_SECRET,
       );
 
-      const decodedJwt = await jwt.verify(jwtToken, SPS_RBAC_JWT_SECRET);
+      const decodedJwt = await jwt.verify(jwtToken, RBAC_JWT_SECRET);
 
       if (!decodedJwt.exp) {
         throw new HTTPException(400, {
@@ -362,9 +362,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async authentication(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
@@ -406,7 +406,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         type: "authentication",
       });
 
-      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decoded.exp) {
         throw new HTTPException(400, {
@@ -437,9 +437,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async refresh(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
@@ -481,7 +481,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         refresh: data["refresh"],
       });
 
-      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decoded.exp) {
         throw new HTTPException(400, {
