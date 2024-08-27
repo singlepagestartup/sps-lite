@@ -1,7 +1,7 @@
 #!/bin/bash
 terminal=$1
 
-if [ "$terminal" == "db" ];
+if [ "$terminal" == "infrastructure" ];
 then
     # wait until docker is started
     while ! docker ps
@@ -24,6 +24,7 @@ fi
 
 if [ "$terminal" == "host" ];
 then
+    gh codespace ports visibility 8080:public -c $CODESPACE_NAME
     gh codespace ports visibility 3000:public -c $CODESPACE_NAME
 
     chmod +x ./create_env.sh
