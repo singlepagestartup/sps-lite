@@ -23,6 +23,7 @@ jobs:
           url: ${{ secrets.PREVIEW_PORTAINER_HOST_UPDATE_URL }}?tag=${{ inputs.TAG }}
           method: "POST"
           timeout: 40000
+
       - name: Send webhook for production service update
         if: ${{ inputs.PRERELEASE == false }}
         uses: fjogeleit/http-request-action@master

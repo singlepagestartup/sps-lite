@@ -3,8 +3,8 @@
   hosts: all
   become: yes
   vars:
-    - aws_access_key_id: "{{ AWS_ACCESS_KEY_ID }}"
-    - aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
+    - root_aws_access_key_id: "{{ ROOT_AWS_ACCESS_KEY_ID }}"
+    - root_aws_secret_access_key: "{{ ROOT_AWS_SECRET_ACCESS_KEY }}"
     - project_name: "{{ PROJECT_NAME }}"
   tasks:
     - name: Get ansible ansible_system_vendor
@@ -45,8 +45,8 @@
       amazon.aws.iam_user:
         name: "{{ item }}"
         state: absent
-        aws_access_key: "{{ aws_access_key_id }}"
-        aws_secret_access_key: "{{ aws_secret_access_key }}"
+        aws_access_key: "{{ root_aws_access_key_id }}"
+        aws_secret_access_key: "{{ root_aws_secret_access_key }}"
       loop:
         - "{{ project_name }}"
         - "{{ project_name }}dev"

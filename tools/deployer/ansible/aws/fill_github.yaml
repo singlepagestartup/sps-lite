@@ -6,7 +6,7 @@
     - github_token: "{{ GITHUB_TOKEN }}"
     - github_repository: "{{ GITHUB_REPOSITORY }}"
     - project_name: "{{ PROJECT_NAME }}"
-    - aws_s3_region: "{{ AWS_S3_REGION }}"
+    - aws_region: "{{ AWS_REGION }}"
     - aws_s3_bucket: "{{ AWS_S3_BUCKET }}"
   tasks:
     - name: Delete artifacts
@@ -74,8 +74,8 @@
             secret_scope: codespaces,
           }
         - {
-            secret_name: AWS_S3_REGION,
-            secret_content: "{{ aws_s3_region }}",
+            secret_name: AWS_REGION,
+            secret_content: "{{ aws_region }}",
             secret_scope: codespaces,
           }
         - {
@@ -86,11 +86,6 @@
         - {
             secret_name: AWS_S3_BUCKET,
             secret_content: "{{ aws_s3_bucket }}",
-            secret_scope: actions,
-          }
-        - {
-            secret_name: AWS_S3_REGION,
-            secret_content: "{{ aws_s3_region }}",
             secret_scope: actions,
           }
         - {

@@ -42,42 +42,46 @@ jobs:
         run: |
           secrets=(\
             "PROJECT_NAME ${{ secrets.PROJECT_NAME }}"\
-            "DOCKER_HUB_USERNAME ${{ secrets.DOCKER_HUB_USERNAME }}"\
-            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}"\
-            "DOCKER_HUB_URL ${{ secrets.DOCKER_HUB_URL }}"\
-            "DOCKER_HUB_PASSWORD ${{ secrets.DOCKER_HUB_PASSWORD }}"\
             "ANSIBLE_HOST ${{ secrets.ANSIBLE_HOST }}"\
             "ANSIBLE_PASSWORD ${{ secrets.ANSIBLE_PASSWORD }}"\
-            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
-            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
+            "DOMAIN ${{ secrets.DOMAIN }}"\
             "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
             "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
-            "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
-            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
-            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
-            "DOMAIN ${{ secrets.DOMAIN }}"\
-            "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
-            "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
-            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.RBAC_COOKIE_SESSION_SECRET }}"\
+            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
+            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
+            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
+            "AWS_REGION ${{ secrets.AWS_REGION }}"\
             "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
             "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
-            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
-            "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
-            "SEED_ENTITIES ${{ secrets.SEED_ENTITIES }}"\
-            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
-            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
-            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
-            "PORTAINER_USERNAME ${{ secrets.PORTAINER_USERNAME }}"\
-            "PORTAINER_PASSWORD ${{ secrets.PORTAINER_PASSWORD }}"\
-            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PORTAINER_SERVICE_SUBDOMAIN }}"\
             "TRAEFIK_USERNAME ${{ secrets.TRAEFIK_USERNAME }}"\
             "TRAEFIK_PASSWORD ${{ secrets.TRAEFIK_PASSWORD }}"\
             "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.TRAEFIK_SERVICE_SUBDOMAIN }}"\
+            "PORTAINER_USERNAME ${{ secrets.PORTAINER_USERNAME }}"\
+            "PORTAINER_PASSWORD ${{ secrets.PORTAINER_PASSWORD }}"\
+            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PORTAINER_SERVICE_SUBDOMAIN }}"\
             "HOST_SERVICE_NAME ${{ secrets.HOST_SERVICE_NAME }}"\
             "HOST_SERVICE_SUBDOMAIN ${{ secrets.HOST_SERVICE_SUBDOMAIN }}"\
-            "DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCKER_HUB_REPOSITORY_NAME }}"\
+            "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
+            "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
+            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.RBAC_COOKIE_SESSION_SECRET }}"\
+            "DOCKER_HUB_USERNAME ${{ secrets.DOCKER_HUB_USERNAME }}"\
+            "DOCKER_HUB_PASSWORD ${{ secrets.DOCKER_HUB_PASSWORD }}"\
+            "DOCKER_HUB_URL ${{ secrets.DOCKER_HUB_URL }}"\
+            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}"\
             "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
             "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
+            "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
+            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
+            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
+            "AVOID_DATABASE_SEEDING ${{ secrets.AVOID_DATABASE_SEEDING }}"\
+            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
+            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
+            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
+            "DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCKER_HUB_REPOSITORY_NAME }}"\
+            "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
+            "O_X_PROCESSING_SHOP_ID ${{ secrets.O_X_PROCESSING_SHOP_ID }}"\
+            "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.O_X_PROCESSING_TEST_PAYMENTS }}"\
+            "O_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.O_X_PROCESSING_WEBHOOK_PASSWORD }}"\
           )
 
           for secret in "${secrets[@]}"; do
