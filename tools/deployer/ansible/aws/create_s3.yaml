@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars:
-    - aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    - aws_access_key_id: "{{ AWS_ACCESS_KEY_ID }}"
     - aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
     - aws_s3_region: "{{ AWS_S3_REGION }}"
     - project_name: "{{ PROJECT_NAME }}"
@@ -53,7 +53,7 @@
         - name: Create S3 bucket
           amazon.aws.s3_bucket:
             name: "{{ item }}"
-            access_key: "{{ aws_access_key }}"
+            access_key: "{{ aws_access_key_id }}"
             secret_key: "{{ aws_secret_access_key }}"
             state: present
             region: "{{ aws_s3_region }}"
@@ -80,7 +80,7 @@
         - name: Set CORS permissions
           community.aws.s3_cors:
             name: "{{ item }}"
-            access_key: "{{ aws_access_key }}"
+            access_key: "{{ aws_access_key_id }}"
             secret_key: "{{ aws_secret_access_key }}"
             state: present
             rules:

@@ -58,6 +58,7 @@ jobs:
             "DOMAIN ${{ secrets.DOMAIN }}"\
             "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
             "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
+            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.RBAC_COOKIE_SESSION_SECRET }}"\
             "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
             "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
             "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\

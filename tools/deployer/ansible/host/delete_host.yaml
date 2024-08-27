@@ -8,6 +8,11 @@
     - name: Remove host service
       shell: docker compose -f /home/code/docker-compose.host.yaml down
 
+    - name: Delete env file
+      file:
+        path: "/home/code/{{ service_name }}.env.local"
+        state: absent
+
     - name: Delete docker-compose file
       file:
         path: /home/code/docker-compose.host.yaml

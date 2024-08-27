@@ -16,6 +16,7 @@ services:
       - overlay_network
 
   host:
+    # image: "singlepagestartup/singlepagestartup:0.0.157"
     build:
       context: ./
       dockerfile: Dockerfile

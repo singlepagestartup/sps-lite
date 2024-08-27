@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars:
-    - aws_access_key: "{{ AWS_ACCESS_KEY }}"
+    - aws_access_key_id: "{{ AWS_ACCESS_KEY_ID }}"
     - aws_secret_access_key: "{{ AWS_SECRET_ACCESS_KEY }}"
     - project_name: "{{ PROJECT_NAME }}"
   tasks:
@@ -45,7 +45,7 @@
       amazon.aws.iam_user:
         name: "{{ item }}"
         state: absent
-        aws_access_key: "{{ aws_access_key }}"
+        aws_access_key: "{{ aws_access_key_id }}"
         aws_secret_access_key: "{{ aws_secret_access_key }}"
       loop:
         - "{{ project_name }}"

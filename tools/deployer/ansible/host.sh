@@ -16,6 +16,10 @@ DATABASE_NAME=$(get_env DATABASE_NAME)
 DATABASE_USERNAME=$(get_env DATABASE_USERNAME)
 DATABASE_PASSWORD=$(get_env DATABASE_PASSWORD)
 
+RBAC_JWT_SECRET=$(get_env RBAC_JWT_SECRET)
+RBAC_SECRET_KEY=$(get_env RBAC_SECRET_KEY)
+RBAC_COOKIE_SESSION_SECRET=$(get_env RBAC_COOKIE_SESSION_SECRET)
+
 DOCKER_HUB_URL=$(get_env DOCKER_HUB_URL)
 DOCKER_HUB_SERVICE_REPOSITORY=$(get_env HOST_DOCKER_HUB_REPOSITORY_NAME)
 
@@ -54,7 +58,7 @@ fi
 
 if [ "$1" != "down" ]
 then
-    ./sentry.sh up $SERVICE_NAME javascript-react NEXT_PUBLIC_SENTRY_DSN && \
+    # ./sentry.sh up $SERVICE_NAME javascript-react NEXT_PUBLIC_SENTRY_DSN && \
     ./domain.sh present $SERVICE_URL $SERVICE_A && \
     ansible-playbook \
         ./host/create_host.yaml \
@@ -65,6 +69,9 @@ then
             DATABASE_NAME=$DATABASE_NAME \
             DATABASE_USERNAME=$DATABASE_USERNAME \
             DATABASE_PASSWORD=$DATABASE_PASSWORD \
+            RBAC_JWT_SECRET=$RBAC_JWT_SECRET \
+            RBAC_SECRET_KEY=$RBAC_SECRET_KEY \
+            RBAC_COOKIE_SESSION_SECRET=$RBAC_COOKIE_SESSION_SECRET \
             DOCKER_HUB_URL=$DOCKER_HUB_URL \
             BACKEND_URL=$BACKEND_URL \
             DOCKER_HUB_SERVICE_REPOSITORY=$DOCKER_HUB_SERVICE_REPOSITORY \
@@ -83,6 +90,6 @@ else
     ansible-playbook \
         ./host/delete_host.yaml \
         -e "SERVICE_NAME=$SERVICE_NAME" && \
-    ./domain.sh down $SERVICE_URL $SERVICE_A && \
-    ./sentry.sh down $SERVICE_NAME NEXT_PUBLIC_SENTRY_DSN
+    ./domain.sh down $SERVICE_URL $SERVICE_A
+    # ./sentry.sh down $SERVICE_NAME NEXT_PUBLIC_SENTRY_DSN
 fi
