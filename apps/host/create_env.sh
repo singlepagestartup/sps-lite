@@ -73,7 +73,12 @@ KV_PASSWORD=$(get_env REDIS_PASSWORD ../redis/.env)
 add_env "KV_PASSWORD" $KV_PASSWORD
 
 SPS_RBAC_COOKIE_SESSION_SECRET=$(generate_random_string)
+add_env "SPS_RBAC_COOKIE_SESSION_SECRET" $SPS_RBAC_COOKIE_SESSION_SECRET
+
 SPS_RBAC_JWT_SECRET=$(generate_random_string)
+add_env "SPS_RBAC_JWT_SECRET" $SPS_RBAC_JWT_SECRET
+
 SPS_RBAC_SECRET_KEY=$(generate_random_string)
+add_env "SPS_RBAC_SECRET_KEY" $SPS_RBAC_SECRET_KEY
 
 add_env "FILE_STORAGE_PROVIDER" "local"
