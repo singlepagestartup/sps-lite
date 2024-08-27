@@ -77,8 +77,8 @@ export class Service {
       const result = await transporter.sendMail(mailOptions);
 
       return result;
-    } catch (error) {
-      throw new Error("Email sending failed");
+    } catch (error: any) {
+      throw new Error(error.message, error.stack);
     }
   }
 }

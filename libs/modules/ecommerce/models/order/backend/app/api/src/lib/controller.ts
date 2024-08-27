@@ -495,14 +495,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           data: {
             url: `${HOST_URL}/api/image-generator/image.png?variant=order-receipt&id=${entity.id}`,
           },
-          params: {
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
             },
           },
         });

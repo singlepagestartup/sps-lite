@@ -13,15 +13,19 @@ then
     cd apps/db
     chmod +x ./up.sh
     ./up.sh
+
+    cd ../redis
+    chmod +x ./up.sh
+    ./up.sh
+
     cd ..
     npm install
 fi
 
-if [ "$terminal" == "frontend" ];
+if [ "$terminal" == "host" ];
 then
     gh codespace ports visibility 3000:public -c $CODESPACE_NAME
 
-    # cd apps/frontend
-    # chmod +x ./create_env.sh
-    # ./create_env.sh
+    chmod +x ./create_env.sh
+    ./create_env.sh
 fi
