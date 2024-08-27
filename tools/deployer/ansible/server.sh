@@ -5,5 +5,6 @@ ansible-playbook \
     ./server/install_psql.yaml \
     ./server/set_cron_jobs.yaml \
     ./server/install_nodejs.yaml \
+    ./server/install_bun.yaml \
     ./server/install_docker.yaml \
     ./server/init_docker_swarm.yaml

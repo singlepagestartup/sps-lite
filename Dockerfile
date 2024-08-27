@@ -3,7 +3,10 @@ FROM node:20
 RUN apt-get update && \
     apt-get -qy full-upgrade && \
     apt-get install -qy curl && \
-    curl -sSL https://get.docker.com/ | sh
+    curl -fsSL https://bun.sh/install | bash && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/root/.bun/bin:$PATH"
 
 ENV GENERATE_SOURCEMAP=false
 ENV NODE_OPTIONS=--max-old-space-size=16384

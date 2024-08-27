@@ -1,0 +1,38 @@
+---
+- name: Install Bun
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Download and install Bun
+      shell: |
+        curl -fsSL https://bun.sh/install | bash
+      args:
+        executable: /bin/bash
+      environment:
+        BUN_INSTALL: "/home/{{ ansible_user }}/.bun"
+      become: false
+
+    - name: Add Bun to PATH in .bashrc
+      lineinfile:
+        path: /home/{{ ansible_user }}/.bashrc
+        line: 'export PATH="/home/{{ ansible_user }}/.bun/bin:$PATH"'
+        create: yes
+      become: false
+
+    - name: Source .bashrc to update PATH
+      shell: source /home/{{ ansible_user }}/.bashrc
+      become: false
+      args:
+        executable: /bin/bash
+
+    - name: Verify Bun installation
+      shell: bun --version
+      register: bun_version
+      become: false
+      environment:
+        PATH: "/home/{{ ansible_user }}/.bun/bin:{{ ansible_env.PATH }}"
+
+    - debug:
+        msg: "Bun installed successfully with version {{ bun_version.stdout }}"
+      when: bun_version.stdout is defined
