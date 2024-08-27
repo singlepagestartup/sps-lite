@@ -17,8 +17,8 @@ ENV NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL
 COPY . .
 
 # write the env variables to a file
-RUN if [ -n "$NEXT_PUBLIC_BACKEND_TOKEN" ]; then echo "NEXT_PUBLIC_BACKEND_TOKEN=$NEXT_PUBLIC_BACKEND_TOKEN" >> /usr/src/app/apps/host/.env.production; fi
-RUN echo "NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL" >> /usr/src/app/apps/host/.env.production
+RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" >> /usr/src/app/apps/host/.env.local
+RUN echo "NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL" >> /usr/src/app/apps/host/.env.local
 
 RUN npm ci
 RUN npm run host:build
@@ -26,7 +26,7 @@ RUN npm run host:build
 EXPOSE 3000
 
 # Running the app
-RUN ["chmod", "-R", "777", "/usr/src/app"]
+# RUN ["chmod", "-R", "777", "/usr/src/app"]
 RUN ["chmod", "+x", "/usr/src/app/start.sh"]
 RUN ["chmod", "-R", "777", "/usr/src/app/apps/host/public"]
 

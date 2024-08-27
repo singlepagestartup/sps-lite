@@ -6,16 +6,16 @@ services:
       file: ./docker-compose.postgres.yaml
       service: postgres
     networks:
-      - sps-db-network
+      - db_network
 
   adminer:
     extends:
       file: ./docker-compose.adminer.yaml
       service: adminer
     networks:
-      - sps-db-network
+      - db_network
 
 networks:
-  sps-db-network:
+  db_network:
     external: false
-    name: ${COMPOSE_PROJECT_NAME}-db-network
+    name: ${COMPOSE_PROJECT_NAME}_db_network

@@ -6,16 +6,26 @@ services:
       file: ./apps/db/docker-compose.postgres.yaml
       service: postgres
     networks:
-      - sps_db_network
+      - overlay_network
 
   redis:
     extends:
       file: ./apps/redis/docker-compose.redis.yaml
       service: redis
     networks:
-      - sps_db_network
+      - overlay_network
+
+  host:
+    image: "host"
+    env_file:
+      - ./apps/host/.env.local
+    command: "sh -c './start.sh host'"
+    ports:
+      - "3000:3000"
+    networks:
+      - overlay_network
 
 networks:
-  sps_db_network:
+  overlay_network:
     external: false
-    name: sps_db_network
+    name: ${COMPOSE_PROJECT_NAME}_overlay_network

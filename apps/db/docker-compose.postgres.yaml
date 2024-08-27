@@ -4,7 +4,7 @@ services:
   postgres:
     build:
       context: .
-      dockerfile: Dockerfile.develop
+      dockerfile: Dockerfile
     restart: always
     volumes:
       - ./db_data:/var/lib/postgresql/data
