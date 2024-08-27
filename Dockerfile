@@ -17,8 +17,8 @@ ENV NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL
 COPY . .
 
 # write the env variables to a file
-RUN echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" >> /usr/src/app/apps/host/.env.local
-RUN echo "NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL" >> /usr/src/app/apps/host/.env.local
+RUN if [ -n "$NEXT_PUBLIC_BACKEND_URL" ]; then echo "NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL" >> /usr/src/app/apps/host/.env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_HOST_URL" ]; then echo "NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL" >> /usr/src/app/apps/host/.env.local; fi
 
 RUN npm ci
 RUN npm run host:build

@@ -1,7 +1,6 @@
 ############################
 # NX
 ############################
-
 .nx
 dist
 tmp
@@ -9,33 +8,70 @@ tmp
 ############################
 # Git
 ############################
-
 .git
 .github
 
 ############################
 # Node
 ############################
-
 node_modules
 *.log
 
 ############################
+# Husky
+############################
+.husky
+
+############################
 # IDE
 ############################
-
 .devcontainer
 .vscode
 
 ############################
-# Storage
+# apps
 ############################
 
+############################
+# Database
+############################
 apps/db/db_data
+apps/db/.env
+
+############################
+# redis
+############################
 apps/redis/redis_data
+apps/redis/.env
 
 ############################
-# Others
+# host
 ############################
+apps/host/.next
+apps/host/out
+apps/host/build
+apps/host/.env
+apps/host/.env*.local
+apps/host/.env*.testing
+apps/host/.vercel
+apps/host/next-env.d.ts
 
-.husky
+############################
+# host / Testing
+############################
+apps/host/coverage
+
+############################
+# host / ICP
+############################
+apps/host/.dfx
+apps/host/*.key
+apps/host/*.pem
+apps/host/*.pem.base64
+apps/host/*-wallet.txt
+apps/host/.env.cloudflare
+
+############################
+# host / Sentry
+############################
+apps/host/.sentryclirc
