@@ -1,5 +1,5 @@
 module.exports = {
-  "**/*": "npx prettier . --write --ignore-unknown",
+  "**/*": "sudo npx prettier . --write --ignore-unknown",
   // "{apps,libs,tools}/**/*.{js,jsx,ts,tsx,feature,json}": [
   //   (files) => {
   //     return ``;
