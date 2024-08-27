@@ -16,12 +16,22 @@ services:
       - overlay_network
 
   host:
-    image: "host"
+    build:
+      context: ./
+      dockerfile: Dockerfile
     env_file:
       - ./apps/host/.env.local
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - KV_PROVIDER=redis
+      - KV_PORT=6379
     command: "sh -c './start.sh host'"
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+      - redis
     networks:
       - overlay_network
 

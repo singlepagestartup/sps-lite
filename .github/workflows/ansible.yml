@@ -73,25 +73,11 @@ jobs:
             "TRAEFIK_USERNAME ${{ secrets.TRAEFIK_USERNAME }}"\
             "TRAEFIK_PASSWORD ${{ secrets.TRAEFIK_PASSWORD }}"\
             "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.TRAEFIK_SERVICE_SUBDOMAIN }}"\
-            "BACKEND_SERVICE_NAME ${{ secrets.BACKEND_SERVICE_NAME }}"\
-            "BACKEND_SERVICE_SUBDOMAIN ${{ secrets.BACKEND_SERVICE_SUBDOMAIN }}"\
-            "BACKEND_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.BACKEND_DOCKER_HUB_REPOSITORY_NAME }}"\
-            "FRONTEND_SERVICE_NAME ${{ secrets.FRONTEND_SERVICE_NAME }}"\
-            "FRONTEND_SERVICE_SUBDOMAIN ${{ secrets.FRONTEND_SERVICE_SUBDOMAIN }}"\
-            "FRONTEND_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.FRONTEND_DOCKER_HUB_REPOSITORY_NAME }}"\
-            "DOCUMENTATION_SERVICE_NAME ${{ secrets.DOCUMENTATION_SERVICE_NAME }}"\
-            "DOCUMENTATION_SERVICE_SUBDOMAIN ${{ secrets.DOCUMENTATION_SERVICE_SUBDOMAIN }}"\
-            "DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME }}"\
+            "HOST_SERVICE_NAME ${{ secrets.HOST_SERVICE_NAME }}"\
+            "HOST_SERVICE_SUBDOMAIN ${{ secrets.HOST_SERVICE_SUBDOMAIN }}"\
+            "DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCKER_HUB_REPOSITORY_NAME }}"\
             "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
             "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
-            "TELEGRAM_BOT_TOKEN ${{ secrets.TELEGRAM_BOT_TOKEN }}"\
-            "TELEGRAM_BOT_USERNAME ${{ secrets.TELEGRAM_BOT_USERNAME }}"\
-            "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
-            "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
-            "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
-            "ZERO_X_PROCESSING_TEST_PAYMENTS ${{ secrets.ZERO_X_PROCESSING_TEST_PAYMENTS }}" \
-            "ZERO_X_PROCESSING_SHOP_ID ${{ secrets.ZERO_X_PROCESSING_SHOP_ID }}" \
-            "ZERO_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.ZERO_X_PROCESSING_WEBHOOK_PASSWORD }}" \
           )
 
           for secret in "${secrets[@]}"; do
