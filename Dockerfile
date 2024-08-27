@@ -5,6 +5,9 @@ RUN apt-get update && \
     apt-get install -qy curl && \
     curl -sSL https://get.docker.com/ | sh
 
+ENV GENERATE_SOURCEMAP=false
+ENV NODE_OPTIONS=--max-old-space-size=16384
+
 WORKDIR /usr/src/app/
 
 ARG NEXT_PUBLIC_BACKEND_URL

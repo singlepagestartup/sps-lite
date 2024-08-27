@@ -5,6 +5,8 @@ services:
     extends:
       file: ./docker-compose.redis.yaml
       service: redis
+    env_file:
+      - ./.env
     networks:
       - redis_network
 

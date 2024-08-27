@@ -51,7 +51,7 @@ apps/host/.next
 apps/host/out
 apps/host/build
 apps/host/.env
-apps/host/.env*.local
+# apps/host/.env*.local
 apps/host/.env*.testing
 apps/host/.vercel
 apps/host/next-env.d.ts
