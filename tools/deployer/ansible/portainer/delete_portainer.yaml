@@ -3,8 +3,21 @@
   hosts: all
   become: yes
   tasks:
-    - name: Remove Portainer service
-      shell: docker compose -f /home/code/docker-compose.portainer.yaml down
+    - name: Remove Portainer stack
+      shell: docker stack rm portainer
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
+
+    - name: Debug result of removing Portainer stack
+      debug:
+        var: result
+
+    - name: Ensure Portainer stack is removed
+      shell: docker stack ls | grep portainer
+      register: check_portainer
+      failed_when: check_portainer.rc == 0
+      ignore_errors: true
 
     - name: Delete portainer_data directory
       file:

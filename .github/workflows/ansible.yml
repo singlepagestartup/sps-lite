@@ -73,7 +73,6 @@ jobs:
             "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
             "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
             "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
-            "AVOID_DATABASE_SEEDING ${{ secrets.AVOID_DATABASE_SEEDING }}"\
             "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
             "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
             "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\

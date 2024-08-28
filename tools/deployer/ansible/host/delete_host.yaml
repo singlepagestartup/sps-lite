@@ -3,10 +3,23 @@
   hosts: all
   become: yes
   vars:
-    - service_name: "{{ SERVICE_NAME }}"
+    service_name: "{{ SERVICE_NAME }}"
   tasks:
-    - name: Remove host service
-      shell: docker compose -f /home/code/docker-compose.host.yaml down
+    - name: Remove host stack
+      shell: docker stack rm {{ service_name }}
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
+
+    - name: Debug result of removing host stack
+      debug:
+        var: result
+
+    - name: Ensure host stack is removed
+      shell: docker stack ls | grep {{ service_name }}
+      register: check_host
+      failed_when: check_host.rc == 0
+      ignore_errors: true
 
     - name: Delete env file
       file:

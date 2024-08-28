@@ -3,10 +3,23 @@
   hosts: all
   become: yes
   tasks:
-    - name: Delete Postgres service
-      shell: docker compose -f /home/code/docker-compose.postgres.yaml down
+    - name: Remove Postgres stack
+      shell: docker stack rm postgres
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
 
-    - name: Copy docker-compose file
+    - name: Debug result of removing Postgres stack
+      debug:
+        var: result
+
+    - name: Ensure Postgres stack is removed
+      shell: docker stack ls | grep postgres
+      register: check_postgres
+      failed_when: check_postgres.rc == 0
+      ignore_errors: true
+
+    - name: Remove docker-compose file
       file:
         path: /home/code/docker-compose.postgres.yaml
         state: absent
