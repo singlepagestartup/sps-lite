@@ -19,9 +19,9 @@ fi
 > .env.local
 echo "Created /.env.local file"
 
-add_env "SPS_HOST_SEED" true
-add_env "SPS_WEBSITE_BUILDER_SEED" true
-add_env "SPS_FILE_STORAGE_SEED" true
+add_env "HOST_SEED" true
+add_env "WEBSITE_BUILDER_SEED" true
+add_env "FILE_STORAGE_SEED" true
 add_env "STARTUP_SEED" true
 
 if [ ! -z $CODESPACE_NAME ]; then
