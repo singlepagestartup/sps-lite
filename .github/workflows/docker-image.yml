@@ -1,4 +1,4 @@
-name: Update backend
+name: Build Docker image
 
 on:
   workflow_dispatch:
@@ -15,8 +15,8 @@ env:
   IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
 
 jobs:
-  create-image:
-    name: Create project docker image
+  build-docker-image:
+    name: Build Docker image
     runs-on: ubuntu-latest
     defaults:
       run:

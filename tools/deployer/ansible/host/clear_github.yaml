@@ -37,6 +37,7 @@
       loop:
         - { secret_name: PORTAINER_HOST_UPDATE_URL, secret_scope: actions }
         - { secret_name: NEXT_PUBLIC_HOST_URL, secret_scope: actions }
+        - { secret_name: NEXT_PUBLIC_BACKEND_URL, secret_scope: actions }
 
     - name: Delete artifacts
       file:
