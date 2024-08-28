@@ -4,9 +4,9 @@ import { CRUDService, DI } from "@sps/shared-backend-api";
 import { Repository } from "./repository";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
 import {
-  SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
   RBAC_JWT_SECRET,
-  SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
   RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 import { IModel as ISubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/sdk/model";
@@ -351,9 +351,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const jwtToken = await jwt.sign(
       {
-        exp:
-          Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        exp: Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,
@@ -366,7 +364,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       {
         exp:
           Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+          RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,
@@ -595,9 +593,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const jwtToken = await jwt.sign(
       {
-        exp:
-          Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        exp: Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,
@@ -610,7 +606,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       {
         exp:
           Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+          RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,
@@ -845,9 +841,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const jwtToken = await jwt.sign(
       {
-        exp:
-          Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        exp: Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,
@@ -860,7 +854,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       {
         exp:
           Math.floor(Date.now() / 1000) +
-          SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+          RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
         iat: Math.floor(Date.now() / 1000),
         subject: {
           id: subject.id,

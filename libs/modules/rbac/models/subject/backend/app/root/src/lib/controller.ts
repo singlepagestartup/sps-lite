@@ -8,9 +8,9 @@ import { HTTPException } from "hono/http-exception";
 import QueryString from "qs";
 import { setCookie, deleteCookie, getCookie } from "hono/cookie";
 import {
-  SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
   RBAC_JWT_SECRET,
-  SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
 import { authorization } from "@sps/sps-backend-utils";
@@ -292,9 +292,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    if (!SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
@@ -306,8 +306,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const jwtToken = await jwt.sign(
         {
           exp:
-            Math.floor(Date.now() / 1000) +
-            SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+            Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
           iat: Math.floor(Date.now() / 1000),
           subject: {
             id: entity.id,
@@ -320,7 +319,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         {
           exp:
             Math.floor(Date.now() / 1000) +
-            SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+            RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
           iat: Math.floor(Date.now() / 1000),
           subject: {
             id: entity.id,
@@ -368,9 +367,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
@@ -418,7 +417,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/",
         secure: true,
         httpOnly: false,
-        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        maxAge: RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         expires: new Date(decoded.exp),
         sameSite: "Strict",
       });
@@ -443,9 +442,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
@@ -493,7 +492,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/",
         secure: true,
         httpOnly: false,
-        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        maxAge: RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         expires: new Date(decoded.exp),
         sameSite: "Strict",
       });
