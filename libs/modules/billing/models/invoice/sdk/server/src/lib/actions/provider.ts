@@ -18,15 +18,16 @@ export interface IActionProps {
     amount: number;
     subjectId: string;
   };
-  provider: "stripe";
   options?: NextRequestOptions;
-  data: any;
+  data: {
+    [key: string]: any;
+    provider: string;
+  };
 }
 
 export async function action(props: IActionProps): Promise<IModel | undefined> {
   const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
-  const provider = props.provider;
   const { data, params, options } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
@@ -56,7 +57,7 @@ export async function action(props: IActionProps): Promise<IModel | undefined> {
   };
 
   const res = await fetch(
-    `${host}${route}/${provider}?${stringifiedQuery}`,
+    `${host}${route}/${data.provider}?${stringifiedQuery}`,
     requestOptions,
   );
 

@@ -9,6 +9,9 @@ import {
   O_X_PROCESSING_SHOP_ID,
   O_X_PROCESSING_TEST_PAYMENTS,
   O_X_PROCESSING_WEBHOOK_PASSWORD,
+  PAYSELECTION_SECRET_KEY,
+  PAYSELECTION_SITE_ID,
+  PAYSELECTION_SITE_NAME,
   RBAC_SECRET_KEY,
   STRIPE_SECRET_KEY,
 } from "@sps/shared-utils";
@@ -307,6 +310,194 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       }
 
       if (props.data.Status === "Success") {
+        invoice = await this.update({
+          id: invoice.id,
+          data: {
+            ...invoice,
+            status: "paid",
+          },
+        });
+
+        if (!invoice) {
+          throw new Error("Invoice not found");
+        }
+      }
+
+      return invoice;
+    }
+  }
+
+  async payselection(
+    props:
+      | { data: any; type: "create"; email: string; subjectId: string }
+      | {
+          type: "webhook";
+          data: {
+            Event: "Payment";
+            Amount: string;
+            Currency: string;
+            DateTime: string;
+            IsTest: number;
+            Brand: string;
+            Bank: string;
+            Country_Code_Alpha2: string;
+            TransactionId: string;
+            OrderId: string;
+            Description: string;
+            CustomFields: string;
+            Service_Id: string;
+            PaymentMethod: string;
+            CardMasked: string;
+            ExpirationDate: string;
+            CardHolder: string;
+          };
+        },
+  ): Promise<(typeof Table)["$inferSelect"]> {
+    if (!PAYSELECTION_SECRET_KEY) {
+      throw new Error("Payselection secret key not found");
+    }
+
+    if (!PAYSELECTION_SITE_ID) {
+      throw new Error("Payselection site id not found");
+    }
+
+    if (!PAYSELECTION_SITE_NAME) {
+      throw new Error("Payselection site name not found");
+    }
+
+    if (props.type === "create") {
+      if (!props.data.amount) {
+        throw new Error("Amount is required");
+      }
+
+      if (props.data.amount < 0) {
+        throw new Error("Amount cannot be negative");
+      }
+
+      const superResult = await super.create(props);
+
+      const amount = props.data.amount;
+
+      const payload = JSON.stringify({
+        PaymentRequest: {
+          OrderId: superResult.id,
+          Amount: `${amount}`,
+          Currency: "RUB",
+          Description: `Checkout invoice id: ${superResult.id}`,
+          RebillFlag: false,
+          CustomerInfo: {
+            Email: props.email,
+            ReceiptEmail: props.email,
+          },
+          ExtendedData: {
+            Email: {
+              enabled: true,
+              required: true,
+            },
+          },
+        },
+      });
+
+      const providerHost = "https://webform.payselection.com";
+      const providerPath = "/webpayments/paylink_create";
+      const method = "POST";
+      const signature = crypto
+        .createHmac("sha256", PAYSELECTION_SECRET_KEY)
+        .update(
+          `${method}\n${providerPath}\n${PAYSELECTION_SITE_ID}\n${superResult.id}\n${payload}`,
+        )
+        .digest("hex");
+
+      console.log(`🚀 ~ payload:`, signature, payload);
+
+      const checkout:
+        | {
+            Id: string;
+            Status: string;
+            Url: string;
+            Invoice: string;
+            Description: string;
+            Amount: string;
+            Currency: string;
+            CreatedDate: string;
+          }
+        | {
+            Code: string;
+            Description: string;
+          } = await fetch(providerHost + providerPath, {
+        method,
+        headers: {
+          "X-SITE-ID": PAYSELECTION_SITE_ID,
+          "X-REQUEST-ID": superResult.id,
+          "X-REQUEST-SIGNATURE": signature,
+          "Content-Type": "application/json",
+        },
+        body: payload,
+      }).then((res) => res.json());
+
+      console.log(`🚀 ~ checkout:`, checkout);
+
+      if ("Id" in checkout) {
+        const updated = await this.update({
+          id: superResult.id,
+          data: {
+            ...superResult,
+            status: "open",
+            providerId: checkout.Id,
+            paymentUrl: checkout.Url,
+          },
+        });
+
+        if (!updated) {
+          throw new Error("Invoice not found");
+        }
+
+        return updated;
+      }
+
+      throw new Error(
+        `Payselection error ${checkout.Code} ${checkout.Description}`,
+      );
+    } else {
+      const { OrderId, TransactionId } = props.data;
+
+      let invoice = await this.findById({ id: OrderId });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      const transactionData: {
+        TransactionState:
+          | "success"
+          | "preauthorized"
+          | "pending"
+          | "voided"
+          | "declined"
+          | "wait_for_3ds"
+          | "redirect";
+        TransactionId: string;
+        OrderId: string;
+      } = await fetch(
+        `https://gw.payselection.com/transactions/${TransactionId}`,
+        {
+          headers: {
+            "X-SITE-ID": PAYSELECTION_SITE_ID,
+          },
+        },
+      ).then((res) => res.json());
+
+      console.log(`🚀 ~ transactionData:`, transactionData);
+
+      if (transactionData.OrderId !== OrderId) {
+        throw new Error("Order ID mismatch");
+      }
+
+      if (transactionData.TransactionState !== "success") {
+        return invoice;
+      }
+
+      if (props.data.Event === "Payment") {
         invoice = await this.update({
           id: invoice.id,
           data: {

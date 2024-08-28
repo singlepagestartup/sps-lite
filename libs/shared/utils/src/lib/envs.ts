@@ -109,3 +109,11 @@ export const O_X_PROCESSING_WEBHOOK_PASSWORD =
 export const AWS_ACCESS_KEY_ID = process.env["AWS_ACCESS_KEY_ID"];
 export const AWS_SECRET_ACCESS_KEY = process.env["AWS_SECRET_ACCESS_KEY"];
 export const AWS_REGION = process.env["AWS_REGION"];
+
+export const PAYSELECTION_SECRET_KEY = process.env["PAYSELECTION_SECRET_KEY"];
+export const PAYSELECTION_SITE_ID =
+  process.env["NEXT_PUBLIC_PAYSELECTION_SITE_ID"];
+export const PAYSELECTION_SITE_NAME =
+  process.env["NEXT_PUBLIC_PAYSELECTION_SITE_NAME"];
+export const PAYSELECTION_PUBLIC_KEY =
+  process.env["NEXT_PUBLIC_PAYSELECTION_PUBLIC_KEY"];

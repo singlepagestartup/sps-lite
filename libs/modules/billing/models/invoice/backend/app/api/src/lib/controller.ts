@@ -176,6 +176,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           email: identityWithEmail.email,
           subjectId: data.subjectId,
         });
+      } else if (provider === "payselection") {
+        entity = await this.service.payselection({
+          data,
+          type: "create",
+          email: identityWithEmail.email,
+          subjectId: data.subjectId,
+        });
       }
 
       return c.json(
@@ -194,6 +201,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   async providerWebhook(c: Context, next: any): Promise<Response> {
     const provider = c.req.param("provider");
     const contentType = c.req.header("content-type");
+    const headers = c.req.header();
+
+    console.log(`🚀 ~ providerWebhook ~ headers:`, headers);
 
     let data;
     if (contentType?.includes("application/json")) {
@@ -227,9 +237,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       entity = await this.service.stripe({ data: event, type: "webhook" });
     } else if (provider === "0xprocessing") {
       entity = await this.service.OxProcessing({ data, type: "webhook" });
+    } else if (provider === "payselection") {
+      entity = await this.service.payselection({ data, type: "webhook" });
     }
 
-    if (entity) {
+    if (entity?.status === "succeeded") {
       await this.service.updatePaymentIntentStatus({ invoice: entity });
     }
 

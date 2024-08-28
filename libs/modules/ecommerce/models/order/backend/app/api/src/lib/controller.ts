@@ -387,8 +387,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
 
       const invoice = await invoiceApi.provider({
-        provider,
         data: {
+          provider,
           amount,
           subjectId: subject.id,
         },
