@@ -37,6 +37,7 @@
     "@tanstack/query-sync-storage-persister": "5.51.21",
     "@tanstack/react-query": "5.49.0",
     "@tanstack/react-query-persist-client": "5.51.23",
+    "@tiptap/core": "2.5.6",
     "@tiptap/extension-link": "2.4.0",
     "@tiptap/react": "2.4.0",
     "@tiptap/starter-kit": "2.4.0",

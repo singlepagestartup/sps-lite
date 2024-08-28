@@ -36,10 +36,14 @@ export function Component(props: IComponentPropsExtended) {
 }
 
 function MiniImage(props: IComponentPropsExtended["data"][0]) {
+  const url = props.file.startsWith("http")
+    ? props.file
+    : `${BACKEND_URL}${props.file}`;
+
   return (
     <div className="w-full flex items-center gap-3">
       <div className="flex h-10 w-10 relative flex-shrink-0">
-        <Image src={`${BACKEND_URL}${props.file}`} alt="" fill={true} />
+        <Image src={url} alt="" fill={true} />
       </div>
       <p className="text-xs">{props.id}</p>
     </div>

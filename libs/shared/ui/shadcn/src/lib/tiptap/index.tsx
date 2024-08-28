@@ -1,7 +1,13 @@
 "use client";
 
 import { cn } from "@sps/shared-frontend-client-utils";
-import { useEditor, EditorContent } from "@tiptap/react";
+import { Node, mergeAttributes } from "@tiptap/core";
+import {
+  useEditor,
+  EditorContent,
+  ReactNodeViewRenderer,
+  NodeViewWrapper,
+} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { ChangeEventHandler, forwardRef, useCallback } from "react";
 import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
@@ -19,8 +25,93 @@ import {
   Link2Icon,
   Link2Off,
   Strikethrough,
+  ClipboardCopy,
 } from "lucide-react";
 import { Input } from "../input";
+import { Button } from "../button";
+import { toast } from "sonner";
+
+declare module "@tiptap/core" {
+  interface Commands<ReturnType> {
+    copyButton: {
+      insertCopyButton: (text: string) => ReturnType;
+    };
+  }
+}
+
+const CopyButton = Node.create({
+  name: "copyButton",
+
+  group: "inline",
+
+  inline: true,
+
+  selectable: false,
+
+  atom: true,
+
+  addAttributes() {
+    return {
+      text: {
+        default: "Copy me!",
+      },
+    };
+  },
+
+  parseHTML() {
+    return [
+      {
+        tag: "button",
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return ["button", mergeAttributes(HTMLAttributes)];
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(CopyButtonView);
+  },
+
+  addCommands() {
+    return {
+      insertCopyButton:
+        (text: string) =>
+        ({ commands }) => {
+          return commands.insertContent({
+            type: this.name,
+            attrs: { text },
+          });
+        },
+    };
+  },
+});
+
+function CopyButtonView({ node }) {
+  const { text } = node.attrs;
+
+  const copyText = () => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast.info("Text copied to clipboard");
+      })
+      .catch((error: any) => {
+        toast.error("Failed to copy text to clipboard", error?.message);
+      });
+  };
+
+  return (
+    <NodeViewWrapper as="span" className="inline-flex items-center">
+      <Button onClick={copyText} variant="outline" className="w-fit">
+        <ClipboardCopy className="h-4 w-4" />
+      </Button>
+    </NodeViewWrapper>
+  );
+}
+
+export default CopyButton;
 
 export type ITipTapEditableProps = {
   value: string;
@@ -50,6 +141,7 @@ export const TipTapEditable = forwardRef<
         openOnClick: false,
         autolink: true,
       }),
+      CopyButton,
     ],
     content: props.value,
     editorProps: {
@@ -267,6 +359,18 @@ export const TipTapEditable = forwardRef<
               </button>
             </Toggle>
           )}
+          <Button
+            onClick={() => {
+              const text = window.prompt("Type text to copy", "Copy me!");
+              if (text) {
+                editor.chain().focus().insertCopyButton(text).run();
+              }
+            }}
+            variant="outline"
+            className="w-fit"
+          >
+            <ClipboardCopy className="h-4 w-4" />
+          </Button>
         </div>
       ) : null}
       <EditorContent editor={editor} />
@@ -277,7 +381,7 @@ export const TipTapEditable = forwardRef<
 export const TipTapContent = forwardRef<HTMLDivElement, ITipTapContentProps>(
   (props: ITipTapContentProps, ref) => {
     const editor = useEditor({
-      extensions: [StarterKit, Link],
+      extensions: [StarterKit, Link, CopyButton],
       content: props.value,
       editorProps: {
         attributes: {
