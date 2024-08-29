@@ -9,7 +9,7 @@ import {
   NodeViewWrapper,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { ChangeEventHandler, forwardRef, useCallback } from "react";
+import { ChangeEventHandler, forwardRef, useCallback, useState } from "react";
 import { ControllerRenderProps, UseFormReturn } from "react-hook-form";
 import { Toggle } from "../toggle";
 import Link from "@tiptap/extension-link";
@@ -26,6 +26,8 @@ import {
   Link2Off,
   Strikethrough,
   ClipboardCopy,
+  Copy,
+  Check,
 } from "lucide-react";
 import { Input } from "../input";
 import { Button } from "../button";
@@ -90,12 +92,18 @@ const CopyButton = Node.create({
 
 function CopyButtonView({ node }) {
   const { text } = node.attrs;
+  const [copied, setCopied] = useState(false);
 
   const copyText = () => {
+    setCopied(true);
+
     navigator.clipboard
       .writeText(text)
       .then(() => {
         toast.info("Text copied to clipboard");
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
       })
       .catch((error: any) => {
         toast.error("Failed to copy text to clipboard", error?.message);
@@ -104,8 +112,8 @@ function CopyButtonView({ node }) {
 
   return (
     <NodeViewWrapper as="span" className="inline-flex items-center">
-      <Button onClick={copyText} variant="outline" className="w-fit">
-        <ClipboardCopy className="h-4 w-4" />
+      <Button onClick={copyText} variant="link" className="w-fit p-0">
+        {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
       </Button>
     </NodeViewWrapper>
   );
