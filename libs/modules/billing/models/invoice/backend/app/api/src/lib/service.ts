@@ -14,6 +14,7 @@ import {
   PAYSELECTION_SECRET_KEY,
   PAYSELECTION_SITE_ID,
   PAYSELECTION_SITE_NAME,
+  PAYSELECTION_WEBHOOK_URL,
   RBAC_SECRET_KEY,
   STRIPE_SECRET_KEY,
 } from "@sps/shared-utils";
@@ -467,8 +468,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         `Payselection error ${checkout.Code} ${checkout.Description}`,
       );
     } else {
-      if (!BACKEND_URL) {
-        throw new Error("BACKEND_URL not found");
+      if (!PAYSELECTION_WEBHOOK_URL) {
+        throw new Error("PAYSELECTION_WEBHOOK_URL not found");
       }
 
       const { OrderId } = props.data;
@@ -482,7 +483,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       const signature = crypto
         .createHmac("sha256", PAYSELECTION_SECRET_KEY)
         .update(
-          `POST\n${BACKEND_URL}/api/billing/invoices/payselection/webhook\n${PAYSELECTION_SITE_ID}\n${props.rawBody}`,
+          `POST\n${PAYSELECTION_WEBHOOK_URL}\n${PAYSELECTION_SITE_ID}\n${props.rawBody}`,
         )
         .digest("hex");
 

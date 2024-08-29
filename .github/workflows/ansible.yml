@@ -85,6 +85,7 @@ jobs:
             "PAYSELECTION_SITE_ID ${{ secrets.PAYSELECTION_SITE_ID }}"\
             "PAYSELECTION_SITE_NAME ${{ secrets.PAYSELECTION_SITE_NAME }}"\
             "PAYSELECTION_PUBLIC_KEY ${{ secrets.PAYSELECTION_PUBLIC_KEY }}"\
+            "PAYSELECTION_WEBHOOK_URL ${{ secrets.PAYSELECTION_WEBHOOK_URL }}"\
           )
 
           for secret in "${secrets[@]}"; do
