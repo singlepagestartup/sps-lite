@@ -81,6 +81,10 @@ jobs:
             "O_X_PROCESSING_SHOP_ID ${{ secrets.O_X_PROCESSING_SHOP_ID }}"\
             "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.O_X_PROCESSING_TEST_PAYMENTS }}"\
             "O_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.O_X_PROCESSING_WEBHOOK_PASSWORD }}"\
+            "PAYSELECTION_SECRET_KEY ${{ secrets.PAYSELECTION_SECRET_KEY }}"\
+            "PAYSELECTION_SITE_ID ${{ secrets.PAYSELECTION_SITE_ID }}"\
+            "PAYSELECTION_SITE_NAME ${{ secrets.PAYSELECTION_SITE_NAME }}"\
+            "PAYSELECTION_PUBLIC_KEY ${{ secrets.PAYSELECTION_PUBLIC_KEY }}"\
           )
 
           for secret in "${secrets[@]}"; do

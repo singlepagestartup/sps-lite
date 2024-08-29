@@ -5,10 +5,12 @@ import { Table } from "@sps/billing/models/invoice/backend/repository/database";
 import { Repository } from "./repository";
 import Stripe from "stripe";
 import {
+  BACKEND_URL,
   HOST_URL,
   O_X_PROCESSING_SHOP_ID,
   O_X_PROCESSING_TEST_PAYMENTS,
   O_X_PROCESSING_WEBHOOK_PASSWORD,
+  PAYSELECTION_PUBLIC_KEY,
   PAYSELECTION_SECRET_KEY,
   PAYSELECTION_SITE_ID,
   PAYSELECTION_SITE_NAME,
@@ -351,8 +353,17 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             ExpirationDate: string;
             CardHolder: string;
           };
+          rawBody: string;
+          headers: {
+            "x-site-id": string;
+            "x-webhook-signature": string;
+          };
         },
   ): Promise<(typeof Table)["$inferSelect"]> {
+    if (!PAYSELECTION_PUBLIC_KEY) {
+      throw new Error("Payselection public key not found");
+    }
+
     if (!PAYSELECTION_SECRET_KEY) {
       throw new Error("Payselection secret key not found");
     }
@@ -398,17 +409,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      const providerHost = "https://webform.payselection.com";
-      const providerPath = "/webpayments/paylink_create";
       const method = "POST";
       const signature = crypto
-        .createHmac("sha256", PAYSELECTION_SECRET_KEY)
+        .createHmac("sha256", PAYSELECTION_PUBLIC_KEY)
         .update(
-          `${method}\n${providerPath}\n${PAYSELECTION_SITE_ID}\n${superResult.id}\n${payload}`,
+          `${method}\n${PAYSELECTION_SITE_NAME}\n${PAYSELECTION_SITE_ID}\n${superResult.id}\n${payload}`,
         )
         .digest("hex");
-
-      console.log(`🚀 ~ payload:`, signature, payload);
 
       const checkout:
         | {
@@ -424,18 +431,19 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         | {
             Code: string;
             Description: string;
-          } = await fetch(providerHost + providerPath, {
-        method,
-        headers: {
-          "X-SITE-ID": PAYSELECTION_SITE_ID,
-          "X-REQUEST-ID": superResult.id,
-          "X-REQUEST-SIGNATURE": signature,
-          "Content-Type": "application/json",
+          } = await fetch(
+        "https://webform.payselection.com/webpayments/paylink_create",
+        {
+          method,
+          headers: {
+            "X-SITE-ID": PAYSELECTION_SITE_ID,
+            "X-REQUEST-ID": superResult.id,
+            "X-REQUEST-SIGNATURE": signature,
+            "Content-Type": "application/json",
+          },
+          body: payload,
         },
-        body: payload,
-      }).then((res) => res.json());
-
-      console.log(`🚀 ~ checkout:`, checkout);
+      ).then((res) => res.json());
 
       if ("Id" in checkout) {
         const updated = await this.update({
@@ -459,7 +467,11 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         `Payselection error ${checkout.Code} ${checkout.Description}`,
       );
     } else {
-      const { OrderId, TransactionId } = props.data;
+      if (!BACKEND_URL) {
+        throw new Error("BACKEND_URL not found");
+      }
+
+      const { OrderId } = props.data;
 
       let invoice = await this.findById({ id: OrderId });
 
@@ -467,34 +479,15 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Invoice not found");
       }
 
-      const transactionData: {
-        TransactionState:
-          | "success"
-          | "preauthorized"
-          | "pending"
-          | "voided"
-          | "declined"
-          | "wait_for_3ds"
-          | "redirect";
-        TransactionId: string;
-        OrderId: string;
-      } = await fetch(
-        `https://gw.payselection.com/transactions/${TransactionId}`,
-        {
-          headers: {
-            "X-SITE-ID": PAYSELECTION_SITE_ID,
-          },
-        },
-      ).then((res) => res.json());
+      const signature = crypto
+        .createHmac("sha256", PAYSELECTION_SECRET_KEY)
+        .update(
+          `POST\n${BACKEND_URL}/api/billing/invoices/payselection/webhook\n${PAYSELECTION_SITE_ID}\n${props.rawBody}`,
+        )
+        .digest("hex");
 
-      console.log(`🚀 ~ transactionData:`, transactionData);
-
-      if (transactionData.OrderId !== OrderId) {
-        throw new Error("Order ID mismatch");
-      }
-
-      if (transactionData.TransactionState !== "success") {
-        return invoice;
+      if (signature !== props.headers["x-webhook-signature"]) {
+        throw new Error("Signature mismatch");
       }
 
       if (props.data.Event === "Payment") {

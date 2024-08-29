@@ -202,15 +202,16 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const provider = c.req.param("provider");
     const contentType = c.req.header("content-type");
     const headers = c.req.header();
+    const rawBody = await c.req.text();
+    const body = await c.req.parseBody();
 
     console.log(`🚀 ~ providerWebhook ~ headers:`, headers);
+    console.log(`🚀 ~ providerWebhook ~ headers:`, await c.req.text());
 
     let data;
     if (contentType?.includes("application/json")) {
       data = await c.req.json();
     } else {
-      const body = await c.req.parseBody();
-
       if (body["data"] instanceof File) {
         throw new HTTPException(400, {
           message: "Files are not supported",
@@ -238,10 +239,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     } else if (provider === "0xprocessing") {
       entity = await this.service.OxProcessing({ data, type: "webhook" });
     } else if (provider === "payselection") {
-      entity = await this.service.payselection({ data, type: "webhook" });
+      if ("x-site-id" in headers && "x-webhook-signature" in headers) {
+        entity = await this.service.payselection({
+          data,
+          type: "webhook",
+          rawBody,
+          headers: {
+            "x-site-id": headers["x-site-id"],
+            "x-webhook-signature": headers["x-webhook-signature"],
+          },
+        });
+      } else {
+        throw new HTTPException(400, {
+          message: "Missing headers",
+        });
+      }
     }
 
-    if (entity?.status === "succeeded") {
+    console.log(`🚀 ~ providerWebhook ~ entity:`, entity);
+
+    if (entity?.status === "paid") {
       await this.service.updatePaymentIntentStatus({ invoice: entity });
     }
 
