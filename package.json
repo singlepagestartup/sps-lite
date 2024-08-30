@@ -15,6 +15,7 @@
     "@hono/zod-validator": "^0.2.2",
     "@hookform/resolvers": "^3.3.4",
     "@next/bundle-analyzer": "^14.2.1",
+    "@next/third-parties": "^14.2.7",
     "@nx/devkit": "19.2.2",
     "@paralleldrive/cuid2": "^2.2.2",
     "@radix-ui/react-accordion": "^1.2.0",

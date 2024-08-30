@@ -86,6 +86,8 @@ jobs:
             "PAYSELECTION_SITE_NAME ${{ secrets.PAYSELECTION_SITE_NAME }}"\
             "PAYSELECTION_PUBLIC_KEY ${{ secrets.PAYSELECTION_PUBLIC_KEY }}"\
             "PAYSELECTION_WEBHOOK_URL ${{ secrets.PAYSELECTION_WEBHOOK_URL }}"\
+            "GOOGLE_TAG_MANAGER_ID ${{ secrets.GOOGLE_TAG_MANAGER_ID }}"\
+            "GOOGLE_ANALYTICS_ID ${{ secrets.GOOGLE_ANALYTICS_ID }}"\
           )
 
           for secret in "${secrets[@]}"; do
