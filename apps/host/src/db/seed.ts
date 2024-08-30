@@ -4,6 +4,7 @@ import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
 import { app as rbac } from "@sps/rbac/backend/app/api";
 import { app as crm } from "@sps/crm/backend/app/api";
 import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
+import { app as notification } from "@sps/notification/backend/app/api";
 import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
@@ -49,6 +50,19 @@ import { exit } from "process";
     });
   } else {
     seeds.push(crmModelsSeeds);
+  }
+
+  const notificationModelsSeeds = await notification.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(notificationModelsSeeds)) {
+    notificationModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(notificationModelsSeeds);
   }
 
   const ecommerceModelsSeeds = await ecommerce.seed({
@@ -127,6 +141,19 @@ import { exit } from "process";
     });
   } else {
     seeds.push(websiteBuilderRelationsSeeds);
+  }
+
+  const notificationRelationsSeeds = await notification.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(notificationRelationsSeeds)) {
+    notificationRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(notificationRelationsSeeds);
   }
 
   const crmRelationsSeeds = await crm.seed({

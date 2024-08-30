@@ -3,6 +3,7 @@ import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
 import { app as rbac } from "@sps/rbac/backend/app/api";
 import { app as crm } from "@sps/crm/backend/app/api";
 import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
+import { app as notification } from "@sps/notification/backend/app/api";
 import { app as fileStorage } from "@sps/file-storage/backend/app/api";
 import { app as startup } from "@sps/startup/backend/app/api";
 
@@ -25,6 +26,11 @@ import { exit } from "process";
   });
 
   await ecommerce.dump({
+    type: "model",
+    dumps: [],
+  });
+
+  await notification.dump({
     type: "model",
     dumps: [],
   });
@@ -60,6 +66,11 @@ import { exit } from "process";
   });
 
   await ecommerce.dump({
+    type: "relation",
+    dumps: [],
+  });
+
+  await notification.dump({
     type: "relation",
     dumps: [],
   });

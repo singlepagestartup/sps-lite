@@ -23,7 +23,7 @@ export class Configuration extends ParentConfiguration {
         },
         seed: {
           active: true,
-          module: "template",
+          module: "notification",
           name: "template",
           type: "model",
         },
