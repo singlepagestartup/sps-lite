@@ -14,6 +14,9 @@ export interface IComponentProps
   topicsToNotifications?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  notificationsToTemplates?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

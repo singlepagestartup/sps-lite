@@ -3,6 +3,7 @@ import { Component as ParentComponent } from "@sps/shared-frontend-components/si
 import { Component as Widget } from "./widget/Component";
 import { Component as Notification } from "./notification/Component";
 import { Component as Topic } from "./topic/Component";
+import { Component as Template } from "./template/Component";
 
 export function Component(props: IComponentProps) {
   const models = [
@@ -17,6 +18,10 @@ export function Component(props: IComponentProps) {
     {
       name: "topic",
       Comp: Topic,
+    },
+    {
+      name: "template",
+      Comp: Template,
     },
   ];
 
