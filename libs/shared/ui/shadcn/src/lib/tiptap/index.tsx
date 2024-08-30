@@ -397,6 +397,7 @@ export const TipTapContent = forwardRef<HTMLDivElement, ITipTapContentProps>(
         },
       },
       editable: false,
+      immediatelyRender: false,
     });
 
     if (!editor) {
