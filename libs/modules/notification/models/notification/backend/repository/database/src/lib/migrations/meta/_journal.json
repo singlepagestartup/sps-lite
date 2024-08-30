@@ -29,6 +29,13 @@
       "when": 1725028926413,
       "tag": "0003_mute_maggott",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1725052637703,
+      "tag": "0004_thin_power_pack",
+      "breakpoints": true
     }
   ]
 }

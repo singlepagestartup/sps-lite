@@ -54,14 +54,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Template not found");
       }
 
-      const attachments =
-        entity.attachments?.split(",")?.map((attachment) => {
-          return attachment.trim();
-        }) || [];
+      const attachments: { type: "image"; url: string }[] =
+        JSON.parse(entity.attachments || "[]") || [];
 
       const renderResult = await templateApi.render({
         id: notificationToTemplates[0].templateId,
-        data: entity.payload ? JSON.parse(entity.payload) : {},
+        data: entity.data ? JSON.parse(entity.data) : {},
         options: {
           headers: {
             "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -85,7 +83,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         subject: entity.title || "Notification from Single Page Startup",
         html: renderResult,
         from: "no-reply@mail.singlepagestartup.com",
-        filePaths: attachments,
+        filePaths: attachments.map((attachment) => attachment.url),
       });
 
       await this.update({

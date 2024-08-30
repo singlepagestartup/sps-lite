@@ -24,7 +24,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       const query = QueryString.stringify(
         {
           variant: template.variant,
-          ...params?.payload,
+          data: params?.payload,
         },
         {
           encodeValuesOnly: true,

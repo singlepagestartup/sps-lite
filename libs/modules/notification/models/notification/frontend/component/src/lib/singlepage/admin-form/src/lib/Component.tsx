@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      payload: props.data?.payload || "",
+      data: props.data?.data || "",
       status: props.data?.status || "new",
       title: props.data?.title || "",
       method: props.data?.method || "email",
@@ -64,8 +64,8 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="text"
-          label="Payload"
-          name="payload"
+          label="Data"
+          name="data"
           form={form}
         />
 
@@ -75,7 +75,7 @@ export function Component(props: IComponentPropsExtended) {
           label="Attachments"
           name="attachments"
           form={form}
-          placeholder="Comma separated list of attachments (paths to files)"
+          placeholder="Array of attachments"
         />
 
         <FormField

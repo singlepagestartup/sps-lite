@@ -1,9 +1,10 @@
-export const variant = "opengraph-image" as const;
+export const variant = "order-status-changed-to-paid" as const;
 
 export interface IComponentProps {
   variant: typeof variant;
-  title?: string;
-  subtitle?: string;
+  data: {
+    id: string;
+  };
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}

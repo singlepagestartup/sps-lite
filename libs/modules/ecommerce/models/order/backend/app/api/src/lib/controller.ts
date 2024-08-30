@@ -27,6 +27,7 @@ import { api as notificationTemplatesApi } from "@sps/notification/models/templa
 import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk/server";
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
+import QueryString from "qs";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -489,9 +490,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       let entity = await this.service.update({ id: uuid, data });
 
       if (entity?.status === "approving") {
+        const query = QueryString.stringify({
+          variant: "order-receipt",
+          data: entity,
+        });
+
         const receiptFile = await fileStorageFileApi.createFromUrl({
           data: {
-            url: `${HOST_URL}/api/image-generator/image.png?variant=order-receipt&id=${entity.id}`,
+            url: `${HOST_URL}/api/image-generator/image.png?${query}`,
           },
           options: {
             headers: {
@@ -665,13 +671,15 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             const notification = await notificationNotificationsApi.create({
               data: {
                 reciever: identity.email,
-                payload: JSON.stringify({
+                data: JSON.stringify({
                   title: "Order status updated",
                   subject: "Order status updated",
                   id: entity?.id || "",
                 }),
                 method: "email",
-                attachments: entity?.receipt || "",
+                attachments: entity?.receipt
+                  ? JSON.stringify([{ type: "image", url: entity.receipt }])
+                  : "[]",
               },
               options: {
                 headers: {

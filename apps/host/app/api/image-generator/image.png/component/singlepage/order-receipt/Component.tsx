@@ -33,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
             fontSize: "1rem",
           }}
         >
-          {props.id ?? "id"}
+          {props.data.id ?? "id"}
         </p>
       </div>
     </div>

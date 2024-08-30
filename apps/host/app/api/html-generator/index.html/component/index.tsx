@@ -1,18 +1,15 @@
-import React from "react";
 import { IComponentProps } from "./interface";
 import { variants } from "./variants";
-import { Component as OpengraphImage } from "./singlepage/opengraph-image/Component";
-import { Component as OrderReceipt } from "./singlepage/order-receipt/Component";
 
-/**
- * Impossible to use object key for dynamic import, throws and error with pipe response
- */
 export function Component(props: IComponentProps) {
-  if (props.variant === "opengraph-image") {
-    return <OpengraphImage {...props} />;
-  } else if (props.variant === "order-receipt") {
-    return <OrderReceipt {...props} />;
+  const Comp = variants[props.variant];
+
+  if (!Comp) {
+    return <></>;
   }
 
-  return <div></div>;
+  // type guards works on component rendering
+  // as any here is required for dynamic import
+  // or you can use switch case, but it's not recommended
+  return <Comp {...(props as any)} />;
 }

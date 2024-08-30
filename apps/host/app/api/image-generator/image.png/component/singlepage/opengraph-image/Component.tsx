@@ -31,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
             fontFamily: "Primary",
           }}
         >
-          {props.title ?? "Single Page Startup"}
+          {props.data.title ?? "Single Page Startup"}
         </p>
         <p
           tw="text-sm font-normal italic"
@@ -39,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
             fontFamily: "Default",
           }}
         >
-          {props.subtitle ??
+          {props.data.subtitle ??
             "The fastest way to create full-stack Next.js project"}
         </p>
       </div>

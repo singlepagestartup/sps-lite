@@ -8,7 +8,7 @@ export const fields = {
   status: pgCore.text("status").notNull().default("new"),
   method: pgCore.text("method").notNull().default("email"),
   title: pgCore.text("title"),
-  payload: pgCore.text("payload"),
+  data: pgCore.text("data"),
   reciever: pgCore.text("reciever").notNull(),
   attachments: pgCore.text("attachments"),
 };

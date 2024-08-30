@@ -1,6 +1,3 @@
-import { IComponentProps as IOpengraphImageComponentProps } from "./opengraph-image";
-import { IComponentProps as IOrderReceiptComponentProps } from "./order-receipt";
+import { IComponentProps as IOrderStatusChangedToPaidComponentProps } from "./order-status-changed-to-paid";
 
-export type IComponentProps =
-  | IOpengraphImageComponentProps
-  | IOrderReceiptComponentProps;
+export type IComponentProps = IOrderStatusChangedToPaidComponentProps;
