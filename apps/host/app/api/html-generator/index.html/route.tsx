@@ -333,11 +333,6 @@ export const GET = async (request: NextRequest) => {
       throw new Error("Host URL not found");
     }
 
-    const width = parsedParams?.["width"] ? Number(parsedParams["width"]) : 512;
-    const height = parsedParams?.["height"]
-      ? Number(parsedParams["height"])
-      : 512;
-
     const fonts: {
       name: string;
       data: Buffer | ArrayBuffer;
@@ -371,6 +366,7 @@ export const GET = async (request: NextRequest) => {
     const html = await render(
       <Html lang="en">
         <Text>Some title</Text>
+        {parsedParams ? <Text>{JSON.stringify(parsedParams)}</Text> : null}
         <Hr />
         <Button href="https://example.com">Click me</Button>
       </Html>,

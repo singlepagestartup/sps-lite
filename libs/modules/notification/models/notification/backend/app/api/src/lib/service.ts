@@ -61,6 +61,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       const renderResult = await templateApi.render({
         id: notificationToTemplates[0].templateId,
+        data: entity.payload ? JSON.parse(entity.payload) : {},
         options: {
           headers: {
             "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,

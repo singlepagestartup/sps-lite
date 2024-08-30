@@ -15,6 +15,7 @@ export interface IComponentProps extends ISpsComponentBase {
   };
   subject: ISubject;
   product: IProduct;
+  successCallback?: (data: IModel) => void;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {

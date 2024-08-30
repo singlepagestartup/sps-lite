@@ -57,6 +57,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   async render(c: Context, next: any): Promise<Response> {
     try {
       const uuid = c.req.param("uuid");
+      const body = await c.req.parseBody();
 
       if (!uuid) {
         throw new HTTPException(400, {
@@ -64,7 +65,24 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
 
-      const data = await this.service.render({ id: uuid, type: "html" });
+      if (body["data"] && typeof body["data"] !== "string") {
+        return c.json(
+          {
+            message: "Invalid body",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const payloadData = JSON.parse(body["data"]);
+
+      const data = await this.service.render({
+        id: uuid,
+        type: "html",
+        payload: payloadData,
+      });
 
       if (!data || !Object.keys(data).length) {
         return c.json(

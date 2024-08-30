@@ -2,18 +2,18 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/client";
+import { api } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
 import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export function Component(props: IComponentPropsExtended) {
-  const createEntity = api.create();
+  // const createEntity = api.create();
 
-  useEffect(() => {
-    if (createEntity.isSuccess && typeof props.successCallback === "function") {
-      props.successCallback(createEntity.data);
-    }
-  }, [createEntity.isSuccess]);
+  // useEffect(() => {
+  //   if (createEntity.isSuccess && typeof props.successCallback === "function") {
+  //     props.successCallback(createEntity.data);
+  //   }
+  // }, [createEntity.isSuccess]);
 
   return (
     <div
@@ -27,12 +27,24 @@ export function Component(props: IComponentPropsExtended) {
         hostUrl={props.hostUrl}
         variant="create"
         successCallback={(data) => {
-          createEntity.mutate({
-            data: {
-              orderId: data.id,
-              productId: props.product.id,
-            },
-          });
+          api
+            .create({
+              data: {
+                orderId: data.id,
+                productId: props.product.id,
+              },
+            })
+            .then((res) => {
+              if (typeof props.successCallback === "function") {
+                props.successCallback(res);
+              }
+            });
+          // createEntity.mutate({
+          //   data: {
+          //     orderId: data.id,
+          //     productId: props.product.id,
+          //   },
+          // });
         }}
       />
     </div>

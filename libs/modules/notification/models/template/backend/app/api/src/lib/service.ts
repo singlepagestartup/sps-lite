@@ -3,10 +3,11 @@ import { injectable } from "inversify";
 import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/notification/models/template/backend/repository/database";
 import { BACKEND_URL } from "@sps/shared-utils";
+import QueryString from "qs";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
-  async render(params: { id: string; type: "html" }) {
+  async render(params: { id: string; type: "html"; payload?: any }) {
     if (!BACKEND_URL) {
       throw new Error("Backend URL not found");
     }
@@ -19,20 +20,22 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Template not found");
     }
 
-    // if (notification.status !== "new") {
-    //   return { ok: true };
-    // }
-
     if (params.type === "html") {
+      const query = QueryString.stringify(
+        {
+          variant: template.variant,
+          ...params?.payload,
+        },
+        {
+          encodeValuesOnly: true,
+        },
+      );
+
       const data = await fetch(
-        BACKEND_URL + "/api/html-generator/index.html",
+        BACKEND_URL + "/api/html-generator/index.html?" + query,
       ).then((res) => res.text());
 
       return data;
-      //   return await this.provider({
-      //     provider: "email",
-      //     id: params.id,
-      //   });
     }
 
     throw new Error("Passed render type is not supported");

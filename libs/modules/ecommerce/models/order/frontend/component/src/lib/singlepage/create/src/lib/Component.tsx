@@ -3,7 +3,7 @@
 import { Form, Button } from "@sps/shared-ui-shadcn";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { api } from "@sps/ecommerce/models/order/sdk/client";
+import { api } from "@sps/ecommerce/models/order/sdk/server";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,7 +14,7 @@ const formSchema = z.object({});
 
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
-  const createEntity = api.create();
+  // const createEntity = api.create();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -22,18 +22,27 @@ export function Component(props: IComponentPropsExtended) {
   });
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
-    createEntity.mutate({
-      data,
-    });
+    api
+      .create({
+        data,
+      })
+      .then((res) => {
+        if (typeof props.successCallback === "function") {
+          props.successCallback(res);
+        }
 
-    router.refresh();
+        router.refresh();
+      });
+    // createEntity.mutate({
+    //   data,
+    // });
   }
 
-  useEffect(() => {
-    if (createEntity.isSuccess && typeof props.successCallback === "function") {
-      props.successCallback(createEntity.data);
-    }
-  }, [createEntity.isSuccess]);
+  // useEffect(() => {
+  //   if (createEntity.isSuccess && typeof props.successCallback === "function") {
+  //     props.successCallback(createEntity.data);
+  //   }
+  // }, [createEntity.isSuccess]);
 
   return (
     <div

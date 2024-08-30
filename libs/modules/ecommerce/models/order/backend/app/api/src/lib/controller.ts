@@ -604,6 +604,17 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           }
 
           const templates = await notificationTemplatesApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "variant",
+                    method: "eq",
+                    value: "order-status-changed-to-paid",
+                  },
+                ],
+              },
+            },
             options: {
               headers: {
                 "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -657,6 +668,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                 payload: JSON.stringify({
                   title: "Order status updated",
                   subject: "Order status updated",
+                  id: entity?.id || "",
                 }),
                 method: "email",
                 attachments: entity?.receipt || "",

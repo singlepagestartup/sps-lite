@@ -7,7 +7,7 @@ export {
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/notification/templates";
-export const variants = ["default"];
+export const variants = ["default", "order-status-changed-to-paid"];
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {
