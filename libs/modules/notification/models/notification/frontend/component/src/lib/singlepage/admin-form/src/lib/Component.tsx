@@ -9,7 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   variants,
   insertSchema,
-  types,
   statuses,
   methods,
 } from "@sps/notification/models/notification/sdk/model";
@@ -23,12 +22,9 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      content: props.data?.content || "",
-      description: props.data?.description || "",
+      payload: props.data?.payload || "",
       status: props.data?.status || "new",
-      subtitle: props.data?.subtitle || "",
       title: props.data?.title || "",
-      type: props.data?.type || "text",
       method: props.data?.method || "email",
       reciever: props.data?.reciever || "",
       attachments: props.data?.attachments || "",
@@ -68,8 +64,8 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="text"
-          label="Content"
-          name="content"
+          label="Payload"
+          name="payload"
           form={form}
         />
 
@@ -85,35 +81,9 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="text"
-          label="Description"
-          name="description"
-          form={form}
-        />
-
-        <FormField
-          ui="shadcn"
-          type="text"
           label="Reciever"
           name="reciever"
           form={form}
-        />
-
-        <FormField
-          ui="shadcn"
-          type="text"
-          label="Subtitle"
-          name="subtitle"
-          form={form}
-        />
-
-        <FormField
-          ui="shadcn"
-          type="select"
-          label="Type"
-          name="type"
-          form={form}
-          placeholder="Select type"
-          options={types.map((type) => [type, type])}
         />
 
         <FormField

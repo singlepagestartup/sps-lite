@@ -5,6 +5,8 @@ import { Table } from "@sps/notification/models/notification/backend/repository/
 import { AWS } from "@sps/shared-third-parties";
 import { api } from "@sps/notification/models/notification/sdk/server";
 import { RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { api as notificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
+import { api as templateApi } from "@sps/notification/models/template/sdk/server";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -26,8 +28,30 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Reciever not found");
       }
 
-      if (!entity.content) {
-        throw new Error("Content not found");
+      const notificationToTemplates = await notificationsToTemplatesApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "notificationId",
+                method: "eq",
+                value: entity.id,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!notificationToTemplates?.length) {
+        throw new Error("Template not found");
       }
 
       const attachments =
@@ -35,12 +59,30 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           return attachment.trim();
         }) || [];
 
+      const renderResult = await templateApi.render({
+        id: notificationToTemplates[0].templateId,
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      console.log(`🚀 ~ provider ~ renderResult:`, renderResult);
+
+      if (!renderResult) {
+        throw new Error("Template not rendered");
+      }
+
       const aws = new AWS();
 
       await aws.ses.sendEmail({
         to: entity.reciever,
         subject: entity.title || "Notification from Single Page Startup",
-        html: entity.content,
+        html: renderResult,
         from: "no-reply@mail.singlepagestartup.com",
         filePaths: attachments,
       });

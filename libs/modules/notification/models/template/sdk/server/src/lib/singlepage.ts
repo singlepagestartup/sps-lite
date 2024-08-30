@@ -6,10 +6,14 @@ import {
   query,
   options,
 } from "@sps/notification/models/template/sdk/model";
+import { action as render } from "./actions/render";
 
-export const api = factory<IModel>({
-  route,
-  host,
-  options,
-  params: query,
-});
+export const api = {
+  ...factory<IModel>({
+    route,
+    host,
+    options,
+    params: query,
+  }),
+  render,
+};

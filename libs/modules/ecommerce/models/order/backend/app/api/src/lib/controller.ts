@@ -23,8 +23,10 @@ import { api as rbacSubjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relatio
 import { api as rbacSubjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 import { api as rbacIdentityApi } from "@sps/rbac/models/identity/sdk/server";
 import { api as notificationNotificationsApi } from "@sps/notification/models/notification/sdk/server";
+import { api as notificationTemplatesApi } from "@sps/notification/models/template/sdk/server";
 import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk/server";
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
+import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -601,6 +603,23 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             ];
           }
 
+          const templates = await notificationTemplatesApi.find({
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!templates?.length) {
+            throw new HTTPException(404, {
+              message: "Templates not found",
+            });
+          }
+
           const identities = await rbacIdentityApi.find({
             params: {
               filters: {
@@ -634,9 +653,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
             const notification = await notificationNotificationsApi.create({
               data: {
-                subject: "Order status updated",
                 reciever: identity.email,
-                content: "<h1>Order status updated</h1>",
+                payload: JSON.stringify({
+                  title: "Order status updated",
+                  subject: "Order status updated",
+                }),
+                method: "email",
                 attachments: entity?.receipt || "",
               },
               options: {
@@ -652,6 +674,21 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             if (!notification) {
               continue;
             }
+
+            await notificationNotificationsToTemplatesApi.create({
+              data: {
+                notificationId: notification.id,
+                templateId: templates[0].id,
+              },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
 
             const topicToNotification =
               await notificationTopicsToNotificationsApi.create({

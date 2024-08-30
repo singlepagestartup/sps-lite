@@ -8,7 +8,6 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/notification/notifications";
 export const variants = ["default"];
-export const types = ["text"];
 export const methods = ["email"];
 export const statuses = ["new", "sent", "read"];
 export const host = BACKEND_URL;
