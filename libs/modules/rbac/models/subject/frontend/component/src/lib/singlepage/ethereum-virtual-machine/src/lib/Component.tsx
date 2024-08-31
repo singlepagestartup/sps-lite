@@ -13,7 +13,7 @@ import { disconnect, signMessage } from "@wagmi/core";
 import { ethereumVirtualMachine } from "@sps/shared-frontend-client-web3";
 import { useCookies } from "react-cookie";
 import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
-import { IModel as ISubjectsToIdenties } from "@sps/rbac/relations/subjects-to-identities/sdk/model";
+// import { IModel as ISubjectsToIdenties } from "@sps/rbac/relations/subjects-to-identities/sdk/model";
 
 const formSchema = z.object({
   message: z.string().min(8),
@@ -25,8 +25,7 @@ export function Component(props: IComponentPropsExtended) {
   const [cookies] = useCookies(["rbac.subject.jwt"]);
   const [isClient, setIsClient] = useState(false);
   const { data: meData, refetch } = api.me();
-  const [subjectToIdentites, setSubjectsToIdentities] =
-    useState<ISubjectsToIdenties[]>();
+  // const [subjectToIdentites, setSubjectsToIdentities] = useState<any[]>();
 
   const authenticateEthereumVirtualMachine = api.ethereumVirtualMachine({});
   const logout = api.logout({
@@ -79,15 +78,23 @@ export function Component(props: IComponentPropsExtended) {
     }
   }
 
-  useEffect(() => {
-    if (!subjectToIdentites) {
-      return;
-    }
+  // useEffect(() => {
+  //   console.log(
+  //     `🚀 ~ useEffect ~ subjectToIdentites:`,
+  //     account.isConnected,
+  //     subjectToIdentites,
+  //     meData,
+  //   );
 
-    if (meData && account.isConnected && !subjectToIdentites.length) {
-      form.handleSubmit(onSubmit)();
-    }
-  }, [account.isConnected, subjectToIdentites, meData]);
+  //   if (!subjectToIdentites) {
+  //     return;
+  //   }
+
+  //   // if (meData && account.isConnected && !subjectToIdentites.length) {
+  //   //   console.log(`🚀 ~ useEffect ~ subjectToIdentites ~ handleSubmit`);
+  //   //   form.handleSubmit(onSubmit)();
+  //   // }
+  // }, [account.isConnected, subjectToIdentites, meData]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -112,10 +119,15 @@ export function Component(props: IComponentPropsExtended) {
           },
         })
         .then((res) => {
-          setSubjectsToIdentities(res);
+          // setSubjectsToIdentities(res);
+
+          if (account.isConnected && !res?.length) {
+            console.log(`🚀 ~ useEffect ~ subjectToIdentites ~ handleSubmit`);
+            form.handleSubmit(onSubmit)();
+          }
 
           if (!res?.length && account?.address) {
-            logoutAction();
+            // logoutAction();
           }
         });
     }
@@ -124,8 +136,16 @@ export function Component(props: IComponentPropsExtended) {
   useEffect(() => {
     if (authenticateEthereumVirtualMachine.isError) {
       disconnect(ethereumVirtualMachine.wagmiConfig.default);
+      return;
     }
-  }, [authenticateEthereumVirtualMachine.isError]);
+    if (account.isConnected && !cookies["rbac.subject.jwt"]) {
+      logoutAction();
+    }
+  }, [
+    authenticateEthereumVirtualMachine.isError,
+    cookies["rbac.subject.jwt"],
+    account.isConnected,
+  ]);
 
   function logoutAction() {
     disconnect(ethereumVirtualMachine.wagmiConfig.default);
