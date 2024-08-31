@@ -6,9 +6,10 @@ import { api } from "@sps/rbac/models/subject/sdk/client";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useJwt } from "react-jwt";
+import Cookie from "js-cookie";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, refetch } = api.me({
+  const { data, isFetching, isLoading, isError, refetch } = api.me({
     ...props.apiProps,
     reactQueryOptions: { enabled: false },
   });
@@ -34,6 +35,13 @@ export default function Client(props: IComponentProps) {
       refetch();
     }
   }, [jwt]);
+
+  useEffect(() => {
+    if (isError && token && !token.isExpired) {
+      Cookie.remove("rbac.subject.jwt");
+      localStorage.removeItem("rbac.subject.refresh");
+    }
+  }, [isError, token]);
 
   useEffect(() => {
     if (props.set && typeof props.set === "function") {
