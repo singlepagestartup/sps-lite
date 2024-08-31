@@ -28,6 +28,8 @@ export default function Client(props: IComponentProps) {
   }, [jwtCookies["rbac.subject.jwt"]]);
 
   useEffect(() => {
+    console.log(`🚀 ~ subject ~ me ~ jwt:`, jwt);
+
     if (token && !token.isExpired) {
       refetch();
     }

@@ -34,6 +34,8 @@ export function Component(props: IComponentPropsExtended) {
   }>(refreshStorage || "");
 
   useEffect(() => {
+    console.log(`🚀 ~ subject ~ init ~ jwtCookies:`, jwtCookies);
+
     if (!jwtCookies["rbac.subject.jwt"]) {
       init.refetch();
     }
