@@ -1,4 +1,8 @@
 
-# cd ./db && ./dump.sh && git add .
+# # cd ./db && ./dump.sh && git add .
 
-npx lint-staged --concurrent false --relative
+if [ ! -z $CODESPACE_NAME ]; then
+    sudo npx lint-staged --concurrent false --relative
+else
+    npx lint-staged --concurrent false --relative
+fi
