@@ -36,6 +36,20 @@
       "when": 1725052637703,
       "tag": "0004_thin_power_pack",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1725240600144,
+      "tag": "0005_sour_leech",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1725242239789,
+      "tag": "0006_rare_stephen_strange",
+      "breakpoints": true
     }
   ]
 }

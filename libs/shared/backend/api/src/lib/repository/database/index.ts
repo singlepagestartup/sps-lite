@@ -13,7 +13,7 @@ import {
   ISeedResult,
   type IConfiguration,
 } from "../../configuration";
-import { ZodDate, ZodError, ZodObject } from "zod";
+import { ZodDate, ZodError, ZodObject, ZodOptional } from "zod";
 import fs from "fs/promises";
 
 @injectable()
@@ -143,7 +143,12 @@ export class Database<T extends PgTableWithColumns<any>>
       delete data.updatedAt;
 
       Object.entries(shape).forEach(([key, value]) => {
-        if (value instanceof ZodDate && data[key]) {
+        const isOptionalDate =
+          value instanceof ZodOptional &&
+          value._def.innerType instanceof ZodDate;
+        const isDate = value instanceof ZodDate;
+
+        if ((isDate || isOptionalDate) && typeof data[key] === "string") {
           data[key] = new Date(data[key]);
         }
 
@@ -217,11 +222,16 @@ export class Database<T extends PgTableWithColumns<any>>
       const shape = this.insertSchema.shape;
 
       Object.entries(shape).forEach(([key, value]) => {
-        if (value instanceof ZodDate && data[key]) {
+        const isOptionalDate =
+          value instanceof ZodOptional &&
+          value._def.innerType instanceof ZodDate;
+        const isDate = value instanceof ZodDate;
+
+        if ((isDate || isOptionalDate) && typeof data[key] === "string") {
           data[key] = new Date(data[key]);
         }
 
-        if (key === "updatedAt" && value instanceof ZodDate) {
+        if (["updatedAt", "createdAt"].includes(key)) {
           data[key] = new Date();
         }
       });

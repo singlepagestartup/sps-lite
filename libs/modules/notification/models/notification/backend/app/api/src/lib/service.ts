@@ -129,6 +129,16 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       return { ok: true };
     }
 
+    const sendAfterTimestamp = new Date(
+      notification.sendAfter ?? new Date(),
+    ).getTime();
+
+    const currentTimestamp = new Date().getTime();
+
+    if (sendAfterTimestamp > currentTimestamp) {
+      return { ok: true };
+    }
+
     if (notification.method === "email") {
       return await this.provider({
         provider: "email",
