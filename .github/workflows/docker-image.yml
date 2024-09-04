@@ -38,7 +38,7 @@ jobs:
             echo "DOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_HOST_URL=${{ secrets.NEXT_PUBLIC_HOST_URL }}" >> $GITHUB_ENV
-
+          fi
       - name: Login to registry
         uses: docker/login-action@v3
         with:
