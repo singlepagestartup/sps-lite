@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./tools/deployer/ansible
+        working-directory: ./tools/deployer
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -29,27 +29,19 @@ jobs:
         run: |
           echo SCRIPT: ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}.sh
           echo ARGS: ${{ steps.set-script-args.outputs.ARGS }}
-      - name: Create inventory file
-        run: |
-          cp ./actions/inventory.yaml.example inventory.yaml
-      - name: Replace ANSIBLE_HOST in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_HOST/${{ secrets.ANSIBLE_HOST }}/g" inventory.yaml
-      - name: Replace ANSIBLE_PASSWORD in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_PASSWORD/${{ secrets.ANSIBLE_PASSWORD }}/g" inventory.yaml
       - name: Add deployer secrets to env file
         run: |
           secrets=(\
             "PROJECT_NAME ${{ secrets.PROJECT_NAME }}"\
             "ANSIBLE_HOST ${{ secrets.ANSIBLE_HOST }}"\
+            "ANSIBLE_USER ${{ secrets.ANSIBLE_USER }}"\
             "ANSIBLE_PASSWORD ${{ secrets.ANSIBLE_PASSWORD }}"\
             "DOMAIN ${{ secrets.DOMAIN }}"\
-            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
             "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
             "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
             "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
-            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
+            "AWS_S3_BUCKET_NAME ${{ secrets.AWS_S3_BUCKET_NAME }}"\
             "AWS_REGION ${{ secrets.AWS_REGION }}"\
             "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
             "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
@@ -59,8 +51,13 @@ jobs:
             "PORTAINER_USERNAME ${{ secrets.PORTAINER_USERNAME }}"\
             "PORTAINER_PASSWORD ${{ secrets.PORTAINER_PASSWORD }}"\
             "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PORTAINER_SERVICE_SUBDOMAIN }}"\
+            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
+            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
+            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
+            "REDIS_PASSWORD ${{ secrets.REDIS_PASSWORD }}"\
             "HOST_SERVICE_NAME ${{ secrets.HOST_SERVICE_NAME }}"\
             "HOST_SERVICE_SUBDOMAIN ${{ secrets.HOST_SERVICE_SUBDOMAIN }}"\
+            "HOST_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.HOST_DOCKER_HUB_REPOSITORY_NAME }}"\
             "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
             "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
             "RBAC_COOKIE_SESSION_SECRET ${{ secrets.RBAC_COOKIE_SESSION_SECRET }}"\
@@ -73,10 +70,8 @@ jobs:
             "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
             "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
             "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
-            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
-            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
-            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
-            "DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCKER_HUB_REPOSITORY_NAME }}"\
+            "GOOGLE_TAG_MANAGER_ID ${{ secrets.GOOGLE_TAG_MANAGER_ID }}"\
+            "GOOGLE_ANALYTICS_ID ${{ secrets.GOOGLE_ANALYTICS_ID }}"\
             "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
             "O_X_PROCESSING_SHOP_ID ${{ secrets.O_X_PROCESSING_SHOP_ID }}"\
             "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.O_X_PROCESSING_TEST_PAYMENTS }}"\
@@ -86,8 +81,6 @@ jobs:
             "PAYSELECTION_SITE_NAME ${{ secrets.PAYSELECTION_SITE_NAME }}"\
             "PAYSELECTION_PUBLIC_KEY ${{ secrets.PAYSELECTION_PUBLIC_KEY }}"\
             "PAYSELECTION_WEBHOOK_URL ${{ secrets.PAYSELECTION_WEBHOOK_URL }}"\
-            "GOOGLE_TAG_MANAGER_ID ${{ secrets.GOOGLE_TAG_MANAGER_ID }}"\
-            "GOOGLE_ANALYTICS_ID ${{ secrets.GOOGLE_ANALYTICS_ID }}"\
           )
 
           for secret in "${secrets[@]}"; do
@@ -96,10 +89,6 @@ jobs:
 
             echo "$secret_name=$secret_value" >> .env
           done
-      # - name: Check env and inventory file
-      #   run: |
-      #     cat .env
-      #     cat inventory.yaml
       - name: Make script file executable
         run: |
           chmod +x \
