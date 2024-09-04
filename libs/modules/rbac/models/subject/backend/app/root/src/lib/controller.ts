@@ -11,9 +11,12 @@ import {
   RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
   RBAC_JWT_SECRET,
   RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
 import { authorization } from "@sps/sps-backend-utils";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -286,6 +289,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async init(c: Context, next: any): Promise<Response> {
+    if (!RBAC_SECRET_KEY) {
+      throw new HTTPException(400, {
+        message: "RBAC_SECRET_KEY not set",
+      });
+    }
     if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
         message: "RBAC_JWT_SECRET not set",
@@ -299,6 +307,68 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
 
     try {
+      const existingSubjects = await subjectApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "createdAt",
+                method: "lt",
+                value: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (existingSubjects?.length) {
+        for (const existingSubject of existingSubjects) {
+          const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "subjectId",
+                    method: "eq",
+                    value: existingSubject.id,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!subjectsToIdentities?.length) {
+            await subjectApi.delete({
+              id: existingSubject.id,
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+          }
+        }
+      }
+
       const entity = await this.service.create({
         data: {},
       });
