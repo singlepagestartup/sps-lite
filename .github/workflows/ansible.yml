@@ -29,7 +29,69 @@ jobs:
         run: |
           echo SCRIPT: ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}.sh
           echo ARGS: ${{ steps.set-script-args.outputs.ARGS }}
-      - name: Add deployer secrets to env file
+      - name: Add deployer PREVIEW secrets to env file
+        if: contains(github.ref_name, '-preview')
+        run: |
+          secrets=(\
+            "PROJECT_NAME ${{ secrets.PREVIEW_PROJECT_NAME }}"\
+            "ANSIBLE_HOST ${{ secrets.PREVIEW_ANSIBLE_HOST }}"\
+            "ANSIBLE_USER ${{ secrets.PREVIEW_ANSIBLE_USER }}"\
+            "ANSIBLE_PASSWORD ${{ secrets.PREVIEW_ANSIBLE_PASSWORD }}"\
+            "DOMAIN ${{ secrets.PREVIEW_DOMAIN }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.PREVIEW_ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.PREVIEW_ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
+            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.PREVIEW_ROOT_AWS_ACCESS_KEY_ID }}"\
+            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.PREVIEW_ROOT_AWS_SECRET_ACCESS_KEY }}"\
+            "AWS_S3_BUCKET_NAME ${{ secrets.PREVIEW_AWS_S3_BUCKET_NAME }}"\
+            "AWS_REGION ${{ secrets.PREVIEW_AWS_REGION }}"\
+            "FILE_STORAGE_PROVIDER ${{ secrets.PREVIEW_FILE_STORAGE_PROVIDER }}"\
+            "BLOB_READ_WRITE_TOKEN ${{ secrets.PREVIEW_BLOB_READ_WRITE_TOKEN }}"\
+            "TRAEFIK_USERNAME ${{ secrets.PREVIEW_TRAEFIK_USERNAME }}"\
+            "TRAEFIK_PASSWORD ${{ secrets.PREVIEW_TRAEFIK_PASSWORD }}"\
+            "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_TRAEFIK_SERVICE_SUBDOMAIN }}"\
+            "PORTAINER_USERNAME ${{ secrets.PREVIEW_PORTAINER_USERNAME }}"\
+            "PORTAINER_PASSWORD ${{ secrets.PREVIEW_PORTAINER_PASSWORD }}"\
+            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_PORTAINER_SERVICE_SUBDOMAIN }}"\
+            "DATABASE_NAME ${{ secrets.PREVIEW_DATABASE_NAME }}"\
+            "DATABASE_USERNAME ${{ secrets.PREVIEW_DATABASE_USERNAME }}"\
+            "DATABASE_PASSWORD ${{ secrets.PREVIEW_DATABASE_PASSWORD }}"\
+            "REDIS_PASSWORD ${{ secrets.PREVIEW_REDIS_PASSWORD }}"\
+            "HOST_SERVICE_NAME ${{ secrets.PREVIEW_HOST_SERVICE_NAME }}"\
+            "HOST_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_HOST_SERVICE_SUBDOMAIN }}"\
+            "HOST_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.PREVIEW_HOST_DOCKER_HUB_REPOSITORY_NAME }}"\
+            "RBAC_JWT_SECRET ${{ secrets.PREVIEW_RBAC_JWT_SECRET }}"\
+            "RBAC_SECRET_KEY ${{ secrets.PREVIEW_RBAC_SECRET_KEY }}"\
+            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.PREVIEW_RBAC_COOKIE_SESSION_SECRET }}"\
+            "DOCKER_HUB_USERNAME ${{ secrets.PREVIEW_DOCKER_HUB_USERNAME }}"\
+            "DOCKER_HUB_PASSWORD ${{ secrets.PREVIEW_DOCKER_HUB_PASSWORD }}"\
+            "DOCKER_HUB_URL ${{ secrets.PREVIEW_DOCKER_HUB_URL }}"\
+            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.PREVIEW_DOCKER_HUB_LOGIN_USERNAME }}"\
+            "GITHUB_TOKEN ${{ secrets.PREVIEW_GH_TOKEN }}"\
+            "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
+            "ROOT_SENTRY_API_KEY ${{ secrets.PREVIEW_ROOT_SENTRY_API_KEY }}"\
+            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.PREVIEW_ROOT_SENTRY_ORGANIZATION_SLUG }}"\
+            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.PREVIEW_ROOT_SENTRY_TEAM_SLUG }}"\
+            "GOOGLE_TAG_MANAGER_ID ${{ secrets.PREVIEW_GOOGLE_TAG_MANAGER_ID }}"\
+            "GOOGLE_ANALYTICS_ID ${{ secrets.PREVIEW_GOOGLE_ANALYTICS_ID }}"\
+            "STRIPE_API_KEY ${{ secrets.PREVIEW_STRIPE_API_KEY }}"\
+            "O_X_PROCESSING_SHOP_ID ${{ secrets.PREVIEW_O_X_PROCESSING_SHOP_ID }}"\
+            "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.PREVIEW_O_X_PROCESSING_TEST_PAYMENTS }}"\
+            "O_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.PREVIEW_O_X_PROCESSING_WEBHOOK_PASSWORD }}"\
+            "PAYSELECTION_SECRET_KEY ${{ secrets.PREVIEW_PAYSELECTION_SECRET_KEY }}"\
+            "PAYSELECTION_SITE_ID ${{ secrets.PREVIEW_PAYSELECTION_SITE_ID }}"\
+            "PAYSELECTION_SITE_NAME ${{ secrets.PREVIEW_PAYSELECTION_SITE_NAME }}"\
+            "PAYSELECTION_PUBLIC_KEY ${{ secrets.PREVIEW_PAYSELECTION_PUBLIC_KEY }}"\
+            "PAYSELECTION_WEBHOOK_URL ${{ secrets.PREVIEW_PAYSELECTION_WEBHOOK_URL }}"\
+          )
+
+          for secret in "${secrets[@]}"; do
+            secret_name=$(echo "$secret" | cut -d' ' -f1)
+            secret_value=$(echo "$secret" | cut -d' ' -f2)
+
+            echo "$secret_name=$secret_value" >> .env
+          done
+      - name: Add deployer default secrets to env file
+        if: ${{ !contains(github.ref_name, '-preview') }}
         run: |
           secrets=(\
             "PROJECT_NAME ${{ secrets.PROJECT_NAME }}"\
@@ -95,4 +157,8 @@ jobs:
             ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh
       - name: Run service script
         run: |
-          ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)
+          if [ -z "${{ steps.set-script-args.outputs.ARGS }}" ]; then
+            ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh
+          else
+            ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh $(echo ${{ steps.set-script-args.outputs.ARGS }})
+          fi
