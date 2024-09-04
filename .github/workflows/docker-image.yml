@@ -11,9 +11,6 @@ on:
         required: true
         type: boolean
 
-env:
-  IMAGE_URL: ${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}
-
 jobs:
   build-docker-image:
     name: Build Docker image
@@ -24,15 +21,34 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+
+      - name: Set environment variables based on PRERELEASE
+        run: |
+          if [ "${{ inputs.PRERELEASE }}" = "true" ]; then
+            echo "IMAGE_URL=${{ secrets.PREVIEW_DOCKER_HUB_URL }}/${{ secrets.PREVIEW_DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_URL=${{ secrets.PREVIEW_DOCKER_HUB_URL }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_USERNAME=${{ secrets.PREVIEW_DOCKER_HUB_USERNAME }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_PASSWORD=${{ secrets.PREVIEW_DOCKER_HUB_PASSWORD }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.PREVIEW_NEXT_PUBLIC_BACKEND_URL }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_HOST_URL=${{ secrets.PREVIEW_NEXT_PUBLIC_HOST_URL }}" >> $GITHUB_ENV
+          else
+            echo "IMAGE_URL=${{ secrets.DOCKER_HUB_URL }}/${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.PROJECT_NAME }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_URL=${{ secrets.DOCKER_HUB_URL }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}" >> $GITHUB_ENV
+            echo "DOCKER_HUB_PASSWORD=${{ secrets.DOCKER_HUB_PASSWORD }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_HOST_URL=${{ secrets.NEXT_PUBLIC_HOST_URL }}" >> $GITHUB_ENV
+
       - name: Login to registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ secrets.DOCKER_HUB_URL }}
-          username: ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          registry: ${{ env.DOCKER_HUB_URL }}
+          username: ${{ env.DOCKER_HUB_USERNAME }}
+          password: ${{ env.DOCKER_HUB_PASSWORD }}
           logout: false
+
       - if: ${{ inputs.PRERELEASE == true }}
-        name: Build image
+        name: Build image for pre-release
         uses: docker/build-push-action@v5
         with:
           context: ./
@@ -41,10 +57,11 @@ jobs:
           tags: |
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
           build-args: |
-            NEXT_PUBLIC_BACKEND_URL=${{ secrets.PREVIEW_NEXT_PUBLIC_BACKEND_URL }}
-            NEXT_PUBLIC_HOST_URL=${{ secrets.PREVIEW_NEXT_PUBLIC_HOST_URL }}
+            NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_HOST_URL=${{ env.NEXT_PUBLIC_HOST_URL }}
+
       - if: ${{ inputs.PRERELEASE == false }}
-        name: Build image
+        name: Build image for release
         uses: docker/build-push-action@v5
         with:
           context: ./
@@ -54,15 +71,19 @@ jobs:
             ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
             ${{ env.IMAGE_URL }}:latest
           build-args: |
-            NEXT_PUBLIC_BACKEND_URL=${{ secrets.NEXT_PUBLIC_BACKEND_URL }}
-            NEXT_PUBLIC_HOST_URL=${{ secrets.NEXT_PUBLIC_HOST_URL }}
+            NEXT_PUBLIC_BACKEND_URL=${{ env.NEXT_PUBLIC_BACKEND_URL }}
+            NEXT_PUBLIC_HOST_URL=${{ env.NEXT_PUBLIC_HOST_URL }}
+
       - name: Inspect release tag image
         run: docker image inspect ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
+
       - if: ${{ inputs.PRERELEASE == false }}
         name: Inspect latest tag image
         run: docker image inspect ${{ env.IMAGE_URL }}:latest
+
       - name: Push release tag to registry
         run: docker push ${{ env.IMAGE_URL }}:${{ inputs.TAG }}
+
       - if: ${{ inputs.PRERELEASE == false }}
         name: Push latest tag to registry
         run: docker push ${{ env.IMAGE_URL }}:latest
