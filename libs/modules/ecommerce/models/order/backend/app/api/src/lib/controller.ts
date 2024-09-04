@@ -15,7 +15,7 @@ import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { HOST_URL, RBAC_JWT_SECRET, RBAC_SECRET_KEY } from "@sps/shared-utils";
-import { api as ordersToBillingPaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
+import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { authorization } from "@sps/sps-backend-utils";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
@@ -28,6 +28,7 @@ import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
 import QueryString from "qs";
+import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -155,6 +156,62 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             status: 400,
           },
         );
+      }
+
+      const oldOrders = await orderApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "createdAt",
+                method: "lt",
+                value: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      if (oldOrders?.length) {
+        for (const oldOrder of oldOrders) {
+          const orderToBillingPaymentIntents =
+            await ordersToBillingModulePaymentIntentsApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "orderId",
+                      method: "eq",
+                      value: oldOrder.id,
+                    },
+                  ],
+                },
+              },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+              },
+            });
+
+          if (orderToBillingPaymentIntents?.length) {
+            continue;
+          }
+
+          await orderApi.delete({
+            id: oldOrder.id,
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+            },
+          });
+        }
       }
 
       const data = JSON.parse(body["data"]);
@@ -427,7 +484,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
 
       const orderToBillingPaymentIntent =
-        await ordersToBillingPaymentIntentsApi.create({
+        await ordersToBillingModulePaymentIntentsApi.create({
           data: {
             orderId: uuid,
             billingModulePaymentIntentId: paymentIntent.id,

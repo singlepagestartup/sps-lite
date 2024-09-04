@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./tools/deployer/ansible
+        working-directory: ./tools/deployer
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -49,7 +49,7 @@ jobs:
             "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
             "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
             "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
-            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
+            "AWS_S3_BUCKET_NAME ${{ secrets.AWS_S3_BUCKET_NAME }}"\
             "AWS_REGION ${{ secrets.AWS_REGION }}"\
             "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
             "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
