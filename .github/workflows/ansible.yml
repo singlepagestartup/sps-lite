@@ -93,7 +93,7 @@ jobs:
             ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh
       - name: Read inventory.yaml
         run: |
-          cat inventory.yaml
-      - name: Run service script
-        run: |
-          ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)
+          ./up.sh
+      # - name: Run service script
+      #   run: |
+      #     ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)
