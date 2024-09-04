@@ -157,8 +157,4 @@ jobs:
             ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh
       - name: Run service script
         run: |
-          if [ -z "${{ steps.set-script-args.outputs.ARGS }}" ]; then
-            ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh
-          else
-            ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh $(echo ${{ steps.set-script-args.outputs.ARGS }})
-          fi
+          ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh
