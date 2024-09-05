@@ -25,7 +25,7 @@ jobs:
       - name: Set environment variables based on PRERELEASE
         run: |
           if [ "${{ inputs.PRERELEASE }}" = "true" ]; then
-            echo "IMAGE_URL=${{ secrets.PREVIEW_DOCKER_HUB_URL }}/singlepagestartup/preview-singlepagestartup" >> $GITHUB_ENV
+            echo "IMAGE_URL=${{ secrets.PREVIEW_DOCKER_HUB_URL }}/${{ secrets.PREVIEW_HOST_DOCKER_HUB_REPOSITORY_NAME }}" >> $GITHUB_ENV
             echo "DOCKER_HUB_URL=${{ secrets.PREVIEW_DOCKER_HUB_URL }}" >> $GITHUB_ENV
             echo "DOCKER_HUB_USERNAME=${{ secrets.PREVIEW_DOCKER_HUB_USERNAME }}" >> $GITHUB_ENV
             echo "DOCKER_HUB_PASSWORD=${{ secrets.PREVIEW_DOCKER_HUB_PASSWORD }}" >> $GITHUB_ENV
