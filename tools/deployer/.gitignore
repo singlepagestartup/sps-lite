@@ -2,7 +2,9 @@ iams
 certs
 *.env
 *.env.*
-*.env.backup
+!.env.example
+!*.env.j2
+!*.env.*.j2
 inventory.yaml*
 inventory.*.yaml
 !inventory.yaml.example
