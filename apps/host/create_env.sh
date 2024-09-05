@@ -1,5 +1,5 @@
 #!/bin/bash
-. ../../tools/deployer/ansible/get_env.sh
+. ../../tools/deployer/get_env.sh
 
 add_env() {
     echo "$1=$2" >> .env.local
