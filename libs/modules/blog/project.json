@@ -44,6 +44,12 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/blog:models:article:repository-generate"
+          },
+          {
+            "command": "nx run @sps/blog:models:category:repository-generate"
+          },
+          {
             "command": "nx run @sps/blog:models:widget:repository-generate"
           }
         ]
@@ -53,7 +59,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
+        "commands": [
+          {
+            "command": "nx run @sps/blog:relations:categories-to-articles:repository-generate"
+          }
+        ]
       }
     },
     "models:repository-migrate": {
@@ -61,6 +71,12 @@
       "options": {
         "parallel": false,
         "commands": [
+          {
+            "command": "nx run @sps/blog:models:article:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/blog:models:category:repository-migrate"
+          },
           {
             "command": "nx run @sps/blog:models:widget:repository-migrate"
           }
@@ -71,7 +87,11 @@
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "commands": []
+        "commands": [
+          {
+            "command": "nx run @sps/blog:relations:categories-to-articles:repository-migrate"
+          }
+        ]
       }
     },
     "models:widget:repository-generate": {
@@ -95,6 +115,90 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/blog/models/widget/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "models:article:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/blog/models/article/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "models:article:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/blog/models/article/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "models:category:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/blog/models/category/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "models:category:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/blog/models/category/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-articles:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/blog/relations/categories-to-articles/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-articles:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/blog/relations/categories-to-articles/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

@@ -4,17 +4,18 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { IComponentPropsExtended } from "./interface";
 import { useSearchParams } from "next/navigation";
-import { Component as SpsRbacSubject } from "@sps/rbac/models/subject/frontend/component";
-import { AdminComponent as SpsHost } from "@sps/host/frontend/component";
-import { AdminComponent as SpsWebsiteBuilder } from "@sps/website-builder/frontend/component";
-import { AdminComponent as SpsBilling } from "@sps/billing/frontend/component";
-import { AdminComponent as SpsBroadcast } from "@sps/broadcast/frontend/component";
-import { AdminComponent as SpsCrm } from "@sps/crm/frontend/component";
-import { AdminComponent as SpsEcommerce } from "@sps/ecommerce/frontend/component";
-import { AdminComponent as SpsFileStorage } from "@sps/file-storage/frontend/component";
-import { AdminComponent as SpsNotification } from "@sps/notification/frontend/component";
+import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
+import { AdminComponent as Host } from "@sps/host/frontend/component";
+import { AdminComponent as WebsiteBuilder } from "@sps/website-builder/frontend/component";
+import { AdminComponent as Billing } from "@sps/billing/frontend/component";
+import { AdminComponent as Broadcast } from "@sps/broadcast/frontend/component";
+import { AdminComponent as Crm } from "@sps/crm/frontend/component";
+import { AdminComponent as Ecommerce } from "@sps/ecommerce/frontend/component";
+import { AdminComponent as Blog } from "@sps/blog/frontend/component";
+import { AdminComponent as FileStorage } from "@sps/file-storage/frontend/component";
+import { AdminComponent as Notification } from "@sps/notification/frontend/component";
 import { AdminComponent as SpsThirdParties } from "@sps/sps-third-parties/frontend/component";
-import { AdminComponent as SpsRbac } from "@sps/rbac/frontend/component";
+import { AdminComponent as Rbac } from "@sps/rbac/frontend/component";
 import { AdminComponent as Startup } from "@sps/startup/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -28,7 +29,7 @@ export function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <SpsRbacSubject
+    <RbacSubject
       variant="is-authorized-wrapper"
       isServer={false}
       hostUrl={props.hostUrl}
@@ -117,6 +118,13 @@ export function Component(props: IComponentPropsExtended) {
                 active={widget === "ecommerce"}
               />
               <Button
+                title="blog"
+                onClick={() => {
+                  setWidget("blog");
+                }}
+                active={widget === "blog"}
+              />
+              <Button
                 title="third-parties"
                 onClick={() => {
                   setWidget("sps-third-parties");
@@ -126,7 +134,7 @@ export function Component(props: IComponentPropsExtended) {
             </div>
             <div className="bg-white rounded-b-lg">
               {widget === "host" ? (
-                <SpsHost
+                <Host
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -134,7 +142,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "sps-broradcast" ? (
-                <SpsBroadcast
+                <Broadcast
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -142,7 +150,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "website-builder" ? (
-                <SpsWebsiteBuilder
+                <WebsiteBuilder
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -150,7 +158,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "file-storage" ? (
-                <SpsFileStorage
+                <FileStorage
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -165,8 +173,16 @@ export function Component(props: IComponentPropsExtended) {
                   variant="default"
                 />
               ) : null}
+              {widget === "blog" ? (
+                <Blog
+                  {...props}
+                  isServer={false}
+                  hostUrl={props.hostUrl}
+                  variant="default"
+                />
+              ) : null}
               {widget === "rbac" ? (
-                <SpsRbac
+                <Rbac
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -174,7 +190,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "notification" ? (
-                <SpsNotification
+                <Notification
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -182,7 +198,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "billing" ? (
-                <SpsBilling
+                <Billing
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -190,7 +206,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "crm" ? (
-                <SpsCrm
+                <Crm
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -198,7 +214,7 @@ export function Component(props: IComponentPropsExtended) {
                 />
               ) : null}
               {widget === "ecommerce" ? (
-                <SpsEcommerce
+                <Ecommerce
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
@@ -217,7 +233,7 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       </section>
-    </SpsRbacSubject>
+    </RbacSubject>
   );
 }
 

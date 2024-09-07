@@ -29,7 +29,7 @@ export class Configuration
         },
         seed: {
           active: true,
-          module: "startup",
+          module: "blog",
           name: "widget",
           type: "model",
         },
