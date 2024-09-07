@@ -10,8 +10,8 @@ import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Component as Attribute } from "@sps/blog/models/attribute/frontend/component";
-import { Component as AttributeKey } from "@sps/blog/models/attribute-key/frontend/component";
+import { Component as Category } from "@sps/blog/models/category/frontend/component";
+import { Component as Article } from "@sps/blog/models/article/frontend/component";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -22,10 +22,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      attributeId: props.data?.attributeId || "",
       orderIndex: props.data?.orderIndex || 0,
-      attributeKeyId: props.data?.attributeKeyId || "",
       className: props.data?.className || "",
+      categoryId: props.data?.categoryId || "",
+      articleId: props.data?.articleId || "",
     },
   });
 
@@ -80,19 +80,19 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        <Attribute
+        <Category
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="attributeId"
+          formFieldName="categoryId"
           form={form}
         />
 
-        <AttributeKey
+        <Article
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="admin-select-input"
-          formFieldName="attributeKeyId"
+          formFieldName="articleId"
           form={form}
         />
       </div>

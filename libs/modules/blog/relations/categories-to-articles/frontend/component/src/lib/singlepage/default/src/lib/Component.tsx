@@ -1,5 +1,5 @@
 import { IComponentPropsExtended } from "./interface";
-import { Component as AttributeKey } from "@sps/blog/models/attribute-key/frontend/component";
+import { Component as Article } from "@sps/blog/models/article/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <AttributeKey
+      <Article
         variant="find"
         isServer={props.isServer}
         hostUrl={props.hostUrl}
@@ -22,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
                 {
                   column: "id",
                   method: "eq",
-                  value: props.data.attributeKeyId,
+                  value: props.data.articleId,
                 },
               ],
             },
@@ -32,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <AttributeKey
+              <Article
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </AttributeKey>
+      </Article>
     </div>
   );
 }

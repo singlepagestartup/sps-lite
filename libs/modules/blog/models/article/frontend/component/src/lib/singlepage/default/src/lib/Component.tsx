@@ -1,5 +1,8 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { TipTap } from "@sps/shared-ui-shadcn";
+import { Component as ArticlesToFileStorageModuleWidgets } from "@sps/blog/relations/articles-to-file-storage-module-widgets/frontend/component";
+import Link from "next/link";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -10,9 +13,51 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: article</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Link
+        href={`/articles/${props.data.id}`}
+        className="flex flex-col w-full gap-3 cursor-pointer"
+      >
+        <div className="w-full">
+          <ArticlesToFileStorageModuleWidgets
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "articleId",
+                      method: "eq",
+                      value: props.data.id,
+                    },
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data }) => {
+              return data?.map((entity, index) => {
+                return (
+                  <ArticlesToFileStorageModuleWidgets
+                    key={index}
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    variant={entity.variant as any}
+                    data={entity}
+                  />
+                );
+              });
+            }}
+          </ArticlesToFileStorageModuleWidgets>
+        </div>
+
+        <p className="font-bold text-4xl">{props.data.title}</p>
+
+        {props.data.description ? (
+          <TipTap value={props.data.description} />
+        ) : null}
+      </Link>
     </div>
   );
 }

@@ -4,6 +4,9 @@ import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-r
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-select-input";
 import { IComponentProps as IDefaultComponentProps } from "./default";
+import { IComponentProps as IArticlesListDefaultComponentProps } from "./articles-list-default";
+import { IComponentProps as IArticleOverviewDefaultComponentProps } from "./article-overview-default";
+
 export type IComponentProps =
   | IFindComponentProps
   | IAdminFormComponentProps
@@ -11,4 +14,6 @@ export type IComponentProps =
   | IAdminTableComponentProps
   | IAdminSelectInputComponentProps
   | IDefaultComponentProps
+  | IArticlesListDefaultComponentProps
+  | IArticleOverviewDefaultComponentProps
   | never;

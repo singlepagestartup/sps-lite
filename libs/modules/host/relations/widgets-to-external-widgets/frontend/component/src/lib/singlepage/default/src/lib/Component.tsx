@@ -4,6 +4,7 @@ import { Component as Rbac } from "./rbac/Component";
 import { Component as Startup } from "./startup/Component";
 import { Component as Ecommerce } from "./ecommerce/Component";
 import { Component as WebsiteBuilder } from "./website-builder/Component";
+import { Component as Blog } from "./blog/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -43,6 +44,15 @@ export function Component(props: IComponentPropsExtended) {
 
       {props.data.externalModule === "ecommerce" ? (
         <Ecommerce
+          {...props}
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          data={props.data}
+        />
+      ) : null}
+
+      {props.data.externalModule === "blog" ? (
+        <Blog
           {...props}
           isServer={props.isServer}
           hostUrl={props.hostUrl}

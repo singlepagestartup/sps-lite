@@ -7,7 +7,11 @@ export {
 import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/blog/widgets";
-export const variants = ["default"] as const;
+export const variants = [
+  "default",
+  "articles-list-default",
+  "article-overview-default",
+] as const;
 export const host = BACKEND_URL;
 export const query = {};
 export const options = {

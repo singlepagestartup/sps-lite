@@ -52,6 +52,25 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type title"
         />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="subtitle"
+          label="Subitle"
+          form={form}
+          placeholder="Type subtitle"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="tiptap"
+          label="Description"
+          name="description"
+          form={form}
+          placeholder="Type description"
+        />
+
         <FormField
           ui="shadcn"
           type="text"
@@ -60,15 +79,32 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Type class name"
         />
+
         <FormField
           ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
           form={form}
-          placeholder="Type title"
+          placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.categoriesToArticles
+          ? props.categoriesToArticles({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.articlesToFileStorageModuleWidgets
+          ? props.articlesToFileStorageModuleWidgets({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );
