@@ -12,6 +12,7 @@ import { app as crmApp } from "@sps/crm/backend/app/api";
 import { app as ecommerceApp } from "@sps/ecommerce/backend/app/api";
 import { app as spsThirdParties } from "@sps/sps-third-parties/backend/app/api";
 import { app as notificationApp } from "@sps/notification/backend/app/api";
+import { app as blogApp } from "@sps/blog/backend/app/api";
 import { ExceptionFilter } from "@sps/shared-backend-api";
 import { ErrorHandler } from "hono/types";
 import {
@@ -47,6 +48,7 @@ app.mount("/sps-third-parties", spsThirdParties.hono.fetch);
 app.mount("/crm", crmApp.hono.fetch);
 app.mount("/ecommerce", ecommerceApp.hono.fetch);
 app.mount("/notification", notificationApp.hono.fetch);
+app.mount("/blog", blogApp.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {

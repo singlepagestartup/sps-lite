@@ -1,19 +1,20 @@
 import { ISeedResult } from "@sps/shared-backend-api";
-import { app as host } from "@sps/host/backend/app/api";
-import { app as websiteBuilder } from "@sps/website-builder/backend/app/api";
-import { app as rbac } from "@sps/rbac/backend/app/api";
-import { app as crm } from "@sps/crm/backend/app/api";
-import { app as ecommerce } from "@sps/ecommerce/backend/app/api";
-import { app as notification } from "@sps/notification/backend/app/api";
-import { app as fileStorage } from "@sps/file-storage/backend/app/api";
-import { app as startup } from "@sps/startup/backend/app/api";
+import { app as hostApp } from "@sps/host/backend/app/api";
+import { app as websiteBuilderApp } from "@sps/website-builder/backend/app/api";
+import { app as rbacApp } from "@sps/rbac/backend/app/api";
+import { app as crmApp } from "@sps/crm/backend/app/api";
+import { app as ecommerceApp } from "@sps/ecommerce/backend/app/api";
+import { app as notificationApp } from "@sps/notification/backend/app/api";
+import { app as blogApp } from "@sps/blog/backend/app/api";
+import { app as fileStorageApp } from "@sps/file-storage/backend/app/api";
+import { app as startupApp } from "@sps/startup/backend/app/api";
 
 import { exit } from "process";
 
 (async () => {
   const seeds: ISeedResult[] = [];
 
-  const hostModelsSeeds = await host.seed({
+  const hostModelsSeeds = await hostApp.seed({
     type: "model",
     seeds,
   });
@@ -26,7 +27,7 @@ import { exit } from "process";
     seeds.push(hostModelsSeeds);
   }
 
-  const websiteBuilderModelsSeeds = await websiteBuilder.seed({
+  const websiteBuilderModelsSeeds = await websiteBuilderApp.seed({
     type: "model",
     seeds,
   });
@@ -39,7 +40,7 @@ import { exit } from "process";
     seeds.push(websiteBuilderModelsSeeds);
   }
 
-  const crmModelsSeeds = await crm.seed({
+  const crmModelsSeeds = await crmApp.seed({
     type: "model",
     seeds,
   });
@@ -52,7 +53,20 @@ import { exit } from "process";
     seeds.push(crmModelsSeeds);
   }
 
-  const notificationModelsSeeds = await notification.seed({
+  const blogModelsSeeds = await blogApp.seed({
+    type: "model",
+    seeds,
+  });
+
+  if (Array.isArray(blogModelsSeeds)) {
+    blogModelsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(blogModelsSeeds);
+  }
+
+  const notificationModelsSeeds = await notificationApp.seed({
     type: "model",
     seeds,
   });
@@ -65,7 +79,7 @@ import { exit } from "process";
     seeds.push(notificationModelsSeeds);
   }
 
-  const ecommerceModelsSeeds = await ecommerce.seed({
+  const ecommerceModelsSeeds = await ecommerceApp.seed({
     type: "model",
     seeds,
   });
@@ -78,7 +92,7 @@ import { exit } from "process";
     seeds.push(ecommerceModelsSeeds);
   }
 
-  const rbacModelsSeeds = await rbac.seed({
+  const rbacModelsSeeds = await rbacApp.seed({
     type: "model",
     seeds,
   });
@@ -91,7 +105,7 @@ import { exit } from "process";
     seeds.push(rbacModelsSeeds);
   }
 
-  const fileStorageModelsSeeds = await fileStorage.seed({
+  const fileStorageModelsSeeds = await fileStorageApp.seed({
     type: "model",
     seeds,
   });
@@ -104,7 +118,7 @@ import { exit } from "process";
     seeds.push(fileStorageModelsSeeds);
   }
 
-  const startupModelsSeeds = await startup.seed({
+  const startupModelsSeeds = await startupApp.seed({
     type: "model",
     seeds,
   });
@@ -117,7 +131,7 @@ import { exit } from "process";
     seeds.push(startupModelsSeeds);
   }
 
-  const hostRelationsSeeds = await host.seed({
+  const hostRelationsSeeds = await hostApp.seed({
     type: "relation",
     seeds,
   });
@@ -130,7 +144,7 @@ import { exit } from "process";
     seeds.push(hostRelationsSeeds);
   }
 
-  const websiteBuilderRelationsSeeds = await websiteBuilder.seed({
+  const websiteBuilderRelationsSeeds = await websiteBuilderApp.seed({
     type: "relation",
     seeds,
   });
@@ -143,7 +157,7 @@ import { exit } from "process";
     seeds.push(websiteBuilderRelationsSeeds);
   }
 
-  const notificationRelationsSeeds = await notification.seed({
+  const notificationRelationsSeeds = await notificationApp.seed({
     type: "relation",
     seeds,
   });
@@ -156,7 +170,20 @@ import { exit } from "process";
     seeds.push(notificationRelationsSeeds);
   }
 
-  const crmRelationsSeeds = await crm.seed({
+  const blogRelationsSeeds = await blogApp.seed({
+    type: "relation",
+    seeds,
+  });
+
+  if (Array.isArray(blogRelationsSeeds)) {
+    blogRelationsSeeds.forEach((seed) => {
+      seeds.push(seed);
+    });
+  } else {
+    seeds.push(blogRelationsSeeds);
+  }
+
+  const crmRelationsSeeds = await crmApp.seed({
     type: "relation",
     seeds,
   });
@@ -169,7 +196,7 @@ import { exit } from "process";
     seeds.push(crmRelationsSeeds);
   }
 
-  const ecommerceRelationsSeeds = await ecommerce.seed({
+  const ecommerceRelationsSeeds = await ecommerceApp.seed({
     type: "relation",
     seeds,
   });
@@ -182,7 +209,7 @@ import { exit } from "process";
     seeds.push(ecommerceRelationsSeeds);
   }
 
-  const rbacRelationsSeeds = await rbac.seed({
+  const rbacRelationsSeeds = await rbacApp.seed({
     type: "relation",
     seeds,
   });
@@ -195,7 +222,7 @@ import { exit } from "process";
     seeds.push(rbacRelationsSeeds);
   }
 
-  const fileStorageRelationsSeeds = await fileStorage.seed({
+  const fileStorageRelationsSeeds = await fileStorageApp.seed({
     type: "relation",
     seeds,
   });
@@ -208,7 +235,7 @@ import { exit } from "process";
     seeds.push(fileStorageRelationsSeeds);
   }
 
-  const startupRelationsSeeds = await startup.seed({
+  const startupRelationsSeeds = await startupApp.seed({
     type: "relation",
     seeds,
   });

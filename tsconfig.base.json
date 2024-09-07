@@ -80,6 +80,7 @@
       "@sps/rbac/*": ["libs/modules/rbac/*"],
       "@sps/sps-third-parties/*": ["libs/modules/sps-third-parties/*"],
       "@sps/website-builder/*": ["libs/modules/website-builder/*"],
+      "@sps/blog/*": ["libs/modules/blog/*"],
       "@sps/startup/*": ["libs/modules/startup/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"]
     },
