@@ -1,28 +1,28 @@
 import { IComponentPropsExtended } from "./interface";
+import { Component as WebsiteBuilderModuleWidget } from "@sps/website-builder/models/widget/frontend/component";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as ArticlesToWebsiteBuilderModuleWidgets } from "@sps/blog/relations/articles-to-website-builder-module-widgets/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
-      data-module="startup"
-      data-model="article"
+      data-module="blog"
+      data-relation="articles-to-website-builder-module-widgets"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex flex-col", props.data.className)}
+      className={cn("w-full flex", props.data.className)}
     >
-      <ArticlesToWebsiteBuilderModuleWidgets
+      <WebsiteBuilderModuleWidget
+        variant="find"
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant="find"
         apiProps={{
           params: {
             filters: {
               and: [
                 {
-                  column: "articleId",
+                  column: "id",
                   method: "eq",
-                  value: props.data.id,
+                  value: props.data.websiteBuilderModuleWidgetId,
                 },
               ],
             },
@@ -32,7 +32,7 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           return data?.map((entity, index) => {
             return (
-              <ArticlesToWebsiteBuilderModuleWidgets
+              <WebsiteBuilderModuleWidget
                 key={index}
                 isServer={props.isServer}
                 hostUrl={props.hostUrl}
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
             );
           });
         }}
-      </ArticlesToWebsiteBuilderModuleWidgets>
+      </WebsiteBuilderModuleWidget>
     </div>
   );
 }

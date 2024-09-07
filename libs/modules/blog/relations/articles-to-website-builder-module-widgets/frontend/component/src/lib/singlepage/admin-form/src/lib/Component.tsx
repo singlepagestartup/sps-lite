@@ -1,12 +1,17 @@
 "use client";
 
 import { IComponentPropsExtended, variant, IModel } from "./interface";
-import { api } from "@sps/blog/models/article/sdk/client";
+import {
+  variants,
+  insertSchema,
+} from "@sps/blog/relations/articles-to-website-builder-module-widgets/sdk/model";
+import { api } from "@sps/blog/relations/articles-to-website-builder-module-widgets/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { variants, insertSchema } from "@sps/blog/models/article/sdk/model";
+import { Component as Article } from "@sps/blog/models/article/frontend/component";
+import { Component as WebsiteBuilderModuleWidget } from "@sps/website-builder/models/widget/frontend/component";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
 export function Component(props: IComponentPropsExtended) {
@@ -17,8 +22,11 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      title: props.data?.title || "",
+      articleId: props.data?.articleId || "",
+      orderIndex: props.data?.orderIndex || 0,
       className: props.data?.className || "",
+      websiteBuilderModuleWidgetId:
+        props.data?.websiteBuilderModuleWidgetId || "",
     },
   });
 
@@ -36,48 +44,31 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <ParentAdminForm<IModel, typeof variant>
       {...props}
-      module="website-builder"
+      module="blog"
       form={form}
       id={props.data?.id}
       onSubmit={onSubmit}
       variant={props.variant}
-      name="article"
+      name="articles-to-website-builder-module-widgets"
+      type="relation"
     >
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
-          type="text"
-          label="Title"
-          name="title"
+          type="number"
+          label="Order index"
+          name="orderIndex"
           form={form}
-          placeholder="Type title"
+          placeholder="Order index"
         />
 
         <FormField
           ui="shadcn"
           type="text"
-          name="subtitle"
-          label="Subitle"
-          form={form}
-          placeholder="Type subtitle"
-        />
-
-        <FormField
-          ui="shadcn"
-          type="tiptap"
-          label="Description"
-          name="description"
-          form={form}
-          placeholder="Type description"
-        />
-
-        <FormField
-          ui="shadcn"
-          type="text"
-          label="Class Name"
+          label="Class name"
           name="className"
           form={form}
-          placeholder="Type class name"
+          placeholder="Class name"
         />
 
         <FormField
@@ -90,29 +81,21 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.categoriesToArticles
-          ? props.categoriesToArticles({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
+        <Article
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="articleId"
+          form={form}
+        />
 
-        {props.articlesToFileStorageModuleWidgets
-          ? props.articlesToFileStorageModuleWidgets({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.articlesToWebsiteBuilderModuleWidgets
-          ? props.articlesToWebsiteBuilderModuleWidgets({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
+        <WebsiteBuilderModuleWidget
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="websiteBuilderModuleWidgetId"
+          form={form}
+        />
       </div>
     </ParentAdminForm>
   );
