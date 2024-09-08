@@ -28,17 +28,17 @@ export class Configuration extends ParentConfiguration {
           type: "relation",
           transformers: [
             {
-              field: "orderId",
+              field: "productId",
               transform: (data) => {
                 const relationEntites = data.seeds
                   .find(
                     (seed) =>
-                      seed.name === "order" &&
+                      seed.name === "product" &&
                       seed.type === "model" &&
                       seed.module === "ecommerce",
                   )
                   ?.seeds?.filter(
-                    (seed) => seed.dump.id === data.entity.dump.orderId,
+                    (seed) => seed.dump.id === data.entity.dump.productId,
                   );
 
                 return relationEntites?.[0].new.id;

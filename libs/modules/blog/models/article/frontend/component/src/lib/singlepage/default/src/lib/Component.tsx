@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex", props.data.className)}
     >
       <Link
-        href={`/articles/${props.data.id}`}
+        href={`/blog/articles/${props.data.id}`}
         className="flex flex-col w-full gap-3 cursor-pointer"
       >
         <div className="w-full">

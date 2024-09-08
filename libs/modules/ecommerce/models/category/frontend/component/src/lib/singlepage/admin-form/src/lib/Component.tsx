@@ -68,6 +68,15 @@ export function Component(props: IComponentPropsExtended) {
 
         <FormField
           ui="shadcn"
+          type="tiptap"
+          label="Description"
+          name="description"
+          form={form}
+          placeholder="Type description"
+        />
+
+        <FormField
+          ui="shadcn"
           type="text"
           label="Class Name"
           name="className"
@@ -87,6 +96,14 @@ export function Component(props: IComponentPropsExtended) {
 
         {props.categoriesToProducts
           ? props.categoriesToProducts({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.categoriesToFileStorageModuleWidgets
+          ? props.categoriesToFileStorageModuleWidgets({
               data: props.data,
               hostUrl: props.hostUrl,
               isServer: props.isServer,

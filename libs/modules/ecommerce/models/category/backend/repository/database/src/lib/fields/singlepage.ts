@@ -8,4 +8,5 @@ export const fields = {
   updatedAt: pgCore.timestamp("updated_at").notNull().defaultNow(),
   variant: pgCore.text("variant").notNull().default("default"),
   slug: pgCore.text("slug").notNull(),
+  description: pgCore.text("description"),
 };

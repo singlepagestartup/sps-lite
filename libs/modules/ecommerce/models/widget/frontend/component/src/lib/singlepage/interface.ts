@@ -8,6 +8,8 @@ import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as IOrdersListDefaultComponentProps } from "./orders-list-default";
 import { IComponentProps as IProductsListDefaultComponentProps } from "./products-list-default";
 import { IComponentProps as IProductOverviewDefaultComponentProps } from "./product-overview-deafult";
+import { IComponentProps as ICategoriesListDefaultComponentProps } from "./categories-list-default";
+import { IComponentProps as ICategoryOverviewDefaultComponentProps } from "./category-overview-deafult";
 
 export type IComponentProps =
   | IFindByIdComponentProps
@@ -20,4 +22,6 @@ export type IComponentProps =
   | IOrdersListDefaultComponentProps
   | IProductsListDefaultComponentProps
   | IProductOverviewDefaultComponentProps
+  | ICategoriesListDefaultComponentProps
+  | ICategoryOverviewDefaultComponentProps
   | never;

@@ -48,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
           }}
         </ProductsToFileStorageModuleWidgets>
       </div>
-      <Link href={`/products/${props.data.id}`} className="w-fit">
+      <Link href={`/ecommerce/products/${props.data.id}`} className="w-fit">
         <p className="font-bold w-fit">{props.data.title}</p>
       </Link>
       <div className="flex flex-col gap-3">

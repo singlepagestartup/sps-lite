@@ -8,6 +8,8 @@ import { Component as Default } from "./default";
 import { Component as OrdersListDefault } from "./orders-list-default";
 import { Component as ProductsListDefault } from "./products-list-default";
 import { Component as ProductOverviewDefault } from "./product-overview-deafult";
+import { Component as CategoriesListDefault } from "./categories-list-default";
+import { Component as CategoryOverviewDefault } from "./category-overview-deafult";
 
 export const variants = {
   "find-by-id": FindById,
@@ -20,4 +22,6 @@ export const variants = {
   "orders-list-default": OrdersListDefault,
   "products-list-default": ProductsListDefault,
   "product-overview-default": ProductOverviewDefault,
+  "categories-list-default": CategoriesListDefault,
+  "category-overview-default": CategoryOverviewDefault,
 };

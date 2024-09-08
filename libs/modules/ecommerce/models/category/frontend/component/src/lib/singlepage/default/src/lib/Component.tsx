@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -8,11 +9,11 @@ export function Component(props: IComponentPropsExtended) {
       data-model="category"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex", props.data.className)}
+      className={cn("w-full flex flex-col", props.data.className)}
     >
-      <p className="font-bold">Generated variant</p>
-      <p className="font-bold text-4xl">Model: category</p>
-      <p className="font-bold text-4xl">Variant: default</p>
+      <Link href={`/ecommerce/categories/${props.data.id}`} className="w-fit">
+        <p className="font-bold text-4xl">{props.data.title}</p>
+      </Link>
     </div>
   );
 }
