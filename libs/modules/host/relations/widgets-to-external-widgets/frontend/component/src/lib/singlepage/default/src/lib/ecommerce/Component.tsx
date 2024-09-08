@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "../interface";
 import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
-// import { Component as Orders } from "./Orders";
-import { Component as Products } from "./Products";
+import { Component as ProductsList } from "./ProductsList";
+import { Component as ProductOverview } from "./ProductOverview";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -32,11 +32,12 @@ export function Component(props: IComponentPropsExtended) {
               hostUrl={props.hostUrl}
               variant={entity.variant as any}
               data={entity}
-              // products={<Products {...props} />}
-              // orders={<Orders {...props} />}
             >
               {entity.variant.includes("products-list") ? (
-                <Products {...props} />
+                <ProductsList {...props} />
+              ) : null}
+              {entity.variant.includes("product-overview") ? (
+                <ProductOverview {...props} />
               ) : null}
             </EcommerceWidget>
           );

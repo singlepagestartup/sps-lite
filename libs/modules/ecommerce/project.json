@@ -79,6 +79,9 @@
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-generate"
           },
           {
+            "command": "nx run @sps/ecommerce:relations:products-to-file-storage-module-widgets:repository-generate"
+          },
+          {
             "command": "nx run @sps/ecommerce:relations:orders-to-products:repository-generate"
           },
           {
@@ -123,6 +126,9 @@
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:products-to-file-storage-module-widgets:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:categories-to-products:repository-migrate"
@@ -437,6 +443,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/ecommerce/relations/categories-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:products-to-file-storage-module-widgets:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/products-to-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:products-to-file-storage-module-widgets:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/products-to-file-storage-module-widgets/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

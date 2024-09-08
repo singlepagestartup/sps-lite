@@ -10,6 +10,7 @@ import { app as productsToAttributesApp } from "@sps/ecommerce/relations/product
 import { app as ordersToProductsApp } from "@sps/ecommerce/relations/orders-to-products/backend/app/api";
 import { app as ordersToBillingPaymentIntentsApp } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/backend/app/api";
 import { app as categoriesToProductsApp } from "@sps/ecommerce/relations/categories-to-products/backend/app/api";
+import { app as ProductsToFileStorageModuleWidgetsApp } from "@sps/ecommerce/relations/products-to-file-storage-module-widgets/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -74,6 +75,11 @@ export class Apps {
       type: "relation",
       route: "/categories-to-products",
       app: categoriesToProductsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/products-to-file-storage-module-widgets",
+      app: ProductsToFileStorageModuleWidgetsApp,
     });
   }
 }
