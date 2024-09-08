@@ -7,20 +7,6 @@
   "targets": {
     "lint": {},
     "tsc:build": {},
-    "repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/ecommerce:models:repository-generate"
-          },
-          {
-            "command": "nx run @sps/ecommerce:relations:repository-generate"
-          }
-        ]
-      }
-    },
     "repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -34,6 +20,20 @@
           },
           {
             "command": "nx run @sps/ecommerce:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/ecommerce:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:repository-generate"
           }
         ]
       }
@@ -67,7 +67,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-generate"
+            "command": "nx run @sps/ecommerce:relations:attribute-keys-to-attributes:repository-generate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-generate"
@@ -110,7 +110,7 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-migrate"
+            "command": "nx run @sps/ecommerce:relations:attribute-keys-to-attributes:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-migrate"
@@ -264,11 +264,11 @@
         ]
       }
     },
-    "relations:attributes-to-attribute-keys:repository-generate": {
+    "relations:attribute-keys-to-attributes:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
+        "cwd": "libs/modules/ecommerce/relations/attribute-keys-to-attributes/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -279,12 +279,12 @@
         ]
       }
     },
-    "relations:attributes-to-attribute-keys:repository-migrate": {
+    "relations:attribute-keys-to-attributes:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
+        "cwd": "libs/modules/ecommerce/relations/attribute-keys-to-attributes/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

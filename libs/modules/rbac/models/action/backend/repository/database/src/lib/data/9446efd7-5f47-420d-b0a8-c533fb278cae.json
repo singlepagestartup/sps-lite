@@ -5,5 +5,5 @@
   "variant": "default",
   "type": "HTTP",
   "method": "GET",
-  "path": "/api/ecommerce/attributes-to-attribute-keys/[ecommerce.attributes-to-attribute-keys.id]"
+  "path": "/api/ecommerce/attribute-keys-to-attributes/[ecommerce.attribute-keys-to-attributes.id]"
 }

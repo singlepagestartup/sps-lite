@@ -1,6 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as ProductsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/frontend/component";
+import { Component as AttributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -34,13 +35,36 @@ export function Component(props: IComponentPropsExtended) {
           {({ data }) => {
             return data?.map((entity, index) => {
               return (
-                <ProductsToAttributes
-                  key={index}
+                <AttributeKeysToAttributes
                   isServer={props.isServer}
                   hostUrl={props.hostUrl}
-                  variant="default"
-                  data={entity}
-                ></ProductsToAttributes>
+                  variant="find"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "attributeId",
+                            method: "eq",
+                            value: entity.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                >
+                  {({ data }) => {
+                    return (
+                      <ProductsToAttributes
+                        key={index}
+                        isServer={props.isServer}
+                        hostUrl={props.hostUrl}
+                        variant="default"
+                        data={entity}
+                      ></ProductsToAttributes>
+                    );
+                  }}
+                </AttributeKeysToAttributes>
               );
             });
           }}

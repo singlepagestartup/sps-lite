@@ -10,7 +10,7 @@ import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as ordersToProducts } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
 import { api as productsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
-import { api as attributesToAttributeKeys } from "@sps/ecommerce/relations/attributes-to-attribute-keys/sdk/server";
+import { api as attributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/sdk/server";
 import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
@@ -342,7 +342,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         const productPrices: IAttribute[] = [];
 
         for (const productToAttribute of productToAttributes) {
-          const productPriceAttributes = await attributesToAttributeKeys.find({
+          const productPriceAttributes = await attributeKeysToAttributes.find({
             params: {
               filters: {
                 and: [

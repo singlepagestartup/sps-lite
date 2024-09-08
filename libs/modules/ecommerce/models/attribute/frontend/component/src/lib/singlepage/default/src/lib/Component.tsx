@@ -1,7 +1,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as AttributeKey } from "@sps/ecommerce/models/attribute-key/frontend/component";
-import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attributes-to-attribute-keys/frontend/component";
+import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
