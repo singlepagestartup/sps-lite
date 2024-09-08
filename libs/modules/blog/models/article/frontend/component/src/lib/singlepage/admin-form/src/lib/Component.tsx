@@ -18,6 +18,7 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       title: props.data?.title || "",
+      slug: props.data?.slug || "",
       className: props.data?.className || "",
     },
   });
@@ -51,6 +52,15 @@ export function Component(props: IComponentPropsExtended) {
           name="title"
           form={form}
           placeholder="Type title"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          name="slug"
+          label="Slug"
+          form={form}
+          placeholder="Type slug"
         />
 
         <FormField
