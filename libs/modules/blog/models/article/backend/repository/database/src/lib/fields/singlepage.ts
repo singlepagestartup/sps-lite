@@ -9,5 +9,5 @@ export const fields = {
   variant: pgCore.text("variant").notNull().default("default"),
   subtitle: pgCore.text("subtitle"),
   description: pgCore.text("description"),
-  slug: pgCore.text("slug").unique(),
+  slug: pgCore.text("slug").notNull().unique(),
 };
