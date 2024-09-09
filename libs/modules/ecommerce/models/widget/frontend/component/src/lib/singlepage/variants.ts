@@ -7,9 +7,9 @@ import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
 import { Component as OrdersListDefault } from "./orders-list-default";
 import { Component as ProductsListDefault } from "./products-list-default";
-import { Component as ProductOverviewDefault } from "./product-overview-deafult";
+import { Component as ProductOverviewDefault } from "./product-overview-default";
 import { Component as CategoriesListDefault } from "./categories-list-default";
-import { Component as CategoryOverviewDefault } from "./category-overview-deafult";
+import { Component as CategoryOverviewDefault } from "./category-overview-default";
 
 export const variants = {
   "find-by-id": FindById,

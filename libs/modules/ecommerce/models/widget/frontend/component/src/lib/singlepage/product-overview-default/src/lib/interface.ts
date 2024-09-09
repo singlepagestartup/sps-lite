@@ -6,7 +6,7 @@ import {
 } from "@sps/shared-frontend-components/singlepage/default/interface";
 import { ReactNode } from "react";
 
-export const variant = "category-overview-deafult" as const;
+export const variant = "product-overview-default" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
