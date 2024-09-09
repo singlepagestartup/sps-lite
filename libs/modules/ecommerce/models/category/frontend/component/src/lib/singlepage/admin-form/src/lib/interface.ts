@@ -17,6 +17,9 @@ export interface IComponentProps
   categoriesToFileStorageModuleWidgets?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  widgetsToCategories?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended
