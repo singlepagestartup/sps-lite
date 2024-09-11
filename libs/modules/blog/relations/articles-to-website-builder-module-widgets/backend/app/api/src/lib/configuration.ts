@@ -38,7 +38,7 @@ export class Configuration extends ParentConfiguration {
                       seed.module === "blog",
                   )
                   ?.seeds?.filter(
-                    (seed) => seed.dump.id === data.entity.dump.orderId,
+                    (seed) => seed.dump.id === data.entity.dump.articleId,
                   );
 
                 return relationEntites?.[0].new.id;
