@@ -21,8 +21,8 @@ export function Component(props: IComponentPropsExtended) {
     defaultValues: {
       variant: props.data?.variant || "default",
       boolean: props.data?.boolean || null,
-      date: props.data?.date || null,
-      datetime: props.data?.datetime || null,
+      date: props.data?.date ? new Date(props.data.date) : null,
+      datetime: props.data?.datetime ? new Date(props.data.datetime) : null,
       number: props.data?.number || null,
       string: props.data?.string || "",
     },

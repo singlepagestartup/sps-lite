@@ -123,6 +123,7 @@ export default CopyButton;
 
 export type ITipTapEditableProps = {
   value: string;
+  name: string;
   form: UseFormReturn<any>;
   placeholder?: string;
   className?: string;
@@ -162,7 +163,7 @@ export const TipTapEditable = forwardRef<
     },
     onUpdate: ({ editor }) => {
       const editorJson = editor?.getJSON();
-      props.form.setValue("description", JSON.stringify(editorJson));
+      props.form.setValue(props.name, JSON.stringify(editorJson));
     },
   });
 
