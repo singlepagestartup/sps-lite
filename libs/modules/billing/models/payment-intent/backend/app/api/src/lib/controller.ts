@@ -217,6 +217,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               data: {
                 ...order,
                 status: "approving",
+                type: "history",
               },
               id: order.id,
               options: {

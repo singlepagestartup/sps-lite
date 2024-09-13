@@ -1,6 +1,7 @@
 "use client";
 
 import { IComponentPropsExtended } from "./interface";
+import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
 import { Component as OrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
 import { Component as AddToCart } from "./assets/AddToCart";
 import { Component as DeleteFromCart } from "./assets/DeleteFromCart";
@@ -15,7 +16,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className="w-full flex flex-col"
     >
-      <OrdersToProducts
+      <Order
         isServer={false}
         hostUrl={props.hostUrl}
         variant="find"
@@ -24,84 +25,156 @@ export function Component(props: IComponentPropsExtended) {
             filters: {
               and: [
                 {
-                  column: "orderId",
+                  column: "id",
                   method: "inArray",
                   value: props.data.map(
                     (entity) => entity.ecommerceModuleOrderId,
                   ),
                 },
                 {
-                  column: "productId",
+                  column: "type",
                   method: "eq",
-                  value: props.product.id,
+                  value: "cart",
                 },
               ],
             },
           },
         }}
       >
-        {({ data: ordersWithCurrentProduct }) => {
-          if (!ordersWithCurrentProduct?.length) {
+        {({ data }) => {
+          if (!data || !data?.length) {
             return <AddToCart {...props} />;
           }
 
-          return props.data.map((entity, index) => {
-            return (
-              <OrdersToProducts
-                key={index}
-                isServer={false}
-                hostUrl={props.hostUrl}
-                variant="find"
-                apiProps={{
-                  params: {
-                    filters: {
-                      and: [
-                        {
-                          column: "orderId",
-                          method: "eq",
-                          value: entity.ecommerceModuleOrderId,
-                        },
-                        {
-                          column: "productId",
-                          method: "eq",
-                          value: props.product.id,
-                        },
-                      ],
-                    },
+          return (
+            <OrdersToProducts
+              isServer={false}
+              hostUrl={props.hostUrl}
+              variant="find"
+              apiProps={{
+                params: {
+                  filters: {
+                    and: [
+                      {
+                        column: "productId",
+                        method: "eq",
+                        value: props.product.id,
+                      },
+                    ],
                   },
-                }}
-              >
-                {({ data }) => {
-                  return data?.map((orderToProduct, index) => {
-                    return (
-                      <div key={index} className="flex flex-col gap-2">
-                        <UpdateInCart
-                          isServer={false}
-                          hostUrl={props.hostUrl}
-                          orderToProduct={orderToProduct}
-                          data={entity}
-                        />
-                        <DeleteFromCart
-                          isServer={false}
-                          hostUrl={props.hostUrl}
-                          orderToProduct={orderToProduct}
-                          data={entity}
-                        />
-                        <Checkout
-                          isServer={false}
-                          hostUrl={props.hostUrl}
-                          orderToProduct={orderToProduct}
-                          data={entity}
-                        />
-                      </div>
-                    );
-                  });
-                }}
-              </OrdersToProducts>
-            );
-          });
+                },
+              }}
+            >
+              {({ data: ordersWithCurrentProduct }) => {
+                if (
+                  !ordersWithCurrentProduct ||
+                  !ordersWithCurrentProduct?.length
+                ) {
+                  return <AddToCart {...props} />;
+                }
+
+                const cartOrdersWithCurrentProduct =
+                  ordersWithCurrentProduct.filter(
+                    (ordersWithCurrentProduct) => {
+                      return data.find((order) => {
+                        return order.id === ordersWithCurrentProduct.orderId;
+                      });
+                    },
+                  );
+
+                if (!cartOrdersWithCurrentProduct.length) {
+                  return <AddToCart {...props} />;
+                }
+
+                return data?.map((order, index) => {
+                  return (
+                    <OrdersToProducts
+                      key={index}
+                      isServer={false}
+                      hostUrl={props.hostUrl}
+                      variant="find"
+                      apiProps={{
+                        params: {
+                          filters: {
+                            and: [
+                              {
+                                column: "orderId",
+                                method: "eq",
+                                value: order.id,
+                              },
+                              {
+                                column: "productId",
+                                method: "eq",
+                                value: props.product.id,
+                              },
+                            ],
+                          },
+                        },
+                      }}
+                    >
+                      {({ data: ordersWithCurrentProduct }) => {
+                        if (!ordersWithCurrentProduct?.length) {
+                          return;
+                        }
+
+                        return ordersWithCurrentProduct
+                          .filter((ordersWithCurrentProduct) => {
+                            return props.data.find(
+                              (subjectToEcommerceModuleOrder) => {
+                                return (
+                                  subjectToEcommerceModuleOrder.ecommerceModuleOrderId ===
+                                  ordersWithCurrentProduct.orderId
+                                );
+                              },
+                            );
+                          })
+                          .map((orderToProduct, index) => {
+                            const subjectToEcommerceModuleOrder =
+                              props.data.find(
+                                (subjectToEcommerceModuleOrder) => {
+                                  return (
+                                    subjectToEcommerceModuleOrder.ecommerceModuleOrderId ===
+                                    orderToProduct.orderId
+                                  );
+                                },
+                              );
+
+                            if (!subjectToEcommerceModuleOrder) {
+                              return;
+                            }
+
+                            return (
+                              <div key={index} className="flex flex-col gap-2">
+                                <UpdateInCart
+                                  isServer={false}
+                                  hostUrl={props.hostUrl}
+                                  orderToProduct={orderToProduct}
+                                  data={subjectToEcommerceModuleOrder}
+                                />
+                                <DeleteFromCart
+                                  isServer={false}
+                                  hostUrl={props.hostUrl}
+                                  orderToProduct={orderToProduct}
+                                  data={subjectToEcommerceModuleOrder}
+                                />
+                                <Checkout
+                                  isServer={false}
+                                  hostUrl={props.hostUrl}
+                                  orderToProduct={orderToProduct}
+                                  data={subjectToEcommerceModuleOrder}
+                                />
+                              </div>
+                            );
+                          });
+                      }}
+                    </OrdersToProducts>
+                  );
+                });
+              }}
+            </OrdersToProducts>
+          );
         }}
-      </OrdersToProducts>
+      </Order>
     </div>
   );
 }

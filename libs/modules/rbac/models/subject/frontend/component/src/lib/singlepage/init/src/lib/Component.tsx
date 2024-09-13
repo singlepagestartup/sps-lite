@@ -34,8 +34,6 @@ export function Component(props: IComponentPropsExtended) {
   }>(refreshStorage || "");
 
   useEffect(() => {
-    console.log(`🚀 ~ subject ~ init ~ jwtCookies:`, jwtCookies);
-
     if (!jwtCookies["rbac.subject.jwt"]) {
       init.refetch();
     }
@@ -67,7 +65,7 @@ export function Component(props: IComponentPropsExtended) {
         },
       });
     }
-  }, [token.decodedToken, refreshToken.decodedToken]);
+  }, [token.decodedToken, refreshToken.isExpired, refreshToken.decodedToken]);
 
   useEffect(() => {
     if (refresh.isError) {

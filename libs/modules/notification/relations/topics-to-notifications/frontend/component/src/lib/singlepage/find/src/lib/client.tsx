@@ -18,7 +18,7 @@ export default function Client(props: IComponentProps) {
     return <></>;
   }
 
-  if (props.children && data) {
+  if (props.children) {
     return props.children({ data });
   }
 
