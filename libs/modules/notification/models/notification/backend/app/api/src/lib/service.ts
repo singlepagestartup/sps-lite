@@ -70,7 +70,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      console.log(`🚀 ~ provider ~ renderResult:`, renderResult);
+      // console.log(`🚀 ~ provider ~ renderResult:`, renderResult);
 
       if (!renderResult) {
         throw new Error("Template not rendered");

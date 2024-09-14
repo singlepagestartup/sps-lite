@@ -12,7 +12,11 @@ import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 import { api as attributeKeyApi } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
 import { api as attributeApi } from "@sps/ecommerce/models/attribute/sdk/server";
+import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
+import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { api as rbacSubjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/server";
+import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
+import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
 import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 
 @injectable()
@@ -87,7 +91,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       for (const product of products) {
         let price: IAttribute | undefined;
-        let timeframe: IAttribute | undefined;
+        let interval: IAttribute | undefined;
 
         const productsToAttributes = await productsToAttributesApi.find({
           params: {
@@ -187,13 +191,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             price = attribute;
           }
 
-          if (attributeKey[0].type === "cron") {
-            timeframe = attribute;
+          if (attributeKey[0].type === "interval") {
+            interval = attribute;
           }
         }
 
         console.log(`🚀 ~ prolongate ~ price:`, price);
-        console.log(`🚀 ~ prolongate ~ timeframe:`, timeframe);
+        console.log(`🚀 ~ prolongate ~ interval:`, interval);
 
         const ordersToProducts = await ordersToProductsApi.find({
           params: {
@@ -247,18 +251,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         }
 
         for (const order of orders) {
-          if (timeframe?.string === "every_minute") {
-            const timeBetween =
-              new Date().getTime() - new Date(order.updatedAt).getTime();
-            const minutesBetween = Math.floor(timeBetween / 1000 / 60);
-
-            const rbacSubjectsToEcommerceModuleOrders =
-              await rbacSubjectsToEcommerceModuleOrdersApi.find({
+          if (interval?.string === "day") {
+            const ordersToBillingModulePaymentIntents =
+              await ordersToBillingModulePaymentIntentsApi.find({
                 params: {
                   filters: {
                     and: [
                       {
-                        column: "ecommerceModuleOrderId",
+                        column: "orderId",
                         method: "eq",
                         value: order.id,
                       },
@@ -272,16 +272,41 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                 },
               });
 
-            console.log(
-              `🚀 ~ prolongate ~ rbacSubjectsToEcommerceModuleOrders:`,
-              rbacSubjectsToEcommerceModuleOrders,
-            );
+            if (!ordersToBillingModulePaymentIntents?.length) {
+              continue;
+            }
 
-            if (minutesBetween >= 1) {
-              const delivered = await orderApi.update({
+            const paymentIntents = await paymentIntentApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "id",
+                      method: "inArray",
+                      value: ordersToBillingModulePaymentIntents.map(
+                        (otp) => otp.billingModulePaymentIntentId,
+                      ),
+                    },
+                    {
+                      column: "status",
+                      method: "eq",
+                      value: "succeeded",
+                    },
+                  ],
+                },
+                options: {
+                  headers: {
+                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                  },
+                },
+              },
+            });
+
+            if (!paymentIntents?.length) {
+              await orderApi.update({
                 id: order.id,
                 data: {
-                  status: "delivered",
+                  status: "canceled",
                 },
                 options: {
                   headers: {
@@ -290,43 +315,107 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                 },
               });
 
-              if (rbacSubjectsToEcommerceModuleOrders?.length) {
-                const newOrder = await orderApi.create({
-                  data: {
-                    status: "new",
-                    type: "cart",
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                  },
-                });
-                const ordersToProducts = await ordersToProductsApi.create({
-                  data: {
-                    orderId: newOrder.id,
-                    productId: product.id,
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                  },
-                });
-                const subjectsToEcommerceModuleOrders =
-                  await rbacSubjectsToEcommerceModuleOrdersApi.create({
-                    data: {
-                      ecommerceModuleOrderId: newOrder.id,
-                      subjectId:
-                        rbacSubjectsToEcommerceModuleOrders[0].subjectId,
+              continue;
+            }
+
+            const latestPaymentIntent = paymentIntents[0];
+            console.log(
+              `🚀 ~ prolongate ~ latestPaymentIntent:`,
+              latestPaymentIntent,
+            );
+
+            const timeBetween =
+              new Date().getTime() -
+              new Date(latestPaymentIntent.updatedAt).getTime();
+            const hoursBetween = Math.floor(timeBetween / 1000 / 60);
+
+            if (hoursBetween >= 24) {
+              // await orderApi.update({
+              //   id: order.id,
+              //   data: {
+              //     status: "canceled",
+              //   },
+              //   options: {
+              //     headers: {
+              //       "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              //     },
+              //   },
+              // });
+              // continue;
+            }
+
+            console.log(`🚀 ~ prolongate ~ minutesBetween:`, hoursBetween);
+
+            if (hoursBetween >= 1) {
+              const paymentIntentsToInvoices =
+                await paymentIntentsToInvoicesApi.find({
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "paymentIntentId",
+                          method: "eq",
+                          value: latestPaymentIntent.id,
+                        },
+                      ],
                     },
                     options: {
                       headers: {
                         "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                       },
                     },
-                  });
+                  },
+                });
+
+              if (!paymentIntentsToInvoices?.length) {
+                continue;
               }
+
+              const invoices = await invoiceApi.find({
+                params: {
+                  filters: {
+                    and: [
+                      {
+                        column: "id",
+                        method: "inArray",
+                        value: paymentIntentsToInvoices?.map(
+                          (pti) => pti.invoiceId,
+                        ),
+                      },
+                      {
+                        column: "status",
+                        method: "eq",
+                        value: "paid",
+                      },
+                    ],
+                  },
+                  options: {
+                    headers: {
+                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                    },
+                  },
+                },
+              });
+
+              if (!invoices?.length) {
+                continue;
+              }
+
+              const providesWithSubscriptions = ["stripe", "payselection"];
+              const invoiceProviderWithSubscription = invoices.find(
+                (invoice) => {
+                  return (
+                    invoice.provider &&
+                    providesWithSubscriptions.includes(invoice.provider)
+                  );
+                },
+              );
+
+              if (invoiceProviderWithSubscription) {
+                continue;
+              }
+
+              console.log(`🚀 ~ prolongate ~ invoices:`, invoices);
             }
           }
         }

@@ -8,7 +8,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/ecommerce/attribute-keys";
 export const variants = ["default"];
-export const types = ["feature", "price", "cron"];
+export const types = ["feature", "price", "interval"];
 export const fields = ["string", "number", "boolean", "date", "datetime"];
 export const host = BACKEND_URL;
 export const query = {};

@@ -79,7 +79,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    const data = JSON.parse(body["data"]);
+    const data: {
+      amount: number;
+      orderId: string;
+      subjectId: string;
+      type: "one_off" | "subscription";
+      interval?: "day" | "week" | "month" | "year";
+    } = JSON.parse(body["data"]);
 
     if (!data.subjectId) {
       throw new HTTPException(400, {
@@ -163,23 +169,37 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       let entity: (typeof Table)["$inferSelect"] | undefined;
 
       if (provider === "stripe") {
+        if (data.type !== "one_off" && data.type !== "subscription") {
+          throw new HTTPException(400, {
+            message: "Invalid type",
+          });
+        }
+        if (data.type === "subscription" && !data.interval) {
+          throw new HTTPException(400, {
+            message: "Interval is required for subscription type",
+          });
+        }
+
         entity = await this.service.stripe({
           data,
-          type: "create",
+          type: data.type,
+          interval: data.interval,
+          action: "create",
           email: identityWithEmail.email,
           subjectId: data.subjectId,
+          orderId: data.orderId,
         });
       } else if (provider === "0xprocessing") {
         entity = await this.service.OxProcessing({
           data,
-          type: "create",
+          action: "create",
           email: identityWithEmail.email,
           subjectId: data.subjectId,
         });
       } else if (provider === "payselection") {
         entity = await this.service.payselection({
           data,
-          type: "create",
+          action: "create",
           email: identityWithEmail.email,
           subjectId: data.subjectId,
         });
@@ -235,14 +255,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const stripe = new Stripe(STRIPE_SECRET_KEY);
       const event = await stripe.events.retrieve(data.id);
 
-      entity = await this.service.stripe({ data: event, type: "webhook" });
+      entity = await this.service.stripe({ data: event, action: "webhook" });
     } else if (provider === "0xprocessing") {
-      entity = await this.service.OxProcessing({ data, type: "webhook" });
+      entity = await this.service.OxProcessing({ data, action: "webhook" });
     } else if (provider === "payselection") {
       if ("x-site-id" in headers && "x-webhook-signature" in headers) {
         entity = await this.service.payselection({
           data,
-          type: "webhook",
+          action: "webhook",
           rawBody,
           headers: {
             "x-site-id": headers["x-site-id"],

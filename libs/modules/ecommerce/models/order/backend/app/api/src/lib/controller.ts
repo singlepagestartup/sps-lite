@@ -25,6 +25,7 @@ import { api as rbacIdentityApi } from "@sps/rbac/models/identity/sdk/server";
 import { api as notificationNotificationsApi } from "@sps/notification/models/notification/sdk/server";
 import { api as notificationTemplatesApi } from "@sps/notification/models/template/sdk/server";
 import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk/server";
+import { api as productApi } from "@sps/ecommerce/models/product/sdk/server";
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
 import QueryString from "qs";
@@ -270,6 +271,30 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       const priceAttributeKey = priceAttributeKeys[0];
 
+      const intervalAttributeKeys = await attributeKeys.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "type",
+                method: "eq",
+                value: "interval",
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const intervalAttributeKey = intervalAttributeKeys?.[0];
+
       const orderToProducts = await ordersToProducts.find({
         params: {
           filters: {
@@ -304,8 +329,46 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       }
 
       let amount = 0;
+      let type;
+      let interval: string | undefined;
 
       for (const orderToProduct of orderToProducts) {
+        const product = await productApi.findById({
+          id: orderToProduct.productId,
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (!product) {
+          return c.json(
+            {
+              message: "Product not found",
+            },
+            {
+              status: 404,
+            },
+          );
+        }
+
+        if (!type) {
+          type = product.type;
+        } else if (type !== product.type) {
+          return c.json(
+            {
+              message: "Order has multiple product types",
+            },
+            {
+              status: 401,
+            },
+          );
+        }
+
         const productToAttributes = await productsToAttributes.find({
           params: {
             filters: {
@@ -340,6 +403,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         }
 
         const productPrices: IAttribute[] = [];
+        const productIntervals: IAttribute[] = [];
 
         for (const productToAttribute of productToAttributes) {
           const productPriceAttributes = await attributeKeysToAttributes.find({
@@ -410,6 +474,81 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           productPrices.push(priceAttribute);
         }
 
+        for (const productToAttribute of productToAttributes) {
+          if (!intervalAttributeKey) {
+            throw new HTTPException(404, {
+              message: "Interval attribute key not found",
+            });
+          }
+
+          const intervals = await attributeKeysToAttributes.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "attributeId",
+                    method: "eq",
+                    value: productToAttribute.attributeId,
+                  },
+                  {
+                    column: "attributeKeyId",
+                    method: "eq",
+                    value: intervalAttributeKey.id,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!intervals?.length) {
+            continue;
+          }
+
+          if (intervals.length > 1) {
+            return c.json(
+              {
+                message: "Product has multiple interval attributes",
+              },
+              {
+                status: 401,
+              },
+            );
+          }
+
+          const intervalAttribute = await attribute.findById({
+            id: intervals[0].attributeId,
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!intervalAttribute) {
+            return c.json(
+              {
+                message: "Interval attribute not found",
+              },
+              {
+                status: 404,
+              },
+            );
+          }
+
+          productIntervals.push(intervalAttribute);
+        }
+
         if (!productPrices.length) {
           return c.json(
             {
@@ -422,6 +561,23 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         }
 
         amount += Number(productPrices[0].number) * orderToProduct.quantity;
+
+        if (!productIntervals.length) {
+          continue;
+        }
+
+        if (!interval && productIntervals[0].string) {
+          interval = productIntervals[0].string;
+        } else if (interval !== productIntervals[0].string) {
+          return c.json(
+            {
+              message: "Order has multiple intervals",
+            },
+            {
+              status: 401,
+            },
+          );
+        }
       }
 
       const entity = await this.service.update({
@@ -450,6 +606,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         data: {
           provider,
           amount,
+          type,
+          interval,
+          orderId: uuid,
           subjectId: subject.id,
         },
         options: {

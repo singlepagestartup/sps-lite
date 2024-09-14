@@ -117,9 +117,19 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async stripe(
     props:
-      | { data: any; type: "create"; email: string; subjectId: string }
       | {
-          type: "webhook";
+          data: {
+            amount: number;
+          };
+          type: "one_off" | "subscription";
+          interval?: "day" | "week" | "month" | "year";
+          action: "create";
+          email: string;
+          subjectId: string;
+          orderId: string;
+        }
+      | {
+          action: "webhook";
           data: Stripe.Response<Stripe.Event>;
         },
   ): Promise<(typeof Table)["$inferSelect"]> {
@@ -129,7 +139,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const stripe = new Stripe(STRIPE_SECRET_KEY);
 
-    if (props.type === "create") {
+    if (props.action === "create") {
       if (!props.data.amount) {
         throw new Error("Amount is required");
       }
@@ -142,47 +152,147 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       const amount = props.data.amount;
 
-      let stripeProduct: any = await stripe.products.search({
-        query: `name:'${amount}' AND active:'true'`,
-      });
+      let stripeProduct: any;
+      let stripePrice: any;
+      let checkout:
+        | Stripe.Response<Stripe.Checkout.Session>
+        | Stripe.Response<Stripe.Subscription>
+        | undefined;
 
-      if (!stripeProduct?.data?.length) {
-        stripeProduct = await stripe.products.create({
-          name: `${amount}`,
-          default_price_data: {
-            currency: "usd",
+      if (props.type === "subscription") {
+        if (!props.interval) {
+          throw new Error("Interval is required for subscription");
+        }
+        stripeProduct = await stripe.products.search({
+          query: `name:'${amount}' AND active:'true'`,
+        });
+
+        if (!stripeProduct?.data?.length) {
+          stripeProduct = await stripe.products.create({
+            name: `${amount}`,
+            type: "service",
+            default_price_data: {
+              unit_amount: +amount * 100,
+              currency: "usd",
+              recurring: { interval: props.interval },
+            },
+          });
+        } else {
+          stripeProduct = stripeProduct.data[0];
+        }
+
+        const priceQuery = await stripe.prices.list({
+          product: stripeProduct.id,
+          active: true,
+          limit: 100,
+        });
+
+        const filteredPrices = priceQuery.data.filter((price) => {
+          return price.recurring && price.recurring.interval === props.interval;
+        });
+
+        if (filteredPrices.length) {
+          stripePrice = filteredPrices[0];
+        } else {
+          stripePrice = await stripe.prices.create({
             unit_amount: +amount * 100,
+            currency: "usd",
+            recurring: { interval: props.interval },
+            product: stripeProduct.id,
+          });
+        }
+
+        let customer: Stripe.Customer | undefined;
+        const customers = await stripe.customers.list({
+          email: props.email,
+          limit: 1,
+        });
+
+        if (!customers?.data?.length) {
+          customer = await stripe.customers.create({
+            email: props.email,
+          });
+        } else {
+          customer = customers.data[0];
+        }
+
+        if (!customer) {
+          throw new Error("Customer not found");
+        }
+
+        checkout = await stripe.subscriptions.create({
+          customer: customer.id,
+          items: [{ price: stripePrice.id }],
+          payment_behavior: "default_incomplete",
+          expand: ["latest_invoice.payment_intent"],
+          metadata: {
+            invoiceId: superResult.id,
+            subjectId: props.subjectId,
+            orderId: props.orderId,
           },
         });
       } else {
-        stripeProduct = stripeProduct.data[0];
+        stripeProduct = await stripe.products.search({
+          query: `name:'${amount}' AND active:'true'`,
+        });
+
+        if (!stripeProduct?.data?.length) {
+          stripeProduct = await stripe.products.create({
+            name: `${amount}`,
+          });
+        } else {
+          stripeProduct = stripeProduct.data[0];
+        }
+
+        stripePrice = stripeProduct.default_price_data
+          ? stripeProduct.default_price_data
+          : await stripe.prices.create({
+              unit_amount: +amount * 100,
+              currency: "usd",
+              product: stripeProduct.id,
+            });
+
+        checkout = await stripe.checkout.sessions.create({
+          line_items: [{ price: stripePrice.id, quantity: 1 }],
+          mode: "payment",
+          customer_email: props.email,
+          success_url: `${HOST_URL}`,
+          cancel_url: `${HOST_URL}`,
+          metadata: {
+            invoiceId: superResult.id,
+            subjectId: props.subjectId,
+            orderId: props.orderId,
+          },
+        });
       }
 
-      const checkout = await stripe.checkout.sessions.create({
-        line_items: [{ price: stripeProduct.default_price, quantity: 1 }],
-        mode: "payment",
-        customer_email: props.email,
-        success_url: `${HOST_URL}`,
-        cancel_url: `${HOST_URL}`,
-        metadata: {
-          invoiceId: superResult.id,
-          subjectId: props.subjectId,
-        },
-      });
-
-      if (!checkout.url) {
-        throw new Error("Checkout URL not found");
+      if (!checkout) {
+        throw new Error("Checkout not found");
       }
 
-      const updated = await this.update({
-        id: superResult.id,
-        data: {
-          ...superResult,
-          status: "open",
-          providerId: checkout.id,
-          paymentUrl: checkout.url,
-        },
-      });
+      let updated: any;
+
+      if ("url" in checkout && checkout.url) {
+        updated = await this.update({
+          id: superResult.id,
+          data: {
+            ...superResult,
+            status: "open",
+            providerId: checkout.id,
+            paymentUrl: checkout.url,
+          },
+        });
+      } else if ("latest_invoice" in checkout && checkout.latest_invoice) {
+        updated = await this.update({
+          id: superResult.id,
+          data: {
+            ...superResult,
+            status: "open",
+            providerId: checkout.latest_invoice?.["id"],
+            paymentUrl: checkout.latest_invoice?.["hosted_invoice_url"],
+          },
+        });
+      }
 
       if (!updated) {
         throw new Error("Invoice not found");
@@ -190,43 +300,78 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       return updated;
     } else {
-      const id = props.data.data.object?.["metadata"]?.["invoiceId"];
-
       const data = props.data.data.object;
 
-      if (!id) {
-        throw new Error("ID not found in stripe webhook data");
-      }
+      if (data.object === "checkout.session") {
+        const id = props.data.data.object?.["metadata"]?.["invoiceId"];
 
-      let invoice = await this.findById({ id });
+        if (!id) {
+          throw new Error("ID not found in stripe webhook data");
+        }
 
-      if (!invoice) {
-        throw new Error("Invoice not found");
-      }
-
-      if (data["status"] === "complete") {
-        invoice = await this.update({
-          id: invoice.id,
-          data: {
-            ...invoice,
-            status: "paid",
-          },
-        });
+        let invoice = await this.findById({ id });
 
         if (!invoice) {
           throw new Error("Invoice not found");
         }
+
+        if (data["status"] === "complete") {
+          invoice = await this.update({
+            id: invoice.id,
+            data: {
+              ...invoice,
+              status: "paid",
+            },
+          });
+
+          if (!invoice) {
+            throw new Error("Invoice not found");
+          }
+        }
+
+        return invoice;
+      } else if (data.object === "invoice") {
+        if (typeof data.subscription === "string") {
+          const subscription = await stripe.subscriptions.retrieve(
+            data.subscription,
+          );
+
+          const id = subscription.metadata.invoiceId;
+
+          console.log(`🚀 ~ subscription:`, subscription);
+          let invoice = await this.findById({ id });
+
+          if (!invoice) {
+            throw new Error("Invoice not found");
+          }
+
+          if (data.status === "paid") {
+            invoice = await this.update({
+              id: invoice.id,
+              data: {
+                ...invoice,
+                status: "paid",
+              },
+            });
+
+            if (!invoice) {
+              throw new Error("Invoice not found");
+            }
+          }
+
+          return invoice;
+        }
       }
 
-      return invoice;
+      throw new Error("Unknown stripe webhook data");
     }
   }
 
   async OxProcessing(
     props:
-      | { data: any; type: "create"; email: string; subjectId: string }
+      | { data: any; action: "create"; email: string; subjectId: string }
       | {
-          type: "webhook";
+          action: "webhook";
           data: {
             PaymentId: number;
             MerchantId: string;
@@ -254,7 +399,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("0xProcessing webhook password not found");
     }
 
-    if (props.type === "create") {
+    if (props.action === "create") {
       const superResult = await super.create(props);
 
       const formData = new FormData();
@@ -332,9 +477,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async payselection(
     props:
-      | { data: any; type: "create"; email: string; subjectId: string }
+      | { data: any; action: "create"; email: string; subjectId: string }
       | {
-          type: "webhook";
+          action: "webhook";
           data: {
             Event: "Payment";
             Amount: string;
@@ -377,7 +522,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Payselection site name not found");
     }
 
-    if (props.type === "create") {
+    if (props.action === "create") {
       if (!props.data.amount) {
         throw new Error("Amount is required");
       }

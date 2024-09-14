@@ -104,8 +104,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               },
             });
 
-            console.log(`🚀 ~ sendAll ~ notification:`, notification);
-
             if (!notification || notification.status !== "new") {
               continue;
             }
