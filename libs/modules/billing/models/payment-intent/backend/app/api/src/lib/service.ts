@@ -5,8 +5,8 @@ import { Table } from "@sps/billing/models/payment-intent/backend/repository/dat
 import { Repository } from "./repository";
 import Stripe from "stripe";
 import {
-  BACKEND_URL,
-  HOST_URL,
+  STRIPE_RETURN_URL,
+  O_X_PROCESSING_RETURN_URL,
   O_X_PROCESSING_SHOP_ID,
   O_X_PROCESSING_TEST_PAYMENTS,
   O_X_PROCESSING_WEBHOOK_PASSWORD,
@@ -57,12 +57,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
       },
     });
-
-    console.log(
-      `🚀 ~ updatePaymentIntentStatus ~ paymentIntentsToInvoice:`,
-      paymentIntentsToInvoice,
-      props.invoice,
-    );
 
     if (paymentIntentsToInvoice?.length) {
       const paymentIntents = await paymentIntentApi.find({
@@ -259,8 +253,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           line_items: [{ price: stripePrice.id, quantity: 1 }],
           mode: "payment",
           customer_email: props.email,
-          success_url: `${HOST_URL}`,
-          cancel_url: `${HOST_URL}`,
+          success_url: `${STRIPE_RETURN_URL}`,
+          cancel_url: `${STRIPE_RETURN_URL}`,
           metadata: {
             orderId: props.orderId,
           },
@@ -281,6 +275,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             amount: props.entity.amount,
             providerId: checkout.id,
             paymentUrl: checkout.url,
+            successUrl: checkout.success_url,
+            cancelUrl: checkout.cancel_url,
           },
           options: {
             headers: {
@@ -315,7 +311,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Invoice not found");
       }
 
-      const paymentIntentToInvoice = await paymentIntentsToInvoicesApi.create({
+      await paymentIntentsToInvoicesApi.create({
         data: {
           paymentIntentId: props.entity.id,
           invoiceId: invoice.id,
@@ -533,7 +529,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async OxProcessing(
     props:
-      | { data: any; action: "create"; email: string; subjectId: string }
+      | {
+          entity: (typeof Table)["$inferSelect"];
+          action: "create";
+          email: string;
+          orderId: string;
+          subjectId: string;
+        }
       | {
           action: "webhook";
           data: {
@@ -568,71 +570,42 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }
 
     if (props.action === "create") {
-      const invoice = await invoiceApi.create({
-        data: {
-          ...props.data,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
       const formData = new FormData();
 
-      const { currency, amount } = props.data;
-
-      formData.append("currency", currency || "USDT");
-      formData.append("amountusd", `${amount}`);
-      formData.append("BillingId", `${invoice.id}`);
+      formData.append("currency", "USDT");
+      formData.append("amountusd", `${props.entity.amount}`);
+      formData.append("BillingId", `${props.orderId}`);
       formData.append("ClientId", `${props.subjectId}`);
       formData.append("MerchantId", `${O_X_PROCESSING_SHOP_ID}`);
       formData.append("email", `${props.email}`);
       formData.append("ReturnUrl", `${true}`);
-      formData.append("SuccessUrl", `${HOST_URL}`);
-      formData.append("CancelUrl", `${HOST_URL}`);
+      formData.append("SuccessUrl", `${O_X_PROCESSING_RETURN_URL}`);
+      formData.append("CancelUrl", `${O_X_PROCESSING_RETURN_URL}`);
 
       if (O_X_PROCESSING_TEST_PAYMENTS) {
         formData.append("test", `${true}`);
       }
 
-      const checkout = await fetch("https://app.0xProcessing.com/Payment", {
+      const checkout: {
+        redirectUrl: string;
+        id: number;
+      } = await fetch("https://app.0xProcessing.com/Payment", {
         method: "POST",
         body: formData,
       }).then((res) => res.json());
 
-      const updated = await invoiceApi.update({
-        id: invoice.id,
+      console.log(`🚀 ~ checkout:`, checkout);
+
+      const invoice = await invoiceApi.create({
         data: {
-          ...invoice,
+          amount: props.entity.amount,
           status: "open",
           providerId: `${checkout.id}`,
           paymentUrl: checkout.redirectUrl,
+          successUrl: O_X_PROCESSING_RETURN_URL,
+          cancelUrl: O_X_PROCESSING_RETURN_URL,
+          provider: "0xprocessing",
         },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (!updated) {
-        throw new Error("Invoice not found");
-      }
-
-      return updated;
-    } else {
-      const { Signature, BillingID, PaymentId, Email, Currency } = props.data;
-
-      let invoice = await invoiceApi.findById({
-        id: BillingID,
         options: {
           headers: {
             "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -647,6 +620,57 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         throw new Error("Invoice not found");
       }
 
+      await paymentIntentsToInvoicesApi.create({
+        data: {
+          paymentIntentId: props.entity.id,
+          invoiceId: invoice.id,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      return invoice;
+    } else {
+      const { Signature, PaymentId, Email, Currency } = props.data;
+
+      const invoices = await invoiceApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "providerId",
+                method: "eq",
+                value: PaymentId,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoices?.length) {
+        throw new Error("Invoice not found");
+      }
+
+      if (invoices.length > 1) {
+        throw new Error("Multiple invoices found");
+      }
+
+      let invoice = invoices[0];
+
       const string = `${PaymentId}:${O_X_PROCESSING_SHOP_ID}:${Email}:${Currency}:${O_X_PROCESSING_WEBHOOK_PASSWORD}`;
 
       const hash = crypto.createHash("md5").update(string).digest("hex");
@@ -660,6 +684,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           id: invoice.id,
           data: {
             ...invoice,
+            amount: props.data.AmountUSD,
             status: "paid",
           },
           options: {
@@ -675,6 +700,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         if (!invoice) {
           throw new Error("Invoice not found");
         }
+
+        await this.updatePaymentIntentStatus({ invoice });
       }
 
       return invoice;

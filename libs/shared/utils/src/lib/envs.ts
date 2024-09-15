@@ -99,12 +99,15 @@ export const BLOB_READ_WRITE_TOKEN = process.env["BLOB_READ_WRITE_TOKEN"];
 export const STRIPE_PUBLISHABLE_KEY =
   process.env["NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"];
 export const STRIPE_SECRET_KEY = process.env["STRIPE_SECRET_KEY"];
+export const STRIPE_RETURN_URL = process.env["STRIPE_RETURN_URL"];
 
 export const O_X_PROCESSING_SHOP_ID = process.env["O_X_PROCESSING_SHOP_ID"];
 export const O_X_PROCESSING_TEST_PAYMENTS =
   process.env["O_X_PROCESSING_TEST_PAYMENTS"];
 export const O_X_PROCESSING_WEBHOOK_PASSWORD =
   process.env["O_X_PROCESSING_WEBHOOK_PASSWORD"];
+export const O_X_PROCESSING_RETURN_URL =
+  process.env["O_X_PROCESSING_RETURN_URL"];
 
 export const AWS_ACCESS_KEY_ID = process.env["AWS_ACCESS_KEY_ID"];
 export const AWS_SECRET_ACCESS_KEY = process.env["AWS_SECRET_ACCESS_KEY"];

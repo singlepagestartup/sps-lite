@@ -274,10 +274,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       } else if (provider === "0xprocessing") {
         result = await this.service.OxProcessing({
-          data,
           action: "create",
           email: identityWithEmail.email,
           subjectId: subjectId,
+          entity,
+          orderId,
         });
       } else if (provider === "payselection") {
         result = await this.service.payselection({
@@ -328,7 +329,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
     console.log(`🚀 ~ providerWebhook ~ data:`, data);
 
-    let entity: any;
+    let result: any;
 
     if (provider === "stripe") {
       if (!STRIPE_SECRET_KEY) {
@@ -338,12 +339,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const stripe = new Stripe(STRIPE_SECRET_KEY);
       const event = await stripe.events.retrieve(data.id);
 
-      entity = await this.service.stripe({ data: event, action: "webhook" });
+      result = await this.service.stripe({ data: event, action: "webhook" });
     } else if (provider === "0xprocessing") {
-      entity = await this.service.OxProcessing({ data, action: "webhook" });
+      result = await this.service.OxProcessing({ data, action: "webhook" });
     } else if (provider === "payselection") {
       if ("x-site-id" in headers && "x-webhook-signature" in headers) {
-        entity = await this.service.payselection({
+        result = await this.service.payselection({
           data,
           action: "webhook",
           rawBody,
@@ -359,15 +360,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       }
     }
 
-    console.log(`🚀 ~ providerWebhook ~ entity:`, entity);
-
-    if (entity?.status === "paid") {
-      await this.service.updatePaymentIntentStatus({ invoice: entity });
-    }
+    console.log(`🚀 ~ providerWebhook ~ entity:`, result);
 
     return c.json(
       {
-        data: entity,
+        data: result,
       },
       200,
     );

@@ -427,6 +427,25 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               continue;
             }
 
+            if (!latestInvoice.provider) {
+              continue;
+            }
+
+            await paymentIntentApi.provider({
+              id: paymentIntentId,
+              data: {
+                provider: latestInvoice.provider,
+              },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+
             console.log(`🚀 ~ prolongate ~ invoices:`, invoices);
           }
         }
