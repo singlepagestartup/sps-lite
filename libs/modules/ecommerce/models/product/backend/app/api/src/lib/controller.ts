@@ -374,7 +374,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               durationInMiliseconds = 3600000;
               break;
             case "day":
-              durationInMiliseconds = 86400000;
+              durationInMiliseconds = 60000;
+              // durationInMiliseconds = 86400000;
               break;
             case "week":
               durationInMiliseconds = 604800000;
