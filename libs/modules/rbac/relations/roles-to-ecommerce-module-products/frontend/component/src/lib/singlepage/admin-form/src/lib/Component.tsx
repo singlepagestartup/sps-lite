@@ -1,13 +1,18 @@
 "use client";
 
 import { IComponentPropsExtended, variant, IModel } from "./interface";
-import { api } from "@sps/rbac/models/role/sdk/client";
+import {
+  variants,
+  insertSchema,
+} from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
+import { api } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/client";
 import { useForm } from "react-hook-form";
 import { FormField } from "@sps/ui-adapter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { variants, insertSchema } from "@sps/rbac/models/role/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
+import { Component as Role } from "@sps/rbac/models/role/frontend/component";
+import { Component as EcommerceModuleProduct } from "@sps/ecommerce/models/product/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -17,9 +22,10 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
-      title: props.data?.title || "",
-      uid: props.data?.uid || "",
-      availableOnRegistration: props.data?.availableOnRegistration || false,
+      orderIndex: props.data?.orderIndex || 0,
+      className: props.data?.className || "",
+      roleId: props.data?.roleId || "",
+      ecommerceModuleProductId: props.data?.ecommerceModuleProductId || "",
     },
   });
 
@@ -37,39 +43,31 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <ParentAdminForm<IModel, typeof variant>
       {...props}
-      module="website-builder"
+      module="rbac"
       form={form}
       id={props.data?.id}
       onSubmit={onSubmit}
       variant={props.variant}
-      name="role"
+      name="roles-to-ecommerce-module-products"
+      type="relation"
     >
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
-          type="text"
-          label="Title"
-          name="title"
+          type="number"
+          label="Order index"
+          name="orderIndex"
           form={form}
-          placeholder="Type title"
+          placeholder="Order index"
         />
 
         <FormField
           ui="shadcn"
           type="text"
-          label="Uid"
-          name="uid"
+          label="Class name"
+          name="className"
           form={form}
-          placeholder="Type uid"
-        />
-
-        <FormField
-          ui="shadcn"
-          type="checkbox"
-          label="Available on registration"
-          name="availableOnRegistration"
-          form={form}
-          placeholder="Available on registration"
+          placeholder="Class name"
         />
 
         <FormField
@@ -82,29 +80,21 @@ export function Component(props: IComponentPropsExtended) {
           options={variants.map((variant) => [variant, variant])}
         />
 
-        {props.rolesToActions
-          ? props.rolesToActions({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
+        <Role
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="roleId"
+          form={form}
+        />
 
-        {props.subjectsToRoles
-          ? props.subjectsToRoles({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
-
-        {props.rolesToEcommerceModuleProducts
-          ? props.rolesToEcommerceModuleProducts({
-              data: props.data,
-              hostUrl: props.hostUrl,
-              isServer: props.isServer,
-            })
-          : null}
+        <EcommerceModuleProduct
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          variant="admin-select-input"
+          formFieldName="ecommerceModuleProductId"
+          form={form}
+        />
       </div>
     </ParentAdminForm>
   );

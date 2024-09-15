@@ -6,7 +6,7 @@ import { Service } from "./service";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as billingPaymentIntent } from "@sps/billing/models/payment-intent/sdk/server";
-import { api as ordersToProducts } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
+import { api as ordersToProductsApi } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
 import { api as productsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
 import { api as attributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/sdk/server";
 import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
@@ -18,6 +18,7 @@ import { authorization } from "@sps/sps-backend-utils";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
 import { api as rbacSubjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/server";
+import { api as rbacSubjectsToRolesApi } from "@sps/rbac/relations/subjects-to-roles/sdk/server";
 import { api as rbacSubjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 import { api as rbacIdentityApi } from "@sps/rbac/models/identity/sdk/server";
 import { api as notificationNotificationsApi } from "@sps/notification/models/notification/sdk/server";
@@ -27,6 +28,8 @@ import { api as productApi } from "@sps/ecommerce/models/product/sdk/server";
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
 import { api as subjectsToBillingModulePaymentIntentsApi } from "@sps/rbac/relations/subjects-to-billing-module-payment-intents/sdk/server";
+import { IModel as IRolesToEcommerceModuleProducts } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
+import { api as rolesToEcommerceModuleProductsApi } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/server";
 import QueryString from "qs";
 import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 
@@ -294,7 +297,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       const intervalAttributeKey = intervalAttributeKeys?.[0];
 
-      const orderToProducts = await ordersToProducts.find({
+      const orderToProducts = await ordersToProductsApi.find({
         params: {
           filters: {
             and: [
@@ -747,6 +750,85 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         });
 
+      const ordersToProducts = await ordersToProductsApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "orderId",
+                method: "eq",
+                value: uuid,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      let rolesToEcommerceModuleProducts:
+        | IRolesToEcommerceModuleProducts[]
+        | undefined;
+
+      if (ordersToProducts?.length) {
+        const products = await productApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "inArray",
+                  value: ordersToProducts?.map(
+                    (orderToProduct) => orderToProduct.productId,
+                  ),
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (products?.length) {
+          const productIds = products.map((product) => product.id);
+
+          rolesToEcommerceModuleProducts =
+            await rolesToEcommerceModuleProductsApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "ecommerceModuleProductId",
+                      method: "inArray",
+                      value: productIds,
+                    },
+                  ],
+                },
+              },
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+        }
+      }
+
       if (rbacSubjectsToEcommerceModuleOrders?.length) {
         for (const rbacSubjectToEcommerceModuleOrder of rbacSubjectsToEcommerceModuleOrders) {
           const subjectsToIdentities = await rbacSubjectsToIdentitiesApi.find({
@@ -945,6 +1027,107 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         },
       });
+
+      if (rbacSubjectsToEcommerceModuleOrders?.length) {
+        for (const rbacSubjectToEcommerceModuleOrder of rbacSubjectsToEcommerceModuleOrders) {
+          const rbacSubjectsToRoles = await rbacSubjectsToRolesApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "subjectId",
+                    method: "eq",
+                    value: rbacSubjectToEcommerceModuleOrder.subjectId,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          const existingRolesIds = rbacSubjectsToRoles?.map(
+            (rbacSubjectToRole) => rbacSubjectToRole.roleId,
+          );
+
+          const productRolesIds = rolesToEcommerceModuleProducts?.map(
+            (roleToEcommerceModuleProduct) =>
+              roleToEcommerceModuleProduct.roleId,
+          );
+
+          if (entity?.status === "approving") {
+            const newRolesIds = productRolesIds?.filter(
+              (productRoleId) => !existingRolesIds?.includes(productRoleId),
+            );
+
+            if (newRolesIds?.length) {
+              for (const newRoleId of newRolesIds) {
+                await rbacSubjectsToRolesApi.create({
+                  data: {
+                    subjectId: rbacSubjectToEcommerceModuleOrder.subjectId,
+                    roleId: newRoleId,
+                  },
+                  options: {
+                    headers: {
+                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                    },
+                    next: {
+                      cache: "no-store",
+                    },
+                  },
+                });
+              }
+            }
+          } else if (entity?.status === "paying") {
+            const removeRolesIds = productRolesIds?.filter((productRoleId) =>
+              existingRolesIds?.includes(productRoleId),
+            );
+
+            if (removeRolesIds?.length) {
+              for (const removeRoleId of removeRolesIds) {
+                const rbacSubjectToRole = rbacSubjectsToRoles?.find(
+                  (rbacSubjectToRole) =>
+                    rbacSubjectToRole.roleId === removeRoleId,
+                );
+
+                if (!rbacSubjectToRole) {
+                  continue;
+                }
+
+                await rbacSubjectsToRolesApi.delete({
+                  id: rbacSubjectToRole.id,
+                  options: {
+                    headers: {
+                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                    },
+                    next: {
+                      cache: "no-store",
+                    },
+                  },
+                });
+              }
+            }
+          }
+
+          console.log(`🚀 ~ update ~ existingRolesIds:`, existingRolesIds);
+
+          console.log(
+            `🚀 ~ update ~ rbacSubjectsToRoles:`,
+            rbacSubjectsToRoles,
+          );
+
+          console.log(
+            `🚀 ~ update ~ rolesToEcommerceModuleProducts:`,
+            rolesToEcommerceModuleProducts,
+          );
+        }
+      }
 
       return c.json({
         data: entity,

@@ -1,5 +1,5 @@
-export { type IModel } from "@sps/rbac/models/role/sdk/model";
-import { IModel } from "@sps/rbac/models/role/sdk/model";
+export { type IModel } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
+import { IModel } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
 import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
@@ -10,13 +10,7 @@ import { ISpsComponentBase } from "@sps/ui-adapter";
 export const variant = "admin-form" as const;
 
 export interface IComponentProps
-  extends IParentComponentProps<IModel, typeof variant> {
-  rolesToActions?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
-  subjectsToRoles?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
-  rolesToEcommerceModuleProducts?: (
-    props: ISpsComponentBase & { data?: IModel },
-  ) => ReactNode;
-}
+  extends IParentComponentProps<IModel, typeof variant> {}
 
 export interface IComponentPropsExtended
   extends IParentComponentPropsExtended<
