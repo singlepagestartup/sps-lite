@@ -1,6 +1,10 @@
 "use server";
 
-import { host, route, IModel } from "@sps/billing/models/invoice/sdk/model";
+import {
+  host,
+  route,
+  IModel,
+} from "@sps/billing/models/payment-intent/sdk/model";
 import {
   NextRequestOptions,
   prepareFormDataToSend,
@@ -14,6 +18,7 @@ export interface IActionProps {
   catchErrors?: boolean;
   tag?: string;
   revalidate?: number;
+  id: string;
   params?: {
     amount: number;
     subjectId: string;
@@ -28,7 +33,7 @@ export interface IActionProps {
 export async function action(props: IActionProps): Promise<IModel | undefined> {
   const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
 
-  const { data, params, options } = props;
+  const { data, params, options, id } = props;
 
   const stringifiedQuery = QueryString.stringify(params, {
     encodeValuesOnly: true,
@@ -57,7 +62,7 @@ export async function action(props: IActionProps): Promise<IModel | undefined> {
   };
 
   const res = await fetch(
-    `${host}${route}/${data.provider}?${stringifiedQuery}`,
+    `${host}${route}/${id}/${data.provider}?${stringifiedQuery}`,
     requestOptions,
   );
 

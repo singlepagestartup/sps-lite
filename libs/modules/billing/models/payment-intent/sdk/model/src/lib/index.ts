@@ -8,14 +8,16 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/billing/payment-intents";
 export const variants = ["default"];
+export const types = ["one_off", "subscription"];
+export const intervals = ["day", "week", "month", "year"];
 export const statuses = [
-  "canceled",
   "processing",
   "requires_action",
   "requires_capture",
   "requires_confirmation",
   "requires_payment_method",
   "succeeded",
+  "canceled",
 ];
 export const host = BACKEND_URL;
 export const query = {};

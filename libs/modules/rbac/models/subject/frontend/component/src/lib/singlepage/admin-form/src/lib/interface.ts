@@ -24,6 +24,9 @@ export interface IComponentProps
   subjectsToNotificationModuleTopics?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  subjectsToBillingModulePaymentIntents?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

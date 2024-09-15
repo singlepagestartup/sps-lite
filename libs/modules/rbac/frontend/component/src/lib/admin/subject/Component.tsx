@@ -5,6 +5,7 @@ import { Component as SubjectsToIdentities } from "@sps/rbac/relations/subjects-
 import { Component as SubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/frontend/component";
 import { Component as SubjectsToEcommerceModuleOrders } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/frontend/component";
 import { Component as SubjectsToNotificationModuleTopics } from "@sps/rbac/relations/subjects-to-notification-module-topics/frontend/component";
+import { Component as SubjectsToBillingModulePaymentIntents } from "@sps/rbac/relations/subjects-to-billing-module-payment-intents/frontend/component";
 
 export function Component() {
   return (
@@ -52,6 +53,36 @@ export function Component() {
 
               return (
                 <SubjectsToEcommerceModuleOrders
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "subjectId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            subjectsToBillingModulePaymentIntents={({
+              data,
+              hostUrl,
+              isServer,
+            }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <SubjectsToBillingModulePaymentIntents
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

@@ -7,20 +7,6 @@
   "targets": {
     "lint": {},
     "tsc:build": {},
-    "repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/billing:models:repository-generate"
-          },
-          {
-            "command": "nx run @sps/billing:relations:repository-generate"
-          }
-        ]
-      }
-    },
     "repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -34,6 +20,20 @@
           },
           {
             "command": "nx run @sps/billing:relations:repository-migrate"
+          }
+        ]
+      }
+    },
+    "repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/billing:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/billing:relations:repository-generate"
           }
         ]
       }

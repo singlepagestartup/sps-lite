@@ -10,6 +10,8 @@ import {
   variants,
   insertSchema,
   statuses,
+  types,
+  intervals,
 } from "@sps/billing/models/payment-intent/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -23,6 +25,8 @@ export function Component(props: IComponentPropsExtended) {
       variant: props.data?.variant || "default",
       amount: props.data?.amount || 0,
       status: props.data?.status || "requires_payment_method",
+      interval: props.data?.interval || "",
+      type: props.data?.type || "one_off",
     },
   });
 
@@ -65,6 +69,26 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Select status"
           options={statuses.map((status) => [status, status])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Type"
+          name="type"
+          form={form}
+          placeholder="Select type"
+          options={types.map((type) => [type, type])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Interval"
+          name="interval"
+          form={form}
+          placeholder="Select interval"
+          options={intervals.map((interval) => [interval, interval])}
         />
 
         <FormField

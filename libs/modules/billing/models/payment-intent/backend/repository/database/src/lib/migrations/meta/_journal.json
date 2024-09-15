@@ -43,6 +43,13 @@
       "when": 1724256826144,
       "tag": "0005_complete_arachne",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1726353814936,
+      "tag": "0006_unique_stephen_strange",
+      "breakpoints": true
     }
   ]
 }

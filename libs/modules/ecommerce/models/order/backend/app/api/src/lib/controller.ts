@@ -6,8 +6,6 @@ import { Service } from "./service";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as billingPaymentIntent } from "@sps/billing/models/payment-intent/sdk/server";
-import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
-import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as ordersToProducts } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
 import { api as productsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
 import { api as attributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/sdk/server";
@@ -28,6 +26,7 @@ import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk
 import { api as productApi } from "@sps/ecommerce/models/product/sdk/server";
 import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
 import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
+import { api as subjectsToBillingModulePaymentIntentsApi } from "@sps/rbac/relations/subjects-to-billing-module-payment-intents/sdk/server";
 import QueryString from "qs";
 import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 
@@ -591,6 +590,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const paymentIntent = await billingPaymentIntent.create({
         data: {
           amount,
+          interval,
+          type,
         },
         options: {
           headers: {
@@ -602,14 +603,40 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      const invoice = await invoiceApi.provider({
+      await subjectsToBillingModulePaymentIntentsApi.create({
+        data: {
+          subjectId: subject.id,
+          billingModulePaymentIntentId: paymentIntent.id,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      await ordersToBillingModulePaymentIntentsApi.create({
+        data: {
+          orderId: uuid,
+          billingModulePaymentIntentId: paymentIntent.id,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      await billingPaymentIntent.provider({
+        id: paymentIntent.id,
         data: {
           provider,
-          amount,
-          type,
-          interval,
-          orderId: uuid,
-          subjectId: subject.id,
         },
         options: {
           headers: {
@@ -620,43 +647,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         },
       });
-
-      if (!invoice) {
-        throw new HTTPException(404, {
-          message: "Invoice not found",
-        });
-      }
-
-      const paymentIntentToInvoice = await paymentIntentsToInvoicesApi.create({
-        data: {
-          paymentIntentId: paymentIntent.id,
-          invoiceId: invoice.id,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      const orderToBillingPaymentIntent =
-        await ordersToBillingModulePaymentIntentsApi.create({
-          data: {
-            orderId: uuid,
-            billingModulePaymentIntentId: paymentIntent.id,
-          },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
 
       return c.json({
         data: entity,
