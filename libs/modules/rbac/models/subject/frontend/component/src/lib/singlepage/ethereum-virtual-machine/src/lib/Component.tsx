@@ -42,8 +42,10 @@ export function Component(props: IComponentPropsExtended) {
   }, [cookies["rbac.subject.jwt"]]);
 
   useEffect(() => {
-    refetch();
-  }, [jwt]);
+    if (jwt && !meData) {
+      refetch();
+    }
+  }, [jwt, meData]);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

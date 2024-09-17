@@ -394,6 +394,21 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           console.log(`🚀 ~ enforce ~ finishAt:`, new Date(finishAt));
 
           if (finishAt < new Date().getTime()) {
+            if (order.status === "canceled") {
+              await orderApi.update({
+                id: order.id,
+                data: {
+                  status: "delivered",
+                },
+                options: {
+                  headers: {
+                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                  },
+                },
+              });
+              continue;
+            }
+
             const providesWithSubscriptions = ["stripe", "payselection"];
 
             await paymentIntentApi.update({

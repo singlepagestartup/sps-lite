@@ -919,55 +919,18 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             },
           });
 
-          if (!templates?.length) {
-            throw new HTTPException(404, {
-              message: "Templates not found",
-            });
-          }
-
-          const identities = await rbacIdentityApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "id",
-                    method: "eq",
-                    value: subjectsToIdentities[0].identityId,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!identities?.length) {
-            continue;
-          }
-
-          for (const identity of identities) {
-            if (!identity.email) {
-              continue;
-            }
-
-            const notification = await notificationNotificationsApi.create({
-              data: {
-                reciever: identity.email,
-                data: JSON.stringify({
-                  title: "Order status updated",
-                  subject: "Order status updated",
-                  id: entity?.id || "",
-                }),
-                method: "email",
-                attachments: entity?.receipt
-                  ? JSON.stringify([{ type: "image", url: entity.receipt }])
-                  : "[]",
+          if (templates?.length) {
+            const identities = await rbacIdentityApi.find({
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "id",
+                      method: "eq",
+                      value: subjectsToIdentities[0].identityId,
+                    },
+                  ],
+                },
               },
               options: {
                 headers: {
@@ -979,30 +942,27 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
               },
             });
 
-            if (!notification) {
+            if (!identities?.length) {
               continue;
             }
 
-            await notificationNotificationsToTemplatesApi.create({
-              data: {
-                notificationId: notification.id,
-                templateId: templates[0].id,
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
+            for (const identity of identities) {
+              if (!identity.email) {
+                continue;
+              }
 
-            const topicToNotification =
-              await notificationTopicsToNotificationsApi.create({
+              const notification = await notificationNotificationsApi.create({
                 data: {
-                  topicId: topics[0].id,
-                  notificationId: notification.id,
+                  reciever: identity.email,
+                  data: JSON.stringify({
+                    title: "Order status updated",
+                    subject: "Order status updated",
+                    id: entity?.id || "",
+                  }),
+                  method: "email",
+                  attachments: entity?.receipt
+                    ? JSON.stringify([{ type: "image", url: entity.receipt }])
+                    : "[]",
                 },
                 options: {
                   headers: {
@@ -1013,6 +973,42 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                   },
                 },
               });
+
+              if (!notification) {
+                continue;
+              }
+
+              await notificationNotificationsToTemplatesApi.create({
+                data: {
+                  notificationId: notification.id,
+                  templateId: templates[0].id,
+                },
+                options: {
+                  headers: {
+                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                  },
+                  next: {
+                    cache: "no-store",
+                  },
+                },
+              });
+
+              const topicToNotification =
+                await notificationTopicsToNotificationsApi.create({
+                  data: {
+                    topicId: topics[0].id,
+                    notificationId: notification.id,
+                  },
+                  options: {
+                    headers: {
+                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                    },
+                    next: {
+                      cache: "no-store",
+                    },
+                  },
+                });
+            }
           }
         }
       }
@@ -1084,7 +1080,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                 });
               }
             }
-          } else if (entity?.status === "paying") {
+          } else if (
+            entity?.status &&
+            ["paying", "delivered"].includes(entity.status)
+          ) {
             const removeRolesIds = productRolesIds?.filter((productRoleId) =>
               existingRolesIds?.includes(productRoleId),
             );
