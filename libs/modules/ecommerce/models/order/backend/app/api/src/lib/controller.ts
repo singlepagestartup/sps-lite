@@ -621,6 +621,45 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
       });
 
+      const ordersToBillingModulePaymentIntents =
+        await ordersToBillingModulePaymentIntentsApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "orderId",
+                  method: "eq",
+                  value: uuid,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+      if (ordersToBillingModulePaymentIntents?.length) {
+        for (const orderToBillingModulePaymentIntent of ordersToBillingModulePaymentIntents) {
+          await ordersToBillingModulePaymentIntentsApi.delete({
+            id: orderToBillingModulePaymentIntent.id,
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+        }
+      }
+
       await ordersToBillingModulePaymentIntentsApi.create({
         data: {
           orderId: uuid,
