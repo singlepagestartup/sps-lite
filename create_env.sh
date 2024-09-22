@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ "$1" = "vercel" ]; then
+if [ "$1" = "deployment" ]; then
+  production_env=$(cat apps/host/.env.production)
+  echo $production_env > apps/host/.env.local
   echo $(printenv) > apps/host/.env.local
   exit 0
 fi

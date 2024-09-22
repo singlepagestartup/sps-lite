@@ -8,7 +8,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/ecommerce/orders";
 export const variants = ["default"];
-export const types = ["cart", "order"];
+export const types = ["cart", "history"];
 export const statuses = [
   "new",
   "paying",

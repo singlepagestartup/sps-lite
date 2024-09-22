@@ -8,7 +8,7 @@ import QueryString from "qs";
 import {
   BACKEND_URL,
   buildTreePaths,
-  SPS_RBAC_SECRET_KEY,
+  RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 import { HTTPException } from "hono/http-exception";
 
@@ -197,8 +197,8 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async withRoutes(props: { id: string }) {
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY not found");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY not found");
     }
 
     const result = await this.service.findById({
@@ -226,7 +226,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             `${BACKEND_URL}/api/${moduleName}/${modelName}`,
             {
               headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
             },
           ).then((res) => res.json());

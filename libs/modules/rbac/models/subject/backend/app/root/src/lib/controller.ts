@@ -8,12 +8,15 @@ import { HTTPException } from "hono/http-exception";
 import QueryString from "qs";
 import { setCookie, deleteCookie, getCookie } from "hono/cookie";
 import {
-  SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
-  SPS_RBAC_JWT_SECRET,
-  SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_JWT_SECRET,
+  RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
 import { authorization } from "@sps/sps-backend-utils";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -105,14 +108,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       );
     }
 
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(500, {
         message: "JWT secret not provided",
       });
     }
 
     try {
-      const decoded = await jwt.verify(token, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(token, RBAC_JWT_SECRET);
 
       if (!decoded.subject?.["id"]) {
         throw new HTTPException(401, {
@@ -140,13 +143,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const secretKeyCookie = getCookie(c, "rbac.secret-key");
       const secretKey = secretKeyHeaders || secretKeyCookie;
 
-      if (secretKey && secretKey !== process.env["SPS_RBAC_SECRET_KEY"]) {
+      if (secretKey && secretKey !== process.env["RBAC_SECRET_KEY"]) {
         throw new HTTPException(401, {
           message: "Unauthorized",
         });
       }
 
-      if (secretKey && secretKey === process.env["SPS_RBAC_SECRET_KEY"]) {
+      if (secretKey && secretKey === process.env["RBAC_SECRET_KEY"]) {
         return c.json({
           data: {
             message: "action granted.",
@@ -220,9 +223,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async registraion(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
@@ -256,7 +259,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         roles: data.roles || [],
       });
 
-      const decodedJwt = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decodedJwt = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decodedJwt.exp) {
         throw new HTTPException(400, {
@@ -286,19 +289,86 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async init(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_SECRET_KEY) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_SECRET_KEY not set",
+      });
+    }
+    if (!RBAC_JWT_SECRET) {
+      throw new HTTPException(400, {
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
-    if (!SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
     try {
+      const existingSubjects = await subjectApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "createdAt",
+                method: "lt",
+                value: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (existingSubjects?.length) {
+        for (const existingSubject of existingSubjects) {
+          const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "subjectId",
+                    method: "eq",
+                    value: existingSubject.id,
+                  },
+                ],
+              },
+            },
+            options: {
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+              next: {
+                cache: "no-store",
+              },
+            },
+          });
+
+          if (!subjectsToIdentities?.length) {
+            await subjectApi.delete({
+              id: existingSubject.id,
+              options: {
+                headers: {
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                },
+                next: {
+                  cache: "no-store",
+                },
+              },
+            });
+          }
+        }
+      }
+
       const entity = await this.service.create({
         data: {},
       });
@@ -306,30 +376,29 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const jwtToken = await jwt.sign(
         {
           exp:
-            Math.floor(Date.now() / 1000) +
-            SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+            Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
           iat: Math.floor(Date.now() / 1000),
           subject: {
             id: entity.id,
           },
         },
-        SPS_RBAC_JWT_SECRET,
+        RBAC_JWT_SECRET,
       );
 
       const refreshToken = await jwt.sign(
         {
           exp:
             Math.floor(Date.now() / 1000) +
-            SPS_RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
+            RBAC_JWT_REFRESH_TOKEN_LIFETIME_IN_SECONDS,
           iat: Math.floor(Date.now() / 1000),
           subject: {
             id: entity.id,
           },
         },
-        SPS_RBAC_JWT_SECRET,
+        RBAC_JWT_SECRET,
       );
 
-      const decodedJwt = await jwt.verify(jwtToken, SPS_RBAC_JWT_SECRET);
+      const decodedJwt = await jwt.verify(jwtToken, RBAC_JWT_SECRET);
 
       if (!decodedJwt.exp) {
         throw new HTTPException(400, {
@@ -362,15 +431,15 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async authentication(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
-    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
@@ -406,7 +475,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         type: "authentication",
       });
 
-      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decoded.exp) {
         throw new HTTPException(400, {
@@ -418,7 +487,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/",
         secure: true,
         httpOnly: false,
-        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        maxAge: RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         expires: new Date(decoded.exp),
         sameSite: "Strict",
       });
@@ -437,15 +506,15 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   }
 
   async refresh(c: Context, next: any): Promise<Response> {
-    if (!SPS_RBAC_JWT_SECRET) {
+    if (!RBAC_JWT_SECRET) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_SECRET not set",
+        message: "RBAC_JWT_SECRET not set",
       });
     }
 
-    if (!SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+    if (!RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
       throw new HTTPException(400, {
-        message: "SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
+        message: "RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS not set",
       });
     }
 
@@ -481,7 +550,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         refresh: data["refresh"],
       });
 
-      const decoded = await jwt.verify(entity.jwt, SPS_RBAC_JWT_SECRET);
+      const decoded = await jwt.verify(entity.jwt, RBAC_JWT_SECRET);
 
       if (!decoded.exp) {
         throw new HTTPException(400, {
@@ -493,7 +562,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/",
         secure: true,
         httpOnly: false,
-        maxAge: SPS_RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+        maxAge: RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
         expires: new Date(decoded.exp),
         sameSite: "Strict",
       });

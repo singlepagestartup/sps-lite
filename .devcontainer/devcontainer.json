@@ -10,8 +10,6 @@
   "features": {
     "ghcr.io/devcontainers-contrib/features/jshint:2": {},
     "ghcr.io/devcontainers-contrib/features/prettier:1": {},
-    // That type of docker not allows to connect to localhost from devcontainer
-    // "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/prulloac/devcontainer-features/bun:1.1.2": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
     "ghcr.io/devcontainers/features/github-cli:1": {}
@@ -23,7 +21,7 @@
 
   "portsAttributes": {
     "3000": {
-      "label": "frontend"
+      "label": "host"
     },
     "8080": {
       "label": "adminer"
@@ -33,7 +31,7 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   "postCreateCommand": "nvm install 20 && nvm alias default 20 && nvm use && npm install",
   "postAttachCommand": {
-    "frontend": "/bin/bash ./.devcontainer/postAttachCommand.sh frontend"
+    "infrastructure": "/bin/bash ./.devcontainer/postAttachCommand.sh infrastructure"
   },
 
   // Configure tool-specific properties.

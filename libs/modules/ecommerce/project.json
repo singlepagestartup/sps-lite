@@ -7,20 +7,6 @@
   "targets": {
     "lint": {},
     "tsc:build": {},
-    "repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/ecommerce:models:repository-generate"
-          },
-          {
-            "command": "nx run @sps/ecommerce:relations:repository-generate"
-          }
-        ]
-      }
-    },
     "repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -38,6 +24,20 @@
         ]
       }
     },
+    "repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/ecommerce:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:repository-generate"
+          }
+        ]
+      }
+    },
     "models:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -48,6 +48,9 @@
           },
           {
             "command": "nx run @sps/ecommerce:models:attribute:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:models:category:repository-generate"
           },
           {
             "command": "nx run @sps/ecommerce:models:product:repository-generate"
@@ -67,10 +70,25 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-generate"
+            "command": "nx run @sps/ecommerce:relations:attribute-keys-to-attributes:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:categories-to-products:repository-generate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:products-to-file-storage-module-widgets:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:categories-to-file-storage-module-widgets:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:widgets-to-categories:repository-generate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:widgets-to-products:repository-generate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-products:repository-generate"
@@ -96,6 +114,9 @@
             "command": "nx run @sps/ecommerce:models:product:repository-migrate"
           },
           {
+            "command": "nx run @sps/ecommerce:models:category:repository-migrate"
+          },
+          {
             "command": "nx run @sps/ecommerce:models:order:repository-migrate"
           },
           {
@@ -110,10 +131,25 @@
         "parallel": false,
         "commands": [
           {
-            "command": "nx run @sps/ecommerce:relations:attributes-to-attribute-keys:repository-migrate"
+            "command": "nx run @sps/ecommerce:relations:attribute-keys-to-attributes:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-billing-module-payment-intents:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:products-to-file-storage-module-widgets:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:categories-to-file-storage-module-widgets:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:categories-to-products:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:widgets-to-categories:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:widgets-to-products:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:orders-to-products:repository-migrate"
@@ -208,6 +244,34 @@
         ]
       }
     },
+    "models:category:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/models/category/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "models:category:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/models/category/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
     "models:attribute:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -264,11 +328,11 @@
         ]
       }
     },
-    "relations:attributes-to-attribute-keys:repository-generate": {
+    "relations:attribute-keys-to-attributes:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
-        "cwd": "libs/modules/ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
+        "cwd": "libs/modules/ecommerce/relations/attribute-keys-to-attributes/backend/repository/database",
         "commands": [
           {
             "command": "drizzle-kit up --config=./src/lib/config.ts"
@@ -279,12 +343,12 @@
         ]
       }
     },
-    "relations:attributes-to-attribute-keys:repository-migrate": {
+    "relations:attribute-keys-to-attributes:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
         "parallel": false,
         "envFile": "apps/host/.env.local",
-        "cwd": "libs/modules/ecommerce/relations/attributes-to-attribute-keys/backend/repository/database",
+        "cwd": "libs/modules/ecommerce/relations/attribute-keys-to-attributes/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"
@@ -369,6 +433,146 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/ecommerce/relations/orders-to-billing-module-payment-intents/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-products:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/categories-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-products:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/categories-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:products-to-file-storage-module-widgets:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/products-to-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:products-to-file-storage-module-widgets:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/products-to-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-file-storage-module-widgets:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/categories-to-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:categories-to-file-storage-module-widgets:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/categories-to-file-storage-module-widgets/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-categories:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/widgets-to-categories/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-categories:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/widgets-to-categories/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-products:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/widgets-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:widgets-to-products:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/widgets-to-products/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

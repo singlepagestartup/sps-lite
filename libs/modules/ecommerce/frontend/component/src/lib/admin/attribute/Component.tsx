@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as ParentComponent } from "@sps/ecommerce/models/attribute/frontend/component";
-import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attributes-to-attribute-keys/frontend/component";
+import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
 import { Component as ProductsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/frontend/component";
 
 export function Component() {

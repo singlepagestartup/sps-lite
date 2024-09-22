@@ -14,12 +14,6 @@ export interface IRoute {
 export interface IController<DTO extends Record<string, unknown>> {
   service: IService<DTO>;
   routes: IRoute[];
-  ok: (c: Context<any, any, any>, data: DTO) => Response | Promise<Response>;
-  send: (
-    c: Context<any, any, any>,
-    code: StatusCode,
-    data: DTO,
-  ) => Response | Promise<Response>;
   find: (c: Context, next: any) => Response | Promise<Response>;
   findById: (c: Context, next: any) => Response | Promise<Response>;
   create: (c: Context, next: any) => Response | Promise<Response>;

@@ -14,6 +14,18 @@ export function Component(props: IComponentPropsExtended) {
       variant="create"
       product={props.product}
       successCallback={(data) => {
+        // api
+        //   .create({
+        //     data: {
+        //       subjectId: props.subject.id,
+        //       ecommerceModuleOrderId: data.orderId,
+        //     },
+        //   })
+        //   .then((res) => {
+        //     if (typeof props.successCallback === "function") {
+        //       props.successCallback(res);
+        //     }
+        //   });
         createEntity.mutate({
           data: {
             subjectId: props.subject.id,

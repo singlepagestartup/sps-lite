@@ -18,6 +18,7 @@ import { Component as StartupWidget } from "@sps/startup/models/widget/frontend/
 import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
 import { Component as BillingWidget } from "@sps/billing/models/widget/frontend/component";
 import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
+import { Component as BlogWidget } from "@sps/blog/models/widget/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();
@@ -148,6 +149,16 @@ export function Component(props: IComponentPropsExtended) {
 
         {watchData.externalModule === "ecommerce" ? (
           <EcommerceWidget
+            isServer={props.isServer}
+            hostUrl={props.hostUrl}
+            variant="admin-select-input"
+            form={form}
+            formFieldName="externalWidgetId"
+          />
+        ) : null}
+
+        {watchData.externalModule === "blog" ? (
+          <BlogWidget
             isServer={props.isServer}
             hostUrl={props.hostUrl}
             variant="admin-select-input"

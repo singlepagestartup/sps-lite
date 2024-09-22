@@ -1,0 +1,30 @@
+---
+- name: Delete Traefik
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Traefik stack
+      shell: docker stack rm traefik
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
+
+    - name: Debug result of removing Traefik stack
+      debug:
+        var: result
+
+    - name: Ensure Traefik stack is removed
+      shell: docker stack ls | grep traefik
+      register: check_traefik
+      failed_when: check_traefik.rc == 0
+      ignore_errors: true
+
+    - name: Delete traefik.yml file
+      file:
+        path: /home/code/traefik.yml
+        state: absent
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.traefik.yaml
+        state: absent

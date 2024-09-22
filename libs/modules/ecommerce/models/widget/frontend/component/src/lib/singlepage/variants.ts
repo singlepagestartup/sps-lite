@@ -5,8 +5,11 @@ import { Component as AdminTable } from "./admin-table";
 import { Component as AdminSelectInput } from "./admin-select-input";
 import { Component as AdminForm } from "./admin-form";
 import { Component as Default } from "./default";
-import { Component as OrdersListBlockDefault } from "./orders-list-block-default";
-import { Component as ProductsListBlockDefault } from "./products-list-block-default";
+import { Component as OrdersListDefault } from "./orders-list-default";
+import { Component as ProductsListDefault } from "./products-list-default";
+import { Component as ProductOverviewDefault } from "./product-overview-default";
+import { Component as CategoriesListDefault } from "./categories-list-default";
+import { Component as CategoryOverviewDefault } from "./category-overview-default";
 
 export const variants = {
   "find-by-id": FindById,
@@ -16,6 +19,9 @@ export const variants = {
   "admin-select-input": AdminSelectInput,
   "admin-form": AdminForm,
   default: Default,
-  "orders-list-block-default": OrdersListBlockDefault,
-  "products-list-block-default": ProductsListBlockDefault,
+  "orders-list-default": OrdersListDefault,
+  "products-list-default": ProductsListDefault,
+  "product-overview-default": ProductOverviewDefault,
+  "categories-list-default": CategoriesListDefault,
+  "category-overview-default": CategoryOverviewDefault,
 };

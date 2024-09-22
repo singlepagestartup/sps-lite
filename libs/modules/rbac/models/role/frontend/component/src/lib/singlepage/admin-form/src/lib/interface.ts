@@ -13,6 +13,9 @@ export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   rolesToActions?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
   subjectsToRoles?: (props: ISpsComponentBase & { data?: IModel }) => ReactNode;
+  rolesToEcommerceModuleProducts?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
 }
 
 export interface IComponentPropsExtended

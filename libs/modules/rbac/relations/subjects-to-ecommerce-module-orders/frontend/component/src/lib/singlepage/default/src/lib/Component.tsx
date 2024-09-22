@@ -25,6 +25,11 @@ export function Component(props: IComponentPropsExtended) {
                   method: "eq",
                   value: props.data.ecommerceModuleOrderId,
                 },
+                {
+                  column: "type",
+                  method: "eq",
+                  value: "cart",
+                },
               ],
             },
           },

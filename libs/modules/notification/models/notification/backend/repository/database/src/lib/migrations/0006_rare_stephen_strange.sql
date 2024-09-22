@@ -1,0 +1,1 @@
+ALTER TABLE "sps_nn_notification" ALTER COLUMN "send_after" SET NOT NULL;

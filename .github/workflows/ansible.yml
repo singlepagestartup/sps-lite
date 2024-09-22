@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./tools/deployer/ansible
+        working-directory: ./tools/deployer
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -29,69 +29,59 @@ jobs:
         run: |
           echo SCRIPT: ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}.sh
           echo ARGS: ${{ steps.set-script-args.outputs.ARGS }}
-      - name: Create inventory file
-        run: |
-          cp ./actions/inventory.yaml.example inventory.yaml
-      - name: Replace ANSIBLE_HOST in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_HOST/${{ secrets.ANSIBLE_HOST }}/g" inventory.yaml
-      - name: Replace ANSIBLE_PASSWORD in inventory.yaml
-        run: |
-          sed -ie "s/ANSIBLE_PASSWORD/${{ secrets.ANSIBLE_PASSWORD }}/g" inventory.yaml
-      - name: Add deployer secrets to env file
+      - name: Add deployer PREVIEW secrets to env file
+        if: contains(github.ref_name, '-preview')
         run: |
           secrets=(\
-            "PROJECT_NAME ${{ secrets.PROJECT_NAME }}"\
-            "DOCKER_HUB_USERNAME ${{ secrets.DOCKER_HUB_USERNAME }}"\
-            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}"\
-            "DOCKER_HUB_URL ${{ secrets.DOCKER_HUB_URL }}"\
-            "DOCKER_HUB_PASSWORD ${{ secrets.DOCKER_HUB_PASSWORD }}"\
-            "ANSIBLE_HOST ${{ secrets.ANSIBLE_HOST }}"\
-            "ANSIBLE_PASSWORD ${{ secrets.ANSIBLE_PASSWORD }}"\
-            "ROOT_AWS_ACCESS_KEY ${{ secrets.ROOT_AWS_ACCESS_KEY }}"\
-            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
-            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
-            "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
-            "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
-            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
-            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
-            "DOMAIN ${{ secrets.DOMAIN }}"\
-            "JWT_SECRET ${{ secrets.JWT_SECRET }}"\
-            "ADMIN_JWT_SECRET ${{ secrets.ADMIN_JWT_SECRET }}"\
-            "APP_KEYS ${{ secrets.APP_KEYS }}"\
-            "AWS_S3_BUCKET ${{ secrets.AWS_S3_BUCKET }}"\
-            "AWS_S3_REGION ${{ secrets.AWS_S3_REGION }}"\
-            "API_TOKEN_SALT ${{ secrets.API_TOKEN_SALT }}"\
-            "SEED_ENTITIES ${{ secrets.SEED_ENTITIES }}"\
-            "UPLOAD_PROVIDER ${{ secrets.UPLOAD_PROVIDER }}"\
-            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
-            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
-            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
-            "PORTAINER_USERNAME ${{ secrets.PORTAINER_USERNAME }}"\
-            "PORTAINER_PASSWORD ${{ secrets.PORTAINER_PASSWORD }}"\
-            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PORTAINER_SERVICE_SUBDOMAIN }}"\
-            "TRAEFIK_USERNAME ${{ secrets.TRAEFIK_USERNAME }}"\
-            "TRAEFIK_PASSWORD ${{ secrets.TRAEFIK_PASSWORD }}"\
-            "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.TRAEFIK_SERVICE_SUBDOMAIN }}"\
-            "BACKEND_SERVICE_NAME ${{ secrets.BACKEND_SERVICE_NAME }}"\
-            "BACKEND_SERVICE_SUBDOMAIN ${{ secrets.BACKEND_SERVICE_SUBDOMAIN }}"\
-            "BACKEND_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.BACKEND_DOCKER_HUB_REPOSITORY_NAME }}"\
-            "FRONTEND_SERVICE_NAME ${{ secrets.FRONTEND_SERVICE_NAME }}"\
-            "FRONTEND_SERVICE_SUBDOMAIN ${{ secrets.FRONTEND_SERVICE_SUBDOMAIN }}"\
-            "FRONTEND_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.FRONTEND_DOCKER_HUB_REPOSITORY_NAME }}"\
-            "DOCUMENTATION_SERVICE_NAME ${{ secrets.DOCUMENTATION_SERVICE_NAME }}"\
-            "DOCUMENTATION_SERVICE_SUBDOMAIN ${{ secrets.DOCUMENTATION_SERVICE_SUBDOMAIN }}"\
-            "DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.DOCUMENTATION_DOCKER_HUB_REPOSITORY_NAME }}"\
-            "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
+            "PROJECT_NAME ${{ secrets.PREVIEW_PROJECT_NAME }}"\
+            "ANSIBLE_HOST ${{ secrets.PREVIEW_ANSIBLE_HOST }}"\
+            "ANSIBLE_USER ${{ secrets.PREVIEW_ANSIBLE_USER }}"\
+            "ANSIBLE_PASSWORD ${{ secrets.PREVIEW_ANSIBLE_PASSWORD }}"\
+            "DOMAIN ${{ secrets.PREVIEW_DOMAIN }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.PREVIEW_ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.PREVIEW_ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
+            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.PREVIEW_ROOT_AWS_ACCESS_KEY_ID }}"\
+            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.PREVIEW_ROOT_AWS_SECRET_ACCESS_KEY }}"\
+            "AWS_S3_BUCKET_NAME ${{ secrets.PREVIEW_AWS_S3_BUCKET_NAME }}"\
+            "AWS_REGION ${{ secrets.PREVIEW_AWS_REGION }}"\
+            "FILE_STORAGE_PROVIDER ${{ secrets.PREVIEW_FILE_STORAGE_PROVIDER }}"\
+            "BLOB_READ_WRITE_TOKEN ${{ secrets.PREVIEW_BLOB_READ_WRITE_TOKEN }}"\
+            "TRAEFIK_USERNAME ${{ secrets.PREVIEW_TRAEFIK_USERNAME }}"\
+            "TRAEFIK_PASSWORD ${{ secrets.PREVIEW_TRAEFIK_PASSWORD }}"\
+            "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_TRAEFIK_SERVICE_SUBDOMAIN }}"\
+            "PORTAINER_USERNAME ${{ secrets.PREVIEW_PORTAINER_USERNAME }}"\
+            "PORTAINER_PASSWORD ${{ secrets.PREVIEW_PORTAINER_PASSWORD }}"\
+            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_PORTAINER_SERVICE_SUBDOMAIN }}"\
+            "DATABASE_NAME ${{ secrets.PREVIEW_DATABASE_NAME }}"\
+            "DATABASE_USERNAME ${{ secrets.PREVIEW_DATABASE_USERNAME }}"\
+            "DATABASE_PASSWORD ${{ secrets.PREVIEW_DATABASE_PASSWORD }}"\
+            "REDIS_PASSWORD ${{ secrets.PREVIEW_REDIS_PASSWORD }}"\
+            "HOST_SERVICE_NAME ${{ secrets.PREVIEW_HOST_SERVICE_NAME }}"\
+            "HOST_SERVICE_SUBDOMAIN ${{ secrets.PREVIEW_HOST_SERVICE_SUBDOMAIN }}"\
+            "HOST_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.PREVIEW_HOST_DOCKER_HUB_REPOSITORY_NAME }}"\
+            "RBAC_JWT_SECRET ${{ secrets.PREVIEW_RBAC_JWT_SECRET }}"\
+            "RBAC_SECRET_KEY ${{ secrets.PREVIEW_RBAC_SECRET_KEY }}"\
+            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.PREVIEW_RBAC_COOKIE_SESSION_SECRET }}"\
+            "DOCKER_HUB_USERNAME ${{ secrets.PREVIEW_DOCKER_HUB_USERNAME }}"\
+            "DOCKER_HUB_PASSWORD ${{ secrets.PREVIEW_DOCKER_HUB_PASSWORD }}"\
+            "DOCKER_HUB_URL ${{ secrets.PREVIEW_DOCKER_HUB_URL }}"\
+            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.PREVIEW_DOCKER_HUB_LOGIN_USERNAME }}"\
+            "GITHUB_TOKEN ${{ secrets.PREVIEW_GH_TOKEN }}"\
             "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
-            "TELEGRAM_BOT_TOKEN ${{ secrets.TELEGRAM_BOT_TOKEN }}"\
-            "TELEGRAM_BOT_USERNAME ${{ secrets.TELEGRAM_BOT_USERNAME }}"\
-            "RUN_TELEGRAM_BOT ${{ secrets.RUN_TELEGRAM_BOT }}"\
-            "OPENAI_API_KEY ${{ secrets.OPENAI_API_KEY }}"\
-            "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
-            "ZERO_X_PROCESSING_TEST_PAYMENTS ${{ secrets.ZERO_X_PROCESSING_TEST_PAYMENTS }}" \
-            "ZERO_X_PROCESSING_SHOP_ID ${{ secrets.ZERO_X_PROCESSING_SHOP_ID }}" \
-            "ZERO_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.ZERO_X_PROCESSING_WEBHOOK_PASSWORD }}" \
+            "ROOT_SENTRY_API_KEY ${{ secrets.PREVIEW_ROOT_SENTRY_API_KEY }}"\
+            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.PREVIEW_ROOT_SENTRY_ORGANIZATION_SLUG }}"\
+            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.PREVIEW_ROOT_SENTRY_TEAM_SLUG }}"\
+            "GOOGLE_TAG_MANAGER_ID ${{ secrets.PREVIEW_GOOGLE_TAG_MANAGER_ID }}"\
+            "GOOGLE_ANALYTICS_ID ${{ secrets.PREVIEW_GOOGLE_ANALYTICS_ID }}"\
+            "STRIPE_API_KEY ${{ secrets.PREVIEW_STRIPE_API_KEY }}"\
+            "O_X_PROCESSING_SHOP_ID ${{ secrets.PREVIEW_O_X_PROCESSING_SHOP_ID }}"\
+            "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.PREVIEW_O_X_PROCESSING_TEST_PAYMENTS }}"\
+            "O_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.PREVIEW_O_X_PROCESSING_WEBHOOK_PASSWORD }}"\
+            "PAYSELECTION_SECRET_KEY ${{ secrets.PREVIEW_PAYSELECTION_SECRET_KEY }}"\
+            "PAYSELECTION_SITE_ID ${{ secrets.PREVIEW_PAYSELECTION_SITE_ID }}"\
+            "PAYSELECTION_SITE_NAME ${{ secrets.PREVIEW_PAYSELECTION_SITE_NAME }}"\
+            "PAYSELECTION_PUBLIC_KEY ${{ secrets.PREVIEW_PAYSELECTION_PUBLIC_KEY }}"\
+            "PAYSELECTION_WEBHOOK_URL ${{ secrets.PREVIEW_PAYSELECTION_WEBHOOK_URL }}"\
           )
 
           for secret in "${secrets[@]}"; do
@@ -100,14 +90,71 @@ jobs:
 
             echo "$secret_name=$secret_value" >> .env
           done
-      # - name: Check env and inventory file
-      #   run: |
-      #     cat .env
-      #     cat inventory.yaml
+      - name: Add deployer default secrets to env file
+        if: ${{ !contains(github.ref_name, '-preview') }}
+        run: |
+          secrets=(\
+            "PROJECT_NAME ${{ secrets.PROJECT_NAME }}"\
+            "ANSIBLE_HOST ${{ secrets.ANSIBLE_HOST }}"\
+            "ANSIBLE_USER ${{ secrets.ANSIBLE_USER }}"\
+            "ANSIBLE_PASSWORD ${{ secrets.ANSIBLE_PASSWORD }}"\
+            "DOMAIN ${{ secrets.DOMAIN }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_EMAIL ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_EMAIL }}"\
+            "ROOT_CLOUDFLARE_ACCOUNT_API_KEY ${{ secrets.ROOT_CLOUDFLARE_ACCOUNT_API_KEY }}"\
+            "ROOT_AWS_ACCESS_KEY_ID ${{ secrets.ROOT_AWS_ACCESS_KEY_ID }}"\
+            "ROOT_AWS_SECRET_ACCESS_KEY ${{ secrets.ROOT_AWS_SECRET_ACCESS_KEY }}"\
+            "AWS_S3_BUCKET_NAME ${{ secrets.AWS_S3_BUCKET_NAME }}"\
+            "AWS_REGION ${{ secrets.AWS_REGION }}"\
+            "FILE_STORAGE_PROVIDER ${{ secrets.FILE_STORAGE_PROVIDER }}"\
+            "BLOB_READ_WRITE_TOKEN ${{ secrets.BLOB_READ_WRITE_TOKEN }}"\
+            "TRAEFIK_USERNAME ${{ secrets.TRAEFIK_USERNAME }}"\
+            "TRAEFIK_PASSWORD ${{ secrets.TRAEFIK_PASSWORD }}"\
+            "TRAEFIK_SERVICE_SUBDOMAIN ${{ secrets.TRAEFIK_SERVICE_SUBDOMAIN }}"\
+            "PORTAINER_USERNAME ${{ secrets.PORTAINER_USERNAME }}"\
+            "PORTAINER_PASSWORD ${{ secrets.PORTAINER_PASSWORD }}"\
+            "PORTAINER_SERVICE_SUBDOMAIN ${{ secrets.PORTAINER_SERVICE_SUBDOMAIN }}"\
+            "DATABASE_NAME ${{ secrets.DATABASE_NAME }}"\
+            "DATABASE_USERNAME ${{ secrets.DATABASE_USERNAME }}"\
+            "DATABASE_PASSWORD ${{ secrets.DATABASE_PASSWORD }}"\
+            "REDIS_PASSWORD ${{ secrets.REDIS_PASSWORD }}"\
+            "HOST_SERVICE_NAME ${{ secrets.HOST_SERVICE_NAME }}"\
+            "HOST_SERVICE_SUBDOMAIN ${{ secrets.HOST_SERVICE_SUBDOMAIN }}"\
+            "HOST_DOCKER_HUB_REPOSITORY_NAME ${{ secrets.HOST_DOCKER_HUB_REPOSITORY_NAME }}"\
+            "RBAC_JWT_SECRET ${{ secrets.RBAC_JWT_SECRET }}"\
+            "RBAC_SECRET_KEY ${{ secrets.RBAC_SECRET_KEY }}"\
+            "RBAC_COOKIE_SESSION_SECRET ${{ secrets.RBAC_COOKIE_SESSION_SECRET }}"\
+            "DOCKER_HUB_USERNAME ${{ secrets.DOCKER_HUB_USERNAME }}"\
+            "DOCKER_HUB_PASSWORD ${{ secrets.DOCKER_HUB_PASSWORD }}"\
+            "DOCKER_HUB_URL ${{ secrets.DOCKER_HUB_URL }}"\
+            "DOCKER_HUB_LOGIN_USERNAME ${{ secrets.DOCKER_HUB_LOGIN_USERNAME }}"\
+            "GITHUB_TOKEN ${{ secrets.GH_TOKEN }}"\
+            "GITHUB_REPOSITORY ${{ github.repository_owner }}/${{ github.event.repository.name }}"\
+            "ROOT_SENTRY_API_KEY ${{ secrets.ROOT_SENTRY_API_KEY }}"\
+            "ROOT_SENTRY_ORGANIZATION_SLUG ${{ secrets.ROOT_SENTRY_ORGANIZATION_SLUG }}"\
+            "ROOT_SENTRY_TEAM_SLUG ${{ secrets.ROOT_SENTRY_TEAM_SLUG }}"\
+            "GOOGLE_TAG_MANAGER_ID ${{ secrets.GOOGLE_TAG_MANAGER_ID }}"\
+            "GOOGLE_ANALYTICS_ID ${{ secrets.GOOGLE_ANALYTICS_ID }}"\
+            "STRIPE_API_KEY ${{ secrets.STRIPE_API_KEY }}"\
+            "O_X_PROCESSING_SHOP_ID ${{ secrets.O_X_PROCESSING_SHOP_ID }}"\
+            "O_X_PROCESSING_TEST_PAYMENTS ${{ secrets.O_X_PROCESSING_TEST_PAYMENTS }}"\
+            "O_X_PROCESSING_WEBHOOK_PASSWORD ${{ secrets.O_X_PROCESSING_WEBHOOK_PASSWORD }}"\
+            "PAYSELECTION_SECRET_KEY ${{ secrets.PAYSELECTION_SECRET_KEY }}"\
+            "PAYSELECTION_SITE_ID ${{ secrets.PAYSELECTION_SITE_ID }}"\
+            "PAYSELECTION_SITE_NAME ${{ secrets.PAYSELECTION_SITE_NAME }}"\
+            "PAYSELECTION_PUBLIC_KEY ${{ secrets.PAYSELECTION_PUBLIC_KEY }}"\
+            "PAYSELECTION_WEBHOOK_URL ${{ secrets.PAYSELECTION_WEBHOOK_URL }}"\
+          )
+
+          for secret in "${secrets[@]}"; do
+            secret_name=$(echo "$secret" | cut -d' ' -f1)
+            secret_value=$(echo "$secret" | cut -d' ' -f2)
+
+            echo "$secret_name=$secret_value" >> .env
+          done
       - name: Make script file executable
         run: |
           chmod +x \
             ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh
       - name: Run service script
         run: |
-          ./$(echo ${{ github.ref_name }} | cut -d'-' -f2).sh $(echo ${{ github.ref_name }} | cut -d'-' -f3-)
+          ./$(echo ${{ steps.set-script-file-name.outputs.SCRIPT_FILE_NAME }}).sh

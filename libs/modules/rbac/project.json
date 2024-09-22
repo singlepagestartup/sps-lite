@@ -7,20 +7,6 @@
   "targets": {
     "lint": {},
     "tsc:build": {},
-    "repository-generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "parallel": false,
-        "commands": [
-          {
-            "command": "nx run @sps/rbac:models:repository-generate"
-          },
-          {
-            "command": "nx run @sps/rbac:relations:repository-generate"
-          }
-        ]
-      }
-    },
     "repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -38,6 +24,21 @@
         ]
       }
     },
+    "repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          {
+            "command": "nx run @sps/rbac:models:repository-generate"
+          },
+          {
+            "command": "nx run @sps/rbac:relations:repository-generate"
+          }
+        ]
+      }
+    },
+
     "models:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -70,7 +71,16 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/rbac:relations:roles-to-ecommerce-module-products:repository-generate"
+          },
+          {
+            "command": "nx run @sps/rbac:relations:subjects-to-notification-module-topics:repository-generate"
+          },
+          {
             "command": "nx run @sps/rbac:relations:subjects-to-ecommerce-module-orders:repository-generate"
+          },
+          {
+            "command": "nx run @sps/rbac:relations:subjects-to-billing-module-payment-intents:repository-generate"
           },
           {
             "command": "nx run @sps/rbac:relations:roles-to-actions:repository-generate"
@@ -119,7 +129,16 @@
         "parallel": false,
         "commands": [
           {
+            "command": "nx run @sps/rbac:relations:roles-to-ecommerce-module-products:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/rbac:relations:subjects-to-notification-module-topics:repository-migrate"
+          },
+          {
             "command": "nx run @sps/rbac:relations:subjects-to-ecommerce-module-orders:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/rbac:relations:subjects-to-billing-module-payment-intents:repository-migrate"
           },
           {
             "command": "nx run @sps/rbac:relations:roles-to-actions:repository-migrate"
@@ -304,6 +323,21 @@
         ]
       }
     },
+    "relations:roles-to-ecommerce-module-products:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/rbac/relations/roles-to-ecommerce-module-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
     "relations:roles-to-actions:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -349,6 +383,36 @@
         ]
       }
     },
+    "relations:subjects-to-billing-module-payment-intents:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/rbac/relations/subjects-to-billing-module-payment-intents/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:subjects-to-notification-module-topics:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/rbac/relations/subjects-to-notification-module-topics/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
     "relations:subjects-to-roles:repository-generate": {
       "executor": "nx:run-commands",
       "options": {
@@ -379,6 +443,19 @@
         ]
       }
     },
+    "relations:roles-to-ecommerce-module-products:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/rbac/relations/roles-to-ecommerce-module-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
     "relations:roles-to-actions:repository-migrate": {
       "executor": "nx:run-commands",
       "options": {
@@ -398,6 +475,32 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/rbac/relations/subjects-to-ecommerce-module-orders/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:subjects-to-billing-module-payment-intents:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/rbac/relations/subjects-to-billing-module-payment-intents/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:subjects-to-notification-module-topics:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/rbac/relations/subjects-to-notification-module-topics/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

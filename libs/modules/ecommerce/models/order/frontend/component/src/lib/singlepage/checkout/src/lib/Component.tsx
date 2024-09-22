@@ -11,13 +11,16 @@ import { api } from "@sps/ecommerce/models/order/sdk/client";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
-const providers = ["stripe", "0xprocessing"] as const;
+const providers = ["stripe", "0xprocessing", "payselection"] as const;
 
 const formSchema = z.object({
   provider: z
     .string()
     .refine(
-      (value) => value === "stripe" || value === "0xprocessing",
+      (value) =>
+        value === "stripe" ||
+        value === "0xprocessing" ||
+        value === "payselection",
       "Invalid provider",
     ),
 });

@@ -1,10 +1,10 @@
 import { createMiddleware } from "hono/factory";
 import {
-  SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
-  SPS_RBAC_COOKIE_SESSION_NAME,
-  SPS_RBAC_COOKIE_SESSION_SECRET,
-  SPS_RBAC_SECRET_KEY,
-  SPS_RBAC_SESSION_LIFETIME_IN_SECONDS,
+  RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
+  RBAC_COOKIE_SESSION_NAME,
+  RBAC_COOKIE_SESSION_SECRET,
+  RBAC_SECRET_KEY,
+  RBAC_SESSION_LIFETIME_IN_SECONDS,
 } from "@sps/shared-utils";
 import { getCookie, setCookie } from "hono/cookie";
 import * as Iron from "iron-webcrypto";
@@ -30,7 +30,7 @@ export class Middleware {
   cookieSessionName: string;
 
   constructor(options?: SessionOptions) {
-    const cookieSessionSecret = SPS_RBAC_COOKIE_SESSION_SECRET;
+    const cookieSessionSecret = RBAC_COOKIE_SESSION_SECRET;
 
     if (!cookieSessionSecret) {
       throw new Error("Cookie session secret is required");
@@ -45,13 +45,13 @@ export class Middleware {
     this.cookieSessionSecret = cookieSessionSecret;
 
     const cookieSessionExpirationSeconds = parseInt(
-      SPS_RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
+      RBAC_COOKIE_SESSION_EXPIRATION_SECONDS,
     );
 
     this.cookieSessionExpirationSeconds = cookieSessionExpirationSeconds;
 
     const cookieSessionName =
-      options?.cookieSessionName || SPS_RBAC_COOKIE_SESSION_NAME;
+      options?.cookieSessionName || RBAC_COOKIE_SESSION_NAME;
 
     this.cookieSessionName = cookieSessionName;
   }
@@ -66,9 +66,9 @@ export class Middleware {
         return await next();
       }
 
-      if (!SPS_RBAC_SECRET_KEY) {
+      if (!RBAC_SECRET_KEY) {
         throw new Error(
-          "SPS_RBAC_SECRET_KEY is required for sessions middleware to work",
+          "RBAC_SECRET_KEY is required for sessions middleware to work",
         );
       }
 
@@ -105,7 +105,7 @@ export class Middleware {
             },
             options: {
               headers: {
-                "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
               next: {
                 cache: "no-store",
@@ -120,19 +120,19 @@ export class Middleware {
           const needToProlongate =
             new Date(session.expiresAt).getTime() > Date.now() &&
             new Date(session.expiresAt).getTime() - Date.now() <
-              SPS_RBAC_SESSION_LIFETIME_IN_SECONDS * 0.8 * 1000;
+              RBAC_SESSION_LIFETIME_IN_SECONDS * 0.8 * 1000;
 
           if (needToProlongate) {
             const prolongatedSession = await api.update({
               data: {
                 expiresAt: new Date(
-                  Date.now() + SPS_RBAC_SESSION_LIFETIME_IN_SECONDS * 1000,
+                  Date.now() + RBAC_SESSION_LIFETIME_IN_SECONDS * 1000,
                 ).toISOString(),
               },
               id: session.id,
               options: {
                 headers: {
-                  "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
                 },
                 next: {
                   cache: "no-store",
@@ -158,7 +158,7 @@ export class Middleware {
           },
           options: {
             headers: {
-              "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
             next: {
               cache: "no-store",

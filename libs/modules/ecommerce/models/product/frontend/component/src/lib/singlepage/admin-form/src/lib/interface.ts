@@ -14,7 +14,16 @@ export interface IComponentProps
   productsToAttributes?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  productsToFileStorageModuleWidgets?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
   ordersToProducts?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  categoriesToProducts?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
+  widgetsToProducts?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
 }

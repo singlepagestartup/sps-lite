@@ -1,6 +1,6 @@
 #/bin/bash
 
-./create_env.sh vercel
+./create_env.sh deployment
 
 export NEW_MIGRATIONS="false"
 

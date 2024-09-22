@@ -1,0 +1,1 @@
+ALTER TABLE "sps_nn_topic" ADD COLUMN "type" text DEFAULT 'info' NOT NULL;

@@ -6,10 +6,14 @@ import {
   query,
   options,
 } from "@sps/billing/models/payment-intent/sdk/model";
+import { action as provider } from "./actions/provider";
 
-export const api = factory<IModel>({
-  route,
-  host,
-  options,
-  params: query,
-});
+export const api = {
+  provider,
+  ...factory<IModel>({
+    route,
+    host,
+    options,
+    params: query,
+  }),
+};

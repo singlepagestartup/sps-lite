@@ -10,7 +10,7 @@ import { api as attributeKeyApi } from "@sps/ecommerce/models/attribute-key/sdk/
 import { api as productApi } from "@sps/ecommerce/models/product/sdk/server";
 import { api as attributeApi } from "@sps/ecommerce/models/attribute/sdk/server";
 import { api as productsToAttributesApi } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
-import { api as attributesToAttributeKeysApi } from "@sps/ecommerce/relations/attributes-to-attribute-keys/sdk/server";
+import { api as attributesToAttributeKeysApi } from "@sps/ecommerce/relations/attribute-keys-to-attributes/sdk/server";
 
 export default function Client(props: IComponentProps) {
   const [amount, setAmount] = useState<string | undefined>();

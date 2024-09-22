@@ -2,7 +2,7 @@ import { api as telegramMessageApi } from "@sps/sps-third-parties/models/telegra
 import { Context } from "telegraf";
 import { Message, Update } from "telegraf/types";
 import { getResponse as getWelcomeResponse } from "../../response-getters/welcome";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 
 export async function handler(
   ctx: Context<Update.MessageUpdate<Message.TextMessage>>,
@@ -20,7 +20,7 @@ export async function handler(
     reply_markup: welcomeResponseContent.replyMarkup,
   });
 
-  if (SPS_RBAC_SECRET_KEY) {
+  if (RBAC_SECRET_KEY) {
     const dbMessage = await telegramMessageApi.create({
       data: {
         from: ctx.botInfo.username,
@@ -29,7 +29,7 @@ export async function handler(
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",

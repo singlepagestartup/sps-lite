@@ -65,7 +65,7 @@ export function Component(props: IComponentPropsExtended) {
         },
       });
     }
-  }, [token.decodedToken, refreshToken.decodedToken]);
+  }, [token.decodedToken, refreshToken.isExpired, refreshToken.decodedToken]);
 
   useEffect(() => {
     if (refresh.isError) {

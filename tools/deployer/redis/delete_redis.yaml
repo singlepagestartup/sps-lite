@@ -1,0 +1,30 @@
+---
+- name: Delete Redis
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Redis stack
+      shell: docker stack rm redis
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
+
+    - name: Debug result of removing Redis stack
+      debug:
+        var: result
+
+    - name: Ensure Redis stack is removed
+      shell: docker stack ls | grep redis
+      register: check_redis
+      failed_when: check_redis.rc == 0
+      ignore_errors: true
+
+    - name: Remove docker-compose file
+      file:
+        path: /home/code/docker-compose.redis.yaml
+        state: absent
+
+    - name: Remove redis_data directory
+      file:
+        path: /home/code/redis_data
+        state: absent

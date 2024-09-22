@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   variants,
   insertSchema,
+  statuses,
+  methods,
 } from "@sps/notification/models/notification/sdk/model";
 import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
 
@@ -20,6 +22,12 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(insertSchema),
     defaultValues: {
       variant: props.data?.variant || "default",
+      data: props.data?.data || "",
+      status: props.data?.status || "new",
+      title: props.data?.title || "",
+      method: props.data?.method || "email",
+      reciever: props.data?.reciever || "",
+      attachments: props.data?.attachments || "",
     },
   });
 
@@ -47,6 +55,59 @@ export function Component(props: IComponentPropsExtended) {
       <div className="flex flex-col gap-6">
         <FormField
           ui="shadcn"
+          type="text"
+          label="Title"
+          name="title"
+          form={form}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Data"
+          name="data"
+          form={form}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Attachments"
+          name="attachments"
+          form={form}
+          placeholder="Array of attachments"
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Reciever"
+          name="reciever"
+          form={form}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Method"
+          name="method"
+          form={form}
+          placeholder="Select method"
+          options={methods.map((method) => [method, method])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="select"
+          label="Status"
+          name="status"
+          form={form}
+          placeholder="Select status"
+          options={statuses.map((status) => [status, status])}
+        />
+
+        <FormField
+          ui="shadcn"
           type="select"
           label="Variant"
           name="variant"
@@ -54,6 +115,22 @@ export function Component(props: IComponentPropsExtended) {
           placeholder="Select variant"
           options={variants.map((variant) => [variant, variant])}
         />
+
+        {props.topicsToNotifications
+          ? props.topicsToNotifications({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
+        {props.notificationsToTemplates
+          ? props.notificationsToTemplates({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

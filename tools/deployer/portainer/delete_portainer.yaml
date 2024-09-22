@@ -1,0 +1,42 @@
+---
+- name: Delete Portainer
+  hosts: all
+  become: yes
+  tasks:
+    - name: Remove Portainer stack
+      shell: docker stack rm portainer
+      register: result
+      failed_when: result.rc != 0
+      ignore_errors: false
+
+    - name: Debug result of removing Portainer stack
+      debug:
+        var: result
+
+    - name: Ensure Portainer stack is removed
+      shell: docker stack ls | grep portainer
+      register: check_portainer
+      failed_when: check_portainer.rc == 0
+      ignore_errors: true
+
+    - name: Delete portainer_data directory
+      file:
+        path: /home/code/portainer_data
+        state: absent
+
+    - name: Delete docker-compose file
+      file:
+        path: /home/code/docker-compose.portainer.yaml
+        state: absent
+
+    - name: Delete docker_hub_registry_id file
+      file:
+        path: /home/code/docker_hub_registry_id
+        state: absent
+      ignore_errors: yes
+
+    - name: Delete set-portainer-webhook.js file
+      file:
+        path: /home/code/set-portainer-webhook.js
+        state: absent
+      ignore_errors: yes

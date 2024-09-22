@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { injectable } from "inversify";
 import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/broadcast/models/channel/backend/repository/database";
-import { SPS_RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
 import { api as messageApi } from "@sps/broadcast/models/message/sdk/server";
 import { api as channelsToMessagesApi } from "@sps/broadcast/relations/channels-to-messages/sdk/server";
@@ -10,8 +10,8 @@ import { api as channelsToMessagesApi } from "@sps/broadcast/relations/channels-
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async pushMessage(props: { data: { channelName: string; payload: any } }) {
-    if (!SPS_RBAC_SECRET_KEY) {
-      throw new Error("SPS_RBAC_SECRET_KEY is not defined");
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC_SECRET_KEY is not defined");
     }
 
     const { data } = props;
@@ -37,7 +37,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
         options: {
           headers: {
-            "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
           },
           next: {
             cache: "no-store",
@@ -52,7 +52,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",
@@ -67,7 +67,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       },
       options: {
         headers: {
-          "X-RBAC-SECRET-KEY": SPS_RBAC_SECRET_KEY,
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
         },
         next: {
           cache: "no-store",

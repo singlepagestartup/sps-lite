@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1725823352314,
+      "tag": "0000_violet_revanche",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1725832527620,
+      "tag": "0001_blushing_jazinda",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1725833242581,
+      "tag": "0002_useful_nekra",
+      "breakpoints": true
+    }
+  ]
+}

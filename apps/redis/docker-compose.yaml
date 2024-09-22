@@ -5,10 +5,12 @@ services:
     extends:
       file: ./docker-compose.redis.yaml
       service: redis
+    env_file:
+      - ./.env
     networks:
-      - sps-redis-network
+      - redis_network
 
 networks:
-  sps-redis-network:
+  redis_network:
     external: false
-    name: ${COMPOSE_PROJECT_NAME}-redis-network
+    name: ${COMPOSE_PROJECT_NAME}_redis_network

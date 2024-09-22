@@ -1,13 +1,19 @@
 import { DefaultApp } from "@sps/shared-backend-api";
 import { app as widgetApp } from "@sps/ecommerce/models/widget/backend/app/api";
 import { app as productApp } from "@sps/ecommerce/models/product/backend/app/api";
+import { app as categoryApp } from "@sps/ecommerce/models/category/backend/app/api";
 import { app as orderApp } from "@sps/ecommerce/models/order/backend/app/api";
 import { app as attributeApp } from "@sps/ecommerce/models/attribute/backend/app/api";
 import { app as attributeKeyApp } from "@sps/ecommerce/models/attribute-key/backend/app/api";
-import { app as attributesToAttributeKeysApp } from "@sps/ecommerce/relations/attributes-to-attribute-keys/backend/app/api";
+import { app as attributesToAttributeKeysApp } from "@sps/ecommerce/relations/attribute-keys-to-attributes/backend/app/api";
 import { app as productsToAttributesApp } from "@sps/ecommerce/relations/products-to-attributes/backend/app/api";
 import { app as ordersToProductsApp } from "@sps/ecommerce/relations/orders-to-products/backend/app/api";
 import { app as ordersToBillingPaymentIntentsApp } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/backend/app/api";
+import { app as categoriesToProductsApp } from "@sps/ecommerce/relations/categories-to-products/backend/app/api";
+import { app as productsToFileStorageModuleWidgetsApp } from "@sps/ecommerce/relations/products-to-file-storage-module-widgets/backend/app/api";
+import { app as categoriesToFileStorageModuleWidgetsApp } from "@sps/ecommerce/relations/categories-to-file-storage-module-widgets/backend/app/api";
+import { app as widgetsToCategoriesApp } from "@sps/ecommerce/relations/widgets-to-categories/backend/app/api";
+import { app as widgetsToProductsApp } from "@sps/ecommerce/relations/widgets-to-products/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -30,6 +36,11 @@ export class Apps {
     });
     this.apps.push({
       type: "model",
+      route: "/categories",
+      app: categoryApp,
+    });
+    this.apps.push({
+      type: "model",
       route: "/orders",
       app: orderApp,
     });
@@ -45,7 +56,7 @@ export class Apps {
     });
     this.apps.push({
       type: "relation",
-      route: "/attributes-to-attribute-keys",
+      route: "/attribute-keys-to-attributes",
       app: attributesToAttributeKeysApp,
     });
     this.apps.push({
@@ -62,6 +73,31 @@ export class Apps {
       type: "relation",
       route: "/orders-to-billing-module-payment-intents",
       app: ordersToBillingPaymentIntentsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/categories-to-products",
+      app: categoriesToProductsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/products-to-file-storage-module-widgets",
+      app: productsToFileStorageModuleWidgetsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/categories-to-file-storage-module-widgets",
+      app: categoriesToFileStorageModuleWidgetsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-categories",
+      app: widgetsToCategoriesApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/widgets-to-products",
+      app: widgetsToProductsApp,
     });
   }
 }

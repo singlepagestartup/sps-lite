@@ -45,17 +45,19 @@ export class Configuration extends ParentConfiguration {
               },
             },
             {
-              field: "productId",
+              field: "billingModulePaymentIntentId",
               transform: (data) => {
                 const relationEntites = data.seeds
                   .find(
                     (seed) =>
-                      seed.name === "product" &&
+                      seed.name === "payment-intent" &&
                       seed.type === "model" &&
-                      seed.module === "ecommerce",
+                      seed.module === "billing",
                   )
                   ?.seeds?.filter(
-                    (seed) => seed.dump.id === data.entity.dump.productId,
+                    (seed) =>
+                      seed.dump.id ===
+                      data.entity.dump.billingModulePaymentIntentId,
                   );
 
                 return relationEntites?.[0].new.id;

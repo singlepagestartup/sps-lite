@@ -4,6 +4,7 @@ import { Component as Rbac } from "./rbac/Component";
 import { Component as Startup } from "./startup/Component";
 import { Component as Ecommerce } from "./ecommerce/Component";
 import { Component as WebsiteBuilder } from "./website-builder/Component";
+import { Component as Blog } from "./blog/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -14,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {props.data.externalModule === "rbac" ? (
+      {/* {props.data.externalModule === "rbac" ? (
         <Rbac
           {...props}
           isServer={props.isServer}
@@ -23,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
         />
       ) : null}
 
-      {/* {props.data.externalModule === "startup" ? (
+      {props.data.externalModule === "startup" ? (
         <Startup
           {...props}
           isServer={props.isServer}
@@ -32,16 +33,16 @@ export function Component(props: IComponentPropsExtended) {
         />
       ) : null} */}
 
-      {/* {props.data.externalModule === "website-builder" ? (
+      {props.data.externalModule === "website-builder" ? (
         <WebsiteBuilder
           {...props}
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           data={props.data}
         />
-      ) : null} */}
+      ) : null}
 
-      {props.data.externalModule === "ecommerce" ? (
+      {/* {props.data.externalModule === "ecommerce" ? (
         <Ecommerce
           {...props}
           isServer={props.isServer}
@@ -49,6 +50,15 @@ export function Component(props: IComponentPropsExtended) {
           data={props.data}
         />
       ) : null}
+
+      {props.data.externalModule === "blog" ? (
+        <Blog
+          {...props}
+          isServer={props.isServer}
+          hostUrl={props.hostUrl}
+          data={props.data}
+        />
+      ) : null} */}
     </div>
   );
 }

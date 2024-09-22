@@ -1,3 +1,7 @@
+/**
+ * Required for image-generator, without importing fonts.css compilled fonts
+ * have random hash names <hash>.p.ttf, not Bold.<hash>.ttf
+ */
 import "../styles/fonts.css";
 import "../styles/tailwind.scss";
 
@@ -9,6 +13,9 @@ import { Component as SpsRbacSubject } from "@sps/rbac/models/subject/frontend/c
 import { Provider as SpsRbacProvider } from "@sps/rbac/frontend/component";
 import { App as SpsBroadcast } from "@sps/broadcast/frontend/component";
 import Loading from "./loading";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GOOGLE_ANALYTICS_ID, GOOGLE_TAG_MANAGER_ID } from "@sps/shared-utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default async function RootLayout({
   children,
@@ -17,6 +24,9 @@ export default async function RootLayout({
 }) {
   return (
     <html className="scroll-smooth">
+      {GOOGLE_TAG_MANAGER_ID ? (
+        <GoogleTagManager gtmId={GOOGLE_TAG_MANAGER_ID} />
+      ) : null}
       <body
         className={`${fonts.defaultFont.variable} ${fonts.primaryFont.variable}`}
       >
@@ -32,6 +42,9 @@ export default async function RootLayout({
           </SpsRbacProvider>
         </Suspense>
       </body>
+      {GOOGLE_ANALYTICS_ID ? (
+        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+      ) : null}
     </html>
   );
 }

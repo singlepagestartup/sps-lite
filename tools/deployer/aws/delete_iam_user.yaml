@@ -1,0 +1,60 @@
+---
+- name: Delete IAM user
+  hosts: all
+  become: yes
+  vars:
+    - root_aws_access_key_id: "{{ ROOT_AWS_ACCESS_KEY_ID }}"
+    - root_aws_secret_access_key: "{{ ROOT_AWS_SECRET_ACCESS_KEY }}"
+    - project_name: "{{ PROJECT_NAME }}"
+  tasks:
+    - name: Get ansible ansible_system_vendor
+      set_fact:
+        ansible_system_vendor: "{{ hostvars[inventory_hostname]['ansible_system_vendor'] }}"
+
+    - name: If DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation --break-system-packages
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor == "DigitalOcean"
+
+    - name: If not DigitalOcean
+      block:
+        - name: Install required Python packages
+          pip:
+            name: "{{ item }}"
+            state: present
+            executable: pip3
+            extra_args: --no-build-isolation
+          loop:
+            - boto
+            - boto3
+            - botocore
+            - awscli
+      when: ansible_system_vendor != "DigitalOcean"
+
+    - name: Delete IAM user
+      amazon.aws.iam_user:
+        name: "{{ item }}"
+        state: absent
+        aws_access_key: "{{ root_aws_access_key_id }}"
+        aws_secret_access_key: "{{ root_aws_secret_access_key }}"
+      loop:
+        - "{{ project_name }}"
+        - "{{ project_name }}dev"
+
+    - name: Delete file
+      file:
+        path: "/home/code/{{ item }}"
+        state: absent
+      loop:
+        - "iam.env"
+        - "dev.iam.env"

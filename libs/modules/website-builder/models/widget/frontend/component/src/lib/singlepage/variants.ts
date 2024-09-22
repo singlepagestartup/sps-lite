@@ -15,6 +15,6 @@ export const variants = {
   "admin-table": AdminTable,
   default: Default,
   "content-block-default": ContentBlockDefaultComponent,
-  "footer-default": FooterDefaultComponent,
-  "navbar-default": NavbarDefaultComponent,
+  // "footer-default": FooterDefaultComponent,
+  // "navbar-default": NavbarDefaultComponent,
 };
