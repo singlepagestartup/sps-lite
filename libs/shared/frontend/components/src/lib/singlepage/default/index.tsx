@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import { IComponentProps } from "./interface";
 import { Provider as ParentProvider } from "@sps/shared-frontend-client-api";
+import { ErrorBoundary } from "@sps/ui-adapter";
+import { Error } from "./Error";
 
 export function Component<M extends { id: string }, V>(
   props: IComponentProps<M, V> & {
@@ -19,10 +21,12 @@ export function Component<M extends { id: string }, V>(
   const Provider = props.Provider;
 
   return (
-    <Suspense fallback={<Skeleton />}>
-      <Provider>
-        <Comp {...props} />
-      </Provider>
-    </Suspense>
+    <ErrorBoundary fallback={Error}>
+      <Suspense fallback={<Skeleton />}>
+        <Provider>
+          <Comp {...props} />
+        </Provider>
+      </Suspense>
+    </ErrorBoundary>
   );
 }

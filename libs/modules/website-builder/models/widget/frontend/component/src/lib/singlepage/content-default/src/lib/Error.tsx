@@ -1,1 +1,1 @@
-export { Error } from "@sps/shared-frontend-components/singlepage/default/Error";
+// export { Error } from "@sps/shared-frontend-components/singlepage/default/Error";

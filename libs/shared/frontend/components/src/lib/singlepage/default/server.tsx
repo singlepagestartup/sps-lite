@@ -3,14 +3,12 @@ import "server-only";
 
 import { IComponentProps, IComponentPropsExtended } from "./interface";
 import { factory } from "@sps/shared-frontend-server-api";
-import { ErrorBoundary } from "@sps/ui-adapter";
 
 export async function Component<
   M extends { id: string },
   V,
   A extends {
     api: ReturnType<typeof factory<M>>;
-    Error: React.ComponentType;
     Skeleton: React.ComponentType;
     Component: React.ComponentType<
       IComponentPropsExtended<M, V, IComponentProps<M, V>>
@@ -18,7 +16,7 @@ export async function Component<
   },
   CP extends IComponentProps<M, V>,
 >(props: CP & A) {
-  const { Error, Component: Child } = props;
+  const { Component: Child } = props;
 
   if (!props.data.id) {
     return <></>;
@@ -33,9 +31,5 @@ export async function Component<
     return <></>;
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Child {...props} data={data} />
-    </ErrorBoundary>
-  );
+  return <Child {...props} data={data} />;
 }
