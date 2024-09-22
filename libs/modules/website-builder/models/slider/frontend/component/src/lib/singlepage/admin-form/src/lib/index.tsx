@@ -1,17 +1,19 @@
-import { Provider as ApiProvider } from "@sps/website-builder/models/slider/sdk/client";
+import {
+  Provider,
+  api as clientApi,
+} from "@sps/website-builder/models/slider/sdk/client";
+import { api as serverApi } from "@sps/website-builder/models/slider/sdk/server";
 import { IComponentProps } from "./interface";
-import Client from "./client";
-import Server from "./server";
-import { Skeleton } from "./Skeleton";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form2";
+import { Component as ChildComponent } from "./Component";
 
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Client={Client}
-      Server={Server}
-      Skeleton={Skeleton}
-      Provider={ApiProvider}
+      Component={ChildComponent}
+      Provider={Provider}
+      clientApi={clientApi}
+      serverApi={serverApi}
       {...props}
     />
   );
