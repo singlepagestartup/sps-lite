@@ -23,6 +23,8 @@ export function Component(props: IComponentPropsExtended) {
           return (
             <AdminTableRow
               key={index}
+              module="billing"
+              name="currency"
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="admin-table-row"

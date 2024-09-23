@@ -3,9 +3,8 @@
 import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/file-storage/models/file/sdk/client";
-import { BACKEND_URL } from "@sps/shared-utils";
 import Image from "next/image";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row2/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
@@ -13,10 +12,8 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <ParentComponent
       {...props}
-      id={props.data.id}
       module="file-storage"
       name="file"
-      adminForm={props.adminForm ? props.adminForm(props) : null}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });

@@ -1,17 +1,19 @@
-import { Provider as ApiProvider } from "@sps/ecommerce/relations/widgets-to-categories/sdk/client";
+import {
+  Provider,
+  api as clientApi,
+} from "@sps/ecommerce/relations/widgets-to-categories/sdk/client";
+import { api as serverApi } from "@sps/ecommerce/relations/widgets-to-categories/sdk/server";
 import { IComponentProps } from "./interface";
-import Client from "./client";
-import Server from "./server";
-import { Skeleton } from "./Skeleton";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row2";
+import { Component as ChildComponent } from "./Component";
 
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Client={Client}
-      Server={Server}
-      Skeleton={Skeleton}
-      Provider={ApiProvider}
+      Component={ChildComponent}
+      Provider={Provider}
+      clientApi={clientApi}
+      serverApi={serverApi}
       {...props}
     />
   );

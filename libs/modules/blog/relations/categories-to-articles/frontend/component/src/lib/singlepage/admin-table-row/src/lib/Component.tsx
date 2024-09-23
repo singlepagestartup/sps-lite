@@ -3,7 +3,7 @@
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/blog/relations/categories-to-articles/sdk/client";
 import { Component as AdminForm } from "../../../admin-form";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table-row2/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const deleteEntity = api.delete();
@@ -11,18 +11,19 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <ParentComponent
       {...props}
-      id={props.data.id}
       module="blog"
       name="categories-to-articles"
       type="relation"
-      adminForm={
-        <AdminForm
-          isServer={false}
-          hostUrl={props.hostUrl}
-          variant="admin-form"
-          data={props.data}
-        />
-      }
+      adminForm={() => {
+        return (
+          <AdminForm
+            isServer={false}
+            hostUrl={props.hostUrl}
+            variant="admin-form"
+            data={props.data}
+          />
+        );
+      }}
       onDelete={() => {
         if (props.data?.id) {
           deleteEntity.mutate({ id: props.data.id });

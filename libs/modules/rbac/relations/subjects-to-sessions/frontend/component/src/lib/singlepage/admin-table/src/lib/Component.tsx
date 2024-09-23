@@ -1,7 +1,7 @@
 import { IComponentPropsExtended, IModel, variant } from "./interface";
 import { Component as AdminForm } from "../../../admin-form";
 import { Component as AdminTableRow } from "../../../admin-table-row";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table/Component";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-table2/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -24,6 +24,9 @@ export function Component(props: IComponentPropsExtended) {
           return (
             <AdminTableRow
               key={index}
+              module="rbac"
+              name="subjects-to-sessions"
+              type="relation"
               isServer={props.isServer}
               hostUrl={props.hostUrl}
               variant="admin-table-row"

@@ -10,7 +10,7 @@ import {
   variants,
   insertSchema,
 } from "@sps/crm/models/request-block/sdk/model";
-import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form/Component";
+import { Component as ParentAdminForm } from "@sps/shared-frontend-components/singlepage/admin-form2/Component";
 
 export function Component(props: IComponentPropsExtended) {
   const updateEntity = api.update();

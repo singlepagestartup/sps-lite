@@ -6,7 +6,7 @@ import { Skeleton } from "./Skeleton";
 import { Error } from "./Error";
 import { IComponentProps, variant, IModel } from "./interface";
 import { api } from "@sps/website-builder/relations/widgets-to-file-storage-module-widgets/sdk/client";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/client";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form2/client";
 
 // default is required for dynamic import
 export default function Client(props: IComponentProps) {

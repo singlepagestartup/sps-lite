@@ -6,7 +6,7 @@ import { Error } from "./Error";
 import { api } from "@sps/website-builder/relations/widgets-to-file-storage-module-widgets/sdk/server";
 import { Component } from "./Component";
 import { Skeleton } from "./Skeleton";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form/server";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/admin-form2/server";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {

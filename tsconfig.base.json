@@ -78,7 +78,6 @@
       "@sps/host/*": ["libs/modules/host/*"],
       "@sps/notification/*": ["libs/modules/notification/*"],
       "@sps/rbac/*": ["libs/modules/rbac/*"],
-      "@sps/sps-third-parties/*": ["libs/modules/sps-third-parties/*"],
       "@sps/website-builder/*": ["libs/modules/website-builder/*"],
       "@sps/blog/*": ["libs/modules/blog/*"],
       "@sps/startup/*": ["libs/modules/startup/*"],

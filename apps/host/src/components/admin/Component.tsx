@@ -14,7 +14,6 @@ import { AdminComponent as Ecommerce } from "@sps/ecommerce/frontend/component";
 import { AdminComponent as Blog } from "@sps/blog/frontend/component";
 import { AdminComponent as FileStorage } from "@sps/file-storage/frontend/component";
 import { AdminComponent as Notification } from "@sps/notification/frontend/component";
-import { AdminComponent as SpsThirdParties } from "@sps/sps-third-parties/frontend/component";
 import { AdminComponent as Rbac } from "@sps/rbac/frontend/component";
 import { AdminComponent as Startup } from "@sps/startup/frontend/component";
 
@@ -124,13 +123,6 @@ export function Component(props: IComponentPropsExtended) {
                 }}
                 active={widget === "blog"}
               />
-              <Button
-                title="third-parties"
-                onClick={() => {
-                  setWidget("sps-third-parties");
-                }}
-                active={widget === "sps-third-parties"}
-              />
             </div>
             <div className="bg-white rounded-b-lg">
               {widget === "host" ? (
@@ -215,14 +207,6 @@ export function Component(props: IComponentPropsExtended) {
               ) : null}
               {widget === "ecommerce" ? (
                 <Ecommerce
-                  {...props}
-                  isServer={false}
-                  hostUrl={props.hostUrl}
-                  variant="default"
-                />
-              ) : null}
-              {widget === "sps-third-parties" ? (
-                <SpsThirdParties
                   {...props}
                   isServer={false}
                   hostUrl={props.hostUrl}
