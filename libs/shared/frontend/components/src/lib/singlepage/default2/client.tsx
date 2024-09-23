@@ -35,6 +35,7 @@ export function Component<
       hostUrl={props.hostUrl}
       isServer={false}
       data={data}
+      children={props.children}
     />
   );
 }

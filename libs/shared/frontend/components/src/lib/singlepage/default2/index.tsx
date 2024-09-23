@@ -20,6 +20,7 @@ export function Component<M extends { id: string }, V>(
     >;
     clientApi: ReturnType<typeof clientFactory<M>>;
     serverApi: ReturnType<typeof serverFactory<M>>;
+    children?: ReactNode;
   },
 ) {
   const Comp: any = props.isServer ? Server : Client;

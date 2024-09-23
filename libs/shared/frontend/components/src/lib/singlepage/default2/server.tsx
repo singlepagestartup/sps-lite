@@ -37,6 +37,7 @@ export async function Component<
       hostUrl={props.hostUrl}
       isServer={props.isServer}
       data={data}
+      children={props.children}
     />
   );
 }

@@ -15,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.data.className || "")}
     >
-      {/* {props.data.externalModule === "rbac" ? (
+      {props.data.externalModule === "rbac" ? (
         <Rbac
           {...props}
           isServer={props.isServer}
@@ -31,7 +31,7 @@ export function Component(props: IComponentPropsExtended) {
           hostUrl={props.hostUrl}
           data={props.data}
         />
-      ) : null} */}
+      ) : null}
 
       {props.data.externalModule === "website-builder" ? (
         <WebsiteBuilder
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
         />
       ) : null}
 
-      {/* {props.data.externalModule === "ecommerce" ? (
+      {props.data.externalModule === "ecommerce" ? (
         <Ecommerce
           {...props}
           isServer={props.isServer}
@@ -58,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
           hostUrl={props.hostUrl}
           data={props.data}
         />
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

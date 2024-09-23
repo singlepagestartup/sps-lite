@@ -65,7 +65,7 @@ export function Component(props: IComponentPropsExtended) {
                 {
                   column: "variant",
                   method: "eq",
-                  value: "primary",
+                  value: "additional",
                 },
               ],
             },
