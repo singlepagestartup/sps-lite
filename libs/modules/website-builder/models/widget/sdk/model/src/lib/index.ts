@@ -9,7 +9,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export const route = "/api/website-builder/widgets";
 export const variants = [
   "default",
-  "content-block-default",
+  "content-default",
   "footer-default",
   "navbar-default",
 ] as const;
