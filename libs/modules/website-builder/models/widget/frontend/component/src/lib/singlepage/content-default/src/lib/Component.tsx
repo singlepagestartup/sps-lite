@@ -2,7 +2,7 @@ import { IComponentPropsExtended } from "./interface";
 import { TipTap } from "@sps/shared-ui-shadcn";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as WidgetsToFileStorageWidgets } from "@sps/website-builder/relations/widgets-to-file-storage-module-widgets/frontend/component";
-// import { Component as WidgetsToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
+import { Component as WidgetsToButtonsArrays } from "@sps/website-builder/relations/widgets-to-buttons-arrays/frontend/component";
 import { Component as ClientAction } from "./ClientAction";
 
 export function Component(props: IComponentPropsExtended) {
@@ -27,7 +27,7 @@ export function Component(props: IComponentPropsExtended) {
         {props.data.description ? (
           <TipTap value={props.data.description} />
         ) : null}
-        {/* <div className="mx-auto my-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
+        <div className="mx-auto my-5 max-w-md flex flex-col sm:flex-row justify-center md:mt-8 gap-4">
           <WidgetsToButtonsArrays
             isServer={props.isServer}
             hostUrl={props.hostUrl}
@@ -60,7 +60,7 @@ export function Component(props: IComponentPropsExtended) {
               });
             }}
           </WidgetsToButtonsArrays>
-        </div> */}
+        </div>
         {props.children}
         <div className="w-full">
           <WidgetsToFileStorageWidgets
