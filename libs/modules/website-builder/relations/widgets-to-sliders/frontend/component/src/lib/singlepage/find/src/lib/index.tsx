@@ -1,17 +1,17 @@
-import { Provider as ApiProvider } from "@sps/website-builder/relations/widgets-to-sliders/sdk/client";
+import {
+  Provider,
+  api as clientApi,
+} from "@sps/website-builder/relations/widgets-to-sliders/sdk/client";
+import { api as serverApi } from "@sps/website-builder/relations/widgets-to-sliders/sdk/server";
 import { IComponentProps } from "./interface";
-import Client from "./client";
-import Server from "./server";
-import { Skeleton } from "./Skeleton";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find2";
 
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Client={Client}
-      Server={Server}
-      Skeleton={Skeleton}
-      Provider={ApiProvider}
+      Provider={Provider}
+      clientApi={clientApi}
+      serverApi={serverApi}
       {...props}
     />
   );
