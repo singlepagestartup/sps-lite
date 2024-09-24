@@ -44,7 +44,7 @@ export class Provider implements IProvider {
 
     const buffer = await (props.file as File).arrayBuffer();
 
-    await fs.promises.writeFile(filePath, Buffer.from(buffer));
+    await fs.promises.writeFile(filePath, Buffer.from(buffer) as any);
 
     const createdFileUrl = path.join(
       "/",
