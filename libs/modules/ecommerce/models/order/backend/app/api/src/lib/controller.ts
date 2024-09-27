@@ -478,9 +478,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
         for (const productToAttribute of productToAttributes) {
           if (!intervalAttributeKey) {
-            throw new HTTPException(404, {
-              message: "Interval attribute key not found",
-            });
+            continue;
           }
 
           const intervals = await attributeKeysToAttributes.find({
