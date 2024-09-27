@@ -307,67 +307,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
 
     try {
-      const existingSubjects = await subjectApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "createdAt",
-                method: "lt",
-                value: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (existingSubjects?.length) {
-        for (const existingSubject of existingSubjects) {
-          const subjectsToIdentities = await subjectsToIdentitiesApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "subjectId",
-                    method: "eq",
-                    value: existingSubject.id,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!subjectsToIdentities?.length) {
-            await subjectApi.delete({
-              id: existingSubject.id,
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-          }
-        }
-      }
+      this.service.clearAnonymusSessions();
 
       const entity = await this.service.create({
         data: {},

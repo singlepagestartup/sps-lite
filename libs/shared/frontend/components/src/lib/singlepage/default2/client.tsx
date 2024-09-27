@@ -25,17 +25,14 @@ export function Component<
     ...props.apiProps,
   });
 
+  const passProps: any = { ...props, data };
+  delete passProps.Component;
+  delete passProps.Skeleton;
+  delete passProps.api;
+
   if (isLoading || !data) {
     return props.Skeleton ?? <Skeleton />;
   }
 
-  return (
-    <Child
-      variant={props.variant}
-      hostUrl={props.hostUrl}
-      isServer={false}
-      data={data}
-      children={props.children}
-    />
-  );
+  return <Child {...passProps} data={data} />;
 }

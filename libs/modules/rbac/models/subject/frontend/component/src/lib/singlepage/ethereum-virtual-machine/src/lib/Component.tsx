@@ -19,6 +19,8 @@ const formSchema = z.object({
   message: z.string().min(8),
 });
 
+let signMessagePopupOpened = false;
+
 export function Component(props: IComponentPropsExtended) {
   const ConnectWallet = ethereumVirtualMachine.ConnectWalletButton;
   const [jwt, setJwt] = useState<string | undefined>();
@@ -60,6 +62,15 @@ export function Component(props: IComponentPropsExtended) {
         toast.error("No account found");
         return;
       }
+
+      if (
+        signMessagePopupOpened ||
+        authenticateEthereumVirtualMachine.status !== "idle"
+      ) {
+        return;
+      }
+
+      signMessagePopupOpened = true;
 
       const signedMessage = await signMessage(
         ethereumVirtualMachine.wagmiConfig.default,
@@ -140,6 +151,7 @@ export function Component(props: IComponentPropsExtended) {
       disconnect(ethereumVirtualMachine.wagmiConfig.default);
       return;
     }
+
     if (account.isConnected && !cookies["rbac.subject.jwt"]) {
       logoutAction();
     }
@@ -148,6 +160,12 @@ export function Component(props: IComponentPropsExtended) {
     cookies["rbac.subject.jwt"],
     account.isConnected,
   ]);
+
+  useEffect(() => {
+    if (authenticateEthereumVirtualMachine.status) {
+      signMessagePopupOpened = false;
+    }
+  }, [authenticateEthereumVirtualMachine.status]);
 
   function logoutAction() {
     disconnect(ethereumVirtualMachine.wagmiConfig.default);

@@ -36,9 +36,6 @@
             "command": "npx nx run @sps/ecommerce:repository-migrate"
           },
           {
-            "command": "npx nx run @sps/sps-third-parties:repository-migrate"
-          },
-          {
             "command": "npx nx run @sps/startup:repository-migrate"
           },
           {

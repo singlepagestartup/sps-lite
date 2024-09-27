@@ -31,13 +31,10 @@ export async function Component<
     return <></>;
   }
 
-  return (
-    <Child
-      variant={props.variant}
-      hostUrl={props.hostUrl}
-      isServer={props.isServer}
-      data={data}
-      children={props.children}
-    />
-  );
+  const passProps: any = { ...props, data };
+  delete passProps.Component;
+  delete passProps.Skeleton;
+  delete passProps.api;
+
+  return <Child {...passProps} data={data} />;
 }
