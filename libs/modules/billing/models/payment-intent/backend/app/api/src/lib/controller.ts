@@ -182,13 +182,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
-    const data: {
-      amount: number;
-      orderId: string;
-      type: "one_off" | "subscription";
-      interval?: "day" | "week" | "month" | "year";
-    } = JSON.parse(body["data"]);
-
     const subjectsToIdentities = await subjectsToIdentitiesApi.find({
       params: {
         filters: {
@@ -282,7 +275,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       } else if (provider === "payselection") {
         result = await this.service.payselection({
-          data,
+          entity,
           action: "create",
           email: identityWithEmail.email,
           subjectId: subjectId,

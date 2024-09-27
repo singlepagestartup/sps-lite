@@ -712,7 +712,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async payselection(
     props:
-      | { data: any; action: "create"; email: string; subjectId: string }
+      | {
+          entity: (typeof Table)["$inferSelect"];
+          action: "create";
+          email: string;
+          subjectId: string;
+        }
       | {
           action: "webhook";
           data: {
@@ -762,17 +767,19 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }
 
     if (props.action === "create") {
-      if (!props.data.amount) {
+      if (!props.entity.amount) {
         throw new Error("Amount is required");
       }
 
-      if (props.data.amount < 0) {
+      if (props.entity.amount < 0) {
         throw new Error("Amount cannot be negative");
       }
 
       const invoice = await invoiceApi.create({
         data: {
-          ...props.data,
+          provider: "stripe",
+          status: "open",
+          amount: props.entity.amount,
         },
         options: {
           headers: {
@@ -784,12 +791,10 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      const amount = props.data.amount;
-
       const payload = JSON.stringify({
         PaymentRequest: {
           OrderId: invoice.id,
-          Amount: `${amount}`,
+          Amount: `${props.entity.amount}`,
           Currency: "RUB",
           Description: `Checkout invoice id: ${invoice.id}`,
           RebillFlag: false,
@@ -851,11 +856,34 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             providerId: checkout.Id,
             paymentUrl: checkout.Url,
           },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
         });
 
         if (!updated) {
           throw new Error("Invoice not found");
         }
+
+        await paymentIntentsToInvoicesApi.create({
+          data: {
+            paymentIntentId: props.entity.id,
+            invoiceId: invoice.id,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
 
         return updated;
       }
