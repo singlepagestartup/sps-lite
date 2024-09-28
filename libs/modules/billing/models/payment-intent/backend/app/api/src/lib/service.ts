@@ -945,6 +945,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         if (!invoice) {
           throw new Error("Invoice not found");
         }
+
+        await this.updatePaymentIntentStatus({ invoice });
       }
 
       return invoice;
