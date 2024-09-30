@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "../interface";
 import { Component as Product } from "@sps/ecommerce/models/product/frontend/component";
-import { Component as ProductAction } from "./ProductAction";
+import { Component as ProductAction } from "./product-action/Component";
 import { Component as Page } from "@sps/host/models/page/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {

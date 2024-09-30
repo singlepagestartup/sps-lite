@@ -1,6 +1,6 @@
 import { IComponentPropsExtended } from "../interface";
 import { Component as Product } from "@sps/ecommerce/models/product/frontend/component";
-import { Component as ProductAction } from "./ProductAction";
+import { Component as ProductAction } from "./product-action/Component";
 import { Component as Page } from "@sps/host/models/page/frontend/component";
 import { Component as CategoriesToProducts } from "@sps/ecommerce/relations/categories-to-products/frontend/component";
 import { Component as Category } from "@sps/ecommerce/models/category/frontend/component";
@@ -67,10 +67,9 @@ export function Component(props: IComponentPropsExtended) {
                               hostUrl={props.hostUrl}
                               variant="default"
                               data={data}
-                              action={
-                                <ProductAction {...props} product={data} />
-                              }
-                            ></Product>
+                            >
+                              <ProductAction {...props} product={data} />
+                            </Product>
                           );
                         }}
                       </Product>

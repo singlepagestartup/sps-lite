@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.658.1",
     "@aws-sdk/client-ses": "^3.637.0",
     "@hono/zod-validator": "^0.2.2",
     "@hookform/resolvers": "^3.3.4",

@@ -9,6 +9,7 @@ export interface IComponentProps<M extends { id: string }, V>
     params?: IFindByIdActionProps["params"];
     options?: IFindByIdActionProps["options"];
   };
+  children?: React.ReactNode;
 }
 
 export type IComponentPropsExtended<

@@ -1,5 +1,3 @@
-"use client";
-
 import { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {

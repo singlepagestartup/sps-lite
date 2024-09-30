@@ -1,12 +1,17 @@
 import { Provider as LocalProvider } from "./local";
 import { Provider as VercelBlobProvider } from "./vercel-blob";
+import { Provider as AWSS3Provider } from "./aws-s3";
 import { IProvider } from "./interface";
+import { AWS_REGION, AWS_S3_BUCKET_NAME } from "@sps/shared-utils";
 
 export class Provider implements IProvider {
   folder: string;
-  client: LocalProvider | VercelBlobProvider;
+  client: LocalProvider | VercelBlobProvider | AWSS3Provider;
 
-  constructor(props: { type: "local" | "vercel-blob"; folder: string }) {
+  constructor(props: {
+    type: "local" | "vercel-blob" | "aws-s3";
+    folder: string;
+  }) {
     this.folder = props.folder;
     if (props.type === "local") {
       const local = new LocalProvider({
@@ -20,6 +25,23 @@ export class Provider implements IProvider {
         folder: props.folder,
       });
       this.client = vercelBlob;
+
+      return;
+    } else if (props.type === "aws-s3") {
+      if (!AWS_REGION) {
+        throw new Error("AWS_REGION is not defined");
+      }
+
+      if (!AWS_S3_BUCKET_NAME) {
+        throw new Error("AWS_S3_BUCKET_NAME is not defined");
+      }
+
+      const awsS3 = new AWSS3Provider({
+        folder: props.folder,
+        bucketName: AWS_S3_BUCKET_NAME,
+        region: AWS_REGION,
+      });
+      this.client = awsS3;
 
       return;
     }

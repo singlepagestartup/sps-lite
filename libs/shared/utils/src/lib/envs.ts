@@ -92,8 +92,17 @@ export const STALE_TIME =
 export const REVALIDATE: number | undefined =
   Number(process.env["NEXT_PUBLIC_REVALIDATE"]) || undefined;
 
-export const FILE_STORAGE_PROVIDER: "vercel-blob" | "local" =
-  process.env["FILE_STORAGE_PROVIDER"] === "local" ? "local" : "vercel-blob";
+export const FILE_STORAGE_PROVIDER: "vercel-blob" | "local" | "aws-s3" =
+  process.env["FILE_STORAGE_PROVIDER"] === undefined
+    ? "local"
+    : ["vercel-blob", "local", "aws-s3"].includes(
+          process.env["FILE_STORAGE_PROVIDER"],
+        )
+      ? (process.env["FILE_STORAGE_PROVIDER"] as
+          | "vercel-blob"
+          | "local"
+          | "aws-s3")
+      : "local";
 export const BLOB_READ_WRITE_TOKEN = process.env["BLOB_READ_WRITE_TOKEN"];
 
 export const STRIPE_PUBLISHABLE_KEY =
@@ -111,6 +120,7 @@ export const O_X_PROCESSING_RETURN_URL =
 
 export const AWS_ACCESS_KEY_ID = process.env["AWS_ACCESS_KEY_ID"];
 export const AWS_SECRET_ACCESS_KEY = process.env["AWS_SECRET_ACCESS_KEY"];
+export const AWS_S3_BUCKET_NAME = process.env["AWS_S3_BUCKET_NAME"];
 export const AWS_REGION = process.env["AWS_REGION"];
 
 export const PAYSELECTION_SECRET_KEY = process.env["PAYSELECTION_SECRET_KEY"];

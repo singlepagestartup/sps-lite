@@ -108,7 +108,7 @@ export function Component(props: IComponentPropsExtended) {
           }}
         </ProductsToAttributes>
       </div>
-      {props.action}
+      {props.children}
     </div>
   );
 }

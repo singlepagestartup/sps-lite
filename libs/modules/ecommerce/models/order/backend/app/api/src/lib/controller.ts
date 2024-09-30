@@ -35,8 +35,12 @@ import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
+  service: Service;
+
   constructor(@inject(DI.IService) service: Service) {
     super(service);
+
+    this.service = service;
 
     this.bindRoutes([
       {
@@ -161,61 +165,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      const oldOrders = await orderApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "createdAt",
-                method: "lt",
-                value: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-        },
-      });
-
-      if (oldOrders?.length) {
-        for (const oldOrder of oldOrders) {
-          const orderToBillingPaymentIntents =
-            await ordersToBillingModulePaymentIntentsApi.find({
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "orderId",
-                      method: "eq",
-                      value: oldOrder.id,
-                    },
-                  ],
-                },
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-              },
-            });
-
-          if (orderToBillingPaymentIntents?.length) {
-            continue;
-          }
-
-          await orderApi.delete({
-            id: oldOrder.id,
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-            },
-          });
-        }
-      }
+      this.service.clearOldOrders();
 
       const data = JSON.parse(body["data"]);
 
