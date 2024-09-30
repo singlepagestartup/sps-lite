@@ -6,8 +6,10 @@ import { api } from "@sps/rbac/models/subject/sdk/client";
 import Cookie from "js-cookie";
 import { useCookies } from "react-cookie";
 import { useJwt } from "react-jwt";
+import { useRouter } from "next/navigation";
 
 export function Component(props: IComponentPropsExtended) {
+  const router = useRouter();
   const refresh = api.refresh();
   const init = api.init({
     reactQueryOptions: {
@@ -40,6 +42,10 @@ export function Component(props: IComponentPropsExtended) {
   }, [jwtCookies]);
 
   useEffect(() => {
+    if (init.status == "success") {
+      return;
+    }
+
     if (!token.decodedToken) {
       return;
     }
@@ -65,7 +71,12 @@ export function Component(props: IComponentPropsExtended) {
         },
       });
     }
-  }, [token.decodedToken, refreshToken.isExpired, refreshToken.decodedToken]);
+  }, [
+    init.status,
+    token.decodedToken,
+    refreshToken.isExpired,
+    refreshToken.decodedToken,
+  ]);
 
   useEffect(() => {
     if (refresh.isError) {
@@ -73,6 +84,12 @@ export function Component(props: IComponentPropsExtended) {
       localStorage.removeItem("rbac.subject.refresh");
     }
   }, [refresh]);
+
+  useEffect(() => {
+    if (init.status === "success") {
+      router.refresh();
+    }
+  }, [init.status]);
 
   return (
     <div
