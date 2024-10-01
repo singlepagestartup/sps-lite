@@ -56,10 +56,10 @@ export function Component(props: IComponentPropsExtended) {
           <FormField
             ui="shadcn"
             type="text"
-            label="login"
+            label="Email"
             name="login"
             form={form}
-            placeholder="Enter your login"
+            placeholder="Enter your email"
           />
           <FormField
             ui="shadcn"

@@ -4,12 +4,12 @@ import { IComponentPropsExtended } from "./interface";
 import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
 import { Component as OrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
 import { Component as AddToCart } from "./assets/AddToCart";
-import { Component as DeleteFromCart } from "./assets/DeleteFromCart";
-import { Component as UpdateInCart } from "./assets/UpdateInCart";
-import { Component as Checkout } from "./assets/Checkout";
 import { cn } from "@sps/shared-frontend-client-utils";
+import { api } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/client";
 
 export function Component(props: IComponentPropsExtended) {
+  const deleteEntity = api.delete();
+
   return (
     <div
       data-module="rbac"
@@ -146,23 +146,30 @@ export function Component(props: IComponentPropsExtended) {
 
                             return (
                               <div key={index} className="flex flex-col gap-2">
-                                <UpdateInCart
+                                <OrdersToProducts
                                   isServer={false}
                                   hostUrl={props.hostUrl}
-                                  orderToProduct={orderToProduct}
-                                  data={subjectToEcommerceModuleOrder}
+                                  variant="quantity"
+                                  data={orderToProduct}
                                 />
-                                <DeleteFromCart
+                                <OrdersToProducts
                                   isServer={false}
                                   hostUrl={props.hostUrl}
-                                  orderToProduct={orderToProduct}
-                                  data={subjectToEcommerceModuleOrder}
+                                  variant="delete"
+                                  data={orderToProduct}
+                                  successCallback={(data) => {
+                                    deleteEntity.mutate({
+                                      id: subjectToEcommerceModuleOrder.id,
+                                    });
+                                  }}
                                 />
-                                <Checkout
+                                <Order
                                   isServer={false}
                                   hostUrl={props.hostUrl}
-                                  orderToProduct={orderToProduct}
-                                  data={subjectToEcommerceModuleOrder}
+                                  variant="checkout"
+                                  data={{
+                                    id: subjectToEcommerceModuleOrder.ecommerceModuleOrderId,
+                                  }}
                                 />
                               </div>
                             );

@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { api } from "@sps/ecommerce/models/order/sdk/client";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { Component as OrdersToBillingModulePaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/frontend/component";
 
 const providers = ["stripe", "0xprocessing", "payselection"] as const;
 
@@ -57,22 +58,62 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.className)}
     >
-      <Form {...form}>
-        <div className="flex flex-col gap-3">
-          <FormField
-            ui="shadcn"
-            type="select"
-            label="Provider"
-            name="provider"
-            form={form}
-            placeholder="Select provider"
-            options={providers.map((provider) => [provider, provider])}
-          />
-          <Button onClick={form.handleSubmit(onSubmit)} variant="primary">
-            Checkout
-          </Button>
-        </div>
-      </Form>
+      <OrdersToBillingModulePaymentIntents
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "orderId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
+            },
+          },
+        }}
+      >
+        {({ data }) => {
+          if (!data?.length) {
+            return (
+              <Form {...form}>
+                <div className="flex flex-col gap-3">
+                  <FormField
+                    ui="shadcn"
+                    type="select"
+                    label="Provider"
+                    name="provider"
+                    form={form}
+                    placeholder="Select provider"
+                    options={providers.map((provider) => [provider, provider])}
+                  />
+                  <Button
+                    onClick={form.handleSubmit(onSubmit)}
+                    variant="primary"
+                  >
+                    Checkout
+                  </Button>
+                </div>
+              </Form>
+            );
+          }
+
+          return data.map((entity, index) => {
+            return (
+              <OrdersToBillingModulePaymentIntents
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="default"
+                data={entity}
+              />
+            );
+          });
+        }}
+      </OrdersToBillingModulePaymentIntents>
     </div>
   );
 }

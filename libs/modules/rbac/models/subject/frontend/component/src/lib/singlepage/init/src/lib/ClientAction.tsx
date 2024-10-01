@@ -40,7 +40,7 @@ export function Component(props: IComponentPropsExtended) {
     if (!jwtCookies["rbac.subject.jwt"]) {
       init.refetch();
     }
-  }, [jwtCookies]);
+  }, []);
 
   useEffect(() => {
     if (init.status == "success") {
@@ -84,7 +84,7 @@ export function Component(props: IComponentPropsExtended) {
       Cookie.remove("rbac.subject.jwt");
       localStorage.removeItem("rbac.subject.refresh");
     }
-  }, [refresh]);
+  }, [refresh.status]);
 
   useEffect(() => {
     if (init.status === "success") {
