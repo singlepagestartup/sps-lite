@@ -6,6 +6,7 @@ export const variant = "ethereum-virtual-machine" as const;
 
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
+  className?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}

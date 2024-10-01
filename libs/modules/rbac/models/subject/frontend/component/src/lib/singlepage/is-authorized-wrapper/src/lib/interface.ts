@@ -19,6 +19,7 @@ export interface IComponentProps extends ISpsComponentBase {
     };
     options?: NextRequestOptions;
   };
+  className?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}

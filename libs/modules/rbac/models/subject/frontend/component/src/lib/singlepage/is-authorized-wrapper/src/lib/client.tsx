@@ -2,12 +2,11 @@
 import "client-only";
 
 import { Component } from "./Component";
-import { ErrorBoundary } from "@sps/ui-adapter";
 import { Skeleton } from "./Skeleton";
-import { Error } from "./Error";
 import { IComponentProps } from "./interface";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as SelectMethod } from "../../../select-method";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export default function Client(props: IComponentProps) {
   const { data, isFetching, isLoading } = api.isAuthorized(props.apiProps);
@@ -18,7 +17,7 @@ export default function Client(props: IComponentProps) {
 
   if (!data) {
     return (
-      <div className="w-full max-w-7xl mx-auto py-20">
+      <div className={cn("w-full flex flex-col", props.className)}>
         <SelectMethod
           isServer={false}
           hostUrl={props.hostUrl}
@@ -29,9 +28,5 @@ export default function Client(props: IComponentProps) {
     );
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} />
-    </ErrorBoundary>
-  );
+  return <Component {...props} />;
 }

@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="subjects-to-billing-module-payment-intents"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex flex-col gap-1", props.className)}
+      className={cn("w-full flex flex-col", props.className)}
     >
       <BillingModulePaymentIntent
         isServer={props.isServer}

@@ -1,12 +1,11 @@
 "use server";
 import "server-only";
 
-import { ErrorBoundary } from "@sps/ui-adapter";
 import { IComponentProps } from "./interface";
-import { Error } from "./Error";
 import { api } from "@sps/rbac/models/subject/sdk/server";
 import { Component } from "./Component";
 import { Component as SelectMethod } from "../../../select-method";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 // default is required for dynamic import
 export default async function Server(props: IComponentProps) {
@@ -14,7 +13,7 @@ export default async function Server(props: IComponentProps) {
 
   if (!data) {
     return (
-      <div className="w-full max-w-7xl mx-auto py-20">
+      <div className={cn("w-full flex flex-col", props.className)}>
         <SelectMethod
           isServer={props.isServer}
           hostUrl={props.hostUrl}
@@ -25,9 +24,5 @@ export default async function Server(props: IComponentProps) {
     );
   }
 
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} />
-    </ErrorBoundary>
-  );
+  return <Component {...props} />;
 }

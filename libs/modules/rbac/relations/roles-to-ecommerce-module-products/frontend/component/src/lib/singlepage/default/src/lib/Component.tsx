@@ -9,7 +9,7 @@ export function Component(props: IComponentPropsExtended) {
       data-relation="roles-to-ecommerce-module-products"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
-      className={cn("w-full flex flex-col gap-1", props.className)}
+      className={cn("w-full flex flex-col", props.className)}
     >
       <EcommerceModuleProduct
         isServer={props.isServer}

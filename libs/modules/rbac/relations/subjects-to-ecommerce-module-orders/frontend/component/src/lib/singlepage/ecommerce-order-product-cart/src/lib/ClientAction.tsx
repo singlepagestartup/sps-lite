@@ -7,6 +7,7 @@ import { Component as AddToCart } from "./assets/AddToCart";
 import { Component as DeleteFromCart } from "./assets/DeleteFromCart";
 import { Component as UpdateInCart } from "./assets/UpdateInCart";
 import { Component as Checkout } from "./assets/Checkout";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -14,7 +15,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="rbac"
       data-relation="ecommerce-order-product-cart"
       data-variant={props.variant}
-      className="w-full flex flex-col"
+      className={cn("w-full flex flex-col", props.className)}
     >
       <Order
         isServer={false}

@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "./interface";
 import { Component as LoginAndPassword } from "../../../login-and-password";
+import { cn } from "@sps/shared-frontend-client-utils";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -7,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data-module="rbac"
       data-model="subject"
       data-variant={props.variant}
-      className="w-full"
+      className={cn("flex flex-col w-full", props.className)}
     >
       <LoginAndPassword
         isServer={props.isServer}

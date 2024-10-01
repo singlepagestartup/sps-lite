@@ -2,16 +2,8 @@
 import "client-only";
 
 import { Component } from "./Component";
-import { ErrorBoundary } from "@sps/ui-adapter";
-import { Skeleton } from "./Skeleton";
-import { Error } from "./Error";
 import { IComponentProps } from "./interface";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 
 export default function Client(props: IComponentProps) {
-  return (
-    <ErrorBoundary fallback={Error}>
-      <Component {...props} />
-    </ErrorBoundary>
-  );
+  return <Component {...props} />;
 }

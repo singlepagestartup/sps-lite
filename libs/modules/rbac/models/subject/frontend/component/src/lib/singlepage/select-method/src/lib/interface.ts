@@ -7,6 +7,7 @@ export const variant = "select-method" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   type: "authentication" | "registration";
+  className?: string;
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}
