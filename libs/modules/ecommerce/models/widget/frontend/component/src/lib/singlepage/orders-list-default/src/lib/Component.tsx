@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       className={cn("w-full flex flex-col", props.data.className)}
     >
       <div className="w-full max-w-7xl mx-auto flex flex-col gap-12">
-        {props.orders}
+        {props.children}
       </div>
     </div>
   );

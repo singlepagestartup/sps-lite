@@ -149,7 +149,6 @@ export function Component(props: IComponentPropsExtended) {
               });
             }}
           </OrdersToBillingPaymentIntents>
-          {props.checkout}
         </div>
       </div>
     </div>

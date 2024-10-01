@@ -3,6 +3,7 @@ import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as ProductsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/frontend/component";
 import { Component as AttributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
 import { Component as ProductsToFileStorageModuleWidgets } from "@sps/ecommerce/relations/products-to-file-storage-module-widgets/frontend/component";
+import { Component as AttributeKey } from "@sps/ecommerce/models/attribute-key/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -68,9 +69,10 @@ export function Component(props: IComponentPropsExtended) {
           }}
         >
           {({ data }) => {
-            return data?.map((entity, index) => {
+            return data?.map((productToAttribute, index) => {
               return (
                 <AttributeKeysToAttributes
+                  key={index}
                   isServer={props.isServer}
                   hostUrl={props.hostUrl}
                   variant="find"
@@ -81,22 +83,61 @@ export function Component(props: IComponentPropsExtended) {
                           {
                             column: "attributeId",
                             method: "eq",
-                            value: entity.id,
+                            value: productToAttribute.attributeId,
                           },
                         ],
                       },
                     },
                   }}
                 >
-                  {({ data }) => {
-                    return (
-                      <ProductsToAttributes
-                        key={index}
-                        isServer={props.isServer}
-                        hostUrl={props.hostUrl}
-                        variant="default"
-                        data={entity}
-                      ></ProductsToAttributes>
+                  {({ data: attributeKeysToAttributes }) => {
+                    return attributeKeysToAttributes?.map(
+                      (attributeKeyToAttribute, index) => {
+                        return (
+                          <AttributeKey
+                            key={index}
+                            isServer={props.isServer}
+                            hostUrl={props.hostUrl}
+                            variant="find"
+                            apiProps={{
+                              params: {
+                                filters: {
+                                  and: [
+                                    {
+                                      column: "id",
+                                      method: "eq",
+                                      value:
+                                        attributeKeyToAttribute.attributeKeyId,
+                                    },
+                                  ],
+                                },
+                              },
+                            }}
+                          >
+                            {({ data }) => {
+                              return data?.map((attributeKey, index) => {
+                                return (
+                                  <div key={index} className="w-fit flex gap-2">
+                                    <AttributeKey
+                                      isServer={props.isServer}
+                                      hostUrl={props.hostUrl}
+                                      variant="default"
+                                      data={attributeKey}
+                                    />
+                                    <ProductsToAttributes
+                                      isServer={props.isServer}
+                                      hostUrl={props.hostUrl}
+                                      variant="default"
+                                      data={productToAttribute}
+                                      attributeField={attributeKey.field}
+                                    />
+                                  </div>
+                                );
+                              });
+                            }}
+                          </AttributeKey>
+                        );
+                      },
                     );
                   }}
                 </AttributeKeysToAttributes>

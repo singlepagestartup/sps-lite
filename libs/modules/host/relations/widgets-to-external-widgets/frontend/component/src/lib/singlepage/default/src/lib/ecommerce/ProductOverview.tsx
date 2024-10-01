@@ -20,28 +20,43 @@ export function Component(props: IComponentPropsExtended) {
           <Product
             isServer={props.isServer}
             hostUrl={props.hostUrl}
-            variant="find-by-id"
-            id={data}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    {
+                      column: "id",
+                      method: "eq",
+                      value: data,
+                    },
+                  ],
+                },
+              },
+            }}
           >
             {({ data }) => {
               if (!data) {
                 return;
               }
 
-              return (
-                <Product
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="overview-default"
-                  data={data}
-                >
-                  <ProductAction
+              return data.map((entity, index) => {
+                return (
+                  <Product
+                    key={index}
                     isServer={props.isServer}
                     hostUrl={props.hostUrl}
-                    product={data}
-                  />
-                </Product>
-              );
+                    variant="overview-default"
+                    data={entity}
+                  >
+                    <ProductAction
+                      isServer={props.isServer}
+                      hostUrl={props.hostUrl}
+                      product={entity}
+                    />
+                  </Product>
+                );
+              });
             }}
           </Product>
         );

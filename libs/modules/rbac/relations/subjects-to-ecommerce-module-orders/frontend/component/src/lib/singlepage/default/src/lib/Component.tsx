@@ -1,7 +1,6 @@
 import { cn } from "@sps/shared-frontend-client-utils";
 import { IComponentPropsExtended } from "./interface";
 import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
-import { Component as EcommerceOrderCheckout } from "../../../ecommerce-order-checkout";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -44,14 +43,6 @@ export function Component(props: IComponentPropsExtended) {
                 hostUrl={props.hostUrl}
                 variant="cart"
                 data={entity}
-                checkout={
-                  <EcommerceOrderCheckout
-                    data={props.data}
-                    isServer={props.isServer}
-                    hostUrl={props.hostUrl}
-                    variant="ecommerce-order-checkout"
-                  />
-                }
               />
             );
           });

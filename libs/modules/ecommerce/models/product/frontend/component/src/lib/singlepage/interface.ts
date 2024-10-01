@@ -1,4 +1,3 @@
-import { IComponentProps as IFindByIdComponentProps } from "./find-by-id";
 import { IComponentProps as IFindComponentProps } from "./find";
 import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-row";
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
@@ -8,7 +7,6 @@ import { IComponentProps as IDefaultComponentProps } from "./default";
 import { IComponentProps as IOverviewDefaultComponentProps } from "./overview-default";
 
 export type IComponentProps =
-  | IFindByIdComponentProps
   | IFindComponentProps
   | IAdminTableRowComponentProps
   | IAdminTableComponentProps

@@ -9,7 +9,6 @@ export const variant = "delete" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  className?: string;
   successCallback?: (data: IModel) => void;
 }
 
