@@ -34,8 +34,13 @@ export function Component(props: IComponentPropsExtended) {
                   hostUrl={props.hostUrl}
                   variant="overview-default"
                   data={data}
-                  action={<ProductAction {...props} product={data} />}
-                ></Product>
+                >
+                  <ProductAction
+                    isServer={props.isServer}
+                    hostUrl={props.hostUrl}
+                    product={data}
+                  />
+                </Product>
               );
             }}
           </Product>

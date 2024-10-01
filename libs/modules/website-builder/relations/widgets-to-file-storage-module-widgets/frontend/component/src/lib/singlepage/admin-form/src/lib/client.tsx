@@ -13,7 +13,7 @@ export default function Client(props: IComponentProps) {
   return (
     <ParentComponent<IModel, typeof variant, any, IComponentProps>
       Error={Error}
-      Skeleton={Skeleton}
+      Skeleton={<Skeleton />}
       Component={Component}
       api={api}
       {...props}

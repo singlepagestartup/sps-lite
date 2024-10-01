@@ -4,7 +4,6 @@ import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-select-input";
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
 import { IComponentProps as IDefaultComponentProps } from "./default";
-import { IComponentProps as ISubjectInitComponentProps } from "./subject-init";
 import { IComponentProps as IChangePasswordComponentProps } from "./change-password";
 import { IComponentProps as IForgotPasswordComponentProps } from "./forgot-password";
 import { IComponentProps as ILoginComponentProps } from "./login";
@@ -18,7 +17,6 @@ export type IComponentProps =
   | IAdminSelectInputComponentProps
   | IAdminFormComponentProps
   | IDefaultComponentProps
-  | ISubjectInitComponentProps
   | IChangePasswordComponentProps
   | IForgotPasswordComponentProps
   | ILoginComponentProps

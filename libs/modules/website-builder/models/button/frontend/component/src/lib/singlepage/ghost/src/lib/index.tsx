@@ -1,14 +1,20 @@
+import {
+  Provider,
+  api as clientApi,
+} from "@sps/website-builder/models/button/sdk/client";
+import { api as serverApi } from "@sps/website-builder/models/button/sdk/server";
 import { IComponentProps } from "./interface";
-import Client from "./client";
-import Server from "./server";
-import { Provider as ApiProvider } from "@sps/website-builder/models/button/sdk/client";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default";
+import { Component as ChildComponent } from "./Component";
 
 export function Component(props: IComponentProps) {
-  const Comp: any = props.isServer ? Server : Client;
-
   return (
-    <ApiProvider>
-      <Comp {...props} />
-    </ApiProvider>
+    <ParentComponent
+      Component={ChildComponent}
+      Provider={Provider}
+      clientApi={clientApi}
+      serverApi={serverApi}
+      {...props}
+    />
   );
 }

@@ -1,15 +1,18 @@
 export { type IModel } from "@sps/website-builder/models/button/sdk/model";
 import { IModel } from "@sps/website-builder/models/button/sdk/model";
-import { ISpsComponentBase } from "@sps/ui-adapter";
+import {
+  IComponentProps as IParentComponentProps,
+  IComponentPropsExtended as IParentComponentPropsExtended,
+} from "@sps/shared-frontend-components/singlepage/default/interface";
 
 export const variant = "destructive" as const;
 
-export interface IComponentProps extends ISpsComponentBase {
-  variant: typeof variant;
-  data: Partial<IModel>;
-  onClick?: () => void;
-}
+export interface IComponentProps
+  extends IParentComponentProps<IModel, typeof variant> {}
 
-export interface IComponentPropsExtended extends IComponentProps {
-  data: IModel;
-}
+export interface IComponentPropsExtended
+  extends IParentComponentPropsExtended<
+    IModel,
+    typeof variant,
+    IComponentProps
+  > {}

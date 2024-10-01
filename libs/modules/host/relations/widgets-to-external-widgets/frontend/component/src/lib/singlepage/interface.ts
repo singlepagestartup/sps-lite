@@ -3,7 +3,6 @@ import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-r
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
 import { IComponentProps as IAdminSelectInputComponentProps } from "./admin-select-input";
 import { IComponentProps as IAdminFormComponentProps } from "./admin-form";
-import { IComponentProps as IPrimaryComponentProps } from "./primary";
 import { IComponentProps as IDefaultComponentProps } from "./default";
 export type IComponentProps =
   | IFindComponentProps
@@ -11,6 +10,5 @@ export type IComponentProps =
   | IAdminTableComponentProps
   | IAdminSelectInputComponentProps
   | IAdminFormComponentProps
-  | IPrimaryComponentProps
   | IDefaultComponentProps
   | never;

@@ -31,5 +31,10 @@ export async function Component<
     return <></>;
   }
 
-  return <Child {...props} data={data} />;
+  const passProps: any = { ...props, data };
+  delete passProps.Component;
+  delete passProps.Skeleton;
+  delete passProps.api;
+
+  return <Child {...passProps} data={data} />;
 }

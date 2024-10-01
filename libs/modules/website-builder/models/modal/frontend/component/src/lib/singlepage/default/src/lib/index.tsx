@@ -10,7 +10,7 @@ export function Component(props: IComponentProps) {
   //   <ParentComponent
   //     Client={Client}
   //     Server={Server}
-  //     Skeleton={Skeleton}
+  //     Skeleton={<Skeleton />}
   //     Provider={ApiProvider}
   //     {...props}
   //   />

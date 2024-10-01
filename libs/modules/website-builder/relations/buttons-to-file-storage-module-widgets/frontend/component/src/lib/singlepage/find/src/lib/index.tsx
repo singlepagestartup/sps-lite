@@ -4,7 +4,7 @@ import {
 } from "@sps/website-builder/relations/buttons-to-file-storage-module-widgets/sdk/client";
 import { api as serverApi } from "@sps/website-builder/relations/buttons-to-file-storage-module-widgets/sdk/server";
 import { IComponentProps } from "./interface";
-import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find2";
+import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/find";
 
 export function Component(props: IComponentProps) {
   return (
