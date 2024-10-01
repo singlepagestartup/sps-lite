@@ -1,4 +1,3 @@
-import { IComponentProps as IFindByIdComponentProps } from "./find-by-id";
 import { IComponentProps as IFindComponentProps } from "./find";
 import { IComponentProps as IAdminTableRowComponentProps } from "./admin-table-row";
 import { IComponentProps as IAdminTableComponentProps } from "./admin-table";
@@ -17,7 +16,6 @@ import { IComponentProps as IMeComponentProps } from "./me";
 import { IComponentProps as IGetEmailsComponentProps } from "./get-emails";
 
 export type IComponentProps =
-  | IFindByIdComponentProps
   | IFindComponentProps
   | IAdminTableRowComponentProps
   | IAdminTableComponentProps

@@ -14,19 +14,37 @@ export function Component(props: IComponentPropsExtended) {
       <Identity
         isServer={props.isServer}
         hostUrl={props.hostUrl}
-        variant="find-by-id"
-        id={props.data.identityId}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "id",
+                  method: "eq",
+                  value: props.data.identityId,
+                },
+              ],
+            },
+          },
+        }}
       >
         {({ data }) => {
-          if (!data) {
-            return null;
+          if (data && data?.length > 1) {
+            throw new Error("More than one identity found");
           }
 
           if (!props.children) {
             return;
           }
 
-          return props.children({ data: data.email });
+          if (!data || data.length === 0) {
+            props.children({ data: undefined });
+          }
+
+          if (data?.length) {
+            return props.children({ data: data[0].email });
+          }
         }}
       </Identity>
     </div>

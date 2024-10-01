@@ -1,8 +1,6 @@
 import { DefaultApp } from "@sps/shared-backend-api";
 import { app as widgetApp } from "@sps/crm/models/widget/backend/app/api";
 import { app as customerApp } from "@sps/crm/models/customer/backend/app/api";
-import { app as requestBlockApp } from "@sps/crm/models/request-block/backend/app/api";
-import { app as widgetsToRequestBlocksApp } from "@sps/crm/relations/widgets-to-request-blocks/backend/app/api";
 
 export class Apps {
   apps: { type: "model" | "relation"; route: string; app: DefaultApp<any> }[] =
@@ -22,16 +20,6 @@ export class Apps {
       type: "model",
       route: "/customers",
       app: customerApp,
-    });
-    this.apps.push({
-      type: "model",
-      route: "/request-blocks",
-      app: requestBlockApp,
-    });
-    this.apps.push({
-      type: "relation",
-      route: "/widgets-to-request-blocks",
-      app: widgetsToRequestBlocksApp,
     });
   }
 }
