@@ -174,6 +174,7 @@ export const api = {
     params?: IMeProps["params"];
     options?: IMeProps["options"];
     reactQueryOptions?: any;
+    mute?: boolean;
   }) => {
     return useQuery<IModel>({
       queryKey: [`${route}/me`],
@@ -206,7 +207,9 @@ export const api = {
 
           return transformedData;
         } catch (error: any) {
-          toast.error(error.message);
+          if (!props?.mute) {
+            toast.error(error.message);
+          }
 
           throw error;
         }

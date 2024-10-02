@@ -9,9 +9,10 @@ import { useJwt } from "react-jwt";
 import Cookie from "js-cookie";
 
 export default function Client(props: IComponentProps) {
-  const { data, isFetching, isLoading, isError, isFetched, refetch } = api.me({
+  const { data, isError, refetch } = api.me({
     ...props.apiProps,
     reactQueryOptions: { enabled: false },
+    mute: true,
   });
   const [jwt, setJwt] = useState<string | undefined>();
   const [jwtCookies] = useCookies(["rbac.subject.jwt"]);
@@ -29,10 +30,10 @@ export default function Client(props: IComponentProps) {
   }, [jwtCookies["rbac.subject.jwt"]]);
 
   useEffect(() => {
-    if (token && !token.isExpired && !isFetched) {
+    if (token && !token.isExpired && !data?.["id"]) {
       refetch();
     }
-  }, [jwt, token, isFetched]);
+  }, [jwt, token, data]);
 
   useEffect(() => {
     if (isError && token && !token.isExpired) {
@@ -46,10 +47,6 @@ export default function Client(props: IComponentProps) {
       props.set(data);
     }
   }, [data, props]);
-
-  if (isFetching || isLoading) {
-    return <></>;
-  }
 
   if (props.children) {
     return props.children({ data });
