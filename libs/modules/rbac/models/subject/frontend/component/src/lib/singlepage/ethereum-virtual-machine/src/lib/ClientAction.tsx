@@ -113,15 +113,8 @@ export function Component(props: IComponentPropsExtended) {
           },
         })
         .then((res) => {
-          // setSubjectsToIdentities(res);
-
           if (account.isConnected && !res?.length) {
-            console.log(`🚀 ~ useEffect ~ subjectToIdentites ~ handleSubmit`);
             form.handleSubmit(onSubmit)();
-          }
-
-          if (!res?.length && account?.address) {
-            // logoutAction();
           }
         });
     }
