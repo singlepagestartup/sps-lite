@@ -30,7 +30,15 @@ export default function Client(props: IComponentProps) {
   }, [jwtCookies["rbac.subject.jwt"]]);
 
   useEffect(() => {
-    if (token && !token.isExpired && !data?.["id"]) {
+    if (!data?.id) {
+      refetch();
+    }
+
+    if (
+      token &&
+      !token.isExpired &&
+      data?.["id"] !== token?.["subject"]?.["id"]
+    ) {
       refetch();
     }
   }, [jwt, token, data]);

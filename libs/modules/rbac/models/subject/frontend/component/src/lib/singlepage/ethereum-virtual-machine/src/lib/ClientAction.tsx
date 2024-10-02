@@ -14,7 +14,6 @@ import { ethereumVirtualMachine } from "@sps/shared-frontend-client-web3";
 import { useCookies } from "react-cookie";
 import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 import { cn } from "@sps/shared-frontend-client-utils";
-// import { IModel as ISubjectsToIdenties } from "@sps/rbac/relations/subjects-to-identities/sdk/model";
 
 const formSchema = z.object({
   message: z.string().min(8),
@@ -28,7 +27,6 @@ export function Component(props: IComponentPropsExtended) {
   const [cookies] = useCookies(["rbac.subject.jwt"]);
   const [isClient, setIsClient] = useState(false);
   const { data: meData, refetch } = api.me();
-  // const [subjectToIdentites, setSubjectsToIdentities] = useState<any[]>();
 
   const authenticateEthereumVirtualMachine = api.ethereumVirtualMachine({});
   const logout = api.logout({
@@ -91,24 +89,6 @@ export function Component(props: IComponentPropsExtended) {
       toast.error("An error occurred:" + error.message);
     }
   }
-
-  // useEffect(() => {
-  //   console.log(
-  //     `🚀 ~ useEffect ~ subjectToIdentites:`,
-  //     account.isConnected,
-  //     subjectToIdentites,
-  //     meData,
-  //   );
-
-  //   if (!subjectToIdentites) {
-  //     return;
-  //   }
-
-  //   // if (meData && account.isConnected && !subjectToIdentites.length) {
-  //   //   console.log(`🚀 ~ useEffect ~ subjectToIdentites ~ handleSubmit`);
-  //   //   form.handleSubmit(onSubmit)();
-  //   // }
-  // }, [account.isConnected, subjectToIdentites, meData]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
