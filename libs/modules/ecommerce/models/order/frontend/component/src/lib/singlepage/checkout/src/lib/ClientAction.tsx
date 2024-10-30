@@ -12,7 +12,12 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import { Component as OrdersToBillingModulePaymentIntents } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/frontend/component";
 
-const providers = ["stripe", "0xprocessing", "payselection"] as const;
+const providers = [
+  "stripe",
+  "0xprocessing",
+  "payselection",
+  "cloudpayments",
+] as const;
 
 const formSchema = z.object({
   provider: z
@@ -21,7 +26,8 @@ const formSchema = z.object({
       (value) =>
         value === "stripe" ||
         value === "0xprocessing" ||
-        value === "payselection",
+        value === "payselection" ||
+        value === "cloudpayments",
       "Invalid provider",
     ),
 });

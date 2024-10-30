@@ -273,12 +273,25 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           entity,
           orderId,
         });
-      } else if (provider === "payselection") {
+      } else if (provider.includes("payselection")) {
+        const credentialsType = provider.includes("international")
+          ? "INT"
+          : "RUB";
+
         result = await this.service.payselection({
+          credentialsType,
           entity,
           action: "create",
           email: identityWithEmail.email,
           subjectId: subjectId,
+        });
+      } else if (provider === "cloudpayments") {
+        result = await this.service.cloudpayments({
+          entity,
+          action: "create",
+          email: identityWithEmail.email,
+          subjectId: subjectId,
+          orderId,
         });
       }
 
@@ -300,7 +313,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const contentType = c.req.header("content-type");
     const headers = c.req.header();
     const rawBody = await c.req.text();
-    const body = await c.req.parseBody();
 
     console.log(`🚀 ~ providerWebhook ~ headers:`, headers);
     console.log(`🚀 ~ providerWebhook ~ headers:`, await c.req.text());
@@ -308,7 +320,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     let data;
     if (contentType?.includes("application/json")) {
       data = await c.req.json();
-    } else {
+    } else if (contentType?.includes("multipart/form-data")) {
+      const body = await c.req.parseBody();
+
       if (body["data"] instanceof File) {
         throw new HTTPException(400, {
           message: "Files are not supported",
@@ -318,6 +332,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       if (typeof body["data"] !== "string") {
         data = JSON.parse(body["data"]);
       }
+    } else if (contentType?.includes("application/x-www-form-urlencoded")) {
+      const params = new URLSearchParams(rawBody);
+      data = Object.fromEntries(params.entries());
     }
 
     console.log(`🚀 ~ providerWebhook ~ data:`, data);
@@ -349,6 +366,18 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       } else {
         throw new HTTPException(400, {
           message: "Missing headers",
+        });
+      }
+    } else if (provider === "cloudpayments") {
+      if ("x-content-hmac" in headers && "content-hmac" in headers) {
+        result = await this.service.cloudpayments({
+          data,
+          action: "webhook",
+          rawBody,
+          headers: {
+            "x-content-hmac": headers["x-content-hmac"],
+            "content-hmac": headers["content-hmac"],
+          },
         });
       }
     }

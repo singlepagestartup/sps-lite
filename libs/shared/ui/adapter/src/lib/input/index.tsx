@@ -12,6 +12,9 @@ import {
   FileInputRoot,
   TipTap,
   Checkbox,
+  RadioGroup,
+  RadioGroupItem,
+  Label,
 } from "@sps/shared-ui-shadcn";
 import { IComponentProps } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
@@ -165,6 +168,34 @@ export const Component = (props: IComponentProps) => {
           })}
         </SelectContent>
       </Select>
+    );
+  }
+
+  if (props.type === "radio") {
+    return (
+      <RadioGroup
+        onValueChange={props.field.onChange}
+        defaultValue={props.field.value}
+        disabled={props.disabled}
+        className={props.className}
+      >
+        {props.options.map((option, index) => {
+          return (
+            <div key={index} className={props.itemClassName}>
+              <RadioGroupItem
+                value={option[0]}
+                id={option[0]}
+                className={props.radioGroupItemClassName}
+              />
+              <Label htmlFor={option[0]} className={props.labelClassName}>
+                {typeof option[1] === "function"
+                  ? option[1](option)
+                  : option[1]}
+              </Label>
+            </div>
+          );
+        })}
+      </RadioGroup>
     );
   }
 

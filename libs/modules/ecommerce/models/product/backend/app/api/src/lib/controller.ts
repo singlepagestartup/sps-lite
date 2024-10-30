@@ -16,7 +16,18 @@ import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/
 import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
-import { RBAC_SECRET_KEY } from "@sps/shared-utils";
+import {
+  RBAC_JWT_SECRET,
+  RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+  RBAC_SECRET_KEY,
+} from "@sps/shared-utils";
+import { IModel as ISubject } from "@sps/rbac/models/subject/sdk/model";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
+import { IModel as IIdentity } from "@sps/rbac/models/identity/sdk/model";
+import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
+import { api as subjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/server";
+import * as jwt from "hono/jwt";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -57,6 +68,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "DELETE",
         path: "/:uuid",
         handler: this.delete,
+      },
+      {
+        method: "POST",
+        path: "/:uuid/checkout",
+        handler: this.checkout,
       },
     ]);
   }
@@ -469,6 +485,356 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       return c.json({
         data: products,
+      });
+    } catch (error: any) {
+      throw new HTTPException(400, {
+        message: error.message,
+      });
+    }
+  }
+
+  async checkout(c: Context, next: any): Promise<Response> {
+    try {
+      if (!RBAC_SECRET_KEY) {
+        return c.json(
+          {
+            message: "RBAC secret key not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      if (!RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS) {
+        return c.json(
+          {
+            message: "RBAC jwt token lifetime not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      if (!RBAC_JWT_SECRET) {
+        return c.json(
+          {
+            message: "RBAC jwt secret not found",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const uuid = c.req.param("uuid");
+      const body = await c.req.parseBody();
+      console.log(`🚀 ~ checkout ~ body:`, body);
+
+      if (!uuid) {
+        return c.json(
+          {
+            message: "Invalid id",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      if (typeof body["data"] !== "string") {
+        return c.json(
+          {
+            message: "Invalid body",
+          },
+          {
+            status: 400,
+          },
+        );
+      }
+
+      const data = JSON.parse(body["data"]);
+
+      const entity = await this.service.findById({ id: uuid });
+
+      if (!entity) {
+        return c.json(
+          {
+            message: "Entity not found",
+          },
+          {
+            status: 404,
+          },
+        );
+      }
+
+      const identities = await identityApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "email",
+                method: "eq",
+                value: data.email,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      let identity: IIdentity | undefined;
+      let subject: ISubject | undefined;
+
+      if (!identities?.length) {
+        identity = await identityApi.create({
+          data: {
+            email: data.email,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+      } else {
+        identity = identities[0];
+      }
+
+      const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "identityId",
+                method: "eq",
+                value: identity.id,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      if (!subjectsToIdentities?.length) {
+        subject = await subjectApi.create({
+          data: {
+            identityId: identity.id,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+        await subjectsToIdentitiesApi.create({
+          data: {
+            subjectId: subject.id,
+            identityId: identity.id,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+      } else {
+        subject = await subjectApi.findById({
+          id: subjectsToIdentities[0].subjectId,
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+      }
+
+      if (!subject) {
+        throw new HTTPException(400, {
+          message: "Subject not found",
+        });
+      }
+
+      const jwtToken = await jwt.sign(
+        {
+          exp:
+            Math.floor(Date.now() / 1000) + RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
+          iat: Math.floor(Date.now() / 1000),
+          subject: {
+            id: subject.id,
+          },
+        },
+        RBAC_JWT_SECRET,
+      );
+
+      const order = await orderApi.create({
+        data: {},
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      const orderToProduct = await ordersToProductsApi.create({
+        data: {
+          orderId: order.id,
+          productId: entity.id,
+          quantity: data.quantity,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      const subjectToEcommerceModuleOrder =
+        await subjectsToEcommerceModuleOrdersApi.create({
+          data: {
+            subjectId: subject.id,
+            ecommerceModuleOrderId: order.id,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+
+      const checkout = await orderApi.checkout({
+        id: order.id,
+        data: {
+          provider: data.provider,
+          email: data.email,
+        },
+        options: {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        },
+      });
+
+      const ordersToBillingModulePaymentIntents =
+        await ordersToBillingModulePaymentIntentsApi.find({
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "orderId",
+                  method: "eq",
+                  value: order.id,
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+          },
+        });
+
+      if (!ordersToBillingModulePaymentIntents?.length) {
+        throw new HTTPException(400, {
+          message: "Billing module payment intent not found",
+        });
+      }
+
+      if (ordersToBillingModulePaymentIntents.length > 1) {
+        throw new HTTPException(400, {
+          message: "Multiple billing module payment intents found",
+        });
+      }
+
+      const paymentIntentId =
+        ordersToBillingModulePaymentIntents[0].billingModulePaymentIntentId;
+
+      const paymentIntent = await paymentIntentApi.findById({
+        id: paymentIntentId,
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      if (!paymentIntent) {
+        throw new HTTPException(400, {
+          message: "Payment intent not found",
+        });
+      }
+
+      const paymentIntentsToInvoices = await paymentIntentsToInvoicesApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "paymentIntentId",
+                method: "eq",
+                value: paymentIntent.id,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      const invoices = await invoiceApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "id",
+                method: "inArray",
+                value: paymentIntentsToInvoices?.map((pti) => pti.invoiceId),
+              },
+              {
+                column: "status",
+                method: "eq",
+                value: "open",
+              },
+            ],
+          },
+          orderBy: {
+            and: [
+              {
+                column: "createdAt",
+                method: "desc",
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+        },
+      });
+
+      if (!invoices?.length) {
+        throw new HTTPException(400, {
+          message: "Invoice not found",
+        });
+      }
+
+      const latestInvoice = invoices[0];
+
+      return c.json({
+        data: { invoice: latestInvoice },
       });
     } catch (error: any) {
       throw new HTTPException(400, {

@@ -49,10 +49,17 @@ export type TTypedProps =
       type: "checkbox";
     }
   | {
-      type: "radio" | "select";
+      type: "select";
       options: [value: string, title: string | TRenderComponent][];
       selectContentClassName?: string;
       selectItemClassName?: string;
+    }
+  | {
+      type: "radio";
+      options: [value: string, title: string | TRenderComponent][];
+      radioGroupItemClassName?: string;
+      labelClassName?: string;
+      itemClassName?: string;
     };
 
 export type IComponentProps = IUniversalProps & TTypedProps;

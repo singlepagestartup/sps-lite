@@ -10,13 +10,21 @@ import {
   O_X_PROCESSING_SHOP_ID,
   O_X_PROCESSING_TEST_PAYMENTS,
   O_X_PROCESSING_WEBHOOK_PASSWORD,
-  PAYSELECTION_PUBLIC_KEY,
-  PAYSELECTION_SECRET_KEY,
-  PAYSELECTION_SITE_ID,
-  PAYSELECTION_SITE_NAME,
-  PAYSELECTION_WEBHOOK_URL,
+  PAYSELECTION_RUB_PUBLIC_KEY,
+  PAYSELECTION_RUB_SECRET_KEY,
+  PAYSELECTION_RUB_SITE_ID,
+  PAYSELECTION_RUB_SITE_NAME,
+  PAYSELECTION_RUB_WEBHOOK_URL,
   RBAC_SECRET_KEY,
   STRIPE_SECRET_KEY,
+  PAYSELECTION_INT_PUBLIC_KEY,
+  PAYSELECTION_INT_SITE_ID,
+  PAYSELECTION_INT_SECRET_KEY,
+  PAYSELECTION_INT_SITE_NAME,
+  PAYSELECTION_INT_WEBHOOK_URL,
+  CLOUDPAYMENTS_API_SECRET,
+  CLOUDPAYMENTS_PUBLIC_ID,
+  HOST_URL,
 } from "@sps/shared-utils";
 import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
@@ -529,6 +537,261 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }
   }
 
+  async cloudpayments(
+    props:
+      | {
+          entity: (typeof Table)["$inferSelect"];
+          action: "create";
+          email: string;
+          subjectId: string;
+          orderId: string;
+        }
+      | {
+          action: "webhook";
+          data: {
+            TransactionId: string;
+            Amount: number;
+            Currency: "RUB" | "USD" | "EUR" | "GBP";
+            PaymentAmount: string;
+            PaymentCurrency: "RUB" | "USD" | "EUR" | "GBP";
+            DateTime: string;
+            CardId?: string;
+            CardFirstSix?: string;
+            CardLastFour?: string;
+            CardType: "Visa" | "Mastercard" | "Maestro" | "МИР";
+            CardExpDate: string;
+            TestMode: boolean;
+            Status: "Authorized" | "Completed";
+            OperationType: "Payment" | "CardPayout";
+            GatewayName?: string;
+            InvoiceId?: string;
+            AccountId?: string;
+            SubscriptionId?: string;
+            CustomFields: any;
+            Data: string;
+          };
+          rawBody: string;
+          headers: {
+            "x-content-hmac": string;
+            "content-hmac": string;
+          };
+        },
+  ) {
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC secret key not found");
+    }
+
+    if (!CLOUDPAYMENTS_PUBLIC_ID) {
+      throw new Error("CloudPayments public id not found");
+    }
+
+    if (!CLOUDPAYMENTS_API_SECRET) {
+      throw new Error("CloudPayments API secret not found");
+    }
+
+    if (props.action === "create") {
+      let invoice = await invoiceApi.create({
+        data: {
+          amount: props.entity.amount,
+          status: "open",
+          successUrl: HOST_URL,
+          cancelUrl: HOST_URL,
+          provider: "cloudpayments",
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const checkoutData: {
+        Amount: number;
+        Currency: "RUB" | "USD" | "EUR" | "GBP";
+        Description: string;
+        Email: string;
+        RequireConfirmation?: boolean;
+        SendEmail?: boolean;
+        InvoiceId?: string;
+        AccountId?: string;
+        OfferUri?: string;
+        Phone?: string;
+        SendSms?: boolean;
+        SendViber?: boolean;
+        CultureName?: "ru-RU" | "en-US";
+        SubscriptionBehavior?: "CreateWeekly" | "CreateMonthly";
+        SuccessRedirectUrl?: string;
+        FailRedirectUrl?: string;
+        JsonData?: any;
+      } = {
+        Amount: props.entity.amount,
+        Currency: "RUB",
+        Description: `Checkout invoice id: ${props.entity.id}`,
+        Email: props.email,
+        JsonData: {
+          orderId: props.orderId,
+          invoiceId: invoice.id,
+        },
+      };
+
+      console.log(`🚀 ~ checkoutData:`, checkoutData);
+
+      const checkout: {
+        Model: {
+          Id: string;
+          Number: number;
+          Amount: number;
+          Currency: (typeof checkoutData)["Currency"];
+          CurrencyCode: number;
+          Email: (typeof checkoutData)["Email"];
+          Phone: (typeof checkoutData)["Phone"];
+          Description: (typeof checkoutData)["Description"];
+          RequireConfirmation: (typeof checkoutData)["RequireConfirmation"];
+          Url: string;
+          CultureName: (typeof checkoutData)["CultureName"];
+          CreatedDate: string;
+          CreatedDateIso: string;
+          PaymentDate: null;
+          PaymentDateIso: null;
+          StatusCode: number;
+          Status: string;
+          InternalId: number;
+        };
+        Success: boolean;
+        Message: null;
+      } = await fetch("https://api.cloudpayments.ru/orders/create", {
+        method: "POST",
+        body: JSON.stringify(checkoutData),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Basic ${Buffer.from(`${CLOUDPAYMENTS_PUBLIC_ID}:${CLOUDPAYMENTS_API_SECRET}`).toString("base64")}`,
+        },
+      }).then((res) => res.json());
+
+      console.log(`🚀 ~ checkout:`, checkout);
+
+      invoice = await invoiceApi.update({
+        id: invoice.id,
+        data: {
+          ...invoice,
+          providerId: `${checkout.Model.InternalId}`,
+          paymentUrl: checkout.Model.Url,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      await paymentIntentsToInvoicesApi.create({
+        data: {
+          paymentIntentId: props.entity.id,
+          invoiceId: invoice.id,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      return invoice;
+    } else {
+      const parsedData:
+        | {
+            orderId: string;
+            invoiceId: string;
+          }
+        | undefined = JSON.parse(props.data?.Data);
+
+      if (!parsedData) {
+        throw new Error("Data in transaction not found");
+      }
+
+      const invoices = await invoiceApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "id",
+                method: "eq",
+                value: parsedData.invoiceId,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoices?.length) {
+        throw new Error("Invoice not found");
+      }
+
+      if (invoices.length > 1) {
+        throw new Error("Multiple invoices found");
+      }
+
+      let invoice = invoices[0];
+
+      const signature = crypto
+        .createHmac("sha256", CLOUDPAYMENTS_API_SECRET)
+        .update(props.rawBody)
+        .digest("base64");
+
+      if (signature !== props.headers["content-hmac"]) {
+        throw new Error("Signature mismatch");
+      }
+
+      if (props.data.Status === "Completed") {
+        invoice = await invoiceApi.update({
+          id: invoice.id,
+          data: {
+            ...invoice,
+            amount: parseInt(props.data.PaymentAmount),
+            status: "paid",
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (!invoice) {
+          throw new Error("Invoice not found");
+        }
+
+        await this.updatePaymentIntentStatus({ invoice });
+      }
+
+      return { code: 0 };
+    }
+  }
+
   async OxProcessing(
     props:
       | {
@@ -714,6 +977,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     props:
       | {
           entity: (typeof Table)["$inferSelect"];
+          credentialsType: "INT" | "RUB";
           action: "create";
           email: string;
           subjectId: string;
@@ -750,6 +1014,130 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("RBAC secret key not found");
     }
 
+    let PAYSELECTION_PUBLIC_KEY: string | undefined;
+    let PAYSELECTION_SITE_ID: string | undefined;
+    let PAYSELECTION_SITE_NAME: string | undefined;
+    let PAYSELECTION_WEBHOOK_URL: string | undefined;
+    let PAYSELECTION_SECRET_KEY: string | undefined;
+
+    if (props.action === "create") {
+      if (props.credentialsType === "RUB") {
+        if (!PAYSELECTION_RUB_PUBLIC_KEY) {
+          throw new Error("Payselection RUB public key not found");
+        }
+
+        if (!PAYSELECTION_RUB_SECRET_KEY) {
+          throw new Error("Payselection RUB secret key not found");
+        }
+
+        if (!PAYSELECTION_RUB_SITE_ID) {
+          throw new Error("Payselection RUB site id not found");
+        }
+
+        if (!PAYSELECTION_RUB_SITE_NAME) {
+          throw new Error("Payselection RUB site name not found");
+        }
+
+        if (!PAYSELECTION_RUB_WEBHOOK_URL) {
+          throw new Error("Payselection RUB webhook url not found");
+        }
+
+        PAYSELECTION_SECRET_KEY = PAYSELECTION_RUB_SECRET_KEY;
+        PAYSELECTION_SITE_ID = PAYSELECTION_RUB_SITE_ID;
+        PAYSELECTION_SITE_NAME = PAYSELECTION_RUB_SITE_NAME;
+        PAYSELECTION_WEBHOOK_URL = PAYSELECTION_RUB_WEBHOOK_URL;
+        PAYSELECTION_PUBLIC_KEY = PAYSELECTION_RUB_PUBLIC_KEY;
+      } else if (props.credentialsType === "INT") {
+        if (!PAYSELECTION_INT_PUBLIC_KEY) {
+          throw new Error("Payselection INT public key not found");
+        }
+
+        if (!PAYSELECTION_INT_SITE_ID) {
+          throw new Error("Payselection INT site id not found");
+        }
+
+        if (!PAYSELECTION_INT_SECRET_KEY) {
+          throw new Error("Payselection INT secret key not found");
+        }
+
+        if (!PAYSELECTION_INT_SITE_NAME) {
+          throw new Error("Payselection INT site name not found");
+        }
+
+        if (!PAYSELECTION_INT_WEBHOOK_URL) {
+          throw new Error("Payselection INT webhook url not found");
+        }
+
+        PAYSELECTION_SECRET_KEY = PAYSELECTION_INT_SECRET_KEY;
+        PAYSELECTION_SITE_ID = PAYSELECTION_INT_SITE_ID;
+        PAYSELECTION_SITE_NAME = PAYSELECTION_INT_SITE_NAME;
+        PAYSELECTION_WEBHOOK_URL = PAYSELECTION_INT_WEBHOOK_URL;
+        PAYSELECTION_PUBLIC_KEY = PAYSELECTION_INT_PUBLIC_KEY;
+      }
+    } else {
+      if (!PAYSELECTION_RUB_SITE_ID && !PAYSELECTION_INT_SITE_ID) {
+        throw new Error("Payselection site id not found");
+      }
+
+      if (PAYSELECTION_RUB_SITE_ID === props.headers["x-site-id"]) {
+        if (!PAYSELECTION_RUB_PUBLIC_KEY) {
+          throw new Error("Payselection RUB public key not found");
+        }
+
+        if (!PAYSELECTION_RUB_PUBLIC_KEY) {
+          throw new Error("Payselection RUB public key not found");
+        }
+
+        if (!PAYSELECTION_RUB_SECRET_KEY) {
+          throw new Error("Payselection RUB secret key not found");
+        }
+
+        if (!PAYSELECTION_RUB_SITE_ID) {
+          throw new Error("Payselection RUB site id not found");
+        }
+
+        if (!PAYSELECTION_RUB_SITE_NAME) {
+          throw new Error("Payselection RUB site name not found");
+        }
+
+        if (!PAYSELECTION_RUB_WEBHOOK_URL) {
+          throw new Error("Payselection RUB webhook url not found");
+        }
+
+        PAYSELECTION_SECRET_KEY = PAYSELECTION_RUB_SECRET_KEY;
+        PAYSELECTION_SITE_ID = PAYSELECTION_RUB_SITE_ID;
+        PAYSELECTION_SITE_NAME = PAYSELECTION_RUB_SITE_NAME;
+        PAYSELECTION_WEBHOOK_URL = PAYSELECTION_RUB_WEBHOOK_URL;
+        PAYSELECTION_PUBLIC_KEY = PAYSELECTION_RUB_PUBLIC_KEY;
+      } else if (PAYSELECTION_INT_SITE_ID === props.headers["x-site-id"]) {
+        if (!PAYSELECTION_INT_PUBLIC_KEY) {
+          throw new Error("Payselection INT public key not found");
+        }
+
+        if (!PAYSELECTION_INT_SITE_ID) {
+          throw new Error("Payselection INT site id not found");
+        }
+
+        if (!PAYSELECTION_INT_SECRET_KEY) {
+          throw new Error("Payselection INT secret key not found");
+        }
+
+        if (!PAYSELECTION_INT_SITE_NAME) {
+          throw new Error("Payselection INT site name not found");
+        }
+
+        if (!PAYSELECTION_INT_WEBHOOK_URL) {
+          throw new Error("Payselection INT webhook url not found");
+        }
+
+        PAYSELECTION_SECRET_KEY = PAYSELECTION_INT_SECRET_KEY;
+        PAYSELECTION_SITE_ID = PAYSELECTION_INT_SITE_ID;
+        PAYSELECTION_SITE_NAME = PAYSELECTION_INT_SITE_NAME;
+        PAYSELECTION_WEBHOOK_URL = PAYSELECTION_INT_WEBHOOK_URL;
+        PAYSELECTION_PUBLIC_KEY = PAYSELECTION_INT_PUBLIC_KEY;
+      }
+    }
+
     if (!PAYSELECTION_PUBLIC_KEY) {
       throw new Error("Payselection public key not found");
     }
@@ -777,7 +1165,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       const invoice = await invoiceApi.create({
         data: {
-          provider: "stripe",
+          provider: "payselection",
           status: "open",
           amount: props.entity.amount,
         },
@@ -943,7 +1331,11 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         });
 
         if (!invoice) {
-          throw new Error("Invoice not found");
+          console.error(
+            "Payselection Webhook - Invoice not found: " + props.rawBody,
+          );
+
+          return;
         }
 
         await this.updatePaymentIntentStatus({ invoice });
