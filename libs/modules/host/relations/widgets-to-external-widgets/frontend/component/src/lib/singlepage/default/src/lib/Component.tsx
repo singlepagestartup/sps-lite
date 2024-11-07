@@ -24,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
         />
       ) : null}
 
-      {props.data.externalModule === "startup" ? (
+      {/* {props.data.externalModule === "startup" ? (
         <Startup
           {...props}
           isServer={props.isServer}
@@ -58,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
           hostUrl={props.hostUrl}
           data={props.data}
         />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

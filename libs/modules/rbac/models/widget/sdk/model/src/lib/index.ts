@@ -9,7 +9,7 @@ import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
 export const route = "/api/rbac/widgets";
 export const variants = [
   "default",
-  "change-password",
+  "identities-default",
   "forgot-password",
   "login",
   "logout",
