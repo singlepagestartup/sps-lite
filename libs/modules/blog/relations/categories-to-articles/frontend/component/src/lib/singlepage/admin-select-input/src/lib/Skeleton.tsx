@@ -1,1 +1,1 @@
-export { Component as Skeleton } from "@sps/shared-frontend-components/singlepage/admin-select-input2/Skeleton";
+export { Component as Skeleton } from "@sps/shared-frontend-components/singlepage/admin-select-input/Skeleton";

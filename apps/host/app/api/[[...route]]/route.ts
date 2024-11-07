@@ -50,14 +50,14 @@ app.mount("/blog", blogApp.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
 
 export async function POST(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+  return handle(app)(request);
 }
 export async function GET(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+  return handle(app)(request);
 }
 export async function PATCH(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+  return handle(app)(request);
 }
 export async function DELETE(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+  return handle(app)(request);
 }

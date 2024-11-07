@@ -6,7 +6,8 @@ import { api } from "@sps/rbac/models/subject/sdk/server";
 import { cookies } from "next/headers";
 
 async function me(props: IComponentProps) {
-  const jwt = cookies().get("rbac.subject.jwt")?.value;
+  const cookieStore = await cookies();
+  const jwt = cookieStore.get("rbac.subject.jwt")?.value;
 
   const headers: HeadersInit = jwt ? { Authorization: `Bearer ${jwt}` } : {};
 
