@@ -5,13 +5,8 @@ import { Table } from "@sps/ecommerce/models/order/backend/repository/database";
 import { Service } from "./service";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { api as billingPaymentIntent } from "@sps/billing/models/payment-intent/sdk/server";
+import { api as billingPaymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
 import { api as ordersToProductsApi } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
-import { api as productsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/sdk/server";
-import { api as attributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/sdk/server";
-import { api as attribute } from "@sps/ecommerce/models/attribute/sdk/server";
-import { IModel as IAttribute } from "@sps/ecommerce/models/attribute/sdk/model";
-import { api as attributeKeys } from "@sps/ecommerce/models/attribute-key/sdk/server";
 import { HOST_URL, RBAC_JWT_SECRET, RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { authorization } from "@sps/sps-backend-utils";
@@ -31,8 +26,8 @@ import { api as subjectsToBillingModulePaymentIntentsApi } from "@sps/rbac/relat
 import { IModel as IRolesToEcommerceModuleProducts } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
 import { api as rolesToEcommerceModuleProductsApi } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/server";
 import QueryString from "qs";
-import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
-
+import { api as broadcastChannelApi } from "@sps/broadcast/models/channel/sdk/server";
+import { api } from "@sps/ecommerce/models/order/sdk/server";
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
   service: Service;
@@ -77,6 +72,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "POST",
         path: "/:uuid/checkout",
         handler: this.checkout,
+      },
+      {
+        method: "POST",
+        path: "/:uuid/check",
+        handler: this.check,
       },
     ]);
   }
@@ -173,6 +173,47 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       console.log(`🚀 ~ checkout ~ provider:`, provider);
 
+      const metadata = {
+        orderId: uuid,
+        subjectId: subject.id,
+      };
+
+      if (!data["email"]) {
+        const identities = await subjectApi.identities({
+          id: subject.id,
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "email",
+                  method: "isNotNull",
+                },
+              ],
+            },
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            },
+            next: {
+              cache: "no-store",
+            },
+          },
+        });
+
+        if (identities?.length) {
+          if (identities.length > 1) {
+            throw new HTTPException(400, {
+              message: "Multiple identities with email found",
+            });
+          }
+
+          metadata["email"] = identities[0].email;
+        }
+      } else {
+        metadata["email"] = data["email"];
+      }
+
       const existing = await this.service.findById({
         id: uuid,
       });
@@ -187,65 +228,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         );
       }
-
-      const priceAttributeKeys = await attributeKeys.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "type",
-                method: "eq",
-                value: "price",
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (!priceAttributeKeys?.length) {
-        return c.json(
-          {
-            message: "Price attribute key not found",
-          },
-          {
-            status: 404,
-          },
-        );
-      }
-
-      const priceAttributeKey = priceAttributeKeys[0];
-
-      const intervalAttributeKeys = await attributeKeys.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "type",
-                method: "eq",
-                value: "interval",
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      const intervalAttributeKey = intervalAttributeKeys?.[0];
 
       const orderToProducts = await ordersToProductsApi.find({
         params: {
@@ -280,265 +262,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      let amount = 0;
-      let type;
-      let interval: string | undefined;
-
-      for (const orderToProduct of orderToProducts) {
-        const product = await productApi.findById({
-          id: orderToProduct.productId,
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
+      const { amount, type, interval } =
+        await this.service.getCheckoutAttributes({
+          id: uuid,
         });
 
-        if (!product) {
-          return c.json(
-            {
-              message: "Product not found",
-            },
-            {
-              status: 404,
-            },
-          );
-        }
-
-        if (!type) {
-          type = product.type;
-        } else if (type !== product.type) {
-          return c.json(
-            {
-              message: "Order has multiple product types",
-            },
-            {
-              status: 401,
-            },
-          );
-        }
-
-        const productToAttributes = await productsToAttributes.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "productId",
-                  method: "eq",
-                  value: orderToProduct.productId,
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
-
-        if (!productToAttributes?.length) {
-          return c.json(
-            {
-              message: "Product does not have any attributes",
-            },
-            {
-              status: 401,
-            },
-          );
-        }
-
-        const productPrices: IAttribute[] = [];
-        const productIntervals: IAttribute[] = [];
-
-        for (const productToAttribute of productToAttributes) {
-          const productPriceAttributes = await attributeKeysToAttributes.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "attributeId",
-                    method: "eq",
-                    value: productToAttribute.attributeId,
-                  },
-                  {
-                    column: "attributeKeyId",
-                    method: "eq",
-                    value: priceAttributeKey.id,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!productPriceAttributes?.length) {
-            continue;
-          }
-
-          if (productPriceAttributes.length > 1) {
-            return c.json(
-              {
-                message: "Product has multiple price attributes",
-              },
-              {
-                status: 401,
-              },
-            );
-          }
-
-          const priceAttribute = await attribute.findById({
-            id: productPriceAttributes[0].attributeId,
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!priceAttribute) {
-            return c.json(
-              {
-                message: "Price attribute not found",
-              },
-              {
-                status: 404,
-              },
-            );
-          }
-
-          productPrices.push(priceAttribute);
-        }
-
-        for (const productToAttribute of productToAttributes) {
-          if (!intervalAttributeKey) {
-            continue;
-          }
-
-          const intervals = await attributeKeysToAttributes.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "attributeId",
-                    method: "eq",
-                    value: productToAttribute.attributeId,
-                  },
-                  {
-                    column: "attributeKeyId",
-                    method: "eq",
-                    value: intervalAttributeKey.id,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!intervals?.length) {
-            continue;
-          }
-
-          if (intervals.length > 1) {
-            return c.json(
-              {
-                message: "Product has multiple interval attributes",
-              },
-              {
-                status: 401,
-              },
-            );
-          }
-
-          const intervalAttribute = await attribute.findById({
-            id: intervals[0].attributeId,
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!intervalAttribute) {
-            return c.json(
-              {
-                message: "Interval attribute not found",
-              },
-              {
-                status: 404,
-              },
-            );
-          }
-
-          productIntervals.push(intervalAttribute);
-        }
-
-        if (!productPrices.length) {
-          return c.json(
-            {
-              message: "Product does not have any price attributes",
-            },
-            {
-              status: 401,
-            },
-          );
-        }
-
-        amount += Number(productPrices[0].number) * orderToProduct.quantity;
-
-        if (!productIntervals.length) {
-          continue;
-        }
-
-        if (!interval && productIntervals[0].string) {
-          interval = productIntervals[0].string;
-        } else if (interval !== productIntervals[0].string) {
-          return c.json(
-            {
-              message: "Order has multiple intervals",
-            },
-            {
-              status: 401,
-            },
-          );
-        }
-      }
-
-      const entity = await this.service.update({
-        id: uuid,
-        data: {
-          ...existing,
-          status: "paying",
-        },
-      });
-
-      const paymentIntent = await billingPaymentIntent.create({
+      const paymentIntent = await billingPaymentIntentApi.create({
         data: {
           amount,
           interval,
@@ -623,10 +352,48 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         },
       });
 
-      await billingPaymentIntent.provider({
+      await billingPaymentIntentApi.provider({
         id: paymentIntent.id,
         data: {
           provider,
+          metadata,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      const entity = await this.service.update({
+        id: uuid,
+        data: {
+          ...existing,
+          status: "paying",
+        },
+      });
+
+      await broadcastChannelApi.pushMessage({
+        data: {
+          channelName: "observer",
+          payload: JSON.stringify({
+            action: {
+              type: "request",
+              method: "POST",
+              path: `/api/billing/payment-intents/${provider}/webhook`,
+            },
+            callback: {
+              type: "request",
+              method: "POST",
+              path: `/api/ecommerce/orders/${uuid}/check`,
+              headers: {
+                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              },
+            },
+          }),
         },
         options: {
           headers: {
@@ -1123,5 +890,115 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         message: error.message,
       });
     }
+  }
+
+  async check(c: Context, next: any): Promise<Response> {
+    if (!RBAC_SECRET_KEY) {
+      throw new HTTPException(400, {
+        message: "RBAC secret key not found",
+      });
+    }
+
+    const uuid = c.req.param("uuid");
+
+    if (!uuid) {
+      return c.json(
+        {
+          message: "Invalid id",
+        },
+        {
+          status: 400,
+        },
+      );
+    }
+
+    const ordersToBillingModulePaymentIntents =
+      await ordersToBillingModulePaymentIntentsApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "orderId",
+                method: "eq",
+                value: uuid,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+    if (!ordersToBillingModulePaymentIntents?.length) {
+      throw new HTTPException(404, {
+        message: "Orders to billing module payment intents not found",
+      });
+    }
+
+    const paymentIntents = await billingPaymentIntentApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "id",
+              method: "inArray",
+              value: ordersToBillingModulePaymentIntents.map(
+                (order) => order.billingModulePaymentIntentId,
+              ),
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!paymentIntents?.length) {
+      throw new HTTPException(404, {
+        message: "Payment intents not found",
+      });
+    }
+
+    const paymentIntentIsSucceeded = paymentIntents.find((paymentIntent) => {
+      return paymentIntent.status === "succeeded";
+    });
+
+    if (!paymentIntentIsSucceeded) {
+      throw new HTTPException(400, {
+        message: "Payment intent is not succeeded",
+      });
+    }
+
+    const order = await api.update({
+      id: uuid,
+      data: {
+        status: "approving",
+        type: "history",
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    return c.json({
+      data: order,
+    });
   }
 }

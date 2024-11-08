@@ -155,6 +155,10 @@ export class Database<T extends PgTableWithColumns<any>>
         if (["updatedAt", "createdAt"].includes(key)) {
           data[key] = new Date();
         }
+
+        if (["expiresAt"].includes(key) && typeof data[key] === "string") {
+          data[key] = new Date(data[key]);
+        }
       });
 
       const plainData: T["$inferInsert"] = this.insertSchema.parse(data);
@@ -233,6 +237,10 @@ export class Database<T extends PgTableWithColumns<any>>
 
         if (["updatedAt", "createdAt"].includes(key)) {
           data[key] = new Date();
+        }
+
+        if (["expiresAt"].includes(key) && typeof data[key] === "string") {
+          data[key] = new Date(data[key]);
         }
       });
 

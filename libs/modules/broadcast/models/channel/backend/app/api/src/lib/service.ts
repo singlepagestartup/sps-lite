@@ -48,7 +48,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
     const message = await messageApi.create({
       data: {
-        payload: data.payload,
+        ...data,
       },
       options: {
         headers: {

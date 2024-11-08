@@ -15,7 +15,8 @@ import {
 } from "@sps/shared-utils";
 import * as jwt from "hono/jwt";
 import { authorization } from "@sps/sps-backend-utils";
-import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
+import { IModel as IIdentity } from "@sps/rbac/models/identity/sdk/model";
 import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
 
 @injectable()
@@ -75,6 +76,11 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "GET",
         path: "/:uuid",
         handler: this.findById,
+      },
+      {
+        method: "GET",
+        path: "/:uuid/identities",
+        handler: this.identities,
       },
       {
         method: "POST",
@@ -204,6 +210,82 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         message: error.message,
       });
     }
+  }
+
+  async identities(c: Context, next: any): Promise<Response> {
+    if (!RBAC_SECRET_KEY) {
+      throw new HTTPException(400, {
+        message: "RBAC secret key not found",
+      });
+    }
+
+    const uuid = c.req.param("uuid");
+
+    if (!uuid) {
+      throw new HTTPException(400, {
+        message: "Invalid id",
+      });
+    }
+
+    const params = c.req.query();
+    const parsedQuery = QueryString.parse(params);
+
+    const subjectsToIdentities = await subjectsToIdentitiesApi.find({
+      params: {
+        filters: {
+          and: [
+            {
+              column: "subjectId",
+              method: "eq",
+              value: uuid,
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!subjectsToIdentities) {
+      throw new HTTPException(404, {
+        message: "No subjects to identities found",
+      });
+    }
+
+    const queryFilters = parsedQuery.filters?.["and"] || [];
+
+    const identities = await identityApi.find({
+      params: {
+        filters: {
+          and: [
+            ...queryFilters,
+            {
+              column: "id",
+              method: "inArray",
+              value: subjectsToIdentities.map((item) => item.identityId),
+            },
+          ],
+        },
+      },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    return c.json({
+      data: identities,
+    });
   }
 
   async logout(c: Context, next: any): Promise<Response> {
