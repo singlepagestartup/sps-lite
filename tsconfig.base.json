@@ -7,7 +7,6 @@
     "module": "ESNext",
     "jsx": "react-jsx",
     "sourceMap": true,
-    "composite": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
