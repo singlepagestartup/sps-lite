@@ -13,6 +13,7 @@ import { IComponentProps as ISelectMethodComponentProps } from "./select-method"
 import { IComponentProps as IEthereumVirtualMachineComponentProps } from "./ethereum-virtual-machine";
 import { IComponentProps as IMeComponentProps } from "./me";
 import { IComponentProps as IGetEmailsComponentProps } from "./get-emails";
+import { IComponentProps as IEcommerceProductOneStepCheckoutComponentProps } from "./ecommerce-product-one-step-checkout";
 
 export type IComponentProps =
   | IFindComponentProps
@@ -30,4 +31,5 @@ export type IComponentProps =
   | IEthereumVirtualMachineComponentProps
   | IMeComponentProps
   | IGetEmailsComponentProps
+  | IEcommerceProductOneStepCheckoutComponentProps
   | never;

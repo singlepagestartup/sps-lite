@@ -79,28 +79,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      // const subject = await subjectApi.me({
-      //   options: {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //     next: {
-      //       cache: "no-store",
-      //     },
-      //   },
-      // });
-
-      // if (!subject) {
-      //   return c.json(
-      //     {
-      //       message: "Not found",
-      //     },
-      //     {
-      //       status: 404,
-      //     },
-      //   );
-      // }
-
       const uuid = c.req.param("uuid");
       const body = await c.req.parseBody();
 
@@ -134,53 +112,14 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       console.log(`🚀 ~ checkout ~ provider:`, provider);
 
-      if (!data["subjectId"]) {
-        throw new HTTPException(400, {
-          message: "Subject not provided found",
-        });
-      }
-
       if (!data["email"]) {
         throw new HTTPException(400, {
-          message: "Email not provided found",
+          message: "Email not provided",
         });
-
-        // const identities = await subjectApi.identities({
-        //   id: subject.id,
-        //   params: {
-        //     filters: {
-        //       and: [
-        //         {
-        //           column: "email",
-        //           method: "isNotNull",
-        //         },
-        //       ],
-        //     },
-        //   },
-        //   options: {
-        //     headers: {
-        //       "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-        //     },
-        //     next: {
-        //       cache: "no-store",
-        //     },
-        //   },
-        // });
-
-        // if (identities?.length) {
-        //   if (identities.length > 1) {
-        //     throw new HTTPException(400, {
-        //       message: "Multiple identities with email found",
-        //     });
-        //   }
-
-        //   metadata["email"] = identities[0].email;
-        // }
       }
 
       const metadata = {
         orderId: uuid,
-        subjectId: data["subjectId"],
         email: data["email"],
       };
 

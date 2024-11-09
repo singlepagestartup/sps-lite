@@ -23,6 +23,8 @@ import { createId } from "@paralleldrive/cuid2";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 import { Address, Hex } from "viem";
+import { api as serverApi } from "../../../server";
+import { IExtendedModel as IEcommerceProductOneStepCheckoutResult } from "../../../server/src/lib/actions/ecommerce-product-one-step-checkout";
 
 export interface IMeProps {
   params?: {
@@ -49,6 +51,17 @@ export interface ILoginAndPasswordMutationFunctionProps {
   data: {
     login: string;
     password: string;
+  };
+  params?: {
+    [key: string]: any;
+  };
+  options?: NextRequestOptions;
+}
+
+export interface IEcommerceProductOneStepCheckoutMutationFunctionProps {
+  data: {
+    quantity: number;
+    provider: string;
   };
   params?: {
     [key: string]: any;
@@ -581,6 +594,55 @@ export const api = {
         globalActionsStore.getState().addAction({
           type: "mutation",
           name: `${route}/authentication/ethereum-virtual-machine`,
+          props: this,
+          result: data,
+          timestamp: Date.now(),
+          requestId: createId(),
+        });
+
+        return data;
+      },
+      ...props?.reactQueryOptions,
+    });
+  },
+  ecommerceProductOneStepCheckout: (props: {
+    id: string;
+    productId: string;
+    params?: {
+      [key: string]: any;
+    };
+    options?: NextRequestOptions;
+    reactQueryOptions?: any;
+  }) => {
+    return useMutation<
+      IEcommerceProductOneStepCheckoutResult,
+      DefaultError,
+      IEcommerceProductOneStepCheckoutMutationFunctionProps
+    >({
+      mutationKey: [
+        `${route}/${props.id}/ecommerce/products/${props.productId}/one-step-checkout`,
+      ],
+      mutationFn: async (
+        mutationFunctionProps: IEcommerceProductOneStepCheckoutMutationFunctionProps,
+      ) => {
+        try {
+          const result = serverApi.ecommerceProductOneStepCheckout({
+            ...mutationFunctionProps,
+            id: props.id,
+            productId: props.productId,
+          });
+
+          return result;
+        } catch (error: any) {
+          toast.error(error.message);
+
+          throw error;
+        }
+      },
+      onSuccess(data) {
+        globalActionsStore.getState().addAction({
+          type: "mutation",
+          name: `${route}/${props.id}/ecommerce/products/${props.productId}/one-step-checkout`,
           props: this,
           result: data,
           timestamp: Date.now(),
