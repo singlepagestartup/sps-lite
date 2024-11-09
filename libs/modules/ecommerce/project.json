@@ -79,6 +79,9 @@
             "command": "nx run @sps/ecommerce:relations:stores-to-products:repository-generate"
           },
           {
+            "command": "nx run @sps/ecommerce:relations:stores-to-products-to-attributes:repository-generate"
+          },
+          {
             "command": "nx run @sps/ecommerce:relations:stores-to-attributes:repository-generate"
           },
           {
@@ -156,6 +159,9 @@
           },
           {
             "command": "nx run @sps/ecommerce:relations:stores-to-products:repository-migrate"
+          },
+          {
+            "command": "nx run @sps/ecommerce:relations:stores-to-products-to-attributes:repository-migrate"
           },
           {
             "command": "nx run @sps/ecommerce:relations:stores-to-attributes:repository-migrate"
@@ -535,6 +541,34 @@
         "parallel": false,
         "envFile": "apps/host/.env.local",
         "cwd": "libs/modules/ecommerce/relations/stores-to-products/backend/repository/database",
+        "commands": [
+          {
+            "command": "bun run ./src/lib/migrate.ts"
+          }
+        ]
+      }
+    },
+    "relations:stores-to-products-to-attributes:repository-generate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "cwd": "libs/modules/ecommerce/relations/stores-to-products-to-attributes/backend/repository/database",
+        "commands": [
+          {
+            "command": "drizzle-kit up --config=./src/lib/config.ts"
+          },
+          {
+            "command": "drizzle-kit generate --config=./src/lib/config.ts"
+          }
+        ]
+      }
+    },
+    "relations:stores-to-products-to-attributes:repository-migrate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "envFile": "apps/host/.env.local",
+        "cwd": "libs/modules/ecommerce/relations/stores-to-products-to-attributes/backend/repository/database",
         "commands": [
           {
             "command": "bun run ./src/lib/migrate.ts"

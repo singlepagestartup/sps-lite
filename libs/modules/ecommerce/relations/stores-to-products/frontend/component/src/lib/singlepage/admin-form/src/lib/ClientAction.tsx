@@ -95,6 +95,14 @@ export function Component(props: IComponentPropsExtended) {
           formFieldName="productId"
           form={form}
         />
+
+        {props.storesToProductsToAttributes
+          ? props.storesToProductsToAttributes({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
       </div>
     </ParentAdminForm>
   );

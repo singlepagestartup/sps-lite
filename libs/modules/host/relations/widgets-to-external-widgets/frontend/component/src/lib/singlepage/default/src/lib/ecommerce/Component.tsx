@@ -1,6 +1,7 @@
 import { IComponentPropsExtended } from "../interface";
 import { Component as EcommerceWidget } from "@sps/ecommerce/models/widget/frontend/component";
 import { Component as ProductsList } from "./ProductsList";
+import { Component as StoresList } from "./StoresList";
 import { Component as ProductOverview } from "./ProductOverview";
 import { Component as CategoryOverview } from "./CategoryOverview";
 
@@ -36,6 +37,9 @@ export function Component(props: IComponentPropsExtended) {
             >
               {entity.variant.includes("products-list") ? (
                 <ProductsList {...props} />
+              ) : null}
+              {entity.variant.includes("stores-list") ? (
+                <StoresList {...props} />
               ) : null}
               {entity.variant.includes("product-overview") ? (
                 <ProductOverview {...props} />

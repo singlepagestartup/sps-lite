@@ -13,104 +13,103 @@ export function Component(props: IComponentPropsExtended) {
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.className || "")}
     >
-      <div className="flex flex-col gap-3">
-        <StoresToAttributes
-          isServer={props.isServer}
-          hostUrl={props.hostUrl}
-          variant="find"
-          apiProps={{
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "storeId",
-                    method: "eq",
-                    value: props.data.id,
-                  },
-                ],
-              },
+      <h2 className="text-4xl font-bold">{props.data.title}</h2>
+      <StoresToAttributes
+        isServer={props.isServer}
+        hostUrl={props.hostUrl}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [
+                {
+                  column: "storeId",
+                  method: "eq",
+                  value: props.data.id,
+                },
+              ],
             },
-          }}
-        >
-          {({ data }) => {
-            return data?.map((productToAttribute, index) => {
-              return (
-                <AttributeKeysToAttributes
-                  key={index}
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant="find"
-                  apiProps={{
-                    params: {
-                      filters: {
-                        and: [
-                          {
-                            column: "attributeId",
-                            method: "eq",
-                            value: productToAttribute.attributeId,
-                          },
-                        ],
-                      },
+          },
+        }}
+      >
+        {({ data }) => {
+          return data?.map((productToAttribute, index) => {
+            return (
+              <AttributeKeysToAttributes
+                key={index}
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                variant="find"
+                apiProps={{
+                  params: {
+                    filters: {
+                      and: [
+                        {
+                          column: "attributeId",
+                          method: "eq",
+                          value: productToAttribute.attributeId,
+                        },
+                      ],
                     },
-                  }}
-                >
-                  {({ data: attributeKeysToAttributes }) => {
-                    return attributeKeysToAttributes?.map(
-                      (attributeKeyToAttribute, index) => {
-                        return (
-                          <AttributeKey
-                            key={index}
-                            isServer={props.isServer}
-                            hostUrl={props.hostUrl}
-                            variant="find"
-                            apiProps={{
-                              params: {
-                                filters: {
-                                  and: [
-                                    {
-                                      column: "id",
-                                      method: "eq",
-                                      value:
-                                        attributeKeyToAttribute.attributeKeyId,
-                                    },
-                                  ],
-                                },
+                  },
+                }}
+              >
+                {({ data: attributeKeysToAttributes }) => {
+                  return attributeKeysToAttributes?.map(
+                    (attributeKeyToAttribute, index) => {
+                      return (
+                        <AttributeKey
+                          key={index}
+                          isServer={props.isServer}
+                          hostUrl={props.hostUrl}
+                          variant="find"
+                          apiProps={{
+                            params: {
+                              filters: {
+                                and: [
+                                  {
+                                    column: "id",
+                                    method: "eq",
+                                    value:
+                                      attributeKeyToAttribute.attributeKeyId,
+                                  },
+                                ],
                               },
-                            }}
-                          >
-                            {({ data }) => {
-                              return data?.map((attributeKey, index) => {
-                                return (
-                                  <div key={index} className="w-fit flex gap-2">
-                                    <AttributeKey
-                                      isServer={props.isServer}
-                                      hostUrl={props.hostUrl}
-                                      variant="default"
-                                      data={attributeKey}
-                                    />
-                                    <StoresToAttributes
-                                      isServer={props.isServer}
-                                      hostUrl={props.hostUrl}
-                                      variant="default"
-                                      data={productToAttribute}
-                                      attributeField={attributeKey.field}
-                                    />
-                                  </div>
-                                );
-                              });
-                            }}
-                          </AttributeKey>
-                        );
-                      },
-                    );
-                  }}
-                </AttributeKeysToAttributes>
-              );
-            });
-          }}
-        </StoresToAttributes>
-      </div>
-      {props.children}
+                            },
+                          }}
+                        >
+                          {({ data }) => {
+                            return data?.map((attributeKey, index) => {
+                              return (
+                                <div key={index} className="w-fit flex gap-2">
+                                  <AttributeKey
+                                    isServer={props.isServer}
+                                    hostUrl={props.hostUrl}
+                                    variant="default"
+                                    data={attributeKey}
+                                  />
+                                  <StoresToAttributes
+                                    isServer={props.isServer}
+                                    hostUrl={props.hostUrl}
+                                    variant="default"
+                                    data={productToAttribute}
+                                    attributeField={attributeKey.field}
+                                  />
+                                </div>
+                              );
+                            });
+                          }}
+                        </AttributeKey>
+                      );
+                    },
+                  );
+                }}
+              </AttributeKeysToAttributes>
+            );
+          });
+        }}
+      </StoresToAttributes>
+      <div className="grid cols-3 border border-2 p-3">{props.children}</div>
     </div>
   );
 }

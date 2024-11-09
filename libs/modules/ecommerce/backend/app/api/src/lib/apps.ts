@@ -11,6 +11,7 @@ import { app as productsToAttributesApp } from "@sps/ecommerce/relations/product
 import { app as ordersToProductsApp } from "@sps/ecommerce/relations/orders-to-products/backend/app/api";
 import { app as ordersToBillingPaymentIntentsApp } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/backend/app/api";
 import { app as storesToProductsApp } from "@sps/ecommerce/relations/stores-to-products/backend/app/api";
+import { app as storesToProductsToAttributesApp } from "@sps/ecommerce/relations/stores-to-products-to-attributes/backend/app/api";
 import { app as storesToAttributesApp } from "@sps/ecommerce/relations/stores-to-attributes/backend/app/api";
 import { app as categoriesToProductsApp } from "@sps/ecommerce/relations/categories-to-products/backend/app/api";
 import { app as productsToFileStorageModuleWidgetsApp } from "@sps/ecommerce/relations/products-to-file-storage-module-widgets/backend/app/api";
@@ -91,6 +92,11 @@ export class Apps {
       type: "relation",
       route: "/stores-to-products",
       app: storesToProductsApp,
+    });
+    this.apps.push({
+      type: "relation",
+      route: "/stores-to-products-to-attributes",
+      app: storesToProductsToAttributesApp,
     });
     this.apps.push({
       type: "relation",

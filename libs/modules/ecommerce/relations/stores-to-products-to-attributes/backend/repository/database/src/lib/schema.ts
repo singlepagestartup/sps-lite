@@ -1,5 +1,5 @@
 import * as pgCore from "drizzle-orm/pg-core";
-import { Table as StoresToProducts } from "@sps/ecommerce/relations/stores-to-products-to-attributes/backend/repository/database";
+import { Table as StoresToProducts } from "@sps/ecommerce/relations/stores-to-products/backend/repository/database";
 import { Table as Attribute } from "@sps/ecommerce/models/attribute/backend/repository/database";
 
 export const moduleName = "sps_ee";
