@@ -7,24 +7,9 @@ import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as billingPaymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
 import { api as ordersToProductsApi } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
-import { HOST_URL, RBAC_JWT_SECRET, RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { HOST_URL, RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
-import { authorization } from "@sps/sps-backend-utils";
-import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
-import { api as rbacSubjectsToEcommerceModuleOrdersApi } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/sdk/server";
-import { api as rbacSubjectsToRolesApi } from "@sps/rbac/relations/subjects-to-roles/sdk/server";
-import { api as rbacSubjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
-import { api as rbacIdentityApi } from "@sps/rbac/models/identity/sdk/server";
-import { api as notificationNotificationsApi } from "@sps/notification/models/notification/sdk/server";
-import { api as notificationTemplatesApi } from "@sps/notification/models/template/sdk/server";
-import { api as notificationTopicsApi } from "@sps/notification/models/topic/sdk/server";
-import { api as productApi } from "@sps/ecommerce/models/product/sdk/server";
-import { api as notificationTopicsToNotificationsApi } from "@sps/notification/relations/topics-to-notifications/sdk/server";
-import { api as notificationNotificationsToTemplatesApi } from "@sps/notification/relations/notifications-to-templates/sdk/server";
-import { api as subjectsToBillingModulePaymentIntentsApi } from "@sps/rbac/relations/subjects-to-billing-module-payment-intents/sdk/server";
-import { IModel as IRolesToEcommerceModuleProducts } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/model";
-import { api as rolesToEcommerceModuleProductsApi } from "@sps/rbac/relations/roles-to-ecommerce-module-products/sdk/server";
 import QueryString from "qs";
 import { api as broadcastChannelApi } from "@sps/broadcast/models/channel/sdk/server";
 import { api } from "@sps/ecommerce/models/order/sdk/server";
@@ -94,51 +79,27 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         );
       }
 
-      if (!RBAC_JWT_SECRET) {
-        return c.json(
-          {
-            message: "RBAC JWT secret not found",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
+      // const subject = await subjectApi.me({
+      //   options: {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //     next: {
+      //       cache: "no-store",
+      //     },
+      //   },
+      // });
 
-      const token = authorization(c);
-
-      if (!token) {
-        return c.json(
-          {
-            message: "Unauthorized",
-          },
-          {
-            status: 401,
-          },
-        );
-      }
-
-      const subject = await subjectApi.me({
-        options: {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (!subject) {
-        return c.json(
-          {
-            message: "Not found",
-          },
-          {
-            status: 404,
-          },
-        );
-      }
+      // if (!subject) {
+      //   return c.json(
+      //     {
+      //       message: "Not found",
+      //     },
+      //     {
+      //       status: 404,
+      //     },
+      //   );
+      // }
 
       const uuid = c.req.param("uuid");
       const body = await c.req.parseBody();
@@ -173,46 +134,55 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
       console.log(`🚀 ~ checkout ~ provider:`, provider);
 
-      const metadata = {
-        orderId: uuid,
-        subjectId: subject.id,
-      };
+      if (!data["subjectId"]) {
+        throw new HTTPException(400, {
+          message: "Subject not provided found",
+        });
+      }
 
       if (!data["email"]) {
-        const identities = await subjectApi.identities({
-          id: subject.id,
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "email",
-                  method: "isNotNull",
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
+        throw new HTTPException(400, {
+          message: "Email not provided found",
         });
 
-        if (identities?.length) {
-          if (identities.length > 1) {
-            throw new HTTPException(400, {
-              message: "Multiple identities with email found",
-            });
-          }
+        // const identities = await subjectApi.identities({
+        //   id: subject.id,
+        //   params: {
+        //     filters: {
+        //       and: [
+        //         {
+        //           column: "email",
+        //           method: "isNotNull",
+        //         },
+        //       ],
+        //     },
+        //   },
+        //   options: {
+        //     headers: {
+        //       "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        //     },
+        //     next: {
+        //       cache: "no-store",
+        //     },
+        //   },
+        // });
 
-          metadata["email"] = identities[0].email;
-        }
-      } else {
-        metadata["email"] = data["email"];
+        // if (identities?.length) {
+        //   if (identities.length > 1) {
+        //     throw new HTTPException(400, {
+        //       message: "Multiple identities with email found",
+        //     });
+        //   }
+
+        //   metadata["email"] = identities[0].email;
+        // }
       }
+
+      const metadata = {
+        orderId: uuid,
+        subjectId: data["subjectId"],
+        email: data["email"],
+      };
 
       const existing = await this.service.findById({
         id: uuid,
@@ -272,21 +242,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           amount,
           interval,
           type,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      await subjectsToBillingModulePaymentIntentsApi.create({
-        data: {
-          subjectId: subject.id,
-          billingModulePaymentIntentId: paymentIntent.id,
         },
         options: {
           headers: {
@@ -383,12 +338,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             action: {
               type: "request",
               method: "POST",
-              path: `/api/billing/payment-intents/${provider}/webhook`,
+              url: `${HOST_URL}/api/billing/payment-intents/${provider}/webhook`,
             },
             callback: {
               type: "request",
               method: "POST",
-              path: `/api/ecommerce/orders/${uuid}/check`,
+              url: `${HOST_URL}/api/ecommerce/orders/${uuid}/check`,
               headers: {
                 "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
               },
@@ -479,407 +434,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
             receipt: receiptFile.file,
           },
         });
-      }
-
-      const rbacSubjectsToEcommerceModuleOrders =
-        await rbacSubjectsToEcommerceModuleOrdersApi.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "ecommerceModuleOrderId",
-                  method: "eq",
-                  value: uuid,
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
-
-      const ordersToProducts = await ordersToProductsApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "orderId",
-                method: "eq",
-                value: uuid,
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      let rolesToEcommerceModuleProducts:
-        | IRolesToEcommerceModuleProducts[]
-        | undefined;
-
-      if (ordersToProducts?.length) {
-        const products = await productApi.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "id",
-                  method: "inArray",
-                  value: ordersToProducts?.map(
-                    (orderToProduct) => orderToProduct.productId,
-                  ),
-                },
-              ],
-            },
-          },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
-            next: {
-              cache: "no-store",
-            },
-          },
-        });
-
-        if (products?.length) {
-          const productIds = products.map((product) => product.id);
-
-          rolesToEcommerceModuleProducts =
-            await rolesToEcommerceModuleProductsApi.find({
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "ecommerceModuleProductId",
-                      method: "inArray",
-                      value: productIds,
-                    },
-                  ],
-                },
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-        }
-      }
-
-      if (rbacSubjectsToEcommerceModuleOrders?.length) {
-        for (const rbacSubjectToEcommerceModuleOrder of rbacSubjectsToEcommerceModuleOrders) {
-          const subjectsToIdentities = await rbacSubjectsToIdentitiesApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "subjectId",
-                    method: "eq",
-                    value: rbacSubjectToEcommerceModuleOrder.subjectId,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!subjectsToIdentities?.length) {
-            continue;
-          }
-
-          let topics = await notificationTopicsApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "title",
-                    method: "eq",
-                    value: "Information",
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (!topics?.length) {
-            topics = [
-              await notificationTopicsApi.create({
-                data: {
-                  title: "Information",
-                },
-                options: {
-                  headers: {
-                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                  },
-                  next: {
-                    cache: "no-store",
-                  },
-                },
-              }),
-            ];
-          }
-
-          const templates = await notificationTemplatesApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "variant",
-                    method: "eq",
-                    value: "order-status-changed-to-paid",
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          if (templates?.length) {
-            const identities = await rbacIdentityApi.find({
-              params: {
-                filters: {
-                  and: [
-                    {
-                      column: "id",
-                      method: "eq",
-                      value: subjectsToIdentities[0].identityId,
-                    },
-                  ],
-                },
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-
-            if (!identities?.length) {
-              continue;
-            }
-
-            for (const identity of identities) {
-              if (!identity.email) {
-                continue;
-              }
-
-              const notification = await notificationNotificationsApi.create({
-                data: {
-                  reciever: identity.email,
-                  data: JSON.stringify({
-                    title: "Order status updated",
-                    subject: "Order status updated",
-                    id: entity?.id || "",
-                  }),
-                  method: "email",
-                  attachments: entity?.receipt
-                    ? JSON.stringify([{ type: "image", url: entity.receipt }])
-                    : "[]",
-                },
-                options: {
-                  headers: {
-                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                  },
-                  next: {
-                    cache: "no-store",
-                  },
-                },
-              });
-
-              if (!notification) {
-                continue;
-              }
-
-              await notificationNotificationsToTemplatesApi.create({
-                data: {
-                  notificationId: notification.id,
-                  templateId: templates[0].id,
-                },
-                options: {
-                  headers: {
-                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                  },
-                  next: {
-                    cache: "no-store",
-                  },
-                },
-              });
-
-              const topicToNotification =
-                await notificationTopicsToNotificationsApi.create({
-                  data: {
-                    topicId: topics[0].id,
-                    notificationId: notification.id,
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                    next: {
-                      cache: "no-store",
-                    },
-                  },
-                });
-            }
-          }
-        }
-      }
-
-      await notificationTopicsApi.sendAll({
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (rbacSubjectsToEcommerceModuleOrders?.length) {
-        for (const rbacSubjectToEcommerceModuleOrder of rbacSubjectsToEcommerceModuleOrders) {
-          const rbacSubjectsToRoles = await rbacSubjectsToRolesApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "subjectId",
-                    method: "eq",
-                    value: rbacSubjectToEcommerceModuleOrder.subjectId,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-          const existingRolesIds = rbacSubjectsToRoles?.map(
-            (rbacSubjectToRole) => rbacSubjectToRole.roleId,
-          );
-
-          const productRolesIds = rolesToEcommerceModuleProducts?.map(
-            (roleToEcommerceModuleProduct) =>
-              roleToEcommerceModuleProduct.roleId,
-          );
-
-          if (entity?.status === "approving") {
-            const newRolesIds = productRolesIds?.filter(
-              (productRoleId) => !existingRolesIds?.includes(productRoleId),
-            );
-
-            if (newRolesIds?.length) {
-              for (const newRoleId of newRolesIds) {
-                await rbacSubjectsToRolesApi.create({
-                  data: {
-                    subjectId: rbacSubjectToEcommerceModuleOrder.subjectId,
-                    roleId: newRoleId,
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                    next: {
-                      cache: "no-store",
-                    },
-                  },
-                });
-              }
-            }
-          } else if (
-            entity?.status &&
-            ["paying", "delivered"].includes(entity.status)
-          ) {
-            const removeRolesIds = productRolesIds?.filter((productRoleId) =>
-              existingRolesIds?.includes(productRoleId),
-            );
-
-            if (removeRolesIds?.length) {
-              for (const removeRoleId of removeRolesIds) {
-                const rbacSubjectToRole = rbacSubjectsToRoles?.find(
-                  (rbacSubjectToRole) =>
-                    rbacSubjectToRole.roleId === removeRoleId,
-                );
-
-                if (!rbacSubjectToRole) {
-                  continue;
-                }
-
-                await rbacSubjectsToRolesApi.delete({
-                  id: rbacSubjectToRole.id,
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                    next: {
-                      cache: "no-store",
-                    },
-                  },
-                });
-              }
-            }
-          }
-
-          console.log(`🚀 ~ update ~ existingRolesIds:`, existingRolesIds);
-
-          console.log(
-            `🚀 ~ update ~ rbacSubjectsToRoles:`,
-            rbacSubjectsToRoles,
-          );
-
-          console.log(
-            `🚀 ~ update ~ rolesToEcommerceModuleProducts:`,
-            rolesToEcommerceModuleProducts,
-          );
-        }
       }
 
       return c.json({

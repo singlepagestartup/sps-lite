@@ -118,7 +118,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           metadata: {
             orderId: data.metadata.orderId,
             email: data.metadata.email,
-            subjectId: data.metadata.subjectId,
           },
         });
       } else if (provider === "0xprocessing") {
@@ -133,7 +132,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           email: data.metadata.email,
           metadata: {
             orderId: data.metadata.orderId,
-            subjectId: data.metadata.subjectId,
           },
           entity,
         });
@@ -247,8 +245,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
     }
-
-    console.log(`🚀 ~ providerWebhook ~ entity:`, result);
 
     return c.json(
       {

@@ -133,7 +133,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           metadata: {
             orderId: string;
             email: string;
-            subjectId: string;
           };
         }
       | {
@@ -269,7 +268,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           metadata: {
             orderId: props.metadata.orderId,
             email: props.metadata.email,
-            subjectId: props.metadata.subjectId,
           },
         });
       }
@@ -549,7 +547,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           action: "create";
           email: string;
           metadata: {
-            subjectId: string;
             orderId: string;
           };
         }
@@ -802,7 +799,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           email: string;
           metadata: {
             orderId: string;
-            subjectId: string;
           };
         }
       | {
@@ -844,7 +840,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       formData.append("currency", "USDT");
       formData.append("amountusd", `${props.entity.amount}`);
       formData.append("BillingId", `${props.metadata.orderId}`);
-      formData.append("ClientId", `${props.metadata.subjectId}`);
+      formData.append("ClientId", `${props.email}`);
       formData.append("MerchantId", `${O_X_PROCESSING_SHOP_ID}`);
       formData.append("email", `${props.email}`);
       formData.append("ReturnUrl", `${true}`);
@@ -984,7 +980,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           credentialsType: "INT" | "RUB";
           action: "create";
           email: string;
-          subjectId: string;
         }
       | {
           action: "webhook";

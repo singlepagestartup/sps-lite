@@ -1,4 +1,8 @@
-import { HOST_URL, RBAC_SECRET_KEY } from "@sps/shared-utils";
+import {
+  HOST_URL,
+  prepareFormDataToSend,
+  RBAC_SECRET_KEY,
+} from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
 import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
@@ -104,16 +108,22 @@ export class Middleware {
 
             if (
               payload.action.method === method &&
-              payload.action.path === path
+              payload.action.url === `${HOST_URL}${path}`
             ) {
-              await fetch(HOST_URL + payload.callback.path, {
+              const options: any = {
                 method: payload.callback.method,
                 headers: {
-                  "Content-Type": "application/json",
                   ...payload.callback.headers,
                 },
-                body: JSON.stringify(payload.callback.body),
-              }).then(async (res) => {
+              };
+
+              if (payload.callback.body) {
+                const formData = prepareFormDataToSend(payload.callback.body);
+
+                options.body = formData;
+              }
+
+              await fetch(payload.callback.url, options).then(async (res) => {
                 if (res.status >= 200 && res.status < 300) {
                   if (!RBAC_SECRET_KEY) {
                     throw Error(
