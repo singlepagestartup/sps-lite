@@ -131,6 +131,14 @@ export function Component(props: IComponentPropsExtended) {
             })
           : null}
 
+        {props.storesToProducts
+          ? props.storesToProducts({
+              data: props.data,
+              hostUrl: props.hostUrl,
+              isServer: props.isServer,
+            })
+          : null}
+
         {props.productsToFileStorageModuleWidgets
           ? props.productsToFileStorageModuleWidgets({
               data: props.data,

@@ -43,7 +43,7 @@ export function Component(props: IComponentPropsExtended) {
       id={props.data?.id}
       onSubmit={onSubmit}
       variant={props.variant}
-      name="product"
+      name="store"
     >
       <div className="flex flex-col gap-6">
         <FormField
@@ -67,10 +67,10 @@ export function Component(props: IComponentPropsExtended) {
         <FormField
           ui="shadcn"
           type="text"
-          name="sku"
-          label="SKU"
+          name="slug"
+          label="Slug"
           form={form}
-          placeholder="Type sku"
+          placeholder="Type slug"
         />
 
         <FormField

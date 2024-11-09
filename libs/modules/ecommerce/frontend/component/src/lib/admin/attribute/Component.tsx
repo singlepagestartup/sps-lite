@@ -3,6 +3,7 @@
 import { Component as ParentComponent } from "@sps/ecommerce/models/attribute/frontend/component";
 import { Component as AttributesToAttributeKeys } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
 import { Component as ProductsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/frontend/component";
+import { Component as StoresToAttributes } from "@sps/ecommerce/relations/stores-to-attributes/frontend/component";
 
 export function Component() {
   return (
@@ -50,6 +51,32 @@ export function Component() {
 
               return (
                 <ProductsToAttributes
+                  isServer={isServer}
+                  hostUrl={hostUrl}
+                  variant="admin-table"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "attributeId",
+                            method: "eq",
+                            value: data.id,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                />
+              );
+            }}
+            storesToAttributes={({ data, hostUrl, isServer }) => {
+              if (!data) {
+                return;
+              }
+
+              return (
+                <StoresToAttributes
                   isServer={isServer}
                   hostUrl={hostUrl}
                   variant="admin-table"

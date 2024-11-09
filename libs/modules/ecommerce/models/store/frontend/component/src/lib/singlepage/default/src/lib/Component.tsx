@@ -1,59 +1,20 @@
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
-import { Component as ProductsToAttributes } from "@sps/ecommerce/relations/products-to-attributes/frontend/component";
+import { Component as StoresToAttributes } from "@sps/ecommerce/relations/stores-to-attributes/frontend/component";
 import { Component as AttributeKeysToAttributes } from "@sps/ecommerce/relations/attribute-keys-to-attributes/frontend/component";
-import { Component as ProductsToFileStorageModuleWidgets } from "@sps/ecommerce/relations/products-to-file-storage-module-widgets/frontend/component";
-import Link from "next/link";
 import { Component as AttributeKey } from "@sps/ecommerce/models/attribute-key/frontend/component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
       data-module="ecommerce"
-      data-model="product"
+      data-model="store"
       data-id={props.data?.id || ""}
       data-variant={props.variant}
       className={cn("w-full flex flex-col", props.className || "")}
     >
-      <div className="w-full">
-        <ProductsToFileStorageModuleWidgets
-          isServer={props.isServer}
-          hostUrl={props.hostUrl}
-          variant="find"
-          apiProps={{
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "productId",
-                    method: "eq",
-                    value: props.data.id,
-                  },
-                ],
-              },
-            },
-          }}
-        >
-          {({ data }) => {
-            return data?.map((entity, index) => {
-              return (
-                <ProductsToFileStorageModuleWidgets
-                  key={index}
-                  isServer={props.isServer}
-                  hostUrl={props.hostUrl}
-                  variant={entity.variant as any}
-                  data={entity}
-                />
-              );
-            });
-          }}
-        </ProductsToFileStorageModuleWidgets>
-      </div>
-      <Link href={`/ecommerce/stores/${props.data.id}`} className="w-fit">
-        <p className="font-bold w-fit">{props.data.title}</p>
-      </Link>
       <div className="flex flex-col gap-3">
-        <ProductsToAttributes
+        <StoresToAttributes
           isServer={props.isServer}
           hostUrl={props.hostUrl}
           variant="find"
@@ -62,7 +23,7 @@ export function Component(props: IComponentPropsExtended) {
               filters: {
                 and: [
                   {
-                    column: "productId",
+                    column: "storeId",
                     method: "eq",
                     value: props.data.id,
                   },
@@ -127,7 +88,7 @@ export function Component(props: IComponentPropsExtended) {
                                       variant="default"
                                       data={attributeKey}
                                     />
-                                    <ProductsToAttributes
+                                    <StoresToAttributes
                                       isServer={props.isServer}
                                       hostUrl={props.hostUrl}
                                       variant="default"
@@ -147,7 +108,7 @@ export function Component(props: IComponentPropsExtended) {
               );
             });
           }}
-        </ProductsToAttributes>
+        </StoresToAttributes>
       </div>
       {props.children}
     </div>
