@@ -31,7 +31,7 @@ import { api as paymentIntentApi } from "@sps/billing/models/payment-intent/sdk/
 import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
 import { IModel as IInvoice } from "@sps/billing/models/invoice/sdk/model";
 import * as crypto from "crypto";
-import { api as ecommerceOrdersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
+// import { api as ecommerceOrdersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -130,8 +130,10 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           entity: (typeof Table)["$inferSelect"];
           action: "create";
           email: string;
-          subjectId: string;
-          orderId: string;
+          metadata: {
+            orderId: string;
+            email: string;
+          };
         }
       | {
           action: "webhook";
@@ -233,7 +235,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           payment_behavior: "default_incomplete",
           expand: ["latest_invoice.payment_intent"],
           metadata: {
-            orderId: props.orderId,
+            ...props.metadata,
           },
         });
       } else {
@@ -264,7 +266,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           success_url: `${STRIPE_RETURN_URL}`,
           cancel_url: `${STRIPE_RETURN_URL}`,
           metadata: {
-            orderId: props.orderId,
+            orderId: props.metadata.orderId,
+            email: props.metadata.email,
           },
         });
       }
@@ -451,52 +454,52 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
               },
             });
 
-            if (subscription?.metadata?.["orderId"]) {
-              const ecommerceOrdersToBillingModulePaymentIntents =
-                await ecommerceOrdersToBillingModulePaymentIntentsApi.find({
-                  params: {
-                    filters: {
-                      and: [
-                        {
-                          column: "orderId",
-                          method: "eq",
-                          value: subscription.metadata["orderId"],
-                        },
-                      ],
-                    },
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                    next: {
-                      cache: "no-store",
-                    },
-                  },
-                });
+            // if (subscription?.metadata?.["orderId"]) {
+            //   const ecommerceOrdersToBillingModulePaymentIntents =
+            //     await ecommerceOrdersToBillingModulePaymentIntentsApi.find({
+            //       params: {
+            //         filters: {
+            //           and: [
+            //             {
+            //               column: "orderId",
+            //               method: "eq",
+            //               value: subscription.metadata["orderId"],
+            //             },
+            //           ],
+            //         },
+            //       },
+            //       options: {
+            //         headers: {
+            //           "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            //         },
+            //         next: {
+            //           cache: "no-store",
+            //         },
+            //       },
+            //     });
 
-              if (
-                ecommerceOrdersToBillingModulePaymentIntents?.length &&
-                ecommerceOrdersToBillingModulePaymentIntents.length === 1
-              ) {
-                await paymentIntentsToInvoicesApi.create({
-                  data: {
-                    paymentIntentId:
-                      ecommerceOrdersToBillingModulePaymentIntents[0]
-                        .billingModulePaymentIntentId,
-                    invoiceId: invoice.id,
-                  },
-                  options: {
-                    headers: {
-                      "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                    },
-                    next: {
-                      cache: "no-store",
-                    },
-                  },
-                });
-              }
-            }
+            //   if (
+            //     ecommerceOrdersToBillingModulePaymentIntents?.length &&
+            //     ecommerceOrdersToBillingModulePaymentIntents.length === 1
+            //   ) {
+            //     await paymentIntentsToInvoicesApi.create({
+            //       data: {
+            //         paymentIntentId:
+            //           ecommerceOrdersToBillingModulePaymentIntents[0]
+            //             .billingModulePaymentIntentId,
+            //         invoiceId: invoice.id,
+            //       },
+            //       options: {
+            //         headers: {
+            //           "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+            //         },
+            //         next: {
+            //           cache: "no-store",
+            //         },
+            //       },
+            //     });
+            //   }
+            // }
           }
 
           console.log(`🚀 ~ invoice:`, invoice);
@@ -543,8 +546,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           entity: (typeof Table)["$inferSelect"];
           action: "create";
           email: string;
-          subjectId: string;
-          orderId: string;
+          metadata: {
+            orderId: string;
+          };
         }
       | {
           action: "webhook";
@@ -631,13 +635,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         Currency: "RUB",
         Description: `Checkout invoice id: ${props.entity.id}`,
         Email: props.email,
-        JsonData: {
-          orderId: props.orderId,
-          invoiceId: invoice.id,
-        },
+        JsonData: { ...props.metadata, invoiceId: invoice.id },
       };
-
-      console.log(`🚀 ~ checkoutData:`, checkoutData);
 
       const checkout: {
         Model: {
@@ -798,8 +797,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           entity: (typeof Table)["$inferSelect"];
           action: "create";
           email: string;
-          orderId: string;
-          subjectId: string;
+          metadata: {
+            orderId: string;
+          };
         }
       | {
           action: "webhook";
@@ -839,8 +839,8 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
       formData.append("currency", "USDT");
       formData.append("amountusd", `${props.entity.amount}`);
-      formData.append("BillingId", `${props.orderId}`);
-      formData.append("ClientId", `${props.subjectId}`);
+      formData.append("BillingId", `${props.metadata.orderId}`);
+      formData.append("ClientId", `${props.email}`);
       formData.append("MerchantId", `${O_X_PROCESSING_SHOP_ID}`);
       formData.append("email", `${props.email}`);
       formData.append("ReturnUrl", `${true}`);
@@ -980,7 +980,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           credentialsType: "INT" | "RUB";
           action: "create";
           email: string;
-          subjectId: string;
         }
       | {
           action: "webhook";

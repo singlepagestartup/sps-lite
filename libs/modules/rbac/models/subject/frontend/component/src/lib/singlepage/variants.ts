@@ -13,6 +13,7 @@ import { Component as SelectMethod } from "./select-method";
 import { Component as EthereumVirtualMachine } from "./ethereum-virtual-machine";
 import { Component as Me } from "./me";
 import { Component as GetEmails } from "./get-emails";
+import { Component as EcommerceProductOneStepCheckout } from "./ecommerce-product-one-step-checkout";
 
 export const variants = {
   find: Find,
@@ -30,4 +31,5 @@ export const variants = {
   "ethereum-virtual-machine": EthereumVirtualMachine,
   me: Me,
   "get-emails": GetEmails,
+  "ecommerce-product-one-step-checkout": EcommerceProductOneStepCheckout,
 };

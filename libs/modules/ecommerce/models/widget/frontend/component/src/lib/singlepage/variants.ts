@@ -8,6 +8,7 @@ import { Component as OrdersListDefault } from "./orders-list-default";
 import { Component as ProductsListDefault } from "./products-list-default";
 import { Component as ProductOverviewDefault } from "./product-overview-default";
 import { Component as CategoriesListDefault } from "./categories-list-default";
+import { Component as StoresListDefault } from "./stores-list-default";
 import { Component as CategoryOverviewDefault } from "./category-overview-default";
 
 export const variants = {
@@ -22,4 +23,5 @@ export const variants = {
   "product-overview-default": ProductOverviewDefault,
   "categories-list-default": CategoriesListDefault,
   "category-overview-default": CategoryOverviewDefault,
+  "stores-list-default": StoresListDefault,
 };

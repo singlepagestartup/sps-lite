@@ -23,6 +23,9 @@ export interface IComponentProps
   categoriesToProducts?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;
+  storesToProducts?: (
+    props: ISpsComponentBase & { data?: IModel },
+  ) => ReactNode;
   widgetsToProducts?: (
     props: ISpsComponentBase & { data?: IModel },
   ) => ReactNode;

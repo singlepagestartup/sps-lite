@@ -388,53 +388,23 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("RBAC_JWT_SECRET is not defined in the service");
     }
 
+    const identity = await identityApi.loginAndPassword({
+      data: { ...props.data, type: props.type },
+      options: {
+        headers: {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+        },
+        next: {
+          cache: "no-store",
+        },
+      },
+    });
+
+    if (!identity) {
+      throw new Error("Invalid credentials");
+    }
+
     if (props.type === "registration") {
-      const identities = await identityApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "email",
-                method: "eq",
-                value: props.data.login.toLowerCase(),
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-      if (identities?.length) {
-        throw new Error("Identity already exists");
-      }
-
-      const salt = await bcrypt.genSalt(10);
-
-      const saltedPassword = await bcrypt.hash(props.data.password, salt);
-
-      const identity = await identityApi.create({
-        data: {
-          email: props.data.login.toLowerCase(),
-          password: saltedPassword,
-          salt,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
       const subject = await this.create({
         data: {
           name: props.data.login.toLowerCase(),
@@ -509,51 +479,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
           },
         });
       }
-    }
-
-    const identities = await identityApi.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "email",
-              method: "eq",
-              value: props.data.login.toLowerCase(),
-            },
-          ],
-        },
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-        },
-        next: {
-          cache: "no-store",
-        },
-      },
-    });
-
-    if (!identities?.length) {
-      throw new Error("Invalid credentials");
-    }
-
-    if (identities.length > 1) {
-      throw new Error("Multiple identities found");
-    }
-
-    const identity = identities[0];
-
-    if (!identity.salt) {
-      throw new Error("No salt found for this identity");
-    }
-
-    const saltedPassword = await bcrypt.hash(
-      props.data.password,
-      identity.salt,
-    );
-
-    if (saltedPassword !== identity.password) {
-      throw new Error("Invalid credentials");
     }
 
     const subjectsToIdentities = await subjectsToIdentitiesApi.find({

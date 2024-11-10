@@ -18,6 +18,7 @@ import {
   IsAuthorizedMiddleware,
   RevalidationMiddleware,
   HTTPCacheMiddleware,
+  ObserverMiddleware,
 } from "@sps/middlewares";
 import { MIDDLEWARE_HTTP_CACHE } from "@sps/shared-utils";
 import { ParseQueryMiddleware } from "@sps/shared-backend-api";
@@ -29,6 +30,7 @@ const app = new Hono<any, any, any>().basePath("/api");
 
 app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
 
+app.use(new ObserverMiddleware().init());
 app.use(new RevalidationMiddleware().init());
 app.use(new ParseQueryMiddleware().init());
 app.use(new IsAuthorizedMiddleware().init());
@@ -49,15 +51,15 @@ app.mount("/notification", notificationApp.hono.fetch);
 app.mount("/blog", blogApp.hono.fetch);
 app.mount("/startup", startupApp.hono.fetch);
 
-export async function POST(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+export async function POST(request: NextRequest) {
+  return handle(app)(request);
 }
-export async function GET(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+export async function GET(request: NextRequest) {
+  return handle(app)(request);
 }
-export async function PATCH(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+export async function PATCH(request: NextRequest) {
+  return handle(app)(request);
 }
-export async function DELETE(request: NextRequest, params: any) {
-  return handle(app)(request, params);
+export async function DELETE(request: NextRequest) {
+  return handle(app)(request);
 }

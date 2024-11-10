@@ -25,9 +25,13 @@ export async function generateMetadata(props: any) {
   return metadataApi.generate({ catchErrors: true, ...props });
 }
 
-export default async function Page(props: { params: { url?: string[] } }) {
-  const url = props.params.url?.join("/") || "/";
-  const slashedUrl = url.startsWith("/") ? url : `/${url}`;
+export default async function Page(props: {
+  params: Promise<{ url?: string[] }>;
+}) {
+  const { url } = await props.params;
+
+  const pageUrl = url?.join("/") || "/";
+  const slashedUrl = pageUrl.startsWith("/") ? pageUrl : `/${pageUrl}`;
 
   return <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl} />;
 }

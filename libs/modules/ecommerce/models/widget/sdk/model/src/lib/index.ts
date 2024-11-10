@@ -14,6 +14,7 @@ export const variants = [
   "product-overview-default",
   "categories-list-default",
   "category-overview-default",
+  "stores-list-default",
 ];
 export const host = BACKEND_URL;
 export const query = {};

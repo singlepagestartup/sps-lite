@@ -4,16 +4,9 @@ import { DI, RESTController } from "@sps/shared-backend-api";
 import { Table } from "@sps/billing/models/payment-intent/backend/repository/database";
 import { Service } from "./service";
 import { Context } from "hono";
-// import { api as invoiceApi } from "@sps/billing/models/invoice/sdk/server";
-// import { api as paymentIntentsToInvoicesApi } from "@sps/billing/relations/payment-intents-to-invoices/sdk/server";
 import { RBAC_SECRET_KEY, STRIPE_SECRET_KEY } from "@sps/shared-utils";
 import Stripe from "stripe";
 import { HTTPException } from "hono/http-exception";
-import { api as ecommerceOrdersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
-import { api as ecommerceOrdersApi } from "@sps/ecommerce/models/order/sdk/server";
-import { api as subjectsToIdentitiesApi } from "@sps/rbac/relations/subjects-to-identities/sdk/server";
-import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
-import { api as subjectsToBillingModulePaymentIntentsApi } from "@sps/rbac/relations/subjects-to-billing-module-payment-intents/sdk/server";
 
 @injectable()
 export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
@@ -92,165 +85,19 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
     const entity = await this.service.findById({ id: uuid });
 
+    const data = JSON.parse(body["data"]);
+
+    if (!data) {
+      throw new HTTPException(400, {
+        message: "Invalid data",
+      });
+    }
+
+    console.log(`🚀 ~ provider ~ data:`, data);
+
     if (!entity) {
       throw new HTTPException(400, {
         message: "Payment intent not found",
-      });
-    }
-
-    const subjectsToBillingModulePaymentIntents =
-      await subjectsToBillingModulePaymentIntentsApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "billingModulePaymentIntentId",
-                method: "eq",
-                value: entity.id,
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-    if (!subjectsToBillingModulePaymentIntents?.length) {
-      throw new HTTPException(400, {
-        message:
-          "No subjects-to-billing-module-payment-intents found for this payment intent",
-      });
-    }
-
-    const subjectId = subjectsToBillingModulePaymentIntents[0].subjectId;
-
-    if (
-      subjectsToBillingModulePaymentIntents.every(
-        (item) => item.subjectId !== subjectId,
-      )
-    ) {
-      throw new HTTPException(400, {
-        message: "Subjects to billing module payments intents are different",
-      });
-    }
-
-    const orderToBillingModulePaymentIntents =
-      await ecommerceOrdersToBillingModulePaymentIntentsApi.find({
-        params: {
-          filters: {
-            and: [
-              {
-                column: "billingModulePaymentIntentId",
-                method: "eq",
-                value: entity.id,
-              },
-            ],
-          },
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-          next: {
-            cache: "no-store",
-          },
-        },
-      });
-
-    if (!orderToBillingModulePaymentIntents?.length) {
-      throw new HTTPException(400, {
-        message:
-          "No orders-to-billing-module-payment-intents found for this payment intent",
-      });
-    }
-
-    const orderId = orderToBillingModulePaymentIntents[0].orderId;
-
-    if (
-      orderToBillingModulePaymentIntents.every(
-        (item) => item.orderId !== orderId,
-      )
-    ) {
-      throw new HTTPException(400, {
-        message: "Orders to billing module payments intents are different",
-      });
-    }
-
-    const subjectsToIdentities = await subjectsToIdentitiesApi.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "subjectId",
-              method: "eq",
-              value: subjectId,
-            },
-          ],
-        },
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-        },
-        next: {
-          cache: "no-store",
-        },
-      },
-    });
-
-    if (!subjectsToIdentities?.length) {
-      throw new HTTPException(400, {
-        message: "No subjects-to-identities found for this subject",
-      });
-    }
-
-    const identities = await identityApi.find({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "id",
-              method: "inArray",
-              value: subjectsToIdentities.map((item) => item.identityId),
-            },
-          ],
-        },
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-        },
-        next: {
-          cache: "no-store",
-        },
-      },
-    });
-
-    if (!identities?.length) {
-      throw new HTTPException(400, {
-        message: "No identity found for this subject",
-      });
-    }
-
-    const identityWithEmail = identities.find(
-      (item) => item.email !== undefined && item.email !== null,
-    );
-
-    if (!identityWithEmail) {
-      throw new HTTPException(400, {
-        message: "No identities with email found for this subject",
-      });
-    }
-
-    if (!identityWithEmail.email) {
-      throw new HTTPException(400, {
-        message: "No email found for this identity",
       });
     }
 
@@ -258,40 +105,59 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       let result: any;
 
       if (provider === "stripe") {
+        if (!data.metadata?.email) {
+          throw new HTTPException(400, {
+            message: "Email is required",
+          });
+        }
+
         result = await this.service.stripe({
           entity,
           action: "create",
-          email: identityWithEmail.email,
-          subjectId: subjectId,
-          orderId,
+          email: data.metadata.email,
+          metadata: {
+            orderId: data.metadata.orderId,
+            email: data.metadata.email,
+          },
         });
       } else if (provider === "0xprocessing") {
+        if (!data.metadata?.email) {
+          throw new HTTPException(400, {
+            message: "Email is required",
+          });
+        }
+
         result = await this.service.OxProcessing({
           action: "create",
-          email: identityWithEmail.email,
-          subjectId: subjectId,
+          email: data.metadata.email,
+          metadata: {
+            orderId: data.metadata.orderId,
+          },
           entity,
-          orderId,
         });
       } else if (provider.includes("payselection")) {
-        const credentialsType = provider.includes("international")
-          ? "INT"
-          : "RUB";
-
-        result = await this.service.payselection({
-          credentialsType,
-          entity,
-          action: "create",
-          email: identityWithEmail.email,
-          subjectId: subjectId,
-        });
+        // const credentialsType = provider.includes("international")
+        //   ? "INT"
+        //   : "RUB";
+        // result = await this.service.payselection({
+        //   credentialsType,
+        //   entity,
+        //   action: "create",
+        //   email: identityWithEmail.email,
+        //   subjectId: subjectId,
+        // });
       } else if (provider === "cloudpayments") {
+        if (!data.metadata?.email) {
+          throw new HTTPException(400, {
+            message: "Email is required",
+          });
+        }
+
         result = await this.service.cloudpayments({
           entity,
           action: "create",
-          email: identityWithEmail.email,
-          subjectId: subjectId,
-          orderId,
+          email: data.metadata.email,
+          metadata: data.metadata,
         });
       }
 
@@ -337,8 +203,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       data = Object.fromEntries(params.entries());
     }
 
-    console.log(`🚀 ~ providerWebhook ~ data:`, data);
-
     let result: any;
 
     if (provider === "stripe") {
@@ -381,8 +245,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         });
       }
     }
-
-    console.log(`🚀 ~ providerWebhook ~ entity:`, result);
 
     return c.json(
       {
@@ -428,68 +290,6 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       const data = JSON.parse(body["data"]);
 
       const entity = await this.service.update({ id: uuid, data });
-
-      if (entity?.status === "succeeded") {
-        const ecommerceOrdersToBillingModulePaymentIntents =
-          await ecommerceOrdersToBillingModulePaymentIntentsApi.find({
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "billingModulePaymentIntentId",
-                    method: "eq",
-                    value: entity.id,
-                  },
-                ],
-              },
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-              next: {
-                cache: "no-store",
-              },
-            },
-          });
-
-        if (ecommerceOrdersToBillingModulePaymentIntents?.length) {
-          for (const ecommerceOrderToBillingModulePaymentIntent of ecommerceOrdersToBillingModulePaymentIntents) {
-            const order = await ecommerceOrdersApi.findById({
-              id: ecommerceOrderToBillingModulePaymentIntent.orderId,
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-
-            if (!order) {
-              continue;
-            }
-
-            await ecommerceOrdersApi.update({
-              data: {
-                ...order,
-                status: "approving",
-                type: "history",
-              },
-              id: order.id,
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-                next: {
-                  cache: "no-store",
-                },
-              },
-            });
-          }
-        }
-      }
 
       return c.json({
         data: entity,

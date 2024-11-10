@@ -87,6 +87,7 @@ function makeConfig() {
       config.externals.push("pino-pretty", "lokijs", "encoding");
       return config;
     },
+    logging: false,
   };
 
   return withBundleAnalyzer(config);

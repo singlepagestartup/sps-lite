@@ -329,8 +329,6 @@ export const GET = async (request: NextRequest) => {
     const params = searchParams.toString();
     const parsedParams = QueryString.parse(params);
 
-    console.log(`🚀 ~ GET ~ parsedParams:`, parsedParams);
-
     if (!HOST_URL) {
       throw new Error("Host URL not found");
     }

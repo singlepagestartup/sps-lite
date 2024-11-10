@@ -8,6 +8,7 @@ import { IComponentProps as IOrdersListDefaultComponentProps } from "./orders-li
 import { IComponentProps as IProductsListDefaultComponentProps } from "./products-list-default";
 import { IComponentProps as IProductOverviewDefaultComponentProps } from "./product-overview-default";
 import { IComponentProps as ICategoriesListDefaultComponentProps } from "./categories-list-default";
+import { IComponentProps as IStoresListDefaultComponentProps } from "./stores-list-default";
 import { IComponentProps as ICategoryOverviewDefaultComponentProps } from "./category-overview-default";
 
 export type IComponentProps =
@@ -22,4 +23,5 @@ export type IComponentProps =
   | IProductOverviewDefaultComponentProps
   | ICategoriesListDefaultComponentProps
   | ICategoryOverviewDefaultComponentProps
+  | IStoresListDefaultComponentProps
   | never;

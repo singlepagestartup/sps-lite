@@ -11,3 +11,7 @@ export {
   Middleware as SessionMiddleware,
   type IMiddlewareGeneric as ISessionMiddlewareGeneric,
 } from "./session";
+export {
+  Middleware as ObserverMiddleware,
+  type IMiddlewareGeneric as IObserverMiddlewareGeneric,
+} from "./observer";

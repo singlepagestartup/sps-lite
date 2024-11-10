@@ -1,5 +1,6 @@
 import { IComponentPropsExtended } from "../interface";
 import { Component as RbacWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as IdentitiesDefault } from "./identities-default/Component";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -23,6 +24,16 @@ export function Component(props: IComponentPropsExtended) {
     >
       {({ data }) => {
         return data?.map((entity, index) => {
+          if (entity.variant === "identities-default") {
+            return (
+              <IdentitiesDefault
+                isServer={props.isServer}
+                hostUrl={props.hostUrl}
+                key={index}
+              />
+            );
+          }
+
           return (
             <RbacWidget
               key={index}
