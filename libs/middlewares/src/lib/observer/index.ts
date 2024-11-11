@@ -45,9 +45,6 @@ export class Middleware {
             },
           },
           options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-            },
             next: {
               cache: "no-store",
             },
@@ -70,6 +67,11 @@ export class Middleware {
               ],
             },
           },
+          options: {
+            next: {
+              cache: "no-store",
+            },
+          },
         });
 
         if (!channelsToMessages?.length) {
@@ -89,7 +91,7 @@ export class Middleware {
                 },
                 {
                   column: "payload",
-                  method: "like",
+                  method: "ilike",
                   value: `%${path}%`,
                 },
                 {
@@ -98,6 +100,11 @@ export class Middleware {
                   value: `%${method}%`,
                 },
               ],
+            },
+          },
+          options: {
+            next: {
+              cache: "no-store",
             },
           },
         });

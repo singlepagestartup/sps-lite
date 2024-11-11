@@ -4,7 +4,12 @@ import { DI, RESTController } from "@sps/shared-backend-api";
 import { Table } from "@sps/billing/models/payment-intent/backend/repository/database";
 import { Service } from "./service";
 import { Context } from "hono";
-import { RBAC_SECRET_KEY, STRIPE_SECRET_KEY } from "@sps/shared-utils";
+import {
+  HOST_URL,
+  NextRequestOptions,
+  RBAC_SECRET_KEY,
+  STRIPE_SECRET_KEY,
+} from "@sps/shared-utils";
 import Stripe from "stripe";
 import { HTTPException } from "hono/http-exception";
 
@@ -159,6 +164,40 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           email: data.metadata.email,
           metadata: data.metadata,
         });
+      } else if (provider === "dummy") {
+        result = await this.service.dummy({
+          entity,
+          action: "create",
+        });
+
+        setTimeout(async () => {
+          if (!RBAC_SECRET_KEY) {
+            return;
+          }
+
+          fetch(HOST_URL + "/api/billing/payment-intents/dummy/webhook", {
+            credentials: "include",
+            method: "POST",
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              data: {
+                id: result.id,
+              },
+            }),
+            next: {
+              cache: "no-store",
+            },
+          } as NextRequestOptions)
+            .then(async (res) => {
+              return res.json();
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }, 10000);
       }
 
       return c.json(
@@ -181,7 +220,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     const rawBody = await c.req.text();
 
     console.log(`🚀 ~ providerWebhook ~ headers:`, headers);
-    console.log(`🚀 ~ providerWebhook ~ headers:`, await c.req.text());
+    console.log(`🚀 ~ providerWebhook ~ c.req.text:`, await c.req.text());
 
     let data;
     if (contentType?.includes("application/json")) {
@@ -244,6 +283,17 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           },
         });
       }
+    } else if (provider === "dummy") {
+      if (!data?.["data"]?.["id"]) {
+        throw new HTTPException(400, {
+          message: "Invalid data",
+        });
+      }
+
+      result = await this.service.dummy({
+        data: data["data"],
+        action: "webhook",
+      });
     }
 
     return c.json(
@@ -252,52 +302,5 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       },
       200,
     );
-  }
-
-  async update(c: Context, next: any): Promise<Response> {
-    if (!RBAC_SECRET_KEY) {
-      throw new HTTPException(400, {
-        message: "RBAC secret key not found",
-      });
-    }
-
-    try {
-      const uuid = c.req.param("uuid");
-      const body = await c.req.parseBody();
-
-      if (!uuid) {
-        return c.json(
-          {
-            message: "Invalid id",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      if (typeof body["data"] !== "string") {
-        return c.json(
-          {
-            message: "Invalid body",
-          },
-          {
-            status: 400,
-          },
-        );
-      }
-
-      const data = JSON.parse(body["data"]);
-
-      const entity = await this.service.update({ id: uuid, data });
-
-      return c.json({
-        data: entity,
-      });
-    } catch (error: any) {
-      throw new HTTPException(400, {
-        message: error.message,
-      });
-    }
   }
 }

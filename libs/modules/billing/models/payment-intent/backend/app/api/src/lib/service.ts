@@ -973,6 +973,124 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }
   }
 
+  async dummy(
+    props:
+      | {
+          entity: (typeof Table)["$inferSelect"];
+          action: "create";
+        }
+      | {
+          action: "webhook";
+          data: {
+            id: string;
+          };
+        },
+  ) {
+    if (!RBAC_SECRET_KEY) {
+      throw new Error("RBAC secret key not found");
+    }
+
+    if (props.action === "create") {
+      const randomString = Math.random().toString(36).substring(7);
+      const invoice = await invoiceApi.create({
+        data: {
+          amount: props.entity.amount,
+          status: "open",
+          providerId: `${randomString}`,
+          paymentUrl: HOST_URL,
+          successUrl: HOST_URL,
+          cancelUrl: HOST_URL,
+          provider: "dummy",
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      await paymentIntentsToInvoicesApi.create({
+        data: {
+          paymentIntentId: props.entity.id,
+          invoiceId: invoice.id,
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      return invoice;
+    } else {
+      const invoices = await invoiceApi.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "id",
+                method: "eq",
+                value: props.data.id,
+              },
+            ],
+          },
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoices?.length) {
+        throw new Error("Invoice not found");
+      }
+
+      if (invoices.length > 1) {
+        throw new Error("Multiple invoices found");
+      }
+
+      let invoice = invoices[0];
+
+      invoice = await invoiceApi.update({
+        id: invoice.id,
+        data: {
+          ...invoice,
+          status: "paid",
+        },
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      if (!invoice) {
+        throw new Error("Invoice not found");
+      }
+
+      await this.updatePaymentIntentStatus({ invoice });
+
+      return invoice;
+    }
+  }
+
   async payselection(
     props:
       | {

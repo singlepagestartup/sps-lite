@@ -18,7 +18,8 @@ const formSchema = z.object({
         value === "stripe" ||
         value === "0xprocessing" ||
         value === "payselection" ||
-        value === "cloudpayments",
+        value === "cloudpayments" ||
+        value === "dummy",
       "Invalid provider",
     ),
   email: z.string().email(),
@@ -35,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      provider: "stripe",
+      provider: "dummy",
       email: "",
       quantity: 1,
       comment: "",

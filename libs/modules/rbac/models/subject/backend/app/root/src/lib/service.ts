@@ -12,7 +12,6 @@ import {
 import { IModel as ISubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/sdk/model";
 import { HTTPException } from "hono/http-exception";
 import * as jwt from "hono/jwt";
-import bcrypt from "bcrypt";
 import { api as subjectsToRolesApi } from "@sps/rbac/relations/subjects-to-roles/sdk/server";
 import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
 import { api as roleApi } from "@sps/rbac/models/role/sdk/server";
