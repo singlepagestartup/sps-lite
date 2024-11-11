@@ -23,6 +23,7 @@ const formSchema = z.object({
     ),
   email: z.string().email(),
   quantity: z.number().int().positive(),
+  comment: z.string().optional(),
 });
 
 export function Component(props: IComponentPropsExtended) {
@@ -37,6 +38,7 @@ export function Component(props: IComponentPropsExtended) {
       provider: "stripe",
       email: "",
       quantity: 1,
+      comment: "",
     },
   });
 
@@ -69,9 +71,19 @@ export function Component(props: IComponentPropsExtended) {
           <FormField
             ui="shadcn"
             type="text"
+            label="Email"
             name="email"
             form={form}
             placeholder="Type your email"
+            className="w-full"
+          />
+          <FormField
+            ui="shadcn"
+            type="text"
+            label="Comment"
+            name="comment"
+            form={form}
+            placeholder="Type comment"
             className="w-full"
           />
 

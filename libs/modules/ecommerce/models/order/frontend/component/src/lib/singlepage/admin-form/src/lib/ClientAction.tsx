@@ -24,6 +24,7 @@ export function Component(props: IComponentPropsExtended) {
       variant: props.data?.variant || "default",
       status: props.data?.status || "new",
       type: props.data?.type || "cart",
+      comment: props.data?.comment || "",
     },
   });
 
@@ -57,6 +58,15 @@ export function Component(props: IComponentPropsExtended) {
           form={form}
           placeholder="Select status"
           options={statuses.map((status) => [status, status])}
+        />
+
+        <FormField
+          ui="shadcn"
+          type="text"
+          label="Comment"
+          name="comment"
+          form={form}
+          placeholder="Type comment"
         />
 
         <FormField

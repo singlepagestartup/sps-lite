@@ -1325,7 +1325,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
 
     const order = await ecommerceOrderApi.create({
-      data: {},
+      data: {
+        comment: data.comment,
+      },
       options: {
         headers: {
           "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,

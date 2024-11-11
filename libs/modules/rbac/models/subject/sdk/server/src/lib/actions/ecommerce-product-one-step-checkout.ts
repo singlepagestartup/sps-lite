@@ -10,7 +10,7 @@ import { IModel as IInvoice } from "@sps/billing/models/invoice/sdk/model";
 
 export interface IActionProps {
   id: string;
-  productId: string;
+  productId?: string;
   tag?: string;
   revalidate?: number;
   params?: {
@@ -33,7 +33,12 @@ export interface IExtendedModel extends IModel {
 }
 
 export async function action(props: IActionProps): Promise<IExtendedModel> {
-  const { id, params, data, options, productId } = props;
+  const { id, params, data, options } = props;
+  const productId = props.productId || props.data["productId"];
+
+  if (!productId) {
+    throw new Error("productId is required");
+  }
 
   const formData = prepareFormDataToSend({ data });
 
