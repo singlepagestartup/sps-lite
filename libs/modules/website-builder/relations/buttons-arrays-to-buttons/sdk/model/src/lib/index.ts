@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/website-builder/relations/buttons-arrays-to-buttons/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/website-builder/buttons-arrays-to-buttons";
 export const variants = ["default"] as const;

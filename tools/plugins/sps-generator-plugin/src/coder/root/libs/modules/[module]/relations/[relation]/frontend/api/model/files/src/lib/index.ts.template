@@ -3,7 +3,7 @@ import {
   IModel as IParentRelationExtended,
   populate as relationPopulate,
 } from "<%= extended_contracts_import_path %>";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export interface IModel extends IParentRelation {}
 export interface IModelExtended extends IParentRelationExtended {}
@@ -19,4 +19,4 @@ export const options = {
 next: {
     revalidate: REVALIDATE,
   },
-};
+} as NextRequestOptions;

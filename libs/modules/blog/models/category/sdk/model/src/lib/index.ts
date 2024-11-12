@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/blog/models/category/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/blog/categories";
 export const variants = ["default"] as const;

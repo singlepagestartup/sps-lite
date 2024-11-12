@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/ecommerce/relations/orders-to-products/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/ecommerce/orders-to-products";
 export const variants = ["default"] as const;

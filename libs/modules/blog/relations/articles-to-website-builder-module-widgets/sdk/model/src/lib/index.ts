@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/blog/relations/articles-to-website-builder-module-widgets/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/blog/articles-to-website-builder-module-widgets";
 export const variants = ["default"] as const;

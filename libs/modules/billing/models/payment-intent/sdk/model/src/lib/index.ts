@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/billing/models/payment-intent/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/billing/payment-intents";
 export const variants = ["default"];

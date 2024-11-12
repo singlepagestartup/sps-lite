@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/startup/models/widget/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/startup/widgets";
 export const variants = ["default"] as const;

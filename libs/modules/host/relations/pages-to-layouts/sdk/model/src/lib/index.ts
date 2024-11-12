@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/host/relations/pages-to-layouts/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/host/pages-to-layouts";
 export const variants = ["default", "additional"];

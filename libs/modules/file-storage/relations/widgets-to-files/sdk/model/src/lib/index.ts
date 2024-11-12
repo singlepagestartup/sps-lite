@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/file-storage/relations/widgets-to-files/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/file-storage/widgets-to-files";
 export const variants = ["default"] as const;

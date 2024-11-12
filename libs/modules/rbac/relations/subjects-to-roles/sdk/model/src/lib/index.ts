@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/rbac/relations/subjects-to-roles/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/rbac/subjects-to-roles";
 export const variants = ["default"] as const;

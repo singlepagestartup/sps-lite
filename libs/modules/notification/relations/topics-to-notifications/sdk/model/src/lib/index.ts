@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/notification/relations/topics-to-notifications/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/notification/topics-to-notifications";
 export const variants = ["default"] as const;

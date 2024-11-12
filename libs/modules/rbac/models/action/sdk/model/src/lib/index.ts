@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/rbac/models/action/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const route = "/api/rbac/actions";
 export const variants = ["default"];

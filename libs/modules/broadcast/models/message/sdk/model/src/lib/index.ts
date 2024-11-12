@@ -4,7 +4,7 @@ export {
   insertSchema,
   selectSchema,
 } from "@sps/broadcast/models/message/backend/repository/database";
-import { BACKEND_URL, REVALIDATE } from "@sps/shared-utils";
+import { BACKEND_URL, NextRequestOptions, REVALIDATE } from "@sps/shared-utils";
 
 export const tag = "message";
 export const route = "/api/broadcast/messages";
