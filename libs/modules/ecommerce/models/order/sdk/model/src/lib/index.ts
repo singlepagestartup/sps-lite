@@ -24,4 +24,4 @@ export const options = {
   next: {
     revalidate: REVALIDATE,
   },
-};
+} as NextRequestOptions;

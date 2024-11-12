@@ -13,6 +13,5 @@ export const query = {};
 export const options = {
   next: {
     revalidate: REVALIDATE,
-    cache: "no-store",
   },
 } as NextRequestOptions;
