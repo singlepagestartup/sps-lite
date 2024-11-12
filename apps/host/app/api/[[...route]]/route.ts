@@ -37,6 +37,7 @@ app.use(new IsAuthorizedMiddleware().init());
 
 if (MIDDLEWARE_HTTP_CACHE) {
   app.use(new HTTPCacheMiddleware().init());
+  new HTTPCacheMiddleware().setRoutes(app);
 }
 
 app.mount("/host", hostApp.hono.fetch);

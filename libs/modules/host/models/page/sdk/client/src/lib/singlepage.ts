@@ -20,6 +20,7 @@ import { globalActionsStore } from "@sps/shared-frontend-client-store";
 import { createId } from "@paralleldrive/cuid2";
 import { toast } from "sonner";
 export { Provider, queryClient } from "@sps/shared-frontend-client-api";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export interface IFindByUrlProps {
   url: string;
@@ -60,9 +61,18 @@ export const api = {
             },
           );
 
+          const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+          const cacheControlOptions: NextRequestOptions["headers"] = noCache
+            ? { "Cache-Control": "no-cache" }
+            : {};
+
           const requestOptions: NextRequestOptions = {
             credentials: "include",
-            ...props?.options,
+            method: "GET",
+            headers: {
+              ...cacheControlOptions,
+              ...options?.headers,
+            },
             next: {
               ...props?.options?.next,
             },
@@ -115,9 +125,17 @@ export const api = {
             },
           );
 
+          const noCache = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+          const cacheControlOptions: NextRequestOptions["headers"] = noCache
+            ? { "Cache-Control": "no-cache" }
+            : {};
+
           const requestOptions: NextRequestOptions = {
             credentials: "include",
-            ...props?.options,
+            headers: {
+              ...cacheControlOptions,
+              ...options?.headers,
+            },
             next: {
               ...props?.options?.next,
             },

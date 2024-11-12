@@ -2,6 +2,7 @@ import { createMiddleware } from "hono/factory";
 import { Provider as StoreProvider } from "@sps/providers-kv";
 import { KV_PROVIDER, KV_TTL } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
+import { setRoutes } from "./routes";
 
 export type IMiddlewareGeneric = {
   Variables: undefined;
@@ -83,5 +84,9 @@ export class Middleware {
 
       return;
     });
+  }
+
+  setRoutes(app: any) {
+    setRoutes(app);
   }
 }
