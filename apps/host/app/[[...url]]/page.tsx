@@ -1,6 +1,7 @@
 import { api as spsHostPageApi } from "@sps/host/models/page/sdk/server";
-import { App as SpsHostApp } from "@sps/host/frontend/component";
+import { App as Host } from "@sps/host/frontend/component";
 import { api as metadataApi } from "@sps/host/models/metadata/sdk/server";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
@@ -8,17 +9,23 @@ export const dynamicParams = true;
 export const experimental_ppr = true;
 
 export async function generateStaticParams() {
+  const productionBuild = process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD;
+
   const urls = await spsHostPageApi.urls({ catchErrors: true });
 
-  return (
-    urls?.filter((url) => {
-      if (url.url.length === 0) {
-        return false;
-      }
+  if (!productionBuild) {
+    return (
+      urls?.filter((url) => {
+        if (url.url.length === 0) {
+          return false;
+        }
 
-      return true;
-    }) || []
-  );
+        return true;
+      }) || []
+    );
+  }
+
+  return [];
 }
 
 export async function generateMetadata(props: any) {
@@ -33,5 +40,5 @@ export default async function Page(props: {
   const pageUrl = url?.join("/") || "/";
   const slashedUrl = pageUrl.startsWith("/") ? pageUrl : `/${pageUrl}`;
 
-  return <SpsHostApp isServer={true} variant="default" hostUrl={slashedUrl} />;
+  return <Host isServer={true} variant="default" hostUrl={slashedUrl} />;
 }
