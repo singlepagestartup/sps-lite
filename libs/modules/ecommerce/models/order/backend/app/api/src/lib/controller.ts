@@ -7,7 +7,7 @@ import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as billingPaymentIntentApi } from "@sps/billing/models/payment-intent/sdk/server";
 import { api as ordersToProductsApi } from "@sps/ecommerce/relations/orders-to-products/sdk/server";
-import { HOST_URL, RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { BACKEND_URL, HOST_URL, RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { api as ordersToBillingModulePaymentIntentsApi } from "@sps/ecommerce/relations/orders-to-billing-module-payment-intents/sdk/server";
 import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
 import QueryString from "qs";
@@ -354,7 +354,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
 
         const receiptFile = await fileStorageFileApi.createFromUrl({
           data: {
-            url: `${HOST_URL}/api/image-generator/image.png?${query}`,
+            url: `${BACKEND_URL}/api/image-generator/image.png?${query}`,
           },
           options: {
             headers: {

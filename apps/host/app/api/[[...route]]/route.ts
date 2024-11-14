@@ -30,6 +30,8 @@ const app = new Hono<any, any, any>().basePath("/api");
 
 app.onError(new ExceptionFilter().catch as unknown as ErrorHandler<any>);
 
+app.use(new ObserverMiddleware().init());
+
 /**
  * It's not secure, because authorized requests can be cached and served to unauthorized users.
  * But perfomance of the application will rediqulesly increase.
@@ -42,8 +44,6 @@ if (MIDDLEWARE_HTTP_CACHE) {
 }
 
 app.use(new IsAuthorizedMiddleware().init());
-
-app.use(new ObserverMiddleware().init());
 app.use(new RevalidationMiddleware().init());
 new RevalidationMiddleware().setRoutes(app);
 app.use(new ParseQueryMiddleware().init());

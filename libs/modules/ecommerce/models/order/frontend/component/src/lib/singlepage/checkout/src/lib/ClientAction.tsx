@@ -17,6 +17,7 @@ const providers = [
   "0xprocessing",
   "payselection",
   "cloudpayments",
+  "dummy",
 ] as const;
 
 const formSchema = z.object({
@@ -27,7 +28,8 @@ const formSchema = z.object({
         value === "stripe" ||
         value === "0xprocessing" ||
         value === "payselection" ||
-        value === "cloudpayments",
+        value === "cloudpayments" ||
+        value === "dummy",
       "Invalid provider",
     ),
 });

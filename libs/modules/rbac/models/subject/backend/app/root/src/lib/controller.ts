@@ -718,6 +718,26 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
     }
 
     if (data.orderId) {
+      const order = await ecommerceOrderApi.findById({
+        id: data.orderId,
+        options: {
+          headers: {
+            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+          },
+          next: {
+            cache: "no-store",
+          },
+        },
+      });
+
+      console.log(`🚀 ~ notify ~ order:`, order);
+
+      if (!order) {
+        throw new HTTPException(404, {
+          message: "No order found",
+        });
+      }
+
       let topics = await notificationTopicApi.find({
         params: {
           filters: {
@@ -795,9 +815,9 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
                 id: data.orderId,
               }),
               method: "email",
-              // attachments: entity?.receipt
-              //   ? JSON.stringify([{ type: "image", url: order.receipt }])
-              //   : "[]",
+              attachments: order?.receipt
+                ? JSON.stringify([{ type: "image", url: order.receipt }])
+                : "[]",
             },
             options: {
               headers: {

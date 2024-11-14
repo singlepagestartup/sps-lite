@@ -98,6 +98,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       });
     }
 
+    console.log(`🚀 ~ provider ~ provider:`, provider);
     console.log(`🚀 ~ provider ~ data:`, data);
 
     if (!entity) {
@@ -141,16 +142,21 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
           entity,
         });
       } else if (provider.includes("payselection")) {
-        // const credentialsType = provider.includes("international")
-        //   ? "INT"
-        //   : "RUB";
-        // result = await this.service.payselection({
-        //   credentialsType,
-        //   entity,
-        //   action: "create",
-        //   email: identityWithEmail.email,
-        //   subjectId: subjectId,
-        // });
+        if (!data.metadata?.email) {
+          throw new HTTPException(400, {
+            message: "Email is required",
+          });
+        }
+
+        const credentialsType = provider.includes("international")
+          ? "INT"
+          : "RUB";
+        result = await this.service.payselection({
+          credentialsType,
+          entity,
+          action: "create",
+          email: data.metadata.email,
+        });
       } else if (provider === "cloudpayments") {
         if (!data.metadata?.email) {
           throw new HTTPException(400, {
@@ -255,7 +261,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
       result = await this.service.stripe({ data: event, action: "webhook" });
     } else if (provider === "0xprocessing") {
       result = await this.service.OxProcessing({ data, action: "webhook" });
-    } else if (provider === "payselection") {
+    } else if (provider.includes("payselection")) {
       if ("x-site-id" in headers && "x-webhook-signature" in headers) {
         result = await this.service.payselection({
           data,

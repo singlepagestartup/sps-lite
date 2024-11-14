@@ -46,8 +46,8 @@ export function Component(props: IComponentPropsExtended) {
         <Ecommerce
           {...props}
           isServer={props.isServer}
-          hostUrl={props.hostUrl}
           data={props.data}
+          hostUrl={props.hostUrl}
         />
       ) : null}
 

@@ -10,6 +10,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { FormField } from "@sps/ui-adapter";
 
+const providers = [
+  "stripe",
+  "0xprocessing",
+  "payselection",
+  "payselection-international",
+  "cloudpayments",
+  "dummy",
+] as const;
+
 const formSchema = z.object({
   provider: z
     .string()
@@ -18,6 +27,7 @@ const formSchema = z.object({
         value === "stripe" ||
         value === "0xprocessing" ||
         value === "payselection" ||
+        value === "payselection-international" ||
         value === "cloudpayments" ||
         value === "dummy",
       "Invalid provider",
@@ -69,6 +79,15 @@ export function Component(props: IComponentPropsExtended) {
     >
       <Form {...form}>
         <div className="flex flex-col gap-3">
+          <FormField
+            ui="shadcn"
+            type="select"
+            label="Provider"
+            name="provider"
+            form={form}
+            placeholder="Select provider"
+            options={providers.map((provider) => [provider, provider])}
+          />
           <FormField
             ui="shadcn"
             type="text"
