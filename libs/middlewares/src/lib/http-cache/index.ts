@@ -2,7 +2,6 @@ import { createMiddleware } from "hono/factory";
 import { Provider as StoreProvider } from "@sps/providers-kv";
 import { KV_PROVIDER, KV_TTL } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
-import { setRoutes } from "./routes";
 
 export type IMiddlewareGeneric = {
   Variables: undefined;
@@ -50,7 +49,7 @@ export class Middleware {
       await next();
 
       if (c.res.status >= 200 && c.res.status < 300) {
-        if (method === "GET") {
+        if (method === "GET" && cacheControl !== "no-cache") {
           const resJson = await c.res.clone().json();
 
           await new StoreProvider({
@@ -87,6 +86,12 @@ export class Middleware {
   }
 
   setRoutes(app: any) {
-    setRoutes(app);
+    app.get("/http-cache/clear", async (c) => {
+      await new StoreProvider({
+        type: KV_PROVIDER,
+      }).flushall();
+
+      return c.json({ message: "Cache cleared" });
+    });
   }
 }

@@ -111,46 +111,50 @@ export class Middleware {
 
         if (messages?.length) {
           for (const message of messages) {
-            const payload = JSON.parse(message.payload);
+            try {
+              const payload = JSON.parse(message.payload);
 
-            if (
-              payload.action.method === method &&
-              payload.action.url === `${HOST_URL}${path}`
-            ) {
-              const options: any = {
-                method: payload.callback.method,
-                headers: {
-                  ...payload.callback.headers,
-                },
-              };
+              if (
+                payload.action.method === method &&
+                payload.action.url === `${HOST_URL}${path}`
+              ) {
+                const options: any = {
+                  method: payload.callback.method,
+                  headers: {
+                    ...payload.callback.headers,
+                  },
+                };
 
-              if (payload.callback.body) {
-                const formData = prepareFormDataToSend(payload.callback.body);
+                if (payload.callback.body) {
+                  const formData = prepareFormDataToSend(payload.callback.body);
 
-                options.body = formData;
-              }
-
-              await fetch(payload.callback.url, options).then(async (res) => {
-                if (res.status >= 200 && res.status < 300) {
-                  if (!RBAC_SECRET_KEY) {
-                    throw Error(
-                      "RBAC_SECRET_KEY is not defined, broadcast middleware 'revalidation' can't request to service.",
-                    );
-                  }
-
-                  await messagesApi.delete({
-                    id: message.id,
-                    options: {
-                      headers: {
-                        "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                      },
-                      next: {
-                        cache: "no-store",
-                      },
-                    },
-                  });
+                  options.body = formData;
                 }
-              });
+
+                await fetch(payload.callback.url, options).then(async (res) => {
+                  if (res.status >= 200 && res.status < 300) {
+                    if (!RBAC_SECRET_KEY) {
+                      throw Error(
+                        "RBAC_SECRET_KEY is not defined, broadcast middleware 'revalidation' can't request to service.",
+                      );
+                    }
+
+                    await messagesApi.delete({
+                      id: message.id,
+                      options: {
+                        headers: {
+                          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+                        },
+                        next: {
+                          cache: "no-store",
+                        },
+                      },
+                    });
+                  }
+                });
+              }
+            } catch (error) {
+              console.error(error);
             }
           }
         }

@@ -1,6 +1,6 @@
 import { createMiddleware } from "hono/factory";
 import { HTTPException } from "hono/http-exception";
-import { RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { HOST_URL, RBAC_SECRET_KEY } from "@sps/shared-utils";
 import { MiddlewareHandler } from "hono";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { getCookie } from "hono/cookie";
@@ -39,16 +39,8 @@ const allowedRoutes: { regexPath: RegExp; methods: string[] }[] = [
     methods: ["GET"],
   },
   {
-    regexPath: /\/api\/rbac\/[a-zA-Z0-9-]+-blocks\/?/,
-    methods: ["GET"],
-  },
-  {
     regexPath: /\/api\/rbac\/subjects\/me/,
     methods: ["GET"],
-  },
-  {
-    regexPath: /\/api\/sps-third-parties\/telegrams\/[a-zA-Z0-9-]+\/webhook/,
-    methods: ["POST"],
   },
   {
     regexPath: /\/api\/(host|website-builder|file-storage)\/.*/,
@@ -78,6 +70,13 @@ export class Middleware {
       const authorizationHeader = c.req.header("Authorization");
       const authorization =
         authorizationCookie || authorizationHeader?.replace("Bearer ", "");
+
+      const origin = c.req.header("Host");
+      const allowedOrigins = ["http://localhost:3000", HOST_URL];
+
+      if (origin && allowedOrigins.includes(origin)) {
+        c.res.headers["Access-Control-Allow-Origin"] = origin;
+      }
 
       /**
        * Vercel doesn't to call equal endpoint, throws 508 Loop detected

@@ -3,9 +3,8 @@ import { App as Host } from "@sps/host/frontend/component";
 import { api as metadataApi } from "@sps/host/models/metadata/sdk/server";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 export const dynamicParams = true;
-// export const dynamic = "force-dynamic";
 export const experimental_ppr = true;
 
 export async function generateStaticParams() {

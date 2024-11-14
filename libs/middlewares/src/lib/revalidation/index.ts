@@ -1,8 +1,8 @@
 import { RBAC_SECRET_KEY, STALE_TIME } from "@sps/shared-utils";
-import { MiddlewareHandler } from "hono";
+import { Context, MiddlewareHandler } from "hono";
 import { createMiddleware } from "hono/factory";
 import { api as channelApi } from "@sps/broadcast/models/channel/sdk/server";
-import { revalidateTag } from "next/cache";
+import { expirePath, expireTag } from "next/cache";
 import { api as messageApi } from "@sps/broadcast/models/message/sdk/server";
 
 export type IMiddlewareGeneric = unknown;
@@ -45,7 +45,7 @@ export class Middleware {
                 },
               },
             });
-            revalidateTag(path);
+            expireTag(path);
           }
 
           if (["DELETE"].includes(method)) {
@@ -66,7 +66,7 @@ export class Middleware {
                 },
               },
             });
-            revalidateTag(pathWithoutId);
+            expireTag(pathWithoutId);
           }
 
           const expiredMessages = await messageApi.find({
@@ -104,6 +104,29 @@ export class Middleware {
           });
         }
       }
+    });
+  }
+
+  setRoutes(app: any) {
+    app.get("/revalidation/revalidate", async (c: Context<any, any, {}>) => {
+      const tag = c.req.query("tag");
+      const path = c.req.query("path");
+
+      if (tag) {
+        expireTag(tag);
+      }
+
+      if (path) {
+        expirePath(path);
+      }
+
+      return c.json({
+        revalidated: {
+          tag,
+          path,
+        },
+        now: Date.now(),
+      });
     });
   }
 }
