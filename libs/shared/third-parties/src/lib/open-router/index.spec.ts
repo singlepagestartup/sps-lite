@@ -11,6 +11,9 @@ jest.mock(
   () => {
     return {
       OPEN_ROUTER_API_KEY: "test-open-router-api-key",
+      OPEN_ROUTER_JEV_DECISION_MODEL: "typesafe/jev-1.13",
+      OPEN_ROUTER_JEV_ROUTER_MODEL: "typesafe/jev-router",
+      OPEN_ROUTER_JEV_COST_TIER: "low",
     };
   },
   {
@@ -26,6 +29,104 @@ describe("OpenRouter completion, tool-calling, and billing contracts", () => {
   afterEach(() => {
     global.fetch = originalFetch;
     jest.restoreAllMocks();
+  });
+
+  it("uses the OpenRouter Decisions endpoint and records its token usage and cost", async () => {
+    const service = new Service();
+    const getModels = jest.spyOn(service, "getModels");
+    global.fetch = jest.fn(async () => ({
+      ok: true,
+      json: async () => ({
+        model: "typesafe/jev-1.13-20260917",
+        answers: { save: { type: "noul", noul: 0.95 } },
+        usage: { input_tokens: 100, output_tokens: 8, cost: 0.0000042 },
+      }),
+    })) as any;
+    const result = await service.decide({
+      state: { text: "Save this" },
+      questions: {
+        save: {
+          type: "noul",
+          instructions: "Save?",
+          criteria: { true: "Save", false: "Do not save" },
+        },
+      },
+    });
+    expect(global.fetch).toHaveBeenCalledWith(
+      "https://openrouter.ai/api/alpha/decisions",
+      expect.anything(),
+    );
+    expect(getModels).not.toHaveBeenCalled();
+    expect(result).toMatchObject({
+      answers: { save: { noul: 0.95 } },
+      billing: {
+        requestModelId: "typesafe/jev-1.13",
+        responseModelId: "typesafe/jev-1.13-20260917",
+        totalUsd: 0.0000042,
+        usage: { prompt_tokens: 100, completion_tokens: 8, total_tokens: 108 },
+      },
+    });
+  });
+
+  it("rejects invalid Decisions answers while retaining reported billing", async () => {
+    const service = new Service();
+    global.fetch = jest.fn(async () => ({
+      ok: true,
+      json: async () => ({
+        answers: {
+          action: {
+            type: "choice",
+            choice: "other-profile",
+            confidence: 1,
+            probabilities: { read: 1 },
+          },
+        },
+        usage: { input_tokens: 10, output_tokens: 2, cost: 0.000001 },
+      }),
+    })) as any;
+    const result = await service.decide({
+      state: {},
+      questions: {
+        action: {
+          type: "choice",
+          instructions: "Choose",
+          criteria: { read: "Read" },
+        },
+      },
+    });
+    expect(result).toMatchObject({
+      error: { message: expect.stringContaining("Invalid") },
+      billing: { totalUsd: 0.000001 },
+    });
+  });
+
+  it("sends the low-cost JEV Router plugin and bills the served model", async () => {
+    const service = new Service();
+    jest.spyOn(service, "getModels").mockResolvedValue([
+      {
+        id: "test/answer",
+        pricing: { prompt: "0.01", completion: "0.01" },
+      } as any,
+    ]);
+    global.fetch = jest.fn(async () => ({
+      json: async () => ({
+        model: "test/answer",
+        choices: [{ message: { content: "Answer" } }],
+        usage: { prompt_tokens: 100, completion_tokens: 2, cost: 0.0002 },
+      }),
+    })) as any;
+    const result = await service.generate({
+      model: "typesafe/jev-router",
+      context: [{ role: "user", content: "Question" }],
+    });
+    const request = JSON.parse(
+      (global.fetch as jest.Mock).mock.calls[0][1].body,
+    );
+    expect(request.plugins).toEqual([{ id: "jev-router", cost_tier: "low" }]);
+    expect(result.billing).toMatchObject({
+      responseModelId: "test/answer",
+      totalUsd: 0.0002,
+    });
   });
 
   /**

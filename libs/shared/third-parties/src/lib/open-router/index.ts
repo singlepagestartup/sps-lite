@@ -1,5 +1,12 @@
-import { OPEN_ROUTER_API_KEY } from "@sps/shared-utils";
+import {
+  OPEN_ROUTER_API_KEY,
+  OPEN_ROUTER_JEV_DECISION_MODEL,
+  OPEN_ROUTER_JEV_ROUTER_MODEL,
+  OPEN_ROUTER_JEV_COST_TIER,
+} from "@sps/shared-utils";
 import type {
+  IOpenRouterDecisionsProps,
+  IOpenRouterDecisionsResult,
   IOpenRouterBilling,
   IOpenRouterGeneratedImage,
   IOpenRouterGenerateResult,
@@ -79,6 +86,102 @@ export class Service {
 
     this.baseURL = "https://openrouter.ai/api/v1";
     this.apiKey = OPEN_ROUTER_API_KEY;
+  }
+
+  async decide(
+    props: IOpenRouterDecisionsProps,
+  ): Promise<IOpenRouterDecisionsResult> {
+    const model = props.model || OPEN_ROUTER_JEV_DECISION_MODEL;
+    let billing: IOpenRouterBilling | null = null;
+    try {
+      const response = await fetch(
+        `${this.baseURL.replace(/\/v1\/?$/, "")}/alpha/decisions`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${this.apiKey}`,
+            "Content-Type": "application/json",
+          },
+          signal: AbortSignal.timeout(30_000),
+          body: JSON.stringify({ ...props, model }),
+        },
+      );
+      const data = (await response.json()) as any;
+      if (data.usage) {
+        billing = await this.buildBilling({
+          data: {
+            ...data,
+            usage: {
+              ...data.usage,
+              prompt_tokens: data.usage.input_tokens,
+              completion_tokens: data.usage.output_tokens,
+              total_tokens:
+                (data.usage.input_tokens || 0) +
+                (data.usage.output_tokens || 0),
+            },
+          },
+          requestModelId: model,
+          messages: [],
+          skipModelLookup: true,
+        });
+      }
+      if (!response.ok || data.error) {
+        return {
+          error: data.error || {
+            message: `OpenRouter Decisions failed: ${response.status}`,
+          },
+          billing,
+        };
+      }
+      const probability = (value: unknown) =>
+        typeof value === "number" &&
+        Number.isFinite(value) &&
+        value >= 0 &&
+        value <= 1;
+      for (const [key, question] of Object.entries(props.questions)) {
+        const answer = data.answers?.[key];
+        let valid = answer?.type === question.type;
+        if (question.type === "noul") valid &&= probability(answer?.noul);
+        else {
+          const criteria =
+            question.type === "choice"
+              ? Object.keys(question.criteria)
+              : question.criteria.map((_, index) => String(index));
+          valid &&=
+            probability(answer?.confidence) &&
+            criteria.every((label) =>
+              probability(answer?.probabilities?.[label]),
+            );
+          if (question.type === "choice")
+            valid &&= criteria.includes(answer?.choice);
+          else
+            valid &&=
+              typeof answer?.score === "number" &&
+              Number.isFinite(answer.score) &&
+              answer.score >= 0 &&
+              answer.score <= question.criteria.length - 1;
+        }
+        if (!valid)
+          return {
+            error: { message: `Invalid OpenRouter Decisions answer: ${key}` },
+            billing,
+          };
+      }
+      billing ||= await this.buildBilling({
+        data,
+        requestModelId: model,
+        messages: [],
+        skipModelLookup: true,
+      });
+      return { answers: data.answers, billing };
+    } catch (error) {
+      return {
+        error: {
+          message: `OpenRouter Decisions failed: ${this.stringifyError(error)}`,
+        },
+        billing,
+      };
+    }
   }
 
   async transcribeAudio(props: {
@@ -329,9 +432,17 @@ export class Service {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.apiKey}`,
+          ...(props.model === OPEN_ROUTER_JEV_ROUTER_MODEL && {
+            "X-OpenRouter-Metadata": "enabled",
+          }),
         },
         body: JSON.stringify({
           model: props.model,
+          ...(props.model === OPEN_ROUTER_JEV_ROUTER_MODEL && {
+            plugins: [
+              { id: "jev-router", cost_tier: OPEN_ROUTER_JEV_COST_TIER },
+            ],
+          }),
           messages: props.messages,
           stream: false,
           max_tokens: props.max_tokens,
@@ -564,12 +675,17 @@ export class Service {
     requestModelId: string;
     messages: IOpenRouterRequestMessage[];
     images?: IOpenRouterGeneratedImage[];
+    skipModelLookup?: boolean;
   }): Promise<IOpenRouterBilling> {
     const usage = this.normalizeUsage(props.data?.usage);
-    const models = await this.getModels();
+    const models = props.skipModelLookup ? [] : await this.getModels();
+    const pricingModelId =
+      typeof props.data?.model === "string"
+        ? props.data.model
+        : props.requestModelId;
     const model =
-      models.find((item) => item.id === props.requestModelId) ||
-      models.find((item) => item.canonical_slug === props.requestModelId) ||
+      models.find((item) => item.id === pricingModelId) ||
+      models.find((item) => item.canonical_slug === pricingModelId) ||
       null;
     const pricing = model?.pricing || null;
     const billablePromptTokens = Math.max(
@@ -619,6 +735,12 @@ export class Service {
         imageUsd = providerReportedTotalUsd;
       }
 
+      totalUsd = providerReportedTotalUsd;
+    }
+    if (
+      props.requestModelId === OPEN_ROUTER_JEV_ROUTER_MODEL &&
+      (upstreamInferenceCostCredits !== null || usageCostCredits !== null)
+    ) {
       totalUsd = providerReportedTotalUsd;
     }
 
@@ -823,7 +945,7 @@ export class Service {
         },
       });
 
-      const data = await response.json();
+      const data = (await response.json()) as { data?: IOpenRouterModel[] };
       models = Array.isArray(data.data) ? data.data : [];
     } catch (error) {
       console.warn("OpenRouter models fetch failed", {

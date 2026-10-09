@@ -215,3 +215,32 @@ delete action is called.
 - `admin-select-input`: admin select input for choosing a subject.
 - `admin-table`: admin table listing subjects.
 - `admin-table-row`: admin row showing subject fields.
+
+### OpenRouter decisions and automatic replies
+
+`react-by/openrouter` uses `typesafe/jev-router` with the `low` cost tier for
+automatic text replies, including coding and file-understanding requests.
+OpenRouter selects the answering model and reasoning effort. Manual model
+selection remains direct. Image generation uses the configured image candidates.
+If the router fails, the existing model candidates provide the fallback.
+
+Task and Knowledge intent detection, passage reranking, tool-group selection,
+and linked Skill selection use `typesafe/jev-1.13` through OpenRouter's
+`/api/alpha/decisions` endpoint and the same OpenRouter API key. Passage relevance
+selects up to twelve useful chunks from the profile-scoped retrieval results.
+Candidate passages are evaluated in byte-bounded batches to fit JEV context
+limits without truncating the source passages.
+Failed reranking retains retrieval order; failed capability selection retains
+the allowed catalog. Decisions usage and the actual answering model's cost are
+recorded in the existing billing ledger.
+
+Natural-language requests can read, create, or supplement profile Knowledge
+without a control mention. `/learn`, `@knowledge`, and explicit Skills remain
+available. The native create tool supports the first Source and imports the
+current message's attached files. Editing reads the Source first, preserves
+other user notes, and checks its `contentHash` before saving. Source and file
+analysis continue through Knowledge services and framework relations.
+
+JEV chooses among available capabilities. Backend profile scope, allowed MCP
+servers, and tool argument validation continue to determine access. A routing
+decision does not execute a mutation.

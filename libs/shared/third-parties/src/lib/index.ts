@@ -10,6 +10,11 @@ export {
 } from "./open-router";
 export { openRouterReasoningEffortValues } from "./open-router/interface";
 export type {
+  IOpenRouterDecisionQuestion,
+  IOpenRouterDecisionAnswer,
+  IOpenRouterDecisionsProps,
+  IOpenRouterDecisionsResult,
+  IOpenRouterDecisionsSuccess,
   IOpenRouterBilling,
   IOpenRouterGenerateResult,
   IOpenRouterGenerationError,

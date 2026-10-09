@@ -28,6 +28,19 @@ src/
 - Webhook setup
 - User interactions
 
+### OpenRouter
+
+`OpenRouter.generate` handles chat completions and function-tool calls. Requests
+for `typesafe/jev-router` include the `jev-router` plugin with `cost_tier: low`.
+Billing records the model returned by OpenRouter and its reported cost.
+
+`OpenRouter.decide` sends typed Choice, Noul, or Score questions to
+`https://openrouter.ai/api/alpha/decisions`, using `OPEN_ROUTER_API_KEY`. It
+validates answers against the supplied questions and normalizes Decisions
+`input_tokens` and `output_tokens` into the shared billing format. It returns
+structured answers or an error, retaining reported usage even when answer
+validation fails. Domain routing and profile permissions live in RBAC services.
+
 ## Usage
 
 ```typescript

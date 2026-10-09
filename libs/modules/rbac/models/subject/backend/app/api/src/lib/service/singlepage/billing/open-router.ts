@@ -8,6 +8,7 @@ export type TOpenRouterBillingPurpose =
   | "classification"
   | "classification_repair"
   | "knowledge_rerank"
+  | "tool_selection"
   | "model_selection"
   | "model_selection_repair"
   | "generation"

@@ -1,12 +1,11 @@
 import {
+  OPEN_ROUTER_JEV_ROUTER_MODEL,
   replaceKnowledgeUserContext,
   readKnowledgeUserContext,
   sliceKnowledgeToolText,
   KNOWLEDGE_TOOL_RESULT_MAX_BYTES,
   KNOWLEDGE_TOOL_READ_MAX_CHARS,
   KNOWLEDGE_TOOL_USER_CONTEXT_MAX_BYTES,
-} from "@sps/shared-utils";
-import {
   NEXT_PUBLIC_API_SERVICE_URL,
   RBAC_JWT_SECRET,
   RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
@@ -53,6 +52,10 @@ import {
   IModel as ISocialModuleProfile,
 } from "@sps/social/models/profile/sdk/model";
 import { IModel as ISocialModuleSkill } from "@sps/social/models/skill/sdk/model";
+import {
+  SocialProfileJevService,
+  type TJevKnowledgeAction,
+} from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/jev";
 import { KnowledgeService } from "@sps/knowledge/backend/app/api/src/lib/service";
 import { KnowledgeSearchResult } from "@sps/knowledge/backend/app/api/src/lib/types";
 import * as jwt from "hono/jwt";
@@ -79,7 +82,7 @@ type TOutputModality = "text" | "image" | "audio" | "file";
 type TComplexity = "low" | "medium" | "high";
 type TRiskLevel = "low" | "medium" | "high";
 type TModelClass = "CHAT" | "CODER" | "VISION" | "IMAGE";
-type TModelConfigClass = TModelClass | "CLASSIFIER";
+type TModelConfigClass = TModelClass;
 
 interface IRequestClassification {
   language: string;
@@ -105,7 +108,7 @@ interface IModelCandidate {
 interface IModelSelectionResult {
   orderedCandidateIds: string[];
   selectedModelId: string | null;
-  selectedBy: "llm" | "priority" | "manual";
+  selectedBy: "jev" | "priority" | "manual";
 }
 
 interface IFinalGenerationResult {
@@ -152,39 +155,8 @@ interface IOpenRouterKnowledgeRetrievalMetadata {
 }
 
 const MODEL_ROUTER_CONFIG = {
-  version: "2026-07-15",
+  version: "2026-10-09-jev",
   classes: {
-    CLASSIFIER: [
-      {
-        id: "openai/gpt-5.6-luna",
-        enabled: true,
-        priority: 100,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["classification", "routing", "structured_outputs"],
-      },
-      {
-        id: "minimax/minimax-m3",
-        enabled: true,
-        priority: 90,
-        input_modalities: ["text", "image"],
-        output_modalities: ["text"],
-        strengths: ["classification", "routing", "cost_efficiency"],
-      },
-      {
-        id: "google/gemini-3.1-flash-lite",
-        enabled: true,
-        priority: 80,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: [
-          "classification",
-          "routing",
-          "multimodal",
-          "cost_efficiency",
-        ],
-      },
-    ],
     CHAT: [
       {
         id: "openai/gpt-5.6-terra",
@@ -400,22 +372,6 @@ const MODEL_ROUTER_CONFIG = {
   },
 } as const;
 
-const ALLOWED_TASKS: TRequestTask[] = [
-  "qa",
-  "support",
-  "coding",
-  "research",
-  "translate",
-  "summarize",
-  "extract",
-  "image_gen",
-  "image_understanding",
-  "tts",
-  "asr",
-  "music_gen",
-  "file_gen",
-];
-
 const ALLOWED_OUTPUT_MODALITIES: TOutputModality[] = [
   "text",
   "image",
@@ -434,83 +390,6 @@ const KNOWLEDGE_RERANK_THREAD_CONTEXT_MESSAGES = 8;
 const KNOWLEDGE_RERANK_THREAD_CONTEXT_CHARS = 800;
 const OPEN_ROUTER_TERMINAL_MESSAGE_WRITTEN_MARKER =
   "open-router-terminal-message-written";
-
-const CLASSIFICATION_RESPONSE_FORMAT = {
-  type: "json_schema" as const,
-  json_schema: {
-    name: "request_classification",
-    strict: true,
-    schema: {
-      type: "object",
-      additionalProperties: false,
-      required: [
-        "language",
-        "task",
-        "input_modalities",
-        "output_modality",
-        "need_web",
-        "complexity",
-        "risk_level",
-      ],
-      properties: {
-        language: {
-          type: "string",
-        },
-        task: {
-          type: "string",
-          enum: [...ALLOWED_TASKS],
-        },
-        input_modalities: {
-          type: "array",
-          minItems: 1,
-          items: {
-            type: "string",
-            enum: [...ALLOWED_INPUT_MODALITIES],
-          },
-        },
-        output_modality: {
-          type: "string",
-          enum: [...ALLOWED_OUTPUT_MODALITIES],
-        },
-        need_web: {
-          type: "boolean",
-        },
-        complexity: {
-          type: "string",
-          enum: ["low", "medium", "high"],
-        },
-        risk_level: {
-          type: "string",
-          enum: ["low", "medium", "high"],
-        },
-      },
-    },
-  },
-};
-
-const KNOWLEDGE_RERANK_RESPONSE_FORMAT = {
-  type: "json_schema" as const,
-  json_schema: {
-    name: "knowledge_rerank",
-    strict: true,
-    schema: {
-      type: "object",
-      additionalProperties: false,
-      required: ["selected_chunk_ids", "reason"],
-      properties: {
-        selected_chunk_ids: {
-          type: "array",
-          items: {
-            type: "string",
-          },
-        },
-        reason: {
-          type: "string",
-        },
-      },
-    },
-  },
-};
 
 export class Handler {
   service: Service;
@@ -1342,13 +1221,30 @@ export class Handler {
 
       const openRouterModels = await openRouter.getModels();
 
-      const requiredInputModalitiesList =
-        this.detectInputModalitiesFromContext(context);
       let requestClassification: IRequestClassification;
       let selectedModelClass: TModelClass = "CHAT";
       let expectedOutputModality: TOutputModality = "text";
       let modelCandidates: IModelCandidate[] = [];
       let modelSelection: IModelSelectionResult;
+      const jev = new SocialProfileJevService({ openRouter, billingLedger });
+      const jevRoute = await jev.route({
+        requestText: sanitizedTriggerDescription,
+        history: this.toKnowledgeRerankThreadContext(context),
+      });
+      const knowledgeImportContext =
+        jevRoute.knowledgeAction === "create"
+          ? context.map((message, index) =>
+              index === context.length - 1
+                ? {
+                    ...message,
+                    content: `${sanitizedTriggerDescription}\nCurrent message attachments will be analyzed and saved by profile_knowledge_create.`,
+                  }
+                : message,
+            )
+          : context;
+      const requiredInputModalitiesList = this.detectInputModalitiesFromContext(
+        knowledgeImportContext,
+      );
 
       if (aiReactionRequest.modelId !== "auto") {
         const manualModel = this.resolveManualOpenRouterModel({
@@ -1385,12 +1281,15 @@ export class Handler {
           },
         });
 
-        const rawRequestClassification = await this.classifyRequest({
-          billingLedger,
-          openRouter,
-          requestText: routingRequestText,
-          requiredInputModalitiesList,
-        });
+        const rawRequestClassification: IRequestClassification = {
+          ...this.buildManualRequestClassification({
+            requestText: routingRequestText,
+            requiredInputModalitiesList,
+            expectedOutputModality:
+              jevRoute.task === "image_gen" ? "image" : "text",
+          }),
+          task: jevRoute.task,
+        };
 
         requestClassification = this.adaptClassificationForEndpoint({
           classification: rawRequestClassification,
@@ -1465,6 +1364,7 @@ export class Handler {
           socialModuleMessage,
           sanitizedQuery: routingRequestText,
           requestedKnowledgeSearch,
+          knowledgeAction: jevRoute.knowledgeAction,
           requestedSkillIds,
           reasoning: openRouterReasoning,
           selectedModelId:
@@ -1474,7 +1374,7 @@ export class Handler {
           threadContext: context,
         });
       const openRouterContext = this.attachSkillMessagePrefixToContext({
-        context,
+        context: knowledgeImportContext,
         skillMessagePrefix: openRouterKnowledgeContext.skillMessagePrefix,
       });
       const generationContext = this.buildGenerationContext({
@@ -1490,6 +1390,9 @@ export class Handler {
       const profileCapabilityTools = this.buildProfileCapabilityTools({
         availableSkills: openRouterKnowledgeContext.availableSkills,
         knowledgeSourceIds: openRouterKnowledgeContext.knowledgeSourceIds,
+        knowledgeAction: jevRoute.knowledgeAction,
+        replyProfileId: replyBySocialModuleProfile.id,
+        socialModuleMessage,
       });
       const allowedMcpServerIds = Array.isArray(
         replyBySocialModuleProfile.allowedMcpServerIds,
@@ -1507,10 +1410,40 @@ export class Handler {
         unavailableMcpServerIds = mcpCatalogResult.unavailableServerIds;
       }
 
-      const socialProfileTools = [
+      const availableTools = [
         ...profileCapabilityTools,
         ...this.buildMcpCapabilityTools(socialProfileMcpCatalogSession),
       ];
+      const capabilities = await jev.selectCapabilities({
+        requestText: sanitizedTriggerDescription,
+        history: this.toKnowledgeRerankThreadContext(context),
+        tools: availableTools,
+        skills: openRouterKnowledgeContext.availableSkills,
+        forceKnowledge:
+          requestedKnowledgeSearch || jevRoute.knowledgeAction !== "none",
+        explicitSkillIds: openRouterKnowledgeContext.requestedSkillIds,
+      });
+      const socialProfileTools = capabilities.tools;
+      if (capabilities.skills.length) {
+        generationContext.unshift({
+          role: "system",
+          content: this.toSkillMessagePrefix(capabilities.skills),
+        });
+      }
+      if (
+        jevRoute.knowledgeAction === "create" ||
+        jevRoute.knowledgeAction === "update" ||
+        jevRoute.knowledgeAction === "auto"
+      ) {
+        generationContext.unshift({
+          role: "system",
+          content: [
+            "Use the profile Knowledge tools to carry out explicit current save/edit requests. The user's direct request already authorizes saving; do not ask for a second confirmation. Ask for clarification only if the material or target Source cannot be identified.",
+            "Read existing human notes before editing and preserve unrelated notes. For a new material use profile_knowledge_create. Attached files are analyzed by the Knowledge service.",
+            `Linked Source ids: ${JSON.stringify(openRouterKnowledgeContext.knowledgeSourceIds)}`,
+          ].join("\n"),
+        });
+      }
       const onModelAttempt = async (modelCandidateId: string) => {
         await api.socialModuleProfileFindByIdChatFindByIdMessageUpdate({
           id: replyByRbacSubject.id,
@@ -1620,6 +1553,19 @@ export class Handler {
         generationResult = finalGenerationResult.generationResult;
       }
 
+      const servedModelId = [...billingLedger]
+        .reverse()
+        .find(
+          (call) =>
+            (call.purpose === "generation" ||
+              call.purpose === "tool_iteration") &&
+            call.status === "success",
+        )?.billing?.responseModelId;
+      if (servedModelId) {
+        selectModelForRequest = servedModelId;
+        selectedModelIdForBilling = servedModelId;
+      }
+
       if (!selectModelForRequest || !generationResult) {
         selectedModelIdForBilling =
           finalGenerationResult.selectedModelId ||
@@ -1691,7 +1637,10 @@ export class Handler {
           knowledge: {
             action: this.hasLearnCommand(socialModuleMessage.description)
               ? "learn"
-              : "generate",
+              : jevRoute.knowledgeAction === "create" ||
+                  jevRoute.knowledgeAction === "update"
+                ? jevRoute.knowledgeAction
+                : "generate",
             profileId: replyBySocialModuleProfile.id,
             triggerMessageId: socialModuleMessage.id,
             useKnowledgeSearch: openRouterKnowledgeContext.useKnowledgeSearch,
@@ -1707,6 +1656,7 @@ export class Handler {
             ),
             activatedSkillIds: Array.from(
               new Set([
+                ...capabilities.skills.map((skill) => skill.id),
                 ...openRouterKnowledgeContext.promptSkills.map(
                   (skill) => skill.id,
                 ),
@@ -1717,7 +1667,10 @@ export class Handler {
                   ),
               ]),
             ),
-            skills: openRouterKnowledgeContext.promptSkills.map((skill) => {
+            skills: [
+              ...openRouterKnowledgeContext.promptSkills,
+              ...capabilities.skills,
+            ].map((skill) => {
               return {
                 skillId: skill.id,
                 slug: skill.slug,
@@ -2121,6 +2074,7 @@ export class Handler {
     socialModuleMessage: ISocialModuleMessage;
     sanitizedQuery: string;
     requestedKnowledgeSearch: boolean;
+    knowledgeAction?: TJevKnowledgeAction;
     requestedSkillIds: string[];
     reasoning?: IOpenRouterReasoning;
     selectedModelId: string | null;
@@ -2155,13 +2109,17 @@ export class Handler {
       );
     }
 
-    const useKnowledgeSearch = props.requestedKnowledgeSearch;
-    const knowledgeSourceIds = useKnowledgeSearch
-      ? await this.findKnowledgeSourceIdsForProfile(props.replyProfile.id)
-      : [];
+    const useKnowledgeSearch =
+      props.requestedKnowledgeSearch ||
+      props.knowledgeAction === "read" ||
+      props.knowledgeAction === "update";
+    const knowledgeSourceIds =
+      useKnowledgeSearch || props.knowledgeAction === "auto"
+        ? await this.findKnowledgeSourceIdsForProfile(props.replyProfile.id)
+        : [];
     const searchSourceIds = useKnowledgeSearch ? knowledgeSourceIds : [];
     const candidateSources =
-      useKnowledgeSearch && query
+      useKnowledgeSearch && query && searchSourceIds.length > 0
         ? await this.knowledgeService.search({
             query,
             topK: KNOWLEDGE_INITIAL_TOP_K,
@@ -2233,144 +2191,15 @@ export class Handler {
     reason: string | null;
     fallbackReason: string | null;
   }> {
-    const fallbackSources = props.candidateSources.slice(0, props.rerankTopK);
-
-    if (!props.candidateSources.length) {
-      return {
-        sources: [],
-        reason: null,
-        fallbackReason: null,
-      };
-    }
-
-    if (!props.selectedModelId) {
-      return {
-        sources: fallbackSources,
-        reason: null,
-        fallbackReason: "no selected model id for knowledge rerank",
-      };
-    }
-
-    const rerankResponse = await this.generateWithBillingLedger({
-      billingLedger: props.billingLedger,
-      purpose: "knowledge_rerank",
+    return new SocialProfileJevService({
       openRouter: props.openRouter,
-      model: props.selectedModelId,
-      max_tokens: 800,
-      reasoning: props.reasoning,
-      responseFormat: KNOWLEDGE_RERANK_RESPONSE_FORMAT,
-      temperature: 0,
-      context: this.buildKnowledgeRerankContext({
-        candidateSources: props.candidateSources,
-        query: props.query,
-        rerankTopK: props.rerankTopK,
-        threadContext: props.threadContext,
-      }),
+      billingLedger: props.billingLedger,
+    }).rerank({
+      query: props.query,
+      history: this.toKnowledgeRerankThreadContext(props.threadContext),
+      sources: props.candidateSources,
+      topK: props.rerankTopK,
     });
-
-    if ("error" in rerankResponse) {
-      return {
-        sources: fallbackSources,
-        reason: null,
-        fallbackReason: "knowledge rerank generation error",
-      };
-    }
-
-    const parsed = this.tryParseJsonObject(rerankResponse.text);
-    const rawSelectedChunkIds = parsed?.selected_chunk_ids;
-
-    if (!Array.isArray(rawSelectedChunkIds)) {
-      return {
-        sources: fallbackSources,
-        reason: null,
-        fallbackReason: "knowledge rerank returned invalid selected_chunk_ids",
-      };
-    }
-
-    const rerankReason =
-      typeof parsed?.reason === "string" ? parsed.reason : null;
-
-    if (!rawSelectedChunkIds.length) {
-      return {
-        sources: [],
-        reason: rerankReason,
-        fallbackReason: null,
-      };
-    }
-
-    const selectedChunkIds = rawSelectedChunkIds
-      .filter((value): value is string => typeof value === "string")
-      .map((value) => value.trim())
-      .filter(Boolean);
-    const sourcesById = new Map(
-      props.candidateSources.map((source) => [source.id, source]),
-    );
-    const selectedSources = Array.from(new Set(selectedChunkIds))
-      .map((chunkId) => sourcesById.get(chunkId))
-      .filter((source): source is KnowledgeSearchResult => Boolean(source))
-      .slice(0, props.rerankTopK);
-
-    if (!selectedSources.length) {
-      return {
-        sources: fallbackSources,
-        reason: null,
-        fallbackReason: "knowledge rerank returned no valid selected_chunk_ids",
-      };
-    }
-
-    return {
-      sources: selectedSources,
-      reason: rerankReason,
-      fallbackReason: null,
-    };
-  }
-
-  private buildKnowledgeRerankContext(props: {
-    candidateSources: KnowledgeSearchResult[];
-    query: string;
-    rerankTopK: number;
-    threadContext: IOpenRouterRequestMessage[];
-  }): IOpenRouterRequestMessage[] {
-    return [
-      {
-        role: "system",
-        content: [
-          "You are reranking profile-scoped RAG chunks before answer generation.",
-          "Select only chunks that directly help answer the user query.",
-          "Prefer chunks that preserve the source meaning and avoid misleading partial context.",
-          `Return at most ${props.rerankTopK} chunk ids.`,
-          "Return STRICT JSON only.",
-        ].join(" "),
-      },
-      {
-        role: "user",
-        content: `User query:\n${props.query}`,
-      },
-      {
-        role: "user",
-        content: [
-          "Recent thread context:",
-          this.toKnowledgeRerankThreadContext(props.threadContext),
-        ].join("\n"),
-      },
-      {
-        role: "user",
-        content: `Candidate chunks JSON:\n${JSON.stringify(
-          props.candidateSources.map((source, index) => {
-            return {
-              order: index + 1,
-              id: source.id,
-              retrievalRole: source.retrievalRole,
-              sourceId: source.sourceId,
-              sourceTitle: source.sourceTitle,
-              chunkIndex: source.chunkIndex,
-              similarity: source.similarity,
-              text: source.text,
-            };
-          }),
-        )}`,
-      },
-    ];
   }
 
   private toKnowledgeRerankThreadContext(context: IOpenRouterRequestMessage[]) {
@@ -2623,8 +2452,100 @@ export class Handler {
   private buildProfileCapabilityTools(props: {
     availableSkills: ISocialModuleSkill[];
     knowledgeSourceIds: string[];
+    knowledgeAction?: TJevKnowledgeAction;
+    replyProfileId?: string;
+    socialModuleMessage?: ISocialModuleMessage;
   }): ISocialProfileAiTool[] {
     const tools: ISocialProfileAiTool[] = [];
+    const canWrite =
+      props.knowledgeAction === "create" ||
+      props.knowledgeAction === "update" ||
+      props.knowledgeAction === "auto" ||
+      props.knowledgeAction === undefined;
+    if (canWrite && props.replyProfileId && props.socialModuleMessage) {
+      const message = props.socialModuleMessage;
+      const profileId = props.replyProfileId;
+      tools.push({
+        source: "knowledge",
+        display: { label: "Create profile Knowledge" },
+        definition: {
+          type: "function",
+          function: {
+            name: "profile_knowledge_create",
+            description:
+              "Save new knowledge in this replying profile when the user explicitly requests it. Include the complete user-provided facts and context. The current message's attachments are analyzed and attached automatically. Use edit for an existing Source instead. Return errors honestly; saved does not always mean indexed.",
+            parameters: {
+              type: "object",
+              properties: {
+                title: { type: "string", minLength: 1 },
+                userContext: { type: "string" },
+              },
+              required: ["title", "userContext"],
+              additionalProperties: false,
+            },
+          },
+        },
+        validateArguments: (args) => {
+          if (
+            typeof args["title"] !== "string" ||
+            !args["title"].trim() ||
+            typeof args["userContext"] !== "string"
+          )
+            throw new Error("Knowledge title and userContext are required.");
+        },
+        execute: async (args) => {
+          const relations =
+            await this.service.socialModule.messagesToFileStorageModuleFiles.find(
+              {
+                params: {
+                  filters: {
+                    and: [
+                      { column: "messageId", method: "eq", value: message.id },
+                    ],
+                  },
+                  orderBy: { and: [{ column: "orderIndex", method: "asc" }] },
+                },
+              },
+            );
+          const saved = await this.knowledgeService.learnContent({
+            slug: this.toSlug(`knowledge-${profileId}-${message.id}`),
+            title: String(args["title"]).trim(),
+            content: String(args["userContext"]),
+            fileIds: [
+              ...new Set<string>(
+                (relations || [])
+                  .map((relation) => relation.fileStorageModuleFileId)
+                  .filter((id): id is string => Boolean(id)),
+              ),
+            ],
+            onSourceSaved: async (sourceId) => {
+              await this.ensureProfileKnowledgeSourceRelation({
+                socialModuleProfileId: profileId,
+                knowledgeModuleSourceId: sourceId,
+              });
+              await this.service.socialModule.messagesToKnowledgeModuleSources.findOrCreate(
+                {
+                  data: {
+                    messageId: message.id,
+                    knowledgeModuleSourceId: sourceId,
+                    kind: "origin",
+                    orderIndex: 0,
+                  },
+                },
+              );
+            },
+          });
+          return {
+            sourceId: saved.source?.id,
+            contentHash: saved.source?.contentHash,
+            indexedContentHash: saved.source?.indexedContentHash,
+            lastIndexedAt: saved.source?.lastIndexedAt,
+            processingError: saved.processingError,
+            indexError: saved.indexError,
+          };
+        },
+      });
+    }
 
     if (props.availableSkills.length) {
       const skillsBySlug = new Map(
@@ -2854,56 +2775,57 @@ export class Handler {
           };
         },
       });
-      tools.push({
-        source: "knowledge",
-        display: { label: "Edit Knowledge context" },
-        definition: {
-          type: "function",
-          function: {
-            name: "profile_knowledge_edit",
-            description:
-              "Directly save user context and optional title in a Source when the user explicitly requests or confirms this edit. Read the Source first, pass its contentHash as expectedContentHash, and preserve its other human notes. File-derived descriptions are rebuilt from files. Do not edit when the user is only discussing a possible change.",
-            parameters: {
-              type: "object",
-              properties: {
-                sourceId: { type: "string", enum: props.knowledgeSourceIds },
-                userContext: { type: "string" },
-                expectedContentHash: { type: "string" },
-                title: { type: "string" },
+      if (canWrite)
+        tools.push({
+          source: "knowledge",
+          display: { label: "Edit Knowledge context" },
+          definition: {
+            type: "function",
+            function: {
+              name: "profile_knowledge_edit",
+              description:
+                "Directly save user context and optional title in a Source when the user explicitly requests or confirms this edit. Read the Source first, pass its contentHash as expectedContentHash, and preserve its other human notes. File-derived descriptions are rebuilt from files. Do not edit when the user is only discussing a possible change.",
+              parameters: {
+                type: "object",
+                properties: {
+                  sourceId: { type: "string", enum: props.knowledgeSourceIds },
+                  userContext: { type: "string" },
+                  expectedContentHash: { type: "string" },
+                  title: { type: "string" },
+                },
+                required: ["sourceId", "userContext", "expectedContentHash"],
+                additionalProperties: false,
               },
-              required: ["sourceId", "userContext", "expectedContentHash"],
-              additionalProperties: false,
             },
           },
-        },
-        execute: async (args) => {
-          const source = await requireSource(args);
-          if (typeof args["userContext"] !== "string")
-            throw new Error("User context is required.");
-          if (args["expectedContentHash"] !== source.contentHash)
-            throw new Error(
-              "Source changed after reading. Read it again before editing.",
-            );
-          const saved = await this.knowledgeService.updateSource({
-            sourceId: source.id,
-            content: replaceKnowledgeUserContext(
-              source.content,
-              args["userContext"],
-            ),
-            expectedContentHash: source.contentHash,
-            ...(typeof args["title"] === "string"
-              ? { title: args["title"] }
-              : {}),
-          });
-          return {
-            sourceId: saved.source?.id,
-            contentHash: saved.source?.contentHash,
-            indexedContentHash: saved.source?.indexedContentHash,
-            lastIndexedAt: saved.source?.lastIndexedAt,
-            indexError: saved.indexError,
-          };
-        },
-      });
+          execute: async (args) => {
+            const source = await requireSource(args);
+            if (typeof args["userContext"] !== "string")
+              throw new Error("User context is required.");
+            if (args["expectedContentHash"] !== source.contentHash)
+              throw new Error(
+                "Source changed after reading. Read it again before editing.",
+              );
+            const saved = await this.knowledgeService.updateSource({
+              sourceId: source.id,
+              content: replaceKnowledgeUserContext(
+                source.content,
+                args["userContext"],
+              ),
+              expectedContentHash: source.contentHash,
+              ...(typeof args["title"] === "string"
+                ? { title: args["title"] }
+                : {}),
+            });
+            return {
+              sourceId: saved.source?.id,
+              contentHash: saved.source?.contentHash,
+              indexedContentHash: saved.source?.indexedContentHash,
+              lastIndexedAt: saved.source?.lastIndexedAt,
+              indexError: saved.indexError,
+            };
+          },
+        });
     }
 
     return tools;
@@ -3076,6 +2998,7 @@ export class Handler {
 
     return [
       "Use the following profile-scoped knowledge fragments for factual grounding.",
+      "Answer directly from these fragments when they contain the needed evidence. Use read/search tools only for missing context or when the user explicitly asks to read or edit a Source.",
       "If the fragments do not support a claim, say that the indexed sources do not contain it.",
       "Use conversation history only to resolve follow-ups and source text for edits.",
       `Knowledge query: ${props.query}`,
@@ -3758,7 +3681,7 @@ export class Handler {
       {
         role: "system",
         content: [
-          `Answer in ${props.language} language.`,
+          "Answer in the language requested by the current user; otherwise use the language of their latest message.",
           "Use portable Markdown only.",
           "Do not use LaTeX delimiters or commands.",
           "Write formulas with plain text and Unicode mathematical symbols so the same answer is readable in web chat and Telegram.",
@@ -3931,476 +3854,26 @@ export class Handler {
     return enabledCandidates;
   }
 
-  protected buildModelSelectionResponseFormat(candidateIds: string[]) {
-    return {
-      type: "json_schema" as const,
-      json_schema: {
-        name: "model_selection",
-        strict: true,
-        schema: {
-          type: "object",
-          additionalProperties: false,
-          required: ["selected_model_id", "reason"],
-          properties: {
-            selected_model_id: {
-              type: "string",
-              enum: candidateIds,
-            },
-            reason: {
-              type: "string",
-            },
-          },
-        },
-      },
-    };
-  }
-
   protected async selectModelCandidatesForRequest(props: {
-    billingLedger: IOpenRouterBillingLedgerEntry[];
-    openRouter: OpenRouter;
-    requestText: string;
-    requestClassification: IRequestClassification;
-    selectedModelClass: TModelClass;
     modelCandidates: IModelCandidate[];
+    selectedModelClass: TModelClass;
+    [key: string]: unknown;
   }): Promise<IModelSelectionResult> {
-    const defaultOrderedCandidateIds = props.modelCandidates
+    const fallbackIds = props.modelCandidates
       .slice()
       .sort((a, b) => b.priority - a.priority)
       .map((candidate) => candidate.id);
-    const modelSelectionResponseFormat = this.buildModelSelectionResponseFormat(
-      defaultOrderedCandidateIds,
-    );
-    const classifierModelIds = this.getEnabledCandidatesByClass(
-      "CLASSIFIER",
-    ).map((candidate) => candidate.id);
-
-    for (const selectorModelId of classifierModelIds) {
-      const selectorResponse = await this.generateWithBillingLedger({
-        billingLedger: props.billingLedger,
-        purpose: "model_selection",
-        openRouter: props.openRouter,
-        model: selectorModelId,
-        max_tokens: 300,
-        responseFormat: modelSelectionResponseFormat,
-        temperature: 0,
-        context: [
-          {
-            role: "system",
-            content: `You are a model router. Return STRICT JSON only:
-{
-  "selected_model_id": "one-of-candidate-ids",
-  "reason": "short reason"
-}
-No markdown. No extra keys.`,
-          },
-          {
-            role: "user",
-            content: `User request: ${props.requestText}`,
-          },
-          {
-            role: "user",
-            content: `Classification: ${JSON.stringify(props.requestClassification)}`,
-          },
-          {
-            role: "user",
-            content: `Target class: ${props.selectedModelClass}`,
-          },
-          {
-            role: "user",
-            content: `Candidates: ${JSON.stringify(
-              props.modelCandidates.map((candidate) => ({
-                id: candidate.id,
-                priority: candidate.priority,
-                strengths: candidate.strengths,
-                best_for: candidate.best_for || [],
-                avoid_for: candidate.avoid_for || [],
-                input_modalities: candidate.input_modalities,
-                output_modalities: candidate.output_modalities,
-              })),
-            )}`,
-          },
-        ],
-      });
-
-      if ("error" in selectorResponse) {
-        console.log(
-          "react-by-openrouter/model-selector-fallback",
-          `model=${selectorModelId}: generation error`,
-        );
-        continue;
-      }
-
-      const selectedModelId = await this.parseAndNormalizeModelSelection({
-        billingLedger: props.billingLedger,
-        openRouter: props.openRouter,
-        selectorModelId,
-        requestText: props.requestText,
-        requestClassification: props.requestClassification,
-        selectedModelClass: props.selectedModelClass,
-        modelCandidates: props.modelCandidates,
-        rawSelectorOutput: selectorResponse.text,
-        modelSelectionResponseFormat,
-      });
-
-      if (!selectedModelId) {
-        console.log(
-          "react-by-openrouter/model-selector-retry",
-          `model=${selectorModelId}: invalid json or invalid selected_model_id`,
-        );
-        this.setLatestBillingLedgerFallbackReason({
-          billingLedger: props.billingLedger,
-          fallbackReason:
-            "invalid json or invalid selected_model_id; falling back to the next selector model",
-        });
-        continue;
-      }
-
+    if (props.selectedModelClass === "IMAGE") {
       return {
-        orderedCandidateIds: [
-          selectedModelId,
-          ...defaultOrderedCandidateIds.filter((id) => id !== selectedModelId),
-        ],
-        selectedModelId,
-        selectedBy: "llm",
+        orderedCandidateIds: fallbackIds,
+        selectedModelId: fallbackIds[0] || null,
+        selectedBy: "priority",
       };
     }
-
     return {
-      orderedCandidateIds: defaultOrderedCandidateIds,
-      selectedModelId: defaultOrderedCandidateIds[0] || null,
-      selectedBy: "priority",
-    };
-  }
-
-  protected async parseAndNormalizeModelSelection(props: {
-    billingLedger: IOpenRouterBillingLedgerEntry[];
-    openRouter: OpenRouter;
-    selectorModelId: string;
-    requestText: string;
-    requestClassification: IRequestClassification;
-    selectedModelClass: TModelClass;
-    modelCandidates: IModelCandidate[];
-    rawSelectorOutput: string;
-    modelSelectionResponseFormat: {
-      type: "json_schema";
-      json_schema: {
-        name: string;
-        strict: boolean;
-        schema: Record<string, unknown>;
-      };
-    };
-  }): Promise<string | null> {
-    const candidateIds = props.modelCandidates.map((candidate) => candidate.id);
-    const availableIds = new Set(candidateIds);
-
-    const parseSelectedModelId = (
-      parsed: Record<string, unknown> | null,
-    ): string | null => {
-      if (!parsed) {
-        return null;
-      }
-
-      const selectedModelId = parsed.selected_model_id;
-
-      if (typeof selectedModelId !== "string") {
-        return null;
-      }
-
-      if (!availableIds.has(selectedModelId)) {
-        return null;
-      }
-
-      return selectedModelId;
-    };
-
-    const directParsed = this.tryParseJsonObject(props.rawSelectorOutput);
-    const directSelectedModelId = parseSelectedModelId(directParsed);
-
-    if (directSelectedModelId) {
-      return directSelectedModelId;
-    }
-
-    const repairResponse = await this.generateWithBillingLedger({
-      billingLedger: props.billingLedger,
-      purpose: "model_selection_repair",
-      openRouter: props.openRouter,
-      model: props.selectorModelId,
-      max_tokens: 300,
-      responseFormat: props.modelSelectionResponseFormat,
-      temperature: 0,
-      context: [
-        {
-          role: "system",
-          content: `Convert assistant output to STRICT JSON:
-{
-  "selected_model_id": "one-of-candidate-ids",
-  "reason": "short reason"
-}
-No markdown. No extra keys.`,
-        },
-        {
-          role: "user",
-          content: `User request: ${props.requestText}`,
-        },
-        {
-          role: "user",
-          content: `Classification: ${JSON.stringify(props.requestClassification)}`,
-        },
-        {
-          role: "user",
-          content: `Target class: ${props.selectedModelClass}`,
-        },
-        {
-          role: "user",
-          content: `Candidate IDs: ${JSON.stringify(candidateIds)}`,
-        },
-        {
-          role: "user",
-          content: `Assistant output to normalize: ${props.rawSelectorOutput}`,
-        },
-      ],
-    });
-
-    if ("error" in repairResponse) {
-      return null;
-    }
-
-    const repairedParsed = this.tryParseJsonObject(repairResponse.text);
-    return parseSelectedModelId(repairedParsed);
-  }
-
-  protected async classifyRequest(props: {
-    billingLedger: IOpenRouterBillingLedgerEntry[];
-    openRouter: OpenRouter;
-    requestText: string;
-    requiredInputModalitiesList: TInputModality[];
-  }): Promise<IRequestClassification> {
-    const classifierModels = this.getEnabledCandidatesByClass("CLASSIFIER").map(
-      (candidate) => candidate.id,
-    );
-    const fallbackClassifierModels = this.getEnabledCandidatesByClass("CHAT")
-      .map((candidate) => candidate.id)
-      .filter((candidateId) => !classifierModels.includes(candidateId));
-    const allClassifierModels = [
-      ...classifierModels,
-      ...fallbackClassifierModels,
-    ];
-
-    for (const classifierModel of classifierModels) {
-      const classificationResponse = await this.generateWithBillingLedger({
-        billingLedger: props.billingLedger,
-        purpose: "classification",
-        openRouter: props.openRouter,
-        model: classifierModel,
-        max_tokens: 600,
-        responseFormat: CLASSIFICATION_RESPONSE_FORMAT,
-        temperature: 0,
-        context: [
-          {
-            role: "system",
-            content: `Return STRICT JSON only with keys:
-{
-  "language": "ru|en|other",
-  "task": "${ALLOWED_TASKS.join(" | ")}",
-  "input_modalities": ["text|image|file"],
-  "output_modality": "text|image|audio|file",
-  "need_web": false,
-  "complexity": "low|medium|high",
-  "risk_level": "low|medium|high"
-}
-No markdown. No explanation. No extra keys.`,
-          },
-          {
-            role: "user",
-            content: `Request text: ${props.requestText}`,
-          },
-          {
-            role: "user",
-            content: `Detected input modalities from message payload: ${JSON.stringify(props.requiredInputModalitiesList)}`,
-          },
-        ],
-      });
-
-      if ("error" in classificationResponse) {
-        console.log(
-          "react-by-openrouter/classifier-fallback",
-          `model=${classifierModel}: generation error`,
-        );
-        continue;
-      }
-
-      const normalizedClassification =
-        await this.parseAndNormalizeClassification({
-          billingLedger: props.billingLedger,
-          openRouter: props.openRouter,
-          classifierModel,
-          fallbackClassifierModels: classifierModels.filter(
-            (m) => m !== classifierModel,
-          ),
-          requestText: props.requestText,
-          requiredInputModalitiesList: props.requiredInputModalitiesList,
-          rawClassifierOutput: classificationResponse.text,
-        });
-
-      if (!normalizedClassification) {
-        console.log(
-          "react-by-openrouter/classifier-fallback",
-          `model=${classifierModel}: invalid json`,
-        );
-        this.setLatestBillingLedgerFallbackReason({
-          billingLedger: props.billingLedger,
-          fallbackReason:
-            "invalid classification json; falling back to the next classifier model",
-        });
-        continue;
-      }
-
-      return normalizedClassification;
-    }
-
-    for (const classifierModel of fallbackClassifierModels) {
-      const classificationResponse = await this.generateWithBillingLedger({
-        billingLedger: props.billingLedger,
-        purpose: "classification",
-        openRouter: props.openRouter,
-        model: classifierModel,
-        max_tokens: 600,
-        temperature: 0,
-        context: [
-          {
-            role: "system",
-            content: `Classify user request and return JSON object only:
-{
-  "language": "ru|en|other",
-  "task": "${ALLOWED_TASKS.join(" | ")}",
-  "input_modalities": ["text|image|file"],
-  "output_modality": "text|image|audio|file",
-  "need_web": false,
-  "complexity": "low|medium|high",
-  "risk_level": "low|medium|high"
-}
-No markdown. No explanation.`,
-          },
-          {
-            role: "user",
-            content: `Request text: ${props.requestText}`,
-          },
-          {
-            role: "user",
-            content: `Detected input modalities from message payload: ${JSON.stringify(props.requiredInputModalitiesList)}`,
-          },
-        ],
-      });
-
-      if ("error" in classificationResponse) {
-        console.log(
-          "react-by-openrouter/classifier-fallback",
-          `model=${classifierModel}: fallback generation error`,
-        );
-        continue;
-      }
-
-      const normalizedClassification =
-        await this.parseAndNormalizeClassification({
-          billingLedger: props.billingLedger,
-          openRouter: props.openRouter,
-          classifierModel,
-          fallbackClassifierModels: allClassifierModels.filter(
-            (modelId) => modelId !== classifierModel,
-          ),
-          requestText: props.requestText,
-          requiredInputModalitiesList: props.requiredInputModalitiesList,
-          rawClassifierOutput: classificationResponse.text,
-        });
-
-      if (!normalizedClassification) {
-        console.log(
-          "react-by-openrouter/classifier-fallback",
-          `model=${classifierModel}: fallback invalid json`,
-        );
-        this.setLatestBillingLedgerFallbackReason({
-          billingLedger: props.billingLedger,
-          fallbackReason:
-            "invalid fallback classification json; falling back to another classifier",
-        });
-        continue;
-      }
-
-      return normalizedClassification;
-    }
-
-    const heuristicClassification = this.getHeuristicClassification({
-      requestText: props.requestText,
-      requiredInputModalitiesList: props.requiredInputModalitiesList,
-    });
-
-    console.log("react-by-openrouter/classifier-fallback", {
-      reason: "all classifier models failed; using heuristic classification",
-      modelsTried: allClassifierModels,
-      heuristicClassification,
-    });
-
-    return heuristicClassification;
-  }
-
-  protected getHeuristicClassification(props: {
-    requestText: string;
-    requiredInputModalitiesList: TInputModality[];
-  }): IRequestClassification {
-    const normalizedRequestText = props.requestText.toLowerCase();
-    const hasImageInput = props.requiredInputModalitiesList.includes("image");
-    const hasFileInput = props.requiredInputModalitiesList.includes("file");
-
-    let task: TRequestTask = "qa";
-
-    if (
-      /(code|coding|debug|bug|refactor|typescript|javascript|python|код|программ)/i.test(
-        normalizedRequestText,
-      )
-    ) {
-      task = "coding";
-    } else if (
-      /(translate|translation|перевед|перевод|локализац)/i.test(
-        normalizedRequestText,
-      )
-    ) {
-      task = "translate";
-    } else if (
-      /(summarize|summary|кратк|резюм|подведи итог)/i.test(
-        normalizedRequestText,
-      )
-    ) {
-      task = "summarize";
-    } else if (
-      /(extract|извлеки|достань|вытащи|структурируй)/i.test(
-        normalizedRequestText,
-      )
-    ) {
-      task = "extract";
-    } else if (
-      /(image generation|generate image|draw|picture|poster|картин|изображен|нарисуй|сгенерируй)/i.test(
-        normalizedRequestText,
-      )
-    ) {
-      task = "image_gen";
-    } else if (hasImageInput || hasFileInput) {
-      task = "image_understanding";
-    }
-
-    const output_modality: TOutputModality =
-      task === "image_gen" ? "image" : "text";
-
-    return {
-      language: this.normalizeLanguage(props.requestText),
-      task,
-      input_modalities:
-        props.requiredInputModalitiesList.length > 0
-          ? props.requiredInputModalitiesList
-          : ["text"],
-      output_modality,
-      need_web: false,
-      complexity: "medium",
-      risk_level: "medium",
+      orderedCandidateIds: [OPEN_ROUTER_JEV_ROUTER_MODEL, ...fallbackIds],
+      selectedModelId: OPEN_ROUTER_JEV_ROUTER_MODEL,
+      selectedBy: "jev",
     };
   }
 
@@ -4454,130 +3927,6 @@ No markdown. No explanation.`,
     }
 
     return `output modality is not supported by endpoint: ${props.expectedOutputModality}`;
-  }
-
-  protected async parseAndNormalizeClassification(props: {
-    billingLedger: IOpenRouterBillingLedgerEntry[];
-    openRouter: OpenRouter;
-    classifierModel: string;
-    fallbackClassifierModels?: string[];
-    requestText: string;
-    requiredInputModalitiesList: TInputModality[];
-    rawClassifierOutput: string;
-  }): Promise<IRequestClassification | null> {
-    const directParsed = this.tryParseJsonObject(props.rawClassifierOutput);
-
-    if (directParsed) {
-      return this.normalizeClassificationPayload({
-        parsedJson: directParsed,
-        requestText: props.requestText,
-        requiredInputModalitiesList: props.requiredInputModalitiesList,
-      });
-    }
-
-    const repairModelId =
-      props.fallbackClassifierModels?.[0] ?? props.classifierModel;
-
-    const repairResponse = await this.generateWithBillingLedger({
-      billingLedger: props.billingLedger,
-      purpose: "classification_repair",
-      openRouter: props.openRouter,
-      model: repairModelId,
-      max_tokens: 300,
-      responseFormat: CLASSIFICATION_RESPONSE_FORMAT,
-      temperature: 0,
-      context: [
-        {
-          role: "system",
-          content: `Convert the assistant output into STRICT JSON with keys:
-{
-  "language": "ru|en|other",
-  "task": "${ALLOWED_TASKS.join(" | ")}",
-  "input_modalities": ["text|image|file"],
-  "output_modality": "text|image|audio|file",
-  "need_web": false,
-  "complexity": "low|medium|high",
-  "risk_level": "low|medium|high"
-}
-No markdown. No explanation. No extra keys.`,
-        },
-        {
-          role: "user",
-          content: `Request text: ${props.requestText}`,
-        },
-        {
-          role: "user",
-          content: `Detected input modalities from message payload: ${JSON.stringify(props.requiredInputModalitiesList)}`,
-        },
-        {
-          role: "user",
-          content: `Assistant output to normalize: ${props.rawClassifierOutput}`,
-        },
-      ],
-    });
-
-    if ("error" in repairResponse) {
-      return null;
-    }
-
-    const repairedParsed = this.tryParseJsonObject(repairResponse.text);
-
-    if (!repairedParsed) {
-      return null;
-    }
-
-    return this.normalizeClassificationPayload({
-      parsedJson: repairedParsed,
-      requestText: props.requestText,
-      requiredInputModalitiesList: props.requiredInputModalitiesList,
-    });
-  }
-
-  protected normalizeClassificationPayload(props: {
-    parsedJson: Record<string, unknown>;
-    requestText: string;
-    requiredInputModalitiesList: TInputModality[];
-  }): IRequestClassification {
-    const task = ALLOWED_TASKS.includes(props.parsedJson.task as TRequestTask)
-      ? (props.parsedJson.task as TRequestTask)
-      : "qa";
-    const output_modality = ALLOWED_OUTPUT_MODALITIES.includes(
-      props.parsedJson.output_modality as TOutputModality,
-    )
-      ? (props.parsedJson.output_modality as TOutputModality)
-      : "text";
-    const input_modalities = (
-      Array.isArray(props.parsedJson.input_modalities)
-        ? props.parsedJson.input_modalities
-        : props.requiredInputModalitiesList
-    ).filter((modality) =>
-      ALLOWED_INPUT_MODALITIES.includes(modality as TInputModality),
-    ) as TInputModality[];
-
-    return {
-      language: this.normalizeLanguage(
-        props.parsedJson.language || props.requestText,
-      ),
-      task,
-      input_modalities:
-        input_modalities.length > 0
-          ? input_modalities
-          : props.requiredInputModalitiesList,
-      output_modality,
-      need_web: Boolean(props.parsedJson.need_web),
-      complexity:
-        props.parsedJson.complexity === "low" ||
-        props.parsedJson.complexity === "medium" ||
-        props.parsedJson.complexity === "high"
-          ? props.parsedJson.complexity
-          : "medium",
-      risk_level:
-        props.parsedJson.risk_level === "low" ||
-        props.parsedJson.risk_level === "medium" ||
-        props.parsedJson.risk_level === "high"
-          ? props.parsedJson.risk_level
-          : "medium",
-    };
   }
 
   protected adaptClassificationForEndpoint(props: {
@@ -4643,34 +3992,5 @@ No markdown. No explanation. No extra keys.`,
     }
 
     return "en";
-  }
-
-  protected tryParseJsonObject(value: string): Record<string, unknown> | null {
-    const trimmed = value.trim();
-    const candidateValues = [trimmed];
-
-    const fencedJsonMatch = trimmed.match(/```json\s*([\s\S]*?)```/i);
-    if (fencedJsonMatch?.[1]) {
-      candidateValues.push(fencedJsonMatch[1].trim());
-    }
-
-    const firstBrace = trimmed.indexOf("{");
-    const lastBrace = trimmed.lastIndexOf("}");
-    if (firstBrace >= 0 && lastBrace > firstBrace) {
-      candidateValues.push(trimmed.slice(firstBrace, lastBrace + 1));
-    }
-
-    for (const candidate of candidateValues) {
-      try {
-        const parsed = JSON.parse(candidate);
-        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
-          return parsed as Record<string, unknown>;
-        }
-      } catch (error) {
-        continue;
-      }
-    }
-
-    return null;
   }
 }

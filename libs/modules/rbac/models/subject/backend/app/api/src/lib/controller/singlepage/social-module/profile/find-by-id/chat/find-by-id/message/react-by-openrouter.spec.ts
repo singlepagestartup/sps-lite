@@ -35,7 +35,7 @@ interface IFindThreadMessageIdsInChatHandler {
 
 interface IOpenRouterModelRouterConfigHandler {
   getEnabledCandidatesByClass(
-    modelClass: "CLASSIFIER" | "CHAT" | "CODER" | "VISION" | "IMAGE",
+    modelClass: "CHAT" | "CODER" | "VISION" | "IMAGE",
   ): Array<{
     id: string;
     priority: number;
@@ -433,7 +433,7 @@ describe("Given: OpenRouter thread context and reply validation", () => {
     const handler = Object.create(
       Handler.prototype,
     ) as IOpenRouterModelRouterConfigHandler;
-    const classes = ["CLASSIFIER", "CHAT", "CODER", "VISION", "IMAGE"] as const;
+    const classes = ["CHAT", "CODER", "VISION", "IMAGE"] as const;
     const idsByClass = Object.fromEntries(
       classes.map((modelClass) => [
         modelClass,
@@ -444,7 +444,6 @@ describe("Given: OpenRouter thread context and reply validation", () => {
     );
     const allIds = Object.values(idsByClass).flat();
 
-    expect(idsByClass.CLASSIFIER[0]).toBe("openai/gpt-5.6-luna");
     expect(idsByClass.CHAT).toEqual(
       expect.arrayContaining([
         "openai/gpt-5.6-terra",
@@ -1604,7 +1603,7 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       {
         role: "system",
         content:
-          "Answer in ru language. Use portable Markdown only. Do not use LaTeX delimiters or commands. Write formulas with plain text and Unicode mathematical symbols so the same answer is readable in web chat and Telegram.",
+          "Answer in the language requested by the current user; otherwise use the language of their latest message. Use portable Markdown only. Do not use LaTeX delimiters or commands. Write formulas with plain text and Unicode mathematical symbols so the same answer is readable in web chat and Telegram.",
       },
       profileSystemMessage,
       {
@@ -1672,11 +1671,9 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       }),
     ]);
     const openRouter = {
-      generate: jest.fn(async () => ({
-        text: JSON.stringify({
-          selected_chunk_ids: ["chunk-1"],
-          reason: "Directly answers the question.",
-        }),
+      generate: jest.fn(),
+      decide: jest.fn(async () => ({
+        answers: { chunk_0: { type: "noul", noul: 0.95 } },
         billing: null,
       })),
     };
@@ -1764,15 +1761,13 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       neighborWindow: 1,
       sourceIds: ["document-1"],
     });
-    expect(openRouter.generate).toHaveBeenCalledWith(
+    expect(openRouter.decide).toHaveBeenCalledWith(
       expect.objectContaining({
-        model: "openai/gpt-5.5",
-        reasoning: {
-          effort: "low",
-          exclude: true,
-        },
+        model: "typesafe/jev-1.13",
+        state: expect.objectContaining({ query: "Question" }),
       }),
     );
+    expect(openRouter.generate).not.toHaveBeenCalled();
     expect(context).toMatchObject({
       useKnowledgeSearch: true,
       searchSourceIds: ["document-1"],
@@ -1801,7 +1796,7 @@ describe("Given: OpenRouter thread context and reply validation", () => {
   /**
    * BDD Scenario
    * Given: explicit @knowledge retrieval returns irrelevant candidate chunks.
-   * When: the structured reranker validly selects no chunk ids.
+   * When: JEV assigns no candidate a relevant probability.
    * Then: no fallback chunks are injected into the final generation context.
    */
   it("When: Knowledge rerank selects no chunks Then: the RAG context stays empty", async () => {
@@ -1812,11 +1807,8 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       }),
     ]);
     const openRouter = {
-      generate: jest.fn(async () => ({
-        text: JSON.stringify({
-          selected_chunk_ids: [],
-          reason: "The candidate does not answer the question.",
-        }),
+      decide: jest.fn(async () => ({
+        answers: { chunk_0: { type: "noul", noul: 0.01 } },
         billing: null,
       })),
     };
@@ -1866,7 +1858,7 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       candidateCount: 1,
       rerankedSourceIds: [],
       rerankFallbackReason: null,
-      rerankReason: "The candidate does not answer the question.",
+      rerankReason: "JEV passage relevance",
     });
   });
 
@@ -2189,11 +2181,11 @@ describe("Given: OpenRouter thread context and reply validation", () => {
 
   /**
    * BDD Scenario
-   * Given: OpenRouter returns invalid JSON during Knowledge rerank.
+   * Given: OpenRouter returns an invalid Decisions response during Knowledge rerank.
    * When: Knowledge context is resolved.
    * Then: deterministic retrieval order is used and fallback metadata is recorded.
    */
-  it("When: Knowledge rerank returns invalid JSON Then: retrieval order fallback is used", async () => {
+  it("When: Knowledge rerank returns an invalid Decisions response Then: retrieval order fallback is used", async () => {
     const search = jest.fn(async () => [
       createKnowledgeSearchResult({
         id: "chunk-1",
@@ -2206,8 +2198,8 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       }),
     ]);
     const openRouter = {
-      generate: jest.fn(async () => ({
-        text: "not json",
+      decide: jest.fn(async () => ({
+        error: { message: "Invalid Decisions response" },
         billing: null,
       })),
     };
@@ -2259,8 +2251,87 @@ describe("Given: OpenRouter thread context and reply validation", () => {
     expect(context.retrieval).toMatchObject({
       candidateCount: 2,
       rerankedSourceIds: ["chunk-1", "chunk-2"],
-      rerankFallbackReason:
-        "knowledge rerank returned invalid selected_chunk_ids",
+      rerankFallbackReason: "JEV rerank failed; using retrieval order.",
     });
+  });
+  it("creates the first profile Source from a natural save request and attaches only the current message files", async () => {
+    const relationCreate = jest.fn(async () => ({}));
+    const originCreate = jest.fn(async () => ({}));
+    const messageFiles = jest.fn(async () => [
+      { fileStorageModuleFileId: "file-1" },
+    ]);
+    const handler = new Handler({
+      socialModule: {
+        profilesToKnowledgeModuleSources: {
+          find: jest.fn(async () => []),
+          create: relationCreate,
+        },
+        messagesToKnowledgeModuleSources: { findOrCreate: originCreate },
+        messagesToFileStorageModuleFiles: { find: messageFiles },
+      },
+    } as any) as any;
+    const learnContent = jest.fn(async (props) => {
+      await props.onSourceSaved("new-source");
+      return {
+        source: {
+          id: "new-source",
+          contentHash: "hash",
+          indexedContentHash: "hash",
+        },
+      };
+    });
+    handler.knowledgeService = { learnContent };
+    const tools = handler.buildProfileCapabilityTools({
+      availableSkills: [],
+      knowledgeSourceIds: [],
+      knowledgeAction: "create",
+      replyProfileId: "profile-1",
+      socialModuleMessage: { id: "message-1" },
+    });
+    const create = tools.find(
+      (tool: any) =>
+        tool.definition.function.name === "profile_knowledge_create",
+    );
+    expect(create).toBeDefined();
+    const result = await create.execute({
+      title: "Lesson",
+      userContext: "My note",
+    });
+    expect(result.sourceId).toBe("new-source");
+    expect(learnContent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        content: "My note",
+        fileIds: ["file-1"],
+        slug: "knowledge-profile-1-message-1",
+      }),
+    );
+    expect(relationCreate).toHaveBeenCalledWith({
+      data: { profileId: "profile-1", knowledgeModuleSourceId: "new-source" },
+    });
+    expect(originCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          messageId: "message-1",
+          knowledgeModuleSourceId: "new-source",
+          kind: "origin",
+        }),
+      }),
+    );
+  });
+
+  it("uses JEV Router in Auto mode without a generative model-selection request", async () => {
+    const handler = Object.create(Handler.prototype) as any;
+    const openRouter = { generate: jest.fn() };
+    const selection = await handler.selectModelCandidatesForRequest({
+      openRouter,
+      selectedModelClass: "CHAT",
+      modelCandidates: [{ id: "fallback", priority: 100 }],
+    });
+    expect(selection).toEqual({
+      selectedModelId: "typesafe/jev-router",
+      orderedCandidateIds: ["typesafe/jev-router", "fallback"],
+      selectedBy: "jev",
+    });
+    expect(openRouter.generate).not.toHaveBeenCalled();
   });
 });
