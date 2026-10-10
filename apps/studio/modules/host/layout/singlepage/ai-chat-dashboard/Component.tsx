@@ -1,6 +1,8 @@
-import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
+import {
+  Component as WebsiteBuilderModuleWidget,
+  type INavbarAiChatProps,
+} from "../../../../website-builder/widget/index";
 import type { ReactNode } from "react";
-import { type INavbarAiChatProps } from "../../../../website-builder/widget/index";
 import { aiChatServiceHrefs } from "../ai-chat-landing/routes";
 
 export interface IAIChatDashboardLayoutProps

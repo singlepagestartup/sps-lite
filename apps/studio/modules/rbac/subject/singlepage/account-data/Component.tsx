@@ -1,23 +1,27 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
 
-import { type ReactNode as ReactNode } from "react";
-import { useContext as useContext } from "react";
-import { createContext as createContext } from "react";
+import {
+  type ReactNode,
+  useContext,
+  createContext,
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+  useId,
+  useRef,
+  useState,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import {
-  forwardRef as forwardRefControl,
-  type ButtonHTMLAttributes as ButtonControlProps,
-} from "react";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { IWebsiteSection as IWebsiteSection } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { useId, useRef, useState } from "react";
+import {
+  IWebsiteSection,
+  type IAIChatServicePageContent,
+} from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import defaultCopy from "./content.json";
 import { useAIChatAccount } from "../account/Account";
-import type { IAIChatServicePageContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 function MarkdownDocument({
   children,
   hideTitle = false,

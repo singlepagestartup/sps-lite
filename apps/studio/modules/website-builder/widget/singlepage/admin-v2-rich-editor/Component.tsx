@@ -1,14 +1,14 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import {
+  forwardRef,
+  type SVGProps,
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+  useState,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
 import { Component as WebsiteBuilderModuleButton } from "../../../button/index";
-import {
-  forwardRef as forwardRefControl,
-  type ButtonHTMLAttributes as ButtonControlProps,
-} from "react";
-import { useState } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import LinkExtension from "@tiptap/extension-link";

@@ -1,6 +1,13 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import {
+  forwardRef,
+  type SVGProps,
+  memo,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import {
@@ -12,7 +19,6 @@ import {
   type SocialPreviewAttachment,
 } from "../chat-overview-default/utils";
 import * as Dialog from "@radix-ui/react-dialog";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { defaultSocialProfiles } from "../../../thread/singlepage/list-default/Component";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;

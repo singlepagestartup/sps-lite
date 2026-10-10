@@ -1,17 +1,21 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
 
-import { forwardRef as forwardRef } from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
-import { twMerge as twMerge } from "tailwind-merge";
-import { type ReactNode as ReactNode } from "react";
-import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
 import {
+  forwardRef,
+  type ReactNode,
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  memo,
+  useEffect,
+  useId,
+  useRef,
+  useState,
 } from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { memo, useEffect, useId, useRef, useState } from "react";
 import { Component as ProjectFilePreview } from "../../../overview/ai-chat/index";
 import { useFiles } from "./Files";
 import { readProjectFiles } from "./utils";

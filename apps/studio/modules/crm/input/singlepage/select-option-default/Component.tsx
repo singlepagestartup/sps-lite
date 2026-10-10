@@ -1,11 +1,9 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-import { forwardRef as forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { useState as useState } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import type { CrmInputRecord } from "../../../shared/demo-crm";
-import { defaultCrmForm } from "../../../shared/demo-crm";
+import { type CrmInputRecord, defaultCrmForm } from "../../../shared/demo-crm";
 interface ISelectOption {
   value: string;
   label: string;

@@ -1,9 +1,7 @@
 import { Component as Glyph } from "../icon/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
-import { twMerge as twMergePresentation } from "tailwind-merge";
+import { forwardRef, type SVGProps } from "react";
+import { twMerge as twMergePresentation, twMerge } from "tailwind-merge";
 import type IconGlyphs from "../icon/icons.json";
-import { twMerge } from "tailwind-merge";
 type ModuleIcon = ReturnType<typeof createIcon>;
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;

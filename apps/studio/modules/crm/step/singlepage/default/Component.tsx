@@ -1,6 +1,9 @@
 import { Component as CrmModuleInput } from "../../../input/index";
-import type { CrmInputRecord, CrmStepRecord } from "../../../shared/demo-crm";
-import { defaultCrmForm } from "../../../shared/demo-crm";
+import {
+  type CrmInputRecord,
+  type CrmStepRecord,
+  defaultCrmForm,
+} from "../../../shared/demo-crm";
 
 export interface CrmStepDefaultProps {
   variant?: string;

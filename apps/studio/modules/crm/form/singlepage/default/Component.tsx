@@ -2,11 +2,10 @@ import { Component as WebsiteBuilderModuleButton } from "../../../../website-bui
 import {
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  useState,
 } from "react";
 import { Component as CrmModuleStep } from "../../../step/index";
-import { useState } from "react";
-import type { CrmFormRecord } from "../../../shared/demo-crm";
-import { defaultCrmForm } from "../../../shared/demo-crm";
+import { type CrmFormRecord, defaultCrmForm } from "../../../shared/demo-crm";
 export interface CrmFormDefaultProps {
   variant?: string;
   form: CrmFormRecord;

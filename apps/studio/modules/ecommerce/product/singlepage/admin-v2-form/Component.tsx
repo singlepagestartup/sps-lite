@@ -1,26 +1,30 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
 import * as Tabs from "@radix-ui/react-tabs";
-import { forwardRef as forwardRef } from "react";
-import { type ElementRef as ElementRef } from "react";
-import { type ComponentPropsWithoutRef as ComponentPropsWithoutRef } from "react";
-import { twMerge as twMerge } from "tailwind-merge";
-import { forwardRef as forwardRefPresentation } from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
-import { useState as useStatePresentation } from "react";
-import { twMerge as twMergePresentation } from "tailwind-merge";
-import { type ReactNode as ReactNodePresentation } from "react";
-import { type FormEventHandler as FormEventHandler } from "react";
-import { useContext as useContext } from "react";
-import { createContext as createContext } from "react";
-import { useState as useStatePresentation2 } from "react";
-import { twMerge as twMergePresentation2 } from "tailwind-merge";
-import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
+  forwardRef,
+  type ElementRef,
+  type ComponentPropsWithoutRef,
+  forwardRef as forwardRefPresentation,
+  useState as useStatePresentation,
+  type ReactNode as ReactNodePresentation,
+  type FormEventHandler,
+  useContext,
+  createContext,
+  useState as useStatePresentation2,
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  useId,
+  useState,
+  type ReactNode,
 } from "react";
+import {
+  twMerge,
+  twMerge as twMergePresentation,
+  twMerge as twMergePresentation2,
+} from "tailwind-merge";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { useId, useState, type ReactNode } from "react";
 import { studioProducts, type IStudioProduct } from "../../shared";
 interface IRecordFormProps {
   children: ReactNodePresentation;

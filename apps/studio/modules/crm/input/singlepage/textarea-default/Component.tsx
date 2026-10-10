@@ -1,5 +1,4 @@
-import type { CrmInputRecord } from "../../../shared/demo-crm";
-import { defaultCrmForm } from "../../../shared/demo-crm";
+import { type CrmInputRecord, defaultCrmForm } from "../../../shared/demo-crm";
 
 export interface CrmInputTextareaDefaultProps {
   variant?: string;

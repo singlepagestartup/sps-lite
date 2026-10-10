@@ -1,5 +1,4 @@
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
 import {

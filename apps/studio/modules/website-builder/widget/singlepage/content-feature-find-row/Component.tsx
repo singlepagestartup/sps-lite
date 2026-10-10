@@ -1,9 +1,7 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import { forwardRef, type SVGProps, type ReactNode } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
-import type { ReactNode } from "react";
 type ModuleIcon = ReturnType<typeof createIcon>;
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;

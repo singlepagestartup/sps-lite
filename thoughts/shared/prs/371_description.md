@@ -10,6 +10,8 @@ The branch also retains the Knowledge Source, file orchestration, MCP configurat
 
 ## Changes
 
+- Consolidate repeated import sources in 112 Studio Module files, retaining runtime/type bindings and local aliases. Reuse one namespace binding in Gallery and Article views and include the formatted Icon story. Module files pass the repository ESLint rules using the Studio TypeScript project.
+
 - Mark all 400 Studio variant implementations with `data-module`, `data-model` and `data-variant` on their highest rendered element. Empty states, direct stories, delegated forms, startup overrides and portals preserve the selected variant. Native button/SVG roots and refs remain intact; Page and Layout keep separate model roots. Catalog scaffolding emits the same contract.
 
 - RBAC Subject owns registration, authentication, password recovery, email/password changes and connected-method actions. Forms use `authentication-email-and-password-<form>-<appearance>` keys. The ordinary Select Method places Email/password, EVM and OAuth tabs inside the form card and preserves their drafts. AI Chat calls the Subject email/password form directly. Host Pages call the public Subject entry; Workspace previews use an owned component snapshot. Identity displays connected accounts and receives action slots. Method states have their own stories and Controls; no provider or wallet is contacted.
@@ -44,6 +46,7 @@ The branch also retains the Knowledge Source, file orchestration, MCP configurat
 
 ## Verification
 
+- [x] ESLint checks all 1,687 Module source files without errors, using the Studio TypeScript project for TS/TSX files. No duplicate import sources remain.
 - [x] `bun test tools/studio apps/studio/workspace apps/studio/modules`: 368 tests across 42 files, including every variant root, rendered preview states, model boundaries, runtime cycles and independent Workspace/Module code, tokens and assets.
 - [x] Studio TypeScript, metadata validation, inventory generation (15 modules, 61 models, 838 contracts), content freshness, code placement and Storybook production build.
 - [x] Browser: AI Chat email/password-only login opens the active Profile immediately; ordinary method tabs render inside the card and retain the email draft through EVM/OAuth switching. Registration, Workspace prototype and local images render. No application console errors; Storybook emits its own future-version accessibility notice.
@@ -67,6 +70,8 @@ All new Studio behavior is local preview state. It does not implement durable st
 The visual boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-visual-boundary.md`. Unrelated uncommitted business documents, uploaded files and production changes are excluded. Navbar rendering boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-slots.md`. Navbar folder verification is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-nesting.md`. The Layout naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-layout-naming.md`. The Profile naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-profile-naming.md`. Thread naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-thread-naming.md`. Website Builder naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-website-builder-naming.md`. The preceding model naming log is `thoughts/shared/handoffs/singlepagestartup/studio-variant-naming-2026-10-10.md`.
 
 ## Downstream migration
+
+- Projects with owned Studio snapshots that repeat import sources should combine named value/type imports using inline `type` specifiers, preserve local aliases and reuse one namespace binding with its corresponding references. Keep runtime import order and component behavior. Verify owned files with the repository ESLint rules against the Studio TypeScript project, then run Studio TypeScript, tests and build.
 
 - Projects with owned Studio variant implementations must add `data-module`, `data-model` and the selected `data-variant` to their highest rendered element, including empty states and portaled content. Forward variant props through same-model render helpers and startup overrides; provide a local default for direct stories. Preserve each nested model's identity, native controls, refs and layout behavior. Apply the contract to owned catalog generator overrides. Replace composition assertions that count every model marker with checks for the intended block/variant. Verify owned roots in the inspector, preview states, portals and Studio checks/build.
 
