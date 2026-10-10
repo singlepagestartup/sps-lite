@@ -1,3 +1,4 @@
+import { projectionComponent } from "./projection";
 import { createHash } from "node:crypto";
 import {
   existsSync,
@@ -538,10 +539,6 @@ export function scaffoldEntity(root: string, entity: ModuleEntityRecord) {
     'export type { IRecord as IModel } from "./singlepage/admin-v2-table/interface";',
     true,
   );
-  const ui = path.join(
-    root,
-    "apps/studio/workspace/design/singlepage/interface-kit/RecordProjection",
-  );
   const alias = `${pascal(entity.module)}Module${pascal(entity.entity)}`;
   const existing = variantAliases(
     path.join(directory, "singlepage/variants.ts"),
@@ -550,15 +547,11 @@ export function scaffoldEntity(root: string, entity: ModuleEntityRecord) {
     (variant) => !existing.has(variant) || existing.get(variant) === variant,
   )) {
     const folder = path.join(directory, "singlepage", variant);
-    const uiImport = relative(folder, ui);
     const dataImport = relative(folder, path.join(table, "data.json"));
     const interfaceImport = relative(folder, path.join(table, "interface"));
-    const code =
-      variant === "admin-v2-table"
-        ? `import { RecordTable } from "${uiImport}";\nimport fixture from "${dataImport}";\nimport type { IRecord } from "${interfaceImport}";\n\nexport interface IComponentProps { empty?: boolean; }\nexport function Component({ empty = false }: IComponentProps) {\n  return <RecordTable<IRecord> schema={fixture.schema} data={empty ? [] : fixture.records} />;\n}`
-        : variant === "admin-v2-card"
-          ? `import { RecordCard, type IProjectionProps } from "${uiImport}";\nimport fixture from "${dataImport}";\nimport type { IRecord } from "${interfaceImport}";\n\nexport interface IComponentProps extends IProjectionProps<IRecord> {}\n\nexport function Component({ data, id, className }: IComponentProps) {\n  const record = data ?? (id ? fixture.records.find((item) => item.id === id) : fixture.records[0]);\n  if (!record) return <p>Record unavailable in this local preview.</p>;\n  return <RecordCard schema={fixture.schema} data={record} className={className} />;\n}`
-          : `import { RecordList, type IProjectionListProps } from "${uiImport}";\nimport fixture from "${dataImport}";\nimport type { IRecord } from "${interfaceImport}";\n\nexport interface IComponentProps extends IProjectionListProps<IRecord> {}\nexport function Component({ data = fixture.records, ...props }: IComponentProps) {\n  return <RecordList<IRecord> schema={fixture.schema} records={data} {...props} />;\n}`;
+    const code = projectionComponent(
+      variant as "admin-v2-table" | "admin-v2-card" | "list",
+    );
     write(path.join(folder, "Component.tsx"), code, true);
     write(
       path.join(folder, "index.ts"),

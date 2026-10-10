@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { defaultRbacIdentities } from "../../../shared";
 import { Component as RbacModuleIdentity } from "../../index";
 import type { IdentityCardDefaultProps } from "./Component";
-import { Component as RbacModuleSubject } from "../../../subject";
+import { Component as RbacModuleSubject } from "../../../subject/index";
 function Example(props: Partial<IdentityCardDefaultProps>) {
   return (
     <RbacModuleIdentity

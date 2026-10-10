@@ -1,15 +1,26 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { Component as ProfileScope } from "../../../scope/ai-chat/project/index";
 import {
   Component as ProfileSidebar,
   type IProfileSidebarProps,
 } from "../../../sidebar/ai-chat/project/index";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import {
-  Button,
-  Icon,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IOverviewAiChatProjectProps {
   profileId: string;
@@ -17,7 +28,6 @@ export interface IOverviewAiChatProjectProps {
   selected: IProfileSidebarProps["selected"];
   children: (navigation: ReactNode) => ReactNode;
 }
-
 export function Component({
   profileId,
   chatId,
@@ -36,7 +46,6 @@ export function Component({
     </ProfileScope>
   );
 }
-
 function OverviewAiChatProject({
   profileId,
   chatId,
@@ -48,16 +57,13 @@ function OverviewAiChatProject({
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerTrigger = useRef<HTMLButtonElement>(null);
   const drawerClose = useRef<HTMLButtonElement>(null);
-
   useEffect(() => {
     if (drawerOpen) drawerClose.current?.focus();
   }, [drawerOpen]);
-
   function closeDrawer() {
     setDrawerOpen(false);
     drawerTrigger.current?.focus();
   }
-
   const toggle = (
     <>
       <Button
@@ -83,7 +89,6 @@ function OverviewAiChatProject({
       </Button>
     </>
   );
-
   return (
     <main className="@container/workspace mx-auto max-w-[1440px] px-4 py-6 @[640px]:px-5">
       <div
@@ -146,3 +151,25 @@ function OverviewAiChatProject({
     </main>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

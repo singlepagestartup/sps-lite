@@ -2,8 +2,8 @@ import { Component as SocialModuleProfile } from "../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../../../rbac/subject/singlepage/account/Account";
 import { ProfilesProvider } from "../../../scope/ai-chat/project/Profiles";
-import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
-import { aiChatWorkspaceFixture } from "../../../../../../../workspace/utils/products/ai-chat-workspace-fixture";
+import { aiChatAccount } from "../../../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatWorkspaceFixture } from "../../../scope/ai-chat/project/fixtures";
 function Example() {
   return (
     <AccountProvider account={aiChatAccount}>

@@ -116,3 +116,62 @@ test("content generation writes only local Studio derivatives", () => {
   expect(generator).not.toContain("apps/host/");
   expect(generator).toContain("apps/studio/modules/");
 });
+
+test("Modules and Workspace own independent presentation code and fixtures", () => {
+  const violations: string[] = [];
+  for (const file of files(studio)) {
+    if (!/\.(?:tsx?|json|css)$/.test(file) || /\.test\.tsx?$/.test(file))
+      continue;
+    const moduleFile = file.startsWith(path.join(studio, "modules") + path.sep);
+    const workspaceFile = file.startsWith(
+      path.join(studio, "workspace") + path.sep,
+    );
+    if (!moduleFile && !workspaceFile) continue;
+    const source = readFileSync(file, "utf8");
+    for (const match of source.matchAll(
+      /(?:from\s*|import\s*\(|new URL\s*\()\s*["']([^"']+)["']/g,
+    )) {
+      const target = path.resolve(path.dirname(file), match[1].split("?")[0]);
+      const forbiddenRoot =
+        path.join(studio, moduleFile ? "workspace" : "modules") + path.sep;
+      if (target.startsWith(forbiddenRoot))
+        violations.push(`${path.relative(studio, file)} → ${match[1]}`);
+    }
+    if (
+      moduleFile &&
+      /(?:\/workspace-(?:assets|design|products)\/|--workspace-brand-|data-workspace-projection)/.test(
+        source,
+      )
+    )
+      violations.push(
+        `${path.relative(studio, file)} → Workspace visual resource`,
+      );
+  }
+  expect(violations).toEqual([]);
+});
+
+test("Module decorators and fonts do not inherit Workspace styling", () => {
+  const preview = readFileSync(
+    path.join(studio, ".storybook/preview.ts"),
+    "utf8",
+  );
+  expect(preview).not.toContain("data-workspace-projection");
+  expect(preview).not.toContain("--workspace-brand-");
+  const theme = readFileSync(path.join(studio, "runtime/sps.css"), "utf8");
+  expect(theme).toContain('"SPS Onest"');
+  expect(theme).not.toContain("workspace-assets");
+});
+
+test("the editable website prototype uses Workspace visual tokens", () => {
+  const prototype = path.join(
+    studio,
+    "workspace/products/singlepage/ai-chat/website/Preview",
+  );
+  const violations = files(prototype).filter((file) => {
+    if (!/\.tsx?$/.test(file)) return false;
+    return /(?:--(?:color|font)-sps|\b(?:bg|text|border|ring|outline|font)-sps)/.test(
+      readFileSync(file, "utf8"),
+    );
+  });
+  expect(violations).toEqual([]);
+});

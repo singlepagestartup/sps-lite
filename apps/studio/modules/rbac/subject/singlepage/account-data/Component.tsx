@@ -1,26 +1,205 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+
+import { type ReactNode as ReactNode } from "react";
+import { useContext as useContext } from "react";
+import { createContext as createContext } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import Markdown from "markdown-to-jsx";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { IWebsiteSection as IWebsiteSection } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import { useId, useRef, useState } from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import {
-  Button,
-  Icon,
-  kit,
-} from "../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
 import defaultCopy from "./content.json";
 import { useAIChatAccount } from "../account/Account";
-import type { IAIChatServicePageContent } from "../../../../../workspace/utils/products/ai-chat-content";
-import {
-  Feedback,
-  PageSection,
-  SectionText,
-} from "../../../../../workspace/design/singlepage/interface-kit/ai-chat/ServiceDocument";
+import type { IAIChatServicePageContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
+function MarkdownDocument({
+  children,
+  hideTitle = false,
+  baseUrl,
+  resolveLink,
+  externalLinksNewTab = false,
+  disableRawHTML = false,
+  className,
+}: {
+  children: string;
+  hideTitle?: boolean;
+  baseUrl?: string;
+  resolveLink?: (url: string) =>
+    | string
+    | {
+        href: string;
+        target: "_top";
+      };
+  externalLinksNewTab?: boolean;
+  disableRawHTML?: boolean;
+  className?: string;
+}) {
+  const assetUrl = (value: string = "") => {
+    if (!baseUrl || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) return value;
+    const url = new URL(value, `https://studio.invalid${baseUrl}`);
+    return url.pathname + url.search + url.hash;
+  };
+  return (
+    <div
+      className={twMerge(
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        className,
+      )}
+    >
+      <Markdown
+        options={{
+          disableParsingRawHTML: disableRawHTML,
+          ...(baseUrl || externalLinksNewTab
+            ? {
+                overrides: {
+                  img: {
+                    component: ({
+                      src,
+                      alt,
+                      ...props
+                    }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+                      <img {...props} src={assetUrl(src)} alt={alt ?? ""} />
+                    ),
+                  },
+                  a: {
+                    component: ({
+                      href,
+                      ...props
+                    }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+                      const resolved =
+                        resolveLink?.(assetUrl(href)) ?? assetUrl(href);
+                      return (
+                        <a
+                          {...props}
+                          {...(typeof resolved === "string"
+                            ? { href: resolved }
+                            : resolved)}
+                          {...(externalLinksNewTab &&
+                          /^https?:\/\//i.test(href ?? "")
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                        />
+                      );
+                    },
+                  },
+                },
+              }
+            : {}),
+        }}
+      >
+        {hideTitle ? children.replace(/^# [^\n]+\n/, "") : children}
+      </Markdown>
+    </div>
+  );
+}
+interface ISectionTextProps {
+  section: IWebsiteSection;
+  tone?: "light" | "dark";
+  size?: "sm" | "xs";
+}
+function SectionText({
+  section,
+  tone = "light",
+  size = "sm",
+}: ISectionTextProps) {
+  const projectHref = useContext(ProjectHrefContext);
+  return (
+    <div
+      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-white/80 [&_a]:text-white [&_strong]:text-white" : "text-sps-muted [&_a]:text-sps-graphite [&_strong]:text-sps-graphite"}`}
+    >
+      {section.paragraphs.map((paragraph, index) => (
+        <MarkdownDocument key={index}>
+          {paragraph.replaceAll(
+            "/ai-chat/social/profiles/example",
+            projectHref,
+          )}
+        </MarkdownDocument>
+      ))}
+    </div>
+  );
+}
+type IconName = keyof typeof IconGlyphs;
+interface IPageSectionProps {
+  section: IWebsiteSection;
+  children?: ReactNode;
+  icon?: IconName;
+  className?: string;
+  contentClassName?: string;
+  descriptionSize?: "sm" | "xs";
+}
+function PageSection({
+  section,
+  children,
+  icon,
+  className = "",
+  contentClassName = "",
+  descriptionSize = "sm",
+}: IPageSectionProps) {
+  return (
+    <section className={`${kit.card} p-5 @[640px]:p-6 ${className}`}>
+      <h2 className="flex items-center gap-3 text-xl font-semibold">
+        {icon ? (
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sps-grey">
+            <Icon name={icon} />
+          </span>
+        ) : null}
+        {section.title}
+      </h2>
+      {section.paragraphs.length ? (
+        <div className="mt-3">
+          <SectionText section={section} size={descriptionSize} />
+        </div>
+      ) : null}
+      {children ? (
+        <div className={`mt-5 ${contentClassName}`}>{children}</div>
+      ) : null}
+    </section>
+  );
+}
+interface IFeedbackProps {
+  children: ReactNode;
+  kind?: "success" | "error" | "info";
+}
+function Feedback({ children, kind = "success" }: IFeedbackProps) {
+  return (
+    <div
+      role={kind === "error" ? "alert" : "status"}
+      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "border-sps-line bg-sps-grey"}`}
+    >
+      <Icon
+        name={
+          kind === "error"
+            ? "warning"
+            : kind === "info"
+              ? "question"
+              : "check-circle"
+        }
+        className={kind === "success" ? "text-sps-graphite" : ""}
+      />
+      <div className="min-w-0">{children}</div>
+    </div>
+  );
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ISettingsProps {
   copy?: IAIChatServicePageContent;
   section?: "purchases" | "data";
   showTokens?: boolean;
 }
-
 export function Component({
   copy = defaultCopy,
   section = "data",
@@ -34,7 +213,6 @@ export function Component({
   const [deletionChecked, setDeletionChecked] = useState(false);
   const [portal, setPortal] = useState<HTMLDivElement | null>(null);
   const cancel = useRef<HTMLButtonElement>(null);
-
   return (
     <div
       data-ds-block="rbac.subject.account-data"
@@ -192,3 +370,29 @@ export function Component({
     </div>
   );
 }
+const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  button: `${buttonBase} bg-sps-green text-sps-graphite enabled:hover:brightness-95 ${focus}`,
+  plain: `${buttonBase} text-sps-muted enabled:hover:text-sps-graphite ${focus}`,
+  card: "min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5",
+  focus: focus,
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

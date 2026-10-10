@@ -1,7 +1,7 @@
 import {
   Component as WebsiteBuilderModuleFeature,
   type FeatureTestimotionalProps,
-} from "../../../feature";
+} from "../../../feature/index";
 
 const avatar1Url =
   "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxidXNpbmVzcyUyMG1hbiUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3MTY2ODA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
@@ -23,14 +23,14 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-8 max-w-2xl sm:mb-10">
-      <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--workspace-brand-muted)]">
+      <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">
         {eyebrow}
       </p>
-      <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--workspace-brand-foreground)]">
+      <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--color-sps-graphite)]">
         {title}
       </h2>
       {description ? (
-        <p className="text-base leading-7 text-[var(--workspace-brand-muted)] mt-3">
+        <p className="text-base leading-7 text-[var(--color-sps-muted)] mt-3">
           {description}
         </p>
       ) : null}
@@ -79,7 +79,7 @@ export function ContentFeatureFindTestimotionals(
 
   return (
     <div
-      className="w-full bg-[var(--workspace-brand-background)] py-12 sm:py-16"
+      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-feature-find-testimotionals"
       data-ds-layer="singlepage"
     >

@@ -1,9 +1,9 @@
 import {
   Component as WebsiteBuilderModuleButtonsArray,
   type ButtonsArrayItem,
-} from "../../../buttons-array";
+} from "../../../buttons-array/index";
 
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype";
+import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
 
 interface FooterColumn {
   title: string;
@@ -66,7 +66,7 @@ export function FooterDefault(props?: Partial<FooterDefaultProps>) {
 
   return (
     <footer
-      className="w-full border-t border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]"
+      className="w-full border-t border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
       data-ds-block="website-builder.widget.footer-default"
       data-ds-layer="singlepage"
     >
@@ -74,7 +74,7 @@ export function FooterDefault(props?: Partial<FooterDefaultProps>) {
         <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="min-w-0 sm:col-span-2 lg:col-span-1">
             <WebsiteBuilderModuleLogotype variant="default" brand={brand} />
-            <p className="mt-5 max-w-xs text-sm leading-6 text-[var(--workspace-brand-muted)]">
+            <p className="mt-5 max-w-xs text-sm leading-6 text-[var(--color-sps-muted)]">
               {description}
             </p>
           </div>
@@ -89,8 +89,8 @@ export function FooterDefault(props?: Partial<FooterDefaultProps>) {
             />
           ))}
         </div>
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[var(--workspace-brand-line)] pt-6 sm:flex-row sm:items-center">
-          <p className="text-xs leading-5 text-[var(--workspace-brand-muted)]">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-sps-line)] pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs leading-5 text-[var(--color-sps-muted)]">
             {copyright}
           </p>
           <WebsiteBuilderModuleButtonsArray

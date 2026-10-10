@@ -2,7 +2,7 @@ import { afterEach, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Component as RbacModuleWidget } from "../../index";
 import { AccountProvider } from "../../../subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../subject/singlepage/account/fixture";
 import {
   readRbacStudioAuthUser,
   writeRbacStudioAuthUser,

@@ -1,5 +1,5 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 export function RbacSubjectAuthenticationResetPassword() {
   return (

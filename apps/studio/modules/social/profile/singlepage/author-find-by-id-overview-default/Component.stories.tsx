@@ -1,4 +1,4 @@
-import { Component as BlogModuleArticle } from "../../../../blog/article";
+import { Component as BlogModuleArticle } from "../../../../blog/article/index";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {

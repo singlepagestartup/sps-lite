@@ -1,9 +1,10 @@
 "use client";
+
 import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as SocialModuleChat } from "../../../../social/chat/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
-import { aiChatProfileChatId } from "../../../../../workspace/utils/products/ai-chat-routes";
+import { aiChatProfileChatId } from "../../../layout/singlepage/ai-chat-landing/routes";
 
 export interface IProfilePageProps {
   profileId: string;

@@ -5,10 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import {
-  createHostStudioState,
-  type IHostStudioState,
-} from "../../../../../../workspace/utils/host-studio/index";
+import { createHostStudioState, type IHostStudioState } from "./state/index";
 
 export interface IHostStudioProviderProps {
   children: ReactNode;

@@ -1,4 +1,4 @@
-import { AIChatPreview } from "../../../../../workspace/products/singlepage/ai-chat/website/Preview";
+import { AIChatPreview } from "../ai-chat/Preview";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example() {
   return <AIChatPreview initialHref="/ai-chat/social/profiles/create" />;

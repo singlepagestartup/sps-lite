@@ -1,4 +1,4 @@
-import { Component as BlogModuleArticle } from "../../../article";
+import { Component as BlogModuleArticle } from "../../../article/index";
 
 const articleOverviewStoryHref =
   "/?path=/story/modules-host-models-page-singlepage-blog-articles-blog-articles-slug--default";

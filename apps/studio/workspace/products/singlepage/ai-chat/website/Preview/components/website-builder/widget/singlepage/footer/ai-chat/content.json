@@ -1,0 +1,19 @@
+{
+  "title": "SinglePageStartup",
+  "paragraphs": [],
+  "items": [],
+  "links": [
+    {
+      "text": "Start with my files",
+      "href": "/ai-chat/rbac/subjects/authentication/registration"
+    },
+    {
+      "text": "Sign in",
+      "href": "/ai-chat/rbac/subjects/authentication/select-method"
+    },
+    {
+      "text": "Code Framework",
+      "href": "https://github.com/singlepagestartup/singlepagestartup"
+    }
+  ]
+}

@@ -45,16 +45,16 @@ export function IdentityFindDefault(props?: Partial<IdentityFindDefaultProps>) {
 
   return (
     <section
-      className="w-full rounded-3xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-background)] p-5"
+      className="w-full rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] p-5"
       data-ds-block="rbac.identity.find-default"
       data-ds-layer="singlepage"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-[var(--workspace-brand-foreground)]">
+          <h2 className="text-xl font-semibold text-[var(--color-sps-graphite)]">
             {title}
           </h2>
-          <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--workspace-brand-muted)]">
+          <p className="mt-1 max-w-2xl text-sm leading-6 text-[var(--color-sps-muted)]">
             {description}
           </p>
         </div>
@@ -62,7 +62,7 @@ export function IdentityFindDefault(props?: Partial<IdentityFindDefaultProps>) {
 
       <div className="mt-6 space-y-4">
         {identities.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-6 text-center text-sm text-[var(--workspace-brand-muted)]">
+          <div className="rounded-xl border border-dashed border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 text-center text-sm text-[var(--color-sps-muted)]">
             {emptyLabel}
           </div>
         ) : (

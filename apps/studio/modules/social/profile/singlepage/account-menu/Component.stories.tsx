@@ -1,5 +1,5 @@
 import { Component as SocialModuleProfile } from "../../index";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
 import type { IAccountMenuProps } from "./Component";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example(props: IAccountMenuProps) {

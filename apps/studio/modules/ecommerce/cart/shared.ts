@@ -21,10 +21,8 @@ export const technicalConsultingCartItem: CartItem = {
   title: "Technical Consulting",
   priceLabel: "$250/hr",
   price: 250,
-  image: new URL(
-    "../../../workspace/assets/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
-    import.meta.url,
-  ).href,
+  image:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
   quantity: 1,
 };
 
@@ -34,10 +32,8 @@ export const websiteDevelopmentCartItem: CartItem = {
   title: "Website Development",
   priceLabel: "from $4,999",
   price: 4999,
-  image: new URL(
-    "../../../workspace/assets/singlepage/generated/living-focus/singlepagestartup-photography-work-in-motion-square.png",
-    import.meta.url,
-  ).href,
+  image:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-work-in-motion-square.png",
   quantity: 1,
 };
 

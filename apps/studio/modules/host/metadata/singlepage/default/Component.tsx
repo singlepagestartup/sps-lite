@@ -3,7 +3,7 @@ import {
   HostStudioProvider,
   type IHostStudioProviderProps,
 } from "../../../page/singlepage/composition/HostRecords/index";
-import { createHostStudioState } from "../../../../../workspace/utils/host-studio/index";
+import { createHostStudioState } from "../../../page/singlepage/composition/HostRecords/state/index";
 export interface IHostMetadataDefaultProps
   extends Omit<IHostStudioProviderProps, "children"> {
   id?: string;

@@ -1,16 +1,37 @@
-/**
- * ecommerce.product.pinned
- *
- * Article-sidebar pinned product: Package icon box + title + shortDescription +
- * price chip + category chip + "View service" + ArrowUpRight. Owned by the
- * ecommerce module (model: product).
- * Source: BlogSections PinnedProductCard (lines 532-561).
- */
-
-import {
-  ArrowUpRight,
-  Package,
-} from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ProductPinnedProps {
   slug: string;
@@ -21,16 +42,6 @@ export interface ProductPinnedProps {
   href?: string;
   target?: "_blank" | "_parent" | "_self" | "_top";
 }
-
-export const defaultProductPinnedProps: ProductPinnedProps = {
-  slug: "consulting",
-  title: "Technical Consulting",
-  shortDescription:
-    "Strategic technical advice on architecture, stack selection, and digital transformation.",
-  priceLabel: "$250/hr",
-  category: "consulting",
-};
-
 export function ProductPinned(props?: Partial<ProductPinnedProps>) {
   const { slug, title, shortDescription, priceLabel, category, href, target } =
     {
@@ -38,31 +49,30 @@ export function ProductPinned(props?: Partial<ProductPinnedProps>) {
       ...props,
     };
   const productHref = href ?? `/ecommerce/products/${slug}`;
-
   return (
     <a
       href={productHref}
       target={target}
       rel={target === "_blank" ? "noreferrer" : undefined}
-      className="group flex min-w-0 flex-col rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-5 transition hover:border-[var(--workspace-brand-foreground)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)]"
+      className="group flex min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 transition hover:border-[var(--color-sps-graphite)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
       data-ds-block="ecommerce.product.pinned"
       data-ds-layer="singlepage"
     >
       <div className="flex items-center justify-between gap-3">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--workspace-brand-background)]">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-sps-grey)]">
           <Package className="h-5 w-5" />
         </span>
-        <span className="rounded-full bg-[var(--workspace-brand-background)] px-3 py-1 text-xs text-[var(--workspace-brand-muted)]">
+        <span className="rounded-full bg-[var(--color-sps-grey)] px-3 py-1 text-xs text-[var(--color-sps-muted)]">
           {category}
         </span>
       </div>
-      <h4 className="mt-5 text-lg font-semibold leading-6 text-[var(--workspace-brand-foreground)]">
+      <h4 className="mt-5 text-lg font-semibold leading-6 text-[var(--color-sps-graphite)]">
         {title}
       </h4>
-      <p className="mt-2 text-sm leading-6 text-[var(--workspace-brand-muted)]">
+      <p className="mt-2 text-sm leading-6 text-[var(--color-sps-muted)]">
         {shortDescription}
       </p>
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--workspace-brand-line)] pt-4">
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--color-sps-line)] pt-4">
         <span className="text-base font-semibold">{priceLabel}</span>
         <span className="inline-flex items-center gap-2 text-sm font-semibold">
           View service <ArrowUpRight className="h-5 w-5" />
@@ -71,3 +81,13 @@ export function ProductPinned(props?: Partial<ProductPinnedProps>) {
     </a>
   );
 }
+const Package = createIcon("package");
+const ArrowUpRight = createIcon("arrow-up-right");
+export const defaultProductPinnedProps: ProductPinnedProps = {
+  slug: "consulting",
+  title: "Technical Consulting",
+  shortDescription:
+    "Strategic technical advice on architecture, stack selection, and digital transformation.",
+  priceLabel: "$250/hr",
+  category: "consulting",
+};

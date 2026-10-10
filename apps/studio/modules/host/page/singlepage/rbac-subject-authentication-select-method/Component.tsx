@@ -1,5 +1,5 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 const authorProfileStoryHref =
   "/?path=/story/modules-host-models-page-singlepage-blog-authors-social-profiles-slug--default";

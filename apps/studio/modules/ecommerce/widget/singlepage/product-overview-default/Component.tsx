@@ -2,7 +2,7 @@ import {
   Component as EcommerceModuleProduct,
   defaultProductOverviewDefaultProps,
   type ProductOverviewDefaultProps,
-} from "../../../product";
+} from "../../../product/index";
 
 export { defaultProductOverviewDefaultProps };
 export type { ProductOverviewDefaultProps };

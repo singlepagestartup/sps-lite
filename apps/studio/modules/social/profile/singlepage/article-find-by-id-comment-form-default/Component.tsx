@@ -1,19 +1,41 @@
-/**
- * social.profile.article-find-by-id-comment-form-default
- *
- * Article comment composer form shown in a social profile context.
- */
-import { Send } from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import { useState } from "react";
-
-export const defaultProfileArticleFindByIdCommentFormDefaultProps = {
-  placeholder: "Write a comment...",
-  submitLabel: "Post comment",
-};
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export type ProfileArticleFindByIdCommentFormDefaultProps =
   typeof defaultProfileArticleFindByIdCommentFormDefaultProps;
-
 export function ProfileArticleFindByIdCommentFormDefault(
   props?: Partial<ProfileArticleFindByIdCommentFormDefaultProps>,
 ) {
@@ -23,19 +45,16 @@ export function ProfileArticleFindByIdCommentFormDefault(
   };
   const [comment, setComment] = useState("");
   const canSubmit = comment.trim().length > 0;
-
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-
         if (!canSubmit) {
           return;
         }
-
         setComment("");
       }}
-      className="rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-5"
+      className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5"
       data-ds-block="social.profile.article-find-by-id-comment-form-default"
       data-ds-layer="singlepage"
     >
@@ -51,13 +70,13 @@ export function ProfileArticleFindByIdCommentFormDefault(
         placeholder={placeholder}
         value={comment}
         onChange={(event) => setComment(event.target.value)}
-        className="min-h-32 w-full resize-y rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] px-4 py-3 text-base text-[var(--workspace-brand-foreground)] outline-none transition focus:border-[var(--workspace-brand-line)] focus:ring-1 focus:ring-[var(--workspace-brand-focus)] focus-visible:border-[var(--workspace-brand-focus)] focus-visible:ring-2 focus-visible:ring-[var(--workspace-brand-focus)]"
+        className="min-h-32 w-full resize-y rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-3 text-base text-[var(--color-sps-graphite)] outline-none transition focus:border-[var(--color-sps-line)] focus:ring-1 focus:ring-[var(--color-sps-graphite)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)]"
       />
       <div className="mt-3 flex justify-end">
         <button
           type="submit"
           disabled={!canSubmit}
-          className="inline-flex items-center gap-2 rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-accent)] px-4 py-2 text-sm text-[var(--workspace-brand-on-accent)] transition hover:bg-[var(--workspace-brand-accent)] disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] min-h-11"
+          className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-green)] px-4 py-2 text-sm text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-green)] disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
         >
           <Send className="h-5 w-5" />
           {submitLabel}
@@ -66,3 +85,8 @@ export function ProfileArticleFindByIdCommentFormDefault(
     </form>
   );
 }
+const Send = createIcon("paper-plane-tilt");
+export const defaultProfileArticleFindByIdCommentFormDefaultProps = {
+  placeholder: "Write a comment...",
+  submitLabel: "Post comment",
+};

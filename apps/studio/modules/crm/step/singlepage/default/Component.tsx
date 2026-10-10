@@ -1,4 +1,4 @@
-import { Component as CrmModuleInput } from "../../../input";
+import { Component as CrmModuleInput } from "../../../input/index";
 import type { CrmInputRecord, CrmStepRecord } from "../../../shared/demo-crm";
 import { defaultCrmForm } from "../../../shared/demo-crm";
 
@@ -63,12 +63,12 @@ export function CrmStepDefault(props?: Partial<CrmStepDefaultProps>) {
 
   return (
     <fieldset
-      className="min-w-0 rounded-2xl bg-[var(--workspace-brand-background)] p-5 sm:p-6"
+      className="min-w-0 rounded-2xl bg-[var(--color-sps-grey)] p-5 sm:p-6"
       data-ds-block="crm.step.default"
       data-ds-layer="singlepage"
     >
       <legend className="sr-only">{step.title}</legend>
-      <h2 className="mb-5 text-lg font-semibold text-[var(--workspace-brand-foreground)]">
+      <h2 className="mb-5 text-lg font-semibold text-[var(--color-sps-graphite)]">
         {step.title}
       </h2>
       <div className="grid min-w-0 gap-5 sm:grid-cols-2">

@@ -1,7 +1,7 @@
 import { Component as RbacModuleSubject } from "../../index";
 import { AccountProvider } from "./Account";
 import type { ISubjectAccountProps } from "./Component";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "./fixture";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example(props: ISubjectAccountProps) {
   return (

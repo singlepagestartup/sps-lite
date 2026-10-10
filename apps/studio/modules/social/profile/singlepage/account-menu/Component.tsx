@@ -1,17 +1,27 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useEffect, useState } from "react";
-import {
-  Icon,
-  kit,
-} from "../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import type { IAIChatUserProfile } from "../../../../../workspace/utils/products/ai-chat-models";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import type { IAIChatUserProfile } from "../scope/ai-chat/project/models";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IAccountMenuProps {
   data?: IAIChatUserProfile;
   email?: string;
-  balance?: { free: number; purchased: number } | null;
+  balance?: {
+    free: number;
+    purchased: number;
+  } | null;
   showTokens?: boolean;
   page?: string;
   settingsHref?: string;
@@ -19,8 +29,6 @@ export interface IAccountMenuProps {
   onNavigate?: () => void;
   onSignOut?: () => void;
 }
-const menuItemClassName =
-  "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey data-highlighted:text-sps-graphite";
 export function Component({
   data = aiChatAccount.profile,
   email = aiChatAccount.email,
@@ -152,3 +160,12 @@ export function Component({
     </DropdownMenu.Root>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const menuItemClassName =
+  "flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey data-highlighted:text-sps-graphite";

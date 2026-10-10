@@ -1,7 +1,7 @@
 import { expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { HostStudioProvider, HostModelForm, HostWorkbench } from "./index";
-import { createHostStudioState } from "../../../../../../workspace/utils/host-studio/index";
+import { createHostStudioState } from "./state/index";
 
 test("Host forms and navigation show models without relation management", () => {
   const state = createHostStudioState();

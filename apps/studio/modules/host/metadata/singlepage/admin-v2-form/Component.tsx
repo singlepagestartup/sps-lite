@@ -4,7 +4,7 @@ import {
   type IHostStudioProviderProps,
 } from "../../../page/singlepage/composition/HostRecords/index";
 import type { IModel } from "../../interface";
-import { createHostStudioState } from "../../../../../workspace/utils/host-studio/index";
+import { createHostStudioState } from "../../../page/singlepage/composition/HostRecords/state/index";
 export interface IHostMetadataAdminV2FormProps
   extends Omit<IHostStudioProviderProps, "children"> {
   record?: IModel;

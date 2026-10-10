@@ -1,19 +1,24 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import { Component as ProjectSelectItem } from "../../item/ai-chat/project/index";
-import {
-  Icon,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export interface IProjectSelectProps {
   profileId?: string;
   onNavigate?: () => void;
   onCloseAutoFocus?: (event: Event) => void;
 }
-const itemClass =
-  "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey";
-
 export function Component({
   profileId,
   onNavigate,
@@ -72,3 +77,12 @@ export function Component({
     </DropdownMenu.Root>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const itemClass =
+  "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey";

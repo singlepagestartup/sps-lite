@@ -1,4 +1,4 @@
-import type { IProjectAsset } from "../../../../../../../../workspace/utils/products/ai-chat-workspace";
+import type { IProjectAsset } from "../../../../../../../social/profile/singlepage/scope/ai-chat/project/state";
 import { Component as FilePreview } from "../../../../overview/ai-chat/index";
 export interface IAssetPreviewProps {
   asset: IProjectAsset;

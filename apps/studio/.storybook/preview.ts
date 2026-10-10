@@ -14,9 +14,9 @@ const preview: Preview = {
       const preview = createElement(
         "div",
         {
-          "data-workspace-projection": layer,
+          "data-sps-theme": layer,
           className:
-            "min-w-0 bg-[var(--workspace-brand-background)] font-[family-name:var(--workspace-brand-font-body)] text-[var(--workspace-brand-foreground)] antialiased" +
+            "min-w-0 bg-sps-grey font-sps text-sps-graphite antialiased" +
             (context.parameters.layout === "centered"
               ? " min-h-0 w-[calc(100vw-2rem)] max-w-7xl"
               : context.parameters.layout === "fullscreen"
@@ -27,11 +27,7 @@ const preview: Preview = {
       );
       return layer === "singlepage"
         ? preview
-        : createElement(
-            "div",
-            { "data-workspace-projection": "singlepage" },
-            preview,
-          );
+        : createElement("div", { "data-sps-theme": "singlepage" }, preview);
     },
   ],
   parameters: {

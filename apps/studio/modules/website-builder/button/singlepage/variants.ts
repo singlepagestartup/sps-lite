@@ -1,3 +1,4 @@
+import { Component as Control } from "./control/index";
 import { Component as AdminV2Card } from "./admin-v2-card/index";
 import { Component as AdminV2Table } from "./admin-v2-table/index";
 import { Component as NavbarAiChat } from "./navbar/ai-chat/index";
@@ -6,8 +7,8 @@ import { Component as List } from "./list/index";
 import { Component as Navigation } from "./navigation/index";
 import { Component as Primary } from "./primary/index";
 import { Component as Secondary } from "./secondary/index";
-
 export const variants = {
+  control: Control,
   "admin-v2-card": AdminV2Card,
   "admin-v2-table": AdminV2Table,
   "navbar-ai-chat": NavbarAiChat,

@@ -1,12 +1,88 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import { type ImgHTMLAttributes as ImgHTMLAttributes } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { type InputHTMLAttributes as InputHTMLAttributes } from "react";
+import { useId as useId } from "react";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
 import {
-  Button,
-  Icon,
-  kit,
-  SquareImage,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import { TextField } from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/ServiceDocument";
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { useState, type FormEvent } from "react";
+interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  hint?: string;
+  error?: string;
+}
+function TextField({
+  label,
+  hint,
+  error,
+  id: suppliedId,
+  className = "",
+  ...props
+}: ITextFieldProps) {
+  const generatedId = useId();
+  const id = suppliedId ?? generatedId;
+  return (
+    <div className="min-w-0 space-y-2">
+      <label htmlFor={id} className={`block ${kit.label}`}>
+        {label}
+      </label>
+      <input
+        {...props}
+        id={id}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={
+          [hint ? `${id}-hint` : "", error ? `${id}-error` : ""]
+            .filter(Boolean)
+            .join(" ") || undefined
+        }
+        className={`${kit.field} ${className}`}
+      />
+      {hint ? (
+        <p id={`${id}-hint`} className={`text-xs leading-relaxed ${kit.muted}`}>
+          {hint}
+        </p>
+      ) : null}
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-sps-danger">
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+interface ISquareImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+  alt: string;
+}
+function SquareImage({
+  alt,
+  className,
+  loading = "lazy",
+  ...props
+}: ISquareImageProps) {
+  return (
+    <img
+      alt={alt}
+      loading={loading}
+      className={twMerge("block aspect-square w-full object-cover", className)}
+      {...props}
+    />
+  );
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export interface IProfileCreateProps {
   onCreate: (name: string) => void;
   onCancel?: () => void;
@@ -52,7 +128,7 @@ export function Component({ onCreate, onCancel }: IProfileCreateProps) {
         </section>
         <div className="relative hidden min-w-0 @[760px]:block">
           <SquareImage
-            src="/workspace-assets/singlepage/generated/living-focus/singlepagestartup-photography-project-start-v1-square.png"
+            src="/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-project-start-v1-square.png"
             alt="A person working on their project at a desk"
             className="h-full min-h-96 w-full rounded-none object-cover"
           />
@@ -68,3 +144,28 @@ export function Component({ onCreate, onCancel }: IProfileCreateProps) {
     </main>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
+  muted: "text-sps-muted",
+  label: "text-sm font-semibold text-sps-graphite",
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

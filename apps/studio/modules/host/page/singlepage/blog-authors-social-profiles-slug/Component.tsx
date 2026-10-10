@@ -1,6 +1,6 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Component as BlogModuleArticle } from "../../../../blog/article";
-import { Component as SocialModuleProfile } from "../../../../social/profile";
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as BlogModuleArticle } from "../../../../blog/article/index";
+import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 
 export function SocialProfileFindByIdOverviewAuthor() {
   return (

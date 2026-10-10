@@ -16,6 +16,11 @@ const source = path.join(
 );
 const check = process.argv.includes("--check");
 function publish(relative: string, data: string | Buffer) {
+  if (relative.startsWith("apps/studio/modules/") && typeof data === "string")
+    data = data
+      .replaceAll("/workspace-assets/", "/module-assets/images/")
+      .replaceAll("/workspace-products/", "/module-assets/documents/")
+      .replaceAll("/workspace-design/", "/module-assets/design/");
   const destination = path.join(root, relative);
   if (check) {
     if (
@@ -80,6 +85,10 @@ publish(
   JSON.stringify(roles, null, 2) + "\n",
 );
 
+publish(
+  "apps/studio/modules/social/profile/singlepage/agent/overview/ai-chat/agents.json",
+  JSON.stringify(roles, null, 2) + "\n",
+);
 const copies = {
   register:
     "rbac/subject/authentication/email-and-password/registration-form/ai-chat",
@@ -94,6 +103,10 @@ const website = servicePaths(
 ) as ReturnType<typeof parseAIChatWebsite>;
 publish(
   "apps/studio/workspace/utils/products/ai-chat-website.generated.json",
+  JSON.stringify(website, null, 2) + "\n",
+);
+publish(
+  "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/website.json",
   JSON.stringify(website, null, 2) + "\n",
 );
 const landingCopies = {
@@ -172,6 +185,18 @@ publish(
 publish(
   "apps/studio/modules/social/profile/singlepage/scope/ai-chat/project/definitions.json",
   JSON.stringify(definitions, null, 2) + "\n",
+);
+publish(
+  "apps/studio/modules/knowledge/source/singlepage/overview/document/ai-chat/guides.json",
+  JSON.stringify(guidePublication, null, 2) + "\n",
+);
+publish(
+  "apps/studio/workspace/utils/products/ai-chat-document-definitions.json",
+  JSON.stringify(definitions, null, 2) + "\n",
+);
+publish(
+  "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/guides.json",
+  JSON.stringify(guidePublication, null, 2) + "\n",
 );
 const materials = readFileSync(path.join(source, "new-project.md"), "utf8");
 publish(

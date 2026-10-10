@@ -1,18 +1,51 @@
-import { useStudioAccount } from "../account/Account";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
-import { useEffect, useId, useRef, useState } from "react";
-import { Button } from "../../../../../workspace/design/singlepage/interface-kit/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
-  Save,
-  User,
-  X,
-} from "../../../../../workspace/utils/components/ModuleIcons";
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { useStudioAccount } from "../account/Account";
+import { aiChatAccount } from "../account/fixture";
+import { useEffect, useId, useRef, useState } from "react";
 import {
   defaultRbacProfiles,
   defaultRbacUser,
   type RbacAccountProfile,
   type RbacAccountUser,
 } from "../../../shared";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface SubjectMeProfileInformationProps {
   user: RbacAccountUser;
@@ -23,23 +56,6 @@ export interface SubjectMeProfileInformationProps {
   profiles: RbacAccountProfile[];
   description: string;
 }
-
-export const defaultSubjectMeProfileInformationProps: SubjectMeProfileInformationProps =
-  {
-    user: defaultRbacUser,
-    title: "Profile",
-    bio: defaultRbacProfiles[0].description ?? "",
-    saveLabel: "Save profile",
-    profile: defaultRbacProfiles[0],
-    profiles: defaultRbacProfiles,
-    description:
-      "Edit the name, headline and information on your public profile.",
-  };
-
-const fieldClass =
-  "mt-2 min-h-12 w-full rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] px-4 py-2.5 text-base text-[var(--workspace-brand-foreground)] outline-none transition focus-visible:border-[var(--workspace-brand-focus)] focus-visible:ring-2 focus-visible:ring-[var(--workspace-brand-focus)] aria-[invalid=true]:border-[var(--workspace-brand-danger)]";
-const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-
 export function SubjectMeProfileInformation(
   props?: Partial<SubjectMeProfileInformationProps>,
 ) {
@@ -78,7 +94,6 @@ export function SubjectMeProfileInformation(
   const viewButton = useRef<HTMLButtonElement>(null);
   const id = useId();
   useEffect(() => () => reader.current?.abort(), []);
-
   function updateDraft(field: keyof typeof draft, value: string) {
     setDraft((previous) => ({ ...previous, [field]: value }));
     setMessage("");
@@ -106,10 +121,9 @@ export function SubjectMeProfileInformation(
     setViewOpen(false);
     viewButton.current?.focus();
   }
-
   return (
     <article
-      className="min-w-0 rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-5 sm:p-6"
+      className="min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-6"
       data-ds-block="rbac.subject.me-profile-information"
       data-profile-id={profile.id}
       data-ds-layer="singlepage"
@@ -117,7 +131,7 @@ export function SubjectMeProfileInformation(
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--workspace-brand-muted)]">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--color-sps-muted)]">
             {description}
           </p>
         </div>
@@ -169,7 +183,7 @@ export function SubjectMeProfileInformation(
         <fieldset className="min-w-0 border-0 p-0">
           <legend className="text-sm font-medium">Avatar</legend>
           <div className="mt-3 flex flex-wrap items-center gap-4">
-            <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-[var(--workspace-brand-background)]">
+            <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-[var(--color-sps-grey)]">
               {avatar ? (
                 <img
                   src={avatar}
@@ -178,7 +192,7 @@ export function SubjectMeProfileInformation(
                   onError={() => setAvatar("")}
                 />
               ) : (
-                <User className="h-6 w-6 text-[var(--workspace-brand-muted)]" />
+                <User className="h-6 w-6 text-[var(--color-sps-muted)]" />
               )}
             </div>
             <div className="min-w-0">
@@ -204,7 +218,7 @@ export function SubjectMeProfileInformation(
                   Remove
                 </Button>
               </div>
-              <p className="mt-2 text-xs leading-5 text-[var(--workspace-brand-muted)]">
+              <p className="mt-2 text-xs leading-5 text-[var(--color-sps-muted)]">
                 PNG, JPEG, WebP or GIF, up to 2 MB. Save to apply changes.
               </p>
             </div>
@@ -304,14 +318,14 @@ export function SubjectMeProfileInformation(
             </div>
             <p
               id={`${id}-slug-help`}
-              className="mt-2 text-xs leading-5 text-[var(--workspace-brand-muted)]"
+              className="mt-2 text-xs leading-5 text-[var(--color-sps-muted)]"
             >
               Lowercase letters, numbers and single hyphens. Availability is
               checked only against profiles in this preview.
             </p>
             <p
               role="status"
-              className={`mt-2 text-sm ${slugCheck?.available === false ? "text-[var(--workspace-brand-danger)]" : "text-[var(--workspace-brand-muted)]"}`}
+              className={`mt-2 text-sm ${slugCheck?.available === false ? "text-[var(--color-sps-danger)]" : "text-[var(--color-sps-muted)]"}`}
             >
               {slugCheck
                 ? slugCheck.available
@@ -324,7 +338,7 @@ export function SubjectMeProfileInformation(
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
           <p
             role={invalid ? "alert" : "status"}
-            className={`text-sm leading-6 ${invalid ? "text-[var(--workspace-brand-danger)]" : "text-[var(--workspace-brand-muted)]"}`}
+            className={`text-sm leading-6 ${invalid ? "text-[var(--color-sps-danger)]" : "text-[var(--color-sps-muted)]"}`}
           >
             {message}
           </p>
@@ -336,14 +350,14 @@ export function SubjectMeProfileInformation(
       </form>
       {viewOpen ? (
         <div
-          className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-[var(--workspace-brand-primary)]/50 p-4"
+          className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-[var(--color-sps-graphite)]/50 p-4"
           onClick={closePreview}
         >
           <section
             role="dialog"
             aria-modal="true"
             aria-label="Profile preview"
-            className="relative max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-[var(--workspace-brand-surface)] p-6"
+            className="relative max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-[var(--color-sps-white)] p-6"
             onClick={(event) => event.stopPropagation()}
             onKeyDown={(event) => {
               if (event.key === "Escape") closePreview();
@@ -373,16 +387,16 @@ export function SubjectMeProfileInformation(
               />
             ) : null}
             <h3 className="text-3xl font-semibold">{savedProfile.title}</h3>
-            <p className="mt-2 text-base text-[var(--workspace-brand-muted)]">
+            <p className="mt-2 text-base text-[var(--color-sps-muted)]">
               {savedProfile.subtitle}
             </p>
             <p className="mt-5 whitespace-pre-wrap break-words text-base leading-[26px]">
               {savedProfile.description}
             </p>
-            <p className="mt-5 break-all text-sm text-[var(--workspace-brand-muted)]">
+            <p className="mt-5 break-all text-sm text-[var(--color-sps-muted)]">
               {savedProfile.slug}
             </p>
-            <p className="mt-6 text-xs text-[var(--workspace-brand-muted)]">
+            <p className="mt-6 text-xs text-[var(--color-sps-muted)]">
               Local profile preview
             </p>
           </section>
@@ -391,3 +405,35 @@ export function SubjectMeProfileInformation(
     </article>
   );
 }
+const X = createIcon("x");
+const User = createIcon("user");
+const Save = createIcon("floppy-disk");
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
+export const defaultSubjectMeProfileInformationProps: SubjectMeProfileInformationProps =
+  {
+    user: defaultRbacUser,
+    title: "Profile",
+    bio: defaultRbacProfiles[0].description ?? "",
+    saveLabel: "Save profile",
+    profile: defaultRbacProfiles[0],
+    profiles: defaultRbacProfiles,
+    description:
+      "Edit the name, headline and information on your public profile.",
+  };
+const fieldClass =
+  "mt-2 min-h-12 w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2.5 text-base text-[var(--color-sps-graphite)] outline-none transition focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] aria-[invalid=true]:border-[var(--color-sps-danger)]";
+const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

@@ -1,11 +1,16 @@
 # SinglePageStartup Studio
 
 `apps/studio` is the repository's read-only presentation system. It combines
-two projections without becoming a second source of truth:
+two independent presentations:
 
 - existing presentation-only module and page components;
 - validated business, marketing, brand, design, and asset artifacts
   from an indexed workspace.
+
+Modules own their rendered markup, local fixtures, model composition and runtime
+assets. Workspace owns its editable documents, design kit and product prototypes.
+Neither imports the other at runtime. Changes cross this boundary only through an
+explicit transfer into the destination’s owned files.
 
 Canonical project artifacts are readable Markdown and YAML files under
 `apps/studio/workspace/<artifact>/`. Assets, products, and layered styles stay
@@ -210,8 +215,8 @@ menu, forms, copy and catalog links use these addresses. Display variants such a
 AI Chat prototypes live entirely in Studio. `Component.tsx` contains each variant's
 implementation, props and callbacks. `index.ts` exports the component and its
 public types or helpers. Fixture data and interactive examples live in
-`Component.stories.tsx`. Product website previews compose these components and
-editable Markdown content.
+`Component.stories.tsx`. Module website previews compose these components and frozen local copy. Workspace
+website previews use their own editable component snapshot and Markdown content.
 
 Studio callers import each model from `<module>/<model>/index.ts` and choose the
 view with `variant`. Each entry's discriminated props retain the required inputs
@@ -254,10 +259,11 @@ rbac/subject/singlepage/authentication/
 ```
 
 The public Subject key mirrors the path, for example
-`authentication-email-and-password-registration-form-ai-chat`. Host Pages and
-editable website previews call this entry. Subject owns local validation, copy,
+`authentication-email-and-password-registration-form-ai-chat`. Host Pages call this entry. Subject owns local validation, copy,
 stories, connected-method actions and preview sign-in; Host owns navigation after
-success. Select Method preserves each method's state while switching tabs.
+success. The AI Chat login Page calls the email/password form directly. The ordinary
+Select Method places Email/password, EVM and OAuth tabs inside the centered card
+and preserves each method’s state while switching tabs.
 EVM and OAuth expose idle, approval, completion and error states through Controls.
 They contact no wallet or provider. Identity displays connected accounts and
 receives action slots from Subject. Registration uses the visitor Subject and
@@ -289,8 +295,8 @@ the same `brand-ai-chat` Logotype as the service screens. Try the chat is a Butt
 record displayed through Buttons Array. Page places `content-ai-chat-hero`, `content-ai-chat-try`
 and `content-ai-chat-continue` inside the Layout, and supplies Social Chat as the `children`
 of `content-ai-chat-try`. Each Widget has its own generated content fixture. The Social
-preview reads `utils/products/ai-chat-website.generated.json`; editable website
-documents pass their content override through Host Page.
+preview reads the Widget-owned `singlepage/content/ai-chat/website.json` fixture.
+Workspace website documents pass overrides to their own prototype.
 
 Layout `ai-chat-dashboard` owns its themed container, Website Builder navbar and footer.
 Pages supply `profileSelect` and `subjectAccount` slots. The navbar directly
@@ -360,15 +366,24 @@ passes File IDs to File `list-attachments-ai-chat` directly. The Source story ex
 `empty` and `withFiles` controls. Upload and detach affect only preview state;
 the File pool remains available for reattachment and message attachments.
 
-Fixtures live in `workspace/utils/products`; visual primitives live in
-`workspace/design/singlepage/interface-kit/ai-chat`. The website keeps model
-providers mounted across local navigation. Studio stores no relation records,
+Fixtures and helpers live beside the models that own them. Component variants
+contain their own rendering; Website Builder Button and Feature provide button
+and icon views through public model entries. Modules use `runtime/sps.css` and
+assets under `runtime/assets`, exposed as `/module-assets`. The website keeps
+model providers mounted across local navigation. Studio stores no relation records,
 query filters or SDK adapters. Production storage, retrieval and tools belong to
 `libs/modules` and are connected separately after visual design.
 
-`bun tools/studio/products/publish-ai-chat.ts` generates local JSON from editable
-copy and role definitions. Isolation tests reject production imports, including
-types and CSS. Storybook uses its own tsconfig, fonts and image assets.
+`bun tools/studio/products/publish-ai-chat.ts` explicitly copies approved editable
+copy and role definitions into Module-owned JSON fixtures. Its `--check` mode
+reports drift without writing. It does not create runtime imports. Isolation tests
+reject production imports and dependencies between Modules and Workspace, including
+visual tokens and asset URLs. Storybook uses its own tsconfig, fonts and images.
+
+Workspace’s AI Chat website prototype lives in
+`workspace/products/singlepage/ai-chat/website/Preview/`. Its component snapshot,
+fixtures and state are editable Workspace files. It uses Workspace tokens and
+assets; changes to Module variants do not replace this snapshot.
 
 ## Host model previews
 
@@ -515,6 +530,6 @@ impact review without automatically replacing any dependent text.
 
 User menus use Subject `account` and Social Profile `account-menu` on every header.
 `showTokens` adds the AI Chat balance and Buy tokens action. Name, avatar, email,
-Settings, Change avatar, Admin Panel and Sign out share one dropdown. The account
+Settings, Admin Panel and Sign out share one dropdown. Avatar changes belong in settings. The account
 stories expose signed-in and token controls. Studio stores the preview session
 and uploaded avatar locally; AI Chat login opens the active project immediately.

@@ -1,4 +1,5 @@
 "use client";
+
 import { Component as SocialModuleThread } from "../../../../thread/index";
 import type { ReactNode } from "react";
 

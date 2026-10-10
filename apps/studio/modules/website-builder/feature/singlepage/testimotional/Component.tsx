@@ -1,23 +1,41 @@
+import { Component as Glyph } from "../icon/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMergePresentation } from "tailwind-merge";
+import starFillSvg from "../icon/star-fill.svg?raw";
+import type IconGlyphs from "../icon/icons.json";
 import { twMerge } from "tailwind-merge";
-import {
-  Star,
-  StarFilled,
-} from "../../../../../workspace/utils/components/ModuleIcons";
-
-const avatarUrl =
-  "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxidXNpbmVzcyUyMG1hbiUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3MTY2ODA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-
-export const defaultFeatureTestimotionalProps = {
-  avatar: avatarUrl,
-  name: "James Carter",
-  role: "CTO, TechFlow",
-  text: "The modular architecture saved us months of development. We shipped our MVP with ecommerce and blog fully integrated in just two weeks.",
-  rating: 5,
-  className: "",
-};
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMergePresentation("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <Glyph {...props} />;
+}
 
 export type FeatureTestimotionalProps = typeof defaultFeatureTestimotionalProps;
-
 export function FeatureTestimotional(
   props?: Partial<FeatureTestimotionalProps>,
 ) {
@@ -26,13 +44,12 @@ export function FeatureTestimotional(
     ...props,
   };
   const rootClassName = twMerge(
-    "flex h-full min-w-0 flex-col rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-6 sm:p-8",
+    "flex h-full min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8",
     className,
   );
   const visibleRating = Number.isNaN(rating)
     ? 0
     : Math.max(0, Math.min(5, Math.floor(rating)));
-
   return (
     <article
       className={rootClassName}
@@ -48,26 +65,26 @@ export function FeatureTestimotional(
           const RatingStar = index < visibleRating ? StarFilled : Star;
           return (
             <RatingStar
-              className={`h-5 w-5 ${index < visibleRating ? "text-[var(--workspace-brand-accent)]" : "text-[var(--workspace-brand-muted)]"}`}
+              className={`h-5 w-5 ${index < visibleRating ? "text-[var(--color-sps-green)]" : "text-[var(--color-sps-muted)]"}`}
               key={index}
             />
           );
         })}
       </div>
-      <blockquote className="flex-1 text-lg leading-8 text-[var(--workspace-brand-foreground)]">
+      <blockquote className="flex-1 text-lg leading-8 text-[var(--color-sps-graphite)]">
         "{text}"
       </blockquote>
-      <footer className="mt-8 flex min-w-0 items-center gap-3 border-t border-[var(--workspace-brand-line)] pt-5">
+      <footer className="mt-8 flex min-w-0 items-center gap-3 border-t border-[var(--color-sps-line)] pt-5">
         <img
-          className="h-12 w-12 shrink-0 rounded-full border border-[var(--workspace-brand-line)] object-cover"
+          className="h-12 w-12 shrink-0 rounded-full border border-[var(--color-sps-line)] object-cover"
           src={avatar}
           alt={name}
         />
         <span className="min-w-0">
-          <strong className="block text-sm font-semibold leading-6 text-[var(--workspace-brand-foreground)]">
+          <strong className="block text-sm font-semibold leading-6 text-[var(--color-sps-graphite)]">
             {name}
           </strong>
-          <small className="block text-sm leading-6 text-[var(--workspace-brand-muted)]">
+          <small className="block text-sm leading-6 text-[var(--color-sps-muted)]">
             {role}
           </small>
         </span>
@@ -75,3 +92,37 @@ export function FeatureTestimotional(
     </article>
   );
 }
+/** Official Phosphor Fill geometry for filled rating values. */
+export const StarFilled = forwardRef<SVGSVGElement, IModuleIconProps>(
+  function StarFilled({ className, size = 20, children, ...props }, ref) {
+    return (
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 256 256"
+        fill="currentColor"
+        width={size}
+        height={size}
+        className={twMergePresentation("h-5 w-5 shrink-0", className)}
+        {...props}
+        ref={ref}
+        dangerouslySetInnerHTML={{
+          __html: starFillSvg
+            .replace(/<svg[^>]*>/, "")
+            .replace(/<\/svg>\s*$/, ""),
+        }}
+      />
+    );
+  },
+);
+const Star = createIcon("star");
+const avatarUrl =
+  "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHxidXNpbmVzcyUyMG1hbiUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3MTY2ODA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+export const defaultFeatureTestimotionalProps = {
+  avatar: avatarUrl,
+  name: "James Carter",
+  role: "CTO, TechFlow",
+  text: "The modular architecture saved us months of development. We shipped our MVP with ecommerce and blog fully integrated in just two weeks.",
+  rating: 5,
+  className: "",
+};

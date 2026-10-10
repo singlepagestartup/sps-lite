@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Component as WebsiteBuilderModuleLogotype } from "../../../../logotype";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../buttons-array";
+import { Component as WebsiteBuilderModuleLogotype } from "../../../../logotype/index";
+import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../buttons-array/index";
 
 export interface INavbarAiChatLandingProps {
   subjectAccount?: ReactNode;

@@ -1,7 +1,7 @@
 import { Component as RbacModuleSubject } from "../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../account/Account";
-import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../account/fixture";
 import { FilesProvider } from "../../../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
 import { SourceProvider } from "../../../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
 import { ThreadProvider } from "../../../../../../social/thread/singlepage/overview/ai-chat/Thread";

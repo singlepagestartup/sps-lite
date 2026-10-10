@@ -1,67 +1,80 @@
-import {
-  Mail,
-  MapPin,
-  Phone,
-  type ModuleIcon,
-} from "../../../../../workspace/utils/components/ModuleIcons";
-
+import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
 import type { ReactNode } from "react";
+type ModuleIcon = ReturnType<typeof createIcon>;
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 interface ContactItem {
   label: string;
   icon: ModuleIcon;
 }
-
-export const defaultContentFeatureFindRowProps = {
-  eyebrow: "Get in touch",
-  title: "Contact us",
-  description:
-    "Have questions about the platform? Want a demo? Reach out and we'll get back to you within 24 hours.",
-  contacts: [
-    { icon: Mail, label: "hello@sps.dev" },
-    { icon: Phone, label: "+1 (555) 123-4567" },
-    { icon: MapPin, label: "San Francisco, CA" },
-  ] satisfies ContactItem[],
-};
-
 export interface ContentFeatureFindRowProps
   extends Partial<typeof defaultContentFeatureFindRowProps> {
   contactForm?: ReactNode;
 }
-
 export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
   const { eyebrow, title, description, contacts, contactForm } = {
     ...defaultContentFeatureFindRowProps,
     ...props,
   };
-
   return (
     <div
       id="contact"
-      className="w-full bg-[var(--workspace-brand-background)] py-12 sm:py-16"
+      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-feature-find-row"
       data-ds-imports="rbac.subject.me-crm-form-deafult"
       data-ds-layer="singlepage"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid overflow-hidden rounded-3xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] lg:grid-cols-2">
-          <div className="min-w-0 bg-[var(--workspace-brand-primary)] p-6 sm:p-10">
-            <p className="mb-3 text-sm font-semibold tracking-normal text-[var(--workspace-brand-muted-on-primary)]">
+        <div className="grid overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] lg:grid-cols-2">
+          <div className="min-w-0 bg-[var(--color-sps-graphite)] p-6 sm:p-10">
+            <p className="mb-3 text-sm font-semibold tracking-normal text-[var(--color-sps-muted-inverse)]">
               {eyebrow}
             </p>
             <h2 className="text-[2rem] font-semibold leading-tight tracking-normal text-white sm:text-[2.5rem]">
               {title}
             </h2>
-            <p className="mt-5 max-w-md text-base leading-7 text-[var(--workspace-brand-muted-on-primary)]">
+            <p className="mt-5 max-w-md text-base leading-7 text-[var(--color-sps-muted-inverse)]">
               {description}
             </p>
             <div className="mt-8 space-y-4">
               {contacts.map((contact) => (
                 <span
-                  className="flex min-w-0 items-center gap-3 text-base leading-7 text-[var(--workspace-brand-muted-on-primary)]"
+                  className="flex min-w-0 items-center gap-3 text-base leading-7 text-[var(--color-sps-muted-inverse)]"
                   key={contact.label}
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--workspace-brand-surface)] text-[var(--workspace-brand-foreground)]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)]">
                     <contact.icon className="h-5 w-5 shrink-0" />
                   </span>
                   <span className="min-w-0 break-words">{contact.label}</span>
@@ -75,3 +88,17 @@ export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
     </div>
   );
 }
+const Phone = createIcon("phone");
+const MapPin = createIcon("map-pin");
+const Mail = createIcon("envelope");
+export const defaultContentFeatureFindRowProps = {
+  eyebrow: "Get in touch",
+  title: "Contact us",
+  description:
+    "Have questions about the platform? Want a demo? Reach out and we'll get back to you within 24 hours.",
+  contacts: [
+    { icon: Mail, label: "hello@sps.dev" },
+    { icon: Phone, label: "+1 (555) 123-4567" },
+    { icon: MapPin, label: "San Francisco, CA" },
+  ] satisfies ContactItem[],
+};

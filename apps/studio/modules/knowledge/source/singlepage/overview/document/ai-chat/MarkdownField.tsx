@@ -1,11 +1,98 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
 
+import { twMerge as twMerge } from "tailwind-merge";
+import Markdown from "markdown-to-jsx";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { memo, useLayoutEffect, useRef, useState } from "react";
-import { MarkdownDocument } from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/Markdown";
-import {
-  Icon,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+function MarkdownDocument({
+  children,
+  hideTitle = false,
+  baseUrl,
+  resolveLink,
+  externalLinksNewTab = false,
+  disableRawHTML = false,
+  className,
+}: {
+  children: string;
+  hideTitle?: boolean;
+  baseUrl?: string;
+  resolveLink?: (url: string) =>
+    | string
+    | {
+        href: string;
+        target: "_top";
+      };
+  externalLinksNewTab?: boolean;
+  disableRawHTML?: boolean;
+  className?: string;
+}) {
+  const assetUrl = (value: string = "") => {
+    if (!baseUrl || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) return value;
+    const url = new URL(value, `https://studio.invalid${baseUrl}`);
+    return url.pathname + url.search + url.hash;
+  };
+  return (
+    <div
+      className={twMerge(
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        className,
+      )}
+    >
+      <Markdown
+        options={{
+          disableParsingRawHTML: disableRawHTML,
+          ...(baseUrl || externalLinksNewTab
+            ? {
+                overrides: {
+                  img: {
+                    component: ({
+                      src,
+                      alt,
+                      ...props
+                    }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+                      <img {...props} src={assetUrl(src)} alt={alt ?? ""} />
+                    ),
+                  },
+                  a: {
+                    component: ({
+                      href,
+                      ...props
+                    }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+                      const resolved =
+                        resolveLink?.(assetUrl(href)) ?? assetUrl(href);
+                      return (
+                        <a
+                          {...props}
+                          {...(typeof resolved === "string"
+                            ? { href: resolved }
+                            : resolved)}
+                          {...(externalLinksNewTab &&
+                          /^https?:\/\//i.test(href ?? "")
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                        />
+                      );
+                    },
+                  },
+                },
+              }
+            : {}),
+        }}
+      >
+        {hideTitle ? children.replace(/^# [^\n]+\n/, "") : children}
+      </Markdown>
+    </div>
+  );
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IMarkdownFieldProps {
   id: string;
@@ -17,7 +104,17 @@ export interface IMarkdownFieldProps {
   helpLabel?: string;
   onHelp?: (button: HTMLButtonElement, section: string) => void;
 }
-
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
+  muted: "text-sps-muted",
+  label: "text-sm font-semibold text-sps-graphite",
+  focus: focus,
+};
 export const MarkdownField = memo(function MarkdownField({
   id,
   label,
@@ -33,14 +130,12 @@ export const MarkdownField = memo(function MarkdownField({
   );
   const textarea = useRef<HTMLTextAreaElement>(null);
   const focusEditor = useRef(false);
-
   useLayoutEffect(() => {
     if (mode === "editor" && focusEditor.current) {
       textarea.current?.focus();
       focusEditor.current = false;
     }
   }, [mode]);
-
   return (
     <div className="min-w-0">
       <div className="mb-2 flex flex-wrap items-center justify-between gap-2">

@@ -1,4 +1,4 @@
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 

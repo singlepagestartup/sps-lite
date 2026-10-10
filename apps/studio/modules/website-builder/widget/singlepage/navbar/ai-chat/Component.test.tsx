@@ -8,8 +8,8 @@ import { Component as HostModuleLayout } from "../../../../../host/layout/index"
 import { Component as SocialModuleProfile } from "../../../../../social/profile/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../index";
 import { Component as Navbar } from "./index";
-import { AIChatPreview } from "../../../../../../workspace/products/singlepage/ai-chat/website/Preview";
-import { aiChatServiceHrefs } from "../../../../../../workspace/utils/products/ai-chat-routes";
+import { AIChatPreview } from "../../../../../host/page/singlepage/ai-chat/Preview";
+import { aiChatServiceHrefs } from "../../../../../host/layout/singlepage/ai-chat-landing/routes";
 
 const studio = path.resolve(import.meta.dir, "../../../../../..");
 const pages = path.join(studio, "modules/host/page/singlepage");

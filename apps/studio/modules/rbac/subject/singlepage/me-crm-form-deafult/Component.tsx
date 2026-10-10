@@ -1,4 +1,4 @@
-import { Component as CrmModuleWidget } from "../../../../crm/widget";
+import { Component as CrmModuleWidget } from "../../../../crm/widget/index";
 import type { CrmFormRecord } from "../../../../crm/shared/demo-crm";
 import { defaultCrmForm } from "../../../../crm/shared/demo-crm";
 
@@ -38,7 +38,7 @@ export function SubjectMeCrmFormDefault(
       className={
         embedded
           ? "min-w-0"
-          : "rounded-3xl bg-[var(--workspace-brand-background)] p-4 sm:p-6"
+          : "rounded-3xl bg-[var(--color-sps-grey)] p-4 sm:p-6"
       }
       data-ds-block="rbac.subject.me-crm-form-deafult"
       data-ds-layer="singlepage"

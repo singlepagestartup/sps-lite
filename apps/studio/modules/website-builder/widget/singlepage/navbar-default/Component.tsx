@@ -1,8 +1,42 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
 import { useCallback, useId, useRef, useState, type ReactNode } from "react";
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../buttons-array";
-import { Menu, X } from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
+import { Component as WebsiteBuilderModuleButtonsArray } from "../../../buttons-array/index";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface NavbarDefaultProps {
   activeHref?: string;
@@ -10,10 +44,6 @@ export interface NavbarDefaultProps {
   cartButton?: ReactNode;
   subjectAccount?: ReactNode;
 }
-export const defaultNavbarDefaultProps: NavbarDefaultProps = {
-  activeHref: "/",
-  brand: "SinglePageStartup",
-};
 export function NavbarDefault({
   activeHref = "/",
   brand,
@@ -26,7 +56,7 @@ export function NavbarDefault({
   const closeNavigation = useCallback(() => setOpen(false), []);
   return (
     <header
-      className="sticky top-0 z-50 w-full shrink-0 border-b border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]/95 backdrop-blur-sm"
+      className="sticky top-0 z-50 w-full shrink-0 border-b border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/95 backdrop-blur-sm"
       data-ds-block="website-builder.widget.navbar-default"
       data-ds-layer="singlepage"
       onKeyDown={(event) => {
@@ -52,7 +82,7 @@ export function NavbarDefault({
           <button
             ref={trigger}
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-xl border border-[var(--workspace-brand-line)] text-[var(--workspace-brand-muted)] hover:bg-[var(--workspace-brand-background)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] text-[var(--color-sps-muted)] hover:bg-[var(--color-sps-grey)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] lg:hidden"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             aria-controls={menuId}
@@ -65,7 +95,7 @@ export function NavbarDefault({
       {open && (
         <div
           id={menuId}
-          className="border-t border-[var(--workspace-brand-line)] px-4 py-3 lg:hidden"
+          className="border-t border-[var(--color-sps-line)] px-4 py-3 lg:hidden"
         >
           <WebsiteBuilderModuleButtonsArray
             variant="navbar-default"
@@ -78,3 +108,9 @@ export function NavbarDefault({
     </header>
   );
 }
+const X = createIcon("x");
+const Menu = createIcon("list");
+export const defaultNavbarDefaultProps: NavbarDefaultProps = {
+  activeHref: "/",
+  brand: "SinglePageStartup",
+};

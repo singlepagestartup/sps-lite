@@ -1,4 +1,4 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature";
+import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
 
 export interface ContentTestimonialItem {
   avatar: string;
@@ -43,17 +43,17 @@ export function ContentTestimonials(props?: Partial<ContentTestimonialsProps>) {
 
   return (
     <section
-      className="w-full bg-[var(--workspace-brand-background)] py-12 sm:py-16"
+      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-testimonials"
       data-ds-layer="singlepage"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--workspace-brand-muted)]">
+            <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">
               {eyebrow}
             </p>
-            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--workspace-brand-foreground)]">
+            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--color-sps-graphite)]">
               {title}
             </h2>
           </div>

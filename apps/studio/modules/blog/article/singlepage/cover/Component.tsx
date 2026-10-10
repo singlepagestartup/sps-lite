@@ -1,8 +1,6 @@
 export const defaultArticleCoverProps = {
-  coverImage: new URL(
-    "../../../../../workspace/assets/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
-    import.meta.url,
-  ).href,
+  coverImage:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
   title: "How to Choose the Right Plan for Your Business",
 };
 
@@ -12,7 +10,7 @@ export function ArticleCover(props?: Partial<ArticleCoverProps>) {
   const { coverImage, title } = { ...defaultArticleCoverProps, ...props };
   return (
     <figure
-      className="m-0 aspect-square min-w-0 overflow-hidden rounded-3xl bg-[var(--workspace-brand-surface)]"
+      className="m-0 aspect-square min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-white)]"
       data-ds-block="blog.article.cover"
       data-ds-layer="singlepage"
     >

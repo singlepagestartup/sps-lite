@@ -1,12 +1,44 @@
-import { memo } from "react";
-import { Button } from "../../../../../workspace/design/singlepage/interface-kit/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
-  Minus,
-  Plus,
-  Trash2,
-} from "../../../../../workspace/utils/components/ModuleIcons";
-
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { memo } from "react";
 import { formatCartMoney } from "../../../cart/shared";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ProductCartDefaultItem {
   id: string;
@@ -17,7 +49,6 @@ export interface ProductCartDefaultItem {
   price: number;
   quantity: number;
 }
-
 export interface ProductCartDefaultProps {
   item: ProductCartDefaultItem;
   compact?: boolean;
@@ -28,26 +59,39 @@ export interface ProductCartDefaultProps {
   onIncrease?: (item: ProductCartDefaultItem) => void;
   onRemove?: (item: ProductCartDefaultItem) => void;
 }
-
+const Trash2 = createIcon("trash");
+const Plus = createIcon("plus");
+const Minus = createIcon("minus");
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
 export const defaultProductCartDefaultItem: ProductCartDefaultItem = {
   id: "srv-consulting",
   slug: "technical-consulting",
   title: "Technical Consulting",
-  image: new URL(
-    "../../../../../workspace/assets/singlepage/generated/living-focus/singlepagestartup-photography-moment-of-focus-square.png",
-    import.meta.url,
-  ).href,
+  image:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-moment-of-focus-square.png",
   priceLabel: "$250/hr",
   price: 250,
   quantity: 1,
 };
-
 export const defaultProductCartDefaultProps: ProductCartDefaultProps = {
   item: defaultProductCartDefaultItem,
   compact: false,
   showRemove: true,
 };
-
 export const ProductCartDefault = memo(function ProductCartDefault(
   props: Partial<ProductCartDefaultProps>,
 ) {
@@ -65,7 +109,6 @@ export const ProductCartDefault = memo(function ProductCartDefault(
     ...props,
   };
   const productHref = href ?? `/ecommerce/products/${item.slug}`;
-
   return (
     <div
       className="flex min-w-0 gap-3 sm:gap-4"
@@ -73,7 +116,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
       data-ds-layer="singlepage"
     >
       <a
-        className="block h-20 w-20 shrink-0 self-start overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)]"
+        className="block h-20 w-20 shrink-0 self-start overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
         href={productHref}
         target={target}
       >
@@ -88,13 +131,13 @@ export const ProductCartDefault = memo(function ProductCartDefault(
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <a
-              className="block break-words text-sm font-semibold text-[var(--workspace-brand-foreground)] no-underline transition hover:text-[var(--workspace-brand-muted)]"
+              className="block break-words text-sm font-semibold text-[var(--color-sps-graphite)] no-underline transition hover:text-[var(--color-sps-muted)]"
               href={productHref}
               target={target}
             >
               {item.title}
             </a>
-            <span className="mt-0.5 block text-xs text-[var(--workspace-brand-muted)]">
+            <span className="mt-0.5 block text-xs text-[var(--color-sps-muted)]">
               {item.priceLabel}
             </span>
           </div>
@@ -102,7 +145,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
             <Button
               variant="plain"
               aria-label={`Remove ${item.title}`}
-              className="h-11 w-11 shrink-0 px-0 hover:bg-[var(--workspace-brand-danger-surface)] hover:text-[var(--workspace-brand-danger)]"
+              className="h-11 w-11 shrink-0 px-0 hover:bg-[var(--color-sps-danger-surface)] hover:text-[var(--color-sps-danger)]"
               onClick={() => onRemove?.(item)}
             >
               <Trash2 className="h-5 w-5" />
@@ -112,14 +155,14 @@ export const ProductCartDefault = memo(function ProductCartDefault(
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
           {compact ? (
-            <span className="text-xs text-[var(--workspace-brand-muted)]">
+            <span className="text-xs text-[var(--color-sps-muted)]">
               Qty: {item.quantity}
             </span>
           ) : (
             <div
               role="group"
               aria-label={`${item.title} quantity`}
-              className="flex items-center gap-1 rounded-xl bg-[var(--workspace-brand-background)] p-1"
+              className="flex items-center gap-1 rounded-xl bg-[var(--color-sps-grey)] p-1"
             >
               <Button
                 variant="plain"
@@ -145,7 +188,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
               </Button>
             </div>
           )}
-          <span className="text-sm font-semibold text-[var(--workspace-brand-foreground)]">
+          <span className="text-sm font-semibold text-[var(--color-sps-graphite)]">
             {formatCartMoney(item.price * item.quantity)}
           </span>
         </div>

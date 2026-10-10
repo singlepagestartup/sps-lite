@@ -5,8 +5,8 @@ import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 import { ProfilesProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 
 import { AccountProvider } from "../../../../rbac/subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
-import { aiChatWorkspaceFixture } from "../../../../../workspace/utils/products/ai-chat-workspace-fixture";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example() {
   return (

@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../../../rbac/subject/singlepage/account/Account";
 import { ProfilesProvider } from "./Profiles";
 import { ProjectProvider } from "./Profile";
-import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
-import { aiChatWorkspaceFixture } from "../../../../../../../workspace/utils/products/ai-chat-workspace-fixture";
+import { aiChatAccount } from "../../../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatWorkspaceFixture } from "./fixtures";
 
 function Example() {
   return (

@@ -3,7 +3,7 @@ import {
   Component as BlogModuleArticle,
   type ArticleOverviewDefaultProps,
   defaultArticleOverviewDefaultProps,
-} from "../../../article";
+} from "../../../article/index";
 
 export { defaultArticleOverviewDefaultProps };
 export type { ArticleOverviewDefaultProps };

@@ -1,4 +1,5 @@
 "use client";
+
 import {
   createContext,
   useContext,
@@ -8,7 +9,7 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import type { IProjectFile } from "../../../../../../../workspace/utils/products/ai-chat-workspace";
+import type { IProjectFile } from "../../../../../../social/profile/singlepage/scope/ai-chat/project/state";
 
 interface IFilesContext {
   files: IProjectFile[];

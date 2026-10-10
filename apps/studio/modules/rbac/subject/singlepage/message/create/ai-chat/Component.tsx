@@ -1,16 +1,28 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useId, useRef, useEffect, useState, type FormEvent } from "react";
-import {
-  Button,
-  Icon,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import { readProjectFiles } from "../../../../../../../workspace/utils/products/ai-chat-files";
+import { readProjectFiles } from "../../../../../../file-storage/file/singlepage/list/attachments/ai-chat/utils";
 import { Component as FileStorageModuleFile } from "../../../../../../file-storage/file/index";
-
 import { useThread } from "../../../../../../social/thread/singlepage/overview/ai-chat/Thread";
 import { useSource } from "../../../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
 import { useFiles } from "../../../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export function Component() {
   const {
     thread,
@@ -214,3 +226,18 @@ export function Component() {
     </form>
   );
 }
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

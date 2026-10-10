@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, useContext, type ReactNode } from "react";
 interface INavigationProviderProps {
   navigate: (href: string) => void;

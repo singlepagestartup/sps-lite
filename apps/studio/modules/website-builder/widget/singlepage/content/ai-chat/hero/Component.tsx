@@ -1,5 +1,5 @@
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array";
-import type { IWebsiteSection } from "../../../../../../../workspace/utils/products/ai-chat-content";
+import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array/index";
+import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 
 export interface IAIChatHeroProps {
@@ -48,7 +48,7 @@ export function Component({ content = defaultContent }: IAIChatHeroProps = {}) {
         </div>
         <figure className="flex items-center justify-center @3xl:p-5 @3xl:pl-0">
           <img
-            src="/workspace-assets/singlepage/generated/living-focus/singlepagestartup-photography-solo-founder-v1-square.png"
+            src="/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-solo-founder-v1-square.png"
             data-asset-id="singlepage-generated-living-focus-photography-solo-founder-v1-square"
             alt={content.labels["hero-photo-alt"]}
             width={1254}

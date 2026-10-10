@@ -1,15 +1,22 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { Component as KnowledgeModuleSource } from "../../../../../../knowledge/source/index";
 import { useId, useState } from "react";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import {
   aiChatProfileHref,
   aiChatThreadCreateHref,
-} from "../../../../../../../workspace/utils/products/ai-chat-routes";
-import {
-  Icon,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+} from "../../../../../../host/layout/singlepage/ai-chat-landing/routes";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IProfileSidebarProps {
   profileId: string;
@@ -87,3 +94,10 @@ export function Component({
     </>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};

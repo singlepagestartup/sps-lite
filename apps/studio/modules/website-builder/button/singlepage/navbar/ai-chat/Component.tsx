@@ -1,10 +1,38 @@
+import IconGlyphs from "../../../../feature/singlepage/icon/icons.json";
 import { memo } from "react";
-import {
-  Icon,
-  kit,
-  type IconName,
-} from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-
+type IconName = keyof typeof IconGlyphs;
+function Icon({
+  name,
+  size = 20,
+  className = "",
+  svgProps,
+}: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  const geometry = IconGlyphs[name]
+    ?.replace(/^\s*<svg\b[^>]*>/, "")
+    .replace(/<\/svg>\s*$/, "");
+  if (!geometry) throw new Error("Missing Phosphor icon: " + name);
+  return (
+    <svg
+      className={`shrink-0 ${size === 24 ? "size-6" : "size-5"} ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 256 256"
+      fill="currentColor"
+      data-icon-family="phosphor"
+      data-icon-name={name}
+      data-icon-weight="regular"
+      aria-hidden="true"
+      focusable="false"
+      {...svgProps}
+      dangerouslySetInnerHTML={{ __html: geometry }}
+    />
+  );
+}
 export interface IHeaderButtonProps {
   id: string;
   activeHref?: string;
@@ -16,6 +44,13 @@ interface IHeaderButton {
   icon: IconName;
   target?: "_self";
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
 const buttons: Record<string, IHeaderButton> = {
   "ai-chat-try": {
     title: "Try the chat",
@@ -35,7 +70,6 @@ const buttons: Record<string, IHeaderButton> = {
     icon: "user-circle",
   },
 };
-
 export const Component = memo(function Component({
   id,
   activeHref,

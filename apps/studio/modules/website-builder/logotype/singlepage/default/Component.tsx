@@ -1,5 +1,17 @@
-import { BrandMark } from "../../../../../workspace/utils/components/BrandMark";
-
+interface BrandMarkProps {
+  size?: "sm" | "md";
+  inverse?: boolean;
+}
+function BrandMark({ size = "md", inverse = false }: BrandMarkProps) {
+  return (
+    <img
+      aria-hidden="true"
+      alt=""
+      className={`block shrink-0 object-contain ${size === "sm" ? "size-6" : "size-8"}`}
+      src={inverse ? darkMark : lightMark}
+    />
+  );
+}
 export interface ILogotypeDefaultProps {
   brand?: string;
   compact?: boolean;
@@ -14,7 +26,7 @@ export function Component({
       href="/?path=/story/modules-host-models-page-singlepage-root--default"
       target="_top"
       aria-label={`${brand} home`}
-      className="inline-flex min-h-11 items-center gap-3 rounded-xl text-base font-semibold text-[var(--workspace-brand-foreground)] no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)]"
+      className="inline-flex min-h-11 items-center gap-3 rounded-xl text-base font-semibold text-[var(--color-sps-graphite)] no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
     >
       <BrandMark size={compact ? "sm" : undefined} />
       <span className={compact ? "sr-only" : "hidden min-[480px]:inline"}>
@@ -23,3 +35,7 @@ export function Component({
     </a>
   );
 }
+const lightMark =
+  "/module-assets/images/singlepage/intake/operator-logo-square-white.svg";
+const darkMark =
+  "/module-assets/images/singlepage/intake/operator-logo-square-black.svg";

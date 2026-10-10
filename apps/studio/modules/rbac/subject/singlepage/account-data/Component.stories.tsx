@@ -3,7 +3,7 @@ import { Component as RbacModuleSubject } from "../../index";
 import type { ISettingsProps } from "./Component";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../account/Account";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../account/fixture";
 
 function Example(props: ISettingsProps) {
   return <RbacModuleSubject {...props} variant="account-data" />;
