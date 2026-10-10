@@ -1,10 +1,17 @@
 import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-export function Component() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function Component({
+  variant = "ai-chat-rbac-subjects-authentication-registration",
+}: IComponentVariantProps = {}) {
   return (
-    <HostModuleLayout variant="ai-chat-dashboard" page="register">
-      <RbacModuleSubject variant="authentication-email-and-password-registration-form-ai-chat" />
-    </HostModuleLayout>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout variant="ai-chat-dashboard" page="register">
+        <RbacModuleSubject variant="authentication-email-and-password-registration-form-ai-chat" />
+      </HostModuleLayout>
+    </div>
   );
 }

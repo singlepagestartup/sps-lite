@@ -667,7 +667,12 @@ interface IArticleRecord {
   variant: string;
   className: string;
 }
-export function BlogArticleAdminV2List() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function BlogArticleAdminV2List({
+  variant = "admin-v2-list",
+}: IComponentVariantProps = {}) {
   const [articles, setArticles] = useState(initialArticles);
   const [preview, setPreview] = useState<IArticleRecord | null>(null);
   const [draft, setDraft] = useState<IArticleRecord | null>(null);
@@ -695,7 +700,13 @@ export function BlogArticleAdminV2List() {
     [edit],
   );
   return (
-    <div data-ds-block="blog.article.admin-v2-list" data-ds-layer="singlepage">
+    <div
+      data-ds-block="blog.article.admin-v2-list"
+      data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={variant}
+    >
       <Records
         title="Articles"
         scope="blog / article"

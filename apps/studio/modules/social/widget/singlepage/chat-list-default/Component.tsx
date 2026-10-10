@@ -45,6 +45,7 @@ function Icon(props: {
 }
 
 export interface SocialWidgetChatListDefaultProps {
+  variant?: string;
   selectedId?: string;
   chatImages?: Record<string, SocialPreviewAttachment>;
   onSelectChat?: (id: string) => void;
@@ -126,6 +127,9 @@ export function SocialWidgetChatListDefault(
       className="flex h-full min-h-[360px] w-full flex-col border-r border-[var(--color-sps-line)] bg-[var(--color-sps-grey)]"
       data-ds-block="social.widget.chat-list-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="widget"
+      data-variant={props?.variant ?? "chat-list-default"}
     >
       <div className="flex shrink-0 items-center justify-between border-b border-[var(--color-sps-line)] px-4 py-3">
         <h2 className="text-sm font-semibold text-[var(--color-sps-graphite)]">

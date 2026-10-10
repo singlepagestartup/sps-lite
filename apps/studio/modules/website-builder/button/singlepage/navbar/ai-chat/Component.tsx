@@ -34,6 +34,7 @@ function Icon({
   );
 }
 export interface IHeaderButtonProps {
+  variant?: string;
   id: string;
   activeHref?: string;
   onNavigate?: () => void;
@@ -71,6 +72,7 @@ const buttons: Record<string, IHeaderButton> = {
   },
 };
 export const Component = memo(function Component({
+  variant = "navbar-ai-chat",
   id,
   activeHref,
   onNavigate,
@@ -81,15 +83,15 @@ export const Component = memo(function Component({
   return (
     <a
       data-ds-block="website-builder.button.navbar-ai-chat"
-      data-module="website-builder"
-      data-model="button"
       data-id={id}
-      data-variant="navbar-ai-chat"
       href={data.url}
       target={data.target}
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
       className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm ${kit.focus} ${active ? "bg-sps-graphite font-semibold text-white" : "text-sps-muted hover:bg-sps-grey"}`}
+      data-module="website-builder"
+      data-model="button"
+      data-variant={variant}
     >
       <Icon name={data.icon} />
       {data.title}

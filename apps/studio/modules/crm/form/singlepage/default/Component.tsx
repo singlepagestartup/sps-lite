@@ -8,6 +8,7 @@ import { useState } from "react";
 import type { CrmFormRecord } from "../../../shared/demo-crm";
 import { defaultCrmForm } from "../../../shared/demo-crm";
 export interface CrmFormDefaultProps {
+  variant?: string;
   form: CrmFormRecord;
   disabled?: boolean;
   subjectName?: string;
@@ -38,6 +39,9 @@ export function CrmFormDefault(props?: Partial<CrmFormDefaultProps>) {
         setInvalid(false);
         setSubmitted(true);
       }}
+      data-module="crm"
+      data-model="form"
+      data-variant={props?.variant ?? "default"}
     >
       <div className="mb-6">
         <h2 className=" text-2xl font-semibold text-[var(--color-sps-graphite)]">

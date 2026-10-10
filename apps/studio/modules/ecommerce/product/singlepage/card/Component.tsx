@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface ProductCardProps {
+  variant?: string;
   slug: string;
   href?: string;
   target?: "_self" | "_top" | "_blank" | "_parent";
@@ -68,6 +69,9 @@ export function ProductCard(props?: Partial<ProductCardProps>) {
       data-ds-block="ecommerce.product.card"
       data-ds-layer="singlepage"
       aria-label={`Open ${title}`}
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "card"}
     >
       <div className="relative aspect-square overflow-hidden bg-[var(--color-sps-grey)]">
         <img src={image} alt={title} className="h-full w-full object-cover" />

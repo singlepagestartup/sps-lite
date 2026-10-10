@@ -611,9 +611,11 @@ function Icon(props: {
 }
 
 export interface IProductAdminListProps {
+  variant?: string;
   initialProduct?: IStudioProduct;
 }
 export function EcommerceProductAdminV2List({
+  variant = "admin-v2-list",
   initialProduct,
 }: IProductAdminListProps = {}) {
   const [products, setProducts] = useState(studioProducts);
@@ -651,6 +653,9 @@ export function EcommerceProductAdminV2List({
       className="min-w-0"
       data-ds-block="ecommerce.product.admin-v2-list"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={variant}
     >
       <Records
         title="Products"

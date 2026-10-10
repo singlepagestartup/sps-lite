@@ -51,7 +51,12 @@ const productOverviewRelatedProducts =
     target: "_top" as const,
   }));
 
-export function EcommerceCartFlowDefault() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function EcommerceCartFlowDefault({
+  variant = "ecommerce-products-ecommerce-products-slug",
+}: IComponentVariantProps = {}) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartCount = getItemCount(items);
@@ -85,50 +90,52 @@ export function EcommerceCartFlowDefault() {
   }, []);
 
   return (
-    <HostModuleLayout
-      variant="website"
-      activeHref="/ecommerce/products"
-      cartButton={
-        <EcommerceModuleCart
-          variant="button-default"
-          count={cartCount}
-          onClick={() => setIsCartOpen(true)}
-        />
-      }
-      cartDrawer={
-        <EcommerceModuleCart
-          variant="drawer-default"
-          items={items}
-          isOpen={isCartOpen}
-          onClear={() => setItems([])}
-          onClose={() => setIsCartOpen(false)}
-          onDecrease={handleDecrease}
-          onIncrease={handleIncrease}
-          onRemove={handleRemove}
-        />
-      }
-    >
-      <main
-        className="min-w-0"
-        data-ds-page="host.page.ecommerce-products-ecommerce-products-slug"
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="website"
+        activeHref="/ecommerce/products"
+        cartButton={
+          <EcommerceModuleCart
+            variant="button-default"
+            count={cartCount}
+            onClick={() => setIsCartOpen(true)}
+          />
+        }
+        cartDrawer={
+          <EcommerceModuleCart
+            variant="drawer-default"
+            items={items}
+            isOpen={isCartOpen}
+            onClear={() => setItems([])}
+            onClose={() => setIsCartOpen(false)}
+            onDecrease={handleDecrease}
+            onIncrease={handleIncrease}
+            onRemove={handleRemove}
+          />
+        }
       >
-        <HostModuleWidget
-          variant="default"
-          externalModule="ecommerce"
-          productProps={{
-            related: productOverviewRelatedProducts,
-            purchase: {
-              id: websiteDevelopmentCartItem.id,
-              slug: websiteDevelopmentCartItem.slug,
-              image: websiteDevelopmentCartItem.image,
-              title: websiteDevelopmentCartItem.title,
-              priceLabel: websiteDevelopmentCartItem.priceLabel,
-              price: websiteDevelopmentCartItem.price,
-              onAddToCart: handleAddToCart,
-            },
-          }}
-        />
-      </main>
-    </HostModuleLayout>
+        <main
+          className="min-w-0"
+          data-ds-page="host.page.ecommerce-products-ecommerce-products-slug"
+        >
+          <HostModuleWidget
+            variant="default"
+            externalModule="ecommerce"
+            productProps={{
+              related: productOverviewRelatedProducts,
+              purchase: {
+                id: websiteDevelopmentCartItem.id,
+                slug: websiteDevelopmentCartItem.slug,
+                image: websiteDevelopmentCartItem.image,
+                title: websiteDevelopmentCartItem.title,
+                priceLabel: websiteDevelopmentCartItem.priceLabel,
+                price: websiteDevelopmentCartItem.price,
+                onAddToCart: handleAddToCart,
+              },
+            }}
+          />
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }

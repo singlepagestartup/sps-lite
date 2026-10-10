@@ -3,12 +3,17 @@ import {
   HostStudioProvider,
   type IHostStudioProviderProps,
 } from "./HostRecords/index";
-export function HostPageComposition(
-  props: Omit<IHostStudioProviderProps, "children"> = {},
-) {
+export interface IHostPageCompositionProps
+  extends Omit<IHostStudioProviderProps, "children"> {
+  variant?: string;
+}
+export function HostPageComposition({
+  variant = "composition",
+  ...props
+}: IHostPageCompositionProps = {}) {
   return (
     <HostStudioProvider {...props}>
-      <HostWorkbench />
+      <HostWorkbench variant={variant} />
     </HostStudioProvider>
   );
 }

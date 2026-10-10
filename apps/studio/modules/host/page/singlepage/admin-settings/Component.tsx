@@ -2,9 +2,19 @@ import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminSettings() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminSettings({
+  variant = "admin-settings",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-settings">
+    <div
+      data-ds-page="host.page.admin-settings"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin/settings"
         eyebrow="host.page"

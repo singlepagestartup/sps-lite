@@ -320,12 +320,14 @@ function PageIntro({ section }: { section: IWebsiteSection }) {
   );
 }
 interface IServicePageProps {
+  variant?: string;
   copy: IAIChatServicePageContentPresentation;
   children: ReactNode;
   showIntro?: boolean;
   projectHref?: string;
 }
 function ServicePage({
+  variant = "authentication-email-and-password-registration-form-ai-chat",
   copy,
   children,
   showIntro = true,
@@ -336,6 +338,9 @@ function ServicePage({
       <div
         data-sps-theme="singlepage"
         className="@container min-w-0 bg-sps-grey text-sps-graphite font-sps"
+        data-module="rbac"
+        data-model="subject"
+        data-variant={variant}
       >
         <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
           <a
@@ -356,14 +361,20 @@ function ServicePage({
   );
 }
 interface IAccountPageProps {
+  variant?: string;
   copy: IAIChatServicePageContentPresentation;
   page: "register" | "login";
   children: ReactNode;
 }
-export function AccountPage({ copy, page, children }: IAccountPageProps) {
+export function AccountPage({
+  variant = "authentication-email-and-password-registration-form-ai-chat",
+  copy,
+  page,
+  children,
+}: IAccountPageProps) {
   const secondaryPhoto = copy.labels["secondary-photo-src"];
   return (
-    <ServicePage copy={copy} showIntro={false}>
+    <ServicePage copy={copy} showIntro={false} variant={variant}>
       <div
         className={`grid min-w-0 items-stretch gap-8 @[1000px]:gap-12 ${secondaryPhoto ? "@[760px]:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]" : "@[760px]:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]"}`}
       >
@@ -442,6 +453,7 @@ function Icon(props: {
 }
 
 export interface IRegisterProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
 }
 export interface IRegisterErrors {
@@ -449,7 +461,10 @@ export interface IRegisterErrors {
   password?: string;
   repeatedPassword?: string;
 }
-export function Component({ copy = defaultCopy }: IRegisterProps = {}) {
+export function Component({
+  variant = "authentication-email-and-password-registration-form-ai-chat",
+  copy = defaultCopy,
+}: IRegisterProps = {}) {
   const label = copy.labels;
   const id = useId();
   const [email, setEmail] = useState("");
@@ -480,7 +495,7 @@ export function Component({ copy = defaultCopy }: IRegisterProps = {}) {
     setSubmitted(Object.keys(nextErrors).length === 0);
   }
   return (
-    <AccountPage copy={copy} page="register">
+    <AccountPage copy={copy} page="register" variant={variant}>
       <PageSection
         section={copy.sections.account}
         icon="user-plus"

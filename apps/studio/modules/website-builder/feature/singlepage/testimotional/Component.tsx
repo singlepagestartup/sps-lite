@@ -37,7 +37,7 @@ function Icon(props: {
 
 export type FeatureTestimotionalProps = typeof defaultFeatureTestimotionalProps;
 export function FeatureTestimotional(
-  props?: Partial<FeatureTestimotionalProps>,
+  props?: Partial<FeatureTestimotionalProps> & { variant?: string },
 ) {
   const { avatar, name, role, text, rating, className } = {
     ...defaultFeatureTestimotionalProps,
@@ -55,6 +55,9 @@ export function FeatureTestimotional(
       className={rootClassName}
       data-ds-block="website-builder.feature.testimotional"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="feature"
+      data-variant={props?.variant ?? "testimotional"}
     >
       <div
         className="mb-6 flex gap-1"

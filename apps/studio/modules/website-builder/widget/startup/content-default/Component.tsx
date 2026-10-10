@@ -20,6 +20,14 @@ export const startupContentProps: ContentDefaultProps = {
   mediaLabel: "Startup-specific landing preview",
 };
 
-export function ContentDefaultStartup(props: Partial<ContentDefaultProps>) {
-  return <ContentDefault {...startupContentProps} {...props} />;
+export function ContentDefaultStartup(
+  props: Partial<ContentDefaultProps> & { variant?: string },
+) {
+  return (
+    <ContentDefault
+      {...startupContentProps}
+      {...props}
+      variant={props.variant ?? "content-default"}
+    />
+  );
 }

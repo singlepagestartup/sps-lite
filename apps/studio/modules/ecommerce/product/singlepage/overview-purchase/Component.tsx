@@ -40,6 +40,7 @@ function Icon(props: {
 }
 
 export interface ProductOverviewPurchaseProps {
+  variant?: string;
   id: string;
   slug: string;
   image: string;
@@ -116,6 +117,9 @@ export function ProductOverviewPurchase(
       data-ds-block={blockId ?? "ecommerce.product.overview-purchase"}
       data-ds-imports={importedBlockId}
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "overview-purchase"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 max-w-2xl">

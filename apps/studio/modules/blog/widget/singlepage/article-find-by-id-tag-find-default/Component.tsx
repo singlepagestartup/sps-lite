@@ -37,7 +37,7 @@ function Icon(props: {
 export type ArticleFindByIdTagFindProps =
   typeof defaultArticleFindByIdTagFindProps;
 export function ArticleFindByIdTagFind(
-  props?: Partial<ArticleFindByIdTagFindProps>,
+  props?: Partial<ArticleFindByIdTagFindProps> & { variant?: string },
 ) {
   const { title, tags } = { ...defaultArticleFindByIdTagFindProps, ...props };
   return (
@@ -46,6 +46,9 @@ export function ArticleFindByIdTagFind(
       data-ds-imports="blog.tag.button-default"
       data-ds-layer="singlepage"
       className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "article-find-by-id-tag-find-default"}
     >
       <div className="mb-3 flex items-center gap-2">
         <Tag className="size-5 text-[var(--color-sps-muted)]" />

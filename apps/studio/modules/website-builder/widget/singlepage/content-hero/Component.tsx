@@ -42,7 +42,9 @@ function Icon(props: {
 }
 
 export type ContentHeroProps = typeof defaultContentHeroProps;
-export function ContentHero(props?: Partial<ContentHeroProps>) {
+export function ContentHero(
+  props?: Partial<ContentHeroProps> & { variant?: string },
+) {
   const {
     feature,
     title,
@@ -57,6 +59,9 @@ export function ContentHero(props?: Partial<ContentHeroProps>) {
       className="w-full bg-[var(--color-sps-grey)] py-8 sm:py-12"
       data-ds-block="website-builder.widget.content-hero"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-hero"}
     >
       <div className="mx-auto grid w-full max-w-7xl gap-0 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="flex min-w-0 flex-col items-start justify-center rounded-t-3xl bg-[var(--color-sps-graphite)] p-6 sm:p-10 lg:rounded-l-3xl lg:rounded-tr-none lg:p-12">

@@ -650,6 +650,8 @@ interface ISelectOption {
   disabled?: boolean;
 }
 interface ISelectProps extends SelectPrimitive.SelectProps {
+  model?: HostModel;
+  variant?: string;
   id?: string;
   className?: string;
   placeholder?: string;
@@ -668,16 +670,19 @@ function Icon(props: {
 }
 
 export interface IHostModelListProps {
+  variant?: string;
   model: HostModel;
   embedded?: boolean;
 }
 export interface IHostModelFormProps {
+  variant?: string;
   model: HostModel;
   record: HostRecord;
   onSaved?: (record: HostRecord) => void;
   embedded?: boolean;
 }
 export interface IHostModelSelectProps {
+  variant?: string;
   model: HostModel;
   value?: string;
   onValueChange?: (value: string) => void;
@@ -691,6 +696,7 @@ interface IHostModelPanelProps {
   onSaved?: (record: HostRecord) => void;
 }
 export function HostModelSelect({
+  variant = "admin-v2-select-input",
   model,
   value,
   onValueChange,
@@ -711,6 +717,8 @@ export function HostModelSelect({
         value: record.id,
         label: hostRecordLabel(record),
       }))}
+      model={model}
+      variant={variant}
     />
   );
 }
@@ -753,7 +761,11 @@ export function HostModelPanel({
     </RecordEditor>
   );
 }
-export function HostModelList({ model, embedded }: IHostModelListProps) {
+export function HostModelList({
+  variant = "admin-v2-list",
+  model,
+  embedded,
+}: IHostModelListProps) {
   const { state, update } = useHostStudio();
   const [draft, setDraft] = useState<HostRecord | null>(null);
   const [preview, setPreview] = useState<HostRecord | null>(null);
@@ -804,6 +816,9 @@ export function HostModelList({ model, embedded }: IHostModelListProps) {
     <div
       data-ds-block={`host.${model}.admin-v2-list`}
       data-ds-layer="singlepage"
+      data-module="host"
+      data-model={model}
+      data-variant={variant}
     >
       <Records
         title={
@@ -832,6 +847,7 @@ export function HostModelList({ model, embedded }: IHostModelListProps) {
   );
 }
 export function HostModelForm({
+  variant = "admin-v2-form",
   model,
   record,
   onSaved,
@@ -849,6 +865,9 @@ export function HostModelForm({
       className={embedded ? "flex min-h-0 flex-1 flex-col" : `${kit.card} p-0`}
       data-ds-block={`host.${model}.admin-v2-form`}
       data-ds-layer="singlepage"
+      data-module="host"
+      data-model={model}
+      data-variant={variant}
     >
       {!embedded && (
         <header className="border-b border-[var(--color-sps-line)] p-5">
@@ -1008,6 +1027,8 @@ const picker = {
 export const Select = forwardRef<HTMLButtonElement, ISelectProps>(
   function Select(
     {
+      model,
+      variant,
       id,
       className,
       placeholder,
@@ -1040,6 +1061,9 @@ export const Select = forwardRef<HTMLButtonElement, ISelectProps>(
           }
         }}
         className="min-w-0"
+        data-module={model ? "host" : undefined}
+        data-model={model}
+        data-variant={variant}
       >
         <SelectPrimitive.Root
           {...props}
@@ -1065,6 +1089,9 @@ export const Select = forwardRef<HTMLButtonElement, ISelectProps>(
           {/* Keep fixed positioning outside CSS containers while retaining the project theme. */}
           <SelectPrimitive.Portal>
             <SelectPrimitive.Content
+              data-module={model ? "host" : undefined}
+              data-model={model}
+              data-variant={variant}
               data-sps-theme={projection}
               position="popper"
               align="start"

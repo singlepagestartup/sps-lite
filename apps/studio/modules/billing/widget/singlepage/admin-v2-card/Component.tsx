@@ -28,18 +28,32 @@ function valueLabel(value: unknown): string {
       : String(value);
 }
 export interface IComponentProps {
+  variant?: string;
   id?: string;
   data?: IRecord;
   className?: string;
 }
-function Card({ id, data, className }: IComponentProps) {
+function Card({
+  variant = "admin-v2-card",
+  id,
+  data,
+  className,
+}: IComponentProps) {
   const record =
     data ??
     (id ? fixture.records.find((item) => item.id === id) : fixture.records[0]);
-  if (!record) return <p>Record unavailable in this local preview.</p>;
+  if (!record)
+    return (
+      <p data-module="billing" data-model="widget" data-variant={variant}>
+        Record unavailable in this local preview.
+      </p>
+    );
   return (
     <article
       className={`min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 sm:p-6 ${className ?? ""}`}
+      data-module="billing"
+      data-model="widget"
+      data-variant={variant}
     >
       <p className="text-xs text-sps-muted">
         {fixture.schema.module} / {fixture.schema.entityType}

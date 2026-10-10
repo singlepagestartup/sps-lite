@@ -20,6 +20,7 @@ function Icon(props: {
 }
 
 export interface IMessageOverviewProps {
+  variant?: string;
   message: IProjectMessage;
   agent: IProjectAgent | null;
   onSelect: (agent: IProjectAgent) => void;
@@ -80,6 +81,7 @@ const kit = {
   focus: focus,
 };
 export const Component = memo(function Component({
+  variant = "overview-ai-chat",
   message,
   agent: replyingAgent,
   onSelect,
@@ -88,11 +90,11 @@ export const Component = memo(function Component({
   return (
     <article
       data-ds-block="social.message.overview-ai-chat"
+      data-id={message.id}
+      className={`flex min-w-0 gap-3 ${message.role === "user" ? "ml-6" : ""}`}
       data-module="social"
       data-model="message"
-      data-id={message.id}
-      data-variant="overview-ai-chat"
-      className={`flex min-w-0 gap-3 ${message.role === "user" ? "ml-6" : ""}`}
+      data-variant={variant}
     >
       {message.role === "assistant" &&
         (replyingAgent ? (

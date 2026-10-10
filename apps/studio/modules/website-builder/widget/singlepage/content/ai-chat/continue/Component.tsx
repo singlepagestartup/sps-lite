@@ -13,6 +13,7 @@ function Icon(props: {
 }
 
 export interface IAIChatContinueProps {
+  variant?: string;
   content?: {
     continue: IWebsiteSection;
     terms: IWebsiteSection;
@@ -23,6 +24,7 @@ export interface IAIChatContinueProps {
   };
 }
 export function Component({
+  variant = "content-ai-chat-continue",
   content = defaultContent,
 }: IAIChatContinueProps = {}) {
   const mainLink = content.startLink;
@@ -30,6 +32,9 @@ export function Component({
     <section
       data-ds-block="website-builder.widget.content-ai-chat-continue"
       className={`${section} pb-10`}
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className="flex flex-wrap items-center justify-between gap-6 border-t border-sps-line py-8">
         <div className="max-w-xl">

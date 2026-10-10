@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface CartButtonDefaultProps {
+  variant?: string;
   count: number;
   label: string;
   onClick?: () => void;
@@ -51,6 +52,9 @@ export function CartButtonDefault(props?: Partial<CartButtonDefaultProps>) {
       data-ds-layer="singlepage"
       onClick={onClick}
       type="button"
+      data-module="ecommerce"
+      data-model="cart"
+      data-variant={props?.variant ?? "button-default"}
     >
       <ShoppingCart className="h-5 w-5" />
       {count > 0 ? (

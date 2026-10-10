@@ -23,27 +23,36 @@ function Icon(props: {
 }
 
 export interface IOverviewAiChatProjectProps {
+  variant?: string;
   profileId: string;
   chatId?: string;
   selected: IProfileSidebarProps["selected"];
   children: (navigation: ReactNode) => ReactNode;
 }
 export function Component({
+  variant = "overview-ai-chat-project",
   profileId,
   chatId,
   selected,
   children,
 }: IOverviewAiChatProjectProps) {
   return (
-    <ProfileScope profileId={profileId}>
-      <OverviewAiChatProject
-        profileId={profileId}
-        chatId={chatId}
-        selected={selected}
-      >
-        {children}
-      </OverviewAiChatProject>
-    </ProfileScope>
+    <div
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
+      data-id={profileId}
+    >
+      <ProfileScope profileId={profileId}>
+        <OverviewAiChatProject
+          profileId={profileId}
+          chatId={chatId}
+          selected={selected}
+        >
+          {children}
+        </OverviewAiChatProject>
+      </ProfileScope>
+    </div>
   );
 }
 function OverviewAiChatProject({
@@ -94,10 +103,7 @@ function OverviewAiChatProject({
       <div
         id="documents"
         data-ds-block="social.profile.overview-ai-chat-project"
-        data-module="social"
-        data-model="profile"
         data-id={profileId}
-        data-variant="overview-ai-chat-project"
         data-sidebar-open={sidebarOpen}
         data-drawer-open={drawerOpen}
         onKeyDown={(event) => {

@@ -88,14 +88,19 @@ export interface IKnowledgeSkill {
   description: string;
   variant: string;
 }
-export function Component() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function Component({
+  variant = "overview-ai-chat",
+}: IComponentVariantProps = {}) {
   return (
     <section
       data-ds-block="social.skill.overview-ai-chat"
+      data-id={knowledgeSkill.id}
       data-module="social"
       data-model="skill"
-      data-id={knowledgeSkill.id}
-      data-variant={knowledgeSkill.variant}
+      data-variant={variant}
     >
       <h3 className="mb-3 font-semibold">{knowledgeSkill.title}</h3>
       <MarkdownDocument>{knowledgeSkill.description}</MarkdownDocument>

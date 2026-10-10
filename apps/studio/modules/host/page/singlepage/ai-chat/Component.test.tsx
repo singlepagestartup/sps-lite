@@ -153,14 +153,18 @@ describe("Local AI Chat components", () => {
     expect(settings).toContain(
       'data-ds-block="social.profile.settings-ai-chat-project"',
     );
-    expect(settings).not.toContain('data-model="thread"');
+    expect(settings).not.toContain(
+      'data-ds-block="social.thread.overview-ai-chat"',
+    );
     const create = renderToStaticMarkup(
       <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create" />,
     );
     expect(create).toContain('data-ds-block="social.thread.create-ai-chat"');
     expect(create).toContain("Thread name");
     expect(create).toContain("Thread agent");
-    expect(create).not.toContain('data-model="thread"');
+    expect(create).not.toContain(
+      'data-ds-block="social.thread.overview-ai-chat"',
+    );
   });
 
   test("project screens have one Host Layout and a Social Profile overview", () => {
@@ -176,7 +180,11 @@ describe("Local AI Chat components", () => {
       expect(html).toContain(
         'data-ds-block="social.profile.overview-ai-chat-project"',
       );
-      expect(html).toContain('data-model="profile" data-id="pottery"');
+      const profile =
+        html.match(
+          /<div(?=[^>]*data-module="social")(?=[^>]*data-model="profile")(?=[^>]*data-variant="overview-ai-chat-project")[^>]*>/,
+        )?.[0] ?? "";
+      expect(profile).toContain('data-id="pottery"');
       expect(html).toContain('aria-label="Show sidebar"');
     }
     const inaccessible = renderToStaticMarkup(

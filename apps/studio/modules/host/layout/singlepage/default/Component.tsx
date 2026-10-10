@@ -6,15 +6,18 @@ import {
 import { createHostStudioState } from "../../../page/singlepage/composition/HostRecords/state/index";
 export interface IHostLayoutDefaultProps
   extends Omit<IHostStudioProviderProps, "children"> {
+  variant?: string;
   id?: string;
 }
 export function HostLayoutDefault({
+  variant = "default",
   id,
   ...provider
 }: IHostLayoutDefaultProps = {}) {
   return (
     <HostStudioProvider {...provider}>
       <HostRecordPreview
+        variant={variant}
         model="layout"
         id={
           id ??

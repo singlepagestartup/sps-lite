@@ -4,6 +4,7 @@ const articleOverviewStoryHref =
   "/?path=/story/modules-host-models-page-singlepage-blog-articles-blog-articles-slug--default";
 
 export interface ArticleFindFeaturedProps {
+  variant?: string;
   count: number;
   /** Removes introduction spacing when composed immediately after a header. */
   compact?: boolean;
@@ -14,6 +15,7 @@ export const defaultArticleFindFeaturedProps: ArticleFindFeaturedProps = {
 };
 
 export function ArticleFindFeatured({
+  variant = "article-find-featured",
   count = 1,
   compact = false,
 }: Partial<ArticleFindFeaturedProps> = {}) {
@@ -23,6 +25,9 @@ export function ArticleFindFeatured({
       data-ds-block="blog.widget.article-find-featured"
       data-ds-imports="blog.article.featured"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-6">

@@ -35,12 +35,14 @@ function PageIntro({ section }: { section: IWebsiteSection }) {
   );
 }
 interface IServicePageProps {
+  variant?: string;
   copy: IAIChatServicePageContentPresentation;
   children: ReactNode;
   showIntro?: boolean;
   projectHref?: string;
 }
 function ServicePage({
+  variant = "checkout-tokens-ai-chat",
   copy,
   children,
   showIntro = true,
@@ -51,6 +53,9 @@ function ServicePage({
       <div
         data-sps-theme="singlepage"
         className="@container min-w-0 bg-sps-grey text-sps-graphite font-sps"
+        data-module="ecommerce"
+        data-model="order"
+        data-variant={variant}
       >
         <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
           <a
@@ -248,9 +253,13 @@ function Icon(props: {
 }
 
 export interface ITokensProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
 }
-export function Component({ copy = defaultCopy }: ITokensProps = {}) {
+export function Component({
+  variant = "checkout-tokens-ai-chat",
+  copy = defaultCopy,
+}: ITokensProps = {}) {
   const aiChatAccount = useAIChatAccount();
   const { sections, labels } = copy;
   const projectHref = useAIChatProjectHref();
@@ -263,7 +272,7 @@ export function Component({ copy = defaultCopy }: ITokensProps = {}) {
   const number = (value: number) =>
     value.toLocaleString("en-US", { maximumFractionDigits: 2 });
   return (
-    <ServicePage copy={copy} projectHref={projectHref}>
+    <ServicePage copy={copy} projectHref={projectHref} variant={variant}>
       <div className="grid min-w-0 items-start gap-6 @[900px]:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0 space-y-6">
           <section className="rounded-2xl bg-sps-graphite p-6 text-white">

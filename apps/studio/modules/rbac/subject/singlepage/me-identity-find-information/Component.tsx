@@ -54,6 +54,7 @@ function Icon(props: {
 }
 
 export interface SubjectMeIdentityFindInformationProps {
+  variant?: string;
   title?: string;
   description?: string;
   emptyLabel?: string;
@@ -146,6 +147,9 @@ export function SubjectMeIdentityFindInformation(
       data-ds-block="rbac.subject.me-identity-find-information"
       data-ds-imports="rbac.identity.card-default rbac.subject.authentication-provider-connect-default"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props.variant ?? "me-identity-find-information"}
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">

@@ -37,7 +37,7 @@ function Icon(props: {
 export type FeatureListItemDefaultProps =
   typeof defaultFeatureListItemDefaultProps;
 export function FeatureListItemDefault(
-  props?: Partial<FeatureListItemDefaultProps>,
+  props?: Partial<FeatureListItemDefaultProps> & { variant?: string },
 ) {
   const {
     icon: Icon,
@@ -58,6 +58,9 @@ export function FeatureListItemDefault(
       className={rootClassName}
       data-ds-block="website-builder.feature.list-item-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="feature"
+      data-variant={props?.variant ?? "list-item-default"}
     >
       <Icon className="mt-1 h-5 w-5 shrink-0 text-[var(--color-sps-muted)]" />
       <span>{label}</span>

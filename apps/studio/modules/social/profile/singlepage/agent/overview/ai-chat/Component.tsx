@@ -168,6 +168,7 @@ function Icon(props: {
 }
 
 export interface IAgentProfileProps {
+  variant?: string;
   agent: IProjectAgent | null;
   onClose: () => void;
 }
@@ -177,7 +178,11 @@ export interface IAgentPickerProps {
   onChange: (agent: IProjectAgent | null) => void;
   onSave: (agent: IProjectAgent) => void;
 }
-export function Component({ agent, onClose }: IAgentProfileProps) {
+export function Component({
+  variant = "agent-overview-ai-chat",
+  agent,
+  onClose,
+}: IAgentProfileProps) {
   return (
     <Dialog.Root
       open={Boolean(agent)}
@@ -186,8 +191,18 @@ export function Component({ agent, onClose }: IAgentProfileProps) {
       }}
     >
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-sps-graphite/40" />
-        <Dialog.Content className="fixed inset-y-4 right-4 z-50 flex w-[calc(100%-32px)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-xl focus:outline-none">
+        <Dialog.Overlay
+          className="fixed inset-0 z-50 bg-sps-graphite/40"
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
+        />
+        <Dialog.Content
+          className="fixed inset-y-4 right-4 z-50 flex w-[calc(100%-32px)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-xl focus:outline-none"
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
+        >
           <div className="shrink-0 border-b border-sps-line p-5">
             <div className="flex items-start gap-3">
               <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-sps-green">

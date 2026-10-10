@@ -1,4 +1,5 @@
 export interface ButtonLinkProps {
+  variant?: string;
   label: string;
   href: string;
   size?: "sm" | "xs";
@@ -31,6 +32,9 @@ export function ButtonLink(props?: Partial<ButtonLinkProps>) {
       data-ds-layer="singlepage"
       href={href}
       target={props?.target}
+      data-module="website-builder"
+      data-model="button"
+      data-variant={props?.variant ?? "link"}
     >
       {label}
     </a>

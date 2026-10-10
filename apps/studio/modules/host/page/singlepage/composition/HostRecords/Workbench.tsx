@@ -9,7 +9,12 @@ import { HOST_STUDIO_MODELS } from "./state/constants";
 import { useHostStudio } from "./Context";
 import { HostModelList } from "./Model";
 import { HostRecordPreview } from "./Preview";
-export function HostWorkbench() {
+export interface IHostWorkbenchProps {
+  variant?: string;
+}
+export function HostWorkbench({
+  variant = "composition",
+}: IHostWorkbenchProps = {}) {
   const { state } = useHostStudio();
   const [view, setView] = useState<HostModel | "preview">("page");
   const [pageId, setPageId] = useState(state.models.page[0]?.id ?? "");
@@ -18,6 +23,9 @@ export function HostWorkbench() {
       className="grid min-w-0 gap-5"
       data-ds-block="host.page.composition"
       data-ds-layer="singlepage"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
     >
       <header className={kit.card}>
         <h1 className="text-2xl font-semibold">Host composition</h1>

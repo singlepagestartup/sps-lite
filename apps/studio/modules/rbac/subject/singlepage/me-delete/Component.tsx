@@ -109,6 +109,7 @@ function Icon(props: {
 }
 
 export interface SubjectMeDeleteProps {
+  variant?: string;
   title: string;
   description: string;
   actionLabel: string;
@@ -133,6 +134,9 @@ export function SubjectMeDelete(props?: Partial<SubjectMeDeleteProps>) {
       data-ds-block="rbac.subject.me-delete"
       data-ds-layer="singlepage"
       data-subject-id={subject.id}
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props?.variant ?? "me-delete"}
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>

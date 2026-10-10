@@ -7,12 +7,14 @@ import {
 } from "react";
 import { useEffect, useState } from "react";
 export interface IOAuthAuthorizationProps {
+  variant?: string;
   initialState?: "idle" | "authorize" | "complete" | "error";
   providerName?: string;
   accountEmail?: string;
   onSuccess?: () => void;
 }
 export function Component({
+  variant = "authentication-oauth-authorization-default",
   initialState = "idle",
   providerName = "Google",
   accountEmail = "preview@example.com",
@@ -25,6 +27,9 @@ export function Component({
       aria-label="OAuth authorization"
       className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 text-sps-graphite"
       data-ds-block="rbac.subject.authentication-oauth-authorization-default"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       <h2 className="text-lg font-semibold">Continue with {providerName}</h2>
       <p className="mt-2 text-sm leading-6 text-sps-muted">

@@ -1,4 +1,5 @@
 export interface ContentDefaultProps {
+  variant?: string;
   counterLabel?: string;
   counterValue?: string | number;
   eyebrow?: string;
@@ -17,6 +18,7 @@ export interface ContentDefaultProps {
   mediaAlt?: string;
 }
 export function ContentDefault({
+  variant = "content-default",
   counterLabel = defaultContentProps.counterLabel,
   counterValue = defaultContentProps.counterValue,
   eyebrow = defaultContentProps.eyebrow,
@@ -40,6 +42,9 @@ export function ContentDefault({
       className="w-full bg-[var(--color-sps-grey)] py-8 sm:py-12"
       data-ds-block="website-builder.widget.content-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className={containerClass}>
         <div className="flex min-w-0 flex-col justify-center gap-6 rounded-t-3xl bg-[var(--color-sps-graphite)] p-6 sm:p-10 lg:rounded-l-3xl lg:rounded-tr-none lg:p-12">

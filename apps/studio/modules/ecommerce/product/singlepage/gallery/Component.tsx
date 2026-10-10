@@ -52,6 +52,7 @@ export interface GalleryImage {
   alt: string;
 }
 export interface ProductGalleryProps {
+  variant?: string;
   images?: GalleryImage[];
   blockId?: string;
   importedBlockId?: string;
@@ -105,6 +106,9 @@ export function ProductGallery(props?: ProductGalleryProps) {
       data-ds-block={blockId}
       data-ds-imports={props?.importedBlockId}
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "gallery"}
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:gap-8 lg:px-8">
         <div className="min-w-0">

@@ -41,7 +41,9 @@ export const defaultContentRichProps = {
 
 export type ContentRichProps = typeof defaultContentRichProps;
 
-export function ContentRich(props?: Partial<ContentRichProps>) {
+export function ContentRich(
+  props?: Partial<ContentRichProps> & { variant?: string },
+) {
   const { content } = { ...defaultContentRichProps, ...props };
   const editor = useEditor(
     {
@@ -83,6 +85,9 @@ export function ContentRich(props?: Partial<ContentRichProps>) {
         [&_.ProseMirror_pre]:my-8 [&_.ProseMirror_pre]:overflow-x-auto [&_.ProseMirror_pre]:rounded-2xl [&_.ProseMirror_pre]:bg-[var(--color-sps-graphite)] [&_.ProseMirror_pre]:p-6
         [&_.ProseMirror_pre_code]:border-0 [&_.ProseMirror_pre_code]:bg-transparent [&_.ProseMirror_pre_code]:p-0 [&_.ProseMirror_pre_code]:text-sm [&_.ProseMirror_pre_code]:text-[var(--color-sps-muted-inverse)]
         [&_.ProseMirror_hr]:my-10 [&_.ProseMirror_hr]:border-[var(--color-sps-line)]"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-rich"}
     >
       <EditorContent editor={editor} />
     </article>

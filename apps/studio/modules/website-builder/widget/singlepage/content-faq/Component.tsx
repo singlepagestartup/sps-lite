@@ -39,7 +39,9 @@ export interface ContentFaqItem {
   a: string;
 }
 export type ContentFaqProps = typeof defaultContentFaqProps;
-export function ContentFaq(props?: Partial<ContentFaqProps>) {
+export function ContentFaq(
+  props?: Partial<ContentFaqProps> & { variant?: string },
+) {
   const { eyebrow, title, description, contactHref, faq } = {
     ...defaultContentFaqProps,
     ...props,
@@ -49,6 +51,9 @@ export function ContentFaq(props?: Partial<ContentFaqProps>) {
       className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-faq"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-faq"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">

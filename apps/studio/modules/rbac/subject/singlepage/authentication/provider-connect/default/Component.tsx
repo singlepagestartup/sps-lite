@@ -81,12 +81,14 @@ function Icon(props: {
 }
 
 export interface IProviderConnectProps {
+  variant?: string;
   provider?: string;
   account?: string;
   onComplete?: (account: string) => void;
   onCancel?: () => void;
 }
 export function Component({
+  variant = "authentication-provider-connect-default",
   provider = "oauth_google",
   account = "",
   onComplete,
@@ -108,6 +110,9 @@ export function Component({
       className="mt-5 min-w-0 rounded-xl border border-sps-line bg-sps-grey p-4 sm:p-5"
       aria-label={`Connect ${meta.title}`}
       data-ds-block="rbac.subject.authentication-provider-connect-default"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       <h4 className="font-semibold">Connect {meta.title}</h4>
       <p className="mt-2 text-sm leading-6 text-sps-muted">

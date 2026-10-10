@@ -19,6 +19,7 @@ export interface INavbarNavigationProps {
   onCloseAutoFocus: (event: Event) => void;
 }
 export interface INavbarAiChatProps {
+  variant?: string;
   buttonsArrayId: string;
   activeHref?: string;
   navigationLayout?: "inline" | "collapsible";
@@ -27,6 +28,7 @@ export interface INavbarAiChatProps {
   subjectAccount?: (props: INavbarNavigationProps) => ReactNode;
 }
 export function Component({
+  variant = "navbar-ai-chat",
   buttonsArrayId,
   activeHref,
   navigationLayout = "collapsible",
@@ -56,11 +58,11 @@ export function Component({
   return (
     <header
       data-ds-block="website-builder.widget.navbar-ai-chat"
+      data-id={widgetId}
+      className={`sticky top-0 z-40 border-b border-sps-line bg-sps-white px-4 py-3 @[800px]:px-8 @[800px]:py-5 ${collapsible ? "h-18 @[800px]:h-24" : ""}`}
       data-module="website-builder"
       data-model="widget"
-      data-id={widgetId}
-      data-variant="navbar-ai-chat"
-      className={`sticky top-0 z-40 border-b border-sps-line bg-sps-white px-4 py-3 @[800px]:px-8 @[800px]:py-5 ${collapsible ? "h-18 @[800px]:h-24" : ""}`}
+      data-variant={variant}
     >
       <div
         className={`mx-auto flex max-w-6xl items-center justify-between gap-2 @[800px]:gap-5 ${collapsible ? "h-full" : "flex-wrap"}`}

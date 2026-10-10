@@ -40,6 +40,7 @@ export interface OrderCheckoutDetailsField {
   required?: boolean;
 }
 export interface OrderCheckoutDetailsDefaultProps {
+  variant?: string;
   contactFields: OrderCheckoutDetailsField[];
   billingFields: OrderCheckoutDetailsField[];
   notesLabel: string;
@@ -97,6 +98,9 @@ export function OrderCheckoutDetailsDefault(
       className="w-full min-w-0 space-y-6 lg:space-y-8"
       data-ds-block="ecommerce.order.checkout-details-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="order"
+      data-variant={props?.variant ?? "checkout-details-default"}
     >
       <section className="rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-8">
         <h2 className="mb-6 text-2xl font-semibold text-[var(--color-sps-graphite)]">

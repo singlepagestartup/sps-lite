@@ -22,7 +22,9 @@ export const defaultProfileBylineProps = {
 
 export type ProfileBylineProps = typeof defaultProfileBylineProps;
 
-export function ProfileByline(props?: Partial<ProfileBylineProps>) {
+export function ProfileByline(
+  props?: Partial<ProfileBylineProps> & { variant?: string },
+) {
   const { name, avatar, href, size, inverse } = {
     ...defaultProfileBylineProps,
     ...props,
@@ -42,6 +44,9 @@ export function ProfileByline(props?: Partial<ProfileBylineProps>) {
       className="flex items-center gap-2"
       data-ds-block="social.profile.byline"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "byline"}
     >
       {href ? (
         <a

@@ -84,17 +84,27 @@ function Icon(props: {
 }
 
 export interface IProfileCreateProps {
+  variant?: string;
   onCreate: (name: string) => void;
   onCancel?: () => void;
 }
-export function Component({ onCreate, onCancel }: IProfileCreateProps) {
+export function Component({
+  variant = "create-ai-chat-project",
+  onCreate,
+  onCancel,
+}: IProfileCreateProps) {
   const [name, setName] = useState("");
   function submit(event: FormEvent) {
     event.preventDefault();
     if (name.trim()) onCreate(name.trim());
   }
   return (
-    <main className="mx-auto max-w-6xl px-4 py-6 @[640px]:px-5">
+    <main
+      className="mx-auto max-w-6xl px-4 py-6 @[640px]:px-5"
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
+    >
       <div className="grid min-w-0 overflow-hidden rounded-2xl border border-sps-line bg-sps-white @[760px]:grid-cols-2">
         <section className="flex flex-col justify-center p-6 @[640px]:p-10">
           <span className="mb-5 h-1 w-10 rounded-full bg-sps-green" />

@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface ProfileFindRowProps {
+  variant?: string;
   name: string;
   role: string;
   avatar: string;
@@ -54,6 +55,9 @@ export function ProfileFindRow(props?: Partial<ProfileFindRowProps>) {
       className="group flex items-center gap-3 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-3 transition hover:border-[var(--color-sps-line)] hover:bg-[var(--color-sps-grey)]"
       data-ds-block="social.profile.find-row"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "find-row"}
     >
       <img
         src={avatar}

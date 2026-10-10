@@ -45,6 +45,7 @@ function Icon(props: {
 }
 
 export interface OrderCheckoutPaymentDefaultProps {
+  variant?: string;
   initialMethod: PaymentMethod;
   agreementLabel: string;
   actionLabel: string;
@@ -193,6 +194,9 @@ export function OrderCheckoutPaymentDefault(
       className="w-full min-w-0 space-y-6 lg:space-y-8"
       data-ds-block="ecommerce.order.checkout-payment-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="order"
+      data-variant={props?.variant ?? "checkout-payment-default"}
     >
       <section className="rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-8">
         <h2 className="mb-7 text-2xl font-semibold text-[var(--color-sps-graphite)]">

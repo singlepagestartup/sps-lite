@@ -162,7 +162,9 @@ export interface ProductFindProduct {
   techStack: string[];
 }
 export type ProductFindCardProps = typeof defaultProductFindCardProps;
-export function ProductFindCard(props?: Partial<ProductFindCardProps>) {
+export function ProductFindCard(
+  props?: Partial<ProductFindCardProps> & { variant?: string },
+) {
   const { categories, products } = {
     ...defaultProductFindCardProps,
     ...props,
@@ -204,6 +206,9 @@ export function ProductFindCard(props?: Partial<ProductFindCardProps>) {
       data-ds-block="ecommerce.widget.product-find-card"
       data-ds-imports="ecommerce.product.card"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="widget"
+      data-variant={props?.variant ?? "product-find-card"}
     >
       <CollectionToolbar
         categories={categories}

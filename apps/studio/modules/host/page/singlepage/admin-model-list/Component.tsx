@@ -2,9 +2,19 @@ import { Component as EcommerceModuleProduct } from "../../../../ecommerce/produ
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminModelList() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminModelList({
+  variant = "admin-model-list",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-model-list">
+    <div
+      data-ds-page="host.page.admin-model-list"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin/ecommerce/product"
         eyebrow="host.page"

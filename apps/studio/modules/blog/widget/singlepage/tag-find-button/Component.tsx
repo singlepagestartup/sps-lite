@@ -39,6 +39,7 @@ interface TagFindButtonItem {
   href?: string;
 }
 export interface TagFindButtonProps {
+  variant?: string;
   title: string;
   tags: TagFindButtonItem[];
 }
@@ -50,6 +51,9 @@ export function TagFindButton(props?: Partial<TagFindButtonProps>) {
       data-ds-block="blog.widget.tag-find-button"
       data-ds-imports="blog.tag.button-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "tag-find-button"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">

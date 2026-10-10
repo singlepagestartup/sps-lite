@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface ProductPinnedProps {
+  variant?: string;
   slug: string;
   title: string;
   shortDescription: string;
@@ -57,6 +58,9 @@ export function ProductPinned(props?: Partial<ProductPinnedProps>) {
       className="group flex min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 transition hover:border-[var(--color-sps-graphite)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
       data-ds-block="ecommerce.product.pinned"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "pinned"}
     >
       <div className="flex items-center justify-between gap-3">
         <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[var(--color-sps-grey)]">

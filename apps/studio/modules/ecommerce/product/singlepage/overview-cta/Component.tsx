@@ -39,6 +39,7 @@ function Icon(props: {
 }
 
 export interface ProductOverviewCtaProps {
+  variant?: string;
   title: string;
   description?: string;
   primaryActionLabel: string;
@@ -65,6 +66,9 @@ export function ProductOverviewCta(props?: Partial<ProductOverviewCtaProps>) {
       data-ds-block={blockId ?? "ecommerce.product.overview-cta"}
       data-ds-imports={importedBlockId}
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "overview-cta"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 rounded-3xl bg-[var(--color-sps-graphite)] p-6 text-[var(--color-sps-white)] sm:p-10 lg:flex-row lg:items-end lg:justify-between lg:p-12">

@@ -17,6 +17,7 @@ function Icon(props: {
 }
 
 export interface ISubjectAccountProps {
+  variant?: string;
   showTokens?: boolean;
   signedIn?: boolean;
   user?: RbacAccountUser;
@@ -28,6 +29,7 @@ export interface ISubjectAccountProps {
   onNavigate?: () => void;
 }
 export function Component({
+  variant = "account",
   showTokens = false,
   signedIn,
   user,
@@ -66,6 +68,9 @@ export function Component({
         target={showTokens ? undefined : "_top"}
         onClick={onNavigate}
         className={`inline-flex min-h-11 shrink-0 items-center gap-2 rounded-xl px-3 text-sm text-sps-graphite no-underline hover:bg-sps-grey ${kit.focus}`}
+        data-module="rbac"
+        data-model="subject"
+        data-variant={variant}
       >
         <Icon name="sign-in" />
         <span className="hidden sm:inline">Sign in</span>
@@ -73,7 +78,12 @@ export function Component({
       </a>
     );
   return (
-    <div data-ds-block="rbac.subject.account">
+    <div
+      data-ds-block="rbac.subject.account"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
+    >
       <SocialModuleProfile
         variant="account-menu"
         data={data}

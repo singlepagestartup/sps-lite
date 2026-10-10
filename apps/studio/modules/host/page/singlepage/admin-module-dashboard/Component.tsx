@@ -3,9 +3,19 @@ import { Component as EcommerceModuleProduct } from "../../../../ecommerce/produ
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminModuleDashboard() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminModuleDashboard({
+  variant = "admin-module-dashboard",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-module-dashboard">
+    <div
+      data-ds-page="host.page.admin-module-dashboard"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin/ecommerce/product"
         eyebrow="host.page"

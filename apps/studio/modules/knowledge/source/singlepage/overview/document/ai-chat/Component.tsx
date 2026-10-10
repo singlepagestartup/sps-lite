@@ -22,7 +22,9 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export interface ISourceDocumentProps extends ISourceCardProps {}
+export interface ISourceDocumentProps extends ISourceCardProps {
+  variant?: string;
+}
 export function Component(props: ISourceDocumentProps) {
   const { source } = useSource();
   const documentName = `${source.title}.md`;
@@ -30,6 +32,9 @@ export function Component(props: ISourceDocumentProps) {
     <section
       aria-label={`${documentName} editor`}
       className="min-w-0 bg-sps-grey p-4"
+      data-module="knowledge"
+      data-model="source"
+      data-variant={props.variant ?? "overview-document-ai-chat"}
     >
       <div className="mb-4 flex items-center justify-between gap-2">
         <h3 className="inline-flex items-center gap-2 text-sm font-semibold">

@@ -37,7 +37,9 @@ function Icon(props: {
 export type ProfileArticleFindByIdCommentFormDefaultProps =
   typeof defaultProfileArticleFindByIdCommentFormDefaultProps;
 export function ProfileArticleFindByIdCommentFormDefault(
-  props?: Partial<ProfileArticleFindByIdCommentFormDefaultProps>,
+  props?: Partial<ProfileArticleFindByIdCommentFormDefaultProps> & {
+    variant?: string;
+  },
 ) {
   const { placeholder, submitLabel } = {
     ...defaultProfileArticleFindByIdCommentFormDefaultProps,
@@ -57,6 +59,9 @@ export function ProfileArticleFindByIdCommentFormDefault(
       className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5"
       data-ds-block="social.profile.article-find-by-id-comment-form-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "article-find-by-id-comment-form-default"}
     >
       <label
         className="mb-3 block text-sm font-semibold"

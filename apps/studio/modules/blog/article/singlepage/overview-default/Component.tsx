@@ -18,7 +18,7 @@ export const defaultArticleOverviewDefaultProps = {
 } satisfies ArticleOverviewDefaultProps;
 
 export function ArticleOverviewDefault(
-  props?: Partial<ArticleOverviewDefaultProps>,
+  props?: Partial<ArticleOverviewDefaultProps> & { variant?: string },
 ) {
   const article = { ...defaultArticleOverviewDefaultProps, ...props };
 
@@ -28,6 +28,9 @@ export function ArticleOverviewDefault(
       data-ds-block="blog.article.overview-default"
       data-ds-imports="blog.article.cover blog.article.detail blog.tag.button-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "overview-default"}
     >
       <ArticleDetail
         {...article}

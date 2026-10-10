@@ -11,6 +11,7 @@ import {
 } from "../../../../ecommerce/cart/shared";
 
 export interface IWebsiteLayoutProps {
+  variant?: string;
   children?: ReactNode;
   activeHref?: string;
   footer?: "default" | "compact";
@@ -21,6 +22,7 @@ export interface IWebsiteLayoutProps {
   cartCount?: number;
 }
 export function Component({
+  variant = "website",
   children,
   activeHref = "/",
   footer = "compact",
@@ -70,6 +72,9 @@ export function Component({
     <div
       data-ds-block="host.layout.website"
       className="flex min-h-screen min-w-0 flex-col bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)] antialiased"
+      data-module="host"
+      data-model="layout"
+      data-variant={variant}
     >
       <WebsiteBuilderModuleWidget
         variant="navbar-default"

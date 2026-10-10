@@ -15,11 +15,13 @@ function Icon(props: {
 }
 
 export interface IProjectSelectProps {
+  variant?: string;
   profileId?: string;
   onNavigate?: () => void;
   onCloseAutoFocus?: (event: Event) => void;
 }
 export function Component({
+  variant = "select-ai-chat-project",
   profileId,
   onNavigate,
   onCloseAutoFocus,
@@ -33,6 +35,9 @@ export function Component({
           aria-label="Project"
           data-ds-block="social.profile.select-ai-chat-project"
           className={`inline-flex min-h-11 max-w-60 items-center gap-2 rounded-xl px-3 text-sm text-sps-muted hover:bg-sps-grey ${kit.focus}`}
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
         >
           <Icon name="folder-open" />
           <span className="min-w-0 truncate">
@@ -49,6 +54,9 @@ export function Component({
           collisionPadding={12}
           onCloseAutoFocus={onCloseAutoFocus}
           className="z-50 w-64 max-w-[calc(100vw-24px)] rounded-xl border border-sps-line bg-sps-white p-2 text-sps-graphite shadow-lg font-sps"
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
         >
           <DropdownMenu.Label className="px-3 py-2 text-xs font-semibold text-sps-muted">
             Projects

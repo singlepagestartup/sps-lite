@@ -1,6 +1,7 @@
 import { memo, type HTMLAttributeAnchorTarget } from "react";
 
 export interface INavigationButtonProps {
+  variant?: string;
   label: string;
   href: string;
   target?: HTMLAttributeAnchorTarget;
@@ -10,6 +11,7 @@ export interface INavigationButtonProps {
 }
 
 export const Component = memo(function Component({
+  variant = "navigation",
   label = "Home",
   href = "/",
   target,
@@ -29,6 +31,9 @@ export const Component = memo(function Component({
       data-ds-block="website-builder.button.navigation"
       aria-disabled="true"
       className={className}
+      data-module="website-builder"
+      data-model="button"
+      data-variant={variant}
     >
       {label}
     </span>
@@ -40,6 +45,9 @@ export const Component = memo(function Component({
       aria-current={selected ? "page" : undefined}
       className={className}
       onClick={onNavigate}
+      data-module="website-builder"
+      data-model="button"
+      data-variant={variant}
     >
       {label}
     </a>

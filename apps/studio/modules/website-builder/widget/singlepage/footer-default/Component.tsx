@@ -37,7 +37,9 @@ export const defaultFooterDefaultProps = {
 
 export type FooterDefaultProps = typeof defaultFooterDefaultProps;
 
-export function FooterDefault(props?: Partial<FooterDefaultProps>) {
+export function FooterDefault(
+  props?: Partial<FooterDefaultProps> & { variant?: string },
+) {
   const { brand, description, copyright, columns, legalLinks } = {
     ...defaultFooterDefaultProps,
     ...props,
@@ -69,6 +71,9 @@ export function FooterDefault(props?: Partial<FooterDefaultProps>) {
       className="w-full border-t border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
       data-ds-block="website-builder.widget.footer-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "footer-default"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">

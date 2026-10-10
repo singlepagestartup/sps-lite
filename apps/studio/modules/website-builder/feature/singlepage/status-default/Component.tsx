@@ -37,7 +37,7 @@ function Icon(props: {
 
 export type FeatureStatusDefaultProps = typeof defaultFeatureStatusDefaultProps;
 export function FeatureStatusDefault(
-  props?: Partial<FeatureStatusDefaultProps>,
+  props?: Partial<FeatureStatusDefaultProps> & { variant?: string },
 ) {
   const {
     icon: Icon,
@@ -57,6 +57,9 @@ export function FeatureStatusDefault(
       className={rootClassName}
       data-ds-block="website-builder.feature.status-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="feature"
+      data-variant={props?.variant ?? "status-default"}
     >
       <div className="flex items-center gap-3">
         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)]">

@@ -42,7 +42,9 @@ interface BlogPostItem {
   readTime: string;
 }
 export type ArticleFindDefaultProps = typeof defaultArticleFindDefaultProps;
-export function ArticleFindDefault(props?: Partial<ArticleFindDefaultProps>) {
+export function ArticleFindDefault(
+  props?: Partial<ArticleFindDefaultProps> & { variant?: string },
+) {
   const { eyebrow, title, viewAllAction, posts } = {
     ...defaultArticleFindDefaultProps,
     ...props,
@@ -55,6 +57,9 @@ export function ArticleFindDefault(props?: Partial<ArticleFindDefaultProps>) {
       className="w-full py-16 lg:py-24"
       data-ds-block="blog.widget.article-find-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "article-find-default"}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">

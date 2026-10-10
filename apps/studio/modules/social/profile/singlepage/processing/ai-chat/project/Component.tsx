@@ -82,16 +82,24 @@ function MarkdownDocument({
   );
 }
 export interface IProjectProcessingDisclosureProps {
+  variant?: string;
   id: string;
   open?: boolean;
 }
-export function Component({ id, open }: IProjectProcessingDisclosureProps) {
+export function Component({
+  variant = "processing-ai-chat-project",
+  id,
+  open,
+}: IProjectProcessingDisclosureProps) {
   return (
     <details
       data-ds-block="social.profile.processing-ai-chat-project"
       id={id}
       open={open}
       className={`my-5 text-xs leading-6 ${kit.muted}`}
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
     >
       <summary
         className={`min-h-9 cursor-pointer underline underline-offset-4 ${kit.focus}`}

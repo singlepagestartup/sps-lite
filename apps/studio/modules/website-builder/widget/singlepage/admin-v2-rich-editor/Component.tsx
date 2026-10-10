@@ -42,7 +42,12 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function WebsiteBuilderAdminV2RichEditor() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function WebsiteBuilderAdminV2RichEditor({
+  variant = "admin-v2-rich-editor",
+}: IComponentVariantProps = {}) {
   const [preview, setPreview] = useState("desktop");
   const [status, setStatus] = useState("");
   const [linkOpen, setLinkOpen] = useState(false);
@@ -100,6 +105,9 @@ export function WebsiteBuilderAdminV2RichEditor() {
       className={`${kit.card} overflow-hidden`}
       data-ds-block="website-builder.widget.admin-v2-rich-editor"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={variant}
     >
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--color-sps-line)] p-5 sm:p-6">
         <div>

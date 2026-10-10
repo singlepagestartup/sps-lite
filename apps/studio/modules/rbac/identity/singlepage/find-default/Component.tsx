@@ -9,6 +9,7 @@ import {
 } from "../../../shared";
 
 export interface IdentityFindDefaultProps {
+  variant?: string;
   title: string;
   description: string;
   emptyLabel: string;
@@ -48,6 +49,9 @@ export function IdentityFindDefault(props?: Partial<IdentityFindDefaultProps>) {
       className="w-full rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] p-5"
       data-ds-block="rbac.identity.find-default"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="identity"
+      data-variant={props?.variant ?? "find-default"}
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>

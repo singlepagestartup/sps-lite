@@ -116,6 +116,7 @@ function Icon(props: {
 }
 
 export interface CartDrawerDefaultProps {
+  variant?: string;
   items: CartItem[];
   isOpen: boolean;
   checkoutHref: string;
@@ -164,6 +165,9 @@ export function CartDrawerDefault(props?: Partial<CartDrawerDefaultProps>) {
         data-ds-block="ecommerce.cart.drawer-default"
         data-ds-imports="ecommerce.product.cart-default"
         data-ds-layer="singlepage"
+        data-module="ecommerce"
+        data-model="cart"
+        data-variant={props?.variant ?? "drawer-default"}
       >
         <Dialog.Overlay className="absolute inset-0 bg-[var(--color-sps-graphite)]/55" />
         <Dialog.Content asChild>

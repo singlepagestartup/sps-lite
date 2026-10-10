@@ -34,12 +34,14 @@ function PageIntro({ section }: { section: IWebsiteSection }) {
   );
 }
 interface IServicePageProps {
+  variant?: string;
   copy: IAIChatServicePageContentPresentation;
   children: ReactNode;
   showIntro?: boolean;
   projectHref?: string;
 }
 function ServicePage({
+  variant = "content-ai-chat-help",
   copy,
   children,
   showIntro = true,
@@ -50,6 +52,9 @@ function ServicePage({
       <div
         data-sps-theme="singlepage"
         className="@container min-w-0 bg-sps-grey text-sps-graphite font-sps"
+        data-module="website-builder"
+        data-model="widget"
+        data-variant={variant}
       >
         <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
           <a
@@ -261,6 +266,7 @@ function Icon(props: {
 }
 
 export interface IHelpProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
   projectHref?: string;
 }
@@ -270,6 +276,7 @@ export interface IHelpErrors {
   result?: string;
 }
 export function Component({
+  variant = "content-ai-chat-help",
   copy = defaultCopy,
   projectHref,
 }: IHelpProps = {}) {
@@ -296,7 +303,7 @@ export function Component({
     else setSubmitted(true);
   }
   return (
-    <ServicePage copy={copy} projectHref={projectHref}>
+    <ServicePage copy={copy} projectHref={projectHref} variant={variant}>
       <div className="grid min-w-0 items-start gap-6 @3xl:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         <PageSection section={sections.request} icon="chat-circle">
           {submitted ? (

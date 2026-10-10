@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface IProfileOverviewProps {
+  variant?: string;
   name: string;
   role: string;
   avatar: string;
@@ -58,7 +59,7 @@ export function Component(props: Partial<IProfileOverviewProps> = {}) {
       data-ds-layer="singlepage"
       data-module="social"
       data-model="profile"
-      data-variant="overview-default"
+      data-variant={props.variant ?? "overview-default"}
     >
       <div className="aspect-square bg-[var(--color-sps-grey)]">
         <img src={avatar} alt={name} className="h-full w-full object-cover" />

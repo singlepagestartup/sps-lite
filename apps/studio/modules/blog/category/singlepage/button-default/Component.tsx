@@ -34,7 +34,7 @@ export type CategoryButtonDefaultProps =
     onSelect?: (slug: string) => void;
   };
 export function CategoryButtonDefault(
-  props?: Partial<CategoryButtonDefaultProps>,
+  props?: Partial<CategoryButtonDefaultProps> & { variant?: string },
 ) {
   const { slug, label, count, isActive, onSelect } = {
     ...defaultCategoryButtonDefaultProps,
@@ -44,6 +44,9 @@ export function CategoryButtonDefault(
     <div
       data-ds-block="blog.category.button-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="category"
+      data-variant={props?.variant ?? "button-default"}
     >
       <CategoryChoice
         slug={slug}

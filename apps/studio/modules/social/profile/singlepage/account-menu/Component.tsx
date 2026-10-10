@@ -16,6 +16,7 @@ function Icon(props: {
 }
 
 export interface IAccountMenuProps {
+  variant?: string;
   data?: IAIChatUserProfile;
   email?: string;
   balance?: {
@@ -30,6 +31,7 @@ export interface IAccountMenuProps {
   onSignOut?: () => void;
 }
 export function Component({
+  variant = "account-menu",
   data = aiChatAccount.profile,
   email = aiChatAccount.email,
   balance = aiChatAccount.balance,
@@ -59,6 +61,9 @@ export function Component({
           data-profile-id={data.id}
           onClick={onNavigate}
           className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl px-2 py-2 text-left hover:bg-sps-grey data-[state=open]:bg-sps-grey ${kit.focus} ${page === "settings" || page === "tokens" ? "bg-sps-grey" : ""}`}
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
         >
           <span className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-full bg-sps-grey">
             {data.avatar && !avatarFailed ? (
@@ -94,6 +99,9 @@ export function Component({
           sideOffset={8}
           collisionPadding={12}
           className="z-[110] w-64 max-w-[calc(100vw-24px)] rounded-xl border border-sps-line bg-sps-white p-2 font-sps text-sps-graphite shadow-lg"
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
         >
           <DropdownMenu.Label className="px-3 py-2">
             <span className="block truncate text-sm font-semibold">

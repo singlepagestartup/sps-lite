@@ -91,18 +91,35 @@ function Icon(props: {
 }
 
 export interface IProfileSettingsProps {
+  variant?: string;
   profileId: string;
 }
-export function Component({ profileId }: IProfileSettingsProps) {
+export function Component({
+  variant = "settings-ai-chat-project",
+  profileId,
+}: IProfileSettingsProps) {
   const { projects, rename } = useProfiles();
   const profile = projects.find((record) => record.id === profileId);
   const [name, setName] = useState(profile?.name ?? "");
   const [saved, setSaved] = useState(false);
-  if (!profile) return <p role="status">Project profile unavailable.</p>;
+  if (!profile)
+    return (
+      <p
+        role="status"
+        data-module="social"
+        data-model="profile"
+        data-variant={variant}
+      >
+        Project profile unavailable.
+      </p>
+    );
   return (
     <div
       data-ds-block="social.profile.settings-ai-chat-project"
       className="space-y-6 p-5"
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
     >
       <form
         className="flex max-w-xl flex-wrap items-end gap-3"

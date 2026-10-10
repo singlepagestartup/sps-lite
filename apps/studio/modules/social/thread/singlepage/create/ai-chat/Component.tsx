@@ -90,10 +90,15 @@ function Icon(props: {
 }
 
 export interface IThreadCreateProps {
+  variant?: string;
   chatId?: string;
   cancelHref: string;
 }
-export function Component({ chatId, cancelHref }: IThreadCreateProps) {
+export function Component({
+  variant = "create-ai-chat",
+  chatId,
+  cancelHref,
+}: IThreadCreateProps) {
   const [title, setTitle] = useState("");
   const [hasAgent, setHasAgent] = useState(false);
   const [previewed, setPreviewed] = useState(false);
@@ -106,6 +111,9 @@ export function Component({ chatId, cancelHref }: IThreadCreateProps) {
         if (title.trim() && hasAgent) setPreviewed(true);
       }}
       className="mx-auto grid w-full max-w-xl gap-5 overflow-y-auto p-5 @[640px]:p-8"
+      data-module="social"
+      data-model="thread"
+      data-variant={variant}
     >
       <p className={`text-sm leading-6 ${kit.muted}`}>
         Give this thread a name and choose an agent. The agent uses the

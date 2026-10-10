@@ -22,28 +22,33 @@ function SectionStack({ children, className }: SectionStackProps) {
     </div>
   );
 }
-export function HomeDefault() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function HomeDefault({ variant = "root" }: IComponentVariantProps = {}) {
   return (
-    <HostModuleLayout variant="website" footer="default">
-      <main className="min-w-0" data-ds-page="host.page.root">
-        <SectionStack>
-          <WebsiteBuilderModuleWidget variant="content-hero" />
-          <WebsiteBuilderModuleWidget variant="content-feature-find-default" />
-          <WebsiteBuilderModuleWidget variant="content-feature-find-card" />
-          <WebsiteBuilderModuleWidget variant="content-files-find-default" />
-          <WebsiteBuilderModuleWidget variant="content-buttons-array-find-default" />
-          <EcommerceModuleWidget variant="product-find-tiers" />
-          <WebsiteBuilderModuleWidget variant="content-feature-find-testimotionals" />
-          <BlogModuleWidget variant="article-find-default" />
-          <WebsiteBuilderModuleWidget variant="content-cta" />
-          <WebsiteBuilderModuleWidget
-            variant="content-feature-find-row"
-            contactForm={
-              <RbacModuleSubject variant="me-crm-form-deafult" embedded />
-            }
-          />
-        </SectionStack>
-      </main>
-    </HostModuleLayout>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout variant="website" footer="default">
+        <main className="min-w-0" data-ds-page="host.page.root">
+          <SectionStack>
+            <WebsiteBuilderModuleWidget variant="content-hero" />
+            <WebsiteBuilderModuleWidget variant="content-feature-find-default" />
+            <WebsiteBuilderModuleWidget variant="content-feature-find-card" />
+            <WebsiteBuilderModuleWidget variant="content-files-find-default" />
+            <WebsiteBuilderModuleWidget variant="content-buttons-array-find-default" />
+            <EcommerceModuleWidget variant="product-find-tiers" />
+            <WebsiteBuilderModuleWidget variant="content-feature-find-testimotionals" />
+            <BlogModuleWidget variant="article-find-default" />
+            <WebsiteBuilderModuleWidget variant="content-cta" />
+            <WebsiteBuilderModuleWidget
+              variant="content-feature-find-row"
+              contactForm={
+                <RbacModuleSubject variant="me-crm-form-deafult" embedded />
+              }
+            />
+          </SectionStack>
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }

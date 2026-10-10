@@ -40,6 +40,7 @@ function Icon(props: {
 
 export type ProductTierVariant = "default" | "featured";
 export interface ProductTierProps {
+  variant?: string;
   name: string;
   price: string;
   period: string;
@@ -86,6 +87,9 @@ export function ProductTier(props?: Partial<ProductTierProps>) {
       data-ds-block="ecommerce.product.tier"
       data-ds-display-variant={isFeatured ? "featured" : "default"}
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "tier"}
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h3 className="text-xl font-semibold">{name}</h3>

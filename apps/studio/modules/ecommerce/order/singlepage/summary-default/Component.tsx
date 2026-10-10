@@ -41,6 +41,7 @@ function Icon(props: {
 }
 
 export interface OrderSummaryDefaultProps {
+  variant?: string;
   items: CartItem[];
   compact?: boolean;
   editable?: boolean;
@@ -60,6 +61,9 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
       data-ds-block="ecommerce.order.summary-default"
       data-ds-imports="ecommerce.product.cart-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="order"
+      data-variant={props?.variant ?? "summary-default"}
     >
       <div className="border-b border-[var(--color-sps-line)] px-6 py-5">
         <h3 className="text-xl font-semibold text-[var(--color-sps-graphite)]">

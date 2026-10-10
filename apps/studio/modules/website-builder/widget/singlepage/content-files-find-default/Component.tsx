@@ -40,7 +40,7 @@ type FeatureListItem = Pick<FeatureListItemDefaultProps, "label" | "icon">;
 export type ContentFilesFindDefaultProps =
   typeof defaultContentFilesFindDefaultProps;
 export function ContentFilesFindDefault(
-  props?: Partial<ContentFilesFindDefaultProps>,
+  props?: Partial<ContentFilesFindDefaultProps> & { variant?: string },
 ) {
   const { eyebrow, title, paragraphs, mediaSrc, mediaAlt, features } = {
     ...defaultContentFilesFindDefaultProps,
@@ -51,6 +51,9 @@ export function ContentFilesFindDefault(
       className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-files-find-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-files-find-default"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid overflow-hidden rounded-3xl bg-[var(--color-sps-white)] lg:grid-cols-2">

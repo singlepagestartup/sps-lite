@@ -35,6 +35,7 @@ function Icon(props: {
 }
 
 export interface OrderCheckoutStepperDefaultProps {
+  variant?: string;
   currentStep: CheckoutStep;
   showBreadcrumb?: boolean;
 }
@@ -53,6 +54,9 @@ export function OrderCheckoutStepperDefault(
       className="w-full py-8 sm:py-12"
       data-ds-block="ecommerce.order.checkout-stepper-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="order"
+      data-variant={props?.variant ?? "checkout-stepper-default"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         {showBreadcrumb ? (

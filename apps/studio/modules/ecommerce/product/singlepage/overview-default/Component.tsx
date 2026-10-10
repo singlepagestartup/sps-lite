@@ -95,6 +95,7 @@ export interface ProductOverviewRelatedProduct {
   target?: "_blank" | "_parent" | "_self" | "_top";
 }
 export interface ProductOverviewDefaultProps {
+  variant?: string;
   hero: ProductOverviewHero;
   stats: ProductOverviewStat[];
   related: ProductOverviewRelatedProduct[];
@@ -267,6 +268,9 @@ export function ProductOverviewDefault(
       data-ds-block="ecommerce.product.overview-default"
       data-ds-imports="ecommerce.product.overview-purchase ecommerce.product.gallery ecommerce.product.card-related ecommerce.product.overview-cta website-builder.widget.content-feature-find-grid website-builder.widget.content-testimonials website-builder.widget.content-faq"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "overview-default"}
     >
       <SectionStack>
         <ProductOverviewHeroSection hero={hero} />

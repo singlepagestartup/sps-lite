@@ -13,18 +13,23 @@ function Icon(props: {
 }
 
 export interface IFilePreviewProps {
+  variant?: string;
   file: IProjectFile;
   compact?: boolean;
 }
-export function Component({ file, compact }: IFilePreviewProps) {
+export function Component({
+  variant = "overview-ai-chat",
+  file,
+  compact,
+}: IFilePreviewProps) {
   return (
     <figure
-      data-module="file-storage"
-      data-model="file"
       data-id={file.id}
       data-ds-block="file-storage.file.overview-ai-chat"
-      data-variant="overview-ai-chat"
       className="min-w-0 overflow-hidden rounded-xl border border-sps-line bg-sps-white"
+      data-module="file-storage"
+      data-model="file"
+      data-variant={variant}
     >
       {file.mimeType?.startsWith("image/") && file.fileUrl ? (
         <a

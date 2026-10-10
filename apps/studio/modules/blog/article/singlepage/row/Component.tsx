@@ -4,7 +4,9 @@
  */
 type ArticleRowTarget = "_blank" | "_parent" | "_self" | "_top";
 export type ArticleRowProps = typeof defaultArticleRowProps;
-export function ArticleRow(props?: Partial<ArticleRowProps>) {
+export function ArticleRow(
+  props?: Partial<ArticleRowProps> & { variant?: string },
+) {
   const {
     href,
     slug,
@@ -26,6 +28,9 @@ export function ArticleRow(props?: Partial<ArticleRowProps>) {
       className={`@container group block min-w-0 overflow-hidden rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] transition hover:border-[var(--color-sps-graphite)] motion-reduce:transition-none ${kit.focus}`}
       data-ds-block="blog.article.row"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "row"}
     >
       <div className="grid min-w-0 @[560px]:grid-cols-[200px_minmax(0,1fr)]">
         <div className="aspect-square overflow-hidden @[560px]:aspect-auto">

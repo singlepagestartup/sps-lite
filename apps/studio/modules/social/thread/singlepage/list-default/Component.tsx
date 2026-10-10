@@ -40,6 +40,7 @@ function Icon(props: {
 }
 
 export interface SocialThreadListDefaultProps {
+  variant?: string;
   title: string;
   description: string;
   selectedId?: string;
@@ -106,6 +107,9 @@ export function SocialThreadListDefault(
       className="flex min-w-0 flex-col border-b border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] md:h-full md:border-b-0 md:border-r"
       data-ds-block="social.thread.list-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="thread"
+      data-variant={props?.variant ?? "list-default"}
     >
       <div className="flex items-center gap-3 px-5 pb-3 pt-5">
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--color-sps-white)]">

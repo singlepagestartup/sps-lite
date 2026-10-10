@@ -48,6 +48,7 @@ function Icon(props: {
 }
 
 export interface SubjectMeProfileInformationProps {
+  variant?: string;
   user: RbacAccountUser;
   title: string;
   bio: string;
@@ -127,6 +128,9 @@ export function SubjectMeProfileInformation(
       data-ds-block="rbac.subject.me-profile-information"
       data-profile-id={profile.id}
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props?.variant ?? "me-profile-information"}
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">

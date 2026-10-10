@@ -33,12 +33,20 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function RbacSubjectAdminV2Settings() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function RbacSubjectAdminV2Settings({
+  variant = "admin-v2-settings",
+}: IComponentVariantProps = {}) {
   return (
     <section
       className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6"
       data-ds-block="rbac.subject.admin-v2-settings"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       <p className="text-xs text-[var(--color-sps-muted)]">rbac.subject</p>
       <h2 className="mt-1 text-xl font-semibold text-[var(--color-sps-graphite)]">

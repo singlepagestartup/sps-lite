@@ -43,17 +43,25 @@ function Icon(props: {
 }
 
 export interface IThreadOverviewProps {
+  variant?: string;
   navigation?: ReactNode;
   messageCreate?: ReactNode;
 }
 export function Component(props: IThreadOverviewProps) {
   return (
     <ThreadProvider>
-      <ThreadOverview {...props} />
+      <ThreadOverview
+        {...props}
+        variant={props.variant ?? "overview-ai-chat"}
+      />
     </ThreadProvider>
   );
 }
-function ThreadOverview({ navigation, messageCreate }: IThreadOverviewProps) {
+function ThreadOverview({
+  variant = "overview-ai-chat",
+  navigation,
+  messageCreate,
+}: IThreadOverviewProps) {
   const {
     thread,
     pane,
@@ -74,14 +82,14 @@ function ThreadOverview({ navigation, messageCreate }: IThreadOverviewProps) {
   return (
     <div
       data-ds-block="social.thread.overview-ai-chat"
-      data-module="social"
-      data-model="thread"
       data-id={thread.id}
       data-thread-id={thread.id}
-      data-variant="overview-ai-chat"
       data-knowledge-source-ids={source.id}
       className="flex min-h-0 min-w-0 flex-1 flex-col"
       aria-label={thread.title}
+      data-module="social"
+      data-model="thread"
+      data-variant={variant}
     >
       <PanelHeader
         title={thread.title}

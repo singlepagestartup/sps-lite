@@ -23,7 +23,9 @@ export const defaultProfileCardProps = {
 
 export type ProfileCardProps = typeof defaultProfileCardProps;
 
-export function ProfileCard(props?: Partial<ProfileCardProps>) {
+export function ProfileCard(
+  props?: Partial<ProfileCardProps> & { variant?: string },
+) {
   const { name, role, avatar, href, target, label } = {
     ...defaultProfileCardProps,
     ...props,
@@ -37,6 +39,9 @@ export function ProfileCard(props?: Partial<ProfileCardProps>) {
       className="block rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 transition hover:border-[var(--color-sps-line)] hover:shadow-sm"
       data-ds-block="social.profile.card"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "card"}
     >
       <p className="mb-3 text-xs st text-[var(--color-sps-muted)]">{label}</p>
       <div className="flex items-center gap-3">

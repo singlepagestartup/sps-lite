@@ -90,7 +90,9 @@ function SectionHeader({
   );
 }
 
-export function ProductFindTiers(props?: Partial<ProductFindTiersProps>) {
+export function ProductFindTiers(
+  props?: Partial<ProductFindTiersProps> & { variant?: string },
+) {
   const { eyebrow, title, description, products } = {
     ...defaultProductFindTiersProps,
     ...props,
@@ -103,6 +105,9 @@ export function ProductFindTiers(props?: Partial<ProductFindTiersProps>) {
       data-ds-block="ecommerce.widget.product-find-tiers"
       data-ds-imports="ecommerce.product.tier"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="widget"
+      data-variant={props?.variant ?? "product-find-tiers"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader

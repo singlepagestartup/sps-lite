@@ -2,6 +2,7 @@ import { SubjectMeProfileInformation } from "../me-profile-information/Component
 import { defaultRbacProfiles, type RbacAccountProfile } from "../../../shared";
 
 export interface SubjectMeSocialModuleProfileFindInformationProps {
+  variant?: string;
   title: string;
   description: string;
   profiles: RbacAccountProfile[];
@@ -28,6 +29,11 @@ export function SubjectMeSocialModuleProfileFindInformation(
       data-ds-block="rbac.subject.me-social-module-profile-find-information"
       data-ds-imports="rbac.subject.me-profile-information"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={
+        props?.variant ?? "me-social-module-profile-find-information"
+      }
     >
       {profiles.length ? (
         profiles.map((profile) => (

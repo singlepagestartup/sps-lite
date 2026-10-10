@@ -28,12 +28,21 @@ function valueLabel(value: unknown): string {
       : String(value);
 }
 export interface IComponentProps {
+  variant?: string;
   empty?: boolean;
 }
-export function Component({ empty = false }: IComponentProps) {
+export function Component({
+  variant = "admin-v2-table",
+  empty = false,
+}: IComponentProps) {
   const records = empty ? [] : fixture.records;
   return (
-    <section className="min-w-0 p-5 sm:p-6">
+    <section
+      className="min-w-0 p-5 sm:p-6"
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
+    >
       <p className="text-xs text-sps-muted">
         {fixture.schema.module} / {fixture.schema.entityType} /{" "}
         {fixture.schema.entity}

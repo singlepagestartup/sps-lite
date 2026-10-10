@@ -2,11 +2,13 @@ import type { ReactNode } from "react";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import type { IWebsiteSection } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 export interface IAIChatLandingLayoutProps {
+  variant?: string;
   children?: ReactNode;
   subjectAccount?: ReactNode;
   footerContent?: IWebsiteSection;
 }
 export function Component({
+  variant = "ai-chat-landing",
   children,
   subjectAccount,
   footerContent,
@@ -16,6 +18,9 @@ export function Component({
       data-sps-theme="singlepage"
       data-ds-block="host.layout.ai-chat-landing"
       className="@container min-h-screen min-w-0 flex flex-col bg-sps-grey font-sps text-sps-graphite"
+      data-module="host"
+      data-model="layout"
+      data-variant={variant}
     >
       <a
         href="#ai-chat-main"

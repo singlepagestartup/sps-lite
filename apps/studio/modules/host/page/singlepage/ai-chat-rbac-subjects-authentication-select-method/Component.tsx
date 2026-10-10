@@ -7,20 +7,26 @@ import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/accoun
 import type { IAIChatServicePageContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 
 export interface ILoginPageProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
 }
-export function Component({ copy }: ILoginPageProps = {}) {
+export function Component({
+  variant = "ai-chat-rbac-subjects-authentication-select-method",
+  copy,
+}: ILoginPageProps = {}) {
   const navigate = useNavigate();
   const projectHref = useAIChatProjectHref();
   return (
-    <HostModuleLayout variant="ai-chat-dashboard" page="login">
-      <RbacModuleSubject
-        variant="authentication-email-and-password-authentication-form-ai-chat"
-        copy={copy}
-        onSuccess={() => {
-          navigate(projectHref);
-        }}
-      />
-    </HostModuleLayout>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout variant="ai-chat-dashboard" page="login">
+        <RbacModuleSubject
+          variant="authentication-email-and-password-authentication-form-ai-chat"
+          copy={copy}
+          onSuccess={() => {
+            navigate(projectHref);
+          }}
+        />
+      </HostModuleLayout>
+    </div>
   );
 }

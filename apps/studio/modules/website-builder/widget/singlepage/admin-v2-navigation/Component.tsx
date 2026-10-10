@@ -34,6 +34,7 @@ function Icon(props: {
 }
 
 export interface WebsiteBuilderAdminV2NavigationProps {
+  variant?: string;
   activePath: string;
 }
 export function WebsiteBuilderAdminV2Navigation(
@@ -45,6 +46,9 @@ export function WebsiteBuilderAdminV2Navigation(
       className="flex lg:h-full lg:min-h-[720px] w-full min-w-0 flex-col border-r border-[var(--color-sps-line)] bg-[var(--color-sps-graphite)] text-white"
       data-ds-block="website-builder.widget.admin-v2-navigation"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "admin-v2-navigation"}
     >
       <div className="border-b border-white/10 px-5 py-5">
         <div className="flex items-center gap-3">

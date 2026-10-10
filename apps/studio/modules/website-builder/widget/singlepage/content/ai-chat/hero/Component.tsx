@@ -3,13 +3,20 @@ import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 
 export interface IAIChatHeroProps {
+  variant?: string;
   content?: { hero: IWebsiteSection; labels: Record<string, string> };
 }
-export function Component({ content = defaultContent }: IAIChatHeroProps = {}) {
+export function Component({
+  variant = "content-ai-chat-hero",
+  content = defaultContent,
+}: IAIChatHeroProps = {}) {
   return (
     <section
       data-ds-block="website-builder.widget.content-ai-chat-hero"
       className="mx-auto max-w-6xl px-5 pb-6 pt-4 @3xl:px-8 @3xl:pt-6"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className="grid overflow-hidden rounded-2xl bg-sps-graphite text-white @3xl:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col justify-center p-6 @3xl:p-8">

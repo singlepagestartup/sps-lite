@@ -6,50 +6,56 @@ import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 import type { IAIChatWebsiteContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 
 export interface IAIChatPageProps {
+  variant?: string;
   content?: IAIChatWebsiteContent;
 }
-export function Component({ content }: IAIChatPageProps = {}) {
+export function Component({
+  variant = "ai-chat",
+  content,
+}: IAIChatPageProps = {}) {
   return (
-    <HostModuleLayout
-      variant="ai-chat-landing"
-      subjectAccount={<RbacModuleSubject variant="account" showTokens />}
-      footerContent={content?.footer}
-    >
-      <main
-        id="ai-chat-main"
-        data-ds-page="host.page.ai-chat"
-        tabIndex={-1}
-        className="outline-none"
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="ai-chat-landing"
+        subjectAccount={<RbacModuleSubject variant="account" showTokens />}
+        footerContent={content?.footer}
       >
-        <WebsiteBuilderModuleWidget
-          variant="content-ai-chat-hero"
-          content={content && { hero: content.hero, labels: content.labels }}
-        />
-        <WebsiteBuilderModuleWidget
-          variant="content-ai-chat-try"
-          content={
-            content && {
-              workflow: content.workflow,
-              uploadNote: content.labels["demo-upload-note"],
-            }
-          }
+        <main
+          id="ai-chat-main"
+          data-ds-page="host.page.ai-chat"
+          tabIndex={-1}
+          className="outline-none"
         >
-          <SocialModuleChat
-            variant="overview-preview-ai-chat"
-            content={content}
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-hero"
+            content={content && { hero: content.hero, labels: content.labels }}
           />
-        </WebsiteBuilderModuleWidget>
-        <WebsiteBuilderModuleWidget
-          variant="content-ai-chat-continue"
-          content={
-            content && {
-              continue: content.continue,
-              terms: content.terms,
-              startLink: content.hero.links[0],
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-try"
+            content={
+              content && {
+                workflow: content.workflow,
+                uploadNote: content.labels["demo-upload-note"],
+              }
             }
-          }
-        />
-      </main>
-    </HostModuleLayout>
+          >
+            <SocialModuleChat
+              variant="overview-preview-ai-chat"
+              content={content}
+            />
+          </WebsiteBuilderModuleWidget>
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-continue"
+            content={
+              content && {
+                continue: content.continue,
+                terms: content.terms,
+                startLink: content.hero.links[0],
+              }
+            }
+          />
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }

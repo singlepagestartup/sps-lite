@@ -18,7 +18,9 @@ export const defaultProfileCompactProps = {
 
 export type ProfileCompactProps = typeof defaultProfileCompactProps;
 
-export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
+export function ProfileCompact(
+  props?: Partial<ProfileCompactProps> & { variant?: string },
+) {
   const { name, role, avatar, href, target, inverse } = {
     ...defaultProfileCompactProps,
     ...props,
@@ -55,6 +57,9 @@ export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
         className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
         data-ds-block="social.profile.compact"
         data-ds-layer="singlepage"
+        data-module="social"
+        data-model="profile"
+        data-variant={props?.variant ?? "compact"}
       >
         {content}
       </a>
@@ -66,6 +71,9 @@ export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
       className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
       data-ds-block="social.profile.compact"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "compact"}
     >
       {content}
     </div>

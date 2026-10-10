@@ -20,23 +20,30 @@ function SectionStack({ children, className }: SectionStackProps) {
     </div>
   );
 }
-export function EcommerceProductFindCard() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function EcommerceProductFindCard({
+  variant = "ecommerce-products",
+}: IComponentVariantProps = {}) {
   return (
-    <HostModuleLayout
-      variant="website"
-      activeHref="/ecommerce/products"
-      footer="compact"
-    >
-      <main
-        className="min-w-0"
-        data-ds-page="host.page.ecommerce-products"
-        data-ds-route="/ecommerce/products"
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="website"
+        activeHref="/ecommerce/products"
+        footer="compact"
       >
-        <SectionStack>
-          <WebsiteBuilderModuleWidget variant="content-page-header" />
-          <EcommerceModuleWidget variant="product-find-card" />
-        </SectionStack>
-      </main>
-    </HostModuleLayout>
+        <main
+          className="min-w-0"
+          data-ds-page="host.page.ecommerce-products"
+          data-ds-route="/ecommerce/products"
+        >
+          <SectionStack>
+            <WebsiteBuilderModuleWidget variant="content-page-header" />
+            <EcommerceModuleWidget variant="product-find-card" />
+          </SectionStack>
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }

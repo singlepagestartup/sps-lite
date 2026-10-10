@@ -42,7 +42,7 @@ export interface ContentFeatureItem {
 export type ContentFeatureFindGridProps =
   typeof defaultContentFeatureFindGridProps;
 export function ContentFeatureFindGrid(
-  props?: Partial<ContentFeatureFindGridProps>,
+  props?: Partial<ContentFeatureFindGridProps> & { variant?: string },
 ) {
   const { eyebrow, title, features } = {
     ...defaultContentFeatureFindGridProps,
@@ -53,6 +53,9 @@ export function ContentFeatureFindGrid(
       className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-feature-find-grid"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-feature-find-grid"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">
