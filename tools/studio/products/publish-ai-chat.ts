@@ -81,7 +81,7 @@ publish(
 );
 
 const copies = {
-  register: "rbac/identity/authentication/register/ai-chat",
+  register: "rbac/subject/authentication/registration/ai-chat",
   login: "rbac/identity/authentication/login/ai-chat",
   settings: "rbac/subject/account-data",
   help: "website-builder/widget/content/ai-chat/help",

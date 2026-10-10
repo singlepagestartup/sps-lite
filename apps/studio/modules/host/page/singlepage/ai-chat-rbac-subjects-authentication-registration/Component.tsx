@@ -1,10 +1,10 @@
 import { Component as HostModuleLayout } from "../../../layout/index";
-import { Component as RbacModuleIdentity } from "../../../../rbac/identity/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 export function Component() {
   return (
     <HostModuleLayout variant="ai-chat-dashboard" page="register">
-      <RbacModuleIdentity variant="authentication-register-ai-chat" />
+      <RbacModuleSubject variant="authentication-registration-ai-chat" />
     </HostModuleLayout>
   );
 }

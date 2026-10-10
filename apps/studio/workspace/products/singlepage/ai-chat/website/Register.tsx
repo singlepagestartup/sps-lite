@@ -1,5 +1,5 @@
 import { Component as HostModuleLayout } from "../../../../../modules/host/layout/index";
-import { Component as RbacModuleIdentity } from "../../../../../modules/rbac/identity/index";
+import { Component as RbacModuleSubject } from "../../../../../modules/rbac/subject/index";
 
 import sourceText from "./register.md?raw";
 import { parseAIChatServicePage } from "./content";
@@ -10,8 +10,8 @@ export default function Register({ text }: { text?: string } = {}) {
   return (
     <AccountProvider account={aiChatAccount}>
       <HostModuleLayout variant="ai-chat-dashboard" page="register">
-        <RbacModuleIdentity
-          variant="authentication-register-ai-chat"
+        <RbacModuleSubject
+          variant="authentication-registration-ai-chat"
           copy={parseAIChatServicePage(text ?? sourceText)}
         />
       </HostModuleLayout>
