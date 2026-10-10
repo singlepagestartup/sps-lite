@@ -1,7 +1,7 @@
 import { Component as HostModuleLayout } from "../../../layout";
-import { Component as RbacModuleIdentity } from "../../../../rbac/identity";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject";
 
-export function RbacIdentityResetPasswordDefault() {
+export function RbacSubjectAuthenticationResetPassword() {
   return (
     <HostModuleLayout
       variant="website"
@@ -14,7 +14,7 @@ export function RbacIdentityResetPasswordDefault() {
       >
         <section className="w-full py-12">
           <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            <RbacModuleIdentity variant="reset-password-default" />
+            <RbacModuleSubject variant="authentication-email-and-password-reset-password-form-default" />
           </div>
         </section>
       </main>

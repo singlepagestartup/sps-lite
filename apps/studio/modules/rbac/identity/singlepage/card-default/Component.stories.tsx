@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { defaultRbacIdentities } from "../../../shared";
 import { Component as RbacModuleIdentity } from "../../index";
 import type { IdentityCardDefaultProps } from "./Component";
+import { Component as RbacModuleSubject } from "../../../subject";
 function Example(props: Partial<IdentityCardDefaultProps>) {
   return (
     <RbacModuleIdentity
@@ -10,17 +11,17 @@ function Example(props: Partial<IdentityCardDefaultProps>) {
       variant="card-default"
       renderFlow={({ identity, action, onClose, onUpdate }) =>
         action === "reconnect" ? (
-          <RbacModuleIdentity
-            variant="provider-connect"
+          <RbacModuleSubject
+            variant="authentication-provider-connect-default"
             provider={identity.provider}
             account={identity.account || identity.email}
             onCancel={onClose}
             onComplete={(account) => onUpdate({ ...identity, account })}
           />
         ) : (
-          <RbacModuleIdentity
+          <RbacModuleSubject
             key={action}
-            variant="account-change"
+            variant="authentication-email-and-password-account-change-default"
             kind={action === "change-email" ? "email" : "password"}
             email={identity.email}
             onCancel={onClose}

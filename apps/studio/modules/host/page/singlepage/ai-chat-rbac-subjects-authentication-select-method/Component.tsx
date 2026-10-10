@@ -1,11 +1,8 @@
 "use client";
 import { Component as HostModuleLayout } from "../../../layout/index";
-import { Component as RbacModuleIdentity } from "../../../../rbac/identity";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject";
 import { useNavigate } from "../../../layout/singlepage/ai-chat-landing/Navigation";
-import {
-  useAIChatProjectHref,
-  useStudioAccount,
-} from "../../../../rbac/subject/singlepage/account/Account";
+import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/account/Account";
 import type { IAIChatServicePageContent } from "../../../../../workspace/utils/products/ai-chat-content";
 
 export interface ILoginPageProps {
@@ -14,14 +11,12 @@ export interface ILoginPageProps {
 export function Component({ copy }: ILoginPageProps = {}) {
   const navigate = useNavigate();
   const projectHref = useAIChatProjectHref();
-  const { signIn } = useStudioAccount();
   return (
     <HostModuleLayout variant="ai-chat-dashboard" page="login">
-      <RbacModuleIdentity
-        variant="authentication-login-ai-chat"
+      <RbacModuleSubject
+        variant="authentication-select-method-ai-chat"
         copy={copy}
-        onSuccess={(email) => {
-          signIn(email);
+        onSuccess={() => {
           navigate(projectHref);
         }}
       />

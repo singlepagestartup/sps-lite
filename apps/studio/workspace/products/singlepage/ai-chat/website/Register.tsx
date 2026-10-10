@@ -11,7 +11,7 @@ export default function Register({ text }: { text?: string } = {}) {
     <AccountProvider account={aiChatAccount}>
       <HostModuleLayout variant="ai-chat-dashboard" page="register">
         <RbacModuleSubject
-          variant="authentication-registration-ai-chat"
+          variant="authentication-email-and-password-registration-form-ai-chat"
           copy={parseAIChatServicePage(text ?? sourceText)}
         />
       </HostModuleLayout>

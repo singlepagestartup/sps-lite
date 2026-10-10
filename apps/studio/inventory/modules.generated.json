@@ -5,7 +5,7 @@
     "modules": 15,
     "entities": 61,
     "variants": 838,
-    "coveredVariants": 164,
+    "coveredVariants": 170,
     "representedEntities": 61
   },
   "modules": [
@@ -4119,18 +4119,11 @@
             }
           ],
           "storyFiles": [
-            "apps/studio/modules/rbac/identity/singlepage/account-change/Component.stories.tsx",
             "apps/studio/modules/rbac/identity/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/rbac/identity/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/authentication/login/ai-chat/Component.stories.tsx",
             "apps/studio/modules/rbac/identity/singlepage/card-default/Component.stories.tsx",
             "apps/studio/modules/rbac/identity/singlepage/find-default/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/login-default/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/password-reset-default/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/provider-connect/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/register-default/Component.stories.tsx",
-            "apps/studio/modules/rbac/identity/singlepage/reset-password-default/Component.stories.tsx"
+            "apps/studio/modules/rbac/identity/singlepage/list/Component.stories.tsx"
           ]
         },
         {
@@ -4314,31 +4307,41 @@
               "variant": "authentication-email-and-password-authentication-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-email-and-password-authentication-form-default"
+              ]
             },
             {
               "variant": "authentication-email-and-password-forgot-password-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-email-and-password-forgot-password-form-default"
+              ]
             },
             {
               "variant": "authentication-email-and-password-registration-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-email-and-password-registration-form-default"
+              ]
             },
             {
               "variant": "authentication-email-and-password-reset-password-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-email-and-password-reset-password-form-default"
+              ]
             },
             {
               "variant": "authentication-ethereum-virtual-machine-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-ethereum-virtual-machine-default"
+              ]
             },
             {
               "variant": "authentication-init-default",
@@ -4374,7 +4377,9 @@
               "variant": "authentication-select-method-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": []
+              "coveredBy": [
+                "rbac.subject.authentication-select-method-default"
+              ]
             },
             {
               "variant": "crm-module-form-request-create",
@@ -4497,7 +4502,18 @@
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-settings/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/registration/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/account-change/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/authentication-form/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/authentication-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/forgot-password-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/registration-form/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/registration-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/reset-password-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/ethereum-virtual-machine/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/oauth/authorization/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/provider-connect/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/select-method/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/authentication/select-method/default/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/list/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/me-crm-form-deafult/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/me-delete/Component.stories.tsx",
