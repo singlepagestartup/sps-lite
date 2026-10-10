@@ -1,17 +1,17 @@
-import { Component as RbacModuleIdentity } from "../../../../index";
+import { Component as RbacModuleSubject } from "../../../../index";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { AccountProvider } from "../../../../../subject/singlepage/account/Account";
+import { AccountProvider } from "../../../account/Account";
 import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
 
 function Example() {
-  return <RbacModuleIdentity variant="authentication-register-ai-chat" />;
+  return <RbacModuleSubject variant="authentication-registration-ai-chat" />;
 }
 
 const meta = {
-  id: "modules-rbac-models-identity-singlepage-authentication-register-ai-chat",
+  id: "modules-rbac-models-subject-singlepage-authentication-registration-ai-chat",
   title:
-    "Modules/Rbac/Models/Identity/Singlepage/authentication/register/ai-chat",
+    "Modules/Rbac/Models/Subject/Singlepage/authentication/registration/ai-chat",
   component: Example,
   parameters: { layout: "fullscreen" },
   decorators: [

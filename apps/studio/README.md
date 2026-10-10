@@ -226,7 +226,8 @@ import { Component as SocialModuleProfile } from ".../social/profile";
 | Model                                                      | Studio responsibility                                   |
 | ---------------------------------------------------------- | ------------------------------------------------------- |
 | Host Page / Layout                                         | Separate pages and the frame with header slots          |
-| RBAC Identity / Subject                                    | Authentication, account forms and current account       |
+| RBAC Subject                                               | Registration, account forms and current account         |
+| RBAC Identity                                              | Sign-in forms and connected identity display            |
 | Social Profile                                             | Project selector, overview, sidebar, forms and agent    |
 | Social Chat / Thread                                       | Chat and Thread overviews                               |
 | Social Message / Skill                                     | Message overview/list and knowledge-editing instruction |
@@ -234,6 +235,11 @@ import { Component as SocialModuleProfile } from ".../social/profile";
 | File Storage File                                          | Upload, attachment list, preview and detach             |
 | Ecommerce Order                                            | Token purchase preview                                  |
 | Website Builder Widget / Logotype / Buttons Array / Button | Header, logo, navigation and Help                       |
+
+AI Chat registration is Subject variant `authentication-registration-ai-chat`.
+The Host Page and editable website preview call the public Subject entry.
+The form, local validation, Storybook sample and published copy belong to Subject;
+registration does not require an existing Identity.
 
 AccountProvider supplies one user profile and its balance directly to Subject
 `account`. ProfilesProvider supplies local project identities; the project
