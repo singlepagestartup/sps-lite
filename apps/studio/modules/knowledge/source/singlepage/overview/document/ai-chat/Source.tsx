@@ -1,4 +1,5 @@
 "use client";
+
 import {
   createContext,
   useContext,
@@ -6,8 +7,8 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import type { IAIChatSource } from "../../../../../../../workspace/utils/products/ai-chat-models";
-import { editSourceUserContext } from "../../../../../../../workspace/utils/products/ai-chat-knowledge";
+import type { IAIChatSource } from "../../../../../../social/profile/singlepage/scope/ai-chat/project/models";
+import { editSourceUserContext } from "../../ai-chat/utils";
 
 interface ISourceContext {
   source: IAIChatSource;

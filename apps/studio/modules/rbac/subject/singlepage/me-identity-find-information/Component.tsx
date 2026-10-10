@@ -1,19 +1,57 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import type { IIdentityFlowProps } from "../../../identity/singlepage/card-default/Component";
-import { Component as AuthenticationProviderConnect } from "../authentication/provider-connect/default";
-import { Component as AuthenticationAccountChange } from "../authentication/email-and-password/account-change/default";
-import { Component as RbacModuleIdentity } from "../../../identity";
+import { Component as AuthenticationProviderConnect } from "../authentication/provider-connect/default/index";
+import { Component as AuthenticationAccountChange } from "../authentication/email-and-password/account-change/default/index";
+import { Component as RbacModuleIdentity } from "../../../identity/index";
 import { useCallback, useEffect, useState } from "react";
 import { useStudioAccount } from "../account/Account";
-import { Button } from "../../../../../workspace/design/singlepage/interface-kit/primitives";
-import { Plus } from "../../../../../workspace/utils/components/ModuleIcons";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../account/fixture";
 import {
   defaultSettingsIdentities,
   identityProviders,
   type IdentityAction,
   type RbacIdentity,
 } from "../../../shared";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface SubjectMeIdentityFindInformationProps {
   title?: string;
@@ -21,13 +59,6 @@ export interface SubjectMeIdentityFindInformationProps {
   emptyLabel?: string;
   identities?: RbacIdentity[];
 }
-export const defaultSubjectMeIdentityFindInformationProps: SubjectMeIdentityFindInformationProps =
-  {
-    title: "Sign-in methods",
-    description:
-      "Choose how you sign in. Manage each connected account separately.",
-    emptyLabel: "No sign-in methods connected to this account.",
-  };
 export function SubjectMeIdentityFindInformation(
   props: SubjectMeIdentityFindInformationProps = {},
 ) {
@@ -223,3 +254,26 @@ export function SubjectMeIdentityFindInformation(
     </article>
   );
 }
+const Plus = createIcon("plus");
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
+export const defaultSubjectMeIdentityFindInformationProps: SubjectMeIdentityFindInformationProps =
+  {
+    title: "Sign-in methods",
+    description:
+      "Choose how you sign in. Manage each connected account separately.",
+    emptyLabel: "No sign-in methods connected to this account.",
+  };

@@ -1,6 +1,6 @@
-import { Component as BlogModuleArticle } from "../../../../blog/article";
-import { Component as EcommerceModuleProduct } from "../../../../ecommerce/product";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as BlogModuleArticle } from "../../../../blog/article/index";
+import { Component as EcommerceModuleProduct } from "../../../../ecommerce/product/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 

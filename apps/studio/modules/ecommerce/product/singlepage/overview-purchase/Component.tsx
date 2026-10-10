@@ -1,17 +1,43 @@
-import { useEffect, useRef, useState } from "react";
-import { Button } from "../../../../../workspace/design/singlepage/interface-kit/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
-  CheckCircle2,
-  Minus,
-  Package,
-  Plus,
-  ShoppingCart,
-} from "../../../../../workspace/utils/components/ModuleIcons";
-
-const IMG_WEB = new URL(
-  "../../../../../workspace/assets/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
-  import.meta.url,
-).href;
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { useEffect, useRef, useState } from "react";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ProductOverviewPurchaseProps {
   id: string;
@@ -37,27 +63,6 @@ export interface ProductOverviewPurchaseProps {
   blockId?: string;
   importedBlockId?: string;
 }
-
-export const defaultProductOverviewPurchaseProps: ProductOverviewPurchaseProps =
-  {
-    id: "srv-web",
-    slug: "website-development",
-    image: IMG_WEB,
-    title: "Website Development",
-    priceLabel: "from $4,999",
-    price: 4999,
-    priceNote: "Project-based pricing. Final quote after discovery call.",
-    deliverables: [
-      "Responsive website",
-      "CMS setup",
-      "SEO configuration",
-      "Analytics integration",
-      "Performance optimization",
-      "Source code handoff",
-    ],
-    techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
-  };
-
 export function ProductOverviewPurchase(
   props?: Partial<ProductOverviewPurchaseProps>,
 ) {
@@ -87,7 +92,6 @@ export function ProductOverviewPurchase(
     },
     [],
   );
-
   function handleAddToCart() {
     onAddToCart?.(
       {
@@ -105,7 +109,6 @@ export function ProductOverviewPurchase(
       window.clearTimeout(feedbackTimer.current);
     feedbackTimer.current = window.setTimeout(() => setIsAdded(false), 1600);
   }
-
   return (
     <section
       id="product-purchase"
@@ -116,57 +119,57 @@ export function ProductOverviewPurchase(
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 max-w-2xl">
-          <p className="text-sm font-semibold text-[var(--workspace-brand-muted)]">
+          <p className="text-sm font-semibold text-[var(--color-sps-muted)]">
             Your project
           </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight text-[var(--workspace-brand-foreground)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-[var(--color-sps-graphite)] sm:text-4xl">
             Choose what you need.
           </h2>
         </div>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div className="min-w-0 overflow-hidden rounded-3xl bg-[var(--workspace-brand-surface)]">
+          <div className="min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-white)]">
             <div className="p-5 sm:p-8">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-[var(--workspace-brand-foreground)]">
+              <h3 className="flex items-center gap-2 text-lg font-semibold text-[var(--color-sps-graphite)]">
                 <Package className="h-5 w-5" /> What you get
               </h3>
               <ul className="mt-5 grid gap-3">
                 {deliverables.map((deliverable) => (
                   <li
                     key={deliverable}
-                    className="flex items-start gap-3 text-base leading-6 text-[var(--workspace-brand-muted)]"
+                    className="flex items-start gap-3 text-base leading-6 text-[var(--color-sps-muted)]"
                   >
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--workspace-brand-foreground)]" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-sps-graphite)]" />
                     <span>{deliverable}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="flex min-w-0 flex-col rounded-3xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-6 sm:p-8 lg:p-10">
+          <div className="flex min-w-0 flex-col rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8 lg:p-10">
             <div className="flex items-center gap-4">
               <img
                 src={image}
                 alt=""
                 className="h-16 w-16 shrink-0 rounded-2xl object-cover"
               />
-              <p className="text-sm font-semibold text-[var(--workspace-brand-muted)]">
+              <p className="text-sm font-semibold text-[var(--color-sps-muted)]">
                 {title}
               </p>
             </div>
-            <p className="mt-4 text-4xl font-semibold leading-tight text-[var(--workspace-brand-foreground)] sm:text-5xl">
+            <p className="mt-4 text-4xl font-semibold leading-tight text-[var(--color-sps-graphite)] sm:text-5xl">
               {priceLabel}
             </p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-[var(--workspace-brand-muted)]">
+            <p className="mt-3 max-w-md text-sm leading-6 text-[var(--color-sps-muted)]">
               {priceNote}
             </p>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[var(--workspace-brand-background)] p-4">
-              <span className="text-sm font-semibold text-[var(--workspace-brand-foreground)]">
+            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[var(--color-sps-grey)] p-4">
+              <span className="text-sm font-semibold text-[var(--color-sps-graphite)]">
                 Quantity / licenses
               </span>
               <div
                 role="group"
                 aria-label="Quantity"
-                className="flex items-center gap-1 rounded-xl bg-[var(--workspace-brand-surface)] p-1"
+                className="flex items-center gap-1 rounded-xl bg-[var(--color-sps-white)] p-1"
               >
                 <Button
                   variant="plain"
@@ -214,3 +217,44 @@ export function ProductOverviewPurchase(
     </section>
   );
 }
+const ShoppingCart = createIcon("shopping-cart");
+const Plus = createIcon("plus");
+const Package = createIcon("package");
+const Minus = createIcon("minus");
+const CheckCircle2 = createIcon("check-circle");
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
+const IMG_WEB =
+  "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png";
+export const defaultProductOverviewPurchaseProps: ProductOverviewPurchaseProps =
+  {
+    id: "srv-web",
+    slug: "website-development",
+    image: IMG_WEB,
+    title: "Website Development",
+    priceLabel: "from $4,999",
+    price: 4999,
+    priceNote: "Project-based pricing. Final quote after discovery call.",
+    deliverables: [
+      "Responsive website",
+      "CMS setup",
+      "SEO configuration",
+      "Analytics integration",
+      "Performance optimization",
+      "Source code handoff",
+    ],
+    techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Vercel"],
+  };

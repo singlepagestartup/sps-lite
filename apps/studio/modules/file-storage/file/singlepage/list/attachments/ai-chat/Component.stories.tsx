@@ -3,9 +3,9 @@ import { Component as FileStorageModuleFile } from "../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { FilesProvider } from "./Files";
-import { aiChatSourceFixture } from "../../../../../../../workspace/utils/products/ai-chat-workspace-fixture";
+import { aiChatSourceFixture } from "../../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import { AccountProvider } from "../../../../../../rbac/subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../../../../rbac/subject/singlepage/account/fixture";
 function Example() {
   const { files } = aiChatSourceFixture();
   const [ids, setIds] = useState(files.map((file) => file.id));

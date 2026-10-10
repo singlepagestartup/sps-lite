@@ -1,17 +1,23 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { memo } from "react";
-import {
-  Icon,
-  kit,
-} from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
 import {
   type IProjectMessage,
   type IProjectDocumentContext,
-} from "../../../../../../workspace/utils/products/ai-chat-workspace";
+} from "../../../../profile/singlepage/scope/ai-chat/project/state";
 import { Component as FileStorageModuleFile } from "../../../../../file-storage/file/index";
-
-import { type IProjectAgent } from "../../../../../../workspace/utils/products/ai-chat-agent-resolver";
+import { type IProjectAgent } from "../../../../profile/singlepage/agent/overview/ai-chat/resolver";
 import { Component as SocialModuleProfile } from "../../../../profile/index";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IMessageOverviewProps {
   message: IProjectMessage;
@@ -19,7 +25,60 @@ export interface IMessageOverviewProps {
   onSelect: (agent: IProjectAgent) => void;
   showContext: boolean;
 }
-
+interface IMessageContextProps {
+  documents: IProjectDocumentContext[];
+  label: string;
+}
+function MessageContext({ documents, label }: IMessageContextProps) {
+  return (
+    <details className={`text-xs ${kit.muted}`}>
+      <summary className={`min-h-8 cursor-pointer py-2 ${kit.focus}`}>
+        {label} · {documents.length}
+      </summary>
+      <div className="space-y-2 pb-2">
+        {documents.map((document) => (
+          <details
+            key={document.name}
+            className="rounded-xl border border-sps-line bg-sps-white p-3"
+          >
+            <summary className={`cursor-pointer leading-5 ${kit.focus}`}>
+              <span className="font-semibold text-sps-graphite">
+                {document.name}
+              </span>
+              <span className="ml-2">
+                {document.status === "draft"
+                  ? "Current draft"
+                  : "Source material"}
+              </span>
+            </summary>
+            <div className="mt-3 max-h-48 overflow-y-auto whitespace-pre-wrap break-words leading-5">
+              {document.text || "No text supplied yet."}
+            </div>
+            {Boolean(document.assets?.length) && (
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {document.assets!.map((asset) => (
+                  <FileStorageModuleFile
+                    variant="list-item-asset-ai-chat"
+                    key={asset.id}
+                    asset={asset}
+                  />
+                ))}
+              </div>
+            )}
+          </details>
+        ))}
+      </div>
+    </details>
+  );
+}
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  muted: "text-sps-muted",
+  focus: focus,
+};
 export const Component = memo(function Component({
   message,
   agent: replyingAgent,
@@ -118,51 +177,3 @@ export const Component = memo(function Component({
     </article>
   );
 });
-
-interface IMessageContextProps {
-  documents: IProjectDocumentContext[];
-  label: string;
-}
-
-function MessageContext({ documents, label }: IMessageContextProps) {
-  return (
-    <details className={`text-xs ${kit.muted}`}>
-      <summary className={`min-h-8 cursor-pointer py-2 ${kit.focus}`}>
-        {label} · {documents.length}
-      </summary>
-      <div className="space-y-2 pb-2">
-        {documents.map((document) => (
-          <details
-            key={document.name}
-            className="rounded-xl border border-sps-line bg-sps-white p-3"
-          >
-            <summary className={`cursor-pointer leading-5 ${kit.focus}`}>
-              <span className="font-semibold text-sps-graphite">
-                {document.name}
-              </span>
-              <span className="ml-2">
-                {document.status === "draft"
-                  ? "Current draft"
-                  : "Source material"}
-              </span>
-            </summary>
-            <div className="mt-3 max-h-48 overflow-y-auto whitespace-pre-wrap break-words leading-5">
-              {document.text || "No text supplied yet."}
-            </div>
-            {Boolean(document.assets?.length) && (
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                {document.assets!.map((asset) => (
-                  <FileStorageModuleFile
-                    variant="list-item-asset-ai-chat"
-                    key={asset.id}
-                    asset={asset}
-                  />
-                ))}
-              </div>
-            )}
-          </details>
-        ))}
-      </div>
-    </details>
-  );
-}

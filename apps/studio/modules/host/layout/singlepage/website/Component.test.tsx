@@ -3,8 +3,8 @@ import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Component as HostModuleLayout } from "../../index";
-import { Component as HostModulePage } from "../../../page";
-import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget";
+import { Component as HostModulePage } from "../../../page/index";
+import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 
 const studio = path.resolve(import.meta.dir, "../../../../..");
 

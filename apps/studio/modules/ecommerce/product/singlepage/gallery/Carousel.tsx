@@ -1,21 +1,49 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
 
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "../../../../../workspace/utils/components/ModuleIcons";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
-
 type CarouselOrientation = "horizontal" | "vertical";
-
 interface CarouselContextValue {
   api: CarouselApi;
   canScrollNext: boolean;
@@ -25,30 +53,33 @@ interface CarouselContextValue {
   scrollNext: () => void;
   scrollPrev: () => void;
 }
-
 interface CarouselProps extends React.HTMLAttributes<HTMLDivElement> {
   opts?: CarouselOptions;
   orientation?: CarouselOrientation;
   plugins?: CarouselPlugin;
   setApi?: (api: CarouselApi) => void;
 }
-
 function cn(...classes: Array<false | null | string | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
-
-const CarouselContext = React.createContext<CarouselContextValue | null>(null);
-
 function useCarousel() {
   const context = React.useContext(CarouselContext);
-
   if (!context) {
     throw new Error("useCarousel must be used within a Carousel");
   }
-
   return context;
 }
-
+export {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+};
+const ChevronRight = createIcon("caret-right");
+const ChevronLeft = createIcon("caret-left");
+const CarouselContext = React.createContext<CarouselContextValue | null>(null);
 const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
   (
     {
@@ -71,27 +102,22 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
-
     const onSelect = React.useCallback((emblaApi: NonNullable<CarouselApi>) => {
       setCanScrollPrev(emblaApi.canScrollPrev());
       setCanScrollNext(emblaApi.canScrollNext());
     }, []);
-
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev();
     }, [api]);
-
     const scrollNext = React.useCallback(() => {
       api?.scrollNext();
     }, [api]);
-
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault();
           scrollPrev();
         }
-
         if (event.key === "ArrowRight") {
           event.preventDefault();
           scrollNext();
@@ -99,30 +125,24 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
       },
       [scrollNext, scrollPrev],
     );
-
     React.useEffect(() => {
       if (!api || !setApi) {
         return;
       }
-
       setApi(api);
     }, [api, setApi]);
-
     React.useEffect(() => {
       if (!api) {
         return;
       }
-
       onSelect(api);
       api.on("reInit", onSelect);
       api.on("select", onSelect);
-
       return () => {
         api.off("reInit", onSelect);
         api.off("select", onSelect);
       };
     }, [api, onSelect]);
-
     return (
       <CarouselContext.Provider
         value={{
@@ -149,14 +169,11 @@ const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     );
   },
 );
-Carousel.displayName = "Carousel";
-
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel();
-
   return (
     <div ref={carouselRef} className="overflow-hidden">
       <div
@@ -175,14 +192,11 @@ const CarouselContent = React.forwardRef<
     </div>
   );
 });
-CarouselContent.displayName = "CarouselContent";
-
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { orientation } = useCarousel();
-
   return (
     <div
       ref={ref}
@@ -197,20 +211,17 @@ const CarouselItem = React.forwardRef<
     />
   );
 });
-CarouselItem.displayName = "CarouselItem";
-
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button">
 >(({ className, ...props }, ref) => {
   const { canScrollPrev, orientation, scrollPrev } = useCarousel();
-
   return (
     <button
       ref={ref}
       aria-label="Previous slide"
       className={cn(
-        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]/90 text-[var(--workspace-brand-foreground)] transition hover:bg-[var(--workspace-brand-surface)] disabled:pointer-events-none disabled:opacity-40",
+        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/90 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-white)] disabled:pointer-events-none disabled:opacity-40",
         orientation === "horizontal"
           ? "top-1/2 -left-4 -translate-y-1/2"
           : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -225,20 +236,17 @@ const CarouselPrevious = React.forwardRef<
     </button>
   );
 });
-CarouselPrevious.displayName = "CarouselPrevious";
-
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button">
 >(({ className, ...props }, ref) => {
   const { canScrollNext, orientation, scrollNext } = useCarousel();
-
   return (
     <button
       ref={ref}
       aria-label="Next slide"
       className={cn(
-        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]/90 text-[var(--workspace-brand-foreground)] transition hover:bg-[var(--workspace-brand-surface)] disabled:pointer-events-none disabled:opacity-40",
+        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/90 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-white)] disabled:pointer-events-none disabled:opacity-40",
         orientation === "horizontal"
           ? "top-1/2 -right-4 -translate-y-1/2"
           : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -253,13 +261,8 @@ const CarouselNext = React.forwardRef<
     </button>
   );
 });
+Carousel.displayName = "Carousel";
+CarouselContent.displayName = "CarouselContent";
+CarouselItem.displayName = "CarouselItem";
+CarouselPrevious.displayName = "CarouselPrevious";
 CarouselNext.displayName = "CarouselNext";
-
-export {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-};

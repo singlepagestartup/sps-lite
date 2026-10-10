@@ -1,4 +1,4 @@
-import { Component as BlogModuleWidget } from "../../../widget";
+import { Component as BlogModuleWidget } from "../../../widget/index";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {

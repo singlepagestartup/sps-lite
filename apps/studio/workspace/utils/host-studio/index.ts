@@ -1,7 +1,7 @@
-import type { IModel as IPage } from "../../../modules/host/page/interface";
-import type { IModel as ILayout } from "../../../modules/host/layout/interface";
-import type { IModel as IWidget } from "../../../modules/host/widget/interface";
-import type { IModel as IMetadata } from "../../../modules/host/metadata/interface";
+import type { IModel as IPage } from "./page";
+import type { IModel as ILayout } from "./layout";
+import type { IModel as IWidget } from "./widget";
+import type { IModel as IMetadata } from "./metadata";
 import { HOST_STUDIO_SAMPLE_IDS } from "./constants";
 
 export interface IHostModelMap {

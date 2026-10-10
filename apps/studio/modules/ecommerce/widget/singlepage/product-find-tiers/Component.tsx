@@ -1,7 +1,7 @@
 import {
   Component as EcommerceModuleProduct,
   type ProductTierProps,
-} from "../../../product";
+} from "../../../product/index";
 
 export type ProductTierItem = ProductTierProps;
 
@@ -77,14 +77,12 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-8 max-w-2xl">
-      <p className="mb-2 text-xs text-[var(--workspace-brand-muted)]">
-        {eyebrow}
-      </p>
-      <h2 className="text-3xl font-semibold leading-tight sm:text-4xl text-[var(--workspace-brand-foreground)]">
+      <p className="mb-2 text-xs text-[var(--color-sps-muted)]">{eyebrow}</p>
+      <h2 className="text-3xl font-semibold leading-tight sm:text-4xl text-[var(--color-sps-graphite)]">
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 text-base leading-6 text-[var(--workspace-brand-muted)]">
+        <p className="mt-3 text-base leading-6 text-[var(--color-sps-muted)]">
           {description}
         </p>
       ) : null}

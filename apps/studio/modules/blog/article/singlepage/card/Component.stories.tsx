@@ -34,7 +34,7 @@ export const Comparison: Story = {
     <div className="mx-auto grid max-w-7xl items-start gap-6 lg:grid-cols-3">
       {(["balanced", "editorial", "compact"] as const).map((layout) => (
         <section className="min-w-0" key={layout}>
-          <h2 className="mb-3 text-sm font-semibold text-[var(--workspace-brand-foreground)]">
+          <h2 className="mb-3 text-sm font-semibold text-[var(--color-sps-graphite)]">
             {layout === "balanced"
               ? "Balanced · default"
               : layout === "editorial"

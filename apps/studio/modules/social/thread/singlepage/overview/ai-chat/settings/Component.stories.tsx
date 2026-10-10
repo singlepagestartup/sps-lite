@@ -1,7 +1,7 @@
 import { Component as SocialModuleThread } from "../../../../index";
 
 import { useState } from "react";
-import type { IProjectTopic } from "../../../../../../../workspace/utils/products/ai-chat-workspace";
+import type { IProjectTopic } from "../../../../../profile/singlepage/scope/ai-chat/project/state";
 import type { Meta, StoryObj } from "@storybook/react";
 
 function Example() {

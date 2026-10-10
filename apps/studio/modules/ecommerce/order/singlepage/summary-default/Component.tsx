@@ -1,19 +1,44 @@
-import { Component as EcommerceModuleProduct } from "../../../product";
-import {
-  Lock,
-  ShieldCheck,
-} from "../../../../../workspace/utils/components/ModuleIcons";
-
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as EcommerceModuleProduct } from "../../../product/index";
 import {
   formatCartMoney,
   getCartTotals,
   type CartItem,
 } from "../../../cart/shared";
-
 import { defaultCheckoutItems } from "../../shared";
-
-const productOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-ecommerce-products-ecommerce-products-slug--default";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface OrderSummaryDefaultProps {
   items: CartItem[];
@@ -23,42 +48,34 @@ export interface OrderSummaryDefaultProps {
   onIncrease?: (item: CartItem) => void;
   onRemove?: (item: CartItem) => void;
 }
-
-export const defaultOrderSummaryDefaultProps: OrderSummaryDefaultProps = {
-  items: defaultCheckoutItems,
-  compact: false,
-  editable: true,
-};
-
 export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
   const { items, compact, editable, onDecrease, onIncrease, onRemove } = {
     ...defaultOrderSummaryDefaultProps,
     ...props,
   };
   const totals = getCartTotals(items);
-
   return (
     <aside
-      className="min-w-0 overflow-hidden rounded-3xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]"
+      className="min-w-0 overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
       data-ds-block="ecommerce.order.summary-default"
       data-ds-imports="ecommerce.product.cart-default"
       data-ds-layer="singlepage"
     >
-      <div className="border-b border-[var(--workspace-brand-line)] px-6 py-5">
-        <h3 className="text-xl font-semibold text-[var(--workspace-brand-foreground)]">
+      <div className="border-b border-[var(--color-sps-line)] px-6 py-5">
+        <h3 className="text-xl font-semibold text-[var(--color-sps-graphite)]">
           Order summary
         </h3>
-        <p className="mt-1 text-sm text-[var(--workspace-brand-muted)]">
+        <p className="mt-1 text-sm text-[var(--color-sps-muted)]">
           {totals.itemCount} {totals.itemCount === 1 ? "item" : "items"}
         </p>
       </div>
 
       {items.length === 0 ? (
-        <p className="px-6 py-8 text-sm text-[var(--workspace-brand-muted)]">
+        <p className="px-6 py-8 text-sm text-[var(--color-sps-muted)]">
           Your order has no items.
         </p>
       ) : null}
-      <ul className="divide-y divide-[var(--workspace-brand-line)] px-6">
+      <ul className="divide-y divide-[var(--color-sps-line)] px-6">
         {items.map((item) => (
           <li key={item.id} className="py-5">
             <EcommerceModuleProduct
@@ -76,35 +93,35 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
         ))}
       </ul>
 
-      <div className="space-y-3 border-t border-[var(--workspace-brand-line)] px-6 py-5">
-        <div className="flex justify-between text-sm text-[var(--workspace-brand-muted)]">
+      <div className="space-y-3 border-t border-[var(--color-sps-line)] px-6 py-5">
+        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
           <span>Subtotal</span>
           <span>{formatCartMoney(totals.subtotal)}</span>
         </div>
-        <div className="flex justify-between text-sm text-[var(--workspace-brand-muted)]">
+        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
           <span>Consultation discount</span>
-          <span className="text-[var(--workspace-brand-foreground)]">
+          <span className="text-[var(--color-sps-graphite)]">
             -{formatCartMoney(totals.discount)}
           </span>
         </div>
-        <div className="flex justify-between text-sm text-[var(--workspace-brand-muted)]">
+        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
           <span>Tax</span>
           <span>$0</span>
         </div>
-        <div className="rounded-2xl bg-[var(--workspace-brand-background)] p-4">
+        <div className="rounded-2xl bg-[var(--color-sps-grey)] p-4">
           <div className="flex items-center justify-between">
-            <span className="text-lg text-[var(--workspace-brand-foreground)]">
+            <span className="text-lg text-[var(--color-sps-graphite)]">
               Total
             </span>
-            <span className="text-3xl font-semibold text-[var(--workspace-brand-foreground)]">
+            <span className="text-3xl font-semibold text-[var(--color-sps-graphite)]">
               {formatCartMoney(totals.total)}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-[var(--workspace-brand-line)] px-6 py-5">
-        <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--workspace-brand-muted)]">
+      <div className="border-t border-[var(--color-sps-line)] px-6 py-5">
+        <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--color-sps-muted)]">
           <span className="inline-flex items-center gap-2">
             <Lock className="h-5 w-5" />
             SSL Secured
@@ -118,3 +135,12 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
     </aside>
   );
 }
+const ShieldCheck = createIcon("shield-check");
+const Lock = createIcon("lock-key");
+const productOverviewStoryHref =
+  "/?path=/story/modules-host-models-page-singlepage-ecommerce-products-ecommerce-products-slug--default";
+export const defaultOrderSummaryDefaultProps: OrderSummaryDefaultProps = {
+  items: defaultCheckoutItems,
+  compact: false,
+  editable: true,
+};

@@ -3,7 +3,7 @@ import { Component as SocialModuleThread } from "../../../../../index";
 import { useCallback, useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../../../../rbac/subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../../../../../rbac/subject/singlepage/account/fixture";
 
 function Example() {
   const [selected, setSelected] = useState(false);

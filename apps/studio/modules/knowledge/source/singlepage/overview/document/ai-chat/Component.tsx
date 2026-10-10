@@ -1,14 +1,26 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
 import {
-  Button,
-  Icon,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import {
   Component as SourceCard,
   type ISourceCardProps,
 } from "../../ai-chat/index";
-import { Component as SourceDownload } from "../../../download/ai-chat";
+import { Component as SourceDownload } from "../../../download/ai-chat/index";
 import { useSource } from "./Source";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ISourceDocumentProps extends ISourceCardProps {}
 export function Component(props: ISourceDocumentProps) {
@@ -30,3 +42,18 @@ export function Component(props: ISourceDocumentProps) {
     </section>
   );
 }
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

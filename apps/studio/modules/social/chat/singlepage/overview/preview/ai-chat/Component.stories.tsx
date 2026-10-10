@@ -1,9 +1,9 @@
 import { Component as SocialModuleChat } from "../../../../index";
 
-import content from "../../../../../../../workspace/utils/products/ai-chat-website.generated.json";
+import content from "../../../../../../website-builder/widget/singlepage/content/ai-chat/website.json";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../../../rbac/subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../../../../workspace/utils/products/ai-chat-account-fixture";
+import { aiChatAccount } from "../../../../../../rbac/subject/singlepage/account/fixture";
 
 function Example() {
   return (

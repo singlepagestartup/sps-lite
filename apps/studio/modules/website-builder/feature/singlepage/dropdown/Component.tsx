@@ -1,42 +1,65 @@
-/**
- * website-builder.feature.dropdown
- *
- * Single expandable feature item (native <details> disclosure). Owned by the
- * website-builder module (model: feature). Accordion-style widgets such as
- * content-faq compose a list of these instead of re-implementing the markup.
- * Presentation-only — uses the native <details>/<summary> toggle, no JS.
- */
-import { ChevronDown } from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as Glyph } from "../icon/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../icon/icons.json";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <Glyph {...props} />;
+}
 
+export type FeatureDropdownProps = typeof defaultFeatureDropdownProps;
+export function FeatureDropdown(props?: Partial<FeatureDropdownProps>) {
+  const { question, answer, open } = {
+    ...defaultFeatureDropdownProps,
+    ...props,
+  };
+  return (
+    <details
+      className="group min-w-0 border-b border-[var(--color-sps-line)] last:border-0"
+      open={open}
+      data-ds-block="website-builder.feature.dropdown"
+      data-ds-layer="singlepage"
+    >
+      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-5 text-base font-semibold leading-6 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-grey)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] [&::-webkit-details-marker]:hidden">
+        <span>{question}</span>
+        <ChevronDown className="h-5 w-5 shrink-0 text-[var(--color-sps-muted)] transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" />
+      </summary>
+      <p className="px-5 pb-6 pr-12 text-base leading-7 text-[var(--color-sps-muted)]">
+        {answer}
+      </p>
+    </details>
+  );
+}
+const ChevronDown = createIcon("caret-down");
 export const defaultFeatureDropdownProps = {
   question: "What tech stack do you use?",
   answer:
     "We primarily use React / Next.js with Tailwind CSS, but we adapt to your existing stack if needed — Vue, Nuxt, Astro, or plain HTML/CSS.",
   open: true,
 };
-
-export type FeatureDropdownProps = typeof defaultFeatureDropdownProps;
-
-export function FeatureDropdown(props?: Partial<FeatureDropdownProps>) {
-  const { question, answer, open } = {
-    ...defaultFeatureDropdownProps,
-    ...props,
-  };
-
-  return (
-    <details
-      className="group min-w-0 border-b border-[var(--workspace-brand-line)] last:border-0"
-      open={open}
-      data-ds-block="website-builder.feature.dropdown"
-      data-ds-layer="singlepage"
-    >
-      <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-5 text-base font-semibold leading-6 text-[var(--workspace-brand-foreground)] transition hover:bg-[var(--workspace-brand-background)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] [&::-webkit-details-marker]:hidden">
-        <span>{question}</span>
-        <ChevronDown className="h-5 w-5 shrink-0 text-[var(--workspace-brand-muted)] transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" />
-      </summary>
-      <p className="px-5 pb-6 pr-12 text-base leading-7 text-[var(--workspace-brand-muted)]">
-        {answer}
-      </p>
-    </details>
-  );
-}

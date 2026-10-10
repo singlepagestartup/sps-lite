@@ -1,11 +1,59 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Shield } from "../../../../../workspace/utils/components/ModuleIcons";
-
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as HostModuleLayout } from "../../../layout/index";
 import { LegalPage, type LegalSection } from "../shared/LegalPage";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
+export function PrivacyPage() {
+  return (
+    <HostModuleLayout variant="website" footer="compact">
+      <main className="min-w-0" data-ds-page="host.page.privacy">
+        <LegalPage
+          breadcrumbLabel="Privacy Policy"
+          description="How SinglePageStartup collects, uses, protects, and shares information across the service."
+          icon={Shield}
+          sections={privacySections}
+          title="Privacy Policy"
+          updatedAt={LAST_UPDATED}
+        />
+      </main>
+    </HostModuleLayout>
+  );
+}
+const Shield = createIcon("shield");
 const COMPANY = "[Company Name]";
 const LAST_UPDATED = "20 февраля 2026";
-
 const privacySections: LegalSection[] = [
   {
     title: "1. Introduction",
@@ -239,20 +287,3 @@ const privacySections: LegalSection[] = [
     ],
   },
 ];
-
-export function PrivacyPage() {
-  return (
-    <HostModuleLayout variant="website" footer="compact">
-      <main className="min-w-0" data-ds-page="host.page.privacy">
-        <LegalPage
-          breadcrumbLabel="Privacy Policy"
-          description="How SinglePageStartup collects, uses, protects, and shares information across the service."
-          icon={Shield}
-          sections={privacySections}
-          title="Privacy Policy"
-          updatedAt={LAST_UPDATED}
-        />
-      </main>
-    </HostModuleLayout>
-  );
-}

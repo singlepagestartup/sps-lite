@@ -1,14 +1,117 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
+
+import { type InputHTMLAttributes as InputHTMLAttributes } from "react";
+import { useId as useIdPresentation } from "react";
+import { useState as useStatePresentation } from "react";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import IconPresentationGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { useId, useState, type FormEvent } from "react";
-import {
-  Button,
-  kit,
-} from "../../../../../../../../workspace/design/singlepage/interface-kit/primitives";
-import { PasswordField } from "../../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/ServiceDocument";
-import {
-  CheckCircle2,
-  Mail,
-} from "../../../../../../../../workspace/utils/components/ModuleIcons";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <IconPresentation
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  hint?: string;
+  error?: string;
+}
+function PasswordField({
+  label,
+  hint,
+  error,
+  id: suppliedId,
+  ...props
+}: ITextFieldProps) {
+  const generatedId = useIdPresentation();
+  const id = suppliedId ?? generatedId;
+  const [visible, setVisible] = useStatePresentation(false);
+  return (
+    <div className="min-w-0 space-y-2">
+      <label htmlFor={id} className={`block ${kitPresentation.label}`}>
+        {label}
+      </label>
+      <div className="relative">
+        <input
+          {...props}
+          id={id}
+          type={visible ? "text" : "password"}
+          aria-invalid={error ? true : undefined}
+          aria-describedby={
+            [hint ? `${id}-hint` : "", error ? `${id}-error` : ""]
+              .filter(Boolean)
+              .join(" ") || undefined
+          }
+          className={`${kitPresentation.field} pr-14`}
+        />
+        <ButtonPresentation
+          variant="plain"
+          onClick={() => setVisible(!visible)}
+          aria-label={`${visible ? "Hide" : "Show"} ${label.toLowerCase()}`}
+          aria-pressed={visible}
+          className="absolute top-0.5 right-1 min-h-11 w-11 px-2"
+        >
+          <Icon name={visible ? "eye-slash" : "eye"} />
+        </ButtonPresentation>
+      </div>
+      {hint ? (
+        <p
+          id={`${id}-hint`}
+          className={`text-xs leading-relaxed ${kitPresentation.muted}`}
+        >
+          {hint}
+        </p>
+      ) : null}
+      {error ? (
+        <p id={`${id}-error`} className="text-sm text-sps-danger">
+          {error}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
+function IconPresentation(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IAccountChangeProps {
   kind?: "email" | "password";
@@ -295,3 +398,53 @@ export function Component({
     </section>
   );
 }
+const Mail = createIcon("envelope");
+const CheckCircle2 = createIcon("check-circle");
+const focusPresentation =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBasePresentation =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const kitPresentation = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
+  muted: "text-sps-muted",
+  label: "text-sm font-semibold text-sps-graphite",
+};
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
+const ButtonPresentation = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

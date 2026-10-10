@@ -1,20 +1,27 @@
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array";
-import { Icon } from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import type { IWebsiteSection } from "../../../../../../../workspace/utils/products/ai-chat-content";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../feature/index";
+import type IconGlyphs from "../../../../../feature/singlepage/icon/icons.json";
+import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array/index";
+import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IAIChatContinueProps {
   content?: {
     continue: IWebsiteSection;
     terms: IWebsiteSection;
-    startLink: { text: string; href: string };
+    startLink: {
+      text: string;
+      href: string;
+    };
   };
 }
-const display = "font-sps font-semibold tracking-normal";
-const muted = "text-sps-muted";
-const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sps-green";
-const section = "mx-auto max-w-6xl px-5 @3xl:px-8";
 export function Component({
   content = defaultContent,
 }: IAIChatContinueProps = {}) {
@@ -77,3 +84,8 @@ export function Component({
     </section>
   );
 }
+const display = "font-sps font-semibold tracking-normal";
+const muted = "text-sps-muted";
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sps-green";
+const section = "mx-auto max-w-6xl px-5 @3xl:px-8";

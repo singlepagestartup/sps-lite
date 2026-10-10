@@ -1,15 +1,40 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import { forwardRef as forwardRef } from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { useState } from "react";
-import {
-  Select,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import type { IProjectAgent } from "../../../../../../../workspace/utils/products/ai-chat-agent-resolver";
+import type { IProjectAgent } from "../../overview/ai-chat/resolver";
 import {
   Component as AgentProfile,
   knowledgeAgent,
 } from "../../overview/ai-chat/index";
 import { Component as AgentAvatar } from "../../avatar/ai-chat/index";
+interface ISelectOption {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+interface ISelectProps extends SelectPrimitive.SelectProps {
+  id?: string;
+  className?: string;
+  placeholder?: string;
+  "aria-label"?: string;
+  "aria-invalid"?: boolean;
+  "aria-describedby"?: string;
+  options: ISelectOption[];
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export interface IThreadAgentSelectProps {
   onChange: (selected: boolean) => void;
 }
@@ -48,3 +73,93 @@ export function Component({ onChange }: IThreadAgentSelectProps) {
     </fieldset>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
+  label: "text-sm font-semibold text-sps-graphite",
+};
+const picker = {
+  trigger: `${kit.field} flex h-12 items-center justify-between gap-3 rounded-lg text-left text-sm font-normal shadow-sm focus-visible:ring-[3px] focus-visible:ring-sps-graphite/20 focus-visible:ring-offset-0 [&>span]:truncate`,
+  icon: "pointer-events-none text-sps-muted",
+  content:
+    "z-50 max-h-[var(--radix-select-content-available-height)] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-md",
+  item: "relative flex min-h-9 w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-3 text-sm outline-none data-[highlighted]:bg-sps-grey data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
+};
+// shadcn Select composition, themed with module tokens and Phosphor icons.
+// https://ui.shadcn.com/docs/components/radix/select
+export const Select = forwardRef<HTMLButtonElement, ISelectProps>(
+  function Select(
+    {
+      id,
+      className,
+      placeholder,
+      options,
+      "aria-label": ariaLabel,
+      "aria-invalid": ariaInvalid,
+      "aria-describedby": ariaDescribedBy,
+      ...props
+    },
+    ref,
+  ) {
+    return (
+      <div className="min-w-0">
+        <SelectPrimitive.Root {...props}>
+          <SelectPrimitive.Trigger
+            ref={ref}
+            id={id}
+            aria-label={ariaLabel}
+            aria-invalid={ariaInvalid}
+            aria-describedby={ariaDescribedBy}
+            className={twMerge(picker.trigger, className)}
+          >
+            <SelectPrimitive.Value placeholder={placeholder} />
+            <SelectPrimitive.Icon asChild>
+              <Icon name="caret-down" className={picker.icon} />
+            </SelectPrimitive.Icon>
+          </SelectPrimitive.Trigger>
+          {/* Keep fixed positioning outside CSS containers while retaining the project theme. */}
+          <SelectPrimitive.Portal>
+            <SelectPrimitive.Content
+              data-sps-theme="singlepage"
+              position="popper"
+              align="start"
+              sideOffset={6}
+              collisionPadding={12}
+              className={picker.content}
+            >
+              <SelectPrimitive.ScrollUpButton className="flex h-7 items-center justify-center">
+                <Icon name="caret-down" className="rotate-180" />
+              </SelectPrimitive.ScrollUpButton>
+              <SelectPrimitive.Viewport className="p-1">
+                {options.map((option) => (
+                  <SelectPrimitive.Item
+                    key={option.value}
+                    value={option.value}
+                    disabled={option.disabled}
+                    className={picker.item}
+                  >
+                    <span className="absolute left-2 flex h-4 w-4 items-center justify-center">
+                      <SelectPrimitive.ItemIndicator>
+                        <Icon name="check" className="h-4 w-4" />
+                      </SelectPrimitive.ItemIndicator>
+                    </span>
+                    <SelectPrimitive.ItemText>
+                      {option.label}
+                    </SelectPrimitive.ItemText>
+                  </SelectPrimitive.Item>
+                ))}
+              </SelectPrimitive.Viewport>
+              <SelectPrimitive.ScrollDownButton className="flex h-7 items-center justify-center">
+                <Icon name="caret-down" />
+              </SelectPrimitive.ScrollDownButton>
+            </SelectPrimitive.Content>
+          </SelectPrimitive.Portal>
+        </SelectPrimitive.Root>
+      </div>
+    );
+  },
+);

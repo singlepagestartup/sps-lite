@@ -1,14 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Button } from "../../../../../../../../workspace/design/singlepage/interface-kit/primitives";
 
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import { useEffect, useState } from "react";
 export interface IOAuthAuthorizationProps {
   initialState?: "idle" | "authorize" | "complete" | "error";
   providerName?: string;
   accountEmail?: string;
   onSuccess?: () => void;
 }
-
 export function Component({
   initialState = "idle",
   providerName = "Google",
@@ -95,3 +98,18 @@ export function Component({
     </section>
   );
 }
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

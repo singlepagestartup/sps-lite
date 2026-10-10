@@ -1,5 +1,5 @@
 import { Component as HostModuleLayout } from "../../index";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import type { Meta, StoryObj } from "@storybook/react";
 function Example() {

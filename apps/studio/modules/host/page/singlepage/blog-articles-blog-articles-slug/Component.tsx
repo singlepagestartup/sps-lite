@@ -1,5 +1,5 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Component as HostModuleWidget } from "../../../widget";
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as HostModuleWidget } from "../../../widget/index";
 
 export function BlogFindByIdArticleOverview() {
   return (

@@ -1,4 +1,7 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import {
   memo,
   useCallback,
@@ -8,12 +11,16 @@ import {
   useState,
   type FormEvent,
 } from "react";
-import {
-  Icon,
-  kit,
-} from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
-import type { IAIChatWebsiteContent } from "../../../../../../../workspace/utils/products/ai-chat-content";
-import defaultContent from "../../../../../../../workspace/utils/products/ai-chat-website.generated.json";
+import type { IAIChatWebsiteContent } from "../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
+import defaultContent from "../../../../../../website-builder/widget/singlepage/content/ai-chat/website.json";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface IChatPreviewProps {
   content?: IAIChatWebsiteContent;
@@ -44,44 +51,6 @@ export interface ITopic {
   messages: IThreadMessage[];
 }
 type TView = "materials" | "document" | "files" | "workspace" | "topic";
-
-const field =
-  "w-full rounded-xl border border-sps-line bg-white px-4 py-3 text-sm leading-6 outline-none focus-visible:ring-2 focus-visible:ring-sps-graphite";
-const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-green";
-const muted = "text-sps-muted";
-
-const ThreadRow = memo(function ThreadRow({
-  name,
-  value,
-  selected,
-  disabled,
-  status,
-  topic,
-  onSelect,
-}: IThreadRowProps) {
-  return (
-    <button
-      type="button"
-      disabled={disabled}
-      aria-pressed={selected}
-      onClick={() => onSelect(value ?? name)}
-      className={`flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm disabled:opacity-50 ${selected ? "bg-white/10" : "hover:bg-white/5"} ${focus}`}
-    >
-      <Icon
-        name={topic ? "chat-circle" : "file-text"}
-        className={`size-4 shrink-0 text-white/60`}
-      />
-      <span className="min-w-0 flex-1 break-words">
-        <span className="block font-semibold">{name}</span>
-        {status ? (
-          <span className="mt-0.5 block text-xs text-white/60">{status}</span>
-        ) : null}
-      </span>
-    </button>
-  );
-});
-
 /** Artifact-derived local prototype: prepared files and scripted replies, no AI calls. */
 export function Component({
   content = defaultContent,
@@ -144,11 +113,9 @@ export function Component({
     setView("topic");
     setStage(3);
   }, []);
-
   useEffect(() => {
     if (view === "document" && !needsAnswer) editor.current?.focus();
   }, [view, selected, needsAnswer]);
-
   function message(
     role: IThreadMessage["role"],
     text: string,
@@ -333,7 +300,6 @@ export function Component({
       </div>
     );
   }
-
   return (
     <div className="overflow-hidden rounded-2xl border border-sps-line bg-white shadow-sm">
       <ol
@@ -730,3 +696,45 @@ export function Component({
     </div>
   );
 }
+const focusPresentation =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const field =
+  "w-full rounded-xl border border-sps-line bg-white px-4 py-3 text-sm leading-6 outline-none focus-visible:ring-2 focus-visible:ring-sps-graphite";
+const muted = "text-sps-muted";
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-green";
+const kit = {
+  button: `${buttonBase} bg-sps-green text-sps-graphite enabled:hover:brightness-95 ${focusPresentation}`,
+};
+const ThreadRow = memo(function ThreadRow({
+  name,
+  value,
+  selected,
+  disabled,
+  status,
+  topic,
+  onSelect,
+}: IThreadRowProps) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      aria-pressed={selected}
+      onClick={() => onSelect(value ?? name)}
+      className={`flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm disabled:opacity-50 ${selected ? "bg-white/10" : "hover:bg-white/5"} ${focus}`}
+    >
+      <Icon
+        name={topic ? "chat-circle" : "file-text"}
+        className={`size-4 shrink-0 text-white/60`}
+      />
+      <span className="min-w-0 flex-1 break-words">
+        <span className="block font-semibold">{name}</span>
+        {status ? (
+          <span className="mt-0.5 block text-xs text-white/60">{status}</span>
+        ) : null}
+      </span>
+    </button>
+  );
+});

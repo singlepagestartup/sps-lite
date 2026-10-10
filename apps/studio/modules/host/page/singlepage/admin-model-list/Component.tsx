@@ -1,4 +1,4 @@
-import { Component as EcommerceModuleProduct } from "../../../../ecommerce/product";
+import { Component as EcommerceModuleProduct } from "../../../../ecommerce/product/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 

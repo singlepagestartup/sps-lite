@@ -1,16 +1,47 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+
+import { type ReactNode as ReactNodePresentation } from "react";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { Component as KnowledgeModuleSource } from "../../../../../knowledge/source/index";
 import { useEffect, useRef, type ReactNode } from "react";
-import {
-  Button,
-  Icon,
-  kit,
-} from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
 import { useSource } from "../../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
-
 import { Component as ThreadMessageList } from "../../message/list/ai-chat/index";
-import { PanelHeader } from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/ServiceDocument";
 import { ThreadProvider, useThread } from "./Thread";
+interface IPanelHeaderProps {
+  title: string;
+  label: string;
+  navigation?: ReactNodePresentation;
+  actions?: ReactNodePresentation;
+}
+function PanelHeader({ title, label, navigation, actions }: IPanelHeaderProps) {
+  return (
+    <header className="sticky top-18 z-10 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-sps-line bg-sps-white p-4 @[760px]/workspace:top-0">
+      <div className="flex min-w-0 items-center gap-3">
+        {navigation}
+        <div className="min-w-0">
+          <p className={`text-xs ${kit.muted}`}>{label}</p>
+          <h2 className="mt-1 break-words text-base font-semibold">{title}</h2>
+        </div>
+      </div>
+      {actions}
+    </header>
+  );
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export interface IThreadOverviewProps {
   navigation?: ReactNode;
   messageCreate?: ReactNode;
@@ -22,7 +53,6 @@ export function Component(props: IThreadOverviewProps) {
     </ThreadProvider>
   );
 }
-
 function ThreadOverview({ navigation, messageCreate }: IThreadOverviewProps) {
   const {
     thread,
@@ -122,3 +152,26 @@ function ThreadOverview({ navigation, messageCreate }: IThreadOverviewProps) {
     </div>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  muted: "text-sps-muted",
+  focus: focus,
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

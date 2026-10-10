@@ -1,7 +1,13 @@
-import {
-  Icon,
-  kit,
-} from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../feature/index";
+import type IconGlyphs from "../../../../feature/singlepage/icon/icons.json";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export function Component() {
   return (
@@ -129,3 +135,10 @@ export function Component() {
     </a>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};

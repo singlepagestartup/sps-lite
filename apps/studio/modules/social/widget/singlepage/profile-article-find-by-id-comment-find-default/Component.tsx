@@ -1,11 +1,37 @@
-/**
- * social.widget.profile-article-find-by-id-comment-find-default
- *
- * Threaded list of article comments (recursive replies). Owned by the social
- * module (model: widget). Display components compose this via import. Static /
- * presentation-only — like and reply controls render in their default state.
- */
-import { ThumbsUp } from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ArticleComment {
   id: string;
@@ -16,7 +42,6 @@ export interface ArticleComment {
   likes: number;
   replies?: ArticleComment[];
 }
-
 function CommentItem({
   comment,
   depth = 0,
@@ -29,13 +54,12 @@ function CommentItem({
     .map((w) => w[0])
     .join("")
     .toUpperCase();
-
   return (
     <div
       className={
         depth > 0
-          ? "ml-2 border-l-2 border-[var(--workspace-brand-line)] pl-3 sm:ml-6 sm:pl-5"
-          : "rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-5 sm:p-6"
+          ? "ml-2 border-l-2 border-[var(--color-sps-line)] pl-3 sm:ml-6 sm:pl-5"
+          : "rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-6"
       }
     >
       <div className="flex gap-3">
@@ -43,36 +67,36 @@ function CommentItem({
           <img
             src={comment.avatar}
             alt={comment.author}
-            className="h-9 w-9 shrink-0 rounded-full border border-[var(--workspace-brand-line)] object-cover"
+            className="h-9 w-9 shrink-0 rounded-full border border-[var(--color-sps-line)] object-cover"
           />
         ) : (
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-background)] text-xs text-[var(--workspace-brand-muted)]">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] text-xs text-[var(--color-sps-muted)]">
             {initials}
           </div>
         )}
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-semibold text-[var(--workspace-brand-foreground)]">
+            <span className="text-sm font-semibold text-[var(--color-sps-graphite)]">
               {comment.author}
             </span>
-            <span className="text-xs text-[var(--workspace-brand-muted)]">
+            <span className="text-xs text-[var(--color-sps-muted)]">
               {comment.date}
             </span>
           </div>
-          <p className="mt-3 text-base leading-7 text-[var(--workspace-brand-foreground)]">
+          <p className="mt-3 text-base leading-7 text-[var(--color-sps-graphite)]">
             {comment.text}
           </p>
           <div className="mt-2 flex items-center gap-3">
             <button
               type="button"
-              className="inline-flex items-center gap-1 rounded-xl px-2 py-1 text-xs text-[var(--workspace-brand-muted)] hover:bg-[var(--workspace-brand-background)] hover:text-[var(--workspace-brand-muted)] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] min-h-11"
+              className="inline-flex items-center gap-1 rounded-xl px-2 py-1 text-xs text-[var(--color-sps-muted)] hover:bg-[var(--color-sps-grey)] hover:text-[var(--color-sps-muted)] transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
             >
               <ThumbsUp className="h-5 w-5" />
               {comment.likes}
             </button>
             <button
               type="button"
-              className="text-xs text-[var(--workspace-brand-muted)] transition hover:text-[var(--workspace-brand-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] min-h-11"
+              className="text-xs text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
             >
               Reply
             </button>
@@ -90,10 +114,30 @@ function CommentItem({
     </div>
   );
 }
-
+export type ProfileArticleFindByIdCommentFindDefaultProps =
+  typeof defaultProfileArticleFindByIdCommentFindDefaultProps;
+export function ProfileArticleFindByIdCommentFindDefault(
+  props?: Partial<ProfileArticleFindByIdCommentFindDefaultProps>,
+) {
+  const { comments } = {
+    ...defaultProfileArticleFindByIdCommentFindDefaultProps,
+    ...props,
+  };
+  return (
+    <div
+      className="space-y-6"
+      data-ds-block="social.widget.profile-article-find-by-id-comment-find-default"
+      data-ds-layer="singlepage"
+    >
+      {comments.map((comment) => (
+        <CommentItem key={comment.id} comment={comment} />
+      ))}
+    </div>
+  );
+}
+const ThumbsUp = createIcon("thumbs-up");
 const sarahAvatar =
   "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHdvbWFuJTIwZGV2ZWxvcGVyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzcxNzE1ODgyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
-
 export const defaultProfileArticleFindByIdCommentFindDefaultProps = {
   comments: [
     {
@@ -124,27 +168,3 @@ export const defaultProfileArticleFindByIdCommentFindDefaultProps = {
     },
   ] as ArticleComment[],
 };
-
-export type ProfileArticleFindByIdCommentFindDefaultProps =
-  typeof defaultProfileArticleFindByIdCommentFindDefaultProps;
-
-export function ProfileArticleFindByIdCommentFindDefault(
-  props?: Partial<ProfileArticleFindByIdCommentFindDefaultProps>,
-) {
-  const { comments } = {
-    ...defaultProfileArticleFindByIdCommentFindDefaultProps,
-    ...props,
-  };
-
-  return (
-    <div
-      className="space-y-6"
-      data-ds-block="social.widget.profile-article-find-by-id-comment-find-default"
-      data-ds-layer="singlepage"
-    >
-      {comments.map((comment) => (
-        <CommentItem key={comment.id} comment={comment} />
-      ))}
-    </div>
-  );
-}

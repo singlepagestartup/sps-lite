@@ -1,9 +1,39 @@
-import { Component as WebsiteBuilderModuleButton } from "../../../button";
-import {
-  ArrowRight,
-  Play,
-  type ModuleIcon,
-} from "../../../../../workspace/utils/components/ModuleIcons";
+import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
+import { Component as WebsiteBuilderModuleButton } from "../../../button/index";
+type ModuleIcon = ReturnType<typeof createIcon>;
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ButtonsArrayItem {
   label: string;
@@ -15,31 +45,12 @@ export interface ButtonsArrayItem {
   inverse?: boolean;
   target?: "_self" | "_top";
 }
-
 export interface ButtonsArrayDefaultProps {
   ariaLabel?: string;
   buttons: ButtonsArrayItem[];
   orientation?: "horizontal" | "vertical";
   title?: string;
 }
-
-export const defaultButtonsArrayProps: ButtonsArrayDefaultProps = {
-  buttons: [
-    {
-      label: "Open admin panel",
-      href: "/admin",
-      variant: "primary",
-      icon: ArrowRight,
-    },
-    {
-      label: "Learn more",
-      href: "#features",
-      variant: "secondary",
-      icon: Play,
-    },
-  ] satisfies ButtonsArrayItem[],
-};
-
 export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
   const { ariaLabel, buttons, orientation, title } = {
     ...defaultButtonsArrayProps,
@@ -49,7 +60,6 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
     orientation === "vertical"
       ? `flex min-w-0 flex-col items-start ${title ? "gap-0" : "gap-3"}`
       : "flex min-w-0 flex-wrap items-center gap-3";
-
   return (
     <div
       aria-label={ariaLabel}
@@ -59,7 +69,7 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
       role={ariaLabel ? "navigation" : undefined}
     >
       {title ? (
-        <h3 className="mb-6 w-full text-base font-semibold leading-6 tracking-normal text-[var(--workspace-brand-foreground)]">
+        <h3 className="mb-6 w-full text-base font-semibold leading-6 tracking-normal text-[var(--color-sps-graphite)]">
           {title}
         </h3>
       ) : null}
@@ -77,7 +87,6 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
             />
           );
         }
-
         return button.variant === "secondary" ? (
           <WebsiteBuilderModuleButton
             variant="secondary"
@@ -102,3 +111,21 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
     </div>
   );
 }
+const Play = createIcon("play");
+const ArrowRight = createIcon("arrow-right");
+export const defaultButtonsArrayProps: ButtonsArrayDefaultProps = {
+  buttons: [
+    {
+      label: "Open admin panel",
+      href: "/admin",
+      variant: "primary",
+      icon: ArrowRight,
+    },
+    {
+      label: "Learn more",
+      href: "#features",
+      variant: "secondary",
+      icon: Play,
+    },
+  ] satisfies ButtonsArrayItem[],
+};

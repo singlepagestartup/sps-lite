@@ -1,4 +1,4 @@
-import { Component as WebsiteBuilderModuleButton } from "../../../button";
+import { Component as WebsiteBuilderModuleButton } from "../../../button/index";
 
 export interface INavbarButtonsProps {
   activeHref?: string;

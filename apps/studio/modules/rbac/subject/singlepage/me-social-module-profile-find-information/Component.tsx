@@ -40,9 +40,9 @@ export function SubjectMeSocialModuleProfileFindInformation(
           />
         ))
       ) : (
-        <div className="rounded-2xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-6">
+        <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <p className="mt-2 text-sm text-[var(--workspace-brand-muted)]">
+          <p className="mt-2 text-sm text-[var(--color-sps-muted)]">
             No public profile is connected.
           </p>
         </div>

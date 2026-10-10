@@ -1,6 +1,6 @@
-import { Component as WebsiteBuilderModuleLogotype } from "../../../../logotype";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../buttons-array";
-import type { IWebsiteSection } from "../../../../../../workspace/utils/products/ai-chat-content";
+import { Component as WebsiteBuilderModuleLogotype } from "../../../../logotype/index";
+import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../buttons-array/index";
+import type { IWebsiteSection } from "../../content/ai-chat/content";
 import defaultContent from "./content.json";
 
 export interface IAIChatFooterProps {

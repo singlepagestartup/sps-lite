@@ -1,5 +1,37 @@
-import { FileText } from "../../../../../workspace/utils/components/ModuleIcons";
-import { kit } from "../../../../../workspace/design/singlepage/interface-kit/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface SocialMessageAttachment {
   id?: string;
@@ -8,7 +40,6 @@ export interface SocialMessageAttachment {
   type?: string;
   url?: string;
 }
-
 export function SocialMessageAttachments({
   attachments,
   onPreview,
@@ -24,7 +55,7 @@ export function SocialMessageAttachments({
         );
         const content = (
           <>
-            <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-lg bg-[var(--workspace-brand-background)]">
+            <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-lg bg-[var(--color-sps-grey)]">
               {image ? (
                 <img
                   src={attachment.url}
@@ -36,14 +67,14 @@ export function SocialMessageAttachments({
               )}
             </span>
             <span className="min-w-0 flex-1 text-left">
-              <span className="block break-all font-medium text-[var(--workspace-brand-foreground)]">
+              <span className="block break-all font-medium text-[var(--color-sps-graphite)]">
                 {attachment.name}
               </span>
               <span className={kit.muted}>{attachment.size}</span>
             </span>
           </>
         );
-        const classes = `flex min-w-0 items-center gap-3 rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] p-3 text-sm ${kit.focus}`;
+        const classes = `flex min-w-0 items-center gap-3 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-3 text-sm ${kit.focus}`;
         return image && onPreview ? (
           <button
             type="button"
@@ -73,3 +104,12 @@ export function SocialMessageAttachments({
     </div>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  muted: "text-[var(--color-sps-muted)]",
+  focus: focus,
+};
+const FileText = createIcon("file-text");

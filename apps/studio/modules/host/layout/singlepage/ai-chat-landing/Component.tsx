@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget";
-import type { IWebsiteSection } from "../../../../../workspace/utils/products/ai-chat-content";
+import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
+import type { IWebsiteSection } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 export interface IAIChatLandingLayoutProps {
   children?: ReactNode;
   subjectAccount?: ReactNode;

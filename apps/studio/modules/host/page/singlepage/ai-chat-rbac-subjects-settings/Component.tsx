@@ -1,7 +1,7 @@
 import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-import { Component as RbacModuleWidget } from "../../../../rbac/widget";
+import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
 
 export function Component() {
   return (

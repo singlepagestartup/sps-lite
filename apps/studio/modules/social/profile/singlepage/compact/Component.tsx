@@ -29,16 +29,16 @@ export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
       <img
         src={avatar}
         alt={name}
-        className="h-10 w-10 rounded-full border border-[var(--workspace-brand-line)] object-cover transition group-hover:opacity-80"
+        className="h-10 w-10 rounded-full border border-[var(--color-sps-line)] object-cover transition group-hover:opacity-80"
       />
       <div>
         <p
-          className={`text-sm font-semibold transition ${inverse ? "text-[var(--workspace-brand-on-primary)]" : "text-[var(--workspace-brand-foreground)]"}`}
+          className={`text-sm font-semibold transition ${inverse ? "text-[var(--color-sps-white)]" : "text-[var(--color-sps-graphite)]"}`}
         >
           {name}
         </p>
         <p
-          className={`text-xs ${inverse ? "text-[var(--workspace-brand-muted-on-primary)]" : "text-[var(--workspace-brand-muted)]"}`}
+          className={`text-xs ${inverse ? "text-[var(--color-sps-muted-inverse)]" : "text-[var(--color-sps-muted)]"}`}
         >
           {role}
         </p>
@@ -52,7 +52,7 @@ export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
         href={href}
         target={target}
         rel={target === "_blank" ? "noreferrer" : undefined}
-        className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)]"
+        className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
         data-ds-block="social.profile.compact"
         data-ds-layer="singlepage"
       >
@@ -63,7 +63,7 @@ export function ProfileCompact(props?: Partial<ProfileCompactProps>) {
 
   return (
     <div
-      className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)]"
+      className="group flex min-h-11 items-center gap-3 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
       data-ds-block="social.profile.compact"
       data-ds-layer="singlepage"
     >

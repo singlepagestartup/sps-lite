@@ -3,7 +3,7 @@ import { Component as KnowledgeModuleSource } from "../../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FilesProvider } from "../../../../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
 import { SourceProvider } from "../../../../overview/document/ai-chat/Source";
-import { aiChatSourceFixture } from "../../../../../../../../workspace/utils/products/ai-chat-workspace-fixture";
+import { aiChatSourceFixture } from "../../../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 function Example() {
   const { source, files, fileIds } = aiChatSourceFixture();
   return (

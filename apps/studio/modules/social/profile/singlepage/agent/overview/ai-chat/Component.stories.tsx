@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  documentAgent,
-  type IProjectAgent,
-} from "../../../../../../../workspace/utils/products/ai-chat-agent-resolver";
+import { documentAgent, type IProjectAgent } from "./resolver";
 import { ProjectAgentPicker } from "./index";
 import type { Meta, StoryObj } from "@storybook/react";
 

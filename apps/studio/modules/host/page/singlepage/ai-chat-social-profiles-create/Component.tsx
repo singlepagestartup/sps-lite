@@ -1,4 +1,5 @@
 "use client";
+
 import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";

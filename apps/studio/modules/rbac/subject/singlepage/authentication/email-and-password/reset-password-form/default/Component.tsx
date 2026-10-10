@@ -1,12 +1,43 @@
-import { Button } from "../../../../../../../../workspace/design/singlepage/interface-kit/primitives";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
+import { forwardRef as forwardRef } from "react";
+import { type SVGProps as SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import {
-  ArrowLeft,
-  Eye,
-  EyeOff,
-  KeyRound,
-  Lock,
-} from "../../../../../../../../workspace/utils/components/ModuleIcons";
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { useState } from "react";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
 
 export interface ISubjectResetPasswordFormDefaultProps {
   title: string;
@@ -20,28 +51,12 @@ export interface ISubjectResetPasswordFormDefaultProps {
   backHref: string;
   backStoryHref?: string;
 }
-
-export const defaultSubjectResetPasswordFormDefaultProps: ISubjectResetPasswordFormDefaultProps =
-  {
-    title: "Reset password",
-    description: "Enter a new password and confirm it to continue",
-    passwordLabel: "New password",
-    passwordPlaceholder: "Create a new password",
-    confirmPasswordLabel: "Confirm password",
-    confirmPasswordPlaceholder: "Repeat your new password",
-    submitLabel: "Update Password",
-    backLabel: "Back to Sign in",
-    backHref: "/rbac/subject/authentication/select-method",
-  };
-
 function getStoryLinkProps(href: string, storyHref?: string) {
   if (storyHref) {
     return { href: storyHref, target: "_top" as const };
   }
-
   return { href };
 }
-
 export function Component(
   props?: Partial<ISubjectResetPasswordFormDefaultProps>,
 ) {
@@ -62,23 +77,22 @@ export function Component(
   };
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
   return (
     <section
-      className="w-full bg-[var(--workspace-brand-background)] py-12 sm:py-16"
+      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="rbac.subject.authentication-email-and-password-reset-password-form-default"
       data-ds-layer="singlepage"
     >
       <div className="mx-auto w-full max-w-lg px-4 sm:px-6 lg:px-0">
-        <div className="overflow-hidden rounded-3xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] shadow-sm">
+        <div className="overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] shadow-sm">
           <div className="px-6 pb-2 pt-8 sm:px-8">
-            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--workspace-brand-accent)] text-[var(--workspace-brand-on-accent)]">
+            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)]">
               <KeyRound className="h-5 w-5" />
             </div>
-            <h1 className="text-3xl font-semibold tracking-tight text-[var(--workspace-brand-foreground)]">
+            <h1 className="text-3xl font-semibold tracking-tight text-[var(--color-sps-graphite)]">
               {title}
             </h1>
-            <p className="mt-1.5 text-sm text-[var(--workspace-brand-muted)]">
+            <p className="mt-1.5 text-sm text-[var(--color-sps-muted)]">
               {description}
             </p>
           </div>
@@ -86,15 +100,15 @@ export function Component(
           <div className="space-y-6 px-6 py-6 sm:px-8">
             <div>
               <label
-                className="mb-1.5 block text-sm font-medium text-[var(--workspace-brand-muted)]"
+                className="mb-1.5 block text-sm font-medium text-[var(--color-sps-muted)]"
                 htmlFor="rbac-reset-password"
               >
                 {passwordLabel}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--workspace-brand-muted)]" />
+                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-sps-muted)]" />
                 <input
-                  className="w-full rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--workspace-brand-foreground)] outline-none transition placeholder:text-[var(--workspace-brand-muted)] focus:border-[var(--workspace-brand-line)] focus:ring-1 focus:ring-[var(--workspace-brand-focus)] focus-visible:border-[var(--workspace-brand-focus)] focus-visible:ring-2 focus-visible:ring-[var(--workspace-brand-focus)]"
+                  className="w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--color-sps-graphite)] outline-none transition placeholder:text-[var(--color-sps-muted)] focus:border-[var(--color-sps-line)] focus:ring-1 focus:ring-[var(--color-sps-graphite)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)]"
                   id="rbac-reset-password"
                   placeholder={passwordPlaceholder}
                   readOnly
@@ -102,7 +116,7 @@ export function Component(
                 />
                 <button
                   aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--workspace-brand-muted)] transition hover:text-[var(--workspace-brand-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] min-h-11"
+                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
                   onClick={() => setShowPassword((value) => !value)}
                   type="button"
                 >
@@ -117,15 +131,15 @@ export function Component(
 
             <div>
               <label
-                className="mb-1.5 block text-sm font-medium text-[var(--workspace-brand-muted)]"
+                className="mb-1.5 block text-sm font-medium text-[var(--color-sps-muted)]"
                 htmlFor="rbac-reset-password-confirm"
               >
                 {confirmPasswordLabel}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--workspace-brand-muted)]" />
+                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-sps-muted)]" />
                 <input
-                  className="w-full rounded-xl border border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--workspace-brand-foreground)] outline-none transition placeholder:text-[var(--workspace-brand-muted)] focus:border-[var(--workspace-brand-line)] focus:ring-1 focus:ring-[var(--workspace-brand-focus)] focus-visible:border-[var(--workspace-brand-focus)] focus-visible:ring-2 focus-visible:ring-[var(--workspace-brand-focus)]"
+                  className="w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--color-sps-graphite)] outline-none transition placeholder:text-[var(--color-sps-muted)] focus:border-[var(--color-sps-line)] focus:ring-1 focus:ring-[var(--color-sps-graphite)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)]"
                   id="rbac-reset-password-confirm"
                   placeholder={confirmPasswordPlaceholder}
                   readOnly
@@ -137,7 +151,7 @@ export function Component(
                       ? "Hide confirm password"
                       : "Show confirm password"
                   }
-                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--workspace-brand-muted)] transition hover:text-[var(--workspace-brand-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--workspace-brand-focus)] min-h-11"
+                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
                   onClick={() => setShowConfirmPassword((value) => !value)}
                   type="button"
                 >
@@ -155,9 +169,9 @@ export function Component(
             </Button>
           </div>
 
-          <div className="border-t border-[var(--workspace-brand-line)] px-6 py-5 text-center sm:px-8">
+          <div className="border-t border-[var(--color-sps-line)] px-6 py-5 text-center sm:px-8">
             <a
-              className="inline-flex items-center gap-1.5 text-xs text-[var(--workspace-brand-muted)] transition hover:text-[var(--workspace-brand-foreground)]"
+              className="inline-flex items-center gap-1.5 text-xs text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-graphite)]"
               {...getStoryLinkProps(backHref, backStoryHref)}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -169,3 +183,35 @@ export function Component(
     </section>
   );
 }
+const Lock = createIcon("lock-key");
+const KeyRound = createIcon("key");
+const EyeOff = createIcon("eye-slash");
+const Eye = createIcon("eye");
+const ArrowLeft = createIcon("arrow-left");
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});
+export const defaultSubjectResetPasswordFormDefaultProps: ISubjectResetPasswordFormDefaultProps =
+  {
+    title: "Reset password",
+    description: "Enter a new password and confirm it to continue",
+    passwordLabel: "New password",
+    passwordPlaceholder: "Create a new password",
+    confirmPasswordLabel: "Confirm password",
+    confirmPasswordPlaceholder: "Repeat your new password",
+    submitLabel: "Update Password",
+    backLabel: "Back to Sign in",
+    backHref: "/rbac/subject/authentication/select-method",
+  };

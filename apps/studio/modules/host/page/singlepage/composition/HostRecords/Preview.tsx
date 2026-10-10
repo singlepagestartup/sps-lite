@@ -1,15 +1,12 @@
+import { Component as WebsiteBuilderModuleButton } from "../../../../../website-builder/button/index";
+import {
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
 import { type ReactNode } from "react";
-import {
-  hostRecordLabel,
-  type HostModel,
-} from "../../../../../../workspace/utils/host-studio/index";
+import { hostRecordLabel, type HostModel } from "./state/index";
 import { Component as BlogModuleWidget } from "../../../../../blog/widget/index";
-import {
-  Button,
-  kit,
-} from "../../../../../../workspace/design/singlepage/interface-kit/primitives";
 import { useHostStudio } from "./Context";
-
 export interface IHostRecordPreviewProps {
   model: HostModel;
   id: string;
@@ -19,7 +16,7 @@ export interface IHostRecordPreviewProps {
 function Empty({ children }: { children: ReactNode }) {
   return (
     <p
-      className={`rounded-xl border border-dashed border-[var(--workspace-brand-line)] p-5 text-sm ${kit.muted}`}
+      className={`rounded-xl border border-dashed border-[var(--color-sps-line)] p-5 text-sm ${kit.muted}`}
     >
       {children}
     </p>
@@ -169,3 +166,26 @@ export function HostRecordPreview({
   }
   return <Empty>Preview unavailable for {model}.</Empty>;
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  card: "min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5",
+  muted: "text-[var(--color-sps-muted)]",
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

@@ -1,5 +1,5 @@
-import { Component as HostModuleLayout } from "../../../layout";
-import { Component as RbacModuleWidget } from "../../../../rbac/widget";
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
 
 export function ProfileDefault() {
   return (

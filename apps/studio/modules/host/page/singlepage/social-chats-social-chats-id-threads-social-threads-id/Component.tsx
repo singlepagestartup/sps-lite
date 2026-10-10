@@ -1,8 +1,8 @@
-import { Component as HostModuleLayout } from "../../../layout";
+import { Component as HostModuleLayout } from "../../../layout/index";
 import {
   Component as SocialModuleWidget,
   defaultSocialWidgetChatListDefaultProps,
-} from "../../../../social/widget";
+} from "../../../../social/widget/index";
 import {
   createPreviewAttachmentStore,
   type SocialPreviewAttachment,
@@ -76,7 +76,7 @@ export function ChatDefault() {
         data-ds-route="/social/chats/[social.chats.id]/threads/[social.threads.id]"
       >
         <section
-          className="grid w-full overflow-hidden border-y border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)] md:grid-cols-[256px_minmax(0,1fr)]"
+          className="grid w-full overflow-hidden border-y border-[var(--color-sps-line)] bg-[var(--color-sps-white)] md:grid-cols-[256px_minmax(0,1fr)]"
           data-ds-imports="social.widget.chat-list-default social.widget.chat-overview-default"
         >
           <SocialModuleWidget

@@ -1,9 +1,10 @@
 "use client";
+
 import { Component as SocialModuleProfile } from "../../../../profile/index";
 import { Component as MessageOverview } from "../../overview/ai-chat/index";
 import { useCallback, useRef, useEffect, useState } from "react";
-import { type IProjectAgent } from "../../../../../../workspace/utils/products/ai-chat-agent-resolver";
-import type { IProjectMessage } from "../../../../../../workspace/utils/products/ai-chat-workspace";
+import { type IProjectAgent } from "../../../../profile/singlepage/agent/overview/ai-chat/resolver";
+import type { IProjectMessage } from "../../../../profile/singlepage/scope/ai-chat/project/state";
 
 export interface IMessageListProps {
   threadId: string;

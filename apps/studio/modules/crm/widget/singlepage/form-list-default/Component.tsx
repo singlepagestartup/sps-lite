@@ -1,4 +1,4 @@
-import { Component as CrmModuleForm } from "../../../form";
+import { Component as CrmModuleForm } from "../../../form/index";
 import { defaultCrmForm, type CrmFormRecord } from "../../../shared/demo-crm";
 
 export interface CrmWidgetFormListDefaultProps {

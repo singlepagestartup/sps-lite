@@ -1,5 +1,6 @@
 "use client";
-import { aiChatAccount } from "../../../../../workspace/utils/products/ai-chat-account-fixture";
+
+import { aiChatAccount } from "./fixture";
 import {
   createContext,
   useCallback,
@@ -8,7 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { IAIChatUserProfile } from "../../../../../workspace/utils/products/ai-chat-models";
+import type { IAIChatUserProfile } from "../../../../social/profile/singlepage/scope/ai-chat/project/models";
 import {
   clearRbacStudioAuthUser,
   readRbacStudioAuthUser,

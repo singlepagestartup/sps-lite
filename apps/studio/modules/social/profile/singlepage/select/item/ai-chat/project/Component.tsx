@@ -1,8 +1,19 @@
 "use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { memo } from "react";
 import type { IProjectIdentity } from "../../../../scope/ai-chat/project/Profiles";
-import { Icon } from "../../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
 export interface IProjectSelectItemProps {
   data: IProjectIdentity;
   selected: boolean;

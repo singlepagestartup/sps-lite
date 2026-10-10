@@ -1,9 +1,9 @@
 import {
   Component as WebsiteBuilderModuleButtonsArray,
   type ButtonsArrayItem,
-} from "../../../buttons-array";
+} from "../../../buttons-array/index";
 
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype";
+import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
 
 interface StudioLink {
   label: string;
@@ -35,12 +35,12 @@ export function FooterCompact(props?: Partial<FooterCompactProps>) {
 
   return (
     <footer
-      className="w-full border-t border-[var(--workspace-brand-line)] bg-[var(--workspace-brand-surface)]"
+      className="w-full border-t border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
       data-ds-block="website-builder.widget.footer-compact"
       data-ds-layer="singlepage"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
-        <div className="flex min-w-0 items-center gap-3 text-sm leading-6 text-[var(--workspace-brand-muted)]">
+        <div className="flex min-w-0 items-center gap-3 text-sm leading-6 text-[var(--color-sps-muted)]">
           <WebsiteBuilderModuleLogotype variant="default" compact />
           <span>{copyright}</span>
         </div>

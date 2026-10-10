@@ -1,6 +1,6 @@
 import { Component as SocialModuleMessage } from "../../../index";
 
-import { documentAgent } from "../../../../../../workspace/utils/products/ai-chat-agent-resolver";
+import { documentAgent } from "../../../../profile/singlepage/agent/overview/ai-chat/resolver";
 import type { Meta, StoryObj } from "@storybook/react";
 
 function Example() {

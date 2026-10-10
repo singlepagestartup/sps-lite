@@ -1,7 +1,7 @@
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import type { ReactNode } from "react";
-import { type INavbarAiChatProps } from "../../../../website-builder/widget";
-import { aiChatServiceHrefs } from "../../../../../workspace/utils/products/ai-chat-routes";
+import { type INavbarAiChatProps } from "../../../../website-builder/widget/index";
+import { aiChatServiceHrefs } from "../ai-chat-landing/routes";
 
 export interface IAIChatDashboardLayoutProps
   extends Pick<INavbarAiChatProps, "profileSelect" | "subjectAccount"> {

@@ -1,7 +1,7 @@
-import { Component as EcommerceModuleCart } from "../../../../ecommerce/cart";
-import { defaultProductOverviewDefaultProps } from "../../../../ecommerce/product";
-import { Component as HostModuleWidget } from "../../../widget";
-import { Component as HostModuleLayout } from "../../../layout";
+import { Component as EcommerceModuleCart } from "../../../../ecommerce/cart/index";
+import { defaultProductOverviewDefaultProps } from "../../../../ecommerce/product/index";
+import { Component as HostModuleWidget } from "../../../widget/index";
+import { Component as HostModuleLayout } from "../../../layout/index";
 import { useCallback, useState } from "react";
 
 import {

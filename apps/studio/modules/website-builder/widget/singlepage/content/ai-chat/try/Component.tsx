@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { IWebsiteSection } from "../../../../../../../workspace/utils/products/ai-chat-content";
+import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 
 export interface IAIChatTryProps {

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import type { HostModel } from "../../../../../../workspace/utils/host-studio/index";
-import { HOST_STUDIO_MODELS } from "../../../../../../workspace/utils/host-studio/constants";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../website-builder/button/index";
 import {
-  Button,
-  kit,
-} from "../../../../../../workspace/design/singlepage/interface-kit/primitives";
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+} from "react";
+import { useState } from "react";
+import type { HostModel } from "./state/index";
+import { HOST_STUDIO_MODELS } from "./state/constants";
 import { useHostStudio } from "./Context";
 import { HostModelList } from "./Model";
 import { HostRecordPreview } from "./Preview";
-
 export function HostWorkbench() {
   const { state } = useHostStudio();
   const [view, setView] = useState<HostModel | "preview">("page");
@@ -75,3 +75,29 @@ export function HostWorkbench() {
     </div>
   );
 }
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  field:
+    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
+  card: "min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5",
+  muted: "text-[var(--color-sps-muted)]",
+  label: "text-sm font-semibold text-[var(--color-sps-graphite)]",
+};
+const Button = forwardRefControl<
+  HTMLButtonElement,
+  ButtonControlProps<HTMLButtonElement> & {
+    variant?: "primary" | "secondary" | "plain" | "danger";
+  }
+>(function Button({ variant = "primary", ...props }, ref) {
+  return (
+    <WebsiteBuilderModuleButton
+      {...props}
+      variant="control"
+      appearance={variant}
+      ref={ref}
+    />
+  );
+});

@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Your notes, photos and plans. One project chat.",
+    "paragraphs": [
+      "AI Chat for your business idea.",
+      "Upload what you have. AI checks for gaps and helps you edit each document in its own thread. Attach saved documents to new conversations about your project.",
+      "Your documents stay editable. Export them and use them freely outside AI Chat."
+    ],
+    "items": [],
+    "links": [
+      {
+        "text": "Start with my files",
+        "href": "/ai-chat/rbac/subjects/authentication/registration"
+      },
+      {
+        "text": "Sign in",
+        "href": "/ai-chat/rbac/subjects/authentication/select-method"
+      }
+    ]
+  },
+  "labels": {
+    "hero-photo-alt": "A solo founder pauses over notes for her new business.",
+    "navigation-foundation": "Try the chat"
+  }
+}

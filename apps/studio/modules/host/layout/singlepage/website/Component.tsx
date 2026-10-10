@@ -1,8 +1,9 @@
 "use client";
+
 import { useCallback, useState, type ReactNode } from "react";
-import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
-import { Component as EcommerceModuleCart } from "../../../../ecommerce/cart";
+import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
+import { Component as EcommerceModuleCart } from "../../../../ecommerce/cart/index";
 import {
   defaultCartItems,
   getCartTotals,
@@ -68,7 +69,7 @@ export function Component({
   return (
     <div
       data-ds-block="host.layout.website"
-      className="flex min-h-screen min-w-0 flex-col bg-[var(--workspace-brand-background)] text-[var(--workspace-brand-foreground)] antialiased"
+      className="flex min-h-screen min-w-0 flex-col bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)] antialiased"
     >
       <WebsiteBuilderModuleWidget
         variant="navbar-default"

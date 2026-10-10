@@ -2,8 +2,8 @@ import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 
 import { Component as SocialModuleChat } from "../../../../social/chat/index";
-import { Component as RbacModuleSubject } from "../../../../rbac/subject";
-import type { IAIChatWebsiteContent } from "../../../../../workspace/utils/products/ai-chat-content";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
+import type { IAIChatWebsiteContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 
 export interface IAIChatPageProps {
   content?: IAIChatWebsiteContent;
