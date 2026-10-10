@@ -6139,6 +6139,7 @@
             "apps/studio/modules/website-builder/widget/singlepage/content-page-header/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content-rich/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content-testimonials/Component.stories.tsx",
+            "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/authentication/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/continue/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/help/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/hero/Component.stories.tsx",

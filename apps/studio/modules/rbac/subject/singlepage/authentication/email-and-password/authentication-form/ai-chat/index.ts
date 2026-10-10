@@ -1,1 +1,6 @@
-export { Component, type ILoginProps, type ILoginErrors } from "./Component";
+export {
+  Component,
+  type ILoginCopy,
+  type ILoginProps,
+  type ILoginErrors,
+} from "./Component";

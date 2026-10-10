@@ -269,6 +269,15 @@ They contact no wallet or provider. Identity displays connected accounts and
 receives action slots from Subject. Registration uses the visitor Subject and
 requires no existing Identity.
 
+AI Chat authentication Pages compose Layout `ai-chat-dashboard`, Website Builder
+Widget `content-ai-chat-authentication` and the Subject form in the Widget’s
+`children` slot. The Widget owns the introduction, photography, back link and
+information card. Host chooses its content, media presentation and card icon.
+Subject forms own their fields, validation, local session and result feedback;
+they render independently in Storybook. The content publisher writes separate
+Widget and form fixtures. Login overrides use `{ content, form }` so each owner
+receives only its own data.
+
 AccountProvider supplies one user profile and its balance directly to Subject
 `account`. ProfilesProvider supplies local project identities; the project
 selector and sidebar display those examples. A route ID selects the supplied

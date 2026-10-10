@@ -3,9 +3,6 @@ import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../w
 
 import {
   type ReactNode,
-  createContext,
-  useContext,
-  type ImgHTMLAttributes,
   type InputHTMLAttributes,
   useId as useIdPresentation,
   useState as useStatePresentation,
@@ -15,15 +12,8 @@ import {
   useState,
   type FormEvent,
 } from "react";
-import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
-import Markdown from "markdown-to-jsx";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import {
-  IAIChatServicePageContent as IAIChatServicePageContentPresentation,
-  IWebsiteSection,
-  type IAIChatServicePageContent,
-} from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import defaultCopy from "./content.json";
 function TextField({
   label,
@@ -144,308 +134,6 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
     </div>
   );
 }
-type IconName = keyof typeof IconGlyphs;
-interface IPageSectionProps {
-  section: IWebsiteSection;
-  children?: ReactNode;
-  icon?: IconName;
-  className?: string;
-  contentClassName?: string;
-  descriptionSize?: "sm" | "xs";
-}
-export function PageSection({
-  section,
-  children,
-  icon,
-  className = "",
-  contentClassName = "",
-  descriptionSize = "sm",
-}: IPageSectionProps) {
-  return (
-    <section className={`${kit.card} p-5 @[640px]:p-6 ${className}`}>
-      <h2 className="flex items-center gap-3 text-xl font-semibold">
-        {icon ? (
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sps-grey">
-            <Icon name={icon} />
-          </span>
-        ) : null}
-        {section.title}
-      </h2>
-      {section.paragraphs.length ? (
-        <div className="mt-3">
-          <SectionText section={section} size={descriptionSize} />
-        </div>
-      ) : null}
-      {children ? (
-        <div className={`mt-5 ${contentClassName}`}>{children}</div>
-      ) : null}
-    </section>
-  );
-}
-interface ISquareImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  alt: string;
-}
-function SquareImage({
-  alt,
-  className,
-  loading = "lazy",
-  ...props
-}: ISquareImageProps) {
-  return (
-    <img
-      alt={alt}
-      loading={loading}
-      className={twMergePresentation(
-        "block aspect-square w-full object-cover",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-function MarkdownDocument({
-  children,
-  hideTitle = false,
-  baseUrl,
-  resolveLink,
-  externalLinksNewTab = false,
-  disableRawHTML = false,
-  className,
-}: {
-  children: string;
-  hideTitle?: boolean;
-  baseUrl?: string;
-  resolveLink?: (url: string) =>
-    | string
-    | {
-        href: string;
-        target: "_top";
-      };
-  externalLinksNewTab?: boolean;
-  disableRawHTML?: boolean;
-  className?: string;
-}) {
-  const assetUrl = (value: string = "") => {
-    if (!baseUrl || /^(?:[a-z][a-z0-9+.-]*:|\/|#)/i.test(value)) return value;
-    const url = new URL(value, `https://studio.invalid${baseUrl}`);
-    return url.pathname + url.search + url.hash;
-  };
-  return (
-    <div
-      className={twMerge(
-        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
-        className,
-      )}
-    >
-      <Markdown
-        options={{
-          disableParsingRawHTML: disableRawHTML,
-          ...(baseUrl || externalLinksNewTab
-            ? {
-                overrides: {
-                  img: {
-                    component: ({
-                      src,
-                      alt,
-                      ...props
-                    }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-                      <img {...props} src={assetUrl(src)} alt={alt ?? ""} />
-                    ),
-                  },
-                  a: {
-                    component: ({
-                      href,
-                      ...props
-                    }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-                      const resolved =
-                        resolveLink?.(assetUrl(href)) ?? assetUrl(href);
-                      return (
-                        <a
-                          {...props}
-                          {...(typeof resolved === "string"
-                            ? { href: resolved }
-                            : resolved)}
-                          {...(externalLinksNewTab &&
-                          /^https?:\/\//i.test(href ?? "")
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                        />
-                      );
-                    },
-                  },
-                },
-              }
-            : {}),
-        }}
-      >
-        {hideTitle ? children.replace(/^# [^\n]+\n/, "") : children}
-      </Markdown>
-    </div>
-  );
-}
-interface ISectionTextProps {
-  section: IWebsiteSection;
-  tone?: "light" | "dark";
-  size?: "sm" | "xs";
-}
-function SectionText({
-  section,
-  tone = "light",
-  size = "sm",
-}: ISectionTextProps) {
-  const projectHref = useContext(ProjectHrefContext);
-  return (
-    <div
-      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-white/80 [&_a]:text-white [&_strong]:text-white" : "text-sps-muted [&_a]:text-sps-graphite [&_strong]:text-sps-graphite"}`}
-    >
-      {section.paragraphs.map((paragraph, index) => (
-        <MarkdownDocument key={index}>
-          {paragraph.replaceAll(
-            "/ai-chat/social/profiles/example",
-            projectHref,
-          )}
-        </MarkdownDocument>
-      ))}
-    </div>
-  );
-}
-function PageIntro({ section }: { section: IWebsiteSection }) {
-  return (
-    <div className="mb-8 max-w-2xl">
-      <div className="mb-4 h-1 w-10 rounded-full bg-sps-green" />
-      <h1 className="text-3xl font-semibold leading-tight tracking-tight @[640px]:text-4xl">
-        {section.title}
-      </h1>
-      <div className="mt-4">
-        <SectionText section={section} />
-      </div>
-    </div>
-  );
-}
-interface IServicePageProps {
-  variant?: string;
-  copy: IAIChatServicePageContentPresentation;
-  children: ReactNode;
-  showIntro?: boolean;
-  projectHref?: string;
-}
-function ServicePage({
-  variant = "authentication-email-and-password-registration-form-ai-chat",
-  copy,
-  children,
-  showIntro = true,
-  projectHref = "/ai-chat/social/profiles/create",
-}: IServicePageProps) {
-  return (
-    <ProjectHrefContext.Provider value={projectHref}>
-      <div
-        data-sps-theme="singlepage"
-        className="@container min-w-0 bg-sps-grey text-sps-graphite font-sps"
-        data-module="rbac"
-        data-model="subject"
-        data-variant={variant}
-      >
-        <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
-          <a
-            href={copy.labels["back-href"].replace(
-              "/ai-chat/social/profiles/example",
-              projectHref,
-            )}
-            className={`mb-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-sps-muted hover:text-sps-graphite ${kit.focus}`}
-          >
-            <Icon name="arrow-left" />
-            {copy.labels["back-label"]}
-          </a>
-          {showIntro ? <PageIntro section={copy.sections.hero} /> : null}
-          {children}
-        </main>
-      </div>
-    </ProjectHrefContext.Provider>
-  );
-}
-interface IAccountPageProps {
-  variant?: string;
-  copy: IAIChatServicePageContentPresentation;
-  page: "register" | "login";
-  children: ReactNode;
-}
-export function AccountPage({
-  variant = "authentication-email-and-password-registration-form-ai-chat",
-  copy,
-  page,
-  children,
-}: IAccountPageProps) {
-  const secondaryPhoto = copy.labels["secondary-photo-src"];
-  return (
-    <ServicePage copy={copy} showIntro={false} variant={variant}>
-      <div
-        className={`grid min-w-0 items-stretch gap-8 @[1000px]:gap-12 ${secondaryPhoto ? "@[760px]:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]" : "@[760px]:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]"}`}
-      >
-        <div className={`min-w-0 ${secondaryPhoto ? "flex flex-col" : ""}`}>
-          <PageIntro section={copy.sections.hero} />
-          {children}
-        </div>
-        <aside
-          className={`min-w-0 flex flex-col ${secondaryPhoto ? "justify-between gap-6" : ""}`}
-        >
-          {secondaryPhoto ? (
-            <SquareImage
-              src={copy.labels["photo-src"]}
-              alt={copy.labels["photo-alt"]}
-              data-asset-id={copy.labels["photo-asset-id"]}
-              width={1254}
-              height={1254}
-              loading="eager"
-              className="rounded-2xl"
-            />
-          ) : null}
-          <div
-            className={
-              page === "login"
-                ? "relative flex min-h-128 min-w-0 flex-1 items-end overflow-hidden rounded-2xl @[760px]:min-h-0"
-                : "min-w-0"
-            }
-          >
-            <SquareImage
-              src={secondaryPhoto || copy.labels["photo-src"]}
-              alt={
-                secondaryPhoto
-                  ? copy.labels["secondary-photo-alt"]
-                  : copy.labels["photo-alt"]
-              }
-              data-asset-id={
-                secondaryPhoto
-                  ? copy.labels["secondary-photo-asset-id"]
-                  : copy.labels["photo-asset-id"]
-              }
-              width={1254}
-              height={1254}
-              loading={secondaryPhoto ? "lazy" : "eager"}
-              className={
-                page === "login"
-                  ? "absolute inset-0 h-full w-full aspect-auto"
-                  : "rounded-2xl"
-              }
-            />
-            <div
-              className={`relative z-10 mx-4 @[640px]:mx-5 ${page === "login" ? "my-4 flex-1 @[640px]:my-5" : "-mt-16"}`}
-            >
-              <PageSection
-                section={
-                  page === "register"
-                    ? copy.sections.materials
-                    : copy.sections.recovery
-                }
-                icon={page === "register" ? "shield-check" : "question"}
-                className="shadow-lg shadow-black/5"
-              />
-            </div>
-          </div>
-        </aside>
-      </div>
-    </ServicePage>
-  );
-}
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;
@@ -455,9 +143,15 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
+export interface IRegisterCopy {
+  title: string;
+  description: string[];
+  successDescription: string[];
+  labels: Record<string, string>;
+}
 export interface IRegisterProps {
   variant?: string;
-  copy?: IAIChatServicePageContent;
+  copy?: IRegisterCopy;
 }
 export interface IRegisterErrors {
   email?: string;
@@ -498,100 +192,114 @@ export function Component({
     setSubmitted(Object.keys(nextErrors).length === 0);
   }
   return (
-    <AccountPage copy={copy} page="register" variant={variant}>
-      <PageSection
-        section={copy.sections.account}
-        icon="user-plus"
-        descriptionSize="xs"
+    <section
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
+      aria-labelledby={`${id}-title`}
+      className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 @[640px]:p-6"
+    >
+      <h2
+        id={`${id}-title`}
+        className="flex items-center gap-3 text-xl font-semibold"
       >
-        <form noValidate onSubmit={submit} className="grid content-start gap-5">
-          <TextField
-            id={`${id}-email`}
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            label={label["email-label"]}
-            placeholder={label["email-placeholder"]}
-            value={email}
-            error={errors.email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-              setErrors((current) => ({ ...current, email: undefined }));
-              setSubmitted(false);
-            }}
-          />
-          <PasswordField
-            id={`${id}-password`}
-            name="password"
-            autoComplete="new-password"
-            required
-            label={label["password-label"]}
-            value={password}
-            error={errors.password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-              setErrors((current) => ({ ...current, password: undefined }));
-              setSubmitted(false);
-            }}
-          />
-          <PasswordField
-            id={`${id}-repeat-password`}
-            name="repeatedPassword"
-            autoComplete="new-password"
-            required
-            label={label["repeat-password-label"]}
-            value={repeatedPassword}
-            error={errors.repeatedPassword}
-            onChange={(event) => {
-              setRepeatedPassword(event.target.value);
-              setErrors((current) => ({
-                ...current,
-                repeatedPassword: undefined,
-              }));
-              setSubmitted(false);
-            }}
-          />
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sps-grey">
+          <Icon name="user-plus" />
+        </span>
+        {copy.title}
+      </h2>
+      {copy.description.map((paragraph, index) => (
+        <p key={index} className="mt-3 text-sm leading-6 text-sps-muted">
+          {paragraph}
+        </p>
+      ))}
+      <form
+        noValidate
+        onSubmit={submit}
+        className="mt-5 grid content-start gap-5"
+      >
+        <TextField
+          id={`${id}-email`}
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          label={label["email-label"]}
+          placeholder={label["email-placeholder"]}
+          value={email}
+          error={errors.email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            setErrors((current) => ({ ...current, email: undefined }));
+            setSubmitted(false);
+          }}
+        />
+        <PasswordField
+          id={`${id}-password`}
+          name="password"
+          autoComplete="new-password"
+          required
+          label={label["password-label"]}
+          value={password}
+          error={errors.password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+            setErrors((current) => ({ ...current, password: undefined }));
+            setSubmitted(false);
+          }}
+        />
+        <PasswordField
+          id={`${id}-repeat-password`}
+          name="repeatedPassword"
+          autoComplete="new-password"
+          required
+          label={label["repeat-password-label"]}
+          value={repeatedPassword}
+          error={errors.repeatedPassword}
+          onChange={(event) => {
+            setRepeatedPassword(event.target.value);
+            setErrors((current) => ({
+              ...current,
+              repeatedPassword: undefined,
+            }));
+            setSubmitted(false);
+          }}
+        />
+        <a
+          className={`w-fit text-sm leading-6 underline decoration-sps-line underline-offset-4 ${kit.focus}`}
+          href={label["terms-href"]}
+        >
+          {label["terms-label"]}
+        </a>
+        <Button type="submit" className="w-full justify-center">
+          {label.submit}
+          <Icon name="arrow-right" />
+        </Button>
+        <p className="text-center text-sm leading-6 text-sps-muted">
+          {label["existing-account"]}{" "}
           <a
-            className={`w-fit text-sm leading-6 underline decoration-sps-line underline-offset-4 ${kit.focus}`}
-            href={label["terms-href"]}
+            className={`font-semibold text-sps-graphite underline underline-offset-4 ${kit.focus}`}
+            href={label["sign-in-href"]}
           >
-            {label["terms-label"]}
+            {label["sign-in-label"]}
           </a>
-          <Button type="submit" className="w-full justify-center">
-            {label.submit}
-            <Icon name="arrow-right" />
-          </Button>
-          <p className="text-center text-sm leading-6 text-sps-muted">
-            {label["existing-account"]}{" "}
-            <a
-              className={`font-semibold text-sps-graphite underline underline-offset-4 ${kit.focus}`}
-              href={label["sign-in-href"]}
-            >
-              {label["sign-in-label"]}
-            </a>
+        </p>
+      </form>
+      {submitted ? (
+        <div className="mt-6 grid gap-4">
+          <Feedback kind="success">{label["success-message"]}</Feedback>
+          <p className="text-sm leading-6 text-sps-muted">
+            {copy.successDescription.join(" ")}
           </p>
-        </form>
-        {submitted ? (
-          <div className="mt-6 grid gap-4">
-            <Feedback kind="success">{label["success-message"]}</Feedback>
-            <p className="text-sm leading-6 text-sps-muted">
-              {copy.sections.success.paragraphs.join(" ")}
-            </p>
-            <a
-              className={`${kit.secondary} w-fit`}
-              href={label["continue-href"]}
-            >
-              {label["continue-label"]}
-              <Icon name="arrow-right" />
-            </a>
-          </div>
-        ) : null}
-      </PageSection>
-    </AccountPage>
+          <a className={`${kit.secondary} w-fit`} href={label["continue-href"]}>
+            {label["continue-label"]}
+            <Icon name="arrow-right" />
+          </a>
+        </div>
+      ) : null}
+    </section>
   );
 }
-const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
 const buttonBase =
@@ -600,7 +308,6 @@ const kit = {
   secondary: `${buttonBase} border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey ${focus}`,
   field:
     "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  card: "min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5",
   muted: "text-sps-muted",
   label: "text-sm font-semibold text-sps-graphite",
   focus: focus,

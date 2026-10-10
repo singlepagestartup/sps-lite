@@ -12,11 +12,88 @@ import { SourceProvider } from "../../../../knowledge/source/singlepage/overview
 import { ThreadProvider } from "../../../../social/thread/singlepage/overview/ai-chat/Thread";
 import { Component as SocialModuleThread } from "../../../../social/thread/index";
 import { Component as SocialModuleMessage } from "../../../../social/message/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import loginFormCopy from "../../../../rbac/subject/singlepage/authentication/email-and-password/authentication-form/ai-chat/content.json";
+import authenticationContent from "../../../../website-builder/widget/singlepage/content/ai-chat/authentication/content.json";
 
 const root = path.resolve(import.meta.dir, "../../../../../../..");
 const studio = path.join(root, "apps/studio");
 
 describe("Local AI Chat components", () => {
+  test("Subject authentication forms render independently of page content", () => {
+    for (const variant of [
+      "authentication-email-and-password-authentication-form-ai-chat",
+      "authentication-email-and-password-registration-form-ai-chat",
+    ] as const) {
+      const html = renderToStaticMarkup(
+        <RbacModuleSubject variant={variant} />,
+      );
+      expect(html).toMatch(
+        /^<section[^>]*data-module="rbac"[^>]*data-model="subject"/,
+      );
+      expect(html).toContain(`data-variant="${variant}"`);
+      expect(html).toContain('name="email"');
+      expect(html).toContain('name="password"');
+      expect(html).not.toContain("<main");
+      expect(html).not.toContain("<img");
+      expect(html).not.toContain("<h1");
+      expect(html).not.toContain("Back to AI Chat");
+      expect(html).not.toContain("Trouble signing in?");
+      expect(html).not.toContain("Before you add files");
+    }
+  });
+
+  test("Host composes one Layout, static Widget content and a Subject form", () => {
+    for (const method of ["select-method", "registration"]) {
+      const html = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref={`/ai-chat/rbac/subjects/authentication/${method}`}
+        />,
+      );
+      expect(html.match(/data-ds-block="host\.layout\.[^"]+"/g)).toHaveLength(
+        1,
+      );
+      const content = html.indexOf(
+        'data-variant="content-ai-chat-authentication"',
+      );
+      const form = html.indexOf(
+        `data-variant="authentication-email-and-password-${method === "registration" ? "registration" : "authentication"}-form-ai-chat"`,
+      );
+      expect(content).toBeGreaterThan(-1);
+      expect(form).toBeGreaterThan(content);
+      expect(html).toContain("<h1");
+      expect(html).toContain("<img");
+      expect(html).toContain(
+        method === "registration"
+          ? "Before you add files"
+          : "Trouble signing in?",
+      );
+    }
+  });
+
+  test("Host routes content and form overrides to their separate owners", () => {
+    const html = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/rbac/subjects/authentication/select-method"
+        loginCopy={{
+          content: {
+            ...authenticationContent,
+            intro: { title: "Edited introduction", paragraphs: [] },
+          },
+          form: {
+            ...loginFormCopy,
+            title: "Edited form",
+            labels: { ...loginFormCopy.labels, "email-label": "Work email" },
+          },
+        }}
+      />,
+    );
+    expect(html).toContain("Edited introduction</h1>");
+    expect(html).toContain("Edited form</h2>");
+    expect(html).toContain("Work email</label>");
+    expect(html).not.toContain(authenticationContent.intro.title);
+  });
+
   test("recognizes prototype routes without intercepting unrelated pages", () => {
     for (const url of [
       "/ai-chat/",

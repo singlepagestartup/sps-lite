@@ -23,6 +23,10 @@
       "path": "../../../layout/singlepage/ai-chat-dashboard"
     },
     {
+      "id": "website-builder.widget.content-ai-chat-authentication",
+      "path": "../../../../website-builder/widget/singlepage/content/ai-chat/authentication"
+    },
+    {
       "id": "rbac.subject.authentication-email-and-password-registration-form-ai-chat",
       "path": "../../../../rbac/subject/singlepage/authentication/email-and-password/registration-form/ai-chat"
     }

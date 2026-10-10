@@ -23,8 +23,12 @@
       "path": "../../../layout/singlepage/ai-chat-dashboard"
     },
     {
-      "id": "rbac.subject.authentication-select-method-ai-chat",
-      "path": "../../../../rbac/subject/singlepage/authentication/select-method/ai-chat"
+      "id": "website-builder.widget.content-ai-chat-authentication",
+      "path": "../../../../website-builder/widget/singlepage/content/ai-chat/authentication"
+    },
+    {
+      "id": "rbac.subject.authentication-email-and-password-authentication-form-ai-chat",
+      "path": "../../../../rbac/subject/singlepage/authentication/email-and-password/authentication-form/ai-chat"
     }
   ]
 }
