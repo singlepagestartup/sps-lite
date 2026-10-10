@@ -20,15 +20,15 @@ describe("Local AI Chat components", () => {
   test("recognizes prototype routes without intercepting unrelated pages", () => {
     for (const url of [
       "/ai-chat/",
-      "/ai-chat/register",
-      "/ai-chat/login",
-      "/ai-chat/settings",
-      "/ai-chat/tokens",
+      "/ai-chat/rbac/subjects/authentication/registration",
+      "/ai-chat/rbac/subjects/authentication/select-method",
+      "/ai-chat/rbac/subjects/settings",
+      "/ai-chat/rbac/subjects/tokens",
       "/ai-chat/help",
-      "/ai-chat/projects/new#materials",
-      "/ai-chat/projects/pottery",
-      "/ai-chat/projects/pottery/settings",
-      "/ai-chat/projects/pottery/threads/new",
+      "/ai-chat/social/profiles/create#materials",
+      "/ai-chat/social/profiles/pottery",
+      "/ai-chat/social/profiles/pottery/settings",
+      "/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create",
     ])
       expect(isAIChatRoute(url)).toBe(true);
     for (const url of [
@@ -36,9 +36,9 @@ describe("Local AI Chat components", () => {
       "/register",
       "/projects/pottery",
       "/ai-chat/unknown",
-      "/ai-chat/projects/pottery/unknown",
-      "/ai-chat/projects/new/settings",
-      "/ai-chat/projects/%bad/settings",
+      "/ai-chat/social/profiles/pottery/unknown",
+      "/ai-chat/social/profiles/create/settings",
+      "/ai-chat/social/profiles/%bad/settings",
     ])
       expect(isAIChatRoute(url)).toBe(false);
   });
@@ -74,15 +74,15 @@ describe("Local AI Chat components", () => {
     }
     for (const variant of [
       "ai-chat",
-      "ai-chat-register",
-      "ai-chat-login",
-      "ai-chat-settings",
+      "ai-chat-rbac-subjects-authentication-registration",
+      "ai-chat-rbac-subjects-authentication-select-method",
+      "ai-chat-rbac-subjects-settings",
       "ai-chat-help",
-      "ai-chat-tokens",
-      "ai-chat-projects-new",
-      "ai-chat-projects-project-id",
-      "ai-chat-projects-project-id-settings",
-      "ai-chat-projects-project-id-threads-new",
+      "ai-chat-rbac-subjects-tokens",
+      "ai-chat-social-profiles-create",
+      "ai-chat-social-profiles-social-profiles-id",
+      "ai-chat-social-profiles-social-profiles-id-settings",
+      "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create",
     ])
       visit(path.join(import.meta.dir, "..", variant, "Component.tsx"));
     expect(visited.size).toBeGreaterThan(20);
@@ -91,12 +91,12 @@ describe("Local AI Chat components", () => {
   test("page components render local assets and prototype navigation", () => {
     for (const url of [
       "/ai-chat/",
-      "/ai-chat/register",
-      "/ai-chat/login",
-      "/ai-chat/settings",
-      "/ai-chat/tokens",
+      "/ai-chat/rbac/subjects/authentication/registration",
+      "/ai-chat/rbac/subjects/authentication/select-method",
+      "/ai-chat/rbac/subjects/settings",
+      "/ai-chat/rbac/subjects/tokens",
       "/ai-chat/help",
-      "/ai-chat/projects/new",
+      "/ai-chat/social/profiles/create",
     ]) {
       const html = renderToStaticMarkup(
         <AIChatPreview
@@ -125,15 +125,15 @@ describe("Local AI Chat components", () => {
   test("concrete Pages own one screen and import domain components, without a Page router", () => {
     const variants = [
       "ai-chat",
-      "ai-chat-register",
-      "ai-chat-login",
-      "ai-chat-settings",
+      "ai-chat-rbac-subjects-authentication-registration",
+      "ai-chat-rbac-subjects-authentication-select-method",
+      "ai-chat-rbac-subjects-settings",
       "ai-chat-help",
-      "ai-chat-tokens",
-      "ai-chat-projects-new",
-      "ai-chat-projects-project-id",
-      "ai-chat-projects-project-id-settings",
-      "ai-chat-projects-project-id-threads-new",
+      "ai-chat-rbac-subjects-tokens",
+      "ai-chat-social-profiles-create",
+      "ai-chat-social-profiles-social-profiles-id",
+      "ai-chat-social-profiles-social-profiles-id-settings",
+      "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create",
     ];
     for (const variant of variants) {
       const file = path.join(import.meta.dir, "..", variant, "Component.tsx");
@@ -148,14 +148,14 @@ describe("Local AI Chat components", () => {
       expect(text.split("\n").length).toBeLessThan(100);
     }
     const settings = renderToStaticMarkup(
-      <AIChatPreview initialHref="/ai-chat/projects/pottery/settings" />,
+      <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/settings" />,
     );
     expect(settings).toContain(
       'data-ds-block="social.profile.settings-ai-chat-project"',
     );
     expect(settings).not.toContain('data-model="thread"');
     const create = renderToStaticMarkup(
-      <AIChatPreview initialHref="/ai-chat/projects/pottery/threads/new" />,
+      <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create" />,
     );
     expect(create).toContain('data-ds-block="social.thread.create-ai-chat"');
     expect(create).toContain("Thread name");
@@ -165,9 +165,9 @@ describe("Local AI Chat components", () => {
 
   test("project screens have one Host Layout and a Social Profile overview", () => {
     for (const url of [
-      "/ai-chat/projects/pottery",
-      "/ai-chat/projects/pottery/settings",
-      "/ai-chat/projects/pottery/threads/new",
+      "/ai-chat/social/profiles/pottery",
+      "/ai-chat/social/profiles/pottery/settings",
+      "/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create",
     ]) {
       const html = renderToStaticMarkup(<AIChatPreview initialHref={url} />);
       expect(html.match(/data-ds-block="host\.layout\.[^"]+"/g)).toEqual([
@@ -180,7 +180,7 @@ describe("Local AI Chat components", () => {
       expect(html).toContain('aria-label="Show sidebar"');
     }
     const inaccessible = renderToStaticMarkup(
-      <AIChatPreview initialHref="/ai-chat/projects/foreign" />,
+      <AIChatPreview initialHref="/ai-chat/social/profiles/foreign" />,
     );
     expect(inaccessible).toContain("Project profile unavailable");
     expect(inaccessible).not.toContain(

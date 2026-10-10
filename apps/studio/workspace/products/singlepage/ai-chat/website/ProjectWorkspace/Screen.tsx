@@ -1,10 +1,10 @@
 import { AIChatPreview } from "../Preview";
 export default function ProjectWorkspace({
-  navigationHref = "/ai-chat/projects/new",
+  navigationHref = "/ai-chat/social/profiles/create",
 }: { text?: string; navigationHref?: string } = {}) {
   return (
     <AIChatPreview
-      initialHref={navigationHref.replace(/^\/projects/, "/ai-chat/projects")}
+      initialHref={navigationHref}
       profiles={{
         initialProjects: [],
       }}

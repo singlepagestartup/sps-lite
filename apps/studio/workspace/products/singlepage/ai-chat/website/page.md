@@ -18,9 +18,9 @@ AI Chat for your business idea.
 
 Upload what you have. AI checks for gaps and helps you edit each document in its own thread. Attach saved documents to new conversations about your project.
 
-[Start with my files](/register)
+[Start with my files](/ai-chat/rbac/subjects/authentication/registration)
 
-[Sign in](/login)
+[Sign in](/ai-chat/rbac/subjects/authentication/select-method)
 
 Your documents stay editable. Export them and use them freely outside AI Chat.
 
@@ -159,13 +159,13 @@ Registration shows the current free token allowance. Paid AI work uses the token
 | Support                         | Initial support requests are processed within 24 hours, without continuous live coverage or a promised resolution time.                                                                            |
 | Materials                       | Review how your materials are processed and stored before uploading. Account deletion removes active data; infrastructure backups may retain copies for up to six months.                          |
 
-[Buy tokens](/tokens) · [How your materials are processed and stored](/projects/new#how-your-materials-are-processed-and-stored) · [Get help](/help)
+[Buy tokens](/ai-chat/rbac/subjects/tokens) · [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored) · [Get help](/ai-chat/help)
 
 <!-- section: footer -->
 
 ## SinglePageStartup
 
-[Start with my files](/register) · [Sign in](/login) · [Code Framework](https://github.com/singlepagestartup/singlepagestartup)
+[Start with my files](/ai-chat/rbac/subjects/authentication/registration) · [Sign in](/ai-chat/rbac/subjects/authentication/select-method) · [Code Framework](https://github.com/singlepagestartup/singlepagestartup)
 
 <!-- section: controls -->
 

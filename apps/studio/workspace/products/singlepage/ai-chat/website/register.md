@@ -29,7 +29,7 @@ Your free token balance appears in the workspace.
 
 ## Before you add files
 
-Read [How your materials are processed and stored](/projects/example#how-your-materials-are-processed-and-stored), including external AI processing and backup retention after deletion.
+Read [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored), including external AI processing and backup retention after deletion.
 
 <!-- section: success -->
 
@@ -44,19 +44,19 @@ Continue to your project chat and add your notes, files and images.
 | Control                  | Text                                                                                                             |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------- |
 | back-label               | Back to AI Chat                                                                                                  |
-| back-href                | /                                                                                                                |
+| back-href                | /ai-chat/                                                                                                        |
 | email-label              | Email                                                                                                            |
 | email-placeholder        | you@example.com                                                                                                  |
 | password-label           | Password                                                                                                         |
 | repeat-password-label    | Repeat password                                                                                                  |
 | terms-label              | How your materials are processed and stored                                                                      |
-| terms-href               | /projects/example#how-your-materials-are-processed-and-stored                                                    |
+| terms-href               | /ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored                                      |
 | submit                   | Create account                                                                                                   |
 | sign-in-label            | Sign in                                                                                                          |
-| sign-in-href             | /login                                                                                                           |
+| sign-in-href             | /ai-chat/rbac/subjects/authentication/select-method                                                              |
 | existing-account         | Already have an account?                                                                                         |
 | continue-label           | Open project chat                                                                                                |
-| continue-href            | /projects/new                                                                                                    |
+| continue-href            | /ai-chat/social/profiles/create                                                                                  |
 | email-error              | Enter a valid email address.                                                                                     |
 | password-error           | Enter a password.                                                                                                |
 | repeat-password-error    | Enter the same password in both fields.                                                                          |

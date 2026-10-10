@@ -12,7 +12,7 @@ review:
 
 ## Your account.
 
-Change your password, view purchases or manage account data. Choose and manage projects in [the project chat](/projects/example).
+Change your password, view purchases or manage account data. Choose and manage projects in [the project chat](/ai-chat/social/profiles/example).
 
 <!-- section: account -->
 
@@ -30,13 +30,13 @@ Enter your current password, then enter the new password twice.
 
 ## Tokens and purchases
 
-View your current token balance, purchase history and receipts. [Buy tokens](/tokens) to continue a saved task when the balance restricts new paid AI requests.
+View your current token balance, purchase history and receipts. [Buy tokens](/ai-chat/rbac/subjects/tokens) to continue a saved task when the balance restricts new paid AI requests.
 
 <!-- section: privacy -->
 
 ## Materials and deletion
 
-The service sends relevant material to external AI providers for your requested work. Read [How your materials are processed and stored](/projects/example#how-your-materials-are-processed-and-stored) before deleting your account.
+The service sends relevant material to external AI providers for your requested work. Read [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored) before deleting your account.
 
 Deletion removes your account and the active data the service controls across all your projects, including uploaded material, documents and conversations. Contabo backups may retain copies for up to six months; the service cannot shorten that period.
 
@@ -65,7 +65,7 @@ Your new password is saved. Return to your workspace to keep working.
 | Control                | Text                                                                                                                                              |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | back-label             | Back to workspace                                                                                                                                 |
-| back-href              | /projects/example                                                                                                                                 |
+| back-href              | /ai-chat/social/profiles/example                                                                                                                  |
 | current-password-label | Current password                                                                                                                                  |
 | repeat-password-label  | Repeat new password                                                                                                                               |
 | password-label         | New password                                                                                                                                      |
@@ -75,7 +75,7 @@ Your new password is saved. Return to your workspace to keep working.
 | account-summary-label  | Account                                                                                                                                           |
 | project-summary-label  | Projects                                                                                                                                          |
 | buy-tokens             | Buy tokens                                                                                                                                        |
-| tokens-href            | /tokens                                                                                                                                           |
+| tokens-href            | /ai-chat/rbac/subjects/tokens                                                                                                                     |
 | delete-label           | Delete account and project data                                                                                                                   |
 | deletion-title         | Delete this account and its project data?                                                                                                         |
 | deletion-description   | Deletion removes the account and active data from all your projects the service controls. Contabo backups may retain copies for up to six months. |

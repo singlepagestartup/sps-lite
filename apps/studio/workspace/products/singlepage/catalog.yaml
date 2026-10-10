@@ -133,25 +133,25 @@ products:
             children:
               - id: landing
                 title: Landing page
-                route: /
+                route: /ai-chat/
                 representations:
                   text: ai-chat/website/page.md
                   preview: ai-chat/website/Landing.tsx
               - id: register
                 title: Create account
-                route: /register
+                route: /ai-chat/rbac/subjects/authentication/registration
                 representations:
                   text: ai-chat/website/register.md
                   preview: ai-chat/website/Register.tsx
               - id: login
                 title: Sign in
-                route: /login
+                route: /ai-chat/rbac/subjects/authentication/select-method
                 representations:
                   text: ai-chat/website/login.md
                   preview: ai-chat/website/Login.tsx
               - id: project-workspace
                 title: Project chat
-                route: /projects/[project-id]
+                route: /ai-chat/social/profiles/[social.profiles.id]
                 uses:
                   - product.ai-chat.page.content.one-hour-setup
                   - product.ai-chat.page.content.project-model
@@ -160,19 +160,19 @@ products:
                   preview: ai-chat/website/ProjectWorkspace/Screen.tsx
               - id: tokens
                 title: Buy tokens
-                route: /tokens
+                route: /ai-chat/rbac/subjects/tokens
                 representations:
                   text: ai-chat/website/tokens.md
                   preview: ai-chat/website/Tokens.tsx
               - id: settings
                 title: Settings
-                route: /settings
+                route: /ai-chat/rbac/subjects/settings
                 representations:
                   text: ai-chat/website/settings.md
                   preview: ai-chat/website/Settings.tsx
               - id: help
                 title: Help
-                route: /help
+                route: /ai-chat/help
                 representations:
                   text: ai-chat/website/help.md
                   preview: ai-chat/website/Help.tsx

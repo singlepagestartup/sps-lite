@@ -27,4 +27,4 @@ The intended deployment flow uses GitHub authorization for a repository created 
 
 Deployment will be a paid offer. Prices and availability are not set. This view does not offer a current editor or a publication action.
 
-[Return to my project texts](/projects/example)
+[Return to my project texts](/ai-chat/social/profiles/example)

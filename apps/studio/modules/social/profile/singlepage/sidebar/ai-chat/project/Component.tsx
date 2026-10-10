@@ -3,20 +3,29 @@ import { Component as KnowledgeModuleSource } from "../../../../../../knowledge/
 import { useId, useState } from "react";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import {
+  aiChatProfileHref,
+  aiChatThreadCreateHref,
+} from "../../../../../../../workspace/utils/products/ai-chat-routes";
+import {
   Icon,
   kit,
 } from "../../../../../../../workspace/design/singlepage/interface-kit/ai-chat/primitives";
 
 export interface IProfileSidebarProps {
   profileId: string;
+  chatId?: string;
   selected: "products" | "settings" | "thread-create";
 }
-export function Component({ profileId, selected }: IProfileSidebarProps) {
+export function Component({
+  profileId,
+  chatId,
+  selected,
+}: IProfileSidebarProps) {
   const id = useId();
   const { projects } = useProfiles();
   const name =
     projects.find((profile) => profile.id === profileId)?.name ?? "Project";
-  const href = `/ai-chat/projects/${encodeURIComponent(profileId)}`;
+  const href = aiChatProfileHref(profileId);
   const settingsSelected = selected === "settings";
   const creatingThread = selected === "thread-create";
   const [open, setOpen] = useState(true);
@@ -67,7 +76,7 @@ export function Component({ profileId, selected }: IProfileSidebarProps) {
       >
         <h2 className="mb-3 text-xs font-semibold text-white/60">Threads</h2>
         <a
-          href={`${href}/threads/new`}
+          href={aiChatThreadCreateHref(profileId, chatId)}
           aria-current={creatingThread ? "page" : undefined}
           className={`flex min-h-11 w-full items-center gap-2 rounded-xl border border-white/15 px-3 py-2 text-left text-sm text-white/80 hover:bg-white/10 ${creatingThread ? "bg-white/15" : ""} ${kit.focus}`}
         >

@@ -104,7 +104,7 @@ If a text edit cannot be saved, keep the last saved description, name the failed
 
 Landing-page generation and paid server deployment are future capabilities outside this first release. Their descriptions remain available under future capabilities; creation and publication are disabled.
 
-[Buy tokens](/tokens) · [Add project material](/projects/example#materials) · [Export the documents](/projects/example#documents)
+[Buy tokens](/ai-chat/rbac/subjects/tokens) · [Add project material](/ai-chat/social/profiles/example#materials) · [Export the documents](/ai-chat/social/profiles/example#documents)
 
 ## Document fields
 

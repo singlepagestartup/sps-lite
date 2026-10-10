@@ -59,7 +59,7 @@ export function Component({
           <DropdownMenu.Separator className="my-1 h-px bg-sps-line" />
           <DropdownMenu.Item asChild>
             <a
-              href="/ai-chat/projects/new"
+              href="/ai-chat/social/profiles/create"
               onClick={onNavigate}
               className={itemClass}
             >

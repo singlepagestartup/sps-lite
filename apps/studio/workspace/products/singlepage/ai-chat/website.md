@@ -30,17 +30,17 @@ Landing-page creation and paid server deployment belong to later development. Th
 
 ## Customer journey and site structure
 
-| Route                    | Customer situation and page responsibility                                                          | Primary next action                     |
-| ------------------------ | --------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| `/`                      | Recognize a place to bring project material, see the chat and try reviewing and editing a document. | **Start with my files** → `/register`   |
-| `/register`              | Create an account with email and password and see the current free token allowance.                 | Continue to `/projects/new`             |
-| `/login`                 | Return to the last project or interrupted task.                                                     | Continue working                        |
-| `/projects/[project-id]` | Choose a project; add materials, edit document threads and manage that project inside its chat.     | Open a file, create a topic or export   |
-| `/tokens`                | Top up voluntarily or resume saved work after the balance reaches −2,000 internal tokens or lower.  | Buy tokens and return to the saved task |
-| `/settings`              | Change the password, view purchases and manage account deletion.                                    | Save a setting or return to work        |
-| `/help`                  | Get help with access, materials, documents, export, chat or payment.                                | Send a support request                  |
+| Route                                                 | Customer situation and page responsibility                                                          | Primary next action                                                            |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `/ai-chat/`                                           | Recognize a place to bring project material, see the chat and try reviewing and editing a document. | **Start with my files** → `/ai-chat/rbac/subjects/authentication/registration` |
+| `/ai-chat/rbac/subjects/authentication/registration`  | Create an account with email and password and see the current free token allowance.                 | Continue to `/ai-chat/social/profiles/create`                                  |
+| `/ai-chat/rbac/subjects/authentication/select-method` | Return to the last project or interrupted task.                                                     | Continue working                                                               |
+| `/ai-chat/social/profiles/[social.profiles.id]`       | Choose a project; add materials, edit document threads and manage that project inside its chat.     | Open a file, create a topic or export                                          |
+| `/ai-chat/rbac/subjects/tokens`                       | Top up voluntarily or resume saved work after the balance reaches −2,000 internal tokens or lower.  | Buy tokens and return to the saved task                                        |
+| `/ai-chat/rbac/subjects/settings`                     | Change the password, view purchases and manage account deletion.                                    | Save a setting or return to work                                               |
+| `/ai-chat/help`                                       | Get help with access, materials, documents, export, chat or payment.                                | Send a support request                                                         |
 
-`/projects/new` opens the project-name screen. After creation, the workspace shows material upload, analysis and document chats in that order. Materials, document threads and future website or deployment workflows appear inside chat rather than as separate site pages.
+`/ai-chat/social/profiles/create` opens the project-name screen. After creation, the workspace shows material upload, analysis and document chats in that order. Materials, document threads and future website or deployment workflows appear inside chat rather than as separate site pages.
 
 ## Key product interactions
 
@@ -50,7 +50,7 @@ The starting screen asks for a project name. After creation, a separate upload s
 
 The AI agent checks the material, links extracted statements to their sources and identifies missing facts or contradictions. It asks about the next unresolved point in chat. An answer updates the affected project or product draft for the person's review. Missing information stays visible when the person cannot answer it.
 
-Registration and upload show [How your materials are processed and stored](/projects/example#how-your-materials-are-processed-and-stored) before files are supplied. Settings links to the same disclosure before deletion.
+Registration and upload show [How your materials are processed and stored](/ai-chat/social/profiles/example#how-your-materials-are-processed-and-stored) before files are supplied. Settings links to the same disclosure before deletion.
 
 ### Chat tools and project settings
 

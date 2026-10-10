@@ -81,7 +81,13 @@ export function Component({
                   <Icon name="pencil-simple" />
                   {labels["edit-request"]}
                 </Button>
-                <a href={labels["return-href"]} className={kit.button}>
+                <a
+                  href={labels["return-href"].replace(
+                    "/ai-chat/social/profiles/example",
+                    projectHref ?? "/ai-chat/social/profiles/create",
+                  )}
+                  className={kit.button}
+                >
                   {labels["return-label"]}
                   <Icon name="arrow-right" />
                 </a>

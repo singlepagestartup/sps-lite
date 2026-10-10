@@ -17,6 +17,8 @@ import { aiChatAccount } from "../../../../utils/products/ai-chat-account-fixtur
 import { aiChatWorkspaceFixture } from "../../../../utils/products/ai-chat-workspace-fixture";
 import {
   resolveAIChatRoute,
+  aiChatProfileHref,
+  aiChatServiceHrefs,
   type IAIChatRoute,
 } from "../../../../utils/products/ai-chat-routes";
 import type { IAIChatServicePageContent } from "../../../../utils/products/ai-chat-content";
@@ -28,18 +30,31 @@ export interface IAIChatPreviewProps {
 }
 const servicePages = {
   landing: "ai-chat",
-  register: "ai-chat-register",
-  login: "ai-chat-login",
-  "account-settings": "ai-chat-settings",
+  register: "ai-chat-rbac-subjects-authentication-registration",
+  login: "ai-chat-rbac-subjects-authentication-select-method",
+  "account-settings": "ai-chat-rbac-subjects-settings",
   help: "ai-chat-help",
-  tokens: "ai-chat-tokens",
-  "project-create": "ai-chat-projects-new",
+  tokens: "ai-chat-rbac-subjects-tokens",
+  "profile-create": "ai-chat-social-profiles-create",
 } as const;
-const projectPages = {
-  products: "ai-chat-projects-project-id",
-  "project-settings": "ai-chat-projects-project-id-settings",
-  "thread-create": "ai-chat-projects-project-id-threads-new",
+const profilePages = {
+  "profile-overview": "ai-chat-social-profiles-social-profiles-id",
+  "profile-settings": "ai-chat-social-profiles-social-profiles-id-settings",
 } as const;
+function ProfilePage({ route }: { route: IAIChatRoute }) {
+  if (route.page === "thread-create")
+    return (
+      <HostModulePage
+        variant="ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create"
+        profileId={route.profileId!}
+        chatId={route.chatId!}
+      />
+    );
+  const variant = profilePages[route.page as keyof typeof profilePages];
+  return variant ? (
+    <HostModulePage variant={variant} profileId={route.profileId!} />
+  ) : null;
+}
 function Pages({
   route,
   loginCopy,
@@ -50,22 +65,23 @@ function Pages({
   const { projects } = useProfiles();
   if (!route) return <main role="status">Page unavailable.</main>;
   const serviceVariant = servicePages[route.page as keyof typeof servicePages];
-  const projectVariant = projectPages[route.page as keyof typeof projectPages];
   const available = projects.some((profile) => profile.id === route.profileId);
   return (
     <>
-      {serviceVariant === "ai-chat-login" ? (
-        <HostModulePage variant="ai-chat-login" copy={loginCopy} />
+      {serviceVariant ===
+      "ai-chat-rbac-subjects-authentication-select-method" ? (
+        <HostModulePage
+          variant="ai-chat-rbac-subjects-authentication-select-method"
+          copy={loginCopy}
+        />
       ) : (
         serviceVariant && <HostModulePage variant={serviceVariant} />
       )}
-      {projectVariant && !available && (
-        <HostModulePage variant={projectVariant} profileId={route.profileId!} />
-      )}
+      {route.profileId && !available && <ProfilePage route={route} />}
       {projects.map((profile) => (
         <ProjectProvider key={profile.id} profileId={profile.id}>
-          {projectVariant && profile.id === route.profileId ? (
-            <HostModulePage variant={projectVariant} profileId={profile.id} />
+          {profile.id === route.profileId ? (
+            <ProfilePage route={route} />
           ) : null}
         </ProjectProvider>
       ))}
@@ -82,16 +98,16 @@ export function AIChatPreview({
   const [projectHref, setProjectHref] = useState(() => {
     const id = resolveAIChatRoute(initialHref)?.profileId;
     return id
-      ? `/ai-chat/projects/${encodeURIComponent(id)}`
+      ? aiChatProfileHref(id)
       : profiles.initialProjects?.[0]
-        ? `/ai-chat/projects/${encodeURIComponent(profiles.initialProjects?.[0].id)}`
-        : "/ai-chat/projects/new";
+        ? aiChatProfileHref(profiles.initialProjects[0].id)
+        : aiChatServiceHrefs["profile-create"];
   });
   const navigate = useCallback((next: string) => {
     if (!resolveAIChatRoute(next)) return;
     setHref(next);
     const id = resolveAIChatRoute(next)?.profileId;
-    if (id) setProjectHref(`/ai-chat/projects/${encodeURIComponent(id)}`);
+    if (id) setProjectHref(aiChatProfileHref(id));
   }, []);
   useEffect(() => navigate(initialHref), [initialHref, navigate]);
   useEffect(() => {

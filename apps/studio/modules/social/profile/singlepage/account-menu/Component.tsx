@@ -27,7 +27,7 @@ export function Component({
   balance = aiChatAccount.balance,
   showTokens = false,
   page,
-  settingsHref = "/ai-chat/settings",
+  settingsHref = "/ai-chat/rbac/subjects/settings",
   settingsTarget,
   onNavigate,
   onSignOut,
@@ -106,7 +106,7 @@ export function Component({
           {showTokens && (
             <DropdownMenu.Item asChild>
               <a
-                href="/ai-chat/tokens"
+                href="/ai-chat/rbac/subjects/tokens"
                 aria-current={page === "tokens" ? "page" : undefined}
                 className={menuItemClassName}
               >

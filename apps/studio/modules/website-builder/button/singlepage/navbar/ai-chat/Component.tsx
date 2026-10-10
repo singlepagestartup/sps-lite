@@ -26,12 +26,12 @@ const buttons: Record<string, IHeaderButton> = {
   "ai-chat-help": { title: "Help", url: "/ai-chat/help", icon: "question" },
   "ai-chat-login": {
     title: "Sign in",
-    url: "/ai-chat/login",
+    url: "/ai-chat/rbac/subjects/authentication/select-method",
     icon: "user-circle",
   },
   "ai-chat-register": {
     title: "Create account",
-    url: "/ai-chat/register",
+    url: "/ai-chat/rbac/subjects/authentication/registration",
     icon: "user-circle",
   },
 };

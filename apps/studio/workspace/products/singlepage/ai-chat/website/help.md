@@ -44,7 +44,7 @@ Tell us what you were trying to do, what happened and the result you need. Name 
 
 Support requests are processed within 24 hours. This is the initial response expectation, not a promise to resolve every request within that time. Continuous live support is outside the current service.
 
-Keep your saved documents and task in place while you wait. [Return to the workspace](/projects/example).
+Keep your saved documents and task in place while you wait. [Return to the workspace](/ai-chat/social/profiles/example).
 
 <!-- section: success -->
 
@@ -59,7 +59,7 @@ We’ll respond within 24 hours. You can keep working in your workspace while yo
 | Control             | Text                                          |
 | ------------------- | --------------------------------------------- |
 | back-label          | Back to workspace                             |
-| back-href           | /projects/example                             |
+| back-href           | /ai-chat/social/profiles/example              |
 | topic-label         | Topic                                         |
 | topic-placeholder   | Select a topic                                |
 | details-label       | What happened?                                |
@@ -69,7 +69,7 @@ We’ll respond within 24 hours. You can keep working in your workspace while yo
 | submit              | Send request                                  |
 | edit-request        | Edit request                                  |
 | return-label        | Return to workspace                           |
-| return-href         | /projects/example                             |
+| return-href         | /ai-chat/social/profiles/example              |
 | topic-error         | Choose a topic.                               |
 | details-error       | Describe what happened.                       |
 | result-error        | Tell us what result you need.                 |

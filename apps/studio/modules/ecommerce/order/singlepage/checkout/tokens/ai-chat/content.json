@@ -114,7 +114,7 @@
         },
         {
           "title": "back-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "balance-label",
@@ -186,7 +186,7 @@
         },
         {
           "title": "return-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "help-label",
@@ -206,7 +206,7 @@
   },
   "labels": {
     "back-label": "Back to workspace",
-    "back-href": "/ai-chat/projects/example",
+    "back-href": "/ai-chat/social/profiles/example",
     "balance-label": "Current balance",
     "balance-unit": "tokens remaining",
     "package-label": "Choose a top-up",
@@ -224,7 +224,7 @@
     "continue-payment": "Continue to payment",
     "retry": "Try again",
     "return-without-buying": "Return without buying",
-    "return-href": "/ai-chat/projects/example",
+    "return-href": "/ai-chat/social/profiles/example",
     "help-label": "Ask for help",
     "help-href": "/ai-chat/help",
     "success-message": "Package selected."

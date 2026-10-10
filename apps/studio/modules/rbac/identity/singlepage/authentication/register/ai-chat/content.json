@@ -10,20 +10,22 @@
     },
     "account": {
       "title": "Create an account",
-      "paragraphs": ["Your free token balance appears in the workspace."],
+      "paragraphs": [
+        "Your free token balance appears in the workspace."
+      ],
       "items": [],
       "links": []
     },
     "materials": {
       "title": "Before you add files",
       "paragraphs": [
-        "Read [How your materials are processed and stored](/ai-chat/projects/example#how-your-materials-are-processed-and-stored), including external AI processing and backup retention after deletion."
+        "Read [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored), including external AI processing and backup retention after deletion."
       ],
       "items": [],
       "links": [
         {
           "text": "How your materials are processed and stored",
-          "href": "/ai-chat/projects/example#how-your-materials-are-processed-and-stored"
+          "href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored"
         }
       ]
     },
@@ -69,7 +71,7 @@
         },
         {
           "title": "terms-href",
-          "text": "/ai-chat/projects/example#how-your-materials-are-processed-and-stored"
+          "text": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored"
         },
         {
           "title": "submit",
@@ -81,7 +83,7 @@
         },
         {
           "title": "sign-in-href",
-          "text": "/ai-chat/login"
+          "text": "/ai-chat/rbac/subjects/authentication/select-method"
         },
         {
           "title": "existing-account",
@@ -93,7 +95,7 @@
         },
         {
           "title": "continue-href",
-          "text": "/ai-chat/projects/new"
+          "text": "/ai-chat/social/profiles/create"
         },
         {
           "title": "email-error",
@@ -147,13 +149,13 @@
     "password-label": "Password",
     "repeat-password-label": "Repeat password",
     "terms-label": "How your materials are processed and stored",
-    "terms-href": "/ai-chat/projects/example#how-your-materials-are-processed-and-stored",
+    "terms-href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored",
     "submit": "Create account",
     "sign-in-label": "Sign in",
-    "sign-in-href": "/ai-chat/login",
+    "sign-in-href": "/ai-chat/rbac/subjects/authentication/select-method",
     "existing-account": "Already have an account?",
     "continue-label": "Open project chat",
-    "continue-href": "/ai-chat/projects/new",
+    "continue-href": "/ai-chat/social/profiles/create",
     "email-error": "Enter a valid email address.",
     "password-error": "Enter a password.",
     "repeat-password-error": "Enter the same password in both fields.",

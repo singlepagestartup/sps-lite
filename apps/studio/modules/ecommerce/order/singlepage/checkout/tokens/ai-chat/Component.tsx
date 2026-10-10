@@ -163,7 +163,10 @@ export function Component({ copy = defaultCopy }: ITokensProps = {}) {
           ) : null}
           <a
             className={`${kit.plain} mt-3 w-full px-0`}
-            href={labels["return-href"]}
+            href={labels["return-href"].replace(
+              "/ai-chat/social/profiles/example",
+              projectHref,
+            )}
           >
             {labels["return-without-buying"]}
           </a>

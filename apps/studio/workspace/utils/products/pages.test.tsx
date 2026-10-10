@@ -65,7 +65,7 @@ describe("product pages", () => {
   test("passes the internal destination to chat layouts", () => {
     const html = renderToStaticMarkup(
       <WorkspacePage
-        navigationHref="/projects/example#materials"
+        navigationHref="/ai-chat/social/profiles/example#materials"
         page={{
           id: "chat",
           title: "Chat",
@@ -78,7 +78,9 @@ describe("product pages", () => {
         }}
       />,
     );
-    expect(html).toContain('data-destination="/projects/example#materials"');
+    expect(html).toContain(
+      'data-destination="/ai-chat/social/profiles/example#materials"',
+    );
   });
 
   test("keeps account page copy and form labels in the review source", () => {

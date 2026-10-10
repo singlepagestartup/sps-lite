@@ -27,4 +27,4 @@ GitHub Actions will handle first deployment and later approved updates to the sa
 
 If a connection or deployment step fails, preserve the repository and last working deployment, identify the failed step and allow retry without rebuilding the page. These are requirements for the later capability, not available first-release actions.
 
-[Return to my project texts](/projects/example)
+[Return to my project texts](/ai-chat/social/profiles/example)

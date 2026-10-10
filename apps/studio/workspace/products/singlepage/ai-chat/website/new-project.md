@@ -58,7 +58,7 @@ Each Product owns its economics. When products share a resource, each states its
 
 Each document keeps its own conversation, edits and review state. Opening another file leaves that thread's work in place. Acceptance applies to the text you reviewed. A new proposed change is reviewed in the owning file's thread; the last reviewed version remains available for topics until you save the revision. You can create a topic with one reviewed document while other sections still have open questions.
 
-[Review my project texts](/projects/example)
+[Review my project texts](/ai-chat/social/profiles/example)
 
 Each document thread shows missing information and its draft or reviewed state beside the conversation. Review progress counts the sections you have reviewed; an unanswered question stays visible. The token balance remains visible. It may go below zero. At −2,000 internal tokens or lower, new paid AI requests are restricted; top up above that threshold to continue from the saved step. Failed or cancelled AI requests restore all their token deductions for a net charge of zero.
 

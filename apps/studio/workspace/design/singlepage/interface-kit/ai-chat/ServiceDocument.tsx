@@ -53,13 +53,13 @@ interface IFeedbackProps {
   kind?: "success" | "error" | "info";
 }
 
-const ProjectHrefContext = createContext("/ai-chat/projects/new");
+const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
 
 export function ServicePage({
   copy,
   children,
   showIntro = true,
-  projectHref = "/ai-chat/projects/new",
+  projectHref = "/ai-chat/social/profiles/create",
 }: IServicePageProps) {
   return (
     <ProjectHrefContext.Provider value={projectHref}>
@@ -70,7 +70,7 @@ export function ServicePage({
         <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
           <a
             href={copy.labels["back-href"].replace(
-              "/ai-chat/projects/example",
+              "/ai-chat/social/profiles/example",
               projectHref,
             )}
             className={`mb-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-sps-muted hover:text-sps-graphite ${kit.focus}`}
@@ -185,7 +185,10 @@ export function SectionText({
     >
       {section.paragraphs.map((paragraph, index) => (
         <MarkdownDocument key={index}>
-          {paragraph.replaceAll("/ai-chat/projects/example", projectHref)}
+          {paragraph.replaceAll(
+            "/ai-chat/social/profiles/example",
+            projectHref,
+          )}
         </MarkdownDocument>
       ))}
     </div>

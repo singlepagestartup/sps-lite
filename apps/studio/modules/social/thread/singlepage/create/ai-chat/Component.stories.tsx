@@ -6,7 +6,7 @@ function Example() {
   return (
     <SocialModuleThread
       variant="create-ai-chat"
-      cancelHref="/ai-chat/projects/pottery"
+      cancelHref="/ai-chat/social/profiles/pottery"
     />
   );
 }
