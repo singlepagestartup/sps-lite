@@ -14,8 +14,8 @@
       "path": "../../../layout/singlepage/website"
     },
     {
-      "id": "rbac.identity.reset-password-default",
-      "path": "../../../../rbac/identity/singlepage/reset-password-default"
+      "id": "rbac.subject.authentication-email-and-password-reset-password-form-default",
+      "path": "../../../../rbac/subject/singlepage/authentication/email-and-password/reset-password-form/default"
     }
   ],
   "figma": {

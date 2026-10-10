@@ -1,5 +1,7 @@
+"use client";
 import type { IIdentityFlowProps } from "../../../identity/singlepage/card-default/Component";
-("use client");
+import { Component as AuthenticationProviderConnect } from "../authentication/provider-connect/default";
+import { Component as AuthenticationAccountChange } from "../authentication/email-and-password/account-change/default";
 import { Component as RbacModuleIdentity } from "../../../identity";
 import { useCallback, useEffect, useState } from "react";
 import { useStudioAccount } from "../account/Account";
@@ -70,9 +72,8 @@ export function SubjectMeIdentityFindInformation(
   const renderFlow = useCallback(
     ({ identity, action, onClose, onUpdate }: IIdentityFlowProps) =>
       action === "reconnect" ? (
-        <RbacModuleIdentity
+        <AuthenticationProviderConnect
           key={action}
-          variant="provider-connect"
           provider={identity.provider}
           account={identity.account || identity.email}
           onCancel={onClose}
@@ -86,9 +87,8 @@ export function SubjectMeIdentityFindInformation(
           }
         />
       ) : (
-        <RbacModuleIdentity
+        <AuthenticationAccountChange
           key={action}
-          variant="account-change"
           kind={action === "change-email" ? "email" : "password"}
           email={identity.email}
           onCancel={onClose}
@@ -113,7 +113,7 @@ export function SubjectMeIdentityFindInformation(
     <article
       className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-4 font-sps text-sps-graphite sm:p-6"
       data-ds-block="rbac.subject.me-identity-find-information"
-      data-ds-imports="rbac.identity.card-default rbac.identity.provider-connect"
+      data-ds-imports="rbac.identity.card-default rbac.subject.authentication-provider-connect-default"
       data-ds-layer="singlepage"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -187,9 +187,8 @@ export function SubjectMeIdentityFindInformation(
               })}
             </div>
             {provider && (
-              <RbacModuleIdentity
+              <AuthenticationProviderConnect
                 key={provider}
-                variant="provider-connect"
                 provider={provider}
                 onCancel={() => setProvider(undefined)}
                 onComplete={(account) => {

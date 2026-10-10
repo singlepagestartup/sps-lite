@@ -275,5 +275,5 @@ test("AI Chat model variants classify their purpose and mirror nested folders", 
     expect(variantPath.split(path.sep).join("-")).toBe(variant);
     checked++;
   }
-  expect(checked).toBe(46);
+  expect(checked).toBe(47);
 });

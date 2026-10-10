@@ -226,8 +226,8 @@ import { Component as SocialModuleProfile } from ".../social/profile";
 | Model                                                      | Studio responsibility                                   |
 | ---------------------------------------------------------- | ------------------------------------------------------- |
 | Host Page / Layout                                         | Separate pages and the frame with header slots          |
-| RBAC Subject                                               | Registration, account forms and current account         |
-| RBAC Identity                                              | Sign-in forms and connected identity display            |
+| RBAC Subject                                               | Authentication, registration, account forms and session |
+| RBAC Identity                                              | Connected identity display                              |
 | Social Profile                                             | Project selector, overview, sidebar, forms and agent    |
 | Social Chat / Thread                                       | Chat and Thread overviews                               |
 | Social Message / Skill                                     | Message overview/list and knowledge-editing instruction |
@@ -236,10 +236,32 @@ import { Component as SocialModuleProfile } from ".../social/profile";
 | Ecommerce Order                                            | Token purchase preview                                  |
 | Website Builder Widget / Logotype / Buttons Array / Button | Header, logo, navigation and Help                       |
 
-AI Chat registration is Subject variant `authentication-registration-ai-chat`.
-The Host Page and editable website preview call the public Subject entry.
-The form, local validation, Storybook sample and published copy belong to Subject;
-registration does not require an existing Identity.
+Authentication and registration belong to Subject. Variant folders follow the
+method and form, with appearance last:
+
+```text
+rbac/subject/singlepage/authentication/
+  email-and-password/
+    authentication-form/{default,ai-chat}/
+    registration-form/{default,ai-chat}/
+    forgot-password-form/default/
+    reset-password-form/default/
+    account-change/default/
+  ethereum-virtual-machine/default/
+  oauth/authorization/default/
+  select-method/{default,ai-chat}/
+  provider-connect/default/
+```
+
+The public Subject key mirrors the path, for example
+`authentication-email-and-password-registration-form-ai-chat`. Host Pages and
+editable website previews call this entry. Subject owns local validation, copy,
+stories, connected-method actions and preview sign-in; Host owns navigation after
+success. Select Method preserves each method's state while switching tabs.
+EVM and OAuth expose idle, approval, completion and error states through Controls.
+They contact no wallet or provider. Identity displays connected accounts and
+receives action slots from Subject. Registration uses the visitor Subject and
+requires no existing Identity.
 
 AccountProvider supplies one user profile and its balance directly to Subject
 `account`. ProfilesProvider supplies local project identities; the project

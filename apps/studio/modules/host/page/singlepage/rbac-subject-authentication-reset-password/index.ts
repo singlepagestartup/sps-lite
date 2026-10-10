@@ -1,1 +1,1 @@
-export { RbacIdentityResetPasswordDefault as Component } from "./Component";
+export { RbacSubjectAuthenticationResetPassword as Component } from "./Component";

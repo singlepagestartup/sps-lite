@@ -14,8 +14,8 @@
       "path": "../../../layout/singlepage/website"
     },
     {
-      "id": "rbac.identity.login-default",
-      "path": "../../../../rbac/identity/singlepage/login-default"
+      "id": "rbac.subject.authentication-select-method-default",
+      "path": "../../../../rbac/subject/singlepage/authentication/select-method/default"
     }
   ],
   "figma": {

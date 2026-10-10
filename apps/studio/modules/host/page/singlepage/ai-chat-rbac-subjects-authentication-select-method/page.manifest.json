@@ -23,8 +23,8 @@
       "path": "../../../layout/singlepage/ai-chat-dashboard"
     },
     {
-      "id": "rbac.identity.authentication-login-ai-chat",
-      "path": "../../../../rbac/identity/singlepage/authentication/login/ai-chat"
+      "id": "rbac.subject.authentication-select-method-ai-chat",
+      "path": "../../../../rbac/subject/singlepage/authentication/select-method/ai-chat"
     }
   ]
 }
