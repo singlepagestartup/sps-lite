@@ -1,6 +1,6 @@
 # Studio AI Chat Page routes
 
-Status: verified; publication in progress
+Status: complete
 
 Host Page folders remain flat. Page variants and Storybook IDs mirror the
 model hierarchy in the route. Landing and Help remain `/ai-chat/` and
@@ -33,6 +33,13 @@ independent of these Page names. Production routes are outside this change.
 - [x] 298 tests across 41 files; TypeScript, metadata/inventory, copy freshness, code placement and scoped diff checks.
 - [x] Storybook production build at `/private/tmp/studio-page-routes-storybook`.
 - [x] Browser: updated Page names; profile creation/settings/switching; New thread name/agent selection and preview-only submit; Cancel retaining knowledge and draft; login returning to the current profile; registration, account settings, tokens and Help. Return links retain the profile. At 320px the new Thread form has no horizontal overflow and Help closes the navigation menu. Error logs are empty; temporary viewport settings and tabs are cleared.
-- [ ] Scoped implementation and PR #371 publication; GitHub head and description verified.
+- [x] Scoped implementation and PR #371 publication; GitHub head and description verified.
 
 Browser evidence: `/private/tmp/studio-page-routes.png`. Check logs use `/private/tmp/studio-page-routes-*.log`.
+
+## Publication
+
+- Local implementation: `9ee9bef7ed646af064152c1c5b2fb7d2e640ce79`.
+- Published implementation: `f01cba6f0f58020ebba69a5341547e1039b62a6b` on `codex/ai-chat-ui-review`.
+- PR: https://github.com/singlepagestartup/singlepagestartup/pull/371.
+- All 136 changed/deleted paths match the checked implementation. The clean publication checkout excludes unrelated production commit `94f63c6a75`; external local work remains preserved.
