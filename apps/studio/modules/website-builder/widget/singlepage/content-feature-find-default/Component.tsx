@@ -41,6 +41,7 @@ interface StatItem {
   description?: string;
 }
 export interface ContentFeatureFindDefaultProps {
+  variant?: string;
   stats: StatItem[];
 }
 export function ContentFeatureFindDefault(
@@ -52,6 +53,9 @@ export function ContentFeatureFindDefault(
       className="w-full bg-[var(--color-sps-grey)] py-4 sm:py-6"
       data-ds-block="website-builder.widget.content-feature-find-default"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-feature-find-default"}
     >
       <div className="mx-auto grid w-full max-w-7xl gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {stats.map((stat) => (

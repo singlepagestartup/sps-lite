@@ -23,6 +23,7 @@ function Icon(props: {
 }
 
 export interface IChatPreviewProps {
+  variant?: string;
   content?: IAIChatWebsiteContent;
 }
 export interface IThreadRowProps {
@@ -53,6 +54,7 @@ export interface ITopic {
 type TView = "materials" | "document" | "files" | "workspace" | "topic";
 /** Artifact-derived local prototype: prepared files and scripted replies, no AI calls. */
 export function Component({
+  variant = "overview-preview-ai-chat",
   content = defaultContent,
 }: IChatPreviewProps = {}) {
   const id = useId();
@@ -301,7 +303,12 @@ export function Component({
     );
   }
   return (
-    <div className="overflow-hidden rounded-2xl border border-sps-line bg-white shadow-sm">
+    <div
+      className="overflow-hidden rounded-2xl border border-sps-line bg-white shadow-sm"
+      data-module="social"
+      data-model="chat"
+      data-variant={variant}
+    >
       <ol
         aria-label={content.workflow.title}
         className="grid grid-cols-2 border-b border-sps-line bg-sps-white @3xl:grid-cols-4"

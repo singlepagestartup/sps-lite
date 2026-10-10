@@ -55,6 +55,7 @@ function Icon(props: {
 }
 
 export interface SocialWidgetChatOverviewDefaultProps {
+  variant?: string;
   chat?: SocialWidgetChatListDefaultProps["chats"][number];
   chatImage?: SocialPreviewAttachment;
   onChatImageChange?: (file: File | null) => void;
@@ -199,6 +200,9 @@ export function SocialWidgetChatOverviewDefault(
       data-ds-block="social.widget.chat-overview-default"
       data-ds-imports="social.thread.list-default social.message.bubble-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="widget"
+      data-variant={props.variant ?? "chat-overview-default"}
     >
       <div className="grid w-full overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] md:h-[calc(100vh-10rem)] md:min-h-[760px] md:grid-cols-[300px_minmax(0,1fr)]">
         <SocialModuleThread

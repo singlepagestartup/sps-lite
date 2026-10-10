@@ -2,9 +2,19 @@ import { Component as WebsiteBuilderModuleWidget } from "../../../../website-bui
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminPreviewDialog() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminPreviewDialog({
+  variant = "admin-preview-dialog",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-preview-dialog">
+    <div
+      data-ds-page="host.page.admin-preview-dialog"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin/website-builder/widget"
         eyebrow="host.page"

@@ -18,9 +18,13 @@ function Icon(props: {
 }
 
 export interface ISourceDownloadProps {
+  variant?: string;
   label?: string;
 }
-export function Component({ label = ".md" }: ISourceDownloadProps) {
+export function Component({
+  variant = "download-ai-chat",
+  label = ".md",
+}: ISourceDownloadProps) {
   const { source } = useSource();
   function download() {
     const url = URL.createObjectURL(
@@ -35,15 +39,22 @@ export function Component({ label = ".md" }: ISourceDownloadProps) {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return (
-    <Button
-      data-ds-block="knowledge.source.download-ai-chat"
-      variant="secondary"
-      aria-label={`Download ${source.title}.md`}
-      onClick={download}
+    <span
+      className="inline-flex"
+      data-module="knowledge"
+      data-model="source"
+      data-variant={variant}
     >
-      <Icon name="arrow-down" />
-      {label}
-    </Button>
+      <Button
+        data-ds-block="knowledge.source.download-ai-chat"
+        variant="secondary"
+        aria-label={`Download ${source.title}.md`}
+        onClick={download}
+      >
+        <Icon name="arrow-down" />
+        {label}
+      </Button>
+    </span>
   );
 }
 const Button = forwardRefControl<

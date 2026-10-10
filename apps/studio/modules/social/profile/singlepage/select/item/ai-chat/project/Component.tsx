@@ -15,6 +15,7 @@ function Icon(props: {
 }
 
 export interface IProjectSelectItemProps {
+  variant?: string;
   data: IProjectIdentity;
   selected: boolean;
   onNavigate?: () => void;
@@ -22,6 +23,7 @@ export interface IProjectSelectItemProps {
 const itemClass =
   "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey";
 export const Component = memo(function Component({
+  variant = "select-item-ai-chat-project",
   data,
   selected,
   onNavigate,
@@ -30,14 +32,14 @@ export const Component = memo(function Component({
     <DropdownMenu.Item asChild>
       <a
         data-ds-block="social.profile.select-item-ai-chat-project"
-        data-module="social"
-        data-model="profile"
         data-id={data.id}
-        data-variant="select-item-ai-chat-project"
         href={`/ai-chat/social/profiles/${encodeURIComponent(data.id)}`}
         onClick={onNavigate}
         className={itemClass}
         aria-current={selected ? "page" : undefined}
+        data-module="social"
+        data-model="profile"
+        data-variant={variant}
       >
         <Icon name="folder-open" />
         <span className="min-w-0 flex-1 truncate">{data.name}</span>

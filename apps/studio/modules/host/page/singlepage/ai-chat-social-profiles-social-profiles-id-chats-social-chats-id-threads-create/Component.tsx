@@ -27,55 +27,62 @@ function PanelHeader({ title, label, navigation, actions }: IPanelHeaderProps) {
   );
 }
 export interface IThreadCreatePageProps {
+  variant?: string;
   profileId: string;
   chatId: string;
 }
-export function Component({ profileId, chatId }: IThreadCreatePageProps) {
+export function Component({
+  variant = "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create",
+  profileId,
+  chatId,
+}: IThreadCreatePageProps) {
   return (
-    <HostModuleLayout
-      variant="ai-chat-dashboard"
-      page="chat"
-      profileSelect={(props) => (
-        <SocialModuleProfile
-          profileId={profileId}
-          {...props}
-          variant="select-ai-chat-project"
-        />
-      )}
-      subjectAccount={({ onNavigate }) => (
-        <RbacModuleSubject
-          variant="account"
-          showTokens
-          page="chat"
-          onNavigate={onNavigate}
-        />
-      )}
-    >
-      <SocialModuleProfile
-        variant="overview-ai-chat-project"
-        profileId={profileId}
-        chatId={chatId}
-        selected="thread-create"
-      >
-        {(navigation) => (
-          <section
-            aria-label="New thread"
-            className="flex min-h-0 flex-1 flex-col"
-          >
-            <PanelHeader
-              title="New thread"
-              label="Thread"
-              navigation={navigation}
-            />
-            <SocialModuleThread
-              variant="create-ai-chat"
-              chatId={chatId}
-              cancelHref={aiChatProfileHref(profileId)}
-            />
-          </section>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="ai-chat-dashboard"
+        page="chat"
+        profileSelect={(props) => (
+          <SocialModuleProfile
+            profileId={profileId}
+            {...props}
+            variant="select-ai-chat-project"
+          />
         )}
-      </SocialModuleProfile>
-    </HostModuleLayout>
+        subjectAccount={({ onNavigate }) => (
+          <RbacModuleSubject
+            variant="account"
+            showTokens
+            page="chat"
+            onNavigate={onNavigate}
+          />
+        )}
+      >
+        <SocialModuleProfile
+          variant="overview-ai-chat-project"
+          profileId={profileId}
+          chatId={chatId}
+          selected="thread-create"
+        >
+          {(navigation) => (
+            <section
+              aria-label="New thread"
+              className="flex min-h-0 flex-1 flex-col"
+            >
+              <PanelHeader
+                title="New thread"
+                label="Thread"
+                navigation={navigation}
+              />
+              <SocialModuleThread
+                variant="create-ai-chat"
+                chatId={chatId}
+                cancelHref={aiChatProfileHref(profileId)}
+              />
+            </section>
+          )}
+        </SocialModuleProfile>
+      </HostModuleLayout>
+    </div>
   );
 }
 const focus =

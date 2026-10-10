@@ -38,6 +38,7 @@ export interface OrderCheckoutNextStep {
   description: string;
 }
 export interface OrderCheckoutConfirmationDefaultProps {
+  variant?: string;
   title: string;
   description: string;
   email: string;
@@ -76,6 +77,9 @@ export function OrderCheckoutConfirmationDefault(
       className="w-full min-w-0 space-y-6 lg:space-y-8"
       data-ds-block="ecommerce.order.checkout-confirmation-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="order"
+      data-variant={props?.variant ?? "checkout-confirmation-default"}
     >
       <section className="flex flex-col gap-5 rounded-3xl bg-[var(--color-sps-graphite)] p-6 text-[var(--color-sps-white)] sm:flex-row sm:items-start sm:p-8">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)]">

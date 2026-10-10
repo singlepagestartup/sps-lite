@@ -14,6 +14,7 @@ export const defaultSubjectMeCrmFormDefaultProps = {
 };
 
 export interface SubjectMeCrmFormDefaultProps {
+  variant?: string;
   subject: {
     id: string;
     name: string;
@@ -43,6 +44,9 @@ export function SubjectMeCrmFormDefault(
       data-ds-block="rbac.subject.me-crm-form-deafult"
       data-ds-layer="singlepage"
       data-subject-id={subject.id}
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props?.variant ?? "me-crm-form-deafult"}
     >
       <CrmModuleWidget
         variant="form-list-default"

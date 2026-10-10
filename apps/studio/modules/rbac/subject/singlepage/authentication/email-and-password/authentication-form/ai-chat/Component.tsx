@@ -148,6 +148,7 @@ function Icon(props: {
 }
 
 export interface ILoginProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
   onSuccess?: (email: string) => void;
 }
@@ -155,7 +156,11 @@ export interface ILoginErrors {
   email?: string;
   password?: string;
 }
-export function Component({ copy = defaultCopy, onSuccess }: ILoginProps = {}) {
+export function Component({
+  variant = "authentication-email-and-password-authentication-form-ai-chat",
+  copy = defaultCopy,
+  onSuccess,
+}: ILoginProps = {}) {
   const { signIn } = useStudioAccount();
   const label = copy.labels;
   const id = useId();
@@ -185,7 +190,7 @@ export function Component({ copy = defaultCopy, onSuccess }: ILoginProps = {}) {
     if (valid) onSuccess?.(email.trim());
   }
   return (
-    <AccountPage copy={copy} page="login">
+    <AccountPage copy={copy} page="login" variant={variant}>
       <PageSection section={copy.sections.account} icon="sign-in">
         <form noValidate onSubmit={submit} className="mt-6 grid gap-5">
           <TextField

@@ -2,12 +2,14 @@ import { Component as Card } from "../admin-v2-card/index";
 import fixture from "../admin-v2-table/data.json";
 import type { IRecord } from "../admin-v2-table/interface";
 export interface IComponentProps {
+  variant?: string;
   data?: IRecord[];
   count?: number;
   empty?: boolean;
   className?: string;
 }
 export function Component({
+  variant = "list",
   data = fixture.records,
   count = 3,
   empty = false,
@@ -19,12 +21,23 @@ export function Component({
       : Math.max(0, Math.floor(count));
   if (!length)
     return (
-      <p role="status" className="p-5">
+      <p
+        role="status"
+        className="p-5"
+        data-module="startup"
+        data-model="widget"
+        data-variant={variant}
+      >
         No records to display.
       </p>
     );
   return (
-    <div className={`grid min-w-0 gap-4 p-4 sm:grid-cols-2 ${className ?? ""}`}>
+    <div
+      className={`grid min-w-0 gap-4 p-4 sm:grid-cols-2 ${className ?? ""}`}
+      data-module="startup"
+      data-model="widget"
+      data-variant={variant}
+    >
       {Array.from({ length }, (_, index) => (
         <Card key={`${data[0].id}:${index}`} data={data[0]} />
       ))}

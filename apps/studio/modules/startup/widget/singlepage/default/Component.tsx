@@ -1,4 +1,5 @@
 export interface StartupWidgetDefaultProps {
+  variant?: string;
   title: string;
   subtitle?: string;
   description?: string;
@@ -6,6 +7,7 @@ export interface StartupWidgetDefaultProps {
 }
 
 export function StartupWidgetDefault({
+  variant = "default",
   title,
   subtitle,
   description,
@@ -16,6 +18,9 @@ export function StartupWidgetDefault({
       className={`w-full rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-10 ${className}`}
       data-ds-block="startup.widget.default"
       data-ds-layer="singlepage"
+      data-module="startup"
+      data-model="widget"
+      data-variant={variant}
     >
       {subtitle ? (
         <p className="text-sm font-medium text-[var(--color-sps-muted)]">

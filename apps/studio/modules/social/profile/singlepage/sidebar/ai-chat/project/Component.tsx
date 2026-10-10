@@ -19,11 +19,13 @@ function Icon(props: {
 }
 
 export interface IProfileSidebarProps {
+  variant?: string;
   profileId: string;
   chatId?: string;
   selected: "products" | "settings" | "thread-create";
 }
 export function Component({
+  variant = "sidebar-ai-chat-project",
   profileId,
   chatId,
   selected,
@@ -37,7 +39,7 @@ export function Component({
   const creatingThread = selected === "thread-create";
   const [open, setOpen] = useState(true);
   return (
-    <>
+    <div data-module="social" data-model="profile" data-variant={variant}>
       <h1 className="mb-3 break-words pr-10 text-lg font-semibold @[760px]/workspace:pr-0">
         {name}
       </h1>
@@ -91,7 +93,7 @@ export function Component({
           New thread
         </a>
       </section>
-    </>
+    </div>
   );
 }
 const focus =

@@ -50,6 +50,7 @@ export interface ProductCartDefaultItem {
   quantity: number;
 }
 export interface ProductCartDefaultProps {
+  variant?: string;
   item: ProductCartDefaultItem;
   compact?: boolean;
   href?: string;
@@ -114,6 +115,9 @@ export const ProductCartDefault = memo(function ProductCartDefault(
       className="flex min-w-0 gap-3 sm:gap-4"
       data-ds-block="ecommerce.product.cart-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props.variant ?? "cart-default"}
     >
       <a
         className="block h-20 w-20 shrink-0 self-start overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"

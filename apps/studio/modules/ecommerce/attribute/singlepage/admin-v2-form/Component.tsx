@@ -90,11 +90,13 @@ function Icon(props: {
 }
 
 export interface IAttributeAdminFormProps {
+  variant?: string;
   attribute?: IStudioAttribute;
   onSave?: (attribute: IStudioAttribute) => void;
   embedded?: boolean;
 }
 export function EcommerceAttributeAdminV2Form({
+  variant = "admin-v2-form",
   attribute = studioAttributes[0],
   onSave,
   embedded = false,
@@ -115,6 +117,9 @@ export function EcommerceAttributeAdminV2Form({
       }
       data-ds-block="ecommerce.attribute.admin-v2-form"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="attribute"
+      data-variant={variant}
     >
       {!embedded && (
         <header className="border-b border-[var(--color-sps-line)] p-5 sm:p-6">

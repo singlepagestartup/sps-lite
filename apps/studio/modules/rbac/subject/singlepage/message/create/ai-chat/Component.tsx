@@ -23,7 +23,12 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function Component() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function Component({
+  variant = "message-create-ai-chat",
+}: IComponentVariantProps = {}) {
   const {
     thread,
     draft: value,
@@ -82,11 +87,11 @@ export function Component() {
   return (
     <form
       data-ds-block="rbac.subject.message-create-ai-chat"
-      data-module="rbac"
-      data-model="subject"
-      data-variant="message-create-ai-chat"
       onSubmit={submit}
       className={`flex min-h-0 shrink-0 flex-col border-t border-sps-line bg-sps-white p-4 max-h-[min(24rem,60%)]`}
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       <label htmlFor={id} className="sr-only">
         {label}

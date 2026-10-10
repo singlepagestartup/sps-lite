@@ -16,11 +16,13 @@ export type TAuthenticationMethod =
   | "ethereum-virtual-machine"
   | "oauth";
 export interface ISelectMethodProps {
+  variant?: string;
   initialMethod?: TAuthenticationMethod;
 
   onSuccess?: (email: string) => void;
 }
 export function Component({
+  variant = "authentication-select-method-default",
   initialMethod = "email-and-password",
   onSuccess,
 }: ISelectMethodProps = {}) {
@@ -45,6 +47,7 @@ export function Component({
   ];
   return (
     <EmailAndPasswordAuthenticationForm
+      variant={variant}
       onSuccess={complete}
       methodSelector={
         <div

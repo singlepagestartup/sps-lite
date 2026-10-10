@@ -7,11 +7,13 @@ import { type IProjectAgent } from "../../../../profile/singlepage/agent/overvie
 import type { IProjectMessage } from "../../../../profile/singlepage/scope/ai-chat/project/state";
 
 export interface IMessageListProps {
+  variant?: string;
   threadId: string;
   messages: IProjectMessage[];
   className?: string;
 }
 export function Component({
+  variant = "list-ai-chat",
   threadId,
   messages,
   className = "",
@@ -32,14 +34,14 @@ export function Component({
     <>
       <div
         data-ds-block="social.message.list-ai-chat"
-        data-module="social"
-        data-model="message"
         data-thread-id={threadId}
-        data-variant="list-ai-chat"
         role="log"
         aria-label="Messages"
         aria-live="polite"
         className={`${className} space-y-6 p-4 @[640px]:p-6`}
+        data-module="social"
+        data-model="message"
+        data-variant={variant}
       >
         {messages.map((message) => (
           <MessageOverview

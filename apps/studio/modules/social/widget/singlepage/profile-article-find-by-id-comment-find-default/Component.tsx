@@ -117,7 +117,9 @@ function CommentItem({
 export type ProfileArticleFindByIdCommentFindDefaultProps =
   typeof defaultProfileArticleFindByIdCommentFindDefaultProps;
 export function ProfileArticleFindByIdCommentFindDefault(
-  props?: Partial<ProfileArticleFindByIdCommentFindDefaultProps>,
+  props?: Partial<ProfileArticleFindByIdCommentFindDefaultProps> & {
+    variant?: string;
+  },
 ) {
   const { comments } = {
     ...defaultProfileArticleFindByIdCommentFindDefaultProps,
@@ -128,6 +130,11 @@ export function ProfileArticleFindByIdCommentFindDefault(
       className="space-y-6"
       data-ds-block="social.widget.profile-article-find-by-id-comment-find-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="widget"
+      data-variant={
+        props?.variant ?? "profile-article-find-by-id-comment-find-default"
+      }
     >
       {comments.map((comment) => (
         <CommentItem key={comment.id} comment={comment} />

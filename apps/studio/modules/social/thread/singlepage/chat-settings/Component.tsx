@@ -50,6 +50,7 @@ function Icon(props: {
 }
 
 export interface SocialChatSettingsProps {
+  variant?: string;
   open: boolean;
   onCloseAutoFocus?: Dialog.DialogContentProps["onCloseAutoFocus"];
   onOpenChange: (open: boolean) => void;
@@ -114,7 +115,11 @@ export function Component(props: SocialChatSettingsProps) {
     setThreadDescription("");
   }
   return (
-    <>
+    <div
+      data-module="social"
+      data-model="thread"
+      data-variant={props.variant ?? "chat-settings"}
+    >
       {" "}
       <div ref={setPortal} data-ds-block="social.thread.chat-settings" />
       <Dialog.Root open={props.open} onOpenChange={props.onOpenChange}>
@@ -303,7 +308,7 @@ export function Component(props: SocialChatSettingsProps) {
           </Dialog.Portal>
         )}
       </Dialog.Root>
-    </>
+    </div>
   );
 }
 const X = createIcon("x");

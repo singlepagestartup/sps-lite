@@ -6,13 +6,18 @@ export const defaultArticleCoverProps = {
 
 export type ArticleCoverProps = typeof defaultArticleCoverProps;
 
-export function ArticleCover(props?: Partial<ArticleCoverProps>) {
+export function ArticleCover(
+  props?: Partial<ArticleCoverProps> & { variant?: string },
+) {
   const { coverImage, title } = { ...defaultArticleCoverProps, ...props };
   return (
     <figure
       className="m-0 aspect-square min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-white)]"
       data-ds-block="blog.article.cover"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "cover"}
     >
       <img
         src={coverImage}

@@ -8,13 +8,16 @@ export { defaultProductOverviewDefaultProps };
 export type { ProductOverviewDefaultProps };
 
 export function ProductOverviewDefaultWidget(
-  props: Partial<ProductOverviewDefaultProps> = {},
+  props: Partial<ProductOverviewDefaultProps> & { variant?: string } = {},
 ) {
   return (
     <div
       data-ds-block="ecommerce.widget.product-overview-default"
       data-ds-imports="ecommerce.product.overview-default"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="widget"
+      data-variant={props.variant ?? "product-overview-default"}
     >
       <EcommerceModuleProduct {...props} variant="overview-default" />
     </div>

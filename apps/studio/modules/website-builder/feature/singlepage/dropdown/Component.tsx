@@ -34,7 +34,9 @@ function Icon(props: {
 }
 
 export type FeatureDropdownProps = typeof defaultFeatureDropdownProps;
-export function FeatureDropdown(props?: Partial<FeatureDropdownProps>) {
+export function FeatureDropdown(
+  props?: Partial<FeatureDropdownProps> & { variant?: string },
+) {
   const { question, answer, open } = {
     ...defaultFeatureDropdownProps,
     ...props,
@@ -45,6 +47,9 @@ export function FeatureDropdown(props?: Partial<FeatureDropdownProps>) {
       open={open}
       data-ds-block="website-builder.feature.dropdown"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="feature"
+      data-variant={props?.variant ?? "dropdown"}
     >
       <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 rounded-xl px-5 py-5 text-base font-semibold leading-6 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-grey)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] [&::-webkit-details-marker]:hidden">
         <span>{question}</span>

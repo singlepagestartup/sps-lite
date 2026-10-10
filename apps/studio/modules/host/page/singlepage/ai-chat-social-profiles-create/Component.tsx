@@ -8,47 +8,54 @@ import { useNavigate } from "../../../layout/singlepage/ai-chat-landing/Navigati
 
 import { useProfiles } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 
-export function Component() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function Component({
+  variant = "ai-chat-social-profiles-create",
+}: IComponentVariantProps = {}) {
   const navigate = useNavigate();
   const { create, projects } = useProfiles();
   return (
-    <HostModuleLayout
-      variant="ai-chat-dashboard"
-      page="chat"
-      profileSelect={(props) => (
-        <SocialModuleProfile {...props} variant="select-ai-chat-project" />
-      )}
-      subjectAccount={({ onNavigate }) => (
-        <RbacModuleSubject
-          variant="account"
-          showTokens
-          page="chat"
-          onNavigate={onNavigate}
-        />
-      )}
-    >
-      <SocialModuleProfile
-        variant="create-ai-chat-project"
-        onCreate={(name) => {
-          const id = create(name);
-          if (id)
-            navigate(`/ai-chat/social/profiles/${encodeURIComponent(id)}`);
-        }}
-        onCancel={
-          projects.length
-            ? () =>
-                navigate(
-                  `/ai-chat/social/profiles/${encodeURIComponent(projects[0].id)}`,
-                )
-            : undefined
-        }
-      />
-      <div className="mx-auto max-w-3xl px-5">
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="ai-chat-dashboard"
+        page="chat"
+        profileSelect={(props) => (
+          <SocialModuleProfile {...props} variant="select-ai-chat-project" />
+        )}
+        subjectAccount={({ onNavigate }) => (
+          <RbacModuleSubject
+            variant="account"
+            showTokens
+            page="chat"
+            onNavigate={onNavigate}
+          />
+        )}
+      >
         <SocialModuleProfile
-          variant="processing-ai-chat-project"
-          id="how-your-materials-are-processed-and-stored"
+          variant="create-ai-chat-project"
+          onCreate={(name) => {
+            const id = create(name);
+            if (id)
+              navigate(`/ai-chat/social/profiles/${encodeURIComponent(id)}`);
+          }}
+          onCancel={
+            projects.length
+              ? () =>
+                  navigate(
+                    `/ai-chat/social/profiles/${encodeURIComponent(projects[0].id)}`,
+                  )
+              : undefined
+          }
         />
-      </div>
-    </HostModuleLayout>
+        <div className="mx-auto max-w-3xl px-5">
+          <SocialModuleProfile
+            variant="processing-ai-chat-project"
+            id="how-your-materials-are-processed-and-stored"
+          />
+        </div>
+      </HostModuleLayout>
+    </div>
   );
 }

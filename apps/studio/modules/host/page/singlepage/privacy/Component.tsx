@@ -35,20 +35,27 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function PrivacyPage() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function PrivacyPage({
+  variant = "privacy",
+}: IComponentVariantProps = {}) {
   return (
-    <HostModuleLayout variant="website" footer="compact">
-      <main className="min-w-0" data-ds-page="host.page.privacy">
-        <LegalPage
-          breadcrumbLabel="Privacy Policy"
-          description="How SinglePageStartup collects, uses, protects, and shares information across the service."
-          icon={Shield}
-          sections={privacySections}
-          title="Privacy Policy"
-          updatedAt={LAST_UPDATED}
-        />
-      </main>
-    </HostModuleLayout>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout variant="website" footer="compact">
+        <main className="min-w-0" data-ds-page="host.page.privacy">
+          <LegalPage
+            breadcrumbLabel="Privacy Policy"
+            description="How SinglePageStartup collects, uses, protects, and shares information across the service."
+            icon={Shield}
+            sections={privacySections}
+            title="Privacy Policy"
+            updatedAt={LAST_UPDATED}
+          />
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }
 const Shield = createIcon("shield");

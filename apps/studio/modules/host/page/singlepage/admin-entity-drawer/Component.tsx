@@ -3,9 +3,19 @@ import { Component as EcommerceModuleProduct } from "../../../../ecommerce/produ
 import { studioProducts } from "../../../../ecommerce/product/shared";
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminEntityDrawer() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminEntityDrawer({
+  variant = "admin-entity-drawer",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-entity-drawer">
+    <div
+      data-ds-page="host.page.admin-entity-drawer"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin/ecommerce/product"
         eyebrow="host.page"

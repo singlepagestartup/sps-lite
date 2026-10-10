@@ -63,6 +63,7 @@ function Icon(props: {
 }
 
 export interface ISectionAssetsProps {
+  variant?: string;
   section: string;
   fileIds: string[];
   onAttach: (ids: string[]) => void;
@@ -73,6 +74,7 @@ interface IFileAttachmentProps {
   onRemove: (id: string) => void;
 }
 export function Component({
+  variant = "list-attachments-ai-chat",
   section,
   fileIds,
   onAttach,
@@ -119,6 +121,9 @@ export function Component({
     <section
       aria-label={`${section} files`}
       className="mt-3 space-y-3 border-t border-sps-line pt-3"
+      data-module="file-storage"
+      data-model="file"
+      data-variant={variant}
     >
       <p className={`text-xs ${kit.muted}`}>Files · {linked.length}</p>
       {linked.map((id) => (

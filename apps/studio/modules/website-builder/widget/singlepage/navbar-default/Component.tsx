@@ -39,12 +39,14 @@ function Icon(props: {
 }
 
 export interface NavbarDefaultProps {
+  variant?: string;
   activeHref?: string;
   brand?: string;
   cartButton?: ReactNode;
   subjectAccount?: ReactNode;
 }
 export function NavbarDefault({
+  variant = "navbar-default",
   activeHref = "/",
   brand,
   cartButton,
@@ -65,6 +67,9 @@ export function NavbarDefault({
           trigger.current?.focus();
         }
       }}
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-6">

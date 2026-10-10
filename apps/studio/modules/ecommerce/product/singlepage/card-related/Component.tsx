@@ -41,6 +41,7 @@ function Icon(props: {
  * Source: ProductPage WidgetRelated card (lines 653-679).
  */
 export interface ProductCardRelatedProps {
+  variant?: string;
   slug: string;
   image: string;
   category: string;
@@ -65,6 +66,9 @@ export function ProductCardRelated(props?: Partial<ProductCardRelatedProps>) {
       className="group flex h-full min-w-0 cursor-pointer items-start gap-4 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 transition motion-reduce:transition-none hover:border-[var(--color-sps-graphite)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
       data-ds-block="ecommerce.product.card-related"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={props?.variant ?? "card-related"}
     >
       <img
         src={image}

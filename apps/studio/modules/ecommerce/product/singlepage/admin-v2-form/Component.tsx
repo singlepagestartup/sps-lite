@@ -92,12 +92,14 @@ function Icon(props: {
 }
 
 export interface IProductAdminFormProps {
+  variant?: string;
   product?: IStudioProduct;
   onSave?: (product: IStudioProduct) => void;
   attributes?: ReactNode;
   embedded?: boolean;
 }
 export function EcommerceProductAdminV2Form({
+  variant = "admin-v2-form",
   product = studioProducts[0],
   onSave,
   attributes,
@@ -117,6 +119,9 @@ export function EcommerceProductAdminV2Form({
       }
       data-ds-block="ecommerce.product.admin-v2-form"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={variant}
     >
       {!embedded && (
         <header className="shrink-0 border-b border-[var(--color-sps-line)] p-5 sm:p-6">

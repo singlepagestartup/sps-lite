@@ -2,6 +2,7 @@ import type { CrmInputRecord } from "../../../shared/demo-crm";
 import { defaultCrmForm } from "../../../shared/demo-crm";
 
 export interface CrmInputTextareaDefaultProps {
+  variant?: string;
   input: CrmInputRecord;
   disabled?: boolean;
   namePrefix?: string;
@@ -28,6 +29,9 @@ export function CrmInputTextareaDefault(
       className="block min-w-0"
       data-ds-block="crm.input.textarea-default"
       data-ds-layer="singlepage"
+      data-module="crm"
+      data-model="input"
+      data-variant={props?.variant ?? "textarea-default"}
     >
       <span className="mb-1 block text-sm font-medium text-[var(--color-sps-graphite)]">
         {input.label}

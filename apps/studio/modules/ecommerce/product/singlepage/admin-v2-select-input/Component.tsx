@@ -30,12 +30,14 @@ function Icon(props: {
 }
 
 export interface IProductSelectProps {
+  variant?: string;
   value?: string;
   onValueChange?: (value: string) => void;
   disabled?: boolean;
   records?: IStudioProduct[];
 }
 export function EcommerceProductAdminV2SelectInput({
+  variant = "admin-v2-select-input",
   value,
   onValueChange,
   disabled,
@@ -48,6 +50,9 @@ export function EcommerceProductAdminV2SelectInput({
       htmlFor={id}
       data-ds-block="ecommerce.product.admin-v2-select-input"
       data-ds-layer="singlepage"
+      data-module="ecommerce"
+      data-model="product"
+      data-variant={variant}
     >
       <span className={kit.label}>Product</span>
       <Select

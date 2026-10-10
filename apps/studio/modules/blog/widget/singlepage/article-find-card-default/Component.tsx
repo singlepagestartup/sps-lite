@@ -167,7 +167,7 @@ export interface ArticleFindCardDefaultArticle {
 export type ArticleFindCardDefaultProps =
   typeof defaultArticleFindCardDefaultProps;
 export function ArticleFindCardDefault(
-  props?: Partial<ArticleFindCardDefaultProps>,
+  props?: Partial<ArticleFindCardDefaultProps> & { variant?: string },
 ) {
   const { categories, articles } = {
     ...defaultArticleFindCardDefaultProps,
@@ -207,6 +207,9 @@ export function ArticleFindCardDefault(
       data-ds-block="blog.widget.article-find-card-default"
       data-ds-imports="blog.category.button-default blog.article.card"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "article-find-card-default"}
     >
       <h2 className="mb-6 text-3xl font-semibold tracking-tight">
         All articles

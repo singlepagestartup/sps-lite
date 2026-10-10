@@ -99,6 +99,7 @@ function Icon(props: {
 }
 
 export interface ISourceCardProps {
+  variant?: string;
   discussing?: boolean;
   onDiscuss?: () => void;
 }
@@ -111,6 +112,7 @@ const kit = {
   focus: focus,
 };
 export const Component = memo(function Component({
+  variant = "overview-ai-chat",
   discussing = false,
   onDiscuss,
 }: ISourceCardProps) {
@@ -123,13 +125,13 @@ export const Component = memo(function Component({
   const materials = sourceMaterials(data.content);
   return (
     <article
-      data-module="knowledge"
-      data-model="source"
       data-id={data.id}
-      data-variant="overview-ai-chat"
       data-ds-block="knowledge.source.overview-ai-chat"
       aria-label={data.title}
       className="rounded-xl border border-sps-line bg-sps-white p-3"
+      data-module="knowledge"
+      data-model="source"
+      data-variant={variant}
     >
       <MarkdownField
         id={id}

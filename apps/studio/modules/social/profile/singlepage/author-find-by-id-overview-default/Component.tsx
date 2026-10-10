@@ -60,7 +60,9 @@ export type ProfileAuthorFindByIdOverviewDefaultProps = Omit<
   articles?: ReactNode;
 };
 export function ProfileAuthorFindByIdOverviewDefault(
-  props?: Partial<ProfileAuthorFindByIdOverviewDefaultProps>,
+  props?: Partial<ProfileAuthorFindByIdOverviewDefaultProps> & {
+    variant?: string;
+  },
 ) {
   const profile = {
     ...defaultProfileAuthorFindByIdOverviewDefaultProps.profile,
@@ -86,6 +88,9 @@ export function ProfileAuthorFindByIdOverviewDefault(
       data-ds-block="social.profile.author-find-by-id-overview-default"
       data-ds-imports="social.profile.author blog.article.row social.profile.find-row"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="profile"
+      data-variant={props?.variant ?? "author-find-by-id-overview-default"}
     >
       <ProfileAuthor {...profile} />
 

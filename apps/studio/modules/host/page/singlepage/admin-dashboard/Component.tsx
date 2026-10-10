@@ -4,9 +4,19 @@ import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-export function AdminDashboard() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function AdminDashboard({
+  variant = "admin-dashboard",
+}: IComponentVariantProps = {}) {
   return (
-    <div data-ds-page="host.page.admin-dashboard">
+    <div
+      data-ds-page="host.page.admin-dashboard"
+      data-module="host"
+      data-model="page"
+      data-variant={variant}
+    >
       <AdminV2PageShell
         activePath="/admin"
         eyebrow="host.page"

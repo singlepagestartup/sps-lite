@@ -5,10 +5,12 @@ import { aiChatServiceHrefs } from "../ai-chat-landing/routes";
 
 export interface IAIChatDashboardLayoutProps
   extends Pick<INavbarAiChatProps, "profileSelect" | "subjectAccount"> {
+  variant?: string;
   page: "register" | "login" | "settings" | "help" | "tokens" | "chat";
   children: ReactNode;
 }
 export function Component({
+  variant = "ai-chat-dashboard",
   children,
   page,
   profileSelect,
@@ -26,6 +28,9 @@ export function Component({
       data-sps-theme="singlepage"
       data-ds-block="host.layout.ai-chat-dashboard"
       className="@container min-h-screen min-w-0 flex flex-col bg-sps-grey font-sps text-sps-graphite"
+      data-module="host"
+      data-model="layout"
+      data-variant={variant}
     >
       <WebsiteBuilderModuleWidget
         variant="navbar-ai-chat"

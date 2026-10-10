@@ -36,7 +36,9 @@ function Icon(props: {
 
 type ArticleFeaturedTarget = "_blank" | "_parent" | "_self" | "_top";
 export type ArticleFeaturedProps = typeof defaultArticleFeaturedProps;
-export function ArticleFeatured(props?: Partial<ArticleFeaturedProps>) {
+export function ArticleFeatured(
+  props?: Partial<ArticleFeaturedProps> & { variant?: string },
+) {
   const {
     href,
     slug,
@@ -59,6 +61,9 @@ export function ArticleFeatured(props?: Partial<ArticleFeaturedProps>) {
       data-ds-block="blog.article.featured"
       data-ds-imports="social.profile.byline"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "featured"}
     >
       <div className="aspect-square min-w-0 overflow-hidden">
         <img

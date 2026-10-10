@@ -10,7 +10,9 @@ export type ContentPageHeaderProps = typeof defaultContentPageHeaderProps & {
   compact?: boolean;
 };
 
-export function ContentPageHeader(props?: Partial<ContentPageHeaderProps>) {
+export function ContentPageHeader(
+  props?: Partial<ContentPageHeaderProps> & { variant?: string },
+) {
   const {
     eyebrow,
     title,
@@ -26,6 +28,9 @@ export function ContentPageHeader(props?: Partial<ContentPageHeaderProps>) {
       className={`bg-[var(--color-sps-grey)] ${compact ? "pb-6 pt-8 sm:pb-8 sm:pt-12" : "py-10 sm:py-16"}`}
       data-ds-block="website-builder.widget.content-page-header"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-page-header"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">

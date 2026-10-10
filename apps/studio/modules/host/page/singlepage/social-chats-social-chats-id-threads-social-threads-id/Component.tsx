@@ -9,7 +9,12 @@ import {
 } from "../../../../social/widget/singlepage/chat-overview-default/utils";
 import { useCallback, useEffect, useState } from "react";
 
-export function ChatDefault() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function ChatDefault({
+  variant = "social-chats-social-chats-id-threads-social-threads-id",
+}: IComponentVariantProps = {}) {
   const [imageStore] = useState(() => createPreviewAttachmentStore());
   const [chatImages, setChatImages] = useState<
     Record<string, SocialPreviewAttachment>
@@ -65,37 +70,41 @@ export function ChatDefault() {
   );
   const selectedChat = chats.find((chat) => chat.id === selectedId) ?? chats[0];
   return (
-    <HostModuleLayout
-      variant="website"
-      activeHref="/social/chats/[social.chats.id]/threads/[social.threads.id]"
-      footer="compact"
-    >
-      <main
-        className="min-w-0"
-        data-ds-page="host.page.social-chats-social-chats-id-threads-social-threads-id"
-        data-ds-route="/social/chats/[social.chats.id]/threads/[social.threads.id]"
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="website"
+        activeHref="/social/chats/[social.chats.id]/threads/[social.threads.id]"
+        footer="compact"
       >
-        <section
-          className="grid w-full overflow-hidden border-y border-[var(--color-sps-line)] bg-[var(--color-sps-white)] md:grid-cols-[256px_minmax(0,1fr)]"
-          data-ds-imports="social.widget.chat-list-default social.widget.chat-overview-default"
+        <main
+          className="min-w-0"
+          data-ds-page="host.page.social-chats-social-chats-id-threads-social-threads-id"
+          data-ds-route="/social/chats/[social.chats.id]/threads/[social.threads.id]"
         >
-          <SocialModuleWidget
-            variant="chat-list-default"
-            chats={chats}
-            chatImages={chatImages}
-            selectedId={selectedId}
-            onSelectChat={selectChat}
-            onCreateChat={createChat}
-          />
-          <SocialModuleWidget
-            variant="chat-overview-default"
-            chat={selectedChat}
-            chatImage={chatImages[selectedChat.id]}
-            onChatImageChange={(file) => changeChatImage(selectedChat.id, file)}
-            onChatChange={updateChat}
-          />
-        </section>
-      </main>
-    </HostModuleLayout>
+          <section
+            className="grid w-full overflow-hidden border-y border-[var(--color-sps-line)] bg-[var(--color-sps-white)] md:grid-cols-[256px_minmax(0,1fr)]"
+            data-ds-imports="social.widget.chat-list-default social.widget.chat-overview-default"
+          >
+            <SocialModuleWidget
+              variant="chat-list-default"
+              chats={chats}
+              chatImages={chatImages}
+              selectedId={selectedId}
+              onSelectChat={selectChat}
+              onCreateChat={createChat}
+            />
+            <SocialModuleWidget
+              variant="chat-overview-default"
+              chat={selectedChat}
+              chatImage={chatImages[selectedChat.id]}
+              onChatImageChange={(file) =>
+                changeChatImage(selectedChat.id, file)
+              }
+              onChatChange={updateChat}
+            />
+          </section>
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }

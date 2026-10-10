@@ -47,6 +47,7 @@ function Icon(props: {
 }
 
 export interface ISubjectAuthenticationFormDefaultProps {
+  variant?: string;
   methodSelector?: ReactNode;
   methodContent?: ReactNode;
   showEmailFields?: boolean;
@@ -131,6 +132,12 @@ export function Component(
       className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="rbac.subject.authentication-email-and-password-authentication-form-default"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={
+        props?.variant ??
+        "authentication-email-and-password-authentication-form-default"
+      }
     >
       <div className="mx-auto w-full max-w-lg px-4 sm:px-6 lg:px-0">
         <div className="overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] shadow-sm">

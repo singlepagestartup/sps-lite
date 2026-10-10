@@ -3,6 +3,7 @@ import type { CrmInputRecord, CrmStepRecord } from "../../../shared/demo-crm";
 import { defaultCrmForm } from "../../../shared/demo-crm";
 
 export interface CrmStepDefaultProps {
+  variant?: string;
   step: CrmStepRecord;
   disabled?: boolean;
   namePrefix?: string;
@@ -66,6 +67,9 @@ export function CrmStepDefault(props?: Partial<CrmStepDefaultProps>) {
       className="min-w-0 rounded-2xl bg-[var(--color-sps-grey)] p-5 sm:p-6"
       data-ds-block="crm.step.default"
       data-ds-layer="singlepage"
+      data-module="crm"
+      data-model="step"
+      data-variant={props?.variant ?? "default"}
     >
       <legend className="sr-only">{step.title}</legend>
       <h2 className="mb-5 text-lg font-semibold text-[var(--color-sps-graphite)]">

@@ -1,6 +1,7 @@
 import { forwardRef, type ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 export interface IControlProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: string;
   appearance?: "primary" | "secondary" | "plain" | "danger";
 }
 const focus =
@@ -15,7 +16,13 @@ export const kit = {
 };
 export const Component = forwardRef<HTMLButtonElement, IControlProps>(
   function Button(
-    { appearance = "primary", type = "button", className, ...props },
+    {
+      variant = "control",
+      appearance = "primary",
+      type = "button",
+      className,
+      ...props
+    },
     ref,
   ) {
     const appearances = {
@@ -30,6 +37,9 @@ export const Component = forwardRef<HTMLButtonElement, IControlProps>(
         type={type}
         className={twMerge(appearances[appearance], className)}
         {...props}
+        data-module="website-builder"
+        data-model="button"
+        data-variant={variant}
       />
     );
   },

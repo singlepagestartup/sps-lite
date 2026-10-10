@@ -36,15 +36,22 @@ function Icon(props: {
 }
 
 export interface IThreadAgentSelectProps {
+  variant?: string;
   onChange: (selected: boolean) => void;
 }
-export function Component({ onChange }: IThreadAgentSelectProps) {
+export function Component({
+  variant = "agent-select-ai-chat",
+  onChange,
+}: IThreadAgentSelectProps) {
   const [agentId, setAgentId] = useState("");
   const [profile, setProfile] = useState<IProjectAgent | null>(null);
   return (
     <fieldset
       data-ds-block="social.profile.agent-select-ai-chat"
       className="min-w-0 space-y-3"
+      data-module="social"
+      data-model="profile"
+      data-variant={variant}
     >
       <legend className={kit.label}>Agent</legend>
       <div className="flex items-center gap-2">

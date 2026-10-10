@@ -75,7 +75,9 @@ export type ArticleDetailProps = typeof defaultArticleDetailProps & {
   cover?: ReactNode;
   tagsCard?: ReactNode;
 };
-export function ArticleDetail(props?: Partial<ArticleDetailProps>) {
+export function ArticleDetail(
+  props?: Partial<ArticleDetailProps> & { variant?: string },
+) {
   const {
     slug,
     category,
@@ -112,6 +114,9 @@ export function ArticleDetail(props?: Partial<ArticleDetailProps>) {
       data-ds-block="blog.article.detail"
       data-ds-imports="blog.tag.button-default blog.article.related-default social.profile.article-find-by-id-comment-form-default social.widget.profile-article-find-by-id-comment-find-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "detail"}
     >
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <nav

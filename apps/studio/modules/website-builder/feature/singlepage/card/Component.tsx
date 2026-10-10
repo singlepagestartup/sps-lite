@@ -35,7 +35,9 @@ function Icon(props: {
 }
 
 export type FeatureCardProps = typeof defaultFeatureCardProps;
-export function FeatureCard(props?: Partial<FeatureCardProps>) {
+export function FeatureCard(
+  props?: Partial<FeatureCardProps> & { variant?: string },
+) {
   const {
     icon: Icon,
     title,
@@ -46,6 +48,9 @@ export function FeatureCard(props?: Partial<FeatureCardProps>) {
       data-ds-block="website-builder.feature.card"
       data-ds-layer="singlepage"
       className="flex h-full min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8"
+      data-module="website-builder"
+      data-model="feature"
+      data-variant={props?.variant ?? "card"}
     >
       <span className="mb-6 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)]">
         <Icon className="h-6 w-6" />

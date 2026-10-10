@@ -6,7 +6,7 @@ type ArticleRelatedDefaultTarget = "_blank" | "_parent" | "_self" | "_top";
 export type ArticleRelatedDefaultProps =
   typeof defaultArticleRelatedDefaultProps;
 export function ArticleRelatedDefault(
-  props?: Partial<ArticleRelatedDefaultProps>,
+  props?: Partial<ArticleRelatedDefaultProps> & { variant?: string },
 ) {
   const { href, slug, category, title, date, readTime, target } = {
     ...defaultArticleRelatedDefaultProps,
@@ -20,6 +20,9 @@ export function ArticleRelatedDefault(
       className={`group block min-w-0 rounded-xl px-3 py-3 transition hover:bg-[var(--color-sps-grey)] motion-reduce:transition-none ${kit.focus}`}
       data-ds-block="blog.article.related-default"
       data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "related-default"}
     >
       <div className="mb-2 flex items-center justify-between gap-3 text-xs text-[var(--color-sps-muted)]">
         <span className="rounded-md bg-[var(--color-sps-graphite)] px-2.5 py-1 font-medium text-[var(--color-sps-white)]">

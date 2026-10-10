@@ -95,8 +95,12 @@ test("the overview composes Thread messages, one Source and a Subject creation f
     "rbac.subject.message-create-ai-chat",
   ])
     expect(html).toContain(`data-ds-block="${marker}"`);
-  expect(html.match(/data-model="thread"/g)).toHaveLength(1);
-  expect(html.match(/data-model="source"/g)).toHaveLength(1);
+  expect(
+    html.match(/data-ds-block="social.thread.overview-ai-chat"/g),
+  ).toHaveLength(1);
+  expect(
+    html.match(/data-ds-block="knowledge.source.overview-ai-chat"/g),
+  ).toHaveLength(1);
   expect(html).toContain('data-thread-id="pottery:products:products:thread"');
   expect(html).toContain(
     'data-knowledge-source-ids="pottery:products:products"',

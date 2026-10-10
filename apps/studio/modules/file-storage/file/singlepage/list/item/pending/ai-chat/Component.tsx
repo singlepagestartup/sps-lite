@@ -14,6 +14,7 @@ function Icon(props: {
 }
 
 export interface IPendingFileProps {
+  variant?: string;
   file: IProjectFile;
   onRemove: (id: string) => void;
 }
@@ -25,17 +26,18 @@ const kit = {
   focus: focus,
 };
 export const Component = memo(function Component({
+  variant = "list-item-pending-ai-chat",
   file,
   onRemove,
 }: IPendingFileProps) {
   return (
     <li
       data-ds-block="file-storage.file.list-item-pending-ai-chat"
+      data-id={file.id}
+      className="flex min-w-0 items-center gap-2 rounded-xl border border-sps-line bg-sps-grey p-2"
       data-module="file-storage"
       data-model="file"
-      data-id={file.id}
-      data-variant="list-item-pending-ai-chat"
-      className="flex min-w-0 items-center gap-2 rounded-xl border border-sps-line bg-sps-grey p-2"
+      data-variant={variant}
     >
       {file.mimeType?.startsWith("image/") && file.fileUrl ? (
         <img

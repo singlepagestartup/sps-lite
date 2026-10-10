@@ -39,6 +39,7 @@ function Icon(props: {
 }
 
 export interface SubjectMeInformationProps {
+  variant?: string;
   subject: RbacSubject;
   title: string;
   description: string;
@@ -81,6 +82,9 @@ export function SubjectMeInformation(
       className="min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-6"
       data-ds-block="rbac.subject.me-information"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={props?.variant ?? "me-information"}
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>

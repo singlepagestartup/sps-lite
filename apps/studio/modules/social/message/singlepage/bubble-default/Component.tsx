@@ -59,6 +59,7 @@ function normalizeReactionOptions(options: string[]) {
   return options.map((option) => normalizeReaction(option).emoji);
 }
 export interface SocialMessageBubbleDefaultProps {
+  variant?: string;
   author: string;
   role: string;
   body: string;
@@ -122,6 +123,9 @@ export function SocialMessageBubbleDefault(
       className={`group flex min-w-0 gap-3 ${isOutgoing ? "flex-row-reverse" : ""}`}
       data-ds-block="social.message.bubble-default"
       data-ds-layer="singlepage"
+      data-module="social"
+      data-model="message"
+      data-variant={props?.variant ?? "bubble-default"}
     >
       {!isOutgoing ? (
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-sps-line)] text-sm font-semibold text-[var(--color-sps-graphite)]">

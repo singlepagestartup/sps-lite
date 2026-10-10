@@ -4,12 +4,14 @@ import type { ArticleOverviewDefaultProps } from "../../../../blog/widget/single
 import type { ProductOverviewDefaultProps } from "../../../../ecommerce/widget/singlepage/product-overview-default/Component";
 
 export interface HostWidgetDefaultProps {
+  variant?: string;
   externalModule?: "blog" | "ecommerce";
   className?: string;
   articleProps?: Partial<ArticleOverviewDefaultProps>;
   productProps?: Partial<ProductOverviewDefaultProps>;
 }
 export function HostWidgetDefault({
+  variant = "default",
   externalModule = "blog",
   className,
   articleProps,
@@ -20,6 +22,9 @@ export function HostWidgetDefault({
       data-ds-block="host.widget.default"
       data-ds-layer="singlepage"
       className={className}
+      data-module="host"
+      data-model="widget"
+      data-variant={variant}
     >
       {externalModule === "blog" ? (
         <BlogModuleWidget

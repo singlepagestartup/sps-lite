@@ -125,6 +125,7 @@ export interface IIdentityFlowProps {
   onUpdate: (identity: RbacIdentity) => void;
 }
 export interface IdentityCardDefaultProps {
+  variant?: string;
   renderFlow?: (props: IIdentityFlowProps) => ReactNode;
   identity: RbacIdentity;
   lastOperationLabel?: string;
@@ -200,6 +201,9 @@ export const IdentityCardDefault = memo(function IdentityCardDefault(
       className="min-w-0 rounded-xl border border-sps-line bg-sps-white p-4 sm:p-5"
       data-ds-block="rbac.identity.card-default"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="identity"
+      data-variant={props.variant ?? "card-default"}
     >
       <div className="flex min-w-0 items-start gap-3">
         <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-sps-grey">

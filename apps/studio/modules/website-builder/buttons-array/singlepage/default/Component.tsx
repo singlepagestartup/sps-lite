@@ -46,6 +46,7 @@ export interface ButtonsArrayItem {
   target?: "_self" | "_top";
 }
 export interface ButtonsArrayDefaultProps {
+  variant?: string;
   ariaLabel?: string;
   buttons: ButtonsArrayItem[];
   orientation?: "horizontal" | "vertical";
@@ -67,6 +68,9 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
       data-ds-block="website-builder.buttons-array.default"
       data-ds-layer="singlepage"
       role={ariaLabel ? "navigation" : undefined}
+      data-module="website-builder"
+      data-model="buttons-array"
+      data-variant={props?.variant ?? "default"}
     >
       {title ? (
         <h3 className="mb-6 w-full text-base font-semibold leading-6 tracking-normal text-[var(--color-sps-graphite)]">

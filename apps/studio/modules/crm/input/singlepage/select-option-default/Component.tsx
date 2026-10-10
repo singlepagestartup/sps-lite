@@ -30,6 +30,7 @@ function Icon(props: {
 }
 
 export interface CrmInputSelectOptionDefaultProps {
+  variant?: string;
   input: CrmInputRecord;
   disabled?: boolean;
   namePrefix?: string;
@@ -47,6 +48,9 @@ export function CrmInputSelectOptionDefault(
       className="block"
       data-ds-block="crm.input.select-option-default"
       data-ds-layer="singlepage"
+      data-module="crm"
+      data-model="input"
+      data-variant={props?.variant ?? "select-option-default"}
     >
       <span className="mb-1 block text-sm font-medium text-[var(--color-sps-graphite)]">
         {input.label}

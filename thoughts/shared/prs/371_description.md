@@ -1,5 +1,7 @@
 ## Summary
 
+Every Studio model variant exposes its module, model and selected variant on its DOM root for browser inspection. Nested models and portaled menus retain their own identities.
+
 Studio Modules and Workspace own independent code, fixtures, visual tokens and assets. Editing Workspace does not change Module rendering; approved copy crosses the boundary through an explicit publisher.
 
 Studio displays models through local Component/index entries and merged singlepage/startup variant maps. All 61 production models across 15 modules are represented; Telegram is excluded. Pages compose model views directly, with local fixtures and Storybook Controls for display states.
@@ -7,6 +9,8 @@ Studio displays models through local Component/index entries and merged singlepa
 The branch also retains the Knowledge Source, file orchestration, MCP configuration and Host fixes described below. This Studio simplification changes no production libraries.
 
 ## Changes
+
+- Mark all 400 Studio variant implementations with `data-module`, `data-model` and `data-variant` on their highest rendered element. Empty states, direct stories, delegated forms, startup overrides and portals preserve the selected variant. Native button/SVG roots and refs remain intact; Page and Layout keep separate model roots. Catalog scaffolding emits the same contract.
 
 - RBAC Subject owns registration, authentication, password recovery, email/password changes and connected-method actions. Forms use `authentication-email-and-password-<form>-<appearance>` keys. The ordinary Select Method places Email/password, EVM and OAuth tabs inside the form card and preserves their drafts. AI Chat calls the Subject email/password form directly. Host Pages call the public Subject entry; Workspace previews use an owned component snapshot. Identity displays connected accounts and receives action slots. Method states have their own stories and Controls; no provider or wallet is contacted.
 
@@ -40,7 +44,7 @@ The branch also retains the Knowledge Source, file orchestration, MCP configurat
 
 ## Verification
 
-- [x] `bun test tools/studio apps/studio/workspace apps/studio/modules`: 301 tests across 41 files, including model boundaries, runtime cycles and independent Workspace/Module code, tokens and assets.
+- [x] `bun test tools/studio apps/studio/workspace apps/studio/modules`: 368 tests across 42 files, including every variant root, rendered preview states, model boundaries, runtime cycles and independent Workspace/Module code, tokens and assets.
 - [x] Studio TypeScript, metadata validation, inventory generation (15 modules, 61 models, 838 contracts), content freshness, code placement and Storybook production build.
 - [x] Browser: AI Chat email/password-only login opens the active Profile immediately; ordinary method tabs render inside the card and retain the email draft through EVM/OAuth switching. Registration, Workspace prototype and local images render. No application console errors; Storybook emits its own future-version accessibility notice.
 - [x] Earlier browser checks cover account/settings flows, scoped knowledge and messages, files, preview-only Thread creation, Profile selection, landing/cart/navigation and responsive layouts. Detailed scope and earlier results remain in the linked plans.
@@ -56,11 +60,15 @@ Earlier retained implementation checks:
 
 ## Notes
 
+Model root coverage and browser checks are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-model-inspection.md`. Browser checks cover populated/empty Page lists, the composed AI Chat model tree, the Profile menu portal and Host Metadata Select, with no console errors.
+
 All new Studio behavior is local preview state. It does not implement durable storage, production data access, authentication/payment mutations, retrieval or tool execution. Production relationships remain in libs/modules. A Products document is a visual grouping of Knowledge; this demo does not restrict future document or agent inventories.
 
 The visual boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-visual-boundary.md`. Unrelated uncommitted business documents, uploaded files and production changes are excluded. Navbar rendering boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-slots.md`. Navbar folder verification is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-nesting.md`. The Layout naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-layout-naming.md`. The Profile naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-profile-naming.md`. Thread naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-thread-naming.md`. Website Builder naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-website-builder-naming.md`. The preceding model naming log is `thoughts/shared/handoffs/singlepagestartup/studio-variant-naming-2026-10-10.md`.
 
 ## Downstream migration
+
+- Projects with owned Studio variant implementations must add `data-module`, `data-model` and the selected `data-variant` to their highest rendered element, including empty states and portaled content. Forward variant props through same-model render helpers and startup overrides; provide a local default for direct stories. Preserve each nested model's identity, native controls, refs and layout behavior. Apply the contract to owned catalog generator overrides. Replace composition assertions that count every model marker with checks for the intended block/variant. Verify owned roots in the inspector, preview states, portals and Studio checks/build.
 
 - Projects with owned Studio variants or Workspace prototypes must remove imports, visual tokens and asset URLs crossing this boundary. Put markup in the owning Module Component or Layout, use public model entries for cross-model composition, and preserve local props/state. Copy required fixtures and assets into their owner. Preserve custom content, licensing and Figma bindings. Workspace prototypes need their own editable snapshot using Workspace tokens/assets. Update local catalog generators so they cannot recreate design-kit imports. AI Chat Pages call the Subject email/password form directly; ordinary method tabs belong inside the form card. Verify both presentations independently, asset loading, auth switching/navigation, tests, types and Storybook build. The explicit publisher remains the controlled copy-transfer step.
 

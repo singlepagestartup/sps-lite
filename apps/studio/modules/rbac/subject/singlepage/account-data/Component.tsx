@@ -196,11 +196,13 @@ function Icon(props: {
 }
 
 export interface ISettingsProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
   section?: "purchases" | "data";
   showTokens?: boolean;
 }
 export function Component({
+  variant = "account-data",
   copy = defaultCopy,
   section = "data",
   showTokens = false,
@@ -217,6 +219,9 @@ export function Component({
     <div
       data-ds-block="rbac.subject.account-data"
       className="grid min-w-0 gap-5"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       {section === "purchases" ? (
         <>

@@ -41,6 +41,7 @@ interface ContactItem {
 }
 export interface ContentFeatureFindRowProps
   extends Partial<typeof defaultContentFeatureFindRowProps> {
+  variant?: string;
   contactForm?: ReactNode;
 }
 export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
@@ -55,6 +56,9 @@ export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
       data-ds-block="website-builder.widget.content-feature-find-row"
       data-ds-imports="rbac.subject.me-crm-form-deafult"
       data-ds-layer="singlepage"
+      data-module="website-builder"
+      data-model="widget"
+      data-variant={props?.variant ?? "content-feature-find-row"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] lg:grid-cols-2">

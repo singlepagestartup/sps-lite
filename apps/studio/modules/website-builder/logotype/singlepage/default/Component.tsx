@@ -13,10 +13,12 @@ function BrandMark({ size = "md", inverse = false }: BrandMarkProps) {
   );
 }
 export interface ILogotypeDefaultProps {
+  variant?: string;
   brand?: string;
   compact?: boolean;
 }
 export function Component({
+  variant = "default",
   brand = "SinglePageStartup",
   compact = false,
 }: ILogotypeDefaultProps = {}) {
@@ -27,6 +29,9 @@ export function Component({
       target="_top"
       aria-label={`${brand} home`}
       className="inline-flex min-h-11 items-center gap-3 rounded-xl text-base font-semibold text-[var(--color-sps-graphite)] no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
+      data-module="website-builder"
+      data-model="logotype"
+      data-variant={variant}
     >
       <BrandMark size={compact ? "sm" : undefined} />
       <span className={compact ? "sr-only" : "hidden min-[480px]:inline"}>

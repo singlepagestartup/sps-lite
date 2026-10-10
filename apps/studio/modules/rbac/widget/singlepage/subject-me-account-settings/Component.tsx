@@ -66,11 +66,13 @@ function Icon(props: {
 }
 
 export interface SubjectMeAccountSettingsProps {
+  variant?: string;
   copy?: IAIChatServicePageContent;
   showTokens?: boolean;
   initialSection?: "profile" | "sign-in" | "purchases" | "data";
 }
 export function SubjectMeAccountSettings({
+  variant = "subject-me-account-settings",
   copy,
   showTokens = false,
   initialSection = "profile",
@@ -122,6 +124,9 @@ export function SubjectMeAccountSettings({
       data-ds-block="rbac.widget.subject-me-account-settings"
       data-ds-imports="rbac.subject.me-profile-information rbac.subject.me-identity-find-information rbac.subject.account-data"
       data-ds-layer="singlepage"
+      data-module="rbac"
+      data-model="widget"
+      data-variant={variant}
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         {showTokens && (

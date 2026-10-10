@@ -1,6 +1,7 @@
 import { Component as WebsiteBuilderModuleButton } from "../../../../button/index";
 
 export interface IHeaderButtonsProps {
+  variant?: string;
   id: string;
   activeHref?: string;
   onNavigate?: () => void;
@@ -11,17 +12,22 @@ const buttonIds: Record<string, string> = {
   "ai-chat-login": "ai-chat-login",
   "ai-chat-register": "ai-chat-register",
 };
-export function Component({ id, activeHref, onNavigate }: IHeaderButtonsProps) {
+export function Component({
+  variant = "navbar-ai-chat",
+  id,
+  activeHref,
+  onNavigate,
+}: IHeaderButtonsProps) {
   const buttonId = buttonIds[id];
   if (!buttonId) return null;
   return (
     <div
       data-ds-block="website-builder.buttons-array.navbar-ai-chat"
+      data-id={id}
+      className="flex items-center gap-1"
       data-module="website-builder"
       data-model="buttons-array"
-      data-id={id}
-      data-variant="navbar-ai-chat"
-      className="flex items-center gap-1"
+      data-variant={variant}
     >
       <WebsiteBuilderModuleButton
         variant="navbar-ai-chat"

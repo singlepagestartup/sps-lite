@@ -9,17 +9,22 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function Component() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function Component({
+  variant = "brand-ai-chat",
+}: IComponentVariantProps = {}) {
   return (
     <a
       href="/ai-chat/"
       data-ds-block="website-builder.logotype.brand-ai-chat"
-      data-module="website-builder"
-      data-model="logotype"
       data-id="ai-chat-logotype"
-      data-variant="brand-ai-chat"
       className={`group relative isolate inline-flex shrink-0 items-center gap-3 rounded-xl ${kit.focus}`}
       aria-label="SPS AI Chat home"
+      data-module="website-builder"
+      data-model="logotype"
+      data-variant={variant}
     >
       <span
         aria-hidden="true"

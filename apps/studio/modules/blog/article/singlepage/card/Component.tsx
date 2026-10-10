@@ -9,7 +9,9 @@ export type ArticleCardProps = typeof defaultArticleCardProps & {
   /** Presentation choice only; the article record contract stays unchanged. */
   layout?: "balanced" | "editorial" | "compact";
 };
-export function ArticleCard(props?: Partial<ArticleCardProps>) {
+export function ArticleCard(
+  props?: Partial<ArticleCardProps> & { variant?: string },
+) {
   const {
     href,
     slug,
@@ -52,6 +54,9 @@ export function ArticleCard(props?: Partial<ArticleCardProps>) {
       data-ds-imports="social.profile.byline"
       data-ds-layer="singlepage"
       data-card-layout={layout}
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "card"}
     >
       {editorial && (
         <div className="px-5 pb-5 pt-6 sm:px-6">

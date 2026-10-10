@@ -2,6 +2,7 @@ import { Component as CrmModuleForm } from "../../../form/index";
 import { defaultCrmForm, type CrmFormRecord } from "../../../shared/demo-crm";
 
 export interface CrmWidgetFormListDefaultProps {
+  variant?: string;
   eyebrow: string;
   title: string;
   description: string;
@@ -32,6 +33,9 @@ export function CrmWidgetFormListDefault(
       className="space-y-8"
       data-ds-block="crm.widget.form-list-default"
       data-ds-layer="singlepage"
+      data-module="crm"
+      data-model="widget"
+      data-variant={props?.variant ?? "form-list-default"}
     >
       <CrmModuleForm
         variant="default"

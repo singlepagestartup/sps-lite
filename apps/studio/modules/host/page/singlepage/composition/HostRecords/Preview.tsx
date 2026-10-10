@@ -8,21 +8,34 @@ import { hostRecordLabel, type HostModel } from "./state/index";
 import { Component as BlogModuleWidget } from "../../../../../blog/widget/index";
 import { useHostStudio } from "./Context";
 export interface IHostRecordPreviewProps {
+  variant?: string;
   model: HostModel;
   id: string;
   language?: string;
   children?: ReactNode;
 }
-function Empty({ children }: { children: ReactNode }) {
+function Empty({
+  model,
+  variant,
+  children,
+}: {
+  model: HostModel;
+  variant?: string;
+  children: ReactNode;
+}) {
   return (
     <p
       className={`rounded-xl border border-dashed border-[var(--color-sps-line)] p-5 text-sm ${kit.muted}`}
+      data-module="host"
+      data-model={model}
+      data-variant={variant}
     >
       {children}
     </p>
   );
 }
 export function HostRecordPreview({
+  variant = "default",
   model,
   id,
   language = "en",
@@ -32,7 +45,7 @@ export function HostRecordPreview({
   const record = state.models[model].find((item) => item.id === id);
   if (!record)
     return (
-      <Empty>
+      <Empty model={model} variant={variant}>
         Missing {model}: {id}
       </Empty>
     );
@@ -42,6 +55,9 @@ export function HostRecordPreview({
         className="grid min-w-0 gap-5"
         data-ds-block="host.page.default"
         data-page-id={id}
+        data-module="host"
+        data-model={model}
+        data-variant={variant}
       >
         <header className={kit.card}>
           <h2 className="text-xl font-semibold">{hostRecordLabel(record)}</h2>
@@ -71,7 +87,13 @@ export function HostRecordPreview({
   }
   if (model === "metadata" && "opengraphTitle" in record)
     return (
-      <section className={kit.card} data-ds-block="host.metadata.default">
+      <section
+        className={kit.card}
+        data-ds-block="host.metadata.default"
+        data-module="host"
+        data-model={model}
+        data-variant={variant}
+      >
         <h3 className="font-semibold">Metadata preview</h3>
         <p className={`mt-1 text-xs ${kit.muted}`}>
           SEO and social fields stay inside this canvas.
@@ -131,6 +153,9 @@ export function HostRecordPreview({
       <section
         className={`${kit.card} grid gap-5`}
         data-ds-block="host.layout.default"
+        data-module="host"
+        data-model={model}
+        data-variant={variant}
       >
         <h3 className="font-semibold">{hostRecordLabel(record)}</h3>
         {children ??
@@ -151,6 +176,9 @@ export function HostRecordPreview({
         className={`${kit.card} grid min-w-0 gap-4`}
         data-ds-block="host.widget.default"
         data-widget-id={id}
+        data-module="host"
+        data-model={model}
+        data-variant={variant}
       >
         <h3 className="text-lg font-semibold">
           {record.title?.[language] || record.adminTitle}
@@ -164,7 +192,11 @@ export function HostRecordPreview({
       </section>
     );
   }
-  return <Empty>Preview unavailable for {model}.</Empty>;
+  return (
+    <Empty model={model} variant={variant}>
+      Preview unavailable for {model}.
+    </Empty>
+  );
 }
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";

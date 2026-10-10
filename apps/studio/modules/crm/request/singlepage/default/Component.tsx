@@ -2,6 +2,7 @@ import type { CrmRequestRecord } from "../../../shared/demo-crm";
 import { defaultCrmRequest } from "../../../shared/demo-crm";
 
 export interface CrmRequestDefaultProps {
+  variant?: string;
   request: CrmRequestRecord;
 }
 
@@ -20,6 +21,9 @@ export function CrmRequestDefault(props?: Partial<CrmRequestDefaultProps>) {
       className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6"
       data-ds-block="crm.request.default"
       data-ds-layer="singlepage"
+      data-module="crm"
+      data-model="request"
+      data-variant={props?.variant ?? "default"}
     >
       <div className="flex items-start justify-between gap-4">
         <div>

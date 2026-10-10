@@ -25,52 +25,58 @@ function PanelHeader({ title, label, navigation, actions }: IPanelHeaderProps) {
   );
 }
 export interface IProfilePageProps {
+  variant?: string;
   profileId: string;
 }
-export function Component({ profileId }: IProfilePageProps) {
+export function Component({
+  variant = "ai-chat-social-profiles-social-profiles-id-settings",
+  profileId,
+}: IProfilePageProps) {
   return (
-    <HostModuleLayout
-      variant="ai-chat-dashboard"
-      page="chat"
-      profileSelect={(props) => (
-        <SocialModuleProfile
-          profileId={profileId}
-          {...props}
-          variant="select-ai-chat-project"
-        />
-      )}
-      subjectAccount={({ onNavigate }) => (
-        <RbacModuleSubject
-          variant="account"
-          showTokens
-          page="chat"
-          onNavigate={onNavigate}
-        />
-      )}
-    >
-      <SocialModuleProfile
-        variant="overview-ai-chat-project"
-        profileId={profileId}
-        selected="settings"
-      >
-        {(navigation) => (
-          <section
-            aria-label="Project settings"
-            className="flex min-h-0 flex-1 flex-col"
-          >
-            <PanelHeader
-              title="Project settings"
-              label="Project"
-              navigation={navigation}
-            />
-            <SocialModuleProfile
-              variant="settings-ai-chat-project"
-              profileId={profileId}
-            />
-          </section>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="ai-chat-dashboard"
+        page="chat"
+        profileSelect={(props) => (
+          <SocialModuleProfile
+            profileId={profileId}
+            {...props}
+            variant="select-ai-chat-project"
+          />
         )}
-      </SocialModuleProfile>
-    </HostModuleLayout>
+        subjectAccount={({ onNavigate }) => (
+          <RbacModuleSubject
+            variant="account"
+            showTokens
+            page="chat"
+            onNavigate={onNavigate}
+          />
+        )}
+      >
+        <SocialModuleProfile
+          variant="overview-ai-chat-project"
+          profileId={profileId}
+          selected="settings"
+        >
+          {(navigation) => (
+            <section
+              aria-label="Project settings"
+              className="flex min-h-0 flex-1 flex-col"
+            >
+              <PanelHeader
+                title="Project settings"
+                label="Project"
+                navigation={navigation}
+              />
+              <SocialModuleProfile
+                variant="settings-ai-chat-project"
+                profileId={profileId}
+              />
+            </section>
+          )}
+        </SocialModuleProfile>
+      </HostModuleLayout>
+    </div>
   );
 }
 const focus =

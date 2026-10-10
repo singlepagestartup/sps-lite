@@ -7,11 +7,13 @@ import {
 } from "react";
 import { useEffect, useState } from "react";
 export interface IEthereumVirtualMachineProps {
+  variant?: string;
   initialState?: "idle" | "authorize" | "complete" | "error";
   walletAddress?: string;
   onSuccess?: () => void;
 }
 export function Component({
+  variant = "authentication-ethereum-virtual-machine-default",
   initialState = "idle",
   walletAddress = "0x1234567890abcdef1234567890abcdef12345678",
   onSuccess,
@@ -23,6 +25,9 @@ export function Component({
       aria-label="Ethereum Virtual Machine authentication"
       className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 text-sps-graphite"
       data-ds-block="rbac.subject.authentication-ethereum-virtual-machine-default"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
     >
       <h2 className="text-lg font-semibold">Sign in with a wallet</h2>
       <p className="mt-2 text-sm leading-6 text-sps-muted">

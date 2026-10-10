@@ -9,7 +9,7 @@ export { defaultArticleOverviewDefaultProps };
 export type { ArticleOverviewDefaultProps };
 
 export function ArticleOverviewDefaultWidget(
-  props?: Partial<ArticleOverviewDefaultProps>,
+  props?: Partial<ArticleOverviewDefaultProps> & { variant?: string },
 ) {
   return (
     <div
@@ -17,6 +17,9 @@ export function ArticleOverviewDefaultWidget(
       data-ds-imports="blog.article.overview-default"
       data-ds-layer="singlepage"
       data-ds-routes="blog.article.overview-default"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "article-overview-default"}
     >
       <BlogModuleArticle
         {...props}

@@ -35,20 +35,25 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
-export function TermsPage() {
+interface IComponentVariantProps {
+  variant?: string;
+}
+export function TermsPage({ variant = "terms" }: IComponentVariantProps = {}) {
   return (
-    <HostModuleLayout variant="website" footer="compact">
-      <main className="min-w-0" data-ds-page="host.page.terms">
-        <LegalPage
-          breadcrumbLabel="Terms of Service"
-          description="The terms that govern access to and use of SinglePageStartup services."
-          icon={FileText}
-          sections={termsSections}
-          title="Terms of Service"
-          updatedAt={LAST_UPDATED}
-        />
-      </main>
-    </HostModuleLayout>
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout variant="website" footer="compact">
+        <main className="min-w-0" data-ds-page="host.page.terms">
+          <LegalPage
+            breadcrumbLabel="Terms of Service"
+            description="The terms that govern access to and use of SinglePageStartup services."
+            icon={FileText}
+            sections={termsSections}
+            title="Terms of Service"
+            updatedAt={LAST_UPDATED}
+          />
+        </main>
+      </HostModuleLayout>
+    </div>
   );
 }
 const FileText = createIcon("file-text");

@@ -57,6 +57,7 @@ function Icon({
   );
 }
 export interface ButtonSecondaryProps {
+  variant?: string;
   label: string;
   href: string;
   icon?: ModuleIcon;
@@ -78,6 +79,9 @@ export function ButtonSecondary(props?: Partial<ButtonSecondaryProps>) {
       data-ds-layer="singlepage"
       href={href}
       target={props?.target}
+      data-module="website-builder"
+      data-model="button"
+      data-variant={props?.variant ?? "secondary"}
     >
       <Icon className="h-5 w-5 shrink-0" />
       {label}
