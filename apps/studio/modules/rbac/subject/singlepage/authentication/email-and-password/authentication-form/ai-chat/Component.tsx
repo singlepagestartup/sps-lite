@@ -14,13 +14,8 @@ import {
 } from "react";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import {
-  AccountPage,
-  PageSection,
-} from "../../registration-form/ai-chat/Component";
 import { useStudioAccount } from "../../../../account/Account";
 import defaultCopy from "./content.json";
-import type { IAIChatServicePageContent } from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 function TextField({
   label,
   hint,
@@ -149,9 +144,15 @@ function Icon(props: {
   return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
 }
 
+export interface ILoginCopy {
+  title: string;
+  description: string[];
+  successDescription: string[];
+  labels: Record<string, string>;
+}
 export interface ILoginProps {
   variant?: string;
-  copy?: IAIChatServicePageContent;
+  copy?: ILoginCopy;
   onSuccess?: (email: string) => void;
 }
 export interface ILoginErrors {
@@ -189,79 +190,101 @@ export function Component({
     }
     const valid = Object.keys(nextErrors).length === 0;
     setSubmitted(valid);
-    if (valid) onSuccess?.(email.trim());
+    if (valid) {
+      signIn(email.trim());
+      onSuccess?.(email.trim());
+    }
   }
   return (
-    <AccountPage copy={copy} page="login" variant={variant}>
-      <PageSection section={copy.sections.account} icon="sign-in">
-        <form noValidate onSubmit={submit} className="mt-6 grid gap-5">
-          <TextField
-            id={`${id}-email`}
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            label={label["email-label"]}
-            placeholder={label["email-placeholder"]}
-            value={email}
-            error={errors.email}
-            onChange={(event) => {
-              setEmail(event.target.value);
-              setErrors((current) => ({ ...current, email: undefined }));
-              setSubmitted(false);
-            }}
-          />
-          <PasswordField
-            id={`${id}-password`}
-            name="password"
-            autoComplete="current-password"
-            required
-            label={label["password-label"]}
-            value={password}
-            error={errors.password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-              setErrors((current) => ({ ...current, password: undefined }));
-              setSubmitted(false);
-            }}
-          />
+    <section
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
+      aria-labelledby={`${id}-title`}
+      className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 @[640px]:p-6"
+    >
+      <h2
+        id={`${id}-title`}
+        className="flex items-center gap-3 text-xl font-semibold"
+      >
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sps-grey">
+          <Icon name="sign-in" />
+        </span>
+        {copy.title}
+      </h2>
+      {copy.description.map((paragraph, index) => (
+        <p key={index} className="mt-3 text-sm leading-6 text-sps-muted">
+          {paragraph}
+        </p>
+      ))}
+      <form
+        noValidate
+        onSubmit={submit}
+        className="mt-5 grid content-start gap-5"
+      >
+        <TextField
+          id={`${id}-email`}
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          label={label["email-label"]}
+          placeholder={label["email-placeholder"]}
+          value={email}
+          error={errors.email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            setErrors((current) => ({ ...current, email: undefined }));
+            setSubmitted(false);
+          }}
+        />
+        <PasswordField
+          id={`${id}-password`}
+          name="password"
+          autoComplete="current-password"
+          required
+          label={label["password-label"]}
+          value={password}
+          error={errors.password}
+          onChange={(event) => {
+            setPassword(event.target.value);
+            setErrors((current) => ({ ...current, password: undefined }));
+            setSubmitted(false);
+          }}
+        />
+        <a
+          className={`w-fit text-sm underline decoration-sps-line underline-offset-4 ${kit.focus}`}
+          href={label["forgot-href"]}
+        >
+          {label["forgot-label"]}
+        </a>
+        <Button type="submit" className="w-full justify-center">
+          {label.submit}
+          <Icon name="arrow-right" />
+        </Button>
+        <p className="text-center text-sm leading-6 text-sps-muted">
+          {label["no-account"]}{" "}
           <a
-            className={`w-fit text-sm underline decoration-sps-line underline-offset-4 ${kit.focus}`}
-            href={label["forgot-href"]}
+            className={`font-semibold text-sps-graphite underline underline-offset-4 ${kit.focus}`}
+            href={label["register-href"]}
           >
-            {label["forgot-label"]}
+            {label["register-label"]}
           </a>
-          <Button type="submit" className="w-full justify-center">
-            {label.submit}
-            <Icon name="arrow-right" />
-          </Button>
-          <p className="text-center text-sm leading-6 text-sps-muted">
-            {label["no-account"]}{" "}
-            <a
-              className={`font-semibold text-sps-graphite underline underline-offset-4 ${kit.focus}`}
-              href={label["register-href"]}
-            >
-              {label["register-label"]}
-            </a>
+        </p>
+      </form>
+      {submitted ? (
+        <div className="mt-6 grid gap-4">
+          <Feedback kind="success">{label["success-message"]}</Feedback>
+          <p className="text-sm leading-6 text-sps-muted">
+            {copy.successDescription.join(" ")}
           </p>
-        </form>
-        {submitted ? (
-          <div className="mt-6 grid gap-4">
-            <Feedback kind="success">{label["success-message"]}</Feedback>
-            <p className="text-sm leading-6 text-sps-muted">
-              {copy.sections.success.paragraphs.join(" ")}
-            </p>
-            <a
-              className={`${kit.secondary} w-fit`}
-              href={label["continue-href"]}
-            >
-              {label["continue-label"]}
-              <Icon name="arrow-right" />
-            </a>
-          </div>
-        ) : null}
-      </PageSection>
-    </AccountPage>
+          <a className={`${kit.secondary} w-fit`} href={label["continue-href"]}>
+            {label["continue-label"]}
+            <Icon name="arrow-right" />
+          </a>
+        </div>
+      ) : null}
+    </section>
   );
 }
 const focus =

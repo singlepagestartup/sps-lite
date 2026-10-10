@@ -1,132 +1,10 @@
 {
-  "sections": {
-    "hero": {
-      "title": "Your files and conversations are waiting.",
-      "paragraphs": [
-        "Sign in to return to your last active project or the task you paused. Each document's thread keeps its discussion and draft; project topics keep their attached documents."
-      ],
-      "items": [],
-      "links": []
-    },
-    "account": {
-      "title": "Sign in",
-      "paragraphs": [],
-      "items": [],
-      "links": []
-    },
-    "recovery": {
-      "title": "Trouble signing in?",
-      "paragraphs": [
-        "Forgot your password? [Contact support](/ai-chat/help). If sign-in fails, check your details and try again.",
-        "No account yet? [Create one](/ai-chat/rbac/subjects/authentication/registration)."
-      ],
-      "items": [],
-      "links": [
-        {
-          "text": "Contact support",
-          "href": "/ai-chat/help"
-        },
-        {
-          "text": "Create one",
-          "href": "/ai-chat/rbac/subjects/authentication/registration"
-        }
-      ]
-    },
-    "success": {
-      "title": "Return to your project",
-      "paragraphs": [
-        "Open your workspace to return to your documents and conversations."
-      ],
-      "items": [],
-      "links": []
-    },
-    "controls": {
-      "title": "Interface labels",
-      "paragraphs": [],
-      "items": [
-        {
-          "title": "back-label",
-          "text": "Back to AI Chat"
-        },
-        {
-          "title": "back-href",
-          "text": "/ai-chat/"
-        },
-        {
-          "title": "email-label",
-          "text": "Email"
-        },
-        {
-          "title": "email-placeholder",
-          "text": "you@example.com"
-        },
-        {
-          "title": "password-label",
-          "text": "Password"
-        },
-        {
-          "title": "submit",
-          "text": "Sign in"
-        },
-        {
-          "title": "forgot-label",
-          "text": "Forgot password?"
-        },
-        {
-          "title": "forgot-href",
-          "text": "/ai-chat/help"
-        },
-        {
-          "title": "register-label",
-          "text": "Create an account"
-        },
-        {
-          "title": "register-href",
-          "text": "/ai-chat/rbac/subjects/authentication/registration"
-        },
-        {
-          "title": "no-account",
-          "text": "No account yet?"
-        },
-        {
-          "title": "continue-label",
-          "text": "Open workspace"
-        },
-        {
-          "title": "continue-href",
-          "text": "/ai-chat/social/profiles/example"
-        },
-        {
-          "title": "email-error",
-          "text": "Enter a valid email address."
-        },
-        {
-          "title": "password-error",
-          "text": "Enter your password."
-        },
-        {
-          "title": "success-message",
-          "text": "Welcome back."
-        },
-        {
-          "title": "photo-src",
-          "text": "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-work-in-motion-square.png"
-        },
-        {
-          "title": "photo-asset-id",
-          "text": "singlepage-generated-living-focus-photography-work-in-motion-square"
-        },
-        {
-          "title": "photo-alt",
-          "text": "A smiling maker in a pottery studio."
-        }
-      ],
-      "links": []
-    }
-  },
+  "title": "Sign in",
+  "description": [],
+  "successDescription": [
+    "Open your workspace to return to your documents and conversations."
+  ],
   "labels": {
-    "back-label": "Back to AI Chat",
-    "back-href": "/ai-chat/",
     "email-label": "Email",
     "email-placeholder": "you@example.com",
     "password-label": "Password",
@@ -140,9 +18,6 @@
     "continue-href": "/ai-chat/social/profiles/example",
     "email-error": "Enter a valid email address.",
     "password-error": "Enter your password.",
-    "success-message": "Welcome back.",
-    "photo-src": "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-work-in-motion-square.png",
-    "photo-asset-id": "singlepage-generated-living-focus-photography-work-in-motion-square",
-    "photo-alt": "A smiling maker in a pottery studio."
+    "success-message": "Welcome back."
   }
 }

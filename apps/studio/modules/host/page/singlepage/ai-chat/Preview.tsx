@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as HostModulePage } from "../../index";
+import { Component as HostModulePage, type ILoginPageProps } from "../../index";
 import { useCallback, useEffect, useState, type MouseEvent } from "react";
 
 import {
@@ -22,9 +22,8 @@ import {
   aiChatServiceHrefs,
   type IAIChatRoute,
 } from "../../../layout/singlepage/ai-chat-landing/routes";
-import type { IAIChatServicePageContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
 export interface IAIChatPreviewProps {
-  loginCopy?: IAIChatServicePageContent;
+  loginCopy?: ILoginPageProps["copy"];
   initialHref?: string;
   account?: IAIChatAccount;
   profiles?: Omit<IProfilesProviderProps, "children">;
@@ -61,7 +60,7 @@ function Pages({
   loginCopy,
 }: {
   route: IAIChatRoute | undefined;
-  loginCopy?: IAIChatServicePageContent;
+  loginCopy?: ILoginPageProps["copy"];
 }) {
   const { projects } = useProfiles();
   if (!route) return <main role="status">Page unavailable.</main>;

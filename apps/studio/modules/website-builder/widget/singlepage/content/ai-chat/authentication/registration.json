@@ -1,0 +1,30 @@
+{
+  "backLink": {
+    "text": "Back to AI Chat",
+    "href": "/ai-chat/"
+  },
+  "intro": {
+    "title": "Bring your project into chat.",
+    "paragraphs": [
+      "Create an account to add your notes, files and images. Work with AI in each document's thread, then use saved documents in new project conversations."
+    ]
+  },
+  "images": [
+    {
+      "src": "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-project-start-v1-square.png",
+      "alt": "A woman working on her project with a laptop and notebook.",
+      "assetId": "singlepage-generated-living-focus-photography-project-start-v1-square"
+    },
+    {
+      "src": "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-project-progress-v1-square.png",
+      "alt": "A man reviewing a project sketch beside his laptop.",
+      "assetId": "singlepage-generated-living-focus-photography-project-progress-v1-square"
+    }
+  ],
+  "aside": {
+    "title": "Before you add files",
+    "paragraphs": [
+      "Read [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored), including external AI processing and backup retention after deletion."
+    ]
+  }
+}

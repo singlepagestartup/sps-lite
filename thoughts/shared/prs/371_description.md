@@ -1,5 +1,7 @@
 ## Summary
 
+AI Chat Host Pages compose their Layout, static Website Builder content and a standalone RBAC Subject form. Authentication and registration share a content Widget with a form slot; Subject owns validation and local session behavior.
+
 Every Studio model variant exposes its module, model and selected variant on its DOM root for browser inspection. Nested models and portaled menus retain their own identities.
 
 Studio Modules and Workspace own independent code, fixtures, visual tokens and assets. Editing Workspace does not change Module rendering; approved copy crosses the boundary through an explicit publisher.
@@ -10,9 +12,11 @@ The branch also retains the Knowledge Source, file orchestration, MCP configurat
 
 ## Changes
 
+- Compose both AI Chat authentication Pages as Host Layout → Website Builder `content-ai-chat-authentication` → Subject form. Website Builder owns the introduction, photography, back link and information card, with content/media/icon inputs selected by Host. Subject forms render independently and retain fields, validation, feedback and local sign-in. Remove the shared `AccountPage`/`PageSection` exports and the cross-form shell import. Split the publisher outputs into Widget content and form copy; login overrides use `{ content, form }`. Add Widget stories, metadata and page bindings.
+
 - Consolidate repeated import sources in 112 Studio Module files, retaining runtime/type bindings and local aliases. Reuse one namespace binding in Gallery and Article views and include the formatted Icon story. Module files pass the repository ESLint rules using the Studio TypeScript project.
 
-- Mark all 400 Studio variant implementations with `data-module`, `data-model` and `data-variant` on their highest rendered element. Empty states, direct stories, delegated forms, startup overrides and portals preserve the selected variant. Native button/SVG roots and refs remain intact; Page and Layout keep separate model roots. Catalog scaffolding emits the same contract.
+- Mark all 401 Studio variant implementations with `data-module`, `data-model` and `data-variant` on their highest rendered element. Empty states, direct stories, delegated forms, startup overrides and portals preserve the selected variant. Native button/SVG roots and refs remain intact; Page and Layout keep separate model roots. Catalog scaffolding emits the same contract.
 
 - RBAC Subject owns registration, authentication, password recovery, email/password changes and connected-method actions. Forms use `authentication-email-and-password-<form>-<appearance>` keys. The ordinary Select Method places Email/password, EVM and OAuth tabs inside the form card and preserves their drafts. AI Chat calls the Subject email/password form directly. Host Pages call the public Subject entry; Workspace previews use an owned component snapshot. Identity displays connected accounts and receives action slots. Method states have their own stories and Controls; no provider or wallet is contacted.
 
@@ -46,8 +50,10 @@ The branch also retains the Knowledge Source, file orchestration, MCP configurat
 
 ## Verification
 
-- [x] ESLint checks all 1,687 Module source files without errors, using the Studio TypeScript project for TS/TSX files. No duplicate import sources remain.
-- [x] `bun test tools/studio apps/studio/workspace apps/studio/modules`: 368 tests across 42 files, including every variant root, rendered preview states, model boundaries, runtime cycles and independent Workspace/Module code, tokens and assets.
+- [x] Authentication browser checks: independent Subject DOM roots contain no page imagery; empty login and mismatched registration passwords show field errors; valid local login opens the Profile immediately; registration shows success/continuation. At 550 px content width, the form has no horizontal overflow and retains a 20 px field gap. No application console errors.
+
+- [x] The import cleanup linted 1,687 Module source files without errors. The authentication composition linted its 17 changed/new source files without errors or warnings. Module TS/TSX uses the Studio TypeScript project; tool files use syntax linting. No duplicate import sources remain.
+- [x] `bun test tools/studio apps/studio/workspace apps/studio/modules`: 371 tests across 42 files, including every variant root, rendered preview states, model boundaries, runtime cycles and independent Workspace/Module code, tokens and assets.
 - [x] Studio TypeScript, metadata validation, inventory generation (15 modules, 61 models, 838 contracts), content freshness, code placement and Storybook production build.
 - [x] Browser: AI Chat email/password-only login opens the active Profile immediately; ordinary method tabs render inside the card and retain the email draft through EVM/OAuth switching. Registration, Workspace prototype and local images render. No application console errors; Storybook emits its own future-version accessibility notice.
 - [x] Earlier browser checks cover account/settings flows, scoped knowledge and messages, files, preview-only Thread creation, Profile selection, landing/cart/navigation and responsive layouts. Detailed scope and earlier results remain in the linked plans.
@@ -70,6 +76,8 @@ All new Studio behavior is local preview state. It does not implement durable st
 The visual boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-visual-boundary.md`. Unrelated uncommitted business documents, uploaded files and production changes are excluded. Navbar rendering boundary and verification are recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-slots.md`. Navbar folder verification is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-navbar-nesting.md`. The Layout naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-layout-naming.md`. The Profile naming map and verification log is `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-profile-naming.md`. Thread naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-thread-naming.md`. Website Builder naming is recorded in `thoughts/shared/plans/singlepagestartup/2026-10-10-studio-website-builder-naming.md`. The preceding model naming log is `thoughts/shared/handoffs/singlepagestartup/studio-variant-naming-2026-10-10.md`.
 
 ## Downstream migration
+
+- Projects overriding Studio AI Chat authentication views must move the shared page shell out of Subject into Website Builder `content-ai-chat-authentication`, compose it with the existing Host Layout in Host Page and supply Subject through `children`. Remove owned `AccountPage`/`PageSection` cross-form imports. Subject copy is `{ title, description, successDescription, labels }`; Widget content is `{ backLink, intro, images, aside }`. Update owned publisher destinations, stories, page/block/Figma metadata and inventory; preserve copy, images, routes, validation, local sign-in and continuation callbacks. Change Host login `copy` and Preview `loginCopy` overrides to `{ content, form }`. Verify isolated forms, composed pages, browser validation/success/navigation, responsive spacing, content freshness and Studio tests/types/build. Production authentication and Workspace prototypes retain their own implementations.
 
 - Projects with owned Studio snapshots that repeat import sources should combine named value/type imports using inline `type` specifiers, preserve local aliases and reuse one namespace binding with its corresponding references. Keep runtime import order and component behavior. Verify owned files with the repository ESLint rules against the Studio TypeScript project, then run Studio TypeScript, tests and build.
 

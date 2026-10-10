@@ -90,10 +90,6 @@ publish(
   JSON.stringify(roles, null, 2) + "\n",
 );
 const copies = {
-  register:
-    "rbac/subject/authentication/email-and-password/registration-form/ai-chat",
-  login:
-    "rbac/subject/authentication/email-and-password/authentication-form/ai-chat",
   settings: "rbac/subject/account-data",
   help: "website-builder/widget/content/ai-chat/help",
   tokens: "ecommerce/order/checkout/tokens/ai-chat",
@@ -140,6 +136,64 @@ for (const [name, owner] of Object.entries(copies)) {
   publish(
     `apps/studio/modules/${module}/${entity}/singlepage/${variant.join("/")}/content.json`,
     JSON.stringify(servicePaths(copy), null, 2) + "\n",
+  );
+}
+for (const [name, form] of Object.entries({
+  login: "authentication-form",
+  register: "registration-form",
+})) {
+  const copy = servicePaths(
+    parseAIChatServicePage(
+      readFileSync(path.join(source, `${name}.md`), "utf8"),
+    ),
+  ) as ReturnType<typeof parseAIChatServicePage>;
+  const labels = Object.fromEntries(
+    Object.entries(copy.labels).filter(
+      ([key]) => !/^(back-|photo-|secondary-photo-)/.test(key),
+    ),
+  );
+  publish(
+    `apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/${form}/ai-chat/content.json`,
+    JSON.stringify(
+      {
+        title: copy.sections.account.title,
+        description: copy.sections.account.paragraphs,
+        successDescription: copy.sections.success.paragraphs,
+        labels,
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+  const content = {
+    backLink: {
+      text: copy.labels["back-label"],
+      href: copy.labels["back-href"],
+    },
+    intro: {
+      title: copy.sections.hero.title,
+      paragraphs: copy.sections.hero.paragraphs,
+    },
+    images: ["photo", "secondary-photo"].flatMap((key) =>
+      copy.labels[`${key}-src`]
+        ? [
+            {
+              src: copy.labels[`${key}-src`],
+              alt: copy.labels[`${key}-alt`],
+              assetId: copy.labels[`${key}-asset-id`],
+            },
+          ]
+        : [],
+    ),
+    aside: {
+      title: copy.sections[name === "login" ? "recovery" : "materials"].title,
+      paragraphs:
+        copy.sections[name === "login" ? "recovery" : "materials"].paragraphs,
+    },
+  };
+  publish(
+    `apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/authentication/${name === "login" ? "content" : "registration"}.json`,
+    JSON.stringify(content, null, 2) + "\n",
   );
 }
 const definitions = parseProjectDocumentDefinitions(
