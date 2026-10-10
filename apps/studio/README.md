@@ -180,9 +180,32 @@ apps/studio/modules/<module>/<model>/<layer>/<variant>/
 ```
 
 Host pages remain under
-`apps/studio/modules/host/page/<layer>/<page-variant>/`. Existing Host page IDs are preserved. Domain variant IDs follow their component names.
+`apps/studio/modules/host/page/<layer>/<page-variant>/`. Host Page variants and Storybook IDs follow their routes. Domain variant IDs follow their component names.
 
 ## Local AI Chat components
+
+AI Chat Host Page folders remain flat. Their variant keys and Storybook route
+names identify the models in the address:
+
+| Page             | Route                                                                                  |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| Landing          | `/ai-chat/`                                                                            |
+| Help             | `/ai-chat/help`                                                                        |
+| Create Profile   | `/ai-chat/social/profiles/create`                                                      |
+| Profile overview | `/ai-chat/social/profiles/[social.profiles.id]`                                        |
+| Profile settings | `/ai-chat/social/profiles/[social.profiles.id]/settings`                               |
+| Create Thread    | `/ai-chat/social/profiles/[social.profiles.id]/chats/[social.chats.id]/threads/create` |
+| Sign in          | `/ai-chat/rbac/subjects/authentication/select-method`                                  |
+| Registration     | `/ai-chat/rbac/subjects/authentication/registration`                                   |
+| Account settings | `/ai-chat/rbac/subjects/settings`                                                      |
+| Tokens           | `/ai-chat/rbac/subjects/tokens`                                                        |
+
+The local preview router decodes Profile and Chat IDs separately and passes them
+to the concrete Page. Profile providers remain mounted across transitions, so
+drafts, knowledge, files and history retain their scope. New thread displays its
+parent Chat ID and a name/agent form with preview-only submit. Sidebar, account
+menu, forms, copy and catalog links use these addresses. Display variants such as
+`overview-ai-chat-project` and Button record IDs remain independent of Page routes.
 
 AI Chat prototypes live entirely in Studio. `Component.tsx` contains each variant's
 implementation, props and callbacks. `index.ts` exports the component and its

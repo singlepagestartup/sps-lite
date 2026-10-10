@@ -1,3 +1,5 @@
+import { resolveAIChatRoute } from "./ai-chat-routes";
+
 export interface IAIChatChat {
   id: string;
   title: string;
@@ -28,15 +30,7 @@ export interface IAIChatFile {
 }
 
 export function projectProfileIdFromHref(href?: string): string | undefined {
-  const id = href
-    ?.split(/[?#]/)[0]
-    .match(/^\/ai-chat\/projects\/([^/]+)$/)?.[1];
-  if (!id || id === "new") return undefined;
-  try {
-    return decodeURIComponent(id);
-  } catch {
-    return id;
-  }
+  return href ? resolveAIChatRoute(href)?.profileId : undefined;
 }
 
 export function projectSourceSlug(

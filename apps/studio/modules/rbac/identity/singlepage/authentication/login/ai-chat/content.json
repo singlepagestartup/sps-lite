@@ -18,7 +18,7 @@
       "title": "Trouble signing in?",
       "paragraphs": [
         "Forgot your password? [Contact support](/ai-chat/help). If sign-in fails, check your details and try again.",
-        "No account yet? [Create one](/ai-chat/register)."
+        "No account yet? [Create one](/ai-chat/rbac/subjects/authentication/registration)."
       ],
       "items": [],
       "links": [
@@ -28,7 +28,7 @@
         },
         {
           "text": "Create one",
-          "href": "/ai-chat/register"
+          "href": "/ai-chat/rbac/subjects/authentication/registration"
         }
       ]
     },
@@ -82,7 +82,7 @@
         },
         {
           "title": "register-href",
-          "text": "/ai-chat/register"
+          "text": "/ai-chat/rbac/subjects/authentication/registration"
         },
         {
           "title": "no-account",
@@ -94,7 +94,7 @@
         },
         {
           "title": "continue-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "email-error",
@@ -134,10 +134,10 @@
     "forgot-label": "Forgot password?",
     "forgot-href": "/ai-chat/help",
     "register-label": "Create an account",
-    "register-href": "/ai-chat/register",
+    "register-href": "/ai-chat/rbac/subjects/authentication/registration",
     "no-account": "No account yet?",
     "continue-label": "Open workspace",
-    "continue-href": "/ai-chat/projects/example",
+    "continue-href": "/ai-chat/social/profiles/example",
     "email-error": "Enter a valid email address.",
     "password-error": "Enter your password.",
     "success-message": "Welcome back.",

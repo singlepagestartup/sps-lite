@@ -27,9 +27,9 @@ Sign in to return to your last active project or the task you paused. Each docum
 
 ## Trouble signing in?
 
-Forgot your password? [Contact support](/help). If sign-in fails, check your details and try again.
+Forgot your password? [Contact support](/ai-chat/help). If sign-in fails, check your details and try again.
 
-No account yet? [Create one](/register).
+No account yet? [Create one](/ai-chat/rbac/subjects/authentication/registration).
 
 <!-- section: success -->
 
@@ -44,7 +44,7 @@ Open your workspace to return to your documents and conversations.
 | Control           | Text                                                                                                        |
 | ----------------- | ----------------------------------------------------------------------------------------------------------- |
 | back-label        | Back to AI Chat                                                                                             |
-| back-href         | /                                                                                                           |
+| back-href         | /ai-chat/                                                                                                   |
 | email-label       | Email                                                                                                       |
 | email-placeholder | you@example.com                                                                                             |
 | password-label    | Password                                                                                                    |
@@ -52,10 +52,10 @@ Open your workspace to return to your documents and conversations.
 | forgot-label      | Forgot password?                                                                                            |
 | forgot-href       | /help                                                                                                       |
 | register-label    | Create an account                                                                                           |
-| register-href     | /register                                                                                                   |
+| register-href     | /ai-chat/rbac/subjects/authentication/registration                                                          |
 | no-account        | No account yet?                                                                                             |
 | continue-label    | Open workspace                                                                                              |
-| continue-href     | /projects/example                                                                                           |
+| continue-href     | /ai-chat/social/profiles/example                                                                            |
 | email-error       | Enter a valid email address.                                                                                |
 | password-error    | Enter your password.                                                                                        |
 | success-message   | Welcome back.                                                                                               |

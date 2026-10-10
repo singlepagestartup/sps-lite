@@ -11,15 +11,17 @@ import {
 } from "../../../../../../workspace/design/singlepage/interface-kit/ai-chat/ServiceDocument";
 import { Component as SocialModuleProfile } from "../../../../profile/index";
 export interface IThreadCreateProps {
+  chatId?: string;
   cancelHref: string;
 }
-export function Component({ cancelHref }: IThreadCreateProps) {
+export function Component({ chatId, cancelHref }: IThreadCreateProps) {
   const [title, setTitle] = useState("");
   const [hasAgent, setHasAgent] = useState(false);
   const [previewed, setPreviewed] = useState(false);
   return (
     <form
       data-ds-block="social.thread.create-ai-chat"
+      data-chat-id={chatId}
       onSubmit={(event) => {
         event.preventDefault();
         if (title.trim() && hasAgent) setPreviewed(true);

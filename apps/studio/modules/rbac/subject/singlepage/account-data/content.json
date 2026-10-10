@@ -3,13 +3,13 @@
     "hero": {
       "title": "Your account.",
       "paragraphs": [
-        "Change your password, view purchases or manage account data. Choose and manage projects in [the project chat](/ai-chat/projects/example)."
+        "Change your password, view purchases or manage account data. Choose and manage projects in [the project chat](/ai-chat/social/profiles/example)."
       ],
       "items": [],
       "links": [
         {
           "text": "the project chat",
-          "href": "/ai-chat/projects/example"
+          "href": "/ai-chat/social/profiles/example"
         }
       ]
     },
@@ -37,27 +37,27 @@
     "purchases": {
       "title": "Tokens and purchases",
       "paragraphs": [
-        "View your current token balance, purchase history and receipts. [Buy tokens](/ai-chat/tokens) to continue a saved task when the balance restricts new paid AI requests."
+        "View your current token balance, purchase history and receipts. [Buy tokens](/ai-chat/rbac/subjects/tokens) to continue a saved task when the balance restricts new paid AI requests."
       ],
       "items": [],
       "links": [
         {
           "text": "Buy tokens",
-          "href": "/ai-chat/tokens"
+          "href": "/ai-chat/rbac/subjects/tokens"
         }
       ]
     },
     "privacy": {
       "title": "Materials and deletion",
       "paragraphs": [
-        "The service sends relevant material to external AI providers for your requested work. Read [How your materials are processed and stored](/ai-chat/projects/example#how-your-materials-are-processed-and-stored) before deleting your account.",
+        "The service sends relevant material to external AI providers for your requested work. Read [How your materials are processed and stored](/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored) before deleting your account.",
         "Deletion removes your account and the active data the service controls across all your projects, including uploaded material, documents and conversations. Contabo backups may retain copies for up to six months; the service cannot shorten that period."
       ],
       "items": [],
       "links": [
         {
           "text": "How your materials are processed and stored",
-          "href": "/ai-chat/projects/example#how-your-materials-are-processed-and-stored"
+          "href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored"
         }
       ]
     },
@@ -95,7 +95,7 @@
         },
         {
           "title": "back-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "current-password-label",
@@ -135,7 +135,7 @@
         },
         {
           "title": "tokens-href",
-          "text": "/ai-chat/tokens"
+          "text": "/ai-chat/rbac/subjects/tokens"
         },
         {
           "title": "delete-label",
@@ -195,7 +195,7 @@
   },
   "labels": {
     "back-label": "Back to workspace",
-    "back-href": "/ai-chat/projects/example",
+    "back-href": "/ai-chat/social/profiles/example",
     "current-password-label": "Current password",
     "repeat-password-label": "Repeat new password",
     "password-label": "New password",
@@ -205,7 +205,7 @@
     "account-summary-label": "Account",
     "project-summary-label": "Projects",
     "buy-tokens": "Buy tokens",
-    "tokens-href": "/ai-chat/tokens",
+    "tokens-href": "/ai-chat/rbac/subjects/tokens",
     "delete-label": "Delete account and project data",
     "deletion-title": "Delete this account and its project data?",
     "deletion-description": "Deletion removes the account and active data from all your projects the service controls. Contabo backups may retain copies for up to six months.",

@@ -66,13 +66,13 @@
       "title": "What happens next",
       "paragraphs": [
         "Support requests are processed within 24 hours. This is the initial response expectation, not a promise to resolve every request within that time. Continuous live support is outside the current service.",
-        "Keep your saved documents and task in place while you wait. [Return to the workspace](/ai-chat/projects/example)."
+        "Keep your saved documents and task in place while you wait. [Return to the workspace](/ai-chat/social/profiles/example)."
       ],
       "items": [],
       "links": [
         {
           "text": "Return to the workspace",
-          "href": "/ai-chat/projects/example"
+          "href": "/ai-chat/social/profiles/example"
         }
       ]
     },
@@ -94,7 +94,7 @@
         },
         {
           "title": "back-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "topic-label",
@@ -134,7 +134,7 @@
         },
         {
           "title": "return-href",
-          "text": "/ai-chat/projects/example"
+          "text": "/ai-chat/social/profiles/example"
         },
         {
           "title": "topic-error",
@@ -158,7 +158,7 @@
   },
   "labels": {
     "back-label": "Back to workspace",
-    "back-href": "/ai-chat/projects/example",
+    "back-href": "/ai-chat/social/profiles/example",
     "topic-label": "Topic",
     "topic-placeholder": "Select a topic",
     "details-label": "What happened?",
@@ -168,7 +168,7 @@
     "submit": "Send request",
     "edit-request": "Edit request",
     "return-label": "Return to workspace",
-    "return-href": "/ai-chat/projects/example",
+    "return-href": "/ai-chat/social/profiles/example",
     "topic-error": "Choose a topic.",
     "details-error": "Describe what happened.",
     "result-error": "Tell us what result you need.",

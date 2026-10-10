@@ -30,11 +30,11 @@ export interface IAccountContext {
 const AccountContext = createContext<IAccountContext>({
   account: { balance: null },
 });
-const ProjectHrefContext = createContext("/ai-chat/projects/new");
+const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
 export function AccountProvider({
   account,
   signedIn,
-  projectHref = "/ai-chat/projects/new",
+  projectHref = "/ai-chat/social/profiles/create",
   children,
 }: IAccountContext & { projectHref?: string; children: ReactNode }) {
   return (

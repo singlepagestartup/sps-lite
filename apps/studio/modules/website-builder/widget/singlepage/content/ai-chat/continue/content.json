@@ -41,11 +41,11 @@
     "links": [
       {
         "text": "Buy tokens",
-        "href": "/ai-chat/tokens"
+        "href": "/ai-chat/rbac/subjects/tokens"
       },
       {
         "text": "How your materials are processed and stored",
-        "href": "/ai-chat/projects/new#how-your-materials-are-processed-and-stored"
+        "href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored"
       },
       {
         "text": "Get help",
@@ -55,6 +55,6 @@
   },
   "startLink": {
     "text": "Start with my files",
-    "href": "/ai-chat/register"
+    "href": "/ai-chat/rbac/subjects/authentication/registration"
   }
 }

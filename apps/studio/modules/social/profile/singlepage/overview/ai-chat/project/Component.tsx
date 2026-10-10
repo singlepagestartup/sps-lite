@@ -13,18 +13,24 @@ import {
 
 export interface IOverviewAiChatProjectProps {
   profileId: string;
+  chatId?: string;
   selected: IProfileSidebarProps["selected"];
   children: (navigation: ReactNode) => ReactNode;
 }
 
 export function Component({
   profileId,
+  chatId,
   selected,
   children,
 }: IOverviewAiChatProjectProps) {
   return (
     <ProfileScope profileId={profileId}>
-      <OverviewAiChatProject profileId={profileId} selected={selected}>
+      <OverviewAiChatProject
+        profileId={profileId}
+        chatId={chatId}
+        selected={selected}
+      >
         {children}
       </OverviewAiChatProject>
     </ProfileScope>
@@ -33,6 +39,7 @@ export function Component({
 
 function OverviewAiChatProject({
   profileId,
+  chatId,
   selected,
   children,
 }: IOverviewAiChatProjectProps) {
@@ -128,7 +135,11 @@ function OverviewAiChatProject({
           >
             <Icon name="x" />
           </button>
-          <ProfileSidebar profileId={profileId} selected={selected} />
+          <ProfileSidebar
+            profileId={profileId}
+            chatId={chatId}
+            selected={selected}
+          />
         </aside>
         <div className="flex min-h-0 min-w-0 flex-col">{children(toggle)}</div>
       </div>

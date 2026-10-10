@@ -119,7 +119,7 @@ export function SubjectMeAccountSettings({
               className="underline"
               href={
                 showTokens
-                  ? "/ai-chat/login"
+                  ? "/ai-chat/rbac/subjects/authentication/select-method"
                   : "/?path=/story/modules-host-models-page-singlepage-rbac-subject-authentication-select-method--default"
               }
               target={showTokens ? undefined : "_top"}

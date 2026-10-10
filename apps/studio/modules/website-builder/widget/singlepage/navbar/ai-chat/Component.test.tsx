@@ -9,6 +9,7 @@ import { Component as SocialModuleProfile } from "../../../../../social/profile/
 import { Component as WebsiteBuilderModuleWidget } from "../../../index";
 import { Component as Navbar } from "./index";
 import { AIChatPreview } from "../../../../../../workspace/products/singlepage/ai-chat/website/Preview";
+import { aiChatServiceHrefs } from "../../../../../../workspace/utils/products/ai-chat-routes";
 
 const studio = path.resolve(import.meta.dir, "../../../../../..");
 const pages = path.join(studio, "modules/host/page/singlepage");
@@ -63,7 +64,9 @@ describe("Website Builder navbar composition", () => {
     expect(html).toContain(
       'data-ds-block="social.profile.select-item-ai-chat-project"',
     );
-    expect(html).toContain('href="/ai-chat/projects/pottery%20%2F%20one"');
+    expect(html).toContain(
+      'href="/ai-chat/social/profiles/pottery%20%2F%20one"',
+    );
     expect(html).toContain('data-id="pottery / one"');
     expect(html.match(/aria-current="page"/g)?.length).toBe(1);
     expect(html).toContain("Second project");
@@ -156,14 +159,16 @@ describe("Website Builder navbar composition", () => {
       const html = renderToStaticMarkup(
         <Navbar
           buttonsArrayId="ai-chat-register"
-          activeHref="/ai-chat/register"
+          activeHref="/ai-chat/rbac/subjects/authentication/registration"
           navigationLayout={navigationLayout}
           navigationLabel="Preview navigation"
           profileSelect={() => <button>Selected project slot</button>}
           subjectAccount={() => <button>Current subject slot</button>}
         />,
       );
-      expect(html).toContain('href="/ai-chat/register"');
+      expect(html).toContain(
+        'href="/ai-chat/rbac/subjects/authentication/registration"',
+      );
       expect(html).toContain('aria-current="page"');
       expect(html).toContain('aria-label="Preview navigation"');
       expect(html).toContain("Selected project slot");
@@ -191,11 +196,11 @@ describe("Website Builder navbar composition", () => {
     const html = renderToStaticMarkup(
       <WebsiteBuilderModuleWidget
         variant="content-ai-chat-help"
-        projectHref="/ai-chat/projects/selected-project"
+        projectHref="/ai-chat/social/profiles/selected-project"
       />,
     );
-    expect(html).toContain('href="/ai-chat/projects/selected-project"');
-    expect(html).not.toContain('href="/ai-chat/projects/example"');
+    expect(html).toContain('href="/ai-chat/social/profiles/selected-project"');
+    expect(html).not.toContain('href="/ai-chat/social/profiles/example"');
   });
 
   test("Host selects account-access navigation and omits project/account slots", () => {
@@ -218,7 +223,7 @@ describe("Website Builder navbar composition", () => {
       );
       const header = html.match(/<header\b[\s\S]*?<\/header>/)?.[0] ?? "";
       expect(header).toContain(`data-id="ai-chat-${action}"`);
-      expect(header).toContain(`href="/ai-chat/${action}"`);
+      expect(header).toContain(`href="${aiChatServiceHrefs[action]}"`);
       expect(header).toContain('aria-label="Account access"');
       expect(header).not.toContain('aria-label="Open navigation menu"');
     }
@@ -226,15 +231,15 @@ describe("Website Builder navbar composition", () => {
 
   test("every header Page owns its model slots through one header Layout", () => {
     const routes = [
-      "register",
-      "login",
-      "settings",
+      "rbac/subjects/authentication/registration",
+      "rbac/subjects/authentication/select-method",
+      "rbac/subjects/settings",
       "help",
-      "tokens",
-      "projects/new",
-      "projects/pottery",
-      "projects/pottery/settings",
-      "projects/pottery/threads/new",
+      "rbac/subjects/tokens",
+      "social/profiles/create",
+      "social/profiles/pottery",
+      "social/profiles/pottery/settings",
+      "social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create",
     ];
     for (const route of routes) {
       const html = renderToStaticMarkup(
@@ -252,7 +257,10 @@ describe("Website Builder navbar composition", () => {
       ).toBe(1);
       const variant =
         "ai-chat-" +
-        route.replace("pottery", "project-id").replaceAll("/", "-");
+        route
+          .replace("pottery%3Aproject-chat", "social-chats-id")
+          .replace("pottery", "social-profiles-id")
+          .replaceAll("/", "-");
       const source = readFileSync(
         path.join(pages, variant, "Component.tsx"),
         "utf8",
@@ -262,13 +270,13 @@ describe("Website Builder navbar composition", () => {
       expect(source).not.toContain(
         "website-builder/widget/singlepage/navbar/ai-chat",
       );
-      if (!["register", "login"].includes(route)) {
+      if (!route.startsWith("rbac/subjects/authentication/")) {
         expect(source).toContain("subjectAccount=");
         expect(source).toContain('variant="account"');
         expect(source).toContain("showTokens");
         expect(source).toContain("rbac/subject/index");
       }
-      if (route.startsWith("projects")) {
+      if (route.startsWith("social/profiles")) {
         expect(source).toContain("profileSelect=");
         expect(source).toContain('variant="select-ai-chat-project"');
         expect(source).toContain("social/profile/index");

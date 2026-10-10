@@ -42,7 +42,7 @@ export function Component({
       }
     : (session.account.profile ?? aiChatAccount.profile);
   const settingsHref = showTokens
-    ? "/ai-chat/settings"
+    ? "/ai-chat/rbac/subjects/settings"
     : "/?path=/story/modules-host-models-page-singlepage-rbac-subject-settings--default";
   if (!authenticated)
     return (
@@ -50,7 +50,7 @@ export function Component({
         data-ds-block="rbac.subject.account"
         href={
           showTokens
-            ? "/ai-chat/login"
+            ? "/ai-chat/rbac/subjects/authentication/select-method"
             : "/?path=/story/modules-host-models-page-singlepage-rbac-subject-authentication-select-method--default"
         }
         target={showTokens ? undefined : "_top"}

@@ -39,11 +39,17 @@ export function WorkspaceDocument({
             aria-label="Project workspace"
           >
             {[
-              { label: "Add materials", href: "/projects/new" },
-              { label: "Project documents", href: "/projects/example" },
-              { label: "Tokens", href: "/tokens" },
-              { label: "Settings", href: "/settings" },
-              { label: "Help", href: "/help" },
+              {
+                label: "Add materials",
+                href: "/ai-chat/social/profiles/create",
+              },
+              {
+                label: "Project documents",
+                href: "/ai-chat/social/profiles/example",
+              },
+              { label: "Tokens", href: "/ai-chat/rbac/subjects/tokens" },
+              { label: "Settings", href: "/ai-chat/rbac/subjects/settings" },
+              { label: "Help", href: "/ai-chat/help" },
               {
                 label: "Code Framework",
                 href: "https://github.com/singlepagestartup/singlepagestartup",

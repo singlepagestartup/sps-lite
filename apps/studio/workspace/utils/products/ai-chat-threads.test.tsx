@@ -118,7 +118,7 @@ test("new profile identity is sufficient to prepare Products; profile IDs isolat
   const render = (id: string) =>
     renderToStaticMarkup(
       <AIChatPreview
-        initialHref={`/ai-chat/projects/${id}`}
+        initialHref={`/ai-chat/social/profiles/${id}`}
         profiles={{
           initialProjects: [
             { id, name: "Empty project", variant: "scope-ai-chat-project" },

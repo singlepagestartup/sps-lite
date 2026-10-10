@@ -5,11 +5,11 @@
   "links": [
     {
       "text": "Start with my files",
-      "href": "/ai-chat/register"
+      "href": "/ai-chat/rbac/subjects/authentication/registration"
     },
     {
       "text": "Sign in",
-      "href": "/ai-chat/login"
+      "href": "/ai-chat/rbac/subjects/authentication/select-method"
     },
     {
       "text": "Code Framework",

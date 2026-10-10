@@ -23,7 +23,9 @@ test("landing Page places native widgets inside one Layout and injects Subject a
   ])
     expect(header).toContain(`data-ds-block="${block}"`);
   expect(header).toContain('href="#workflow"');
-  expect(header).toContain('href="/ai-chat/login"');
+  expect(header).toContain(
+    'href="/ai-chat/rbac/subjects/authentication/select-method"',
+  );
   expect(html).toContain(
     'data-ds-block="website-builder.widget.footer-ai-chat"',
   );

@@ -4,7 +4,7 @@ import { parseAIChatServicePage } from "./content";
 export default function Login({ text }: { text?: string } = {}) {
   return (
     <AIChatPreview
-      initialHref="/ai-chat/login"
+      initialHref="/ai-chat/rbac/subjects/authentication/select-method"
       loginCopy={parseAIChatServicePage(text ?? sourceText)}
     />
   );

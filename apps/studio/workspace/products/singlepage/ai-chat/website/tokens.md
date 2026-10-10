@@ -89,7 +89,7 @@ Review the selected amount and token total. You can choose a different package o
 | Control               | Text                                                                               |
 | --------------------- | ---------------------------------------------------------------------------------- |
 | back-label            | Back to workspace                                                                  |
-| back-href             | /projects/example                                                                  |
+| back-href             | /ai-chat/social/profiles/example                                                   |
 | balance-label         | Current balance                                                                    |
 | balance-unit          | tokens remaining                                                                   |
 | package-label         | Choose a top-up                                                                    |
@@ -107,7 +107,7 @@ Review the selected amount and token total. You can choose a different package o
 | continue-payment      | Continue to payment                                                                |
 | retry                 | Try again                                                                          |
 | return-without-buying | Return without buying                                                              |
-| return-href           | /projects/example                                                                  |
+| return-href           | /ai-chat/social/profiles/example                                                   |
 | help-label            | Ask for help                                                                       |
 | help-href             | /help                                                                              |
 | success-message       | Package selected.                                                                  |

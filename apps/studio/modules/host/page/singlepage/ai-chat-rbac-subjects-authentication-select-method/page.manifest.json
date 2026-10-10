@@ -1,0 +1,30 @@
+{
+  "id": "ai-chat-rbac-subjects-authentication-select-method",
+  "title": "ai-chat-rbac-subjects-authentication-select-method",
+  "layer": "singlepage",
+  "state": "draft",
+  "description": "AI Chat page recipe for /ai-chat/rbac/subjects/authentication/select-method.",
+  "files": {
+    "component": "Component.tsx",
+    "story": "Component.stories.tsx"
+  },
+  "figma": {
+    "componentName": "host.page",
+    "pageName": "host",
+    "variantName": "ai-chat-rbac-subjects-authentication-select-method",
+    "nodeId": null,
+    "variantNodeId": null,
+    "syncStatus": "not-created",
+    "metadataFile": "figma.json"
+  },
+  "blocks": [
+    {
+      "id": "host.layout.ai-chat-dashboard",
+      "path": "../../../layout/singlepage/ai-chat-dashboard"
+    },
+    {
+      "id": "rbac.identity.authentication-login-ai-chat",
+      "path": "../../../../rbac/identity/singlepage/authentication/login/ai-chat"
+    }
+  ]
+}

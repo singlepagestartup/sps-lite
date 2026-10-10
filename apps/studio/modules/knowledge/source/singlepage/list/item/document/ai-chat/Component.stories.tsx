@@ -17,7 +17,7 @@ function Example() {
           <KnowledgeModuleSource
             variant="list-item-document-ai-chat"
             selected
-            href="/ai-chat/projects/pottery"
+            href="/ai-chat/social/profiles/pottery"
           />
         </div>
       </SourceProvider>

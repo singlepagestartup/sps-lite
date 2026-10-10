@@ -12,14 +12,14 @@ import { Component as AdminV2SelectInput } from "./admin-v2-select-input/index";
 import { Component as AdminV2Table } from "./admin-v2-table/index";
 import { Component as AiChat } from "./ai-chat/index";
 import { Component as AiChatHelp } from "./ai-chat-help/index";
-import { Component as AiChatLogin } from "./ai-chat-login/index";
-import { Component as AiChatProjectsNew } from "./ai-chat-projects-new/index";
-import { Component as AiChatProjectsProjectId } from "./ai-chat-projects-project-id/index";
-import { Component as AiChatProjectsProjectIdSettings } from "./ai-chat-projects-project-id-settings/index";
-import { Component as AiChatProjectsProjectIdThreadsNew } from "./ai-chat-projects-project-id-threads-new/index";
-import { Component as AiChatRegister } from "./ai-chat-register/index";
-import { Component as AiChatSettings } from "./ai-chat-settings/index";
-import { Component as AiChatTokens } from "./ai-chat-tokens/index";
+import { Component as AiChatRbacSubjectsAuthenticationSelectMethod } from "./ai-chat-rbac-subjects-authentication-select-method/index";
+import { Component as AiChatSocialProfilesCreate } from "./ai-chat-social-profiles-create/index";
+import { Component as AiChatSocialProfilesSocialProfilesId } from "./ai-chat-social-profiles-social-profiles-id/index";
+import { Component as AiChatSocialProfilesSocialProfilesIdSettings } from "./ai-chat-social-profiles-social-profiles-id-settings/index";
+import { Component as AiChatSocialProfilesSocialProfilesIdChatsSocialChatsIdThreadsCreate } from "./ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create/index";
+import { Component as AiChatRbacSubjectsAuthenticationRegistration } from "./ai-chat-rbac-subjects-authentication-registration/index";
+import { Component as AiChatRbacSubjectsSettings } from "./ai-chat-rbac-subjects-settings/index";
+import { Component as AiChatRbacSubjectsTokens } from "./ai-chat-rbac-subjects-tokens/index";
 import { Component as Blog } from "./blog/index";
 import { Component as BlogArticlesBlogArticlesSlug } from "./blog-articles-blog-articles-slug/index";
 import { Component as BlogAuthorsSocialProfilesSlug } from "./blog-authors-social-profiles-slug/index";
@@ -54,14 +54,19 @@ export const variants = {
   "admin-v2-table": AdminV2Table,
   "ai-chat": AiChat,
   "ai-chat-help": AiChatHelp,
-  "ai-chat-login": AiChatLogin,
-  "ai-chat-projects-new": AiChatProjectsNew,
-  "ai-chat-projects-project-id": AiChatProjectsProjectId,
-  "ai-chat-projects-project-id-settings": AiChatProjectsProjectIdSettings,
-  "ai-chat-projects-project-id-threads-new": AiChatProjectsProjectIdThreadsNew,
-  "ai-chat-register": AiChatRegister,
-  "ai-chat-settings": AiChatSettings,
-  "ai-chat-tokens": AiChatTokens,
+  "ai-chat-rbac-subjects-authentication-select-method":
+    AiChatRbacSubjectsAuthenticationSelectMethod,
+  "ai-chat-social-profiles-create": AiChatSocialProfilesCreate,
+  "ai-chat-social-profiles-social-profiles-id":
+    AiChatSocialProfilesSocialProfilesId,
+  "ai-chat-social-profiles-social-profiles-id-settings":
+    AiChatSocialProfilesSocialProfilesIdSettings,
+  "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create":
+    AiChatSocialProfilesSocialProfilesIdChatsSocialChatsIdThreadsCreate,
+  "ai-chat-rbac-subjects-authentication-registration":
+    AiChatRbacSubjectsAuthenticationRegistration,
+  "ai-chat-rbac-subjects-settings": AiChatRbacSubjectsSettings,
+  "ai-chat-rbac-subjects-tokens": AiChatRbacSubjectsTokens,
   blog: Blog,
   "blog-articles-blog-articles-slug": BlogArticlesBlogArticlesSlug,
   "blog-authors-social-profiles-slug": BlogAuthorsSocialProfilesSlug,

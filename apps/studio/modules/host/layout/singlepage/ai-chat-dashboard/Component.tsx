@@ -1,6 +1,7 @@
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import type { ReactNode } from "react";
 import { type INavbarAiChatProps } from "../../../../website-builder/widget";
+import { aiChatServiceHrefs } from "../../../../../workspace/utils/products/ai-chat-routes";
 
 export interface IAIChatDashboardLayoutProps
   extends Pick<INavbarAiChatProps, "profileSelect" | "subjectAccount"> {
@@ -29,7 +30,13 @@ export function Component({
       <WebsiteBuilderModuleWidget
         variant="navbar-ai-chat"
         buttonsArrayId={buttonsArrayId}
-        activeHref={`/ai-chat/${page}`}
+        activeHref={
+          page === "chat"
+            ? undefined
+            : aiChatServiceHrefs[
+                page === "settings" ? "account-settings" : page
+              ]
+        }
         navigationLayout={accountAccess ? "inline" : "collapsible"}
         navigationLabel={
           accountAccess ? "Account access" : "Account navigation"

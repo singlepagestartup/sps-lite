@@ -10,11 +10,11 @@
     "links": [
       {
         "text": "Start with my files",
-        "href": "/ai-chat/register"
+        "href": "/ai-chat/rbac/subjects/authentication/registration"
       },
       {
         "text": "Sign in",
-        "href": "/ai-chat/login"
+        "href": "/ai-chat/rbac/subjects/authentication/select-method"
       }
     ]
   },
@@ -95,11 +95,11 @@
     "links": [
       {
         "text": "Start with my files",
-        "href": "/ai-chat/register"
+        "href": "/ai-chat/rbac/subjects/authentication/registration"
       },
       {
         "text": "Sign in",
-        "href": "/ai-chat/login"
+        "href": "/ai-chat/rbac/subjects/authentication/select-method"
       },
       {
         "text": "Code Framework",
@@ -141,11 +141,11 @@
     "links": [
       {
         "text": "Buy tokens",
-        "href": "/ai-chat/tokens"
+        "href": "/ai-chat/rbac/subjects/tokens"
       },
       {
         "text": "How your materials are processed and stored",
-        "href": "/ai-chat/projects/new#how-your-materials-are-processed-and-stored"
+        "href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored"
       },
       {
         "text": "Get help",
