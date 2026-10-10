@@ -1,27 +1,30 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
 
-import { type ReactNode as ReactNode } from "react";
-import { createContext as createContext } from "react";
-import { useContext as useContext } from "react";
-import { twMerge as twMerge } from "tailwind-merge";
-import Markdown from "markdown-to-jsx";
-import { type ImgHTMLAttributes as ImgHTMLAttributes } from "react";
-import { twMerge as twMergePresentation } from "tailwind-merge";
-import { type InputHTMLAttributes as InputHTMLAttributes } from "react";
-import { useId as useIdPresentation } from "react";
-import { useState as useStatePresentation } from "react";
-import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import {
+  type ReactNode,
+  createContext,
+  useContext,
+  type ImgHTMLAttributes,
+  type InputHTMLAttributes,
+  useId as useIdPresentation,
+  useState as useStatePresentation,
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  useId,
+  useState,
+  type FormEvent,
 } from "react";
+import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
+import Markdown from "markdown-to-jsx";
+import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { IAIChatServicePageContent as IAIChatServicePageContentPresentation } from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { IWebsiteSection as IWebsiteSection } from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { useId, useState, type FormEvent } from "react";
+import {
+  IAIChatServicePageContent as IAIChatServicePageContentPresentation,
+  IWebsiteSection,
+  type IAIChatServicePageContent,
+} from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import defaultCopy from "./content.json";
-import type { IAIChatServicePageContent } from "../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 function TextField({
   label,
   hint,

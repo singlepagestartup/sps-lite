@@ -1,9 +1,6 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
-import { twMerge as twMerge } from "tailwind-merge";
-import { ReactNode as ReactNode } from "react";
-import { twMerge as twMergePresentation } from "tailwind-merge";
+import { forwardRef, type SVGProps, ReactNode } from "react";
+import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { ProductCardRelated } from "../card-related/Component";

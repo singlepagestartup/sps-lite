@@ -1,5 +1,7 @@
-import type { CrmOptionRecord } from "../../../shared/demo-crm";
-import { defaultCrmOptions } from "../../../shared/demo-crm";
+import {
+  type CrmOptionRecord,
+  defaultCrmOptions,
+} from "../../../shared/demo-crm";
 
 export interface CrmOptionDefaultProps {
   variant?: string;

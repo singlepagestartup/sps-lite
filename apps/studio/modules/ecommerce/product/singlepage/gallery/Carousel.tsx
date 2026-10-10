@@ -1,20 +1,18 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
 
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import * as React from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+interface IModuleIconProps extends React.SVGProps<SVGSVGElement> {
   size?: number;
 }
 type IconName = keyof typeof IconGlyphs;
 function createIcon(name: IconName) {
-  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+  const Component = React.forwardRef<SVGSVGElement, IModuleIconProps>(
     function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
       return (
         <span className="contents">

@@ -1,20 +1,24 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
 
-import { type InputHTMLAttributes as InputHTMLAttributes } from "react";
-import { useId as useIdPresentation } from "react";
-import { useState as useStatePresentation } from "react";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import {
+  type InputHTMLAttributes,
+  useId as useIdPresentation,
+  useState as useStatePresentation,
+  forwardRef,
+  type SVGProps,
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+  useId,
+  useState,
+  type FormEvent,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../../website-builder/button/index";
 import {
-  forwardRef as forwardRefControl,
-  type ButtonHTMLAttributes as ButtonControlProps,
-} from "react";
-import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import IconPresentationGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { useId, useState, type FormEvent } from "react";
+  type default as IconGlyphs,
+  default as IconPresentationGlyphs,
+} from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }

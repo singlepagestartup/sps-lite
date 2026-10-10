@@ -4,8 +4,9 @@ import { Component as WebsiteBuilderModuleButton } from "../../../../../../../we
 import {
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  useEffect,
+  useState,
 } from "react";
-import { useEffect, useState } from "react";
 export interface IOAuthAuthorizationProps {
   variant?: string;
   initialState?: "idle" | "authorize" | "complete" | "error";

@@ -8,11 +8,10 @@ import {
   type ReactNode,
 } from "react";
 import type { IProjectMessage } from "../../../../profile/singlepage/scope/ai-chat/project/state";
-import type { IAIChatThread } from "./state";
 import { useSource } from "../../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
 import { useFiles } from "../../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
 import { knowledgeAgent } from "../../../../profile/singlepage/agent/overview/ai-chat/index";
-import { appendThreadExchange } from "./state";
+import { type IAIChatThread, appendThreadExchange } from "./state";
 
 interface IThreadContext {
   thread: IAIChatThread;

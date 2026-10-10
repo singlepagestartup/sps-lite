@@ -1,6 +1,8 @@
 import { Component as CrmModuleWidget } from "../../../../crm/widget/index";
-import type { CrmFormRecord } from "../../../../crm/shared/demo-crm";
-import { defaultCrmForm } from "../../../../crm/shared/demo-crm";
+import {
+  type CrmFormRecord,
+  defaultCrmForm,
+} from "../../../../crm/shared/demo-crm";
 
 export const defaultSubjectMeCrmFormDefaultProps = {
   subject: {

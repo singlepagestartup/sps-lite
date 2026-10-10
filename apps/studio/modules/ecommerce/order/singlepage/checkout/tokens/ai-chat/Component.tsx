@@ -1,26 +1,29 @@
 "use client";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
 
-import { type ReactNode as ReactNode } from "react";
-import { useContext as useContext } from "react";
-import { createContext as createContext } from "react";
+import {
+  type ReactNode,
+  useContext,
+  createContext,
+  forwardRef as forwardRefControl,
+  type ButtonHTMLAttributes as ButtonControlProps,
+  useId,
+  useState,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
-import {
-  forwardRef as forwardRefControl,
-  type ButtonHTMLAttributes as ButtonControlProps,
-} from "react";
 import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { IWebsiteSection as IWebsiteSection } from "../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { IAIChatServicePageContent as IAIChatServicePageContentPresentation } from "../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { useId, useState } from "react";
+import {
+  IWebsiteSection,
+  IAIChatServicePageContent as IAIChatServicePageContentPresentation,
+  type IAIChatServicePageContent,
+} from "../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import {
   useAIChatAccount,
   useAIChatProjectHref,
 } from "../../../../../../rbac/subject/singlepage/account/Account";
 import defaultCopy from "./content.json";
-import type { IAIChatServicePageContent } from "../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 function PageIntro({ section }: { section: IWebsiteSection }) {
   return (
     <div className="mb-8 max-w-2xl">

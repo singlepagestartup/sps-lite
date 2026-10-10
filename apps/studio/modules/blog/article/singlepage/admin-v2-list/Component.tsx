@@ -1,32 +1,32 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-import { forwardRef as forwardRef } from "react";
-import * as SelectPrimitive from "@radix-ui/react-select";
-import { useState as useStatePresentation } from "react";
-import { twMerge as twMerge } from "tailwind-merge";
-import { type ReactNode as ReactNode } from "react";
-import { useId as useId } from "react";
-import { useState as useStatePresentation2 } from "react";
-import { useMemo as useMemoPresentation } from "react";
-import { useCallback as useCallbackPresentation } from "react";
-import { twMerge as twMergePresentation } from "tailwind-merge";
-import { type InputHTMLAttributes as InputHTMLAttributes } from "react";
-import { memo as memo } from "react";
-import { useState as useStatePresentation3 } from "react";
-import { useRef as useRef } from "react";
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import * as DialogPresentation from "@radix-ui/react-dialog";
-import { useContext as useContext } from "react";
-import { createContext as createContext } from "react";
-import { useRef as useRefPresentation } from "react";
-import { type FormEventHandler as FormEventHandler } from "react";
-import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
+  forwardRef,
+  useState as useStatePresentation,
+  type ReactNode,
+  useId,
+  useState as useStatePresentation2,
+  useMemo as useMemoPresentation,
+  useCallback as useCallbackPresentation,
+  type InputHTMLAttributes,
+  memo,
+  useState as useStatePresentation3,
+  useRef,
+  useContext,
+  createContext,
+  useRef as useRefPresentation,
+  type FormEventHandler,
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
+  useCallback,
+  useMemo,
+  useState,
 } from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
+import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import * as DialogPresentation from "@radix-ui/react-dialog";
+import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { useCallback, useMemo, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
 interface IRecordFormProps {
   children: ReactNode;
   footer: ReactNode;
@@ -768,11 +768,11 @@ export function BlogArticleAdminV2List({
           <RecordForm
             footer={
               <>
-                <Dialog.Close asChild>
+                <DialogPresentation.Close asChild>
                   <Button variant="secondary" type="button">
                     Cancel
                   </Button>
-                </Dialog.Close>
+                </DialogPresentation.Close>
                 <Button type="submit">
                   <Icon name="floppy-disk" />
                   {draft.id ? "Save changes" : "Create article"}

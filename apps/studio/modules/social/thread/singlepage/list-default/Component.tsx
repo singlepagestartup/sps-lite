@@ -1,6 +1,13 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-import { forwardRef as forwardRef } from "react";
-import { type SVGProps as SVGProps } from "react";
+import {
+  forwardRef,
+  type SVGProps,
+  memo,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import { Component as SocialChatSettings } from "../chat-settings/index";
@@ -8,7 +15,6 @@ import {
   createPreviewAttachmentStore,
   type SocialPreviewAttachment,
 } from "../../../widget/singlepage/chat-overview-default/utils";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }

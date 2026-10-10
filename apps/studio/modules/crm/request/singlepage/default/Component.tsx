@@ -1,5 +1,7 @@
-import type { CrmRequestRecord } from "../../../shared/demo-crm";
-import { defaultCrmRequest } from "../../../shared/demo-crm";
+import {
+  type CrmRequestRecord,
+  defaultCrmRequest,
+} from "../../../shared/demo-crm";
 
 export interface CrmRequestDefaultProps {
   variant?: string;
