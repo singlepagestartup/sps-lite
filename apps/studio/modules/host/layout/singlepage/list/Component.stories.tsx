@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as HostModuleLayout } from "../../index";
 const meta = {
-  title: "Modules/Host/Models/Layout/Singlepage/list",
+  id: "modules-host-models-layout-singlepage-list",
+  title: "Modules/Host/Layout/Singlepage/list",
   component: HostModuleLayout,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

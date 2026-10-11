@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as AnalyticModuleMetric } from "../../index";
 
 const meta = {
-  title: "Modules/Analytic/Models/Metric/Singlepage/admin-v2-table",
+  id: "modules-analytic-models-metric-singlepage-admin-v2-table",
+  title: "Modules/Analytic/Metric/Singlepage/admin-v2-table",
   component: AnalyticModuleMetric,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

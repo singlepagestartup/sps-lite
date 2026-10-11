@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta: Meta<typeof IdentityFindDefault> = {
-  title: "Modules/RBAC/Models/Identity/Singlepage/identity-find-default",
+  id: "modules-rbac-models-identity-singlepage-identity-find-default",
+  title: "Modules/RBAC/Identity/Singlepage/identity-find-default",
   component: IdentityFindDefault,
   args: defaultIdentityFindDefaultProps,
 };

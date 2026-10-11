@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-rbac-models-subject-singlepage-me-social-module-profile-find-information",
   title:
-    "Modules/RBAC/Models/Subject/Singlepage/me-social-module-profile-find-information",
+    "Modules/RBAC/Subject/Singlepage/me-social-module-profile-find-information",
   component: SubjectMeSocialModuleProfileFindInformation,
   args: defaultSubjectMeSocialModuleProfileFindInformationProps,
 } satisfies Meta<typeof SubjectMeSocialModuleProfileFindInformation>;

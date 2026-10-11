@@ -4,7 +4,7 @@ import { WebsiteBuilderAdminV2Navigation } from "./Component";
 
 const meta = {
   id: "modules-website-builder-models-widget-singlepage-admin-v2-navigation",
-  title: "Modules/Website Builder/Models/Widget/Singlepage/admin-v2-navigation",
+  title: "Modules/Website-Builder/Widget/Singlepage/admin-v2-navigation",
   component: WebsiteBuilderAdminV2Navigation,
   parameters: {
     layout: "centered",

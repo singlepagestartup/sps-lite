@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as SocialModuleWidget } from "../../index";
 const meta = {
-  title: "Modules/Social/Models/Widget/Singlepage/list",
+  id: "modules-social-models-widget-singlepage-list",
+  title: "Modules/Social/Widget/Singlepage/list",
   component: SocialModuleWidget,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

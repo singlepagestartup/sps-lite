@@ -4,7 +4,8 @@ import { Component as CrmModuleOption } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/CRM/Models/Option/Singlepage/admin-v2-card",
+  id: "modules-crm-models-option-singlepage-admin-v2-card",
+  title: "Modules/CRM/Option/Singlepage/admin-v2-card",
   component: CrmModuleOption,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

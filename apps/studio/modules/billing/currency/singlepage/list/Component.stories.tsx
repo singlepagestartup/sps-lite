@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as BillingModuleCurrency } from "../../index";
 const meta = {
-  title: "Modules/Billing/Models/Currency/Singlepage/list",
+  id: "modules-billing-models-currency-singlepage-list",
+  title: "Modules/Billing/Currency/Singlepage/list",
   component: BillingModuleCurrency,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

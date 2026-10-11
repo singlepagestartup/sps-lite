@@ -4,7 +4,7 @@ import { BlogArticleAdminV2List } from "./Component";
 
 const meta = {
   id: "modules-blog-models-article-singlepage-admin-v2-list",
-  title: "Modules/Blog/Models/Article/Singlepage/admin-v2-list",
+  title: "Modules/Blog/Article/Singlepage/admin-v2-list",
   component: BlogArticleAdminV2List,
   parameters: {
     layout: "centered",

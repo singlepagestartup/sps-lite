@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Feature/Singlepage/badge-default",
+  id: "modules-website-builder-models-feature-singlepage-badge-default",
+  title: "Modules/Website-Builder/Feature/Singlepage/badge-default",
   component: FeatureBadgeDefault,
   parameters: { layout: "centered" },
   args: defaultFeatureBadgeDefaultProps,

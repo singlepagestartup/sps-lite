@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-ecommerce-models-order-singlepage-order-checkout-confirmation-default",
   title:
-    "Modules/Ecommerce/Models/Order/Singlepage/order-checkout-confirmation-default",
+    "Modules/Ecommerce/Order/Singlepage/order-checkout-confirmation-default",
   component: OrderCheckoutConfirmationDefault,
   parameters: {
     layout: "padded",

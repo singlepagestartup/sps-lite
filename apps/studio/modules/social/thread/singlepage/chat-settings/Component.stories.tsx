@@ -22,7 +22,8 @@ function Preview(args: SocialChatSettingsProps) {
   );
 }
 const meta = {
-  title: "Modules/Social/Models/Thread/Singlepage/chat-settings",
+  id: "modules-social-models-thread-singlepage-chat-settings",
+  title: "Modules/Social/Thread/Singlepage/chat-settings",
   component: Component,
   args: {
     open: true,

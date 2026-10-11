@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as WebsiteBuilderModuleSlider } from "../../index";
 
 const meta = {
-  title: "Modules/Website-Builder/Models/Slider/Singlepage/admin-v2-table",
+  id: "modules-website-builder-models-slider-singlepage-admin-v2-table",
+  title: "Modules/Website-Builder/Slider/Singlepage/admin-v2-table",
   component: WebsiteBuilderModuleSlider,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

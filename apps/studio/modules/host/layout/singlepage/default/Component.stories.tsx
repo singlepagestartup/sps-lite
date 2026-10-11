@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { HostLayoutDefault } from "./Component";
 const meta = {
-  title: "Modules/Host/Models/Layout/Singlepage/default",
+  id: "modules-host-models-layout-singlepage-default",
+  title: "Modules/Host/Layout/Singlepage/default",
   component: HostLayoutDefault,
   parameters: { layout: "padded" },
 } satisfies Meta<typeof HostLayoutDefault>;

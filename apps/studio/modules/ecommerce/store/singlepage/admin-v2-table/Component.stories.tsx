@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as EcommerceModuleStore } from "../../index";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Store/Singlepage/admin-v2-table",
+  id: "modules-ecommerce-models-store-singlepage-admin-v2-table",
+  title: "Modules/Ecommerce/Store/Singlepage/admin-v2-table",
   component: EcommerceModuleStore,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

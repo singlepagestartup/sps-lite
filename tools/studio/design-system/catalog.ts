@@ -569,7 +569,8 @@ export function scaffoldEntity(root: string, entity: ModuleEntityRecord) {
         : entity.module === "rbac"
           ? "RBAC"
           : title(entity.module);
-    const storyTitle = `Modules/${moduleTitle}/Models/${title(entity.entity)}/Singlepage/${variant}`;
+    const storyTitle = `Modules/${moduleTitle}/${title(entity.entity)}/Singlepage/${variant}`;
+    const storyId = `modules-${entity.module}-models-${entity.entity}-singlepage-${variant}`;
     const controls =
       variant === "list"
         ? '  argTypes: { count: { control: { type: "number", min: 0, max: 50 } }, empty: { control: "boolean" } },\n'
@@ -578,7 +579,7 @@ export function scaffoldEntity(root: string, entity: ModuleEntityRecord) {
           : '  argTypes: { id: { control: "text" } },\n';
     write(
       path.join(folder, "Component.stories.tsx"),
-      `import type { Meta, StoryObj } from "@storybook/react-vite";\nimport { Component as ${alias} } from "../../index";\n${variant === "admin-v2-card" ? `import fixture from "${dataImport}";\n` : ""}const meta = {\n  title: ${JSON.stringify(storyTitle)},\n  component: ${alias},\n  args: { variant: ${JSON.stringify(variant)}${variant === "admin-v2-card" ? ", id: fixture.records[0].id" : variant === "list" ? ", count: 3, empty: false" : ", empty: false"} },\n${controls}} satisfies Meta<typeof ${alias}>;\nexport default meta;\ntype Story = StoryObj<typeof meta>;\nexport const Default: Story = {};\n${variant !== "admin-v2-card" ? "export const Empty: Story = { args: { empty: true } };\n" : ""}${variant === "list" ? "export const Many: Story = { args: { count: 20 } };\n" : ""}`,
+      `import type { Meta, StoryObj } from "@storybook/react-vite";\nimport { Component as ${alias} } from "../../index";\n${variant === "admin-v2-card" ? `import fixture from "${dataImport}";\n` : ""}const meta = {\n  id: ${JSON.stringify(storyId)},\n  title: ${JSON.stringify(storyTitle)},\n  component: ${alias},\n  args: { variant: ${JSON.stringify(variant)}${variant === "admin-v2-card" ? ", id: fixture.records[0].id" : variant === "list" ? ", count: 3, empty: false" : ", empty: false"} },\n${controls}} satisfies Meta<typeof ${alias}>;\nexport default meta;\ntype Story = StoryObj<typeof meta>;\nexport const Default: Story = {};\n${variant !== "admin-v2-card" ? "export const Empty: Story = { args: { empty: true } };\n" : ""}${variant === "list" ? "export const Many: Story = { args: { count: 20 } };\n" : ""}`,
       true,
     );
     metadata(root, folder, entity, variant);

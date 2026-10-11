@@ -7,7 +7,7 @@ import type { Preview } from "@storybook/react";
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      if (!context.title.startsWith("Modules/")) return createElement(Story);
+      if (!context.id.startsWith("modules-")) return createElement(Story);
       const layer = context.id.includes("-singlepage-")
         ? "singlepage"
         : "startup";

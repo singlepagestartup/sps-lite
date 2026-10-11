@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { HostWidgetAdminV2SelectInput } from "./Component";
 const meta = {
-  title: "Modules/Host/Models/Widget/Singlepage/admin-v2-select-input",
+  id: "modules-host-models-widget-singlepage-admin-v2-select-input",
+  title: "Modules/Host/Widget/Singlepage/admin-v2-select-input",
   component: HostWidgetAdminV2SelectInput,
   parameters: { layout: "padded" },
 } satisfies Meta<typeof HostWidgetAdminV2SelectInput>;

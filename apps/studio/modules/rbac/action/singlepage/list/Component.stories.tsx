@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as RbacModuleAction } from "../../index";
 const meta = {
-  title: "Modules/RBAC/Models/Action/Singlepage/list",
+  id: "modules-rbac-models-action-singlepage-list",
+  title: "Modules/RBAC/Action/Singlepage/list",
   component: RbacModuleAction,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

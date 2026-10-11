@@ -1,7 +1,7 @@
 {
   "$schema": "../../../../../block.schema.json",
   "id": "rbac.subject.me-delete",
-  "title": "RBAC Subject / me-delete",
+  "title": "me-delete",
   "description": "Current-subject account delete action card.",
   "layer": "singlepage",
   "state": "draft",

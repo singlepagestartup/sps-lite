@@ -197,7 +197,7 @@ export const defaultOrderCheckoutConfirmationDefaultProps: OrderCheckoutConfirma
     ],
     continueShoppingLabel: "Continue shopping",
     continueShoppingHref:
-      "/?path=/story/modules-host-models-page-singlepage-ecommerce-products--default",
+      "/?path=/story/modules-host-models-page-singlepage-ecommerce-module-product-find--default",
     homeLabel: "Back to home",
     homeHref: "/?path=/story/modules-host-models-page-singlepage-root--default",
   };

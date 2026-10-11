@@ -236,9 +236,17 @@ test("scaffolding preserves authored data and UI and skips relations and Telegra
   expect(readFileSync(path.join(table, "Component.tsx"), "utf8")).toContain(
     "Owned records",
   );
-  expect(
-    readFileSync(path.join(table, "../list/Component.stories.tsx"), "utf8"),
-  ).toContain("count: { control:");
+  const listStory = readFileSync(
+    path.join(table, "../list/Component.stories.tsx"),
+    "utf8",
+  );
+  expect(listStory).toContain("count: { control:");
+  expect(listStory).toContain(
+    'title: "Modules/Analytic/Metric/Singlepage/list"',
+  );
+  expect(listStory).toContain(
+    'id: "modules-analytic-models-metric-singlepage-list"',
+  );
   const model = path.dirname(path.dirname(table));
   const own = path.join(model, "singlepage/owned-list");
   mkdirSync(own, { recursive: true });

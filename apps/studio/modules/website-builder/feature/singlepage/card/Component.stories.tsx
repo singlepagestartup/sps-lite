@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FeatureCard, defaultFeatureCardProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Feature/Singlepage/card",
+  id: "modules-website-builder-models-feature-singlepage-card",
+  title: "Modules/Website-Builder/Feature/Singlepage/card",
   component: FeatureCard,
   parameters: { layout: "centered" },
   args: defaultFeatureCardProps,

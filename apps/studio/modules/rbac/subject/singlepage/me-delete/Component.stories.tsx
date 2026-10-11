@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { SubjectMeDelete, defaultSubjectMeDeleteProps } from "./Component";
 
 const meta = {
-  title: "Modules/RBAC/Models/Subject/Singlepage/me-delete",
+  id: "modules-rbac-models-subject-singlepage-me-delete",
+  title: "Modules/RBAC/Subject/Singlepage/me-delete",
   component: SubjectMeDelete,
   args: defaultSubjectMeDeleteProps,
 } satisfies Meta<typeof SubjectMeDelete>;

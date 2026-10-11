@@ -6,7 +6,6 @@ import {
   useRef as useRefPresentation,
   forwardRef,
   type SVGProps,
-  forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
   memo,
   useRef,
@@ -15,7 +14,6 @@ import {
 } from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { twMerge as twMerge } from "tailwind-merge";
-import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import {
   defaultSettingsIdentities,
@@ -129,6 +127,7 @@ export interface IIdentityFlowProps {
 }
 export interface IdentityCardDefaultProps {
   variant?: string;
+  actions?: ReactNode;
   renderFlow?: (props: IIdentityFlowProps) => ReactNode;
   identity: RbacIdentity;
   lastOperationLabel?: string;
@@ -145,21 +144,30 @@ const buttonBase =
 const kit = {
   muted: "text-[var(--color-sps-muted)]",
 };
-const Button = forwardRefControl<
-  HTMLButtonElement,
-  ButtonControlProps<HTMLButtonElement> & {
-    variant?: "primary" | "secondary" | "plain" | "danger";
-  }
->(function Button({ variant = "primary", ...props }, ref) {
+function Button({
+  variant = "primary",
+  type = "button",
+  className,
+  ...props
+}: ButtonControlProps<HTMLButtonElement> & {
+  variant?: "primary" | "secondary" | "plain" | "danger";
+  ref?: React.Ref<HTMLButtonElement>;
+}) {
+  const appearances = {
+    primary: "bg-sps-green text-sps-graphite",
+    secondary: "border border-sps-line bg-sps-white",
+    plain: "text-sps-muted",
+    danger:
+      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger",
+  };
   return (
-    <WebsiteBuilderModuleButton
+    <button
       {...props}
-      variant="control"
-      appearance={variant}
-      ref={ref}
+      type={type}
+      className={twMerge(buttonBase, focus, appearances[variant], className)}
     />
   );
-});
+}
 export const defaultIdentityCardDefaultProps: IdentityCardDefaultProps = {
   identity: defaultSettingsIdentities[0],
 };
@@ -172,6 +180,7 @@ export const IdentityCardDefault = memo(function IdentityCardDefault(
     onAction,
     onUpdate,
     renderFlow,
+    actions,
   } = { ...defaultIdentityCardDefaultProps, ...props };
   const [localIdentity, setLocalIdentity] = useState<RbacIdentity>();
   const identity =
@@ -226,45 +235,49 @@ export const IdentityCardDefault = memo(function IdentityCardDefault(
       <p className="mt-3 text-sm leading-6 text-sps-muted">
         {meta.description}
       </p>
-      <div className="mt-4 flex max-w-full flex-wrap gap-2">
-        {getIdentityActions(identity).map((action) => (
-          <Button
-            ref={(node) => {
-              buttons.current[action.key] = node;
-            }}
-            variant={action.tone === "danger" ? "plain" : "secondary"}
-            key={action.key}
-            onClick={() => {
-              setLocalResult("");
-              if (action.key === "delete") {
-                setPendingAction(action);
-                return;
-              }
-              if (
-                action.key === "change-email" ||
-                action.key === "change-password" ||
-                action.key === "reconnect"
-              ) {
-                if (renderFlow) setFlow(action.key);
-                else onAction?.(identity, action);
-              }
-            }}
-            type="button"
-            aria-expanded={
-              action.key === "delete" ? undefined : flow === action.key
-            }
-          >
-            {action.label}
-          </Button>
-        ))}
-      </div>
-      {flow &&
-        renderFlow?.({
-          identity,
-          action: flow,
-          onClose: closeFlow,
-          onUpdate: update,
-        })}
+      {actions ?? (
+        <>
+          <div className="mt-4 flex max-w-full flex-wrap gap-2">
+            {getIdentityActions(identity).map((action) => (
+              <Button
+                ref={(node) => {
+                  buttons.current[action.key] = node;
+                }}
+                variant={action.tone === "danger" ? "plain" : "secondary"}
+                key={action.key}
+                onClick={() => {
+                  setLocalResult("");
+                  if (action.key === "delete") {
+                    setPendingAction(action);
+                    return;
+                  }
+                  if (
+                    action.key === "change-email" ||
+                    action.key === "change-password" ||
+                    action.key === "reconnect"
+                  ) {
+                    if (renderFlow) setFlow(action.key);
+                    else onAction?.(identity, action);
+                  }
+                }}
+                type="button"
+                aria-expanded={
+                  action.key === "delete" ? undefined : flow === action.key
+                }
+              >
+                {action.label}
+              </Button>
+            ))}
+          </div>
+          {flow &&
+            renderFlow?.({
+              identity,
+              action: flow,
+              onClose: closeFlow,
+              onUpdate: update,
+            })}
+        </>
+      )}
       {(lastOperationLabel || localResult) && (
         <p role="status" className="mt-4 text-sm">
           {lastOperationLabel ?? localResult}
@@ -286,22 +299,24 @@ export const IdentityCardDefault = memo(function IdentityCardDefault(
           </div>
         </dl>
       </details>
-      <ConfirmationDialog
-        open={pendingAction !== null}
-        onOpenChange={(open) => {
-          if (!open) setPendingAction(null);
-        }}
-        title={`Remove ${meta.title}?`}
-        description={`Remove ${getIdentityPrimaryLogin(identity)} from the sign-in methods in this preview? No external account is deleted.`}
-        confirmLabel="Remove identity"
-        onConfirm={() => {
-          if (!pendingAction) return;
-          if (onAction) onAction(identity, pendingAction);
-          else setLocalResult("Identity removal requested in this preview.");
-          setPendingAction(null);
-        }}
-        portalContainer={portalContainer}
-      />
+      {actions === undefined && (
+        <ConfirmationDialog
+          open={pendingAction !== null}
+          onOpenChange={(open) => {
+            if (!open) setPendingAction(null);
+          }}
+          title={`Remove ${meta.title}?`}
+          description={`Remove ${getIdentityPrimaryLogin(identity)} from the sign-in methods in this preview? No external account is deleted.`}
+          confirmLabel="Remove identity"
+          onConfirm={() => {
+            if (!pendingAction) return;
+            if (onAction) onAction(identity, pendingAction);
+            else setLocalResult("Identity removal requested in this preview.");
+            setPendingAction(null);
+          }}
+          portalContainer={portalContainer}
+        />
+      )}
     </article>
   );
 });

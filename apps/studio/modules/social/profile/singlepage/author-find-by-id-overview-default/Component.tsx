@@ -273,9 +273,9 @@ const MessageSquare = createIcon("chat");
 const Clock = createIcon("clock");
 const ArrowLeft = createIcon("arrow-left");
 const blogIndexStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-blog--default";
+  "/?path=/story/modules-host-models-page-singlepage-blog-module-article-find--default";
 const authorOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-blog-authors-social-profiles-slug--default";
+  "/?path=/story/modules-host-models-page-singlepage-social-module-profile-slug-author--default";
 const jamesAvatar =
   "https://images.unsplash.com/photo-1629507208649-70919ca33793?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1hbiUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3MTY2ODA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
 const marcusAvatar =

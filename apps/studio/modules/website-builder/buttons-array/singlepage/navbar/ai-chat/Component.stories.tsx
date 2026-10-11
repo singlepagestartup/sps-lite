@@ -11,8 +11,7 @@ function Example() {
 }
 const meta = {
   id: "modules-website-builder-models-buttons-array-singlepage-navbar-ai-chat",
-  title:
-    "Modules/Website-Builder/Models/ButtonsArray/Singlepage/navbar/ai-chat",
+  title: "Modules/Website-Builder/ButtonsArray/Singlepage/navbar/ai-chat",
   component: Example,
   parameters: { layout: "centered" },
 } satisfies Meta<typeof Example>;

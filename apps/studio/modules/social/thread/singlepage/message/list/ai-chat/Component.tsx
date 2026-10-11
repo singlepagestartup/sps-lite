@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as SocialModuleMessage } from "../../../../../message/index";
-import { useThread } from "../../../overview/ai-chat/Thread";
+import { useThread } from "../../../id/ai-chat/Thread";
 
 export interface IThreadMessageListProps {
   variant?: string;

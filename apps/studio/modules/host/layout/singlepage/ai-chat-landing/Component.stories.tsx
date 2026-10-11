@@ -6,7 +6,7 @@ function Example() {
   return (
     <HostModuleLayout
       variant="ai-chat-landing"
-      subjectAccount={<RbacModuleSubject variant="account" showTokens />}
+      subjectAccount={<RbacModuleSubject variant="me-account" showTokens />}
     >
       <main className="p-5">AI Chat page content slot</main>
     </HostModuleLayout>
@@ -14,7 +14,7 @@ function Example() {
 }
 const meta = {
   id: "modules-host-models-layout-singlepage-ai-chat-landing",
-  title: "Modules/Host/Models/Layout/Singlepage/ai-chat-landing",
+  title: "Modules/Host/Layout/Singlepage/ai-chat-landing",
   component: Example,
   parameters: { layout: "fullscreen" },
 } satisfies Meta<typeof Example>;

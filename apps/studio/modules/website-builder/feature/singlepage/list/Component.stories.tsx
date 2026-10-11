@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as WebsiteBuilderModuleFeature } from "../../index";
 const meta = {
-  title: "Modules/Website-Builder/Models/Feature/Singlepage/list",
+  id: "modules-website-builder-models-feature-singlepage-list",
+  title: "Modules/Website-Builder/Feature/Singlepage/list",
   component: WebsiteBuilderModuleFeature,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

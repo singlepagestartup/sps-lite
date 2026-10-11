@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleDetail, defaultArticleDetailProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/detail",
+  id: "modules-blog-models-article-singlepage-detail",
+  title: "Modules/Blog/Article/Singlepage/detail",
   component: ArticleDetail,
   parameters: { layout: "fullscreen" },
   args: defaultArticleDetailProps,

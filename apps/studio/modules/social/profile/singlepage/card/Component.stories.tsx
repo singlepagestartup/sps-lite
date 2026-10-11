@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProfileCard, defaultProfileCardProps } from "./Component";
 
 const meta = {
-  title: "Modules/Social/Models/Profile/Singlepage/card",
+  id: "modules-social-models-profile-singlepage-card",
+  title: "Modules/Social/Profile/Singlepage/card",
   component: ProfileCard,
   parameters: {
     layout: "centered",

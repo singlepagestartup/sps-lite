@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Component } from "./Component";
 const meta = {
-  title: "Modules/Website-Builder/Models/Button/Singlepage/navigation",
+  id: "modules-website-builder-models-button-singlepage-navigation",
+  title: "Modules/Website-Builder/Button/Singlepage/navigation",
   component: Component,
   parameters: { layout: "fullscreen" },
   args: { label: "Home", href: "/", selected: false, disabled: false },

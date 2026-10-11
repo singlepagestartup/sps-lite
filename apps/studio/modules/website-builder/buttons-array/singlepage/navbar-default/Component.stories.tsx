@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Component } from "./Component";
 const meta = {
-  title:
-    "Modules/Website-Builder/Models/Buttons-Array/Singlepage/navbar-default",
+  id: "modules-website-builder-models-buttons-array-singlepage-navbar-default",
+  title: "Modules/Website-Builder/Buttons-Array/Singlepage/navbar-default",
   component: Component,
   parameters: { layout: "fullscreen" },
   args: { activeHref: "/", orientation: "horizontal" },

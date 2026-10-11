@@ -7,8 +7,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Social/Models/Profile/Singlepage/author-find-by-id-overview-default",
+  id: "modules-social-models-profile-singlepage-author-find-by-id-overview-default",
+  title: "Modules/Social/Profile/Singlepage/author-find-by-id-overview-default",
   component: ProfileAuthorFindByIdOverviewDefault,
   parameters: { layout: "fullscreen" },
   args: defaultProfileAuthorFindByIdOverviewDefaultProps,

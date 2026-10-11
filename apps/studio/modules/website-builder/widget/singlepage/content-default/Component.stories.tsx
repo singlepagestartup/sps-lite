@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ContentDefault, defaultContentProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/content-default",
+  id: "modules-website-builder-models-widget-singlepage-content-default",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-default",
   component: ContentDefault,
   parameters: {
     layout: "fullscreen",

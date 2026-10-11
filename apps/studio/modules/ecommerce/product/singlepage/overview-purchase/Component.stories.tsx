@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/overview-purchase",
+  id: "modules-ecommerce-models-product-singlepage-overview-purchase",
+  title: "Modules/Ecommerce/Product/Singlepage/overview-purchase",
   component: ProductOverviewPurchase,
   parameters: {
     layout: "fullscreen",

@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/card-related",
+  id: "modules-ecommerce-models-product-singlepage-card-related",
+  title: "Modules/Ecommerce/Product/Singlepage/card-related",
   component: ProductCardRelated,
   parameters: {
     layout: "padded",

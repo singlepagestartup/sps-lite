@@ -7,15 +7,17 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-feature-find-row",
+  id: "modules-website-builder-models-widget-singlepage-content-feature-find-row",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-feature-find-row",
   component: ContentFeatureFindRow,
   parameters: {
     layout: "fullscreen",
   },
   args: {
     ...defaultContentFeatureFindRowProps,
-    contactForm: <RbacModuleSubject variant="me-crm-form-deafult" embedded />,
+    contactForm: (
+      <RbacModuleSubject variant="me-crm-module-form-default" embedded />
+    ),
   },
 } satisfies Meta<typeof ContentFeatureFindRow>;
 

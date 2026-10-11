@@ -317,7 +317,7 @@ const IMG = {
     "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
 };
 const productOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-ecommerce-products-ecommerce-products-slug--default";
+  "/?path=/story/modules-host-models-page-singlepage-ecommerce-module-product-slug--default";
 export const defaultProductFindCardProps = {
   categories: [
     { slug: "all", label: "All services" },

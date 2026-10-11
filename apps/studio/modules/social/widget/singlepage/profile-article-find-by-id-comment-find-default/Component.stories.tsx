@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-social-models-widget-singlepage-profile-article-find-by-id-comment-find-default",
   title:
-    "Modules/Social/Models/Widget/Singlepage/profile-article-find-by-id-comment-find-default",
+    "Modules/Social/Widget/Singlepage/profile-article-find-by-id-comment-find-default",
   component: ProfileArticleFindByIdCommentFindDefault,
   parameters: {
     layout: "padded",

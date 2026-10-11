@@ -4,7 +4,8 @@ import { Component as BroadcastModuleChannel } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Broadcast/Models/Channel/Singlepage/admin-v2-card",
+  id: "modules-broadcast-models-channel-singlepage-admin-v2-card",
+  title: "Modules/Broadcast/Channel/Singlepage/admin-v2-card",
   component: BroadcastModuleChannel,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Feature/Singlepage/testimotional",
+  id: "modules-website-builder-models-feature-singlepage-testimotional",
+  title: "Modules/Website-Builder/Feature/Singlepage/testimotional",
   component: FeatureTestimotional,
   parameters: {
     layout: "centered",

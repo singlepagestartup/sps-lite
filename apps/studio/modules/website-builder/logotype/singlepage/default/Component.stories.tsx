@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Component } from "./Component";
 const meta = {
-  title: "Modules/Website-Builder/Models/Logotype/Singlepage/default",
+  id: "modules-website-builder-models-logotype-singlepage-default",
+  title: "Modules/Website-Builder/Logotype/Singlepage/default",
   component: Component,
   parameters: { layout: "fullscreen" },
   args: { compact: false },

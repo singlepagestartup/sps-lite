@@ -4,7 +4,8 @@ import { Component as NotificationModuleTopic } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Notification/Models/Topic/Singlepage/admin-v2-card",
+  id: "modules-notification-models-topic-singlepage-admin-v2-card",
+  title: "Modules/Notification/Topic/Singlepage/admin-v2-card",
   component: NotificationModuleTopic,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

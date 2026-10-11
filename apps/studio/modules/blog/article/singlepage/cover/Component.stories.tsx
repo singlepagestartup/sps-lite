@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleCover, defaultArticleCoverProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/cover",
+  id: "modules-blog-models-article-singlepage-cover",
+  title: "Modules/Blog/Article/Singlepage/cover",
   component: ArticleCover,
   parameters: { layout: "fullscreen" },
   args: defaultArticleCoverProps,

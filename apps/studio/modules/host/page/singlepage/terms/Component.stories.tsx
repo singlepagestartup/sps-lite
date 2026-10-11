@@ -4,7 +4,7 @@ import { TermsPage } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-terms",
-  title: "Modules/Host/Models/Page/Singlepage",
+  title: "Modules/Host/Page/Singlepage/terms",
   component: TermsPage,
   parameters: {
     layout: "fullscreen",
@@ -16,5 +16,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "/terms",
+  name: "Default",
 };

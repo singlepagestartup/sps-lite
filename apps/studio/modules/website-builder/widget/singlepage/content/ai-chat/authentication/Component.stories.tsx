@@ -3,8 +3,9 @@ import { Component } from "./Component";
 import registrationContent from "./registration.json";
 
 const meta = {
+  id: "modules-website-builder-models-widget-singlepage-content-ai-chat-authentication",
   title:
-    "Modules/Website-Builder/Models/Widget/Singlepage/content/ai-chat/authentication",
+    "Modules/Website-Builder/Widget/Singlepage/content/ai-chat/authentication",
   component: Component,
   parameters: { layout: "fullscreen" },
   args: {

@@ -2,8 +2,7 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
 
 import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as KnowledgeModuleSource } from "../../../../../../knowledge/source/index";
-import { useId, useState } from "react";
+import { Component as ProfileSourceSidebarList } from "../../../knowledge-module/source/list/sidebar/ai-chat";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import {
   aiChatProfileHref,
@@ -30,14 +29,12 @@ export function Component({
   chatId,
   selected,
 }: IProfileSidebarProps) {
-  const id = useId();
   const { projects } = useProfiles();
   const name =
     projects.find((profile) => profile.id === profileId)?.name ?? "Project";
   const href = aiChatProfileHref(profileId);
   const settingsSelected = selected === "settings";
   const creatingThread = selected === "thread-create";
-  const [open, setOpen] = useState(true);
   return (
     <div data-module="social" data-model="profile" data-variant={variant}>
       <h1 className="mb-3 break-words pr-10 text-lg font-semibold @[760px]/workspace:pr-0">
@@ -53,31 +50,10 @@ export function Component({
           <Icon name="gear-six" className="size-4" />
           Settings
         </a>
-        <div className="rounded-xl bg-black/20 p-1.5">
-          <button
-            type="button"
-            aria-label={open ? "Hide document list" : "Show document list"}
-            aria-expanded={open}
-            aria-controls={`${id}-document-list`}
-            onClick={() => setOpen((current) => !current)}
-            className={`flex min-h-11 w-full items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-left text-sm font-semibold ${kit.focus}`}
-          >
-            <Icon name="folder-open" className="size-4" />
-            <span className="flex-1">Documents</span>
-            <span className="text-xs text-white/60">1</span>
-            <Icon
-              name="caret-down"
-              className={`size-4 ${open ? "rotate-180" : ""}`}
-            />
-          </button>
-          <div id={`${id}-document-list`} hidden={!open} className="ml-3 mt-1">
-            <KnowledgeModuleSource
-              variant="list-item-document-ai-chat"
-              selected={!settingsSelected && !creatingThread}
-              href={href}
-            />
-          </div>
-        </div>
+        <ProfileSourceSidebarList
+          href={href}
+          selected={!settingsSelected && !creatingThread}
+        />
       </nav>
       <section
         aria-label="Project threads"

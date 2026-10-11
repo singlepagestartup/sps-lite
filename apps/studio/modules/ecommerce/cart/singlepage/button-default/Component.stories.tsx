@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CartButtonDefault, defaultCartButtonDefaultProps } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Cart/Singlepage/cart-button-default",
+  id: "modules-ecommerce-models-cart-singlepage-cart-button-default",
+  title: "Modules/Ecommerce/Cart/Singlepage/cart-button-default",
   component: CartButtonDefault,
   parameters: {
     layout: "centered",

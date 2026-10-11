@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ContentPageHeader, defaultContentPageHeaderProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/content-page-header",
+  id: "modules-website-builder-models-widget-singlepage-content-page-header",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-page-header",
   component: ContentPageHeader,
   parameters: { layout: "fullscreen" },
   args: defaultContentPageHeaderProps,

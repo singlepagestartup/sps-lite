@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as AnalyticModuleWidget } from "../../index";
 
 const meta = {
-  title: "Modules/Analytic/Models/Widget/Singlepage/admin-v2-table",
+  id: "modules-analytic-models-widget-singlepage-admin-v2-table",
+  title: "Modules/Analytic/Widget/Singlepage/admin-v2-table",
   component: AnalyticModuleWidget,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

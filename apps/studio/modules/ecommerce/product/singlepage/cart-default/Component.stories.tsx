@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/cart-default",
+  id: "modules-ecommerce-models-product-singlepage-cart-default",
+  title: "Modules/Ecommerce/Product/Singlepage/cart-default",
   component: ProductCartDefault,
   parameters: {
     layout: "padded",

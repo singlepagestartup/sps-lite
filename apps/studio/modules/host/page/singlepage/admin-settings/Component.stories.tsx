@@ -4,7 +4,7 @@ import { AdminSettings } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-settings",
-  title: "Modules/Host/Models/Page/Singlepage/admin-settings",
+  title: "Modules/Host/Page/Singlepage/admin-settings",
   component: AdminSettings,
   parameters: {
     layout: "fullscreen",

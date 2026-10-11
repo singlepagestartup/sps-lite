@@ -6,8 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-files-find-default",
+  id: "modules-website-builder-models-widget-singlepage-content-files-find-default",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-files-find-default",
   component: ContentFilesFindDefault,
   parameters: {
     layout: "fullscreen",

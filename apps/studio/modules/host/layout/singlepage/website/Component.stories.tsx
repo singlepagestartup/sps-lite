@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Component } from "./Component";
 const meta = {
-  title: "Modules/Host/Models/Layout/Singlepage/website",
+  id: "modules-host-models-layout-singlepage-website",
+  title: "Modules/Host/Layout/Singlepage/website",
   component: Component,
   parameters: { layout: "fullscreen" },
   args: {

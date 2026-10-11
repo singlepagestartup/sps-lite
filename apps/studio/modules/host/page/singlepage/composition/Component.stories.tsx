@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { HostPageComposition } from "./Component";
 const meta = {
-  title: "Modules/Host/Models/Page/Singlepage/composition",
+  id: "modules-host-models-page-singlepage-composition",
+  title: "Modules/Host/Page/Singlepage/composition",
   component: HostPageComposition,
   parameters: { layout: "padded" },
 } satisfies Meta<typeof HostPageComposition>;

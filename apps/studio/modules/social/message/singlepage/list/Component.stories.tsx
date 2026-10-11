@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as SocialModuleMessage } from "../../index";
 const meta = {
-  title: "Modules/Social/Models/Message/Singlepage/list",
+  id: "modules-social-models-message-singlepage-list",
+  title: "Modules/Social/Message/Singlepage/list",
   component: SocialModuleMessage,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

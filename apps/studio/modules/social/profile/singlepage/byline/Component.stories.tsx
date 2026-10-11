@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProfileByline, defaultProfileBylineProps } from "./Component";
 
 const meta = {
-  title: "Modules/Social/Models/Profile/Singlepage/byline",
+  id: "modules-social-models-profile-singlepage-byline",
+  title: "Modules/Social/Profile/Singlepage/byline",
   component: ProfileByline,
   parameters: {
     layout: "centered",

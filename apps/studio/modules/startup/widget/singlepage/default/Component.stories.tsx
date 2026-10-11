@@ -4,7 +4,7 @@ import { StartupWidgetDefault } from "./Component";
 
 const meta = {
   id: "modules-startup-models-widget-singlepage-default",
-  title: "Modules/Startup/Models/Widget/Singlepage/default",
+  title: "Modules/Startup/Widget/Singlepage/default",
   component: StartupWidgetDefault,
   parameters: { layout: "padded" },
   args: {

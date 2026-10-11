@@ -1,5 +1,5 @@
 import { Component as SocialModuleProfile } from "../../index";
-import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import type { IAccountMenuProps } from "./Component";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example(props: IAccountMenuProps) {
@@ -7,7 +7,7 @@ function Example(props: IAccountMenuProps) {
 }
 const meta = {
   id: "modules-social-models-profile-singlepage-account-menu",
-  title: "Modules/Social/Models/Profile/Singlepage/account-menu",
+  title: "Modules/Social/Profile/Singlepage/account-menu",
   component: Example,
   parameters: { layout: "centered" },
   args: { showTokens: false, data: aiChatAccount.profile },

@@ -1,14 +1,14 @@
+import { Component as KnowledgeSourceListDocumentAiChat } from "./knowledge-module/source/list/document/ai-chat";
+import { Component as KnowledgeSourceListSidebarAiChat } from "./knowledge-module/source/list/sidebar/ai-chat";
 import { Component as AdminV2Card } from "./admin-v2-card/index";
 import { Component as AdminV2Table } from "./admin-v2-table/index";
-import { Component as AgentOverviewAiChat } from "./agent/overview/ai-chat/index";
+import { Component as AgentIdAiChat } from "./agent/id/ai-chat/index";
 import { Component as AgentAvatarAiChat } from "./agent/avatar/ai-chat/index";
 import { Component as AgentSelectAiChat } from "./agent/select/ai-chat/index";
-import { Component as CreateAiChatProject } from "./create/ai-chat/project/index";
-import { Component as ProcessingAiChatProject } from "./processing/ai-chat/project/index";
 import { Component as ScopeAiChatProject } from "./scope/ai-chat/project/index";
 import { Component as SelectItemAiChatProject } from "./select/item/ai-chat/project/index";
 import { Component as OverviewDefault } from "./overview/default/index";
-import { Component as OverviewAiChatProject } from "./overview/ai-chat/project/index";
+import { Component as IdAiChatProject } from "./id/ai-chat/project/index";
 import { Component as SelectAiChatProject } from "./select/ai-chat/project/index";
 import { Component as SettingsAiChatProject } from "./settings/ai-chat/project/index";
 import { Component as SidebarAiChatProject } from "./sidebar/ai-chat/project/index";
@@ -23,17 +23,19 @@ import { Component as FindRow } from "./find-row/index";
 import { Component as List } from "./list/index";
 
 export const variants = {
+  "knowledge-module-source-list-document-ai-chat":
+    KnowledgeSourceListDocumentAiChat,
+  "knowledge-module-source-list-sidebar-ai-chat":
+    KnowledgeSourceListSidebarAiChat,
   "admin-v2-card": AdminV2Card,
   "admin-v2-table": AdminV2Table,
-  "agent-overview-ai-chat": AgentOverviewAiChat,
+  "agent-id-ai-chat": AgentIdAiChat,
   "agent-avatar-ai-chat": AgentAvatarAiChat,
   "agent-select-ai-chat": AgentSelectAiChat,
-  "create-ai-chat-project": CreateAiChatProject,
-  "processing-ai-chat-project": ProcessingAiChatProject,
   "scope-ai-chat-project": ScopeAiChatProject,
   "select-item-ai-chat-project": SelectItemAiChatProject,
   "overview-default": OverviewDefault,
-  "overview-ai-chat-project": OverviewAiChatProject,
+  "id-ai-chat-project": IdAiChatProject,
   "select-ai-chat-project": SelectAiChatProject,
   "settings-ai-chat-project": SettingsAiChatProject,
   "sidebar-ai-chat-project": SidebarAiChatProject,

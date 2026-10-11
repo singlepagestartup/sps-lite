@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState, type MouseEvent } from "react";
 import {
   AccountProvider,
   type IAIChatAccount,
-} from "../../../../rbac/subject/singlepage/account/Account";
+} from "../../../../rbac/subject/singlepage/me/account/Account";
 import {
   ProfilesProvider,
   useProfiles,
@@ -14,7 +14,7 @@ import {
 } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { ProjectProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
 import { NavigationProvider } from "../../../layout/singlepage/ai-chat-landing/Navigation";
-import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import {
   resolveAIChatRoute,
@@ -26,26 +26,31 @@ export interface IAIChatPreviewProps {
   loginCopy?: ILoginPageProps["copy"];
   initialHref?: string;
   account?: IAIChatAccount;
+  signedIn?: boolean;
   profiles?: Omit<IProfilesProviderProps, "children">;
 }
 const servicePages = {
   landing: "ai-chat",
-  register: "ai-chat-rbac-subjects-authentication-registration",
-  login: "ai-chat-rbac-subjects-authentication-select-method",
-  "account-settings": "ai-chat-rbac-subjects-settings",
+  register: "rbac-module-subject-me-authentication-registration-ai-chat",
+  login: "rbac-module-subject-me-authentication-select-method-ai-chat",
+  "account-settings": "rbac-module-subject-me-settings-ai-chat",
   help: "ai-chat-help",
-  tokens: "ai-chat-rbac-subjects-tokens",
-  "profile-create": "ai-chat-social-profiles-create",
+  tokens:
+    "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
+  "profile-create":
+    "rbac-module-subject-me-social-module-profile-create-ai-chat",
 } as const;
 const profilePages = {
-  "profile-overview": "ai-chat-social-profiles-social-profiles-id",
-  "profile-settings": "ai-chat-social-profiles-social-profiles-id-settings",
+  "profile-overview":
+    "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
+  "profile-settings":
+    "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
 } as const;
 function ProfilePage({ route }: { route: IAIChatRoute }) {
   if (route.page === "thread-create")
     return (
       <HostModulePage
-        variant="ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create"
+        variant="rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat"
         profileId={route.profileId!}
         chatId={route.chatId!}
       />
@@ -69,9 +74,9 @@ function Pages({
   return (
     <>
       {serviceVariant ===
-      "ai-chat-rbac-subjects-authentication-select-method" ? (
+      "rbac-module-subject-me-authentication-select-method-ai-chat" ? (
         <HostModulePage
-          variant="ai-chat-rbac-subjects-authentication-select-method"
+          variant="rbac-module-subject-me-authentication-select-method-ai-chat"
           copy={loginCopy}
         />
       ) : (
@@ -92,6 +97,7 @@ export function AIChatPreview({
   loginCopy,
   initialHref = "/ai-chat/",
   account = aiChatAccount,
+  signedIn,
   profiles = aiChatWorkspaceFixture(),
 }: IAIChatPreviewProps) {
   const [href, setHref] = useState(initialHref);
@@ -136,12 +142,13 @@ export function AIChatPreview({
       account={account}
       projectHref={projectHref}
       signedIn={
+        signedIn ??
         !["landing", "login", "register"].includes(
           resolveAIChatRoute(initialHref)?.page ?? "",
         )
       }
     >
-      <ProfilesProvider {...profiles}>
+      <ProfilesProvider key={JSON.stringify(profiles)} {...profiles}>
         <NavigationProvider navigate={navigate}>
           <div onClick={followLink} data-preview-href={href}>
             <Pages route={resolveAIChatRoute(href)} loginCopy={loginCopy} />

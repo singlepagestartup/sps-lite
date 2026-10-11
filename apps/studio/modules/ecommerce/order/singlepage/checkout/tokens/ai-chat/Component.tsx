@@ -22,7 +22,7 @@ import {
 import {
   useAIChatAccount,
   useAIChatProjectHref,
-} from "../../../../../../rbac/subject/singlepage/account/Account";
+} from "../../../../../../rbac/subject/singlepage/me/account/Account";
 import defaultCopy from "./content.json";
 function PageIntro({ section }: { section: IWebsiteSection }) {
   return (
@@ -61,16 +61,6 @@ function ServicePage({
         data-variant={variant}
       >
         <main className="mx-auto max-w-6xl px-5 py-7 @[640px]:px-8 @[640px]:py-10">
-          <a
-            href={copy.labels["back-href"].replace(
-              "/ai-chat/social/profiles/example",
-              projectHref,
-            )}
-            className={`mb-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-sps-muted hover:text-sps-graphite ${kit.focus}`}
-          >
-            <Icon name="arrow-left" />
-            {copy.labels["back-label"]}
-          </a>
           {showIntro ? <PageIntro section={copy.sections.hero} /> : null}
           {children}
         </main>

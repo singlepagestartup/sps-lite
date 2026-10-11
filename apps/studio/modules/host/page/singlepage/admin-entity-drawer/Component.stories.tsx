@@ -4,7 +4,7 @@ import { AdminEntityDrawer } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-entity-drawer",
-  title: "Modules/Host/Models/Page/Singlepage/admin-entity-drawer",
+  title: "Modules/Host/Page/Singlepage/admin-entity-drawer",
   component: AdminEntityDrawer,
   parameters: {
     layout: "fullscreen",

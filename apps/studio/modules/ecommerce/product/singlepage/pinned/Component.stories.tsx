@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProductPinned, defaultProductPinnedProps } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/pinned",
+  id: "modules-ecommerce-models-product-singlepage-pinned",
+  title: "Modules/Ecommerce/Product/Singlepage/pinned",
   component: ProductPinned,
   parameters: {
     layout: "padded",

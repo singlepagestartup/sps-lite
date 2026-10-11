@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProductCard, defaultProductCardProps } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/card",
+  id: "modules-ecommerce-models-product-singlepage-card",
+  title: "Modules/Ecommerce/Product/Singlepage/card",
   component: ProductCard,
   parameters: {
     layout: "padded",

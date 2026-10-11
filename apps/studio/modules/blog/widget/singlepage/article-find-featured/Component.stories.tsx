@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Widget/Singlepage/article-find-featured",
+  id: "modules-blog-models-widget-singlepage-article-find-featured",
+  title: "Modules/Blog/Widget/Singlepage/article-find-featured",
   component: ArticleFindFeatured,
   parameters: {
     layout: "fullscreen",

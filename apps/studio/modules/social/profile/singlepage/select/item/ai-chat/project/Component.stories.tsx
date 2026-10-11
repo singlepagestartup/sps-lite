@@ -26,7 +26,7 @@ function Example() {
 }
 const meta = {
   id: "modules-social-models-profile-singlepage-select-item-ai-chat-project",
-  title: "Modules/Social/Models/Profile/Singlepage/select/item/ai-chat/project",
+  title: "Modules/Social/Profile/Singlepage/select/item/ai-chat/project",
   component: Example,
 } satisfies Meta<typeof Example>;
 export default meta;

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as AgentModuleAgent } from "../../index";
 const meta = {
-  title: "Modules/Agent/Models/Agent/Singlepage/list",
+  id: "modules-agent-models-agent-singlepage-list",
+  title: "Modules/Agent/Agent/Singlepage/list",
   component: AgentModuleAgent,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

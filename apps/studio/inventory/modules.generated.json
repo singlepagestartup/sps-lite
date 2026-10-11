@@ -5,7 +5,7 @@
     "modules": 15,
     "entities": 61,
     "variants": 838,
-    "coveredVariants": 170,
+    "coveredVariants": 164,
     "representedEntities": 61
   },
   "modules": [
@@ -46,7 +46,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/agent/models/agent/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["agent.agent.admin-v2-card"]
+              "coveredBy": [
+                "agent.agent.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -70,7 +72,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/agent/models/agent/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["agent.agent.admin-v2-table"]
+              "coveredBy": [
+                "agent.agent.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -131,7 +135,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/agent/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["agent.widget.admin-v2-card"]
+              "coveredBy": [
+                "agent.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -155,7 +161,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/agent/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["agent.widget.admin-v2-table"]
+              "coveredBy": [
+                "agent.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -221,7 +229,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/analytic/models/metric/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["analytic.metric.admin-v2-card"]
+              "coveredBy": [
+                "analytic.metric.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -245,7 +255,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/analytic/models/metric/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["analytic.metric.admin-v2-table"]
+              "coveredBy": [
+                "analytic.metric.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -306,7 +318,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/analytic/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["analytic.widget.admin-v2-card"]
+              "coveredBy": [
+                "analytic.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -330,7 +344,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/analytic/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["analytic.widget.admin-v2-table"]
+              "coveredBy": [
+                "analytic.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -396,7 +412,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/currency/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.currency.admin-v2-card"]
+              "coveredBy": [
+                "billing.currency.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -420,7 +438,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/currency/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.currency.admin-v2-table"]
+              "coveredBy": [
+                "billing.currency.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -493,7 +513,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/invoice/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.invoice.admin-v2-card"]
+              "coveredBy": [
+                "billing.invoice.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -517,7 +539,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/invoice/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.invoice.admin-v2-table"]
+              "coveredBy": [
+                "billing.invoice.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -578,7 +602,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/payment-intent/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.payment-intent.admin-v2-card"]
+              "coveredBy": [
+                "billing.payment-intent.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -602,7 +628,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/payment-intent/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.payment-intent.admin-v2-table"]
+              "coveredBy": [
+                "billing.payment-intent.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -663,7 +691,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.widget.admin-v2-card"]
+              "coveredBy": [
+                "billing.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -687,7 +717,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/billing/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["billing.widget.admin-v2-table"]
+              "coveredBy": [
+                "billing.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -753,7 +785,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/article/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.article.admin-v2-card"]
+              "coveredBy": [
+                "blog.article.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -777,7 +811,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/article/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.article.admin-v2-table"]
+              "coveredBy": [
+                "blog.article.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -789,7 +825,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/article/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.article.related-default"]
+              "coveredBy": [
+                "blog.article.related-default"
+              ]
             },
             {
               "variant": "find",
@@ -862,7 +900,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/category/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.category.admin-v2-card"]
+              "coveredBy": [
+                "blog.category.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -886,7 +926,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/category/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.category.admin-v2-table"]
+              "coveredBy": [
+                "blog.category.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -954,7 +996,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.widget.admin-v2-card"]
+              "coveredBy": [
+                "blog.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -978,7 +1022,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.widget.admin-v2-table"]
+              "coveredBy": [
+                "blog.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -996,7 +1042,9 @@
               "variant": "article-overview-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/blog/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["blog.widget.article-overview-default"]
+              "coveredBy": [
+                "blog.widget.article-overview-default"
+              ]
             },
             {
               "variant": "article-overview-ecommerce-module-product-list-default",
@@ -1086,7 +1134,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/broadcast/models/channel/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["broadcast.channel.admin-v2-card"]
+              "coveredBy": [
+                "broadcast.channel.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1110,7 +1160,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/broadcast/models/channel/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["broadcast.channel.admin-v2-table"]
+              "coveredBy": [
+                "broadcast.channel.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1183,7 +1235,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/broadcast/models/message/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["broadcast.message.admin-v2-card"]
+              "coveredBy": [
+                "broadcast.message.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1207,7 +1261,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/broadcast/models/message/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["broadcast.message.admin-v2-table"]
+              "coveredBy": [
+                "broadcast.message.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1273,7 +1329,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/form/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.form.admin-v2-card"]
+              "coveredBy": [
+                "crm.form.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1297,7 +1355,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/form/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.form.admin-v2-table"]
+              "coveredBy": [
+                "crm.form.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1309,7 +1369,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/form/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.form.default"]
+              "coveredBy": [
+                "crm.form.default"
+              ]
             },
             {
               "variant": "find",
@@ -1322,7 +1384,8 @@
             "apps/studio/modules/crm/form/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/crm/form/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/crm/form/singlepage/default/Component.stories.tsx",
-            "apps/studio/modules/crm/form/singlepage/list/Component.stories.tsx"
+            "apps/studio/modules/crm/form/singlepage/list/Component.stories.tsx",
+            "apps/studio/modules/crm/form/singlepage/support/ai-chat/Component.stories.tsx"
           ]
         },
         {
@@ -1359,7 +1422,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/input/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.input.admin-v2-card"]
+              "coveredBy": [
+                "crm.input.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1383,7 +1448,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/input/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.input.admin-v2-table"]
+              "coveredBy": [
+                "crm.input.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1407,19 +1474,25 @@
               "variant": "select-option-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/input/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.input.select-option-default"]
+              "coveredBy": [
+                "crm.input.select-option-default"
+              ]
             },
             {
               "variant": "text-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/input/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.input.text-default"]
+              "coveredBy": [
+                "crm.input.text-default"
+              ]
             },
             {
               "variant": "textarea-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/input/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.input.textarea-default"]
+              "coveredBy": [
+                "crm.input.textarea-default"
+              ]
             }
           ],
           "storyFiles": [
@@ -1427,6 +1500,7 @@
             "apps/studio/modules/crm/input/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/crm/input/singlepage/list/Component.stories.tsx",
             "apps/studio/modules/crm/input/singlepage/select-option-default/Component.stories.tsx",
+            "apps/studio/modules/crm/input/singlepage/support/ai-chat/Component.stories.tsx",
             "apps/studio/modules/crm/input/singlepage/text-default/Component.stories.tsx",
             "apps/studio/modules/crm/input/singlepage/textarea-default/Component.stories.tsx"
           ]
@@ -1465,7 +1539,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/option/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.option.admin-v2-card"]
+              "coveredBy": [
+                "crm.option.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1489,7 +1565,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/option/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.option.admin-v2-table"]
+              "coveredBy": [
+                "crm.option.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1501,7 +1579,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/option/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.option.default"]
+              "coveredBy": [
+                "crm.option.default"
+              ]
             },
             {
               "variant": "find",
@@ -1551,7 +1631,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/request/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.request.admin-v2-card"]
+              "coveredBy": [
+                "crm.request.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1575,7 +1657,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/request/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.request.admin-v2-table"]
+              "coveredBy": [
+                "crm.request.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1587,7 +1671,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/request/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.request.default"]
+              "coveredBy": [
+                "crm.request.default"
+              ]
             },
             {
               "variant": "find",
@@ -1637,7 +1723,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/step/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.step.admin-v2-card"]
+              "coveredBy": [
+                "crm.step.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1661,7 +1749,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/step/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.step.admin-v2-table"]
+              "coveredBy": [
+                "crm.step.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1673,7 +1763,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/step/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.step.default"]
+              "coveredBy": [
+                "crm.step.default"
+              ]
             },
             {
               "variant": "find",
@@ -1686,7 +1778,8 @@
             "apps/studio/modules/crm/step/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/crm/step/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/crm/step/singlepage/default/Component.stories.tsx",
-            "apps/studio/modules/crm/step/singlepage/list/Component.stories.tsx"
+            "apps/studio/modules/crm/step/singlepage/list/Component.stories.tsx",
+            "apps/studio/modules/crm/step/singlepage/support/ai-chat/Component.stories.tsx"
           ]
         },
         {
@@ -1723,7 +1816,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.widget.admin-v2-card"]
+              "coveredBy": [
+                "crm.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1747,7 +1842,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.widget.admin-v2-table"]
+              "coveredBy": [
+                "crm.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1771,7 +1868,9 @@
               "variant": "form-list-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/crm/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["crm.widget.form-list-default"]
+              "coveredBy": [
+                "crm.widget.form-list-default"
+              ]
             }
           ],
           "storyFiles": [
@@ -1820,19 +1919,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.attribute.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute.admin-v2-form"]
+              "coveredBy": [
+                "ecommerce.attribute.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute.admin-v2-select-input"]
+              "coveredBy": [
+                "ecommerce.attribute.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -1844,7 +1949,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.attribute.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1907,7 +2014,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute-key/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute-key.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.attribute-key.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -1931,7 +2040,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/attribute-key/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.attribute-key.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.attribute-key.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -1992,7 +2103,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/category/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.category.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.category.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2016,7 +2129,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/category/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.category.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.category.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2089,7 +2204,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/order/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.order.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.order.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2113,7 +2230,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/order/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.order.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.order.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2210,19 +2329,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/product/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.product.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.product.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/product/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.product.admin-v2-form"]
+              "coveredBy": [
+                "ecommerce.product.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/product/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.product.admin-v2-select-input"]
+              "coveredBy": [
+                "ecommerce.product.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -2234,7 +2359,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/product/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.product.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.product.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2246,7 +2373,9 @@
               "variant": "cart-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/product/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.product.cart-default"]
+              "coveredBy": [
+                "ecommerce.product.cart-default"
+              ]
             },
             {
               "variant": "currency-toggle-group-default",
@@ -2334,7 +2463,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/store/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.store.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.store.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2358,7 +2489,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/store/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.store.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.store.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2425,7 +2558,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.widget.admin-v2-card"]
+              "coveredBy": [
+                "ecommerce.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2449,7 +2584,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.widget.admin-v2-table"]
+              "coveredBy": [
+                "ecommerce.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2497,7 +2634,9 @@
               "variant": "product-overview-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/ecommerce/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["ecommerce.widget.product-overview-default"]
+              "coveredBy": [
+                "ecommerce.widget.product-overview-default"
+              ]
             },
             {
               "variant": "store-list-default",
@@ -2560,7 +2699,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/file-storage/models/file/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["file-storage.file.admin-v2-card"]
+              "coveredBy": [
+                "file-storage.file.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2584,7 +2725,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/file-storage/models/file/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["file-storage.file.admin-v2-table"]
+              "coveredBy": [
+                "file-storage.file.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2608,11 +2751,11 @@
           "storyFiles": [
             "apps/studio/modules/file-storage/file/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/file-storage/file/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/file-storage/file/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/file-storage/file/singlepage/list/attachments/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/file-storage/file/singlepage/list/item/asset/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/file-storage/file/singlepage/list/item/pending/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/file-storage/file/singlepage/overview/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/file-storage/file/singlepage/id/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/file-storage/file/singlepage/list-attachments-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/file-storage/file/singlepage/list-item-asset-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/file-storage/file/singlepage/list-item-pending-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/file-storage/file/singlepage/list/Component.stories.tsx"
           ]
         },
         {
@@ -2649,7 +2792,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/file-storage/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["file-storage.widget.admin-v2-card"]
+              "coveredBy": [
+                "file-storage.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -2673,7 +2818,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/file-storage/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["file-storage.widget.admin-v2-table"]
+              "coveredBy": [
+                "file-storage.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2739,19 +2886,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/layout/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.layout.admin-v2-card"]
+              "coveredBy": [
+                "host.layout.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/layout/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.layout.admin-v2-form"]
+              "coveredBy": [
+                "host.layout.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/layout/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.layout.admin-v2-select-input"]
+              "coveredBy": [
+                "host.layout.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -2763,7 +2916,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/layout/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.layout.admin-v2-table"]
+              "coveredBy": [
+                "host.layout.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2775,7 +2930,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/layout/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.layout.default"]
+              "coveredBy": [
+                "host.layout.default"
+              ]
             },
             {
               "variant": "find",
@@ -2831,19 +2988,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/metadata/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.metadata.admin-v2-card"]
+              "coveredBy": [
+                "host.metadata.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/metadata/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.metadata.admin-v2-form"]
+              "coveredBy": [
+                "host.metadata.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/metadata/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.metadata.admin-v2-select-input"]
+              "coveredBy": [
+                "host.metadata.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -2855,7 +3018,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/metadata/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.metadata.admin-v2-table"]
+              "coveredBy": [
+                "host.metadata.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2867,7 +3032,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/metadata/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.metadata.default"]
+              "coveredBy": [
+                "host.metadata.default"
+              ]
             },
             {
               "variant": "find",
@@ -2920,19 +3087,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/page/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.page.admin-v2-card"]
+              "coveredBy": [
+                "host.page.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/page/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.page.admin-v2-form"]
+              "coveredBy": [
+                "host.page.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/page/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.page.admin-v2-select-input"]
+              "coveredBy": [
+                "host.page.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -2944,7 +3117,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/page/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.page.admin-v2-table"]
+              "coveredBy": [
+                "host.page.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -2956,7 +3131,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/page/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.page.default"]
+              "coveredBy": [
+                "host.page.default"
+              ]
             },
             {
               "variant": "find",
@@ -2991,32 +3168,32 @@
             "apps/studio/modules/host/page/singlepage/admin-v2-select-input/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/ai-chat-help/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-rbac-subjects-authentication-registration/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-rbac-subjects-authentication-select-method/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-rbac-subjects-settings/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-rbac-subjects-tokens/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-social-profiles-create/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-social-profiles-social-profiles-id-settings/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ai-chat-social-profiles-social-profiles-id/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/blog-articles-blog-articles-slug/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/blog-authors-social-profiles-slug/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/blog/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/blog-module-article-find/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/blog-module-article-slug/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/composition/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/default/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ecommerce-products-ecommerce-products-slug/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/ecommerce-products/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/ecommerce-module-product-find/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/ecommerce-module-product-slug/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/list/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/privacy/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subject-authentication-reset-password/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subject-authentication-select-method/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subject-settings/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subjects-rbac-subjects-id-subjects-to-ecommerce-module-orders-checkout-confirmation/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subjects-rbac-subjects-id-subjects-to-ecommerce-module-orders-checkout-payment/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/rbac-subjects-rbac-subjects-id-subjects-to-ecommerce-module-orders-checkout/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-authentication-registration-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-authentication-reset-password/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-authentication-select-method-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-authentication-select-method/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-ecommerce-module-order-checkout-confirmation/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-ecommerce-module-order-checkout-payment/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-ecommerce-module-order-checkout/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-settings-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-settings/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-social-module-profile-create-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/rbac-module-subject-me-social-module-profile-id-settings-ai-chat/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/root/Component.stories.tsx",
-            "apps/studio/modules/host/page/singlepage/social-chats-social-chats-id-threads-social-threads-id/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/social-module-chat-id-thread-id/Component.stories.tsx",
+            "apps/studio/modules/host/page/singlepage/social-module-profile-slug-author/Component.stories.tsx",
             "apps/studio/modules/host/page/singlepage/terms/Component.stories.tsx"
           ]
         },
@@ -3054,19 +3231,25 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.widget.admin-v2-card"]
+              "coveredBy": [
+                "host.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.widget.admin-v2-form"]
+              "coveredBy": [
+                "host.widget.admin-v2-form"
+              ]
             },
             {
               "variant": "admin-v2-select-input",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.widget.admin-v2-select-input"]
+              "coveredBy": [
+                "host.widget.admin-v2-select-input"
+              ]
             },
             {
               "variant": "admin-v2-sidebar-item",
@@ -3078,7 +3261,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.widget.admin-v2-table"]
+              "coveredBy": [
+                "host.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3090,7 +3275,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/host/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["host.widget.default"]
+              "coveredBy": [
+                "host.widget.default"
+              ]
             },
             {
               "variant": "find",
@@ -3148,7 +3335,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/knowledge/models/chunk/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["knowledge.chunk.admin-v2-card"]
+              "coveredBy": [
+                "knowledge.chunk.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3172,7 +3361,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/knowledge/models/chunk/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["knowledge.chunk.admin-v2-table"]
+              "coveredBy": [
+                "knowledge.chunk.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3233,7 +3424,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/knowledge/models/source/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["knowledge.source.admin-v2-card"]
+              "coveredBy": [
+                "knowledge.source.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3257,7 +3450,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/knowledge/models/source/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["knowledge.source.admin-v2-table"]
+              "coveredBy": [
+                "knowledge.source.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3294,10 +3489,9 @@
             "apps/studio/modules/knowledge/source/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/knowledge/source/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/knowledge/source/singlepage/download/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/knowledge/source/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/knowledge/source/singlepage/list/item/document/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/knowledge/source/singlepage/overview/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/knowledge/source/singlepage/overview/document/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/knowledge/source/singlepage/id/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/knowledge/source/singlepage/list-item-document-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/knowledge/source/singlepage/list/Component.stories.tsx"
           ]
         }
       ]
@@ -3339,7 +3533,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/notification/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.notification.admin-v2-card"]
+              "coveredBy": [
+                "notification.notification.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3363,7 +3559,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/notification/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.notification.admin-v2-table"]
+              "coveredBy": [
+                "notification.notification.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3424,7 +3622,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/template/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.template.admin-v2-card"]
+              "coveredBy": [
+                "notification.template.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3448,7 +3648,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/template/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.template.admin-v2-table"]
+              "coveredBy": [
+                "notification.template.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3509,7 +3711,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/topic/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.topic.admin-v2-card"]
+              "coveredBy": [
+                "notification.topic.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3533,7 +3737,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/topic/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.topic.admin-v2-table"]
+              "coveredBy": [
+                "notification.topic.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3594,7 +3800,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.widget.admin-v2-card"]
+              "coveredBy": [
+                "notification.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3618,7 +3826,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/notification/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["notification.widget.admin-v2-table"]
+              "coveredBy": [
+                "notification.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3684,7 +3894,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/action/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.action.admin-v2-card"]
+              "coveredBy": [
+                "rbac.action.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3708,7 +3920,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/action/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.action.admin-v2-table"]
+              "coveredBy": [
+                "rbac.action.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3769,7 +3983,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/identity/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.identity.admin-v2-card"]
+              "coveredBy": [
+                "rbac.identity.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3793,7 +4009,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/identity/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.identity.admin-v2-table"]
+              "coveredBy": [
+                "rbac.identity.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3853,7 +4071,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage/form-field-default",
               "variantsFile": "libs/modules/rbac/models/identity/frontend/component/src/lib/singlepage/form-field-default/variants.ts",
-              "coveredBy": ["rbac.identity.admin-v2-card"]
+              "coveredBy": [
+                "rbac.identity.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3877,7 +4097,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage/form-field-default",
               "variantsFile": "libs/modules/rbac/models/identity/frontend/component/src/lib/singlepage/form-field-default/variants.ts",
-              "coveredBy": ["rbac.identity.admin-v2-table"]
+              "coveredBy": [
+                "rbac.identity.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -3952,7 +4174,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/role/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.role.admin-v2-card"]
+              "coveredBy": [
+                "rbac.role.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -3976,7 +4200,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/role/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.role.admin-v2-table"]
+              "coveredBy": [
+                "rbac.role.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4037,7 +4263,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.subject.admin-v2-card"]
+              "coveredBy": [
+                "rbac.subject.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4061,7 +4289,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.subject.admin-v2-table"]
+              "coveredBy": [
+                "rbac.subject.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4079,41 +4309,31 @@
               "variant": "authentication-email-and-password-authentication-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": [
-                "rbac.subject.authentication-email-and-password-authentication-form-default"
-              ]
+              "coveredBy": []
             },
             {
               "variant": "authentication-email-and-password-forgot-password-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": [
-                "rbac.subject.authentication-email-and-password-forgot-password-form-default"
-              ]
+              "coveredBy": []
             },
             {
               "variant": "authentication-email-and-password-registration-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": [
-                "rbac.subject.authentication-email-and-password-registration-form-default"
-              ]
+              "coveredBy": []
             },
             {
               "variant": "authentication-email-and-password-reset-password-form-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": [
-                "rbac.subject.authentication-email-and-password-reset-password-form-default"
-              ]
+              "coveredBy": []
             },
             {
               "variant": "authentication-ethereum-virtual-machine-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": [
-                "rbac.subject.authentication-ethereum-virtual-machine-default"
-              ]
+              "coveredBy": []
             },
             {
               "variant": "authentication-init-default",
@@ -4149,7 +4369,7 @@
               "variant": "authentication-select-method-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.subject.authentication-select-method-default"]
+              "coveredBy": []
             },
             {
               "variant": "crm-module-form-request-create",
@@ -4267,31 +4487,46 @@
             }
           ],
           "storyFiles": [
-            "apps/studio/modules/rbac/subject/singlepage/account-data/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/account/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-settings/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/account-change/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/authentication-form/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/authentication-form/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/forgot-password-form/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/registration-form/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/registration-form/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/reset-password-form/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/ethereum-virtual-machine/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/oauth/authorization/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/provider-connect/default/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/select-method/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/authentication/select-method/default/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/me-crm-form-deafult/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me-crm-module-form-default/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/me-delete/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/me-identity-find-information/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/me-information/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/me-profile-information/Component.stories.tsx",
             "apps/studio/modules/rbac/subject/singlepage/me-social-module-profile-find-information/Component.stories.tsx",
-            "apps/studio/modules/rbac/subject/singlepage/message/create/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/rbac/subject/singlepage/me/account/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/account-change/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/authentication-form/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/authentication-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/forgot-password-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/registration-form/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/registration-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/reset-password-form/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/ethereum-virtual-machine/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/oauth/authorization/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/provider-connect/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/select-method/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/authentication/select-method/default/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/crm-module/form/support/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/delete/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/ecommerce-module/order/checkout/tokens/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/ecommerce-module/order/list/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/change-email/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/change-password/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/create/email-and-password/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/create/ethereum-virtual-machine/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/create/oauth-google/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/create/telegram/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/delete/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/identity/find/information/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/create/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/chat/id/thread/create/form/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/chat/id/thread/id/knowledge-module/source/list/document/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/chat/id/thread/id/knowledge-module/source/update/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/chat/id/thread/id/message/create/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/settings/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/subject/singlepage/me/social-module/profile/id/update-name/ai-chat/Component.stories.tsx"
           ]
         },
         {
@@ -4328,7 +4563,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.widget.admin-v2-card"]
+              "coveredBy": [
+                "rbac.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4352,7 +4589,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/rbac/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["rbac.widget.admin-v2-table"]
+              "coveredBy": [
+                "rbac.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4443,7 +4682,10 @@
             "apps/studio/modules/rbac/widget/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/rbac/widget/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/rbac/widget/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/rbac/widget/singlepage/subject-me-account-settings/Component.stories.tsx"
+            "apps/studio/modules/rbac/widget/singlepage/subject-me-profile-settings/Component.stories.tsx",
+            "apps/studio/modules/rbac/widget/singlepage/subject-me-social-module-profile-id-chat-id-thread-create-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/widget/singlepage/subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/rbac/widget/singlepage/subject-me-social-module-profile-id-settings-ai-chat/Component.stories.tsx"
           ]
         }
       ]
@@ -4485,7 +4727,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/action/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.action.admin-v2-card"]
+              "coveredBy": [
+                "social.action.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4509,7 +4753,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/action/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.action.admin-v2-table"]
+              "coveredBy": [
+                "social.action.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4576,7 +4822,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.attribute.admin-v2-card"]
+              "coveredBy": [
+                "social.attribute.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4600,7 +4848,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/attribute/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.attribute.admin-v2-table"]
+              "coveredBy": [
+                "social.attribute.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4661,7 +4911,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/attribute-key/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.attribute-key.admin-v2-card"]
+              "coveredBy": [
+                "social.attribute-key.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4685,7 +4937,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/attribute-key/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.attribute-key.admin-v2-table"]
+              "coveredBy": [
+                "social.attribute-key.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4746,7 +5000,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/chat/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.chat.admin-v2-card"]
+              "coveredBy": [
+                "social.chat.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4770,7 +5026,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/chat/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.chat.admin-v2-table"]
+              "coveredBy": [
+                "social.chat.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4794,10 +5052,10 @@
           "storyFiles": [
             "apps/studio/modules/social/chat/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/social/chat/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/social/chat/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/social/chat/singlepage/list/item/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/chat/singlepage/overview/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/chat/singlepage/overview/preview/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/social/chat/singlepage/id/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/chat/singlepage/id/preview/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/chat/singlepage/list-item-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/chat/singlepage/list/Component.stories.tsx"
           ]
         },
         {
@@ -4834,7 +5092,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/message/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.message.admin-v2-card"]
+              "coveredBy": [
+                "social.message.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4858,7 +5118,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/message/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.message.admin-v2-table"]
+              "coveredBy": [
+                "social.message.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -4883,9 +5145,9 @@
             "apps/studio/modules/social/message/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/social/message/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/social/message/singlepage/bubble-default/Component.stories.tsx",
-            "apps/studio/modules/social/message/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/social/message/singlepage/list/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/message/singlepage/overview/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/social/message/singlepage/id/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/message/singlepage/list-ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/message/singlepage/list/Component.stories.tsx"
           ]
         },
         {
@@ -4922,7 +5184,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/profile/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.profile.admin-v2-card"]
+              "coveredBy": [
+                "social.profile.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -4946,7 +5210,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/profile/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.profile.admin-v2-table"]
+              "coveredBy": [
+                "social.profile.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5001,7 +5267,6 @@
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/profile/frontend/component/src/lib/singlepage/variants.ts",
               "coveredBy": [
-                "social.profile.author-find-by-id-overview-default",
                 "social.profile.overview-default"
               ]
             }
@@ -5011,7 +5276,7 @@
             "apps/studio/modules/social/profile/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/agent/avatar/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/profile/singlepage/agent/overview/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/profile/singlepage/agent/id/ai-chat/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/agent/select/ai-chat/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/article-find-by-id-comment-form-default/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/author-find-by-id-overview-default/Component.stories.tsx",
@@ -5019,12 +5284,12 @@
             "apps/studio/modules/social/profile/singlepage/byline/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/card/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/compact/Component.stories.tsx",
-            "apps/studio/modules/social/profile/singlepage/create/ai-chat/project/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/find-row/Component.stories.tsx",
+            "apps/studio/modules/social/profile/singlepage/id/ai-chat/project/Component.stories.tsx",
+            "apps/studio/modules/social/profile/singlepage/knowledge-module/source/list/document/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/profile/singlepage/knowledge-module/source/list/sidebar/ai-chat/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/social/profile/singlepage/overview/ai-chat/project/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/overview/default/Component.stories.tsx",
-            "apps/studio/modules/social/profile/singlepage/processing/ai-chat/project/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/scope/ai-chat/project/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/select/ai-chat/project/Component.stories.tsx",
             "apps/studio/modules/social/profile/singlepage/select/item/ai-chat/project/Component.stories.tsx",
@@ -5066,7 +5331,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/skill/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.skill.admin-v2-card"]
+              "coveredBy": [
+                "social.skill.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5090,7 +5357,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/skill/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.skill.admin-v2-table"]
+              "coveredBy": [
+                "social.skill.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5138,8 +5407,8 @@
           "storyFiles": [
             "apps/studio/modules/social/skill/singlepage/admin-v2-card/Component.stories.tsx",
             "apps/studio/modules/social/skill/singlepage/admin-v2-table/Component.stories.tsx",
-            "apps/studio/modules/social/skill/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/social/skill/singlepage/overview/ai-chat/Component.stories.tsx"
+            "apps/studio/modules/social/skill/singlepage/id/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/skill/singlepage/list/Component.stories.tsx"
           ]
         },
         {
@@ -5176,7 +5445,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/thread/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.thread.admin-v2-card"]
+              "coveredBy": [
+                "social.thread.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5200,7 +5471,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/thread/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.thread.admin-v2-table"]
+              "coveredBy": [
+                "social.thread.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5226,12 +5499,13 @@
             "apps/studio/modules/social/thread/singlepage/admin-v2-table/Component.stories.tsx",
             "apps/studio/modules/social/thread/singlepage/chat-settings/Component.stories.tsx",
             "apps/studio/modules/social/thread/singlepage/create/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/thread/singlepage/download/ai-chat/Component.stories.tsx",
+            "apps/studio/modules/social/thread/singlepage/id/ai-chat-settings/Component.stories.tsx",
+            "apps/studio/modules/social/thread/singlepage/id/ai-chat/Component.stories.tsx",
             "apps/studio/modules/social/thread/singlepage/list-default/Component.stories.tsx",
+            "apps/studio/modules/social/thread/singlepage/list-item-sidebar-ai-chat/Component.stories.tsx",
             "apps/studio/modules/social/thread/singlepage/list/Component.stories.tsx",
-            "apps/studio/modules/social/thread/singlepage/list/item/sidebar/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/thread/singlepage/message/list/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/thread/singlepage/overview/ai-chat/Component.stories.tsx",
-            "apps/studio/modules/social/thread/singlepage/overview/ai-chat/settings/Component.stories.tsx"
+            "apps/studio/modules/social/thread/singlepage/message/list/ai-chat/Component.stories.tsx"
           ]
         },
         {
@@ -5268,7 +5542,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.widget.admin-v2-card"]
+              "coveredBy": [
+                "social.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5292,7 +5568,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.widget.admin-v2-table"]
+              "coveredBy": [
+                "social.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5304,13 +5582,17 @@
               "variant": "chat-list-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.widget.chat-list-default"]
+              "coveredBy": [
+                "social.widget.chat-list-default"
+              ]
             },
             {
               "variant": "chat-overview-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/social/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["social.widget.chat-overview-default"]
+              "coveredBy": [
+                "social.widget.chat-overview-default"
+              ]
             },
             {
               "variant": "default",
@@ -5379,7 +5661,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/startup/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["startup.widget.admin-v2-card"]
+              "coveredBy": [
+                "startup.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5403,7 +5687,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/startup/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["startup.widget.admin-v2-table"]
+              "coveredBy": [
+                "startup.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5415,7 +5701,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/startup/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["startup.widget.default"]
+              "coveredBy": [
+                "startup.widget.default"
+              ]
             },
             {
               "variant": "find",
@@ -5470,7 +5758,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/button/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.button.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.button.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5494,7 +5784,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/button/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.button.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.button.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5536,7 +5828,9 @@
               "variant": "link",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/button/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.button.link"]
+              "coveredBy": [
+                "website-builder.button.link"
+              ]
             },
             {
               "variant": "outline",
@@ -5548,13 +5842,17 @@
               "variant": "primary",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/button/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.button.primary"]
+              "coveredBy": [
+                "website-builder.button.primary"
+              ]
             },
             {
               "variant": "secondary",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/button/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.button.secondary"]
+              "coveredBy": [
+                "website-builder.button.secondary"
+              ]
             }
           ],
           "storyFiles": [
@@ -5603,7 +5901,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/buttons-array/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.buttons-array.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.buttons-array.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5627,7 +5927,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/buttons-array/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.buttons-array.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.buttons-array.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5639,7 +5941,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/buttons-array/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.buttons-array.default"]
+              "coveredBy": [
+                "website-builder.buttons-array.default"
+              ]
             },
             {
               "variant": "find",
@@ -5691,7 +5995,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/feature/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.feature.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.feature.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5715,7 +6021,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/feature/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.feature.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.feature.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5783,7 +6091,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/logotype/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.logotype.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.logotype.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5807,7 +6117,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/logotype/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.logotype.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.logotype.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5819,7 +6131,9 @@
               "variant": "default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/logotype/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.logotype.default"]
+              "coveredBy": [
+                "website-builder.logotype.default"
+              ]
             },
             {
               "variant": "find",
@@ -5870,7 +6184,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/slide/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.slide.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.slide.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5894,7 +6210,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/slide/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.slide.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.slide.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -5955,7 +6273,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/slider/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.slider.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.slider.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -5979,7 +6299,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/slider/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.slider.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.slider.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -6040,7 +6362,9 @@
               "variant": "admin-v2-card",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.widget.admin-v2-card"]
+              "coveredBy": [
+                "website-builder.widget.admin-v2-card"
+              ]
             },
             {
               "variant": "admin-v2-form",
@@ -6064,7 +6388,9 @@
               "variant": "admin-v2-table",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.widget.admin-v2-table"]
+              "coveredBy": [
+                "website-builder.widget.admin-v2-table"
+              ]
             },
             {
               "variant": "admin-v2-table-row",
@@ -6117,7 +6443,9 @@
               "variant": "navbar-default",
               "scope": "singlepage",
               "variantsFile": "libs/modules/website-builder/models/widget/frontend/component/src/lib/singlepage/variants.ts",
-              "coveredBy": ["website-builder.widget.navbar-default"]
+              "coveredBy": [
+                "website-builder.widget.navbar-default"
+              ]
             }
           ],
           "storyFiles": [
@@ -6143,6 +6471,8 @@
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/continue/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/help/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/hero/Component.stories.tsx",
+            "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/materials-processing/Component.stories.tsx",
+            "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/profile-create/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/try/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/footer-compact/Component.stories.tsx",
             "apps/studio/modules/website-builder/widget/singlepage/footer-default/Component.stories.tsx",

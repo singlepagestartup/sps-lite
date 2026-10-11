@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as BroadcastModuleMessage } from "../../index";
 const meta = {
-  title: "Modules/Broadcast/Models/Message/Singlepage/list",
+  id: "modules-broadcast-models-message-singlepage-list",
+  title: "Modules/Broadcast/Message/Singlepage/list",
   component: BroadcastModuleMessage,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

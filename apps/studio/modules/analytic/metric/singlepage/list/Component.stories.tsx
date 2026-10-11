@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as AnalyticModuleMetric } from "../../index";
 const meta = {
-  title: "Modules/Analytic/Models/Metric/Singlepage/list",
+  id: "modules-analytic-models-metric-singlepage-list",
+  title: "Modules/Analytic/Metric/Singlepage/list",
   component: AnalyticModuleMetric,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

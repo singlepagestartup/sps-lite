@@ -5,7 +5,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Widget/Singlepage/article-find-card-default",
+  id: "modules-blog-models-widget-singlepage-article-find-card-default",
+  title: "Modules/Blog/Widget/Singlepage/article-find-card-default",
   component: ArticleFindCardDefault,
   parameters: { layout: "fullscreen" },
   args: defaultArticleFindCardDefaultProps,

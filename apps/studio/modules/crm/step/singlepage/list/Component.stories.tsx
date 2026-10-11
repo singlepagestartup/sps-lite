@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as CrmModuleStep } from "../../index";
 const meta = {
-  title: "Modules/CRM/Models/Step/Singlepage/list",
+  id: "modules-crm-models-step-singlepage-list",
+  title: "Modules/CRM/Step/Singlepage/list",
   component: CrmModuleStep,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

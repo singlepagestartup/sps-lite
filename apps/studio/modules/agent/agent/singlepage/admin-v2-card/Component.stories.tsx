@@ -4,7 +4,8 @@ import { Component as AgentModuleAgent } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Agent/Models/Agent/Singlepage/admin-v2-card",
+  id: "modules-agent-models-agent-singlepage-admin-v2-card",
+  title: "Modules/Agent/Agent/Singlepage/admin-v2-card",
   component: AgentModuleAgent,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

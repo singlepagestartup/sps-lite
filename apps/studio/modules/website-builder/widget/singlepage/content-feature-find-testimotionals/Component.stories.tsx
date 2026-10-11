@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-website-builder-models-widget-singlepage-content-feature-find-testimotionals",
   title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-feature-find-testimotionals",
+    "Modules/Website-Builder/Widget/Singlepage/content-feature-find-testimotionals",
   component: ContentFeatureFindTestimotionals,
   parameters: {
     layout: "fullscreen",

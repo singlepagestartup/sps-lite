@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Widget/Singlepage/article-overview-default",
+  id: "modules-blog-models-widget-singlepage-article-overview-default",
+  title: "Modules/Blog/Widget/Singlepage/article-overview-default",
   component: ArticleOverviewDefaultWidget,
   parameters: {
     layout: "fullscreen",

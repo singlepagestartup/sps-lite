@@ -7,7 +7,8 @@ import {
 import { ContentDefaultStartup, startupContentProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Startup/content-default",
+  id: "modules-website-builder-models-widget-startup-content-default",
+  title: "Modules/Website-Builder/Widget/Startup/content-default",
   component: ContentDefaultStartup,
   parameters: {
     layout: "fullscreen",

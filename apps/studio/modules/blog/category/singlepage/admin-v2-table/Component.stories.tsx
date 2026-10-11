@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as BlogModuleCategory } from "../../index";
 
 const meta = {
-  title: "Modules/Blog/Models/Category/Singlepage/admin-v2-table",
+  id: "modules-blog-models-category-singlepage-admin-v2-table",
+  title: "Modules/Blog/Category/Singlepage/admin-v2-table",
   component: BlogModuleCategory,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

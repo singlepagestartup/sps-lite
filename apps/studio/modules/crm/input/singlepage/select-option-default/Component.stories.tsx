@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/CRM/Models/Input/Singlepage/select-option-default",
+  id: "modules-crm-models-input-singlepage-select-option-default",
+  title: "Modules/CRM/Input/Singlepage/select-option-default",
   component: CrmInputSelectOptionDefault,
   parameters: {
     layout: "padded",

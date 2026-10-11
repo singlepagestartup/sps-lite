@@ -4,7 +4,7 @@ import { AdminPreviewDialog } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-preview-dialog",
-  title: "Modules/Host/Models/Page/Singlepage/admin-preview-dialog",
+  title: "Modules/Host/Page/Singlepage/admin-preview-dialog",
   component: AdminPreviewDialog,
   parameters: {
     layout: "fullscreen",

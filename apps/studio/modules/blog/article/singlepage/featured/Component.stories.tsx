@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleFeatured, defaultArticleFeaturedProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/featured",
+  id: "modules-blog-models-article-singlepage-featured",
+  title: "Modules/Blog/Article/Singlepage/featured",
   component: ArticleFeatured,
   parameters: {
     layout: "padded",

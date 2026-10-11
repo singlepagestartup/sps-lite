@@ -2,7 +2,7 @@ import { Component as WebsiteBuilderModuleFeature } from "../website-builder/fea
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../website-builder/feature/singlepage/icon/icons.json";
-import { aiChatAccount } from "./subject/singlepage/account/fixture";
+import { aiChatAccount } from "./subject/singlepage/me/account/fixture";
 type ModuleIcon = ReturnType<typeof createIcon>;
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;

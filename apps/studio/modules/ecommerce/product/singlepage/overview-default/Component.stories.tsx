@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/overview-default",
+  id: "modules-ecommerce-models-product-singlepage-overview-default",
+  title: "Modules/Ecommerce/Product/Singlepage/overview-default",
   component: ProductOverviewDefault,
   parameters: {
     layout: "fullscreen",

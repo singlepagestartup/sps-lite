@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as WebsiteBuilderModuleButton } from "../../index";
 
 const meta = {
-  title: "Modules/Website-Builder/Models/Button/Singlepage/admin-v2-table",
+  id: "modules-website-builder-models-button-singlepage-admin-v2-table",
+  title: "Modules/Website-Builder/Button/Singlepage/admin-v2-table",
   component: WebsiteBuilderModuleButton,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

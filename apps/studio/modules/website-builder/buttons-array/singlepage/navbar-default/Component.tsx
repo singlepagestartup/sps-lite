@@ -11,9 +11,9 @@ const links = [
   {
     label: "Services",
     href: "/ecommerce/products",
-    story: "ecommerce-products",
+    story: "ecommerce-module-product-find",
   },
-  { label: "Blog", href: "/blog", story: "blog" },
+  { label: "Blog", href: "/blog", story: "blog-module-article-find" },
   { label: "Chat", href: "/chat", disabled: true },
 ];
 export function Component({

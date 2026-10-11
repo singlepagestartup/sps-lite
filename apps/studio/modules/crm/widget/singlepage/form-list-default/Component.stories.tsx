@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/CRM/Models/Widget/Singlepage/form-list-default",
+  id: "modules-crm-models-widget-singlepage-form-list-default",
+  title: "Modules/CRM/Widget/Singlepage/form-list-default",
   component: CrmWidgetFormListDefault,
   parameters: {
     layout: "padded",

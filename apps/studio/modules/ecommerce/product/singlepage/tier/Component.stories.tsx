@@ -7,7 +7,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/tier",
+  id: "modules-ecommerce-models-product-singlepage-tier",
+  title: "Modules/Ecommerce/Product/Singlepage/tier",
   component: ProductTier,
   parameters: {
     layout: "padded",

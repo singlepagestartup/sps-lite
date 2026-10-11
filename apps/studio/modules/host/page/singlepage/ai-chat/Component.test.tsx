@@ -5,15 +5,15 @@ import ts from "typescript";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AIChatPreview } from "./Preview";
 import { isAIChatRoute } from "../../../layout/singlepage/ai-chat-landing/routes";
-import { documentAgent } from "../../../../social/profile/singlepage/agent/overview/ai-chat/resolver";
-import { ProjectAgentPicker } from "../../../../social/profile/singlepage/agent/overview/ai-chat/index";
-import { FilesProvider } from "../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
-import { SourceProvider } from "../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
-import { ThreadProvider } from "../../../../social/thread/singlepage/overview/ai-chat/Thread";
+import { documentAgent } from "../../../../social/profile/singlepage/agent/id/ai-chat/resolver";
+import { ProjectAgentPicker } from "../../../../social/profile/singlepage/agent/id/ai-chat/index";
+import { FilesProvider } from "../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
+import { SourceProvider } from "../../../../knowledge/source/singlepage/id/ai-chat/Source";
+import { ThreadProvider } from "../../../../social/thread/singlepage/id/ai-chat/Thread";
 import { Component as SocialModuleThread } from "../../../../social/thread/index";
 import { Component as SocialModuleMessage } from "../../../../social/message/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject";
-import loginFormCopy from "../../../../rbac/subject/singlepage/authentication/email-and-password/authentication-form/ai-chat/content.json";
+import loginFormCopy from "../../../../rbac/subject/singlepage/me/authentication/email-and-password/authentication-form/ai-chat/content.json";
 import authenticationContent from "../../../../website-builder/widget/singlepage/content/ai-chat/authentication/content.json";
 
 const root = path.resolve(import.meta.dir, "../../../../../../..");
@@ -22,8 +22,8 @@ const studio = path.join(root, "apps/studio");
 describe("Local AI Chat components", () => {
   test("Subject authentication forms render independently of page content", () => {
     for (const variant of [
-      "authentication-email-and-password-authentication-form-ai-chat",
-      "authentication-email-and-password-registration-form-ai-chat",
+      "me-authentication-email-and-password-authentication-form-ai-chat",
+      "me-authentication-email-and-password-registration-form-ai-chat",
     ] as const) {
       const html = renderToStaticMarkup(
         <RbacModuleSubject variant={variant} />,
@@ -57,7 +57,7 @@ describe("Local AI Chat components", () => {
         'data-variant="content-ai-chat-authentication"',
       );
       const form = html.indexOf(
-        `data-variant="authentication-email-and-password-${method === "registration" ? "registration" : "authentication"}-form-ai-chat"`,
+        `data-variant="me-authentication-email-and-password-${method === "registration" ? "registration" : "authentication"}-form-ai-chat"`,
       );
       expect(content).toBeGreaterThan(-1);
       expect(form).toBeGreaterThan(content);
@@ -92,6 +92,158 @@ describe("Local AI Chat components", () => {
     expect(html).toContain("Edited form</h2>");
     expect(html).toContain("Work email</label>");
     expect(html).not.toContain(authenticationContent.intro.title);
+  });
+
+  test("Help submits through Subject and renders CRM form, step and inputs", () => {
+    const html = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/help" />,
+    );
+    expect(html).toMatch(
+      /<form[^>]*data-module="rbac"[^>]*data-model="subject"[^>]*data-variant="me-crm-module-form-support-ai-chat"/,
+    );
+    expect(html).toContain('data-model="form" data-variant="support-ai-chat"');
+    expect(html).toContain('data-model="step" data-variant="support-ai-chat"');
+    expect(
+      html.match(/data-model="input" data-variant="support-ai-chat"/g),
+    ).toHaveLength(3);
+    expect(html).toContain('type="submit"');
+    expect(html).not.toContain('data-model="button" data-variant="control"');
+  });
+
+  test("authentication navbars display the current Subject account and omit back links", () => {
+    for (const method of ["select-method", "registration"]) {
+      const href = `/ai-chat/rbac/subjects/authentication/${method}`;
+      const signedIn = renderToStaticMarkup(
+        <AIChatPreview initialHref={href} signedIn />,
+      );
+      const guest = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref={href}
+          account={{ balance: { free: 250, purchased: 0 } }}
+        />,
+      );
+      expect(signedIn).toContain('data-ds-block="social.profile.account-menu"');
+      expect(guest).toContain('data-ds-block="rbac.subject.me-account"');
+      expect(guest).not.toContain(
+        'data-ds-block="social.profile.account-menu"',
+      );
+      for (const html of [signedIn, guest]) {
+        expect(html).not.toContain('data-id="ai-chat-register"');
+        expect(html).not.toContain('data-id="ai-chat-login"');
+        expect(html).not.toContain("Back to AI Chat");
+      }
+    }
+  });
+
+  test("settings show paid receipts separately from Subject deletion and token checkout", () => {
+    const settings = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/rbac/subjects/settings" />,
+    );
+    expect(settings).toContain(
+      'data-variant="me-ecommerce-module-order-list-ai-chat"',
+    );
+    expect(settings).toContain('data-variant="me-delete-ai-chat"');
+    expect(settings).toContain('aria-label="Paid purchases"');
+    expect(settings.match(/download="SPS-[^"]+-receipt.txt"/g)).toHaveLength(3);
+    expect(settings).not.toContain("Back to workspace");
+    const tokens = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/rbac/subjects/tokens" />,
+    );
+    expect(
+      tokens.indexOf(
+        'data-variant="me-ecommerce-module-order-checkout-tokens-ai-chat"',
+      ),
+    ).toBeLessThan(tokens.indexOf('data-variant="checkout-tokens-ai-chat"'));
+    expect(tokens).not.toContain("Back to workspace");
+  });
+
+  test("Thread creation and document lists expose their own domain roots", () => {
+    const create = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create" />,
+    );
+    expect(create).toContain(
+      'data-variant="subject-me-social-module-profile-id-chat-id-thread-create-ai-chat"',
+    );
+    expect(create).toMatch(
+      /<section[^>]*data-ds-block="social.thread.create-ai-chat"/,
+    );
+    expect(create).toContain(
+      'data-variant="knowledge-module-source-list-sidebar-ai-chat"',
+    );
+    const profile = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/social/profiles/pottery" />,
+    );
+    expect(profile).toMatch(
+      /<section[^>]*data-module="social"[^>]*data-model="profile"[^>]*data-variant="knowledge-module-source-list-document-ai-chat"/,
+    );
+    expect(profile).toMatch(
+      /<article[^>]*data-module="knowledge"[^>]*data-model="source"[^>]*data-variant="id-ai-chat"/,
+    );
+    expect(profile).not.toContain('data-variant="overview-document-ai-chat"');
+    expect(profile.match(/aria-label="Products.md editor"/g)).toHaveLength(1);
+    expect(profile.match(/aria-label="Download Products.md"/g)).toHaveLength(1);
+    expect(
+      profile.match(/data-ds-block="knowledge.source.id-ai-chat"/g),
+    ).toHaveLength(2);
+    expect(profile).toContain(
+      'data-model="thread" data-variant="download-ai-chat"',
+    );
+  });
+
+  test("Subject selects Knowledge only for the identified Thread", () => {
+    function panel(threadId: string) {
+      return renderToStaticMarkup(
+        <FilesProvider>
+          <SourceProvider profileId="pottery">
+            <ThreadProvider>
+              <RbacModuleSubject
+                variant="me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat"
+                subjectId="operator"
+                profileId="pottery"
+                chatId="project-chat"
+                threadId={threadId}
+              />
+            </ThreadProvider>
+          </SourceProvider>
+        </FilesProvider>,
+      );
+    }
+    const matched = panel("pottery:products:products:thread");
+    expect(matched).toContain('data-subject-id="operator"');
+    expect(matched).toContain('data-profile-id="pottery"');
+    expect(matched).toContain('data-chat-id="project-chat"');
+    expect(matched).toContain(
+      'data-thread-id="pottery:products:products:thread"',
+    );
+    expect(matched).toContain('aria-label="Document knowledge"');
+    expect(matched).not.toContain('aria-label="Products.md editor"');
+    expect(matched).not.toContain('aria-label="Download Products.md"');
+    const other = panel("another-thread");
+    expect(other).toContain("Thread knowledge unavailable.");
+    expect(other).not.toContain('data-model="source"');
+    expect(other).not.toContain("Upload files");
+  });
+
+  test("Subject project actions occupy separate static and model display slots", () => {
+    const create = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/social/profiles/create" />,
+    );
+    expect(
+      create.indexOf('data-variant="content-ai-chat-profile-create"'),
+    ).toBeLessThan(
+      create.indexOf('data-variant="me-social-module-profile-create-ai-chat"'),
+    );
+    const settings = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/settings" />,
+    );
+    expect(settings).toContain(
+      'data-variant="subject-me-social-module-profile-id-settings-ai-chat"',
+    );
+    expect(settings).toContain(
+      'data-variant="me-social-module-profile-id-update-name-ai-chat"',
+    );
+    expect(settings).not.toContain("Export Products.md");
+    expect(settings).not.toContain("Download Products.md");
   });
 
   test("recognizes prototype routes without intercepting unrelated pages", () => {
@@ -151,15 +303,15 @@ describe("Local AI Chat components", () => {
     }
     for (const variant of [
       "ai-chat",
-      "ai-chat-rbac-subjects-authentication-registration",
-      "ai-chat-rbac-subjects-authentication-select-method",
-      "ai-chat-rbac-subjects-settings",
+      "rbac-module-subject-me-authentication-registration-ai-chat",
+      "rbac-module-subject-me-authentication-select-method-ai-chat",
+      "rbac-module-subject-me-settings-ai-chat",
       "ai-chat-help",
-      "ai-chat-rbac-subjects-tokens",
-      "ai-chat-social-profiles-create",
-      "ai-chat-social-profiles-social-profiles-id",
-      "ai-chat-social-profiles-social-profiles-id-settings",
-      "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create",
+      "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
+      "rbac-module-subject-me-social-module-profile-create-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
     ])
       visit(path.join(import.meta.dir, "..", variant, "Component.tsx"));
     expect(visited.size).toBeGreaterThan(20);
@@ -202,15 +354,15 @@ describe("Local AI Chat components", () => {
   test("concrete Pages own one screen and import domain components, without a Page router", () => {
     const variants = [
       "ai-chat",
-      "ai-chat-rbac-subjects-authentication-registration",
-      "ai-chat-rbac-subjects-authentication-select-method",
-      "ai-chat-rbac-subjects-settings",
+      "rbac-module-subject-me-authentication-registration-ai-chat",
+      "rbac-module-subject-me-authentication-select-method-ai-chat",
+      "rbac-module-subject-me-settings-ai-chat",
       "ai-chat-help",
-      "ai-chat-rbac-subjects-tokens",
-      "ai-chat-social-profiles-create",
-      "ai-chat-social-profiles-social-profiles-id",
-      "ai-chat-social-profiles-social-profiles-id-settings",
-      "ai-chat-social-profiles-social-profiles-id-chats-social-chats-id-threads-create",
+      "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
+      "rbac-module-subject-me-social-module-profile-create-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
+      "rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
     ];
     for (const variant of variants) {
       const file = path.join(import.meta.dir, "..", variant, "Component.tsx");
@@ -230,18 +382,14 @@ describe("Local AI Chat components", () => {
     expect(settings).toContain(
       'data-ds-block="social.profile.settings-ai-chat-project"',
     );
-    expect(settings).not.toContain(
-      'data-ds-block="social.thread.overview-ai-chat"',
-    );
+    expect(settings).not.toContain('data-ds-block="social.thread.id-ai-chat"');
     const create = renderToStaticMarkup(
       <AIChatPreview initialHref="/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create" />,
     );
     expect(create).toContain('data-ds-block="social.thread.create-ai-chat"');
     expect(create).toContain("Thread name");
     expect(create).toContain("Thread agent");
-    expect(create).not.toContain(
-      'data-ds-block="social.thread.overview-ai-chat"',
-    );
+    expect(create).not.toContain('data-ds-block="social.thread.id-ai-chat"');
   });
 
   test("project screens have one Host Layout and a Social Profile overview", () => {
@@ -255,11 +403,11 @@ describe("Local AI Chat components", () => {
         'data-ds-block="host.layout.ai-chat-dashboard"',
       ]);
       expect(html).toContain(
-        'data-ds-block="social.profile.overview-ai-chat-project"',
+        'data-ds-block="social.profile.id-ai-chat-project"',
       );
       const profile =
         html.match(
-          /<div(?=[^>]*data-module="social")(?=[^>]*data-model="profile")(?=[^>]*data-variant="overview-ai-chat-project")[^>]*>/,
+          /<div(?=[^>]*data-module="social")(?=[^>]*data-model="profile")(?=[^>]*data-variant="id-ai-chat-project")[^>]*>/,
         )?.[0] ?? "";
       expect(profile).toContain('data-id="pottery"');
       expect(html).toContain('aria-label="Show sidebar"');
@@ -269,7 +417,7 @@ describe("Local AI Chat components", () => {
     );
     expect(inaccessible).toContain("Project profile unavailable");
     expect(inaccessible).not.toContain(
-      'data-ds-block="social.profile.overview-ai-chat-project"',
+      'data-ds-block="social.profile.id-ai-chat-project"',
     );
   });
 
@@ -311,7 +459,7 @@ describe("Local AI Chat components", () => {
                 id: "history:products",
                 slug: "history:products",
                 title: "Products.md",
-                variant: "overview-ai-chat",
+                variant: "id-ai-chat",
               }}
               initialMessages={messages}
             >

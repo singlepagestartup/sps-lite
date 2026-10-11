@@ -6,7 +6,7 @@ function Example() {
 }
 const meta = {
   id: "modules-website-builder-models-logotype-singlepage-brand-ai-chat",
-  title: "Modules/Website-Builder/Models/Logotype/Singlepage/brand/ai-chat",
+  title: "Modules/Website-Builder/Logotype/Singlepage/brand/ai-chat",
   component: Example,
   parameters: { layout: "centered" },
 } satisfies Meta<typeof Example>;

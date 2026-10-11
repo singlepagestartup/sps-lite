@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as WebsiteBuilderModuleLogotype } from "../../index";
 const meta = {
-  title: "Modules/Website-Builder/Models/Logotype/Singlepage/list",
+  id: "modules-website-builder-models-logotype-singlepage-list",
+  title: "Modules/Website-Builder/Logotype/Singlepage/list",
   component: WebsiteBuilderModuleLogotype,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

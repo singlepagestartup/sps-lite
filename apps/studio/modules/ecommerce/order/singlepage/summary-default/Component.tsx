@@ -141,7 +141,7 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
 const ShieldCheck = createIcon("shield-check");
 const Lock = createIcon("lock-key");
 const productOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-ecommerce-products-ecommerce-products-slug--default";
+  "/?path=/story/modules-host-models-page-singlepage-ecommerce-module-product-slug--default";
 export const defaultOrderSummaryDefaultProps: OrderSummaryDefaultProps = {
   items: defaultCheckoutItems,
   compact: false,

@@ -4,7 +4,8 @@ import { Component as CrmModuleWidget } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/CRM/Models/Widget/Singlepage/admin-v2-card",
+  id: "modules-crm-models-widget-singlepage-admin-v2-card",
+  title: "Modules/CRM/Widget/Singlepage/admin-v2-card",
   component: CrmModuleWidget,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

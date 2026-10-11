@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProductOverviewDefaultWidget } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Widget/Singlepage/product-overview-default",
+  id: "modules-ecommerce-models-widget-singlepage-product-overview-default",
+  title: "Modules/Ecommerce/Widget/Singlepage/product-overview-default",
   component: ProductOverviewDefaultWidget,
   parameters: { layout: "fullscreen" },
 } satisfies Meta<typeof ProductOverviewDefaultWidget>;

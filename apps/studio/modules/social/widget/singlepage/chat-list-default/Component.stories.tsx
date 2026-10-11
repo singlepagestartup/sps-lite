@@ -4,7 +4,7 @@ import { SocialWidgetChatListDefault } from "./Component";
 
 const meta = {
   id: "modules-social-models-widget-singlepage-chat-list-default",
-  title: "Modules/Social/Models/Widget/Singlepage/chat-list-default",
+  title: "Modules/Social/Widget/Singlepage/chat-list-default",
   component: SocialWidgetChatListDefault,
   parameters: {
     layout: "fullscreen",

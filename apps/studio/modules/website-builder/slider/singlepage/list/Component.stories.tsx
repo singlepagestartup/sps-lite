@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as WebsiteBuilderModuleSlider } from "../../index";
 const meta = {
-  title: "Modules/Website-Builder/Models/Slider/Singlepage/list",
+  id: "modules-website-builder-models-slider-singlepage-list",
+  title: "Modules/Website-Builder/Slider/Singlepage/list",
   component: WebsiteBuilderModuleSlider,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

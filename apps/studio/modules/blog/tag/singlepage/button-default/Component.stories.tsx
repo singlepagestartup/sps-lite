@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TagButtonDefault, defaultTagButtonDefaultProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Tag/Singlepage/button-default",
+  id: "modules-blog-models-tag-singlepage-button-default",
+  title: "Modules/Blog/Tag/Singlepage/button-default",
   component: TagButtonDefault,
   parameters: { layout: "centered" },
   args: defaultTagButtonDefaultProps,

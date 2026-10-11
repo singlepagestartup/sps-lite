@@ -1,3 +1,5 @@
+import { Component as MaterialsProcessingContent } from "./content/ai-chat/materials-processing";
+import { Component as ProfileCreateContent } from "./content/ai-chat/profile-create";
 import { Component as AdminV2Card } from "./admin-v2-card/index";
 import { Component as AdminV2Navigation } from "./admin-v2-navigation/index";
 import { Component as AdminV2RichEditor } from "./admin-v2-rich-editor/index";
@@ -30,6 +32,8 @@ import { Component as List } from "./list/index";
 import { Component as NavbarDefault } from "./navbar-default/index";
 
 export const variants = {
+  "content-ai-chat-materials-processing": MaterialsProcessingContent,
+  "content-ai-chat-profile-create": ProfileCreateContent,
   "admin-v2-card": AdminV2Card,
   "admin-v2-navigation": AdminV2Navigation,
   "admin-v2-rich-editor": AdminV2RichEditor,

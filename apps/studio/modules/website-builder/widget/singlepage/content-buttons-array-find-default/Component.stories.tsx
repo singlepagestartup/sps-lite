@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-website-builder-models-widget-singlepage-content-buttons-array-find-default",
   title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-buttons-array-find-default",
+    "Modules/Website-Builder/Widget/Singlepage/content-buttons-array-find-default",
   component: ContentButtonsArrayFindDefault,
   parameters: {
     layout: "fullscreen",

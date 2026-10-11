@@ -7,7 +7,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/overview-default",
+  id: "modules-blog-models-article-singlepage-overview-default",
+  title: "Modules/Blog/Article/Singlepage/overview-default",
   component: ArticleOverviewDefault,
   parameters: {
     layout: "fullscreen",

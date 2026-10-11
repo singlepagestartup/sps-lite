@@ -4,7 +4,8 @@ import { Component as KnowledgeModuleChunk } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Knowledge/Models/Chunk/Singlepage/admin-v2-card",
+  id: "modules-knowledge-models-chunk-singlepage-admin-v2-card",
+  title: "Modules/Knowledge/Chunk/Singlepage/admin-v2-card",
   component: KnowledgeModuleChunk,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

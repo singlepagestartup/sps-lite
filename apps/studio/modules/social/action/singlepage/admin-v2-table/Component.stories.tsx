@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as SocialModuleAction } from "../../index";
 
 const meta = {
-  title: "Modules/Social/Models/Action/Singlepage/admin-v2-table",
+  id: "modules-social-models-action-singlepage-admin-v2-table",
+  title: "Modules/Social/Action/Singlepage/admin-v2-table",
   component: SocialModuleAction,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

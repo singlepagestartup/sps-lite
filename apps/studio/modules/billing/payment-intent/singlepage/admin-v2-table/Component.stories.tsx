@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as BillingModulePaymentIntent } from "../../index";
 
 const meta = {
-  title: "Modules/Billing/Models/Payment-Intent/Singlepage/admin-v2-table",
+  id: "modules-billing-models-payment-intent-singlepage-admin-v2-table",
+  title: "Modules/Billing/Payment-Intent/Singlepage/admin-v2-table",
   component: BillingModulePaymentIntent,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

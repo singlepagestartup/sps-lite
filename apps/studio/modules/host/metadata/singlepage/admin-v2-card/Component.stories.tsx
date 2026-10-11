@@ -4,7 +4,8 @@ import { Component as HostModuleMetadata } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Host/Models/Metadata/Singlepage/admin-v2-card",
+  id: "modules-host-models-metadata-singlepage-admin-v2-card",
+  title: "Modules/Host/Metadata/Singlepage/admin-v2-card",
   component: HostModuleMetadata,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

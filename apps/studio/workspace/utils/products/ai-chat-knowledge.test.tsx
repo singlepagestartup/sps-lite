@@ -6,9 +6,9 @@ import {
   sourceMaterials,
   sourceUserContext,
 } from "./ai-chat-knowledge";
-import { SourceProvider } from "../../../modules/knowledge/source/singlepage/overview/document/ai-chat/Source";
-import { FilesProvider } from "../../../modules/file-storage/file/singlepage/list/attachments/ai-chat/Files";
-import { Component as SourceSection } from "../../../modules/knowledge/source/singlepage/overview/ai-chat/index";
+import { SourceProvider } from "../../../modules/knowledge/source/singlepage/id/ai-chat/Source";
+import { FilesProvider } from "../../../modules/file-storage/file/singlepage/list-attachments-ai-chat/Files";
+import { Component as SourceSection } from "../../../modules/knowledge/source/singlepage/id/ai-chat/index";
 
 const files: IProjectFile[] = [
   {

@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/related-default",
+  id: "modules-blog-models-article-singlepage-related-default",
+  title: "Modules/Blog/Article/Singlepage/related-default",
   component: ArticleRelatedDefault,
   parameters: {
     layout: "padded",

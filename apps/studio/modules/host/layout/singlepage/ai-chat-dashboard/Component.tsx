@@ -19,12 +19,7 @@ export function Component({
   subjectAccount,
 }: IAIChatDashboardLayoutProps) {
   const accountAccess = page === "register" || page === "login";
-  const buttonsArrayId =
-    page === "register"
-      ? "ai-chat-login"
-      : page === "login"
-        ? "ai-chat-register"
-        : "ai-chat-help";
+  const buttonsArrayId = accountAccess ? "empty" : "ai-chat-help";
   return (
     <div
       data-sps-theme="singlepage"
@@ -49,7 +44,7 @@ export function Component({
           accountAccess ? "Account access" : "Account navigation"
         }
         profileSelect={accountAccess ? undefined : profileSelect}
-        subjectAccount={accountAccess ? undefined : subjectAccount}
+        subjectAccount={subjectAccount}
       />
       <div className="min-w-0 flex-1">{children}</div>
       <WebsiteBuilderModuleWidget variant="footer-ai-chat" />

@@ -1,4 +1,4 @@
-import { SubjectMeProfileInformation } from "../me-profile-information/Component";
+import { SubjectMeProfileInformation } from "../me/social-module/profile/id/settings/ai-chat/Component";
 import { defaultRbacProfiles, type RbacAccountProfile } from "../../../shared";
 
 export interface SubjectMeSocialModuleProfileFindInformationProps {
@@ -27,7 +27,7 @@ export function SubjectMeSocialModuleProfileFindInformation(
     <section
       className="min-w-0 space-y-6"
       data-ds-block="rbac.subject.me-social-module-profile-find-information"
-      data-ds-imports="rbac.subject.me-profile-information"
+      data-ds-imports="rbac.subject.me-social-module-profile-id-settings-ai-chat"
       data-ds-layer="singlepage"
       data-module="rbac"
       data-model="subject"
@@ -39,6 +39,7 @@ export function SubjectMeSocialModuleProfileFindInformation(
         profiles.map((profile) => (
           <SubjectMeProfileInformation
             key={profile.id}
+            profileId={profile.id}
             profile={profile}
             profiles={profiles}
             title={profiles.length > 1 ? profile.title : title}

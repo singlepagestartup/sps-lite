@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Widget/Singlepage/product-find-tiers",
+  id: "modules-ecommerce-models-widget-singlepage-product-find-tiers",
+  title: "Modules/Ecommerce/Widget/Singlepage/product-find-tiers",
   component: ProductFindTiersComponent,
   parameters: {
     layout: "fullscreen",

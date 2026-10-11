@@ -49,7 +49,7 @@ export function ArticleFindDefault(
     ...props,
   };
   const articleHref =
-    "/?path=/story/modules-host-models-page-singlepage-blog-articles-blog-articles-slug--default";
+    "/?path=/story/modules-host-models-page-singlepage-blog-module-article-slug--default";
   return (
     <section
       id="blog"

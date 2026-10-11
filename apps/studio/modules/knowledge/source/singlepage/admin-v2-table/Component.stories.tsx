@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as KnowledgeModuleSource } from "../../index";
 
 const meta = {
-  title: "Modules/Knowledge/Models/Source/Singlepage/admin-v2-table",
+  id: "modules-knowledge-models-source-singlepage-admin-v2-table",
+  title: "Modules/Knowledge/Source/Singlepage/admin-v2-table",
   component: KnowledgeModuleSource,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

@@ -4,13 +4,14 @@ import {
   useRef,
   forwardRef,
   type SVGProps,
-  forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
   useState,
 } from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import { twMerge as twMerge } from "tailwind-merge";
-import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
+import {
+  twMerge as mergeButtonClass,
+  twMerge as twMerge,
+} from "tailwind-merge";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
 import { defaultRbacSubject, type RbacSubject } from "../../../shared";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
@@ -192,21 +193,36 @@ const buttonBase =
 const kit = {
   muted: "text-[var(--color-sps-muted)]",
 };
-const Button = forwardRefControl<
-  HTMLButtonElement,
-  ButtonControlProps<HTMLButtonElement> & {
-    variant?: "primary" | "secondary" | "plain" | "danger";
-  }
->(function Button({ variant = "primary", ...props }, ref) {
+function Button({
+  variant = "primary",
+  type = "button",
+  className,
+  ...props
+}: ButtonControlProps<HTMLButtonElement> & {
+  variant?: "primary" | "secondary" | "plain" | "danger";
+  ref?: React.Ref<HTMLButtonElement>;
+}) {
+  const appearances = {
+    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    secondary:
+      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
+    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+    danger:
+      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+  };
   return (
-    <WebsiteBuilderModuleButton
+    <button
       {...props}
-      variant="control"
-      appearance={variant}
-      ref={ref}
+      type={type}
+      className={mergeButtonClass(
+        "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        appearances[variant],
+        className,
+      )}
     />
   );
-});
+}
 export const defaultSubjectMeDeleteProps: SubjectMeDeleteProps = {
   title: "Danger Zone",
   description:

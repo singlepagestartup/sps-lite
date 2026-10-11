@@ -4,7 +4,7 @@ import { AdminModuleDashboard } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-module-dashboard",
-  title: "Modules/Host/Models/Page/Singlepage/admin-module-dashboard",
+  title: "Modules/Host/Page/Singlepage/admin-module-dashboard",
   component: AdminModuleDashboard,
   parameters: {
     layout: "fullscreen",

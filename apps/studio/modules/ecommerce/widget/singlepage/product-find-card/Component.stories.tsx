@@ -5,7 +5,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Widget/Singlepage/product-find-card",
+  id: "modules-ecommerce-models-widget-singlepage-product-find-card",
+  title: "Modules/Ecommerce/Widget/Singlepage/product-find-card",
   component: ProductFindCardComponent,
   parameters: { layout: "fullscreen" },
   args: defaultProductFindCardProps,

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as KnowledgeModuleSource } from "../../index";
 const meta = {
-  title: "Modules/Knowledge/Models/Source/Singlepage/list",
+  id: "modules-knowledge-models-source-singlepage-list",
+  title: "Modules/Knowledge/Source/Singlepage/list",
   component: KnowledgeModuleSource,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

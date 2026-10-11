@@ -2,7 +2,7 @@ import { Component as HostModuleLayout } from "../../../layout/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/account/Account";
+import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/me/account/Account";
 
 interface IComponentVariantProps {
   variant?: string;
@@ -18,7 +18,7 @@ export function Component({
         page="help"
         subjectAccount={({ onNavigate }) => (
           <RbacModuleSubject
-            variant="account"
+            variant="me-account"
             showTokens
             page="help"
             onNavigate={onNavigate}
@@ -28,7 +28,12 @@ export function Component({
         <WebsiteBuilderModuleWidget
           variant="content-ai-chat-help"
           projectHref={projectHref}
-        />
+        >
+          <RbacModuleSubject
+            variant="me-crm-module-form-support-ai-chat"
+            projectHref={projectHref}
+          />
+        </WebsiteBuilderModuleWidget>
       </HostModuleLayout>
     </div>
   );

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Component } from "./Component";
 const meta = {
-  title: "Modules/Website-Builder/Models/Widget/Singlepage/footer/ai-chat",
+  id: "modules-website-builder-models-widget-singlepage-footer-ai-chat",
+  title: "Modules/Website-Builder/Widget/Singlepage/footer/ai-chat",
   component: Component,
   parameters: { layout: "fullscreen" },
 } satisfies Meta<typeof Component>;

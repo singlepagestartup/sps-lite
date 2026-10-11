@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/CRM/Models/Input/Singlepage/textarea-default",
+  id: "modules-crm-models-input-singlepage-textarea-default",
+  title: "Modules/CRM/Input/Singlepage/textarea-default",
   component: CrmInputTextareaDefault,
   parameters: {
     layout: "padded",

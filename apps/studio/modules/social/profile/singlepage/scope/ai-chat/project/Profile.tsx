@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, type ReactNode } from "react";
-import { FilesProvider } from "../../../../../../file-storage/file/singlepage/list/attachments/ai-chat/Files";
-import { SourceProvider } from "../../../../../../knowledge/source/singlepage/overview/document/ai-chat/Source";
-import { ThreadProvider } from "../../../../../thread/singlepage/overview/ai-chat/Thread";
+import { FilesProvider } from "../../../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
+import { SourceProvider } from "../../../../../../knowledge/source/singlepage/id/ai-chat/Source";
+import { ThreadProvider } from "../../../../../thread/singlepage/id/ai-chat/Thread";
 interface IProjectProviderProps {
   profileId: string;
   children: ReactNode;

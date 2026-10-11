@@ -81,7 +81,7 @@ export function Component({
         activeHref={activeHref}
         subjectAccount={
           subjectAccount === undefined ? (
-            <RbacModuleSubject variant="account" signedIn={signedIn} />
+            <RbacModuleSubject variant="me-account" signedIn={signedIn} />
           ) : (
             subjectAccount
           )

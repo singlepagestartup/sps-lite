@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as AgentModuleAgent } from "../../index";
 
 const meta = {
-  title: "Modules/Agent/Models/Agent/Singlepage/admin-v2-table",
+  id: "modules-agent-models-agent-singlepage-admin-v2-table",
+  title: "Modules/Agent/Agent/Singlepage/admin-v2-table",
   component: AgentModuleAgent,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

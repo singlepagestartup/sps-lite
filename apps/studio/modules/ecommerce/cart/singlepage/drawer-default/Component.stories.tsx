@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CartDrawerDefault, defaultCartDrawerDefaultProps } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Cart/Singlepage/cart-drawer-default",
+  id: "modules-ecommerce-models-cart-singlepage-cart-drawer-default",
+  title: "Modules/Ecommerce/Cart/Singlepage/cart-drawer-default",
   component: CartDrawerDefault,
   parameters: {
     layout: "fullscreen",

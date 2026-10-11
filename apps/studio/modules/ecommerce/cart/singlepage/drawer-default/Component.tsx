@@ -328,12 +328,12 @@ const Button = forwardRefControl<
   );
 });
 const productOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-ecommerce-products-ecommerce-products-slug--default";
+  "/?path=/story/modules-host-models-page-singlepage-ecommerce-module-product-slug--default";
 export const defaultCartDrawerDefaultProps: CartDrawerDefaultProps = {
   items: defaultCartItems,
   isOpen: true,
   checkoutHref:
-    "/?path=/story/modules-host-models-page-singlepage-rbac-subjects-rbac-subjects-id-subjects-to-ecommerce-module-orders-checkout--default",
+    "/?path=/story/modules-host-models-page-singlepage-rbac-module-subject-me-ecommerce-module-order-checkout--default",
   productsHref:
-    "/?path=/story/modules-host-models-page-singlepage-ecommerce-products--default",
+    "/?path=/story/modules-host-models-page-singlepage-ecommerce-module-product-find--default",
 };

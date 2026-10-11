@@ -66,7 +66,7 @@ export function aiChatSourceFixture() {
   const source = {
     id: "pottery:products:products",
     slug: "pottery:products:products",
-    variant: "overview-ai-chat",
+    variant: "id-ai-chat",
     title: "Products",
     content: "Weekend pottery workshops for first-time potters.",
     description:

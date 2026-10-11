@@ -4,7 +4,7 @@ import { Component, defaultProfileOverviewProps } from "./Component";
 
 const meta = {
   id: "modules-social-models-profile-singlepage-overview-default",
-  title: "Modules/Social/Models/Profile/Singlepage/overview/default",
+  title: "Modules/Social/Profile/Singlepage/overview/default",
   component: Component,
   render: (args) => (
     <SocialModuleProfile {...args} variant="overview-default" />

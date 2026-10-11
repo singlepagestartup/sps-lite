@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as HostModuleMetadata } from "../../index";
 const meta = {
-  title: "Modules/Host/Models/Metadata/Singlepage/list",
+  id: "modules-host-models-metadata-singlepage-list",
+  title: "Modules/Host/Metadata/Singlepage/list",
   component: HostModuleMetadata,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

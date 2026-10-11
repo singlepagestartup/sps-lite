@@ -6,8 +6,9 @@ import {
 } from "./Component";
 
 const meta = {
+  id: "modules-website-builder-models-widget-singlepage-content-feature-find-default",
   title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-feature-find-default",
+    "Modules/Website-Builder/Widget/Singlepage/content-feature-find-default",
   component: ContentFeatureFindDefault,
   parameters: {
     layout: "fullscreen",

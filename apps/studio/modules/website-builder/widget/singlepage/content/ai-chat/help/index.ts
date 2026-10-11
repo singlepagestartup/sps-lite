@@ -1,1 +1,1 @@
-export { Component, type IHelpProps, type IHelpErrors } from "./Component";
+export { Component, type IHelpProps } from "./Component";

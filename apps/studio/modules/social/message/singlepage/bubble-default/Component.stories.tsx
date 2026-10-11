@@ -4,7 +4,7 @@ import { SocialMessageBubbleDefault } from "./Component";
 
 const meta = {
   id: "modules-social-models-message-singlepage-bubble-default",
-  title: "Modules/Social/Models/Message/Singlepage/bubble-default",
+  title: "Modules/Social/Message/Singlepage/bubble-default",
   component: SocialMessageBubbleDefault,
   parameters: {
     layout: "centered",

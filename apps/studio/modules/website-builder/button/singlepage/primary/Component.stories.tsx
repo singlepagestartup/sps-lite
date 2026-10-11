@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ButtonPrimary, defaultButtonPrimaryProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Button/Singlepage/primary",
+  id: "modules-website-builder-models-button-singlepage-primary",
+  title: "Modules/Website-Builder/Button/Singlepage/primary",
   component: ButtonPrimary,
   parameters: {
     layout: "centered",

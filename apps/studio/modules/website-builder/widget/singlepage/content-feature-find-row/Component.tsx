@@ -52,7 +52,7 @@ export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
       id="contact"
       className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-feature-find-row"
-      data-ds-imports="rbac.subject.me-crm-form-deafult"
+      data-ds-imports="rbac.subject.me-crm-module-form-default"
       data-ds-layer="singlepage"
       data-module="website-builder"
       data-model="widget"

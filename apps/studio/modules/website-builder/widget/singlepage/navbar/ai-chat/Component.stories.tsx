@@ -13,7 +13,7 @@ function Example(props: INavbarAiChatProps) {
 }
 const meta = {
   id: "modules-website-builder-models-widget-singlepage-navbar-ai-chat",
-  title: "Modules/Website-Builder/Models/Widget/Singlepage/navbar/ai-chat",
+  title: "Modules/Website-Builder/Widget/Singlepage/navbar/ai-chat",
   component: Example,
   parameters: { layout: "fullscreen" },
   args: {

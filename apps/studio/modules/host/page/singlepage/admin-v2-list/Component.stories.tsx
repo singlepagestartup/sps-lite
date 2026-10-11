@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { HostPageAdminV2List } from "./Component";
 const meta = {
-  title: "Modules/Host/Models/Page/Singlepage/admin-v2-list",
+  id: "modules-host-models-page-singlepage-admin-v2-list",
+  title: "Modules/Host/Page/Singlepage/admin-v2-list",
   component: HostPageAdminV2List,
   parameters: { layout: "padded" },
 } satisfies Meta<typeof HostPageAdminV2List>;

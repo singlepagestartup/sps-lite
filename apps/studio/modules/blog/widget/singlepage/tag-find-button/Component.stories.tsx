@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TagFindButton, defaultTagFindButtonProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Widget/Singlepage/tag-find-button",
+  id: "modules-blog-models-widget-singlepage-tag-find-button",
+  title: "Modules/Blog/Widget/Singlepage/tag-find-button",
   component: TagFindButton,
   parameters: { layout: "fullscreen" },
   args: defaultTagFindButtonProps,

@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleRow, defaultArticleRowProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/row",
+  id: "modules-blog-models-article-singlepage-row",
+  title: "Modules/Blog/Article/Singlepage/row",
   component: ArticleRow,
   parameters: {
     layout: "padded",

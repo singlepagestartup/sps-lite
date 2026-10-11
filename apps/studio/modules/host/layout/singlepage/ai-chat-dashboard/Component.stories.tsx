@@ -4,8 +4,8 @@ import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { ProfilesProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 
-import { AccountProvider } from "../../../../rbac/subject/singlepage/account/Account";
-import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+import { AccountProvider } from "../../../../rbac/subject/singlepage/me/account/Account";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import type { Meta, StoryObj } from "@storybook/react";
 function Example() {
@@ -22,7 +22,7 @@ function Example() {
       )}
       subjectAccount={({ onNavigate }) => (
         <RbacModuleSubject
-          variant="account"
+          variant="me-account"
           showTokens
           page="chat"
           onNavigate={onNavigate}
@@ -35,7 +35,7 @@ function Example() {
 }
 const meta = {
   id: "modules-host-models-layout-singlepage-ai-chat-dashboard",
-  title: "Modules/Host/Models/Layout/Singlepage/ai-chat-dashboard",
+  title: "Modules/Host/Layout/Singlepage/ai-chat-dashboard",
   component: Example,
   parameters: { layout: "fullscreen" },
   decorators: [

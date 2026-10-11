@@ -6,8 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Ecommerce/Models/Order/Singlepage/order-checkout-payment-default",
+  id: "modules-ecommerce-models-order-singlepage-order-checkout-payment-default",
+  title: "Modules/Ecommerce/Order/Singlepage/order-checkout-payment-default",
   component: OrderCheckoutPaymentDefault,
   parameters: {
     layout: "padded",

@@ -1,0 +1,21 @@
+import type { Meta, StoryObj } from "@storybook/react";
+
+import {
+  SubjectMeIdentityFindInformation,
+  defaultSubjectMeIdentityFindInformationProps,
+} from "./Component";
+
+const meta = {
+  id: "modules-rbac-models-subject-singlepage-me-identity-find-information",
+  title: "Modules/RBAC/Subject/Singlepage/me/identity/find/information",
+  component: SubjectMeIdentityFindInformation,
+  args: defaultSubjectMeIdentityFindInformationProps,
+} satisfies Meta<typeof SubjectMeIdentityFindInformation>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  name: "default",
+};

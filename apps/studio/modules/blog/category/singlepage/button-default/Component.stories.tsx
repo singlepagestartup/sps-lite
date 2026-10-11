@@ -5,7 +5,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Category/Singlepage/button-default",
+  id: "modules-blog-models-category-singlepage-button-default",
+  title: "Modules/Blog/Category/Singlepage/button-default",
   component: CategoryButtonDefault,
   parameters: { layout: "centered" },
   args: defaultCategoryButtonDefaultProps,

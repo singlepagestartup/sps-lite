@@ -4,7 +4,7 @@ import { AdminModelEdit } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-model-edit",
-  title: "Modules/Host/Models/Page/Singlepage/admin-model-edit",
+  title: "Modules/Host/Page/Singlepage/admin-model-edit",
   component: AdminModelEdit,
   parameters: {
     layout: "fullscreen",

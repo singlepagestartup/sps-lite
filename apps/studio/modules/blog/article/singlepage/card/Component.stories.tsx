@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ArticleCard, defaultArticleCardProps } from "./Component";
 
 const meta = {
-  title: "Modules/Blog/Models/Article/Singlepage/card",
+  id: "modules-blog-models-article-singlepage-card",
+  title: "Modules/Blog/Article/Singlepage/card",
   component: ArticleCard,
   parameters: { layout: "padded" },
   args: defaultArticleCardProps,

@@ -5,7 +5,6 @@ import type IconGlyphs from "../../../../../feature/singlepage/icon/icons.json";
 import defaultContent from "./content.json";
 
 export interface IAuthenticationContent {
-  backLink: { text: string; href: string };
   intro: { title: string; paragraphs: string[] };
   images: { src: string; alt: string; assetId: string }[];
   aside: { title: string; paragraphs: string[] };
@@ -46,13 +45,6 @@ export function Component({
       data-variant={variant}
       className="@container mx-auto w-full max-w-6xl px-5 py-7 @3xl:px-8 @3xl:py-10"
     >
-      <a
-        href={content.backLink.href}
-        className="mb-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-sps-muted hover:text-sps-graphite focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite"
-      >
-        <WebsiteBuilderModuleFeature variant="icon" name="arrow-left" />
-        {content.backLink.text}
-      </a>
       <div
         className={`grid min-w-0 items-stretch gap-8 @[1000px]:gap-12 ${media === "stack" ? "@[760px]:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)]" : "@[760px]:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)]"}`}
       >

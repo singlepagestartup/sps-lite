@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as RbacModuleRole } from "../../index";
 
 const meta = {
-  title: "Modules/RBAC/Models/Role/Singlepage/admin-v2-table",
+  id: "modules-rbac-models-role-singlepage-admin-v2-table",
+  title: "Modules/RBAC/Role/Singlepage/admin-v2-table",
   component: RbacModuleRole,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

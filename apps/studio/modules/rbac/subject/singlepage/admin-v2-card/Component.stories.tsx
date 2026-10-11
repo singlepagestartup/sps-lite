@@ -4,7 +4,8 @@ import { Component as RbacModuleSubject } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/RBAC/Models/Subject/Singlepage/admin-v2-card",
+  id: "modules-rbac-models-subject-singlepage-admin-v2-card",
+  title: "Modules/RBAC/Subject/Singlepage/admin-v2-card",
   component: RbacModuleSubject,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

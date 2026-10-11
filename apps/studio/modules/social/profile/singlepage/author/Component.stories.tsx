@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProfileAuthor, defaultProfileAuthorProps } from "./Component";
 
 const meta = {
-  title: "Modules/Social/Models/Profile/Singlepage/author",
+  id: "modules-social-models-profile-singlepage-author",
+  title: "Modules/Social/Profile/Singlepage/author",
   component: ProfileAuthor,
   parameters: { layout: "fullscreen" },
   args: defaultProfileAuthorProps,

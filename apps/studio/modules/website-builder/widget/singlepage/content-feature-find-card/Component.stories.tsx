@@ -6,8 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-feature-find-card",
+  id: "modules-website-builder-models-widget-singlepage-content-feature-find-card",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-feature-find-card",
   component: ContentFeatureFindCard,
   parameters: {
     layout: "fullscreen",

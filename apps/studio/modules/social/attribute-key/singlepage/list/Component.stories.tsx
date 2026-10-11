@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as SocialModuleAttributeKey } from "../../index";
 const meta = {
-  title: "Modules/Social/Models/Attribute-Key/Singlepage/list",
+  id: "modules-social-models-attribute-key-singlepage-list",
+  title: "Modules/Social/Attribute-Key/Singlepage/list",
   component: SocialModuleAttributeKey,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

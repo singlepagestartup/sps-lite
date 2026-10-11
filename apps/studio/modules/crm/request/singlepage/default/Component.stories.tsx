@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { CrmRequestDefault, defaultCrmRequestDefaultProps } from "./Component";
 
 const meta = {
-  title: "Modules/CRM/Models/Request/Singlepage/default",
+  id: "modules-crm-models-request-singlepage-default",
+  title: "Modules/CRM/Request/Singlepage/default",
   component: CrmRequestDefault,
   parameters: {
     layout: "padded",

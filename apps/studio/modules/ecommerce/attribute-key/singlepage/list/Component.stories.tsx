@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as EcommerceModuleAttributeKey } from "../../index";
 const meta = {
-  title: "Modules/Ecommerce/Models/Attribute-Key/Singlepage/list",
+  id: "modules-ecommerce-models-attribute-key-singlepage-list",
+  title: "Modules/Ecommerce/Attribute-Key/Singlepage/list",
   component: EcommerceModuleAttributeKey,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

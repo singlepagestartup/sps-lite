@@ -4,7 +4,7 @@ import { SocialThreadListDefault } from "./Component";
 
 const meta = {
   id: "modules-social-models-thread-singlepage-list-default",
-  title: "Modules/Social/Models/Thread/Singlepage/list-default",
+  title: "Modules/Social/Thread/Singlepage/list-default",
   component: SocialThreadListDefault,
   parameters: {
     layout: "centered",

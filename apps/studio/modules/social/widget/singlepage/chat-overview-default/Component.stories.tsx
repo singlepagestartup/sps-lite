@@ -4,7 +4,7 @@ import { SocialWidgetChatOverviewDefault } from "./Component";
 
 const meta = {
   id: "modules-social-models-widget-singlepage-chat-overview-default",
-  title: "Modules/Social/Models/Widget/Singlepage/chat-overview-default",
+  title: "Modules/Social/Widget/Singlepage/chat-overview-default",
   component: SocialWidgetChatOverviewDefault,
   parameters: {
     layout: "fullscreen",

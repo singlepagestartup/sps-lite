@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as FileStorageModuleFile } from "../../index";
 const meta = {
-  title: "Modules/File-Storage/Models/File/Singlepage/list",
+  id: "modules-file-storage-models-file-singlepage-list",
+  title: "Modules/File-Storage/File/Singlepage/list",
   component: FileStorageModuleFile,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Feature/Singlepage/list-item-default",
+  id: "modules-website-builder-models-feature-singlepage-list-item-default",
+  title: "Modules/Website-Builder/Feature/Singlepage/list-item-default",
   component: FeatureListItemDefault,
   parameters: { layout: "centered" },
   args: defaultFeatureListItemDefaultProps,

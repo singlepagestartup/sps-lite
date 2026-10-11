@@ -5,8 +5,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Website Builder/Models/Widget/Singlepage/content-testimonials",
+  id: "modules-website-builder-models-widget-singlepage-content-testimonials",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-testimonials",
   component: ContentTestimonials,
   parameters: { layout: "fullscreen" },
   args: defaultContentTestimonialsProps,

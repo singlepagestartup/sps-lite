@@ -1,7 +1,7 @@
 import { Component as BlogModuleArticle } from "../../../article/index";
 
 const articleOverviewStoryHref =
-  "/?path=/story/modules-host-models-page-singlepage-blog-articles-blog-articles-slug--default";
+  "/?path=/story/modules-host-models-page-singlepage-blog-module-article-slug--default";
 
 export interface ArticleFindFeaturedProps {
   variant?: string;

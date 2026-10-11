@@ -6,8 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title:
-    "Modules/Blog/Models/Widget/Singlepage/article-find-by-id-tag-find-default",
+  id: "modules-blog-models-widget-singlepage-article-find-by-id-tag-find-default",
+  title: "Modules/Blog/Widget/Singlepage/article-find-by-id-tag-find-default",
   component: ArticleFindByIdTagFind,
   parameters: { layout: "padded" },
   args: defaultArticleFindByIdTagFindProps,

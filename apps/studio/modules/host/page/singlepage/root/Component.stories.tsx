@@ -4,7 +4,7 @@ import { HomeDefault } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-root",
-  title: "Modules/Host/Models/Page/Singlepage",
+  title: "Modules/Host/Page/Singlepage/root",
   component: HomeDefault,
   parameters: {
     layout: "fullscreen",
@@ -16,5 +16,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  name: "/",
+  name: "Default",
 };

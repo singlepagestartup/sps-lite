@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as NotificationModuleNotification } from "../../index";
 const meta = {
-  title: "Modules/Notification/Models/Notification/Singlepage/list",
+  id: "modules-notification-models-notification-singlepage-list",
+  title: "Modules/Notification/Notification/Singlepage/list",
   component: NotificationModuleNotification,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

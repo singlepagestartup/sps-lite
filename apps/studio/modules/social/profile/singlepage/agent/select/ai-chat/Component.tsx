@@ -5,11 +5,11 @@ import { forwardRef, useState } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
 import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import type { IProjectAgent } from "../../overview/ai-chat/resolver";
+import type { IProjectAgent } from "../../id/ai-chat/resolver";
 import {
   Component as AgentProfile,
   knowledgeAgent,
-} from "../../overview/ai-chat/index";
+} from "../../id/ai-chat/index";
 import { Component as AgentAvatar } from "../../avatar/ai-chat/index";
 interface ISelectOption {
   value: string;

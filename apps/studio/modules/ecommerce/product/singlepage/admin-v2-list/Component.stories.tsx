@@ -4,7 +4,7 @@ import { EcommerceProductAdminV2List } from "./Component";
 
 const meta = {
   id: "modules-ecommerce-models-product-singlepage-admin-v2-list",
-  title: "Modules/Ecommerce/Models/Product/Singlepage/admin-v2-list",
+  title: "Modules/Ecommerce/Product/Singlepage/admin-v2-list",
   component: EcommerceProductAdminV2List,
   parameters: {
     layout: "centered",

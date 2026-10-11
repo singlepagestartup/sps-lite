@@ -275,7 +275,7 @@ export function SubjectMeAccountSettings({
               href={
                 showTokens
                   ? "/ai-chat/rbac/subjects/authentication/select-method"
-                  : "/?path=/story/modules-host-models-page-singlepage-rbac-subject-authentication-select-method--default"
+                  : "/?path=/story/modules-host-models-page-singlepage-rbac-module-subject-me-authentication-select-method--default"
               }
               target={showTokens ? undefined : "_top"}
             >

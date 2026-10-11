@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/RBAC/Models/Subject/Singlepage/me-information",
+  id: "modules-rbac-models-subject-singlepage-me-information",
+  title: "Modules/RBAC/Subject/Singlepage/me-information",
   component: SubjectMeInformation,
   args: defaultSubjectMeInformationProps,
 } satisfies Meta<typeof SubjectMeInformation>;

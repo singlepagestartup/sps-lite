@@ -1,19 +1,23 @@
+import { threadDocumentMarkdown } from "../../../modules/social/thread/singlepage/id/ai-chat/state";
 import { expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { aiChatProjectFixture } from "./ai-chat-workspace-fixture";
+import {
+  aiChatProjectFixture,
+  aiChatSourceFixture,
+} from "./ai-chat-workspace-fixture";
 import { appendThreadExchange } from "./ai-chat-threads";
 import { Component as SocialModuleChat } from "../../../modules/social/chat";
+import { Component as SocialModuleThread } from "../../../modules/social/thread";
 import { Component as RbacModuleSubject } from "../../../modules/rbac/subject";
-import { SourceProvider } from "../../../modules/knowledge/source/singlepage/overview/document/ai-chat/Source";
-import { FilesProvider } from "../../../modules/file-storage/file/singlepage/list/attachments/ai-chat/Files";
+import { SourceProvider } from "../../../modules/knowledge/source/singlepage/id/ai-chat/Source";
+import { FilesProvider } from "../../../modules/file-storage/file/singlepage/list-attachments-ai-chat/Files";
 import { AIChatPreview } from "../../products/singlepage/ai-chat/website/Preview";
 import { aiChatAccount } from "./ai-chat-account-fixture";
-import { knowledgeAgent } from "../../../modules/social/profile/singlepage/agent/overview/ai-chat/index";
-import { aiChatSourceFixture } from "./ai-chat-workspace-fixture";
+import { knowledgeAgent } from "../../../modules/social/profile/singlepage/agent/id/ai-chat/index";
 import {
   ThreadProvider,
   useThread,
-} from "../../../modules/social/thread/singlepage/overview/ai-chat/Thread";
+} from "../../../modules/social/thread/singlepage/id/ai-chat/Thread";
 
 test("knowledge titles define the overview and message context instead of Products", () => {
   const { source } = aiChatSourceFixture();
@@ -22,10 +26,41 @@ test("knowledge titles define the overview and message context instead of Produc
   const html = renderToStaticMarkup(
     <FilesProvider>
       <SourceProvider profileId="pottery" initialSource={source}>
-        <SocialModuleChat
-          variant="overview-ai-chat"
-          messageCreate={<RbacModuleSubject variant="message-create-ai-chat" />}
-        />
+        <ThreadProvider>
+          <SocialModuleChat
+            variant="id-ai-chat"
+            thread={
+              <SocialModuleThread
+                variant="id-ai-chat"
+                knowledgeSourceIds={["pottery:products:products"]}
+                documentDownload={
+                  <SocialModuleThread
+                    variant="download-ai-chat"
+                    threadId="pottery:products:products:thread"
+                    fileName={`${source.title}.md`}
+                    sources={[source]}
+                  />
+                }
+                messageCreate={
+                  <RbacModuleSubject
+                    variant="me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat"
+                    profileId="pottery"
+                    chatId="project-chat"
+                    threadId="pottery:products:products:thread"
+                  />
+                }
+                knowledge={
+                  <RbacModuleSubject
+                    variant="me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat"
+                    profileId="pottery"
+                    chatId="project-chat"
+                    threadId="pottery:products:products:thread"
+                  />
+                }
+              />
+            }
+          />
+        </ThreadProvider>
       </SourceProvider>
     </FilesProvider>,
   );
@@ -47,7 +82,7 @@ test("knowledge titles define the overview and message context instead of Produc
   expect(messages[1].text).toContain("Strategy knowledge");
 });
 
-test("a nested overview reuses the existing Thread and message history", () => {
+test("a nested identified Thread reuses the existing Thread and message history", () => {
   function Messages() {
     return (
       <p>
@@ -76,30 +111,53 @@ test("a nested overview reuses the existing Thread and message history", () => {
   expect(html).not.toContain("ready to work on");
 });
 
-test("the overview composes Thread messages, one Source and a Subject creation form", () => {
+test("the identified Chat composes Thread messages, one Source and a Subject creation form", () => {
   const html = renderToStaticMarkup(
     <FilesProvider>
       <SourceProvider profileId="pottery">
-        <SocialModuleChat
-          variant="overview-ai-chat"
-          messageCreate={<RbacModuleSubject variant="message-create-ai-chat" />}
-        />
+        <ThreadProvider>
+          <SocialModuleChat
+            variant="id-ai-chat"
+            thread={
+              <SocialModuleThread
+                variant="id-ai-chat"
+                knowledgeSourceIds={["pottery:products:products"]}
+                messageCreate={
+                  <RbacModuleSubject
+                    variant="me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat"
+                    profileId="pottery"
+                    chatId="project-chat"
+                    threadId="pottery:products:products:thread"
+                  />
+                }
+                knowledge={
+                  <RbacModuleSubject
+                    variant="me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat"
+                    profileId="pottery"
+                    chatId="project-chat"
+                    threadId="pottery:products:products:thread"
+                  />
+                }
+              />
+            }
+          />
+        </ThreadProvider>
       </SourceProvider>
     </FilesProvider>,
   );
   for (const marker of [
-    "social.chat.overview-ai-chat",
-    "social.thread.overview-ai-chat",
-    "social.message.overview-ai-chat",
-    "knowledge.source.overview-ai-chat",
-    "rbac.subject.message-create-ai-chat",
+    "social.chat.id-ai-chat",
+    "social.thread.id-ai-chat",
+    "social.message.id-ai-chat",
+    "knowledge.source.id-ai-chat",
+    "rbac.subject.me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat",
   ])
     expect(html).toContain(`data-ds-block="${marker}"`);
+  expect(html.match(/data-ds-block="social.thread.id-ai-chat"/g)).toHaveLength(
+    1,
+  );
   expect(
-    html.match(/data-ds-block="social.thread.overview-ai-chat"/g),
-  ).toHaveLength(1);
-  expect(
-    html.match(/data-ds-block="knowledge.source.overview-ai-chat"/g),
+    html.match(/data-ds-block="knowledge.source.id-ai-chat"/g),
   ).toHaveLength(1);
   expect(html).toContain('data-thread-id="pottery:products:products:thread"');
   expect(html).toContain(
@@ -176,4 +234,19 @@ test("sending snapshots one knowledge and linked files; later edits and detach p
   expect(next[3].context![0].text).toBe("Changed knowledge");
   expect(next[3].filesUsed?.map((file) => file.id)).toEqual(["workshop-notes"]);
   expect(history).toHaveLength(2);
+});
+
+test("Thread export combines all supplied Knowledge sections under one document name", () => {
+  const { source } = aiChatSourceFixture();
+  const other = {
+    ...source,
+    id: "customers",
+    title: "Customers",
+    content: "Small workshop groups.",
+  };
+  const markdown = threadDocumentMarkdown("Workshop plan.md", [source, other]);
+  expect(markdown).toStartWith("# Workshop plan\n\n");
+  expect(markdown).toContain(`## ${source.title}\n\n${source.content}`);
+  expect(markdown).toContain("## Customers\n\nSmall workshop groups.");
+  expect(markdown.match(/^# /gm)).toHaveLength(1);
 });

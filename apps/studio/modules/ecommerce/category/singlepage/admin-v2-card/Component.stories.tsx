@@ -4,7 +4,8 @@ import { Component as EcommerceModuleCategory } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Category/Singlepage/admin-v2-card",
+  id: "modules-ecommerce-models-category-singlepage-admin-v2-card",
+  title: "Modules/Ecommerce/Category/Singlepage/admin-v2-card",
   component: EcommerceModuleCategory,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

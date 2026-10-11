@@ -17,7 +17,7 @@ export function Component({
     <div data-module="host" data-model="page" data-variant={variant}>
       <HostModuleLayout
         variant="ai-chat-landing"
-        subjectAccount={<RbacModuleSubject variant="account" showTokens />}
+        subjectAccount={<RbacModuleSubject variant="me-account" showTokens />}
         footerContent={content?.footer}
       >
         <main
@@ -39,10 +39,7 @@ export function Component({
               }
             }
           >
-            <SocialModuleChat
-              variant="overview-preview-ai-chat"
-              content={content}
-            />
+            <SocialModuleChat variant="id-preview-ai-chat" content={content} />
           </WebsiteBuilderModuleWidget>
           <WebsiteBuilderModuleWidget
             variant="content-ai-chat-continue"

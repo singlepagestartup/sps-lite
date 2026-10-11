@@ -203,28 +203,30 @@ describe("Website Builder navbar composition", () => {
     expect(html).not.toContain('href="/ai-chat/social/profiles/example"');
   });
 
-  test("Host selects account-access navigation and omits project/account slots", () => {
+  test("Host selects account-access navigation and renders the supplied Subject slot", () => {
     const hiddenSlot = () => {
-      throw new Error("Host must omit this slot on an account-access page");
+      throw new Error(
+        "Host must omit the project selector on an account-access page",
+      );
     };
-    for (const [page, action] of [
-      ["register", "login"],
-      ["login", "register"],
-    ] as const) {
+    for (const page of ["register", "login"] as const) {
       const html = renderToStaticMarkup(
         <HostModuleLayout
           variant="ai-chat-dashboard"
           page={page}
           profileSelect={hiddenSlot}
-          subjectAccount={hiddenSlot}
+          subjectAccount={() => (
+            <a href={aiChatServiceHrefs.login}>Subject sign in</a>
+          )}
         >
           <main>Account access page</main>
         </HostModuleLayout>,
       );
       const header = html.match(/<header\b[\s\S]*?<\/header>/)?.[0] ?? "";
-      expect(header).toContain(`data-id="ai-chat-${action}"`);
-      expect(header).toContain(`href="${aiChatServiceHrefs[action]}"`);
-      expect(header).toContain('aria-label="Account access"');
+      expect(header).toContain("Subject sign in");
+      expect(header).toContain(`href="${aiChatServiceHrefs.login}"`);
+      expect(header).not.toContain('data-id="ai-chat-register"');
+      expect(header).not.toContain('data-id="ai-chat-login"');
       expect(header).not.toContain('aria-label="Open navigation menu"');
     }
   });
@@ -255,14 +257,12 @@ describe("Website Builder navbar composition", () => {
         html.match(/data-ds-block="website-builder.widget.footer-ai-chat"/g)
           ?.length,
       ).toBe(1);
-      const variant =
-        "ai-chat-" +
-        route
-          .replace("pottery%3Aproject-chat", "social-chats-id")
-          .replace("pottery", "social-profiles-id")
-          .replaceAll("/", "-");
+      const variant = html.match(
+        /data-module="host" data-model="page" data-variant="([^"]+)"/,
+      )?.[1];
+      expect(variant).toBeDefined();
       const source = readFileSync(
-        path.join(pages, variant, "Component.tsx"),
+        path.join(pages, variant!, "Component.tsx"),
         "utf8",
       );
       expect(source).toContain("layout/index");
@@ -270,9 +270,9 @@ describe("Website Builder navbar composition", () => {
       expect(source).not.toContain(
         "website-builder/widget/singlepage/navbar/ai-chat",
       );
-      if (!route.startsWith("rbac/subjects/authentication/")) {
+      {
         expect(source).toContain("subjectAccount=");
-        expect(source).toContain('variant="account"');
+        expect(source).toContain('variant="me-account"');
         expect(source).toContain("showTokens");
         expect(source).toContain("rbac/subject/index");
       }

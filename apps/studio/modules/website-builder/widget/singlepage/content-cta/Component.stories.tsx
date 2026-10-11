@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ContentCta, defaultContentCtaProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/content-cta",
+  id: "modules-website-builder-models-widget-singlepage-content-cta",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-cta",
   component: ContentCta,
   parameters: {
     layout: "fullscreen",

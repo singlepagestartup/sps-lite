@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Feature/Singlepage/status-default",
+  id: "modules-website-builder-models-feature-singlepage-status-default",
+  title: "Modules/Website-Builder/Feature/Singlepage/status-default",
   component: FeatureStatusDefault,
   parameters: { layout: "centered" },
   args: defaultFeatureStatusDefaultProps,

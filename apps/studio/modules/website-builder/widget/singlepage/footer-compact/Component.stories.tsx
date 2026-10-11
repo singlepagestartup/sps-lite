@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { FooterCompact, defaultFooterCompactProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/footer-compact",
+  id: "modules-website-builder-models-widget-singlepage-footer-compact",
+  title: "Modules/Website-Builder/Widget/Singlepage/footer-compact",
   component: FooterCompact,
   parameters: {
     layout: "fullscreen",

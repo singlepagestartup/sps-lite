@@ -4,7 +4,8 @@ import { Component as SocialModuleMessage } from "../../index";
 import fixture from "../admin-v2-table/data.json";
 
 const meta = {
-  title: "Modules/Social/Models/Message/Singlepage/admin-v2-card",
+  id: "modules-social-models-message-singlepage-admin-v2-card",
+  title: "Modules/Social/Message/Singlepage/admin-v2-card",
   component: SocialModuleMessage,
   args: { variant: "admin-v2-card", id: fixture.records[0].id },
   argTypes: { id: { control: "text" } },

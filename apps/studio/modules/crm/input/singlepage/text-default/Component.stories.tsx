@@ -6,7 +6,8 @@ import {
 } from "./Component";
 
 const meta = {
-  title: "Modules/CRM/Models/Input/Singlepage/text-default",
+  id: "modules-crm-models-input-singlepage-text-default",
+  title: "Modules/CRM/Input/Singlepage/text-default",
   component: CrmInputTextDefault,
   parameters: {
     layout: "padded",

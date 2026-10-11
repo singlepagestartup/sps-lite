@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProductGallery, defaultProductGalleryProps } from "./Component";
 
 const meta = {
-  title: "Modules/Ecommerce/Models/Product/Singlepage/gallery",
+  id: "modules-ecommerce-models-product-singlepage-gallery",
+  title: "Modules/Ecommerce/Product/Singlepage/gallery",
   component: ProductGallery,
   parameters: {
     layout: "fullscreen",

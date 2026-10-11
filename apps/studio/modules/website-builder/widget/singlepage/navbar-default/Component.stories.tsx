@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { NavbarDefault, defaultNavbarDefaultProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/navbar-default",
+  id: "modules-website-builder-models-widget-singlepage-navbar-default",
+  title: "Modules/Website-Builder/Widget/Singlepage/navbar-default",
   component: NavbarDefault,
   parameters: {
     layout: "fullscreen",

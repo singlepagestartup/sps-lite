@@ -2,7 +2,7 @@
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
 
 import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import type { IProjectAgent } from "../../overview/ai-chat/resolver";
+import type { IProjectAgent } from "../../id/ai-chat/resolver";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;

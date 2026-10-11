@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ContentRich, defaultContentRichProps } from "./Component";
 
 const meta = {
-  title: "Modules/Website Builder/Models/Widget/Singlepage/content-rich",
+  id: "modules-website-builder-models-widget-singlepage-content-rich",
+  title: "Modules/Website-Builder/Widget/Singlepage/content-rich",
   component: ContentRich,
   parameters: { layout: "padded" },
   args: defaultContentRichProps,

@@ -2,7 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as NotificationModuleNotification } from "../../index";
 
 const meta = {
-  title: "Modules/Notification/Models/Notification/Singlepage/admin-v2-table",
+  id: "modules-notification-models-notification-singlepage-admin-v2-table",
+  title: "Modules/Notification/Notification/Singlepage/admin-v2-table",
   component: NotificationModuleNotification,
   argTypes: { empty: { control: "boolean" } },
   args: { variant: "admin-v2-table", empty: false },

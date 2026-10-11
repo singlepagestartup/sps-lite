@@ -12,7 +12,7 @@ function Example(props: Partial<IdentityCardDefaultProps>) {
       renderFlow={({ identity, action, onClose, onUpdate }) =>
         action === "reconnect" ? (
           <RbacModuleSubject
-            variant="authentication-provider-connect-default"
+            variant="me-authentication-provider-connect-default"
             provider={identity.provider}
             account={identity.account || identity.email}
             onCancel={onClose}
@@ -21,7 +21,7 @@ function Example(props: Partial<IdentityCardDefaultProps>) {
         ) : (
           <RbacModuleSubject
             key={action}
-            variant="authentication-email-and-password-account-change-default"
+            variant="me-authentication-email-and-password-account-change-default"
             kind={action === "change-email" ? "email" : "password"}
             email={identity.email}
             onCancel={onClose}
@@ -36,7 +36,8 @@ function Example(props: Partial<IdentityCardDefaultProps>) {
 }
 
 const meta = {
-  title: "Modules/RBAC/Models/Identity/Singlepage/card-default",
+  id: "modules-rbac-models-identity-singlepage-card-default",
+  title: "Modules/RBAC/Identity/Singlepage/card-default",
   component: Example,
   args: {
     identity: defaultRbacIdentities[0],

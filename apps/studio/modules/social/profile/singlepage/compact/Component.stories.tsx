@@ -3,7 +3,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ProfileCompact, defaultProfileCompactProps } from "./Component";
 
 const meta = {
-  title: "Modules/Social/Models/Profile/Singlepage/compact",
+  id: "modules-social-models-profile-singlepage-compact",
+  title: "Modules/Social/Profile/Singlepage/compact",
   component: ProfileCompact,
   parameters: {
     layout: "centered",

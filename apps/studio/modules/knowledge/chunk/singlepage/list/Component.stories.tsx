@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as KnowledgeModuleChunk } from "../../index";
 const meta = {
-  title: "Modules/Knowledge/Models/Chunk/Singlepage/list",
+  id: "modules-knowledge-models-chunk-singlepage-list",
+  title: "Modules/Knowledge/Chunk/Singlepage/list",
   component: KnowledgeModuleChunk,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

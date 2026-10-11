@@ -245,8 +245,8 @@ for (const entry of files(modules).filter((file) =>
 
 test("delegated Subject forms and startup overrides preserve the selected variant", () => {
   for (const variant of [
-    "authentication-select-method-ai-chat",
-    "authentication-select-method-default",
+    "me-authentication-select-method-ai-chat",
+    "me-authentication-select-method-default",
   ] as const)
     expectRoot(
       renderToStaticMarkup(<RbacModuleSubject variant={variant} />),

@@ -5,7 +5,7 @@ import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useEffect, useState } from "react";
 import type { IAIChatUserProfile } from "../scope/ai-chat/project/models";
-import { aiChatAccount } from "../../../../rbac/subject/singlepage/account/fixture";
+import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;

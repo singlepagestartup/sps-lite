@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Component as BlogModuleCategory } from "../../index";
 const meta = {
-  title: "Modules/Blog/Models/Category/Singlepage/list",
+  id: "modules-blog-models-category-singlepage-list",
+  title: "Modules/Blog/Category/Singlepage/list",
   component: BlogModuleCategory,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {

@@ -7,7 +7,7 @@ import {
   type ButtonHTMLAttributes as ButtonControlProps,
 } from "react";
 import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { useSource } from "../../overview/document/ai-chat/Source";
+import { useSource } from "../../id/ai-chat/Source";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;

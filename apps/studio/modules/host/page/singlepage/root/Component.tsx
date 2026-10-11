@@ -43,7 +43,10 @@ export function HomeDefault({ variant = "root" }: IComponentVariantProps = {}) {
             <WebsiteBuilderModuleWidget
               variant="content-feature-find-row"
               contactForm={
-                <RbacModuleSubject variant="me-crm-form-deafult" embedded />
+                <RbacModuleSubject
+                  variant="me-crm-module-form-default"
+                  embedded
+                />
               }
             />
           </SectionStack>

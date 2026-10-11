@@ -86,11 +86,11 @@ publish(
 );
 
 publish(
-  "apps/studio/modules/social/profile/singlepage/agent/overview/ai-chat/agents.json",
+  "apps/studio/modules/social/profile/singlepage/agent/id/ai-chat/agents.json",
   JSON.stringify(roles, null, 2) + "\n",
 );
 const copies = {
-  settings: "rbac/subject/account-data",
+  settings: "rbac/subject/me/delete/ai-chat",
   help: "website-builder/widget/content/ai-chat/help",
   tokens: "ecommerce/order/checkout/tokens/ai-chat",
 };
@@ -138,6 +138,53 @@ for (const [name, owner] of Object.entries(copies)) {
     JSON.stringify(servicePaths(copy), null, 2) + "\n",
   );
 }
+const helpCopy = servicePaths(
+  parseAIChatServicePage(readFileSync(path.join(source, "help.md"), "utf8")),
+) as ReturnType<typeof parseAIChatServicePage>;
+publish(
+  "apps/studio/modules/crm/form/singlepage/support/ai-chat/content.json",
+  JSON.stringify(
+    {
+      title: helpCopy.sections.request.title,
+      fields: Object.fromEntries(
+        ["topic", "details", "result"].map((key) => [
+          key,
+          {
+            label: helpCopy.labels[`${key}-label`],
+            placeholder: helpCopy.labels[`${key}-placeholder`],
+          },
+        ]),
+      ),
+      topics: helpCopy.sections.topics.items.map((item) => item.title),
+    },
+    null,
+    2,
+  ) + "\n",
+);
+publish(
+  "apps/studio/modules/rbac/subject/singlepage/me/crm-module/form/support/ai-chat/content.json",
+  JSON.stringify(
+    {
+      labels: Object.fromEntries(
+        Object.entries(helpCopy.labels).filter(([key]) =>
+          [
+            "topic-error",
+            "details-error",
+            "result-error",
+            "submit",
+            "success-message",
+            "edit-request",
+            "return-label",
+            "return-href",
+          ].includes(key),
+        ),
+      ),
+      successParagraphs: helpCopy.sections.success.paragraphs,
+    },
+    null,
+    2,
+  ) + "\n",
+);
 for (const [name, form] of Object.entries({
   login: "authentication-form",
   register: "registration-form",
@@ -153,7 +200,7 @@ for (const [name, form] of Object.entries({
     ),
   );
   publish(
-    `apps/studio/modules/rbac/subject/singlepage/authentication/email-and-password/${form}/ai-chat/content.json`,
+    `apps/studio/modules/rbac/subject/singlepage/me/authentication/email-and-password/${form}/ai-chat/content.json`,
     JSON.stringify(
       {
         title: copy.sections.account.title,
@@ -166,10 +213,6 @@ for (const [name, form] of Object.entries({
     ) + "\n",
   );
   const content = {
-    backLink: {
-      text: copy.labels["back-label"],
-      href: copy.labels["back-href"],
-    },
     intro: {
       title: copy.sections.hero.title,
       paragraphs: copy.sections.hero.paragraphs,
@@ -241,7 +284,7 @@ publish(
   JSON.stringify(definitions, null, 2) + "\n",
 );
 publish(
-  "apps/studio/modules/knowledge/source/singlepage/overview/document/ai-chat/guides.json",
+  "apps/studio/modules/knowledge/source/singlepage/id/ai-chat/guides.json",
   JSON.stringify(guidePublication, null, 2) + "\n",
 );
 publish(
@@ -254,7 +297,7 @@ publish(
 );
 const materials = readFileSync(path.join(source, "new-project.md"), "utf8");
 publish(
-  "apps/studio/modules/social/profile/singlepage/processing/ai-chat/project/disclosure.json",
+  "apps/studio/modules/website-builder/widget/singlepage/content/ai-chat/materials-processing/disclosure.json",
   JSON.stringify(
     materials.slice(
       materials.indexOf("## How your materials are processed and stored"),
