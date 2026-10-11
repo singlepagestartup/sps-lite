@@ -1,0 +1,26 @@
+{
+  "backLink": {
+    "text": "Back to AI Chat",
+    "href": "/ai-chat/"
+  },
+  "intro": {
+    "title": "Your files and conversations are waiting.",
+    "paragraphs": [
+      "Sign in to return to your last active project or the task you paused. Each document's thread keeps its discussion and draft; project topics keep their attached documents."
+    ]
+  },
+  "images": [
+    {
+      "src": "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-work-in-motion-square.png",
+      "alt": "A smiling maker in a pottery studio.",
+      "assetId": "singlepage-generated-living-focus-photography-work-in-motion-square"
+    }
+  ],
+  "aside": {
+    "title": "Trouble signing in?",
+    "paragraphs": [
+      "Forgot your password? [Contact support](/ai-chat/help). If sign-in fails, check your details and try again.",
+      "No account yet? [Create one](/ai-chat/rbac/subjects/authentication/registration)."
+    ]
+  }
+}

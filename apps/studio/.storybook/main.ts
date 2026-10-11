@@ -23,6 +23,7 @@ const config: StorybookConfig = {
   },
   staticDirs: [
     "../runtime",
+    { from: "../runtime/assets", to: "/module-assets" },
     "../foundations",
     { from: "../workspace/assets", to: "/workspace-assets" },
     { from: "../workspace/products", to: "/workspace-products" },
@@ -58,7 +59,6 @@ const config: StorybookConfig = {
     ],
     resolve: {
       ...config.resolve,
-      tsconfigPaths: true,
     },
     css: {
       ...config.css,

@@ -1,0 +1,23 @@
+{
+  "title": "Sign in",
+  "description": [],
+  "successDescription": [
+    "Open your workspace to return to your documents and conversations."
+  ],
+  "labels": {
+    "email-label": "Email",
+    "email-placeholder": "you@example.com",
+    "password-label": "Password",
+    "submit": "Sign in",
+    "forgot-label": "Forgot password?",
+    "forgot-href": "/ai-chat/help",
+    "register-label": "Create an account",
+    "register-href": "/ai-chat/rbac/subjects/authentication/registration",
+    "no-account": "No account yet?",
+    "continue-label": "Open workspace",
+    "continue-href": "/ai-chat/social/profiles/example",
+    "email-error": "Enter a valid email address.",
+    "password-error": "Enter your password.",
+    "success-message": "Welcome back."
+  }
+}

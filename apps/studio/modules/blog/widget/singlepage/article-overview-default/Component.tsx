@@ -1,0 +1,37 @@
+import { ArticleFindByIdTagFind } from "../article-find-by-id-tag-find-default/Component";
+import {
+  Component as BlogModuleArticle,
+  type ArticleOverviewDefaultProps,
+  defaultArticleOverviewDefaultProps,
+} from "../../../article/index";
+
+export { defaultArticleOverviewDefaultProps };
+export type { ArticleOverviewDefaultProps };
+
+export function ArticleOverviewDefaultWidget(
+  props?: Partial<ArticleOverviewDefaultProps> & { variant?: string },
+) {
+  return (
+    <div
+      data-ds-block="blog.widget.article-overview-default"
+      data-ds-imports="blog.article.overview-default"
+      data-ds-layer="singlepage"
+      data-ds-routes="blog.article.overview-default"
+      data-module="blog"
+      data-model="widget"
+      data-variant={props?.variant ?? "article-overview-default"}
+    >
+      <BlogModuleArticle
+        {...props}
+        variant="overview-default"
+        tagsCard={
+          props?.tagsCard ?? (
+            <ArticleFindByIdTagFind
+              tags={props?.tags ?? defaultArticleOverviewDefaultProps.tags}
+            />
+          )
+        }
+      />
+    </div>
+  );
+}

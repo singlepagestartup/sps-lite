@@ -90,26 +90,23 @@ describe("product catalog", () => {
     ]);
     expect(pages?.title).toBe("Pages");
     expect(pages?.children.map(({ route }) => route)).toEqual([
-      "/",
-      "/register",
-      "/login",
-      "/projects/new",
-      "/projects/[project-id]",
-      "/projects/[project-id]/landing-page",
-      "/projects/[project-id]/landing-page/publish",
-      "/tokens",
-      "/settings",
-      "/help",
+      "/ai-chat/",
+      "/ai-chat/rbac/subjects/authentication/registration",
+      "/ai-chat/rbac/subjects/authentication/select-method",
+      "/ai-chat/social/profiles/[social.profiles.id]",
+      "/ai-chat/rbac/subjects/tokens",
+      "/ai-chat/rbac/subjects/settings",
+      "/ai-chat/help",
     ]);
     expect(
-      pages?.children.find(({ id }) => id === "new-project")?.uses,
-    ).toEqual(["product.ai-chat.page.content.one-hour-setup"]);
+      pages?.children.find(({ id }) => id === "project-workspace")?.title,
+    ).toBe("Project chat");
     expect(
       pages?.children.find(({ id }) => id === "project-workspace")?.uses,
-    ).toEqual(["product.ai-chat.page.content.project-model"]);
-    expect(
-      pages?.children.find(({ id }) => id === "landing-page-workspace")?.uses,
-    ).toEqual(["product.ai-chat.page.content.project-model"]);
+    ).toEqual([
+      "product.ai-chat.page.content.one-hour-setup",
+      "product.ai-chat.page.content.project-model",
+    ]);
     expect(
       pages?.children.every(
         ({ representations }) =>

@@ -1,0 +1,96 @@
+"use client";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+
+import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
+import { Component as ProjectSelectItem } from "../../item/ai-chat/project/index";
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
+export interface IProjectSelectProps {
+  variant?: string;
+  profileId?: string;
+  onNavigate?: () => void;
+  onCloseAutoFocus?: (event: Event) => void;
+}
+export function Component({
+  variant = "select-ai-chat-project",
+  profileId,
+  onNavigate,
+  onCloseAutoFocus,
+}: IProjectSelectProps) {
+  const { projects } = useProfiles();
+  return (
+    <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Trigger asChild>
+        <button
+          type="button"
+          aria-label="Project"
+          data-ds-block="social.profile.select-ai-chat-project"
+          className={`inline-flex min-h-11 max-w-60 items-center gap-2 rounded-xl px-3 text-sm text-sps-muted hover:bg-sps-grey ${kit.focus}`}
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
+        >
+          <Icon name="folder-open" />
+          <span className="min-w-0 truncate">
+            {projects.find((profile) => profile.id === profileId)?.name ??
+              "Select project"}
+          </span>
+          <Icon name="caret-down" className="size-4" />
+        </button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Portal>
+        <DropdownMenu.Content
+          align="end"
+          sideOffset={8}
+          collisionPadding={12}
+          onCloseAutoFocus={onCloseAutoFocus}
+          className="z-50 w-64 max-w-[calc(100vw-24px)] rounded-xl border border-sps-line bg-sps-white p-2 text-sps-graphite shadow-lg font-sps"
+          data-module="social"
+          data-model="profile"
+          data-variant={variant}
+        >
+          <DropdownMenu.Label className="px-3 py-2 text-xs font-semibold text-sps-muted">
+            Projects
+          </DropdownMenu.Label>
+          {projects.map((profile) => (
+            <ProjectSelectItem
+              key={profile.id}
+              data={profile}
+              selected={profile.id === profileId}
+              onNavigate={onNavigate}
+            />
+          ))}
+          <DropdownMenu.Separator className="my-1 h-px bg-sps-line" />
+          <DropdownMenu.Item asChild>
+            <a
+              href="/ai-chat/social/profiles/create"
+              onClick={onNavigate}
+              className={itemClass}
+            >
+              <Icon name="plus" />
+              New project
+            </a>
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Portal>
+    </DropdownMenu.Root>
+  );
+}
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const itemClass =
+  "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey";

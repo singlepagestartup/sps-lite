@@ -1,0 +1,141 @@
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { forwardRef, type SVGProps } from "react";
+import { twMerge as twMerge } from "tailwind-merge";
+import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SocialModuleProfile } from "../../../../social/profile/index";
+interface IModuleIconProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+}
+type IconName = keyof typeof IconGlyphs;
+function createIcon(name: IconName) {
+  const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
+    function ModuleGlyph({ className, size = 20, children, ...props }, ref) {
+      return (
+        <span className="contents">
+          <Icon
+            name={name}
+            className={twMerge("h-5 w-5", className)}
+            svgProps={{ ...props, ref, width: size, height: size }}
+          />
+        </span>
+      );
+    },
+  );
+  Component.displayName = `Phosphor(${name})`;
+  return Component;
+}
+function Icon(props: {
+  name: keyof typeof IconGlyphs;
+  size?: 20 | 24;
+  className?: string;
+  svgProps?: React.SVGProps<SVGSVGElement>;
+}) {
+  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+}
+
+type ArticleFeaturedTarget = "_blank" | "_parent" | "_self" | "_top";
+export type ArticleFeaturedProps = typeof defaultArticleFeaturedProps;
+export function ArticleFeatured(
+  props?: Partial<ArticleFeaturedProps> & { variant?: string },
+) {
+  const {
+    href,
+    slug,
+    title,
+    excerpt,
+    coverImage,
+    category,
+    authorName,
+    authorAvatar,
+    date,
+    readTime,
+    target,
+  } = { ...defaultArticleFeaturedProps, ...props };
+  return (
+    <a
+      href={href ?? `/blog/articles/${slug}`}
+      target={target}
+      rel={target === "_blank" ? "noreferrer" : undefined}
+      className={`group grid min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-graphite)] text-[var(--color-sps-white)] md:grid-cols-2 ${kit.focus}`}
+      data-ds-block="blog.article.featured"
+      data-ds-imports="social.profile.byline"
+      data-ds-layer="singlepage"
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "featured"}
+    >
+      <div className="aspect-square min-w-0 overflow-hidden">
+        <img
+          src={coverImage}
+          alt={title}
+          className="h-full w-full object-cover"
+        />
+      </div>
+      <div className="flex min-w-0 flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">
+        <div>
+          <div className="mb-6 flex flex-wrap items-center gap-2 text-xs">
+            <span className="rounded-full bg-[var(--color-sps-green)] px-3 py-1.5 font-medium text-[var(--color-sps-graphite)]">
+              Featured article
+            </span>
+            <span className="rounded-full border border-white/20 px-3 py-1.5">
+              {category}
+            </span>
+          </div>
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight lg:text-4xl">
+            {title}
+          </h2>
+          <p className="mt-5 text-base leading-[26px] text-[var(--color-sps-muted-inverse)]">
+            {excerpt}
+          </p>
+        </div>
+        <div>
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/20 pt-5 text-xs text-[var(--color-sps-muted-inverse)]">
+            <SocialModuleProfile
+              variant="byline"
+              inverse
+              name={authorName}
+              avatar={authorAvatar}
+              href={null}
+              size="xs"
+            />
+            <span>{date}</span>
+          </div>
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <span className="text-xs text-[var(--color-sps-muted-inverse)]">
+              {readTime}
+            </span>
+            <span className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--color-sps-green)] px-5 py-2 text-sm font-semibold text-[var(--color-sps-graphite)]">
+              Read article <ArrowUpRight className="size-5" />
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
+const ArrowUpRight = createIcon("arrow-up-right");
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const sarahAvatar =
+  "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHdvbWFuJTIwZGV2ZWxvcGVyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzcxNzE1ODgyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+export const defaultArticleFeaturedProps = {
+  href: undefined as string | undefined,
+  slug: "how-to-choose",
+  title: "How to Choose the Right Plan for Your Business",
+  excerpt:
+    "A comprehensive guide to evaluating subscription tiers, comparing features, and making the right decision for your team size and growth trajectory.",
+  coverImage:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
+  category: "guides",
+  authorName: "Sarah Kim",
+  authorSlug: "sarah-kim",
+  authorAvatar: sarahAvatar,
+  date: "Feb 18, 2026",
+  readTime: "7 min read",
+  target: undefined as ArticleFeaturedTarget | undefined,
+};

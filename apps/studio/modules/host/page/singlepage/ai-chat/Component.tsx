@@ -1,0 +1,61 @@
+import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
+
+import { Component as SocialModuleChat } from "../../../../social/chat/index";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
+import type { IAIChatWebsiteContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
+
+export interface IAIChatPageProps {
+  variant?: string;
+  content?: IAIChatWebsiteContent;
+}
+export function Component({
+  variant = "ai-chat",
+  content,
+}: IAIChatPageProps = {}) {
+  return (
+    <div data-module="host" data-model="page" data-variant={variant}>
+      <HostModuleLayout
+        variant="ai-chat-landing"
+        subjectAccount={<RbacModuleSubject variant="account" showTokens />}
+        footerContent={content?.footer}
+      >
+        <main
+          id="ai-chat-main"
+          data-ds-page="host.page.ai-chat"
+          tabIndex={-1}
+          className="outline-none"
+        >
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-hero"
+            content={content && { hero: content.hero, labels: content.labels }}
+          />
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-try"
+            content={
+              content && {
+                workflow: content.workflow,
+                uploadNote: content.labels["demo-upload-note"],
+              }
+            }
+          >
+            <SocialModuleChat
+              variant="overview-preview-ai-chat"
+              content={content}
+            />
+          </WebsiteBuilderModuleWidget>
+          <WebsiteBuilderModuleWidget
+            variant="content-ai-chat-continue"
+            content={
+              content && {
+                continue: content.continue,
+                terms: content.terms,
+                startLink: content.hero.links[0],
+              }
+            }
+          />
+        </main>
+      </HostModuleLayout>
+    </div>
+  );
+}

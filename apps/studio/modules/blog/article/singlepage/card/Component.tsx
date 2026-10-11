@@ -1,0 +1,127 @@
+import { Component as SocialModuleProfile } from "../../../../social/profile/index";
+/**
+ * Model-owned article link. Balanced, editorial and compact are presentation
+ * choices over the same article props; widgets compose this component.
+ * The footer separates the Social profile byline from reading metadata.
+ */
+type ArticleCardTarget = "_blank" | "_parent" | "_self" | "_top";
+export type ArticleCardProps = typeof defaultArticleCardProps & {
+  /** Presentation choice only; the article record contract stays unchanged. */
+  layout?: "balanced" | "editorial" | "compact";
+};
+export function ArticleCard(
+  props?: Partial<ArticleCardProps> & { variant?: string },
+) {
+  const {
+    href,
+    slug,
+    coverImage,
+    category,
+    date,
+    title,
+    excerpt,
+    authorName,
+    authorAvatar,
+    readTime,
+    target,
+    layout = "balanced",
+  } = { ...defaultArticleCardProps, ...props };
+  const compact = layout === "compact";
+  const editorial = layout === "editorial";
+  const metadata = (
+    <div className="flex min-w-0 flex-wrap items-center justify-between gap-3 border-t border-[var(--color-sps-line)] pt-4">
+      <div className="min-w-0">
+        <SocialModuleProfile
+          variant="byline"
+          name={authorName}
+          avatar={authorAvatar}
+          href={null}
+          size="xs"
+        />
+      </div>
+      <div className="ml-auto shrink-0 text-right text-xs leading-5 text-[var(--color-sps-muted)]">
+        <p>{readTime}</p>
+      </div>
+    </div>
+  );
+  return (
+    <a
+      href={href ?? `/blog/articles/${slug}`}
+      target={target}
+      rel={target === "_blank" ? "noreferrer" : undefined}
+      className={`group grid h-full min-w-0 overflow-hidden rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] transition hover:border-[var(--color-sps-graphite)] motion-reduce:transition-none ${compact ? "grid-cols-[96px_minmax(0,1fr)] items-start gap-4 p-4" : "grid-rows-[auto_1fr]"} ${kit.focus}`}
+      data-ds-block="blog.article.card"
+      data-ds-imports="social.profile.byline"
+      data-ds-layer="singlepage"
+      data-card-layout={layout}
+      data-module="blog"
+      data-model="article"
+      data-variant={props?.variant ?? "card"}
+    >
+      {editorial && (
+        <div className="px-5 pb-5 pt-6 sm:px-6">
+          <div className="mb-3 flex items-center justify-between gap-3 text-xs text-[var(--color-sps-muted)]">
+            <span>{category}</span>
+            <span>{date}</span>
+          </div>
+          <h3 className="text-2xl font-semibold leading-7 tracking-tight">
+            {title}
+          </h3>
+        </div>
+      )}
+      <div
+        className={`aspect-square overflow-hidden ${compact ? "rounded-xl" : ""}`}
+      >
+        <img src={coverImage} alt="" className="h-full w-full object-cover" />
+      </div>
+      <div className={`flex min-w-0 flex-col ${compact ? "" : "p-5 sm:p-6"}`}>
+        {!editorial && (
+          <>
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-[var(--color-sps-muted)]">
+              <span className="font-medium">{category}</span>
+              <span>{date}</span>
+            </div>
+            <h3
+              className={`${compact ? "text-lg leading-6" : "text-2xl leading-7"} font-semibold tracking-tight text-[var(--color-sps-graphite)]`}
+            >
+              {title}
+            </h3>
+          </>
+        )}
+        {!compact && (
+          <p className="mb-5 mt-3 line-clamp-2 text-sm leading-[22px] text-[var(--color-sps-muted)]">
+            {excerpt}
+          </p>
+        )}
+        {!compact && <div className="mt-auto">{metadata}</div>}
+      </div>
+      {compact && <div className="col-span-2">{metadata}</div>}
+    </a>
+  );
+}
+const focus =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+const buttonBase =
+  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
+const kit = {
+  focus: focus,
+};
+const sarahAvatar =
+  "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHdvbWFuJTIwZGV2ZWxvcGVyJTIwaGVhZHNob3R8ZW58MXx8fHwxNzcxNzE1ODgyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral";
+export const defaultArticleCardProps = {
+  href: undefined as string | undefined,
+  slug: "how-to-choose",
+  coverImage:
+    "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
+  category: "guides",
+  date: "Feb 18, 2026",
+  title: "How to Choose the Right Plan for Your Business",
+  excerpt:
+    "A comprehensive guide to evaluating subscription tiers, comparing features, and making the right decision for your team size and growth trajectory.",
+  authorName: "Sarah Kim",
+  authorAvatar: sarahAvatar,
+  authorSlug: "sarah-kim",
+  commentCount: 3,
+  readTime: "7 min read",
+  target: undefined as ArticleCardTarget | undefined,
+};

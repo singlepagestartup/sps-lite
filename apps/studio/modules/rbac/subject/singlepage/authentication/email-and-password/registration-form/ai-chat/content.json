@@ -1,0 +1,25 @@
+{
+  "title": "Create an account",
+  "description": ["Your free token balance appears in the workspace."],
+  "successDescription": [
+    "Continue to your project chat and add your notes, files and images."
+  ],
+  "labels": {
+    "email-label": "Email",
+    "email-placeholder": "you@example.com",
+    "password-label": "Password",
+    "repeat-password-label": "Repeat password",
+    "terms-label": "How your materials are processed and stored",
+    "terms-href": "/ai-chat/social/profiles/create#how-your-materials-are-processed-and-stored",
+    "submit": "Create account",
+    "sign-in-label": "Sign in",
+    "sign-in-href": "/ai-chat/rbac/subjects/authentication/select-method",
+    "existing-account": "Already have an account?",
+    "continue-label": "Open project chat",
+    "continue-href": "/ai-chat/social/profiles/create",
+    "email-error": "Enter a valid email address.",
+    "password-error": "Enter a password.",
+    "repeat-password-error": "Enter the same password in both fields.",
+    "success-message": "Your account is ready."
+  }
+}
