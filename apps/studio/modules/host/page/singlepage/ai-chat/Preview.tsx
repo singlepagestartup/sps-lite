@@ -113,7 +113,7 @@ function Pages({
 }
 export function AIChatPreview({
   loginCopy,
-  initialHref = "/ai-chat/",
+  initialHref = "/",
   account = aiChatAccount,
   signedIn,
   profiles = aiChatWorkspaceFixture(),

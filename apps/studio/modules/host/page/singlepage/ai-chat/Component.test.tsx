@@ -273,7 +273,7 @@ describe("Local AI Chat components", () => {
 
   test("recognizes prototype routes without intercepting unrelated pages", () => {
     for (const url of [
-      "/ai-chat/",
+      "/",
       "/ai-chat/rbac/subjects/authentication/registration",
       "/ai-chat/rbac/subjects/authentication/select-method",
       "/ai-chat/rbac/subjects/settings",
@@ -286,7 +286,8 @@ describe("Local AI Chat components", () => {
     ])
       expect(isAIChatRoute(url)).toBe(true);
     for (const url of [
-      "/",
+      "/framework",
+      "/ai-chat/",
       "/register",
       "/projects/pottery",
       "/ai-chat/unknown",
@@ -344,7 +345,7 @@ describe("Local AI Chat components", () => {
 
   test("page components render local assets and prototype navigation", () => {
     for (const url of [
-      "/ai-chat/",
+      "/",
       "/ai-chat/rbac/subjects/authentication/registration",
       "/ai-chat/rbac/subjects/authentication/select-method",
       "/ai-chat/rbac/subjects/settings",
@@ -359,7 +360,9 @@ describe("Local AI Chat components", () => {
         />,
       );
       for (const [, href] of html.matchAll(/<a[^>]*href="(\/[^\"]*)"/g))
-        expect(href.startsWith("/ai-chat/")).toBe(true);
+        expect(
+          href === "/" || href === "/framework" || href.startsWith("/ai-chat/"),
+        ).toBe(true);
       for (const [, src] of html.matchAll(
         /src="(\/workspace-assets\/[^\"]*)"/g,
       ))

@@ -7,7 +7,7 @@ type IPageStoryProps = Pick<
   "signedIn" | "account" | "profiles"
 >;
 function Example(props: IPageStoryProps) {
-  return <AIChatPreview {...props} initialHref="/ai-chat/" />;
+  return <AIChatPreview {...props} initialHref="/" />;
 }
 const meta = {
   id: "modules-host-models-page-singlepage-ai-chat",

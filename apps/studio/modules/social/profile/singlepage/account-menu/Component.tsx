@@ -142,16 +142,6 @@ export function Component({
               Settings
             </a>
           </DropdownMenu.Item>
-          <DropdownMenu.Item asChild>
-            <a
-              href="/?path=/story/modules-host-models-page-singlepage-admin-settings--default"
-              target="_top"
-              className={menuItemClassName}
-            >
-              <Icon name="shield" />
-              Admin Panel
-            </a>
-          </DropdownMenu.Item>
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item asChild>
             <button

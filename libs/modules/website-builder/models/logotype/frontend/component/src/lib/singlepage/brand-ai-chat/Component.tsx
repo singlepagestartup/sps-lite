@@ -9,7 +9,7 @@ export function Component({
   const pathname = `/${language}`;
   return (
     <a
-      href={getLocalizedHref(pathname, "/ai-chat")}
+      href={getLocalizedHref(pathname, "/")}
       data-ds-block="website-builder.logotype.brand-ai-chat"
       data-id={data.id}
       className={`group relative isolate inline-flex shrink-0 items-center gap-3 rounded-xl ${kit.focus}`}

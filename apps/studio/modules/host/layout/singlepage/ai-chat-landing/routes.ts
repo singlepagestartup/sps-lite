@@ -15,7 +15,7 @@ export interface IAIChatRoute {
 }
 
 export const aiChatServiceHrefs = {
-  landing: "/ai-chat/",
+  landing: "/",
   register: "/ai-chat/rbac/subjects/authentication/registration",
   login: "/ai-chat/rbac/subjects/authentication/select-method",
   "account-settings": "/ai-chat/rbac/subjects/settings",

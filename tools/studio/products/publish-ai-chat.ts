@@ -36,10 +36,16 @@ function publish(relative: string, data: string | Buffer) {
   }
 }
 function servicePaths(value: unknown): unknown {
-  if (typeof value === "string")
+  if (typeof value === "string") {
+    if (value === "/" || /^\/framework(?:[?#]|$)/.test(value)) return value;
     return value
-      .replace(/\]\((\/(?!ai-chat\/)[^)]*)\)/g, "](/ai-chat$1)")
+      .replace(/\]\((\/(?!ai-chat\/)[^)]*)\)/g, (match, href: string) =>
+        href === "/" || /^\/framework(?:[?#]|$)/.test(href)
+          ? match
+          : `](/ai-chat${href})`,
+      )
       .replace(/^\/(?!ai-chat\/|workspace-assets\/)(.*)$/, "/ai-chat/$1");
+  }
   if (Array.isArray(value)) return value.map(servicePaths);
   if (value && typeof value === "object")
     return Object.fromEntries(

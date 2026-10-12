@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, LogOut, Settings, Shield } from "lucide-react";
+import { ChevronDown, LogOut, Settings } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
 import type { IModel as IProfile } from "@sps/social/models/profile/sdk/model";
@@ -152,12 +152,6 @@ function AccountMenu({
               >
                 <Settings className="size-5" />
                 Settings
-              </Link>
-            </DropdownMenu.Item>
-            <DropdownMenu.Item asChild>
-              <Link href={`${localeBase}/admin`} className={menuItemClassName}>
-                <Shield className="size-5" />
-                Admin Panel
               </Link>
             </DropdownMenu.Item>
             <DropdownMenu.Separator className="my-1 h-px bg-border" />

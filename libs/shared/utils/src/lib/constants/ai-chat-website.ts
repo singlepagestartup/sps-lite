@@ -126,7 +126,7 @@ export const AI_CHAT_WEBSITE_CONTENT: IAIChatWebsiteContent = {
       },
       {
         text: "Code Framework",
-        href: "https://github.com/singlepagestartup/singlepagestartup",
+        href: "/framework",
       },
     ],
   },

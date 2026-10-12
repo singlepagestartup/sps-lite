@@ -40,7 +40,7 @@ export function Component(props: IComponentPropsExtended) {
           Start with my files
         </a>
         <a href={getLocalizedHref(pathname, "/ai-chat/sign-in")}>Sign in</a>
-        <a href="https://singlepagestartup.com">Code Framework</a>
+        <a href={getLocalizedHref(pathname, "/framework")}>Code Framework</a>
       </div>
     </footer>
   );

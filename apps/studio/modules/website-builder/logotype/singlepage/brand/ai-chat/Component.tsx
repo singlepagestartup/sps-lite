@@ -17,7 +17,7 @@ export function Component({
 }: IComponentVariantProps = {}) {
   return (
     <a
-      href="/ai-chat/"
+      href="/"
       data-ds-block="website-builder.logotype.brand-ai-chat"
       data-id="ai-chat-logotype"
       className={`group relative isolate inline-flex shrink-0 items-center gap-3 rounded-xl ${kit.focus}`}
