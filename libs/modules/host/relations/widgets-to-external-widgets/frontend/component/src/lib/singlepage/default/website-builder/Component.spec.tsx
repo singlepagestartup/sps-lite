@@ -129,7 +129,7 @@ it("injects the authenticated Subject support form into Help without a page-leve
     "authentication-me-default",
     "me-crm-module-form-support-ai-chat",
   ]);
-  expect(subjectCalls.mock.calls[0][0].isServer).toBe(true);
+  expect(subjectCalls.mock.calls[0][0].isServer).toBe(false);
   expect(subjectCalls.mock.calls[1][0]).toEqual(
     expect.objectContaining({
       data: expect.objectContaining({ id: "current-subject" }),
@@ -160,6 +160,12 @@ it.each([
     );
     expect(target).not.toHaveProperty("url");
     expect(target).not.toHaveProperty("apiProps");
+    expect(subjectCalls.mock.calls[0][0]).toEqual(
+      expect.objectContaining({
+        variant: "authentication-me-default",
+        isServer: false,
+      }),
+    );
     const account = subjectCalls.mock.calls.find(
       ([call]) => call.variant === "me-account-ai-chat",
     )?.[0];

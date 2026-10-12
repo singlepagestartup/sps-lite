@@ -8,8 +8,10 @@ AI Chat composition uses the target Widget's persisted variant in `default`.
 The Website Builder `navbar-ai-chat` adapter supplies RBAC account and project
 selectors through the Widget's children. The project-creation and Help adapters
 supply their RBAC forms to Website Builder content slots.
-Help composes Subject authentication and its support form directly in the Host
-adapter. The persisted Website Builder Help Widget owns the support card; its
+Navbar and Help resolve the Subject session through the client SDK inside their
+Client Components. The Host server readers load public Widget records without
+reading session cookies. Help composes its support form in the Host adapter.
+The persisted Website Builder Help Widget owns the support card; its
 child slot receives the RBAC form, which loads the CRM Form through its SDK.
 Landing receives the Social Chat demonstration through its children
 slot. Website Builder owns their presentation, and the Host adapter owns these
