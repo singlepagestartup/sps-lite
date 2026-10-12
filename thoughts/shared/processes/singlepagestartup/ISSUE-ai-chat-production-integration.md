@@ -1,0 +1,269 @@
+---
+issue_number: none
+issue_title: "AI Chat production integration"
+repository: singlepagestartup
+execution_mode: local
+status: implemented
+current_phase: complete
+created_at: 2026-10-11
+---
+
+# Local execution record: AI Chat production integration
+
+## Stages
+
+| Stage           | Result                                                                                                                         |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Research        | Existing routing, Subject SDKs, Thread metadata, AI bootstrap, Knowledge indexing and OpenRouter execution identified.         |
+| Plan            | RBAC compositions, project-specific AI identity, Thread document bindings, local fonts/assets and admin configuration defined. |
+| Implementation  | Production variants and SDK/API integration present in the working tree.                                                       |
+| Verification    | Browser scenarios and relevant checks recorded below.                                                                          |
+| Operator review | Ready.                                                                                                                         |
+
+The task runs locally without a GitHub issue or intermediate approval stages. The Studio reference is commit `842d434153`.
+
+## Implementation
+
+Host Page owns route-aware composition for both Page and Layout Widgets. It
+reads the Layout's persisted default and additional links, creates Host Widgets
+with the current Page route, and supplies ready nodes to Layout's `before` and
+`after` slots. Layout and its relation presenters have no URL props. Standalone
+Layouts retain their relation fallback. External Host adapters resolve IDs and
+active-navigation flags; Website Builder and RBAC Widgets receive those values
+and locale, without the raw Page URL. The account menu and Social sidebar links
+use supplied locale and selected flags.
+
+CRM Form `support-ai-chat` uses the shared SPS `default` record wrapper. Its
+Provider and client/server APIs come from the CRM Form SDK. `isServer` selects
+the reader; both readers call `findById` with `data.id` and `apiProps`. The render
+component receives the loaded record and its `className`, alongside RBAC field
+values, errors and actions. The shared wrapper supplies loading and error
+boundaries. The existing slug lookup in RBAC selects the Form reference.
+
+Website Builder Help owns the support card, its heading and icon. Host's external
+Widget relation resolves the persisted Help Widget and supplies the authenticated
+Subject form as children. RBAC owns validation and CRM request submission; CRM
+Form owns only the support fields, errors and action slot. Studio uses the same
+ownership. The live Help Widget and CRM Form retain their existing IDs.
+
+Host and Studio components use generic semantic color roles. Host's preset
+maps `primary`, `default`, surface, text, border and error utilities to CSS
+variables; Studio has the same independent role definitions in
+`runtime/theme.css`. Primary surfaces use `primary-foreground`, and strong
+surfaces use `default-foreground` and `default-muted-foreground`. The existing
+Default and Primary font loaders remain in place. `font-sans` and
+`font-default` both resolve the default font. The AI Chat Layout's persisted
+class list uses `bg-muted font-default text-foreground`.
+
+Production icons are shared React SVG components in `libs/shared/ui/adapter/src/lib/icons`, exported as `Icon` and `IconName` from `@sps/ui-adapter`. Eighteen consumer files and the shared Select use that component. Website Builder Feature has no icon variant. The 17 Phosphor Regular path geometries match the original catalog; the renderer uses JSX glyphs and inherited color. Static logos use files in `apps/host/public/images`. The PDF fixture’s SVG resides in `apps/host/public/images/pdf`, with identical file bytes and a public image URL. The two icon-folder exceptions are absent from `.gitignore`.
+
+Host reads the Page → Layout → Widget and Page → Widget links from the database. Landing and Help target Website Builder Widgets. The Host external-widget adapters supply the Social Chat demonstration and authenticated Subject support form through children slots. The unused Landing and Help RBAC Widget variants are absent from the component and SDK registries. The Layout links Website Builder Navbar in its `default` slot and Footer in `additional`. The Host external-widget adapter injects RBAC account and project selectors into Navbar children. Profile, Chat and Thread parameters come from Host Page `url-segment-value` against the stored page mask; RBAC receives explicit IDs and the locale.
+
+RBAC Widgets use server authentication and connected-project readers, then compose Social Profile → Chat → Thread. Separate Subject components own message reads, submission, Source creation and attachment, individual Source updates and Thread Markdown export. Account settings compose separate personal Profile, avatar and Identity components. Static Website Builder content and the project frame render on the server; menus, forms, document panes and live SDK readers remain client components. Multiple Profiles can share a Chat; each Profile keeps its own document Threads.
+
+The Profile collection uses `GET /api/rbac/subjects/:id/social-module/profiles` with ordinary query filters and `POST` at the same URL with Profile fields in `data`. Both return Profile models. The collection includes the Subject's own Profiles and Profiles connected through its Chats. The UI selects artificial-intelligence Profiles with a variant filter. GET performs no writes. The workspace view combines Profile, Chat and Thread records in the frontend; its cache is separate from the Profile collection cache. Item actions use concrete Profile, Chat and Thread IDs.
+
+The creation form sends only `title` and `variant="artificial-intelligence"`. Profile model defaults generate `slug` and `adminTitle`. Each project has a human author Profile, Chat, default Thread, artificial-intelligence Profile and a separate Agent Subject. The shared bootstrap connects the newly created Profile and preserves its generated fields. Telegram retains its deterministic agent identity and Profile creation. The form keeps a successfully returned Profile while resolving its workspace; retrying that step uses the same Profile. The Profile creation service provisions Brief.md, Strategy.md, Brand.md, Design.md and Products.md before returning the Profile. The lifecycle Thread becomes Brief.md, and the workspace opens it first. The document service reuses existing document IDs, including a Thread saved before its Chat relation failed.
+
+Thread `metadata.aiChatDocument` contains a predefined document key (`brief`, `strategy`, `brand`, `design` or `products`), the target AI Profile ID and the document's Source IDs. Both create and update validate Chat membership and Source ownership. The document title and Markdown download belong to the Thread. Source cards contain only their section editor, discussion action and attachments. Ordinary conversation Threads have no document marker and render only messages and the composer. Their UI has no Knowledge editor, Markdown export or document target selector; AI retrieval still uses the project’s saved Knowledge. Documents and topics occupy separate sidebar lists. The five existing web projects have all five documents; their Products.md IDs and Source lists remain intact.
+
+Knowledge mutations reuse the existing scoped Source APIs and indexing pipeline. A partial save retains the created Source ID for retry; edits made before retry update that Source rather than create another. The editor distinguishes persistence, indexing and material-analysis outcomes.
+
+Messages use the existing thread-scoped Subject SDK and `rbacAiReactionRequest` metadata. Backend action handling triggers one AI execution. Web AI Chat requests use the existing token billing route; Telegram-specific channel and legacy tariff requirements remain in the Telegram flow.
+
+Account text and avatar changes use owner-scoped Subject routes. Existing localized values are preserved. Authentication uses the real email/password SDKs, including registration confirmation and terms controls, forgot-password and reset-password forms.
+
+The navbar receives the RBAC `me-account-ai-chat` composition in its account slot. The menu loads the current Subject's Profile, avatar and identity email through SDK-backed components. Settings and Admin Panel link to their production routes; Sign out uses the authentication SDK. Enter opens the menu, and Escape closes it and returns focus to the account button.
+
+The Purchases card uses the Storybook title, caption, Phosphor wallet and receipt glyphs, spacing, status badge and responsive row layout. Paid history is loaded from the authenticated Subject order collection with explicit filters. Cache keys include the filters, and realtime topics remain attached. Amounts use order totals grouped by currency; receipt downloads use stored File relations. Loading, failure and empty states are explicit. Settings use a mobile section picker and omit the workspace back link.
+
+AI Chat dropdowns use the Studio Radix/shadcn presentation. The project menu contains folder glyphs, the selected project check, a Projects label and New project. Its rows receive real Profile data and existing Profile/Chat/Thread destinations from the RBAC composition. Agent and mobile settings pickers use the shared SPS Select adapter. The Working on radio menu retains Source IDs as values and offers Whole document plus the current Thread's sections.
+
+Documents navigation uses the Social Profile `thread-list-sidebar-ai-chat` presentation in the workspace, project settings and Thread creation compositions. It starts expanded and includes the Studio folder, file and caret glyphs, document count and selected link styling. The button controls a hidden document list with `aria-expanded` and `aria-controls`. Document links retain the concrete Profile/Chat/Thread route.
+
+The project creation card uses the Studio heading, copy, image and caption through Website Builder `content-ai-chat-profile-create`. Its form retains the existing Profile creation SDK. The page includes `content-ai-chat-materials-processing` below the card and has no separate project-card grid. Project choice stays in the navbar menu.
+
+The Social Profile `sidebar-ai-chat-project` presentation supplies the Settings and New thread links across workspace, project settings and Thread creation. Padding, rounding, hover and current-page states follow Studio. The Website Builder `brand-ai-chat` logotype supplies its hover animation and keyboard focus treatment in navbar and footer. Navigation links preserve the current locale.
+
+Help opens `/ai-chat/help`, backed by its own Host Page and Website Builder Widget chain. Its Host adapter supplies the RBAC support form as children. RBAC Subject loads CRM Form `ai-chat-support`, validates its fields and submits through the existing CRM request SDK. The Topic picker uses the shared SPS Select adapter. Success depends on the API response.
+
+Both Default and Primary font roles contain static Onest weights 100–900 and derived oblique companions, with OFL licenses. The existing font paths remain intact. Static imagery is under `apps/host/public/images/ai-chat/`.
+
+## Browser results
+
+- The project menu and Help Select display shared Phosphor SVGs with zero Website Builder Feature icon wrappers. The Select’s checkmark measures 16 CSS px. Header and footer logos load from the Host public image URL. The PDF fixture loads its relocated 640 × 240 SVG and reaches `ready` after PDF generation. No browser console errors are present.
+
+- Landing renders the Social Chat demonstration inside Website Builder through the Host child slot. Check materials advances the local walkthrough. Help renders the authenticated Subject support form in its Website Builder form slot. Both page DOMs contain zero RBAC Widget wrappers; browser console errors are absent. Stored Host relations for these pages target Website Builder, and no Host relation references the retired RBAC Landing or Help variants.
+
+- “Five documents — verification” opens Brief.md after the one-field creation form submits. Its Chat contains five document Threads, one ordinary topic and one primary relation. It starts with zero persisted Sources.
+- Five existing web projects have Brief.md, Strategy.md, Brand.md, Design.md and Products.md. Repeated initialization preserves their document IDs. Blue Kiln retains its Products.md Thread and both Products and Bookings Source IDs and cards.
+- Ordinary conversations have no Knowledge editor, download action or Working on selector. Their shared project Knowledge remains available to AI retrieval. At 375 CSS px, the five documents are accessible from project navigation; Brief has Chat/Document tabs and no horizontal overflow. The viewport is restored and the temporary browser tab is closed.
+
+- DOM evidence confirms one Navbar and one Footer inside Host Layout `815c3653-933e-4938-b768-1124be773268`, with Navbar outside RBAC Widget. The selected Social Profile contains its Chat and Thread, whose IDs match the page route.
+- The decomposed workspace opens through the project menu. Project settings, New thread and account Settings destinations render. Personal Profile/avatar, connected Identity and Purchases sections retain their SDK data. Documents toggles in desktop and mobile navigation; the mobile Document pane has no horizontal overflow at 375 CSS px.
+- Project creation renders its Website Builder card and separate materials Widget, without a project-card grid. Help renders its support form. Sign-in and registration use distinct Subject forms; registration retains its two-image Website Builder presentation. No messages, support requests, account changes or project changes were submitted during these decomposition checks.
+- A new Blue Kiln project initially had zero Knowledge and zero Skills, with Agent Subject `2714f38f-d1c6-477b-9f58-8c58b8828858`.
+- Its first real reply returned 47 EUR, 90 minutes, eight adults and `CLAY-ORBIT-47` from the saved Products Source.
+- An uploaded fictional text file was persisted and analysed. A new Thread retrieved its 12-day pickup period and `KILN-PICKUP-12`, together with a second Source's 48-hour cancellation rule.
+- Products.md retains two Source cards after reload. DOM verification found one document header, one download button and two Knowledge cards. The downloaded Markdown contains both sections.
+- Orchid bicycle studio has a different AI Profile and Agent Subject. Its reply returned 89 EUR, 35 minutes and `BIKE-NEBULA-89`; the Blue Kiln pickup code was unavailable in that project's knowledge.
+- A project belonging to a different signed-in account was excluded from the workspace.
+- Project rename, account headline and uploaded demo avatar persist after reload.
+- Landing, login, registration and workspace document views have no horizontal overflow at 390 CSS px. Chat/document tabs and project navigation work. The temporary viewport override is reset.
+- The observed reply model is `openai/gpt-6-luna`.
+- The Profile creation form creates “REST profile — verification” through the Profile collection, then opens its own Profile/Chat/Thread URL. It appears alongside the existing projects after reload. Returning to Blue Kiln preserves its messages and both Knowledge cards.
+- The account menu opens on the workspace and settings pages. Settings opens the account settings page, Admin Panel opens `/en/admin`, and Escape restores focus to the trigger. The account menu change passes Host TypeScript and code-placement checks. Sign out is connected without ending the operator's session during verification.
+- The project menu selects Blue Kiln and marks its row as current. New project opens the existing production creation form at `/en/ai-chat/projects`. Enter opens the menu; Escape closes it and restores trigger focus. Agent selection and the Working on section selection update their triggers. At 375 CSS px, the project menu fits without horizontal overflow and the mobile settings picker switches to Purchases. Temporary viewport overrides are reset.
+- Creating “Automatic fields — verification” through the one-field form opens its Profile/Chat/Thread route. An SDK read confirms `variant="artificial-intelligence"`, the submitted title, generated slug `absent-amethyst-octopus-5586` and generated admin title `attractive ivory possum`. Its Products.md Thread points to the new Profile and starts with no Knowledge Sources.
+- Documents collapses and expands in the full Storybook reference and production. Pointer, Enter and Space toggles update the button state and link visibility. The settings and Thread creation screens use the same block, and Products.md returns to its workspace route. At 375 CSS px, the block also toggles in mobile project navigation without horizontal overflow. Host TypeScript passes; the temporary viewport override is reset.
+
+- The project creation card and materials disclosure match their Studio components. Pointer and Enter open the disclosure. The extra project-card grid is absent. At 375 CSS px, the page and expanded disclosure have no horizontal overflow.
+- Settings and New thread links have 8 px vertical and 12 px horizontal padding. Hover applies the Studio translucent background. Both links open their concrete Profile/Chat destinations; the New thread screen renders after navigation. The logo hover rotates its glyph by −6 degrees, scales it to 1.1 and reveals the star.
+- Help opens from the navbar and renders the Studio heading, support card and response information. An empty submit shows three errors and focuses the visible Topic trigger. Choosing a topic clears its error. Support requests were not sent during verification. Help is also checked at 375 CSS px; viewport overrides are reset.
+
+The landing walkthrough is explicitly labelled as an interactive preview whose changes stay on the page. The project workspace above uses persisted records and actual AI execution.
+
+## Admin configuration
+
+The authenticated admin UI contains one AI Chat Layout (`815c3653-933e-4938-b768-1124be773268`) and eleven Page chains: eight target RBAC Widgets, and landing, project creation and Help target Website Builder Widgets. The Layout links Navbar and Footer separately; project creation has an additional materials Widget. Their variants, URLs and IDs are in [admin-records.json](ai-chat-production-evidence/admin-records.json). The graph before decomposition is retained in [host-graph-before-decomposition.json](ai-chat-production-evidence/host-graph-before-decomposition.json).
+
+Persisted project, Agent, Thread and Source IDs are in [persisted-records.json](ai-chat-production-evidence/persisted-records.json).
+
+## Checks
+
+| Check                                                    | Result                                                                                                                                                                                                                                               |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Profile REST, SDK, composition, avatar and bootstrap BDD | 8 suites, 28 tests passed. The three composition tests also pass after the final cache change.                                                                                                                                                       |
+| Thread document BDD, integration baseline                | Included in the earlier integration run of 3 suites and 8 tests.                                                                                                                                                                                     |
+| Agent OpenRouter/channel BDD                             | 2 suites, 22 tests passed.                                                                                                                                                                                                                           |
+| Localized navigation                                     | 3 tests passed for current locale, explicit destination locale, external links and fragments.                                                                                                                                                        |
+| Host TypeScript                                          | Passed with no emit.                                                                                                                                                                                                                                 |
+| Host/RBAC decomposition                                  | 5 suites, 9 tests passed: Host segment resolution and filter isolation; authenticated project readers; Knowledge retry; message context; rename cache invalidation and server refresh.                                                               |
+| Profile automatic fields                                 | 3 suites, 15 tests passed for the collection, shared AI bootstrap and REST SDK. Live creation and persisted fields verified.                                                                                                                         |
+| Host production build, integration baseline              | Passed, including page generation and sitemap, with local API access. The Profile REST correction is verified by TypeScript and live browser checks.                                                                                                 |
+| Workspace documents and ordinary Threads                 | 10 suites, 29 tests passed: default document provisioning, legacy Source preservation, retry after relation failure, known document keys, Profile scoping, sidebar ordering, message context and conditional panes.                                  |
+| Public content composition                               | 2 tests passed: persisted Website Builder resolution, Host child-slot composition, current Subject binding and relation-filter isolation.                                                                                                            |
+| Shared icons and static images                           | 4 suites, 7 tests passed: server SVG rendering, accessibility, CSS dimension overrides, message context, Knowledge retry and Host child-slot composition. Host TypeScript passes.                                                                    |
+| Semantic theme inheritance                               | Host and Studio TypeScript pass. 91 Studio design-system tests and two shared Icon tests pass. Browser samples preserve AI Chat colors and dimensions; a compiled Host CSS fixture verifies downstream color, foreground, border and font overrides. |
+| Support form ownership                                   | 2 Host composition tests and 24 Studio tests pass. Host and Studio TypeScript pass. Browser metadata confirms the persisted Website Builder Widget contains the RBAC form and CRM fields; empty-field validation still reports three errors.         |
+| Support Form record loading                              | 3 tests pass for client reads, server reads, loaded-record rendering and the loading state. Host TypeScript passes. Live SDK reads and browser metadata identify the same CRM Form; field input and required-field validation remain functional.     |
+| Host Page route ownership                                | 10 tests pass for Page-owned slots, standalone Layout fallback, model ID resolution and external Widget props without URL. Browser checks cover the existing project, Layout links, Help and account navigation. Host TypeScript passes.             |
+| Code placement                                           | Passed.                                                                                                                                                                                                                                              |
+| Git whitespace                                           | Passed.                                                                                                                                                                                                                                              |
+| Repository data snapshots                                | No snapshot files changed for workspace documents.                                                                                                                                                                                                   |
+| API TypeScript                                           | The same 25 baseline diagnostics remain in payment providers, File/Blob types, audio transcription, Page/Telegram response types and Z-AI response typing. No added diagnostics.                                                                     |
+
+Services use the requested `npm run api:dev` and `npm run host:dev` commands on ports 4000 and 3000. Storybook remains on 4321. Nx daemon and plugin isolation are disabled, with separate temporary workspace-data directories.
+
+## Evidence
+
+- [Host Page route ownership validation](ai-chat-production-evidence/host-url-validation.json)
+- [Workspace with Page-owned Layout slots](ai-chat-production-evidence/host-url-workspace.png)
+- [Help navigation flag](ai-chat-production-evidence/host-url-help.png)
+- [Account settings navigation flag](ai-chat-production-evidence/host-url-settings.png)
+
+- [Support Form SDK record validation](ai-chat-production-evidence/support-record-validation.json)
+- [Support Form after SDK loading](ai-chat-production-evidence/support-record-help.png)
+
+- [Support form ownership validation](ai-chat-production-evidence/support-hierarchy-validation.json)
+- [Help after support-card decomposition](ai-chat-production-evidence/support-hierarchy-help.png)
+
+- [Semantic theme validation](ai-chat-production-evidence/semantic-theme-validation.json)
+- [AI Chat with semantic theme roles](ai-chat-production-evidence/semantic-theme-workspace.png)
+- [Downstream theme override](ai-chat-production-evidence/semantic-theme-override.png)
+- [Storybook with semantic theme roles](ai-chat-production-evidence/semantic-theme-storybook.png)
+
+- [Shared icons and static images validation](ai-chat-production-evidence/shared-icons-validation.json)
+- [Shared icons in the project menu](ai-chat-production-evidence/shared-icons-project-menu.png)
+- [Shared icons in Help Select](ai-chat-production-evidence/shared-icons-support-select.png)
+
+- [Public content Host graph](ai-chat-production-evidence/public-content-host-graph.json)
+- [Landing and Help composition validation](ai-chat-production-evidence/public-content-composition-validation.json)
+- [Landing with Host-supplied demonstration](ai-chat-production-evidence/landing-host-slot-composition.png)
+- [Help with Host-supplied Subject form](ai-chat-production-evidence/help-host-slot-composition.png)
+
+- [Document provisioning and existing-project validation](ai-chat-production-evidence/documents-backfill-validation.json)
+- [New project and Source ID validation](ai-chat-production-evidence/documents-runtime-validation.json)
+- [Document and topic browser validation](ai-chat-production-evidence/documents-browser-validation.json)
+- [Ordinary conversation with five documents](ai-chat-production-evidence/ordinary-thread-with-five-documents.png)
+- [New project with five documents](ai-chat-production-evidence/new-project-five-documents.png)
+- [Preserved Products and Bookings](ai-chat-production-evidence/products-preserved-with-five-documents.png)
+- [Mobile Brief editor](ai-chat-production-evidence/brief-document-mobile.png)
+
+- [Host layout and Social composition](ai-chat-production-evidence/host-composition-validation.json)
+- [Workspace after decomposition](ai-chat-production-evidence/host-composition-workspace.png)
+- [Registration after decomposition](ai-chat-production-evidence/host-composition-registration.png)
+- [Mobile document after decomposition](ai-chat-production-evidence/host-composition-mobile-document.png)
+- [Desktop workspace](ai-chat-production-evidence/workspace-desktop.png)
+- [Reply using uploaded material](ai-chat-production-evidence/file-knowledge-reply.png)
+- [Project isolation](ai-chat-production-evidence/project-isolation.png)
+- [Desktop landing](ai-chat-production-evidence/landing-desktop.png)
+- [Mobile landing](ai-chat-production-evidence/landing-mobile.png)
+- [Mobile sign-in](ai-chat-production-evidence/sign-in-mobile.png)
+- [Mobile registration](ai-chat-production-evidence/registration-mobile.png)
+- [Mobile document](ai-chat-production-evidence/workspace-mobile-document.png)
+- [Mobile chat](ai-chat-production-evidence/workspace-mobile-chat.png)
+- [Persisted account profile and avatar](ai-chat-production-evidence/account-settings-desktop.png)
+- [Account dropdown menu](ai-chat-production-evidence/account-menu-desktop.png)
+- [Profile creation through the REST collection](ai-chat-production-evidence/profile-rest-creation.png)
+- [Profile REST validation](ai-chat-production-evidence/profile-rest-validation.json)
+- [Purchases on desktop](ai-chat-production-evidence/purchases-production-desktop.png)
+- [Purchases on mobile](ai-chat-production-evidence/purchases-production-mobile.png)
+- [Purchase validation](ai-chat-production-evidence/purchases-validation.json)
+- [Project menu on desktop](ai-chat-production-evidence/project-menu-desktop.png)
+- [Project menu on mobile](ai-chat-production-evidence/project-menu-mobile.png)
+- [Agent picker](ai-chat-production-evidence/agent-select-menu.png)
+- [Working on menu](ai-chat-production-evidence/working-context-menu.png)
+- [Dropdown validation](ai-chat-production-evidence/dropdowns-validation.json)
+- [Project created with automatic fields](ai-chat-production-evidence/project-automatic-fields.png)
+- [Automatic field validation](ai-chat-production-evidence/profile-defaults-validation.json)
+- [Expanded Documents navigation](ai-chat-production-evidence/documents-sidebar-expanded.png)
+- [Collapsed Documents navigation](ai-chat-production-evidence/documents-sidebar-collapsed.png)
+- [Mobile Documents navigation](ai-chat-production-evidence/documents-sidebar-mobile.png)
+- [Documents navigation validation](ai-chat-production-evidence/documents-sidebar-validation.json)
+- [Project creation matching Studio](ai-chat-production-evidence/project-create-parity.png)
+- [Expanded materials disclosure](ai-chat-production-evidence/project-create-materials.png)
+- [Mobile project creation](ai-chat-production-evidence/project-create-mobile.png)
+- [Help page](ai-chat-production-evidence/help-production.png)
+- [Mobile Help page](ai-chat-production-evidence/help-mobile.png)
+- [New thread navigation](ai-chat-production-evidence/sidebar-new-thread-hover.png)
+- [Studio parity validation](ai-chat-production-evidence/studio-parity-validation.json)
+- [Validation results](ai-chat-production-evidence/validation.json)
+
+## Verification limits
+
+Registration was inspected without submitting terms acceptance. Password and identity changes were not executed. The purchase list was verified with an empty live history; paid rows, totals and stored receipt links were checked with isolated fixtures. Payment and account deletion were not executed. Commercial billing rules beyond the existing execution route are outside this change.
+
+Repository-wide API type checking is not clean because of existing errors listed above. Host compilation, relevant backend tests and live API/browser scenarios are checked separately.
+
+The default build heap was insufficient for this monorepo; the build uses `NODE_OPTIONS=--max-old-space-size=8192`. Its isolated output avoids replacing the running development server's `.next` directory. Build-generated TypeScript includes and temporary output are removed after verification.
+
+## Model reader audit
+
+The AI Chat frontend inventory contains 58 public variants across CRM, Ecommerce,
+Knowledge, RBAC, Social and Website Builder: 31 record readers, 21 current Subject
+readers, one collection reader, one Source creation form and four authentication
+actions. Each record variant binds the model SDK to the shared SPS reader.
+The shared parent owns the Provider, loading state and client/server SDK choice.
+AI Chat variants have no additional local loading wrappers. `Component.tsx`
+renders each view; `ClientComponent.tsx` owns its interactive controls.
+
+Source `id-ai-chat` requires a saved Source ID; `form-ai-chat` creates a section
+without an ID. Message lists read only the IDs supplied by the scoped RBAC reader.
+Thread links and downloads receive actual Thread records. The empty project
+selector is an explicit presentation state without a model record.
+
+Host now composes the authentication frame from a persisted Website Builder
+Widget and the RBAC authentication Widget. Navbar and footer load their logotype
+through `widgets-to-logotypes`. The landing adapter loads the demonstration Chat
+by slug. The missing local records and logotype links were created through SDKs;
+repository database snapshots and schemas were unchanged. Record IDs are in
+[component-wrapper-records.json](ai-chat-production-evidence/component-wrapper-records.json),
+and the variant inventory is in
+[component-wrapper-audit.json](ai-chat-production-evidence/component-wrapper-audit.json).
+
+Shared reader implementations match the existing framework code. Model
+renderers pass explicit public props into their client views. Host assembles the
+header and Help slots; interactive RBAC compositions create their render
+callbacks on the client. SDK objects and reader implementation props stay out of
+those client view props.

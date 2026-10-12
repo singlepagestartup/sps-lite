@@ -29,6 +29,7 @@ Each module contains:
 - TailwindCSS only, no ad-hoc CSS.
 - Design includes a dedicated Icons block naming its library or custom drawing method and showing the glyphs. Generate photographic and illustrative masters with unconstrained aspect ratios, then prepare square delivery images by expanding the canvas with an image-editing tool; preserve the originals. Follow `.agents/templates/design.md` and `.agents/roles/brand-designer.md`.
 - Always use SDK providers for data access from `libs/modules/<module>/models/<model|relation>/sdk/<client|server>`.
+- Before implementing or reviewing frontend variants, read `.agents/contracts/engineering/frontend-components.md` for template reuse, explicit UI props and JSX slots at client/server boundaries.
 - Use relation components with `variant="find"` and filter via `apiProps.params.filters.and`.
 - Backend only hosted in `apps/api/app.ts`.
 - Backend route middleware must live in the module's `backend/app/middlewares/src/lib/*` folder and be exported from that middleware package; controllers should only compose route definitions, middleware instances, and handlers.
@@ -117,6 +118,15 @@ Ordinary upstream synchronization and new agent tasks do not invoke migration
 checks automatically and do not depend on an adaptation checkpoint or agent
 availability. There are no migration hooks on merge/rewrite. Keep Git sync and
 adaptation outcomes separate; a pending adaptation does not make a merge fail.
+
+## Code Review Rules
+
+For pull request and local diff reviews, read and apply
+`.agents/workflows/engineering/review_pr.md` before reporting findings. This is
+the shared guidance for the `review-pr` skill and built-in Code Review: module
+dependency direction, API and cache consistency across affected readers, and
+evidence-based findings with the architecture decision left to the developer.
+Proposed module ordering stays advisory until the operator confirms it.
 
 ## Code Review Checklist
 
