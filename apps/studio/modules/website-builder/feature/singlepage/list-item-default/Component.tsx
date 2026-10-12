@@ -47,7 +47,7 @@ export function FeatureListItemDefault(
     ...props,
   };
   const rootClassName = [
-    "flex min-w-0 items-start gap-3 text-base leading-7 text-[var(--color-sps-graphite)]",
+    "flex min-w-0 items-start gap-3 text-base leading-7 text-foreground",
     className,
   ]
     .filter(Boolean)
@@ -61,7 +61,7 @@ export function FeatureListItemDefault(
       data-model="feature"
       data-variant={props?.variant ?? "list-item-default"}
     >
-      <Icon className="mt-1 h-5 w-5 shrink-0 text-[var(--color-sps-muted)]" />
+      <Icon className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" />
       <span>{label}</span>
     </span>
   );

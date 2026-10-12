@@ -9,6 +9,28 @@
 - Data access must go through module SDK providers (`Provider`, `clientApi`, `serverApi`). Relation components should use `variant="find"` with filters supplied via `apiProps.params.filters.and`.
 - For advanced fetching/transform logic, mirror the `singlepage/default` pattern: move data-handling into `client.tsx` / `server.tsx` wrappers so `Component.tsx` stays purely presentational.
 
+## Theme and fonts
+
+`styles/presets/shadcn.ts` defines the light and dark defaults through semantic
+CSS variables. Components use `primary` / `primary-foreground` for actions,
+`default` / `default-foreground` / `default-muted-foreground` for strong surfaces,
+`card`, `muted`, `foreground`, `muted-foreground`, `border`, and `input` for
+ordinary surfaces, text and fields. Errors use `destructive`,
+`destructive-surface`, and `destructive-border`.
+
+A downstream project changes the corresponding variables in its Host preset or
+base theme, such as `--primary` and `--primary-foreground`, without editing module
+components. Color values are HSL channels, for example `270 60% 50%`.
+Tailwind opacity modifiers such as `bg-primary/25` remain available.
+
+`font-default` and `font-sans` both use `--font-default`. `font-primary` uses
+`--font-primary`. `app/fonts.tsx` loads those two existing roles from
+`styles/fonts/Default` and `styles/fonts/Primary`; downstream projects replace
+those files with their own fonts.
+
+Studio's independent `runtime/theme.css` exposes the same semantic color and
+font roles. Its font assets remain local to Studio.
+
 ## Locale redirects
 
 Locale middleware adds the default language prefix while preserving the request

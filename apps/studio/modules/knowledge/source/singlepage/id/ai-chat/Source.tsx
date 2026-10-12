@@ -12,6 +12,7 @@ import { editSourceUserContext } from "./utils";
 
 interface ISourceContext {
   source: IAIChatSource;
+  sources: IAIChatSource[];
   fileIds: string[];
   edit: (value: string) => void;
   attach: (fileIds: string[]) => void;
@@ -21,6 +22,7 @@ interface ISourceProviderProps {
   profileId: string;
   children: ReactNode;
   initialSource?: IAIChatSource;
+  initialSources?: IAIChatSource[];
   initialFileIds?: string[];
 }
 const SourceContext = createContext<ISourceContext | null>(null);
@@ -28,6 +30,7 @@ export function SourceProvider({
   profileId,
   children,
   initialSource,
+  initialSources = [],
   initialFileIds = [],
 }: ISourceProviderProps) {
   const [source, setSource] = useState<IAIChatSource>(
@@ -62,7 +65,19 @@ export function SourceProvider({
     [],
   );
   return (
-    <SourceContext.Provider value={{ source, fileIds, edit, attach, detach }}>
+    <SourceContext.Provider
+      value={{
+        source,
+        sources: [
+          source,
+          ...initialSources.filter((item) => item.id !== source.id),
+        ],
+        fileIds,
+        edit,
+        attach,
+        detach,
+      }}
+    >
       {children}
     </SourceContext.Provider>
   );
@@ -71,4 +86,8 @@ export function useSource() {
   const context = useContext(SourceContext);
   if (!context) throw new Error("AI Chat Source requires SourceProvider.");
   return context;
+}
+
+export function useProfileSources() {
+  return useContext(SourceContext)?.sources || [];
 }

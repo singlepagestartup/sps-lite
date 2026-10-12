@@ -3,9 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 function Example() {
   return (
     <WebsiteBuilderModuleWidget variant="content-ai-chat-help">
-      <div className="rounded-2xl border border-sps-line bg-sps-white p-6 text-sm text-sps-muted">
-        Support form slot
-      </div>
+      <div className="text-sm text-muted-foreground">Support form slot</div>
     </WebsiteBuilderModuleWidget>
   );
 }

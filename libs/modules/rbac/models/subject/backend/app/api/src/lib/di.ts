@@ -92,7 +92,12 @@ export interface IBillingModule {
 
 export interface INotificationModule {
   topic: IReadService;
-  notification: IReadService;
+  notification: IReadService & {
+    sendVerificationCode: (props: {
+      email: string;
+      code: string;
+    }) => Promise<{ sent: boolean }>;
+  };
   template: IReadService;
   topicsToNotifications: IReadService;
   notificationsToTemplates: IReadService;

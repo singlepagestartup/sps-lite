@@ -12,7 +12,7 @@ export function ArticleCover(
   const { coverImage, title } = { ...defaultArticleCoverProps, ...props };
   return (
     <figure
-      className="m-0 aspect-square min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-white)]"
+      className="m-0 aspect-square min-w-0 overflow-hidden rounded-3xl bg-card"
       data-ds-block="blog.article.cover"
       data-ds-layer="singlepage"
       data-module="blog"

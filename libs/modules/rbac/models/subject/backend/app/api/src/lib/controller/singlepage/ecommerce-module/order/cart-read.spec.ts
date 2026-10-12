@@ -31,8 +31,9 @@ import { Handler as ListHandler } from "./list";
 import { Handler as QuantityHandler } from "./quantity";
 import { Handler as TotalHandler } from "./total";
 
-function createContext() {
+function createContext(params?: unknown) {
   return {
+    get: () => params,
     req: {
       param: (name: string) => (name === "id" ? "subject-1" : undefined),
     },
@@ -133,5 +134,71 @@ describe("Given: an authenticated subject with historical cart orders", () => {
     await new TotalHandler(service).execute(createContext(), jest.fn());
 
     expectActiveCartFilters(orderFind);
+  });
+});
+
+describe("Subject order history", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    authorizationMock.mockReturnValue("token");
+    verifyMock.mockResolvedValue({ subject: { id: "subject-1" } });
+  });
+
+  it("returns paid history through the collection endpoint while preserving ownership", async () => {
+    const { service, orderFind } = createService();
+    orderFind.mockResolvedValue([
+      { id: "order-1", type: "history", status: "paid" },
+    ]);
+    const filters = [
+      { column: "type", method: "eq", value: "history" },
+      { column: "status", method: "inArray", value: ["paid", "completed"] },
+    ];
+    const result = await new ListHandler(service).execute(
+      createContext({ filters: { and: filters } }),
+      jest.fn(),
+    );
+    expect(orderFind).toHaveBeenCalledWith({
+      params: {
+        filters: {
+          and: [
+            { column: "id", method: "inArray", value: ["order-1"] },
+            ...filters,
+          ],
+        },
+      },
+    });
+    expect(result).toEqual({
+      data: [{ id: "order-1", type: "history", status: "paid" }],
+    });
+  });
+
+  it("does not return another subject's order if an OR query widens the repository result", async () => {
+    const { service, orderFind } = createService();
+    orderFind.mockResolvedValue([{ id: "order-1" }, { id: "foreign-order" }]);
+    const result = await new ListHandler(service).execute(
+      createContext({
+        filters: { or: [{ column: "status", method: "eq", value: "paid" }] },
+      }),
+      jest.fn(),
+    );
+    expect(result).toEqual({ data: [{ id: "order-1" }] });
+  });
+
+  it("rejects a request for another subject's collection", async () => {
+    const { service, orderFind } = createService();
+    verifyMock.mockResolvedValue({ subject: { id: "subject-2" } });
+    await expect(
+      new ListHandler(service).execute(createContext(), jest.fn()),
+    ).rejects.toThrow("Only order owner can read orders");
+    expect(orderFind).not.toHaveBeenCalled();
+  });
+
+  it("returns an empty list without querying orders when the subject has no links", async () => {
+    const { service, orderFind } = createService();
+    service.subjectsToEcommerceModuleOrders.find.mockResolvedValue([]);
+    expect(
+      await new ListHandler(service).execute(createContext(), jest.fn()),
+    ).toEqual({ data: [] });
+    expect(orderFind).not.toHaveBeenCalled();
   });
 });

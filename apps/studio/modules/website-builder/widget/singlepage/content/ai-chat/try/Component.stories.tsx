@@ -7,7 +7,7 @@ const meta = {
   parameters: { layout: "fullscreen" },
   args: {
     children: (
-      <div className="rounded-2xl border border-sps-line bg-sps-white p-8 text-sps-muted">
+      <div className="rounded-2xl border border-border bg-card p-8 text-muted-foreground">
         Chat preview supplied by Host Page
       </div>
     ),

@@ -38,11 +38,7 @@ export function SubjectMeCrmFormDefault(
 
   return (
     <section
-      className={
-        embedded
-          ? "min-w-0"
-          : "rounded-3xl bg-[var(--color-sps-grey)] p-4 sm:p-6"
-      }
+      className={embedded ? "min-w-0" : "rounded-3xl bg-muted p-4 sm:p-6"}
       data-ds-block="rbac.subject.me-crm-module-form-default"
       data-ds-layer="singlepage"
       data-subject-id={subject.id}

@@ -92,63 +92,55 @@ export function ProfileAuthorFindByIdOverviewDefault(
     >
       <ProfileAuthor {...profile} />
 
-      <div className="w-full bg-[var(--color-sps-grey)]">
+      <div className="w-full bg-muted">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
           <div className="grid gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_300px]">
             {/* Left column */}
             <div className="min-w-0 space-y-8">
               {/* Stats row */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                <div className="flex items-center gap-3 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)]">
-                    <Newspaper className="h-5 w-5 text-[var(--color-sps-muted)]" />
+                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-muted">
+                    <Newspaper className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold text-[var(--color-sps-graphite)]">
+                    <p className="text-2xl font-semibold text-foreground">
                       {statArticles}
                     </p>
-                    <p className="text-xs text-[var(--color-sps-muted)]">
-                      Articles
-                    </p>
+                    <p className="text-xs text-muted-foreground">Articles</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)]">
-                    <MessageSquare className="h-5 w-5 text-[var(--color-sps-muted)]" />
+                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-muted">
+                    <MessageSquare className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold text-[var(--color-sps-graphite)]">
+                    <p className="text-2xl font-semibold text-foreground">
                       {statComments}
                     </p>
-                    <p className="text-xs text-[var(--color-sps-muted)]">
-                      Comments
-                    </p>
+                    <p className="text-xs text-muted-foreground">Comments</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)]">
-                    <ThumbsUp className="h-5 w-5 text-[var(--color-sps-muted)]" />
+                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-muted">
+                    <ThumbsUp className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold text-[var(--color-sps-graphite)]">
+                    <p className="text-2xl font-semibold text-foreground">
                       {statLikes}
                     </p>
-                    <p className="text-xs text-[var(--color-sps-muted)]">
-                      Likes
-                    </p>
+                    <p className="text-xs text-muted-foreground">Likes</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)]">
-                    <Clock className="h-5 w-5 text-[var(--color-sps-muted)]" />
+                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border bg-muted">
+                    <Clock className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <div>
-                    <p className="text-2xl font-semibold text-[var(--color-sps-graphite)]">
+                    <p className="text-2xl font-semibold text-foreground">
                       {statReadTime}
                     </p>
-                    <p className="text-xs text-[var(--color-sps-muted)]">
-                      Read Time
-                    </p>
+                    <p className="text-xs text-muted-foreground">Read Time</p>
                   </div>
                 </div>
               </div>
@@ -156,10 +148,10 @@ export function ProfileAuthorFindByIdOverviewDefault(
               {/* Articles list */}
               <section>
                 <div className="mb-4 flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-[var(--color-sps-graphite)]">
+                  <h2 className="text-lg font-semibold text-foreground">
                     Articles by {profile.name}
                   </h2>
-                  <span className="rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] px-2 py-0.5 text-xs text-[var(--color-sps-muted)]">
+                  <span className="rounded-xl border border-border bg-muted px-2 py-0.5 text-xs text-muted-foreground">
                     {statArticles} {statArticles === 1 ? "post" : "posts"}
                   </span>
                 </div>
@@ -170,26 +162,26 @@ export function ProfileAuthorFindByIdOverviewDefault(
             {/* Right sidebar */}
             <aside className="min-w-0 space-y-6">
               {/* Bio */}
-              <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
+              <div className="rounded-2xl border border-border bg-card p-6">
                 <div className="mb-3 flex items-center gap-2">
-                  <User className="h-5 w-5 text-[var(--color-sps-muted)]" />
-                  <h3 className="text-lg font-semibold text-[var(--color-sps-graphite)]">
+                  <User className="h-5 w-5 text-muted-foreground" />
+                  <h3 className="text-lg font-semibold text-foreground">
                     About
                   </h3>
                 </div>
-                <p className="text-sm text-[var(--color-sps-muted)]">{bio}</p>
+                <p className="text-sm text-muted-foreground">{bio}</p>
               </div>
 
               {/* Skills */}
-              <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
-                <h3 className="mb-3 text-lg font-semibold text-[var(--color-sps-graphite)]">
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-3 text-lg font-semibold text-foreground">
                   Skills & Expertise
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
                   {skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] px-2.5 py-1 text-xs text-[var(--color-sps-muted)]"
+                      className="rounded-xl border border-border bg-muted px-2.5 py-1 text-xs text-muted-foreground"
                     >
                       {skill}
                     </span>
@@ -198,8 +190,8 @@ export function ProfileAuthorFindByIdOverviewDefault(
               </div>
 
               {/* Category breakdown */}
-              <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
-                <h3 className="mb-3 text-lg font-semibold text-[var(--color-sps-graphite)]">
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-3 text-lg font-semibold text-foreground">
                   Categories
                 </h3>
                 <div className="space-y-2">
@@ -209,16 +201,16 @@ export function ProfileAuthorFindByIdOverviewDefault(
                         key={category}
                         className="flex items-center justify-between"
                       >
-                        <span className="text-xs capitalize text-[var(--color-sps-muted)]">
+                        <span className="text-xs capitalize text-muted-foreground">
                           {category}
                         </span>
                         <div className="flex items-center gap-2">
-                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-[var(--color-sps-grey)]">
+                          <div className="h-1.5 w-16 overflow-hidden rounded-full bg-muted">
                             <div
-                              className={`h-full rounded-full bg-[var(--color-sps-line)] ${widthClassName}`}
+                              className={`h-full rounded-full bg-border ${widthClassName}`}
                             />
                           </div>
-                          <span className="text-xs text-[var(--color-sps-muted)]">
+                          <span className="text-xs text-muted-foreground">
                             {count}
                           </span>
                         </div>
@@ -230,8 +222,8 @@ export function ProfileAuthorFindByIdOverviewDefault(
 
               {/* Other authors */}
               {otherAuthors.length > 0 && (
-                <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
-                  <p className="mb-3 text-xs st text-[var(--color-sps-muted)]">
+                <div className="rounded-2xl border border-border bg-card p-6">
+                  <p className="mb-3 text-xs st text-muted-foreground">
                     Other Authors
                   </p>
                   <div className="space-y-2">
@@ -254,7 +246,7 @@ export function ProfileAuthorFindByIdOverviewDefault(
               <a
                 href={blogIndexStoryHref}
                 target="_top"
-                className="flex items-center gap-2 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 text-sm text-[var(--color-sps-muted)] transition hover:border-[var(--color-sps-line)] hover:bg-[var(--color-sps-grey)]"
+                className="flex items-center gap-2 rounded-2xl border border-border bg-card p-5 text-sm text-muted-foreground transition hover:border-border hover:bg-muted"
               >
                 <ArrowLeft className="h-5 w-5" />
                 Back to all articles

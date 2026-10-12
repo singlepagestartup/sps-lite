@@ -2,6 +2,10 @@ import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI } from "@sps/shared-backend-api";
 import { Repository } from "../../repository";
+import { verify } from "hono/jwt";
+import { RBAC_JWT_SECRET } from "@sps/shared-utils";
+import { Service as ProfileOwnership } from "./social-module/profile/ownership";
+import { Service as AuthenticationMe } from "./authentication/me";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
 import { Service as Logout } from "./logout";
 import {
@@ -130,6 +134,10 @@ import {
   SocialProfileKnowledgeAccessService,
   type IEnsureSocialProfileKnowledgeAccessProps,
 } from "./social-module/profile/knowledge/access";
+import {
+  Service as SocialModuleProfileAvatarUpdate,
+  type IExecuteProps as ISocialModuleProfileAvatarUpdateProps,
+} from "./social-module/profile/avatar";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -215,10 +223,26 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return this.isAuthorizedService.execute(props);
   }
 
+  async socialModuleProfileAvatarUpdate(
+    props: ISocialModuleProfileAvatarUpdateProps,
+  ) {
+    return new SocialModuleProfileAvatarUpdate({
+      fileStorageModule: this.fileStorageModule,
+    }).execute(props);
+  }
+
   async socialModuleProfileMcpCatalogOpen(
     props: IProfileMcpCatalogOpenProps,
   ): Promise<IProfileMcpCatalogSession> {
     return this.getSocialModuleProfileMcpCatalogService().open(props);
+  }
+
+  async socialModuleProfileAvatarFind(props: {
+    socialModuleProfileId: string | undefined;
+  }) {
+    return new SocialModuleProfileAvatarUpdate({
+      fileStorageModule: this.fileStorageModule,
+    }).find(props.socialModuleProfileId);
   }
 
   async socialModuleProfileAiToolLoopRun(
@@ -302,14 +326,18 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async authenticationLoginAndPassowrd(
     props: IAuthenticationEmailAndPasswordExecuteProps,
   ) {
-    return new AuthenticationEmailAndPassword(this.repository).execute(props);
+    return this.completeUserAuthentication(
+      await new AuthenticationEmailAndPassword(this.repository).execute(props),
+    );
   }
 
   async authenticationEthereumVirtualMachine(
     props: IAuthenticationEthereumVirtualMachineExecuteProps,
   ) {
-    return new AuthenticationEthereumVirtualMachine(this.repository).execute(
-      props,
+    return this.completeUserAuthentication(
+      await new AuthenticationEthereumVirtualMachine(this.repository).execute(
+        props,
+      ),
     );
   }
 
@@ -326,7 +354,32 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async authenticationOAuthExchange(
     props: IAuthenticationOAuthExchangeExecuteProps,
   ) {
-    return new AuthenticationOAuthExchange(this.repository).execute(props);
+    return this.completeUserAuthentication(
+      await new AuthenticationOAuthExchange(this.repository).execute(props),
+    );
+  }
+
+  async socialModuleProfileOwnershipEnsure(props: { subjectId: string }) {
+    return new ProfileOwnership(this).ensure(props);
+  }
+
+  async authenticationMe(props: { subjectId: string }) {
+    return new AuthenticationMe(this).execute(props);
+  }
+
+  protected async completeUserAuthentication<T extends { jwt: string }>(
+    result: T,
+  ): Promise<T> {
+    if (!RBAC_JWT_SECRET)
+      throw new Error("Configuration error. RBAC_JWT_SECRET not set");
+    const decoded = await verify(result.jwt, RBAC_JWT_SECRET);
+    const subjectId = decoded.subject?.["id"];
+    if (typeof subjectId !== "string")
+      throw new Error(
+        "Authentication error. No Subject in authenticated session",
+      );
+    await this.socialModuleProfileOwnershipEnsure({ subjectId });
+    return result;
   }
 
   async deleteAnonymousSubjects(props?: IDeleteAnonymousSubjectsExecuteProps) {
@@ -402,6 +455,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     autoBootstrapProfile: boolean;
   }) {
     return this.getChatLifecycleService().createChatWithDefaultThread(props);
+  }
+
+  async socialModuleChatLifecycleValidateDocument(props: {
+    socialModuleChatId: string;
+    document: unknown;
+  }) {
+    return this.getChatLifecycleService().validateDocument(props);
   }
 
   async socialModuleChatLifecycleAssertSubjectOwnsChat(props: {

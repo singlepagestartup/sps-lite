@@ -1,10 +1,100 @@
 import { expect, test } from "bun:test";
-import { readdirSync, readFileSync } from "node:fs";
+import {
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
+import { globSync } from "tinyglobby";
 import ts from "typescript";
 
 const root = path.resolve(import.meta.dir, "../../..");
 const studio = path.join(root, "apps/studio");
+
+test.each([
+  ["design", "components"],
+  ["products", "componentModules"],
+])(
+  "%s imports workspace views without executing tests or stories",
+  (kind, variable) => {
+    const loader = path.join(studio, "workspace/utils", kind, "source.ts");
+    const tree = ts.createSourceFile(
+      loader,
+      readFileSync(loader, "utf8"),
+      ts.ScriptTarget.Latest,
+      true,
+    );
+    let patterns: string[] = [];
+    function visit(node: ts.Node) {
+      if (
+        ts.isVariableDeclaration(node) &&
+        node.name.getText(tree) === variable
+      ) {
+        const initializer = node.initializer;
+        if (!initializer || !ts.isCallExpression(initializer))
+          throw new Error("Missing workspace component glob");
+        const argument = initializer.arguments[0];
+        const entries = ts.isArrayLiteralExpression(argument)
+          ? argument.elements
+          : [argument];
+        patterns = entries.map((entry) => {
+          if (!ts.isStringLiteral(entry))
+            throw new Error("Workspace glob patterns must be static strings");
+          return entry.text;
+        });
+      }
+      ts.forEachChild(node, visit);
+    }
+    visit(tree);
+    expect(patterns.length).toBeGreaterThan(0);
+
+    const fixture = mkdtempSync(path.join(tmpdir(), "sps-workspace-imports-"));
+    const cwd = path.join(fixture, "workspace/utils", kind);
+    try {
+      mkdirSync(cwd, { recursive: true });
+      for (const layer of ["singlepage", "startup"]) {
+        const directory = path.join(
+          fixture,
+          "workspace",
+          kind,
+          layer,
+          "nested",
+        );
+        mkdirSync(path.join(directory, "__tests__"), { recursive: true });
+        for (const filename of [
+          "View.tsx",
+          "Preview.jsx",
+          "View.test.tsx",
+          "View.spec.tsx",
+          "View.stories.tsx",
+          "Preview.test.jsx",
+          "Preview.spec.jsx",
+          "Preview.stories.jsx",
+          "__tests__/Browser.tsx",
+        ])
+          writeFileSync(
+            path.join(directory, filename),
+            "export default () => null;",
+          );
+      }
+      const imports = globSync(patterns, { cwd })
+        .map((file) => file.split(path.sep).join("/"))
+        .sort();
+      expect(imports).toEqual([
+        `../../${kind}/singlepage/nested/Preview.jsx`,
+        `../../${kind}/singlepage/nested/View.tsx`,
+        `../../${kind}/startup/nested/Preview.jsx`,
+        `../../${kind}/startup/nested/View.tsx`,
+      ]);
+    } finally {
+      rmSync(fixture, { recursive: true, force: true });
+    }
+  },
+);
 
 function files(directory: string): string[] {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -157,8 +247,8 @@ test("Module decorators and fonts do not inherit Workspace styling", () => {
   );
   expect(preview).not.toContain("data-workspace-projection");
   expect(preview).not.toContain("--workspace-brand-");
-  const theme = readFileSync(path.join(studio, "runtime/sps.css"), "utf8");
-  expect(theme).toContain('"SPS Onest"');
+  const theme = readFileSync(path.join(studio, "runtime/theme.css"), "utf8");
+  expect(theme).toContain('"Default"');
   expect(theme).not.toContain("workspace-assets");
 });
 

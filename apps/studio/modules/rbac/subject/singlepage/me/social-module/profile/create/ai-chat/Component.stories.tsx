@@ -4,14 +4,18 @@ import { AccountProvider } from "../../../../account/Account";
 import { aiChatAccount } from "../../../../account/fixture";
 import { ProfilesProvider } from "../../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { aiChatWorkspaceFixture } from "../../../../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-import { ProjectProvider } from "../../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
-function Example() {
+interface IExampleProps {
+  pending: boolean;
+  empty: boolean;
+}
+function Example({ pending, empty }: IExampleProps) {
   return (
     <AccountProvider account={aiChatAccount}>
-      <ProfilesProvider {...aiChatWorkspaceFixture()}>
-        <ProjectProvider profileId="pottery">
-          <RbacModuleSubject variant="me-social-module-profile-create-ai-chat" />
-        </ProjectProvider>
+      <ProfilesProvider
+        initialProjects={empty ? [] : aiChatWorkspaceFixture().initialProjects}
+        loading={pending}
+      >
+        <RbacModuleSubject variant="me-social-module-profile-create-ai-chat" />
       </ProfilesProvider>
     </AccountProvider>
   );
@@ -22,6 +26,13 @@ const meta = {
     "Modules/RBAC/Subject/Singlepage/me/social-module/profile/create/ai-chat",
   component: Example,
   parameters: { layout: "fullscreen" },
+  args: { pending: false, empty: false },
+  argTypes: {
+    pending: { control: "boolean" },
+    empty: { control: "boolean" },
+  },
 } satisfies Meta<typeof Example>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
+export const Loading: StoryObj<typeof meta> = { args: { pending: true } };
+export const Empty: StoryObj<typeof meta> = { args: { empty: true } };

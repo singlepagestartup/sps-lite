@@ -37,7 +37,7 @@ Search accepts only chunks whose Source hashes match. Profile-scoped search mate
 
 ## Chat and access
 
-RBAC handles profile-scoped create, read, update, delete, file management, `/learn`, and skill runs. Messages use Knowledge only with an explicit `@knowledge` mention. Search and read/edit tools are bound to Source IDs available to the replying profile.
+RBAC handles profile-scoped create, read, update, delete, file management, `/learn`, and skill runs. OpenRouter messages can use Knowledge through a natural-language request detected by JEV or an explicit `@knowledge` mention. Search and read/edit tools are bound to Source IDs available to the replying profile.
 
 `profile_knowledge_search` returns bounded excerpts with `sourceId`, `textLength`, and `textTruncated`. `profile_knowledge_read` reads saved content in pages of up to 12,000 Unicode characters and returns `nextOffset` and the current content hash. Both tool responses fit a 24 KiB UTF-8 JSON budget, below the tool loop's 32 KiB limit. Pagination preserves the full saved text, including multibyte characters and JSON escapes. Follow `nextOffset` with the same `section`; offsets count UTF-16 code units.
 
@@ -59,15 +59,15 @@ The Knowledge module SDK uses `sourceIds` and `reindexSource`. Source content ed
 
 ## Runtime configuration
 
-Embeddings and chat configuration live in `backend/app/api/src/lib/configuration.ts`; vector dimensions are 768. File analysis uses OpenRouter:
+Embeddings and chat configuration live in `backend/app/api/src/lib/configuration.ts`; vector dimensions are 768. File analysis and synthesis use OpenRouter with `medium` reasoning effort:
 
-| Variable                             | Default                   |
-| ------------------------------------ | ------------------------- |
-| `KNOWLEDGE_ANALYSIS_MODEL`           | `google/gemini-2.5-flash` |
-| `KNOWLEDGE_TRANSCRIPTION_MODEL`      | `openai/whisper-1`        |
-| `KNOWLEDGE_VIDEO_FRAME_STEP_SECONDS` | `1`                       |
-| `KNOWLEDGE_PDF_INFO_COMMAND`         | `pdfinfo`                 |
-| `KNOWLEDGE_PDF_RENDER_COMMAND`       | `pdftoppm`                |
+| Variable                             | Default              |
+| ------------------------------------ | -------------------- |
+| `KNOWLEDGE_ANALYSIS_MODEL`           | `openai/gpt-6.1-sol` |
+| `KNOWLEDGE_TRANSCRIPTION_MODEL`      | `openai/whisper-1`   |
+| `KNOWLEDGE_VIDEO_FRAME_STEP_SECONDS` | `1`                  |
+| `KNOWLEDGE_PDF_INFO_COMMAND`         | `pdfinfo`            |
+| `KNOWLEDGE_PDF_RENDER_COMMAND`       | `pdftoppm`           |
 
 Install Poppler and FFmpeg for local processing; the application Docker image includes them. Current per-file limits are 100 MB, 200 PDF pages, and 3600 seconds of audio/video. A synthesis input over one million characters is rejected. Empty, failed, or truncated model responses are not published. Errors are returned by the operation or logged; Source has no persisted processing-status fields.
 

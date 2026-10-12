@@ -67,7 +67,7 @@ export function CrmStepDefault(props?: Partial<CrmStepDefaultProps>) {
 
   return (
     <fieldset
-      className="min-w-0 rounded-2xl bg-[var(--color-sps-grey)] p-5 sm:p-6"
+      className="min-w-0 rounded-2xl bg-muted p-5 sm:p-6"
       data-ds-block="crm.step.default"
       data-ds-layer="singlepage"
       data-module="crm"
@@ -75,7 +75,7 @@ export function CrmStepDefault(props?: Partial<CrmStepDefaultProps>) {
       data-variant={props?.variant ?? "default"}
     >
       <legend className="sr-only">{step.title}</legend>
-      <h2 className="mb-5 text-lg font-semibold text-[var(--color-sps-graphite)]">
+      <h2 className="mb-5 text-lg font-semibold text-foreground">
         {step.title}
       </h2>
       <div className="grid min-w-0 gap-5 sm:grid-cols-2">

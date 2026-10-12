@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Subjects represent authenticated users or actors, and connect identities, roles, and application-specific flows.
+Subjects represent visitors, registered accounts and actors, and connect identities, roles and application-specific flows.
 
 ## Layering Boundary
 
@@ -35,7 +35,7 @@ Thread management through `rbac.subject` requires `rbac.permission` records for 
 ## Authentication API
 
 - `GET /rbac/subjects/authentication/init`: initialize anonymous/authenticated session tokens.
-- `GET /rbac/subjects/authentication/me`: get current subject from JWT.
+- `GET /rbac/subjects/authentication/me`: resolve the current Subject and its server-derived `authenticated` status.
 - `POST /rbac/subjects/authentication/refresh`: refresh JWT/refresh pair.
 - `POST /rbac/subjects/authentication/logout`: logout current session.
 - `POST /rbac/subjects/authentication/email-and-password/authentication`: login by email+password.
@@ -43,9 +43,39 @@ Thread management through `rbac.subject` requires `rbac.permission` records for 
 - `POST /rbac/subjects/authentication/email-and-password/forgot-password`: request reset code.
 - `POST /rbac/subjects/authentication/email-and-password/reset-password`: reset password by code.
 - `POST /rbac/subjects/authentication/ethereum-virtual-machine`: EVM signature login.
+
+Guest and registered Subjects both use `variant="default"`. A JWT identifies a
+visitor session; it does not establish that an account exists. The `me` response
+adds `authenticated`, derived from the Subject's Identity links. This field is
+session metadata and is not stored in the Subject table. The authentication
+reader supplies `{ data, authenticated }` to its children. Account menus,
+private workspace entry points and admin controls use that flag before loading
+profiles, projects or roles.
+
+Protected AI Chat entry points pass `unauthenticatedRedirectHref` to the
+authentication reader. A resolved visitor session redirects to the localized
+sign-in page before private project reads. Token restoration and pending session
+queries keep the loading state; an authenticated account still receives the
+project-access result when it opens another owner's workspace.
+
+Email registration reuses the current visitor Subject identified by a verified
+session token. Its Identity and registration roles are attached to that Subject,
+and authentication completion creates its personal profile and ownership grants.
+An existing account cannot be reused as a visitor for another registration.
+Session initialization and `me` reads create no Social Profile. A visitor's
+generated Subject slug is not displayed as an account name.
+
 - `POST /rbac/subjects/authentication/oauth/{provider}`: start OAuth flow (`google`).
 - `GET /rbac/subjects/authentication/oauth/{provider}/callback`: OAuth provider callback.
 - `POST /rbac/subjects/authentication/oauth/exchange`: exchange one-time code to JWT/refresh.
+
+### Account email changes and project reads
+
+- `GET /rbac/subjects/:id/social-module/profiles/projects` returns the caller's assistant profiles with their Chat and initial document Thread. Ownership comes from the Subject's `assistant` relation, and the caller's personal Profile must also belong to that Chat. Shared Chat membership does not establish project ownership.
+- `POST /rbac/subjects/:id/identities/:identityId/email-change/code` sends a verification code through the Notification service. An empty data object requests a code for the current address; a new `email` requires the `verificationId` returned by verifying the current address.
+- `POST /rbac/subjects/:id/identities/:identityId/email-change/verify` verifies `challengeId` and the six-digit `code`. Current-address verification returns a `verificationId`; new-address verification saves the email and returns the public Identity fields.
+
+These routes use owner middleware and concrete permissions in the Subject's private account role. Email codes expire after ten minutes, are stored as keyed hashes, and are consumed atomically. An incorrect code consumes that challenge; another code can be requested after the per-stage, one-minute sending limit. Password changes use the existing owner Identity update method with the current password and a new password; the form requires its repeated value before submitting.
 
 ## Anonymous Session Lifecycle
 
@@ -177,7 +207,25 @@ action. Knowledge create/update/reindex contracts are unchanged, and deletion
 requires the Agent conversation's fresh confirmation revision before the RBAC
 delete action is called.
 
+### Subject Profile collection
+
+`GET /api/rbac/subjects/:id/social-module/profiles` returns the Subject's own Profiles and Profiles connected through its Chats, with caller filters applied within that scope.
+
+`POST` at the same URL accepts `data.title` and `data.variant` (`default` or `artificial-intelligence`). Profile model defaults generate `slug` and `adminTitle`; caller values for those fields are not forwarded. The AI Chat form supplies `artificial-intelligence` and asks only for the project name. AI Profile creation also provisions its Chat, default Thread and Agent Subject using the existing bootstrap. The returned model is the created Profile.
+
 ## Variants
+
+- `me-social-module-profile-list-ai-chat`: connected AI Profiles and their workspace context. Its server reader forwards the current JWT through SDKs; its client reader supports seeded data and existing realtime invalidation.
+- `me-social-module-profile-select-ai-chat`: project menu backed by that reader and Social Profile menu rows.
+- `me-social-module-profile-id-navigation-ai-chat`: current project's Documents and topic navigation using Social Profile and Thread presentations.
+- `me-social-module-profile-id-chat-id-thread-id-ai-chat`: selected Thread composition with separate message reader, composer, Knowledge list and export actions.
+- `me-social-module-profile-id-chat-id-thread-id-message-list-ai-chat` and `me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat`: scoped messages and submission with AI reaction and selected Source metadata.
+- `me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat` and `me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-id-update-ai-chat`: document Source creation/attachment and individual Source editing. Creation retries retain the saved Source ID.
+- `me-social-module-profile-id-chat-id-thread-id-download-ai-chat`: scoped Source reader and Thread Markdown export.
+- `me-social-module-profile-list-settings-ai-chat`, `me-social-module-profile-id-update-ai-chat` and `me-social-module-profile-id-avatar-update-ai-chat`: personal Profile reader, text mutation and avatar actions composed in Social Profile settings.
+- `me-identity-list-settings-ai-chat` and `me-identity-id-settings-ai-chat`: connected identity reader and per-identity settings actions.
+- `me-authentication-email-and-password-*-form-ai-chat`: distinct sign-in, registration, forgot-password and reset-password variants sharing private form mechanics.
+- `me-crm-module-form-support-ai-chat`: validates support fields and submits them through the existing Subject CRM request SDK. The CRM Form is loaded by slug `ai-chat-support`; success appears only after the API resolves.
 
 - `default`: renders linked identity email and a profile link.
 - `agent`: non-human execution subject linked to an AI or system social profile.
@@ -204,6 +252,7 @@ delete action is called.
 - `ecommerce-module-order-delete-default`: delete order action.
 - `ecommerce-module-order-checkout-default`: order checkout flow.
 - `ecommerce-module-order-list-default`: list orders for subject.
+- `me-ecommerce-module-order-list-ai-chat`: the current Subject’s paid purchase history and receipt links. The order collection accepts query filters; without filters it retains the active cart defaults (`type=cart`, `status=new`). Every collection result remains restricted to orders linked to the Subject.
 - `ecommerce-module-order-list-checkout-default`: list orders in checkout context.
 - `ecommerce-module-order-list-quantity-default`: list order quantities.
 - `ecommerce-module-order-list-total-default`: list order totals.
@@ -215,6 +264,74 @@ delete action is called.
 - `admin-select-input`: admin select input for choosing a subject.
 - `admin-table`: admin table listing subjects.
 - `admin-table-row`: admin row showing subject fields.
+
+### AI Chat workspace documents
+
+`GET /api/rbac/subjects/:id/social-module/profiles` returns only Profiles
+directly linked to that Subject. With no matching Profiles it returns `[]`.
+Shared Chat membership does not establish Profile ownership. Both GET and POST
+require the requesting Subject to match `:id`; a private owner role grants the
+concrete Subject collection route rather than a public collection template.
+
+Successful registration creates one personal Profile and its `default` link
+before returning authentication credentials. Repeated authentication preserves
+that Profile. Its initial display name comes from the generated Subject slug;
+the Profile slug and admin title are assigned without user input. Existing
+personal names are preserved.
+
+POST creates an artificial-intelligence Profile from its title and variant,
+then links it to its human owner with `variant="assistant"`. The personal
+Profile is provisioned by authentication and cannot be duplicated through this
+POST route. Account identity and personal settings select the `default` link;
+the project selector requests artificial-intelligence Profiles.
+
+The private owner role also grants GET of the current Subject record by its
+concrete ID, so standard SPS readers can load that record without access to the
+Subject collection.
+
+Sign-in methods use `GET /api/rbac/subjects/:id/identities`. An owner check
+protects the route, and the authentication flow grants access only to the
+concrete Subject path. Email and password updates use the corresponding owned
+Identity PATCH route. That handler accepts only email or current/new passwords
+and returns the saved Identity through its output schema; it never echoes
+submitted passwords. Forms use the loaded Identity data and do not query the
+general Identity collection again.
+
+Personal Profile saves and avatar reads/uploads use concrete owner routes.
+The avatar reader returns only the selected Profile's file and relation.
+RBAC passes that file into the Social Profile avatar view, so account controls
+do not need access to general file or relation collections. Profile, Identity
+and avatar mutations patch their acting client's caches and retain WebSocket
+invalidation. Successful email and password edits close their dialogs. Account data
+updates without a page reload.
+
+The Subject project list has distinct pending, error, empty and populated
+states. An empty successful response displays the creation form and a navbar
+Create project action. Errors display a retry action. Studio includes Loading
+and Empty stories for both the Subject selector and the creation page.
+
+Creating an artificial-intelligence Profile through the Subject collection also
+creates Brief.md, Strategy.md, Brand.md, Design.md and Products.md in its Chat,
+in Studio Workspace review order. The form supplies only the project title and
+Profile variant; the backend provisions the documents and the workspace opens
+Brief.md first. Read operations do not initialize documents.
+
+The Subject-owned `metadata.aiChatDocument` contract has `key`, `profileId` and
+`sourceIds`. Only the five predefined keys identify document Threads. A
+presentation variant or title cannot mark a conversation as a document. Each
+document displays only its listed Sources from the selected project Profile.
+Source attachment preserves the document key and other Thread metadata.
+
+Ordinary Threads show messages and the composer across the workspace width.
+They have no Knowledge editor, export action or document context selector. The
+assistant can still retrieve saved Knowledge from the project Profile. Sidebar
+Documents are ordered separately from ordinary Threads. Documents belonging to
+another Profile in the same Chat remain in that Profile’s workspace.
+
+The document service can initialize an existing web project explicitly while
+preserving its identified Products.md Thread and Source IDs. Repeating it reuses
+the same documents. Additional document relations use `variant="ai-chat"`;
+the Chat’s single primary relation retains `variant="default"`.
 
 ### OpenRouter decisions and automatic replies
 
@@ -240,6 +357,12 @@ available. The native create tool supports the first Source and imports the
 current message's attached files. Editing reads the Source first, preserves
 other user notes, and checks its `contentHash` before saving. Source and file
 analysis continue through Knowledge services and framework relations.
+
+Knowledge create and edit tools can wait up to four minutes for analysis and
+indexing, within the tool loop's five-minute total deadline. Other tools retain
+the default thirty-second limit. New imports receive the current attachment
+names and instructions to base titles and notes on the current user input.
+An expired wait does not cancel an operation; check saved state before retrying.
 
 JEV chooses among available capabilities. Backend profile scope, allowed MCP
 servers, and tool argument validation continue to determine access. A routing

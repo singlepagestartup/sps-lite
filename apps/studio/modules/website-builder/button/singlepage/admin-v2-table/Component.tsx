@@ -43,20 +43,20 @@ export function Component({
       data-model="button"
       data-variant={variant}
     >
-      <p className="text-xs text-sps-muted">
+      <p className="text-xs text-muted-foreground">
         {fixture.schema.module} / {fixture.schema.entityType} /{" "}
         {fixture.schema.entity}
       </p>
       <h2 className="mt-2 text-xl font-semibold">{fixture.schema.entity}</h2>
-      <div className="mt-5 max-w-full overflow-x-auto rounded-xl border border-sps-line bg-sps-white">
+      <div className="mt-5 max-w-full overflow-x-auto rounded-xl border border-border bg-card">
         <table className="w-full text-left">
-          <thead className="bg-sps-grey">
+          <thead className="bg-muted">
             <tr>
               {fields.map((field) => (
                 <th
                   scope="col"
                   key={field.key}
-                  className="px-4 py-3 text-xs font-semibold text-sps-muted"
+                  className="px-4 py-3 text-xs font-semibold text-muted-foreground"
                 >
                   {field.label}
                 </th>
@@ -81,7 +81,7 @@ export function Component({
 const fields = fixture.schema.fields;
 const Row = memo(function Row({ record }: { record: IRecord }) {
   return (
-    <tr className="border-t border-sps-line">
+    <tr className="border-t border-border">
       {fields.map((field) => (
         <td
           key={field.key}

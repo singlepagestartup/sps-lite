@@ -8,7 +8,7 @@ function Example() {
   return (
     <FilesProvider>
       <SourceProvider profileId="pottery">
-        <div className="@container/workspace @container/chat flex h-160 flex-col overflow-hidden bg-sps-white">
+        <div className="@container/workspace @container/chat flex h-160 flex-col overflow-hidden bg-card">
           <SocialModuleThread
             variant="id-ai-chat"
             messageCreate={

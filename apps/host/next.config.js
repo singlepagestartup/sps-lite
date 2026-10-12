@@ -24,6 +24,7 @@ function makeConfig() {
 
   return withBundleAnalyzer({
     reactStrictMode: true,
+    distDir: process.env.SPS_HOST_DIST_DIR || ".next",
     // Preserve the public origin in locale redirects, including loopback hosts.
     skipMiddlewareUrlNormalize: true,
     deploymentId: process.env.NEXT_DEPLOYMENT_ID || undefined,

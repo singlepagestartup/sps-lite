@@ -19,7 +19,7 @@ export interface IAuthenticationContentProps {
 
 function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
   return (
-    <div className="space-y-3 text-sm leading-6 text-sps-muted [&_a]:font-medium [&_a]:text-sps-graphite [&_a]:underline [&_a]:underline-offset-4">
+    <div className="space-y-3 text-sm leading-6 text-muted-foreground [&_a]:font-medium [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4">
       {paragraphs.map((paragraph, index) => (
         <div key={index}>
           <Markdown options={{ disableParsingRawHTML: true }}>
@@ -50,7 +50,7 @@ export function Component({
       >
         <div className="min-w-0">
           <div className="mb-8 max-w-2xl">
-            <div className="mb-4 h-1 w-10 rounded-full bg-sps-green" />
+            <div className="mb-4 h-1 w-10 rounded-full bg-primary text-primary-foreground" />
             <h1 className="text-3xl font-semibold leading-tight tracking-tight @[640px]:text-4xl">
               {content.intro.title}
             </h1>
@@ -85,10 +85,10 @@ export function Component({
               />
               {index === content.images.length - 1 && (
                 <section
-                  className={`relative z-10 mx-4 rounded-2xl border border-sps-line bg-sps-white p-5 shadow-lg shadow-black/5 @[640px]:mx-5 @[640px]:p-6 ${media === "cover" ? "my-4 flex-1 @[640px]:my-5" : "-mt-16"}`}
+                  className={`relative z-10 mx-4 rounded-2xl border border-border bg-card p-5 shadow-lg shadow-black/5 @[640px]:mx-5 @[640px]:p-6 ${media === "cover" ? "my-4 flex-1 @[640px]:my-5" : "-mt-16"}`}
                 >
                   <h2 className="flex items-center gap-3 text-xl font-semibold">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sps-grey">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted">
                       <WebsiteBuilderModuleFeature
                         variant="icon"
                         name={asideIcon}

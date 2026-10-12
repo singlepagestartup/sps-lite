@@ -64,6 +64,7 @@ export interface SubjectMeProfileInformationProps {
   profile: RbacAccountProfile;
   profiles: RbacAccountProfile[];
   description: string;
+  saveError?: string;
 }
 export function SubjectMeProfileInformation(
   props?: Partial<SubjectMeProfileInformationProps>,
@@ -128,8 +129,9 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
     slug: profile.slug,
   });
   const [savedProfile, setSavedProfile] = useState(draft);
-  const [message, setMessage] = useState("");
-  const [invalid, setInvalid] = useState(false);
+  const [message, setMessage] = useState(props.saveError ?? "");
+  const [invalid, setInvalid] = useState(!!props.saveError);
+  const errorRef = useRef<HTMLDivElement>(null);
   const [slugCheck, setSlugCheck] = useState<{
     value: string;
     available: boolean;
@@ -141,6 +143,14 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
   const slugInput = useRef<HTMLInputElement>(null);
   const viewButton = useRef<HTMLButtonElement>(null);
   const id = useId();
+  useEffect(() => {
+    setMessage(props.saveError ?? "");
+    setInvalid(!!props.saveError);
+  }, [props.saveError]);
+  useEffect(() => {
+    if (invalid && message)
+      errorRef.current?.scrollIntoView({ block: "nearest" });
+  }, [invalid, message]);
   useEffect(() => () => reader.current?.abort(), []);
   function updateDraft(field: keyof typeof draft, value: string) {
     setDraft((previous) => ({ ...previous, [field]: value }));
@@ -171,7 +181,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
   }
   return (
     <article
-      className="min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-6"
+      className="min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-6"
       data-ds-block="rbac.subject.me-social-module-profile-id-settings-ai-chat"
       data-profile-id={profile.id}
       data-ds-layer="singlepage"
@@ -185,7 +195,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--color-sps-muted)]">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
             {description}
           </p>
         </div>
@@ -237,7 +247,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
         <fieldset className="min-w-0 border-0 p-0">
           <legend className="text-sm font-medium">Avatar</legend>
           <div className="mt-3 flex flex-wrap items-center gap-4">
-            <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-[var(--color-sps-grey)]">
+            <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl bg-muted">
               {avatar ? (
                 <img
                   src={avatar}
@@ -246,7 +256,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
                   onError={() => setAvatar("")}
                 />
               ) : (
-                <User className="h-6 w-6 text-[var(--color-sps-muted)]" />
+                <User className="h-6 w-6 text-muted-foreground" />
               )}
             </div>
             <div className="min-w-0">
@@ -265,6 +275,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
                   onClick={() => {
                     reader.current?.abort();
                     setAvatar("");
+                    setInvalid(false);
                     if (fileInput.current) fileInput.current.value = "";
                     setMessage("Avatar removed in this preview.");
                   }}
@@ -272,7 +283,7 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
                   Remove
                 </Button>
               </div>
-              <p className="mt-2 text-xs leading-5 text-[var(--color-sps-muted)]">
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
                 PNG, JPEG, WebP or GIF, up to 2 MB. Save to apply changes.
               </p>
             </div>
@@ -372,14 +383,14 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
             </div>
             <p
               id={`${id}-slug-help`}
-              className="mt-2 text-xs leading-5 text-[var(--color-sps-muted)]"
+              className="mt-2 text-xs leading-5 text-muted-foreground"
             >
               Lowercase letters, numbers and single hyphens. Availability is
               checked only against profiles in this preview.
             </p>
             <p
               role="status"
-              className={`mt-2 text-sm ${slugCheck?.available === false ? "text-[var(--color-sps-danger)]" : "text-[var(--color-sps-muted)]"}`}
+              className={`mt-2 text-sm ${slugCheck?.available === false ? "text-destructive" : "text-muted-foreground"}`}
             >
               {slugCheck
                 ? slugCheck.available
@@ -389,29 +400,48 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
             </p>
           </div>
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-          <p
-            role={invalid ? "alert" : "status"}
-            className={`text-sm leading-6 ${invalid ? "text-[var(--color-sps-danger)]" : "text-[var(--color-sps-muted)]"}`}
+        <div className="mt-6 flex justify-end">
+          <Button
+            type="submit"
+            variant={invalid ? "danger" : "primary"}
+            aria-describedby={
+              invalid && message ? `${id}-save-error` : undefined
+            }
+            className={invalid ? "border-destructive" : undefined}
           >
-            {message}
-          </p>
-          <Button type="submit">
             <Save className="h-5 w-5" />
             {saveLabel}
           </Button>
         </div>
+        {invalid && message ? (
+          <div
+            ref={errorRef}
+            id={`${id}-save-error`}
+            role="alert"
+            className="mt-4 rounded-xl border border-destructive bg-destructive-surface p-4 text-sm text-destructive"
+          >
+            <p className="font-semibold">Profile could not be saved</p>
+            <p className="mt-1 break-words leading-6">{message}</p>
+          </div>
+        ) : message ? (
+          <p
+            role="status"
+            className="mt-3 text-sm leading-6 text-muted-foreground"
+          >
+            {message}
+          </p>
+        ) : null}
       </form>
       {viewOpen ? (
         <div
-          className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-[var(--color-sps-graphite)]/50 p-4"
+          className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-default/50 p-4"
           onClick={closePreview}
         >
           <section
             role="dialog"
             aria-modal="true"
             aria-label="Profile preview"
-            className="relative max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-[var(--color-sps-white)] p-6"
+            className="relative max-h-[90dvh] w-full max-w-lg overflow-y-auto rounded-3xl bg-card p-6"
             onClick={(event) => event.stopPropagation()}
             onKeyDown={(event) => {
               if (event.key === "Escape") closePreview();
@@ -441,16 +471,16 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
               />
             ) : null}
             <h3 className="text-3xl font-semibold">{savedProfile.title}</h3>
-            <p className="mt-2 text-base text-[var(--color-sps-muted)]">
+            <p className="mt-2 text-base text-muted-foreground">
               {savedProfile.subtitle}
             </p>
             <p className="mt-5 whitespace-pre-wrap break-words text-base leading-[26px]">
               {savedProfile.description}
             </p>
-            <p className="mt-5 break-all text-sm text-[var(--color-sps-muted)]">
+            <p className="mt-5 break-all text-sm text-muted-foreground">
               {savedProfile.slug}
             </p>
-            <p className="mt-6 text-xs text-[var(--color-sps-muted)]">
+            <p className="mt-6 text-xs text-muted-foreground">
               Local profile preview
             </p>
           </section>
@@ -472,12 +502,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -485,7 +515,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}
@@ -504,5 +534,5 @@ export const defaultSubjectMeProfileInformationProps: SubjectMeProfileInformatio
       "Edit the name, headline and information on your public profile.",
   };
 const fieldClass =
-  "mt-2 min-h-12 w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2.5 text-base text-[var(--color-sps-graphite)] outline-none transition focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] aria-[invalid=true]:border-[var(--color-sps-danger)]";
+  "mt-2 min-h-12 w-full rounded-xl border border-border bg-card px-4 py-2.5 text-base text-foreground outline-none transition focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground aria-[invalid=true]:border-destructive";
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;

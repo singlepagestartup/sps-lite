@@ -5,3 +5,6 @@ export {
 export { Button } from "./lib/button";
 export { Component as FormField } from "./lib/form-field";
 export type { ISpsComponentBase } from "./lib/interfaces/components";
+
+export { Select, type ISelectOption } from "./lib/select";
+export { Icon, type IconName, type IIconProps } from "./lib/icons";

@@ -45,7 +45,7 @@ export function ContentTestimonials(
 
   return (
     <section
-      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
+      className="w-full bg-muted py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-testimonials"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -55,10 +55,10 @@ export function ContentTestimonials(
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">
+            <p className="mb-2 text-sm font-semibold tracking-normal text-muted-foreground">
               {eyebrow}
             </p>
-            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--color-sps-graphite)]">
+            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-foreground">
               {title}
             </h2>
           </div>

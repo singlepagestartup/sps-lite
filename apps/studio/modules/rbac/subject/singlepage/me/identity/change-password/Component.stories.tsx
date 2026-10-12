@@ -31,3 +31,11 @@ const meta = {
 } satisfies Meta<typeof Example>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
+
+export const Expanded: StoryObj<typeof meta> = {
+  play: async ({ canvasElement }) => {
+    canvasElement
+      .querySelector<HTMLButtonElement>("button[aria-expanded]")
+      ?.click();
+  },
+};

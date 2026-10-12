@@ -71,8 +71,8 @@ export function ButtonSecondary(props?: Partial<ButtonSecondaryProps>) {
     <a
       className={
         props?.inverse
-          ? "inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/25 px-4 text-sm font-semibold text-white no-underline hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-green"
-          : `${kit.secondary} no-underline hover:bg-[var(--color-sps-grey)]`
+          ? "inline-flex min-h-11 items-center gap-2 rounded-xl border border-default-foreground/25 px-4 text-sm font-semibold text-default-foreground no-underline hover:bg-card/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+          : `${kit.secondary} no-underline hover:bg-muted`
       }
       data-ds-block="website-builder.button.secondary"
       data-ds-layer="singlepage"
@@ -89,11 +89,11 @@ export function ButtonSecondary(props?: Partial<ButtonSecondaryProps>) {
 }
 const Play = createIcon("play");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  secondary: `${buttonBase} border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)] enabled:hover:bg-[var(--color-sps-grey)] ${focus}`,
+  secondary: `${buttonBase} border border-border bg-card text-foreground enabled:hover:bg-muted ${focus}`,
 };
 export const defaultButtonSecondaryProps: ButtonSecondaryProps = {
   label: "Learn more",

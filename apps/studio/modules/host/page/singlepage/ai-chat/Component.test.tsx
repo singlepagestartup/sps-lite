@@ -13,6 +13,7 @@ import { ThreadProvider } from "../../../../social/thread/singlepage/id/ai-chat/
 import { Component as SocialModuleThread } from "../../../../social/thread/index";
 import { Component as SocialModuleMessage } from "../../../../social/message/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject";
+import { Component as CrmModuleForm } from "../../../../crm/form";
 import loginFormCopy from "../../../../rbac/subject/singlepage/me/authentication/email-and-password/authentication-form/ai-chat/content.json";
 import authenticationContent from "../../../../website-builder/widget/singlepage/content/ai-chat/authentication/content.json";
 
@@ -94,6 +95,23 @@ describe("Local AI Chat components", () => {
     expect(html).not.toContain(authenticationContent.intro.title);
   });
 
+  test("CRM support fields render independently of Website Builder presentation", () => {
+    const html = renderToStaticMarkup(
+      <CrmModuleForm
+        variant="support-ai-chat"
+        id="standalone-support"
+        values={{ topic: "", details: "", result: "" }}
+        onChange={() => {}}
+      />,
+    );
+    expect(html).toContain('data-module="crm"');
+    expect(html).toContain('name="details"');
+    expect(html).toContain('name="result"');
+    expect(html).not.toContain('data-module="website-builder"');
+    expect(html).not.toContain("<h2");
+    expect(html).not.toContain("Support request</");
+  });
+
   test("Help submits through Subject and renders CRM form, step and inputs", () => {
     const html = renderToStaticMarkup(
       <AIChatPreview initialHref="/ai-chat/help" />,
@@ -106,6 +124,13 @@ describe("Local AI Chat components", () => {
     expect(
       html.match(/data-model="input" data-variant="support-ai-chat"/g),
     ).toHaveLength(3);
+    const heading = html.indexOf("Support request</h2>");
+    const form = html.indexOf(
+      'data-variant="me-crm-module-form-support-ai-chat"',
+    );
+    expect(heading).toBeGreaterThan(-1);
+    expect(heading).toBeLessThan(form);
+    expect(html).toContain('aria-label="Support request"');
     expect(html).toContain('type="submit"');
     expect(html).not.toContain('data-model="button" data-variant="control"');
   });

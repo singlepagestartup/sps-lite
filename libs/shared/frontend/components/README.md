@@ -94,3 +94,15 @@ import {
 ## License
 
 MIT
+
+## SPS model readers
+
+Model variants use the shared parent in `index.tsx`, with the model Provider
+and client/server SDKs. Saved records use `singlepage/default`; current Subject
+variants use `singlepage/subject-default`. Collection variants use
+`singlepage/find`, and creation forms use `singlepage/admin/form`.
+
+`Component.tsx` renders the view. Interactive controls live in
+`ClientComponent.tsx`, with explicit public props and JSX slots. SDK objects and
+reader implementation props do not belong to that view's client props. AI Chat
+variants use the same shared readers as the other model variants.

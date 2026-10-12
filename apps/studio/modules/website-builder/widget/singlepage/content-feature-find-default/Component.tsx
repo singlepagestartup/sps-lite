@@ -49,7 +49,7 @@ export function ContentFeatureFindDefault(
   const { stats } = { ...defaultContentFeatureFindDefaultProps, ...props };
   return (
     <div
-      className="w-full bg-[var(--color-sps-grey)] py-4 sm:py-6"
+      className="w-full bg-muted py-4 sm:py-6"
       data-ds-block="website-builder.widget.content-feature-find-default"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -59,15 +59,15 @@ export function ContentFeatureFindDefault(
       <div className="mx-auto grid w-full max-w-7xl gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
         {stats.map((stat) => (
           <div
-            className="min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-6"
+            className="min-w-0 rounded-2xl border border-border bg-card p-5 sm:p-6"
             key={stat.label}
           >
             <div className="flex items-start justify-between gap-3">
               <div className="min-w-0">
-                <strong className="block break-words text-3xl font-semibold leading-tight tracking-normal text-[var(--color-sps-graphite)] sm:text-4xl">
+                <strong className="block break-words text-3xl font-semibold leading-tight tracking-normal text-foreground sm:text-4xl">
                   {stat.value}
                 </strong>
-                <span className="mt-2 block text-sm font-semibold leading-6 text-[var(--color-sps-graphite)]">
+                <span className="mt-2 block text-sm font-semibold leading-6 text-foreground">
                   {stat.label}
                 </span>
               </div>
@@ -76,7 +76,7 @@ export function ContentFeatureFindDefault(
               </span>
             </div>
             {stat.description ? (
-              <p className="mt-4 text-sm leading-6 text-[var(--color-sps-muted)]">
+              <p className="mt-4 text-sm leading-6 text-muted-foreground">
                 {stat.description}
               </p>
             ) : null}
@@ -91,7 +91,7 @@ const TrendingUp = createIcon("trend-up");
 const Layers = createIcon("stack");
 const Database = createIcon("database");
 const iconBoxClass =
-  "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)]";
+  "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground";
 export const defaultContentFeatureFindDefaultProps = {
   stats: [
     {

@@ -10,6 +10,7 @@ import { Component as SubjectAction5 } from "./me/social-module/profile/id/chat/
 import { Component as SubjectAction3 } from "./me/social-module/profile/id/chat/id/thread/create/form/ai-chat";
 import { Component as SubjectAction1 } from "./me/social-module/profile/id/update-name/ai-chat";
 import { Component as SubjectAction0 } from "./me/social-module/profile/create/ai-chat";
+import { Component as SubjectProfileSelectAiChat } from "./me/social-module/profile/select/ai-chat";
 import { Component as MeEcommerceOrderCheckoutTokensAiChat } from "./me/ecommerce-module/order/checkout/tokens/ai-chat";
 import { Component as MeEcommerceOrderListAiChat } from "./me/ecommerce-module/order/list/ai-chat";
 import { Component as MeDeleteAiChat } from "./me/delete/ai-chat";
@@ -33,7 +34,7 @@ import { Component as MessageCreateAiChat } from "./me/social-module/profile/id/
 import { Component as Account } from "./me/account/index";
 import { Component as List } from "./list/index";
 import { Component as MeCrmFormDeafult } from "./me-crm-module-form-default/index";
-import { Component as MeDelete } from "./me-delete/index";
+import { Component as MeDelete } from "./me/delete/default/index";
 import { Component as MeIdentityFindInformation } from "./me/identity/find/information/index";
 import { Component as MeInformation } from "./me-information/index";
 import { Component as MeProfileInformation } from "./me/social-module/profile/id/settings/ai-chat/index";
@@ -55,6 +56,7 @@ export const variants = {
     SubjectAction3,
   "me-social-module-profile-id-update-name-ai-chat": SubjectAction1,
   "me-social-module-profile-create-ai-chat": SubjectAction0,
+  "me-social-module-profile-select-ai-chat": SubjectProfileSelectAiChat,
   "me-ecommerce-module-order-checkout-tokens-ai-chat":
     MeEcommerceOrderCheckoutTokensAiChat,
   "me-ecommerce-module-order-list-ai-chat": MeEcommerceOrderListAiChat,

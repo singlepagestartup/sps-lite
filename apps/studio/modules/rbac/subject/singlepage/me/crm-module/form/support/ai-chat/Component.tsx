@@ -61,20 +61,20 @@ export function Component({
           <div className="grid gap-5">
             <p
               role="status"
-              className="rounded-xl border border-sps-line bg-sps-grey p-4 text-sm"
+              className="rounded-xl border border-border bg-muted p-4 text-sm"
             >
               {defaultCopy.labels["success-message"]}
             </p>
             {defaultCopy.successParagraphs.map((text) => (
-              <p key={text} className="text-sm leading-6 text-sps-muted">
+              <p key={text} className="text-sm leading-6 text-muted-foreground">
                 {text}
               </p>
             ))}
-            <dl className="grid gap-4 rounded-xl bg-sps-grey p-4">
+            <dl className="grid gap-4 rounded-xl bg-muted p-4">
               {Object.entries(values).map(([field, value]) => (
                 <div key={field}>
                   <dt className="text-sm font-semibold capitalize">{field}</dt>
-                  <dd className="mt-1 whitespace-pre-wrap break-words text-sm text-sps-muted">
+                  <dd className="mt-1 whitespace-pre-wrap break-words text-sm text-muted-foreground">
                     {value}
                   </dd>
                 </div>
@@ -84,7 +84,7 @@ export function Component({
               <button
                 type="button"
                 onClick={() => setSubmitted(false)}
-                className="min-h-11 rounded-xl border border-sps-line px-5 text-sm font-semibold"
+                className="min-h-11 rounded-xl border border-border px-5 text-sm font-semibold"
               >
                 {defaultCopy.labels["edit-request"]}
               </button>
@@ -102,7 +102,7 @@ export function Component({
         ) : (
           <button
             type="submit"
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-sps-green px-5 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
             <WebsiteBuilderModuleFeature
               variant="icon"

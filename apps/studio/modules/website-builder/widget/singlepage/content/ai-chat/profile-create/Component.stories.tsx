@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 function Example() {
   return (
     <WebsiteBuilderModuleWidget variant="content-ai-chat-profile-create">
-      <p className="mt-8 rounded-xl border border-sps-line p-4">
+      <p className="mt-8 rounded-xl border border-border p-4">
         Subject form slot
       </p>
     </WebsiteBuilderModuleWidget>

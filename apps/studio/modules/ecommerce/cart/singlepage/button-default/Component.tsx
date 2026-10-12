@@ -46,7 +46,7 @@ export function CartButtonDefault(props?: Partial<CartButtonDefaultProps>) {
   return (
     <button
       aria-label={label}
-      className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-muted)] transition hover:bg-[var(--color-sps-grey)] hover:text-[var(--color-sps-graphite)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
+      className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       data-ds-block="ecommerce.cart.button-default"
       data-ds-layer="singlepage"
       onClick={onClick}
@@ -57,7 +57,7 @@ export function CartButtonDefault(props?: Partial<CartButtonDefaultProps>) {
     >
       <ShoppingCart className="h-5 w-5" />
       {count > 0 ? (
-        <span className="absolute -right-1.5 -top-1.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[var(--color-sps-green)] px-1 text-xs font-semibold text-[var(--color-sps-graphite)]">
+        <span className="absolute -right-1.5 -top-1.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-primary text-primary-foreground px-1 text-xs font-semibold">
           {count}
         </span>
       ) : null}

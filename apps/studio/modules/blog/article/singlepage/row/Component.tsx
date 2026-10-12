@@ -25,7 +25,7 @@ export function ArticleRow(
       href={href ?? `/blog/articles/${slug}`}
       target={target}
       rel={target === "_blank" ? "noreferrer" : undefined}
-      className={`@container group block min-w-0 overflow-hidden rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] transition hover:border-[var(--color-sps-graphite)] motion-reduce:transition-none ${kit.focus}`}
+      className={`@container group block min-w-0 overflow-hidden rounded-2xl border border-border bg-card transition hover:border-foreground motion-reduce:transition-none ${kit.focus}`}
       data-ds-block="blog.article.row"
       data-ds-layer="singlepage"
       data-module="blog"
@@ -41,17 +41,17 @@ export function ArticleRow(
           />
         </div>
         <div className="flex min-w-0 flex-col p-5 @[560px]:p-6">
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--color-sps-muted)]">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
             <span className="font-medium">{category}</span>
             <span>{date}</span>
           </div>
-          <h3 className="text-2xl font-semibold leading-7 tracking-tight text-[var(--color-sps-graphite)]">
+          <h3 className="text-2xl font-semibold leading-7 tracking-tight text-foreground">
             {title}
           </h3>
-          <p className="mt-3 text-sm leading-[22px] text-[var(--color-sps-muted)]">
+          <p className="mt-3 text-sm leading-[22px] text-muted-foreground">
             {excerpt}
           </p>
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--color-sps-line)] pt-4 text-xs text-[var(--color-sps-muted)]">
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4 text-xs text-muted-foreground">
             <div className="flex flex-wrap gap-2">
               {tags.slice(0, 2).map((tag) => (
                 <span key={tag}>#{tag}</span>
@@ -67,7 +67,7 @@ export function ArticleRow(
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {

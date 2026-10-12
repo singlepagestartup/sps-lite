@@ -103,7 +103,7 @@ function IdAiChatProject({
     </>
   );
   return (
-    <main className="@container/workspace mx-auto max-w-[1440px] px-4 py-6 @[640px]:px-5">
+    <main className="@container/workspace w-full px-4 py-6 @[800px]:px-8">
       <div
         id="documents"
         data-ds-block="social.profile.id-ai-chat-project"
@@ -116,7 +116,7 @@ function IdAiChatProject({
             closeDrawer();
           }
         }}
-        className="group/project relative grid min-w-0 grid-cols-1 overflow-hidden rounded-2xl border border-sps-line bg-sps-white @[760px]/workspace:h-160 @[760px]/workspace:data-[sidebar-open=true]:grid-cols-[210px_minmax(0,1fr)]"
+        className="group/project relative mx-auto grid w-full max-w-6xl min-w-0 grid-cols-1 overflow-hidden rounded-2xl border border-border bg-card @[760px]/workspace:h-160 @[760px]/workspace:data-[sidebar-open=true]:grid-cols-[210px_minmax(0,1fr)]"
       >
         <button
           type="button"
@@ -139,14 +139,14 @@ function IdAiChatProject({
               setDrawerOpen(false);
             }
           }}
-          className="absolute inset-y-0 left-0 z-30 hidden w-80 max-w-[calc(100%-3rem)] min-w-0 overflow-y-auto bg-sps-graphite p-4 text-white shadow-xl @max-[760px]/workspace:group-data-[drawer-open=true]/project:block @[760px]/workspace:static @[760px]/workspace:z-auto @[760px]/workspace:w-auto @[760px]/workspace:max-w-none @[760px]/workspace:shadow-none @[760px]/workspace:group-data-[sidebar-open=true]/project:block @[760px]/workspace:group-data-[sidebar-open=false]/project:hidden"
+          className="absolute inset-y-0 left-0 z-30 hidden w-80 max-w-[calc(100%-3rem)] min-w-0 overflow-y-auto bg-default p-4 text-default-foreground shadow-xl @max-[760px]/workspace:group-data-[drawer-open=true]/project:block @[760px]/workspace:static @[760px]/workspace:z-auto @[760px]/workspace:w-auto @[760px]/workspace:max-w-none @[760px]/workspace:shadow-none @[760px]/workspace:group-data-[sidebar-open=true]/project:block @[760px]/workspace:group-data-[sidebar-open=false]/project:hidden"
         >
           <button
             ref={drawerClose}
             type="button"
             aria-label="Close sidebar"
             onClick={closeDrawer}
-            className={`absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-lg hover:bg-white/10 @[760px]/workspace:hidden ${kit.focus}`}
+            className={`absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-lg hover:bg-card/10 @[760px]/workspace:hidden ${kit.focus}`}
           >
             <Icon name="x" />
           </button>
@@ -162,7 +162,7 @@ function IdAiChatProject({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {

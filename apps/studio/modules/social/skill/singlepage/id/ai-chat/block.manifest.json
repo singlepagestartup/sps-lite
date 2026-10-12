@@ -3,7 +3,7 @@
   "title": "id-ai-chat",
   "layer": "singlepage",
   "state": "draft",
-  "description": "Overview of one local skill for editing linked knowledge.",
+  "description": "One professional specialization Skill linked to an AI Chat Profile; Business Analyst example from Studio.",
   "files": {
     "component": "Component.tsx",
     "story": "Component.stories.tsx"

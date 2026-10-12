@@ -40,7 +40,7 @@ export function Component({
         </label>
         <input
           id={id}
-          className="mt-2 min-h-12 w-full rounded-xl border border-sps-line bg-sps-white px-4 text-base focus-visible:outline-2"
+          className="mt-2 min-h-12 w-full rounded-xl border border-border bg-card px-4 text-base focus-visible:outline-2"
           value={name}
           onChange={(event) => {
             setName(event.target.value);
@@ -78,7 +78,7 @@ function Button({
     <button
       {...props}
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-50 ${appearance === "primary" ? "bg-sps-green text-sps-graphite" : "text-sps-muted"} ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-50 ${appearance === "primary" ? "bg-primary text-primary-foreground" : "text-muted-foreground"} ${className}`}
     />
   );
 }

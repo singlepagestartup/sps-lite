@@ -46,7 +46,7 @@ interface IHeaderButton {
   target?: "_self";
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
@@ -88,7 +88,7 @@ export const Component = memo(function Component({
       target={data.target}
       onClick={onNavigate}
       aria-current={active ? "page" : undefined}
-      className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm ${kit.focus} ${active ? "bg-sps-graphite font-semibold text-white" : "text-sps-muted hover:bg-sps-grey"}`}
+      className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm ${kit.focus} ${active ? "bg-default font-semibold text-default-foreground" : "text-muted-foreground hover:bg-muted"}`}
       data-module="website-builder"
       data-model="button"
       data-variant={variant}

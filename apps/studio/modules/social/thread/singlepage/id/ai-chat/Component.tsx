@@ -12,7 +12,7 @@ interface IPanelHeaderProps {
 }
 function PanelHeader({ title, label, navigation, actions }: IPanelHeaderProps) {
   return (
-    <header className="sticky top-0 z-10 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-sps-line bg-sps-white p-4">
+    <header className="sticky top-0 z-10 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-border bg-card p-4">
       <div className="flex min-w-0 items-center gap-3">
         {navigation}
         <div className="min-w-0">
@@ -67,14 +67,14 @@ function ThreadId({
         label="Document thread"
         navigation={navigation}
         actions={
-          <div className="flex rounded-lg bg-sps-grey p-1 @[900px]/chat:hidden">
+          <div className="flex rounded-lg bg-muted p-1 @[900px]/chat:hidden">
             {(["chat", "document"] as const).map((item) => (
               <button
                 key={item}
                 type="button"
                 aria-pressed={pane === item}
                 onClick={() => setPane(item)}
-                className={`min-h-9 rounded-md px-3 text-xs font-semibold ${kit.focus} ${pane === item ? "bg-sps-white" : kit.muted}`}
+                className={`min-h-9 rounded-md px-3 text-xs font-semibold ${kit.focus} ${pane === item ? "bg-card" : kit.muted}`}
               >
                 {item === "chat" ? "Chat" : "Document"}
               </button>
@@ -93,12 +93,12 @@ function ThreadId({
           {messageCreate}
         </div>
         <div
-          className={`${pane === "document" ? "block" : "hidden"} min-h-0 min-w-0 overflow-y-auto border-sps-line @[900px]/chat:block @[900px]/chat:border-l`}
+          className={`${pane === "document" ? "block" : "hidden"} min-h-0 min-w-0 overflow-y-auto border-border @[900px]/chat:block @[900px]/chat:border-l`}
         >
           <section
             aria-label={`${thread.title} editor`}
             data-thread-id={thread.id}
-            className="min-w-0 bg-sps-grey p-4"
+            className="min-w-0 bg-muted p-4"
           >
             <div className="mb-4 flex items-center justify-between gap-2">
               <h3 className="inline-flex items-center gap-2 text-sm font-semibold">
@@ -115,8 +115,8 @@ function ThreadId({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const kit = {
-  muted: "text-sps-muted",
+  muted: "text-muted-foreground",
   focus: focus,
 };

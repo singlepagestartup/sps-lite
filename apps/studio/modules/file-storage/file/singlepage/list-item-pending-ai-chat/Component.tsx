@@ -19,7 +19,7 @@ export interface IPendingFileProps {
   onRemove: (id: string) => void;
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
@@ -34,7 +34,7 @@ export const Component = memo(function Component({
     <li
       data-ds-block="file-storage.file.list-item-pending-ai-chat"
       data-id={file.id}
-      className="flex min-w-0 items-center gap-2 rounded-xl border border-sps-line bg-sps-grey p-2"
+      className="flex min-w-0 items-center gap-2 rounded-xl border border-border bg-muted p-2"
       data-module="file-storage"
       data-model="file"
       data-variant={variant}
@@ -46,7 +46,7 @@ export const Component = memo(function Component({
           className="size-10 shrink-0 rounded-lg object-contain"
         />
       ) : (
-        <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-sps-white">
+        <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card">
           <Icon name="file-text" className="size-5" />
         </span>
       )}
@@ -57,7 +57,7 @@ export const Component = memo(function Component({
         type="button"
         onClick={() => onRemove(file.id)}
         aria-label={`Remove ${file.name}`}
-        className={`grid size-11 shrink-0 place-items-center rounded-lg hover:bg-sps-white ${kit.focus}`}
+        className={`grid size-11 shrink-0 place-items-center rounded-lg hover:bg-card ${kit.focus}`}
       >
         <Icon name="x" className="size-4" />
       </button>

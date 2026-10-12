@@ -9,6 +9,7 @@ import {
   type ButtonHTMLAttributes as ButtonControlProps,
   useState,
   type FormEvent,
+  type ReactNode,
 } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
@@ -19,7 +20,6 @@ import { Component as SocialModuleSkill } from "../../../../../skill/index";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AI_CHAT_AGENTS, type IProjectAgent } from "./resolver";
 import { Component as ProjectAgentAvatar } from "../../avatar/ai-chat/index";
-import { knowledgeSkill } from "../../../../../skill/singlepage/id/ai-chat/index";
 interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   hint?: string;
@@ -57,7 +57,7 @@ function TextField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -94,7 +94,7 @@ function MarkdownDocument({
   return (
     <div
       className={twMergePresentation(
-        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-muted [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-muted-foreground [&_a]:text-muted-foreground [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-foreground [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-foreground [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-border [&_td]:p-2 [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
         className,
       )}
     >
@@ -169,6 +169,8 @@ function Icon(props: {
 
 export interface IAgentProfileProps {
   variant?: string;
+  knowledge?: ReactNode;
+  knowledgeCount?: number;
   agent: IProjectAgent | null;
   onClose: () => void;
 }
@@ -182,6 +184,8 @@ export function Component({
   variant = "agent-id-ai-chat",
   agent,
   onClose,
+  knowledge,
+  knowledgeCount = 0,
 }: IAgentProfileProps) {
   return (
     <Dialog.Root
@@ -192,27 +196,27 @@ export function Component({
     >
       <Dialog.Portal>
         <Dialog.Overlay
-          className="fixed inset-0 z-50 bg-sps-graphite/40"
+          className="fixed inset-0 z-50 bg-default/40"
           data-module="social"
           data-model="profile"
           data-variant={variant}
         />
         <Dialog.Content
-          className="fixed inset-y-4 right-4 z-50 flex w-[calc(100%-32px)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-xl focus:outline-none"
+          className="fixed inset-y-4 right-4 z-50 flex w-[calc(100vw-2rem)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card font-default text-foreground shadow-xl focus:outline-none"
           data-module="social"
           data-model="profile"
           data-variant={variant}
         >
-          <div className="shrink-0 border-b border-sps-line p-5">
+          <div className="shrink-0 border-b border-border p-5">
             <div className="flex items-start gap-3">
-              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-sps-green">
+              <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
                 <Icon name="robot" />
               </span>
               <div className="min-w-0 flex-1">
                 <Dialog.Title className="text-lg font-semibold">
                   {agent?.name}
                 </Dialog.Title>
-                <p className="mt-1 text-xs text-sps-muted">
+                <p className="mt-1 text-xs text-muted-foreground">
                   {agent?.custom ? "Custom agent" : "Preset agent"}
                 </p>
               </div>
@@ -226,16 +230,33 @@ export function Component({
                 </Button>
               </Dialog.Close>
             </div>
-            <Dialog.Description className="mt-4 text-sm leading-6 text-sps-muted">
+            <Dialog.Description className="mt-4 text-sm leading-6 text-muted-foreground">
               {agent?.description}
             </Dialog.Description>
           </div>
-          <div className="min-h-0 overflow-y-auto p-5">
-            {agent?.id === knowledgeAgent.id ? (
-              <SocialModuleSkill variant="id-ai-chat" />
-            ) : (
-              <MarkdownDocument hideTitle>{agent?.role ?? ""}</MarkdownDocument>
-            )}
+          <div className="min-h-0 flex-1 space-y-6 overflow-y-auto p-5">
+            <section aria-label="Assistant skills" className="space-y-3">
+              <h3 className="text-sm font-semibold">Skills · 1</h3>
+              <div className="rounded-xl border border-border p-4">
+                {agent?.id === knowledgeAgent.id ? (
+                  <SocialModuleSkill variant="id-ai-chat" />
+                ) : (
+                  <MarkdownDocument hideTitle>
+                    {agent?.role ?? ""}
+                  </MarkdownDocument>
+                )}
+              </div>
+            </section>
+            <section aria-label="Profile knowledge" className="space-y-3">
+              <h3 className="text-sm font-semibold">
+                Knowledge · {knowledgeCount}
+              </h3>
+              {knowledge || (
+                <p className="text-sm text-muted-foreground">
+                  No linked knowledge.
+                </p>
+              )}
+            </section>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
@@ -305,7 +326,7 @@ export function ProjectAgentPicker({
         </div>
         {agent && <ProjectAgentAvatar agent={agent} onSelect={setProfile} />}
       </div>
-      <p className="text-xs leading-5 text-sps-muted">
+      <p className="text-xs leading-5 text-muted-foreground">
         {agent?.description ??
           "Use the selected model with attached documents, without a preset or custom role."}
       </p>
@@ -332,14 +353,14 @@ export function ProjectAgentPicker({
       <Component agent={profile} onClose={() => setProfile(null)} />
       <Dialog.Root open={editing} onOpenChange={setEditing}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 z-50 bg-sps-graphite/40" />
-          <Dialog.Content className="fixed inset-y-4 right-4 z-50 flex w-[calc(100%-32px)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-xl focus:outline-none">
-            <div className="flex items-start justify-between gap-3 border-b border-sps-line p-5">
+          <Dialog.Overlay className="fixed inset-0 z-50 bg-default/40" />
+          <Dialog.Content className="fixed inset-y-4 right-4 z-50 flex w-[calc(100%-32px)] max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card font-default text-foreground shadow-xl focus:outline-none">
+            <div className="flex items-start justify-between gap-3 border-b border-border p-5">
               <div>
                 <Dialog.Title className="text-lg font-semibold">
                   {draft ? "Edit agent" : "Create your own agent"}
                 </Dialog.Title>
-                <Dialog.Description className="mt-1 text-sm leading-6 text-sps-muted">
+                <Dialog.Description className="mt-1 text-sm leading-6 text-muted-foreground">
                   Define its responsibility, method and boundaries. Project
                   context comes from the documents attached to the thread.
                 </Dialog.Description>
@@ -398,21 +419,21 @@ export function ProjectAgentPicker({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  muted: "text-sps-muted",
-  label: "text-sm font-semibold text-sps-graphite",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  muted: "text-muted-foreground",
+  label: "text-sm font-semibold text-foreground",
 };
 const picker = {
-  trigger: `${kit.field} flex h-12 items-center justify-between gap-3 rounded-lg text-left text-sm font-normal shadow-sm focus-visible:ring-[3px] focus-visible:ring-sps-graphite/20 focus-visible:ring-offset-0 [&>span]:truncate`,
-  icon: "pointer-events-none text-sps-muted",
+  trigger: `${kit.field} flex h-12 items-center justify-between gap-3 rounded-lg text-left text-sm font-normal shadow-sm focus-visible:ring-[3px] focus-visible:ring-foreground/20 focus-visible:ring-offset-0 [&>span]:truncate`,
+  icon: "pointer-events-none text-muted-foreground",
   content:
-    "z-50 max-h-[var(--radix-select-content-available-height)] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-sps-line bg-sps-white font-sps text-sps-graphite shadow-md",
-  item: "relative flex min-h-9 w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-3 text-sm outline-none data-[highlighted]:bg-sps-grey data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
+    "z-50 max-h-[var(--radix-select-content-available-height)] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-border bg-card font-default text-foreground shadow-md",
+  item: "relative flex min-h-9 w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-3 text-sm outline-none data-[highlighted]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
 };
 // shadcn Select composition, themed with module tokens and Phosphor icons.
 // https://ui.shadcn.com/docs/components/radix/select
@@ -507,5 +528,6 @@ export const knowledgeAgent: IProjectAgent = {
   id: "knowledge-assistant",
   name: "Knowledge assistant",
   description: "Works with the project's knowledge and its files.",
-  role: knowledgeSkill.description,
+  // Professional instructions belong to the Skills linked to this shared Profile.
+  role: "",
 };

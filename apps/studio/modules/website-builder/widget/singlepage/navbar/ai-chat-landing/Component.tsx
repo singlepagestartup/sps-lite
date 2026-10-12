@@ -13,7 +13,7 @@ export function Component({
   return (
     <header
       data-ds-block="website-builder.widget.navbar-ai-chat-landing"
-      className="sticky top-0 z-40 border-b border-sps-line bg-sps-grey"
+      className="sticky top-0 z-40 border-b border-border bg-muted"
       data-module="website-builder"
       data-model="widget"
       data-variant={variant}

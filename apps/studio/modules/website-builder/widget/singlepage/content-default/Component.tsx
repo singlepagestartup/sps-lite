@@ -39,7 +39,7 @@ export function ContentDefault({
     .join(" ");
   return (
     <div
-      className="w-full bg-[var(--color-sps-grey)] py-8 sm:py-12"
+      className="w-full bg-muted py-8 sm:py-12"
       data-ds-block="website-builder.widget.content-default"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -47,10 +47,10 @@ export function ContentDefault({
       data-variant={variant}
     >
       <div className={containerClass}>
-        <div className="flex min-w-0 flex-col justify-center gap-6 rounded-t-3xl bg-[var(--color-sps-graphite)] p-6 sm:p-10 lg:rounded-l-3xl lg:rounded-tr-none lg:p-12">
+        <div className="flex min-w-0 flex-col justify-center gap-6 rounded-t-3xl bg-default p-6 sm:p-10 lg:rounded-l-3xl lg:rounded-tr-none lg:p-12">
           {counterLabel || hasCounterValue ? (
             <p
-              className="m-0 inline-flex items-center gap-1 text-sm leading-5 text-[var(--color-sps-muted-inverse)]"
+              className="m-0 inline-flex items-center gap-1 text-sm leading-5 text-default-muted-foreground"
               aria-label={counterText}
             >
               {counterLabel ? (
@@ -60,15 +60,15 @@ export function ContentDefault({
             </p>
           ) : null}
           {eyebrow ? (
-            <p className="m-0 text-sm font-semibold leading-6 tracking-normal text-[var(--color-sps-muted-inverse)]">
+            <p className="m-0 text-sm font-semibold leading-6 tracking-normal text-default-muted-foreground">
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="m-0 max-w-[16ch] text-[2.5rem] font-semibold leading-[1.08] tracking-normal text-white sm:text-5xl xl:text-[4rem]">
+          <h1 className="m-0 max-w-[16ch] text-[2.5rem] font-semibold leading-[1.08] tracking-normal text-default-foreground sm:text-5xl xl:text-[4rem]">
             {title}
           </h1>
           {description ? (
-            <p className="m-0 max-w-lg text-base leading-7 text-[var(--color-sps-muted-inverse)] sm:text-lg sm:leading-8">
+            <p className="m-0 max-w-lg text-base leading-7 text-default-muted-foreground sm:text-lg sm:leading-8">
               {description}
             </p>
           ) : null}
@@ -87,7 +87,7 @@ export function ContentDefault({
         </div>
 
         <div
-          className="min-h-72 w-full overflow-hidden rounded-b-3xl bg-[var(--color-sps-white)] lg:relative lg:rounded-r-3xl lg:rounded-bl-none"
+          className="min-h-72 w-full overflow-hidden rounded-b-3xl bg-card lg:relative lg:rounded-r-3xl lg:rounded-bl-none"
           aria-label={mediaLabel}
         >
           {mediaSrc ? (
@@ -98,7 +98,7 @@ export function ContentDefault({
             />
           ) : (
             <div
-              className="aspect-square h-full w-full bg-[var(--color-sps-line)]"
+              className="aspect-square h-full w-full bg-border"
               aria-hidden="true"
             />
           )}
@@ -108,19 +108,19 @@ export function ContentDefault({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  button: `${buttonBase} bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)] enabled:hover:brightness-95 ${focus}`,
-  secondary: `${buttonBase} border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)] enabled:hover:bg-[var(--color-sps-grey)] ${focus}`,
+  button: `${buttonBase} bg-primary text-primary-foreground enabled:hover:brightness-95 ${focus}`,
+  secondary: `${buttonBase} border border-border bg-card text-foreground enabled:hover:bg-muted ${focus}`,
 };
 const defaultMediaSrc =
   "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png";
 const containerClass =
   "mx-auto grid w-full max-w-7xl gap-0 px-4 sm:px-6 lg:grid-cols-2 lg:px-8";
-const buttonPrimaryClass = `${kit.button} no-underline hover:brightness-95 focus-visible:outline-[var(--color-sps-white)]`;
-const buttonSecondaryClass = `${kit.secondary} no-underline hover:bg-[var(--color-sps-grey)] focus-visible:outline-[var(--color-sps-white)]`;
+const buttonPrimaryClass = `${kit.button} no-underline hover:brightness-95 focus-visible:outline-card`;
+const buttonSecondaryClass = `${kit.secondary} no-underline hover:bg-muted focus-visible:outline-card`;
 export const defaultContentProps: ContentDefaultProps = {
   counterLabel: "Counter:",
   counterValue: 1,

@@ -72,7 +72,7 @@ export function ButtonsArrayDefault(props?: Partial<ButtonsArrayDefaultProps>) {
       data-variant={props?.variant ?? "default"}
     >
       {title ? (
-        <h3 className="mb-6 w-full text-base font-semibold leading-6 tracking-normal text-[var(--color-sps-graphite)]">
+        <h3 className="mb-6 w-full text-base font-semibold leading-6 tracking-normal text-foreground">
           {title}
         </h3>
       ) : null}

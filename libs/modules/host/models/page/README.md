@@ -4,7 +4,11 @@
 
 Pages represent routable site pages and act as containers for layouts, widgets,
 and metadata. The default variant assembles layout structure and in-page widgets
-for the page.
+for the page. Page resolves the Layout's default and additional Widget links,
+composes their Host Widgets with the current route, and supplies ready nodes to
+the Layout. The Layout and its relation presenters receive no URL. External
+Widget adapters in Host resolve model IDs and presentation flags before rendering
+other modules.
 
 ## Fields
 

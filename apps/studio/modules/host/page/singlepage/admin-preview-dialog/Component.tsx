@@ -21,8 +21,8 @@ export function AdminPreviewDialog({
         title="Content preview"
         description="Edit page content and review it at desktop or mobile width."
       >
-        <div className="rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-grey)] p-5">
-          <div className="mx-auto max-w-5xl rounded-2xl bg-[var(--color-sps-white)] p-4 ">
+        <div className="rounded-3xl border border-border bg-muted p-5">
+          <div className="mx-auto max-w-5xl rounded-2xl bg-card p-4 ">
             <WebsiteBuilderModuleWidget variant="admin-v2-rich-editor" />
           </div>
         </div>

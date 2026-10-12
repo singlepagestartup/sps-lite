@@ -47,7 +47,7 @@ export function FeatureStatusDefault(
     ...props,
   };
   const rootClassName = twMerge(
-    "min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5",
+    "min-w-0 rounded-2xl border border-border bg-card p-5",
     className,
   );
   return (
@@ -60,14 +60,12 @@ export function FeatureStatusDefault(
       data-variant={props?.variant ?? "status-default"}
     >
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)]">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <Icon className="h-5 w-5" />
         </span>
         <span className="min-w-0">
-          <small className="block text-xs text-[var(--color-sps-muted)]">
-            {label}
-          </small>
-          <strong className="block text-sm font-semibold leading-6 text-[var(--color-sps-graphite)]">
+          <small className="block text-xs text-muted-foreground">{label}</small>
+          <strong className="block text-sm font-semibold leading-6 text-foreground">
             {value}
           </strong>
         </span>

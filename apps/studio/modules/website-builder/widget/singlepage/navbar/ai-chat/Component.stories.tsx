@@ -6,7 +6,7 @@ import {
 import type { Meta, StoryObj } from "@storybook/react";
 function Example(props: INavbarAiChatProps) {
   return (
-    <div className="@container min-h-56 font-sps">
+    <div className="@container min-h-56 font-default">
       <WebsiteBuilderModuleWidget {...props} variant="navbar-ai-chat" />
     </div>
   );

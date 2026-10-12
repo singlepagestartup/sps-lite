@@ -72,15 +72,15 @@ export function ProductTier(props?: Partial<ProductTierProps>) {
   const cardClassName = [
     "flex h-full min-w-0 flex-col rounded-3xl border p-6 sm:p-8",
     isFeatured
-      ? "border-[var(--color-sps-graphite)] bg-[var(--color-sps-graphite)] text-[var(--color-sps-white)]"
-      : "border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)]",
+      ? "border-foreground bg-default text-default-foreground"
+      : "border-border bg-card text-foreground",
     className,
   ]
     .filter(Boolean)
     .join(" ");
   const mutedClassName = isFeatured
-    ? "text-[var(--color-sps-muted-inverse)]"
-    : "text-[var(--color-sps-muted)]";
+    ? "text-default-muted-foreground"
+    : "text-muted-foreground";
   return (
     <article
       className={cardClassName}
@@ -94,7 +94,7 @@ export function ProductTier(props?: Partial<ProductTierProps>) {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <h3 className="text-xl font-semibold">{name}</h3>
         {isFeatured ? (
-          <span className="rounded-full bg-[var(--color-sps-green)] px-3 py-1 text-xs font-semibold text-[var(--color-sps-graphite)]">
+          <span className="rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
             {badge ?? "Most popular"}
           </span>
         ) : null}
@@ -108,12 +108,12 @@ export function ProductTier(props?: Partial<ProductTierProps>) {
       </p>
       <Button
         variant={isFeatured ? "primary" : "secondary"}
-        className={`mt-7 w-full ${isFeatured ? "focus-visible:outline-[var(--color-sps-white)]" : ""}`}
+        className={`mt-7 w-full ${isFeatured ? "focus-visible:outline-card" : ""}`}
       >
         {cta}
       </Button>
       <ul
-        className={`mt-8 flex-1 space-y-4 border-t pt-6 ${isFeatured ? "border-[var(--color-sps-muted-inverse)]/30" : "border-[var(--color-sps-line)]"}`}
+        className={`mt-8 flex-1 space-y-4 border-t pt-6 ${isFeatured ? "border-default-muted-foreground/30" : "border-border"}`}
       >
         {features.map((feature) => (
           <li
@@ -121,7 +121,7 @@ export function ProductTier(props?: Partial<ProductTierProps>) {
             className={`flex items-start gap-3 text-sm leading-6 ${mutedClassName}`}
           >
             <CheckCircle2
-              className={`mt-0.5 h-5 w-5 shrink-0 ${isFeatured ? "text-[var(--color-sps-green)]" : "text-[var(--color-sps-graphite)]"}`}
+              className={`mt-0.5 h-5 w-5 shrink-0 ${isFeatured ? "text-primary" : "text-foreground"}`}
             />
             <span>{feature}</span>
           </li>

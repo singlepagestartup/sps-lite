@@ -36,7 +36,7 @@ export function Component({
       data-model="widget"
       data-variant={variant}
     >
-      <div className="flex flex-wrap items-center justify-between gap-6 border-t border-sps-line py-8">
+      <div className="flex flex-wrap items-center justify-between gap-6 border-t border-border py-8">
         <div className="max-w-xl">
           <h2 className={`text-2xl ${display}`}>{content.continue.title}</h2>
           <p className={`mt-3 text-base leading-7 ${muted}`}>
@@ -50,7 +50,7 @@ export function Component({
           ]}
         />
       </div>
-      <details className="group border-t border-sps-line">
+      <details className="group border-t border-border">
         <summary
           className={`flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 py-5 text-sm font-semibold [&::-webkit-details-marker]:hidden ${focus}`}
         >
@@ -89,8 +89,8 @@ export function Component({
     </section>
   );
 }
-const display = "font-sps font-semibold tracking-normal";
-const muted = "text-sps-muted";
+const display = "font-default font-semibold tracking-normal";
+const muted = "text-muted-foreground";
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sps-green";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary";
 const section = "mx-auto max-w-6xl px-5 @3xl:px-8";

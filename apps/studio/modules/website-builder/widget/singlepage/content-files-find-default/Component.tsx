@@ -47,7 +47,7 @@ export function ContentFilesFindDefault(
   };
   return (
     <div
-      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
+      className="w-full bg-muted py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-files-find-default"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -55,7 +55,7 @@ export function ContentFilesFindDefault(
       data-variant={props?.variant ?? "content-files-find-default"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid overflow-hidden rounded-3xl bg-[var(--color-sps-white)] lg:grid-cols-2">
+        <div className="grid overflow-hidden rounded-3xl bg-card lg:grid-cols-2">
           <div className="relative aspect-square min-w-0 lg:aspect-auto">
             <img
               className="absolute inset-0 h-full w-full object-cover"
@@ -64,15 +64,15 @@ export function ContentFilesFindDefault(
             />
           </div>
           <div className="min-w-0 p-6 sm:p-8 lg:p-10">
-            <p className="mb-2 text-sm font-semibold tracking-normal text-[var(--color-sps-muted)]">
+            <p className="mb-2 text-sm font-semibold tracking-normal text-muted-foreground">
               {eyebrow}
             </p>
-            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-[var(--color-sps-graphite)]">
+            <h2 className="text-[2rem] font-semibold leading-tight tracking-normal sm:text-[2.5rem] text-foreground">
               {title}
             </h2>
             {paragraphs.map((paragraph, index) => (
               <p
-                className={`text-base leading-7 text-[var(--color-sps-muted)] ${index === 0 ? "mt-4" : "mt-3"}`}
+                className={`text-base leading-7 text-muted-foreground ${index === 0 ? "mt-4" : "mt-3"}`}
                 key={paragraph}
               >
                 {paragraph}

@@ -242,6 +242,92 @@ describe("Given: a bounded social.profile AI tool loop", () => {
     },
   );
 
+  it("allows a declared long-running tool to finish after the default thirty-second deadline", async () => {
+    jest.useFakeTimers();
+    try {
+      const tool = createTool({
+        source: "knowledge",
+        timeoutMs: 240_000,
+        execute: jest.fn(
+          () =>
+            new Promise((resolve) =>
+              setTimeout(() => resolve({ saved: true }), 35_000),
+            ),
+        ),
+      });
+      const generate = jest
+        .fn()
+        .mockResolvedValueOnce({
+          text: "",
+          toolCalls: [
+            {
+              id: "long-call",
+              type: "function",
+              function: {
+                name: tool.definition.function.name,
+                arguments: "{}",
+              },
+            },
+          ],
+          billing: null,
+        })
+        .mockResolvedValueOnce({ text: "Saved", billing: null });
+      const task = new SocialProfileAiToolLoop().run({
+        context: [{ role: "user", content: "Save the file" }],
+        modelCandidateIds: ["primary"],
+        tools: [tool],
+        generate,
+      });
+      await jest.advanceTimersByTimeAsync(35_000);
+      const result = await task;
+      expect(result.finalText).toBe("Saved");
+      expect(result.trace.stopReason).toBe("final_text");
+      expect(result.trace.calls).toEqual([
+        expect.objectContaining({
+          name: tool.definition.function.name,
+          status: "success",
+        }),
+      ]);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it("bounds a tool-specific timeout by the remaining total deadline", async () => {
+    jest.useFakeTimers();
+    try {
+      const tool = createTool({
+        timeoutMs: 600_000,
+        execute: jest.fn(() => new Promise(() => undefined)),
+      });
+      const task = new SocialProfileAiToolLoop().run({
+        context: [{ role: "user", content: "Wait" }],
+        modelCandidateIds: ["primary"],
+        tools: [tool],
+        generate: jest.fn(async () => ({
+          text: "",
+          toolCalls: [
+            {
+              id: "long-call",
+              type: "function" as const,
+              function: {
+                name: tool.definition.function.name,
+                arguments: "{}",
+              },
+            },
+          ],
+          billing: null,
+        })),
+      });
+      await jest.advanceTimersByTimeAsync(300_000);
+      const result = await task;
+      expect(result.trace.stopReason).toBe("total_timeout");
+      expect(result.trace.calls).toEqual([]);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
   /**
    * BDD Scenario
    * Given: the primary model fails before any tool executes and a fallback model succeeds.

@@ -219,7 +219,7 @@ const CarouselPrevious = React.forwardRef<
       ref={ref}
       aria-label="Previous slide"
       className={cn(
-        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/90 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-white)] disabled:pointer-events-none disabled:opacity-40",
+        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card/90 text-foreground transition hover:bg-card disabled:pointer-events-none disabled:opacity-40",
         orientation === "horizontal"
           ? "top-1/2 -left-4 -translate-y-1/2"
           : "-top-4 left-1/2 -translate-x-1/2 rotate-90",
@@ -244,7 +244,7 @@ const CarouselNext = React.forwardRef<
       ref={ref}
       aria-label="Next slide"
       className={cn(
-        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/90 text-[var(--color-sps-graphite)] transition hover:bg-[var(--color-sps-white)] disabled:pointer-events-none disabled:opacity-40",
+        "absolute z-10 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card/90 text-foreground transition hover:bg-card disabled:pointer-events-none disabled:opacity-40",
         orientation === "horizontal"
           ? "top-1/2 -right-4 -translate-y-1/2"
           : "-bottom-4 left-1/2 -translate-x-1/2 rotate-90",

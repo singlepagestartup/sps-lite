@@ -81,7 +81,7 @@ export function Component(
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   return (
     <section
-      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
+      className="w-full bg-muted py-12 sm:py-16"
       data-ds-block="rbac.subject.me-authentication-email-and-password-reset-password-form-default"
       data-ds-layer="singlepage"
       data-module="rbac"
@@ -92,15 +92,15 @@ export function Component(
       }
     >
       <div className="mx-auto w-full max-w-lg px-4 sm:px-6 lg:px-0">
-        <div className="overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] shadow-sm">
+        <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
           <div className="px-6 pb-2 pt-8 sm:px-8">
-            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)]">
+            <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
               <KeyRound className="h-5 w-5" />
             </div>
-            <h1 className="text-3xl font-semibold tracking-tight text-[var(--color-sps-graphite)]">
+            <h1 className="text-3xl font-semibold tracking-tight text-foreground">
               {title}
             </h1>
-            <p className="mt-1.5 text-sm text-[var(--color-sps-muted)]">
+            <p className="mt-1.5 text-sm text-muted-foreground">
               {description}
             </p>
           </div>
@@ -108,15 +108,15 @@ export function Component(
           <div className="space-y-6 px-6 py-6 sm:px-8">
             <div>
               <label
-                className="mb-1.5 block text-sm font-medium text-[var(--color-sps-muted)]"
+                className="mb-1.5 block text-sm font-medium text-muted-foreground"
                 htmlFor="rbac-reset-password"
               >
                 {passwordLabel}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-sps-muted)]" />
+                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <input
-                  className="w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--color-sps-graphite)] outline-none transition placeholder:text-[var(--color-sps-muted)] focus:border-[var(--color-sps-line)] focus:ring-1 focus:ring-[var(--color-sps-graphite)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)]"
+                  className="w-full rounded-xl border border-border bg-card min-h-12 py-3 pl-12 pr-14 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-border focus:ring-1 focus:ring-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground"
                   id="rbac-reset-password"
                   placeholder={passwordPlaceholder}
                   readOnly
@@ -124,7 +124,7 @@ export function Component(
                 />
                 <button
                   aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
+                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground transition hover:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground min-h-11"
                   onClick={() => setShowPassword((value) => !value)}
                   type="button"
                 >
@@ -139,15 +139,15 @@ export function Component(
 
             <div>
               <label
-                className="mb-1.5 block text-sm font-medium text-[var(--color-sps-muted)]"
+                className="mb-1.5 block text-sm font-medium text-muted-foreground"
                 htmlFor="rbac-reset-password-confirm"
               >
                 {confirmPasswordLabel}
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--color-sps-muted)]" />
+                <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
                 <input
-                  className="w-full rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] min-h-12 py-3 pl-12 pr-14 text-base text-[var(--color-sps-graphite)] outline-none transition placeholder:text-[var(--color-sps-muted)] focus:border-[var(--color-sps-line)] focus:ring-1 focus:ring-[var(--color-sps-graphite)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)]"
+                  className="w-full rounded-xl border border-border bg-card min-h-12 py-3 pl-12 pr-14 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-border focus:ring-1 focus:ring-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground"
                   id="rbac-reset-password-confirm"
                   placeholder={confirmPasswordPlaceholder}
                   readOnly
@@ -159,7 +159,7 @@ export function Component(
                       ? "Hide confirm password"
                       : "Show confirm password"
                   }
-                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-muted)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] min-h-11"
+                  className="absolute right-1 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-lg text-muted-foreground transition hover:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground min-h-11"
                   onClick={() => setShowConfirmPassword((value) => !value)}
                   type="button"
                 >
@@ -177,9 +177,9 @@ export function Component(
             </Button>
           </div>
 
-          <div className="border-t border-[var(--color-sps-line)] px-6 py-5 text-center sm:px-8">
+          <div className="border-t border-border px-6 py-5 text-center sm:px-8">
             <a
-              className="inline-flex items-center gap-1.5 text-xs text-[var(--color-sps-muted)] transition hover:text-[var(--color-sps-graphite)]"
+              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition hover:text-foreground"
               {...getStoryLinkProps(backHref, backStoryHref)}
             >
               <ArrowLeft className="h-5 w-5" />
@@ -206,12 +206,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -219,7 +219,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

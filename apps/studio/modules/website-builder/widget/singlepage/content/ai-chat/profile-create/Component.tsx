@@ -14,15 +14,16 @@ export function Component({
       data-model="widget"
       data-variant={variant}
     >
-      <div className="grid min-w-0 overflow-hidden rounded-2xl border border-sps-line bg-sps-white @[760px]:grid-cols-2">
+      <div className="grid min-w-0 overflow-hidden rounded-2xl border border-border bg-card @[760px]:grid-cols-2">
         <section className="flex flex-col justify-center p-6 @[640px]:p-10">
-          <span className="mb-5 h-1 w-10 rounded-full bg-sps-green" />
+          <span className="mb-5 h-1 w-10 rounded-full bg-primary text-primary-foreground" />
           <h1 className="text-3xl font-semibold leading-tight">
             Start with a name.
           </h1>
-          <p className={`mt-4 text-sm leading-6 ${"text-sps-muted"}`}>
-            Create a project and start working in its Products thread. Add
-            knowledge and files whenever you need them.
+          <p className={`mt-4 text-sm leading-6 ${"text-muted-foreground"}`}>
+            Create a project with Brief, Strategy, Brand, Design and Products
+            documents. Start with the Brief and add knowledge and files as you
+            work.
           </p>
           {children}
         </section>
@@ -33,11 +34,11 @@ export function Component({
             loading="lazy"
             className="h-full min-h-96 w-full rounded-none object-cover"
           />
-          <div className="absolute inset-x-5 bottom-5 rounded-xl bg-sps-graphite p-5 text-white">
+          <div className="absolute inset-x-5 bottom-5 rounded-xl bg-default p-5 text-default-foreground">
             <p className="font-semibold">Your files. Your project.</p>
-            <p className="mt-2 text-sm leading-6 text-white/70">
-              Describe your products, attach useful files and work with the
-              product assistant in one conversation.
+            <p className="mt-2 text-sm leading-6 text-default-foreground/70">
+              Describe your business, attach useful files and work with the
+              assistant in your project.
             </p>
           </div>
         </div>

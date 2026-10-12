@@ -1,7 +1,6 @@
 "use client";
 
 import { Component as HostModuleLayout } from "../../../layout/index";
-import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 interface IComponentVariantProps {
@@ -17,7 +16,10 @@ export function Component({
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={(props) => (
-          <SocialModuleProfile {...props} variant="select-ai-chat-project" />
+          <RbacModuleSubject
+            {...props}
+            variant="me-social-module-profile-select-ai-chat"
+          />
         )}
         subjectAccount={({ onNavigate }) => (
           <RbacModuleSubject

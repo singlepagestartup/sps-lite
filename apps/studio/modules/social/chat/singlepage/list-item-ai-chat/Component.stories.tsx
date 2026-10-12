@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 function Example() {
   return (
-    <div className="w-64 rounded-xl bg-sps-graphite p-4">
+    <div className="w-64 rounded-xl bg-default p-4">
       <SocialModuleChat
         variant="list-item-ai-chat"
         data={{

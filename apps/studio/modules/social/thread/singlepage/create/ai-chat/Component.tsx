@@ -20,10 +20,10 @@ export function Component({
       data-chat-id={chatId}
       className="flex min-h-0 min-w-0 flex-1 flex-col"
     >
-      <header className="sticky top-0 z-10 flex shrink-0 items-center gap-3 border-b border-sps-line bg-sps-white p-4">
+      <header className="sticky top-0 z-10 flex shrink-0 items-center gap-3 border-b border-border bg-card p-4">
         {navigation}
         <div>
-          <p className="text-xs text-sps-muted">Thread</p>
+          <p className="text-xs text-muted-foreground">Thread</p>
           <h2 className="mt-1 text-base font-semibold">New thread</h2>
         </div>
       </header>

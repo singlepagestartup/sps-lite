@@ -106,15 +106,15 @@ export function ProductGallery(props?: ProductGalleryProps) {
     >
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 sm:px-6 lg:gap-8 lg:px-8">
         <div className="min-w-0">
-          <p className="text-sm font-semibold text-[var(--color-sps-muted)]">
+          <p className="text-sm font-semibold text-muted-foreground">
             A closer look
           </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight text-[var(--color-sps-graphite)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
             Project gallery
           </h2>
         </div>
         <div
-          className="min-w-0 overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
+          className="min-w-0 overflow-hidden rounded-3xl border border-border bg-card"
           onKeyDown={handleGalleryKeyDown}
         >
           <Carousel
@@ -135,14 +135,14 @@ export function ProductGallery(props?: ProductGalleryProps) {
               ))}
             </CarouselContent>
           </Carousel>
-          <div className="space-y-4 border-t border-[var(--color-sps-line)] p-5">
+          <div className="space-y-4 border-t border-border p-5">
             <div className="flex flex-wrap gap-2" aria-label="Gallery images">
               {images.map((image, index) => (
                 <button
                   key={image.src}
                   aria-current={index === active ? "true" : undefined}
                   aria-label={`Show gallery image ${index + 1}`}
-                  className={`h-16 w-16 cursor-pointer overflow-hidden rounded-xl border-2 transition motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] ${index === active ? "border-[var(--color-sps-graphite)]" : "border-transparent opacity-70 hover:opacity-100"}`}
+                  className={`h-16 w-16 cursor-pointer overflow-hidden rounded-xl border-2 transition motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${index === active ? "border-foreground" : "border-transparent opacity-70 hover:opacity-100"}`}
                   onClick={() => handleSelect(index)}
                   type="button"
                 >
@@ -155,10 +155,7 @@ export function ProductGallery(props?: ProductGalleryProps) {
               ))}
             </div>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p
-                aria-live="polite"
-                className="text-sm text-[var(--color-sps-muted)]"
-              >
+              <p aria-live="polite" className="text-sm text-muted-foreground">
                 {active + 1} of {total}
               </p>
               {total > 1 ? (

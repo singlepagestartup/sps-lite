@@ -71,13 +71,13 @@ export function ProductOverviewCta(props?: Partial<ProductOverviewCtaProps>) {
       data-variant={props?.variant ?? "overview-cta"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 rounded-3xl bg-[var(--color-sps-graphite)] p-6 text-[var(--color-sps-white)] sm:p-10 lg:flex-row lg:items-end lg:justify-between lg:p-12">
+        <div className="flex flex-col gap-8 rounded-3xl bg-default p-6 text-default-foreground sm:p-10 lg:flex-row lg:items-end lg:justify-between lg:p-12">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-semibold leading-tight sm:text-4xl">
               {title}
             </h2>
             {description ? (
-              <p className="mt-4 max-w-xl text-base leading-7 text-[var(--color-sps-muted-inverse)]">
+              <p className="mt-4 max-w-xl text-base leading-7 text-default-muted-foreground">
                 {description}
               </p>
             ) : null}
@@ -86,14 +86,14 @@ export function ProductOverviewCta(props?: Partial<ProductOverviewCtaProps>) {
             <Button
               onClick={onPrimaryAction}
               disabled={!onPrimaryAction}
-              className="focus-visible:outline-[var(--color-sps-white)]"
+              className="focus-visible:outline-card"
             >
               <ShoppingCart className="h-5 w-5" />
               {primaryActionLabel}
             </Button>
             <a
               href={secondaryHref}
-              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[var(--color-sps-muted-inverse)]/50 px-5 py-2 text-sm font-semibold text-[var(--color-sps-white)] transition hover:bg-[var(--color-sps-white)]/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-white)]"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-default-muted-foreground/50 px-5 py-2 text-sm font-semibold text-default-foreground transition hover:bg-card/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-card"
             >
               {secondaryActionLabel}
               <ArrowRight className="h-5 w-5" />

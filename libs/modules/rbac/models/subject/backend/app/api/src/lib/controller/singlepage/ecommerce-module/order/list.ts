@@ -37,7 +37,7 @@ export class Handler {
       const decoded = await jwt.verify(token, RBAC_JWT_SECRET);
 
       if (decoded?.["subject"]?.["id"] !== id) {
-        throw new Error("Validation error. Only order owner can update order");
+        throw new Error("Validation error. Only order owner can read orders");
       }
 
       const subjectsToEcommerceModuleOrders =
@@ -61,42 +61,33 @@ export class Handler {
         });
       }
 
-      const ecommerceModuleOrdersWithCartType =
-        await this.service.ecommerceModule.order.find({
-          params: {
-            filters: {
-              and: [
-                {
-                  column: "id",
-                  method: "inArray",
-                  value: subjectsToEcommerceModuleOrders.map(
-                    (subjectToEcommerceModuleOrder) =>
-                      subjectToEcommerceModuleOrder.ecommerceModuleOrderId,
-                  ),
-                },
-                {
-                  column: "type",
-                  method: "eq",
-                  value: "cart",
-                },
-                {
-                  column: "status",
-                  method: "eq",
-                  value: "new",
-                },
-              ],
-            },
+      const params = c.get("parsedQuery");
+      const ownedOrderIds = subjectsToEcommerceModuleOrders.map(
+        (relation) => relation.ecommerceModuleOrderId,
+      );
+      const defaultFilters = [
+        { column: "type", method: "eq", value: "cart" },
+        { column: "status", method: "eq", value: "new" },
+      ];
+      const orders = await this.service.ecommerceModule.order.find({
+        params: {
+          ...params,
+          filters: {
+            ...params?.filters,
+            and: [
+              { column: "id", method: "inArray", value: ownedOrderIds },
+              ...(params?.filters
+                ? (params.filters.and ?? [])
+                : defaultFilters),
+            ],
           },
-        });
+        },
+      });
 
-      if (!ecommerceModuleOrdersWithCartType?.length) {
-        return c.json({
-          data: [],
-        });
-      }
-
+      // An OR filter must never widen the result beyond the subject's orders.
+      const ownedIds = new Set(ownedOrderIds);
       return c.json({
-        data: ecommerceModuleOrdersWithCartType,
+        data: (orders ?? []).filter((order) => ownedIds.has(order.id)),
       });
     } catch (error: any) {
       const { status, message, details } = getHttpErrorType(error);

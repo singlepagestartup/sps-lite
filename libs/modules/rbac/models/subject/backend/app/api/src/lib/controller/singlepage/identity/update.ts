@@ -3,8 +3,9 @@ import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import * as jwt from "hono/jwt";
 import { authorization, getHttpErrorType } from "@sps/backend-utils";
-import { Service } from "../../../service";
+import type { Service } from "../../../service";
 import { api as identityApi } from "@sps/rbac/models/identity/sdk/server";
+import { applyOutputSchema } from "@sps/shared-backend-api";
 
 export class Handler {
   service: Service;
@@ -47,6 +48,17 @@ export class Handler {
       }
 
       const data = JSON.parse(body["data"]);
+      if (
+        !data ||
+        typeof data !== "object" ||
+        Array.isArray(data) ||
+        Object.keys(data).some(
+          (key) => !["email", "password", "newPassword"].includes(key),
+        )
+      )
+        throw new Error(
+          "Validation error. Only email or password may be updated",
+        );
 
       const subjectsToIdentities = await this.service.subjectsToIdentities.find(
         {
@@ -87,39 +99,48 @@ export class Handler {
         throw new Error("Not Found error. No identity found");
       }
 
-      if (identity.provider === "email_and_password") {
-        if (data.password && data.newPassword) {
-          const updated = await identityApi.changePassword({
-            id: identity.id,
-            data: {
-              password: data.password,
-              newPassword: data.newPassword,
+      if (identity.provider !== "email_and_password")
+        throw new Error(
+          "Validation error. This sign-in provider manages its own credentials",
+        );
+      if (data.password !== undefined || data.newPassword !== undefined) {
+        if (
+          typeof data.password !== "string" ||
+          typeof data.newPassword !== "string" ||
+          data.newPassword.length < 8 ||
+          data.email !== undefined
+        )
+          throw new Error(
+            "Validation error. Current and new passwords are required",
+          );
+        await identityApi.changePassword({
+          id: identity.id,
+          data: {
+            password: data.password,
+            newPassword: data.newPassword,
+          },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
             },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-            },
-          });
-        } else {
-          const updated = await identityApi.update({
-            id: identity.id,
-            data: {
-              ...identity,
-              ...data,
-            },
-            options: {
-              headers: {
-                "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              },
-            },
-          });
-        }
+          },
+        });
+      } else {
+        throw new Error(
+          "Validation error. Verify your current and new email before changing it.",
+        );
       }
+      const updated = await this.service.identity.findById({
+        id: identityUuid,
+      });
 
       return c.json(
         {
-          data,
+          data: applyOutputSchema({
+            c,
+            service: this.service.identity,
+            data: updated,
+          }),
         },
         201,
       );

@@ -16,7 +16,7 @@ function Example() {
             variant="settings-ai-chat-project"
             profileId="pottery"
           >
-            <p className="text-sm text-sps-muted">
+            <p className="text-sm text-muted-foreground">
               Subject profile settings action slot
             </p>
           </SocialModuleProfile>

@@ -122,12 +122,12 @@ export function ArticleDetail(
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <nav
           aria-label="Article breadcrumb"
-          className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[var(--color-sps-muted)]"
+          className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
         >
           <a
             href={blogIndexStoryHref}
             target="_top"
-            className={`inline-flex min-h-11 items-center gap-2 rounded-xl hover:text-[var(--color-sps-graphite)] ${kit.focus}`}
+            className={`inline-flex min-h-11 items-center gap-2 rounded-xl hover:text-foreground ${kit.focus}`}
           >
             <ArrowLeft className="size-5" />
             All articles
@@ -138,16 +138,16 @@ export function ArticleDetail(
         <header
           className={`grid min-w-0 gap-4 ${cover ? "lg:grid-cols-2" : ""}`}
         >
-          <div className="flex min-w-0 flex-col justify-between gap-8 rounded-3xl bg-[var(--color-sps-graphite)] p-6 text-[var(--color-sps-white)] sm:p-8 lg:p-10">
+          <div className="flex min-w-0 flex-col justify-between gap-8 rounded-3xl bg-default p-6 text-default-foreground sm:p-8 lg:p-10">
             <div>
-              <span className="inline-flex rounded-full bg-[var(--color-sps-green)] px-3 py-1.5 text-xs font-medium text-[var(--color-sps-graphite)]">
+              <span className="inline-flex rounded-full bg-primary text-primary-foreground px-3 py-1.5 text-xs font-medium">
                 {category}
               </span>
               <h1 className="mt-6 break-words text-4xl font-semibold leading-[1.08] tracking-tight md:text-5xl">
                 {title}
               </h1>
             </div>
-            <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-t border-white/20 pt-5">
+            <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-t border-default-foreground/20 pt-5">
               <SocialModuleProfile
                 variant="compact"
                 inverse
@@ -157,7 +157,7 @@ export function ArticleDetail(
                 href={authorOverviewStoryHref}
                 target="_top"
               />
-              <div className="text-right text-xs leading-5 text-[var(--color-sps-muted-inverse)]">
+              <div className="text-right text-xs leading-5 text-default-muted-foreground">
                 <p>{date}</p>
                 <p>{readTime}</p>
               </div>
@@ -167,7 +167,7 @@ export function ArticleDetail(
         </header>
         <div className="grid min-w-0 items-start gap-6 pt-6 sm:pt-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-8">
           <div className="min-w-0 space-y-8">
-            <div className="rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-8 lg:p-10">
+            <div className="rounded-3xl border border-border bg-card p-5 sm:p-8 lg:p-10">
               <div className="mb-8 flex flex-wrap gap-2">
                 {tags.map((tag) => (
                   <BlogModuleTag
@@ -182,7 +182,7 @@ export function ArticleDetail(
                 variant="content-rich"
                 content={content}
               />
-              <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-[var(--color-sps-line)] pt-6">
+              <div className="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
                 <Button variant="secondary" onClick={copyLink}>
                   <Share2 className="size-5" />
                   Copy link
@@ -198,7 +198,7 @@ export function ArticleDetail(
               </div>
               <p
                 aria-live="polite"
-                className="mt-3 text-xs text-[var(--color-sps-muted)]"
+                className="mt-3 text-xs text-muted-foreground"
               >
                 {copyStatus ||
                   (saved ? "Saved locally for this preview session." : "")}
@@ -206,12 +206,12 @@ export function ArticleDetail(
             </div>
             <section
               aria-label="Article comments"
-              className="rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5 sm:p-8"
+              className="rounded-3xl border border-border bg-card p-5 sm:p-8"
             >
               <h2 className="mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight">
                 <MessageSquare className="size-6" />
                 Comments{" "}
-                <span className="text-base font-normal text-[var(--color-sps-muted)]">
+                <span className="text-base font-normal text-muted-foreground">
                   {totalComments}
                 </span>
               </h2>
@@ -234,7 +234,7 @@ export function ArticleDetail(
               target="_top"
             />
             {pinnedProducts.length > 0 && (
-              <section className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
+              <section className="rounded-2xl border border-border bg-card p-5">
                 <h2 className="mb-4 text-lg font-semibold">Related products</h2>
                 <div className="space-y-4">
                   {pinnedProducts.map((product) => (
@@ -255,7 +255,7 @@ export function ArticleDetail(
             )}
             {tagsCard}
             {relatedArticles.length > 0 && (
-              <section className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5">
+              <section className="rounded-2xl border border-border bg-card p-5">
                 <h2 className="mb-4 text-lg font-semibold">Keep reading</h2>
                 <div className="space-y-3">
                   {relatedArticles.map((rel) => (
@@ -293,11 +293,11 @@ const ChevronRight = createIcon("caret-right");
 const Bookmark = createIcon("bookmark-simple");
 const ArrowLeft = createIcon("arrow-left");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  secondary: `${buttonBase} border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)] enabled:hover:bg-[var(--color-sps-grey)] ${focus}`,
+  secondary: `${buttonBase} border border-border bg-card text-foreground enabled:hover:bg-muted ${focus}`,
   focus: focus,
 };
 const Button = forwardRefControl<

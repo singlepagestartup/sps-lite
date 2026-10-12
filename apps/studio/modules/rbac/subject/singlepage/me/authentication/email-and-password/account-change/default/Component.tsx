@@ -93,7 +93,7 @@ function PasswordField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -134,7 +134,7 @@ export function Component({
 }: IAccountChangeProps = {}) {
   const [step, setStep] = useState<
     "start" | "verify-current" | "details" | "verify-new" | "complete"
-  >("start");
+  >(kind === "password" ? "details" : "start");
   const [code, setCode] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
@@ -197,7 +197,7 @@ export function Component({
   return (
     <section
       aria-label={title}
-      className="mt-5 min-w-0 rounded-xl border border-sps-line bg-sps-grey p-4 sm:p-5"
+      className="mt-5 min-w-0 rounded-xl border border-border bg-muted p-4 sm:p-5"
       data-ds-block="rbac.subject.me-authentication-email-and-password-account-change-default"
       data-module="rbac"
       data-model="subject"
@@ -218,25 +218,27 @@ export function Component({
         </div>
       ) : (
         <>
-          <ol
-            aria-label="Change progress"
-            className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-sps-muted"
-          >
-            {steps.map((label, index) => (
-              <li
-                key={label}
-                aria-current={active === index ? "step" : undefined}
-                className={
-                  active === index ? "font-semibold text-sps-graphite" : ""
-                }
-              >
-                {index + 1}. {label}
-              </li>
-            ))}
-          </ol>
+          {kind === "email" && (
+            <ol
+              aria-label="Change progress"
+              className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground"
+            >
+              {steps.map((label, index) => (
+                <li
+                  key={label}
+                  aria-current={active === index ? "step" : undefined}
+                  className={
+                    active === index ? "font-semibold text-foreground" : ""
+                  }
+                >
+                  {index + 1}. {label}
+                </li>
+              ))}
+            </ol>
+          )}
           {step === "start" ? (
             <div className="mt-5 space-y-4">
-              <p className="break-words text-sm leading-6 text-sps-muted">
+              <p className="break-words text-sm leading-6 text-muted-foreground">
                 First, confirm access to {email}. Then{" "}
                 {kind === "email"
                   ? "enter and verify your new email address."
@@ -260,9 +262,9 @@ export function Component({
             >
               {step === "verify-current" || step === "verify-new" ? (
                 <>
-                  <p className="break-words text-sm leading-6 text-sps-muted">
+                  <p className="break-words text-sm leading-6 text-muted-foreground">
                     Enter the verification code for{" "}
-                    <strong className="font-medium text-sps-graphite">
+                    <strong className="font-medium text-foreground">
                       {step === "verify-new"
                         ? newEmail.trim().toLowerCase()
                         : email}
@@ -292,7 +294,10 @@ export function Component({
                       }}
                     />
                   </label>
-                  <p id={`${id}-hint`} className="text-xs text-sps-muted">
+                  <p
+                    id={`${id}-hint`}
+                    className="text-xs text-muted-foreground"
+                  >
                     Preview code: 123456. No email is sent.
                   </p>
                   <div>
@@ -308,7 +313,10 @@ export function Component({
                       Resend code
                     </Button>
                     {resent && (
-                      <p role="status" className="mt-1 text-xs text-sps-muted">
+                      <p
+                        role="status"
+                        className="mt-1 text-xs text-muted-foreground"
+                      >
                         A new preview code is ready: 123456.
                       </p>
                     )}
@@ -345,6 +353,8 @@ export function Component({
                   />
                   <PasswordField
                     label="New password"
+                    hint="Use at least 8 characters."
+                    minLength={8}
                     name="new-password"
                     autoComplete="new-password"
                     required
@@ -356,6 +366,7 @@ export function Component({
                   />
                   <PasswordField
                     label="Repeat new password"
+                    minLength={8}
                     name="repeat-password"
                     autoComplete="new-password"
                     required
@@ -368,7 +379,7 @@ export function Component({
                 </>
               )}
               {error && (
-                <p role="alert" className="text-sm text-sps-danger">
+                <p role="alert" className="text-sm text-destructive">
                   {error}
                 </p>
               )}
@@ -382,21 +393,23 @@ export function Component({
                         : "Change password"
                       : "Verify code"}
                 </Button>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  onClick={() =>
-                    advance(
-                      step === "verify-new"
-                        ? "details"
-                        : step === "details"
-                          ? "verify-current"
-                          : "start",
-                    )
-                  }
-                >
-                  Back
-                </Button>
+                {kind === "email" && (
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    onClick={() =>
+                      advance(
+                        step === "verify-new"
+                          ? "details"
+                          : step === "details"
+                            ? "verify-current"
+                            : "start",
+                      )
+                    }
+                  >
+                    Back
+                  </Button>
+                )}
                 <Button type="button" variant="plain" onClick={onCancel}>
                   Cancel
                 </Button>
@@ -411,22 +424,22 @@ export function Component({
 const Mail = createIcon("envelope");
 const CheckCircle2 = createIcon("check-circle");
 const focusPresentation =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBasePresentation =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const kitPresentation = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  muted: "text-sps-muted",
-  label: "text-sm font-semibold text-sps-graphite",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  muted: "text-muted-foreground",
+  label: "text-sm font-semibold text-foreground",
 };
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-card)] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
 };
 function Button({
   variant = "primary",
@@ -438,12 +451,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -451,7 +464,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}
@@ -468,12 +481,12 @@ function ButtonPresentation({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -481,7 +494,7 @@ function ButtonPresentation({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

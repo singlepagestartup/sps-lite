@@ -82,7 +82,7 @@ export function ChatDefault({
           data-ds-route="/social/chats/[social.chats.id]/threads/[social.threads.id]"
         >
           <section
-            className="grid w-full overflow-hidden border-y border-[var(--color-sps-line)] bg-[var(--color-sps-white)] md:grid-cols-[256px_minmax(0,1fr)]"
+            className="grid w-full overflow-hidden border-y border-border bg-card md:grid-cols-[256px_minmax(0,1fr)]"
             data-ds-imports="social.widget.chat-list-default social.widget.chat-overview-default"
           >
             <SocialModuleWidget

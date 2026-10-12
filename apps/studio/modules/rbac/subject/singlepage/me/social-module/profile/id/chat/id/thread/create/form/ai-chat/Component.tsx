@@ -17,7 +17,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "border-sps-line bg-sps-grey"}`}
+      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-destructive-border bg-destructive-surface text-destructive" : "border-border bg-muted"}`}
     >
       <Icon
         name={
@@ -27,7 +27,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
               ? "question"
               : "check-circle"
         }
-        className={kind === "success" ? "text-sps-graphite" : ""}
+        className={kind === "success" ? "text-foreground" : ""}
       />
       <div className="min-w-0">{children}</div>
     </div>
@@ -70,7 +70,7 @@ function TextField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -147,7 +147,7 @@ export function Component({
         </Button>
         <a
           href={cancelHref}
-          className={`inline-flex min-h-11 items-center rounded-xl border border-sps-line px-5 text-sm font-semibold ${kit.focus}`}
+          className={`inline-flex min-h-11 items-center rounded-xl border border-border px-5 text-sm font-semibold ${kit.focus}`}
         >
           Cancel
         </a>
@@ -157,11 +157,11 @@ export function Component({
   );
 }
 const kit = {
-  label: "text-sm font-semibold text-sps-graphite",
-  muted: "text-sps-muted",
+  label: "text-sm font-semibold text-foreground",
+  muted: "text-muted-foreground",
   focus: "focus-visible:outline-2",
   field:
-    "min-h-12 w-full rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base focus-visible:outline-2",
+    "min-h-12 w-full rounded-xl border border-border bg-card px-4 py-2 text-base focus-visible:outline-2",
 };
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -177,7 +177,7 @@ function Button({
     <button
       {...props}
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-50 ${appearance === "primary" ? "bg-sps-green text-sps-graphite" : "text-sps-muted"} ${className}`}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:cursor-not-allowed disabled:opacity-50 ${appearance === "primary" ? "bg-primary text-primary-foreground" : "text-muted-foreground"} ${className}`}
     />
   );
 }

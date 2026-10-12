@@ -1,7 +1,7 @@
 /**
  * social.profile.card
  *
- * Sidebar "Author" card: rounded-xl border bg-[var(--color-sps-white)], label,
+ * Sidebar "Author" card: rounded-xl border bg-card, label,
  * h-12 avatar + name + role, root element is an anchor. Owned by the social
  * module (model: profile). Display components such as the blog article detail
  * sidebar compose this via import instead of re-implementing the markup.
@@ -36,25 +36,23 @@ export function ProfileCard(
       href={href}
       target={target}
       rel={target === "_blank" ? "noreferrer" : undefined}
-      className="block rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 transition hover:border-[var(--color-sps-line)] hover:shadow-sm"
+      className="block rounded-2xl border border-border bg-card p-6 transition hover:border-border hover:shadow-sm"
       data-ds-block="social.profile.card"
       data-ds-layer="singlepage"
       data-module="social"
       data-model="profile"
       data-variant={props?.variant ?? "card"}
     >
-      <p className="mb-3 text-xs st text-[var(--color-sps-muted)]">{label}</p>
+      <p className="mb-3 text-xs st text-muted-foreground">{label}</p>
       <div className="flex items-center gap-3">
         <img
           src={avatar}
           alt={name}
-          className="h-12 w-12 rounded-full border border-[var(--color-sps-line)] object-cover"
+          className="h-12 w-12 rounded-full border border-border object-cover"
         />
         <div>
-          <p className="text-base font-semibold text-[var(--color-sps-graphite)]">
-            {name}
-          </p>
-          <p className="text-xs text-[var(--color-sps-muted)]">{role}</p>
+          <p className="text-base font-semibold text-foreground">{name}</p>
+          <p className="text-xs text-muted-foreground">{role}</p>
         </div>
       </div>
     </a>

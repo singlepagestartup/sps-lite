@@ -64,7 +64,7 @@ function PasswordField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -107,7 +107,7 @@ export function Component({
   const id = useId();
   return (
     <section
-      className="mt-5 min-w-0 rounded-xl border border-sps-line bg-sps-grey p-4 sm:p-5"
+      className="mt-5 min-w-0 rounded-xl border border-border bg-muted p-4 sm:p-5"
       aria-label={`Connect ${meta.title}`}
       data-ds-block="rbac.subject.me-authentication-provider-connect-default"
       data-module="rbac"
@@ -115,14 +115,14 @@ export function Component({
       data-variant={variant}
     >
       <h4 className="font-semibold">Connect {meta.title}</h4>
-      <p className="mt-2 text-sm leading-6 text-sps-muted">
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
         {credentials
           ? "Add your email and password, then verify the email address."
           : wallet
             ? "Choose a wallet, then approve an ownership signature. No transaction or payment is required."
             : `Continue with ${meta.title}, then approve access to sign in.`}
       </p>
-      <p className="mt-2 text-xs text-sps-muted">
+      <p className="mt-2 text-xs text-muted-foreground">
         Connection preview. No external account or wallet is contacted.
       </p>
       {stage === "me-account" ? (
@@ -218,11 +218,11 @@ export function Component({
               }}
             />
           </label>
-          <p className="text-xs text-sps-muted">
+          <p className="text-xs text-muted-foreground">
             Preview code: 123456. No email is sent. Passwords are not stored.
           </p>
           {error && (
-            <p role="alert" className="text-sm text-sps-danger">
+            <p role="alert" className="text-sm text-destructive">
               {error}
             </p>
           )}
@@ -247,7 +247,7 @@ export function Component({
       ) : stage === "approve" ? (
         <div className="mt-5 space-y-4">
           <p className="break-all text-sm font-medium">{value}</p>
-          <p className="text-sm leading-6 text-sps-muted">
+          <p className="text-sm leading-6 text-muted-foreground">
             {wallet
               ? "Confirm the signature request to verify this wallet belongs to you."
               : `Approve the sign-in request for this ${meta.title} account.`}
@@ -283,22 +283,22 @@ export function Component({
   );
 }
 const focusPresentation =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBasePresentation =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const kitPresentation = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  muted: "text-sps-muted",
-  label: "text-sm font-semibold text-sps-graphite",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  muted: "text-muted-foreground",
+  label: "text-sm font-semibold text-foreground",
 };
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-card)] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
 };
 function Button({
   variant = "primary",
@@ -310,12 +310,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -323,7 +323,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}
@@ -340,12 +340,12 @@ function ButtonPresentation({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -353,7 +353,7 @@ function ButtonPresentation({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

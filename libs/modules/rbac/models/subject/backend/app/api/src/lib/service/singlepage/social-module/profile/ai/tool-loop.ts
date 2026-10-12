@@ -27,6 +27,7 @@ export type TSocialProfileAiToolSource = "skill" | "knowledge" | "mcp";
 export interface ISocialProfileAiTool {
   definition: IOpenRouterTool;
   source: TSocialProfileAiToolSource;
+  timeoutMs?: number;
   display?: {
     label: string;
     serverId?: string;
@@ -217,17 +218,17 @@ export class SocialProfileAiToolLoop {
               1,
               limits.totalTimeoutMs - (now() - startedAt),
             );
+            const toolTimeoutMs =
+              toolsByName.get(toolCall.function.name)?.timeoutMs ??
+              limits.toolTimeoutMs;
             const isBoundedByTotalTimeout =
-              remainingTotalTimeoutMs <= limits.toolTimeoutMs;
+              remainingTotalTimeoutMs <= toolTimeoutMs;
             const toolResult = await this.executeToolCall({
               call: toolCall,
               maxResultBytes: limits.maxResultBytes,
               onEvent: props.onEvent,
               selectedModelId,
-              timeoutMs: Math.min(
-                limits.toolTimeoutMs,
-                remainingTotalTimeoutMs,
-              ),
+              timeoutMs: Math.min(toolTimeoutMs, remainingTotalTimeoutMs),
               timeoutReason: isBoundedByTotalTimeout
                 ? "total_timeout"
                 : "tool_timeout",
@@ -555,8 +556,8 @@ export class SocialProfileAiToolLoop {
         ru: "Задача выполнялась слишком долго и была остановлена. Попробуйте повторить запрос.",
       },
       tool_timeout: {
-        en: "The tool did not finish in time. Please try again.",
-        ru: "Инструмент не успел завершить работу. Попробуйте повторить запрос.",
+        en: "The tool did not finish in time. The operation may still complete; check its result before retrying.",
+        ru: "Инструмент не успел завершить работу. Операция может ещё завершиться; проверьте результат перед повторным запросом.",
       },
       tool_error: {
         en: "The task could not be completed because a tool failed. Please try again.",

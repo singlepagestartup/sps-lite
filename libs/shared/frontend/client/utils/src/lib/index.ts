@@ -18,3 +18,5 @@ export {
   getAdminBasePath,
   useAdminBasePath,
 } from "./admin-route";
+
+export { getLocalizedHref } from "./localized-href";

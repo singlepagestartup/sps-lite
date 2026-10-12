@@ -1,10 +1,17 @@
 "use client";
 
 import { Component as HostModulePage, type ILoginPageProps } from "../../index";
-import { useCallback, useEffect, useState, type MouseEvent } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type MouseEvent,
+} from "react";
 
 import {
   AccountProvider,
+  useStudioAccount,
   type IAIChatAccount,
 } from "../../../../rbac/subject/singlepage/me/account/Account";
 import {
@@ -13,7 +20,10 @@ import {
   type IProfilesProviderProps,
 } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { ProjectProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
-import { NavigationProvider } from "../../../layout/singlepage/ai-chat-landing/Navigation";
+import {
+  NavigationProvider,
+  useNavigate,
+} from "../../../layout/singlepage/ai-chat-landing/Navigation";
 import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import {
@@ -68,6 +78,14 @@ function Pages({
   loginCopy?: ILoginPageProps["copy"];
 }) {
   const { projects } = useProfiles();
+  const { signedIn } = useStudioAccount();
+  const navigate = useNavigate();
+  const requiresAuthentication =
+    !!route && !["landing", "login", "register", "help"].includes(route.page);
+  useEffect(() => {
+    if (requiresAuthentication && !signedIn) navigate(aiChatServiceHrefs.login);
+  }, [requiresAuthentication, signedIn, navigate]);
+  if (requiresAuthentication && !signedIn) return null;
   if (!route) return <main role="status">Page unavailable.</main>;
   const serviceVariant = servicePages[route.page as keyof typeof servicePages];
   const available = projects.some((profile) => profile.id === route.profileId);
@@ -101,6 +119,7 @@ export function AIChatPreview({
   profiles = aiChatWorkspaceFixture(),
 }: IAIChatPreviewProps) {
   const [href, setHref] = useState(initialHref);
+  const previousInitialHref = useRef(initialHref);
   const [projectHref, setProjectHref] = useState(() => {
     const id = resolveAIChatRoute(initialHref)?.profileId;
     return id
@@ -115,7 +134,11 @@ export function AIChatPreview({
     const id = resolveAIChatRoute(next)?.profileId;
     if (id) setProjectHref(aiChatProfileHref(id));
   }, []);
-  useEffect(() => navigate(initialHref), [initialHref, navigate]);
+  useEffect(() => {
+    if (previousInitialHref.current === initialHref) return;
+    previousInitialHref.current = initialHref;
+    navigate(initialHref);
+  }, [initialHref, navigate]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [href]);

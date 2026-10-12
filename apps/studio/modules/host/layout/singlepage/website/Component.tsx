@@ -71,7 +71,7 @@ export function Component({
   return (
     <div
       data-ds-block="host.layout.website"
-      className="flex min-h-screen min-w-0 flex-col bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)] antialiased"
+      className="flex min-h-screen min-w-0 flex-col bg-muted text-foreground antialiased"
       data-module="host"
       data-model="layout"
       data-variant={variant}

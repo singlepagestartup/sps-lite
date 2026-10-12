@@ -22,7 +22,7 @@ export class Middleware {
         const secretKey =
           c.req.header("X-RBAC-SECRET-KEY") || getCookie(c, "rbac.secret-key");
 
-        const id = c.req.param("id");
+        const id = c.req.param("id") || c.req.param("uuid");
 
         if (!id) {
           throw new Error("Validation error. No id provided");

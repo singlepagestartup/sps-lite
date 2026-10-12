@@ -11,7 +11,7 @@ export function FeatureBadgeDefault(
 
   return (
     <div
-      className="inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-3 py-1 text-xs font-medium leading-5 text-[var(--color-sps-graphite)]"
+      className="inline-flex min-h-8 max-w-full items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium leading-5 text-foreground"
       data-ds-block="website-builder.feature.badge-default"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -19,7 +19,7 @@ export function FeatureBadgeDefault(
       data-variant={props?.variant ?? "badge-default"}
     >
       <span
-        className="inline-block h-2 w-2 shrink-0 rounded-full bg-[var(--color-sps-green)]"
+        className="inline-block h-2 w-2 shrink-0 rounded-full bg-primary text-primary-foreground"
         aria-hidden="true"
       />
       {label}

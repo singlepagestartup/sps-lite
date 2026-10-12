@@ -16,7 +16,7 @@ const preview: Preview = {
         {
           "data-sps-theme": layer,
           className:
-            "min-w-0 bg-sps-grey font-sps text-sps-graphite antialiased" +
+            "min-w-0 bg-muted font-default text-foreground antialiased" +
             (context.parameters.layout === "centered"
               ? " min-h-0 w-[calc(100vw-2rem)] max-w-7xl"
               : context.parameters.layout === "fullscreen"

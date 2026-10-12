@@ -116,7 +116,7 @@ export function SubjectMeIdentityFindInformation(
   );
   return (
     <article
-      className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-4 font-sps text-sps-graphite sm:p-6"
+      className="min-w-0 rounded-2xl border border-border bg-card p-4 font-default text-foreground sm:p-6"
       data-module="rbac"
       data-model="subject"
       data-variant={props.variant ?? "me-identity-find-information"}
@@ -125,17 +125,17 @@ export function SubjectMeIdentityFindInformation(
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h2 className="text-xl font-semibold">{title}</h2>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-sps-muted">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
             {description}
           </p>
         </div>
-        <span className="rounded-full bg-sps-grey px-3 py-1.5 text-xs text-sps-muted">
+        <span className="rounded-full bg-muted px-3 py-1.5 text-xs text-muted-foreground">
           {identities.length} connected
         </span>
       </div>
       <div className="mt-6 space-y-4">
         {identities.length === 0 ? (
-          <p className="rounded-xl border border-dashed border-sps-line p-6 text-sm text-sps-muted">
+          <p className="rounded-xl border border-dashed border-border p-6 text-sm text-muted-foreground">
             {emptyLabel}
           </p>
         ) : (
@@ -155,7 +155,7 @@ export function SubjectMeIdentityFindInformation(
           {result}
         </p>
       )}
-      <div className="mt-6 border-t border-sps-line pt-5">
+      <div className="mt-6 border-t border-border pt-5">
         <Button
           variant="secondary"
           aria-expanded={adding}
@@ -257,12 +257,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -270,7 +270,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

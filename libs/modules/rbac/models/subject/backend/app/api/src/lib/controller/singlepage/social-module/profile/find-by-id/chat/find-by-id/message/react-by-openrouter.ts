@@ -6,6 +6,7 @@ import {
   KNOWLEDGE_TOOL_RESULT_MAX_BYTES,
   KNOWLEDGE_TOOL_READ_MAX_CHARS,
   KNOWLEDGE_TOOL_USER_CONTEXT_MAX_BYTES,
+  KNOWLEDGE_TOOL_WRITE_TIMEOUT_MS,
   NEXT_PUBLIC_API_SERVICE_URL,
   RBAC_JWT_SECRET,
   RBAC_JWT_TOKEN_LIFETIME_IN_SECONDS,
@@ -945,6 +946,7 @@ export class Handler {
       });
 
       const context: IOpenRouterRequestMessage[] = [];
+      let currentAttachmentTitles: string[] = [];
       const requestedSkillIds = aiReactionRequest.skillIds;
       const requestedKnowledgeSearch = this.hasKnowledgeControl(
         socialModuleMessage.description,
@@ -1144,6 +1146,13 @@ export class Handler {
 
               if (socialModuleMessage.id === socialModuleMessageId) {
                 routingRequestText = resolvedMessageContext.routingText;
+                currentAttachmentTitles = (fileStorageFiles || []).map(
+                  (file) =>
+                    this.toLearnText(file.adminTitle) ||
+                    this.toLearnText(file.alt) ||
+                    basename(this.toLearnText(file.file).split("?")[0]) ||
+                    "attachment",
+                );
               }
             }
           }
@@ -1237,7 +1246,11 @@ export class Handler {
               index === context.length - 1
                 ? {
                     ...message,
-                    content: `${sanitizedTriggerDescription}\nCurrent message attachments will be analyzed and saved by profile_knowledge_create.`,
+                    content: [
+                      sanitizedTriggerDescription,
+                      `Current message attachments: ${JSON.stringify(currentAttachmentTitles)}. These files will be analyzed and saved by profile_knowledge_create.`,
+                      "For this new material, use the current attachment names and current user explanations. Use earlier conversation facts only when the current request explicitly refers to them; do not copy a previous Source's title or notes into a new upload.",
+                    ].join("\n"),
                   }
                 : message,
             )
@@ -2467,6 +2480,7 @@ export class Handler {
       const profileId = props.replyProfileId;
       tools.push({
         source: "knowledge",
+        timeoutMs: KNOWLEDGE_TOOL_WRITE_TIMEOUT_MS,
         display: { label: "Create profile Knowledge" },
         definition: {
           type: "function",
@@ -2778,6 +2792,7 @@ export class Handler {
       if (canWrite)
         tools.push({
           source: "knowledge",
+          timeoutMs: KNOWLEDGE_TOOL_WRITE_TIMEOUT_MS,
           display: { label: "Edit Knowledge context" },
           definition: {
             type: "function",

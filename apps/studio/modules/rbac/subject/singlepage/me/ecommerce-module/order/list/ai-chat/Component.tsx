@@ -27,17 +27,17 @@ const OrderItem = memo(function OrderItem({
 }) {
   const receipt = `Order ${data.id}\nDate: ${data.date}\nStatus: ${data.status}\n${showTokens ? `Tokens: ${data.tokens}\n` : ""}Total: ${data.total}\nStudio preview receipt`;
   return (
-    <li className="grid min-w-0 gap-3 border-t border-sps-line py-4 @[640px]:grid-cols-[minmax(0,1fr)_auto] @[640px]:items-center">
+    <li className="grid min-w-0 gap-3 border-t border-border py-4 @[640px]:grid-cols-[minmax(0,1fr)_auto] @[640px]:items-center">
       <div>
         <p className="text-sm font-semibold">
           {showTokens
             ? `${data.tokens.toLocaleString("en-US")} tokens`
             : "Service purchase"}{" "}
-          <span className="ml-2 inline-flex rounded-full bg-sps-green/25 px-2 py-1 text-xs font-medium">
+          <span className="ml-2 inline-flex rounded-full bg-primary/25 px-2 py-1 text-xs font-medium">
             {data.status}
           </span>
         </p>
-        <p className="mt-1 text-xs text-sps-muted">
+        <p className="mt-1 text-xs text-muted-foreground">
           {data.id} · {data.date}
         </p>
       </div>
@@ -46,7 +46,7 @@ const OrderItem = memo(function OrderItem({
         <a
           download={`${data.id}-receipt.txt`}
           href={`data:text/plain;charset=utf-8,${encodeURIComponent(receipt)}`}
-          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-sps-line px-4 text-sm font-medium"
+          className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 text-sm font-medium"
         >
           <WebsiteBuilderModuleFeature variant="icon" name="file-text" />
           Receipt
@@ -65,7 +65,7 @@ export function Component({
   const purchases = copy?.sections.purchases;
   return (
     <section
-      className="@container min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 @[640px]:p-6"
+      className="@container min-w-0 rounded-2xl border border-border bg-card p-5 @[640px]:p-6"
       data-module="rbac"
       data-model="subject"
       data-variant={variant}
@@ -73,14 +73,14 @@ export function Component({
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h2 className="flex items-center gap-3 text-xl font-semibold">
-            <span className="grid size-10 place-items-center rounded-xl bg-sps-grey">
+            <span className="grid size-10 place-items-center rounded-xl bg-muted">
               <WebsiteBuilderModuleFeature variant="icon" name="wallet" />
             </span>
             {showTokens
               ? (purchases?.title ?? "Tokens and purchases")
               : "Purchases"}
           </h2>
-          <div className="mt-3 text-sm leading-6 text-sps-muted [&_a]:underline">
+          <div className="mt-3 text-sm leading-6 text-muted-foreground [&_a]:underline">
             {showTokens && purchases ? (
               purchases.paragraphs.map((text, index) => (
                 <Markdown key={index} options={{ disableParsingRawHTML: true }}>
@@ -100,7 +100,7 @@ export function Component({
             href={
               copy?.labels["tokens-href"] ?? "/ai-chat/rbac/subjects/tokens"
             }
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-sps-green px-5 text-sm font-semibold"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 text-sm font-semibold"
           >
             <WebsiteBuilderModuleFeature variant="icon" name="plus" />
             {copy?.labels["buy-tokens"] ?? "Buy tokens"}
@@ -108,14 +108,14 @@ export function Component({
         )}
       </header>
       {showTokens && (
-        <p className="my-5 text-sm text-sps-muted">
+        <p className="my-5 text-sm text-muted-foreground">
           {account.balance
             ? `${(account.balance.free + account.balance.purchased).toLocaleString("en-US")} tokens available`
             : "Balance unavailable"}
         </p>
       )}
       {empty ? (
-        <p role="status" className="mt-5 rounded-xl bg-sps-grey p-4 text-sm">
+        <p role="status" className="mt-5 rounded-xl bg-muted p-4 text-sm">
           {copy?.labels["purchases-empty"] ?? "No purchases yet."}
         </p>
       ) : (

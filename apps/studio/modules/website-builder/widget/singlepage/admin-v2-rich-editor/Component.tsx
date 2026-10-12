@@ -109,7 +109,7 @@ export function WebsiteBuilderAdminV2RichEditor({
       data-model="widget"
       data-variant={variant}
     >
-      <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--color-sps-line)] p-5 sm:p-6">
+      <header className="flex flex-wrap items-center justify-between gap-4 border-b border-border p-5 sm:p-6">
         <div>
           <p className={`text-sm ${kit.muted}`}>Page content</p>
           <h2 className="mt-1 text-2xl font-semibold">Content editor</h2>
@@ -127,7 +127,7 @@ export function WebsiteBuilderAdminV2RichEditor({
       <div className="grid gap-6 p-5 sm:p-6 xl:grid-cols-[minmax(0,1fr)_240px]">
         <div className="min-w-0">
           <div
-            className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl bg-[var(--color-sps-grey)] p-2"
+            className="mb-4 flex flex-wrap items-center gap-2 rounded-2xl bg-muted p-2"
             role="toolbar"
             aria-label="Formatting"
           >
@@ -139,7 +139,7 @@ export function WebsiteBuilderAdminV2RichEditor({
                 title={label}
                 aria-pressed={Boolean(active)}
                 disabled={!editor}
-                className={`grid size-11 place-items-center rounded-xl transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] ${active ? "bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)]" : "text-[var(--color-sps-muted)] hover:bg-[var(--color-sps-white)]"}`}
+                className={`grid size-11 place-items-center rounded-xl transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${active ? "bg-card text-foreground" : "text-muted-foreground hover:bg-card"}`}
                 onMouseDown={(event) => event.preventDefault()}
                 onClick={run}
               >
@@ -149,7 +149,7 @@ export function WebsiteBuilderAdminV2RichEditor({
           </div>
           {linkOpen && (
             <form
-              className="mb-4 grid gap-3 rounded-2xl bg-[var(--color-sps-grey)] p-4"
+              className="mb-4 grid gap-3 rounded-2xl bg-muted p-4"
               onSubmit={(event) => {
                 event.preventDefault();
                 if (!/^https?:\/\//i.test(linkUrl)) {
@@ -177,10 +177,7 @@ export function WebsiteBuilderAdminV2RichEditor({
                 />
               </label>
               {linkError && (
-                <p
-                  role="alert"
-                  className="text-sm text-[var(--color-sps-danger)]"
-                >
+                <p role="alert" className="text-sm text-destructive">
                   {linkError}
                 </p>
               )}
@@ -202,12 +199,12 @@ export function WebsiteBuilderAdminV2RichEditor({
             </form>
           )}
           <div
-            className={`mx-auto min-w-0 rounded-2xl border border-[var(--color-sps-line)] p-5 transition-[max-width] sm:p-6 ${preview === "mobile" ? "max-w-sm" : "max-w-none"} [&_.ProseMirror]:text-base [&_.ProseMirror]:leading-7 [&_.ProseMirror_h2]:mb-4 [&_.ProseMirror_h2]:text-3xl [&_.ProseMirror_h2]:font-semibold [&_.ProseMirror_p]:my-4 [&_.ProseMirror_ul]:ml-5 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_a]:underline [&_.ProseMirror_a]:underline-offset-4 [&_.ProseMirror_blockquote]:rounded-xl [&_.ProseMirror_blockquote]:bg-[var(--color-sps-grey)] [&_.ProseMirror_blockquote]:p-4`}
+            className={`mx-auto min-w-0 rounded-2xl border border-border p-5 transition-[max-width] sm:p-6 ${preview === "mobile" ? "max-w-sm" : "max-w-none"} [&_.ProseMirror]:text-base [&_.ProseMirror]:leading-7 [&_.ProseMirror_h2]:mb-4 [&_.ProseMirror_h2]:text-3xl [&_.ProseMirror_h2]:font-semibold [&_.ProseMirror_p]:my-4 [&_.ProseMirror_ul]:ml-5 [&_.ProseMirror_ul]:list-disc [&_.ProseMirror_a]:underline [&_.ProseMirror_a]:underline-offset-4 [&_.ProseMirror_blockquote]:rounded-xl [&_.ProseMirror_blockquote]:bg-muted [&_.ProseMirror_blockquote]:p-4`}
           >
             <EditorContent editor={editor} />
           </div>
         </div>
-        <aside className="self-start rounded-2xl bg-[var(--color-sps-grey)] p-5">
+        <aside className="self-start rounded-2xl bg-muted p-5">
           <h3 className="flex items-center gap-2 text-base font-semibold">
             <Monitor className="size-5" />
             Preview width
@@ -217,7 +214,7 @@ export function WebsiteBuilderAdminV2RichEditor({
             {["desktop", "mobile"].map((value) => (
               <label
                 key={value}
-                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-xl p-3 text-sm ${preview === value ? "bg-[var(--color-sps-white)] font-semibold" : kit.muted}`}
+                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-xl p-3 text-sm ${preview === value ? "bg-card font-semibold" : kit.muted}`}
               >
                 <input
                   type="radio"
@@ -225,7 +222,7 @@ export function WebsiteBuilderAdminV2RichEditor({
                   value={value}
                   checked={preview === value}
                   onChange={() => setPreview(value)}
-                  className="size-4 accent-[var(--color-sps-graphite)]"
+                  className="size-4 accent-foreground"
                 />
                 {value === "desktop" ? "Desktop" : "Mobile"}
               </label>
@@ -243,14 +240,14 @@ export function WebsiteBuilderAdminV2RichEditor({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
-  card: "min-w-0 rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5",
-  muted: "text-[var(--color-sps-muted)]",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-card)] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  card: "min-w-0 rounded-2xl border border-border bg-card p-5",
+  muted: "text-muted-foreground",
 };
 const Save = createIcon("floppy-disk");
 const Monitor = createIcon("monitor");

@@ -44,16 +44,14 @@ export function ArticleFindByIdTagFind(
       data-ds-block="blog.widget.article-find-by-id-tag-find-default"
       data-ds-imports="blog.tag.button-default"
       data-ds-layer="singlepage"
-      className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-5"
+      className="rounded-2xl border border-border bg-card p-5"
       data-module="blog"
       data-model="widget"
       data-variant={props?.variant ?? "article-find-by-id-tag-find-default"}
     >
       <div className="mb-3 flex items-center gap-2">
-        <Tag className="size-5 text-[var(--color-sps-muted)]" />
-        <span className="text-lg font-semibold text-[var(--color-sps-graphite)]">
-          {title}
-        </span>
+        <Tag className="size-5 text-muted-foreground" />
+        <span className="text-lg font-semibold text-foreground">{title}</span>
       </div>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (

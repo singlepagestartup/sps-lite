@@ -23,17 +23,17 @@ export function Component({
   return (
     <section
       aria-label="Ethereum Virtual Machine authentication"
-      className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 text-sps-graphite"
+      className="min-w-0 rounded-2xl border border-border bg-card p-5 text-foreground"
       data-ds-block="rbac.subject.me-authentication-ethereum-virtual-machine-default"
       data-module="rbac"
       data-model="subject"
       data-variant={variant}
     >
       <h2 className="text-lg font-semibold">Sign in with a wallet</h2>
-      <p className="mt-2 text-sm leading-6 text-sps-muted">
+      <p className="mt-2 text-sm leading-6 text-muted-foreground">
         Connect an EVM wallet and confirm ownership with a signature.
       </p>
-      <p className="mt-2 text-xs text-sps-muted">
+      <p className="mt-2 text-xs text-muted-foreground">
         Local preview. No wallet connection, signature or transaction is
         requested.
       </p>
@@ -49,8 +49,8 @@ export function Component({
         )}
         {state === "authorize" && (
           <>
-            <div className="rounded-xl bg-sps-grey p-4">
-              <p className="text-xs text-sps-muted">Connected wallet</p>
+            <div className="rounded-xl bg-muted p-4">
+              <p className="text-xs text-muted-foreground">Connected wallet</p>
               <p className="mt-2 break-all font-mono text-sm">
                 {walletAddress}
               </p>
@@ -86,7 +86,7 @@ export function Component({
         )}
         {state === "error" && (
           <>
-            <p role="alert" className="text-sm text-sps-danger">
+            <p role="alert" className="text-sm text-destructive">
               Wallet authentication was not completed. Try connecting again.
             </p>
             <Button
@@ -113,12 +113,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -126,7 +126,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

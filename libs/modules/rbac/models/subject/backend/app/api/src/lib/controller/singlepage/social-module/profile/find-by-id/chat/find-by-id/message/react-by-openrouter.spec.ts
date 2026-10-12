@@ -2293,6 +2293,7 @@ describe("Given: OpenRouter thread context and reply validation", () => {
         tool.definition.function.name === "profile_knowledge_create",
     );
     expect(create).toBeDefined();
+    expect(create.timeoutMs).toBe(240_000);
     const result = await create.execute({
       title: "Lesson",
       userContext: "My note",

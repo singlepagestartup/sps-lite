@@ -13,7 +13,7 @@ function Example() {
         initialSource={source}
         initialFileIds={fileIds}
       >
-        <div className="w-64 bg-sps-graphite p-4">
+        <div className="w-64 bg-default p-4">
           <KnowledgeModuleSource
             variant="list-item-document-ai-chat"
             selected

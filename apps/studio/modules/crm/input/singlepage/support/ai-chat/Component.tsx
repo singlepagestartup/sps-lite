@@ -31,7 +31,7 @@ export function Component({
     "aria-invalid": Boolean(error),
     "aria-describedby": error ? `${id}-error` : undefined,
     className:
-      "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-3 text-base text-sps-graphite placeholder:text-sps-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite aria-invalid:border-sps-danger",
+      "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-3 text-base text-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground aria-invalid:border-destructive",
   };
   return (
     <div
@@ -66,7 +66,7 @@ export function Component({
         />
       )}
       {error && (
-        <p id={`${id}-error`} role="alert" className="text-sm text-sps-danger">
+        <p id={`${id}-error`} role="alert" className="text-sm text-destructive">
           {error}
         </p>
       )}

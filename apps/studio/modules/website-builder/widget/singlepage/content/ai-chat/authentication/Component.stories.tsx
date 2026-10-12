@@ -10,7 +10,7 @@ const meta = {
   parameters: { layout: "fullscreen" },
   args: {
     children: (
-      <div className="rounded-2xl border border-dashed border-sps-line p-6 text-sm text-sps-muted">
+      <div className="rounded-2xl border border-dashed border-border p-6 text-sm text-muted-foreground">
         Subject form slot
       </div>
     ),

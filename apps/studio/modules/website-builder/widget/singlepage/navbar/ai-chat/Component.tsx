@@ -59,7 +59,7 @@ export function Component({
     <header
       data-ds-block="website-builder.widget.navbar-ai-chat"
       data-id={widgetId}
-      className={`sticky top-0 z-40 border-b border-sps-line bg-sps-white px-4 py-3 @[800px]:px-8 @[800px]:py-5 ${collapsible ? "h-18 @[800px]:h-24" : ""}`}
+      className={`sticky top-0 z-40 border-b border-border bg-card px-4 py-3 @[800px]:px-8 @[800px]:py-5 ${collapsible ? "h-18 @[800px]:h-24" : ""}`}
       data-module="website-builder"
       data-model="widget"
       data-variant={variant}
@@ -82,7 +82,7 @@ export function Component({
             id={navigationId}
             className={
               collapsible
-                ? `${navigationOpen ? "flex" : "hidden"} absolute inset-x-0 top-full flex-col items-start gap-1 border-b border-sps-line bg-sps-white px-4 py-3 shadow-lg @[800px]:static @[800px]:flex @[800px]:flex-row @[800px]:items-center @[800px]:border-0 @[800px]:p-0 @[800px]:shadow-none`
+                ? `${navigationOpen ? "flex" : "hidden"} absolute inset-x-0 top-full flex-col items-start gap-1 border-b border-border bg-card px-4 py-3 shadow-lg @[800px]:static @[800px]:flex @[800px]:flex-row @[800px]:items-center @[800px]:border-0 @[800px]:p-0 @[800px]:shadow-none`
                 : "flex items-center gap-1"
             }
           >
@@ -107,7 +107,7 @@ export function Component({
               aria-expanded={navigationOpen}
               aria-controls={navigationId}
               onClick={() => setNavigationOpen((open) => !open)}
-              className={`inline-flex size-11 items-center justify-center rounded-xl text-sps-muted hover:bg-sps-grey @[800px]:hidden ${kit.focus}`}
+              className={`inline-flex size-11 items-center justify-center rounded-xl text-muted-foreground hover:bg-muted @[800px]:hidden ${kit.focus}`}
             >
               <Icon name={navigationOpen ? "x" : "list"} />
             </button>
@@ -118,7 +118,7 @@ export function Component({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {

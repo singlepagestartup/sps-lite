@@ -21,7 +21,7 @@ export interface IProjectSelectItemProps {
   onNavigate?: () => void;
 }
 const itemClass =
-  "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-sps-grey";
+  "flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none data-highlighted:bg-muted";
 export const Component = memo(function Component({
   variant = "select-item-ai-chat-project",
   data,

@@ -12,7 +12,7 @@ function Example() {
     <AccountProvider account={aiChatAccount}>
       <ProfilesProvider {...aiChatWorkspaceFixture()}>
         <ProjectProvider profileId="pottery">
-          <div className="w-64 bg-sps-graphite p-4 text-white">
+          <div className="w-64 bg-default p-4 text-default-foreground">
             <SocialModuleProfile
               variant="sidebar-ai-chat-project"
               profileId="pottery"

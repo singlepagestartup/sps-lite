@@ -8,6 +8,7 @@ import type { IModel as IFileStorageModuleFile } from "@sps/file-storage/models/
 import { Component as SocialModuleProfilesToFileStorageModuleFiles } from "@sps/social/relations/profiles-to-file-storage-module-files/frontend/component";
 import { NEXT_PUBLIC_API_SERVICE_URL } from "@sps/shared-utils";
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 function getProfileDisplayName(props: IComponentPropsExtended) {
   return (
@@ -51,13 +52,48 @@ function FallbackAvatar(props: { className?: string; displayName: string }) {
   );
 }
 
+function FileAvatar(props: {
+  file?: IFileStorageModuleFile | null;
+  displayName: string;
+  className?: string;
+  fallback: ReactNode;
+}) {
+  if (!props.file || !isImageFile(props.file)) return props.fallback;
+  return (
+    <div
+      className={cn(
+        "relative h-8 w-8 shrink-0 overflow-hidden rounded-full bg-muted",
+        props.className,
+      )}
+    >
+      <Image
+        src={getFileSrc(props.file)}
+        alt={props.displayName}
+        fill
+        className="object-cover"
+        sizes="80px"
+      />
+    </div>
+  );
+}
+
 export function Component(props: IComponentPropsExtended) {
   const displayName = getProfileDisplayName(props);
+  const fallback = props.fallback ?? (
+    <FallbackAvatar className={props.className} displayName={displayName} />
+  );
+  if (props.file !== undefined)
+    return (
+      <FileAvatar
+        file={props.file}
+        displayName={displayName}
+        className={props.className}
+        fallback={fallback}
+      />
+    );
 
   if (props.data.id === "unknown") {
-    return (
-      <FallbackAvatar className={props.className} displayName={displayName} />
-    );
+    return fallback;
   }
 
   return (
@@ -99,12 +135,7 @@ export function Component(props: IComponentPropsExtended) {
         const profileFile = profileFiles?.[0];
 
         if (!profileFile?.fileStorageModuleFileId) {
-          return (
-            <FallbackAvatar
-              className={props.className}
-              displayName={displayName}
-            />
-          );
+          return fallback;
         }
 
         return (
@@ -130,12 +161,7 @@ export function Component(props: IComponentPropsExtended) {
               const file = files?.[0];
 
               if (!file || !isImageFile(file)) {
-                return (
-                  <FallbackAvatar
-                    className={props.className}
-                    displayName={displayName}
-                  />
-                );
+                return fallback;
               }
 
               return (

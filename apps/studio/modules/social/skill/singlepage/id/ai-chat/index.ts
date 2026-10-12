@@ -1,1 +1,5 @@
-export { Component, knowledgeSkill, type IKnowledgeSkill } from "./Component";
+export {
+  Component,
+  businessAnalystSkill,
+  type IAIChatSkill,
+} from "./Component";

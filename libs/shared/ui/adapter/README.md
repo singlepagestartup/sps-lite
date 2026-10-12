@@ -10,6 +10,8 @@ src/
     ├── button/           # Button adapter component
     ├── form-field/       # Form field adapter component
     ├── input/            # Input adapter component
+    ├── icons/            # Shared React SVG icons
+    ├── select/           # Select adapter component
     ├── interfaces/       # Common interfaces and types
     └── wrappers/         # Component wrappers and HOCs
 ```
@@ -42,6 +44,21 @@ The adapter components serve several key purposes:
 - Provides consistent input handling
 - Manages input states and validation
 - Handles different input types
+
+### Select Adapter
+
+`Select` with `ui="shadcn"` renders the SPS-styled Radix Select used by Studio forms. Pass `options` with `value`, `label` and optional `disabled` fields. Use `value` and `onValueChange` for controlled selection. The adapter supports placeholders, required and disabled states, validation attributes and keyboard navigation.
+
+### Icons
+
+Import `Icon` and its `IconName` type from `@sps/ui-adapter`. The Phosphor Regular
+glyphs are React SVG elements in `src/lib/icons`, usable in server and client
+components. Color follows `currentColor`; `size` accepts 20 or 24 pixels, and
+Tailwind classes can override the dimensions. Icons are decorative by default;
+use SVG properties for an accessible label when the icon conveys meaning.
+
+Static image files belong in `apps/host/public/images` or File Storage. Icons
+use shared UI components directly rather than a Website Builder Feature variant.
 
 ## Usage
 

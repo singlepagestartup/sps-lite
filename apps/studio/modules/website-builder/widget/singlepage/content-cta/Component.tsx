@@ -42,7 +42,7 @@ export function ContentCta(
   };
   return (
     <div
-      className="w-full bg-[var(--color-sps-grey)] py-12 sm:py-16"
+      className="w-full bg-muted py-12 sm:py-16"
       data-ds-block="website-builder.widget.content-cta"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -50,12 +50,12 @@ export function ContentCta(
       data-variant={props?.variant ?? "content-cta"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 rounded-3xl bg-[var(--color-sps-graphite)] p-6 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end lg:p-12">
+        <div className="grid gap-8 rounded-3xl bg-default p-6 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-end lg:p-12">
           <div>
-            <h2 className="max-w-2xl text-[2rem] font-semibold leading-tight tracking-normal text-white sm:text-[2.5rem]">
+            <h2 className="max-w-2xl text-[2rem] font-semibold leading-tight tracking-normal text-default-foreground sm:text-[2.5rem]">
               {title}
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-[var(--color-sps-muted-inverse)]">
+            <p className="mt-5 max-w-xl text-base leading-7 text-default-muted-foreground">
               {description}
             </p>
           </div>
@@ -75,15 +75,15 @@ export function ContentCta(
 }
 const ArrowRight = createIcon("arrow-right");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  button: `${buttonBase} bg-[var(--color-sps-green)] text-[var(--color-sps-graphite)] enabled:hover:brightness-95 ${focus}`,
-  secondary: `${buttonBase} border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)] enabled:hover:bg-[var(--color-sps-grey)] ${focus}`,
+  button: `${buttonBase} bg-primary text-primary-foreground enabled:hover:brightness-95 ${focus}`,
+  secondary: `${buttonBase} border border-border bg-card text-foreground enabled:hover:bg-muted ${focus}`,
 };
-const buttonInvertedClass = `${kit.button} no-underline hover:brightness-95 focus-visible:outline-[var(--color-sps-white)]`;
-const buttonGhostDarkClass = `${kit.secondary} no-underline hover:bg-[var(--color-sps-grey)] focus-visible:outline-[var(--color-sps-white)]`;
+const buttonInvertedClass = `${kit.button} no-underline hover:brightness-95 focus-visible:outline-card`;
+const buttonGhostDarkClass = `${kit.secondary} no-underline hover:bg-muted focus-visible:outline-card`;
 export const defaultContentCtaProps = {
   title: "Ready to take control?",
   description:

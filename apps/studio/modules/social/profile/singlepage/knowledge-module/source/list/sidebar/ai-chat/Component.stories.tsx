@@ -1,14 +1,17 @@
 import { Component as SocialModuleProfile } from "../../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
+import { SourceProvider } from "../../../../../../../../knowledge/source/singlepage/id/ai-chat/Source";
 function Example() {
   return (
-    <div className="bg-sps-graphite p-4 text-white">
-      <SocialModuleProfile
-        variant="knowledge-module-source-list-sidebar-ai-chat"
-        href="/ai-chat/social/profiles/pottery"
-        selected
-      />
-    </div>
+    <SourceProvider profileId="pottery">
+      <div className="bg-default p-4 text-default-foreground">
+        <SocialModuleProfile
+          variant="knowledge-module-source-list-sidebar-ai-chat"
+          href="/ai-chat/social/profiles/pottery"
+          selected
+        />
+      </div>
+    </SourceProvider>
   );
 }
 const meta = {

@@ -27,7 +27,7 @@ import defaultCopy from "./content.json";
 function PageIntro({ section }: { section: IWebsiteSection }) {
   return (
     <div className="mb-8 max-w-2xl">
-      <div className="mb-4 h-1 w-10 rounded-full bg-sps-green" />
+      <div className="mb-4 h-1 w-10 rounded-full bg-primary text-primary-foreground" />
       <h1 className="text-3xl font-semibold leading-tight tracking-tight @[640px]:text-4xl">
         {section.title}
       </h1>
@@ -55,7 +55,7 @@ function ServicePage({
     <ProjectHrefContext.Provider value={projectHref}>
       <div
         data-sps-theme="singlepage"
-        className="@container min-w-0 bg-sps-grey text-sps-graphite font-sps"
+        className="@container min-w-0 bg-muted text-foreground font-default"
         data-module="ecommerce"
         data-model="order"
         data-variant={variant}
@@ -98,7 +98,7 @@ function MarkdownDocument({
   return (
     <div
       className={twMerge(
-        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-muted [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-muted-foreground [&_a]:text-muted-foreground [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-foreground [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-foreground [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-border [&_td]:p-2 [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
         className,
       )}
     >
@@ -161,7 +161,7 @@ function SectionText({
   const projectHref = useContext(ProjectHrefContext);
   return (
     <div
-      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-white/80 [&_a]:text-white [&_strong]:text-white" : "text-sps-muted [&_a]:text-sps-graphite [&_strong]:text-sps-graphite"}`}
+      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-default-foreground/80 [&_a]:text-default-foreground [&_strong]:text-default-foreground" : "text-muted-foreground [&_a]:text-foreground [&_strong]:text-foreground"}`}
     >
       {section.paragraphs.map((paragraph, index) => (
         <MarkdownDocument key={index}>
@@ -195,7 +195,7 @@ function PageSection({
     <section className={`${kit.card} p-5 @[640px]:p-6 ${className}`}>
       <h2 className="flex items-center gap-3 text-xl font-semibold">
         {icon ? (
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sps-grey">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
             <Icon name={icon} />
           </span>
         ) : null}
@@ -220,7 +220,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "border-sps-line bg-sps-grey"}`}
+      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-destructive-border bg-destructive-surface text-destructive" : "border-border bg-muted"}`}
     >
       <Icon
         name={
@@ -230,7 +230,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
               ? "question"
               : "check-circle"
         }
-        className={kind === "success" ? "text-sps-graphite" : ""}
+        className={kind === "success" ? "text-foreground" : ""}
       />
       <div className="min-w-0">{children}</div>
     </div>
@@ -268,16 +268,16 @@ export function Component({
     <ServicePage copy={copy} projectHref={projectHref} variant={variant}>
       <div className="grid min-w-0 items-start gap-6 @[900px]:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0 space-y-6">
-          <section className="rounded-2xl bg-sps-graphite p-6 text-white">
+          <section className="rounded-2xl bg-default p-6 text-default-foreground">
             <div className="flex items-start gap-3">
-              <span className="rounded-xl bg-white/10 p-3 text-sps-green">
+              <span className="rounded-xl bg-card/10 p-3 text-primary">
                 <Icon name="wallet" />
               </span>
               <div>
                 <h2 className="text-lg font-semibold">
                   {sections.balance.title}
                 </h2>
-                <p className="mt-2 text-sm text-white/70">
+                <p className="mt-2 text-sm text-default-foreground/70">
                   {aiChatAccount.balance
                     ? number(
                         aiChatAccount.balance?.free +
@@ -288,7 +288,7 @@ export function Component({
                 </p>
               </div>
             </div>
-            <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-white/15 pt-5">
+            <dl className="mt-5 grid grid-cols-2 gap-4 border-t border-default-foreground/15 pt-5">
               {[
                 [labels["free-balance-label"], aiChatAccount.balance?.free],
                 [
@@ -297,7 +297,9 @@ export function Component({
                 ],
               ].map(([label, balance]) => (
                 <div key={label}>
-                  <dt className="text-xs text-white/70">{label}</dt>
+                  <dt className="text-xs text-default-foreground/70">
+                    {label}
+                  </dt>
                   <dd className="mt-2 text-2xl font-semibold">
                     {typeof balance === "number" ? number(balance) : "—"}
                   </dd>
@@ -312,7 +314,7 @@ export function Component({
                 {sections.packages.items.map((item) => (
                   <label
                     key={item.title}
-                    className={`relative flex min-h-28 cursor-pointer flex-col justify-between gap-4 rounded-xl border p-4 transition has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-sps-graphite ${selected === item.title ? "border-sps-graphite bg-sps-grey ring-1 ring-sps-graphite" : "border-sps-line hover:bg-sps-grey"}`}
+                    className={`relative flex min-h-28 cursor-pointer flex-col justify-between gap-4 rounded-xl border p-4 transition has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground ${selected === item.title ? "border-foreground bg-muted ring-1 ring-foreground" : "border-border hover:bg-muted"}`}
                   >
                     <input
                       type="radio"
@@ -328,19 +330,19 @@ export function Component({
                     <span className="flex items-center justify-between gap-2">
                       <span className="text-xl font-semibold">
                         {number(Number(item.title))}
-                        <span className="ml-1 text-xs font-medium text-sps-muted">
+                        <span className="ml-1 text-xs font-medium text-muted-foreground">
                           {labels.currency}
                         </span>
                       </span>
                       <span
-                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${selected === item.title ? "border-transparent bg-sps-green" : "border-sps-line"}`}
+                        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${selected === item.title ? "border-transparent bg-primary text-primary-foreground" : "border-border"}`}
                       >
                         {selected === item.title ? (
                           <Icon name="check" className="h-3 w-3" />
                         ) : null}
                       </span>
                     </span>
-                    <span className="text-xs text-sps-muted">
+                    <span className="text-xs text-muted-foreground">
                       {labels["rate-label"]}
                     </span>
                   </label>
@@ -350,7 +352,7 @@ export function Component({
           </PageSection>
         </div>
         <PageSection section={sections.purchase} icon="credit-card">
-          <dl className="space-y-4 border-y border-sps-line py-5 text-sm">
+          <dl className="space-y-4 border-y border-border py-5 text-sm">
             <div className="flex items-center justify-between gap-3">
               <dt className={kit.muted}>{labels["selected-label"]}</dt>
               <dd className="font-semibold">
@@ -420,7 +422,7 @@ export function Component({
           ].map((section) => (
             <details
               key={section.title}
-              className="group border-b border-sps-line last:border-b-0"
+              className="group border-b border-border last:border-b-0"
             >
               <summary
                 className={`flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-semibold ${kit.focus}`}
@@ -440,13 +442,13 @@ export function Component({
 }
 const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  plain: `${buttonBase} text-sps-muted enabled:hover:text-sps-graphite ${focus}`,
-  card: "min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5",
-  muted: "text-sps-muted",
+  plain: `${buttonBase} text-muted-foreground enabled:hover:text-foreground ${focus}`,
+  card: "min-w-0 rounded-2xl border border-border bg-card p-5",
+  muted: "text-muted-foreground",
   focus: focus,
 };
 const Button = forwardRefControl<

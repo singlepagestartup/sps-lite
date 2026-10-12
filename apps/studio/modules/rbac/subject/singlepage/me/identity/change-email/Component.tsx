@@ -64,7 +64,7 @@ function Button({
     <button
       {...props}
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:opacity-50 ${appearance === "secondary" ? "border border-sps-line bg-sps-white" : appearance === "danger" ? "border border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "text-sps-muted"}`}
+      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:opacity-50 ${appearance === "secondary" ? "border border-border bg-card" : appearance === "danger" ? "border border-destructive-border bg-destructive-surface text-destructive" : "text-muted-foreground"}`}
     />
   );
 }

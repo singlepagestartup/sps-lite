@@ -19,12 +19,12 @@ export const Component = memo(function Component({
   disabled = false,
   onNavigate,
 }: Partial<INavigationButtonProps> = {}) {
-  const className = `inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-medium no-underline transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] ${
+  const className = `inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-medium no-underline transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
     disabled
-      ? "cursor-not-allowed text-[var(--color-sps-muted)]"
+      ? "cursor-not-allowed text-muted-foreground"
       : selected
-        ? "bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)]"
-        : "text-[var(--color-sps-muted)] hover:bg-[var(--color-sps-grey)] hover:text-[var(--color-sps-graphite)]"
+        ? "bg-muted text-foreground"
+        : "text-muted-foreground hover:bg-muted hover:text-foreground"
   }`;
   return disabled ? (
     <span

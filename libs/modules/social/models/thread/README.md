@@ -20,6 +20,9 @@ Threads group messages within chats.
 
 ## Variants
 
+- `id-ai-chat`: Thread header and message/composer slots. An explicit `isDocument` prop enables responsive Chat/Document panes, Knowledge and download slots; ordinary conversations occupy the full width.
+- `download-ai-chat`: document export button receiving a download action and pending state from RBAC Subject.
+- `list-item-sidebar-ai-chat`: memoized document or topic link with a selected state, Studio glyphs and a localized destination.
 - `default`: placeholder thread view.
 - `find`: data-fetch wrapper for querying threads.
 - `admin-form`: admin create/edit form for thread fields.

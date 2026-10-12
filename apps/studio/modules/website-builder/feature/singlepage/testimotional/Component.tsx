@@ -42,7 +42,7 @@ export function FeatureTestimotional(
     ...props,
   };
   const rootClassName = twMerge(
-    "flex h-full min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8",
+    "flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 sm:p-8",
     className,
   );
   const visibleRating = Number.isNaN(rating)
@@ -66,26 +66,26 @@ export function FeatureTestimotional(
           const RatingStar = index < visibleRating ? StarFilled : Star;
           return (
             <RatingStar
-              className={`h-5 w-5 ${index < visibleRating ? "text-[var(--color-sps-green)]" : "text-[var(--color-sps-muted)]"}`}
+              className={`h-5 w-5 ${index < visibleRating ? "text-primary" : "text-muted-foreground"}`}
               key={index}
             />
           );
         })}
       </div>
-      <blockquote className="flex-1 text-lg leading-8 text-[var(--color-sps-graphite)]">
+      <blockquote className="flex-1 text-lg leading-8 text-foreground">
         "{text}"
       </blockquote>
-      <footer className="mt-8 flex min-w-0 items-center gap-3 border-t border-[var(--color-sps-line)] pt-5">
+      <footer className="mt-8 flex min-w-0 items-center gap-3 border-t border-border pt-5">
         <img
-          className="h-12 w-12 shrink-0 rounded-full border border-[var(--color-sps-line)] object-cover"
+          className="h-12 w-12 shrink-0 rounded-full border border-border object-cover"
           src={avatar}
           alt={name}
         />
         <span className="min-w-0">
-          <strong className="block text-sm font-semibold leading-6 text-[var(--color-sps-graphite)]">
+          <strong className="block text-sm font-semibold leading-6 text-foreground">
             {name}
           </strong>
-          <small className="block text-sm leading-6 text-[var(--color-sps-muted)]">
+          <small className="block text-sm leading-6 text-muted-foreground">
             {role}
           </small>
         </span>

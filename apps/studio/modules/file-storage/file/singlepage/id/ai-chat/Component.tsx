@@ -26,7 +26,7 @@ export function Component({
     <figure
       data-id={file.id}
       data-ds-block="file-storage.file.id-ai-chat"
-      className="min-w-0 overflow-hidden rounded-xl border border-sps-line bg-sps-white"
+      className="min-w-0 overflow-hidden rounded-xl border border-border bg-card"
       data-module="file-storage"
       data-model="file"
       data-variant={variant}
@@ -43,7 +43,7 @@ export function Component({
             src={file.fileUrl}
             alt={file.name}
             loading="lazy"
-            className={`w-full object-contain bg-sps-grey ${compact ? "h-24" : "max-h-64"}`}
+            className={`w-full object-contain bg-muted ${compact ? "h-24" : "max-h-64"}`}
           />
         </a>
       ) : null}
@@ -82,10 +82,10 @@ export function Component({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  plain: `${buttonBase} text-sps-muted enabled:hover:text-sps-graphite ${focus}`,
+  plain: `${buttonBase} text-muted-foreground enabled:hover:text-foreground ${focus}`,
   focus: focus,
 };

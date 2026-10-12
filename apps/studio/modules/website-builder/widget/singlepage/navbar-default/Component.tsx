@@ -64,7 +64,7 @@ export function NavbarDefault({
   const closeNavigation = useCallback(() => setOpen(false), []);
   return (
     <header
-      className="sticky top-0 z-50 w-full shrink-0 border-b border-[var(--color-sps-line)] bg-[var(--color-sps-white)]/95 backdrop-blur-sm"
+      className="sticky top-0 z-50 w-full shrink-0 border-b border-border bg-card/95 backdrop-blur-sm"
       data-ds-block="website-builder.widget.navbar-default"
       data-ds-layer="singlepage"
       onKeyDown={(event) => {
@@ -93,7 +93,7 @@ export function NavbarDefault({
           <button
             ref={trigger}
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-xl border border-[var(--color-sps-line)] text-[var(--color-sps-muted)] hover:bg-[var(--color-sps-grey)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-xl border border-border text-muted-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground lg:hidden"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             aria-controls={menuId}
@@ -104,10 +104,7 @@ export function NavbarDefault({
         </div>
       </div>
       {open && (
-        <div
-          id={menuId}
-          className="border-t border-[var(--color-sps-line)] px-4 py-3 lg:hidden"
-        >
+        <div id={menuId} className="border-t border-border px-4 py-3 lg:hidden">
           <WebsiteBuilderModuleButtonsArray
             variant="navbar-default"
             activeHref={activeHref}

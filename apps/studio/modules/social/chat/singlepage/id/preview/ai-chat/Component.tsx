@@ -269,12 +269,12 @@ export function Component({
         key={item.id}
         className={
           item.role === "user"
-            ? "ml-6 rounded-xl bg-sps-white p-4"
+            ? "ml-6 rounded-xl bg-card p-4"
             : "flex items-start gap-3"
         }
       >
         {item.role === "assistant" ? (
-          <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-sps-green">
+          <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground">
             <Icon name="robot" className="size-4" />
           </span>
         ) : null}
@@ -288,7 +288,7 @@ export function Component({
           {item.documents?.map((document) => (
             <blockquote
               key={document.name}
-              className="mt-3 border-l-2 border-sps-green pl-3"
+              className="mt-3 border-l-2 border-primary pl-3"
             >
               <p className="text-xs font-semibold">{document.name}.md</p>
               <p
@@ -304,23 +304,23 @@ export function Component({
   }
   return (
     <div
-      className="overflow-hidden rounded-2xl border border-sps-line bg-white shadow-sm"
+      className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
       data-module="social"
       data-model="chat"
       data-variant={variant}
     >
       <ol
         aria-label={content.workflow.title}
-        className="grid grid-cols-2 border-b border-sps-line bg-sps-white @3xl:grid-cols-4"
+        className="grid grid-cols-2 border-b border-border bg-card @3xl:grid-cols-4"
       >
         {content.workflow.items.map((item, index) => (
           <li
             key={item.title}
             aria-current={stage === index ? "step" : undefined}
-            className={`flex items-center gap-2 border-b border-sps-line px-3 py-4 text-xs @3xl:border-b-0 @3xl:px-5 ${stage === index ? "font-semibold" : muted}`}
+            className={`flex items-center gap-2 border-b border-border px-3 py-4 text-xs @3xl:border-b-0 @3xl:px-5 ${stage === index ? "font-semibold" : muted}`}
           >
             <span
-              className={`grid size-6 shrink-0 place-items-center rounded-full ${stage >= index ? "bg-sps-green text-sps-graphite" : "bg-white"}`}
+              className={`grid size-6 shrink-0 place-items-center rounded-full ${stage >= index ? "bg-primary text-primary-foreground" : "bg-card"}`}
             >
               {stage > index ? (
                 <Icon name="check" className="size-3" />
@@ -333,14 +333,14 @@ export function Component({
         ))}
       </ol>
       <div className="grid min-w-0 @3xl:grid-cols-[220px_minmax(0,1fr)]">
-        <aside className="min-w-0 bg-sps-graphite p-5 text-white">
+        <aside className="min-w-0 bg-default p-5 text-default-foreground">
           <div className="flex items-center gap-3">
-            <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10">
+            <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-card/10">
               <Icon name="folder-open" />
             </span>
             <p className="text-sm font-semibold">{content.demoDraft.title}</p>
           </div>
-          <p className="mb-2 mt-6 text-xs font-semibold text-white/60">
+          <p className="mb-2 mt-6 text-xs font-semibold text-default-foreground/60">
             {label["demo-document-threads"]}
           </p>
           <div className="grid grid-cols-2 gap-1 @3xl:grid-cols-1">
@@ -358,23 +358,23 @@ export function Component({
             type="button"
             onClick={() => setView("files")}
             aria-pressed={view === "files"}
-            className={`mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/20 px-3 text-sm ${focus}`}
+            className={`mt-4 inline-flex min-h-11 items-center gap-2 rounded-lg border border-default-foreground/20 px-3 text-sm ${focus}`}
           >
             <Icon name="paperclip" className="size-4" />
             {label["demo-files"]}
-            <span className="text-white/60">
+            <span className="text-default-foreground/60">
               {content.demoFiles.items.length}
             </span>
           </button>
-          <div className="mt-6 border-t border-white/15 pt-4">
-            <p className="mb-2 text-xs font-semibold text-white/60">
+          <div className="mt-6 border-t border-default-foreground/15 pt-4">
+            <p className="mb-2 text-xs font-semibold text-default-foreground/60">
               {label["demo-workspace"]}
             </p>
             <button
               type="button"
               onClick={openWorkspace}
               aria-pressed={view === "workspace"}
-              className={`mb-2 inline-flex min-h-11 w-full items-center gap-2 rounded-lg border border-white/20 px-3 text-left text-sm disabled:opacity-50 ${focus}`}
+              className={`mb-2 inline-flex min-h-11 w-full items-center gap-2 rounded-lg border border-default-foreground/20 px-3 text-left text-sm disabled:opacity-50 ${focus}`}
             >
               <Icon name="plus" className="size-4" />
               {label["demo-new-topic"]}
@@ -390,14 +390,14 @@ export function Component({
               />
             ))}
             {!topics.length ? (
-              <p className="mt-2 text-xs leading-5 text-white/60">
+              <p className="mt-2 text-xs leading-5 text-default-foreground/60">
                 {label["demo-topic-hint"]}
               </p>
             ) : null}
           </div>
         </aside>
         <section aria-label={heading} className="min-w-0">
-          <header className="flex items-center justify-between gap-3 border-b border-sps-line px-5 py-4">
+          <header className="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
             <div className="min-w-0 flex-1">
               <p className={`text-xs ${muted}`}>
                 {view === "document"
@@ -421,7 +421,7 @@ export function Component({
           <div className="space-y-5 p-5 @3xl:p-6">
             {view === "materials" ? (
               <>
-                <div className="ml-6 rounded-xl bg-sps-white p-4">
+                <div className="ml-6 rounded-xl bg-card p-4">
                   <p className="text-xs font-semibold">{label["demo-you"]}</p>
                   <p className="mt-2 text-sm leading-6">
                     {content.demoDraft.paragraphs[0]}
@@ -430,7 +430,7 @@ export function Component({
                     {content.demoFiles.items.map((file) => (
                       <span
                         key={file.title}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-sps-line bg-white px-2 py-1.5 text-xs"
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-2 py-1.5 text-xs"
                       >
                         <Icon
                           name={
@@ -492,7 +492,7 @@ export function Component({
                   {content.demoFiles.items.map((file) => (
                     <div
                       key={file.title}
-                      className="rounded-xl border border-sps-line p-4"
+                      className="rounded-xl border border-border p-4"
                     >
                       <dt className="inline-flex items-center gap-2 text-sm font-semibold">
                         <Icon name="file-text" className="size-4" />
@@ -552,8 +552,8 @@ export function Component({
                   </form>
                 ) : (
                   <>
-                    <div className="rounded-xl border border-sps-line">
-                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-sps-line px-4 py-3">
+                    <div className="rounded-xl border border-border">
+                      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-3">
                         <label
                           htmlFor={`${id}-document`}
                           className="inline-flex items-center gap-2 text-sm font-semibold"
@@ -608,7 +608,7 @@ export function Component({
                     <button
                       type="button"
                       onClick={openWorkspace}
-                      className={`${kit.button} border border-sps-line !bg-white`}
+                      className={`${kit.button} border border-border !bg-card`}
                     >
                       <Icon name="plus" className="size-4" />
                       {label["demo-open-workspace"]}
@@ -656,7 +656,7 @@ export function Component({
                   {activeTopic.documents.map((name) => (
                     <span
                       key={name}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-sps-line bg-sps-white px-3 py-2 text-xs"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs"
                     >
                       <Icon name="paperclip" className="size-3" />
                       {name}.md
@@ -704,16 +704,16 @@ export function Component({
   );
 }
 const focusPresentation =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const field =
-  "w-full rounded-xl border border-sps-line bg-white px-4 py-3 text-sm leading-6 outline-none focus-visible:ring-2 focus-visible:ring-sps-graphite";
-const muted = "text-sps-muted";
+  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm leading-6 outline-none focus-visible:ring-2 focus-visible:ring-foreground";
+const muted = "text-muted-foreground";
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-green";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 const kit = {
-  button: `${buttonBase} bg-sps-green text-sps-graphite enabled:hover:brightness-95 ${focusPresentation}`,
+  button: `${buttonBase} bg-primary text-primary-foreground enabled:hover:brightness-95 ${focusPresentation}`,
 };
 const ThreadRow = memo(function ThreadRow({
   name,
@@ -730,16 +730,18 @@ const ThreadRow = memo(function ThreadRow({
       disabled={disabled}
       aria-pressed={selected}
       onClick={() => onSelect(value ?? name)}
-      className={`flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm disabled:opacity-50 ${selected ? "bg-white/10" : "hover:bg-white/5"} ${focus}`}
+      className={`flex min-h-12 w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm disabled:opacity-50 ${selected ? "bg-card/10" : "hover:bg-card/5"} ${focus}`}
     >
       <Icon
         name={topic ? "chat-circle" : "file-text"}
-        className="size-4 shrink-0 text-white/60"
+        className="size-4 shrink-0 text-default-foreground/60"
       />
       <span className="min-w-0 flex-1 break-words">
         <span className="block font-semibold">{name}</span>
         {status ? (
-          <span className="mt-0.5 block text-xs text-white/60">{status}</span>
+          <span className="mt-0.5 block text-xs text-default-foreground/60">
+            {status}
+          </span>
         ) : null}
       </span>
     </button>

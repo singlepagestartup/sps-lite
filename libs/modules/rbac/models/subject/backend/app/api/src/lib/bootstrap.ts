@@ -154,6 +154,7 @@ import { Service as BillingPaymentIntentsToInvoicesService } from "@sps/billing/
 import { Repository as NotificationTopicRepository } from "@sps/notification/models/topic/backend/app/api/src/lib/repository";
 import { Configuration as NotificationTopicConfiguration } from "@sps/notification/models/topic/backend/app/api/src/lib/configuration";
 import { Repository as NotificationNotificationRepository } from "@sps/notification/models/notification/backend/app/api/src/lib/repository";
+import { Service as NotificationNotificationService } from "@sps/notification/models/notification/backend/app/api/src/lib/service";
 import { Configuration as NotificationNotificationConfiguration } from "@sps/notification/models/notification/backend/app/api/src/lib/configuration";
 import { Repository as NotificationTemplateRepository } from "@sps/notification/models/template/backend/app/api/src/lib/repository";
 import { Configuration as NotificationTemplateConfiguration } from "@sps/notification/models/template/backend/app/api/src/lib/configuration";
@@ -492,7 +493,7 @@ const bindings = new ContainerModule((bind: interfaces.Bind) => {
         topic: new CRUDService<any>(
           new NotificationTopicRepository(new NotificationTopicConfiguration()),
         ),
-        notification: new CRUDService<any>(
+        notification: new NotificationNotificationService(
           new NotificationNotificationRepository(
             new NotificationNotificationConfiguration(),
           ),

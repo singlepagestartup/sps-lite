@@ -35,7 +35,7 @@ function MarkdownDocument({
   return (
     <div
       className={twMerge(
-        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-muted [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-muted-foreground [&_a]:text-muted-foreground [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-foreground [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-foreground [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-border [&_td]:p-2 [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
         className,
       )}
     >
@@ -105,14 +105,14 @@ export interface IMarkdownFieldProps {
   onHelp?: (button: HTMLButtonElement, section: string) => void;
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  muted: "text-sps-muted",
-  label: "text-sm font-semibold text-sps-graphite",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  muted: "text-muted-foreground",
+  label: "text-sm font-semibold text-foreground",
   focus: focus,
 };
 export const MarkdownField = memo(function MarkdownField({
@@ -149,7 +149,7 @@ export const MarkdownField = memo(function MarkdownField({
               aria-label={helpLabel ?? `About ${section}`}
               aria-haspopup="dialog"
               onClick={(event) => onHelp(event.currentTarget, section)}
-              className={`inline-flex shrink-0 items-center justify-center rounded p-0.5 text-sps-muted hover:text-sps-graphite focus:outline-none ${kit.focus}`}
+              className={`inline-flex shrink-0 items-center justify-center rounded p-0.5 text-muted-foreground hover:text-foreground focus:outline-none ${kit.focus}`}
             >
               <Icon name="question" className="size-4" />
             </button>
@@ -158,7 +158,7 @@ export const MarkdownField = memo(function MarkdownField({
         <div
           role="group"
           aria-label={`${label} display`}
-          className="flex rounded-lg bg-sps-grey p-1"
+          className="flex rounded-lg bg-muted p-1"
         >
           {(["editor", "preview"] as const).map((option) => (
             <button
@@ -173,7 +173,7 @@ export const MarkdownField = memo(function MarkdownField({
                 if (mode === "editor" && option === "editor")
                   textarea.current?.focus();
               }}
-              className={`min-h-7 rounded-md px-2 text-xs font-semibold ${kit.focus} ${mode === option ? "bg-sps-white text-sps-graphite" : kit.muted}`}
+              className={`min-h-7 rounded-md px-2 text-xs font-semibold ${kit.focus} ${mode === option ? "bg-card text-foreground" : kit.muted}`}
             >
               {option === "editor" ? "Editor" : "Preview"}
             </button>
@@ -196,7 +196,7 @@ export const MarkdownField = memo(function MarkdownField({
           id={`${id}-preview`}
           role="region"
           aria-label={`${label} preview`}
-          className="min-h-32 min-w-0 rounded-xl border border-sps-line px-3 py-2"
+          className="min-h-32 min-w-0 rounded-xl border border-border px-3 py-2"
         >
           {value.trim() ? (
             <MarkdownDocument

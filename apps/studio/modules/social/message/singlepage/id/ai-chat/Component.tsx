@@ -40,10 +40,10 @@ function MessageContext({ documents, label }: IMessageContextProps) {
         {documents.map((document) => (
           <details
             key={document.name}
-            className="rounded-xl border border-sps-line bg-sps-white p-3"
+            className="rounded-xl border border-border bg-card p-3"
           >
             <summary className={`cursor-pointer leading-5 ${kit.focus}`}>
-              <span className="font-semibold text-sps-graphite">
+              <span className="font-semibold text-foreground">
                 {document.name}
               </span>
               <span className="ml-2">
@@ -73,11 +73,11 @@ function MessageContext({ documents, label }: IMessageContextProps) {
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  muted: "text-sps-muted",
+  muted: "text-muted-foreground",
   focus: focus,
 };
 export const Component = memo(function Component({
@@ -106,13 +106,13 @@ export const Component = memo(function Component({
         ) : (
           <span
             aria-hidden="true"
-            className="grid size-8 shrink-0 place-items-center rounded-lg bg-sps-grey text-sps-graphite"
+            className="grid size-8 shrink-0 place-items-center rounded-lg bg-muted text-foreground"
           >
             <Icon name="robot" className="size-4" />
           </span>
         ))}
       <div
-        className={`min-w-0 flex-1 ${message.role === "user" ? "rounded-2xl bg-sps-grey p-4" : ""}`}
+        className={`min-w-0 flex-1 ${message.role === "user" ? "rounded-2xl bg-muted p-4" : ""}`}
       >
         <p className={`text-xs font-semibold ${kit.muted}`}>
           {message.role === "user"
@@ -120,7 +120,7 @@ export const Component = memo(function Component({
             : (replyingAgent?.name ?? "AI assistant")}
         </p>
         {message.workingOn && (
-          <p className="mt-2 text-xs leading-5 text-sps-muted">
+          <p className="mt-2 text-xs leading-5 text-muted-foreground">
             Working on {message.workingOn.documentName} ·{" "}
             {message.workingOn.sections.length
               ? message.workingOn.sections.join(" · ")

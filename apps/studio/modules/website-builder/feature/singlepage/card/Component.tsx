@@ -46,18 +46,18 @@ export function FeatureCard(
     <article
       data-ds-block="website-builder.feature.card"
       data-ds-layer="singlepage"
-      className="flex h-full min-w-0 flex-col rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8"
+      className="flex h-full min-w-0 flex-col rounded-2xl border border-border bg-card p-6 sm:p-8"
       data-module="website-builder"
       data-model="feature"
       data-variant={props?.variant ?? "card"}
     >
-      <span className="mb-6 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-sps-grey)] text-[var(--color-sps-graphite)]">
+      <span className="mb-6 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted text-foreground">
         <Icon className="h-6 w-6" />
       </span>
-      <h3 className="text-xl font-semibold leading-7 tracking-normal text-[var(--color-sps-graphite)]">
+      <h3 className="text-xl font-semibold leading-7 tracking-normal text-foreground">
         {title}
       </h3>
-      <p className="mt-3 text-base leading-7 text-[var(--color-sps-muted)]">
+      <p className="mt-3 text-base leading-7 text-muted-foreground">
         {description}
       </p>
     </article>

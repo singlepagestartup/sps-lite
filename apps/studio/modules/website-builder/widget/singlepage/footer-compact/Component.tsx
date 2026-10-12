@@ -37,7 +37,7 @@ export function FooterCompact(
 
   return (
     <footer
-      className="w-full border-t border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
+      className="w-full border-t border-border bg-card"
       data-ds-block="website-builder.widget.footer-compact"
       data-ds-layer="singlepage"
       data-module="website-builder"
@@ -45,7 +45,7 @@ export function FooterCompact(
       data-variant={props?.variant ?? "footer-compact"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
-        <div className="flex min-w-0 items-center gap-3 text-sm leading-6 text-[var(--color-sps-muted)]">
+        <div className="flex min-w-0 items-center gap-3 text-sm leading-6 text-muted-foreground">
           <WebsiteBuilderModuleLogotype variant="default" compact />
           <span>{copyright}</span>
         </div>

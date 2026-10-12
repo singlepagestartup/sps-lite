@@ -19,3 +19,16 @@ Relations live in the owning modules:
 Ordinary Source edits trigger text indexing. `POST /api/knowledge/sources/:id/reindex` rebuilds vectors from saved content. File relation mutations trigger full file analysis followed by indexing. Deleting a Source removes its chunks and relations and preserves Files.
 
 Frontend variants include the normal admin views, `chat-sidebar-item`, and `chat-sidebar-detail`. Data access uses the Source SDK. The AI Chat editor prototype lives in `apps/studio/modules/knowledge/models/source/singlepage/ai-chat-editor`.
+
+## AI Chat record and form variants
+
+`id-ai-chat` receives a Source reference with an ID. Its SPS record wrapper
+loads the current Source through the matching client or server SDK before
+rendering the editor. The renderer uses `IComponentPropsExtended`; caller save,
+discussion and attachment callbacks retain the RBAC scope that created them.
+
+`form-ai-chat` creates a section before a Source exists. It uses the shared form
+wrapper, accepts an initial title and content, and makes no `findById` request
+without an ID. The document's RBAC composition creates and links the Source.
+The editable fields live in its `ClientComponent`; the saved-record variant
+reuses those fields after loading its record.

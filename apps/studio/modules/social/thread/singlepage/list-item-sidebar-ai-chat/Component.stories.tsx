@@ -12,7 +12,7 @@ function Example() {
     [],
   );
   return (
-    <div className="max-w-sm rounded-2xl bg-sps-graphite p-4 text-white">
+    <div className="max-w-sm rounded-2xl bg-default p-4 text-default-foreground">
       <SocialModuleThread
         variant="list-item-sidebar-ai-chat"
         id="brief"

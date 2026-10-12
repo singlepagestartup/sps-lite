@@ -19,6 +19,23 @@ RBAC widgets provide reusable content blocks for access and account flows.
 
 ## Variants
 
+- `subject-me-profile-settings`: account sections composed from separate Subject Profile, avatar, Identity and purchase components.
+- `subject-me-social-module-profile-create-ai-chat`: authenticated Profile creation form for the Website Builder project card.
+- `subject-me-social-module-profile-id-settings-ai-chat`: project settings for explicit Profile/Chat IDs supplied by Host.
+- `subject-me-social-module-profile-id-chat-id-thread-create-ai-chat`: Thread creation within a selected, connected project.
+- `subject-me-social-module-profile-id-chat-id-thread-id-ai-chat`: connected-project guard and Social Profile → Chat → Thread composition. Subject components provide messages, composer, Knowledge editors and document export.
+- `subject-me-authentication-*-ai-chat`: separate authentication pages with a Website Builder content slot and the corresponding Subject form.
+
+AI Chat Widgets use server authentication and project readers for their initial
+composition. Interactive Subject forms and Thread panes remain client
+components. Navbar and Footer are linked through Host Layout data. Route IDs
+come from Host adapters; these Widgets do not select screens from URL strings.
+
+Landing and Help composition belongs to Host `widgets-to-external-widgets`.
+Their persisted targets are Website Builder Widgets. Host supplies the Social
+Chat demonstration to Landing and the authenticated Subject support form to
+Help through children slots.
+
 - `default`: placeholder widget view.
 - `find`: data-fetch wrapper for querying widgets.
 - `admin-form`: admin create/edit form for localized fields and metadata.

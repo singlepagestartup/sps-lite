@@ -114,19 +114,27 @@ export class Handler {
           });
       }
 
-      if (!title && preferenceUpdatedThread) {
+      const document =
+        data.document === undefined
+          ? undefined
+          : await this.service.socialModuleChatLifecycleValidateDocument({
+              socialModuleChatId,
+              document: data.document,
+            });
+
+      if (!title && preferenceUpdatedThread && document === undefined) {
         return c.json({
           data: preferenceUpdatedThread,
         });
       }
 
-      if (!title) {
+      if (!title && document === undefined) {
         throw new Error("Validation error. Thread title is required");
       }
 
       let sourceSystemId = existingSocialModuleThread.sourceSystemId;
 
-      if (canMirrorTelegramTopic({ socialModuleChat })) {
+      if (title && canMirrorTelegramTopic({ socialModuleChat })) {
         if (sourceSystemId) {
           await editTelegramForumTopic({
             socialModuleChat,
@@ -145,7 +153,16 @@ export class Handler {
       const socialModuleThread = await socialModuleThreadApi.update({
         id: socialModuleThreadId,
         data: {
-          title,
+          ...(title ? { title } : {}),
+          ...(document !== undefined
+            ? {
+                metadata: {
+                  ...(((preferenceUpdatedThread || existingSocialModuleThread)
+                    .metadata as Record<string, unknown>) || {}),
+                  aiChatDocument: document,
+                },
+              }
+            : {}),
           ...(sourceSystemId !== existingSocialModuleThread.sourceSystemId
             ? { sourceSystemId }
             : {}),

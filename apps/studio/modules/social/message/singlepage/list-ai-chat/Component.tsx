@@ -1,5 +1,7 @@
 "use client";
 
+import { Component as KnowledgeModuleSource } from "../../../../knowledge/source/index";
+import { useProfileSources } from "../../../../knowledge/source/singlepage/id/ai-chat/Source";
 import { Component as SocialModuleProfile } from "../../../profile/index";
 import { Component as MessageOverview } from "../id/ai-chat/index";
 import { useCallback, useRef, useEffect, useState } from "react";
@@ -18,6 +20,7 @@ export function Component({
   messages,
   className = "",
 }: IMessageListProps) {
+  const sources = useProfileSources();
   const [profile, setProfile] = useState<IProjectAgent | null>(null);
   const selectProfile = useCallback(
     (selected: IProjectAgent) => setProfile(selected),
@@ -57,6 +60,18 @@ export function Component({
       <SocialModuleProfile
         variant="agent-id-ai-chat"
         agent={profile}
+        knowledgeCount={sources.length}
+        knowledge={
+          sources.length
+            ? sources.map((source) => (
+                <KnowledgeModuleSource
+                  key={source.id}
+                  variant="id-sidebar-ai-chat"
+                  data={source}
+                />
+              ))
+            : undefined
+        }
         onClose={() => setProfile(null)}
       />
     </>

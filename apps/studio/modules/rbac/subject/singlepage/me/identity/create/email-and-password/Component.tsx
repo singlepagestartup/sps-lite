@@ -36,7 +36,7 @@ export function Component({
         disabled={connected}
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        className="flex min-h-14 w-full items-center gap-3 rounded-xl border border-sps-line px-4 py-3 text-left text-sm hover:bg-sps-grey focus-visible:outline-2 disabled:cursor-default disabled:text-sps-muted"
+        className="flex min-h-14 w-full items-center gap-3 rounded-xl border border-border px-4 py-3 text-left text-sm hover:bg-muted focus-visible:outline-2 disabled:cursor-default disabled:text-muted-foreground"
       >
         <Glyph className="size-5 shrink-0" />
         <span className="min-w-0 flex-1">

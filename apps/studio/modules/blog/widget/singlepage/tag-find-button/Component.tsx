@@ -55,10 +55,10 @@ export function TagFindButton(props?: Partial<TagFindButtonProps>) {
       data-variant={props?.variant ?? "tag-find-button"}
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6">
+        <div className="rounded-2xl border border-border bg-card p-6">
           <div className="mb-3 flex items-center gap-2">
-            <Tag className="size-5 text-[var(--color-sps-muted)]" />
-            <span className="text-lg font-semibold text-[var(--color-sps-graphite)]">
+            <Tag className="size-5 text-muted-foreground" />
+            <span className="text-lg font-semibold text-foreground">
               {title}
             </span>
           </div>

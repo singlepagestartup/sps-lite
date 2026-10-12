@@ -132,6 +132,8 @@ function SubjectThreadWorkspace({
 }
 
 export function Component(props: ISubjectThreadWorkspaceProps) {
+  const { signedIn } = useStudioAccount();
+  if (!signedIn) return null;
   return (
     <ProjectProvider profileId={props.profileId}>
       <SubjectThreadWorkspace {...props} />

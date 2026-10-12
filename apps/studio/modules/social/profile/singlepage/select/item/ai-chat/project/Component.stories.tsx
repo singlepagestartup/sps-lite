@@ -4,12 +4,12 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 function Example() {
   return (
     <DropdownMenu.Root defaultOpen modal={false}>
-      <DropdownMenu.Trigger className="rounded-xl border border-sps-line bg-sps-white px-4 py-3">
+      <DropdownMenu.Trigger className="rounded-xl border border-border bg-card px-4 py-3">
         Projects
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
         forceMount
-        className="w-64 rounded-xl border border-sps-line bg-sps-white p-2 text-sps-graphite"
+        className="w-64 rounded-xl border border-border bg-card p-2 text-foreground"
       >
         <SocialModuleProfile
           variant="select-item-ai-chat-project"

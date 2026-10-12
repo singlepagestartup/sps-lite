@@ -8,7 +8,7 @@ function Example() {
   return (
     <AccountProvider account={aiChatAccount}>
       <ProfilesProvider {...aiChatWorkspaceFixture()}>
-        <div className="@container min-h-screen bg-sps-grey font-sps text-sps-graphite">
+        <div className="@container min-h-screen bg-muted font-default text-foreground">
           <SocialModuleProfile
             variant="id-ai-chat-project"
             profileId="pottery"

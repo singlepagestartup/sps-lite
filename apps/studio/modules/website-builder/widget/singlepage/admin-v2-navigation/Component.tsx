@@ -42,21 +42,21 @@ export function WebsiteBuilderAdminV2Navigation(
   const activePath = props?.activePath ?? "/admin/ecommerce/product";
   return (
     <aside
-      className="flex lg:h-full lg:min-h-[720px] w-full min-w-0 flex-col border-r border-[var(--color-sps-line)] bg-[var(--color-sps-graphite)] text-white"
+      className="flex lg:h-full lg:min-h-[720px] w-full min-w-0 flex-col border-r border-border bg-default text-default-foreground"
       data-ds-block="website-builder.widget.admin-v2-navigation"
       data-ds-layer="singlepage"
       data-module="website-builder"
       data-model="widget"
       data-variant={props?.variant ?? "admin-v2-navigation"}
     >
-      <div className="border-b border-white/10 px-5 py-5">
+      <div className="border-b border-default-foreground/10 px-5 py-5">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-card text-foreground">
             <FileText className="h-5 w-5" />
           </div>
           <div>
             <p className="text-sm font-semibold">SPS Admin</p>
-            <p className="text-xs text-[var(--color-sps-muted-inverse)]">
+            <p className="text-xs text-default-muted-foreground">
               Records and relationships
             </p>
           </div>
@@ -71,10 +71,10 @@ export function WebsiteBuilderAdminV2Navigation(
           const Icon = item.icon;
           return (
             <a
-              className={`flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-white)] ${
+              className={`flex min-h-11 shrink-0 items-center gap-3 whitespace-nowrap rounded-xl px-3 py-2.5 text-sm transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-card ${
                 isActive
-                  ? "bg-[var(--color-sps-white)] text-[var(--color-sps-graphite)]"
-                  : "text-[var(--color-sps-muted-inverse)] hover:bg-[var(--color-sps-white)]/10 hover:text-white"
+                  ? "bg-card text-foreground"
+                  : "text-default-muted-foreground hover:bg-card/10 hover:text-default-foreground"
               }`}
               aria-current={isActive ? "page" : undefined}
               href={item.href}
@@ -86,12 +86,12 @@ export function WebsiteBuilderAdminV2Navigation(
           );
         })}
       </nav>
-      <div className="mt-auto hidden border-t border-white/10 p-4 lg:block">
-        <div className="rounded-xl bg-[var(--color-sps-white)]/10 p-3">
-          <p className="text-xs font-medium tracking-normal text-[var(--color-sps-muted-inverse)]">
+      <div className="mt-auto hidden border-t border-default-foreground/10 p-4 lg:block">
+        <div className="rounded-xl bg-card/10 p-3">
+          <p className="text-xs font-medium tracking-normal text-default-muted-foreground">
             Local preview
           </p>
-          <p className="mt-2 text-sm text-white">
+          <p className="mt-2 text-sm text-default-foreground">
             Explore records, edit fields and manage connections.
           </p>
         </div>

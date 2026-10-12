@@ -38,7 +38,7 @@ export function Component({
         <AlertDialog.Portal container={portal}>
           <AlertDialog.Overlay className="fixed inset-0 z-[200] bg-black/40" />
           <AlertDialog.Content
-            className="fixed left-1/2 top-1/2 z-[210] w-[calc(100%_-_2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-sps-line bg-sps-white p-6 text-sps-graphite"
+            className="fixed left-1/2 top-1/2 z-[210] w-[calc(100%_-_2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-border bg-card p-6 text-foreground"
             onOpenAutoFocus={(event) => {
               event.preventDefault();
               cancel.current?.focus();
@@ -47,7 +47,7 @@ export function Component({
             <AlertDialog.Title className="text-xl font-semibold">
               Remove {getIdentityProviderMeta(identity.provider).title}?
             </AlertDialog.Title>
-            <AlertDialog.Description className="mt-3 text-sm leading-6 text-sps-muted">
+            <AlertDialog.Description className="mt-3 text-sm leading-6 text-muted-foreground">
               Remove {getIdentityPrimaryLogin(identity)} from the sign-in
               methods in this preview? No external account is deleted.
             </AlertDialog.Description>
@@ -81,7 +81,7 @@ function Button({
     <button
       {...props}
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:opacity-50 ${appearance === "secondary" ? "border border-sps-line bg-sps-white" : appearance === "danger" ? "border border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "text-sps-muted"}`}
+      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 disabled:opacity-50 ${appearance === "secondary" ? "border border-border bg-card" : appearance === "danger" ? "border border-destructive-border bg-destructive-surface text-destructive" : "text-muted-foreground"}`}
     />
   );
 }

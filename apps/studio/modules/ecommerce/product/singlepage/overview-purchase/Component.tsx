@@ -125,57 +125,57 @@ export function ProductOverviewPurchase(
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 max-w-2xl">
-          <p className="text-sm font-semibold text-[var(--color-sps-muted)]">
+          <p className="text-sm font-semibold text-muted-foreground">
             Your project
           </p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight text-[var(--color-sps-graphite)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
             Choose what you need.
           </h2>
         </div>
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <div className="min-w-0 overflow-hidden rounded-3xl bg-[var(--color-sps-white)]">
+          <div className="min-w-0 overflow-hidden rounded-3xl bg-card">
             <div className="p-5 sm:p-8">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-[var(--color-sps-graphite)]">
+              <h3 className="flex items-center gap-2 text-lg font-semibold text-foreground">
                 <Package className="h-5 w-5" /> What you get
               </h3>
               <ul className="mt-5 grid gap-3">
                 {deliverables.map((deliverable) => (
                   <li
                     key={deliverable}
-                    className="flex items-start gap-3 text-base leading-6 text-[var(--color-sps-muted)]"
+                    className="flex items-start gap-3 text-base leading-6 text-muted-foreground"
                   >
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-sps-graphite)]" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-foreground" />
                     <span>{deliverable}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="flex min-w-0 flex-col rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] p-6 sm:p-8 lg:p-10">
+          <div className="flex min-w-0 flex-col rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10">
             <div className="flex items-center gap-4">
               <img
                 src={image}
                 alt=""
                 className="h-16 w-16 shrink-0 rounded-2xl object-cover"
               />
-              <p className="text-sm font-semibold text-[var(--color-sps-muted)]">
+              <p className="text-sm font-semibold text-muted-foreground">
                 {title}
               </p>
             </div>
-            <p className="mt-4 text-4xl font-semibold leading-tight text-[var(--color-sps-graphite)] sm:text-5xl">
+            <p className="mt-4 text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
               {priceLabel}
             </p>
-            <p className="mt-3 max-w-md text-sm leading-6 text-[var(--color-sps-muted)]">
+            <p className="mt-3 max-w-md text-sm leading-6 text-muted-foreground">
               {priceNote}
             </p>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-[var(--color-sps-grey)] p-4">
-              <span className="text-sm font-semibold text-[var(--color-sps-graphite)]">
+            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-muted p-4">
+              <span className="text-sm font-semibold text-foreground">
                 Quantity / licenses
               </span>
               <div
                 role="group"
                 aria-label="Quantity"
-                className="flex items-center gap-1 rounded-xl bg-[var(--color-sps-white)] p-1"
+                className="flex items-center gap-1 rounded-xl bg-card p-1"
               >
                 <Button
                   variant="plain"

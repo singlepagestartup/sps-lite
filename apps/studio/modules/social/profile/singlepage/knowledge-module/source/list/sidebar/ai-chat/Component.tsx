@@ -16,7 +16,7 @@ export function Component({
   const [open, setOpen] = useState(true);
   const kit = {
     focus:
-      "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-green",
+      "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
   };
   return (
     <div
@@ -31,7 +31,7 @@ export function Component({
         aria-expanded={open}
         aria-controls={`${id}-document-list`}
         onClick={() => setOpen((current) => !current)}
-        className={`flex min-h-11 w-full items-center gap-2 rounded-lg bg-white/10 px-3 py-2 text-left text-sm font-semibold ${kit.focus}`}
+        className={`flex min-h-11 w-full items-center gap-2 rounded-lg bg-card/10 px-3 py-2 text-left text-sm font-semibold ${kit.focus}`}
       >
         <WebsiteBuilderModuleFeature
           variant="icon"
@@ -39,7 +39,7 @@ export function Component({
           className="size-4"
         />
         <span className="flex-1">Documents</span>
-        <span className="text-xs text-white/60">1</span>
+        <span className="text-xs text-default-foreground/60">1</span>
         <WebsiteBuilderModuleFeature
           variant="icon"
           name="caret-down"

@@ -30,3 +30,12 @@ const meta = {
 } satisfies Meta<typeof Example>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
+export const Loading: StoryObj<typeof meta> = {
+  args: { profiles: { initialProjects: [], loading: true } },
+};
+export const Empty: StoryObj<typeof meta> = {
+  args: { profiles: { initialProjects: [], loading: false } },
+};
+export const Error: StoryObj<typeof meta> = {
+  args: { profiles: { initialProjects: [], error: true } },
+};

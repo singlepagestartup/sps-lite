@@ -56,7 +56,7 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
   const totals = getCartTotals(items);
   return (
     <aside
-      className="min-w-0 overflow-hidden rounded-3xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)]"
+      className="min-w-0 overflow-hidden rounded-3xl border border-border bg-card"
       data-ds-block="ecommerce.order.summary-default"
       data-ds-imports="ecommerce.product.cart-default"
       data-ds-layer="singlepage"
@@ -64,21 +64,19 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
       data-model="order"
       data-variant={props?.variant ?? "summary-default"}
     >
-      <div className="border-b border-[var(--color-sps-line)] px-6 py-5">
-        <h3 className="text-xl font-semibold text-[var(--color-sps-graphite)]">
-          Order summary
-        </h3>
-        <p className="mt-1 text-sm text-[var(--color-sps-muted)]">
+      <div className="border-b border-border px-6 py-5">
+        <h3 className="text-xl font-semibold text-foreground">Order summary</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
           {totals.itemCount} {totals.itemCount === 1 ? "item" : "items"}
         </p>
       </div>
 
       {items.length === 0 ? (
-        <p className="px-6 py-8 text-sm text-[var(--color-sps-muted)]">
+        <p className="px-6 py-8 text-sm text-muted-foreground">
           Your order has no items.
         </p>
       ) : null}
-      <ul className="divide-y divide-[var(--color-sps-line)] px-6">
+      <ul className="divide-y divide-border px-6">
         {items.map((item) => (
           <li key={item.id} className="py-5">
             <EcommerceModuleProduct
@@ -96,35 +94,33 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
         ))}
       </ul>
 
-      <div className="space-y-3 border-t border-[var(--color-sps-line)] px-6 py-5">
-        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
+      <div className="space-y-3 border-t border-border px-6 py-5">
+        <div className="flex justify-between text-sm text-muted-foreground">
           <span>Subtotal</span>
           <span>{formatCartMoney(totals.subtotal)}</span>
         </div>
-        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
+        <div className="flex justify-between text-sm text-muted-foreground">
           <span>Consultation discount</span>
-          <span className="text-[var(--color-sps-graphite)]">
+          <span className="text-foreground">
             -{formatCartMoney(totals.discount)}
           </span>
         </div>
-        <div className="flex justify-between text-sm text-[var(--color-sps-muted)]">
+        <div className="flex justify-between text-sm text-muted-foreground">
           <span>Tax</span>
           <span>$0</span>
         </div>
-        <div className="rounded-2xl bg-[var(--color-sps-grey)] p-4">
+        <div className="rounded-2xl bg-muted p-4">
           <div className="flex items-center justify-between">
-            <span className="text-lg text-[var(--color-sps-graphite)]">
-              Total
-            </span>
-            <span className="text-3xl font-semibold text-[var(--color-sps-graphite)]">
+            <span className="text-lg text-foreground">Total</span>
+            <span className="text-3xl font-semibold text-foreground">
               {formatCartMoney(totals.total)}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-[var(--color-sps-line)] px-6 py-5">
-        <div className="flex flex-wrap items-center gap-5 text-sm text-[var(--color-sps-muted)]">
+      <div className="border-t border-border px-6 py-5">
+        <div className="flex flex-wrap items-center gap-5 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-2">
             <Lock className="h-5 w-5" />
             SSL Secured

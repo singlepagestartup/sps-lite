@@ -37,7 +37,7 @@ export function Component({
       data-thread-id={threadId}
     >
       {thread.id === threadId && proposal && (
-        <div className="mx-4 mb-4 rounded-xl border border-sps-line bg-sps-grey p-4">
+        <div className="mx-4 mb-4 rounded-xl border border-border bg-muted p-4">
           <p className="text-xs font-semibold">
             Proposed update · {source.title}
           </p>
@@ -72,7 +72,7 @@ function Button({
     <button
       {...props}
       type={type}
-      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 ${appearance === "primary" ? "bg-sps-green text-sps-graphite" : "text-sps-muted"}`}
+      className={`inline-flex min-h-11 items-center justify-center rounded-xl px-5 py-2 text-sm font-semibold focus-visible:outline-2 ${appearance === "primary" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}
     />
   );
 }

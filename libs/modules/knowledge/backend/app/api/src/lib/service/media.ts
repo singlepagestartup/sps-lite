@@ -216,8 +216,8 @@ export class MediaService {
 
   private async generate(prompt: string, image?: string) {
     const response = await this.provider().generate({
-      model: process.env.KNOWLEDGE_ANALYSIS_MODEL || "google/gemini-2.5-flash",
-      temperature: 0,
+      model: process.env.KNOWLEDGE_ANALYSIS_MODEL || "openai/gpt-6.1-sol",
+      reasoning: { effort: "medium", exclude: true },
       stripNonTextOnRetry: false,
       context: [
         {

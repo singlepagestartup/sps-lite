@@ -20,10 +20,10 @@ export function Component({
       data-variant={variant}
       data-profile-id={profileId}
     >
-      <header className="sticky top-0 z-10 flex shrink-0 items-center gap-3 border-b border-sps-line bg-sps-white p-4">
+      <header className="sticky top-0 z-10 flex shrink-0 items-center gap-3 border-b border-border bg-card p-4">
         {navigation}
         <div>
-          <p className="text-xs text-sps-muted">Project</p>
+          <p className="text-xs text-muted-foreground">Project</p>
           <h2 className="mt-1 text-base font-semibold">Project settings</h2>
         </div>
       </header>

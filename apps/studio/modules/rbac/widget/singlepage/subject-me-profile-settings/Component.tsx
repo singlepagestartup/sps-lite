@@ -115,7 +115,7 @@ export function SubjectMeProfileSettings({
   ];
   return (
     <section
-      className="w-full bg-sps-grey py-6 font-sps text-sps-graphite sm:py-8"
+      className="w-full bg-muted py-6 font-default text-foreground sm:py-8"
       data-ds-block="rbac.widget.subject-me-profile-settings"
       data-ds-imports="rbac.subject.me-social-module-profile-id-settings-ai-chat rbac.subject.me-identity-find-information rbac.subject.me-ecommerce-module-order-list-ai-chat rbac.subject.me-delete-ai-chat"
       data-ds-layer="singlepage"
@@ -129,7 +129,7 @@ export function SubjectMeProfileSettings({
             <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
               Account settings
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-sps-muted">
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
               Edit your profile, manage how you sign in and review your account
               data.
             </p>
@@ -150,7 +150,7 @@ export function SubjectMeProfileSettings({
         {signedOut ? (
           <p
             role="status"
-            className="rounded-xl border border-sps-line bg-sps-white p-6"
+            className="rounded-xl border border-border bg-card p-6"
           >
             You are signed out.{" "}
             <a
@@ -199,11 +199,11 @@ export function SubjectMeProfileSettings({
                   }
                   onClick={() => setActiveSection(sectionId)}
                   type="button"
-                  className={`flex min-h-12 w-full cursor-pointer items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite ${activeSection === sectionId ? "bg-sps-white" : "text-sps-muted hover:bg-sps-white"}`}
+                  className={`flex min-h-12 w-full cursor-pointer items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${activeSection === sectionId ? "bg-card" : "text-muted-foreground hover:bg-card"}`}
                 >
                   <span
                     aria-hidden="true"
-                    className={`h-5 w-1 shrink-0 rounded-full ${activeSection === sectionId ? "bg-sps-green" : "bg-transparent"}`}
+                    className={`h-5 w-1 shrink-0 rounded-full ${activeSection === sectionId ? "bg-primary text-primary-foreground" : "bg-transparent"}`}
                   />
                   {label}
                 </button>
@@ -231,19 +231,19 @@ export function SubjectMeProfileSettings({
 }
 const LogOut = createIcon("sign-out");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] px-4 py-2 text-base text-[var(--color-sps-graphite)] outline-none transition motion-reduce:transition-none placeholder:text-[var(--color-sps-muted)] focus-visible:border-[var(--color-sps-graphite)] focus-visible:ring-2 focus-visible:ring-[var(--color-sps-graphite)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-sps-white)] disabled:cursor-not-allowed disabled:bg-[var(--color-sps-grey)] disabled:text-[var(--color-sps-muted)] disabled:opacity-60 [&[readonly]]:bg-[var(--color-sps-grey)] aria-invalid:border-[var(--color-sps-danger)] aria-invalid:focus-visible:ring-[var(--color-sps-danger)]",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-card)] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
 };
 const picker = {
-  trigger: `${kit.field} flex h-12 items-center justify-between gap-3 rounded-lg text-left text-sm font-normal shadow-sm focus-visible:ring-[3px] focus-visible:ring-[var(--color-sps-graphite)]/20 focus-visible:ring-offset-0 [&>span]:truncate`,
-  icon: "pointer-events-none text-[var(--color-sps-muted)]",
+  trigger: `${kit.field} flex h-12 items-center justify-between gap-3 rounded-lg text-left text-sm font-normal shadow-sm focus-visible:ring-[3px] focus-visible:ring-foreground/20 focus-visible:ring-offset-0 [&>span]:truncate`,
+  icon: "pointer-events-none text-muted-foreground",
   content:
-    "z-[60] max-h-[var(--radix-select-content-available-height)] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-[var(--color-sps-line)] bg-[var(--color-sps-white)] font-[family-name:var(--font-sps)] text-[var(--color-sps-graphite)] shadow-md",
-  item: "relative flex min-h-9 w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-3 text-sm outline-none data-[highlighted]:bg-[var(--color-sps-grey)] data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
+    "z-[60] max-h-[var(--radix-select-content-available-height)] w-[var(--radix-select-trigger-width)] overflow-hidden rounded-lg border border-border bg-card font-default text-foreground shadow-md",
+  item: "relative flex min-h-9 w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-3 text-sm outline-none data-[highlighted]:bg-muted data-[disabled]:pointer-events-none data-[disabled]:opacity-40",
 };
 // shadcn Select composition, themed with module tokens and Phosphor icons.
 // https://ui.shadcn.com/docs/components/radix/select

@@ -22,12 +22,12 @@ export function ButtonLink(props?: Partial<ButtonLinkProps>) {
   const sizeClass = size === "xs" ? "text-xs" : "text-sm";
   const toneClass =
     tone === "muted"
-      ? "text-[var(--color-sps-muted)] hover:text-[var(--color-sps-graphite)]"
-      : "text-[var(--color-sps-muted)] hover:text-[var(--color-sps-graphite)]";
+      ? "text-muted-foreground hover:text-foreground"
+      : "text-muted-foreground hover:text-foreground";
 
   return (
     <a
-      className={`inline-flex min-h-11 min-w-11 max-w-full items-center justify-center rounded-xl no-underline underline-offset-4 transition hover:underline motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)] ${sizeClass} ${toneClass}`}
+      className={`inline-flex min-h-11 min-w-11 max-w-full items-center justify-center rounded-xl no-underline underline-offset-4 transition hover:underline motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${sizeClass} ${toneClass}`}
       data-ds-block="website-builder.button.link"
       data-ds-layer="singlepage"
       href={href}

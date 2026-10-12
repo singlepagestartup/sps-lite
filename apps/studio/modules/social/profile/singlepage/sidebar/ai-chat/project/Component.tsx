@@ -45,7 +45,7 @@ export function Component({
           href={`${href}/settings`}
           aria-label="Project settings"
           aria-current={settingsSelected ? "page" : undefined}
-          className={`flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium hover:bg-white/10 ${kit.focus} ${settingsSelected ? "bg-white/15" : "text-white/80"}`}
+          className={`flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium hover:bg-card/10 ${kit.focus} ${settingsSelected ? "bg-card/15" : "text-default-foreground/80"}`}
         >
           <Icon name="gear-six" className="size-4" />
           Settings
@@ -57,13 +57,15 @@ export function Component({
       </nav>
       <section
         aria-label="Project threads"
-        className="mt-5 border-t border-white/10 pt-4"
+        className="mt-5 border-t border-default-foreground/10 pt-4"
       >
-        <h2 className="mb-3 text-xs font-semibold text-white/60">Threads</h2>
+        <h2 className="mb-3 text-xs font-semibold text-default-foreground/60">
+          Threads
+        </h2>
         <a
           href={aiChatThreadCreateHref(profileId, chatId)}
           aria-current={creatingThread ? "page" : undefined}
-          className={`flex min-h-11 w-full items-center gap-2 rounded-xl border border-white/15 px-3 py-2 text-left text-sm text-white/80 hover:bg-white/10 ${creatingThread ? "bg-white/15" : ""} ${kit.focus}`}
+          className={`flex min-h-11 w-full items-center gap-2 rounded-xl border border-default-foreground/15 px-3 py-2 text-left text-sm text-default-foreground/80 hover:bg-card/10 ${creatingThread ? "bg-card/15" : ""} ${kit.focus}`}
         >
           <Icon name="plus" className="size-4" />
           New thread
@@ -73,7 +75,7 @@ export function Component({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {

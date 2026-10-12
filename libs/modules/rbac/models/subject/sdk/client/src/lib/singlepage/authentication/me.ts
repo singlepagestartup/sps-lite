@@ -14,6 +14,7 @@ import {
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
 
 export type IProps = IParentProps["IAuthenticationMeProps"] & {
+  subjectId?: string;
   reactQueryOptions?: Partial<UseQueryOptions<any>>;
 };
 
@@ -21,7 +22,7 @@ export type IResult = IParentResult["IAuthenticationMeResult"];
 
 export function action(props: IProps) {
   return useQuery<IResult>({
-    queryKey: [`${route}/authentication/me`],
+    queryKey: [`${route}/authentication/me`, props.subjectId],
     queryFn: async () => {
       try {
         const result = await api.authenticationMe({

@@ -389,8 +389,11 @@ the File pool remains available for reattachment and message attachments.
 Fixtures and helpers live beside the models that own them. Component variants
 contain their own rendering. Website Builder Feature supplies icons through its
 public model entry; Subject form actions use local native buttons. Website Builder
-Button supplies content and navigation links. Modules use `runtime/sps.css` and
-assets under `runtime/assets`, exposed as `/module-assets`. The website keeps
+Button supplies content and navigation links. Modules use `runtime/theme.css` and
+assets under `runtime/assets`, exposed as `/module-assets`. Color utilities use
+semantic roles such as `primary`, `default`, `card`, `muted`, `foreground`, and
+`border`; color variables contain HSL channels. `font-default` and `font-sans` use
+the same default font role, and `font-primary` is available for display text. The website keeps
 model providers mounted across local navigation. Studio stores no relation records,
 query filters or SDK adapters. Production storage, retrieval and tools belong to
 `libs/modules` and are connected separately after visual design.

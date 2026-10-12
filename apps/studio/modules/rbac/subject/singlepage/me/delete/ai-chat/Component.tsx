@@ -52,7 +52,7 @@ function MarkdownDocument({
   return (
     <div
       className={twMerge(
-        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-sps-grey [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-sps-muted [&_a]:text-sps-muted [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-sps-line [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-sps-grey [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-sps-graphite [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-sps-graphite [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-sps-graphite [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-sps-line [&_td]:p-2 [&_th]:border [&_th]:border-sps-line [&_th]:bg-sps-grey [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
+        "min-w-0 max-w-none break-words [&_pre]:max-w-full [&_pre]:overflow-x-auto [&_pre]:rounded-2xl [&_pre]:bg-muted [&_pre]:p-5 [&_pre_code]:whitespace-pre [&_pre_code]:break-normal text-base leading-7 text-muted-foreground [&_a]:text-muted-foreground [&_a]:underline [&_blockquote]:border-l-4 [&_blockquote]:border-border [&_blockquote]:pl-4 [&_code]:rounded [&_code]:bg-muted [&_code]:px-1 [&_h1]:mb-5 [&_h1]:text-3xl [&_h1]:font-semibold [&_h1]:tracking-tight [&_h1]:text-foreground [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h3]:mb-2 [&_h3]:mt-6 [&_h3]:font-semibold [&_h3]:text-foreground [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-3 [&_table]:my-5 [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto [&_td]:border [&_td]:border-border [&_td]:p-2 [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-2 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6",
         className,
       )}
     >
@@ -115,7 +115,7 @@ function SectionText({
   const projectHref = useContext(ProjectHrefContext);
   return (
     <div
-      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-white/80 [&_a]:text-white [&_strong]:text-white" : "text-sps-muted [&_a]:text-sps-graphite [&_strong]:text-sps-graphite"}`}
+      className={`space-y-3 ${size === "xs" ? "text-xs [&>div]:text-xs [&>div]:leading-relaxed" : "text-sm"} leading-relaxed [&_p]:m-0 [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold ${tone === "dark" ? "text-default-foreground/80 [&_a]:text-default-foreground [&_strong]:text-default-foreground" : "text-muted-foreground [&_a]:text-foreground [&_strong]:text-foreground"}`}
     >
       {section.paragraphs.map((paragraph, index) => (
         <MarkdownDocument key={index}>
@@ -149,7 +149,7 @@ function PageSection({
     <section className={`${kit.card} p-5 @[640px]:p-6 ${className}`}>
       <h2 className="flex items-center gap-3 text-xl font-semibold">
         {icon ? (
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sps-grey">
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-muted">
             <Icon name={icon} />
           </span>
         ) : null}
@@ -174,7 +174,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "border-sps-line bg-sps-grey"}`}
+      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-destructive-border bg-destructive-surface text-destructive" : "border-border bg-muted"}`}
     >
       <Icon
         name={
@@ -184,7 +184,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
               ? "question"
               : "check-circle"
         }
-        className={kind === "success" ? "text-sps-graphite" : ""}
+        className={kind === "success" ? "text-foreground" : ""}
       />
       <div className="min-w-0">{children}</div>
     </div>
@@ -222,7 +222,7 @@ export function Component({
       data-variant={variant}
     >
       <PageSection section={sections.privacy} icon="shield">
-        <div className="mt-6 border-t border-sps-danger-line pt-6">
+        <div className="mt-6 border-t border-destructive-border pt-6">
           <h3 className="text-lg font-semibold">{sections.danger.title}</h3>
           <SectionText section={sections.danger} />
           <div ref={setPortal} className="mt-5">
@@ -239,24 +239,24 @@ export function Component({
               <AlertDialog.Portal container={portal}>
                 <AlertDialog.Overlay className="fixed inset-0 z-[200] bg-black/40" />
                 <AlertDialog.Content
-                  className="fixed left-1/2 top-1/2 z-[210] max-h-[85dvh] w-[calc(100%_-_2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-sps-line bg-sps-white p-6 font-sps text-sps-graphite shadow-xl"
+                  className="fixed left-1/2 top-1/2 z-[210] max-h-[85dvh] w-[calc(100%_-_2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-2xl border border-border bg-card p-6 font-default text-foreground shadow-xl"
                   onOpenAutoFocus={(event) => {
                     event.preventDefault();
                     cancel.current?.focus();
                   }}
                 >
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sps-danger-surface text-sps-danger">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-destructive-surface text-destructive">
                     <Icon name="trash" size={24} />
                   </div>
                   <AlertDialog.Title className="text-2xl font-semibold leading-tight">
                     {labels["deletion-title"]}
                   </AlertDialog.Title>
-                  <AlertDialog.Description className="mt-3 text-sm leading-6 text-sps-muted">
+                  <AlertDialog.Description className="mt-3 text-sm leading-6 text-muted-foreground">
                     {labels["deletion-description"]}
                   </AlertDialog.Description>
-                  <dl className="mt-5 grid gap-3 rounded-xl bg-sps-grey p-4 text-sm">
+                  <dl className="mt-5 grid gap-3 rounded-xl bg-muted p-4 text-sm">
                     <div>
-                      <dt className="text-sps-muted">
+                      <dt className="text-muted-foreground">
                         {labels["account-summary-label"]}
                       </dt>
                       <dd className="mt-1 break-words font-medium">
@@ -264,7 +264,7 @@ export function Component({
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-sps-muted">
+                      <dt className="text-muted-foreground">
                         {labels["project-summary-label"]}
                       </dt>
                       <dd className="mt-1 break-words font-medium">
@@ -302,7 +302,7 @@ export function Component({
         </div>
       </PageSection>
 
-      <details className="rounded-xl border border-sps-line px-5 py-4 text-sm">
+      <details className="rounded-xl border border-border px-5 py-4 text-sm">
         <summary className={`w-fit cursor-pointer font-medium ${kit.focus}`}>
           {sections.recovery.title}
         </summary>
@@ -319,13 +319,13 @@ export function Component({
 }
 const ProjectHrefContext = createContext("/ai-chat/social/profiles/create");
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  button: `${buttonBase} bg-sps-green text-sps-graphite enabled:hover:brightness-95 ${focus}`,
-  plain: `${buttonBase} text-sps-muted enabled:hover:text-sps-graphite ${focus}`,
-  card: "min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5",
+  button: `${buttonBase} bg-primary text-primary-foreground enabled:hover:brightness-95 ${focus}`,
+  plain: `${buttonBase} text-muted-foreground enabled:hover:text-foreground ${focus}`,
+  card: "min-w-0 rounded-2xl border border-border bg-card p-5",
   focus: focus,
 };
 function Button({
@@ -338,12 +338,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -351,7 +351,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

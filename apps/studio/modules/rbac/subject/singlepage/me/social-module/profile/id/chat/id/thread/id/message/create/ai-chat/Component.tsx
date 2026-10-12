@@ -101,7 +101,7 @@ export function Component({
     <form
       data-ds-block="rbac.subject.me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat"
       onSubmit={submit}
-      className="flex min-h-0 shrink-0 flex-col border-t border-sps-line bg-sps-white p-4 max-h-[min(24rem,60%)]"
+      className="flex min-h-0 shrink-0 flex-col border-t border-border bg-card p-4 max-h-[min(24rem,60%)]"
       data-module="rbac"
       data-model="subject"
       data-subject-id={subjectId ?? account.subject?.id}
@@ -116,7 +116,7 @@ export function Component({
       {
         <div className="mb-3 shrink-0">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <span className="text-xs text-sps-muted">Working on</span>
+            <span className="text-xs text-muted-foreground">Working on</span>
             <DropdownMenu.Root modal={false}>
               <DropdownMenu.Trigger asChild>
                 <Button
@@ -136,9 +136,9 @@ export function Component({
                   align="start"
                   sideOffset={6}
                   collisionPadding={12}
-                  className="z-50 max-h-80 w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-lg border border-sps-line bg-sps-white p-1 font-sps text-sps-graphite shadow-md"
+                  className="z-50 max-h-80 w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-lg border border-border bg-card p-1 font-default text-foreground shadow-md"
                 >
-                  <DropdownMenu.Label className="px-3 py-2 text-xs font-semibold text-sps-muted">
+                  <DropdownMenu.Label className="px-3 py-2 text-xs font-semibold text-muted-foreground">
                     {thread.title} · working context
                   </DropdownMenu.Label>
                   <DropdownMenu.RadioGroup
@@ -154,7 +154,7 @@ export function Component({
                       <DropdownMenu.RadioItem
                         key={item.value}
                         value={item.value}
-                        className="relative flex min-h-10 cursor-pointer items-center rounded-md py-2 pl-8 pr-3 text-sm outline-none data-highlighted:bg-sps-grey"
+                        className="relative flex min-h-10 cursor-pointer items-center rounded-md py-2 pl-8 pr-3 text-sm outline-none data-highlighted:bg-muted"
                       >
                         <DropdownMenu.ItemIndicator className="absolute left-2">
                           <Icon name="check" className="size-4" />
@@ -169,7 +169,7 @@ export function Component({
           </div>
         </div>
       }
-      <div className="flex min-h-0 flex-col rounded-2xl border border-sps-line p-2 focus-within:border-sps-graphite">
+      <div className="flex min-h-0 flex-col rounded-2xl border border-border p-2 focus-within:border-foreground">
         <div className="min-h-0 overflow-y-auto">
           {files.length > 0 && (
             <ul
@@ -240,7 +240,7 @@ export function Component({
       {error && (
         <p
           role="alert"
-          className="mt-2 shrink-0 text-sm leading-5 text-sps-graphite"
+          className="mt-2 shrink-0 text-sm leading-5 text-foreground"
         >
           {error}
         </p>
@@ -258,12 +258,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -271,7 +271,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

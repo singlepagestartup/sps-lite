@@ -47,7 +47,7 @@ function TextField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -103,7 +103,7 @@ function PasswordField({
         </p>
       ) : null}
       {error ? (
-        <p id={`${id}-error`} className="text-sm text-sps-danger">
+        <p id={`${id}-error`} className="text-sm text-destructive">
           {error}
         </p>
       ) : null}
@@ -118,7 +118,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-sps-danger-line bg-sps-danger-surface text-sps-danger" : "border-sps-line bg-sps-grey"}`}
+      className={`flex items-start gap-3 rounded-xl border p-4 text-sm leading-relaxed ${kind === "error" ? "border-destructive-border bg-destructive-surface text-destructive" : "border-border bg-muted"}`}
     >
       <Icon
         name={
@@ -128,7 +128,7 @@ function Feedback({ children, kind = "success" }: IFeedbackProps) {
               ? "question"
               : "check-circle"
         }
-        className={kind === "success" ? "text-sps-graphite" : ""}
+        className={kind === "success" ? "text-foreground" : ""}
       />
       <div className="min-w-0">{children}</div>
     </div>
@@ -200,19 +200,19 @@ export function Component({
       data-model="subject"
       data-variant={variant}
       aria-labelledby={`${id}-title`}
-      className="min-w-0 rounded-2xl border border-sps-line bg-sps-white p-5 @[640px]:p-6"
+      className="min-w-0 rounded-2xl border border-border bg-card p-5 @[640px]:p-6"
     >
       <h2
         id={`${id}-title`}
         className="flex items-center gap-3 text-xl font-semibold"
       >
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-sps-grey">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted">
           <Icon name="sign-in" />
         </span>
         {copy.title}
       </h2>
       {copy.description.map((paragraph, index) => (
-        <p key={index} className="mt-3 text-sm leading-6 text-sps-muted">
+        <p key={index} className="mt-3 text-sm leading-6 text-muted-foreground">
           {paragraph}
         </p>
       ))}
@@ -252,7 +252,7 @@ export function Component({
           }}
         />
         <a
-          className={`w-fit text-sm underline decoration-sps-line underline-offset-4 ${kit.focus}`}
+          className={`w-fit text-sm underline decoration-border underline-offset-4 ${kit.focus}`}
           href={label["forgot-href"]}
         >
           {label["forgot-label"]}
@@ -261,10 +261,10 @@ export function Component({
           {label.submit}
           <Icon name="arrow-right" />
         </Button>
-        <p className="text-center text-sm leading-6 text-sps-muted">
+        <p className="text-center text-sm leading-6 text-muted-foreground">
           {label["no-account"]}{" "}
           <a
-            className={`font-semibold text-sps-graphite underline underline-offset-4 ${kit.focus}`}
+            className={`font-semibold text-foreground underline underline-offset-4 ${kit.focus}`}
             href={label["register-href"]}
           >
             {label["register-label"]}
@@ -274,7 +274,7 @@ export function Component({
       {submitted ? (
         <div className="mt-6 grid gap-4">
           <Feedback kind="success">{label["success-message"]}</Feedback>
-          <p className="text-sm leading-6 text-sps-muted">
+          <p className="text-sm leading-6 text-muted-foreground">
             {copy.successDescription.join(" ")}
           </p>
           <a className={`${kit.secondary} w-fit`} href={label["continue-href"]}>
@@ -287,15 +287,15 @@ export function Component({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {
-  secondary: `${buttonBase} border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey ${focus}`,
+  secondary: `${buttonBase} border border-border bg-card text-foreground enabled:hover:bg-muted ${focus}`,
   field:
-    "min-h-12 w-full min-w-0 rounded-xl border border-sps-line bg-sps-white px-4 py-2 text-base text-sps-graphite outline-none transition motion-reduce:transition-none placeholder:text-sps-muted focus-visible:border-sps-graphite focus-visible:ring-2 focus-visible:ring-sps-graphite focus-visible:ring-offset-2 focus-visible:ring-offset-sps-white disabled:cursor-not-allowed disabled:bg-sps-grey disabled:text-sps-muted disabled:opacity-60 [&[readonly]]:bg-sps-grey aria-invalid:border-sps-danger aria-invalid:focus-visible:ring-sps-danger",
-  muted: "text-sps-muted",
-  label: "text-sm font-semibold text-sps-graphite",
+    "min-h-12 w-full min-w-0 rounded-xl border border-border bg-card px-4 py-2 text-base text-foreground outline-none transition motion-reduce:transition-none placeholder:text-muted-foreground focus-visible:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-card disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:opacity-60 [&[readonly]]:bg-muted aria-invalid:border-destructive aria-invalid:focus-visible:ring-destructive",
+  muted: "text-muted-foreground",
+  label: "text-sm font-semibold text-foreground",
   focus: focus,
 };
 function Button({
@@ -308,12 +308,12 @@ function Button({
   ref?: React.Ref<HTMLButtonElement>;
 }) {
   const appearances = {
-    primary: "bg-sps-green text-sps-graphite enabled:hover:brightness-95",
+    primary: "bg-primary text-primary-foreground enabled:hover:brightness-95",
     secondary:
-      "border border-sps-line bg-sps-white text-sps-graphite enabled:hover:bg-sps-grey",
-    plain: "text-sps-muted enabled:hover:text-sps-graphite",
+      "border border-border bg-card text-foreground enabled:hover:bg-muted",
+    plain: "text-muted-foreground enabled:hover:text-foreground",
     danger:
-      "border border-sps-danger-line bg-sps-danger-surface text-sps-danger enabled:hover:brightness-95",
+      "border border-destructive-border bg-destructive-surface text-destructive enabled:hover:brightness-95",
   };
   return (
     <button
@@ -321,7 +321,7 @@ function Button({
       type={type}
       className={mergeButtonClass(
         "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground",
         appearances[variant],
         className,
       )}

@@ -67,12 +67,12 @@ export function Component({
         }
         target={showTokens ? undefined : "_top"}
         onClick={onNavigate}
-        className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl px-2 py-2 text-left text-sm text-sps-graphite no-underline hover:bg-sps-grey ${kit.focus}`}
+        className={`inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-2 rounded-xl px-2 py-2 text-left text-sm text-foreground no-underline hover:bg-muted ${kit.focus}`}
         data-module="rbac"
         data-model="subject"
         data-variant={variant}
       >
-        <span className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-full bg-sps-grey">
+        <span className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-full bg-muted">
           <Icon name="user-circle" className="size-6" />
         </span>
         <span className="hidden text-sm font-semibold sm:inline">Sign in</span>
@@ -105,7 +105,7 @@ export function Component({
   );
 }
 const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sps-graphite";
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
   "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
 const kit = {

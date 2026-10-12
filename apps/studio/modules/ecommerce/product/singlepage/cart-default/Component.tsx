@@ -120,7 +120,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
       data-variant={props.variant ?? "cart-default"}
     >
       <a
-        className="block h-20 w-20 shrink-0 self-start overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-sps-graphite)]"
+        className="block h-20 w-20 shrink-0 self-start overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         href={productHref}
         target={target}
       >
@@ -135,13 +135,13 @@ export const ProductCartDefault = memo(function ProductCartDefault(
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <a
-              className="block break-words text-sm font-semibold text-[var(--color-sps-graphite)] no-underline transition hover:text-[var(--color-sps-muted)]"
+              className="block break-words text-sm font-semibold text-foreground no-underline transition hover:text-muted-foreground"
               href={productHref}
               target={target}
             >
               {item.title}
             </a>
-            <span className="mt-0.5 block text-xs text-[var(--color-sps-muted)]">
+            <span className="mt-0.5 block text-xs text-muted-foreground">
               {item.priceLabel}
             </span>
           </div>
@@ -149,7 +149,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
             <Button
               variant="plain"
               aria-label={`Remove ${item.title}`}
-              className="h-11 w-11 shrink-0 px-0 hover:bg-[var(--color-sps-danger-surface)] hover:text-[var(--color-sps-danger)]"
+              className="h-11 w-11 shrink-0 px-0 hover:bg-destructive-surface hover:text-destructive"
               onClick={() => onRemove?.(item)}
             >
               <Trash2 className="h-5 w-5" />
@@ -159,14 +159,14 @@ export const ProductCartDefault = memo(function ProductCartDefault(
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-3">
           {compact ? (
-            <span className="text-xs text-[var(--color-sps-muted)]">
+            <span className="text-xs text-muted-foreground">
               Qty: {item.quantity}
             </span>
           ) : (
             <div
               role="group"
               aria-label={`${item.title} quantity`}
-              className="flex items-center gap-1 rounded-xl bg-[var(--color-sps-grey)] p-1"
+              className="flex items-center gap-1 rounded-xl bg-muted p-1"
             >
               <Button
                 variant="plain"
@@ -192,7 +192,7 @@ export const ProductCartDefault = memo(function ProductCartDefault(
               </Button>
             </div>
           )}
-          <span className="text-sm font-semibold text-[var(--color-sps-graphite)]">
+          <span className="text-sm font-semibold text-foreground">
             {formatCartMoney(item.price * item.quantity)}
           </span>
         </div>

@@ -24,7 +24,7 @@ export function Component({
     <div
       data-sps-theme="singlepage"
       data-ds-block="host.layout.ai-chat-dashboard"
-      className="@container min-h-screen min-w-0 flex flex-col bg-sps-grey font-sps text-sps-graphite"
+      className="@container min-h-screen min-w-0 flex flex-col bg-muted font-default text-foreground"
       data-module="host"
       data-model="layout"
       data-variant={variant}
@@ -47,7 +47,10 @@ export function Component({
         subjectAccount={subjectAccount}
       />
       <div className="min-w-0 flex-1">{children}</div>
-      <WebsiteBuilderModuleWidget variant="footer-ai-chat" />
+      <WebsiteBuilderModuleWidget
+        variant="footer-ai-chat"
+        className="w-full px-4 @[800px]:px-8"
+      />
     </div>
   );
 }
