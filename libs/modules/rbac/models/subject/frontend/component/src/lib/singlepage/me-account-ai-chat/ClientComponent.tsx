@@ -4,6 +4,8 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, LogOut, Settings } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
+import { Component as BillingCurrency } from "@sps/billing/models/currency/frontend/component";
+import { Component as SubjectBalances } from "@sps/rbac/relations/subjects-to-billing-module-currencies/frontend/component";
 import type { IModel as IProfile } from "@sps/social/models/profile/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 import { Icon } from "@sps/ui-adapter";
@@ -70,6 +72,68 @@ function AccountAvatar(props: {
   );
 }
 
+interface IAccountTokenBalanceProps {
+  subjectId: string;
+  language: string;
+}
+
+function AccountTokenBalance({
+  subjectId,
+  language,
+}: IAccountTokenBalanceProps) {
+  return (
+    <span className="block text-xs font-normal text-muted-foreground">
+      <BillingCurrency
+        isServer={false}
+        variant="find"
+        apiProps={{
+          params: {
+            filters: {
+              and: [{ column: "slug", method: "eq", value: "token" }],
+            },
+          },
+        }}
+      >
+        {({ data: currencies }) => {
+          const currency = currencies?.[0];
+          if (!currency) return "— tokens";
+          return (
+            <SubjectBalances
+              isServer={false}
+              variant="find"
+              apiProps={{
+                params: {
+                  filters: {
+                    and: [
+                      { column: "subjectId", method: "eq", value: subjectId },
+                      {
+                        column: "billingModuleCurrencyId",
+                        method: "eq",
+                        value: currency.id,
+                      },
+                    ],
+                  },
+                },
+              }}
+            >
+              {({ data: balances }) => {
+                if (!balances) return "— tokens";
+                const amount = Number(balances[0]?.amount ?? "0");
+                const label = Number.isFinite(amount)
+                  ? new Intl.NumberFormat(language, {
+                      maximumFractionDigits: 6,
+                    }).format(amount)
+                  : "—";
+                return `${label} tokens`;
+              }}
+            </SubjectBalances>
+          );
+        }}
+      </BillingCurrency>
+    </span>
+  );
+}
+
 interface IAccountMenuProps {
   subjectId: string;
   subjectSlug: string;
@@ -121,11 +185,14 @@ function AccountMenu({
             ) : (
               fallbackAvatar
             )}
-            <span
-              title={name}
-              className="hidden max-w-32 truncate text-sm font-semibold sm:block"
-            >
-              {name}
+            <span className="hidden sm:block">
+              <span
+                title={name}
+                className="block max-w-32 truncate text-sm font-semibold"
+              >
+                {name}
+              </span>
+              <AccountTokenBalance subjectId={subjectId} language={language} />
             </span>
             <ChevronDown className="hidden size-4 text-muted-foreground sm:block" />
           </button>
@@ -141,6 +208,7 @@ function AccountMenu({
               <span className="block truncate text-sm font-semibold">
                 {name}
               </span>
+              <AccountTokenBalance subjectId={subjectId} language={language} />
               <AccountEmail subjectId={subjectId} />
             </DropdownMenu.Label>
             <DropdownMenu.Separator className="my-1 h-px bg-border" />

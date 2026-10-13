@@ -121,6 +121,24 @@ free-subscription provisioning only when bootstrap returns
 `shouldCheckoutFreeSubscription=true` (registration or `/start`); ordinary
 messages remain independent from billing.
 
+Email/password, OAuth and wallet authentication ensure the shared
+`free-subscription` product after creating the personal profile. Existing
+active subscriptions retain their terms; signing in again does not create a
+second order or grant another allowance. A new free order completes local
+zero-price invoice settlement and delivery before authentication returns,
+so its role and token balance are ready for the first assistant request.
+
+Configure the free product through the runtime API or admin interface: price
+zero, interval `day`, token top-up `3000`, and the associated access role.
+Keep its interval and top-up attributes separate from other tariffs. The
+internal `dummy` provider must be allowed for web provisioning. Free invoices
+settle locally and do not call a payment provider. The existing Order check
+and RBAC Subject check jobs expire and renew each daily period; renewal resets
+the single token balance to 3000 and delivers the next daily allowance.
+All requests continue to debit that balance through the existing BillRoute.
+These jobs must run in the deployment. Repository data snapshots are not the
+configuration interface.
+
 ### Repair and rollout
 
 The canonical API deployment runs this compatibility repair on every API

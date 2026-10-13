@@ -114,6 +114,43 @@ describe("Given: ecommerce product checkout handler", () => {
     ordersToBillingCurrenciesCreateMock.mockResolvedValue({ id: "otbc-1" });
   });
 
+  it("checks out for an existing account without creating an empty email Identity", async () => {
+    const service = createService();
+    service.subjectsToIdentities = {
+      find: jest.fn().mockResolvedValue([{ identityId: "existing" }]),
+    };
+    await new Handler(service).execute(
+      createContext(
+        { id: "subject-1", productId: "product-1" },
+        {
+          data: JSON.stringify({
+            provider: "dummy",
+            storeId: "store-1",
+            billingModule: { currency: { id: "currency-1" } },
+          }),
+        },
+      ),
+      jest.fn(),
+    );
+    expect(service.deanonymize).not.toHaveBeenCalled();
+    expect(orderCreateMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("requires email from an anonymous checkout before creating an order", async () => {
+    const service = createService();
+    service.subjectsToIdentities = { find: jest.fn().mockResolvedValue([]) };
+    await expect(
+      new Handler(service).execute(
+        createContext(
+          { id: "subject-1", productId: "product-1" },
+          { data: JSON.stringify({ provider: "dummy", storeId: "store-1" }) },
+        ),
+        jest.fn(),
+      ),
+    ).rejects.toThrow("Email is required");
+    expect(orderCreateMock).not.toHaveBeenCalled();
+  });
+
   it("When: provider is not telegram-star Then: subject is deanonymized and checkout is created", async () => {
     const service = createService();
     const handler = new Handler(service);

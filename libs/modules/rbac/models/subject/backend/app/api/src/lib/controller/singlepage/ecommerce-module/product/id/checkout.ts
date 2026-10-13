@@ -78,8 +78,19 @@ export class Handler {
         throw new Error("Not Found error. No entity found with id:" + id);
       }
 
-      if (data.provider !== "telegram-star") {
+      if (data.provider !== "telegram-star" && data.email) {
         await this.service.deanonymize({ id, email: data.email });
+      } else if (data.provider !== "telegram-star") {
+        const identities = await this.service.subjectsToIdentities.find({
+          params: {
+            filters: {
+              and: [{ column: "subjectId", method: "eq", value: id }],
+            },
+            limit: 1,
+          },
+        });
+        if (!identities.length)
+          throw new Error("Validation error. Email is required for checkout.");
       }
 
       const ecommerceModuleProductsToAttributes =

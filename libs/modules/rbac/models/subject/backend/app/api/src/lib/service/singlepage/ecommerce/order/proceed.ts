@@ -940,6 +940,25 @@ export class Service {
       const provider = firstInvoice.provider;
       const currency = firstCurrency;
 
+      if (
+        provider &&
+        firstInvoice.amount === 0 &&
+        props.extendedOrder.checkoutAttributesByCurrency.amount === 0
+      ) {
+        await api.ecommerceModuleProductCheckout({
+          id: props.subjectToEcommerceModuleOrder.subjectId,
+          productId: props.extendedOrder.ordersToProducts[0].productId,
+          data: { provider, billingModule: { currency } },
+          options: {
+            headers: {
+              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
+              "Cache-Control": "no-store",
+            },
+          },
+        });
+        return;
+      }
+
       if (provider === "telegram-star") {
         const subjectToSocialModuleProfiles =
           await this.subjectsToSocialModuleProfiles.find({

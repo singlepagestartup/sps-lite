@@ -6,6 +6,7 @@ import { verify } from "hono/jwt";
 import { RBAC_JWT_SECRET } from "@sps/shared-utils";
 import { Service as ProfileOwnership } from "./social-module/profile/ownership";
 import { Service as AuthenticationMe } from "./authentication/me";
+import { Service as FreeSubscription } from "./billing/free-subscription";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
 import { Service as Logout } from "./logout";
 import {
@@ -379,7 +380,18 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
         "Authentication error. No Subject in authenticated session",
       );
     await this.socialModuleProfileOwnershipEnsure({ subjectId });
+    await this.freeSubscriptionEnsure({ subjectId });
     return result;
+  }
+
+  async freeSubscriptionEnsure(props: { subjectId: string }) {
+    await new FreeSubscription({
+      ecommerceModule: this.ecommerceModule,
+      billingModule: this.billingModule,
+      subjectsToEcommerceModuleOrders: this.subjectsToEcommerceModuleOrders,
+    }).activate({ id: props.subjectId }, (proceedProps) =>
+      this.ecommerceOrderProceed(proceedProps),
+    );
   }
 
   async deleteAnonymousSubjects(props?: IDeleteAnonymousSubjectsExecuteProps) {

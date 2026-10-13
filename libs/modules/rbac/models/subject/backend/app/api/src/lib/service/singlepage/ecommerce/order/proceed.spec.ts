@@ -64,6 +64,69 @@ import {
   Service,
 } from "./proceed";
 
+it("renews an expired zero-price daily subscription without requiring a Telegram chat", async () => {
+  jest.clearAllMocks();
+  const { service } = createService();
+  (
+    service.subjectsToBillingModuleCurrencies.find as jest.Mock
+  ).mockResolvedValue([
+    { id: "token-balance", variant: "default", amount: "11" },
+  ]);
+  await service.delivered({
+    order: { id: "free-order", status: "delivered" } as any,
+    extendedOrder: {
+      id: "free-order",
+      checkoutAttributesByCurrency: {
+        amount: 0,
+        type: "subscription",
+        interval: "day",
+      },
+      ordersToProducts: [
+        { productId: "free-product", product: { slug: "free-subscription" } },
+      ],
+      ordersToBillingModulePaymentIntents: [
+        {
+          billingModulePaymentIntent: {
+            type: "one_off",
+            paymentIntentsToCurrencies: [{ currency: { id: "currency" } }],
+            paymentIntentsToInvoices: [
+              { invoice: { provider: "dummy", amount: 0 } },
+            ],
+          },
+        },
+      ],
+    } as any,
+    subjectToEcommerceModuleOrder: {
+      subjectId: "user",
+      ecommerceModuleOrderId: "free-order",
+    },
+    existingRolesIds: [],
+    productsRolesIds: [],
+    subjectsToRoles: [],
+  });
+  expect(mockSubjectProductCheckout).toHaveBeenCalledWith({
+    id: "user",
+    productId: "free-product",
+    data: {
+      provider: "dummy",
+      billingModule: { currency: { id: "currency" } },
+    },
+    options: {
+      headers: {
+        "X-RBAC-SECRET-KEY": "test-rbac-secret",
+        "Cache-Control": "no-store",
+      },
+    },
+  });
+  expect(mockSubjectsToBillingModuleCurrenciesUpdate).toHaveBeenCalledTimes(1);
+  expect(mockSubjectsToBillingModuleCurrenciesUpdate).toHaveBeenCalledWith(
+    expect.objectContaining({
+      id: "token-balance",
+      data: expect.objectContaining({ amount: "0" }),
+    }),
+  );
+});
+
 function createService(props?: {
   candidateOrders?: any[];
   relationFindResults?: any[][];
