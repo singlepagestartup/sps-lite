@@ -4,6 +4,7 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Paperclip, Send } from "lucide-react";
 import { Icon } from "@sps/ui-adapter";
 import { api } from "@sps/rbac/models/subject/sdk/client";
+import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
 import {
   getAIChatDocument,
   RBAC_AI_REACTION_REQUEST_METADATA_KEY,
@@ -26,6 +27,9 @@ export function Component(props: IComponentPropsExtended) {
   };
   const document = getAIChatDocument(props.thread.metadata);
   const isDocument = document?.profileId === project.profile.id;
+  const documentSkillSlug = AI_CHAT_DOCUMENTS.find(
+    (definition) => definition.key === document?.key,
+  )?.skillSlug;
   const sources =
     api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
       { ...scope, reactQueryOptions: { enabled: isDocument } },
@@ -60,7 +64,7 @@ export function Component(props: IComponentPropsExtended) {
             ...messageScope,
             data: {
               description: isDocument
-                ? `${
+                ? `/${documentSkillSlug}\n\n${
                     selectedSource
                       ? `Working on knowledge: ${selectedSource.title} (Source ID: ${selectedSource.id}) in ${props.thread.title || "this document"}.`
                       : `Working on the whole document: ${props.thread.title || "this document"}.`

@@ -1,5 +1,6 @@
 import { Service as Bootstrap } from "./ai/bootstrap";
 import { Service as Documents } from "./documents";
+import { Service as Skills } from "./skills";
 import type { Service as SubjectService } from "../../index";
 import { api as profileApi } from "@sps/social/models/profile/sdk/server";
 import { api as subjectProfilesApi } from "@sps/rbac/relations/subjects-to-social-module-profiles/sdk/server";
@@ -59,6 +60,8 @@ export class Service {
       throw new Error(
         "Validation error. Profile title must contain 1 to 200 characters",
       );
+    const skills = new Skills(this.service.socialModule);
+    const defaults = await skills.defaults();
     const options = {
       headers: {
         "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -78,7 +81,7 @@ export class Service {
     const context =
       await this.service.socialModuleChatLifecycleCreateChatWithDefaultThread({
         subjectId: props.subjectId,
-        data: { title, variant: "default" },
+        data: { title, variant: "ai-chat" },
         autoBootstrapProfile: true,
       });
     const agent = await new Bootstrap({
@@ -104,6 +107,7 @@ export class Service {
       },
       options,
     });
+    await skills.connect(agent.socialModuleProfile.id, defaults);
     await new Documents(this.service.socialModule).execute({
       profileId: agent.socialModuleProfile.id,
       chatId: context.socialModuleChat.id,

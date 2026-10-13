@@ -1,5 +1,13 @@
 const mockBootstrap = jest.fn();
 const mockDocuments = jest.fn();
+const mockDefaults = jest.fn();
+const mockConnect = jest.fn();
+jest.mock("./skills", () => ({
+  Service: class {
+    defaults = mockDefaults;
+    connect = mockConnect;
+  },
+}));
 jest.mock("./documents", () => ({
   Service: class {
     execute = mockDocuments;
@@ -107,6 +115,8 @@ function dependencies() {
 describe("Subject profile collection", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockDefaults.mockResolvedValue([{ id: "default-skill" }]);
+    mockConnect.mockResolvedValue(undefined);
     mockBootstrap.mockImplementation(async ({ socialModuleProfile }) => ({
       socialModuleProfile,
     }));
@@ -199,6 +209,20 @@ describe("Subject profile collection", () => {
     expect(mockRelationCreate).not.toHaveBeenCalled();
     expect(mockBootstrap).not.toHaveBeenCalled();
   });
+  it("checks required profession configuration before creating any assistant records", async () => {
+    mockDefaults.mockRejectedValueOnce(
+      new Error("Configuration error. Missing skill"),
+    );
+    await expect(
+      new Service(dependencies() as any).create({
+        subjectId: "owner",
+        data: { variant: "artificial-intelligence", title: { en: "Project" } },
+      }),
+    ).rejects.toThrow("Missing skill");
+    expect(mockProfileCreate).not.toHaveBeenCalled();
+    expect(mockBootstrap).not.toHaveBeenCalled();
+    expect(mockConnect).not.toHaveBeenCalled();
+  });
   it("two projects with the same title receive distinct profiles, conversations and agent identities", async () => {
     const deps = dependencies();
     const svc = new Service(deps as any);
@@ -258,11 +282,17 @@ describe("Subject profile collection", () => {
       deps.socialModuleChatLifecycleCreateChatWithDefaultThread,
     ).toHaveBeenCalledWith({
       subjectId: "owner",
-      data: { title: "Project", variant: "default" },
+      data: { title: "Project", variant: "ai-chat" },
       autoBootstrapProfile: true,
     });
     expect(mockBootstrap.mock.calls[0][0].socialModuleProfile).toBe(first);
     expect(mockBootstrap.mock.calls[1][0].socialModuleProfile).toBe(second);
+    expect(mockConnect).toHaveBeenCalledWith(first.id, [
+      { id: "default-skill" },
+    ]);
+    expect(mockConnect).toHaveBeenCalledWith(second.id, [
+      { id: "default-skill" },
+    ]);
     expect(first).not.toHaveProperty("thread");
     expect(first).not.toHaveProperty("chat");
     expect(

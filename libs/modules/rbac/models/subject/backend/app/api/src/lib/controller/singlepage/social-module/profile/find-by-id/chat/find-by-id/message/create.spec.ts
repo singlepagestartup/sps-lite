@@ -25,6 +25,7 @@ jest.mock("@sps/shared-utils", () => {
     OPEN_AI_TRANSCRIPTION_MODEL: undefined,
     RBAC_JWT_SECRET: "jwt-secret",
     RBAC_SECRET_KEY: "rbac-secret",
+    AI_CHAT_DOCUMENTS: [{ key: "brief", skillSlug: "ai-chat-account-manager" }],
   };
 });
 
@@ -145,6 +146,9 @@ function createService() {
       .fn()
       .mockResolvedValue(undefined),
     socialModule: {
+      thread: {
+        findById: jest.fn().mockResolvedValue({ id: "thread-1", metadata: {} }),
+      },
       profilesToChats: {
         find: jest.fn().mockResolvedValue([
           {
@@ -341,6 +345,105 @@ describe("Given: rbac social message create author relation", () => {
       "1",
     );
     expect(events).toEqual(["response"]);
+  });
+
+  it("When: a document message arrives via API Then: its linked profession is persisted", async () => {
+    const service = createService();
+    service.socialModule.thread.findById.mockResolvedValue({
+      id: "thread-1",
+      metadata: {
+        aiChatDocument: {
+          key: "brief",
+          profileId: "assistant-profile",
+          sourceIds: ["brief-source"],
+        },
+      },
+    });
+    service.socialModule.skill = {
+      find: jest.fn().mockResolvedValue([
+        {
+          id: "brief-skill",
+          slug: "ai-chat-account-manager",
+          description: "Current instructions",
+        },
+      ]),
+    };
+    service.socialModule.profilesToSkills = {
+      find: jest
+        .fn()
+        .mockResolvedValue([
+          { profileId: "assistant-profile", skillId: "brief-skill" },
+        ]),
+    };
+    const handler = new Handler(service);
+    handler.notifyOtherSubjectsInChat = jest.fn().mockResolvedValue(undefined);
+    await handler.execute(
+      createContext([], {
+        description: "Prepare the brief",
+        metadata: {
+          aiChatDocumentSourceId: "brief-source",
+          rbacAiReactionRequest: {
+            version: 1,
+            modelId: "auto",
+            reasoning: "auto",
+            skillIds: ["unrelated-skill"],
+            useKnowledgeSearch: false,
+          },
+        },
+      }),
+      jest.fn(),
+    );
+    expect(mockSocialModuleMessageCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: {
+          description: "/ai-chat-account-manager\n\nPrepare the brief",
+          metadata: {
+            aiChatDocumentSourceId: "brief-source",
+            rbacAiReactionRequest: {
+              version: 1,
+              modelId: "auto",
+              reasoning: "auto",
+              skillIds: ["brief-skill"],
+              useKnowledgeSearch: false,
+            },
+          },
+        },
+      }),
+    );
+    expect(service.socialModule.profilesToSkills.find).toHaveBeenCalledWith({
+      params: {
+        filters: {
+          and: [
+            { column: "profileId", method: "eq", value: "assistant-profile" },
+            { column: "skillId", method: "eq", value: "brief-skill" },
+          ],
+        },
+      },
+    });
+  });
+
+  it("When: a document selects another document's Source Then: no message is written", async () => {
+    const service = createService();
+    service.socialModule.thread.findById.mockResolvedValue({
+      id: "thread-1",
+      metadata: {
+        aiChatDocument: {
+          key: "brief",
+          profileId: "assistant-profile",
+          sourceIds: ["brief-source"],
+        },
+      },
+    });
+    await expect(
+      new Handler(service).execute(
+        createContext([], {
+          description: "Edit this",
+          metadata: { aiChatDocumentSourceId: "another-source" },
+        }),
+        jest.fn(),
+      ),
+    ).rejects.toThrow("does not belong to this document");
+    expect(mockSocialModuleMessageCreate).not.toHaveBeenCalled();
   });
 
   /**

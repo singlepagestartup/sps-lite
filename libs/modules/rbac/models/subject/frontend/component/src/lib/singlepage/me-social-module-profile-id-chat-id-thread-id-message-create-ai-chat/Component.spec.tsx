@@ -99,7 +99,7 @@ it("sends through the requester profile and preserves the selected Knowledge con
       socialModuleThreadId: "thread",
       data: expect.objectContaining({
         description:
-          "Working on knowledge: Products (Source ID: source) in Products.md.\n\nReview these products",
+          "/ai-chat-business-analyst\n\nWorking on knowledge: Products (Source ID: source) in Products.md.\n\nReview these products",
         metadata: expect.objectContaining({ aiChatDocumentSourceId: "source" }),
       }),
     }),
@@ -186,7 +186,7 @@ it("falls back to the whole document when a selected Source is not connected to 
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(send).toHaveBeenCalled());
   expect(send.mock.calls[0][0].data.description).toBe(
-    "Working on the whole document: Brief.md.\n\nReview this brief",
+    "/ai-chat-account-manager\n\nWorking on the whole document: Brief.md.\n\nReview this brief",
   );
   expect(send.mock.calls[0][0].data.metadata).not.toHaveProperty(
     "aiChatDocumentSourceId",

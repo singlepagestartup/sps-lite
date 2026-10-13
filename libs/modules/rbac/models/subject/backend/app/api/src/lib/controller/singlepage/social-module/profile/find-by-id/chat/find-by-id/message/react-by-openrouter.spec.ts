@@ -24,6 +24,7 @@ jest.mock("@sps/backend-utils", () => {
 import { Handler } from "./react-by-openrouter";
 import { blobifyFiles } from "@sps/backend-utils";
 import { NEXT_PUBLIC_API_SERVICE_URL } from "@sps/shared-utils";
+import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
 import type { KnowledgeSearchResult } from "@sps/knowledge/backend/app/api/src/lib/types";
 
 interface IFindThreadMessageIdsInChatHandler {
@@ -2335,4 +2336,108 @@ describe("Given: OpenRouter thread context and reply validation", () => {
     });
     expect(openRouter.generate).not.toHaveBeenCalled();
   });
+});
+
+it("keeps all profile Knowledge available in ordinary AI Chat threads without activating document professions", async () => {
+  const skills = AI_CHAT_DOCUMENTS.map((document, index) => ({
+    id: `profession-${index}`,
+    slug: document.skillSlug,
+    title: document.title,
+    description: "Current manually edited role instructions",
+  }));
+  const handler = new Handler({
+    socialModule: {
+      profilesToSkills: {
+        find: jest.fn(async () =>
+          skills.map((skill) => ({ skillId: skill.id })),
+        ),
+      },
+      skill: { find: jest.fn(async () => skills) },
+      profilesToKnowledgeModuleSources: {
+        find: jest.fn(async () =>
+          ["brief", "strategy", "brand", "design", "products"].map((id) => ({
+            knowledgeModuleSourceId: id,
+          })),
+        ),
+      },
+    },
+  } as any) as any;
+  handler.knowledgeService = { search: jest.fn(async () => []) };
+  const props = {
+    billingLedger: [],
+    openRouter: {} as any,
+    replyProfile: { id: "assistant" },
+    socialModuleMessage: { description: "Explain my project" },
+    sanitizedQuery: "Explain my project",
+    requestedKnowledgeSearch: true,
+    requestedSkillIds: [],
+    selectedModelId: null,
+    threadContext: [],
+    isAIChat: true,
+  };
+  const ordinary = await handler.resolveOpenRouterKnowledgeContext(props);
+  expect(ordinary.availableSkills).toEqual([]);
+  expect(ordinary.promptSkills).toEqual([]);
+  expect(ordinary.skillMessagePrefix).toBe("");
+  expect(ordinary.knowledgeSourceIds).toEqual([
+    "brief",
+    "strategy",
+    "brand",
+    "design",
+    "products",
+  ]);
+  const document = await handler.resolveOpenRouterKnowledgeContext({
+    ...props,
+    documentSkill: skills[0],
+  });
+  expect(document.promptSkills).toEqual([skills[0]]);
+  expect(
+    document.skillMessagePrefix.match(
+      /Current manually edited role instructions/g,
+    ),
+  ).toHaveLength(1);
+});
+
+it("document tools offer proposals and reads while direct Knowledge writers are absent", () => {
+  const handler = new Handler({ socialModule: {} } as any) as any;
+  const tools = handler.buildProfileCapabilityTools({
+    availableSkills: [],
+    knowledgeSourceIds: ["own-source", "other-document-source"],
+    knowledgeAction: "update",
+    replyProfileId: "assistant",
+    socialModuleMessage: { id: "request" },
+    disableKnowledgeWrites: true,
+    documentContext: {
+      targetSourceId: "own-source",
+      document: {
+        key: "brief",
+        profileId: "assistant",
+        sourceIds: ["own-source"],
+      },
+      thread: { id: "thread" },
+      proposal: null,
+    },
+  });
+  expect(tools.map((tool: any) => tool.definition.function.name)).toEqual([
+    "profile_knowledge_propose",
+    "profile_knowledge_search",
+    "profile_knowledge_read",
+  ]);
+});
+
+it("resolves the agent subject separately from the assistant ownership relation", async () => {
+  const findById = jest.fn(async ({ id }) => ({ id, variant: "agent" }));
+  const handler = new Handler({
+    subjectsToSocialModuleProfiles: {
+      find: jest.fn(async () => [
+        { subjectId: "owner", variant: "assistant" },
+        { subjectId: "agent", variant: "default" },
+      ]),
+    },
+    findById,
+  } as any) as any;
+  expect(await handler.resolveRbacSubjectForSocialProfile("assistant")).toEqual(
+    { id: "agent", variant: "agent" },
+  );
+  expect(findById).toHaveBeenCalledWith({ id: "agent" });
 });

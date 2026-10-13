@@ -2,6 +2,60 @@ import { SocialProfileJevService } from "./jev";
 import type { ISocialProfileAiTool } from "./tool-loop";
 
 describe("JEV profile routing", () => {
+  it("classifies approval against the stored shown proposal and fails closed when routing is unavailable", async () => {
+    const decide = jest.fn(async (request: any) => ({
+      answers: {
+        task: { type: "choice", choice: "qa" },
+        knowledgeAction: { type: "choice", choice: "update" },
+        documentProposalAction: { type: "choice", choice: "confirm" },
+      },
+      billing: null,
+    }));
+    const service = new SocialProfileJevService({
+      openRouter: { decide } as any,
+      billingLedger: [],
+    });
+    const props = {
+      requestText: "Подтверждаю",
+      history: "",
+      documentProposal: {
+        id: "proposal",
+        title: "Brief",
+        status: "pending",
+        shown: true,
+      },
+    };
+    expect(await service.route(props)).toMatchObject({
+      documentProposalAction: "confirm",
+    });
+    expect(decide.mock.calls[0][0].state.documentProposal).toEqual(
+      props.documentProposal,
+    );
+    expect(
+      await service.route({
+        ...props,
+        documentProposal: { ...props.documentProposal, shown: false },
+      }),
+    ).toMatchObject({ documentProposalAction: "none" });
+    decide.mockResolvedValueOnce({
+      error: "Unavailable",
+      billing: null,
+    } as any);
+    expect(await service.route(props)).toMatchObject({
+      documentProposalAction: "none",
+    });
+    decide.mockResolvedValueOnce({
+      answers: {
+        task: { type: "choice", choice: "qa" },
+        knowledgeAction: { type: "choice", choice: "update" },
+        documentProposalAction: { type: "choice", choice: "ambiguous" },
+      },
+      billing: null,
+    });
+    expect(await service.route(props)).toMatchObject({
+      documentProposalAction: "none",
+    });
+  });
   const tool = (
     name: string,
     source: ISocialProfileAiTool["source"],

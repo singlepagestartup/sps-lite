@@ -39,9 +39,23 @@ Search accepts only chunks whose Source hashes match. Profile-scoped search mate
 
 RBAC handles profile-scoped create, read, update, delete, file management, `/learn`, and skill runs. OpenRouter messages can use Knowledge through a natural-language request detected by JEV or an explicit `@knowledge` mention. Search and read/edit tools are bound to Source IDs available to the replying profile.
 
+The shared generation prompt instructs the model to perform one focused
+`profile_knowledge_search` when the initial fragments lack facts needed for
+the answer, before reporting information unavailable. It requests relevant
+`profile_knowledge_read` pages when search excerpts are insufficient or exact
+saved wording is needed. Tool failures and missing information are reported
+separately.
+
 `profile_knowledge_search` returns bounded excerpts with `sourceId`, `textLength`, and `textTruncated`. `profile_knowledge_read` reads saved content in pages of up to 12,000 Unicode characters and returns `nextOffset` and the current content hash. Both tool responses fit a 24 KiB UTF-8 JSON budget, below the tool loop's 32 KiB limit. Pagination preserves the full saved text, including multibyte characters and JSON escapes. Follow `nextOffset` with the same `section`; offsets count UTF-16 code units.
 
-The read response includes a user-context preview. If `userContextTruncated` is true, read all pages with `section=userContext` before editing. `profile_knowledge_edit` directly saves user context and an optional title when the user requests or confirms the edit; it preserves file-derived sections and triggers indexing. The edit must carry the hash returned by the read operation, so a concurrent content change requires another read. Chat edits use ordinary Source updates. There is no Edit Suggestion, approval entity, version history, or restore operation.
+The read response includes a user-context preview. If `userContextTruncated` is true, read all pages with `section=userContext` before editing. `profile_knowledge_edit` directly saves user context and an optional title when the user requests or confirms the edit; it preserves file-derived sections and triggers indexing. The edit must carry the hash returned by the read operation, so a concurrent content change requires another read. Chat edits use ordinary Source updates. There is no separate approval entity, version history, or restore operation.
+
+AI Chat document threads expose `profile_knowledge_propose` instead of direct
+create/edit tools. RBAC stores the exact draft in Thread metadata and shows it
+in an assistant message. Knowledge is unchanged until a subsequent user
+confirmation. Confirmation checks the original Source hash, then applies the
+stored text and indexes it. The first confirmed draft also creates the profile
+and document links. Other linked Sources remain available for reading.
 
 Origin and citation links use `messages-to-knowledge-module-sources` with `kind=origin|citation`; skill material uses `skills-to-knowledge-module-sources`. Metadata can contain generation results and usage, but relations determine material ownership and origin.
 

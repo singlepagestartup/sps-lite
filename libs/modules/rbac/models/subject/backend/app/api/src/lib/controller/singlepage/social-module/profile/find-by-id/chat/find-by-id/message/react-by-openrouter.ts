@@ -1,4 +1,5 @@
 import {
+  AI_CHAT_DOCUMENTS,
   OPEN_ROUTER_JEV_ROUTER_MODEL,
   replaceKnowledgeUserContext,
   readKnowledgeUserContext,
@@ -58,6 +59,11 @@ import {
   type TJevKnowledgeAction,
 } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/jev";
 import { KnowledgeService } from "@sps/knowledge/backend/app/api/src/lib/service";
+import {
+  Service as DocumentService,
+  type IAIChatDocumentContext,
+} from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/document";
+import { Service as ProfileSkills } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/skills";
 import { KnowledgeSearchResult } from "@sps/knowledge/backend/app/api/src/lib/types";
 import * as jwt from "hono/jwt";
 import { createHash } from "node:crypto";
@@ -947,10 +953,31 @@ export class Handler {
 
       const context: IOpenRouterRequestMessage[] = [];
       let currentAttachmentTitles: string[] = [];
-      const requestedSkillIds = aiReactionRequest.skillIds;
-      const requestedKnowledgeSearch = this.hasKnowledgeControl(
-        socialModuleMessage.description,
+      const isAIChat = socialModuleChat.variant === "ai-chat";
+      const documentService = new DocumentService(
+        this.service.socialModule,
+        this.knowledgeService,
       );
+      const documentContext = isAIChat
+        ? await documentService.load({
+            profileId: replyBySocialModuleProfile.id,
+            threadId: socialModuleThreadId,
+            message: socialModuleMessage,
+          })
+        : null;
+      const documentSkill = documentContext
+        ? await new ProfileSkills(this.service.socialModule).forDocument(
+            replyBySocialModuleProfile.id,
+            documentContext.document.key,
+          )
+        : undefined;
+      const requestedSkillIds = documentSkill
+        ? [documentSkill.id]
+        : aiReactionRequest.skillIds;
+      const requestedKnowledgeSearch =
+        isAIChat ||
+        aiReactionRequest.useKnowledgeSearch ||
+        this.hasKnowledgeControl(socialModuleMessage.description);
       const hasMentionedSkill = Boolean(
         this.getMentionedSkillSlugs(socialModuleMessage.description).length,
       );
@@ -1058,7 +1085,10 @@ export class Handler {
                 continue;
               }
 
-              if (this.isOpenRouterLearnContextMessage(messageDescription)) {
+              if (
+                !documentContext &&
+                this.isOpenRouterLearnContextMessage(messageDescription)
+              ) {
                 continue;
               }
 
@@ -1173,7 +1203,10 @@ export class Handler {
         RBAC_JWT_SECRET,
       );
 
-      if (this.hasLearnCommand(socialModuleMessage.description)) {
+      if (
+        !documentContext &&
+        this.hasLearnCommand(socialModuleMessage.description)
+      ) {
         const learnedMessage = await this.learnFromMessage({
           rbacSubjectAuthenticationJwt: replyByRbacSubjectAuthenticationJwt,
           replyByRbacSubjectId: replyByRbacSubject.id,
@@ -1239,7 +1272,24 @@ export class Handler {
       const jevRoute = await jev.route({
         requestText: sanitizedTriggerDescription,
         history: this.toKnowledgeRerankThreadContext(context),
+        ...(documentContext?.proposal
+          ? {
+              documentProposal: {
+                id: documentContext.proposal.id,
+                status: documentContext.proposal.status,
+                title: documentContext.proposal.title,
+                shown: Boolean(documentContext.proposal.shownInMessageId),
+              },
+            }
+          : {}),
       });
+      const documentResolution = documentContext
+        ? await documentService.resolve(
+            documentContext,
+            jevRoute.documentProposalAction || "none",
+            socialModuleMessage.id,
+          )
+        : null;
       const knowledgeImportContext =
         jevRoute.knowledgeAction === "create"
           ? context.map((message, index) =>
@@ -1385,6 +1435,8 @@ export class Handler {
             modelSelection.orderedCandidateIds[0] ||
             null,
           threadContext: context,
+          isAIChat,
+          documentSkill,
         });
       const openRouterContext = this.attachSkillMessagePrefixToContext({
         context: knowledgeImportContext,
@@ -1406,6 +1458,13 @@ export class Handler {
         knowledgeAction: jevRoute.knowledgeAction,
         replyProfileId: replyBySocialModuleProfile.id,
         socialModuleMessage,
+        ...(documentContext &&
+        (!jevRoute.documentProposalAction ||
+          jevRoute.documentProposalAction === "none" ||
+          jevRoute.documentProposalAction === "revise")
+          ? { documentContext }
+          : {}),
+        disableKnowledgeWrites: Boolean(documentContext),
       });
       const allowedMcpServerIds = Array.isArray(
         replyBySocialModuleProfile.allowedMcpServerIds,
@@ -1413,7 +1472,11 @@ export class Handler {
         ? replyBySocialModuleProfile.allowedMcpServerIds
         : [];
 
-      if (expectedOutputModality === "text" && allowedMcpServerIds.length) {
+      if (
+        expectedOutputModality === "text" &&
+        allowedMcpServerIds.length &&
+        !documentContext
+      ) {
         const mcpCatalogResult = await this.openProfileMcpCatalogBestEffort({
           configuredServerIds: allowedMcpServerIds,
           rbacSubjectAuthenticationJwt: replyByRbacSubjectAuthenticationJwt,
@@ -1443,7 +1506,25 @@ export class Handler {
           content: this.toSkillMessagePrefix(capabilities.skills),
         });
       }
-      if (
+      if (documentContext) {
+        generationContext.unshift({
+          role: "system",
+          content: [
+            `Current document: ${documentContext.thread.title}; Source ID: ${documentContext.targetSourceId ?? "not selected or not created"}.`,
+            "You may read all linked profile Knowledge. Changes to this document require profile_knowledge_propose, which only records a proposal. The server shows its exact text after your answer. Briefly explain your reasoning; do not duplicate the full proposal or claim it was saved. Do not ask another tool to bypass this confirmation flow.",
+            "Brainstorm and ask focused questions when the inputs are incomplete. When enough facts are available or the user requests a draft, propose the structured document. Never invent operator facts.",
+            documentResolution
+              ? `Result of the user's response to the saved proposal: ${JSON.stringify(documentResolution)}. Report this result honestly. An applied result means the exact stored text was saved; do not regenerate it. A conflict requires reading the changed Source and a new proposal.`
+              : "",
+            documentContext.proposal?.status === "pending" ||
+            jevRoute.documentProposalAction === "revise"
+              ? `Pending proposal (not saved Knowledge): ${JSON.stringify(documentContext.proposal)}`
+              : "",
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        });
+      } else if (
         jevRoute.knowledgeAction === "create" ||
         jevRoute.knowledgeAction === "update" ||
         jevRoute.knowledgeAction === "auto"
@@ -1624,6 +1705,17 @@ export class Handler {
       });
       billingSettled = true;
 
+      const proposalPreview = documentContext
+        ? documentService.preview(
+            documentContext,
+            socialModuleMessage.id,
+            requestClassification.language,
+          )
+        : null;
+      if (proposalPreview)
+        generationResult.text = [generationResult.text, proposalPreview]
+          .filter(Boolean)
+          .join("\n\n");
       const replyMessageData = await this.buildOpenRouterReplyMessageData({
         expectedOutputModality,
         generationResult,
@@ -1648,6 +1740,12 @@ export class Handler {
             unavailableServerIds: unavailableMcpServerIds,
           },
           knowledge: {
+            ...(documentContext
+              ? {
+                  documentProposalId: documentContext.proposal?.id,
+                  documentResolution,
+                }
+              : {}),
             action: this.hasLearnCommand(socialModuleMessage.description)
               ? "learn"
               : jevRoute.knowledgeAction === "create" ||
@@ -1737,6 +1835,12 @@ export class Handler {
               },
             },
           },
+        );
+      if (documentContext && proposalPreview)
+        await documentService.markShown(
+          documentContext,
+          socialModuleMessage.id,
+          repliedSocialModuleMessage.id,
         );
 
       for (const sourceId of new Set(
@@ -2015,14 +2119,16 @@ export class Handler {
       },
     });
 
-    if (relations?.length !== 1 || !relations[0]?.subjectId) {
+    const replyRelations =
+      relations?.filter((relation) => relation.variant !== "assistant") || [];
+    if (replyRelations.length !== 1 || !replyRelations[0]?.subjectId) {
       throw new Error(
         "Validation error. Reply social.profile must have exactly one linked rbac.subject.",
       );
     }
 
     const rbacSubject = await this.service.findById({
-      id: relations[0].subjectId,
+      id: replyRelations[0].subjectId,
     });
 
     if (!rbacSubject) {
@@ -2092,19 +2198,37 @@ export class Handler {
     reasoning?: IOpenRouterReasoning;
     selectedModelId: string | null;
     threadContext: IOpenRouterRequestMessage[];
+    isAIChat?: boolean;
+    documentSkill?: ISocialModuleSkill;
   }): Promise<IResolvedOpenRouterKnowledgeContext> {
     const mentionedSkillSlugs = this.getMentionedSkillSlugs(
       props.socialModuleMessage.description || "",
     );
-    const availableSkills = await this.findSkillsForProfile({
+    const linkedSkills = await this.findSkillsForProfile({
       socialModuleProfileId: props.replyProfile.id,
       requireRequestedSkillsLinked: false,
     });
-    const promptSkills = await this.findPromptSkillsForProfile({
-      socialModuleProfileId: props.replyProfile.id,
-      skillIds: props.requestedSkillIds,
-      skillSlugs: mentionedSkillSlugs,
-    });
+    const availableSkills = props.isAIChat
+      ? linkedSkills.filter(
+          (skill) =>
+            !AI_CHAT_DOCUMENTS.some(
+              (document) => document.skillSlug === skill.slug,
+            ),
+        )
+      : linkedSkills;
+    const promptSkills = props.documentSkill
+      ? [props.documentSkill]
+      : (
+          await this.findPromptSkillsForProfile({
+            socialModuleProfileId: props.replyProfile.id,
+            skillIds: props.requestedSkillIds,
+            skillSlugs: mentionedSkillSlugs,
+          })
+        ).filter(
+          (skill) =>
+            !props.isAIChat ||
+            availableSkills.some((available) => available.id === skill.id),
+        );
     const requestedSkillIds = Array.from(
       new Set([
         ...props.requestedSkillIds,
@@ -2468,13 +2592,23 @@ export class Handler {
     knowledgeAction?: TJevKnowledgeAction;
     replyProfileId?: string;
     socialModuleMessage?: ISocialModuleMessage;
+    documentContext?: IAIChatDocumentContext;
+    disableKnowledgeWrites?: boolean;
   }): ISocialProfileAiTool[] {
     const tools: ISocialProfileAiTool[] = [];
     const canWrite =
-      props.knowledgeAction === "create" ||
-      props.knowledgeAction === "update" ||
-      props.knowledgeAction === "auto" ||
-      props.knowledgeAction === undefined;
+      !props.disableKnowledgeWrites &&
+      (props.knowledgeAction === "create" ||
+        props.knowledgeAction === "update" ||
+        props.knowledgeAction === "auto" ||
+        props.knowledgeAction === undefined);
+    if (props.documentContext && props.socialModuleMessage)
+      tools.push(
+        new DocumentService(
+          this.service.socialModule,
+          this.knowledgeService,
+        ).tool(props.documentContext, props.socialModuleMessage),
+      );
     if (canWrite && props.replyProfileId && props.socialModuleMessage) {
       const message = props.socialModuleMessage;
       const profileId = props.replyProfileId;
@@ -3009,12 +3143,14 @@ export class Handler {
             ].join("\n");
           })
           .join("\n\n---\n\n")
-      : "No indexed knowledge fragments matched the query.";
+      : "The initial search returned no matching knowledge fragments.";
 
     return [
       "Use the following profile-scoped knowledge fragments for factual grounding.",
-      "Answer directly from these fragments when they contain the needed evidence. Use read/search tools only for missing context or when the user explicitly asks to read or edit a Source.",
-      "If the fragments do not support a claim, say that the indexed sources do not contain it.",
+      "Answer directly when these fragments contain enough evidence.",
+      "If needed facts are missing and profile_knowledge_search is available, call it once with a focused query before concluding that information is unavailable.",
+      "Use profile_knowledge_read for relevant pages if search excerpts are insufficient or exact saved wording is needed.",
+      "Describe missing information only after that search; distinguish a tool failure from information not found. Never invent facts.",
       "Use conversation history only to resolve follow-ups and source text for edits.",
       `Knowledge query: ${props.query}`,
       "",
@@ -3644,6 +3780,7 @@ export class Handler {
             )
           : "",
         "Use the profile description as persona, expertise, and communication boundary.",
+        "Use the available read/search tools to obtain missing facts when the supplied context is insufficient. The supplied excerpts may cover only part of the information available to you.",
         "Linked social skills are available capabilities. Activate only skills relevant to the assigned task and follow their instructions precisely.",
       ]
         .filter(Boolean)

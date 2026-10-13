@@ -38,3 +38,9 @@ time, thread creation time, and finally thread ID.
 RBAC stores the versioned `rbacAiThreadPreferences` namespace in `metadata`
 for chat-composer preferences such as the explicitly selected OpenRouter model.
 Unknown metadata keys are preserved when that namespace is updated.
+
+RBAC also stores `rbacAiDocumentProposal` in document Thread metadata. It holds
+one exact proposed Knowledge edit, the Source's original content hash, the
+message showing the proposal, and its pending, applied or rejected state.
+A later user confirmation applies the stored text. A changed Source requires
+a new proposal; repeated confirmation of an applied proposal performs no write.

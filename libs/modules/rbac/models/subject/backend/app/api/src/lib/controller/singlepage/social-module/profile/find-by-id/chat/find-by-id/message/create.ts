@@ -23,7 +23,10 @@ import {
 import {
   normalizeRbacAiReactionRequestMetadata,
   parseRbacAiReactionRequestMetadata,
+  getAIChatDocument,
+  RBAC_AI_REACTION_REQUEST_METADATA_KEY,
 } from "@sps/rbac/models/subject/sdk/model";
+import { Service as ProfileSkills } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/skills";
 export class Handler {
   service: Service;
   audioTranscriptionService = new AudioTranscriptionService();
@@ -114,6 +117,49 @@ export class Handler {
         pathSocialModuleThreadId: socialModuleThreadIdFromPath || undefined,
         requestedThreadId: requestedThreadId || undefined,
       });
+
+      const thread = await this.service.socialModule.thread.findById({
+        id: socialModuleThreadId,
+      });
+      const document = getAIChatDocument(thread?.metadata);
+      if (
+        document &&
+        document.profileId !== socialModuleProfileId &&
+        parsedBody.data
+      ) {
+        const selectedSourceId =
+          parsedBody.data.metadata?.aiChatDocumentSourceId;
+        if (
+          selectedSourceId !== undefined &&
+          (typeof selectedSourceId !== "string" ||
+            !document.sourceIds.includes(selectedSourceId))
+        )
+          throw new Error(
+            "Authorization error. Selected Knowledge Source does not belong to this document.",
+          );
+        const skill = await new ProfileSkills(
+          this.service.socialModule,
+        ).forDocument(document.profileId, document.key);
+        const description =
+          typeof parsedBody.data.description === "string"
+            ? parsedBody.data.description
+            : "";
+        parsedBody.data.description = description.startsWith(`/${skill.slug}\n`)
+          ? description
+          : `/${skill.slug}\n\n${description}`;
+        parsedBody.data.metadata = {
+          ...parsedBody.data.metadata,
+          [RBAC_AI_REACTION_REQUEST_METADATA_KEY]: {
+            ...(aiReactionRequest || {
+              version: 1,
+              modelId: "auto",
+              reasoning: "auto",
+              useKnowledgeSearch: true,
+            }),
+            skillIds: [skill.id],
+          },
+        };
+      }
 
       if (parsedBody.data && "threadId" in parsedBody.data) {
         delete parsedBody.data.threadId;
