@@ -33,6 +33,7 @@ jest.mock("@sps/shared-utils", () => {
 
 jest.mock("@sps/backend-utils", () => {
   return {
+    ...jest.requireActual("@sps/backend-utils"),
     getHttpErrorType: (error: Error) => ({
       status: 400,
       message: error.message,
@@ -370,7 +371,7 @@ describe("Given: rbac social message create author relation", () => {
       find: jest.fn().mockResolvedValue([
         {
           id: "brief-skill",
-          slug: "ai-chat-account-manager",
+          slug: "ai-chat-account-manager-assistant-profile",
           description: "Current instructions",
         },
       ]),
@@ -386,7 +387,7 @@ describe("Given: rbac social message create author relation", () => {
     handler.notifyOtherSubjectsInChat = jest.fn().mockResolvedValue(undefined);
     await handler.execute(
       createContext([], {
-        description: "Prepare the brief",
+        description: "/ai-chat-account-manager\n\nPrepare the brief",
         metadata: {
           aiChatDocumentSourceId: "brief-source",
           rbacAiReactionRequest: {
@@ -403,7 +404,8 @@ describe("Given: rbac social message create author relation", () => {
     expect(mockSocialModuleMessageCreate).toHaveBeenCalledWith(
       expect.objectContaining({
         data: {
-          description: "/ai-chat-account-manager\n\nPrepare the brief",
+          description:
+            "/ai-chat-account-manager-assistant-profile\n\nPrepare the brief",
           metadata: {
             aiChatDocumentSourceId: "brief-source",
             rbacAiReactionRequest: {
@@ -422,7 +424,6 @@ describe("Given: rbac social message create author relation", () => {
         filters: {
           and: [
             { column: "profileId", method: "eq", value: "assistant-profile" },
-            { column: "skillId", method: "eq", value: "brief-skill" },
           ],
         },
       },

@@ -1,6 +1,7 @@
 import {
   RBAC_JWT_SECRET,
   RBAC_SECRET_KEY,
+  AI_CHAT_DOCUMENTS,
   assertSupportedAiChatAttachments,
 } from "@sps/shared-utils";
 import { Context } from "hono";
@@ -148,9 +149,15 @@ export class Handler {
           typeof parsedBody.data.description === "string"
             ? parsedBody.data.description
             : "";
-        parsedBody.data.description = description.startsWith(`/${skill.slug}\n`)
-          ? description
-          : `/${skill.slug}\n\n${description}`;
+        const baseSlug = AI_CHAT_DOCUMENTS.find(
+          (definition) => definition.key === document.key,
+        )?.skillSlug;
+        const leadingCommand = description.match(/^\/([^\s]+)(?=\s|$)\s*/);
+        const content =
+          leadingCommand && [skill.slug, baseSlug].includes(leadingCommand[1])
+            ? description.slice(leadingCommand[0].length)
+            : description;
+        parsedBody.data.description = `/${skill.slug}\n\n${content}`;
         parsedBody.data.metadata = {
           ...parsedBody.data.metadata,
           [RBAC_AI_REACTION_REQUEST_METADATA_KEY]: {

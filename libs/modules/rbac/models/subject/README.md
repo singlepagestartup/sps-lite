@@ -343,6 +343,15 @@ the Chat’s single primary relation retains `variant="default"`.
 
 ### OpenRouter decisions and automatic replies
 
+Creating an AI Chat assistant also creates and links five separate document
+Skills from `libs/shared/utils/src/lib/constants/ai-chat-skill-templates.ts`.
+Commands include the assistant profile ID; descriptions are independent for
+each assistant. No shared Skill rows need to be seeded before project creation.
+Failed Skill setup removes that attempt's records and the new profile before
+chat creation. Document message creation resolves the linked profession on the
+server and stores its actual command and ID. Ordinary threads activate a
+profession only when explicitly requested.
+
 `react-by/openrouter` selects from the local catalogue in
 `libs/shared/utils/src/lib/constants/open-router-models.ts`. Its only answering
 model is `openai/gpt-6.1-sol`, with `high` reasoning for text, coding, and

@@ -1,11 +1,9 @@
 const mockBootstrap = jest.fn();
 const mockDocuments = jest.fn();
-const mockDefaults = jest.fn();
-const mockConnect = jest.fn();
+const mockEnsure = jest.fn();
 jest.mock("./skills", () => ({
   Service: class {
-    defaults = mockDefaults;
-    connect = mockConnect;
+    ensure = mockEnsure;
   },
 }));
 jest.mock("./documents", () => ({
@@ -14,6 +12,7 @@ jest.mock("./documents", () => ({
   },
 }));
 const mockProfileCreate = jest.fn();
+const mockProfileDelete = jest.fn();
 const mockRelationCreate = jest.fn();
 jest.mock("./ai/bootstrap", () => ({
   Service: class {
@@ -22,7 +21,7 @@ jest.mock("./ai/bootstrap", () => ({
 }));
 jest.mock("@sps/shared-utils", () => ({ RBAC_SECRET_KEY: "test-secret" }));
 jest.mock("@sps/social/models/profile/sdk/server", () => ({
-  api: { create: mockProfileCreate },
+  api: { create: mockProfileCreate, delete: mockProfileDelete },
 }));
 jest.mock(
   "@sps/rbac/relations/subjects-to-social-module-profiles/sdk/server",
@@ -115,8 +114,8 @@ function dependencies() {
 describe("Subject profile collection", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockDefaults.mockResolvedValue([{ id: "default-skill" }]);
-    mockConnect.mockResolvedValue(undefined);
+    mockEnsure.mockResolvedValue([]);
+    mockProfileDelete.mockResolvedValue(undefined);
     mockBootstrap.mockImplementation(async ({ socialModuleProfile }) => ({
       socialModuleProfile,
     }));
@@ -209,19 +208,20 @@ describe("Subject profile collection", () => {
     expect(mockRelationCreate).not.toHaveBeenCalled();
     expect(mockBootstrap).not.toHaveBeenCalled();
   });
-  it("checks required profession configuration before creating any assistant records", async () => {
-    mockDefaults.mockRejectedValueOnce(
-      new Error("Configuration error. Missing skill"),
-    );
+  it("cleans up the new profile and stops setup when creating its skills fails", async () => {
+    mockEnsure.mockRejectedValueOnce(new Error("Skill creation failed"));
     await expect(
       new Service(dependencies() as any).create({
         subjectId: "owner",
         data: { variant: "artificial-intelligence", title: { en: "Project" } },
       }),
-    ).rejects.toThrow("Missing skill");
-    expect(mockProfileCreate).not.toHaveBeenCalled();
+    ).rejects.toThrow("Skill creation failed");
+    expect(mockProfileDelete).toHaveBeenCalledWith(
+      expect.objectContaining({ id: "profile-1" }),
+    );
     expect(mockBootstrap).not.toHaveBeenCalled();
-    expect(mockConnect).not.toHaveBeenCalled();
+    expect(mockRelationCreate).not.toHaveBeenCalled();
+    expect(mockDocuments).not.toHaveBeenCalled();
   });
   it("two projects with the same title receive distinct profiles, conversations and agent identities", async () => {
     const deps = dependencies();
@@ -287,12 +287,8 @@ describe("Subject profile collection", () => {
     });
     expect(mockBootstrap.mock.calls[0][0].socialModuleProfile).toBe(first);
     expect(mockBootstrap.mock.calls[1][0].socialModuleProfile).toBe(second);
-    expect(mockConnect).toHaveBeenCalledWith(first.id, [
-      { id: "default-skill" },
-    ]);
-    expect(mockConnect).toHaveBeenCalledWith(second.id, [
-      { id: "default-skill" },
-    ]);
+    expect(mockEnsure).toHaveBeenCalledWith(first.id);
+    expect(mockEnsure).toHaveBeenCalledWith(second.id);
     expect(first).not.toHaveProperty("thread");
     expect(first).not.toHaveProperty("chat");
     expect(
@@ -304,6 +300,28 @@ describe("Subject profile collection", () => {
       { profileId: first.id, chatId: "chat-1" },
       { profileId: second.id, chatId: "chat-2" },
     ]);
+  });
+
+  it("waits for private Skill setup before publishing assistant ownership and documents", async () => {
+    let finish: (value: any[]) => void = () => {};
+    mockEnsure.mockImplementationOnce(
+      () =>
+        new Promise((resolve) => {
+          finish = resolve;
+        }),
+    );
+    const creation = new Service(dependencies() as any).create({
+      subjectId: "owner",
+      data: { variant: "artificial-intelligence", title: { en: "Project" } },
+    });
+    for (let step = 0; step < 5; step++) await Promise.resolve();
+    expect(mockEnsure).toHaveBeenCalledWith("profile-1");
+    expect(mockRelationCreate).not.toHaveBeenCalled();
+    expect(mockDocuments).not.toHaveBeenCalled();
+    finish([]);
+    await creation;
+    expect(mockRelationCreate).toHaveBeenCalledTimes(1);
+    expect(mockDocuments).toHaveBeenCalledTimes(1);
   });
   it("ignores caller slug and admin title instead of selecting another profile", async () => {
     const deps = dependencies();

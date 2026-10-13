@@ -8,6 +8,7 @@
 
 jest.mock("@sps/backend-utils", () => {
   return {
+    ...jest.requireActual("@sps/backend-utils"),
     blobifyFiles: jest.fn(async () => ["generated-file"]),
     getHttpErrorType: jest.fn((error) => {
       const message = error instanceof Error ? error.message : String(error);
@@ -2462,90 +2463,96 @@ describe("Given: OpenRouter thread context and reply validation", () => {
   });
 });
 
-it("keeps all profile Knowledge available in ordinary AI Chat threads without activating document professions", async () => {
-  const skills = AI_CHAT_DOCUMENTS.map((document, index) => ({
-    id: `profession-${index}`,
-    slug: document.skillSlug,
-    title: document.title,
-    description: "Current manually edited role instructions",
-  }));
-  const handler = new Handler({
-    socialModule: {
-      profilesToSkills: {
-        find: jest.fn(async () =>
-          skills.map((skill) => ({ skillId: skill.id })),
-        ),
+it.each(["shared", "private"])(
+  "keeps Knowledge available without activating %s document professions in ordinary threads",
+  async (kind) => {
+    const skills = AI_CHAT_DOCUMENTS.map((document, index) => ({
+      id: `profession-${index}`,
+      slug:
+        kind === "private"
+          ? `${document.skillSlug}-assistant`
+          : document.skillSlug,
+      title: document.title,
+      description: "Current manually edited role instructions",
+    }));
+    const handler = new Handler({
+      socialModule: {
+        profilesToSkills: {
+          find: jest.fn(async () =>
+            skills.map((skill) => ({ skillId: skill.id })),
+          ),
+        },
+        skill: { find: jest.fn(async () => skills) },
+        profilesToKnowledgeModuleSources: {
+          find: jest.fn(async () =>
+            ["brief", "strategy", "brand", "design", "products"].map((id) => ({
+              knowledgeModuleSourceId: id,
+            })),
+          ),
+        },
       },
-      skill: { find: jest.fn(async () => skills) },
-      profilesToKnowledgeModuleSources: {
-        find: jest.fn(async () =>
-          ["brief", "strategy", "brand", "design", "products"].map((id) => ({
-            knowledgeModuleSourceId: id,
-          })),
-        ),
-      },
-    },
-  } as any) as any;
-  handler.knowledgeService = { search: jest.fn(async () => []) };
-  const props = {
-    billingLedger: [],
-    openRouter: {} as any,
-    replyProfile: { id: "assistant" },
-    socialModuleMessage: { description: "Explain my project" },
-    sanitizedQuery: "Explain my project",
-    requestedKnowledgeSearch: true,
-    requestedSkillIds: [],
-    selectedModelId: null,
-    threadContext: [],
-    isAIChat: true,
-  };
-  const ordinary = await handler.resolveOpenRouterKnowledgeContext(props);
-  expect(ordinary.availableSkills).toEqual([]);
-  expect(ordinary.promptSkills).toEqual([]);
-  expect(ordinary.skillMessagePrefix).toBe("");
-  expect(ordinary.knowledgeSourceIds).toEqual([
-    "brief",
-    "strategy",
-    "brand",
-    "design",
-    "products",
-  ]);
-  const explicit = await handler.resolveOpenRouterKnowledgeContext({
-    ...props,
-    socialModuleMessage: {
-      description: `/${skills[1].slug}\nExplain my project`,
-    },
-  });
-  expect(explicit.availableSkills).toEqual([skills[1]]);
-  expect(explicit.promptSkills).toEqual([skills[1]]);
-  expect(explicit.requestedSkillIds).toEqual([skills[1].id]);
-  expect(
-    explicit.skillMessagePrefix.match(
-      /Current manually edited role instructions/g,
-    ),
-  ).toHaveLength(1);
-  const selected = await handler.resolveOpenRouterKnowledgeContext({
-    ...props,
-    requestedSkillIds: [skills[2].id],
-  });
-  expect(selected.promptSkills).toEqual([skills[2]]);
-  await expect(
-    handler.resolveOpenRouterKnowledgeContext({
+    } as any) as any;
+    handler.knowledgeService = { search: jest.fn(async () => []) };
+    const props = {
+      billingLedger: [],
+      openRouter: {} as any,
+      replyProfile: { id: "assistant" },
+      socialModuleMessage: { description: "Explain my project" },
+      sanitizedQuery: "Explain my project",
+      requestedKnowledgeSearch: true,
+      requestedSkillIds: [],
+      selectedModelId: null,
+      threadContext: [],
+      isAIChat: true,
+    };
+    const ordinary = await handler.resolveOpenRouterKnowledgeContext(props);
+    expect(ordinary.availableSkills).toEqual([]);
+    expect(ordinary.promptSkills).toEqual([]);
+    expect(ordinary.skillMessagePrefix).toBe("");
+    expect(ordinary.knowledgeSourceIds).toEqual([
+      "brief",
+      "strategy",
+      "brand",
+      "design",
+      "products",
+    ]);
+    const explicit = await handler.resolveOpenRouterKnowledgeContext({
       ...props,
-      requestedSkillIds: ["unlinked-profession"],
-    }),
-  ).rejects.toThrow("not linked to profile");
-  const document = await handler.resolveOpenRouterKnowledgeContext({
-    ...props,
-    documentSkill: skills[0],
-  });
-  expect(document.promptSkills).toEqual([skills[0]]);
-  expect(
-    document.skillMessagePrefix.match(
-      /Current manually edited role instructions/g,
-    ),
-  ).toHaveLength(1);
-});
+      socialModuleMessage: {
+        description: `/${skills[1].slug}\nExplain my project`,
+      },
+    });
+    expect(explicit.availableSkills).toEqual([skills[1]]);
+    expect(explicit.promptSkills).toEqual([skills[1]]);
+    expect(explicit.requestedSkillIds).toEqual([skills[1].id]);
+    expect(
+      explicit.skillMessagePrefix.match(
+        /Current manually edited role instructions/g,
+      ),
+    ).toHaveLength(1);
+    const selected = await handler.resolveOpenRouterKnowledgeContext({
+      ...props,
+      requestedSkillIds: [skills[2].id],
+    });
+    expect(selected.promptSkills).toEqual([skills[2]]);
+    await expect(
+      handler.resolveOpenRouterKnowledgeContext({
+        ...props,
+        requestedSkillIds: ["unlinked-profession"],
+      }),
+    ).rejects.toThrow("not linked to profile");
+    const document = await handler.resolveOpenRouterKnowledgeContext({
+      ...props,
+      documentSkill: skills[0],
+    });
+    expect(document.promptSkills).toEqual([skills[0]]);
+    expect(
+      document.skillMessagePrefix.match(
+        /Current manually edited role instructions/g,
+      ),
+    ).toHaveLength(1);
+  },
+);
 
 it("document tools offer proposals and reads while direct Knowledge writers are absent", () => {
   const handler = new Handler({ socialModule: {} } as any) as any;

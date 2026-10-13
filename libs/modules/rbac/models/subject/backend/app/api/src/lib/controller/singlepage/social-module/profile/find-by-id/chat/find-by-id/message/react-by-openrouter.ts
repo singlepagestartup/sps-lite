@@ -1,5 +1,4 @@
 import {
-  AI_CHAT_DOCUMENTS,
   OPEN_ROUTER_ASSISTANT_MODEL,
   OPEN_ROUTER_MODEL_ROUTER_CONFIG as MODEL_ROUTER_CONFIG,
   replaceKnowledgeUserContext,
@@ -33,7 +32,11 @@ import {
   type TRbacAiReactionReasoning,
   parseRbacAiReactionRequestMetadata,
 } from "@sps/rbac/models/subject/sdk/model";
-import { blobifyFiles, getHttpErrorType } from "@sps/backend-utils";
+import {
+  blobifyFiles,
+  getHttpErrorType,
+  getAIChatDocumentForSkill,
+} from "@sps/backend-utils";
 import {
   OpenRouter,
   type IOpenRouterGenerateResult,
@@ -2093,9 +2096,7 @@ export class Handler {
     const availableSkills = props.isAIChat
       ? linkedSkills.filter(
           (skill) =>
-            !AI_CHAT_DOCUMENTS.some(
-              (document) => document.skillSlug === skill.slug,
-            ) ||
+            !getAIChatDocumentForSkill(skill.slug, props.replyProfile.id) ||
             (!props.documentSkill &&
               (props.requestedSkillIds.includes(skill.id) ||
                 mentionedSkillSlugs.includes(skill.slug.toLowerCase()))),

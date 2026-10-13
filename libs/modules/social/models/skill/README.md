@@ -17,9 +17,9 @@ flow. The relation controls which profiles can use the skill.
 
 ## AI Chat document professions
 
-AI Chat requires five shared skills with non-empty instructions:
+Each new AI Chat assistant receives five separate Skill records with non-empty instructions:
 
-| Document    | Skill slug                         |
+| Document    | Command prefix                     |
 | ----------- | ---------------------------------- |
 | Brief.md    | `ai-chat-account-manager`          |
 | Strategy.md | `ai-chat-strategist`               |
@@ -27,13 +27,19 @@ AI Chat requires five shared skills with non-empty instructions:
 | Design.md   | `ai-chat-brand-designer`           |
 | Products.md | `ai-chat-business-analyst`         |
 
-An operator creates these records through the runtime API or admin interface.
-New AI Chat assistants receive all five links during profile creation. The
-server rejects creation when a required skill is missing or has empty
-instructions. It does not generate instructions from Studio or overwrite
-manual edits. Editing a shared skill affects every linked assistant.
+The server creates each record from the fixed instructions in
+`libs/shared/utils/src/lib/constants/ai-chat-skill-templates.ts` and links it to
+the new assistant. Each command appends that profile's ID to the prefix, such
+as `ai-chat-account-manager-<profile-id>`. Creating a project requires no
+preconfigured Skill rows, Studio import or Publisher flow. Subsequent setup
+attempts reuse those records and links without overwriting edited descriptions.
+Descriptions and titles can be edited through the existing scoped Skill API;
+built-in profession commands remain stable. These records are excluded from the
+shared catalogue and cannot be linked to another profile through the scoped API.
+Already linked legacy shared commands remain readable for existing assistants;
+when both versions are linked, document requests use the profile's own record.
 
-Document messages carry the appropriate slash command and selected skill ID.
+The server gives document messages the profile's actual slash command and Skill ID.
 Generation reads the current instructions once for each request. Ordinary
 AI Chat threads can read all profile Knowledge but do not automatically
 activate these five professions.

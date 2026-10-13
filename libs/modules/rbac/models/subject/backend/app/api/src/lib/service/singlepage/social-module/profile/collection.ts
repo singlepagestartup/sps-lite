@@ -61,7 +61,6 @@ export class Service {
         "Validation error. Profile title must contain 1 to 200 characters",
       );
     const skills = new Skills(this.service.socialModule);
-    const defaults = await skills.defaults();
     const options = {
       headers: {
         "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -78,6 +77,12 @@ export class Service {
       },
       options,
     });
+    try {
+      await skills.ensure(profile.id);
+    } catch (error) {
+      await profileApi.delete({ id: profile.id, options });
+      throw error;
+    }
     const context =
       await this.service.socialModuleChatLifecycleCreateChatWithDefaultThread({
         subjectId: props.subjectId,
@@ -107,7 +112,6 @@ export class Service {
       },
       options,
     });
-    await skills.connect(agent.socialModuleProfile.id, defaults);
     await new Documents(this.service.socialModule).execute({
       profileId: agent.socialModuleProfile.id,
       chatId: context.socialModuleChat.id,
