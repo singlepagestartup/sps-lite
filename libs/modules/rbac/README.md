@@ -246,6 +246,10 @@ permission paths, and row payloads are not logged. This compatibility code is
 removed only after the downstream rollout tracked by issue #216; its generated
 migrations and permanent constraints remain.
 
+Default and topic thread checks use only Telegram Chats with a provider ID,
+matching the repair's write scope. AI Chat documents and discussion threads
+may share the `default` variant and remain separate records.
+
 ---
 
 ## 2. Models
