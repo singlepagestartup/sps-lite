@@ -76,6 +76,9 @@ results
 node_modules
 .node_history
 
+# Next.js generated output, including temporary test builds
+.next*/
+
 ############################
 # NX
 ############################
