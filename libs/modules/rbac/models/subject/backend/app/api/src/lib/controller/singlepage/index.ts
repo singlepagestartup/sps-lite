@@ -10,6 +10,7 @@ import {
   RequestSocialModuleThreadBelongsToChat,
   RequestSubjectCanManageChatAgentProfile,
   RequestSubjectIdOwner,
+  RequestSubjectOwnsEcommerceModuleOrder,
   RequestSubjectOwnsSocialModuleChat,
 } from "../../../../../middlewares";
 
@@ -308,11 +309,19 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "GET",
         path: "/:id/ecommerce-module/orders/:orderId/quantity",
         handler: this.ecommerceModuleOrderIdQuantity,
+        middlewares: [
+          new RequestSubjectIdOwner().init(),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "GET",
         path: "/:id/ecommerce-module/orders/:orderId/total",
         handler: this.ecommerceModuleOrderIdTotal,
+        middlewares: [
+          new RequestSubjectIdOwner().init(),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "POST",
@@ -330,6 +339,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "PATCH",
         path: "/:id/ecommerce-module/orders/:orderId",
         handler: this.ecommerceModuleOrderIdUpdate,
+        middlewares: [
+          new RequestSubjectIdOwner().init(),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "DELETE",
@@ -346,6 +359,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "DELETE",
         path: "/:id/ecommerce-module/orders/:orderId",
         handler: this.ecommerceModuleOrderIdDelete,
+        middlewares: [
+          new RequestSubjectIdOwner().init(),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "PATCH",
