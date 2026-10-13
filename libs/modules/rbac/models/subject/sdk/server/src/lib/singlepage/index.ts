@@ -27,6 +27,11 @@ import {
   type IResult as ISocialModuleProfileCreateResult,
 } from "./social-module/profile/create";
 import {
+  action as billingModuleBalance,
+  type IProps as IBillingModuleBalanceProps,
+  type IResult as IBillingModuleBalanceResult,
+} from "./billing-module/balance";
+import {
   action as socialModuleProfileFind,
   type IProps as ISocialModuleProfileFindProps,
   type IResult as ISocialModuleProfileFindResult,
@@ -460,6 +465,7 @@ import {
 } from "./social-module/chat/find-by-id/profile/delete";
 
 export type IProps = {
+  IBillingModuleBalanceProps: IBillingModuleBalanceProps;
   IIdentityChangeEmailRequestProps: IIdentityChangeEmailRequestProps;
   IIdentityChangeEmailVerifyProps: IIdentityChangeEmailVerifyProps;
   ISocialModuleProfileFindByIdAvatarFindProps: ISocialModuleProfileFindByIdAvatarFindProps;
@@ -558,6 +564,7 @@ export type IProps = {
 };
 
 export type IResult = {
+  IBillingModuleBalanceResult: IBillingModuleBalanceResult;
   IIdentityChangeEmailRequestResult: IIdentityChangeEmailRequestResult;
   IIdentityChangeEmailVerifyResult: IIdentityChangeEmailVerifyResult;
   ISocialModuleProfileFindByIdAvatarFindResult: ISocialModuleProfileFindByIdAvatarFindResult;
@@ -740,6 +747,7 @@ export const api = {
   socialModuleProfileFindByIdChatFindByIdDelete,
   socialModuleProfileFindByIdChatFindByIdActionCreate,
   socialModuleProfileFindByIdChatFindByIdActionFind,
+  billingModuleBalance,
   socialModuleProfileFind,
   identityChangeEmailRequest,
   identityChangeEmailVerify,

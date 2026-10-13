@@ -1,4 +1,5 @@
 import { Handler as SubjectProfileAvatarUpdate } from "./social-module/profile/find-by-id/avatar/update";
+import { Handler as SubjectBalance } from "./billing-module/balance";
 import { Handler as SubjectProfileAvatarFind } from "./social-module/profile/find-by-id/avatar/find";
 import { Handler as SubjectProfileUpdate } from "./social-module/profile/find-by-id/update";
 import { Handler as SocialModuleProfileCreate } from "./social-module/profile/create";
@@ -134,6 +135,12 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         path: "/:id/social-module/profiles/projects",
         handler: (c) =>
           new SocialModuleProfileProjects(this.service).execute(c),
+        middlewares: [new RequestSubjectIdOwner().init()],
+      },
+      {
+        method: "GET",
+        path: "/:id/billing-module/balance",
+        handler: (c) => new SubjectBalance(this.service).execute(c),
         middlewares: [new RequestSubjectIdOwner().init()],
       },
       {

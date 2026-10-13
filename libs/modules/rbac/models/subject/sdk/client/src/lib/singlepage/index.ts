@@ -25,6 +25,11 @@ import {
   type IResult as ISocialModuleProfileCreateResult,
 } from "./social-module/profile/create";
 import {
+  action as billingModuleBalance,
+  type IProps as IBillingModuleBalanceProps,
+  type IResult as IBillingModuleBalanceResult,
+} from "./billing-module/balance";
+import {
   action as socialModuleProfileFind,
   type IProps as ISocialModuleProfileFindProps,
   type IResult as ISocialModuleProfileFindResult,
@@ -414,6 +419,7 @@ import {
 } from "./social-module/chat/find-by-id/profile/delete";
 
 export type IProps = {
+  IBillingModuleBalanceProps: IBillingModuleBalanceProps;
   ISocialModuleProfileFindByIdAvatarFindProps: ISocialModuleProfileFindByIdAvatarFindProps;
   ISocialModuleProfileFindByIdAvatarUpdateProps: ISocialModuleProfileFindByIdAvatarUpdateProps;
   ISocialModuleProfileFindByIdUpdateProps: ISocialModuleProfileFindByIdUpdateProps;
@@ -499,6 +505,7 @@ export type IProps = {
 };
 
 export type IResult = {
+  IBillingModuleBalanceResult: IBillingModuleBalanceResult;
   ISocialModuleProfileFindByIdAvatarFindResult: ISocialModuleProfileFindByIdAvatarFindResult;
   ISocialModuleProfileFindByIdAvatarUpdateResult: ISocialModuleProfileFindByIdAvatarUpdateResult;
   ISocialModuleProfileFindByIdUpdateResult: ISocialModuleProfileFindByIdUpdateResult;
@@ -660,6 +667,7 @@ export const api = {
   socialModuleProfileFindByIdChatFindByIdDelete,
   socialModuleProfileFindByIdChatFindByIdActionCreate,
   socialModuleProfileFindByIdChatFindByIdActionFind,
+  billingModuleBalance,
   socialModuleProfileFind,
   socialModuleProfileCreate,
   socialModuleProfileFindByIdUpdate,

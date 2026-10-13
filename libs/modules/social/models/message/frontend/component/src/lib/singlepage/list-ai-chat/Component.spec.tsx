@@ -23,7 +23,7 @@ const mockFiles = [
 jest.mock(
   "@sps/social/relations/profiles-to-messages/frontend/component",
   () => ({
-    Component: (props: any) =>
+    Component: jest.fn((props: any) =>
       props.children({
         data: [
           {
@@ -34,12 +34,13 @@ jest.mock(
           },
         ],
       }),
+    ),
   }),
 );
 jest.mock(
   "@sps/social/relations/messages-to-file-storage-module-files/frontend/component",
   () => ({
-    Component: (props: any) =>
+    Component: jest.fn((props: any) =>
       props.children({
         data:
           props.apiProps.params.filters.and[0].value === "user-message"
@@ -62,6 +63,7 @@ jest.mock(
               ]
             : [],
       }),
+    ),
   }),
 );
 jest.mock("@sps/file-storage/models/file/frontend/component", () => ({
@@ -214,4 +216,49 @@ it("follows new replies and growing attachments but preserves the position when 
     scrollHeight.mockRestore();
     clientHeight.mockRestore();
   }
+});
+
+it("renders scoped authors and all files without reading generic relations", () => {
+  const authors = jest.requireMock(
+    "@sps/social/relations/profiles-to-messages/frontend/component",
+  ).Component;
+  const messageFiles = jest.requireMock(
+    "@sps/social/relations/messages-to-file-storage-module-files/frontend/component",
+  ).Component;
+  authors.mockClear();
+  messageFiles.mockClear();
+  const open = jest.fn();
+  render(
+    <Component
+      {...({
+        data: [
+          {
+            id: "scoped-user-message",
+            description: "Two references",
+            authorProfileIds: ["requester"],
+            attachments: [mockFiles[2], mockFiles[0]],
+            createdAt: "2026-10-13T00:00:00Z",
+          },
+          {
+            id: "scoped-assistant-message",
+            description: "Answer",
+            authorProfileIds: ["author-assistant"],
+            attachments: [],
+            createdAt: "2026-10-13T00:00:01Z",
+          },
+        ],
+        requesterProfileId: "requester",
+        onProfileOpen: open,
+      } as any)}
+    />,
+  );
+  expect(authors).not.toHaveBeenCalled();
+  expect(messageFiles).not.toHaveBeenCalled();
+  expect(
+    within(screen.getByRole("list", { name: "Message attachments" }))
+      .getAllByRole("link")
+      .map((link) => link.getAttribute("aria-label")),
+  ).toEqual(["Open Third.pdf", "Open First.png"]);
+  fireEvent.click(screen.getByRole("button", { name: "About this assistant" }));
+  expect(open).toHaveBeenCalledWith("author-assistant");
 });

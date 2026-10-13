@@ -26,6 +26,9 @@ Frontend variants include the normal admin views, `chat-sidebar-item`, and `chat
 loads the current Source through the matching client or server SDK before
 rendering the editor. The renderer uses `IComponentPropsExtended`; caller save,
 discussion and attachment callbacks retain the RBAC scope that created them.
+RBAC supplies the record wrapper's query function from the profile-scoped
+Knowledge reader. It does not grant global Knowledge Source reads to render
+the owner's document. The wrapper retains normal realtime invalidation.
 
 `form-ai-chat` creates a section before a Source exists. It uses the shared form
 wrapper, accepts an initial title and content, and makes no `findById` request

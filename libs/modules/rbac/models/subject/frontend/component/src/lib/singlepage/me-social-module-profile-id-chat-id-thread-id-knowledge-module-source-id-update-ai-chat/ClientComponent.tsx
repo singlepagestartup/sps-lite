@@ -4,6 +4,9 @@ import { X } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
 import { Component as File } from "@sps/file-storage/models/file/frontend/component";
+import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
+import { clientHost } from "@sps/rbac/models/subject/sdk/model";
+import { saturateHeaders } from "@sps/shared-frontend-client-utils";
 import type { IComponentPropsExtended } from "./interface";
 import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
 
@@ -20,7 +23,14 @@ const SourceFile = memo(function SourceFile({
   const title = file.adminTitle || file.alt || "File";
   return (
     <li className="relative min-w-0">
-      <File isServer={false} variant="attachment-ai-chat" data={file} />
+      <File
+        isServer={false}
+        variant="attachment-ai-chat"
+        data={file}
+        apiProps={{
+          reactQueryOptions: { initialData: file, queryFn: async () => file },
+        }}
+      />
       <button
         type="button"
         aria-label={`Remove ${title} from knowledge`}
@@ -145,6 +155,27 @@ export const Component = memo(function Component({
       isServer={false}
       variant="id-ai-chat"
       data={source}
+      apiProps={{
+        reactQueryOptions: {
+          initialData: source,
+          queryFn: async () => {
+            const records =
+              await serverApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+                {
+                  ...scope,
+                  host: clientHost,
+                  options: {
+                    headers: saturateHeaders({ "Cache-Control": "no-store" }),
+                  },
+                },
+              );
+            const current = records.find((record) => record.id === source.id);
+            if (!current)
+              throw new Error("Source is no longer linked to this assistant.");
+            return current;
+          },
+        },
+      }}
       onDiscuss={discuss}
       attachments={
         <div className="mt-4 border-t border-border pt-3">

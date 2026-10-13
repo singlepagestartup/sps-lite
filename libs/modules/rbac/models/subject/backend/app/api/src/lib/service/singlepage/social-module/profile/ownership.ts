@@ -257,6 +257,10 @@ export class Service {
     const permissions: Record<string, unknown>[] = [];
     const descriptors = [
       { method: "GET", path: `/api/rbac/subjects/${subjectId}` },
+      {
+        method: "GET",
+        path: `/api/rbac/subjects/${subjectId}/billing-module/balance`,
+      },
       { method: "GET", path },
       { method: "GET", path: `${path}/projects` },
       { method: "POST", path },

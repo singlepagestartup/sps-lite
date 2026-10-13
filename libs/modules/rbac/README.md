@@ -133,12 +133,22 @@ These routes validate subject/profile access and the Social profile-Source relat
 
 Telegram personal AI provisioning also ensures one existing-model RBAC grant
 for the profile owner. The role slug is
-`social-profile-<social-profile-id>-knowledge-owner`; fourteen chat-scoped
+`social-profile-<social-profile-id>-knowledge-owner`; sixteen chat-scoped
 assistant-management permissions cover profile listing/update/avatar, six
-skill operations, and five Knowledge Source operations. They keep the target
+skill operations, five Knowledge Source operations, and two Source attachment
+operations. They keep the target
 AI profile UUID literal, and the role is
 assigned to the authenticated owner through `subjects-to-roles`. No
 profile-to-role relation or extra authorization middleware is introduced.
+
+The AI Chat account menu reads the single token balance through
+`GET /api/rbac/subjects/:id/billing-module/balance`. The private account role
+grants that exact Subject path, and owner middleware rejects another Subject.
+Project, Skill and Source record wrappers use scoped SDK query functions.
+Scoped message responses include their authors and ordered Files, so chat
+rows need no global relation or File listing permission. Reading an owned
+assistant's Knowledge repairs older attachment grants; shared Chat membership
+alone does not create an owner grant.
 
 ### Natural-key integrity and concurrent Telegram bootstrap
 

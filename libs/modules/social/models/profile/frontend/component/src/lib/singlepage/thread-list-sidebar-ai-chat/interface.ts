@@ -18,6 +18,9 @@ export interface IDocumentLinkProps {
 
 export const variant = "thread-list-sidebar-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
+  apiProps?: IParent<IModel, typeof variant>["apiProps"] & {
+    reactQueryOptions?: Partial<UseQueryOptions<IModel | undefined>>;
+  };
   language?: string;
   documents: IDocumentLinkProps[];
 }

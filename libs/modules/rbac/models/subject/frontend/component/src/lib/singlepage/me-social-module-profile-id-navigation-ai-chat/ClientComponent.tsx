@@ -8,6 +8,7 @@ import {
   projectHref,
   projectBaseHref,
   findProjectThreads,
+  findProjectProfile,
 } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
@@ -31,6 +32,16 @@ export function Component(props: IComponentPropsExtended) {
       variant="sidebar-ai-chat-project"
       language={props.language}
       data={project.profile}
+      apiProps={{
+        reactQueryOptions: {
+          initialData: project.profile,
+          queryFn: () =>
+            findProjectProfile({
+              subjectId: props.data.id,
+              profileId: project.profile.id,
+            }),
+        },
+      }}
       settingsHref={`${projectBaseHref(project)}/settings`}
       newThreadHref={`${projectBaseHref(project)}/threads/create`}
       settingsSelected={props.selected === "settings"}
@@ -71,6 +82,16 @@ export function Component(props: IComponentPropsExtended) {
         variant="thread-list-sidebar-ai-chat"
         language={props.language}
         data={project.profile}
+        apiProps={{
+          reactQueryOptions: {
+            initialData: project.profile,
+            queryFn: () =>
+              findProjectProfile({
+                subjectId: props.data.id,
+                profileId: project.profile.id,
+              }),
+          },
+        }}
         className="my-4"
         documents={documents.map((thread) => ({
           data: thread,

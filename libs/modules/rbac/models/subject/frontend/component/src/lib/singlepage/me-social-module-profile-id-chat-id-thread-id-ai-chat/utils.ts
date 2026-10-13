@@ -38,6 +38,26 @@ export async function findProjectThreads(props: {
   });
 }
 
+export async function findProjectProfile(props: {
+  subjectId: string;
+  profileId: string;
+}) {
+  const profiles = await subjectApi.socialModuleProfileFind({
+    id: props.subjectId,
+    params: {
+      filters: {
+        and: [{ column: "id", method: "eq", value: props.profileId }],
+      },
+    },
+    host: clientHost,
+    options: { headers: saturateHeaders({ "Cache-Control": "no-store" }) },
+  });
+  const profile = profiles.find((record) => record.id === props.profileId);
+  if (!profile)
+    throw new Error("Profile is no longer available to this account.");
+  return profile;
+}
+
 export function getProjectsQueryKey(subjectId: string) {
   return ["ai-chat-projects", subjectId];
 }

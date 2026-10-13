@@ -6,8 +6,40 @@ import { memo, useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Bot, User } from "lucide-react";
 import Markdown from "markdown-to-jsx";
 import type { IComponentPropsExtended } from "./interface";
-import type { IModel } from "@sps/social/models/message/sdk/model";
+import type { IChatMessage as IModel } from "@sps/social/models/message/sdk/model";
+import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
 
+function AttachmentStrip({ files }: { files: IFile[] }) {
+  if (!files.length) return null;
+  return (
+    <div className="mt-3 min-w-0">
+      <p className="mb-2 text-xs text-muted-foreground">
+        {files.length} {files.length === 1 ? "attachment" : "attachments"}
+      </p>
+      <ul
+        aria-label="Message attachments"
+        tabIndex={0}
+        className="flex gap-2 overflow-x-auto pb-2"
+      >
+        {files.map((file) => (
+          <li key={file.id} className="w-36 shrink-0 sm:w-40">
+            <Files
+              isServer={false}
+              variant="attachment-ai-chat"
+              data={file}
+              apiProps={{
+                reactQueryOptions: {
+                  initialData: file,
+                  queryFn: async () => file,
+                },
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 const Row = memo(function Row({
   message,
   own,
@@ -67,71 +99,76 @@ const Row = memo(function Row({
             {message.description || ""}
           </Markdown>
         </div>
-        <MessageFiles
-          isServer={false}
-          variant="find"
-          keepDataWhileFetching
-          apiProps={{
-            params: {
-              filters: {
-                and: [{ column: "messageId", method: "eq", value: message.id }],
+        {message.attachments && <AttachmentStrip files={message.attachments} />}
+        {!message.attachments && (
+          <MessageFiles
+            isServer={false}
+            variant="find"
+            keepDataWhileFetching
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    { column: "messageId", method: "eq", value: message.id },
+                  ],
+                },
+                orderBy: { and: [{ column: "orderIndex", method: "asc" }] },
               },
-              orderBy: { and: [{ column: "orderIndex", method: "asc" }] },
-            },
-          }}
-        >
-          {({ data }) =>
-            !!data?.length && (
-              <div className="mt-3 min-w-0">
-                <p className="mb-2 text-xs text-muted-foreground">
-                  {data.length}{" "}
-                  {data.length === 1 ? "attachment" : "attachments"}
-                </p>
-                <ul
-                  aria-label="Message attachments"
-                  tabIndex={0}
-                  className="flex gap-2 overflow-x-auto pb-2 focus-visible:outline-2 focus-visible:outline-offset-2"
-                >
-                  {[...data]
-                    .sort((a, b) => (a.orderIndex || 0) - (b.orderIndex || 0))
-                    .map((link) => (
-                      <li key={link.id} className="w-36 shrink-0 sm:w-40">
-                        <Files
-                          isServer={false}
-                          variant="find"
-                          keepDataWhileFetching
-                          apiProps={{
-                            params: {
-                              filters: {
-                                and: [
-                                  {
-                                    column: "id",
-                                    method: "eq",
-                                    value: link.fileStorageModuleFileId,
-                                  },
-                                ],
+            }}
+          >
+            {({ data }) =>
+              !!data?.length && (
+                <div className="mt-3 min-w-0">
+                  <p className="mb-2 text-xs text-muted-foreground">
+                    {data.length}{" "}
+                    {data.length === 1 ? "attachment" : "attachments"}
+                  </p>
+                  <ul
+                    aria-label="Message attachments"
+                    tabIndex={0}
+                    className="flex gap-2 overflow-x-auto pb-2 focus-visible:outline-2 focus-visible:outline-offset-2"
+                  >
+                    {[...data]
+                      .sort((a, b) => (a.orderIndex || 0) - (b.orderIndex || 0))
+                      .map((link) => (
+                        <li key={link.id} className="w-36 shrink-0 sm:w-40">
+                          <Files
+                            isServer={false}
+                            variant="find"
+                            keepDataWhileFetching
+                            apiProps={{
+                              params: {
+                                filters: {
+                                  and: [
+                                    {
+                                      column: "id",
+                                      method: "eq",
+                                      value: link.fileStorageModuleFileId,
+                                    },
+                                  ],
+                                },
                               },
-                            },
-                          }}
-                        >
-                          {({ data: files }) =>
-                            files?.map((file) => (
-                              <Files
-                                key={file.id}
-                                isServer={false}
-                                variant="attachment-ai-chat"
-                                data={file}
-                              />
-                            ))
-                          }
-                        </Files>
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            )
-          }
-        </MessageFiles>
+                            }}
+                          >
+                            {({ data: files }) =>
+                              files?.map((file) => (
+                                <Files
+                                  key={file.id}
+                                  isServer={false}
+                                  variant="attachment-ai-chat"
+                                  data={file}
+                                />
+                              ))
+                            }
+                          </Files>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              )
+            }
+          </MessageFiles>
+        )}
       </div>
     </article>
   );
@@ -219,38 +256,54 @@ export function Component(props: IComponentPropsExtended) {
           </div>
         </div>
       )}
-      {ordered.map((message) => (
-        <Authors
-          key={message.id}
-          isServer={false}
-          variant="find"
-          keepDataWhileFetching
-          apiProps={{
-            params: {
-              filters: {
-                and: [{ column: "messageId", method: "eq", value: message.id }],
+      {ordered.map((message: IModel) =>
+        message.authorProfileIds ? (
+          <Row
+            key={message.id}
+            message={message}
+            onProfileOpen={props.onProfileOpen}
+            assistantProfileId={
+              message.authorProfileIds.find(
+                (id) => id !== props.requesterProfileId,
+              ) || props.assistantProfileId
+            }
+            own={message.authorProfileIds.includes(props.requesterProfileId)}
+          />
+        ) : (
+          <Authors
+            key={message.id}
+            isServer={false}
+            variant="find"
+            keepDataWhileFetching
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    { column: "messageId", method: "eq", value: message.id },
+                  ],
+                },
               },
-            },
-          }}
-        >
-          {({ data }) => (
-            <Row
-              message={message}
-              onProfileOpen={props.onProfileOpen}
-              assistantProfileId={
-                data?.find(
-                  (link) => link.profileId !== props.requesterProfileId,
-                )?.profileId || props.assistantProfileId
-              }
-              own={
-                !!data?.some(
-                  (link) => link.profileId === props.requesterProfileId,
-                )
-              }
-            />
-          )}
-        </Authors>
-      ))}
+            }}
+          >
+            {({ data }) => (
+              <Row
+                message={message}
+                onProfileOpen={props.onProfileOpen}
+                assistantProfileId={
+                  data?.find(
+                    (link) => link.profileId !== props.requesterProfileId,
+                  )?.profileId || props.assistantProfileId
+                }
+                own={
+                  !!data?.some(
+                    (link) => link.profileId === props.requesterProfileId,
+                  )
+                }
+              />
+            )}
+          </Authors>
+        ),
+      )}
     </div>
   );
 }

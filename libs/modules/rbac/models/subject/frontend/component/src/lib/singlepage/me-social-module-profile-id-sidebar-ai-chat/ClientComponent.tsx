@@ -1,4 +1,8 @@
 "use client";
+import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
+import { clientHost } from "@sps/rbac/models/subject/sdk/model";
+import { saturateHeaders } from "@sps/shared-frontend-client-utils";
+import { findProjectProfile } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
 import { Component as Skill } from "@sps/social/models/skill/frontend/component";
@@ -46,6 +50,16 @@ export function Component(props: IComponentPropsExtended) {
       isServer={false}
       variant="agent-id-ai-chat"
       data={profile}
+      apiProps={{
+        reactQueryOptions: {
+          initialData: profile,
+          queryFn: () =>
+            findProjectProfile({
+              subjectId: props.data.id,
+              profileId: profile.id,
+            }),
+        },
+      }}
       language="en"
       onClose={props.onClose}
       skillsCount={skills.data?.length}
@@ -62,6 +76,34 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="id-ai-chat"
               data={skill}
+              apiProps={{
+                reactQueryOptions: {
+                  initialData: skill,
+                  queryFn: async () => {
+                    const records =
+                      await serverApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(
+                        {
+                          ...scope,
+                          targetSocialModuleProfileId: profile.id,
+                          host: clientHost,
+                          options: {
+                            headers: saturateHeaders({
+                              "Cache-Control": "no-store",
+                            }),
+                          },
+                        },
+                      );
+                    const current = records.find(
+                      (record) => record.id === skill.id,
+                    );
+                    if (!current)
+                      throw new Error(
+                        "Skill is no longer linked to this assistant.",
+                      );
+                    return current;
+                  },
+                },
+              }}
               language="en"
             />
           ))
@@ -81,6 +123,34 @@ export function Component(props: IComponentPropsExtended) {
             isServer={false}
             variant="id-sidebar-ai-chat"
             data={source}
+            apiProps={{
+              reactQueryOptions: {
+                initialData: source,
+                queryFn: async () => {
+                  const records =
+                    await serverApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+                      {
+                        ...scope,
+                        targetSocialModuleProfileId: profile.id,
+                        host: clientHost,
+                        options: {
+                          headers: saturateHeaders({
+                            "Cache-Control": "no-store",
+                          }),
+                        },
+                      },
+                    );
+                  const current = records.find(
+                    (record) => record.id === source.id,
+                  );
+                  if (!current)
+                    throw new Error(
+                      "Source is no longer linked to this assistant.",
+                    );
+                  return current;
+                },
+              },
+            }}
           >
             <SourceFiles
               subjectId={props.data.id}
@@ -123,9 +193,11 @@ function SourceFiles(props: ISourceFilesProps) {
         <File
           key={file.id}
           isServer={false}
-          variant="default"
-          language="en"
+          variant="attachment-ai-chat"
           data={file}
+          apiProps={{
+            reactQueryOptions: { initialData: file, queryFn: async () => file },
+          }}
         />
       ))}
     </div>

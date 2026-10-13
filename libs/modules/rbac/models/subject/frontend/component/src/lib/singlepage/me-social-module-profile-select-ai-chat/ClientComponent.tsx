@@ -4,7 +4,10 @@ import {
   Component as Profile,
   EmptyProjectSelect,
 } from "@sps/social/models/profile/frontend/component";
-import { projectHref } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
+import {
+  projectHref,
+  findProjectProfile,
+} from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -47,6 +50,16 @@ export function Component(props: IComponentPropsExtended) {
                   isServer={false}
                   variant="select-item-ai-chat-project"
                   data={item.profile}
+                  apiProps={{
+                    reactQueryOptions: {
+                      initialData: item.profile,
+                      queryFn: () =>
+                        findProjectProfile({
+                          subjectId: props.data.id,
+                          profileId: item.profile.id,
+                        }),
+                    },
+                  }}
                   href={`/${props.language}${projectHref(item)}`}
                   selected={false}
                 />
@@ -58,6 +71,16 @@ export function Component(props: IComponentPropsExtended) {
             isServer={false}
             variant="select-ai-chat-project"
             data={current.profile}
+            apiProps={{
+              reactQueryOptions: {
+                initialData: current.profile,
+                queryFn: () =>
+                  findProjectProfile({
+                    subjectId: props.data.id,
+                    profileId: current.profile.id,
+                  }),
+              },
+            }}
             createHref={`/${props.language}/ai-chat/projects`}
           >
             {projects.map((item) => (
@@ -66,6 +89,16 @@ export function Component(props: IComponentPropsExtended) {
                 isServer={false}
                 variant="select-item-ai-chat-project"
                 data={item.profile}
+                apiProps={{
+                  reactQueryOptions: {
+                    initialData: item.profile,
+                    queryFn: () =>
+                      findProjectProfile({
+                        subjectId: props.data.id,
+                        profileId: item.profile.id,
+                      }),
+                  },
+                }}
                 href={`/${props.language}${projectHref(item)}`}
                 selected={
                   item.profile.id === current?.profile.id &&
