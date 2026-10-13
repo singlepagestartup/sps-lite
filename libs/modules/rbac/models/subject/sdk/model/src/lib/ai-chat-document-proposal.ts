@@ -3,7 +3,7 @@ export const RBAC_AI_DOCUMENT_PROPOSAL_KEY = "rbacAiDocumentProposal";
 export interface IAIChatDocumentProposal {
   version: 1;
   id: string;
-  status: "pending" | "applied" | "rejected";
+  status: "pending" | "needs_revision" | "applied" | "rejected";
   sourceId: string | null;
   expectedContentHash: string | null;
   title: string;
@@ -26,7 +26,9 @@ export function getAIChatDocumentProposal(
   if (
     !value ||
     value.version !== 1 ||
-    !["pending", "applied", "rejected"].includes(value.status) ||
+    !["pending", "needs_revision", "applied", "rejected"].includes(
+      value.status,
+    ) ||
     typeof value.id !== "string" ||
     typeof value.title !== "string" ||
     typeof value.userContext !== "string" ||

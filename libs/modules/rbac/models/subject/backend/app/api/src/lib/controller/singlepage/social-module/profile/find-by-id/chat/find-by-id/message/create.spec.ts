@@ -25,6 +25,8 @@ jest.mock("@sps/shared-utils", () => {
     OPEN_AI_TRANSCRIPTION_MODEL: undefined,
     RBAC_JWT_SECRET: "jwt-secret",
     RBAC_SECRET_KEY: "rbac-secret",
+    assertSupportedAiChatAttachments:
+      jest.requireActual("@sps/shared-utils").assertSupportedAiChatAttachments,
     AI_CHAT_DOCUMENTS: [{ key: "brief", skillSlug: "ai-chat-account-manager" }],
   };
 });
@@ -146,6 +148,11 @@ function createService() {
       .fn()
       .mockResolvedValue(undefined),
     socialModule: {
+      chat: {
+        findById: jest
+          .fn()
+          .mockResolvedValue({ id: "chat-1", variant: "ai-chat" }),
+      },
       thread: {
         findById: jest.fn().mockResolvedValue({ id: "thread-1", metadata: {} }),
       },
@@ -579,4 +586,22 @@ describe("Given: rbac social message create author relation", () => {
       },
     });
   });
+});
+
+it("rejects unsupported AI Chat uploads before creating a message or uploading any file", async () => {
+  jest.clearAllMocks();
+  const context = createContext([]);
+  const body = new FormData();
+  body.set("data", JSON.stringify({ description: "Review the logo" }));
+  body.set(
+    "files",
+    new File(["<svg/>"], "logo.svg", { type: "image/svg+xml" }),
+  );
+  context.req.formData.mockResolvedValue(body);
+  const handler = new Handler(createService());
+  await expect(handler.execute(context, jest.fn())).rejects.toThrow(
+    "Unsupported files: logo.svg",
+  );
+  expect(mockSocialModuleMessageCreate).not.toHaveBeenCalled();
+  expect(mockFileStorageFileCreate).not.toHaveBeenCalled();
 });

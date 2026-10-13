@@ -99,12 +99,29 @@ export class KnowledgeService {
     content: string;
     description?: string | null;
     expectedContentHash?: string;
+    fileIds?: string[];
   }) {
     const source = await this.repository.updateSource(props);
     if (!source)
       throw new Error(`Knowledge Source ${props.sourceId} was not found.`);
+    let processingError: string | undefined;
+    if (props.fileIds?.length) {
+      const current = await this.repository.sourceFiles(source.id);
+      const newIds = props.fileIds.filter(
+        (id) => !current.some((item) => item.file.id === id),
+      );
+      if (newIds.length) {
+        await this.repository.attachFiles(source.id, newIds);
+        try {
+          await this.rebuildFiles(source.id);
+        } catch (error) {
+          processingError =
+            error instanceof Error ? error.message : String(error);
+        }
+      }
+    }
     let indexError: string | undefined;
-    if (source.indexedContentHash !== source.contentHash) {
+    if (!processingError && source.indexedContentHash !== source.contentHash) {
       try {
         await this.index({ sourceId: source.id });
       } catch (error) {
@@ -115,6 +132,7 @@ export class KnowledgeService {
     return {
       source: await this.repository.findSourceById(source.id),
       indexError,
+      processingError,
     };
   }
 

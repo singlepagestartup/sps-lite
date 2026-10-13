@@ -37,6 +37,82 @@ function createTool(
   };
 }
 
+it("finishes a staged proposal without another generative call or a false model error", async () => {
+  const tool = createTool({ source: "knowledge", completeAfterSuccess: true });
+  const generate = jest.fn().mockResolvedValue({
+    text: "",
+    toolCalls: [
+      {
+        id: "proposal",
+        type: "function",
+        function: {
+          name: tool.definition.function.name,
+          arguments: '{"id":"draft"}',
+        },
+      },
+    ],
+    billing: null,
+  });
+  const result = await new SocialProfileAiToolLoop().run({
+    context: [{ role: "user", content: "Prepare a draft" }],
+    modelCandidateIds: ["openai/gpt-6.1-sol"],
+    tools: [tool],
+    generate,
+    language: "ru",
+  });
+  expect(generate).toHaveBeenCalledTimes(1);
+  expect(result.trace.stopReason).toBe("final_text");
+  expect(result.finalText).toBe("Предложение готово к проверке.");
+  expect(result.trace.calls).toHaveLength(1);
+});
+
+it("requires the proposal tool before accepting a document revision as complete", async () => {
+  const tool = createTool({ source: "knowledge", completeAfterSuccess: true });
+  const generate = jest
+    .fn()
+    .mockResolvedValueOnce({ text: "A revised draft without a tool call" })
+    .mockResolvedValueOnce({
+      text: "",
+      toolCalls: [
+        {
+          id: "staged",
+          type: "function",
+          function: {
+            name: tool.definition.function.name,
+            arguments: '{"id":"revised"}',
+          },
+        },
+      ],
+    });
+  const result = await new SocialProfileAiToolLoop().run({
+    context: [{ role: "user", content: "Revise the proposed document" }],
+    modelCandidateIds: ["test/answer"],
+    tools: [tool],
+    requiredCompletionToolName: tool.definition.function.name,
+    generate,
+  });
+  expect(generate).toHaveBeenCalledTimes(2);
+  expect(result.trace.calls).toHaveLength(1);
+  expect(result.trace.stopReason).toBe("final_text");
+});
+
+it("reports an unstaged revision as an error when the model keeps avoiding the tool", async () => {
+  const tool = createTool({ source: "knowledge", completeAfterSuccess: true });
+  const generate = jest
+    .fn()
+    .mockResolvedValue({ text: "The revision is ready" });
+  const result = await new SocialProfileAiToolLoop().run({
+    context: [{ role: "user", content: "Revise the proposed document" }],
+    modelCandidateIds: ["test/answer"],
+    tools: [tool],
+    requiredCompletionToolName: tool.definition.function.name,
+    generate,
+  });
+  expect(generate).toHaveBeenCalledTimes(2);
+  expect(result.trace.calls).toHaveLength(0);
+  expect(result.trace.stopReason).toBe("model_error");
+});
+
 describe("Given: a bounded social.profile AI tool loop", () => {
   /**
    * BDD Scenario

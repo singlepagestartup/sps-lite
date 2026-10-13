@@ -65,6 +65,14 @@ An existing account cannot be reused as a visitor for another registration.
 Session initialization and `me` reads create no Social Profile. A visitor's
 generated Subject slug is not displayed as an account name.
 
+The client SDK saves the tokens and resets query state before completing email
+registration or sign-in. Mounted session readers refetch before navigation,
+including when registration keeps the visitor Subject and returns the same JWT.
+Forms must preserve the active query subscriptions when authentication completes.
+Subject view readers synchronize their browser cookie snapshot on mount and
+when the requested Subject changes. A cookie written before the reader mounts
+must be available even when the browser's cookie-change event has already fired.
+
 - `POST /rbac/subjects/authentication/oauth/{provider}`: start OAuth flow (`google`).
 - `GET /rbac/subjects/authentication/oauth/{provider}/callback`: OAuth provider callback.
 - `POST /rbac/subjects/authentication/oauth/exchange`: exchange one-time code to JWT/refresh.
@@ -335,11 +343,14 @@ the Chat’s single primary relation retains `variant="default"`.
 
 ### OpenRouter decisions and automatic replies
 
-`react-by/openrouter` uses `typesafe/jev-router` with the `low` cost tier for
-automatic text replies, including coding and file-understanding requests.
-OpenRouter selects the answering model and reasoning effort. Manual model
-selection remains direct. Image generation uses the configured image candidates.
-If the router fails, the existing model candidates provide the fallback.
+`react-by/openrouter` selects from the local catalogue in
+`libs/shared/utils/src/lib/constants/open-router-models.ts`. Its only answering
+model is `openai/gpt-6.1-sol`, with `high` reasoning for text, coding, and
+image/file analysis. The same policy restricts manual selection and the
+composer's model list. A single candidate needs no model-selection API call.
+The selection flow supports Jev Decisions when multiple candidates are enabled.
+GPT 6.1 Sol returns text through OpenRouter; automatic image-generation requests
+receive an unavailable notice without a generation call.
 
 Task and Knowledge intent detection, passage reranking, tool-group selection,
 and linked Skill selection use `typesafe/jev-1.13` through OpenRouter's

@@ -22,6 +22,93 @@ jest.mock("@sps/website-builder/models/feature/frontend/component", () => ({
 }));
 import { Component } from "./Component";
 beforeEach(() => send.mockReset());
+
+it("accumulates file selections, removes files, reorders with arrows and dragging, and sends the staged order with Cmd Enter", async () => {
+  URL.createObjectURL = jest.fn(() => "blob:preview");
+  URL.revokeObjectURL = jest.fn();
+  send.mockResolvedValue({ id: "sent" });
+  render(
+    <Component
+      {...({
+        data: { id: "subject" },
+        project: {
+          requesterProfileId: "requester",
+          profile: { id: "project" },
+          chat: { id: "chat" },
+        },
+        thread: { id: "topic", metadata: {} },
+        target: "whole",
+        onTargetChange: jest.fn(),
+      } as any)}
+    />,
+  );
+  const first = new File(["first"], "first.png", { type: "image/png" });
+  const second = new File(["second"], "second.webp", { type: "image/webp" });
+  const third = new File(["third"], "third.txt", { type: "text/plain" });
+  const input = screen.getByLabelText("Attach files to message");
+  fireEvent.change(input, { target: { files: [first, second] } });
+  fireEvent.change(input, { target: { files: [third] } });
+  expect(screen.getAllByRole("listitem")).toHaveLength(3);
+  fireEvent.click(
+    screen.getByRole("button", { name: "Move third.txt earlier" }),
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Remove first.png" }));
+  const transferred = new Map<string, string>();
+  const dataTransfer = {
+    setData: (type: string, value: string) => transferred.set(type, value),
+    getData: (type: string) => transferred.get(type) || "",
+    effectAllowed: "",
+    dropEffect: "",
+  };
+  const dragged = screen.getByText("third.txt").closest("li")!;
+  const destination = screen.getByText("second.webp").closest("li")!;
+  fireEvent.dragStart(dragged, { dataTransfer });
+  fireEvent.dragOver(destination, { dataTransfer });
+  fireEvent.drop(destination, { dataTransfer });
+  const textarea = screen.getByRole("textbox", { name: "Message" });
+  fireEvent.change(textarea, { target: { value: "Review the material" } });
+  fireEvent.keyDown(textarea, { key: "Enter" });
+  expect(send).not.toHaveBeenCalled();
+  fireEvent.keyDown(textarea, { key: "Enter", metaKey: true });
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  expect(send.mock.calls[0][0].data.files).toEqual([second, third]);
+  await waitFor(() => expect(screen.queryByRole("listitem")).toBeNull());
+});
+
+it("sends file-only messages with Ctrl Enter and retains attachments when sending fails", async () => {
+  URL.createObjectURL = jest.fn(() => "blob:preview");
+  URL.revokeObjectURL = jest.fn();
+  send.mockRejectedValue(new Error("Upload failed"));
+  render(
+    <Component
+      {...({
+        data: { id: "subject" },
+        project: {
+          requesterProfileId: "requester",
+          profile: { id: "project" },
+          chat: { id: "chat" },
+        },
+        thread: { id: "topic", metadata: {} },
+        target: "whole",
+        onTargetChange: jest.fn(),
+      } as any)}
+    />,
+  );
+  const file = new File(["data"], "notes.txt", { type: "text/plain" });
+  fireEvent.change(screen.getByLabelText("Attach files to message"), {
+    target: { files: [file] },
+  });
+  fireEvent.keyDown(screen.getByRole("textbox", { name: "Message" }), {
+    key: "Enter",
+    ctrlKey: true,
+  });
+  await waitFor(() =>
+    expect(screen.getByRole("alert").textContent).toBe("Upload failed"),
+  );
+  expect(send.mock.calls[0][0].data.files).toEqual([file]);
+  expect(send.mock.calls[0][0].data.description).toBe("Attached files.");
+  expect(screen.getByRole("button", { name: "Remove notes.txt" })).toBeTruthy();
+});
 it("keeps project Knowledge search for ordinary conversations without showing document targets or sending a stale Source target", async () => {
   send.mockResolvedValue({ id: "message" });
   render(
@@ -112,44 +199,6 @@ it("sends through the requester profile and preserves the selected Knowledge con
   );
 });
 
-it("lists only Sources connected to the current document, including multiple named sections", async () => {
-  const change = jest.fn();
-  render(
-    <Component
-      {...({
-        data: { id: "subject" },
-        project: {
-          requesterProfileId: "requester",
-          profile: { id: "project" },
-          chat: { id: "chat" },
-        },
-        thread: {
-          id: "thread",
-          title: "Products.md",
-          metadata: {
-            aiChatDocument: {
-              key: "products",
-              profileId: "project",
-              sourceIds: ["source", "booking-source"],
-            },
-          },
-        },
-        target: "whole",
-        onTargetChange: change,
-      } as any)}
-    />,
-  );
-  fireEvent.keyDown(screen.getByRole("button", { name: "Working on" }), {
-    key: "ArrowDown",
-  });
-  expect(
-    await screen.findByRole("menuitemradio", { name: "Whole document" }),
-  ).toBeTruthy();
-  expect(screen.getByRole("menuitemradio", { name: "Products" })).toBeTruthy();
-  fireEvent.click(screen.getByRole("menuitemradio", { name: "Bookings" }));
-  expect(change).toHaveBeenCalledWith("booking-source");
-  expect(screen.queryByRole("menuitemradio", { name: "Strategy" })).toBeNull();
-});
 it("falls back to the whole document when a selected Source is not connected to this Thread", async () => {
   send.mockResolvedValue({ id: "message" });
   render(
@@ -177,9 +226,7 @@ it("falls back to the whole document when a selected Source is not connected to 
       } as any)}
     />,
   );
-  expect(
-    screen.getByRole("button", { name: "Working on" }).textContent,
-  ).toContain("Whole document");
+  expect(screen.queryByRole("button", { name: "Working on" })).toBeNull();
   fireEvent.change(screen.getByRole("textbox", { name: "Message" }), {
     target: { value: "Review this brief" },
   });
@@ -191,4 +238,56 @@ it("falls back to the whole document when a selected Source is not connected to 
   expect(send.mock.calls[0][0].data.metadata).not.toHaveProperty(
     "aiChatDocumentSourceId",
   );
+});
+
+it("rejects new SVG attachments without replacing earlier supported files", async () => {
+  URL.createObjectURL = jest.fn(() => "blob:preview");
+  URL.revokeObjectURL = jest.fn();
+  send.mockResolvedValue({ id: "sent" });
+  render(
+    <Component
+      {...({
+        data: { id: "subject" },
+        project: {
+          requesterProfileId: "requester",
+          profile: { id: "project" },
+          chat: { id: "chat" },
+        },
+        thread: {
+          id: "thread",
+          title: "Brief.md",
+          metadata: {
+            aiChatDocument: {
+              key: "brief",
+              profileId: "project",
+              sourceIds: [],
+            },
+          },
+        },
+        target: "whole",
+        onTargetChange: jest.fn(),
+      } as any)}
+    />,
+  );
+  expect(screen.queryByRole("button", { name: "Working on" })).toBeNull();
+  const input = screen.getByLabelText(
+    "Attach files to message",
+  ) as HTMLInputElement;
+  expect(input.accept).not.toContain(".svg");
+  const first = new File(["data"], "first.png", { type: "image/png" });
+  const second = new File(["data"], "second.jpg", { type: "image/jpeg" });
+  fireEvent.change(input, { target: { files: [first] } });
+  fireEvent.change(input, {
+    target: {
+      files: [
+        new File(["<svg/>"], "logo.svg", { type: "image/svg+xml" }),
+        second,
+      ],
+    },
+  });
+  expect(screen.getByRole("alert").textContent).toContain("logo.svg");
+  expect(screen.getAllByRole("listitem")).toHaveLength(2);
+  fireEvent.click(screen.getByRole("button", { name: "Send" }));
+  await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
+  expect(send.mock.calls[0][0].data.files).toEqual([first, second]);
 });

@@ -3,7 +3,10 @@ import { memo, useCallback, useMemo, useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
-import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
+import {
+  AI_CHAT_DOCUMENTS,
+  assertSupportedAiChatAttachments,
+} from "@sps/shared-utils";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
 import type { IModel as ISource } from "@sps/knowledge/models/source/sdk/model";
@@ -77,6 +80,7 @@ export function Component(props: IComponentPropsExtended) {
         documentRef.current.profileId !== project.profile.id
       )
         throw new Error("Knowledge sections belong to project documents.");
+      assertSupportedAiChatAttachments(files);
       let source = savedDrafts.current.get(draftId);
       if (!source) {
         source = await createSource.mutateAsync({ ...scope, data: value });

@@ -1,4 +1,11 @@
 const updateThread = jest.fn();
+const attachProposalFile = jest.fn(async ({ data }: any) => data);
+jest.mock(
+  "@sps/social/relations/messages-to-file-storage-module-files/sdk/server",
+  () => ({
+    api: { findOrCreate: (...args: any[]) => attachProposalFile(...args) },
+  }),
+);
 jest.mock("@sps/social/models/thread/sdk/server", () => ({
   api: { update: (...args: any[]) => updateThread(...args) },
 }));
@@ -52,7 +59,9 @@ function fixture(empty = false) {
     messagesToKnowledgeModuleSources: {
       findOrCreate: jest.fn(async ({ data }) => data),
     },
-    messagesToFileStorageModuleFiles: { find: jest.fn(async () => []) },
+    messagesToFileStorageModuleFiles: {
+      find: jest.fn(async () => []),
+    },
     profilesToMessages: {
       find: jest.fn(async () => [
         { profileId: "assistant", messageId: "shown" },
@@ -90,6 +99,58 @@ function fixture(empty = false) {
 }
 
 beforeEach(() => jest.clearAllMocks());
+it("preserves proposed attachments through a text revision and adds newly supplied files", async () => {
+  const f = fixture();
+  f.social.messagesToFileStorageModuleFiles.find.mockResolvedValue([
+    { fileStorageModuleFileId: "original-file" },
+  ]);
+  let context = (await f.load())!;
+  await f.service.tool(context, { id: "request" } as any).execute({
+    title: "Brief",
+    userContext: "First draft",
+    expectedContentHash: "old-hash",
+  });
+  await f.service.markShown(context, "request", "shown");
+  context = (await f.load())!;
+  await f.service.resolve(context, "revise", "revision");
+  expect(
+    await f.service.resolve((await f.load())!, "confirm", "premature"),
+  ).toMatchObject({ status: "not_confirmable" });
+  // A later request still carries the original files after a failed revision.
+  context = (await f.load())!;
+  f.social.messagesToFileStorageModuleFiles.find.mockResolvedValue([
+    { fileStorageModuleFileId: "added-file" },
+  ]);
+  await f.service.tool(context, { id: "revision" } as any).execute({
+    title: "Brief",
+    userContext: "Revised draft",
+    expectedContentHash: "old-hash",
+  });
+  expect(context.proposal?.fileIds).toEqual(["original-file", "added-file"]);
+  await f.service.markShown(context, "revision", "shown");
+  expect(attachProposalFile).toHaveBeenCalledWith(
+    expect.objectContaining({
+      data: {
+        messageId: "shown",
+        fileStorageModuleFileId: "original-file",
+        orderIndex: 0,
+      },
+    }),
+  );
+  expect(attachProposalFile).toHaveBeenCalledWith(
+    expect.objectContaining({
+      data: {
+        messageId: "shown",
+        fileStorageModuleFileId: "added-file",
+        orderIndex: 1,
+      },
+    }),
+  );
+  await f.service.resolve((await f.load())!, "confirm", "confirmation");
+  expect(f.knowledge.updateSource).toHaveBeenCalledWith(
+    expect.objectContaining({ fileIds: ["original-file", "added-file"] }),
+  );
+});
 it("proposes without saving, then applies exactly the shown text and makes repeated confirmation harmless", async () => {
   const f = fixture();
   const context = (await f.load())!;
@@ -141,7 +202,7 @@ it("requires a shown proposal, cancels revisions and detects changes since the p
   await f.service.markShown(context, "request", "shown");
   await f.service.resolve((await f.load())!, "revise", "revise");
   expect(getAIChatDocumentProposal(f.thread().metadata)?.status).toBe(
-    "rejected",
+    "needs_revision",
   );
   expect(f.knowledge.updateSource).not.toHaveBeenCalled();
 });

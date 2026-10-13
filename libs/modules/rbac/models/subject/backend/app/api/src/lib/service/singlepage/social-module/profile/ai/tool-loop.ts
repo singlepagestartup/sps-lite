@@ -25,6 +25,7 @@ export const SOCIAL_PROFILE_AI_TOOL_LOOP_DEFAULTS: ISocialProfileAiToolLoopLimit
 export type TSocialProfileAiToolSource = "skill" | "knowledge" | "mcp";
 
 export interface ISocialProfileAiTool {
+  completeAfterSuccess?: boolean;
   definition: IOpenRouterTool;
   source: TSocialProfileAiToolSource;
   timeoutMs?: number;
@@ -103,6 +104,7 @@ export interface ISocialProfileAiToolLoopProps {
   language?: string;
   modelCandidateIds: string[];
   tools: ISocialProfileAiTool[];
+  requiredCompletionToolName?: string;
   generate: (props: {
     model: string;
     context: IOpenRouterRequestMessage[];
@@ -147,6 +149,13 @@ export class SocialProfileAiToolLoop {
 
       toolsByName.set(name, tool);
     }
+    if (
+      props.requiredCompletionToolName &&
+      !toolsByName.get(props.requiredCompletionToolName)?.completeAfterSuccess
+    )
+      throw new Error(
+        "Configuration error. Required completion tool is unavailable",
+      );
 
     const modelCandidateIds = Array.from(
       new Set(
@@ -163,6 +172,7 @@ export class SocialProfileAiToolLoop {
     let selectedModelId: string | null = null;
     let previousCallSignature: string | null = null;
     let repeatedCallCount = 0;
+    let missingCompletionToolRetries = 0;
 
     try {
       for (
@@ -241,6 +251,29 @@ export class SocialProfileAiToolLoop {
               tool_call_id: toolCall.id,
               content: toolResult.serialized,
             });
+            if (toolsByName.get(toolCall.function.name)?.completeAfterSuccess) {
+              const result = this.toResult({
+                context,
+                durationMs: now() - startedAt,
+                exposedToolNames: Array.from(toolsByName.keys()),
+                finalText:
+                  generation.result.text.trim() ||
+                  (props.language?.startsWith("ru")
+                    ? "Предложение готово к проверке."
+                    : "The proposal is ready for review."),
+                selectedModelId,
+                stepCount: iteration,
+                stopReason: "final_text",
+                traceCalls,
+              });
+              await this.emitEvent(props.onEvent, {
+                type: "run_completed",
+                selectedModelId,
+                stopReason: result.trace.stopReason,
+                durationMs: result.trace.durationMs,
+              });
+              return result;
+            }
           }
 
           continue;
@@ -253,6 +286,21 @@ export class SocialProfileAiToolLoop {
             "model_error",
             "The model returned neither text nor a tool call.",
           );
+        }
+        if (props.requiredCompletionToolName) {
+          if (missingCompletionToolRetries++ >= 1)
+            throw new ToolLoopStopError(
+              "model_error",
+              "The model did not stage the requested document proposal.",
+            );
+          context.push(
+            { role: "assistant", content: finalText },
+            {
+              role: "system",
+              content: `The document draft must be staged with ${props.requiredCompletionToolName} before replying. Call that tool with the complete revised human notes; do not claim the proposal exists until the tool succeeds.`,
+            },
+          );
+          continue;
         }
 
         const result = this.toResult({

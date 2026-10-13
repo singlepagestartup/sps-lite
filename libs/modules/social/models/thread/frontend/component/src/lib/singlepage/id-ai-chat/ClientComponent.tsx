@@ -45,7 +45,9 @@ export function Component(props: IComponentPropsExtended) {
         <div
           className={`${!props.isDocument || pane === "chat" ? "flex" : "hidden"} min-h-0 min-w-0 flex-col xl:flex`}
         >
-          <div className="min-h-0 flex-1 overflow-y-auto">{props.messages}</div>
+          <div data-ai-chat-messages className="min-h-0 flex-1 overflow-y-auto">
+            {props.messages}
+          </div>
           {props.composer}
         </div>
         {props.isDocument && (

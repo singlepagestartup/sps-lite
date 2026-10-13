@@ -37,3 +37,5 @@ Document messages carry the appropriate slash command and selected skill ID.
 Generation reads the current instructions once for each request. Ordinary
 AI Chat threads can read all profile Knowledge but do not automatically
 activate these five professions.
+An explicit `/skill-slug` in the current message activates that connected
+skill for the request.

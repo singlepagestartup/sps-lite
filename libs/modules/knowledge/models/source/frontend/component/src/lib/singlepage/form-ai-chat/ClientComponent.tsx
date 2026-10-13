@@ -4,6 +4,14 @@ import Markdown from "markdown-to-jsx";
 import { MessageCircle, Upload } from "lucide-react";
 import type { IClientComponentProps } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
+import {
+  AI_CHAT_ATTACHMENT_ACCEPT,
+  assertSupportedAiChatAttachments,
+  readKnowledgeUserContext,
+  readKnowledgeMaterials,
+  readKnowledgeDocumentContent,
+  replaceKnowledgeUserContext,
+} from "@sps/shared-utils";
 
 export const Component = memo(function Component(props: IClientComponentProps) {
   const id = useId();
@@ -15,6 +23,8 @@ export const Component = memo(function Component(props: IClientComponentProps) {
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState("");
   const saved = props.data;
+  const notes = readKnowledgeUserContext(content);
+  const materials = readKnowledgeMaterials(content);
   const dirty = useRef(false);
   useEffect(() => {
     if (saved && !dirty.current) {
@@ -93,7 +103,7 @@ export const Component = memo(function Component(props: IClientComponentProps) {
       {preview ? (
         <div className="prose min-h-44 max-w-none break-words rounded-xl border border-border p-3 text-sm">
           <Markdown options={{ disableParsingRawHTML: true }}>
-            {content || "No knowledge saved yet."}
+            {readKnowledgeDocumentContent(content) || "No knowledge saved yet."}
           </Markdown>
         </div>
       ) : (
@@ -102,13 +112,27 @@ export const Component = memo(function Component(props: IClientComponentProps) {
           disabled={pending}
           className="min-h-44 w-full resize-y rounded-xl border border-border bg-card p-3 font-mono text-sm leading-6 text-muted-foreground focus:outline-2"
           placeholder={props.placeholder || "Add knowledge for this section."}
-          value={content}
+          value={notes}
           onChange={(event) => {
             dirty.current = true;
-            setContent(event.target.value);
+            setContent(
+              replaceKnowledgeUserContext(content, event.target.value),
+            );
             setStatus("");
           }}
         />
+      )}
+      {!preview && materials && (
+        <details className="mt-2 rounded-xl border border-border p-3 text-sm">
+          <summary className="cursor-pointer font-semibold">
+            Analyzed materials
+          </summary>
+          <div className="prose mt-3 max-w-none break-words text-sm">
+            <Markdown options={{ disableParsingRawHTML: true }}>
+              {materials}
+            </Markdown>
+          </div>
+        </details>
       )}
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
         {props.onDiscuss && (
@@ -153,6 +177,7 @@ export const Component = memo(function Component(props: IClientComponentProps) {
           <input
             aria-label={`Upload files for ${title}`}
             type="file"
+            accept={AI_CHAT_ATTACHMENT_ACCEPT}
             multiple
             className="sr-only"
             disabled={pending}
@@ -162,6 +187,7 @@ export const Component = memo(function Component(props: IClientComponentProps) {
               if (!files?.length) return;
               setPending(true);
               try {
+                assertSupportedAiChatAttachments(Array.from(files));
                 const result = await props.onAttach!(files);
                 setStatus(result || "Files saved");
               } catch (error) {

@@ -257,7 +257,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       if (urlParts.length === entityUrlParts.length - 1) {
         return "1";
       }
-      return undefined;
+      return null;
     }
 
     const urlParts = props.url.split("/").filter((part) => part !== "");
@@ -270,6 +270,6 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       }
     }
 
-    return segmentValue;
+    return segmentValue ?? null;
   }
 }

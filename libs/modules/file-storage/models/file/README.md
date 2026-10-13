@@ -28,6 +28,7 @@ Knowledge owns operations that also rebuild Sources using that File.
 ## Variants
 
 - `default`: renders image/video output based on MIME type.
+- `attachment-ai-chat`: compact preview card that opens the original File.
 - `find`: data-fetch wrapper for querying files.
 - `admin-form`: admin create/edit form for file metadata.
 - `admin-select-input`: admin select input for choosing a file.

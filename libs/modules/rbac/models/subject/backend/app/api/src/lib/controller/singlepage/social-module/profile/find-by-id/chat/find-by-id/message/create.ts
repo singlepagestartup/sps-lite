@@ -1,4 +1,8 @@
-import { RBAC_JWT_SECRET, RBAC_SECRET_KEY } from "@sps/shared-utils";
+import {
+  RBAC_JWT_SECRET,
+  RBAC_SECRET_KEY,
+  assertSupportedAiChatAttachments,
+} from "@sps/shared-utils";
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { Service } from "../../../../../../../../service";
@@ -189,6 +193,18 @@ export class Handler {
         .getAll("files")
         .filter((item) => item instanceof File) as File[];
       if (files.length) {
+        const chat = await this.service.socialModule.chat.findById({
+          id: socialModuleChatId,
+        });
+        if (chat?.variant === "ai-chat") {
+          try {
+            assertSupportedAiChatAttachments(files);
+          } catch (error) {
+            throw new Error(
+              `Validation error. ${error instanceof Error ? error.message : String(error)}`,
+            );
+          }
+        }
         parsedBody.files = { files };
       }
 
@@ -261,8 +277,7 @@ export class Handler {
           try {
             const fileStorageFile = await fileStorageModuleFileApi.create({
               data: {
-                adminTitle:
-                  "Social Module Message Id: " + socialModuleMessage.id,
+                adminTitle: files.name,
                 file: files,
               },
               options: {

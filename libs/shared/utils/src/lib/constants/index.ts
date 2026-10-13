@@ -52,3 +52,6 @@ export {
 
 export * from "./ai-chat-service";
 export * from "./ai-chat-documents";
+
+export * from "./open-router-models";
+export * from "./ai-chat-attachments";

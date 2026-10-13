@@ -1,15 +1,57 @@
 "use client";
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { X } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
 import { Component as File } from "@sps/file-storage/models/file/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
+import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
+
+interface ISourceFileProps {
+  file: IFile;
+  removing: boolean;
+  onRemove: (id: string) => void;
+}
+const SourceFile = memo(function SourceFile({
+  file,
+  removing,
+  onRemove,
+}: ISourceFileProps) {
+  const title = file.adminTitle || file.alt || "File";
+  return (
+    <li className="relative min-w-0">
+      <File isServer={false} variant="attachment-ai-chat" data={file} />
+      <button
+        type="button"
+        aria-label={`Remove ${title} from knowledge`}
+        disabled={removing}
+        onClick={() => onRemove(file.id)}
+        className="absolute right-1 top-1 z-10 grid size-7 place-items-center rounded-full bg-foreground text-background hover:opacity-80 disabled:opacity-40"
+      >
+        <X className="size-4" />
+      </button>
+      {removing && (
+        <p className="mt-1 text-xs text-muted-foreground" role="status">
+          Removing…
+        </p>
+      )}
+    </li>
+  );
+});
 export const Component = memo(function Component({
   data,
   project,
   source,
   onDiscuss,
 }: IComponentPropsExtended) {
+  const [expanded, setExpanded] = useState(false);
+  const [removingId, setRemovingId] = useState<string | null>(null);
+  const [fileError, setFileError] = useState("");
+  const [fileStatus, setFileStatus] = useState("");
+  const removalInFlight = useRef<string | null>(null);
+  useEffect(() => {
+    if (source.contentHash === source.indexedContentHash) setFileStatus("");
+  }, [source.contentHash, source.indexedContentHash]);
   const scope = useMemo(
     () => ({
       id: data.id,
@@ -34,6 +76,42 @@ export const Component = memo(function Component({
   const discuss = useCallback(
     () => onDiscuss(source.id),
     [onDiscuss, source.id],
+  );
+  const remove = useCallback(
+    async (fileId: string) => {
+      if (removalInFlight.current !== null) {
+        setFileError("Wait for the current file operation to finish.");
+        return;
+      }
+      removalInFlight.current = fileId;
+      setRemovingId(fileId);
+      setFileError("");
+      setFileStatus("");
+      try {
+        const result = await files.mutateAsync({
+          ...scope,
+          knowledgeModuleSourceId: source.id,
+          data: {
+            removeFileId: fileId,
+            expectedContentHash: source.contentHash,
+          },
+        });
+        if (result.analysisPending)
+          setFileStatus("File removed. Analyzing remaining files…");
+        if (result.processingError)
+          setFileError(
+            `File removed; analysis failed: ${result.processingError}`,
+          );
+      } catch (error) {
+        setFileError(
+          error instanceof Error ? error.message : "File could not be removed.",
+        );
+      } finally {
+        removalInFlight.current = null;
+        setRemovingId(null);
+      }
+    },
+    [files.mutateAsync, scope, source.id, source.contentHash],
   );
   const save = useCallback(
     async (data: { title: string; content: string }) => {
@@ -78,15 +156,41 @@ export const Component = memo(function Component({
               {attachments.error.message}
             </p>
           )}
-          {attachments.data?.map(({ file }) => (
-            <File
-              key={file.id}
-              isServer={false}
-              variant="default"
-              language="en"
-              data={file}
-            />
-          ))}
+          {fileError && (
+            <p role="alert" className="mb-2 text-xs text-destructive">
+              {fileError}
+            </p>
+          )}
+          {fileStatus && (
+            <p role="status" className="mb-2 text-xs text-muted-foreground">
+              {fileStatus}
+            </p>
+          )}
+          <ul
+            aria-label="Knowledge attachments"
+            className="grid min-w-0 grid-cols-2 gap-2"
+          >
+            {(expanded ? attachments.data : attachments.data?.slice(0, 2))?.map(
+              ({ file, relation }) => (
+                <SourceFile
+                  key={relation.id}
+                  file={file}
+                  removing={removingId === file.id}
+                  onRemove={remove}
+                />
+              ),
+            )}
+          </ul>
+          {(attachments.data?.length || 0) > 2 && (
+            <button
+              type="button"
+              aria-expanded={expanded}
+              className="mt-3 min-h-9 w-full rounded-lg border border-border px-3 text-xs font-semibold"
+              onClick={() => setExpanded((value) => !value)}
+            >
+              {expanded ? "Show less" : "Show more"}
+            </button>
+          )}
         </div>
       }
       onSave={save}

@@ -12,8 +12,6 @@ jest.mock(
     return {
       OPEN_ROUTER_API_KEY: "test-open-router-api-key",
       OPEN_ROUTER_JEV_DECISION_MODEL: "typesafe/jev-1.13",
-      OPEN_ROUTER_JEV_ROUTER_MODEL: "typesafe/jev-router",
-      OPEN_ROUTER_JEV_COST_TIER: "low",
     };
   },
   {
@@ -29,6 +27,53 @@ describe("OpenRouter completion, tool-calling, and billing contracts", () => {
   afterEach(() => {
     global.fetch = originalFetch;
     jest.restoreAllMocks();
+  });
+
+  it("converts SVG image input to PNG while retaining image content in the request", async () => {
+    const service = new Service();
+    jest.spyOn(service, "getModels").mockResolvedValue([]);
+    const svg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="10"><rect width="20" height="10" fill="violet"/></svg>';
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(svg, { headers: { "content-type": "image/svg+xml" } }),
+      )
+      .mockResolvedValueOnce({
+        json: async () => ({
+          choices: [{ message: { content: "Image understood" } }],
+        }),
+      }) as any;
+    await service.generate({
+      model: "test/vision",
+      context: [
+        {
+          role: "user",
+          content: [
+            {
+              type: "image_url",
+              image_url: {
+                url: `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`,
+              },
+            },
+          ],
+        },
+      ],
+    });
+    const request = JSON.parse(
+      (global.fetch as jest.Mock).mock.calls[1][1].body,
+    );
+    expect(request.messages[0].content[0].image_url.url).toMatch(
+      /^data:image\/png;base64,/,
+    );
+    expect(
+      Buffer.from(
+        request.messages[0].content[0].image_url.url.split(",")[1],
+        "base64",
+      )
+        .subarray(1, 4)
+        .toString(),
+    ).toBe("PNG");
   });
 
   it("uses the OpenRouter Decisions endpoint and records its token usage and cost", async () => {
@@ -100,7 +145,7 @@ describe("OpenRouter completion, tool-calling, and billing contracts", () => {
     });
   });
 
-  it("sends the low-cost JEV Router plugin and bills the served model", async () => {
+  it("sends the selected model without a routing plugin and records its cost", async () => {
     const service = new Service();
     jest.spyOn(service, "getModels").mockResolvedValue([
       {
@@ -116,16 +161,18 @@ describe("OpenRouter completion, tool-calling, and billing contracts", () => {
       }),
     })) as any;
     const result = await service.generate({
-      model: "typesafe/jev-router",
+      model: "test/answer",
       context: [{ role: "user", content: "Question" }],
     });
     const request = JSON.parse(
       (global.fetch as jest.Mock).mock.calls[0][1].body,
     );
-    expect(request.plugins).toEqual([{ id: "jev-router", cost_tier: "low" }]);
+    expect(request.plugins).toBeUndefined();
+    expect(request.model).toBe("test/answer");
     expect(result.billing).toMatchObject({
       responseModelId: "test/answer",
-      totalUsd: 0.0002,
+      usageCostCredits: 0.0002,
+      totalUsd: 1.02,
     });
   });
 

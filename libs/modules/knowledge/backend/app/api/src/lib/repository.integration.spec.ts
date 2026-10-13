@@ -291,3 +291,75 @@ describe("Knowledge Source transactions", () => {
     ).toBe(false);
   });
 });
+
+it("guards attachment removal by Source version, invalidates the old index, and retains original file records", async () => {
+  const current = await source("Original notes");
+  const files = await db
+    .insert(FileTable)
+    .values(
+      [0, 1].map((index) => ({
+        file: `/detach-${index}.txt`,
+        adminTitle: `Detach ${index}`,
+        alt: "",
+        slug: `knowledge-detach-${randomUUID()}`,
+        extension: "txt",
+        mimeType: "text/plain",
+        size: 3,
+        width: 0,
+        height: 0,
+      })),
+    )
+    .returning();
+  fileIds.push(...files.map((file) => file.id));
+  await repository.attachFiles(
+    current.id,
+    files.map((file) => file.id),
+  );
+  const before = (await repository.findSourceById(current.id))!;
+  await repository.publishChunks(current.id, before.contentHash, [
+    chunk("Previously indexed files"),
+  ]);
+  await expect(
+    repository.setFiles(
+      current.id,
+      [files[1].id],
+      files.map((file) => file.id),
+      "stale-hash",
+    ),
+  ).rejects.toThrow("Conflict error");
+  expect(
+    (await repository.sourceFiles(current.id)).map((item) => item.file.id),
+  ).toEqual(files.map((file) => file.id));
+  await repository.setFiles(
+    current.id,
+    [files[1].id],
+    files.map((file) => file.id),
+    before.contentHash,
+  );
+  expect(
+    (await repository.sourceFiles(current.id)).map((item) => item.file.id),
+  ).toEqual([files[1].id]);
+  expect((await repository.findSourceById(current.id))!.content).toBe(
+    "Original notes",
+  );
+  expect(
+    await repository.searchChunks({
+      embedding: vector,
+      topK: 5,
+      sourceIds: [current.id],
+    }),
+  ).toEqual([]);
+  expect(
+    await db.select().from(FileTable).where(eq(FileTable.id, files[0].id)),
+  ).toHaveLength(1);
+  await expect(
+    repository.setFiles(
+      current.id,
+      [],
+      files.map((file) => file.id),
+    ),
+  ).rejects.toThrow("attachments changed");
+  expect(
+    (await repository.sourceFiles(current.id)).map((item) => item.file.id),
+  ).toEqual([files[1].id]);
+});

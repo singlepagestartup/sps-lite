@@ -1,8 +1,6 @@
 import {
   OPEN_ROUTER_API_KEY,
   OPEN_ROUTER_JEV_DECISION_MODEL,
-  OPEN_ROUTER_JEV_ROUTER_MODEL,
-  OPEN_ROUTER_JEV_COST_TIER,
 } from "@sps/shared-utils";
 import type {
   IOpenRouterDecisionsProps,
@@ -306,11 +304,29 @@ export class Service {
             if (part.type === "image_url") {
               const url = part.image_url.url;
 
-              if (this.shouldInlineMediaUrl(url)) {
-                const { dataUrl } = await this.fetchAsDataUrl({
+              if (
+                this.shouldInlineMediaUrl(url) ||
+                /^data:image\/svg\+xml/i.test(url) ||
+                /\.svg(?:[?#]|$)/i.test(url)
+              ) {
+                let { dataUrl } = await this.fetchAsDataUrl({
                   url,
                   fallbackMimeType: "image/*",
                 });
+                if (/^data:image\/svg\+xml/i.test(dataUrl)) {
+                  const { default: sharp } = await import("sharp");
+                  const bytes = Buffer.from(dataUrl.split(",")[1], "base64");
+                  const png = await sharp(bytes, { density: 144 })
+                    .resize({
+                      width: 2048,
+                      height: 2048,
+                      fit: "inside",
+                      withoutEnlargement: true,
+                    })
+                    .png()
+                    .toBuffer();
+                  dataUrl = `data:image/png;base64,${png.toString("base64")}`;
+                }
 
                 return {
                   type: "image_url" as const,
@@ -432,17 +448,9 @@ export class Service {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.apiKey}`,
-          ...(props.model === OPEN_ROUTER_JEV_ROUTER_MODEL && {
-            "X-OpenRouter-Metadata": "enabled",
-          }),
         },
         body: JSON.stringify({
           model: props.model,
-          ...(props.model === OPEN_ROUTER_JEV_ROUTER_MODEL && {
-            plugins: [
-              { id: "jev-router", cost_tier: OPEN_ROUTER_JEV_COST_TIER },
-            ],
-          }),
           messages: props.messages,
           stream: false,
           max_tokens: props.max_tokens,
@@ -735,12 +743,6 @@ export class Service {
         imageUsd = providerReportedTotalUsd;
       }
 
-      totalUsd = providerReportedTotalUsd;
-    }
-    if (
-      props.requestModelId === OPEN_ROUTER_JEV_ROUTER_MODEL &&
-      (upstreamInferenceCostCredits !== null || usageCostCredits !== null)
-    ) {
       totalUsd = providerReportedTotalUsd;
     }
 

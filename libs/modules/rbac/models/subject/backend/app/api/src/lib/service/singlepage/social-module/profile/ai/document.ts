@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { api as threadApi } from "@sps/social/models/thread/sdk/server";
+import { api as messageFilesApi } from "@sps/social/relations/messages-to-file-storage-module-files/sdk/server";
 import {
   getAIChatDocument,
   getAIChatDocumentProposal,
@@ -18,6 +19,7 @@ import type { ISocialModule } from "../../../../../di";
 import type { ISocialProfileAiTool } from "./tool-loop";
 
 export interface IAIChatDocumentContext {
+  revisingProposal?: boolean;
   thread: IThread;
   document: IAIChatDocument;
   targetSourceId: string | null | undefined;
@@ -129,6 +131,7 @@ export class Service {
   ): ISocialProfileAiTool {
     return {
       source: "knowledge",
+      completeAfterSuccess: true,
       display: { label: "Propose document Knowledge update" },
       definition: {
         type: "function",
@@ -181,6 +184,7 @@ export class Service {
               filters: {
                 and: [{ column: "messageId", method: "eq", value: message.id }],
               },
+              orderBy: { and: [{ column: "orderIndex", method: "asc" }] },
             },
           });
         const proposal: IAIChatDocumentProposal = {
@@ -191,10 +195,20 @@ export class Service {
           expectedContentHash,
           title: args["title"].trim(),
           userContext: args["userContext"],
-          fileIds: links.map(
-            (link: { fileStorageModuleFileId: string }) =>
-              link.fileStorageModuleFileId,
-          ),
+          fileIds: [
+            ...new Set([
+              ...((context.revisingProposal ||
+                context.proposal?.status === "pending" ||
+                context.proposal?.status === "needs_revision") &&
+              context.proposal?.sourceId === context.targetSourceId
+                ? context.proposal?.fileIds || []
+                : []),
+              ...links.map(
+                (link: { fileStorageModuleFileId: string }) =>
+                  link.fileStorageModuleFileId,
+              ),
+            ]),
+          ],
           triggerMessageId: message.id,
         };
         await this.save(context, proposal);
@@ -236,14 +250,28 @@ export class Service {
     triggerId: string,
     replyId: string,
   ) {
+    const proposal = context.proposal;
     if (
-      context.proposal?.status === "pending" &&
-      context.proposal.triggerMessageId === triggerId
-    )
+      proposal?.status === "pending" &&
+      proposal.triggerMessageId === triggerId
+    ) {
+      if (!RBAC_SECRET_KEY)
+        throw new Error("Configuration error. RBAC_SECRET_KEY not set");
       await this.save(context, {
-        ...context.proposal,
+        ...proposal,
         shownInMessageId: replyId,
       });
+      for (const [orderIndex, fileId] of proposal.fileIds.entries()) {
+        await messageFilesApi.findOrCreate({
+          data: {
+            messageId: replyId,
+            fileStorageModuleFileId: fileId,
+            orderIndex,
+          },
+          options: { headers: { "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY } },
+        });
+      }
+    }
   }
 
   async resolve(
@@ -266,8 +294,14 @@ export class Service {
     context.thread = fresh;
     context.document = getAIChatDocument(fresh.metadata)!;
     if (action === "reject" || action === "revise") {
-      if (proposal.status === "pending")
-        await this.save(context, { ...proposal, status: "rejected" });
+      context.revisingProposal =
+        action === "revise" &&
+        ["pending", "needs_revision"].includes(proposal.status);
+      if (["pending", "needs_revision"].includes(proposal.status))
+        await this.save(context, {
+          ...proposal,
+          status: action === "revise" ? "needs_revision" : "rejected",
+        });
       return {
         proposalId: proposal.id,
         status: action === "revise" ? "needs_revision" : "rejected",
@@ -334,6 +368,7 @@ export class Service {
           proposal.userContext,
         ),
         expectedContentHash: proposal.expectedContentHash!,
+        fileIds: proposal.fileIds,
       });
     } else {
       if (context.document.sourceIds.length)

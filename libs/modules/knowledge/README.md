@@ -9,14 +9,14 @@ The backend lives in `backend/app/api`; Source and Chunk have the standard model
 File format is detected from stored bytes. The common material service processes every current attachment:
 
 - PDF: render every page, transcribe text and tables, describe images and diagrams.
-- Image: recognize text and describe the visual content.
+- Image: recognize text and describe the visual content. SVG is rendered as PNG for the model; its original file is retained.
 - Video: describe frames at one-second intervals by default and combine them with time-aligned speech transcription.
 - Audio: transcribe speech with segment timestamps.
 - UTF-8 text: preserve its structure and timestamps.
 
 The service combines these descriptions with user context into Source content. Files retain their original bytes and are linked through `sources-to-file-storage-module-files`. `/learn` reuses the Message's existing Files and creates one Source for the whole message. Repeating that operation uses the same Source and relations.
 
-Content contains `Контекст пользователя`, `Сведения из материалов`, and `Общее описание` sections. The user section has `knowledge:user` Markdown markers. The server preserves its text during reconstruction; the model receives it as context. The editor keeps human notes editable and generated descriptions visible. A Source without Files can use ordinary text content.
+Content contains `Контекст пользователя`, `Сведения из материалов`, and `Общее описание` sections. The `knowledge:user` Markdown markers separate confirmed notes from generated file descriptions so reconstruction preserves the notes. AI Chat hides these internal delimiters and the enclosing header in its editor, Preview, and Markdown downloads. The editor changes the notes; Preview includes notes and analyzed materials. Generated descriptions are also available under Analyzed materials. Saving notes preserves the generated sections. A Source without Files can use ordinary text content.
 
 Adding, detaching, replacing, reordering, or moving a File relation invalidates generated content and chunks atomically and analyzes all current Files. Moving a relation rebuilds both Sources. Physical File deletion captures affected Sources before cascade. Source deletion and relation detachment preserve stored Files. Failed analysis leaves human text and attachments available for retry and does not publish partial descriptions. Conditional publication rejects a changed content hash or attachment snapshot.
 
@@ -57,6 +57,18 @@ confirmation. Confirmation checks the original Source hash, then applies the
 stored text and indexes it. The first confirmed draft also creates the profile
 and document links. Other linked Sources remain available for reading.
 
+The native `profile_knowledge_files` tool lists exact attachment IDs and the
+Source hash. `profile_knowledge_file_detach` is available only for an explicit
+current removal request. Document threads restrict it to their linked Source
+and selected target. The scoped Files mutation checks the hash and existing
+attachment list atomically, preserves original Files and human notes, and
+rebuilds analyzed content and the index. Detachment returns immediately after
+saving the relation change; `analysisPending` identifies unfinished processing.
+A separate scoped reanalysis request emits the normal cache and WebSocket
+updates when it completes. The model must not report an index as ready while
+processing remains pending. Analysis errors are logged and leave the Source
+unindexed. Removing a file does not approve or replace a pending text proposal.
+
 Origin and citation links use `messages-to-knowledge-module-sources` with `kind=origin|citation`; skill material uses `skills-to-knowledge-module-sources`. Metadata can contain generation results and usage, but relations determine material ownership and origin.
 
 ## API and SDK
@@ -69,19 +81,23 @@ Origin and citation links use `messages-to-knowledge-module-sources` with `kind=
 - `DELETE /api/knowledge/files/:id`: delete a stored File and rebuild its Sources.
 - Generated CRUD for Source, Chunk, `sources-to-chunks`, and `sources-to-file-storage-module-files`.
 
+New AI Chat message and sidebar uploads allow PNG, JPG, WebP, GIF, PDF, TXT,
+MD, CSV and JSON. Frontend pickers and scoped RBAC endpoints reject SVG and
+other unsupported uploads. Legacy SVG analysis sends a rendered PNG to the
+model while retaining the original file.
+
 The Knowledge module SDK uses `sourceIds` and `reindexSource`. Source content editing uses its model SDK or the scoped RBAC SDK. The chat sidebar provides Files open/add/replace/detach actions; it saves text changes before changing attachments. Open displays the original stored File in a new browser tab. Analyze files repeats analysis of all current attachments and indexing; Reindex only rebuilds the saved text's index.
 
 ## Runtime configuration
 
-Embeddings and chat configuration live in `backend/app/api/src/lib/configuration.ts`; vector dimensions are 768. File analysis and synthesis use OpenRouter with `medium` reasoning effort:
+Embeddings and chat configuration live in `backend/app/api/src/lib/configuration.ts`; vector dimensions are 768. File analysis and synthesis use `openai/gpt-6.1-sol` with `high` reasoning from the shared model policy in `libs/shared/utils/src/lib/constants/open-router-models.ts`.
 
-| Variable                             | Default              |
-| ------------------------------------ | -------------------- |
-| `KNOWLEDGE_ANALYSIS_MODEL`           | `openai/gpt-6.1-sol` |
-| `KNOWLEDGE_TRANSCRIPTION_MODEL`      | `openai/whisper-1`   |
-| `KNOWLEDGE_VIDEO_FRAME_STEP_SECONDS` | `1`                  |
-| `KNOWLEDGE_PDF_INFO_COMMAND`         | `pdfinfo`            |
-| `KNOWLEDGE_PDF_RENDER_COMMAND`       | `pdftoppm`           |
+| Variable                             | Default            |
+| ------------------------------------ | ------------------ |
+| `KNOWLEDGE_TRANSCRIPTION_MODEL`      | `openai/whisper-1` |
+| `KNOWLEDGE_VIDEO_FRAME_STEP_SECONDS` | `1`                |
+| `KNOWLEDGE_PDF_INFO_COMMAND`         | `pdfinfo`          |
+| `KNOWLEDGE_PDF_RENDER_COMMAND`       | `pdftoppm`         |
 
 Install Poppler and FFmpeg for local processing; the application Docker image includes them. Current per-file limits are 100 MB, 200 PDF pages, and 3600 seconds of audio/video. A synthesis input over one million characters is rejected. Empty, failed, or truncated model responses are not published. Errors are returned by the operation or logged; Source has no persisted processing-status fields.
 

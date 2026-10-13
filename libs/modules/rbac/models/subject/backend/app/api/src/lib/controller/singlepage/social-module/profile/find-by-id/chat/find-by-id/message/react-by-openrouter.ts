@@ -1,6 +1,7 @@
 import {
   AI_CHAT_DOCUMENTS,
-  OPEN_ROUTER_JEV_ROUTER_MODEL,
+  OPEN_ROUTER_ASSISTANT_MODEL,
+  OPEN_ROUTER_MODEL_ROUTER_CONFIG as MODEL_ROUTER_CONFIG,
   replaceKnowledgeUserContext,
   readKnowledgeUserContext,
   sliceKnowledgeToolText,
@@ -48,6 +49,7 @@ import { IModel as IFileStorageModuleFile } from "@sps/file-storage/models/file/
 import {
   IModel as ISocialModuleMessage,
   isSocialMessageExcludedFromOpenRouter,
+  withSocialMessageSystemMetadata,
 } from "@sps/social/models/message/sdk/model";
 import {
   getLocalizedProfilePlainText,
@@ -115,7 +117,7 @@ interface IModelCandidate {
 interface IModelSelectionResult {
   orderedCandidateIds: string[];
   selectedModelId: string | null;
-  selectedBy: "jev" | "priority" | "manual";
+  selectedBy: "jev" | "priority" | "manual" | "single";
 }
 
 interface IFinalGenerationResult {
@@ -160,224 +162,6 @@ interface IOpenRouterKnowledgeRetrievalMetadata {
   rerankFallbackReason: string | null;
   rerankReason: string | null;
 }
-
-const MODEL_ROUTER_CONFIG = {
-  version: "2026-10-09-jev",
-  classes: {
-    CHAT: [
-      {
-        id: "openai/gpt-5.6-terra",
-        enabled: true,
-        priority: 100,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["general_chat", "reasoning", "professional_work"],
-      },
-      {
-        id: "minimax/minimax-m3",
-        enabled: true,
-        priority: 95,
-        input_modalities: ["text", "image"],
-        output_modalities: ["text"],
-        strengths: [
-          "general_chat",
-          "reasoning",
-          "agentic_workflows",
-          "cost_efficiency",
-        ],
-      },
-      {
-        id: "anthropic/claude-sonnet-5",
-        enabled: true,
-        priority: 90,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["deep_reasoning", "long_form", "professional_work"],
-      },
-      {
-        id: "google/gemini-3.5-flash",
-        enabled: true,
-        priority: 88,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: [
-          "general_chat",
-          "agentic_workflows",
-          "reasoning",
-          "multimodal",
-        ],
-      },
-      {
-        id: "google/gemini-3.1-flash-lite",
-        enabled: true,
-        priority: 85,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["speed", "general_chat", "multimodal", "cost_efficiency"],
-      },
-      {
-        id: "openai/gpt-5.6-luna",
-        enabled: true,
-        priority: 80,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["speed", "high_volume", "concise_answers"],
-      },
-      {
-        id: "minimax/minimax-m2.7",
-        enabled: true,
-        priority: 75,
-        input_modalities: ["text"],
-        output_modalities: ["text"],
-        strengths: [
-          "professional_work",
-          "office_tasks",
-          "coding",
-          "cost_efficiency",
-        ],
-      },
-    ],
-    CODER: [
-      {
-        id: "openai/gpt-5.6-sol",
-        enabled: true,
-        priority: 100,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["coding", "debugging", "architecture", "deep_reasoning"],
-        best_for: ["code_generation", "bug_fixing", "architecture_help"],
-      },
-      {
-        id: "minimax/minimax-m2.7",
-        enabled: true,
-        priority: 95,
-        input_modalities: ["text"],
-        output_modalities: ["text"],
-        strengths: ["coding", "debugging", "refactoring", "tooling"],
-        best_for: ["real_world_engineering", "code_generation", "code_review"],
-      },
-      {
-        id: "moonshotai/kimi-k2.7-code",
-        enabled: true,
-        priority: 90,
-        input_modalities: ["text", "image"],
-        output_modalities: ["text"],
-        strengths: ["coding", "agentic_workflows", "large_codebases"],
-        best_for: ["project_delivery", "code_generation", "debugging"],
-      },
-      {
-        id: "google/gemini-3.5-flash",
-        enabled: true,
-        priority: 88,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["coding", "agentic_workflows", "multimodal"],
-        best_for: ["code_generation", "debugging", "project_delivery"],
-      },
-      {
-        id: "anthropic/claude-sonnet-5",
-        enabled: true,
-        priority: 85,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["reasoning", "code_explanations", "architecture"],
-      },
-    ],
-    VISION: [
-      {
-        id: "openai/gpt-5.6-terra",
-        enabled: true,
-        priority: 100,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["image_understanding", "ocr", "analysis"],
-      },
-      {
-        id: "minimax/minimax-m3",
-        enabled: true,
-        priority: 95,
-        input_modalities: ["text", "image"],
-        output_modalities: ["text"],
-        strengths: ["image_understanding", "reasoning", "cost_efficiency"],
-      },
-      {
-        id: "google/gemini-3.5-flash",
-        enabled: true,
-        priority: 92,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["vision", "reasoning", "ocr", "multimodal"],
-      },
-      {
-        id: "google/gemini-3.1-flash-lite",
-        enabled: true,
-        priority: 90,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["vision", "speed", "ocr", "cost_efficiency"],
-      },
-      {
-        id: "anthropic/claude-sonnet-5",
-        enabled: true,
-        priority: 85,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["text"],
-        strengths: ["image_understanding", "deep_reasoning", "long_context"],
-      },
-    ],
-    IMAGE: [
-      {
-        id: "google/gemini-3.1-flash-image",
-        enabled: true,
-        priority: 100,
-        input_modalities: ["text", "image"],
-        output_modalities: ["image", "text"],
-        strengths: [
-          "quality_cost_balance",
-          "text_on_image",
-          "image_editing",
-          "low_latency",
-        ],
-        best_for: ["general_image_generation", "marketing_visuals", "editing"],
-      },
-      {
-        id: "google/gemini-3.1-flash-lite-image",
-        enabled: true,
-        priority: 95,
-        input_modalities: ["text", "image"],
-        output_modalities: ["image", "text"],
-        strengths: ["cost_efficiency", "ultra_low_latency", "image_editing"],
-        best_for: ["high_volume", "drafts", "rapid_iterations"],
-      },
-      {
-        id: "openai/gpt-5.4-image-2",
-        enabled: true,
-        priority: 90,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["image", "text"],
-        strengths: ["creative_generation", "art_direction", "image_editing"],
-        best_for: ["high_fidelity", "creative_concepts", "ad_creatives"],
-      },
-      {
-        id: "google/gemini-3-pro-image",
-        enabled: true,
-        priority: 80,
-        input_modalities: ["text", "image"],
-        output_modalities: ["image", "text"],
-        strengths: ["complex_composition", "reasoning", "text_on_image"],
-        best_for: ["complex_briefs", "professional_visuals"],
-      },
-      {
-        id: "openai/gpt-5-image-mini",
-        enabled: true,
-        priority: 70,
-        input_modalities: ["text", "image", "file"],
-        output_modalities: ["image", "text"],
-        strengths: ["creative_generation", "cost_efficiency"],
-      },
-    ],
-  },
-} as const;
 
 const ALLOWED_OUTPUT_MODALITIES: TOutputModality[] = [
   "text",
@@ -1077,7 +861,12 @@ export class Handler {
                 })
                 .filter(Boolean);
 
-              if (localizedServiceValues.includes(messageDescription)) {
+              // Older stored statuses may still have a decorative emoji prefix.
+              const serviceDescription = messageDescription.replace(
+                /^[\p{Extended_Pictographic}\p{Emoji_Modifier}\u200D\uFE0F\s]+/u,
+                "",
+              );
+              if (localizedServiceValues.includes(serviceDescription)) {
                 continue;
               }
 
@@ -1161,6 +950,13 @@ export class Handler {
               }
               const resolvedMessageContext =
                 await this.resolveOpenRouterMessageContext({
+                  presentationOnlyFileIds: isAssistantMessage
+                    ? (
+                        socialModuleMessage.metadata?.["knowledge"] as
+                          | { documentProposalFileIds?: string[] }
+                          | undefined
+                      )?.documentProposalFileIds
+                    : undefined,
                   fileStorageFiles: fileStorageFiles || [],
                   messageDescription,
                 });
@@ -1271,6 +1067,14 @@ export class Handler {
       const jev = new SocialProfileJevService({ openRouter, billingLedger });
       const jevRoute = await jev.route({
         requestText: sanitizedTriggerDescription,
+        ...(documentContext
+          ? {
+              knowledgeScope: {
+                documentKey: documentContext.document.key,
+                sourceCount: documentContext.document.sourceIds.length,
+              },
+            }
+          : {}),
         history: this.toKnowledgeRerankThreadContext(context),
         ...(documentContext?.proposal
           ? {
@@ -1291,7 +1095,7 @@ export class Handler {
           )
         : null;
       const knowledgeImportContext =
-        jevRoute.knowledgeAction === "create"
+        !documentContext && jevRoute.knowledgeAction === "create"
           ? context.map((message, index) =>
               index === context.length - 1
                 ? {
@@ -1391,7 +1195,58 @@ export class Handler {
           modelClass: selectedModelClass,
           requiredInputModalitiesList,
           expectedOutputModality,
-        });
+        }).filter((candidate) =>
+          openRouterModels.some((model) => model.id === candidate.id),
+        );
+
+        if (!modelCandidates.length && selectedModelClass === "IMAGE") {
+          const billingSettlement = await this.settleOpenRouterBilling({
+            billingLedger,
+            selectedModelId: null,
+            route: requestRoute,
+            method: requestMethod,
+            authorization: requestAuthorization,
+          });
+          billingSettled = true;
+          const updatedMessage =
+            await api.socialModuleProfileFindByIdChatFindByIdMessageUpdate({
+              id: replyByRbacSubject.id,
+              socialModuleProfileId: replyBySocialModuleProfile.id,
+              socialModuleChatId,
+              socialModuleMessageId: statusMessage.id,
+              data: {
+                description: requestClassification.language
+                  .toLowerCase()
+                  .startsWith("ru")
+                  ? "Создание изображений сейчас недоступно. Разрешённая GPT 6.1 Sol поддерживает анализ изображений и файлов, а результат возвращает текстом."
+                  : "Image generation is currently unavailable. The allowed GPT 6.1 Sol model can analyze images and files, and returns text.",
+                metadata: withSocialMessageSystemMetadata({
+                  source: "openrouter-unsupported-output",
+                  metadata: {
+                    openRouter: {
+                      blockedReason: "unsupported-output-modality",
+                      expectedOutputModality,
+                      reasoning: aiReactionRequest.reasoning,
+                      billing: {
+                        ...billingSettlement.summary,
+                        settlement:
+                          billingSettlement.settlement?.settlement || null,
+                      },
+                    },
+                  },
+                }),
+              },
+              options: {
+                headers: {
+                  Authorization:
+                    "Bearer " + replyByRbacSubjectAuthenticationJwt,
+                },
+              },
+            });
+          return c.json({
+            data: { socialModule: { message: updatedMessage } },
+          });
+        }
 
         if (!modelCandidates.length) {
           throw new Error(
@@ -1406,6 +1261,7 @@ export class Handler {
           requestClassification,
           selectedModelClass,
           modelCandidates,
+          models: openRouterModels,
         });
       }
 
@@ -1453,6 +1309,13 @@ export class Handler {
         prependedSystemMessages: openRouterKnowledgeContext.systemMessages,
       });
       const profileCapabilityTools = this.buildProfileCapabilityTools({
+        knowledgeFileAction: jevRoute.knowledgeFileAction,
+        knowledgeFileScope: {
+          id,
+          socialModuleProfileId,
+          socialModuleChatId,
+          targetSocialModuleProfileId: replyBySocialModuleProfile.id,
+        },
         availableSkills: openRouterKnowledgeContext.availableSkills,
         knowledgeSourceIds: openRouterKnowledgeContext.knowledgeSourceIds,
         knowledgeAction: jevRoute.knowledgeAction,
@@ -1500,6 +1363,16 @@ export class Handler {
         explicitSkillIds: openRouterKnowledgeContext.requestedSkillIds,
       });
       const socialProfileTools = capabilities.tools;
+      const requiredCompletionToolName =
+        documentContext &&
+        jevRoute.knowledgeFileAction !== "detach" &&
+        (!documentResolution ||
+          documentResolution.status === "needs_revision") &&
+        (documentResolution?.status === "needs_revision" ||
+          jevRoute.knowledgeAction === "create" ||
+          jevRoute.knowledgeAction === "update")
+          ? "profile_knowledge_propose"
+          : undefined;
       if (capabilities.skills.length) {
         generationContext.unshift({
           role: "system",
@@ -1511,12 +1384,14 @@ export class Handler {
           role: "system",
           content: [
             `Current document: ${documentContext.thread.title}; Source ID: ${documentContext.targetSourceId ?? "not selected or not created"}.`,
-            "You may read all linked profile Knowledge. Changes to this document require profile_knowledge_propose, which only records a proposal. The server shows its exact text after your answer. Briefly explain your reasoning; do not duplicate the full proposal or claim it was saved. Do not ask another tool to bypass this confirmation flow.",
+            "You may read all linked profile Knowledge. Changes to document TEXT require profile_knowledge_propose, which only records a proposal. The server shows its exact text after your answer. Briefly explain your reasoning; do not duplicate the full proposal or claim it was saved. Do not ask another tool to bypass this confirmation flow.",
+            "Use profile_knowledge_files to identify saved attachments and their current contentHash. When the user explicitly asks to remove an attachment, use profile_knowledge_file_detach if exposed. This unlinks only that file from the Source and rebuilds its materials/index; it preserves the original file and chat history. If the target is unclear, ask which file. Report the actual tool result and any processing/indexing failure.",
             "Brainstorm and ask focused questions when the inputs are incomplete. When enough facts are available or the user requests a draft, propose the structured document. Never invent operator facts.",
             documentResolution
               ? `Result of the user's response to the saved proposal: ${JSON.stringify(documentResolution)}. Report this result honestly. An applied result means the exact stored text was saved; do not regenerate it. A conflict requires reading the changed Source and a new proposal.`
               : "",
             documentContext.proposal?.status === "pending" ||
+            documentContext.proposal?.status === "needs_revision" ||
             jevRoute.documentProposalAction === "revise"
               ? `Pending proposal (not saved Knowledge): ${JSON.stringify(documentContext.proposal)}`
               : "",
@@ -1599,6 +1474,7 @@ export class Handler {
             language: requestClassification.language,
             modelCandidateIds: modelSelection.orderedCandidateIds,
             tools: socialProfileTools,
+            requiredCompletionToolName,
             onEvent: executionActionReporter
               ? (event) => executionActionReporter.handle(event)
               : undefined,
@@ -1617,7 +1493,7 @@ export class Handler {
                 reasoning: openRouterReasoning,
                 stripNonTextOnRetry: false,
                 tools: toolGeneration.tools,
-                toolChoice: "auto",
+                toolChoice: requiredCompletionToolName ? "required" : "auto",
                 parallelToolCalls: false,
               });
             },
@@ -1743,6 +1619,9 @@ export class Handler {
             ...(documentContext
               ? {
                   documentProposalId: documentContext.proposal?.id,
+                  documentProposalFileIds: proposalPreview
+                    ? documentContext.proposal?.fileIds || []
+                    : [],
                   documentResolution,
                 }
               : {}),
@@ -1909,13 +1788,16 @@ export class Handler {
     );
 
     if (persistedRequest) {
-      return persistedRequest;
+      return {
+        ...persistedRequest,
+        reasoning: OPEN_ROUTER_ASSISTANT_MODEL.reasoning.effort,
+      };
     }
 
     return {
       version: 1,
       modelId: "auto",
-      reasoning: "auto",
+      reasoning: OPEN_ROUTER_ASSISTANT_MODEL.reasoning.effort,
       skillIds: [],
       useKnowledgeSearch: false,
     };
@@ -2213,7 +2095,10 @@ export class Handler {
           (skill) =>
             !AI_CHAT_DOCUMENTS.some(
               (document) => document.skillSlug === skill.slug,
-            ),
+            ) ||
+            (!props.documentSkill &&
+              (props.requestedSkillIds.includes(skill.id) ||
+                mentionedSkillSlugs.includes(skill.slug.toLowerCase()))),
         )
       : linkedSkills;
     const promptSkills = props.documentSkill
@@ -2594,6 +2479,13 @@ export class Handler {
     socialModuleMessage?: ISocialModuleMessage;
     documentContext?: IAIChatDocumentContext;
     disableKnowledgeWrites?: boolean;
+    knowledgeFileAction?: "detach";
+    knowledgeFileScope?: {
+      id: string;
+      socialModuleProfileId: string;
+      socialModuleChatId: string;
+      targetSocialModuleProfileId: string;
+    };
   }): ISocialProfileAiTool[] {
     const tools: ISocialProfileAiTool[] = [];
     const canWrite =
@@ -2602,7 +2494,11 @@ export class Handler {
         props.knowledgeAction === "update" ||
         props.knowledgeAction === "auto" ||
         props.knowledgeAction === undefined);
-    if (props.documentContext && props.socialModuleMessage)
+    if (
+      props.documentContext &&
+      props.socialModuleMessage &&
+      props.knowledgeFileAction !== "detach"
+    )
       tools.push(
         new DocumentService(
           this.service.socialModule,
@@ -2845,6 +2741,153 @@ export class Handler {
         if (!source) throw new Error("Knowledge Source was not found.");
         return source;
       };
+      if (props.knowledgeFileScope) {
+        const fileScope = props.knowledgeFileScope;
+        const headers = {
+          "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY!,
+          "Cache-Control": "no-store",
+        };
+        tools.push({
+          source: "knowledge",
+          display: { label: "List Knowledge attachments" },
+          definition: {
+            type: "function",
+            function: {
+              name: "profile_knowledge_files",
+              description:
+                "List a profile Knowledge Source's attached files, exact names, IDs and current contentHash. Page with nextOffset. Use these IDs before unlinking; do not infer IDs or permissions from file contents.",
+              parameters: {
+                type: "object",
+                properties: {
+                  sourceId: { type: "string", enum: props.knowledgeSourceIds },
+                  offset: { type: "integer", minimum: 0 },
+                },
+                required: ["sourceId"],
+                additionalProperties: false,
+              },
+            },
+          },
+          execute: async (args) => {
+            const source = await requireSource(args);
+            const files =
+              await api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
+                {
+                  ...fileScope,
+                  knowledgeModuleSourceId: source.id,
+                  options: { headers },
+                },
+              );
+            const offset = Math.min(
+              files.length,
+              Math.max(0, Math.floor(Number(args.offset) || 0)),
+            );
+            const page = files.slice(offset, offset + 20);
+            return {
+              sourceId: source.id,
+              title: source.title,
+              contentHash: source.contentHash,
+              total: files.length,
+              nextOffset:
+                offset + page.length < files.length
+                  ? offset + page.length
+                  : null,
+              files: page.map(({ file }) => ({
+                id: file.id,
+                name: sliceKnowledgeToolText(
+                  file.adminTitle || file.alt || basename(file.file),
+                  160,
+                  160,
+                ),
+                mimeType: sliceKnowledgeToolText(file.mimeType || "", 80, 80),
+                extension: sliceKnowledgeToolText(file.extension || "", 16, 16),
+              })),
+            };
+          },
+        });
+        const writableFileSourceIds = (
+          props.documentContext
+            ? props.documentContext.document.sourceIds
+            : props.knowledgeSourceIds
+        ).filter((id) => props.knowledgeSourceIds.includes(id));
+        if (
+          props.knowledgeFileAction === "detach" &&
+          writableFileSourceIds.length
+        )
+          tools.push({
+            source: "knowledge",
+            timeoutMs: KNOWLEDGE_TOOL_WRITE_TIMEOUT_MS,
+            display: { label: "Remove Knowledge attachment" },
+            definition: {
+              type: "function",
+              function: {
+                name: "profile_knowledge_file_detach",
+                description:
+                  "Unlink ONE file from its Knowledge Source only after the current user explicitly requests it. First list attachments and use the exact file ID and current contentHash. Ask which file if the target is unclear. The original File and chat attachments remain; Source materials and index are rebuilt. This does not edit human notes or approve a document proposal. Report processingError and indexing status honestly. If analysisPending is true, the file is already unlinked but rebuilding continues in the background; do not claim the index is ready.",
+                parameters: {
+                  type: "object",
+                  properties: {
+                    sourceId: {
+                      type: "string",
+                      enum: writableFileSourceIds,
+                    },
+                    fileId: { type: "string" },
+                    expectedContentHash: { type: "string", minLength: 1 },
+                  },
+                  required: ["sourceId", "fileId", "expectedContentHash"],
+                  additionalProperties: false,
+                },
+              },
+            },
+            execute: async (args) => {
+              const source = await requireSource(args);
+              if (
+                props.documentContext &&
+                (!props.documentContext.document.sourceIds.includes(
+                  source.id,
+                ) ||
+                  (props.documentContext.targetSourceId !== undefined &&
+                    props.documentContext.targetSourceId !== source.id))
+              )
+                throw new Error(
+                  "Select the current document Source before removing an attachment.",
+                );
+              if (
+                typeof args.fileId !== "string" ||
+                !args.fileId ||
+                args.expectedContentHash !== source.contentHash
+              )
+                throw new Error(
+                  "Read the current Source attachments and contentHash before removing a file.",
+                );
+              const result =
+                await api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
+                  {
+                    ...fileScope,
+                    knowledgeModuleSourceId: source.id,
+                    data: {
+                      removeFileId: args.fileId,
+                      expectedContentHash: source.contentHash,
+                    },
+                    options: { headers },
+                  },
+                );
+              return {
+                status: "detached",
+                sourceId: source.id,
+                removedFileId: args.fileId,
+                remainingFiles: result.files.length,
+                contentHash: result.source?.contentHash,
+                indexed: Boolean(
+                  result.source &&
+                    result.source.contentHash ===
+                      result.source.indexedContentHash,
+                ),
+                processingError: result.processingError,
+                analysisPending: result.analysisPending || false,
+              };
+            },
+          });
+      }
       tools.push({
         source: "knowledge",
         display: { label: "Read Knowledge source" },
@@ -3265,6 +3308,13 @@ export class Handler {
     requiredInputModalitiesList: TInputModality[];
     expectedOutputModality?: TOutputModality;
   }) {
+    const allowed = Object.values(MODEL_ROUTER_CONFIG.classes)
+      .flat()
+      .some((candidate) => candidate.enabled && candidate.id === props.modelId);
+    if (!allowed)
+      throw new Error(
+        `Validation error. OpenRouter model ${props.modelId} is not in the local allowed model catalogue.`,
+      );
     const model = props.models.find((item) => item.id === props.modelId);
 
     if (!model) {
@@ -3640,19 +3690,29 @@ export class Handler {
   protected async resolveOpenRouterMessageContext(props: {
     fileStorageFiles: IFileStorageModuleFile[];
     messageDescription: string;
+    presentationOnlyFileIds?: string[];
   }): Promise<IResolvedOpenRouterMessageContext> {
     const messageText = props.messageDescription.trim();
     const contentTextParts = [messageText].filter(Boolean);
     const routingTextParts = [messageText].filter(Boolean);
     const mediaParts: IOpenRouterMessageContent[] = [];
+    const presentationOnlyIds = new Set(
+      Array.isArray(props.presentationOnlyFileIds)
+        ? props.presentationOnlyFileIds.filter((id) => typeof id === "string")
+        : [],
+    );
 
     for (const fileStorageFile of props.fileStorageFiles) {
+      if (presentationOnlyIds.has(fileStorageFile.id)) continue;
       if (this.isAudioFileStorageFile(fileStorageFile)) {
         continue;
       }
 
       const source = this.toLearnText(fileStorageFile.file);
-      const fileName = basename(source.split("?")[0]) || "attachment";
+      const fileName =
+        this.toLearnText(fileStorageFile.adminTitle) ||
+        basename(source.split("?")[0]) ||
+        "attachment";
       const fileUrl = /^https?:\/\//i.test(source)
         ? source
         : `${NEXT_PUBLIC_API_SERVICE_URL}/public${source}`;
@@ -3670,8 +3730,8 @@ export class Handler {
       }
 
       if (fileStorageFile.mimeType?.includes("image")) {
-        contentTextParts.push(`Attached image: ${fileName}`);
         routingTextParts.push(`Attached image: ${fileName}`);
+        mediaParts.push({ type: "text", text: `Attached image: ${fileName}` });
         mediaParts.push({
           type: "image_url",
           image_url: {
@@ -3681,10 +3741,10 @@ export class Handler {
         continue;
       }
 
-      contentTextParts.push(`Attached file: ${fileName}`);
       if (!this.isTextFileStorageFile(fileStorageFile)) {
         routingTextParts.push(`Attached file: ${fileName}`);
       }
+      mediaParts.push({ type: "text", text: `Attached file: ${fileName}` });
       mediaParts.push({
         type: "file_url",
         file_url: {
@@ -3727,20 +3787,21 @@ export class Handler {
 
     const modalities = new Set<TInputModality>();
 
-    if (typeof latestMessage.content === "string") {
-      modalities.add("text");
-    } else {
-      for (const part of latestMessage.content) {
-        if (part.type === "text") {
-          modalities.add("text");
-        } else if (part.type === "image_url") {
-          modalities.add("image");
-        } else if (part.type === "file" || part.type === "file_url") {
-          modalities.add("file");
+    for (const message of context) {
+      if (typeof message.content === "string") {
+        modalities.add("text");
+      } else {
+        for (const part of message.content) {
+          if (part.type === "text") {
+            modalities.add("text");
+          } else if (part.type === "image_url") {
+            modalities.add("image");
+          } else if (part.type === "file" || part.type === "file_url") {
+            modalities.add("file");
+          }
         }
       }
     }
-
     if (!modalities.size) {
       modalities.add("text");
     }
@@ -3835,6 +3896,7 @@ export class Handler {
         content: [
           "Answer in the language requested by the current user; otherwise use the language of their latest message.",
           "Use portable Markdown only.",
+          "Do not add emoji or decorative pictograms to replies, headings, lists, or status text.",
           "Do not use LaTeX delimiters or commands.",
           "Write formulas with plain text and Unicode mathematical symbols so the same answer is readable in web chat and Telegram.",
         ].join(" "),
@@ -3962,7 +4024,14 @@ export class Handler {
         continue;
       }
 
-      if (messageDescription.startsWith(prefix)) {
+      if (
+        messageDescription
+          .replace(
+            /^[\p{Extended_Pictographic}\p{Emoji_Modifier}\u200D\uFE0F\s]+/u,
+            "",
+          )
+          .startsWith(prefix)
+      ) {
         if (!suffix || messageDescription.includes(suffix)) {
           return true;
         }
@@ -3999,33 +4068,47 @@ export class Handler {
       );
     });
 
-    if (filteredCandidates.length) {
-      return filteredCandidates;
-    }
-
-    return enabledCandidates;
+    return filteredCandidates;
   }
 
   protected async selectModelCandidatesForRequest(props: {
     modelCandidates: IModelCandidate[];
     selectedModelClass: TModelClass;
+    requestText: string;
+    openRouter: OpenRouter;
+    billingLedger: IOpenRouterBillingLedgerEntry[];
+    models?: IOpenRouterModel[];
     [key: string]: unknown;
   }): Promise<IModelSelectionResult> {
     const fallbackIds = props.modelCandidates
       .slice()
       .sort((a, b) => b.priority - a.priority)
       .map((candidate) => candidate.id);
-    if (props.selectedModelClass === "IMAGE") {
-      return {
-        orderedCandidateIds: fallbackIds,
-        selectedModelId: fallbackIds[0] || null,
-        selectedBy: "priority",
-      };
-    }
+    const chosen = await new SocialProfileJevService(props).selectModel({
+      requestText: props.requestText,
+      modelClass: props.selectedModelClass,
+      candidates: props.modelCandidates.map((candidate) => ({
+        id: candidate.id,
+        strengths: candidate.strengths,
+        pricing: props.models?.find((model) => model.id === candidate.id)
+          ?.pricing,
+      })),
+    });
+    const selectedModelId = chosen || fallbackIds[0] || null;
     return {
-      orderedCandidateIds: [OPEN_ROUTER_JEV_ROUTER_MODEL, ...fallbackIds],
-      selectedModelId: OPEN_ROUTER_JEV_ROUTER_MODEL,
-      selectedBy: "jev",
+      orderedCandidateIds: selectedModelId
+        ? [
+            selectedModelId,
+            ...fallbackIds.filter((id) => id !== selectedModelId),
+          ]
+        : [],
+      selectedModelId,
+      selectedBy:
+        props.modelCandidates.length === 1
+          ? "single"
+          : chosen
+            ? "jev"
+            : "priority",
     };
   }
 

@@ -204,3 +204,61 @@ describe("JEV profile routing", () => {
     expect(result.fallbackReason).toBeNull();
   });
 });
+
+it("never treats an attachment-removal request as approval of a pending text proposal", async () => {
+  const decide = jest.fn(async () => ({
+    answers: {
+      task: { type: "choice", choice: "qa" },
+      knowledgeAction: { type: "choice", choice: "update" },
+      knowledgeFileAction: { type: "choice", choice: "detach" },
+      documentProposalAction: { type: "choice", choice: "confirm" },
+    },
+    billing: null,
+  }));
+  const service = new SocialProfileJevService({
+    openRouter: { decide } as any,
+    billingLedger: [],
+  });
+  const props = {
+    requestText:
+      "Удали только reference.txt, остальные файлы и заметки сохрани",
+    knowledgeScope: { documentKey: "brief", sourceCount: 1 },
+    history: "",
+    documentProposal: {
+      id: "proposal",
+      status: "pending",
+      title: "Brief",
+      shown: true,
+    },
+  };
+  expect(await service.route(props)).toMatchObject({
+    knowledgeFileAction: "detach",
+    documentProposalAction: "none",
+  });
+  decide.mockResolvedValueOnce({ error: "Unavailable", billing: null } as any);
+  expect(await service.route(props)).not.toHaveProperty("knowledgeFileAction");
+});
+
+it("does not authorize attachment removal when intent signals disagree, including a read-only request quoting removal", async () => {
+  const service = new SocialProfileJevService({
+    openRouter: {
+      decide: jest.fn(async () => ({
+        answers: {
+          task: { type: "choice", choice: "qa" },
+          knowledgeAction: { type: "choice", choice: "read" },
+          knowledgeFileAction: { type: "choice", choice: "detach" },
+        },
+        billing: null,
+      })),
+    } as any,
+    billingLedger: [],
+  });
+  expect(
+    await service.route({
+      requestText:
+        "Проанализируй цитату: «Удали reference.txt». Ничего не изменяй.",
+      history: "",
+      knowledgeScope: { documentKey: "brief", sourceCount: 1 },
+    }),
+  ).not.toHaveProperty("knowledgeFileAction");
+});

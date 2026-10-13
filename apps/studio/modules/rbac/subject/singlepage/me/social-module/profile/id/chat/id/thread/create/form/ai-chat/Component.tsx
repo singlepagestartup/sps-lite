@@ -6,7 +6,6 @@ import {
   type InputHTMLAttributes,
 } from "react";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../../../../../../website-builder/feature";
-import { Component as SocialModuleProfile } from "../../../../../../../../../../../../../social/profile";
 import type IconGlyphs from "../../../../../../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
 import { useStudioAccount } from "../../../../../../../../../account/Account";
 interface IFeedbackProps {
@@ -102,7 +101,6 @@ export function Component({
 }: ISubjectThreadCreateFormProps) {
   const { account } = useStudioAccount();
   const [title, setTitle] = useState("");
-  const [hasAgent, setHasAgent] = useState(false);
   const [previewed, setPreviewed] = useState(false);
   return (
     <form
@@ -115,12 +113,11 @@ export function Component({
       className="mx-auto grid w-full max-w-xl gap-5 overflow-y-auto p-5 @[640px]:p-8"
       onSubmit={(event) => {
         event.preventDefault();
-        if (title.trim() && hasAgent) setPreviewed(true);
+        if (title.trim()) setPreviewed(true);
       }}
     >
       <p className={`text-sm leading-6 ${kit.muted}`}>
-        Give this thread a name and choose an agent. The agent uses the
-        project's knowledge.
+        Give this thread a name.
       </p>
       <TextField
         label="Thread name"
@@ -133,15 +130,8 @@ export function Component({
         maxLength={100}
         placeholder="What do you want to work on?"
       />
-      <SocialModuleProfile
-        variant="agent-select-ai-chat"
-        onChange={(selected) => {
-          setHasAgent(selected);
-          setPreviewed(false);
-        }}
-      />
       <div className="flex flex-wrap gap-3">
-        <Button type="submit" disabled={!title.trim() || !hasAgent}>
+        <Button type="submit" disabled={!title.trim()}>
           <Icon name="chat-circle" />
           Create thread
         </Button>

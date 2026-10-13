@@ -503,11 +503,19 @@ export class KnowledgeRepository {
     sourceId: string,
     fileIds: string[],
     expectedFileIds?: string[],
+    expectedContentHash?: string,
   ) {
     return this.db.transaction(async (tx) => {
       await this.lockFiles(tx, fileIds);
       const sources = await this.lockSources(tx, [sourceId]);
       if (!sources.length) throw new Error("Knowledge Source was not found.");
+      if (
+        expectedContentHash !== undefined &&
+        sources[0].contentHash !== expectedContentHash
+      )
+        throw new Error(
+          "Conflict error. Knowledge Source changed. Refresh and retry the operation.",
+        );
       const existing = await tx
         .select()
         .from(SourcesToFileStorageModuleFilesTable)
@@ -522,7 +530,7 @@ export class KnowledgeRepository {
           JSON.stringify(expectedFileIds)
       )
         throw new Error(
-          "Knowledge attachments changed. Refresh and retry the operation.",
+          "Conflict error. Knowledge attachments changed. Refresh and retry the operation.",
         );
       const ids = [...new Set(fileIds)];
       for (const relation of existing) {

@@ -131,7 +131,7 @@ export const api = {
       },
     );
 
-    return useQuery<string>({
+    return useQuery<string | null>({
       queryKey: [`${route}/url-segment-value?${stringifiedQuery}`],
       queryFn: async () => {
         try {
@@ -156,13 +156,13 @@ export const api = {
             requestOptions,
           );
 
-          const json = await responsePipe<{ data: string }>({
+          const json = await responsePipe<{ data: string | null }>({
             res,
           });
 
-          const transformedData = transformResponseItem<string>(json);
+          const transformedData = transformResponseItem<string | null>(json);
 
-          return transformedData;
+          return transformedData ?? null;
         } catch (error: any) {
           toast.error(error.message);
 

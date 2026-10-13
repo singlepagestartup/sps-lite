@@ -183,6 +183,7 @@
     "reflect-metadata": "^0.2.2",
     "remotion": "4.0.505",
     "server-only": "^0.0.1",
+    "sharp": "0.34.5",
     "slugify": "^1.6.6",
     "sonner": "^1.7.1",
     "stripe": "^17.5.0",

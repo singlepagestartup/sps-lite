@@ -7,6 +7,7 @@ export { util as hash } from "./lib/hash";
 export * from "./lib/envs";
 export * from "./lib/secret-strength";
 export * from "./lib/constants";
+export * from "./lib/ai-chat-attachments";
 export * from "./lib/topics";
 export * from "./lib/routes";
 export type { NextRequestOptions } from "./lib/types";

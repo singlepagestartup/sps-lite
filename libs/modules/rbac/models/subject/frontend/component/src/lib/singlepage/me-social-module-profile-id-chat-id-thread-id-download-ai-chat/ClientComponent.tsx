@@ -3,6 +3,7 @@ import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { Component as Thread } from "@sps/social/models/thread/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
+import { readKnowledgeDocumentContent } from "@sps/shared-utils";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
   const scope = {
@@ -29,7 +30,10 @@ export function Component(props: IComponentPropsExtended) {
       [
         `# ${thread.title}\n\n` +
           documentSources
-            .map((source) => `## ${source.title}\n\n${source.content}`)
+            .map(
+              (source) =>
+                `## ${source.title}\n\n${readKnowledgeDocumentContent(source.content)}`,
+            )
             .join("\n\n"),
       ],
       { type: "text/markdown;charset=utf-8" },

@@ -34,6 +34,7 @@ export function Component(props: IComponentPropsExtended) {
     <Messages
       isServer={false}
       variant="list-ai-chat"
+      keepDataWhileFetching
       apiProps={{
         reactQueryOptions: {
           initialData: ordered,
