@@ -96,10 +96,28 @@ export class Service {
           },
         },
       };
+      let updatedReusable: IThread | null = null;
+      if (reusable) {
+        updatedReusable = await threadApi.updateMetadataNamespace({
+          id: reusable.id,
+          namespace: "aiChatDocument",
+          expectedValue: reusable.metadata.aiChatDocument ?? null,
+          value: data.metadata.aiChatDocument,
+          options,
+        });
+        if (!updatedReusable)
+          throw new Error(
+            "Thread document changed concurrently. Retry document initialization.",
+          );
+      }
       const thread =
         pending ||
         (reusable
-          ? await threadApi.update({ id: reusable.id, data, options })
+          ? await threadApi.update({
+              id: reusable.id,
+              data: { title: data.title },
+              options,
+            })
           : await threadApi.create({
               data: { ...data, slug, variant: "default" },
               options,

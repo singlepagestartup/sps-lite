@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 import {
   getDrizzle,
   getPostgresClient,
@@ -27,7 +27,7 @@ jest.mock(
   }),
 );
 jest.mock("@sps/social/models/thread/sdk/server", () => ({
-  api: { update: (...args: any[]) => saveThread(...args) },
+  api: { updateMetadataNamespace: (...args: any[]) => saveThread(...args) },
 }));
 jest.mock("@sps/shared-utils", () => ({
   ...jest.requireActual("@sps/shared-utils"),
@@ -130,9 +130,20 @@ it("persists a confirmed document Source with profile and origin links, indexes 
   const findThread = async () =>
     (await db.select().from(Thread).where(eq(Thread.id, thread.id)))[0];
   saveThread.mockImplementation(
-    async ({ id, data }) =>
+    async ({ id, namespace, expectedValue, value }) =>
       (
-        await db.update(Thread).set(data).where(eq(Thread.id, id)).returning()
+        await db
+          .update(Thread)
+          .set({
+            metadata: sql`jsonb_set(${Thread.metadata}, ARRAY[${namespace}]::text[], ${JSON.stringify(value)}::jsonb, true)`,
+          })
+          .where(
+            and(
+              eq(Thread.id, id),
+              sql`coalesce(${Thread.metadata} -> ${namespace}, 'null'::jsonb) = ${JSON.stringify(expectedValue ?? null)}::jsonb`,
+            ),
+          )
+          .returning()
       )[0],
   );
   const social: any = {

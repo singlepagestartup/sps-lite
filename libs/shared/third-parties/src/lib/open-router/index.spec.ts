@@ -1007,3 +1007,49 @@ describe("OpenRouter completion, tool-calling, and billing contracts", () => {
     });
   });
 });
+
+it("keeps the thread session across decisions, generation and a retry", async () => {
+  const originalFetch = global.fetch;
+  const service = new Service({ sessionId: "thread-profile" });
+  jest.spyOn(service, "getModels").mockResolvedValue([]);
+  const fetchMock = jest
+    .fn()
+    .mockResolvedValueOnce({ json: async () => ({ answers: {} }) })
+    .mockResolvedValueOnce({
+      json: async () => ({ error: { message: "unsupported media" } }),
+    })
+    .mockResolvedValueOnce({
+      json: async () => ({ choices: [{ message: { content: "ok" } }] }),
+    });
+  global.fetch = fetchMock as any;
+  try {
+    await service.decide({ state: {}, questions: {} });
+    await service.generate({
+      model: "test/text",
+      context: [
+        {
+          role: "user",
+          content: [
+            { type: "text", text: "question" },
+            {
+              type: "image_url",
+              image_url: { url: "https://example.test/image.png" },
+            },
+          ],
+        },
+      ],
+    });
+    expect(fetchMock.mock.calls[0][1].headers["x-session-id"]).toBe(
+      "thread-profile",
+    );
+    expect(JSON.parse(fetchMock.mock.calls[1][1].body).session_id).toBe(
+      "thread-profile",
+    );
+    expect(JSON.parse(fetchMock.mock.calls[2][1].body).session_id).toBe(
+      "thread-profile",
+    );
+  } finally {
+    global.fetch = originalFetch;
+    jest.restoreAllMocks();
+  }
+});

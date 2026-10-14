@@ -761,3 +761,89 @@ describe("Given: a bounded social.profile AI tool loop", () => {
     });
   });
 });
+
+it("places original media after all tool responses in a multi-call step", async () => {
+  const tool = createTool({
+    source: "context",
+    additionalContext: () => [
+      {
+        role: "user",
+        content: [
+          {
+            type: "image_url",
+            image_url: { url: "https://example.test/original.png" },
+          },
+        ],
+      },
+    ],
+  });
+  const generate = jest
+    .fn()
+    .mockResolvedValueOnce({
+      text: "",
+      toolCalls: [1, 2].map((id) => ({
+        id: String(id),
+        type: "function",
+        function: {
+          name: tool.definition.function.name,
+          arguments: '{"id":"same"}',
+        },
+      })),
+      billing: null,
+    })
+    .mockResolvedValueOnce({ text: "understood", billing: null });
+  const result = await new SocialProfileAiToolLoop().run({
+    context: [{ role: "user", content: "Read originals" }],
+    modelCandidateIds: ["test"],
+    tools: [tool],
+    generate,
+  });
+  expect(result.context.map((message) => message.role)).toEqual([
+    "user",
+    "assistant",
+    "tool",
+    "tool",
+    "user",
+    "user",
+  ]);
+  expect(result.context[2].tool_call_id).toBe("1");
+  expect(result.context[3].tool_call_id).toBe("2");
+});
+
+it("pairs every declared tool response before finishing a step that staged a draft", async () => {
+  const stage = createTool({ completeAfterSuccess: true });
+  const read = createTool({
+    definition: {
+      type: "function",
+      function: {
+        name: "read",
+        parameters: { type: "object", properties: { id: { type: "string" } } },
+      },
+    },
+  });
+  const generate = jest.fn().mockResolvedValue({
+    text: "",
+    toolCalls: [stage, read].map((tool, index) => ({
+      id: String(index),
+      type: "function",
+      function: {
+        name: tool.definition.function.name,
+        arguments: '{"id":"draft"}',
+      },
+    })),
+    billing: null,
+  });
+  const result = await new SocialProfileAiToolLoop().run({
+    context: [{ role: "user", content: "Draft with original material" }],
+    modelCandidateIds: ["test"],
+    tools: [stage, read],
+    generate,
+  });
+  expect(
+    result.context
+      .filter((message) => message.role === "tool")
+      .map((message) => message.tool_call_id),
+  ).toEqual(["0", "1"]);
+  expect(read.execute).toHaveBeenCalled();
+  expect(generate).toHaveBeenCalledTimes(1);
+});

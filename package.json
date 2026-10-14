@@ -155,6 +155,7 @@
     "ioredis": "^5.4.2",
     "iron-webcrypto": "^1.2.1",
     "js-cookie": "^3.0.5",
+    "js-tiktoken": "^1.0.21",
     "jsonwebtoken": "^9.0.2",
     "jspdf": "4.2.1",
     "lodash": "^4.17.21",

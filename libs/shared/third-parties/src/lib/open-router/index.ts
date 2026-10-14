@@ -15,6 +15,7 @@ import type {
   IOpenRouterToolCall,
   IOpenRouterToolChoice,
   IOpenRouterUsage,
+  IOpenRouterSessionOptions,
 } from "./interface";
 
 export type IOpenRouterMessageContent =
@@ -77,7 +78,7 @@ export class Service {
   baseURL: string;
   apiKey: string;
 
-  constructor() {
+  constructor(private readonly options: IOpenRouterSessionOptions = {}) {
     if (!OPEN_ROUTER_API_KEY) {
       throw new Error("Configuration error. OPEN_ROUTER_API_KEY is not set");
     }
@@ -99,6 +100,9 @@ export class Service {
           headers: {
             Authorization: `Bearer ${this.apiKey}`,
             "Content-Type": "application/json",
+            ...(this.options.sessionId && {
+              "x-session-id": this.options.sessionId,
+            }),
           },
           signal: AbortSignal.timeout(30_000),
           body: JSON.stringify({ ...props, model }),
@@ -441,6 +445,8 @@ export class Service {
     reasoning?: IOpenRouterReasoning;
     response_format?: IOpenRouterResponseFormat;
     temperature?: number;
+    sessionId?: string;
+    timeoutMs?: number;
   }): Promise<any> {
     try {
       const response = await fetch(`${this.baseURL}/chat/completions`, {
@@ -449,8 +455,10 @@ export class Service {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.apiKey}`,
         },
+        signal: AbortSignal.timeout(props.timeoutMs ?? 120_000),
         body: JSON.stringify({
           model: props.model,
+          ...(props.sessionId && { session_id: props.sessionId }),
           messages: props.messages,
           stream: false,
           max_tokens: props.max_tokens,
@@ -844,6 +852,8 @@ export class Service {
     responseFormat?: IOpenRouterResponseFormat;
     temperature?: number;
     stripNonTextOnRetry?: boolean;
+    sessionId?: string;
+    timeoutMs?: number;
   }): Promise<IOpenRouterGenerateResult> {
     const hasNonTextContent = props.context.some(
       (message) => typeof message.content !== "string",
@@ -859,6 +869,8 @@ export class Service {
     const data = await this.requestCompletion({
       model: props.model,
       messages: normalizedMessages,
+      sessionId: props.sessionId ?? this.options.sessionId,
+      timeoutMs: props.timeoutMs,
       max_tokens: props.max_tokens,
       tools: props.tools,
       tool_choice: props.toolChoice,
@@ -889,6 +901,8 @@ export class Service {
         const retryData = await this.requestCompletion({
           model: props.model,
           messages: strippedMessages,
+          sessionId: props.sessionId ?? this.options.sessionId,
+          timeoutMs: props.timeoutMs,
           max_tokens: props.max_tokens,
           tools: props.tools,
           tool_choice: props.toolChoice,

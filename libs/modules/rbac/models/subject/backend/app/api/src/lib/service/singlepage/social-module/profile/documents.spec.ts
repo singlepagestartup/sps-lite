@@ -1,5 +1,6 @@
 const createThread = jest.fn();
 const updateThread = jest.fn();
+const updateNamespace = jest.fn();
 const createLink = jest.fn();
 jest.mock("@sps/shared-utils", () => ({
   ...jest.requireActual("@sps/shared-utils"),
@@ -9,6 +10,7 @@ jest.mock("@sps/social/models/thread/sdk/server", () => ({
   api: {
     create: (...args: any[]) => createThread(...args),
     update: (...args: any[]) => updateThread(...args),
+    updateMetadataNamespace: (...args: any[]) => updateNamespace(...args),
   },
 }));
 jest.mock("@sps/social/relations/chats-to-threads/sdk/server", () => ({
@@ -39,6 +41,18 @@ function fixture(initial: any) {
     Object.assign(thread, data);
     return thread;
   });
+  updateNamespace.mockImplementation(
+    async ({ id, namespace, expectedValue, value }) => {
+      const thread = threads.find((thread) => thread.id === id)!;
+      if (
+        JSON.stringify(thread.metadata[namespace] ?? null) !==
+        JSON.stringify(expectedValue)
+      )
+        return null;
+      thread.metadata = { ...thread.metadata, [namespace]: value };
+      return thread;
+    },
+  );
   createLink.mockImplementation(async ({ data }) => {
     links.push(data);
     return data;

@@ -1,3 +1,7 @@
+export interface IOpenRouterSessionOptions {
+  sessionId?: string;
+}
+
 export interface IOpenRouterUsage {
   prompt_tokens: number;
   completion_tokens: number;

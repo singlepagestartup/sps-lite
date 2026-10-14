@@ -44,3 +44,22 @@ one exact proposed Knowledge edit, the Source's original content hash, the
 message showing the proposal, and its pending, applied or rejected state.
 A later user confirmation applies the stored text. A changed Source requires
 a new proposal; repeated confirmation of an applied proposal performs no write.
+
+## Atomic metadata namespace updates
+
+The Thread Repository and Service expose `updateMetadataNamespace({ id,
+namespace, expectedValue, value })`. One SQL update compares the namespace's
+current JSONB value and replaces only that key. Missing and JSON null values
+compare as null. A stale comparison returns null; success returns the updated
+Thread. Other metadata keys survive concurrent updates.
+
+The server SDK exposes the same operation through the existing Thread PATCH
+route, with `data.metadataNamespaceUpdate` as its sole field. Ordinary update
+routing, output schemas, revalidation and WebSocket notification middleware
+remain in use. Namespace names exclude prototype keys. Direct full-metadata
+replacement remains ordinary CRUD; callers that modify one owned namespace use
+the atomic operation.
+
+RBAC uses it for preferences, document proposals and `rbacAiThreadContext`.
+Social stores that context as opaque JSON and does not summarize conversations
+or interpret Profile memory, draft text, hashes or Source versions.

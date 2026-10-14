@@ -184,6 +184,7 @@ export class KnowledgeService {
 
   async search(props: {
     query: string;
+    sessionId?: string;
     topK?: number;
     neighborWindow?: number;
     finalTopK?: number;
@@ -205,7 +206,9 @@ export class KnowledgeService {
     }
 
     const config = getKnowledgeConfiguration();
-    const embedding = await this.embeddingClient.embed(query);
+    const embedding = props.sessionId
+      ? await this.embeddingClient.embed(query, { sessionId: props.sessionId })
+      : await this.embeddingClient.embed(query);
     const topK = Math.min(
       Math.max(Number(props.topK || config.search.defaultTopK), 1),
       50,

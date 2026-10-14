@@ -41,6 +41,14 @@ validates answers against the supplied questions and normalizes Decisions
 structured answers or an error, retaining reported usage even when answer
 validation fails. Domain routing and profile permissions live in RBAC services.
 
+`new OpenRouter({ sessionId })` supplies a session for Decisions and chat
+completions. `generate({ sessionId })` can override it for one completion;
+retries preserve it. Decisions use `x-session-id`, and chat requests use
+`session_id`. Completion requests have a 120-second network deadline, with an
+optional `timeoutMs` override. RBAC summaries use 60 seconds and fall back to
+original history on failure. Sessions help provider routing and log grouping;
+actual cache usage comes from provider usage fields.
+
 ## Usage
 
 ```typescript

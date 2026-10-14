@@ -105,14 +105,11 @@ export class Service {
       throw new Error(
         "Document proposal changed during this request. Review the latest proposal.",
       );
-    const thread = await threadApi.update({
+    const thread = await threadApi.updateMetadataNamespace({
       id: current.id,
-      data: {
-        metadata: {
-          ...current.metadata,
-          [RBAC_AI_DOCUMENT_PROPOSAL_KEY]: proposal,
-        },
-      },
+      namespace: RBAC_AI_DOCUMENT_PROPOSAL_KEY,
+      expectedValue: current.metadata[RBAC_AI_DOCUMENT_PROPOSAL_KEY] ?? null,
+      value: proposal,
       options: {
         headers: {
           "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
@@ -120,6 +117,10 @@ export class Service {
         },
       },
     });
+    if (!thread)
+      throw new Error(
+        "Document proposal changed during this request. Review the latest proposal.",
+      );
     context.thread = thread;
     context.document = getAIChatDocument(thread.metadata)!;
     context.proposal = proposal;
@@ -431,16 +432,13 @@ export class Service {
       id: context.thread.id,
     });
     const document = getAIChatDocument(current.metadata)!;
-    const thread = await threadApi.update({
+    const thread = await threadApi.updateMetadataNamespace({
       id: current.id,
-      data: {
-        metadata: {
-          ...current.metadata,
-          aiChatDocument: {
-            ...document,
-            sourceIds: [...new Set([...document.sourceIds, sourceId])],
-          },
-        },
+      namespace: "aiChatDocument",
+      expectedValue: current.metadata.aiChatDocument,
+      value: {
+        ...document,
+        sourceIds: [...new Set([...document.sourceIds, sourceId])],
       },
       options: {
         headers: {
@@ -449,6 +447,10 @@ export class Service {
         },
       },
     });
+    if (!thread)
+      throw new Error(
+        "Document Source links changed during this request. Retry with the current document.",
+      );
     context.thread = thread;
     context.document = getAIChatDocument(thread.metadata)!;
   }

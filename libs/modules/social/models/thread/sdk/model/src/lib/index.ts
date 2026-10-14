@@ -28,3 +28,4 @@ export const options = {
 } as NextRequestOptions;
 
 export * from "./primary-thread";
+export type { IThreadMetadataNamespaceUpdate } from "./metadata-namespace";

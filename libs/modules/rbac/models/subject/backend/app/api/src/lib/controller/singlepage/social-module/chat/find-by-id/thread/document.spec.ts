@@ -5,7 +5,7 @@ jest.mock("@sps/shared-utils", () => ({
   RBAC_JWT_SECRET: "test-jwt",
 }));
 jest.mock("@sps/social/models/thread/sdk/server", () => ({
-  api: { update: jest.fn() },
+  api: { update: jest.fn(), updateMetadataNamespace: jest.fn() },
 }));
 import { Handler } from "./update";
 import { ChatLifecycleService } from "../../../../../../service/singlepage/social-module/chat/lifecycle";
@@ -101,7 +101,9 @@ describe("Given an owned Chat and Thread", () => {
     expect(api.update).not.toHaveBeenCalled();
   });
   it("When the same owned Source is submitted twice Then it is stored once and other metadata survives", async () => {
-    (api.update as jest.Mock).mockResolvedValue({ id: "thread" });
+    (api.updateMetadataNamespace as jest.Mock).mockResolvedValue({
+      id: "thread",
+    });
     const owned = service();
     await new Handler(owned).execute(
       context({
@@ -120,20 +122,24 @@ describe("Given an owned Chat and Thread", () => {
       socialModuleChatId: "chat",
       socialModuleThreadId: "thread",
     });
-    expect(api.update).toHaveBeenCalledWith(
+    expect(api.updateMetadataNamespace).toHaveBeenCalledWith(
       expect.objectContaining({
-        data: {
-          metadata: {
-            openRouterModelId: "chosen",
-            unrelated: true,
-            aiChatDocument: {
-              key: "products",
-              profileId: "profile",
-              sourceIds: ["source"],
-            },
-          },
-        },
+        namespace: "aiChatDocument",
+        expectedValue: null,
+        value: { key: "products", profileId: "profile", sourceIds: ["source"] },
       }),
     );
+    expect(api.update).not.toHaveBeenCalled();
   });
+});
+
+it("rejects a stale document namespace before applying other thread fields", async () => {
+  (api.updateMetadataNamespace as jest.Mock).mockResolvedValueOnce(null);
+  await expect(
+    new Handler(service()).execute(
+      context({ key: "brief", profileId: "profile", sourceIds: [] }),
+      null,
+    ),
+  ).rejects.toThrow("changed concurrently");
+  expect(api.update).not.toHaveBeenCalled();
 });

@@ -7,7 +7,7 @@ jest.mock(
   }),
 );
 jest.mock("@sps/social/models/thread/sdk/server", () => ({
-  api: { update: (...args: any[]) => updateThread(...args) },
+  api: { updateMetadataNamespace: (...args: any[]) => updateThread(...args) },
 }));
 jest.mock("@sps/shared-utils", () => ({
   ...jest.requireActual("@sps/shared-utils"),
@@ -43,10 +43,20 @@ function fixture(empty = false) {
   const links: any[] = empty
     ? []
     : [{ profileId: "assistant", knowledgeModuleSourceId: "source" }];
-  updateThread.mockImplementation(async ({ data }) => {
-    thread = { ...thread, ...data };
-    return structuredClone(thread);
-  });
+  updateThread.mockImplementation(
+    async ({ namespace, expectedValue, value }) => {
+      if (
+        JSON.stringify(thread.metadata[namespace] ?? null) !==
+        JSON.stringify(expectedValue)
+      )
+        return null;
+      thread = {
+        ...thread,
+        metadata: { ...thread.metadata, [namespace]: value },
+      };
+      return structuredClone(thread);
+    },
+  );
   const social: any = {
     thread: { findById: jest.fn(async () => structuredClone(thread)) },
     profilesToKnowledgeModuleSources: {

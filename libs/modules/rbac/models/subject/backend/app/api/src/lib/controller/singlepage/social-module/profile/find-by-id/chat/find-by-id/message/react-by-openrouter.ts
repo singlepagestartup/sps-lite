@@ -1,5 +1,6 @@
 import {
   OPEN_ROUTER_ASSISTANT_MODEL,
+  AI_CONTEXT_POLICY,
   OPEN_ROUTER_MODEL_ROUTER_CONFIG as MODEL_ROUTER_CONFIG,
   replaceKnowledgeUserContext,
   readKnowledgeUserContext,
@@ -36,6 +37,7 @@ import {
   blobifyFiles,
   getHttpErrorType,
   getAIChatDocumentForSkill,
+  estimateAiContextTokens,
 } from "@sps/backend-utils";
 import {
   OpenRouter,
@@ -70,6 +72,8 @@ import {
 } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/document";
 import { Service as ProfileSkills } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/skills";
 import { KnowledgeSearchResult } from "@sps/knowledge/backend/app/api/src/lib/types";
+import type { IAiContextHistoryMessage } from "@sps/rbac/models/subject/backend/app/api/src/lib/service";
+import { fingerprintAiContextMessage } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/context/utils";
 import * as jwt from "hono/jwt";
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
@@ -216,6 +220,7 @@ export class Handler {
     purpose: TOpenRouterBillingPurpose;
     openRouter: OpenRouter;
     model: string;
+    sessionId?: string;
     context: IOpenRouterRequestMessage[];
     max_tokens?: number;
     reasoning?: IOpenRouterReasoning;
@@ -239,6 +244,7 @@ export class Handler {
   }): Promise<IOpenRouterGenerateResult> {
     const result = await props.openRouter.generate({
       model: props.model,
+      sessionId: props.sessionId,
       context: props.context,
       max_tokens: props.max_tokens,
       reasoning: props.reasoning,
@@ -412,6 +418,7 @@ export class Handler {
     modelSelection: IModelSelectionResult;
     expectedOutputModality: TOutputModality;
     generationContext: IOpenRouterRequestMessage[];
+    sessionId?: string;
     reasoning?: IOpenRouterReasoning;
     onModelAttempt?: (modelId: string) => Promise<void>;
   }): Promise<IFinalGenerationResult> {
@@ -441,6 +448,7 @@ export class Handler {
       openRouter: props.openRouter,
       model: primaryModelId,
       context: props.generationContext,
+      sessionId: props.sessionId,
       max_tokens: maxTokens,
       reasoning: props.reasoning,
       stripNonTextOnRetry: false,
@@ -480,6 +488,7 @@ export class Handler {
       openRouter: props.openRouter,
       model: fallbackModelId,
       context: props.generationContext,
+      sessionId: props.sessionId,
       max_tokens: maxTokens,
       reasoning: props.reasoning,
       stripNonTextOnRetry: false,
@@ -602,6 +611,7 @@ export class Handler {
   }
 
   async execute(c: Context, next: any): Promise<Response> {
+    const startedAt = Date.now();
     const billingLedger: IOpenRouterBillingLedgerEntry[] = [];
     let socialProfileMcpCatalogSession: IProfileMcpCatalogSession | null = null;
     let unavailableMcpServerIds: string[] = [];
@@ -739,6 +749,8 @@ export class Handler {
       });
 
       const context: IOpenRouterRequestMessage[] = [];
+      const contextHistory: IAiContextHistoryMessage[] = [];
+      let contextResetMessageId: string | null = null;
       let currentAttachmentTitles: string[] = [];
       const isAIChat = socialModuleChat.variant === "ai-chat";
       const documentService = new DocumentService(
@@ -776,6 +788,7 @@ export class Handler {
       });
       let routingRequestText = sanitizedTriggerDescription;
 
+      const thisTriggerCreatedAt = socialModuleMessage.createdAt;
       const chatThreadMessageIds = await this.findThreadMessageIdsInChat({
         socialModuleChatId,
         socialModuleThreadId,
@@ -833,7 +846,25 @@ export class Handler {
             });
 
           if (socialModuleProfilesToMessages?.length) {
+            socialModuleMessages.sort((a, b) =>
+              a.createdAt && b.createdAt
+                ? new Date(a.createdAt).getTime() -
+                    new Date(b.createdAt).getTime() || a.id.localeCompare(b.id)
+                : 0,
+            );
             for (const socialModuleMessage of socialModuleMessages) {
+              const triggerTime = new Date(
+                socialModuleMessage.createdAt || 0,
+              ).getTime();
+              const requestTime = new Date(thisTriggerCreatedAt || 0).getTime();
+              if (
+                thisTriggerCreatedAt &&
+                socialModuleMessage.createdAt &&
+                (triggerTime > requestTime ||
+                  (triggerTime === requestTime &&
+                    socialModuleMessage.id > socialModuleMessageId))
+              )
+                break;
               const messageDescription =
                 socialModuleMessage.id === socialModuleMessageId
                   ? sanitizedTriggerDescription
@@ -842,6 +873,8 @@ export class Handler {
               // Soft context reset marker: keep messages only after the latest /new.
               if (messageDescription.startsWith("/new")) {
                 context.length = 0;
+                contextHistory.length = 0;
+                contextResetMessageId = socialModuleMessage.id;
                 continue;
               }
 
@@ -972,6 +1005,30 @@ export class Handler {
                 role: isAssistantMessage ? "assistant" : "user",
                 content: resolvedMessageContext.content,
               });
+              const presentationIds = new Set(
+                isAssistantMessage
+                  ? (
+                      socialModuleMessage.metadata?.["knowledge"] as
+                        | { documentProposalFileIds?: string[] }
+                        | undefined
+                    )?.documentProposalFileIds || []
+                  : [],
+              );
+              const contextFiles = (fileStorageFiles || []).filter(
+                (file) =>
+                  !presentationIds.has(file.id) &&
+                  !this.isAudioFileStorageFile(file),
+              );
+              contextHistory.push({
+                id: socialModuleMessage.id,
+                role: isAssistantMessage ? "assistant" : "user",
+                content: resolvedMessageContext.content,
+                attachments: contextFiles,
+                fingerprint: fingerprintAiContextMessage(
+                  socialModuleMessage,
+                  contextFiles,
+                ),
+              });
 
               if (socialModuleMessage.id === socialModuleMessageId) {
                 routingRequestText = resolvedMessageContext.routingText;
@@ -983,6 +1040,7 @@ export class Handler {
                     "attachment",
                 );
               }
+              if (socialModuleMessage.id === socialModuleMessageId) break;
             }
           }
         }
@@ -1025,7 +1083,31 @@ export class Handler {
         });
       }
 
-      const openRouter = new OpenRouter();
+      const aiContext = this.service.socialModuleProfileAiContextCreate({
+        chatId: socialModuleChatId,
+        threadId: socialModuleThreadId,
+        profileId: replyBySocialModuleProfile.id,
+        triggerMessageId: socialModuleMessage.id,
+        resetMessageId: contextResetMessageId,
+        history: contextHistory,
+        documentThread: Boolean(documentContext),
+      });
+      const openRouter = new OpenRouter({ sessionId: aiContext.sessionId });
+      const contextSourceIds = await this.findKnowledgeSourceIdsForProfile(
+        replyBySocialModuleProfile.id,
+      );
+      const contextSourceRefs = contextSourceIds.length
+        ? (
+            await this.knowledgeService.listSources({
+              sourceIds: contextSourceIds,
+            })
+          )
+            .map((source) => ({
+              id: source.id,
+              contentHash: source.contentHash,
+            }))
+            .sort((a, b) => a.id.localeCompare(b.id))
+        : [];
 
       const statusMessage =
         await api.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageCreate(
@@ -1044,6 +1126,13 @@ export class Handler {
             },
           },
         );
+
+      const preparedContext = await aiContext.prepare({
+        openRouter,
+        billingLedger,
+        sourceRefs: contextSourceRefs,
+      });
+      context.splice(0, context.length, ...preparedContext.messages);
 
       await api.socialModuleProfileFindByIdChatFindByIdMessageUpdate({
         id: replyByRbacSubject.id,
@@ -1296,11 +1385,10 @@ export class Handler {
           threadContext: context,
           isAIChat,
           documentSkill,
+          contextMode: aiContext.mode,
+          sessionId: aiContext.sessionId,
         });
-      const openRouterContext = this.attachSkillMessagePrefixToContext({
-        context: knowledgeImportContext,
-        skillMessagePrefix: openRouterKnowledgeContext.skillMessagePrefix,
-      });
+      const openRouterContext = knowledgeImportContext;
       const generationContext = this.buildGenerationContext({
         context: openRouterContext,
         expectedOutputModality,
@@ -1309,9 +1397,22 @@ export class Handler {
           language: requestClassification.language,
           replyProfile: replyBySocialModuleProfile,
         }),
-        prependedSystemMessages: openRouterKnowledgeContext.systemMessages,
+        prependedSystemMessages: [
+          ...(openRouterKnowledgeContext.skillMessagePrefix
+            ? [
+                {
+                  role: "system" as const,
+                  content: openRouterKnowledgeContext.skillMessagePrefix,
+                },
+              ]
+            : []),
+          ...openRouterKnowledgeContext.systemMessages,
+          ...preparedContext.systemMessages,
+          ...aiContext.draftSystemMessage(),
+        ],
       });
       const profileCapabilityTools = this.buildProfileCapabilityTools({
+        sessionId: aiContext.sessionId,
         knowledgeFileAction: jevRoute.knowledgeFileAction,
         knowledgeFileScope: {
           id,
@@ -1365,7 +1466,7 @@ export class Handler {
           requestedKnowledgeSearch || jevRoute.knowledgeAction !== "none",
         explicitSkillIds: openRouterKnowledgeContext.requestedSkillIds,
       });
-      const socialProfileTools = capabilities.tools;
+      const socialProfileTools = [...capabilities.tools, ...aiContext.tools()];
       const requiredCompletionToolName =
         documentContext &&
         jevRoute.knowledgeFileAction !== "detach" &&
@@ -1377,44 +1478,52 @@ export class Handler {
           ? "profile_knowledge_propose"
           : undefined;
       if (capabilities.skills.length) {
-        generationContext.unshift({
+        generationContext.splice(2, 0, {
           role: "system",
           content: this.toSkillMessagePrefix(capabilities.skills),
         });
       }
       if (documentContext) {
-        generationContext.unshift({
-          role: "system",
-          content: [
-            `Current document: ${documentContext.thread.title}; Source ID: ${documentContext.targetSourceId ?? "not selected or not created"}.`,
-            "You may read all linked profile Knowledge. Changes to document TEXT require profile_knowledge_propose, which only records a proposal. The server shows its exact text after your answer. Briefly explain your reasoning; do not duplicate the full proposal or claim it was saved. Do not ask another tool to bypass this confirmation flow.",
-            "Use profile_knowledge_files to identify saved attachments and their current contentHash. When the user explicitly asks to remove an attachment, use profile_knowledge_file_detach if exposed. This unlinks only that file from the Source and rebuilds its materials/index; it preserves the original file and chat history. If the target is unclear, ask which file. Report the actual tool result and any processing/indexing failure.",
-            "Brainstorm and ask focused questions when the inputs are incomplete. When enough facts are available or the user requests a draft, propose the structured document. Never invent operator facts.",
-            documentResolution
-              ? `Result of the user's response to the saved proposal: ${JSON.stringify(documentResolution)}. Report this result honestly. An applied result means the exact stored text was saved; do not regenerate it. A conflict requires reading the changed Source and a new proposal.`
-              : "",
-            documentContext.proposal?.status === "pending" ||
-            documentContext.proposal?.status === "needs_revision" ||
-            jevRoute.documentProposalAction === "revise"
-              ? `Pending proposal (not saved Knowledge): ${JSON.stringify(documentContext.proposal)}`
-              : "",
-          ]
-            .filter(Boolean)
-            .join("\n"),
-        });
+        generationContext.splice(
+          generationContext.findIndex((message) => message.role !== "system"),
+          0,
+          {
+            role: "system",
+            content: [
+              `Current document: ${documentContext.thread.title}; Source ID: ${documentContext.targetSourceId ?? "not selected or not created"}.`,
+              "You may read all linked profile Knowledge. Changes to document TEXT require profile_knowledge_propose, which only records a proposal. The server shows its exact text after your answer. Briefly explain your reasoning; do not duplicate the full proposal or claim it was saved. Do not ask another tool to bypass this confirmation flow.",
+              "Use profile_knowledge_files to identify saved attachments and their current contentHash. When the user explicitly asks to remove an attachment, use profile_knowledge_file_detach if exposed. This unlinks only that file from the Source and rebuilds its materials/index; it preserves the original file and chat history. If the target is unclear, ask which file. Report the actual tool result and any processing/indexing failure.",
+              "Brainstorm and ask focused questions when the inputs are incomplete. When enough facts are available or the user requests a draft, propose the structured document. Never invent operator facts.",
+              documentResolution
+                ? `Result of the user's response to the saved proposal: ${JSON.stringify(documentResolution)}. Report this result honestly. An applied result means the exact stored text was saved; do not regenerate it. A conflict requires reading the changed Source and a new proposal.`
+                : "",
+              documentContext.proposal?.status === "pending" ||
+              documentContext.proposal?.status === "needs_revision" ||
+              jevRoute.documentProposalAction === "revise"
+                ? `Pending proposal (not saved Knowledge): ${JSON.stringify(documentContext.proposal)}`
+                : "",
+            ]
+              .filter(Boolean)
+              .join("\n"),
+          },
+        );
       } else if (
         jevRoute.knowledgeAction === "create" ||
         jevRoute.knowledgeAction === "update" ||
         jevRoute.knowledgeAction === "auto"
       ) {
-        generationContext.unshift({
-          role: "system",
-          content: [
-            "Use the profile Knowledge tools to carry out explicit current save/edit requests. The user's direct request already authorizes saving; do not ask for a second confirmation. Ask for clarification only if the material or target Source cannot be identified.",
-            "Read existing human notes before editing and preserve unrelated notes. For a new material use profile_knowledge_create. Attached files are analyzed by the Knowledge service.",
-            `Linked Source ids: ${JSON.stringify(openRouterKnowledgeContext.knowledgeSourceIds)}`,
-          ].join("\n"),
-        });
+        generationContext.splice(
+          generationContext.findIndex((message) => message.role !== "system"),
+          0,
+          {
+            role: "system",
+            content: [
+              "Use the profile Knowledge tools to carry out explicit current save/edit requests. The user's direct request already authorizes saving; do not ask for a second confirmation. Ask for clarification only if the material or target Source cannot be identified.",
+              "Read existing human notes before editing and preserve unrelated notes. For a new material use profile_knowledge_create. Attached files are analyzed by the Knowledge service.",
+              `Linked Source ids: ${JSON.stringify(openRouterKnowledgeContext.knowledgeSourceIds)}`,
+            ].join("\n"),
+          },
+        );
       }
       const onModelAttempt = async (modelCandidateId: string) => {
         await api.socialModuleProfileFindByIdChatFindByIdMessageUpdate({
@@ -1443,12 +1552,44 @@ export class Handler {
         | undefined;
       let socialProfileToolLoopResult: ISocialProfileAiToolLoopResult | null =
         null;
+      let contextWindowExceeded = false;
+      const contextWindowMessage = requestClassification.language.startsWith(
+        "ru",
+      )
+        ? "Точный документ и необходимые сообщения превышают окно модели. Выберите раздел документа для продолжения."
+        : "The exact document and required messages exceed the model context window. Select a document section to continue.";
       let finalGenerationResult: IFinalGenerationResult = {
         selectedModelId: null,
         fallbackReasons: [],
       };
 
-      if (expectedOutputModality === "text" && socialProfileTools.length) {
+      const contextMetrics = aiContext.measure(
+        generationContext,
+        socialProfileTools.map((tool) => tool.definition),
+        estimateAiContextTokens(
+          openRouterKnowledgeContext.systemMessages
+            .map((message) => this.getMessageTextContent(message))
+            .join("\n"),
+        ),
+      );
+      const modelWindow = openRouterModels.find(
+        (model) => model.id === modelSelection.selectedModelId,
+      )?.context_length;
+      if (
+        modelWindow &&
+        contextMetrics.inputEstimatedTokens +
+          OPEN_ROUTER_FINAL_TEXT_MAX_TOKENS >
+          modelWindow
+      ) {
+        selectModelForRequest = modelSelection.selectedModelId;
+        generationResult = {
+          text: contextWindowMessage,
+        };
+        contextMetrics.budgetExceededReason = "model_context_window_exceeded";
+      } else if (
+        expectedOutputModality === "text" &&
+        socialProfileTools.length
+      ) {
         let generationCallCount = 0;
         const socialModuleChat = await this.service.socialModule.chat.findById({
           id: socialModuleChatId,
@@ -1485,13 +1626,36 @@ export class Handler {
               generationCallCount += 1;
               await onModelAttempt(toolGeneration.model);
 
-              return this.generateWithBillingLedger({
+              const iterationMetrics = aiContext.measure(
+                toolGeneration.context,
+                toolGeneration.tools,
+                contextMetrics.knowledgeEstimatedTokens,
+              );
+              if (
+                (openRouterModels.find(
+                  (model) => model.id === toolGeneration.model,
+                )?.context_length ||
+                  modelWindow) &&
+                iterationMetrics.inputEstimatedTokens +
+                  OPEN_ROUTER_FINAL_TEXT_MAX_TOKENS >
+                  (openRouterModels.find(
+                    (model) => model.id === toolGeneration.model,
+                  )?.context_length || modelWindow)!
+              ) {
+                contextWindowExceeded = true;
+                return {
+                  error: { message: "context_window_exceeded" },
+                  billing: null,
+                };
+              }
+              const result = await this.generateWithBillingLedger({
                 billingLedger,
                 purpose:
                   generationCallCount === 1 ? "generation" : "tool_iteration",
                 openRouter,
                 model: toolGeneration.model,
                 context: toolGeneration.context,
+                sessionId: aiContext.sessionId,
                 max_tokens: OPEN_ROUTER_FINAL_TEXT_MAX_TOKENS,
                 reasoning: openRouterReasoning,
                 stripNonTextOnRetry: false,
@@ -1499,6 +1663,14 @@ export class Handler {
                 toolChoice: requiredCompletionToolName ? "required" : "auto",
                 parallelToolCalls: false,
               });
+              if (
+                "error" in result &&
+                /context.{0,30}(length|window)|maximum.{0,30}tokens/i.test(
+                  this.stringifyError(result.error),
+                )
+              )
+                contextWindowExceeded = true;
+              return result;
             },
           });
         selectModelForRequest =
@@ -1508,8 +1680,12 @@ export class Handler {
           null;
         selectedModelIdForBilling = selectModelForRequest;
         generationResult = {
-          text: socialProfileToolLoopResult.finalText,
+          text: contextWindowExceeded
+            ? contextWindowMessage
+            : socialProfileToolLoopResult.finalText,
         };
+        if (contextWindowExceeded)
+          contextMetrics.budgetExceededReason = "model_context_window_exceeded";
       } else {
         finalGenerationResult = await this.generateFinalOpenRouterReply({
           billingLedger,
@@ -1517,6 +1693,7 @@ export class Handler {
           modelSelection,
           expectedOutputModality,
           generationContext,
+          sessionId: aiContext.sessionId,
           reasoning: openRouterReasoning,
           onModelAttempt,
         });
@@ -1593,6 +1770,11 @@ export class Handler {
         : null;
       if (proposalPreview)
         generationResult.text = [generationResult.text, proposalPreview]
+          .filter(Boolean)
+          .join("\n\n");
+      const workingDraftPreview = aiContext.preview();
+      if (workingDraftPreview)
+        generationResult.text = [generationResult.text, workingDraftPreview]
           .filter(Boolean)
           .join("\n\n");
       const replyMessageData = await this.buildOpenRouterReplyMessageData({
@@ -1679,6 +1861,9 @@ export class Handler {
             },
           },
           openRouter: {
+            context: contextMetrics,
+            sessionId: aiContext.sessionId,
+            durationMs: Date.now() - startedAt,
             toolLoop: socialProfileToolLoopResult?.trace || {
               enabled: false,
               stepCount: 1,
@@ -2085,6 +2270,8 @@ export class Handler {
     threadContext: IOpenRouterRequestMessage[];
     isAIChat?: boolean;
     documentSkill?: ISocialModuleSkill;
+    contextMode?: "full" | "compact";
+    sessionId?: string;
   }): Promise<IResolvedOpenRouterKnowledgeContext> {
     const mentionedSkillSlugs = this.getMentionedSkillSlugs(
       props.socialModuleMessage.description || "",
@@ -2145,6 +2332,7 @@ export class Handler {
       useKnowledgeSearch && query && searchSourceIds.length > 0
         ? await this.knowledgeService.search({
             query,
+            ...(props.sessionId && { sessionId: props.sessionId }),
             topK: KNOWLEDGE_INITIAL_TOP_K,
             neighborWindow: KNOWLEDGE_NEIGHBOR_WINDOW,
             sourceIds: searchSourceIds,
@@ -2160,7 +2348,18 @@ export class Handler {
       selectedModelId: props.selectedModelId,
       threadContext: props.threadContext,
     });
-    const sources = knowledgeRerankResult.sources;
+    const sources: KnowledgeSearchResult[] = [];
+    let knowledgeTokens = 0;
+    for (const source of knowledgeRerankResult.sources) {
+      const size = estimateAiContextTokens(source.text);
+      if (
+        props.contextMode === "compact" &&
+        knowledgeTokens + size > AI_CONTEXT_POLICY.knowledgeTokens
+      )
+        continue;
+      sources.push(source);
+      knowledgeTokens += size;
+    }
     const systemMessages: IOpenRouterRequestMessage[] = [
       ...(useKnowledgeSearch
         ? [
@@ -2473,6 +2672,7 @@ export class Handler {
   }
 
   private buildProfileCapabilityTools(props: {
+    sessionId?: string;
     availableSkills: ISocialModuleSkill[];
     knowledgeSourceIds: string[];
     knowledgeAction?: TJevKnowledgeAction;
@@ -2689,6 +2889,7 @@ export class Handler {
         execute: async (args) => {
           const sources = await this.knowledgeService.search({
             query: String(args["query"]).trim(),
+            ...(props.sessionId && { sessionId: props.sessionId }),
             sourceIds: props.knowledgeSourceIds,
             topK: KNOWLEDGE_RERANK_TOP_K,
             neighborWindow: KNOWLEDGE_NEIGHBOR_WINDOW,

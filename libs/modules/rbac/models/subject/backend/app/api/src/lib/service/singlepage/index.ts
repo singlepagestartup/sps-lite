@@ -4,6 +4,11 @@ import { CRUDService, DI } from "@sps/shared-backend-api";
 import { Repository } from "../../repository";
 import { verify } from "hono/jwt";
 import { RBAC_JWT_SECRET } from "@sps/shared-utils";
+import {
+  Service as AiContextService,
+  type IAiContextServiceProps,
+  type IAiContextService,
+} from "./social-module/profile/ai/context";
 import { Service as ProfileOwnership } from "./social-module/profile/ownership";
 import { Service as AuthenticationMe } from "./authentication/me";
 import { Service as FreeSubscription } from "./billing/free-subscription";
@@ -252,6 +257,16 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return this.getSocialModuleProfileAiToolLoopService().run(props);
   }
 
+  socialModuleProfileAiContextCreate(
+    props: Omit<IAiContextServiceProps, "socialModule" | "fileStorageModule">,
+  ): IAiContextService {
+    return this.createSocialModuleProfileAiContextService({
+      ...props,
+      socialModule: this.socialModule,
+      fileStorageModule: this.fileStorageModule,
+    });
+  }
+
   socialModuleProfileAiExecutionActionReporterCreate(
     props: IAiExecutionActionReporterProps,
   ): IAiExecutionActionReporter {
@@ -287,15 +302,29 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Not found error. Social module thread not found");
     }
 
-    return this.socialModule.thread.update({
-      id: thread.id,
-      data: {
-        metadata: setRbacAiThreadModelPreference({
-          metadata: thread.metadata,
-          modelId: props.modelId,
-        }),
-      },
-    });
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const current = attempt
+        ? await this.socialModule.thread.findById({ id: thread.id })
+        : thread;
+      const metadata = setRbacAiThreadModelPreference({
+        metadata: current.metadata,
+        modelId: props.modelId,
+      });
+      const updated = await this.socialModule.thread.update({
+        id: current.id,
+        data: {
+          metadataNamespaceUpdate: {
+            namespace: "rbacAiThreadPreferences",
+            expectedValue: current.metadata.rbacAiThreadPreferences ?? null,
+            value: metadata.rbacAiThreadPreferences,
+          },
+        },
+      });
+      if (updated) return updated;
+    }
+    throw new Error(
+      "Thread preferences changed concurrently. Retry with the current thread.",
+    );
   }
 
   async logout(): Promise<any> {
@@ -592,6 +621,12 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return new SocialProfileAiToolLoop();
   }
 
+  protected createSocialModuleProfileAiContextService(
+    props: IAiContextServiceProps,
+  ): IAiContextService {
+    return new AiContextService(props);
+  }
+
   protected createSocialModuleProfileAiExecutionActionReporter(
     props: IAiExecutionActionReporterProps,
   ) {
@@ -600,6 +635,11 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 }
 
 export type {
+  IAiContextService,
+  IAiContextServiceProps,
+  IAiContextPrepareProps,
+  IAiContextPreparation,
+  IAiContextHistoryMessage,
   IAiExecutionActionReporter,
   IAiExecutionActionReporterProps,
   IOpenRouterBillingLedgerEntry,

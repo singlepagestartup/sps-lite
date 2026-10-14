@@ -144,3 +144,29 @@ describe("Given: rbac.subject profile AI service composition", () => {
     ).resolves.toBe(startupSession);
   });
 });
+
+it("routes context creation through the replaceable Subject factory with its module dependencies", () => {
+  const factory = jest.fn().mockReturnValue({ mode: "compact" });
+  const service = Object.assign(Object.create(StartupService.prototype), {
+    socialModule: { thread: {} },
+    fileStorageModule: { file: {} },
+    createSocialModuleProfileAiContextService: factory,
+  }) as StartupService;
+  const props = {
+    chatId: "chat",
+    threadId: "thread",
+    profileId: "profile",
+    triggerMessageId: "trigger",
+    resetMessageId: null,
+    history: [],
+    documentThread: false,
+  };
+  expect(service.socialModuleProfileAiContextCreate(props)).toEqual({
+    mode: "compact",
+  });
+  expect(factory).toHaveBeenCalledWith({
+    ...props,
+    socialModule: service.socialModule,
+    fileStorageModule: service.fileStorageModule,
+  });
+});

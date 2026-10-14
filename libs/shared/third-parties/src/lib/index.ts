@@ -7,6 +7,7 @@ export {
   type IOpenRouterMessageContent,
   type IOpenRouterRequestMessage,
   type IOpenRouterReasoning,
+  type IOpenRouterResponseFormat,
 } from "./open-router";
 export { openRouterReasoningEffortValues } from "./open-router/interface";
 export type {
@@ -27,5 +28,6 @@ export type {
   IOpenRouterToolChoice,
   IOpenRouterToolFunction,
   IOpenRouterUsage,
+  IOpenRouterSessionOptions,
   TOpenRouterReasoningEffort,
 } from "./open-router/interface";

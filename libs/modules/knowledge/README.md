@@ -104,3 +104,14 @@ Install Poppler and FFmpeg for local processing; the application Docker image in
 ## Verification
 
 Run `@sps/knowledge:jest:test` and `@sps/knowledge:jest:integration` explicitly. Database tests cover scope isolation, stale-result rejection, atomic chunk replacement, file snapshot changes, and File preservation. File processing and chat flows also require native parser fixtures and browser verification.
+
+Conversation compaction belongs to RBAC. Its summaries and unconfirmed working
+drafts stay in Social Thread metadata and do not create or edit Sources. RBAC
+invalidates derived conversation memory when permitted Source versions change.
+Scoped search and complete Source reads still determine current business facts,
+even when chat history is compacted or indexing is unfinished. Historical chat
+attachments are separate evidence from the Source's current attachment list.
+
+`KnowledgeService.search` accepts an optional `sessionId`. Embedding calls pass
+it as `x-session-id`; concurrent searches keep their own session headers. This
+field groups provider requests and does not change Source scope or retrieval.

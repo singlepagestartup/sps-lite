@@ -387,3 +387,62 @@ An expired wait does not cancel an operation; check saved state before retrying.
 JEV chooses among available capabilities. Backend profile scope, allowed MCP
 servers, and tool argument validation continue to determine access. A routing
 decision does not execute a mutation.
+
+### Thread context and exact working drafts
+
+AI Chat and Telegram use `socialModuleProfileAiContextCreate` on the public
+Subject service. `createSocialModuleProfileAiContextService` is the protected
+factory for startup overrides. Its `IAiContextService` return contract permits
+project implementations without inheriting internal state. Social supplies persisted messages and generic
+Thread metadata; RBAC owns the versioned `rbacAiThreadContext` contract, with a
+separate state for each replying Profile.
+
+`RBAC_AI_CONTEXT_MODE=full|compact` controls assembly. The default is `full`:
+the final-code trial has eleven complete pairs, with 80.52% lower Credits in
+compact. All twelve compact tasks passed; the full visual task was stopped by
+the $5 budget reservation guard. Complete that pair before enabling compact.
+The trial and activation decision are in
+[the experiment report](../../../../../thoughts/shared/research/singlepagestartup/2026-10-14-ai-chat-context-experiment.md).
+
+In `compact`, the last three completed user/assistant exchanges and the current
+request retain their exact text. Older history is summarized when unsummarized
+text reaches 8,000 estimated tokens. Each summary call processes at most 16,000
+estimated text tokens, requests at most 2,048 output tokens, and aims for a
+1,000-token summary. Unprocessed messages stay in the request. The normal
+request budget is 12,000 estimated tokens, including instructions and tool
+schemas; initial Knowledge excerpts use up to 3,000. An exact document or
+unsummarized history can exceed that soft budget. The model's physical window
+produces a request to work on a document section, without cutting its text.
+
+Text estimates use `js-tiktoken`, `o200k_base`, and a 20% margin. Original media
+parts are counted separately; this estimate does not predict image token usage.
+Provider usage, cache and reasoning tokens remain in billing. Summary calls
+have `purpose=context_summary`. Reply metadata records context estimates,
+media counts, fallback and overflow reasons, assembly time and response time;
+it contains no private prompt text.
+
+Memory publication checks the processed history fingerprint and atomically
+compares the previous namespace value. Concurrent writes to other namespaces or
+other Profiles are preserved. Invalid state versions, edited messages or files,
+changed Source hashes, invalid summaries and repeated conflicts retain the
+original history. `/new` discards conversation memory and ordinary working
+drafts after that marker; saved Knowledge and document proposals keep their
+existing behavior.
+
+`profile_thread_history_read` finds and paginates original messages in the
+current thread snapshot. `profile_thread_attachment_read` adds an original
+image/file to the next model step. Historical files are labeled as historical;
+the current Source's Files tool remains authoritative for its attachments.
+Older media is represented by names and IDs during compact text requests.
+
+`profile_thread_draft_stage` stores a complete exact ordinary-chat or Telegram
+draft with its hash and file references. Updates require the current draft hash.
+The server displays the stored text, and subsequent prompts pin it independently
+of summaries. This operation does not write Knowledge. Document threads retain
+the exact `rbacAiDocumentProposal`, its original Source hash and confirmation
+state through the existing proposal service.
+
+Stable thread/Profile sessions group answering, summary and JEV requests in
+OpenRouter. Initial and tool-triggered Knowledge search passes that session to
+embedding requests through `x-session-id`. Persistent instructions precede
+changing Knowledge fragments and conversation state.

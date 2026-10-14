@@ -22,7 +22,11 @@ export const SOCIAL_PROFILE_AI_TOOL_LOOP_DEFAULTS: ISocialProfileAiToolLoopLimit
     maxRepeatedCalls: 2,
   };
 
-export type TSocialProfileAiToolSource = "skill" | "knowledge" | "mcp";
+export type TSocialProfileAiToolSource =
+  | "skill"
+  | "knowledge"
+  | "mcp"
+  | "context";
 
 export interface ISocialProfileAiTool {
   completeAfterSuccess?: boolean;
@@ -34,6 +38,7 @@ export interface ISocialProfileAiTool {
     serverId?: string;
   };
   execute: (args: Record<string, unknown>) => Promise<unknown>;
+  additionalContext?: (result: unknown) => IOpenRouterRequestMessage[];
   validateArguments?: (args: Record<string, unknown>) => void;
   audit?: (args: Record<string, unknown>) => Record<string, unknown>;
 }
@@ -202,6 +207,8 @@ export class SocialProfileAiToolLoop {
             tool_calls: generation.result.toolCalls,
           });
 
+          const additionalContext: IOpenRouterRequestMessage[] = [];
+          let completed = false;
           for (const toolCall of generation.result.toolCalls) {
             this.assertWithinTotalTimeout({
               startedAt,
@@ -251,29 +258,34 @@ export class SocialProfileAiToolLoop {
               tool_call_id: toolCall.id,
               content: toolResult.serialized,
             });
-            if (toolsByName.get(toolCall.function.name)?.completeAfterSuccess) {
-              const result = this.toResult({
-                context,
-                durationMs: now() - startedAt,
-                exposedToolNames: Array.from(toolsByName.keys()),
-                finalText:
-                  generation.result.text.trim() ||
-                  (props.language?.startsWith("ru")
-                    ? "Предложение готово к проверке."
-                    : "The proposal is ready for review."),
-                selectedModelId,
-                stepCount: iteration,
-                stopReason: "final_text",
-                traceCalls,
-              });
-              await this.emitEvent(props.onEvent, {
-                type: "run_completed",
-                selectedModelId,
-                stopReason: result.trace.stopReason,
-                durationMs: result.trace.durationMs,
-              });
-              return result;
-            }
+            additionalContext.push(...toolResult.additionalContext);
+            completed ||= Boolean(
+              toolsByName.get(toolCall.function.name)?.completeAfterSuccess,
+            );
+          }
+          context.push(...additionalContext);
+          if (completed) {
+            const result = this.toResult({
+              context,
+              durationMs: now() - startedAt,
+              exposedToolNames: Array.from(toolsByName.keys()),
+              finalText:
+                generation.result.text.trim() ||
+                (props.language?.startsWith("ru")
+                  ? "Предложение готово к проверке."
+                  : "The proposal is ready for review."),
+              selectedModelId,
+              stepCount: iteration,
+              stopReason: "final_text",
+              traceCalls,
+            });
+            await this.emitEvent(props.onEvent, {
+              type: "run_completed",
+              selectedModelId,
+              stopReason: result.trace.stopReason,
+              durationMs: result.trace.durationMs,
+            });
+            return result;
           }
 
           continue;
@@ -493,7 +505,11 @@ export class SocialProfileAiToolLoop {
         resultBytes,
       });
 
-      return { serialized, trace };
+      return {
+        serialized,
+        trace,
+        additionalContext: tool.additionalContext?.(result) || [],
+      };
     } catch (error) {
       const normalized = this.toStopError(error);
 
