@@ -6,6 +6,7 @@ import type { IAIChatProject } from "@sps/rbac/models/subject/sdk/model";
 export const variant = "me-social-module-profile-create-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   projects?: IAIChatProject[];
+  hideBackLink?: boolean;
   pending?: boolean;
   project?: IAIChatProject;
   threadId?: string;

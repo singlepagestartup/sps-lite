@@ -116,7 +116,7 @@ function IdAiChatProject({
             closeDrawer();
           }
         }}
-        className="group/project relative mx-auto grid w-full max-w-6xl min-w-0 grid-cols-1 overflow-hidden rounded-2xl border border-border bg-card @[760px]/workspace:h-160 @[760px]/workspace:data-[sidebar-open=true]:grid-cols-[210px_minmax(0,1fr)]"
+        className="group/project relative mx-auto grid w-full max-w-6xl min-w-0 grid-cols-1 overflow-hidden rounded-2xl border border-border bg-card h-[calc(100dvh-9rem)] min-h-[560px] @[760px]/workspace:data-[sidebar-open=true]:grid-cols-[210px_minmax(0,1fr)]"
       >
         <button
           type="button"

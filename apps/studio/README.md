@@ -205,8 +205,9 @@ adapter selects the corresponding Page variant for each address:
 
 | Page             | Route                                                                                  |
 | ---------------- | -------------------------------------------------------------------------------------- |
-| Landing          | `/ai-chat/`                                                                            |
+| Landing          | `/`                                                                                    |
 | Help             | `/ai-chat/help`                                                                        |
+| My projects      | `/ai-chat/projects`                                                                    |
 | Create Profile   | `/ai-chat/social/profiles/create`                                                      |
 | Profile overview | `/ai-chat/social/profiles/[social.profiles.id]`                                        |
 | Profile settings | `/ai-chat/social/profiles/[social.profiles.id]/settings`                               |
@@ -216,12 +217,30 @@ adapter selects the corresponding Page variant for each address:
 | Account settings | `/ai-chat/rbac/subjects/settings`                                                      |
 | Tokens           | `/ai-chat/rbac/subjects/tokens`                                                        |
 
-The local preview router decodes Profile and Chat IDs separately and passes them
-to the concrete Page. Profile providers remain mounted across transitions, so
-drafts, knowledge, files and history retain their scope. New thread displays its
-parent Chat ID and a name/agent form with preview-only submit. Sidebar, account
-menu, forms, copy and catalog links use these addresses. Display variants such as
-`id-ai-chat-project` and Button record IDs remain independent of Page routes.
+Module page stories select a concrete screen from their supplied address and
+fixtures. `signedIn` controls the header appearance; it does not authorize the
+screen. Account data comes from the current example's props. Studio reads no
+browser authentication storage, persists no session, and never redirects a story
+to sign in. Actions emit supplied callbacks. Page navigation needs an explicit
+`onNavigate` callback; the selected story stays on its screen by default.
+Local UI interactions such as opening menus, editing drafts and reordering
+attachments remain available within the example.
+
+The project chooser is
+`Modules/Host/Page/Singlepage/rbac-module-subject-me-social-module-profile-list-ai-chat`.
+It lists the supplied projects and has a Create project button. Default, Empty,
+Loading, Error, Guest and Creating show its states. Creation and cancellation
+change only the example's UI; choosing a project emits `onNavigate`. The sign-in
+example emits `/ai-chat/projects` after a successful form interaction.
+
+Private project Pages expose `workspaceState`: `ready`, `checking-session`,
+`loading-projects`, `loading-chat`, `sign-in-required`, `access-denied` and `error`.
+Checking session and loading projects show a workspace skeleton without project
+content. Loading chat keeps the supplied project navigation and shows skeletons
+in the content area. Access and error states contain navigation or retry controls.
+Guest examples for document chats, thread creation and project settings select
+`sign-in-required`, with no project selector, files, threads or private forms.
+These stories contain no session checks or redirects.
 
 AI Chat prototypes live entirely in Studio. `Component.tsx` contains each variant's
 implementation, props and callbacks. `index.ts` exports the component and its
@@ -242,7 +261,7 @@ import { Component as SocialModuleProfile } from ".../social/profile";
 | Model                                                      | Studio responsibility                                                 |
 | ---------------------------------------------------------- | --------------------------------------------------------------------- |
 | Host Page / Layout                                         | Separate pages and the frame with header slots                        |
-| RBAC Subject                                               | Authentication, registration, account forms and session               |
+| RBAC Subject                                               | Authentication, registration and account form presentation            |
 | RBAC Identity                                              | Connected identity display                                            |
 | Social Profile                                             | Selector, ID view, document lists, settings and agent                 |
 | Social Chat / Thread                                       | Identified Chat and Thread views                                      |
@@ -271,8 +290,7 @@ rbac/subject/singlepage/authentication/
 
 The public Subject key mirrors the path, for example
 `authentication-email-and-password-registration-form-ai-chat`. Host Pages call this entry. Subject owns local validation, copy,
-stories, connected-method actions and preview sign-in; Host owns navigation after
-success. The AI Chat login Page calls the email/password form directly. The ordinary
+stories and callbacks for connected-method actions and form submission. The AI Chat login Page calls the email/password form directly. The ordinary
 Select Method places Email/password, EVM and OAuth tabs inside the centered card
 and preserves each method’s state while switching tabs.
 EVM and OAuth expose idle, approval, completion and error states through Controls.
@@ -284,7 +302,7 @@ AI Chat authentication Pages compose Layout `ai-chat-dashboard`, Website Builder
 Widget `content-ai-chat-authentication` and the Subject form in the Widget’s
 `children` slot. The Widget owns the introduction, photography and
 information card. Host chooses its content, media presentation and card icon.
-Subject forms own their fields, validation, local session and result feedback;
+Subject forms own their fields, validation and result feedback;
 they render independently in Storybook. The content publisher writes separate
 Widget and form fixtures. Login overrides use `{ content, form }` so each owner
 receives only its own data.
@@ -297,13 +315,14 @@ an identity to the local preview.
 
 The project prototype has one Products.md document, one prepared Thread, one
 Knowledge Source and one knowledge assistant using Skill `id-ai-chat`.
-The New thread page shows a name, agent selection and Cancel. Submit displays
+The New thread page shows a name and Cancel. Submit displays
 preview feedback and creates no Thread records.
 
 Each Host Page owns one screen: landing, register, login, account settings, help,
 tokens, project creation, project content, project settings and thread creation.
-Pages use the public model entries. The website Preview adapter handles local
-navigation between those pages.
+Pages use the public model entries. Module stories emit navigation callbacks
+without replacing their selected page. The separate Workspace website prototype
+owns navigation between its screens.
 
 AI Chat Layout examples use flat `singlepage/ai-chat-landing` and
 `singlepage/ai-chat-dashboard` folders. Their names distinguish visual samples;

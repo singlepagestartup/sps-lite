@@ -1,14 +1,8 @@
 import { afterEach, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Component as RbacModuleSubject } from "../../../index";
-import { AccountProvider } from "./Account";
+import { AccountProvider, useStudioAccount } from "./Account";
 import { aiChatAccount } from "./fixture";
-import {
-  readRbacStudioAuthUser,
-  writeRbacStudioAuthUser,
-  clearRbacStudioAuthUser,
-} from "../../../../shared";
-
 const originalWindow = globalThis.window;
 afterEach(() => {
   if (originalWindow) globalThis.window = originalWindow;
@@ -54,36 +48,73 @@ test("guest headers share one sign-in control with the appropriate destination",
   );
 });
 
-test("avatar updates persist for the current user and survive signing in again", () => {
-  const values = new Map<string, string>();
-  let events = 0;
+test("browser session data cannot override explicit story props", () => {
+  let storageReads = 0;
+  let storageWrites = 0;
   globalThis.window = {
     localStorage: {
-      getItem: (key: string) => values.get(key) ?? null,
-      setItem: (key: string, value: string) => values.set(key, value),
-      removeItem: (key: string) => values.delete(key),
-    },
-    dispatchEvent: () => {
-      events++;
-      return true;
+      getItem: () => {
+        storageReads++;
+        return JSON.stringify({
+          email: "other@example.com",
+          name: "Other account",
+        });
+      },
+      setItem: () => {
+        storageWrites++;
+      },
+      removeItem: () => {
+        storageWrites++;
+      },
     },
   } as unknown as Window & typeof globalThis;
-  writeRbacStudioAuthUser("sarah@sps.dev", {
-    avatar: "data:image/png;base64,preview",
-    name: "Sarah",
-  });
-  expect(readRbacStudioAuthUser()?.avatar).toBe(
-    "data:image/png;base64,preview",
+  const member = renderToStaticMarkup(
+    <AccountProvider account={aiChatAccount} signedIn>
+      <RbacModuleSubject variant="me-account" showTokens />
+    </AccountProvider>,
   );
-  expect(writeRbacStudioAuthUser(" SARAH@SPS.DEV ").name).toBe("Sarah");
-  expect(readRbacStudioAuthUser()?.avatar).toBe(
-    "data:image/png;base64,preview",
+  const guest = renderToStaticMarkup(
+    <AccountProvider account={aiChatAccount} signedIn={false}>
+      <RbacModuleSubject variant="me-account" showTokens />
+    </AccountProvider>,
   );
-  expect(writeRbacStudioAuthUser("james@sps.dev").name).toBe("James Carter");
-  expect(readRbacStudioAuthUser()?.avatar).not.toBe(
-    "data:image/png;base64,preview",
+  expect(member).toContain("Alex");
+  expect(member).not.toContain("Other account");
+  expect(guest).toContain("Sign in");
+  expect(guest).not.toContain('data-ds-block="social.profile.account-menu"');
+  expect(storageReads).toBe(0);
+  expect(storageWrites).toBe(0);
+});
+
+test("account actions emit supplied callbacks without changing presentation data", () => {
+  let view: ReturnType<typeof useStudioAccount> | undefined;
+  const events: unknown[] = [];
+  function Capture() {
+    view = useStudioAccount();
+    return null;
+  }
+  renderToStaticMarkup(
+    <AccountProvider
+      account={aiChatAccount}
+      signedIn
+      onSignIn={(email) => events.push(email)}
+      onSignOut={() => events.push("sign-out")}
+      onProfileChange={(updates) => events.push(updates)}
+      onEmailChange={(email) => events.push(email)}
+    >
+      <Capture />
+    </AccountProvider>,
   );
-  clearRbacStudioAuthUser();
-  expect(readRbacStudioAuthUser()).toBeNull();
-  expect(events).toBe(4);
+  view!.signIn("example@example.com");
+  view!.signOut();
+  view!.updateProfile({ name: "Edited name" });
+  view!.updateEmail("edited@example.com");
+  expect(events).toEqual([
+    "example@example.com",
+    "sign-out",
+    { name: "Edited name" },
+    "edited@example.com",
+  ]);
+  expect(view!.account).toBe(aiChatAccount);
+  expect(view!.signedIn).toBe(true);
 });

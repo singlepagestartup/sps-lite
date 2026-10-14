@@ -5,7 +5,7 @@ import {
   ProjectAgentPicker,
   knowledgeAgent,
 } from "./index";
-import { Component as KnowledgeSource } from "../../../../../../knowledge/source/index";
+import { Component as KnowledgeModuleSource } from "../../../../../../knowledge/source/index";
 import type { Meta, StoryObj } from "@storybook/react";
 
 function Example() {
@@ -82,7 +82,7 @@ function ProfileKnowledgeExample() {
             variant: "id-ai-chat",
           },
         ].map((source) => (
-          <KnowledgeSource
+          <KnowledgeModuleSource
             key={source.id}
             variant="id-sidebar-ai-chat"
             data={source}
@@ -94,4 +94,46 @@ function ProfileKnowledgeExample() {
 }
 export const ProfileKnowledge: StoryObj<typeof meta> = {
   render: () => <ProfileKnowledgeExample />,
+};
+
+import { Component as SocialModuleSkill } from "../../../../../../social/skill";
+function DocumentSkillsExample() {
+  const [open, setOpen] = useState(true);
+  const documents = ["brief", "strategy", "brand", "design", "products"];
+  return (
+    <div className="min-h-screen bg-muted p-8">
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="rounded-xl border border-border bg-card px-4 py-3"
+      >
+        About this assistant
+      </button>
+      <AgentProfile
+        agent={open ? knowledgeAgent : null}
+        onClose={() => setOpen(false)}
+        skillsCount={5}
+        skills={documents.map((document) => {
+          const profession = documentAgent(document);
+          return (
+            <SocialModuleSkill
+              key={document}
+              variant="id-ai-chat"
+              data={{
+                id: `example-${document}-skill`,
+                slug: `ai-chat-${profession.id}-11111111-1111-4111-8111-111111111111`,
+                title: profession.name,
+                adminTitle: profession.name,
+                description: profession.role,
+                variant: "id-ai-chat",
+              }}
+            />
+          );
+        })}
+      />
+    </div>
+  );
+}
+export const DocumentSkills: StoryObj<typeof meta> = {
+  render: () => <DocumentSkillsExample />,
 };

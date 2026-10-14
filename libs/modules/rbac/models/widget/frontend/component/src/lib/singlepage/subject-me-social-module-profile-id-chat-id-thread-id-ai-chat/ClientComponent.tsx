@@ -6,6 +6,8 @@ import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { clientHost } from "@sps/rbac/models/subject/sdk/model";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
 import type { IComponentPropsExtended } from "./interface";
+import { Component as WorkspaceSkeleton } from "./Skeleton";
+import { Component as WorkspaceNotice } from "./Error";
 export function Component(props: IComponentPropsExtended) {
   return (
     <div
@@ -18,6 +20,14 @@ export function Component(props: IComponentPropsExtended) {
       <Subject
         isServer={props.isServer}
         variant="authentication-me-default"
+        skeleton={<WorkspaceSkeleton stage="checking-session" />}
+        fallback={
+          <WorkspaceNotice
+            state="error"
+            message="We couldn't check your session. Please try again."
+            onRetry={() => window.location.reload()}
+          />
+        }
         unauthenticatedRedirectHref={`/${props.language || "en"}/ai-chat/sign-in`}
       >
         {({ data, authenticated }) => {
@@ -27,6 +37,10 @@ export function Component(props: IComponentPropsExtended) {
               isServer={props.isServer}
               variant="me-social-module-profile-list-ai-chat"
               data={data}
+              loading={<WorkspaceSkeleton stage="loading-projects" />}
+              renderError={({ retry }) => (
+                <WorkspaceNotice state="error" onRetry={retry} />
+              )}
               renderProjects={({ projects }) => {
                 const project = projects.find(
                   (item) =>
@@ -35,9 +49,11 @@ export function Component(props: IComponentPropsExtended) {
                 );
                 if (!project)
                   return (
-                    <p role="alert" className="p-8">
-                      This project is unavailable in your workspace.
-                    </p>
+                    <WorkspaceNotice
+                      state="access-denied"
+                      projectsHref={`/${props.language || "en"}/ai-chat/projects`}
+                      signInHref={`/${props.language || "en"}/ai-chat/sign-in`}
+                    />
                   );
                 const navigation = (
                   <Subject
@@ -87,6 +103,18 @@ export function Component(props: IComponentPropsExtended) {
                           project={project}
                           navigation={navigation}
                           threadId={props.threadId}
+                          renderLoadError={({ retry, unavailable }) => (
+                            <WorkspaceNotice
+                              state={unavailable ? "access-denied" : "error"}
+                              embedded
+                              onRetry={retry}
+                              projectsHref={`/${props.language || "en"}/ai-chat/projects`}
+                              signInHref={`/${props.language || "en"}/ai-chat/sign-in`}
+                            />
+                          )}
+                          loading={
+                            <WorkspaceSkeleton stage="loading-chat" embedded />
+                          }
                         />
                       </Chat>
                     </Profile>

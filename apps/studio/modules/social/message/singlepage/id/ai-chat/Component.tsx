@@ -133,18 +133,25 @@ export const Component = memo(function Component({
           </p>
         )}
         {Boolean(message.files?.length) && (
-          <div
-            aria-label="Message attachments"
-            className="mt-3 grid gap-2 @[640px]:grid-cols-2"
-          >
-            {message.files!.map((file) => (
-              <FileStorageModuleFile
-                variant="id-ai-chat"
-                key={file.id}
-                file={file}
-                compact
-              />
-            ))}
+          <div className="mt-3 min-w-0">
+            <p className="mb-2 text-xs text-muted-foreground">
+              {message.files!.length}{" "}
+              {message.files!.length === 1 ? "attachment" : "attachments"}
+            </p>
+            <ul
+              aria-label="Message attachments"
+              tabIndex={0}
+              className="flex gap-2 overflow-x-auto pb-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground"
+            >
+              {message.files!.map((file) => (
+                <li key={file.id} className="w-36 shrink-0 sm:w-40">
+                  <FileStorageModuleFile
+                    variant="attachment-ai-chat"
+                    file={file}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         )}
         {Boolean(message.filesUsed?.length) && (

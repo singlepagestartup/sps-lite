@@ -4,11 +4,6 @@ import { Component as RbacModuleWidget } from "../../index";
 import { Component as RbacModuleSubject } from "../../../subject";
 import { AccountProvider } from "../../../subject/singlepage/me/account/Account";
 import { aiChatAccount } from "../../../subject/singlepage/me/account/fixture";
-import {
-  readRbacStudioAuthUser,
-  writeRbacStudioAuthUser,
-} from "../../../shared";
-
 const originalWindow = globalThis.window;
 afterEach(() => {
   if (originalWindow) globalThis.window = originalWindow;
@@ -78,32 +73,32 @@ test("website and AI Chat settings share current-user profile, methods and data 
   }
 });
 
-test("changing local email preserves profile fields without persisting passwords or verification codes", () => {
-  const values = new Map<string, string>();
+test("profile fields come from the supplied example even with browser storage", () => {
+  let reads = 0;
   globalThis.window = {
     localStorage: {
-      getItem: (key: string) => values.get(key) ?? null,
-      setItem: (key: string, value: string) => values.set(key, value),
+      getItem: () => {
+        reads++;
+        return "stale user";
+      },
     },
-    dispatchEvent: () => true,
   } as unknown as Window & typeof globalThis;
-  const profile = writeRbacStudioAuthUser("alex@example.com", {
-    name: "Alex",
-    avatar: aiChatAccount.profile.avatar!,
-    role: "Maker",
-    slug: "alex-maker",
-    description: "Pottery workshops",
-  });
-  const { email, ...fields } = profile;
-  writeRbacStudioAuthUser(" ALEX.NEW@EXAMPLE.COM ", fields);
-  const updated = readRbacStudioAuthUser();
-  expect(updated?.email).toBe("alex.new@example.com");
-  expect(updated?.name).toBe("Alex");
-  expect(updated?.slug).toBe("alex-maker");
-  expect(updated?.role).toBe("Maker");
-  expect(updated?.description).toBe("Pottery workshops");
-  expect(updated?.avatar).toBe(aiChatAccount.profile.avatar);
-  const saved = [...values.values()].join();
-  expect(saved).not.toContain("password");
-  expect(saved).not.toContain("123456");
+  const html = renderToStaticMarkup(
+    <AccountProvider
+      account={aiChatAccount}
+      user={{
+        name: "Alex",
+        email: "alex@example.com",
+        avatar: aiChatAccount.profile.avatar!,
+        role: "Maker",
+        slug: "alex-maker",
+        description: "Pottery workshops",
+      }}
+    >
+      <RbacModuleWidget variant="subject-me-profile-settings" />
+    </AccountProvider>,
+  );
+  expect(html).toContain('value="alex-maker"');
+  expect(html).toContain("Pottery workshops");
+  expect(reads).toBe(0);
 });

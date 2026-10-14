@@ -3,6 +3,7 @@ import { api as serverApi } from "@sps/rbac/models/widget/sdk/server";
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default";
 import { Component as ChildComponent } from "./Component";
+import { Component as WorkspaceSkeleton } from "./Skeleton";
 
 export function Component(props: IComponentProps) {
   return (
@@ -12,6 +13,7 @@ export function Component(props: IComponentProps) {
       clientApi={clientApi}
       serverApi={serverApi}
       {...props}
+      Skeleton={<WorkspaceSkeleton stage="checking-session" />}
     />
   );
 }

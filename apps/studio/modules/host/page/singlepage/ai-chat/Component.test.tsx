@@ -17,10 +17,195 @@ import { Component as CrmModuleForm } from "../../../../crm/form";
 import loginFormCopy from "../../../../rbac/subject/singlepage/me/authentication/email-and-password/authentication-form/ai-chat/content.json";
 import authenticationContent from "../../../../website-builder/widget/singlepage/content/ai-chat/authentication/content.json";
 
+import ThreadCreateStory, {
+  Guest as ThreadCreateGuest,
+} from "../rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat/Component.stories";
+import ProjectSettingsStory, {
+  Guest as ProjectSettingsGuest,
+} from "../rbac-module-subject-me-social-module-profile-id-settings-ai-chat/Component.stories";
+
 const root = path.resolve(import.meta.dir, "../../../../../../..");
 const studio = path.join(root, "apps/studio");
 
 describe("Local AI Chat components", () => {
+  test("the projects page lists each supplied project without opening the first", () => {
+    const html = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/projects"
+        profiles={{
+          initialProjects: [
+            {
+              id: "one",
+              name: "First project",
+              variant: "scope-ai-chat-project",
+            },
+            {
+              id: "two",
+              name: "Second project",
+              variant: "scope-ai-chat-project",
+            },
+          ],
+        }}
+      />,
+    );
+    expect(html).toContain("My projects</h1>");
+    expect(html).toContain('aria-label="Open First project"');
+    expect(html).toContain('href="/ai-chat/social/profiles/one"');
+    expect(html).toContain('href="/ai-chat/social/profiles/two"');
+    expect(html).toContain("Create project");
+    expect(html).not.toContain("Products.md");
+    expect(html).not.toContain('aria-label="Messages"');
+    expect(html).not.toContain("Project name");
+  });
+  test("project list states never expose supplied private names while unavailable", () => {
+    for (const flag of ["loading", "error"] as const) {
+      const html = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref="/ai-chat/projects"
+          profiles={{
+            initialProjects: [
+              {
+                id: "one",
+                name: "Private project",
+                variant: "scope-ai-chat-project",
+              },
+            ],
+            [flag]: true,
+          }}
+        />,
+      );
+      expect(html).not.toContain("Private project");
+      expect(html).not.toContain('href="/ai-chat/social/profiles/one"');
+      expect(html).toContain(
+        flag === "loading" ? 'aria-busy="true"' : "Try again",
+      );
+    }
+    const guest = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/projects"
+        signedIn={false}
+        projectsState="sign-in-required"
+      />,
+    );
+    expect(guest).toContain("Sign in to open your workspace");
+    expect(guest).not.toContain("Pottery workshops");
+    expect(guest).not.toContain('aria-label="Your projects"');
+    expect(guest).not.toContain("Create project");
+    const empty = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/projects"
+        profiles={{ initialProjects: [] }}
+      />,
+    );
+    expect(empty).toContain("No projects yet");
+    expect(empty).toContain("Create project");
+  });
+  test("the creation state returns to the project chooser rather than a first project", () => {
+    const html = renderToStaticMarkup(
+      <AIChatPreview initialHref="/ai-chat/projects" creatingProject />,
+    );
+    expect(html).toContain("Project name");
+    expect(html).toContain("Back to projects");
+    expect(html).not.toContain('aria-label="Your projects"');
+    expect(html).not.toContain("Back to my project");
+  });
+
+  test("document and thread creation stories render their selected page for either header state", () => {
+    for (const signedIn of [false, true]) {
+      const document = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref="/ai-chat/social/profiles/pottery"
+          signedIn={signedIn}
+        />,
+      );
+      expect(document).toContain('data-ds-block="social.thread.id-ai-chat"');
+      expect(document).not.toContain('name="password"');
+      const create = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref="/ai-chat/social/profiles/pottery/chats/pottery%3Aproject-chat/threads/create"
+          signedIn={signedIn}
+        />,
+      );
+      expect(create).toContain("Thread name");
+      expect(create).not.toContain('name="password"');
+    }
+  });
+
+  test("explicit page states hide private content until the ready state", () => {
+    for (const workspaceState of [
+      "checking-session",
+      "loading-projects",
+      "sign-in-required",
+      "access-denied",
+      "error",
+    ] as const) {
+      const html = renderToStaticMarkup(
+        <AIChatPreview
+          initialHref="/ai-chat/social/profiles/pottery"
+          workspaceState={workspaceState}
+          signedIn
+        />,
+      );
+      expect(html).toContain(`data-workspace-state="${workspaceState}"`);
+      expect(html).not.toContain("Pottery workshops");
+      expect(html).not.toContain("Products.md is ready");
+      expect(html).not.toContain('aria-label="Messages"');
+      expect(html).not.toContain('name="password"');
+      if (
+        workspaceState === "checking-session" ||
+        workspaceState === "loading-projects"
+      ) {
+        expect(html).toContain('aria-busy="true"');
+        expect(html).not.toContain("<textarea");
+      }
+    }
+    const loading = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/social/profiles/pottery"
+        workspaceState="loading-chat"
+      />,
+    );
+    expect(loading).toContain("Pottery workshops");
+    expect(loading).toContain('data-workspace-state="loading-chat"');
+    expect(loading).not.toContain("Products.md is ready");
+    expect(loading).not.toContain("<textarea");
+    const ready = renderToStaticMarkup(
+      <AIChatPreview
+        initialHref="/ai-chat/social/profiles/pottery"
+        workspaceState="ready"
+      />,
+    );
+    expect(ready).toContain("Products.md is ready");
+  });
+
+  test("guest fixtures for thread creation and project settings show no private navigation or forms", () => {
+    const views = [
+      renderToStaticMarkup(
+        <ThreadCreateStory.component
+          {...ThreadCreateStory.args}
+          {...ThreadCreateGuest.args}
+        />,
+      ),
+      renderToStaticMarkup(
+        <ProjectSettingsStory.component
+          {...ProjectSettingsStory.args}
+          {...ProjectSettingsGuest.args}
+        />,
+      ),
+    ];
+    for (const html of views) {
+      expect(html).toContain('data-workspace-state="sign-in-required"');
+      expect(html).toContain("Sign in to open your workspace");
+      expect(html).not.toContain("Pottery workshops");
+      expect(html).not.toContain("Products.md");
+      expect(html).not.toContain('aria-label="Project conversations"');
+      expect(html).not.toContain('aria-label="Project threads"');
+      expect(html).not.toContain("Thread name");
+      expect(html).not.toContain("Create thread");
+      expect(html).not.toContain("Save project");
+    }
+  });
+
   test("Subject authentication forms render independently of page content", () => {
     for (const variant of [
       "me-authentication-email-and-password-authentication-form-ai-chat",
@@ -209,7 +394,7 @@ describe("Local AI Chat components", () => {
     expect(profile.match(/aria-label="Download Products.md"/g)).toHaveLength(1);
     expect(
       profile.match(/data-ds-block="knowledge.source.id-ai-chat"/g),
-    ).toHaveLength(2);
+    ).toHaveLength(1);
     expect(profile).toContain(
       'data-model="thread" data-variant="download-ai-chat"',
     );
@@ -279,6 +464,7 @@ describe("Local AI Chat components", () => {
       "/ai-chat/rbac/subjects/settings",
       "/ai-chat/rbac/subjects/tokens",
       "/ai-chat/help",
+      "/ai-chat/projects",
       "/ai-chat/social/profiles/create#materials",
       "/ai-chat/social/profiles/pottery",
       "/ai-chat/social/profiles/pottery/settings",
@@ -335,6 +521,7 @@ describe("Local AI Chat components", () => {
       "ai-chat-help",
       "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
       "rbac-module-subject-me-social-module-profile-create-ai-chat",
+      "rbac-module-subject-me-social-module-profile-list-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
@@ -351,6 +538,7 @@ describe("Local AI Chat components", () => {
       "/ai-chat/rbac/subjects/settings",
       "/ai-chat/rbac/subjects/tokens",
       "/ai-chat/help",
+      "/ai-chat/projects",
       "/ai-chat/social/profiles/create",
     ]) {
       const html = renderToStaticMarkup(
@@ -388,6 +576,7 @@ describe("Local AI Chat components", () => {
       "ai-chat-help",
       "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
       "rbac-module-subject-me-social-module-profile-create-ai-chat",
+      "rbac-module-subject-me-social-module-profile-list-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
       "rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
@@ -416,7 +605,7 @@ describe("Local AI Chat components", () => {
     );
     expect(create).toContain('data-ds-block="social.thread.create-ai-chat"');
     expect(create).toContain("Thread name");
-    expect(create).toContain("Thread agent");
+    expect(create).not.toContain("Thread agent");
     expect(create).not.toContain('data-ds-block="social.thread.id-ai-chat"');
   });
 

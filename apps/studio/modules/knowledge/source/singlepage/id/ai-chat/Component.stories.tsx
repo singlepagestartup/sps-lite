@@ -3,16 +3,27 @@ import { Component as KnowledgeModuleSource } from "../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { FilesProvider } from "../../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
 import { SourceProvider } from "./Source";
-import { aiChatSourceFixture } from "../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
+import {
+  aiChatSourceFixture,
+  aiChatAttachmentFixture,
+} from "../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 interface IExampleProps {
   empty?: boolean;
   withFiles?: boolean;
+  fileCount?: number;
 }
-function Example({ empty = false, withFiles = false }: IExampleProps) {
-  const { source, files, fileIds } = aiChatSourceFixture();
+function Example({
+  empty = false,
+  withFiles = false,
+  fileCount = 2,
+}: IExampleProps) {
+  const { source } = aiChatSourceFixture();
+  const files = aiChatAttachmentFixture(fileCount);
+  const fileIds = files.map((file) => file.id);
   return (
     <FilesProvider initialFiles={files}>
       <SourceProvider
+        key={`${empty}:${withFiles}:${fileCount}`}
         profileId="pottery"
         initialSource={{ ...source, content: empty ? "" : source.content }}
         initialFileIds={withFiles ? fileIds : []}
@@ -41,3 +52,7 @@ export const Default: StoryObj<typeof meta> = {};
 
 export const Empty: StoryObj<typeof meta> = { args: { empty: true } };
 export const WithFiles: StoryObj<typeof meta> = { args: { withFiles: true } };
+
+export const ManyFiles: StoryObj<typeof meta> = {
+  args: { withFiles: true, fileCount: 13 },
+};

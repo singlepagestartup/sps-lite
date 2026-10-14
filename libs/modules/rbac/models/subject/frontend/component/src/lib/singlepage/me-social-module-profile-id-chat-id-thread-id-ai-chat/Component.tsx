@@ -13,6 +13,8 @@ export function Component(props: IComponentPropsExtended) {
       project={props.project}
       threadId={props.threadId}
       navigation={props.navigation}
+      loading={props.loading}
+      renderLoadError={props.renderLoadError}
     />
   );
 }

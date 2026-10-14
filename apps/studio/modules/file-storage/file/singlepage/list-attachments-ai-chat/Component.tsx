@@ -7,6 +7,7 @@ import {
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
   memo,
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -16,9 +17,9 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as ProjectFilePreview } from "../id/ai-chat/index";
+import { Component as AttachmentFile } from "../attachment-ai-chat";
 import { useFiles } from "./Files";
-import { readProjectFiles } from "./utils";
+import { readProjectFiles, AI_CHAT_ATTACHMENT_ACCEPT } from "./utils";
 interface IFeedbackProps {
   children: ReactNode;
   kind?: "success" | "error" | "info";
@@ -71,11 +72,16 @@ export interface ISectionAssetsProps {
   section: string;
   fileIds: string[];
   onAttach: (ids: string[]) => void;
-  onRemove: (fileId: string) => void;
+  onRemove: (fileId: string) => void | Promise<void>;
+  initialExpanded?: boolean;
+  pendingFileId?: string | null;
+  errorMessage?: string;
+  statusMessage?: string;
 }
 interface IFileAttachmentProps {
   id: string;
   onRemove: (id: string) => void;
+  pending: boolean;
 }
 export function Component({
   variant = "list-attachments-ai-chat",
@@ -83,12 +89,19 @@ export function Component({
   fileIds,
   onAttach,
   onRemove,
+  initialExpanded = false,
+  pendingFileId = null,
+  errorMessage = "",
+  statusMessage = "",
 }: ISectionAssetsProps) {
   const { files: sources, register } = useFiles();
   const linked = fileIds.filter((id) => sources.some((file) => file.id === id));
   const id = useId();
   const input = useRef<HTMLInputElement>(null);
   const [selected, setSelected] = useState("");
+  const [expanded, setExpanded] = useState(initialExpanded);
+  const [removingId, setRemovingId] = useState<string | null>(null);
+  const removal = useRef(false);
   const [reading, setReading] = useState(false);
   const [error, setError] = useState("");
   const available = sources.filter((source) => !linked.includes(source.id));
@@ -99,6 +112,28 @@ export function Component({
       mounted.current = false;
     };
   }, []);
+  const remove = useCallback(
+    async (fileId: string) => {
+      if (removal.current || pendingFileId) {
+        setError("Wait for the current file operation to finish.");
+        return;
+      }
+      removal.current = true;
+      setRemovingId(fileId);
+      setError("");
+      try {
+        await onRemove(fileId);
+      } catch (cause) {
+        setError(
+          cause instanceof Error ? cause.message : "File could not be removed.",
+        );
+      } finally {
+        removal.current = false;
+        if (mounted.current) setRemovingId(null);
+      }
+    },
+    [onRemove, pendingFileId],
+  );
   async function upload(files: FileList | null) {
     if (!files?.length) return;
     setReading(true);
@@ -130,9 +165,39 @@ export function Component({
       data-variant={variant}
     >
       <p className={`text-xs ${kit.muted}`}>Files · {linked.length}</p>
-      {linked.map((id) => (
-        <FileAttachment key={id} id={id} onRemove={onRemove} />
-      ))}
+      {errorMessage && (
+        <p role="alert" className="text-xs text-destructive">
+          {errorMessage}
+        </p>
+      )}
+      {statusMessage && (
+        <p role="status" className="text-xs text-muted-foreground">
+          {statusMessage}
+        </p>
+      )}
+      <ul
+        aria-label="Knowledge attachments"
+        className="grid min-w-0 grid-cols-2 gap-2"
+      >
+        {(expanded ? linked : linked.slice(0, 2)).map((id) => (
+          <FileAttachment
+            key={id}
+            id={id}
+            pending={id === (pendingFileId ?? removingId)}
+            onRemove={remove}
+          />
+        ))}
+      </ul>
+      {linked.length > 2 && (
+        <button
+          type="button"
+          aria-expanded={expanded}
+          className="min-h-9 w-full rounded-lg border border-border px-3 text-xs font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground"
+          onClick={() => setExpanded((value) => !value)}
+        >
+          {expanded ? "Show less" : "Show more"}
+        </button>
+      )}
       <div className="flex flex-wrap gap-2">
         <Button
           variant="plain"
@@ -148,6 +213,7 @@ export function Component({
           aria-label={`Upload files for ${section}`}
           className="sr-only"
           type="file"
+          accept={AI_CHAT_ATTACHMENT_ACCEPT}
           multiple
           disabled={reading}
           onChange={(event) => {
@@ -304,21 +370,29 @@ const Button = forwardRefControl<
 const FileAttachment = memo(function FileAttachment({
   id,
   onRemove,
+  pending,
 }: IFileAttachmentProps) {
   const { files } = useFiles();
   const file = files.find((record) => record.id === id);
+  const remove = useCallback(() => onRemove(id), [onRemove, id]);
   if (!file) return null;
   return (
-    <article className="space-y-2" aria-label={`${file.name} attachment`}>
-      <ProjectFilePreview file={file} />
-      <Button
-        variant="plain"
-        className="min-h-9 px-2 text-xs"
-        onClick={() => onRemove(id)}
-        aria-label={`Detach ${file.name}`}
+    <li className="relative min-w-0" aria-label={`${file.name} attachment`}>
+      <AttachmentFile variant="attachment-ai-chat" file={file} />
+      <button
+        type="button"
+        onClick={remove}
+        disabled={pending}
+        aria-label={`Remove ${file.name} from knowledge`}
+        className="absolute right-1 top-1 z-10 grid size-7 place-items-center rounded-full bg-foreground text-background hover:opacity-80 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
-        Detach
-      </Button>
-    </article>
+        <Icon name="x" className="size-4" />
+      </button>
+      {pending && (
+        <p className="mt-1 text-xs text-muted-foreground" role="status">
+          Removing…
+        </p>
+      )}
+    </li>
   );
 });

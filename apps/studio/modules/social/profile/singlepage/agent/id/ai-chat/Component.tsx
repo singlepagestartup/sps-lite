@@ -171,6 +171,8 @@ export interface IAgentProfileProps {
   variant?: string;
   knowledge?: ReactNode;
   knowledgeCount?: number;
+  skills?: ReactNode;
+  skillsCount?: number;
   agent: IProjectAgent | null;
   onClose: () => void;
 }
@@ -186,6 +188,8 @@ export function Component({
   onClose,
   knowledge,
   knowledgeCount = 0,
+  skills,
+  skillsCount = 1,
 }: IAgentProfileProps) {
   return (
     <Dialog.Root
@@ -236,16 +240,18 @@ export function Component({
           </div>
           <div className="min-h-0 flex-1 space-y-6 overflow-y-auto p-5">
             <section aria-label="Assistant skills" className="space-y-3">
-              <h3 className="text-sm font-semibold">Skills · 1</h3>
-              <div className="rounded-xl border border-border p-4">
-                {agent?.id === knowledgeAgent.id ? (
-                  <SocialModuleSkill variant="id-ai-chat" />
-                ) : (
-                  <MarkdownDocument hideTitle>
-                    {agent?.role ?? ""}
-                  </MarkdownDocument>
-                )}
-              </div>
+              <h3 className="text-sm font-semibold">Skills · {skillsCount}</h3>
+              {skills ?? (
+                <div className="rounded-xl border border-border p-4">
+                  {agent?.id === knowledgeAgent.id ? (
+                    <SocialModuleSkill variant="id-ai-chat" />
+                  ) : (
+                    <MarkdownDocument hideTitle>
+                      {agent?.role ?? ""}
+                    </MarkdownDocument>
+                  )}
+                </div>
+              )}
             </section>
             <section aria-label="Profile knowledge" className="space-y-3">
               <h3 className="text-sm font-semibold">

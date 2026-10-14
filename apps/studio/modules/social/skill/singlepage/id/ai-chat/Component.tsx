@@ -90,20 +90,22 @@ export interface IAIChatSkill {
 }
 interface IComponentVariantProps {
   variant?: string;
+  data?: IAIChatSkill;
 }
 export function Component({
   variant = "id-ai-chat",
+  data = businessAnalystSkill,
 }: IComponentVariantProps = {}) {
   return (
     <section
       data-ds-block="social.skill.id-ai-chat"
-      data-id={businessAnalystSkill.id}
+      data-id={data.id}
       data-module="social"
       data-model="skill"
       data-variant={variant}
     >
-      <h3 className="mb-3 font-semibold">{businessAnalystSkill.title}</h3>
-      <MarkdownDocument>{businessAnalystSkill.description}</MarkdownDocument>
+      <h3 className="mb-3 font-semibold">{data.title}</h3>
+      <MarkdownDocument>{data.description}</MarkdownDocument>
     </section>
   );
 }

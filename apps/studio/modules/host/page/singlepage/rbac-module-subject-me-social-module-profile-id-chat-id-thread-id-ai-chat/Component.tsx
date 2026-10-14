@@ -10,10 +10,23 @@ import { useStudioAccount } from "../../../../rbac/subject/singlepage/me/account
 export interface IProfilePageProps {
   variant?: string;
   profileId: string;
+  state?:
+    | "ready"
+    | "checking-session"
+    | "loading-projects"
+    | "loading-chat"
+    | "sign-in-required"
+    | "access-denied"
+    | "error";
+  errorMessage?: string;
+  onRetry?: () => void;
 }
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
   profileId,
+  state = "ready",
+  errorMessage,
+  onRetry,
 }: IProfilePageProps) {
   const { signedIn } = useStudioAccount();
   return (
@@ -22,7 +35,7 @@ export function Component({
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={
-          signedIn
+          signedIn && (state === "ready" || state === "loading-chat")
             ? (props) => (
                 <SocialModuleProfile
                   profileId={profileId}
@@ -43,6 +56,9 @@ export function Component({
       >
         <RbacModuleWidget
           variant="subject-me-social-module-profile-id-chat-id-thread-id-ai-chat"
+          state={state}
+          errorMessage={errorMessage}
+          onRetry={onRetry}
           profileId={profileId}
           chatId={aiChatProfileChatId(profileId)}
         />

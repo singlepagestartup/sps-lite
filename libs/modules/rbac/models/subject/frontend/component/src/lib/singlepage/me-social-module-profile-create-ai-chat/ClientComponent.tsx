@@ -105,12 +105,12 @@ export function Component(props: IComponentPropsExtended) {
             ? "Open project"
             : "Create project"}
       </button>
-      {props.projects?.[0] && (
+      {!props.hideBackLink && (
         <Link
-          href={projectHref(props.projects[0])}
+          href="/ai-chat/projects"
           className="rounded-xl py-3 text-center text-sm font-semibold text-muted-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
-          Back to my project
+          Back to projects
         </Link>
       )}
       {error && (

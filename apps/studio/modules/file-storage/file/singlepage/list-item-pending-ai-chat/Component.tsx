@@ -1,66 +1,110 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
-
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature";
 import type { IProjectFile } from "../../../../social/profile/singlepage/scope/ai-chat/project/state";
-import { memo } from "react";
-function Icon(props: {
-  name: keyof typeof IconGlyphs;
-  size?: 20 | 24;
-  className?: string;
-  svgProps?: React.SVGProps<SVGSVGElement>;
-}) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
-}
-
+import { memo, useCallback } from "react";
 export interface IPendingFileProps {
   variant?: string;
   file: IProjectFile;
   onRemove: (id: string) => void;
+  onMove?: (id: string, direction: -1 | 1) => void;
+  onReorder?: (id: string, targetId: string) => void;
+  first?: boolean;
+  last?: boolean;
+  disabled?: boolean;
 }
-const focus =
-  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
-const buttonBase =
-  "inline-flex min-h-11 max-w-full items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition motion-reduce:transition-none enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50";
-const kit = {
-  focus: focus,
-};
 export const Component = memo(function Component({
   variant = "list-item-pending-ai-chat",
   file,
   onRemove,
+  onMove,
+  onReorder,
+  first = false,
+  last = false,
+  disabled = false,
 }: IPendingFileProps) {
+  const remove = useCallback(() => onRemove(file.id), [onRemove, file.id]);
   return (
     <li
       data-ds-block="file-storage.file.list-item-pending-ai-chat"
       data-id={file.id}
-      className="flex min-w-0 items-center gap-2 rounded-xl border border-border bg-muted p-2"
       data-module="file-storage"
       data-model="file"
       data-variant={variant}
+      draggable={!!onReorder && !disabled}
+      onDragStart={(event) => {
+        event.dataTransfer.setData("text/plain", file.id);
+        event.dataTransfer.effectAllowed = "move";
+      }}
+      onDragOver={(event) => {
+        if (!disabled && onReorder) {
+          event.preventDefault();
+          event.dataTransfer.dropEffect = "move";
+        }
+      }}
+      onDrop={(event) => {
+        event.preventDefault();
+        if (!disabled)
+          onReorder?.(event.dataTransfer.getData("text/plain"), file.id);
+      }}
+      className={`relative w-36 shrink-0 rounded-xl border border-border bg-muted/30 p-2 sm:w-40 ${onReorder && !disabled ? "cursor-grab active:cursor-grabbing" : ""}`}
     >
-      {file.mimeType?.startsWith("image/") && file.fileUrl ? (
-        <img
-          src={file.fileUrl}
-          alt={file.name}
-          className="size-10 shrink-0 rounded-lg object-contain"
-        />
-      ) : (
-        <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card">
-          <Icon name="file-text" className="size-5" />
-        </span>
-      )}
-      <span className="min-w-0 flex-1 break-words text-xs leading-5">
-        {file.name}
-      </span>
       <button
         type="button"
-        onClick={() => onRemove(file.id)}
         aria-label={`Remove ${file.name}`}
-        className={`grid size-11 shrink-0 place-items-center rounded-lg hover:bg-card ${kit.focus}`}
+        disabled={disabled}
+        onClick={remove}
+        className="absolute right-1 top-1 z-10 grid size-6 place-items-center rounded-full bg-foreground text-background hover:opacity-80 disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
-        <Icon name="x" className="size-4" />
+        <WebsiteBuilderModuleFeature
+          variant="icon"
+          name="x"
+          className="size-4"
+        />
       </button>
+      <div className="flex h-20 items-center justify-center overflow-hidden rounded-lg bg-neutral-500">
+        {file.mimeType?.startsWith("image/") && file.fileUrl ? (
+          <img
+            src={file.fileUrl}
+            alt={file.name}
+            draggable={false}
+            className="h-full w-full object-contain"
+          />
+        ) : (
+          <WebsiteBuilderModuleFeature
+            variant="icon"
+            name="file-text"
+            className="size-7 text-background"
+          />
+        )}
+      </div>
+      <p title={file.name} className="mt-2 truncate text-xs font-medium">
+        {file.name}
+      </p>
+      <div className="mt-1 flex items-center justify-between gap-1">
+        <span className="text-xs text-muted-foreground">
+          {Math.max(1, Math.ceil(file.size / 1024))} KB
+        </span>
+        {onMove && (
+          <div className="flex">
+            {([-1, 1] as const).map((direction) => (
+              <button
+                key={direction}
+                type="button"
+                aria-label={`Move ${file.name} ${direction === -1 ? "earlier" : "later"}`}
+                disabled={disabled || (direction === -1 ? first : last)}
+                onClick={() => onMove(file.id, direction)}
+                className="grid size-8 place-items-center rounded-md hover:bg-muted disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground"
+              >
+                <WebsiteBuilderModuleFeature
+                  variant="icon"
+                  name={direction === -1 ? "caret-left" : "caret-right"}
+                  className="size-4"
+                />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </li>
   );
 });

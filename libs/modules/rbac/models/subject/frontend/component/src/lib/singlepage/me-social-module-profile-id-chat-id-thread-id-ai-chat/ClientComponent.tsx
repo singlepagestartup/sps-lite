@@ -39,17 +39,27 @@ function Workspace(
   );
   if (threads.isPending)
     return (
-      <p role="status" className="p-8">
-        Loading thread…
-      </p>
+      props.loading ?? (
+        <p role="status" className="p-8">
+          Loading thread…
+        </p>
+      )
     );
-  if (threads.error || !thread)
+  if (threads.error || !thread) {
+    if (props.renderLoadError)
+      return props.renderLoadError({
+        retry: () => {
+          void threads.refetch();
+        },
+        unavailable: !threads.error && !thread,
+      });
     return (
       <p role="alert" className="p-8 text-destructive">
         {threads.error?.message ||
           "This Thread does not belong to the selected Chat."}
       </p>
     );
+  }
   const actionProps = { isServer: false, data: props.data, project, thread };
   const document = getAIChatDocument(thread.metadata);
   const isDocument = document?.profileId === project.profile.id;

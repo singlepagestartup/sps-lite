@@ -6,7 +6,10 @@ import { Component as ListItemPendingAiChat } from "./list-item-pending-ai-chat/
 import { Component as IdAiChat } from "./id/ai-chat/index";
 import { Component as List } from "./list/index";
 
+import { Component as AttachmentAiChat } from "./attachment-ai-chat";
+
 export const variants = {
+  "attachment-ai-chat": AttachmentAiChat,
   "admin-v2-card": AdminV2Card,
   "admin-v2-table": AdminV2Table,
   "list-item-asset-ai-chat": ListItemAssetAiChat,

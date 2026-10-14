@@ -35,6 +35,9 @@ export function Component({
       <DropdownMenu.Root modal={false}>
         <DropdownMenu.Trigger asChild>
           <button
+            data-module="social"
+            data-model="profile"
+            data-variant={variant}
             type="button"
             aria-label="Projects unavailable"
             className={buttonClassName}
@@ -50,13 +53,22 @@ export function Component({
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
+            data-module="social"
+            data-model="profile"
+            data-variant={variant}
             align="end"
             sideOffset={8}
             collisionPadding={12}
             onCloseAutoFocus={onCloseAutoFocus}
             className="z-50 w-64 max-w-[calc(100vw-24px)] rounded-xl border border-border bg-card p-3 text-foreground shadow-lg font-default"
           >
-            <div role="alert" className="space-y-2 p-1 text-sm">
+            <div
+              role="alert"
+              data-module="social"
+              data-model="profile"
+              data-variant={variant}
+              className="space-y-2 p-1 text-sm"
+            >
               <p className="font-semibold">Couldn't load your projects.</p>
               <p className="text-muted-foreground">
                 Try again to reconnect to your workspace.
@@ -78,6 +90,9 @@ export function Component({
   if (pending ?? loading)
     return (
       <div
+        data-module="social"
+        data-model="profile"
+        data-variant={variant}
         role="status"
         aria-label="Loading projects"
         aria-busy="true"
@@ -94,6 +109,9 @@ export function Component({
   if (!projects.length)
     return (
       <a
+        data-module="social"
+        data-model="profile"
+        data-variant={variant}
         href="/ai-chat/social/profiles/create"
         onClick={onNavigate}
         className={buttonClassName}

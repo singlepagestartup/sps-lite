@@ -10,7 +10,7 @@ import {
   type IAuthenticationContent,
 } from "../../../../website-builder/widget";
 import { useNavigate } from "../../../layout/singlepage/ai-chat-landing/Navigation";
-import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/me/account/Account";
+import { aiChatServiceHrefs } from "../../../layout/singlepage/ai-chat-landing/routes";
 
 export interface ILoginPageProps {
   variant?: string;
@@ -21,7 +21,6 @@ export function Component({
   copy,
 }: ILoginPageProps = {}) {
   const navigate = useNavigate();
-  const projectHref = useAIChatProjectHref();
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
       <HostModuleLayout
@@ -43,7 +42,7 @@ export function Component({
             variant="me-authentication-email-and-password-authentication-form-ai-chat"
             copy={copy?.form}
             onSuccess={() => {
-              navigate(projectHref);
+              navigate(aiChatServiceHrefs["profile-list"]);
             }}
           />
         </WebsiteBuilderModuleWidget>

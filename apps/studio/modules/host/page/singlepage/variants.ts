@@ -1,3 +1,4 @@
+import { Component as ProjectsPage } from "./rbac-module-subject-me-social-module-profile-list-ai-chat/index";
 import { Component as AdminDashboard } from "./admin-dashboard/index";
 import { Component as AdminEntityDrawer } from "./admin-entity-drawer/index";
 import { Component as AdminModelEdit } from "./admin-model-edit/index";
@@ -40,6 +41,7 @@ import { Component as SocialModuleChatIdThreadId } from "./social-module-chat-id
 import { Component as Terms } from "./terms/index";
 
 export const variants = {
+  "rbac-module-subject-me-social-module-profile-list-ai-chat": ProjectsPage,
   "admin-dashboard": AdminDashboard,
   "admin-entity-drawer": AdminEntityDrawer,
   "admin-model-edit": AdminModelEdit,

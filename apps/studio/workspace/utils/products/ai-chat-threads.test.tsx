@@ -163,7 +163,7 @@ test("the identified Chat composes Thread messages, one Source and a Subject cre
   expect(html).toContain(
     'data-knowledge-source-ids="pottery:products:products"',
   );
-  expect(html).toContain('aria-label="Working on"');
+  expect(html).not.toContain('aria-label="Working on"');
   expect(html).toContain("Knowledge assistant");
   for (const obsolete of [
     "Brief.md",

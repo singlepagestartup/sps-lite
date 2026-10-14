@@ -10,6 +10,7 @@ export function Component(props: IComponentPropsExtended) {
       className={props.className}
       children={props.children}
       projects={props.projects}
+      hideBackLink={props.hideBackLink}
       pending={props.pending}
       project={props.project}
       threadId={props.threadId}

@@ -2,7 +2,18 @@ import type { IComponentPropsExtended } from "./interface";
 export function Component({
   variant = "content-ai-chat-profile-create",
   children,
+  appearance = "form",
 }: IComponentPropsExtended) {
+  if (appearance === "projects")
+    return (
+      <div
+        data-module="website-builder"
+        data-model="widget"
+        data-variant={variant}
+      >
+        {children}
+      </div>
+    );
   return (
     <main
       className="mx-auto max-w-6xl px-4 py-6 sm:px-5"

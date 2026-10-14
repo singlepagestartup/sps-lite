@@ -30,6 +30,10 @@ export function Component(props: IComponentPropsExtended) {
               data={entity}
               variant={entity.variant as any}
               language={props.language}
+              {...(entity.variant === "content-ai-chat-profile-create" &&
+              props.url === "/ai-chat/projects"
+                ? { appearance: "projects" as const }
+                : {})}
               {...(entity.variant === "navbar-ai-chat"
                 ? { helpSelected: props.url === "/ai-chat/help" }
                 : {})}

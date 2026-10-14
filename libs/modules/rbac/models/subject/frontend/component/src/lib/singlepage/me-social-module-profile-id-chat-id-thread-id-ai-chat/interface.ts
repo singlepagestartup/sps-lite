@@ -10,6 +10,11 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
   project?: IAIChatProject;
   threadId?: string;
   navigation?: import("react").ReactNode;
+  loading?: import("react").ReactNode;
+  renderLoadError?: (props: {
+    retry: () => void;
+    unavailable: boolean;
+  }) => import("react").ReactNode;
 }
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}

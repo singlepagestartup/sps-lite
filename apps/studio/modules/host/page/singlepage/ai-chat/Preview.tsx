@@ -1,17 +1,11 @@
 "use client";
 
 import { Component as HostModulePage, type ILoginPageProps } from "../../index";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type MouseEvent,
-} from "react";
+import type { MouseEvent } from "react";
+import type { IProfilePageProps } from "../rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat";
 
 import {
   AccountProvider,
-  useStudioAccount,
   type IAIChatAccount,
 } from "../../../../rbac/subject/singlepage/me/account/Account";
 import {
@@ -20,10 +14,7 @@ import {
   type IProfilesProviderProps,
 } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { ProjectProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
-import {
-  NavigationProvider,
-  useNavigate,
-} from "../../../layout/singlepage/ai-chat-landing/Navigation";
+import { NavigationProvider } from "../../../layout/singlepage/ai-chat-landing/Navigation";
 import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import {
@@ -33,11 +24,18 @@ import {
   type IAIChatRoute,
 } from "../../../layout/singlepage/ai-chat-landing/routes";
 export interface IAIChatPreviewProps {
+  projectsState?: "ready" | "sign-in-required";
+  creatingProject?: boolean;
+  onCreatingProjectChange?: (creating: boolean) => void;
   loginCopy?: ILoginPageProps["copy"];
   initialHref?: string;
   account?: IAIChatAccount;
   signedIn?: boolean;
+  workspaceState?: IProfilePageProps["state"];
+  workspaceErrorMessage?: string;
+  onRetry?: () => void;
   profiles?: Omit<IProfilesProviderProps, "children">;
+  onNavigate?: (href: string) => void;
 }
 const servicePages = {
   landing: "ai-chat",
@@ -47,6 +45,7 @@ const servicePages = {
   help: "ai-chat-help",
   tokens:
     "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
+  "profile-list": "rbac-module-subject-me-social-module-profile-list-ai-chat",
   "profile-create":
     "rbac-module-subject-me-social-module-profile-create-ai-chat",
 } as const;
@@ -56,36 +55,69 @@ const profilePages = {
   "profile-settings":
     "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
 } as const;
-function ProfilePage({ route }: { route: IAIChatRoute }) {
+function ProfilePage({
+  route,
+  workspaceState,
+  workspaceErrorMessage,
+  onRetry,
+}: { route: IAIChatRoute } & Pick<
+  IAIChatPreviewProps,
+  "workspaceState" | "workspaceErrorMessage" | "onRetry"
+>) {
+  if (route.page === "profile-overview")
+    return (
+      <HostModulePage
+        variant="rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat"
+        profileId={route.profileId!}
+        state={workspaceState}
+        errorMessage={workspaceErrorMessage}
+        onRetry={onRetry}
+      />
+    );
   if (route.page === "thread-create")
     return (
       <HostModulePage
         variant="rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat"
         profileId={route.profileId!}
         chatId={route.chatId!}
+        state={workspaceState}
+        errorMessage={workspaceErrorMessage}
+        onRetry={onRetry}
       />
     );
   const variant = profilePages[route.page as keyof typeof profilePages];
   return variant ? (
-    <HostModulePage variant={variant} profileId={route.profileId!} />
+    <HostModulePage
+      variant={variant}
+      profileId={route.profileId!}
+      state={workspaceState}
+      errorMessage={workspaceErrorMessage}
+      onRetry={onRetry}
+    />
   ) : null;
 }
 function Pages({
+  projectsState,
+  creatingProject,
+  onCreatingProjectChange,
   route,
   loginCopy,
+  workspaceState,
+  workspaceErrorMessage,
+  onRetry,
 }: {
   route: IAIChatRoute | undefined;
   loginCopy?: ILoginPageProps["copy"];
-}) {
+} & Pick<
+  IAIChatPreviewProps,
+  | "workspaceState"
+  | "workspaceErrorMessage"
+  | "onRetry"
+  | "projectsState"
+  | "creatingProject"
+  | "onCreatingProjectChange"
+>) {
   const { projects } = useProfiles();
-  const { signedIn } = useStudioAccount();
-  const navigate = useNavigate();
-  const requiresAuthentication =
-    !!route && !["landing", "login", "register", "help"].includes(route.page);
-  useEffect(() => {
-    if (requiresAuthentication && !signedIn) navigate(aiChatServiceHrefs.login);
-  }, [requiresAuthentication, signedIn, navigate]);
-  if (requiresAuthentication && !signedIn) return null;
   if (!route) return <main role="status">Page unavailable.</main>;
   const serviceVariant = servicePages[route.page as keyof typeof servicePages];
   const available = projects.some((profile) => profile.id === route.profileId);
@@ -97,14 +129,34 @@ function Pages({
           variant="rbac-module-subject-me-authentication-select-method-ai-chat"
           copy={loginCopy}
         />
+      ) : serviceVariant ===
+        "rbac-module-subject-me-social-module-profile-list-ai-chat" ? (
+        <HostModulePage
+          variant={serviceVariant}
+          state={projectsState}
+          creating={creatingProject}
+          onCreatingChange={onCreatingProjectChange}
+        />
       ) : (
         serviceVariant && <HostModulePage variant={serviceVariant} />
       )}
-      {route.profileId && !available && <ProfilePage route={route} />}
+      {route.profileId && !available && (
+        <ProfilePage
+          route={route}
+          workspaceState={workspaceState}
+          workspaceErrorMessage={workspaceErrorMessage}
+          onRetry={onRetry}
+        />
+      )}
       {projects.map((profile) => (
         <ProjectProvider key={profile.id} profileId={profile.id}>
           {profile.id === route.profileId ? (
-            <ProfilePage route={route} />
+            <ProfilePage
+              route={route}
+              workspaceState={workspaceState}
+              workspaceErrorMessage={workspaceErrorMessage}
+              onRetry={onRetry}
+            />
           ) : null}
         </ProjectProvider>
       ))}
@@ -112,36 +164,24 @@ function Pages({
   );
 }
 export function AIChatPreview({
+  projectsState,
+  creatingProject,
+  onCreatingProjectChange,
   loginCopy,
   initialHref = "/",
   account = aiChatAccount,
   signedIn,
+  workspaceState,
+  workspaceErrorMessage,
+  onRetry,
   profiles = aiChatWorkspaceFixture(),
+  onNavigate,
 }: IAIChatPreviewProps) {
-  const [href, setHref] = useState(initialHref);
-  const previousInitialHref = useRef(initialHref);
-  const [projectHref, setProjectHref] = useState(() => {
-    const id = resolveAIChatRoute(initialHref)?.profileId;
-    return id
-      ? aiChatProfileHref(id)
-      : profiles.initialProjects?.[0]
-        ? aiChatProfileHref(profiles.initialProjects[0].id)
-        : aiChatServiceHrefs["profile-create"];
-  });
-  const navigate = useCallback((next: string) => {
-    if (!resolveAIChatRoute(next)) return;
-    setHref(next);
-    const id = resolveAIChatRoute(next)?.profileId;
-    if (id) setProjectHref(aiChatProfileHref(id));
-  }, []);
-  useEffect(() => {
-    if (previousInitialHref.current === initialHref) return;
-    previousInitialHref.current = initialHref;
-    navigate(initialHref);
-  }, [initialHref, navigate]);
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [href]);
+  const route = resolveAIChatRoute(initialHref);
+  const projectHref = route?.profileId
+    ? aiChatProfileHref(route.profileId)
+    : aiChatServiceHrefs["profile-list"];
+  const navigate = onNavigate ?? (() => {});
   function followLink(event: MouseEvent<HTMLDivElement>) {
     const anchor = (event.target as Element).closest("a");
     if (
@@ -173,8 +213,17 @@ export function AIChatPreview({
     >
       <ProfilesProvider key={JSON.stringify(profiles)} {...profiles}>
         <NavigationProvider navigate={navigate}>
-          <div onClick={followLink} data-preview-href={href}>
-            <Pages route={resolveAIChatRoute(href)} loginCopy={loginCopy} />
+          <div onClick={followLink} data-preview-href={initialHref}>
+            <Pages
+              route={route}
+              projectsState={projectsState}
+              creatingProject={creatingProject}
+              onCreatingProjectChange={onCreatingProjectChange}
+              loginCopy={loginCopy}
+              workspaceState={workspaceState}
+              workspaceErrorMessage={workspaceErrorMessage}
+              onRetry={onRetry}
+            />
           </div>
         </NavigationProvider>
       </ProfilesProvider>

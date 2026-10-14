@@ -18,3 +18,24 @@ const meta = {
 } satisfies Meta<typeof FileStorageModuleFile>;
 export default meta;
 export const Default: StoryObj<typeof meta> = { args: meta.args };
+
+export const Image: StoryObj<typeof meta> = {
+  args: {
+    file: {
+      id: "reference",
+      name: "Workshop reference.jpg",
+      size: 342 * 1024,
+      text: "",
+      mimeType: "image/jpeg",
+      fileUrl:
+        "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-project-start-v1-square.png",
+    },
+    onMove: () => undefined,
+    onReorder: () => undefined,
+    first: true,
+  },
+};
+export const Sending: StoryObj<typeof meta> = {
+  ...Image,
+  args: { ...Image.args, disabled: true },
+};

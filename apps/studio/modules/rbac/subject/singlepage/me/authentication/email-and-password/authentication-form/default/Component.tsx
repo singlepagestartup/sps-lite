@@ -15,7 +15,6 @@ import {
   twMerge as twMergePresentation,
 } from "tailwind-merge";
 import type IconGlyphs from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { writeRbacStudioAuthUser } from "../../../../../../../shared";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -119,15 +118,7 @@ export function Component(
   const [rememberMe, setRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   function handleSubmit() {
-    if (onSuccess) {
-      onSuccess(email || "sarah@sps.dev");
-      return;
-    }
-    writeRbacStudioAuthUser(email || "sarah@sps.dev");
-    if (typeof window === "undefined") return;
-    const targetHref = submitStoryHref ?? submitHref;
-    const targetWindow = window.top ?? window;
-    targetWindow.location.href = targetHref;
+    onSuccess?.(email);
   }
   return (
     <section

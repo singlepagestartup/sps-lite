@@ -8,20 +8,25 @@ export interface ISubjectProfileCreateProps {
   variant?: string;
   subjectId?: string;
   pending?: boolean;
+  hideBackLink?: boolean;
 }
 export function Component({
   variant = "me-social-module-profile-create-ai-chat",
   subjectId,
   pending,
+  hideBackLink,
 }: ISubjectProfileCreateProps = {}) {
   const { account } = useStudioAccount();
-  const { create, projects, loading, error, retry } = useProfiles();
+  const { create, loading, error, retry } = useProfiles();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const id = useId();
   if (error)
     return (
       <div
+        data-module="rbac"
+        data-model="subject"
+        data-variant={variant}
         role="alert"
         className="mt-8 grid gap-3 rounded-xl border border-destructive-border bg-destructive-surface p-4 text-sm"
       >
@@ -93,16 +98,12 @@ export function Component({
         <WebsiteBuilderModuleFeature variant="icon" name="plus" />
         Create project
       </Button>
-      {projects[0] && (
+      {!hideBackLink && (
         <Button
           appearance="plain"
-          onClick={() =>
-            navigate(
-              `/ai-chat/social/profiles/${encodeURIComponent(projects[0].id)}`,
-            )
-          }
+          onClick={() => navigate("/ai-chat/projects")}
         >
-          Back to my project
+          Back to projects
         </Button>
       )}
     </form>

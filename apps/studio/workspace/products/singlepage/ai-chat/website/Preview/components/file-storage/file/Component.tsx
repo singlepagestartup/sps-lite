@@ -3,7 +3,9 @@ import { Component as Variant0 } from "./singlepage/list/item/pending/ai-chat/in
 import { Component as Variant1 } from "./singlepage/list/attachments/ai-chat/index";
 import { Component as Variant2 } from "./singlepage/list/item/asset/ai-chat/index";
 import { Component as Variant3 } from "./singlepage/overview/ai-chat/index";
+import { Component as AttachmentAiChat } from "./singlepage/attachment/ai-chat";
 const variants = {
+  "attachment-ai-chat": AttachmentAiChat,
   "list-item-pending-ai-chat": Variant0,
   "list-attachments-ai-chat": Variant1,
   "list-item-asset-ai-chat": Variant2,
