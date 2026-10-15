@@ -4,7 +4,7 @@ import { Component as RbacRole } from "@sps/rbac/models/role/frontend/component"
 import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
 import { Component as RbacSubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/frontend/component";
 import { PropsWithChildren } from "react";
-import { Component as Access } from "../admin/Access";
+import { Component as Access } from "../admin/access";
 
 export function Component(props: PropsWithChildren) {
   return (

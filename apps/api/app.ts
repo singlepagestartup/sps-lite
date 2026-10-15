@@ -160,10 +160,10 @@ const revalidationMiddleware = new RevalidationMiddleware();
 app.use(revalidationMiddleware.init());
 
 /**
- * It's not secure, because authorized requests can be cached and served to unauthorized users.
- * But perfomance of the application will rediqulesly increase.
- * Now added "Cache-Control": "no-store" for preventing caching of authorized requests,
- * but it should be added to the request
+ * Construct the invalidator independently of HTTP cache registration: direct
+ * service writes must bump topic versions before Next/WS revalidation, including
+ * when this process does not cache responses. GET caching remains opt-in through
+ * MIDDLEWARE_HTTP_CACHE below; scoped reads also need exclusions or no-store.
  */
 const httpCacheMiddleware = new HTTPCacheMiddleware();
 const publishMutationEffects = createMutationEffectsPublisher({

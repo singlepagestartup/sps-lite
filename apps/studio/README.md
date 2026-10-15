@@ -95,8 +95,9 @@ one model; providers and helpers keep their state-specific entry points.
 
 Each variant owns an `interface.ts` exporting its literal `variant`, public
 `IComponentProps`, payload types and `IComponentPropsExtended`. The view imports
-that contract; its `index.ts` exports the component and types. Model and layer
-interfaces derive the public union from their effective registries, so a startup
+that contract; shared local input fields, when needed, use `IProps`. A view
+imports only the types it uses. Its `index.ts` exports the component and types.
+Model and layer interfaces derive the public union from their effective registries, so a startup
 override replaces both the renderer and the matching props contract. Optional
 arguments on a private view do not make `variant` optional at the public model
 entry. `studio:catalog` preserves authored contracts and requires an owning

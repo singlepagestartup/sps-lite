@@ -4,13 +4,13 @@ import type { IAIChatSource } from "../../../../social/profile/singlepage/scope/
 
 export const variant = "id-sidebar-ai-chat";
 
-export interface IVariantProps {
+export interface IProps {
   variant?: "id-sidebar-ai-chat";
   data: IAIChatSource;
   children?: ReactNode;
 }
 
-type IVariantInputs = NonNullable<IVariantProps>;
+type IVariantInputs = NonNullable<IProps>;
 
 export interface IComponentProps extends Omit<IVariantInputs, "variant"> {
   variant?: "id-sidebar-ai-chat";

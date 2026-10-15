@@ -4,7 +4,7 @@ import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/comp
 import { Component as RbacRole } from "@sps/rbac/models/role/frontend/component";
 import { Component as RbacSubjectsToRoles } from "@sps/rbac/relations/subjects-to-roles/frontend/component";
 import { Component as Dashboard } from "./assets/Dashboard";
-import { Component as Access } from "./Access";
+import { Component as Access } from "./access";
 
 export function Component() {
   return (

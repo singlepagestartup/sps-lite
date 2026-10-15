@@ -1,4 +1,4 @@
-import type { IComponentProps, IVariantProps } from "./interface";
+import type { IComponentProps } from "./interface";
 import { memo } from "react";
 import fixture from "../admin-v2-table/data.json";
 import type { IRecord } from "../admin-v2-table/interface";

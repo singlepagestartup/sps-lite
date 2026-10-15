@@ -152,6 +152,11 @@ async function resolveExternalWidget(props: {
   };
 }
 
+/**
+ * Follow the explicit Widget -> Website Builder content relation. This is one
+ * supported edge in page-preview, not recursive traversal of arbitrary relations.
+ * Other registered relations are available through the relation-record tools.
+ */
 async function findNestedWebsiteWidgets(props: {
   module: string;
   widgetId: string;
@@ -318,6 +323,7 @@ export function filterHostGraphCandidates(props: {
   });
 }
 
+/** Read-only URL lookup through Host's links and one nested WB content edge. */
 export async function resolveHostGraph(
   input: IHostGraphPreviewInput | unknown,
   options?: IHostGraphOptions,

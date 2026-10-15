@@ -1,4 +1,4 @@
-import type { IComponentProps, IVariantProps } from "./interface";
+import type { IComponentProps } from "./interface";
 import Markdown from "markdown-to-jsx";
 import type { ReactNode } from "react";
 import type { IAIChatSource } from "../../../../social/profile/singlepage/scope/ai-chat/project/models";
