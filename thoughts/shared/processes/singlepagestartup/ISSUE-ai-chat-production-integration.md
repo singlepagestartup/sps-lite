@@ -525,3 +525,26 @@ not-found page; auto-review rejected navigating to an existing private thread
 because it might disclose its content. No real forms or AI/support requests
 were submitted, and the viewport was restored. Dev Help remains a browser
 navigation timeout; the corresponding production page passes.
+
+## Document download permission follow-up
+
+The document Thread view composed its Markdown download action with an already
+RBAC-authorized Thread record, but the download child omitted the shared
+reader's props mode. Mounting the action therefore issued a second, global
+`GET /api/social/threads/:id`. The global permission resolver correctly denied
+that route for the ordinary account and displayed a permission toast while
+the scoped Chat and message readers continued to work. This action was missing
+from the earlier no-duplicate-reader regression.
+
+The action now passes `dataSource="props"` to the public Social Thread download
+variant. Its existing RBAC Source reader remains responsible for loading and
+scope. No permission grants, authentication rules or database records change.
+
+The new regression renders the real RBAC index and Social download variant
+through their shared readers. Before the fix, both cases fail on the forbidden
+direct read. After the fix, no Social query or Provider mounts, the exported
+Markdown follows updated scoped Sources, and a denied Source read disables
+download without a direct fallback. RBAC unit: 143 suites / 760 tests pass;
+the existing scoped Thread realtime-refetch regression also passes. Logs:
+`/private/tmp/sps-thread-permission-red.log`,
+`/private/tmp/sps-thread-download-green.log`.

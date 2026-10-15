@@ -46,6 +46,7 @@ export function Component(props: IComponentPropsExtended) {
       isServer={false}
       variant="download-ai-chat"
       data={thread}
+      dataSource="props"
       onDownload={download}
       pending={sources.isPending || !!sources.error}
     />
