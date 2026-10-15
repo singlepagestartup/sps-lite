@@ -1,6 +1,5 @@
 "use client";
 import { memo } from "react";
-import { api } from "@sps/ecommerce/models/order/sdk/client";
 import { Component as ReceiptRelations } from "@sps/ecommerce/relations/orders-to-file-storage-module-files/frontend/component";
 import { Component as File } from "@sps/file-storage/models/file/frontend/component";
 import { Icon } from "@sps/ui-adapter";
@@ -10,20 +9,8 @@ import type { IComponentPropsExtended } from "./interface";
 export const Component = memo(function Component(
   props: IComponentPropsExtended,
 ) {
-  const totals = api.total({
-    id: props.data.id,
-    reactQueryOptions: {
-      meta: {
-        topics: [
-          "ecommerce.orders",
-          "ecommerce.orders-to-products",
-          "ecommerce.products",
-        ],
-      },
-    },
-  });
   const currencies = new Map<string, { amount: number; label: string }>();
-  totals.data?.forEach(({ total, billingModuleCurrency }) => {
+  props.totals?.forEach(({ total, billingModuleCurrency }) => {
     const previous = currencies.get(billingModuleCurrency.id);
     currencies.set(billingModuleCurrency.id, {
       amount: (previous?.amount ?? 0) + total,
@@ -59,9 +46,9 @@ export const Component = memo(function Component(
       </div>
       <div className="flex flex-wrap items-center gap-4">
         <span className="text-sm font-semibold">
-          {totals.isPending
+          {props.totalsPending
             ? "Loading total…"
-            : totals.isError || !currencies.size
+            : props.totalsError || !currencies.size
               ? "Total unavailable"
               : Array.from(currencies, ([id, value]) => (
                   <span key={id} className="block">

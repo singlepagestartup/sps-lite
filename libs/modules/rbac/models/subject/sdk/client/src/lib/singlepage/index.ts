@@ -1,5 +1,10 @@
 "use client";
 import {
+  action as socialModuleProfileProjects,
+  type IProps as ISocialModuleProfileProjectsProps,
+  type IResult as ISocialModuleProfileProjectsResult,
+} from "./social-module/profile/projects";
+import {
   request as identityChangeEmailRequest,
   verify as identityChangeEmailVerify,
 } from "./identity/change-email";
@@ -425,6 +430,7 @@ export type IProps = {
   ISocialModuleProfileFindByIdUpdateProps: ISocialModuleProfileFindByIdUpdateProps;
   ISocialModuleProfileCreateProps: ISocialModuleProfileCreateProps;
   ISocialModuleProfileFindProps: ISocialModuleProfileFindProps;
+  ISocialModuleProfileProjectsProps: ISocialModuleProfileProjectsProps;
   ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdateProps: ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdateProps;
   ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFindProps: ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFindProps;
   IAuthenticationInitProps: IAuthenticationInitProps;
@@ -511,6 +517,7 @@ export type IResult = {
   ISocialModuleProfileFindByIdUpdateResult: ISocialModuleProfileFindByIdUpdateResult;
   ISocialModuleProfileCreateResult: ISocialModuleProfileCreateResult;
   ISocialModuleProfileFindResult: ISocialModuleProfileFindResult;
+  ISocialModuleProfileProjectsResult: ISocialModuleProfileProjectsResult;
   ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdateResult: ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdateResult;
   ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFindResult: ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFindResult;
   IAuthenticationInitResult: IAuthenticationInitResult;
@@ -669,6 +676,7 @@ export const api = {
   socialModuleProfileFindByIdChatFindByIdActionFind,
   billingModuleBalance,
   socialModuleProfileFind,
+  socialModuleProfileProjects,
   socialModuleProfileCreate,
   socialModuleProfileFindByIdUpdate,
   socialModuleProfileFindByIdAvatarFind,

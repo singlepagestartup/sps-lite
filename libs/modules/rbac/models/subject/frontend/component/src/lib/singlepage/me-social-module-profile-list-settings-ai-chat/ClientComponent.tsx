@@ -1,15 +1,11 @@
 "use client";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
-  const profiles = api.socialModuleProfileFind({
-    id: props.data.id,
-    params: {
-      filters: { and: [{ column: "variant", method: "eq", value: "default" }] },
-    },
-    reactQueryOptions: { retry: false },
-  });
+  const profiles = {
+    ...props.profilesRead,
+    refetch: props.profilesRead.refetch || (() => window.location.reload()),
+  };
   if (profiles.isError)
     return (
       <div role="alert" className="space-y-3 text-sm">

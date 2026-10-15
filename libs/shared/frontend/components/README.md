@@ -106,3 +106,14 @@ variants use `singlepage/subject-default`. Collection variants use
 `ClientComponent.tsx`, with explicit public props and JSX slots. SDK objects and
 reader implementation props do not belong to that view's client props. AI Chat
 variants use the same shared readers as the other model variants.
+
+When additional or specialized SDK requests cannot be expressed through the
+shared reader, a variant may use local `client.tsx` and `server.tsx`. Keep
+`interface.ts`, `index.tsx`, `Component.tsx` and optional
+`ClientComponent.tsx` in their existing roles. Type the SDK inputs and loaded
+results, preserve one Provider/loading owner, and register the variant and its
+public props in the owning layer's `variants.ts` and `interface.ts` union.
+
+The [frontend component contract](../../../../.agents/contracts/engineering/frontend-components.md)
+defines reader specialization, client boundaries and the React Query /
+`globalActionsStore` / realtime responsibilities for implementation and review.

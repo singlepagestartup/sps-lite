@@ -2,20 +2,15 @@
 import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
 import { clientHost } from "@sps/rbac/models/subject/sdk/model";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
 import { Component as Messages } from "@sps/social/models/message/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
-  const messages =
-    api.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind({
-      id: props.data.id,
-      socialModuleProfileId: props.project.requesterProfileId,
-      socialModuleChatId: props.project.chat.id,
-      socialModuleThreadId: props.thread.id,
-      reactQueryOptions: { refetchInterval: 5000 },
-    });
+  const messages = {
+    ...props.messagesRead,
+    refetch: props.messagesRead.refetch || (() => window.location.reload()),
+  };
   if (messages.error)
     return (
       <p role="alert" className="p-4 text-destructive">

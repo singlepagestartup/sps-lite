@@ -23,11 +23,11 @@ export function action(props: IProps) {
     ...props.reactQueryOptions,
     queryKey: [key],
     meta: {
-      ...props.reactQueryOptions?.meta,
       topics: [
         "social.profiles-to-file-storage-module-files",
         "file-storage.files",
       ],
+      ...props.reactQueryOptions?.meta,
     },
     queryFn: () =>
       api.socialModuleProfileFindByIdAvatarFind({

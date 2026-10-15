@@ -10,6 +10,7 @@ const widgets = [{ id: "website-widget", variant: "landing-ai-chat" }];
 const widgetReads = jest.fn();
 const widgetRenders = jest.fn();
 const subjectCalls = jest.fn();
+const projectWidgetCalls = jest.fn();
 let authenticated = true;
 jest.mock("./widget/singlepage/navbar-default", () => ({
   Component: () => null,
@@ -44,7 +45,13 @@ jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   },
 }));
 jest.mock("@sps/rbac/models/widget/frontend/component", () => ({
-  Component: () => {
+  Component: (props: any) => {
+    if (props.variant === "find")
+      return props.children({ data: [{ id: "project-widget" }] });
+    if (props.variant === "subject-me-social-module-profile-create-ai-chat") {
+      projectWidgetCalls(props);
+      return <section aria-label="Project chooser" />;
+    }
     throw new Error(
       "Public Website Builder content must not render an RBAC Widget wrapper",
     );
@@ -96,6 +103,22 @@ beforeEach(() => {
   widgetReads.mockClear();
   widgetRenders.mockClear();
   subjectCalls.mockClear();
+  projectWidgetCalls.mockClear();
+});
+it("gives the chooser the original content Widget without mounting an empty Website Builder shell", () => {
+  widgets[0].variant = "content-ai-chat-profile-create";
+  const html = renderToStaticMarkup(
+    <Component {...props} url="/ai-chat/projects" />,
+  );
+  expect(html).toContain('aria-label="Project chooser"');
+  expect(widgetRenders).not.toHaveBeenCalled();
+  expect(projectWidgetCalls).toHaveBeenCalledWith(
+    expect.objectContaining({
+      data: { id: "project-widget" },
+      language: "en",
+      projectCreateWidget: widgets[0],
+    }),
+  );
 });
 it("composes the Social demo into the persisted Website Builder Landing through Host's child slot", () => {
   widgets[0].variant = "landing-ai-chat";

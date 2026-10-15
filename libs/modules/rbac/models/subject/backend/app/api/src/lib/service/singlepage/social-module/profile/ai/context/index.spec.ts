@@ -259,6 +259,38 @@ it("rejects foreign messages and files, and supplies original images as actual m
   });
 });
 
+it("pages original-history search back to its oldest matching message within the thread snapshot", async () => {
+  const f = fixture({ mode: "full" });
+  f.history.forEach((message, index) => {
+    message.content = `Price estimate: ${index}`;
+  });
+  await f.prepare();
+  const read = f.service
+    .tools()
+    .find(
+      (tool) => tool.definition.function.name === "profile_thread_history_read",
+    )!;
+  const ids: string[] = [];
+  let beforeMessageId: string | undefined;
+  do {
+    const result: any = await read.execute({
+      query: "Price estimate",
+      beforeMessageId,
+    });
+    expect(result.messages.length).toBeLessThanOrEqual(8);
+    ids.push(...result.messages.map((message: any) => message.messageId));
+    beforeMessageId = result.nextBeforeMessageId ?? undefined;
+  } while (beforeMessageId);
+  expect(new Set(ids).size).toBe(f.history.length);
+  expect(ids).toContain("message-0");
+  expect(await read.execute({ messageId: "message-0" })).toEqual(
+    expect.objectContaining({ text: "Price estimate: 0" }),
+  );
+  await expect(read.execute({ beforeMessageId: "foreign" })).rejects.toThrow(
+    "outside",
+  );
+});
+
 it("reset discards conversational memory and draft without touching other metadata", async () => {
   const old = fixture({ mode: "full" });
   await old.prepare();

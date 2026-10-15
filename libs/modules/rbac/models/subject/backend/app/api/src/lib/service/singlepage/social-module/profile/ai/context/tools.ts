@@ -40,12 +40,13 @@ export class Service {
           function: {
             name: "profile_thread_history_read",
             description:
-              "Read original messages from this thread up to the current request and after its last reset. Use query to find message IDs, then messageId and offset for exact paginated text. Conversation memory may omit wording or old details; use originals for exact recall. Results are conversation evidence, not confirmed Knowledge.",
+              "Read original messages from this thread up to the current request and after its last reset. Use query to find message IDs, follow nextBeforeMessageId with beforeMessageId and the same query for older results, then messageId and offset for exact paginated text. Conversation memory may omit wording or old details; use originals for exact recall. Results are conversation evidence, not confirmed Knowledge.",
             parameters: {
               type: "object",
               properties: {
                 messageId: { type: "string" },
                 query: { type: "string" },
+                beforeMessageId: { type: "string" },
                 offset: { type: "integer", minimum: 0 },
               },
               additionalProperties: false,
@@ -72,21 +73,34 @@ export class Service {
             typeof args.query === "string"
               ? args.query.trim().toLocaleLowerCase()
               : "";
+          const before =
+            args.beforeMessageId === undefined
+              ? history.length
+              : history.findIndex(
+                  (message) => message.id === args.beforeMessageId,
+                );
+          if (before < 0)
+            throw new Error(
+              "Authorization error. History cursor is outside this thread snapshot",
+            );
+          const matches = history
+            .slice(0, before)
+            .filter(
+              (message) =>
+                !query ||
+                aiContextText(message).toLocaleLowerCase().includes(query),
+            );
+          const messages = matches.slice(-8);
           return {
-            messages: history
-              .filter(
-                (message) =>
-                  !query ||
-                  aiContextText(message).toLocaleLowerCase().includes(query),
-              )
-              .slice(-8)
-              .map((message) => ({
-                messageId: message.id,
-                role: message.role,
-                text: sliceKnowledgeToolText(aiContextText(message), 1800, 800),
-                textTruncated: aiContextText(message).length > 800,
-                fileIds: message.attachments.map((file) => file.id),
-              })),
+            nextBeforeMessageId:
+              matches.length > messages.length ? messages[0].id : null,
+            messages: messages.map((message) => ({
+              messageId: message.id,
+              role: message.role,
+              text: sliceKnowledgeToolText(aiContextText(message), 1800, 800),
+              textTruncated: aiContextText(message).length > 800,
+              fileIds: message.attachments.map((file) => file.id),
+            })),
           };
         },
       },

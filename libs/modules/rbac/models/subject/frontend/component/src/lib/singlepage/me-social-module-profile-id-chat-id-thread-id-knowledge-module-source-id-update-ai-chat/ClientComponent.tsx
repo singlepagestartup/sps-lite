@@ -48,12 +48,10 @@ const SourceFile = memo(function SourceFile({
     </li>
   );
 });
-export const Component = memo(function Component({
-  data,
-  project,
-  source,
-  onDiscuss,
-}: IComponentPropsExtended) {
+export const Component = memo(function Component(
+  props: IComponentPropsExtended,
+) {
+  const { data, project, source, onDiscuss } = props;
   const [expanded, setExpanded] = useState(false);
   const [removingId, setRemovingId] = useState<string | null>(null);
   const [fileError, setFileError] = useState("");
@@ -79,10 +77,10 @@ export const Component = memo(function Component({
     api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
       {},
     );
-  const attachments =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
-      { ...scope, knowledgeModuleSourceId: source.id },
-    );
+  const attachments = {
+    ...props.attachmentsRead,
+    refetch: props.attachmentsRead.refetch || (() => window.location.reload()),
+  };
   const discuss = useCallback(
     () => onDiscuss(source.id),
     [onDiscuss, source.id],

@@ -38,6 +38,10 @@ export function action(props: { onSuccess?: (result: IResult) => void }) {
           result.source.id,
           result.source,
         );
+        queryClient.setQueriesData(
+          { queryKey: [`/api/knowledge/sources/${result.source.id}`] },
+          result.source,
+        );
         for (const query of queryClient.getQueryCache().findAll({
           predicate: (query) => {
             const key = query.queryKey[0];

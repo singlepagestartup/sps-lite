@@ -1,5 +1,4 @@
 "use client";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
@@ -13,10 +12,10 @@ import {
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
-  const threads = api.socialModuleChatFindByIdThreadFind({
-    id: props.data.id,
-    socialModuleChatId: project.chat.id,
-  });
+  const threads = {
+    ...props.threadsRead,
+    refetch: props.threadsRead.refetch || (() => window.location.reload()),
+  };
   const documents = AI_CHAT_DOCUMENTS.flatMap((definition) =>
     (threads.data || []).filter((thread) => {
       const document = getAIChatDocument(thread.metadata);

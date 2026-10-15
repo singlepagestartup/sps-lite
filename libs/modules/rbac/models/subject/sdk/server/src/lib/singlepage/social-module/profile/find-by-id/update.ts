@@ -19,16 +19,26 @@ export interface IProps {
 }
 export type IResult = IModel;
 export async function action(props: IProps): Promise<IResult> {
+  const incoming = props.options?.headers;
+  const headers = new Headers();
+  if (Array.isArray(incoming)) {
+    for (const [name, value] of incoming) headers.append(name, value);
+  } else if (incoming && typeof incoming.forEach === "function") {
+    incoming.forEach((value: string, name: string) =>
+      headers.append(name, value),
+    );
+  } else {
+    for (const [name, value] of Object.entries(incoming ?? {}))
+      headers.set(name, typeof value === "string" ? value : value.join(", "));
+  }
+  headers.set("content-type", "application/json");
   const res = await fetch(
     `${props.host || serverHost}${route}/${props.id}/social-module/profiles/${props.socialModuleProfileId}`,
     {
       ...props.options,
       credentials: "include",
       method: "PATCH",
-      headers: {
-        ...props.options?.headers,
-        "content-type": "application/json",
-      },
+      headers,
       body: JSON.stringify({ data: props.data }),
     },
   );

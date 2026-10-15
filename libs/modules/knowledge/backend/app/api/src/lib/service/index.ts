@@ -93,6 +93,10 @@ export class KnowledgeService {
       });
   }
 
+  async sourceFiles(sourceId: string) {
+    return this.repository.sourceFiles(sourceId);
+  }
+
   async updateSource(props: {
     sourceId: string;
     title?: string;
@@ -101,23 +105,17 @@ export class KnowledgeService {
     expectedContentHash?: string;
     fileIds?: string[];
   }) {
-    const source = await this.repository.updateSource(props);
+    const updated = await this.repository.updateSourceWithAttachments(props);
+    const source = updated?.source;
     if (!source)
       throw new Error(`Knowledge Source ${props.sourceId} was not found.`);
     let processingError: string | undefined;
-    if (props.fileIds?.length) {
-      const current = await this.repository.sourceFiles(source.id);
-      const newIds = props.fileIds.filter(
-        (id) => !current.some((item) => item.file.id === id),
-      );
-      if (newIds.length) {
-        await this.repository.attachFiles(source.id, newIds);
-        try {
-          await this.rebuildFiles(source.id);
-        } catch (error) {
-          processingError =
-            error instanceof Error ? error.message : String(error);
-        }
+    if (updated?.attachmentsChanged) {
+      try {
+        await this.rebuildFiles(source.id);
+      } catch (error) {
+        processingError =
+          error instanceof Error ? error.message : String(error);
       }
     }
     let indexError: string | undefined;

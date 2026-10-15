@@ -20,7 +20,7 @@ RBAC widgets provide reusable content blocks for access and account flows.
 ## Variants
 
 - `subject-me-profile-settings`: account sections composed from separate Subject Profile, avatar, Identity and purchase components.
-- `subject-me-social-module-profile-create-ai-chat`: authenticated Profile creation form for the Website Builder project card.
+- `subject-me-social-module-profile-create-ai-chat`: authenticated project chooser and creation flow. Host passes the persisted Website Builder creation Widget as `projectCreateWidget`. The chooser renders project links; Create project opens the original `content-ai-chat-profile-create` card with its photograph, copy and Subject form. Back to projects returns to the chooser.
 - `subject-me-social-module-profile-id-settings-ai-chat`: project settings for explicit Profile/Chat IDs supplied by Host.
 - `subject-me-social-module-profile-id-chat-id-thread-create-ai-chat`: Thread creation within a selected, connected project.
 - `subject-me-social-module-profile-id-chat-id-thread-id-ai-chat`: connected-project guard and Social Profile → Chat → Thread composition. Subject components provide messages, composer, Knowledge editors and document export.

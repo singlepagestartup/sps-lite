@@ -10,6 +10,7 @@ export interface IAuthenticationContent {
   aside: { title: string; paragraphs: string[] };
 }
 export interface IAuthenticationContentProps {
+  language?: string;
   content?: IAuthenticationContent;
   children?: ReactNode;
   media?: "cover" | "stack";

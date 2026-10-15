@@ -126,13 +126,6 @@ const Attachment = memo(function Attachment(props: IAttachmentProps) {
 
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
-  const scope = {
-    id: props.data.id,
-    socialModuleProfileId: project.requesterProfileId,
-    socialModuleChatId: project.chat.id,
-    targetSocialModuleProfileId: project.profile.id,
-  };
-
   const messageScope = {
     id: props.data.id,
     socialModuleProfileId: project.requesterProfileId,
@@ -141,10 +134,10 @@ export function Component(props: IComponentPropsExtended) {
   };
   const document = getAIChatDocument(props.thread.metadata);
   const isDocument = document?.profileId === project.profile.id;
-  const sources =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
-      { ...scope, reactQueryOptions: { enabled: isDocument } },
-    );
+  const sources = {
+    ...props.sourcesRead,
+    refetch: props.sourcesRead.refetch || (() => window.location.reload()),
+  };
   const documentSources =
     document?.profileId === project.profile.id
       ? (sources.data || []).filter((source) =>

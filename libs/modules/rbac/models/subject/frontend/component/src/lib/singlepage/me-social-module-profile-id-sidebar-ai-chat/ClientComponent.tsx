@@ -3,12 +3,11 @@ import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
 import { clientHost } from "@sps/rbac/models/subject/sdk/model";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
 import { findProjectProfile } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
 import { Component as Skill } from "@sps/social/models/skill/frontend/component";
 import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
 import { Component as File } from "@sps/file-storage/models/file/frontend/component";
-import type { IComponentPropsExtended } from "./interface";
+import type { IComponentPropsExtended, ISourceFilesProps } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   const scope = {
@@ -16,22 +15,10 @@ export function Component(props: IComponentPropsExtended) {
     socialModuleProfileId: props.project.requesterProfileId,
     socialModuleChatId: props.project.chat.id,
   };
-  const profiles =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFind(scope);
+  const profiles = props.profilesRead;
   const profile = profiles.data?.find((item) => item.id === props.profileId);
-  const target = {
-    ...scope,
-    targetSocialModuleProfileId: props.profileId,
-    reactQueryOptions: {
-      enabled: !!profile && profile.variant === "artificial-intelligence",
-    },
-  };
-  const skills =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(target);
-  const knowledge =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
-      target,
-    );
+  const skills = props.skillsRead;
+  const knowledge = props.knowledgeRead;
   if (profiles.isPending)
     return (
       <p role="status" className="p-4">
@@ -152,12 +139,7 @@ export function Component(props: IComponentPropsExtended) {
               },
             }}
           >
-            <SourceFiles
-              subjectId={props.data.id}
-              project={props.project}
-              profileId={profile.id}
-              sourceId={source.id}
-            />
+            {props.sourceFiles?.[source.id]}
           </Source>
         ))
       ) : (
@@ -166,30 +148,14 @@ export function Component(props: IComponentPropsExtended) {
     </Profile>
   );
 }
-interface ISourceFilesProps {
-  subjectId: string;
-  project: IComponentPropsExtended["project"];
-  profileId: string;
-  sourceId: string;
-}
-function SourceFiles(props: ISourceFilesProps) {
-  const files =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
-      {
-        id: props.subjectId,
-        socialModuleProfileId: props.project.requesterProfileId,
-        socialModuleChatId: props.project.chat.id,
-        targetSocialModuleProfileId: props.profileId,
-        knowledgeModuleSourceId: props.sourceId,
-      },
-    );
+export function SourceFiles({ files, error }: ISourceFilesProps) {
   return (
     <div className="mt-3 space-y-2 border-t border-border pt-3">
       <p className="text-xs text-muted-foreground">
-        Files · {files.data?.length || 0}
+        Files · {files?.length || 0}
       </p>
-      {files.error && <p role="alert">{files.error.message}</p>}
-      {files.data?.map(({ file }) => (
+      {error && <p role="alert">{error}</p>}
+      {files?.map(({ file }) => (
         <File
           key={file.id}
           isServer={false}

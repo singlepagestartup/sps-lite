@@ -1,3 +1,9 @@
+/**
+ * BDD Suite: Knowledge Source transaction consistency.
+ * Given: saved Sources, attachment links and indexed chunks in PostgreSQL.
+ * When: content, attachments or derived records change.
+ * Then: concurrent validation and partial failures preserve a consistent Source.
+ */
 import { KnowledgeRepository } from "./repository";
 import {
   getDrizzle,
@@ -50,6 +56,125 @@ afterEach(() => {
 });
 
 describe("Knowledge Source transactions", () => {
+  it("reuses one Source across concurrent preserved upserts of the same document slug", async () => {
+    const slug = `knowledge-concurrent-document-${randomUUID()}`;
+    const saved = await Promise.all(
+      Array.from({ length: 6 }, async (_, index) => {
+        const item = await repository.upsertSourceBySlug(
+          {
+            slug,
+            title: "Concurrent document",
+            content: `Confirmed draft ${index}`,
+          },
+          true,
+        );
+        if (item && !sourceIds.includes(item.id)) sourceIds.push(item.id);
+        return item;
+      }),
+    );
+    expect(new Set(saved.map((item) => item!.id)).size).toBe(1);
+    expect(new Set(saved.map((item) => item!.content)).size).toBe(1);
+    const rows = await db
+      .select()
+      .from(SourceTable)
+      .where(eq(SourceTable.slug, slug));
+    expect(rows).toHaveLength(1);
+    expect(rows[0].id).toBe(saved[0]!.id);
+  });
+
+  it("preserves confirmed content and index when a staged attachment was deleted", async () => {
+    const current = await source("Original confirmed notes");
+    await repository.publishChunks(current.id, current.contentHash, [
+      chunk(current.content),
+    ]);
+    const before = await repository.findSourceById(current.id);
+    const files = await db
+      .insert(FileTable)
+      .values(
+        [0, 1].map((index) => ({
+          file: `/staged-${index}.txt`,
+          adminTitle: "Staged",
+          alt: "Staged",
+          slug: `knowledge-staged-${randomUUID()}`,
+          extension: "txt",
+          mimeType: "text/plain",
+          size: 3,
+          width: 0,
+          height: 0,
+        })),
+      )
+      .returning();
+    fileIds.push(...files.map((file) => file.id));
+    await db.delete(FileTable).where(eq(FileTable.id, files[1].id));
+    await expect(
+      repository.updateSource({
+        sourceId: current.id,
+        title: "Changed title",
+        content: "Changed notes",
+        expectedContentHash: before!.contentHash,
+        fileIds: files.map((file) => file.id),
+      }),
+    ).rejects.toMatchObject({
+      message: "Stored file was not found.",
+      code: "KNOWLEDGE_FILES_NOT_FOUND",
+      fileIds: [files[1].id],
+    });
+    const after = await repository.findSourceById(current.id);
+    expect(after).toEqual(before);
+    expect(await repository.sourceFiles(current.id)).toEqual([]);
+    expect(
+      (
+        await repository.searchChunks({
+          embedding: vector,
+          topK: 5,
+          sourceIds: [current.id],
+        })
+      ).map((item) => item.text),
+    ).toEqual([current.content]);
+  });
+
+  it("commits notes and appended attachments together and preserves notes through invalidation", async () => {
+    const current = await source("Old notes");
+    const [file] = await db
+      .insert(FileTable)
+      .values({
+        file: "/atomic.txt",
+        adminTitle: "Atomic",
+        alt: "Atomic",
+        slug: `knowledge-atomic-${randomUUID()}`,
+        extension: "txt",
+        mimeType: "text/plain",
+        size: 3,
+        width: 0,
+        height: 0,
+      })
+      .returning();
+    fileIds.push(file.id);
+    const updated = await repository.updateSourceWithAttachments({
+      sourceId: current.id,
+      content: "New confirmed notes",
+      expectedContentHash: current.contentHash,
+      fileIds: [file.id, file.id],
+    });
+    expect(updated?.attachmentsChanged).toBe(true);
+    expect(updated?.source.content).toBe("New confirmed notes");
+    expect(updated?.source.contentHash).toBe(
+      hashContent("New confirmed notes"),
+    );
+    expect(updated?.source.indexedContentHash).toBeNull();
+    expect(
+      (await repository.sourceFiles(current.id)).map((item) => item.file.id),
+    ).toEqual([file.id]);
+    expect(
+      (
+        await repository.updateSourceWithAttachments({
+          sourceId: current.id,
+          content: "New confirmed notes",
+          fileIds: [file.id],
+        })
+      )?.attachmentsChanged,
+    ).toBe(false);
+  });
   it("isolates profile scopes and excludes the old index immediately after a content edit", async () => {
     const first = await source("Первый текст"),
       second = await source("Второй текст");

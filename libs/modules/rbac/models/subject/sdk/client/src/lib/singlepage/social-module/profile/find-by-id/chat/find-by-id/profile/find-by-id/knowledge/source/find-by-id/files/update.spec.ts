@@ -35,6 +35,8 @@ it("updates owner-scoped Knowledge and Files caches immediately while keeping re
     [{ id: "source", content: "Other scope" }],
   );
   const other = queryClient.getQueryData([otherKey]);
+  const detailKey = ["/api/knowledge/sources/source", undefined];
+  queryClient.setQueryData(detailKey, { id: "source", content: "Old content" });
   const result = {
     source: {
       id: "source",
@@ -60,6 +62,7 @@ it("updates owner-scoped Knowledge and Files caches immediately while keeping re
     result.files,
   );
   expect(queryClient.getQueryData([otherKey])).toBe(other);
+  expect(queryClient.getQueryData(detailKey)).toEqual(result.source);
   expect(addAction).toHaveBeenCalledWith(
     expect.objectContaining({
       type: "mutation",

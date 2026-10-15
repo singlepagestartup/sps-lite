@@ -1,4 +1,12 @@
+/**
+ * BDD Suite: Studio catalog generation.
+ * Given: model schemas and authored flat or nested component variants.
+ * When: the catalog rebuilds local records and public variant registries.
+ * Then: authored variants and startup overrides remain available to consumers.
+ */
 import { afterEach, expect, test } from "bun:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import {
   existsSync,
   mkdtempSync,
@@ -190,6 +198,45 @@ test("assembling keeps variant aliases, startup overrides and authored files", (
       "...singlepageVariants",
     ),
   );
+});
+
+test("reassembling nested variants preserves custom keys and startup rendering", async () => {
+  const directory = mkdtempSync(path.join(tmpdir(), "studio-nested-entries-"));
+  temporary.push(directory);
+  for (const layer of ["singlepage", "startup"]) {
+    const selector = path.join(directory, layer, "agent/select/ai-chat");
+    mkdirSync(selector, { recursive: true });
+    writeFileSync(
+      path.join(selector, "Component.tsx"),
+      `export function Component() { return ${JSON.stringify(layer)}; }`,
+    );
+    writeFileSync(
+      path.join(directory, layer, "variants.ts"),
+      'import { Component as Selector } from "./agent/select/ai-chat/Component.tsx"; export const variants = { "choose-agent": Selector };',
+    );
+  }
+  const sidebar = path.join(directory, "singlepage/sidebar/ai-chat/project");
+  mkdirSync(sidebar, { recursive: true });
+  writeFileSync(
+    path.join(sidebar, "Component.tsx"),
+    'export function Component() { return "project sidebar"; }',
+  );
+  for (let iteration = 0; iteration < 2; iteration++) {
+    assembleEntity(directory);
+    const { variants } = await import(
+      path.join(directory, "variants.ts") + `?iteration=${iteration}`
+    );
+    expect(Object.keys(variants).sort()).toEqual([
+      "choose-agent",
+      "sidebar-ai-chat-project",
+    ]);
+    expect(renderToStaticMarkup(createElement(variants["choose-agent"]))).toBe(
+      "startup",
+    );
+    expect(
+      renderToStaticMarkup(createElement(variants["sidebar-ai-chat-project"])),
+    ).toBe("project sidebar");
+  }
 });
 
 test("scaffolding preserves authored data and UI and skips relations and Telegram", async () => {

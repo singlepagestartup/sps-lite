@@ -12,6 +12,8 @@ import {
   type IResult as IParentResult,
 } from "@sps/rbac/models/subject/sdk/server";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
+import { queryClient, subscription } from "@sps/shared-frontend-client-api";
+import { useEffect } from "react";
 
 export type IProps = IParentProps["IAuthenticationMeProps"] & {
   subjectId?: string;
@@ -21,8 +23,12 @@ export type IProps = IParentProps["IAuthenticationMeProps"] & {
 export type IResult = IParentResult["IAuthenticationMeResult"];
 
 export function action(props: IProps) {
+  const queryKey = `${route}/authentication/me`;
+  const { meta, ...reactQueryOptions } = props.reactQueryOptions ?? {};
+  useEffect(() => subscription(queryKey, queryClient), [queryKey]);
   return useQuery<IResult>({
-    queryKey: [`${route}/authentication/me`, props.subjectId],
+    queryKey: [queryKey, props.subjectId],
+    meta: { topics: ["rbac.subjects"], ...meta },
     queryFn: async () => {
       try {
         const result = await api.authenticationMe({
@@ -54,6 +60,6 @@ export function action(props: IProps) {
       return data;
     },
     staleTime: STALE_TIME,
-    ...(props ? props.reactQueryOptions : {}),
+    ...reactQueryOptions,
   });
 }

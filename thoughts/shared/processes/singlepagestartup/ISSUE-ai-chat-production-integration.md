@@ -230,9 +230,41 @@ Services use the requested `npm run api:dev` and `npm run host:dev` commands on 
 - [Studio parity validation](ai-chat-production-evidence/studio-parity-validation.json)
 - [Validation results](ai-chat-production-evidence/validation.json)
 
+## Code review
+
+Локальная рабочая копия содержит исправления приватного HTTP-кэша, сохранения
+анализа материалов, атомарного подтверждения вложений, client cache keys,
+Knowledge invalidation, lifetime черновиков, locale и pagination истории.
+Каталог Studio сохраняет вложенные варианты, а перенесённый Delete component
+имеет корректный syncKey. Регрессионные проверки и границы подтверждения
+описаны в [отчёте review](../../research/singlepagestartup/2026-10-14-branch-code-review.md).
+
+Бизнес-модуль `libs/modules/telegram` удалён вместе с API/SDK/admin registrations,
+seed/dump и migration targets. Отдельный `apps/telegram` и команды Agent
+сохранены; транспорт проходит 45 unit tests и Bun build. Social управляет
+связями профиля со статьями, Blog не импортирует Social. Подтверждённый порядок
+с Analytic ниже Host и ноль обратных импортов описаны в
+[аудите модулей](../../research/singlepagestartup/2026-10-14-module-order-import-audit.md).
+Общий контракт `.agents/contracts/engineering/module-dependencies.md`
+подключён к `AGENTS.md`, `CLAUDE.md` и workflow review. Все они требуют проверять
+импорты вверх по подтверждённому порядку, включая типы, SDK и UI-композицию.
+Verification gaps находятся в том же аудите.
+
+Повторная проверка по обновлённым правилам закрывает потерю Source ID при
+быстрых сохранениях, устаревшие статусы и гонки подтверждения AI document proposals, detail cache
+keys, metadata/subscription gaps ручных SDK, заголовки Profile update,
+разделение Host lookup keys и HTTP cache динамических URL, aggregate totals
+и raw Studio preview. Knowledge включён в обе scoped pipelines.
+13 Subject variants имеют локальные client/server readers с типизированными
+результатами и прежним владельцем Provider. Named auth form зарегистрирован.
+[Актуальный отчёт](../../research/singlepagestartup/2026-10-15-branch-code-review-followup.md)
+содержит воспроизведения, проверки и оставшиеся границы. Unit для 23 проектов,
+integration для 16, Host TypeScript и browser smoke проходят; общий API
+TypeScript сохраняет 22 диагностики в существовавших в comparison base строках.
+
 ## Verification limits
 
-Registration was inspected without submitting terms acceptance. Password and identity changes were not executed. The purchase list was verified with an empty live history; paid rows, totals and stored receipt links were checked with isolated fixtures. Payment and account deletion were not executed. Commercial billing rules beyond the existing execution route are outside this change.
+Registration was inspected without submitting terms acceptance. Password and identity changes were not executed. The initial purchase smoke used an empty history. The follow-up browser smoke rendered a real paid row; totals and stored receipt links also have isolated fixture coverage. Payment and account deletion were not executed. Commercial billing rules beyond the existing execution route are outside this change.
 
 Repository-wide API type checking is not clean because of existing errors listed above. Host compilation, relevant backend tests and live API/browser scenarios are checked separately.
 
@@ -240,13 +272,14 @@ The default build heap was insufficient for this monorepo; the build uses `NODE_
 
 ## Model reader audit
 
-The AI Chat frontend inventory contains 58 public variants across CRM, Ecommerce,
-Knowledge, RBAC, Social and Website Builder: 31 record readers, 21 current Subject
-readers, one collection reader, one Source creation form and four authentication
-actions. Each record variant binds the model SDK to the shared SPS reader.
-The shared parent owns the Provider, loading state and client/server SDK choice.
-AI Chat variants have no additional local loading wrappers. `Component.tsx`
-renders each view; `ClientComponent.tsx` owns its interactive controls.
+AI Chat record variants bind model SDKs to shared SPS readers. Current Subject
+variants retain the shared Subject reader. The shared parent owns Provider,
+record loading and SDK selection. Thirteen Subject variants and the Ecommerce
+purchase variant use local `client.tsx`/`server.tsx` for additional scoped or
+aggregate SDK reads. Their interfaces describe request scope and loaded SDK
+results; `index.tsx` selects the local reader without duplicating Provider or
+the shared record request. `Component.tsx` renders the view;
+`ClientComponent.tsx` owns interactive controls, mutations and local UI state.
 
 Source `id-ai-chat` requires a saved Source ID; `form-ai-chat` creates a section
 without an ID. Message lists read only the IDs supplied by the scoped RBAC reader.
@@ -259,11 +292,84 @@ through `widgets-to-logotypes`. The landing adapter loads the demonstration Chat
 by slug. The missing local records and logotype links were created through SDKs;
 repository database snapshots and schemas were unchanged. Record IDs are in
 [component-wrapper-records.json](ai-chat-production-evidence/component-wrapper-records.json),
-and the variant inventory is in
+and the initial variant inventory is in
 [component-wrapper-audit.json](ai-chat-production-evidence/component-wrapper-audit.json).
 
-Shared reader implementations match the existing framework code. Model
+Shared readers retain Provider and record-loading ownership. Model
 renderers pass explicit public props into their client views. Host assembles the
 header and Help slots; interactive RBAC compositions create their render
 callbacks on the client. SDK objects and reader implementation props stay out of
 those client view props.
+
+## Project creation card and Host console follow-up
+
+The project chooser preserves the original Website Builder creation card.
+Host passes the persisted content Widget into the RBAC chooser; it does not
+mount a second empty content shell. Create project mounts the registered
+`content-ai-chat-profile-create` variant with the existing Subject form in its
+children slot. The original photograph, heading, caption and materials disclosure
+remain. Back to projects returns to the list. Studio's chooser uses its original
+creation content component for the same state.
+
+The former chooser implementation used a separate narrow form and the
+`appearance="projects"` bypass on the Website Builder card. That path hid the
+photograph and replaced the existing composition. It is removed.
+
+The public RBAC behavior test exercises chooser → original photo card → chooser;
+Host composition checks the persisted content Widget handoff. The live
+`/en/ai-chat/projects` screen renders an existing project link and the original
+creation form without browser warnings/errors. The browser check did not submit
+a new project, change account data or generate AI responses.
+[Restored creation card](ai-chat-production-evidence/project-create-restored-after-chooser.png).
+
+The image generator resolves emitted font file URLs directly. Turbopack adds
+content hashes such as `BlackItalic.bf76eca6.ttf`; that name does not belong in
+`styles/fonts/Primary`. The source-path probe and malformed `HOST + file://`
+request produced ENOENT logs before the previous fallback found the asset.
+The Webpack fallback now reads static media from the active build directory.
+An isolated Next server rendered a real text/italic PNG with HTTP 200 and
+21,964 bytes without font errors.
+
+`Single item size exceeds maxSize` came from Next's development
+`staticPathsCache`, not account creation. Its limit was 5,242,880 bytes and the
+expanded `generateStaticParams` entry was 14,873,511 bytes. Enumerating all
+Host URL masks crossed that limit. `generateStaticParams` now returns an empty
+list in both phases; `dynamicParams = true` preserves normal requested-URL
+resolution. Two requests after hot reload returned 200 without further maxSize
+warnings. The isolated server and its build directory are cleaned up; the
+user's server was not restarted.
+
+Validation: 19 RBAC Widget tests, 38 Host module tests and 3 catch-all route
+regressions pass. Host and Studio TypeScript checks pass. Browser navigation
+between chooser and creation passes without warning/error logs. Registration
+was not repeated. The isolated Node 24 server also logged a pre-existing
+`this.localStorage.getItem is not a function` during page rendering; that
+separate behavior is outside these two fixes.
+
+## Production font URL compatibility
+
+The image generator supports both server build representations. Turbopack
+emits a file URL, read directly. Production Webpack can supply
+`/_next/static/media/<hashed-font>.ttf` through a relative-URL object whose
+protocol is empty. That path maps to the active build's `static/media` file.
+Absolute HTTP URLs retain HTTP loading. Deployment starts Next with `apps/host`
+as its working directory and supplies `.next/static` through its synchronized
+static volume.
+
+The first file-URL correction omitted the relative Webpack representation.
+Its production request returned 404 with `ERR_INVALID_URL` for
+`/_next/static/media/Thin.5071b435.ttf`. Resolving that path before checking the
+protocol fixes the production case without probing hashed names in the source
+font directories.
+
+The corrected full Webpack production build and its type check pass. A separate
+`next start` server returned a 640×360 PNG with Primary bold and Default italic
+text: HTTP 200, 22,401 bytes, no font-loading errors. The dev server returned
+exactly the same PNG bytes; both SHA-256 hashes are
+`2fe617a48701642d9262011cdc61533c2a0340b1afb27c6cff472d450d8cac70`.
+[Production font output](ai-chat-production-evidence/font-production-webpack-verified.png).
+The check used the local production runtime, not a Docker deployment.
+
+The temporary production server and its build directory are removed. The
+pre-check tsconfig is restored, preserving earlier working-copy changes. The
+user's dev server, source font files and deployment configuration are unchanged.

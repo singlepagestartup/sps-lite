@@ -1,5 +1,5 @@
 "use client";
-import { memo, useCallback, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
@@ -29,10 +29,10 @@ export function Component(props: IComponentPropsExtended) {
       project.profile.id,
     ],
   );
-  const sources =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
-      scope,
-    );
+  const sources = {
+    ...props.sourcesRead,
+    refetch: props.sourcesRead.refetch || (() => window.location.reload()),
+  };
   const createSource =
     api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceCreate(
       scope,
@@ -51,23 +51,34 @@ export function Component(props: IComponentPropsExtended) {
     socialModuleChatId: scope.socialModuleChatId,
     socialModuleThreadId: selectedThreadId,
   });
-  const document = getAIChatDocument(thread.metadata);
+  const document = useMemo(
+    () => getAIChatDocument(thread.metadata),
+    [thread.metadata],
+  );
   const prompt = AI_CHAT_DOCUMENTS.find(
     (definition) => definition.key === document?.key,
   )?.prompt;
   const documentRef = useRef(document);
-  documentRef.current = document;
+  useEffect(() => {
+    documentRef.current = document;
+  }, [document]);
   const savedDrafts = useRef(
     new Map<string, ISource & { indexingError?: string }>(),
   );
   const attachQueue = useRef<Promise<unknown>>(Promise.resolve());
-  const [draftIds, setDraftIds] = useState(["initial"]);
+  const [draftIds, setDraftIds] = useState<string[]>([]);
+  const initializedDraft = useRef(false);
   const documentSources =
     document?.profileId === project.profile.id
       ? (sources.data || []).filter((source) =>
           document.sourceIds.includes(source.id),
         )
       : [];
+  useEffect(() => {
+    if (sources.data === undefined || initializedDraft.current) return;
+    initializedDraft.current = true;
+    if (!documentSources.length) setDraftIds(["initial"]);
+  }, [sources.data, documentSources.length]);
   const onDiscuss = props.onDiscuss;
   const saveDraft = useCallback(
     async (
@@ -156,6 +167,20 @@ export function Component(props: IComponentPropsExtended) {
     ],
   );
 
+  if (sources.data === undefined)
+    return sources.error ? (
+      <div role="alert">
+        <p>{sources.error.message}</p>
+        <button type="button" onClick={() => void sources.refetch()}>
+          Retry
+        </button>
+      </div>
+    ) : (
+      <p role="status" aria-busy="true">
+        Loading knowledge sections…
+      </p>
+    );
+
   return (
     <>
       {sources.error && <p role="alert">{sources.error.message}</p>}
@@ -170,17 +195,15 @@ export function Component(props: IComponentPropsExtended) {
           onDiscuss={onDiscuss}
         />
       ))}
-      {draftIds
-        .filter((id) => id !== "initial" || !documentSources.length)
-        .map((id) => (
-          <DraftSource
-            key={id}
-            id={id}
-            title={id === "initial" ? thread.title?.replace(/\.md$/, "") : ""}
-            placeholder={prompt}
-            onSave={saveDraft}
-          />
-        ))}
+      {draftIds.map((id) => (
+        <DraftSource
+          key={id}
+          id={id}
+          title={id === "initial" ? thread.title?.replace(/\.md$/, "") : ""}
+          placeholder={prompt}
+          onSave={saveDraft}
+        />
+      ))}
       <button
         type="button"
         className="flex min-h-10 items-center justify-center gap-2 rounded-xl border border-border text-xs font-semibold"

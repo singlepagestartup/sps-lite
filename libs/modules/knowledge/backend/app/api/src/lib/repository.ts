@@ -11,6 +11,7 @@ import {
   KnowledgeChunkInput,
   KnowledgeSearchResult,
   KnowledgeSourceInput,
+  KnowledgeMissingFilesError,
 } from "./types";
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { FILE_STORAGE_FOLDER, FILE_STORAGE_PROVIDER } from "@sps/shared-utils";
@@ -23,6 +24,16 @@ import { Service as FileService } from "@sps/file-storage/models/file/backend/ap
 import { readUserContext, hashContent } from "./service/utils";
 import fs from "node:fs/promises";
 import path from "node:path";
+
+export interface IUpdateSourceProps {
+  sourceId: string;
+  content?: string;
+  data?: Partial<typeof SourceTable.$inferSelect>;
+  title?: string;
+  description?: string | null;
+  expectedContentHash?: string;
+  fileIds?: string[];
+}
 
 export class KnowledgeRepository {
   private db = getDrizzle({
@@ -92,15 +103,13 @@ export class KnowledgeRepository {
     });
   }
 
-  async updateSource(props: {
-    sourceId: string;
-    content?: string;
-    data?: Partial<typeof SourceTable.$inferSelect>;
-    title?: string;
-    description?: string | null;
-    expectedContentHash?: string;
-  }) {
+  async updateSource(props: IUpdateSourceProps) {
+    return (await this.updateSourceWithAttachments(props))?.source ?? null;
+  }
+
+  async updateSourceWithAttachments(props: IUpdateSourceProps) {
     return this.db.transaction(async (tx) => {
+      await this.lockFiles(tx, props.fileIds ?? []);
       const [source] = await tx
         .select()
         .from(SourceTable)
@@ -113,7 +122,7 @@ export class KnowledgeRepository {
         source.contentHash !== props.expectedContentHash
       )
         return null;
-      return this.sourceCrud(tx).update({
+      const updated = await this.sourceCrud(tx).update({
         id: source.id,
         data: {
           ...source,
@@ -131,6 +140,18 @@ export class KnowledgeRepository {
             : {}),
         },
       });
+      if (!updated)
+        throw new Error(`Knowledge Source ${props.sourceId} was not found.`);
+      const attachmentsChanged = await this.appendSourceFiles(
+        tx,
+        source.id,
+        props.fileIds ?? [],
+      );
+      if (attachmentsChanged) await this.invalidateSources(tx, [updated]);
+      const stored = await this.sourceCrud(tx).findById({ id: source.id });
+      if (!stored)
+        throw new Error(`Knowledge Source ${props.sourceId} was not found.`);
+      return { source: stored, attachmentsChanged };
     });
   }
 
@@ -336,8 +357,17 @@ export class KnowledgeRepository {
       .where(inArray(FileTable.id, ids))
       .orderBy(asc(FileTable.id))
       .for(mode);
-    if (files.length !== ids.length)
-      throw new Error("Stored file was not found.");
+    if (files.length !== ids.length) {
+      const found = new Set(files.map((file) => file.id));
+      const error: KnowledgeMissingFilesError = Object.assign(
+        new Error("Stored file was not found."),
+        {
+          code: "KNOWLEDGE_FILES_NOT_FOUND" as const,
+          fileIds: ids.filter((id) => !found.has(id)),
+        },
+      );
+      throw error;
+    }
   }
 
   private async lockSources(tx: typeof this.db, sourceIds: string[]) {
@@ -465,25 +495,35 @@ export class KnowledgeRepository {
     await this.db.transaction(async (tx) => {
       await this.lockFiles(tx, fileIds);
       const sources = await this.lockSources(tx, [sourceId]);
-      const existing = await tx
-        .select()
-        .from(SourcesToFileStorageModuleFilesTable)
-        .where(eq(SourcesToFileStorageModuleFilesTable.sourceId, sourceId));
-      const attached = new Set(
-        existing.map((relation) => relation.fileStorageModuleFileId),
-      );
-      let orderIndex =
-        Math.max(-1, ...existing.map((relation) => relation.orderIndex)) + 1;
-      let changed = false;
-      for (const fileStorageModuleFileId of [...new Set(fileIds)]) {
-        if (attached.has(fileStorageModuleFileId)) continue;
-        await this.relationCrud(tx).create({
-          data: { sourceId, fileStorageModuleFileId, orderIndex: orderIndex++ },
-        });
-        changed = true;
-      }
+      const changed = await this.appendSourceFiles(tx, sourceId, fileIds);
       if (changed) await this.invalidateSources(tx, sources);
     });
+  }
+
+  private async appendSourceFiles(
+    tx: typeof this.db,
+    sourceId: string,
+    fileIds: string[],
+  ) {
+    if (!fileIds.length) return false;
+    const existing = await tx
+      .select()
+      .from(SourcesToFileStorageModuleFilesTable)
+      .where(eq(SourcesToFileStorageModuleFilesTable.sourceId, sourceId));
+    const attached = new Set(
+      existing.map((relation) => relation.fileStorageModuleFileId),
+    );
+    let orderIndex =
+      Math.max(-1, ...existing.map((relation) => relation.orderIndex)) + 1;
+    let changed = false;
+    for (const fileStorageModuleFileId of [...new Set(fileIds)]) {
+      if (attached.has(fileStorageModuleFileId)) continue;
+      await this.relationCrud(tx).create({
+        data: { sourceId, fileStorageModuleFileId, orderIndex: orderIndex++ },
+      });
+      changed = true;
+    }
+    return changed;
   }
 
   async fileSourceIds(fileId: string) {

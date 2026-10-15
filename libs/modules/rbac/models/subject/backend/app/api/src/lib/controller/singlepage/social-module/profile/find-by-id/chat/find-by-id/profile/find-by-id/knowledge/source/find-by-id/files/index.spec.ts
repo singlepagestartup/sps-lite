@@ -27,6 +27,12 @@ jest.mock("@sps/rbac/models/subject/sdk/server", () => ({
       mockReanalyze,
   },
 }));
+/**
+ * BDD Suite: Scoped Knowledge attachments.
+ * Given: a Source and uploaded or attached files.
+ * When: files are uploaded, removed or reanalyzed.
+ * Then: validated bytes and metadata are preserved and failures retain scope.
+ */
 import { Handler } from "./index";
 function context(body: FormData) {
   return {
@@ -68,6 +74,27 @@ it("rejects SVG uploads before persisting file or Source changes", async () => {
   });
   expect(mockCreateFile).not.toHaveBeenCalled();
   expect(mockSetFiles).not.toHaveBeenCalled();
+});
+it("preserves uploaded text bytes, filename and MIME type across FormData runtimes", async () => {
+  const body = new FormData();
+  body.set(
+    "files",
+    new File(["Original UTF-8 notes: привет"], "notes.txt", {
+      type: "text/plain",
+    }),
+  );
+  mockCreateFile.mockResolvedValue({ id: "uploaded" });
+  await new Handler().execute(context(body));
+  const uploaded = mockCreateFile.mock.calls[0][0].data.file;
+  expect(uploaded.name).toBe("notes.txt");
+  expect(uploaded.type).toBe("text/plain");
+  expect(await uploaded.text()).toBe("Original UTF-8 notes: привет");
+  expect(mockSetFiles).toHaveBeenCalledWith(
+    "source",
+    ["first", "second", "uploaded"],
+    ["first", "second"],
+    undefined,
+  );
 });
 it("unlinks atomically and returns while the scoped background analysis is still running", async () => {
   const body = new FormData();

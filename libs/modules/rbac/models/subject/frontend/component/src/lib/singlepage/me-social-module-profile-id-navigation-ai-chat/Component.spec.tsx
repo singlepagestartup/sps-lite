@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+jest.mock("client-only", () => ({}), { virtual: true });
 import { render, screen } from "@testing-library/react";
 const records = [
   ...["products", "design", "brief", "brand", "strategy"].map((key) => ({
@@ -44,7 +45,7 @@ jest.mock("@sps/social/models/profile/frontend/component", () => ({
 jest.mock("@sps/social/models/thread/frontend/component", () => ({
   Component: (props: any) => <a>{props.data.title}</a>,
 }));
-import { Component } from "./Component";
+import Component from "./client";
 it("orders the five project documents separately from topics and excludes another Profile's documents", () => {
   render(
     <Component

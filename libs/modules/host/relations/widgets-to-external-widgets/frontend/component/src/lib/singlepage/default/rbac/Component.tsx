@@ -73,6 +73,7 @@ export function Component(props: IComponentPropsExtended) {
                       key={frame.id}
                       isServer={props.isServer}
                       variant="content-ai-chat-authentication"
+                      language={props.language}
                       data={frame}
                       {...(entity.variant ===
                       "subject-me-authentication-registration-ai-chat"
@@ -87,6 +88,7 @@ export function Component(props: IComponentPropsExtended) {
                         isServer={props.isServer}
                         data={entity}
                         variant={entity.variant as any}
+                        language={props.language}
                       />
                     </WebsiteWidget>
                   ))

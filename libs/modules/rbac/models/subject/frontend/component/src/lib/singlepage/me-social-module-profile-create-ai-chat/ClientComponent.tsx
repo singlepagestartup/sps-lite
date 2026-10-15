@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import Link from "next/link";
 import { Icon } from "@sps/ui-adapter";
 import { api, queryClient } from "@sps/rbac/models/subject/sdk/client";
@@ -13,6 +14,7 @@ import {
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
+  const pathname = usePathname();
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const [createdProfile, setCreatedProfile] = useState<IProfile | null>(null);
@@ -70,7 +72,7 @@ export function Component(props: IComponentPropsExtended) {
           await queryClient.invalidateQueries({
             queryKey: getProjectsQueryKey(props.data.id),
           });
-          router.push(projectHref(project));
+          router.push(getLocalizedHref(pathname, projectHref(project)));
         } catch (error) {
           setError(
             error instanceof Error ? error.message : "Project creation failed",
@@ -107,7 +109,7 @@ export function Component(props: IComponentPropsExtended) {
       </button>
       {!props.hideBackLink && (
         <Link
-          href="/ai-chat/projects"
+          href={getLocalizedHref(pathname, "/ai-chat/projects")}
           className="rounded-xl py-3 text-center text-sm font-semibold text-muted-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
         >
           Back to projects

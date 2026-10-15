@@ -8,6 +8,10 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 const mockProfilesFind = jest.fn();
 const mockContextsFind = jest.fn();
+jest.mock("client-only", () => ({}), { virtual: true });
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({ refresh: jest.fn() }),
+}));
 jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
   api: {
     socialModuleProfileFind: (props: any) =>
@@ -15,6 +19,12 @@ jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
         queryKey: ["profiles", props.id],
         queryFn: mockProfilesFind,
         initialData: props.reactQueryOptions.initialData,
+      }),
+    socialModuleProfileProjects: (props: any) =>
+      useQuery({
+        queryKey: ["projects", props.id],
+        queryFn: () => mockContextsFind(props),
+        ...props.reactQueryOptions,
       }),
   },
 }));
@@ -25,7 +35,7 @@ jest.mock(
     findProjects: (props: any) => mockContextsFind(props),
   }),
 );
-import { Component } from "./ClientComponent";
+import Component from "./client";
 
 function example(initialProjects?: any[]) {
   const client = new QueryClient({
@@ -102,7 +112,7 @@ it("can retry a failed collection and then show the empty state", async () => {
 });
 
 it("shows a context failure without presenting an empty project collection", async () => {
-  mockProfilesFind.mockResolvedValue([{ id: "profile" }]);
+  mockProfilesFind.mockResolvedValue([{ id: "Existing project" }]);
   mockContextsFind.mockRejectedValue(new Error("Conversation unavailable"));
   example();
   expect(await screen.findByRole("alert")).toBeTruthy();
@@ -111,7 +121,7 @@ it("shows a context failure without presenting an empty project collection", asy
 });
 
 it("renders the loaded projects after resolving their contexts", async () => {
-  mockProfilesFind.mockResolvedValue([{ id: "profile" }]);
+  mockProfilesFind.mockResolvedValue([{ id: "Existing project" }]);
   mockContextsFind.mockResolvedValue([{ profile: { id: "Existing project" } }]);
   example();
   expect(await screen.findByText("Existing project")).toBeTruthy();

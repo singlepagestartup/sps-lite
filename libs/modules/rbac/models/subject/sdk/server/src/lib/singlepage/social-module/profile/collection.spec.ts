@@ -1,5 +1,6 @@
 import { action as find } from "./find";
 import { action as create } from "./create";
+import { action as update } from "./find-by-id/update";
 
 describe("Subject profile REST SDK", () => {
   beforeEach(() => {
@@ -45,4 +46,27 @@ describe("Subject profile REST SDK", () => {
       (global.fetch as jest.Mock).mock.calls[0][1].body.get("data"),
     ).toEqual(JSON.stringify(data));
   });
+  it.each([
+    { Authorization: "Bearer owner" },
+    [["Authorization", "Bearer owner"]],
+    new Headers({ Authorization: "Bearer owner" }),
+  ])(
+    "preserves scoped update authentication for supported header representations %j",
+    async (headers) => {
+      await update({
+        id: "owner",
+        socialModuleProfileId: "profile",
+        data: { title: { en: "New title" } },
+        options: { headers: headers as any },
+      });
+      const options = (global.fetch as jest.Mock).mock.calls[0][1];
+      const sent = new Headers(options.headers);
+      expect(sent.get("Authorization")).toBe("Bearer owner");
+      expect(sent.get("content-type")).toBe("application/json");
+      expect(options.method).toBe("PATCH");
+      expect(JSON.parse(options.body)).toEqual({
+        data: { title: { en: "New title" } },
+      });
+    },
+  );
 });

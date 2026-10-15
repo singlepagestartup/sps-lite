@@ -35,7 +35,7 @@ export class Handler {
       const uploadedIds: string[] = [];
       const uploads = body
         .getAll("files")
-        .filter((value): value is File => value instanceof File);
+        .filter((value) => typeof value !== "string");
       try {
         assertSupportedAiChatAttachments(uploads);
       } catch (error) {
@@ -53,7 +53,14 @@ export class Handler {
         throw new Error("Select files to attach.");
       for (const file of uploads) {
         const saved = await fileApi.create({
-          data: { adminTitle: file.name, alt: file.name, file },
+          data: {
+            adminTitle: file.name,
+            alt: file.name,
+            file: new File([Buffer.from(await file.arrayBuffer())], file.name, {
+              type: file.type,
+              lastModified: file.lastModified,
+            }),
+          },
           options: { headers: { "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY! } },
         });
         uploadedIds.push(saved.id);

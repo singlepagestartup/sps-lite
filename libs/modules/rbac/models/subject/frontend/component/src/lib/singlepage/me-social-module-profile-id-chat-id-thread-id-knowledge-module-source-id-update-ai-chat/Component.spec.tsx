@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+jest.mock("client-only", () => ({}), { virtual: true });
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 const removeFile = jest.fn();
 const attachments = Array.from({ length: 13 }, (_, index) => ({
@@ -25,7 +26,7 @@ jest.mock("@sps/knowledge/models/source/frontend/component", () => ({
 jest.mock("@sps/file-storage/models/file/frontend/component", () => ({
   Component: ({ data }: any) => <a href={data.file}>{data.adminTitle}</a>,
 }));
-import { Component } from "./Component";
+import Component from "./client";
 const props = {
   data: { id: "subject" },
   project: {

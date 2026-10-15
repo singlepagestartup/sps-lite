@@ -61,7 +61,8 @@ export function action(props: IProps) {
         throw error;
       }
     },
-    onSuccess(data, variables, context) {
+    async onSuccess(...args) {
+      const [data, variables] = args;
       const collectionRoute = `${route}/${variables.id}/social-module/chats/${variables.socialModuleChatId}/threads`;
       for (const query of queryClient.getQueryCache().findAll({
         predicate: (query) => {
@@ -78,17 +79,21 @@ export function action(props: IProps) {
           data.id,
           data,
         );
+      patchInListQueries(queryClient, "/api/social/threads", data.id, data);
+      queryClient.setQueriesData(
+        { queryKey: [`/api/social/threads/${data.id}`] },
+        data,
+      );
       globalActionsStore.getState().addAction({
         type: "mutation",
         name: `${route}/${props.id}/social-module/chats/${props.socialModuleChatId}/threads/${props.socialModuleThreadId}`,
-        props: this,
+        props: variables,
         result: data,
         timestamp: Date.now(),
         requestId: createId(),
       });
 
-      consumerOnSuccess?.(data, variables, context);
-      return data;
+      await consumerOnSuccess?.(...args);
     },
     ...reactQueryOptions,
   });

@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { MessageCircle } from "lucide-react";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import { projectHref } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
@@ -27,6 +28,7 @@ function CreateThread(
   },
 ) {
   const router = useRouter();
+  const pathname = usePathname();
   const { project } = props;
   const [name, setName] = useState("");
   const [error, setError] = useState("");
@@ -55,7 +57,9 @@ function CreateThread(
                 variant: "ai-chat",
               },
             });
-            router.push(projectHref(project, thread.id));
+            router.push(
+              getLocalizedHref(pathname, projectHref(project, thread.id)),
+            );
           } catch (error) {
             setError(
               error instanceof Error ? error.message : "Thread creation failed",
@@ -86,7 +90,7 @@ function CreateThread(
             {create.isPending ? "Creating…" : "Create thread"}
           </button>
           <Link
-            href={projectHref(project)}
+            href={getLocalizedHref(pathname, projectHref(project))}
             className="inline-flex min-h-11 items-center rounded-xl border border-border px-5 text-sm font-semibold"
           >
             Cancel

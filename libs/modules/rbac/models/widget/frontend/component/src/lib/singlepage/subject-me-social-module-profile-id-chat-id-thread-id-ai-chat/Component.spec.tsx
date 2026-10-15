@@ -1,6 +1,6 @@
 import { Children, isValidElement, type ReactElement } from "react";
-jest.mock("server-only", () => ({}));
-jest.mock("client-only", () => ({}));
+jest.mock("server-only", () => ({}), { virtual: true });
+jest.mock("client-only", () => ({}), { virtual: true });
 
 const mockRecord = { id: "workspace-widget", variant: "workspace" };
 const mockFindById = jest.fn().mockResolvedValue(mockRecord);

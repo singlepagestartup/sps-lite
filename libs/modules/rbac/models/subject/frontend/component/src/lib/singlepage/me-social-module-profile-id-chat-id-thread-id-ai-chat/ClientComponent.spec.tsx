@@ -1,5 +1,10 @@
 import { renderToStaticMarkup } from "react-dom/server";
 
+jest.mock("client-only", () => ({}), { virtual: true });
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({ refresh: jest.fn() }),
+}));
+
 const mockRefetch = jest.fn();
 let mockThreads: any;
 jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
@@ -20,7 +25,7 @@ jest.mock("@sps/social/models/thread/frontend/component", () => ({
   Component: () => <div>Private messages</div>,
 }));
 
-import { Component } from "./ClientComponent";
+import Component from "./client";
 const props = {
   data: { id: "owner" },
   project: {

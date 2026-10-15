@@ -5,12 +5,13 @@ import {
 import { api as serverApi } from "@sps/ecommerce/models/order/sdk/server";
 import { IComponentProps } from "./interface";
 import { Component as ParentComponent } from "@sps/shared-frontend-components/singlepage/default";
-import { Component as ChildComponent } from "./Component";
+import { Component as Client } from "./client";
+import { Component as Server } from "./server";
 
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Component={ChildComponent as any}
+      Component={(props.isServer ? Server : Client) as any}
       Provider={Provider}
       clientApi={clientApi}
       serverApi={serverApi}

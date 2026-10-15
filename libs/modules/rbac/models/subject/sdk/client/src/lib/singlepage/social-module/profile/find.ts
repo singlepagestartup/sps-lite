@@ -22,12 +22,12 @@ export function action(props: IProps) {
     ...props.reactQueryOptions,
     queryKey: [key],
     meta: {
-      ...props.reactQueryOptions?.meta,
       topics: [
         "social.profiles",
         "social.profiles-to-chats",
         "rbac.subjects-to-social-module-profiles",
       ],
+      ...props.reactQueryOptions?.meta,
     },
     queryFn: () =>
       api.socialModuleProfileFind({

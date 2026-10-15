@@ -2,6 +2,8 @@
 import { useId, useState } from "react";
 import { Select, Icon } from "@sps/ui-adapter";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { api } from "@sps/rbac/models/subject/sdk/client";
 import {
   Component as Subject,
@@ -34,6 +36,7 @@ export function Component(props: IComponentPropsExtended) {
   );
 }
 function Settings(props: ISettingsProps) {
+  const pathname = usePathname();
   const id = useId();
   const [section, setSection] = useState("Profile");
   const logout = api.authenticationLogout({});
@@ -58,7 +61,11 @@ function Settings(props: ISettingsProps) {
         <button
           type="button"
           disabled={logout.isPending}
-          onClick={() => logout.mutate({ redirectTo: "/ai-chat/sign-in" })}
+          onClick={() =>
+            logout.mutate({
+              redirectTo: getLocalizedHref(pathname, "/ai-chat/sign-in"),
+            })
+          }
           className="flex min-h-11 items-center gap-2 rounded-xl border border-border bg-card px-5 text-sm font-semibold"
         >
           <Icon name="sign-out" className="size-4" />
@@ -141,13 +148,16 @@ function Settings(props: ISettingsProps) {
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 The service sends relevant material to external AI providers for
                 your requested work. Review{" "}
-                <Link className="underline" href="/privacy">
+                <Link
+                  className="underline"
+                  href={getLocalizedHref(pathname, "/privacy")}
+                >
                   how your materials are processed and stored
                 </Link>
                 .
               </p>
               <Link
-                href="/ai-chat/projects"
+                href={getLocalizedHref(pathname, "/ai-chat/projects")}
                 className="mt-6 inline-flex min-h-11 items-center rounded-xl border border-border px-4 text-sm font-semibold"
               >
                 Review my projects

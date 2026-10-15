@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+jest.mock("client-only", () => ({}), { virtual: true });
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 const send = jest.fn();
 jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
@@ -20,7 +21,7 @@ jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
 jest.mock("@sps/website-builder/models/feature/frontend/component", () => ({
   Component: () => null,
 }));
-import { Component } from "./Component";
+import Component from "./client";
 beforeEach(() => send.mockReset());
 
 it("accumulates file selections, removes files, reorders with arrows and dragging, and sends the staged order with Cmd Enter", async () => {

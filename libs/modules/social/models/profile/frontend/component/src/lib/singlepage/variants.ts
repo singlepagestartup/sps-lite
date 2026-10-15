@@ -1,6 +1,7 @@
 import { Component as AgentIdAiChat } from "./agent-id-ai-chat";
 import { Component as IdSettingsAiChat } from "./id-settings-ai-chat";
 import { Component as SidebarAiChatProject } from "./sidebar-ai-chat-project";
+import { Component as ThreadListSidebarAiChat } from "./thread-list-sidebar-ai-chat";
 import { Component as SelectItemAiChatProject } from "./select-item-ai-chat-project";
 import { Component as SelectAiChatProject } from "./select-ai-chat-project";
 import { Component as IdAiChatProject } from "./id-ai-chat-project";
@@ -49,4 +50,3 @@ export const variants = {
   default: Default,
   find: Find,
 };
-import { Component as ThreadListSidebarAiChat } from "./thread-list-sidebar-ai-chat";

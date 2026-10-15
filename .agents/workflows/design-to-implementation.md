@@ -51,13 +51,10 @@ questions reach `libs/modules`.
 
 ## Current coverage
 
-`apps/studio/modules` projects 7 of the 16 modules in `libs/modules`: `blog`,
-`crm`, `ecommerce`, `host`, `rbac`, `social` and `website-builder`. The other
-nine — `agent`, `analytic`, `billing`, `broadcast`, `file-storage`,
-`knowledge`, `notification`, `startup` and `telegram` — have no Studio
-projection yet, so work touching them has no visual stage to pass through. The
-rule is that they should have one; the gap is recorded here rather than implied
-by its absence.
+`apps/studio/modules` projects the fifteen business modules in `libs/modules`.
+The Studio inventory and catalog checks validate native model coverage.
+Telegram transport runs separately in `apps/telegram`; there is no Telegram
+business module or Studio module projection.
 
 ## Final editorial pass
 

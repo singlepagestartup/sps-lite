@@ -3,8 +3,26 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 const mockTotal = jest.fn();
 let mockReceipts: { fileStorageModuleFileId: string }[] = [];
+jest.mock("server-only", () => ({}));
+jest.mock("client-only", () => ({}));
 jest.mock("@sps/ecommerce/models/order/sdk/client", () => ({
-  api: { total: (...args: unknown[]) => mockTotal(...args) },
+  Provider: ({ children }: any) => children,
+  api: {
+    total: (...args: unknown[]) => mockTotal(...args),
+    findById: ({ id }: { id: string }) => ({
+      data: {
+        id,
+        receipt: "SPS-2026-1042",
+        createdAt: "2026-10-08T12:00:00.000Z",
+        type: "history",
+        status: "paid",
+      },
+      isLoading: false,
+    }),
+  },
+}));
+jest.mock("@sps/ecommerce/models/order/sdk/server", () => ({
+  api: { total: jest.fn() },
 }));
 jest.mock(
   "@sps/ecommerce/relations/orders-to-file-storage-module-files/frontend/component",
@@ -24,7 +42,8 @@ jest.mock("@sps/website-builder/models/feature/frontend/component", () => ({
 jest.mock("@sps/shared-utils", () => ({
   NEXT_PUBLIC_API_SERVICE_URL: "http://localhost:4000",
 }));
-import { Component } from "./Component";
+import { Component } from "../../index";
+import { Component as Server } from "./server";
 
 function renderPurchase() {
   return renderToStaticMarkup(
@@ -78,5 +97,40 @@ describe("Paid purchase details", () => {
     const html = renderPurchase();
     expect(html).toContain('title="Receipt is not available yet."');
     expect(html).not.toContain("href=");
+  });
+  it("keeps total failures local to the purchase details", () => {
+    mockTotal.mockReturnValue({ isPending: false, isError: true });
+    const html = renderPurchase();
+    expect(html).toContain("Total unavailable");
+    expect(html).toContain("SPS-2026-1042");
+  });
+  it("loads totals through the server SDK before rendering a server purchase", async () => {
+    const serverApi = jest.requireMock(
+      "@sps/ecommerce/models/order/sdk/server",
+    ).api;
+    serverApi.total.mockResolvedValue([
+      {
+        total: 42,
+        billingModuleCurrency: { id: "usd", slug: "usd", symbol: "$" },
+      },
+    ]);
+    const options = { headers: { "Cache-Control": "no-store" } };
+    const result = await Server({
+      isServer: true,
+      variant: "purchase-ai-chat",
+      data: {
+        id: "server-order",
+        receipt: "SPS-SERVER",
+        createdAt: "2026-10-08T12:00:00.000Z",
+      } as any,
+      apiProps: { options },
+    });
+    const html = renderToStaticMarkup(result);
+    expect(serverApi.total).toHaveBeenCalledWith({
+      id: "server-order",
+      options,
+    });
+    expect(html).toContain("42 USD");
+    expect(html).toContain("SPS-SERVER");
   });
 });

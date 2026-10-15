@@ -37,11 +37,14 @@ export function action(_props: IProps) {
         data.id,
         data,
       );
-      queryClient.setQueryData([`/api/social/profiles/${data.id}`], data);
+      queryClient.setQueriesData(
+        { queryKey: [`/api/social/profiles/${data.id}`] },
+        data,
+      );
       globalActionsStore.getState().addAction({
         type: "mutation",
         name: `${route}/:id/social-module/profiles/:profileId`,
-        props: this,
+        props: variables,
         result: data,
         timestamp: Date.now(),
         requestId: createId(),

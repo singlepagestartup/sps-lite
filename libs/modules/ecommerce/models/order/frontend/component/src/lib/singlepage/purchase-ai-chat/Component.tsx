@@ -9,6 +9,9 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       className={props.className}
       children={props.children}
+      totals={props.totals}
+      totalsPending={props.totalsPending}
+      totalsError={props.totalsError}
     />
   );
 }

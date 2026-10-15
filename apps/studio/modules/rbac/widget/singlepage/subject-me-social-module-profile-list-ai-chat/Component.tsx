@@ -1,5 +1,6 @@
 import { Component as WorkspaceNotice } from "../subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Error";
 import { memo, type ReactNode } from "react";
+import { Component as ProjectCreateContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/profile-create/Component";
 import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature";
 export interface IProjectSummary {
   id: string;
@@ -34,6 +35,22 @@ export function Component({
 }: IProjectsOverviewProps) {
   if (state === "sign-in-required")
     return <WorkspaceNotice variant={variant} state={state} />;
+  if (creating)
+    return (
+      <div className="w-full min-w-0">
+        <div className="mx-auto flex max-w-6xl justify-end px-4 pt-6 sm:px-5">
+          <button
+            type="button"
+            onClick={onCancel}
+            className={`${control} border border-border bg-card text-foreground hover:bg-muted`}
+          >
+            <Glyph name="arrow-left" />
+            Back to projects
+          </button>
+        </div>
+        <ProjectCreateContent>{children}</ProjectCreateContent>
+      </div>
+    );
   return (
     <main
       data-module="rbac"
@@ -47,33 +64,22 @@ export function Component({
             aria-hidden="true"
             className="mb-5 block h-1 w-10 rounded-full bg-primary"
           />
-          <h1 className="text-3xl font-semibold tracking-tight">
-            {creating ? "Create a project" : "My projects"}
-          </h1>
+          <h1 className="text-3xl font-semibold tracking-tight">My projects</h1>
           <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
-            {creating
-              ? "Give your project a name. Add files and work on your documents as you go."
-              : "Choose a project to continue with its documents and conversations."}
+            Choose a project to continue with its documents and conversations.
           </p>
         </div>
         <button
           type="button"
-          onClick={creating ? onCancel : onCreate}
+          onClick={onCreate}
           disabled={pending || error}
-          className={`${control} ${creating ? "border border-border bg-card text-foreground hover:bg-muted" : "bg-primary text-primary-foreground hover:brightness-95"}`}
+          className={`${control} bg-primary text-primary-foreground hover:brightness-95`}
         >
-          <Glyph name={creating ? "arrow-left" : "plus"} />
-          {creating ? "Back to projects" : "Create project"}
+          <Glyph name="plus" />
+          Create project
         </button>
       </div>
-      {creating ? (
-        <section
-          aria-label="Create project"
-          className="max-w-xl rounded-2xl border border-border bg-card p-6"
-        >
-          {children}
-        </section>
-      ) : pending ? (
+      {pending ? (
         <section
           role="status"
           aria-label="Loading your projects"

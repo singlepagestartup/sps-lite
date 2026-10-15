@@ -11,6 +11,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Cookies, CookiesProvider } from "react-cookie";
 
 const mockRouter = { push: jest.fn(), refresh: jest.fn(), replace: jest.fn() };
+let mockPathname = "/en/ai-chat/create-account";
 let mockAuthenticated = false;
 let mockIssuedJwt = "account-token";
 const mockMe = jest.fn(async (..._args: unknown[]) => ({
@@ -25,7 +26,7 @@ const mockAuthenticate = jest.fn(async (..._args: unknown[]) => {
 
 jest.mock("next/navigation", () => ({
   useRouter: () => mockRouter,
-  usePathname: () => "/en/ai-chat/create-account",
+  usePathname: () => mockPathname,
   useSearchParams: () => new URLSearchParams(),
 }));
 jest.mock("next/link", () => ({
@@ -42,7 +43,8 @@ jest.mock("react-jwt", () => ({
 }));
 jest.mock("@sps/shared-utils", () => ({ STALE_TIME: 60_000 }));
 jest.mock("@sps/shared-frontend-client-utils", () => ({
-  getLocalizedHref: (_pathname: string, href: string) => `/en${href}`,
+  getLocalizedHref: jest.requireActual("@sps/shared-frontend-client-utils")
+    .getLocalizedHref,
   saturateHeaders: () => ({}),
   authorization: { parseJwt: () => ({ exp: 1_900_000_000 }) },
 }));
@@ -52,6 +54,7 @@ jest.mock("@sps/shared-frontend-client-store", () => ({
 jest.mock("@sps/shared-frontend-client-api", () => {
   const { QueryClient } = jest.requireActual("@tanstack/react-query");
   return {
+    subscription: () => () => {},
     queryClient: new QueryClient({
       defaultOptions: { queries: { retry: false, gcTime: Infinity } },
     }),
@@ -71,6 +74,7 @@ jest.mock("@sps/rbac/models/subject/sdk/server", () => ({
   },
 }));
 jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
+  Provider: ({ children }: any) => children,
   api: {
     authenticationMe: jest.requireActual(
       "../../../../../../../../sdk/client/src/lib/singlepage/authentication/me",
@@ -93,6 +97,7 @@ import { queryClient } from "@sps/shared-frontend-client-api";
 import Client from "../../me-default/client";
 import { Component as SubjectClient } from "@sps/shared-frontend-components/singlepage/subject-default/client";
 import { Component } from "./Component";
+import { Component as PublicForm } from "./index";
 
 const mockRecordApi = {
   findById: () => ({ data: undefined, isLoading: false, refetch: jest.fn() }),
@@ -110,6 +115,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  mockPathname = "/en/ai-chat/create-account";
   queryClient.clear();
   jest.clearAllMocks();
   mockAuthenticated = false;
@@ -117,9 +123,50 @@ beforeEach(() => {
   document.cookie = "rbac.subject.jwt=visitor-token; path=/";
 });
 
+it.each([
+  "authentication",
+  "registration",
+  "forgot-password",
+  "reset-password",
+] as const)("retains Russian in %s secondary navigation", (mode) => {
+  mockPathname = "/ru/ai-chat/sign-in";
+  const view = render(
+    <QueryClientProvider client={queryClient}>
+      <CookiesProvider cookies={new Cookies({})}>
+        <Component
+          variant="authentication-email-and-password-form-ai-chat"
+          mode={mode}
+        />
+      </CookiesProvider>
+    </QueryClientProvider>,
+  );
+  const hrefs = [...view.container.querySelectorAll("a[href]")].map(
+    (link) => link.getAttribute("href")!,
+  );
+  expect(hrefs.length).toBeGreaterThan(0);
+  expect(hrefs.every((href) => href.startsWith("/ru/"))).toBe(true);
+});
+
 afterEach(() => {
   queryClient.clear();
   localStorage.clear();
+});
+
+it("renders the registered form entrypoint in its explicitly selected mode", () => {
+  render(
+    <QueryClientProvider client={queryClient}>
+      <PublicForm
+        isServer={false}
+        variant="authentication-email-and-password-form-ai-chat"
+        mode="forgot-password"
+      />
+    </QueryClientProvider>,
+  );
+  expect(
+    screen.getByRole("heading", { name: "Reset your password" }),
+  ).toBeTruthy();
+  expect(screen.getByRole("textbox", { name: "Email" })).toBeTruthy();
+  expect(screen.queryByLabelText("Password")).toBeNull();
 });
 
 it.each([

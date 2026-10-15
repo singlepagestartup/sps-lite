@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import type { IResult } from "@sps/rbac/models/subject/sdk/server";
 import type { IModel } from "@sps/rbac/models/subject/sdk/model";
 import type {
   IComponentProps as IParent,
@@ -11,4 +13,34 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
   onClose: () => void;
 }
 export interface IComponentPropsExtended
-  extends IParentExtended<IModel, typeof variant, IComponentProps> {}
+  extends IParentExtended<IModel, typeof variant, IComponentProps> {
+  profilesRead: {
+    data?: IResult["ISocialModuleProfileFindByIdChatFindByIdProfileFindResult"];
+    isPending?: boolean;
+    error?: { message: string };
+  };
+  skillsRead: {
+    data?: IResult["ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFindResult"];
+    isPending?: boolean;
+    error?: { message: string };
+  };
+  knowledgeRead: {
+    data?: IResult["ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindResult"];
+    isPending?: boolean;
+    error?: { message: string };
+  };
+  sourceFiles?: Record<string, ReactNode>;
+}
+export interface ISourceFilesProps {
+  files?: IResult["ISocialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFindResult"];
+  error?: string;
+}
+export interface ISourceFilesReaderProps {
+  scope: {
+    id: string;
+    socialModuleProfileId: string;
+    socialModuleChatId: string;
+  };
+  profileId: string;
+  sourceId: string;
+}

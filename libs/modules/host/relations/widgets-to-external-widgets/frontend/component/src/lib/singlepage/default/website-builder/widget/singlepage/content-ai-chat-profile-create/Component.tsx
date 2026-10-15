@@ -27,6 +27,7 @@ export function Component(props: IComponentProps) {
             variant="subject-me-social-module-profile-create-ai-chat"
             data={widget}
             language={props.language}
+            projectCreateWidget={props.data}
           />
         ))
       }

@@ -12,7 +12,18 @@ export interface IResult {
 }
 
 export async function action(props: IProps): Promise<IResult> {
-  const headers = new Headers(props.options?.headers);
+  const incoming = props.options?.headers;
+  const headers = new Headers();
+  if (Array.isArray(incoming)) {
+    for (const [name, value] of incoming) headers.append(name, value);
+  } else if (incoming && typeof incoming.forEach === "function") {
+    incoming.forEach((value: string, name: string) =>
+      headers.append(name, value),
+    );
+  } else {
+    for (const [name, value] of Object.entries(incoming ?? {}))
+      headers.set(name, typeof value === "string" ? value : value.join(", "));
+  }
   headers.set("Cache-Control", "no-store");
   const res = await fetch(
     `${props.host || serverHost}${route}/${props.id}/billing-module/balance`,

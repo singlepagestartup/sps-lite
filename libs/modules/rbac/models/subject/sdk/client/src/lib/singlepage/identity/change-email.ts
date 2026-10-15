@@ -6,6 +6,8 @@ import type { IProps } from "@sps/rbac/models/subject/sdk/server";
 type IRequestProps = IProps["IIdentityChangeEmailRequestProps"];
 type IVerifyProps = IProps["IIdentityChangeEmailVerifyProps"];
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
+import { globalActionsStore } from "@sps/shared-frontend-client-store";
+import { createId } from "@paralleldrive/cuid2";
 import {
   patchInListQueries,
   queryClient,
@@ -22,6 +24,15 @@ export function request() {
           headers: saturateHeaders(props.options?.headers),
         },
       }),
+    onSuccess(_result, props) {
+      globalActionsStore.getState().addAction({
+        type: "mutation",
+        name: `${route}/${props.id}/identities/${props.identityId}/email-change/code`,
+        props: { id: props.id, identityId: props.identityId },
+        timestamp: Date.now(),
+        requestId: createId(),
+      });
+    },
   });
 }
 export function verify() {
@@ -37,6 +48,14 @@ export function verify() {
         },
       }),
     onSuccess: (result, props) => {
+      globalActionsStore.getState().addAction({
+        type: "mutation",
+        name: `${route}/${props.id}/identities/${props.identityId}/email-change/verify`,
+        props: { id: props.id, identityId: props.identityId },
+        result: { stage: result.stage },
+        timestamp: Date.now(),
+        requestId: createId(),
+      });
       if (result.stage !== "complete") return;
       const identity = result.identity;
       patchInListQueries(
@@ -51,8 +70,8 @@ export function verify() {
         identity.id,
         identity,
       );
-      queryClient.setQueryData(
-        [`/api/rbac/identities/${identity.id}`],
+      queryClient.setQueriesData(
+        { queryKey: [`/api/rbac/identities/${identity.id}`] },
         identity,
       );
     },

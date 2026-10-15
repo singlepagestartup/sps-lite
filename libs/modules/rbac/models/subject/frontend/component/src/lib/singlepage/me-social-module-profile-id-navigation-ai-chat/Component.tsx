@@ -4,6 +4,7 @@ import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
     <ClientComponent
+      threadsRead={props.threadsRead}
       isServer={props.isServer}
       variant={props.variant}
       data={props.data}

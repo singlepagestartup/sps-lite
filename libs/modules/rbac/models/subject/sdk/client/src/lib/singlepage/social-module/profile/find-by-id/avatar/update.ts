@@ -62,7 +62,7 @@ export function action(_props: IProps) {
       globalActionsStore.getState().addAction({
         type: "mutation",
         name: `${subjectRoute}/:id/social-module/profiles/:profileId/avatar`,
-        props: this,
+        props: variables,
         result: data,
         timestamp: Date.now(),
         requestId: createId(),

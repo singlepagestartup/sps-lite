@@ -2,18 +2,23 @@ import Markdown from "markdown-to-jsx";
 import { AI_CHAT_HELP_CONTENT } from "@sps/shared-utils";
 import { Icon } from "@sps/ui-adapter";
 import type { IComponentPropsExtended } from "./interface";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 export function Component({
   variant = "content-ai-chat-help",
   projectHref = "/ai-chat/projects",
   data,
   children,
+  language = "en",
 }: IComponentPropsExtended) {
   const copy = AI_CHAT_HELP_CONTENT;
   function paragraphs(items: string[]) {
     return items.map((text) => (
       <div key={text}>
         <Markdown options={{ disableParsingRawHTML: true }}>
-          {text.replaceAll("/ai-chat/social/profiles/example", projectHref)}
+          {text.replaceAll(
+            "/ai-chat/social/profiles/example",
+            getLocalizedHref(`/${language}`, projectHref),
+          )}
         </Markdown>
       </div>
     ));

@@ -3,13 +3,35 @@ import { Icon } from "@sps/ui-adapter";
 
 import { AI_CHAT_AUTHENTICATION_CONTENT as defaultContent } from "@sps/shared-utils";
 import type { IComponentPropsExtended } from "./interface";
+import type { ComponentProps } from "react";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 
-function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
+function Paragraphs({
+  paragraphs,
+  language,
+}: {
+  paragraphs: string[];
+  language: string;
+}) {
   return (
     <div className="space-y-3 text-sm leading-6 text-muted-foreground [&_a]:font-medium [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-4">
       {paragraphs.map((paragraph, index) => (
         <div key={index}>
-          <Markdown options={{ disableParsingRawHTML: true }}>
+          <Markdown
+            options={{
+              disableParsingRawHTML: true,
+              overrides: {
+                a: {
+                  component: ({ href = "", ...props }: ComponentProps<"a">) => (
+                    <a
+                      {...props}
+                      href={getLocalizedHref(`/${language}`, href)}
+                    />
+                  ),
+                },
+              },
+            }}
+          >
             {paragraph}
           </Markdown>
         </div>
@@ -24,6 +46,7 @@ export function Component({
   children,
   media = "cover",
   asideIcon = "question",
+  language = "en",
 }: IComponentPropsExtended) {
   return (
     <main
@@ -42,7 +65,10 @@ export function Component({
               {content.intro.title}
             </h1>
             <div className="mt-4">
-              <Paragraphs paragraphs={content.intro.paragraphs} />
+              <Paragraphs
+                paragraphs={content.intro.paragraphs}
+                language={language}
+              />
             </div>
           </div>
           {children}
@@ -81,7 +107,10 @@ export function Component({
                     {content.aside.title}
                   </h2>
                   <div className="mt-3">
-                    <Paragraphs paragraphs={content.aside.paragraphs} />
+                    <Paragraphs
+                      paragraphs={content.aside.paragraphs}
+                      language={language}
+                    />
                   </div>
                 </section>
               )}

@@ -89,7 +89,6 @@
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
       "@sps/startup/*": ["libs/modules/startup/*"],
-      "@sps/telegram/*": ["libs/modules/telegram/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/website-builder/*": ["libs/modules/website-builder/*"]
     },

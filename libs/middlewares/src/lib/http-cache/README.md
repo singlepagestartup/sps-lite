@@ -8,6 +8,16 @@ and the query string. A caller whose response must not be shared sends
 `Cache-Control: no-store`, or its route is excluded (see
 [Extension seams](#extension-seams)).
 
+Subject collections, individual Subjects and all routes beneath a Subject ID
+are excluded by default. Their ownership checks must run for every caller,
+including requests without a `Cache-Control` header. Public model routes
+retain response caching.
+
+Host Page URL lookup, URL segment lookup and URL enumeration bypass response
+caching. Their Page masks expand values from arbitrary module collections;
+changes to those values cannot be covered by a fixed `host.pages` topic.
+This applies to `/api/host/pages/find-by-url`, `/url-segment-value` and `/urls`.
+
 ## Keys
 
 ```

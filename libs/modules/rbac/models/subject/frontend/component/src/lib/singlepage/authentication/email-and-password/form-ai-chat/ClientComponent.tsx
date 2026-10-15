@@ -153,7 +153,10 @@ export function Component({ mode }: IComponentProps) {
           </label>
         )}
         {!registration && !forgot && !reset && (
-          <Link className="text-sm underline" href="/ai-chat/forgot-password">
+          <Link
+            className="text-sm underline"
+            href={getLocalizedHref(pathname, "/ai-chat/forgot-password")}
+          >
             Forgot password?
           </Link>
         )}
@@ -168,11 +171,17 @@ export function Component({ mode }: IComponentProps) {
             />
             <span>
               I agree to the{" "}
-              <Link href="/terms" className="text-foreground underline">
+              <Link
+                href={getLocalizedHref(pathname, "/terms")}
+                className="text-foreground underline"
+              >
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link href="/privacy" className="text-foreground underline">
+              <Link
+                href={getLocalizedHref(pathname, "/privacy")}
+                className="text-foreground underline"
+              >
                 Privacy Policy
               </Link>
               .
@@ -210,7 +219,7 @@ export function Component({ mode }: IComponentProps) {
       </form>
       {forgot || reset ? (
         <Link
-          href="/ai-chat/sign-in"
+          href={getLocalizedHref(pathname, "/ai-chat/sign-in")}
           className="mt-6 block text-center text-sm font-semibold underline"
         >
           Back to sign in
@@ -220,7 +229,10 @@ export function Component({ mode }: IComponentProps) {
           {registration ? "Already have an account? " : "No account yet? "}
           <Link
             className="font-semibold text-foreground underline"
-            href={registration ? "/ai-chat/sign-in" : "/ai-chat/create-account"}
+            href={getLocalizedHref(
+              pathname,
+              registration ? "/ai-chat/sign-in" : "/ai-chat/create-account",
+            )}
           >
             {registration ? "Sign in" : "Create an account"}
           </Link>

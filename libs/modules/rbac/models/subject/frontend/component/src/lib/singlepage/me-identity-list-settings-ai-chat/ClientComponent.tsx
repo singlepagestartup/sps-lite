@@ -1,12 +1,11 @@
 "use client";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
-  const identities = api.identityFind({
-    id: props.data.id,
-    reactQueryOptions: { retry: false },
-  });
+  const identities = {
+    ...props.identitiesRead,
+    refetch: props.identitiesRead.refetch || (() => window.location.reload()),
+  };
   return (
     <>
       <h2 className="text-xl font-semibold">Sign-in methods</h2>
@@ -40,7 +39,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="me-identity-id-settings-ai-chat"
             data={props.data}
             identity={identity}
-            canRemove={identities.data.length > 1}
+            canRemove={(identities.data?.length || 0) > 1}
           />
         ))
       )}

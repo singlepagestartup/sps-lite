@@ -6,6 +6,7 @@ import {
 import type { IComponentPropsExtended } from "./interface";
 import { useCallback, useState } from "react";
 import { Component as Projects } from "./Projects";
+import { Component as WebsiteBuilderWidget } from "@sps/website-builder/models/widget/frontend/component";
 export function Component(props: IComponentPropsExtended) {
   const [creating, setCreating] = useState(false);
   const openCreate = useCallback(() => setCreating(true), []);
@@ -63,13 +64,19 @@ export function Component(props: IComponentPropsExtended) {
                       href: `/${props.language || "en"}${projectHref(project)}`,
                     }))}
                   >
-                    <Subject
+                    <WebsiteBuilderWidget
                       isServer={false}
-                      variant="me-social-module-profile-create-ai-chat"
-                      data={data}
-                      projects={projects}
-                      hideBackLink
-                    />
+                      variant="content-ai-chat-profile-create"
+                      data={props.projectCreateWidget}
+                    >
+                      <Subject
+                        isServer={false}
+                        variant="me-social-module-profile-create-ai-chat"
+                        data={data}
+                        projects={projects}
+                        hideBackLink
+                      />
+                    </WebsiteBuilderWidget>
                   </Projects>
                 );
               }}

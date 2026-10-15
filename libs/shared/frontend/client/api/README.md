@@ -52,6 +52,16 @@ export const api = factory<IModel>({
 });
 ```
 
+### Client Cache and Event State
+
+The standard API Provider keeps API results in the shared in-memory React Query
+cache. SDK hooks and mutations use this cache to render and update entity data.
+`globalActionsStore` holds runtime request and revalidation events consumed by
+the subscription pipeline below. Its compact `sessionStorage` snapshot is for
+debugging and is not read back to restore either the event log or query data.
+See [the store contract](../store/README.md) for state lifetime and the complete
+WebSocket → store → subscription → query flow.
+
 ### Realtime Query Subscription Contract (`meta.topics`)
 
 How a **query** receives live updates (the read side; the mutation/cache
@@ -79,10 +89,10 @@ free.
 
 **Hand-written SDK queries — explicit and REQUIRED.** A query written with
 `useQuery` directly (not through the factory) MUST declare `meta.topics`, or it
-silently stops updating: the subscription pipeline disables the legacy
-route-fallback as soon as ANY query on the page carries matching topics, so a
-topic-less query is never invalidated (this was the cart-badge regression). Two
-cases:
+can miss changes broadcast through a different mutation route. The subscription
+pipeline skips a route's legacy fallback only when that route has a query
+covered by the broadcast topics. A topic-less reader cannot rely on another
+reader's topic subscription to cover its own cache entry. Two cases:
 
 - **Collection-shaped route** → derive, never hardcode:
 
@@ -137,7 +147,10 @@ Key modes:
 
 - **Prefix mode (default)** — `route` matches all query keys starting with
   `[route]`, covering both factory keys (`[route, serializedParams]`) and
-  one-element URL keys.
+  one-element URL keys (`[route + "?" + serializedParams]`). The URL match
+  stops at the query separator, so detail routes and neighboring collections
+  remain separate. Inline URL parameters receive the same append safety
+  checks as factory parameters.
 - **Exact mode** (`opts.exact = true`, append only) — `route` is the full
   first key element; used by hand-written SDKs (e.g. chat) that own their key
   semantics.
@@ -179,11 +192,14 @@ response, the reconciling refetch produces deep-equal data and no rerender.
 Hand-written SDK mutations (files using `useMutation` directly instead of the
 factory) MUST preserve the same two-tier behavior in their success handling:
 
-1. keep the SDK-level `globalActionsStore` push so WebSocket revalidation stays
-   the background consistency fallback,
+1. keep the SDK-level `globalActionsStore` push for shared action tracking,
 2. patch the acting client's cache via the shared helpers (exact-key mode when
    the read query key cannot be derived from the mutation route),
 3. call any consumer-specific success callback after the internal handling.
+
+Keep the reader's subscription pipeline enabled so backend WebSocket messages
+can reconcile the cache across subscribed clients. The local mutation event
+and the incoming backend revalidation message are separate store actions.
 
 Reference implementation: the chat thread messages cache —
 `libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/social-module/profile/chat/message/list/default/hooks/use-thread-messages-refetch.ts`

@@ -4,6 +4,7 @@ import type { IComponentProps as IParent } from "@sps/shared-frontend-components
 
 export const variant = "landing-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
+  language?: string;
   children?: React.ReactNode;
 }
 export interface IComponentPropsExtended

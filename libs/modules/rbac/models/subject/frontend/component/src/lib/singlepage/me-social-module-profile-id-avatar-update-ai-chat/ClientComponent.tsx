@@ -9,11 +9,10 @@ export const Component = memo(function Component(
 ) {
   const subjectId = props.data.id;
   const profileId = props.profile.id;
-  const preview = api.socialModuleProfileFindByIdAvatarFind({
-    id: subjectId,
-    socialModuleProfileId: profileId,
-    reactQueryOptions: { retry: false },
-  });
+  const preview = {
+    ...props.previewRead,
+    refetch: props.previewRead.refetch || (() => window.location.reload()),
+  };
   const avatar = api.socialModuleProfileFindByIdAvatarUpdate({});
   const [status, setStatus] = useState("");
   async function save(data: { file: globalThis.File } | { reset: true }) {

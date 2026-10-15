@@ -69,6 +69,8 @@ import { Component as SocialModuleProfileChatListDefault } from "./social-module
 import { Component as SocialModuleProfileChatOverviewDefault } from "./social-module/profile/chat/overview/default";
 
 export const variants = {
+  "authentication-email-and-password-form-ai-chat":
+    AuthenticationEmailAndPasswordFormAiChat,
   "me-social-module-profile-id-sidebar-ai-chat":
     MeSocialModuleProfileIdSidebarAiChat,
   "me-authentication-email-and-password-reset-password-form-ai-chat":
@@ -169,3 +171,4 @@ export const variants = {
   "social-module-profile-chat-overview-default":
     SocialModuleProfileChatOverviewDefault,
 };
+import { Component as AuthenticationEmailAndPasswordFormAiChat } from "./authentication/email-and-password/form-ai-chat";

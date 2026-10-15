@@ -1,4 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
+jest.mock("client-only", () => ({}), { virtual: true });
+jest.mock("server-only", () => ({}), { virtual: true });
 
 let mockAuthenticated = true;
 let mockAuthState = "ready";

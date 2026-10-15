@@ -15,6 +15,10 @@ export function Component(props: IComponentPropsExtended) {
       navigation={props.navigation}
       loading={props.loading}
       renderLoadError={props.renderLoadError}
+      threads={props.threads}
+      threadsLoading={props.threadsLoading}
+      threadsError={props.threadsError}
+      retryThreads={props.retryThreads}
     />
   );
 }

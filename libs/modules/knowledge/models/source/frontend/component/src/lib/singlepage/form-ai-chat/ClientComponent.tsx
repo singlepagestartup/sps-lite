@@ -27,9 +27,16 @@ export const Component = memo(function Component(props: IClientComponentProps) {
   const materials = readKnowledgeMaterials(content);
   const dirty = useRef(false);
   useEffect(() => {
-    if (saved && !dirty.current) {
-      setTitle(saved.title);
-      setContent(saved.content);
+    if (saved) {
+      if (!dirty.current) setTitle(saved.title);
+      setContent((current) =>
+        dirty.current
+          ? replaceKnowledgeUserContext(
+              saved.content,
+              readKnowledgeUserContext(current),
+            )
+          : saved.content,
+      );
     }
   }, [saved?.title, saved?.content]);
   async function save() {
@@ -188,6 +195,10 @@ export const Component = memo(function Component(props: IClientComponentProps) {
               setPending(true);
               try {
                 assertSupportedAiChatAttachments(Array.from(files));
+                if (saved && dirty.current) {
+                  await props.onSave({ title, content });
+                  dirty.current = false;
+                }
                 const result = await props.onAttach!(files);
                 setStatus(result || "Files saved");
               } catch (error) {

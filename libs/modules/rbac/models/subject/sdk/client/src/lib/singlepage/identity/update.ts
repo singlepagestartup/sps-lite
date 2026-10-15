@@ -64,11 +64,14 @@ export function action(props: IProps) {
         data,
       );
       patchInListQueries(queryClient, "/api/rbac/identities", data.id, data);
-      queryClient.setQueryData([`/api/rbac/identities/${data.id}`], data);
+      queryClient.setQueriesData(
+        { queryKey: [`/api/rbac/identities/${data.id}`] },
+        data,
+      );
       globalActionsStore.getState().addAction({
         type: "mutation",
         name: `${route}/:id/identities/:identityId`,
-        props: this,
+        props: variables,
         result: data,
         timestamp: Date.now(),
         requestId: createId(),

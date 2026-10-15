@@ -28,6 +28,14 @@ is evidence of current practice, not automatic permission to repeat it.
 
 ## Dependency boundaries
 
+Read `.agents/contracts/engineering/module-dependencies.md` and check changed
+modules against its confirmed top-to-bottom order. For each cross-module import
+or reexport, determine the owning source and target modules, resolve aliases and
+barrels, and flag a target above the source. This applies to backend code,
+schemas, SDKs, frontend composition and type-only imports. A type-only violation
+is a boundary finding without being proof of a runtime cycle. Applications
+compose modules outside this order.
+
 Keep these orders separate:
 
 - **Backend execution:** controller/handler → service → repository → database
@@ -62,10 +70,10 @@ are fulfilled. Preserve transaction and partial-failure semantics when
 considering a replacement with separate HTTP calls. Do not report a direct
 read or a documented DI call as a cache bug without tracing its actual effect.
 
-An inferred or proposed module order becomes mandatory only after operator
-confirmation. Until then, use verified module boundaries and report unclear
-ownership as a decision to resolve, with evidence; do not impose a guessed
-linear hierarchy or silently expand the accepted exception.
+The confirmed module order is mandatory. A proposed change to that order or
+an exception requires operator confirmation; an existing upward import does not
+establish an exception. Report unclear ownership with its path and consequence
+and keep accepted exceptions within their documented scope.
 
 ## API and cache review
 
@@ -117,15 +125,15 @@ by code and which still needs reproduction.
 
 Load the source that governs the change rather than copying its whole checklist:
 
-| Change                           | Source and review focus                                                                                                                                                                                                                                                                |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API routes, DI, authorization    | Root and module READMEs; RBAC authorization layering; boundary guards, ownership scope, middleware registration, and transport/transaction effects                                                                                                                                     |
-| Queries, mutations, realtime     | `libs/shared/frontend/client/api/README.md`, `libs/middlewares/src/lib/http-cache/README.md`, `libs/middlewares/src/lib/revalidation/README.md`; full cache and subscriber consistency                                                                                                 |
-| Model/relation schemas           | Root instructions and entity README; relation ownership, cascading impact, Drizzle `repository-generate`, and runtime behavior instead of data-snapshot edits                                                                                                                          |
-| Frontend variants                | `.agents/contracts/engineering/frontend-components.md`, root Code Review Checklist and applicable entity docs; template and Provider ownership, runtime props at RSC boundaries, JSX slots, SDK/relation data flow, memoized rows, per-item pending state, and lowest-level `useWatch` |
-| File placement                   | `.agents/contracts/engineering/code-placement.md`; reuse an existing home and avoid a file beside a folder with the same name                                                                                                                                                          |
-| Studio or downstream inheritance | `.agents/workflows/design-to-implementation.md`, `.agents/contracts/inheritance.md`, and applicable Studio docs; source ownership, production data flow, and isolation of prototype material                                                                                           |
-| Tests and validation             | Root BDD/scoped-testing convention and the change's real consumer; observable behavior, relevant integration/scenario coverage, and explicit gaps                                                                                                                                      |
+| Change                           | Source and review focus                                                                                                                                                                                                                                                                                                                        |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API routes, DI, authorization    | Root and module READMEs; RBAC authorization layering; boundary guards, ownership scope, middleware registration, and transport/transaction effects                                                                                                                                                                                             |
+| Queries, mutations, realtime     | `libs/shared/frontend/client/api/README.md`, `libs/shared/frontend/client/store/README.md`, `libs/middlewares/src/lib/http-cache/README.md`, `libs/middlewares/src/lib/revalidation/README.md`; query cache, runtime events, persistence scope and subscriber consistency                                                                      |
+| Model/relation schemas           | Root instructions and entity README; relation ownership, cascading impact, Drizzle `repository-generate`, and runtime behavior instead of data-snapshot edits                                                                                                                                                                                  |
+| Frontend variants                | `.agents/contracts/engineering/frontend-components.md`, root Code Review Checklist and applicable entity docs; file roles, layer registry and props union, justified local client/server readers, Provider ownership, RSC props and JSX slots, SDK/cache/realtime data flow, memoized rows, per-item pending state and lowest-level `useWatch` |
+| File placement                   | `.agents/contracts/engineering/code-placement.md`; reuse an existing home and avoid a file beside a folder with the same name                                                                                                                                                                                                                  |
+| Studio or downstream inheritance | `.agents/workflows/design-to-implementation.md`, `.agents/contracts/inheritance.md`, and applicable Studio docs; source ownership, production data flow, and isolation of prototype material                                                                                                                                                   |
+| Tests and validation             | Root BDD/scoped-testing convention and the change's real consumer; observable behavior, relevant integration/scenario coverage, and explicit gaps                                                                                                                                                                                              |
 
 Keep deterministic lint/format failures in normal checks. Include a convention
 in the review findings when its violation creates a concrete behavior,

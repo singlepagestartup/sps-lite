@@ -33,3 +33,15 @@ other modules.
 - `admin-table-row`: admin UI row for page listings.
 - `admin-form`: admin UI create/edit form.
 - `admin-table`: admin UI table for browsing pages.
+
+## URL lookup cache
+
+The client `findByUrl` query key includes the URL and query parameters, so
+different destinations have separate entries. Both URL lookup readers subscribe
+to Page changes through `host.pages`.
+
+HTTP response caching excludes `find-by-url`, `url-segment-value` and `urls`.
+These operations expand Page masks against other modules' records; a fixed
+Page-only cache topic cannot describe all changes to dynamic route values.
+The exclusions are defined in
+`libs/middlewares/src/lib/http-cache/routes/singlepage.ts`.

@@ -11,6 +11,8 @@ import {
   appendToListQueries,
 } from "@sps/shared-frontend-client-api";
 import { useMutation } from "@tanstack/react-query";
+import { globalActionsStore } from "@sps/shared-frontend-client-store";
+import { createId } from "@paralleldrive/cuid2";
 export interface IProps {
   id: string;
 }
@@ -35,6 +37,17 @@ export function action(props: IProps) {
         data,
       );
       appendToListQueries(queryClient, "/api/social/profiles", data);
+      void queryClient.invalidateQueries({
+        queryKey: ["/api/social/profiles/count"],
+      });
+      globalActionsStore.getState().addAction({
+        type: "mutation",
+        name: `${route}/${variables.id}/social-module/profiles`,
+        props: variables,
+        result: data,
+        timestamp: Date.now(),
+        requestId: createId(),
+      });
       void queryClient.invalidateQueries({
         predicate: (query) =>
           typeof query.queryKey[0] === "string" &&

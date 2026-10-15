@@ -1,24 +1,17 @@
 "use client";
-import { api } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { Component as Thread } from "@sps/social/models/thread/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 import { readKnowledgeDocumentContent } from "@sps/shared-utils";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
-  const scope = {
-    id: props.data.id,
-    socialModuleProfileId: project.requesterProfileId,
-    socialModuleChatId: project.chat.id,
-    targetSocialModuleProfileId: project.profile.id,
-  };
 
   const thread = props.thread;
   const document = getAIChatDocument(thread.metadata);
-  const sources =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
-      scope,
-    );
+  const sources = {
+    ...props.sourcesRead,
+    refetch: props.sourcesRead.refetch || (() => window.location.reload()),
+  };
   const documentSources =
     document?.profileId === project.profile.id
       ? (sources.data || []).filter((source) =>

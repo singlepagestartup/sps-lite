@@ -9,9 +9,9 @@ its client/server composition. It governs model and relation variants under
 Inspect a neighboring variant of the same kind and the applicable generator
 template under
 `tools/plugins/sps-generator-plugin/src/coder/root/libs/modules/[module]/`.
-Keep its `index.tsx` and shared parent contract. The parent owns SDK selection,
+Keep its file roles and reader contract. The shared parent owns SDK selection,
 record loading, Provider, Suspense and error handling where that template
-provides them.
+provides them. Specialized reads use the local reader structure below.
 
 For ordinary saved-record variants, bind the model SDKs and renderer to
 `@sps/shared-frontend-components/singlepage/default`. Use the existing
@@ -19,11 +19,63 @@ For ordinary saved-record variants, bind the model SDKs and renderer to
 Implement the view in `Component.tsx` and its interactive controls in an
 optional `ClientComponent.tsx`.
 
-A visual or interaction change does not justify copying shared readers into
-local `client.tsx`/`server.tsx`, adding another Provider around the same reader,
-or modifying shared loading code. Existing specialized variants retain their
-applicable template; their local readers are not a reason to give every view
-another loading layer.
+## Variant files and registration
+
+Keep each variant in its own folder in the owning `singlepage` or `startup`
+layer. Its files have these roles:
+
+| File                        | Responsibility                                                                                                                                                                                                                            |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `interface.ts`              | Export the literal `variant` name, `IComponentProps` for public inputs and `IComponentPropsExtended` for inputs plus loaded results. Describe request parameters and result types through the applicable SDK types and shared interfaces. |
+| `index.tsx`                 | Wire the reader, SDKs, Provider and view through the applicable template. Select client/server execution here when the variant has local readers. An export-only entrypoint can be `index.ts`.                                            |
+| `client.tsx`, `server.tsx`  | Optional local readers for specialized SDK requests; follow the rules below.                                                                                                                                                              |
+| `Component.tsx`             | Render the view from typed props and loaded results; keep it server-compatible.                                                                                                                                                           |
+| `ClientComponent.tsx`       | Optional interactive view with hooks, browser APIs and local UI state. It has a different role from the client reader.                                                                                                                    |
+| `Skeleton.tsx`, `Error.tsx` | Loading and error views when the applicable template needs them.                                                                                                                                                                          |
+
+Register the component in `variants.ts` of the layer where it is implemented.
+The registry key must match its exported `variant` literal, and the layer's
+`interface.ts` must include its public props in the variant union. Keep the
+public entrypoint wired to the effective registry and type union: the root
+registry merges `singlepage` first and `startup` second so project overrides
+win. Follow a nested registry when the applicable template uses one.
+A file that exists on disk but cannot be selected through the public
+`variant` prop is incomplete.
+
+## Specialized client/server readers
+
+Local `client.tsx` and `server.tsx` are allowed when the variant needs data
+interactions that the shared reader cannot express, such as additional SDK
+requests, dependent reads or a custom SDK operation. Keep the same variant
+folder and file roles; this does not require a different component layout.
+A visual or interaction change alone continues to use the shared reader.
+
+Before adding local readers, compare the needed requests with the shared
+reader and a neighboring specialized variant. Record the SDK operations and
+why the shared reader is insufficient in the change description. In
+`interface.ts`, identify those operations through the request/result types or
+an explanatory comment where their names are not apparent. Use exported SDK
+`IProps`, `IResult` or existing model types; declare public request inputs and
+the loaded fields passed to the view. Do not repeat SDK request/response shapes
+as untyped objects.
+
+- `client.tsx` uses the client SDK hooks and their loading/error states.
+  `server.tsx` awaits the server SDK. Implement both paths when the variant
+  supports both runtimes, and give the view the same typed result contract.
+- Keep data requests in readers and SDKs. Interactive mutations use the client
+  SDK in the interactive component or its established hook. Do not add raw
+  fetches or a second data-fetching system in the visual component.
+- Preserve one owner for Provider and loading/error composition. Local readers
+  replace the relevant shared reading behavior; do not wrap an unchanged shared
+  reader in another copy of its Provider or duplicate its requests.
+- Preserve the module dependency order, explicit client-boundary props, query
+  subscriptions and mutation cache handling. Specialization changes which SDK
+  operations run, not those contracts.
+
+An existing local-reader example is the RBAC Subject variant at
+`libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/social-module/profile/chat/overview/default/`.
+Its structure illustrates reader placement; apply the boundary and cache rules
+in this contract when changing it or using it as a reference.
 
 ## Explicit props at the client boundary
 
@@ -75,10 +127,56 @@ declared in that file use `isServer={false}`. A server composer must cross into
 that client view through JSX first. Setting `isServer={false}` on a model
 wrapper from a server composer does not by itself establish a safe boundary.
 
+## Client state, cache and realtime
+
+Client data has separate owners:
+
+- The model/relation SDK uses the shared React Query cache for API results.
+  The standard API Provider keeps this cache in memory; it does not restore
+  entity data from `sessionStorage`.
+- `globalActionsStore` in `@sps/shared-frontend-client-store` is the Zustand
+  runtime event log used by the query subscription pipeline. Its compact
+  `sessionStorage` snapshot is for debugging, can omit large payloads and is
+  not read back to hydrate the store. Do not render business entities from it
+  or rely on it to restore a page after reload.
+- Temporary controls, draft inputs and per-item pending state stay in the
+  lowest owning client component or an established feature-state mechanism.
+  A new persistent draft requirement needs an explicit storage/lifetime
+  contract; the global event log does not provide that persistence.
+
+The realtime path is backend mutation → revalidation WebSocket → Host's
+revalidation component → `globalActionsStore` → SDK `subscription(...)` →
+React Query invalidation and refetch of active matching queries. Matching uses
+`meta.topics`; route matching remains available when that route has no query
+covered by the broadcast topics. Revalidation runs from incoming events in
+memory, independently of the debug snapshot.
+
+Use the existing SDK subscription pipeline instead of opening a revalidation
+WebSocket per variant. Factory SDKs provide subscriptions and mutation cache
+handling. Hand-written SDK queries keep `meta.topics`, option merging and
+subscription cleanup; hand-written mutations keep action tracking, shared
+cache patching and internal success handling before consumer callbacks.
+Local patches update the acting client's cache; WebSocket reconciliation
+covers other subscribed clients and server-created or derived changes.
+Additional reads in specialized variants obey the same rules.
+
+Read `libs/shared/frontend/client/api/README.md` for query/mutation contracts,
+`libs/shared/frontend/client/store/README.md` for event storage, and
+`libs/middlewares/src/lib/revalidation/README.md` for backend broadcasts and
+cache ordering.
+
 ## Implementation and review checks
 
-- Compare the changed variant's wrapper with its applicable template and check
-  whether Provider and loading ownership are duplicated.
+- Check the required file roles, literal variant name, owning layer registry,
+  public props union and public component route. Exercise the variant through
+  that entrypoint so a missing registration cannot pass as a working view.
+- Compare the wrapper with its applicable template. For local readers, verify
+  the reason for specialization, SDK input/result types and supported runtime
+  paths; check whether Provider, loading ownership or requests are duplicated.
+- Trace API data through React Query, realtime events through the shared store
+  and SDK subscriptions, and persistent UI state through its explicit storage
+  contract. Check cache patching and cross-client reconciliation for affected
+  queries, including additional reads in specialized variants.
 - Trace the runtime props reaching each Client Component, including objects
   added by a parent reader. Check every ordinary function prop's producer and
   consumer, and verify that slots carry nodes rather than server render callbacks.

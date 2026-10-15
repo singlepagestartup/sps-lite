@@ -2,8 +2,13 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { AI_CHAT_WEBSITE_CONTENT as content } from "@sps/shared-utils";
 import type { IComponentPropsExtended } from "./interface";
+import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 
-export function Component({ children }: IComponentPropsExtended) {
+export function Component({
+  children,
+  language = "en",
+}: IComponentPropsExtended) {
+  const pathname = `/${language}`;
   return (
     <main
       id="ai-chat-main"
@@ -26,7 +31,7 @@ export function Component({ children }: IComponentPropsExtended) {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/ai-chat/projects"
+                href={getLocalizedHref(pathname, "/ai-chat/projects")}
                 className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 text-sm font-semibold"
               >
                 {content.hero.links[0].text}
@@ -82,7 +87,7 @@ export function Component({ children }: IComponentPropsExtended) {
             </p>
           </div>
           <Link
-            href="/ai-chat/projects"
+            href={getLocalizedHref(pathname, "/ai-chat/projects")}
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 text-sm font-semibold"
           >
             {content.hero.links[0].text}
@@ -109,7 +114,7 @@ export function Component({ children }: IComponentPropsExtended) {
               ))}
             </dl>
             <Link
-              href="/ai-chat/settings"
+              href={getLocalizedHref(pathname, "/ai-chat/settings")}
               className="mt-5 inline-block text-sm underline"
             >
               Account settings and purchases

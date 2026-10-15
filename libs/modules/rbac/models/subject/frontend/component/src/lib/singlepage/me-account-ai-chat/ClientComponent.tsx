@@ -10,30 +10,26 @@ import { Icon } from "@sps/ui-adapter";
 import type { ReactNode } from "react";
 
 export function Component(props: IComponentPropsExtended) {
-  const profiles = api.socialModuleProfileFind({
-    id: props.data.id,
-    params: {
-      filters: { and: [{ column: "variant", method: "eq", value: "default" }] },
-    },
-    reactQueryOptions: { retry: false },
-  });
   return (
     <AccountMenu
       language={props.language}
       settingsSelected={props.settingsSelected}
       subjectId={props.data.id}
       subjectSlug={props.data.slug}
-      profile={profiles.data?.[0]}
+      profile={props.accountProfile}
+      accountIdentities={props.accountIdentities}
+      accountAvatar={props.accountAvatar}
+      accountBalance={props.accountBalance}
     />
   );
 }
 
-function AccountEmail({ subjectId }: { subjectId: string }) {
-  const identities = api.identityFind({
-    id: subjectId,
-    reactQueryOptions: { retry: false },
-  });
-  return identities.data?.map(
+function AccountEmail({
+  identities,
+}: {
+  identities: IComponentPropsExtended["accountIdentities"];
+}) {
+  return identities?.map(
     (identity) =>
       identity.email && (
         <span
@@ -51,12 +47,8 @@ function AccountAvatar(props: {
   profile: IProfile;
   language: string;
   fallback: ReactNode;
+  avatar?: IComponentPropsExtended["accountAvatar"];
 }) {
-  const avatar = api.socialModuleProfileFindByIdAvatarFind({
-    id: props.subjectId,
-    socialModuleProfileId: props.profile.id,
-    reactQueryOptions: { retry: false },
-  });
   return (
     <Profile
       isServer={false}
@@ -64,25 +56,22 @@ function AccountAvatar(props: {
       language={props.language}
       data={props.profile}
       className="size-8"
-      file={avatar.data?.file ?? null}
+      file={props.avatar?.file ?? null}
       fallback={props.fallback}
     />
   );
 }
 
 interface IAccountTokenBalanceProps {
+  balance?: IComponentPropsExtended["accountBalance"];
   subjectId: string;
   language: string;
 }
 
-function AccountTokenBalance({
-  subjectId,
-  language,
-}: IAccountTokenBalanceProps) {
-  const balance = api.billingModuleBalance({ id: subjectId });
-  const amount = Number(balance.data?.amount);
+function AccountTokenBalance({ balance, language }: IAccountTokenBalanceProps) {
+  const amount = Number(balance?.amount);
   const label =
-    balance.data && Number.isFinite(amount)
+    balance && Number.isFinite(amount)
       ? new Intl.NumberFormat(language, { maximumFractionDigits: 6 }).format(
           amount,
         )
@@ -94,7 +83,11 @@ function AccountTokenBalance({
   );
 }
 
-interface IAccountMenuProps {
+interface IAccountMenuProps
+  extends Pick<
+    IComponentPropsExtended,
+    "accountIdentities" | "accountAvatar" | "accountBalance"
+  > {
   subjectId: string;
   subjectSlug: string;
   language?: string;
@@ -107,6 +100,9 @@ function AccountMenu({
   profile,
   language = "en",
   settingsSelected,
+  accountIdentities,
+  accountAvatar,
+  accountBalance,
 }: IAccountMenuProps) {
   const localeBase = `/${language}`;
   const logout = api.authenticationLogout({});
@@ -141,6 +137,7 @@ function AccountMenu({
                 language={language}
                 profile={profile}
                 fallback={fallbackAvatar}
+                avatar={accountAvatar}
               />
             ) : (
               fallbackAvatar
@@ -152,7 +149,11 @@ function AccountMenu({
               >
                 {name}
               </span>
-              <AccountTokenBalance subjectId={subjectId} language={language} />
+              <AccountTokenBalance
+                subjectId={subjectId}
+                language={language}
+                balance={accountBalance}
+              />
             </span>
             <ChevronDown className="hidden size-4 text-muted-foreground sm:block" />
           </button>
@@ -168,8 +169,12 @@ function AccountMenu({
               <span className="block truncate text-sm font-semibold">
                 {name}
               </span>
-              <AccountTokenBalance subjectId={subjectId} language={language} />
-              <AccountEmail subjectId={subjectId} />
+              <AccountTokenBalance
+                subjectId={subjectId}
+                language={language}
+                balance={accountBalance}
+              />
+              <AccountEmail identities={accountIdentities} />
             </DropdownMenu.Label>
             <DropdownMenu.Separator className="my-1 h-px bg-border" />
             <DropdownMenu.Item asChild>

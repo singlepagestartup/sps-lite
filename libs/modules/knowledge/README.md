@@ -57,6 +57,29 @@ confirmation. Confirmation checks the original Source hash, then applies the
 stored text and indexes it. The first confirmed draft also creates the profile
 and document links. Other linked Sources remain available for reading.
 
+Before writing Knowledge, confirmation atomically claims the pending proposal
+in Thread metadata using `confirmationMessageId`. A claimed proposal returns
+`applying` to reject/revise requests. If the write outcome is unknown, another
+confirm resumes the operation; it checks the saved title, notes and staged File
+links before completing the Thread status. First-Source creation uses the
+stable document slug and the repository's transactional slug lock, so concurrent
+confirmations reuse one Source and its unique profile/origin links.
+
+A missing staged File or a changed Source version requires a revised proposal
+and clears the claim once the original conditional write cannot succeed.
+A first-Source attempt can already have saved notes and links before attachment
+failure; the conflict response asks the caller to read that Source before
+revising. A changed title/notes on that deterministic first Source also permits
+a new revision; an in-flight attachment operation may still complete. The
+conflict response does not claim that saved work was undone. Unknown write
+errors retain the claim for a later confirm retry.
+
+For an existing Source, confirmation commits its notes and new attachment links
+in one transaction. It locks Files before the Source and checks the expected
+content hash. A missing staged File leaves the notes, links and index unchanged.
+Material analysis runs after that commit; its failure is returned separately
+without rejecting the saved confirmation.
+
 The native `profile_knowledge_files` tool lists exact attachment IDs and the
 Source hash. `profile_knowledge_file_detach` is available only for an explicit
 current removal request. Document threads restrict it to their linked Source

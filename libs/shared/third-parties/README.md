@@ -30,9 +30,9 @@ src/
 
 ### OpenRouter
 
-`OpenRouter.generate` handles chat completions and function-tool calls. Requests
-for `typesafe/jev-router` include the `jev-router` plugin with `cost_tier: low`.
-Billing records the model returned by OpenRouter and its reported cost.
+`OpenRouter.generate` handles chat completions and function-tool calls. It sends
+the selected model directly without adding a routing plugin. Billing records
+the model returned by OpenRouter and its reported cost.
 
 `OpenRouter.decide` sends typed Choice, Noul, or Score questions to
 `https://openrouter.ai/api/alpha/decisions`, using `OPEN_ROUTER_API_KEY`. It

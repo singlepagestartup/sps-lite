@@ -2,8 +2,9 @@
 repository: singlepagestartup
 date: 2026-10-09
 revision: 3d153028fc38044af9104edbddb7565a5ec9cfe1
-status: proposal
-confirmation: pending
+status: superseded
+confirmation: historical-proposal
+superseded_by: 2026-10-14-module-order-import-audit.md
 scope: module dependencies and reusable code-review rules
 ---
 
@@ -11,8 +12,9 @@ scope: module dependencies and reusable code-review rules
 
 Общие правила ревью находятся в
 [review_pr.md](../../../../.agents/workflows/engineering/review_pr.md).
-Предлагаемая ниже группировка модулей ждёт подтверждения пользователя.
-Уже действующие границы берутся из документации соответствующего модуля.
+Текущий подтверждённый порядок и результаты исправлений находятся в
+[аудите модульных импортов](2026-10-14-module-order-import-audit.md).
+Ниже сохранён исторический разбор исходной группировки.
 
 ## Что проверено
 
@@ -82,7 +84,7 @@ relations. Его потребляют frontend-композиции Host и Tel
   [Agent bootstrap](../../../../libs/modules/agent/models/agent/backend/app/api/src/lib/bootstrap.ts) и
   [Agent README](../../../../libs/modules/agent/README.md), владение Telegram-командами и вызовы через subject SDK.
 - `telegram → host` на уровне схемы внешних виджетов:
-  [widgets-to-external-widgets/schema.ts](../../../../libs/modules/telegram/relations/widgets-to-external-widgets/backend/repository/database/src/lib/schema.ts).
+  [widgets-to-external-widgets/schema.ts](https://github.com/singlepagestartup/singlepagestartup/blob/ced0f3713a89d09c5627a9cc1f502a55e17d754e/libs/modules/telegram/relations/widgets-to-external-widgets/backend/repository/database/src/lib/schema.ts).
 
 ## Что требует отдельного решения
 
@@ -136,3 +138,48 @@ Cursor backend rules содержат пример порядка middleware, к
 Разработчик выбирает исправление или обоснованное исключение.
 Предлагаемая группировка модулей и решение по обратной UI-композиции ждут
 подтверждения; проверка подтверждённых границ уже применима.
+
+## Точечная проверка текущей ветки
+
+```yaml
+verification_date: 2026-10-14
+verification_branch: codex/studio-host-models
+verification_revision: ced0f3713a89d09c5627a9cc1f502a55e17d754e
+verification_scope: documented-boundaries-and-eslint
+```
+
+Связи `website-builder → file-storage`, `blog → ecommerce` и
+`social → knowledge` присутствуют в приведённых выше схемах relations.
+CRM Form bootstrap внедряет Notification repositories; Agent bootstrap
+подключает Social, RBAC и Host. README Ecommerce сохраняет запрет обратной
+зависимости от RBAC subject, а README Knowledge разделяет анализ Source и
+хранение Files. Админская форма Blog по-прежнему импортирует Social relation,
+чья схема ссылается на Blog Article. Полный граф импортов в этой проверке не
+пересобирался; отсутствие runtime-циклов не установлено.
+
+Предлагаемые уровни не закодированы в действующем ESLint-конфиге.
+В [eslint.config.mjs](../../../../eslint.config.mjs) правило
+`@nx/enforce-module-boundaries` находится в блоке `**/*.js` / `**/*.jsx`,
+а TypeScript-блок его не включает. `depConstraints` использует
+`sourceTag: "*"` и `onlyDependOnLibsWithTags: ["*"]`; направления между
+уровнями этим условием не ограничены. Проверенные `project.json` модулей
+Agent, Blog, Ecommerce, File Storage, Host, Knowledge, RBAC и Social имеют
+пустой массив `tags`.
+
+Статус таблицы остаётся `proposal`, подтверждение — `pending`.
+Для обязательной автоматической проверки нужны утверждённые границы и
+правила, различающие доменную реализацию, схемы, типы и UI-композицию.
+Один уровень на весь модуль не выражает описанные здесь роли RBAC и Host.
+
+## Проверка линейного списка оператора
+
+[Полный аудит импортов](2026-10-14-module-order-import-audit.md) сравнивает
+текущую рабочую копию с явно предложенным порядком шестнадцати модулей.
+Он устанавливает девять импортов вверх в семи файлах: `host → analytic`,
+`telegram → host`, `blog → social`.
+
+Приведённый выше пример `telegram → host` не следует считать основанием для
+разрешённой архитектурной зависимости. README relation и форма связывают
+Telegram Widget, тогда как schema и миграция используют Host Widget;
+серверные readers двух Telegram admin tables также используют Host SDK.
+Этот конфликт владельца данных описан в полном аудите.

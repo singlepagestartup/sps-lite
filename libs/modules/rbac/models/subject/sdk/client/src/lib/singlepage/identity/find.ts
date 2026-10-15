@@ -24,8 +24,8 @@ export function action(props: IProps) {
     ...props.reactQueryOptions,
     queryKey: [key],
     meta: {
-      ...props.reactQueryOptions?.meta,
       topics: ["rbac.identities", "rbac.subjects-to-identities"],
+      ...props.reactQueryOptions?.meta,
     },
     queryFn: async () =>
       (await api.identityFind({

@@ -31,6 +31,13 @@ those files with their own fonts.
 Studio's independent `runtime/theme.css` exposes the same semantic color and
 font roles. Its font assets remain local to Studio.
 
+The image generator resolves fonts according to the build output. Turbopack
+file URLs are read directly. Webpack can return relative
+`/_next/static/media/...` URLs with an empty protocol; these map to the active
+build directory's `static/media` files (`SPS_HOST_DIST_DIR`, or `.next`).
+Absolute HTTP URLs use HTTP loading. Source font names and emitted names can
+differ because the build adds content hashes.
+
 ## Locale redirects
 
 Locale middleware adds the default language prefix while preserving the request
@@ -40,6 +47,13 @@ explicit port. The path and query parameters remain in the redirect.
 
 `skipMiddlewareUrlNormalize` prevents Next from rewriting loopback hosts in the
 outgoing Location header; a login on `127.0.0.1` keeps the same cookie origin.
+
+The catch-all page keeps `generateStaticParams()` empty in development and
+production. With `dynamicParams = true`, the Host page reader resolves each
+requested URL on demand. Expanding every page mask across user-owned entities
+can exceed Next's fixed 5 MiB development static-path cache and repeat that
+expensive enumeration on each request. The URL enumeration API remains available
+for explicit consumers such as the sitemap.
 
 ## Testing
 

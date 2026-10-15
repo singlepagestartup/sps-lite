@@ -70,6 +70,7 @@ import { IComponentProps as ISocialModuleProfileChatListDefaultComponentProps } 
 import { IComponentProps as ISocialModuleProfileChatOverviewDefaultComponentProps } from "./social-module/profile/chat/overview/default/interface";
 
 export type IComponentProps =
+  | IAuthenticationEmailAndPasswordFormAiChat
   | IMeSocialModuleProfileIdSidebarAiChat
   | IResetPasswordFormAiChat
   | IForgotPasswordFormAiChat
@@ -140,3 +141,4 @@ export type IComponentProps =
   | ISocialModuleProfileChatListDefaultComponentProps
   | ISocialModuleProfileChatOverviewDefaultComponentProps
   | never;
+import type { IComponentProps as IAuthenticationEmailAndPasswordFormAiChat } from "./authentication/email-and-password/form-ai-chat/interface";

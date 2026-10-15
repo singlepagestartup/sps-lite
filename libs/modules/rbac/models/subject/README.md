@@ -440,7 +440,11 @@ draft with its hash and file references. Updates require the current draft hash.
 The server displays the stored text, and subsequent prompts pin it independently
 of summaries. This operation does not write Knowledge. Document threads retain
 the exact `rbacAiDocumentProposal`, its original Source hash and confirmation
-state through the existing proposal service.
+state through the existing proposal service. Pending proposals with
+`confirmationMessageId` have claimed confirmation: reject/revise returns
+`applying`, and a later confirm can finish a save after an interrupted request.
+See [Knowledge confirmation semantics](../../../knowledge/README.md) for
+conditional writes, attachment checks and partial failures.
 
 Stable thread/Profile sessions group answering, summary and JEV requests in
 OpenRouter. Initial and tool-triggered Knowledge search passes that session to

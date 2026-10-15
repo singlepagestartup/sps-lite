@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useState } from "react";
 import { Menu } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { useRouter } from "next/navigation";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import { Component as Thread } from "@sps/social/models/thread/frontend/component";
@@ -24,20 +24,17 @@ function Workspace(
   },
 ) {
   const project = props.project;
+  const router = useRouter();
   const [target, setTarget] = useState("whole");
   const [profileId, setProfileId] = useState<string | null>(null);
   const openProfile = useCallback((id: string) => setProfileId(id), []);
   const closeProfile = useCallback(() => setProfileId(null), []);
   const [navigationOpen, setNavigationOpen] = useState(false);
   const onDiscuss = useCallback((id: string) => setTarget(id), []);
-  const threads = api.socialModuleChatFindByIdThreadFind({
-    id: props.data.id,
-    socialModuleChatId: project.chat.id,
-  });
-  const thread = threads.data?.find(
+  const thread = props.threads?.find(
     (thread) => thread.id === (props.threadId || project.thread.id),
   );
-  if (threads.isPending)
+  if (props.threadsLoading)
     return (
       props.loading ?? (
         <p role="status" className="p-8">
@@ -45,17 +42,18 @@ function Workspace(
         </p>
       )
     );
-  if (threads.error || !thread) {
+  if (props.threadsError || !thread) {
     if (props.renderLoadError)
       return props.renderLoadError({
         retry: () => {
-          void threads.refetch();
+          if (props.retryThreads) props.retryThreads();
+          else router.refresh();
         },
-        unavailable: !threads.error && !thread,
+        unavailable: !props.threadsError && !thread,
       });
     return (
       <p role="alert" className="p-8 text-destructive">
-        {threads.error?.message ||
+        {props.threadsError ||
           "This Thread does not belong to the selected Chat."}
       </p>
     );

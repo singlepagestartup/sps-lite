@@ -113,13 +113,15 @@ Important:
 
 For each incoming revalidation message:
 
-1. If `topics` exist and there are queries with matching `meta.topics`:
-   - invalidate by topics (`predicate` over query meta)
-   - skip route matching branch
-2. If `topics` exist but no query uses matching `meta.topics`:
-   - fallback to route invalidation (legacy compatibility)
-3. If `topics` are empty:
-   - route invalidation only
+1. If `topics` exist and there are queries with matching `meta.topics`,
+   invalidate those queries (`predicate` over query meta).
+2. Skip a subscription's route matching only when that route has a query
+   covered by the broadcast topics. Other routes retain their fallback.
+3. If `topics` are empty, use route invalidation only.
+
+Each hand-written query declares its own topics; another query's subscription
+does not supply the missing metadata for its cache entry. Subscriptions are
+registered and cleaned up through the shared SDK pipeline.
 
 ### 3. Route matching rule
 
@@ -141,8 +143,11 @@ This prevents false positives for similar route names.
 
 ### Cart (ecommerce orders)
 
-- Cart queries currently rely on route fallback (no dedicated `meta.topics` yet).
-- This is intentional compatibility mode while topic migration is incremental.
+- Factory cart queries derive `ecommerce.orders` topics. Hand-written
+  aggregates declare the collections used by their calculation.
+- Order `/:id/total` observes orders, order-product quantities, product price
+  attributes, their relations and billing currencies. Its explicit topic rule
+  covers the same dependencies in the HTTP cache and the SDK subscription.
 
 ## Canonical topic derivation (framework layer, issue #195)
 

@@ -1,4 +1,5 @@
 /** @jest-environment jsdom */
+jest.mock("client-only", () => ({}), { virtual: true });
 import { fireEvent, render, screen } from "@testing-library/react";
 const skills = jest.fn((_props: any) => ({
   data: [{ id: "skill", title: "Knowledge editing" }],
@@ -60,7 +61,7 @@ jest.mock("@sps/knowledge/models/source/frontend/component", () => ({
 jest.mock("@sps/file-storage/models/file/frontend/component", () => ({
   Component: (props: any) => <p>{props.data.adminTitle}</p>,
 }));
-import { Component } from "./Component";
+import Component from "./client";
 it("shows all Knowledge and Skills of the selected Chat profile through owner-scoped SDKs", () => {
   const close = jest.fn();
   render(
