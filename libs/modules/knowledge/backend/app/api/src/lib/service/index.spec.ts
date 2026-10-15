@@ -19,7 +19,7 @@ function fixture(attachmentsChanged: boolean) {
       .mockResolvedValue({ source, attachmentsChanged }),
     findSourceById: jest.fn().mockResolvedValue(source),
   };
-  const service = new KnowledgeService({ repository });
+  const service = new KnowledgeService({ source: repository });
   const rebuild = jest
     .spyOn(service, "rebuildFiles")
     .mockResolvedValue(source as any);
@@ -62,4 +62,26 @@ it("reports post-commit analysis failure without rejecting the confirmed update"
     processingError: "Provider unavailable",
   });
   expect(f.index).not.toHaveBeenCalled();
+});
+
+it("rejects unsupported stored attachments before first-Source creation or external linking", async () => {
+  const validateAttachments = jest
+    .fn()
+    .mockRejectedValue(new Error("SVG files are not supported in Knowledge."));
+  const upsertSourceBySlug = jest.fn();
+  const onSourceSaved = jest.fn();
+  const service = new KnowledgeService({
+    source: { validateAttachments, upsertSourceBySlug } as any,
+  });
+  await expect(
+    service.learnContent({
+      slug: "document",
+      title: "Document",
+      content: "Notes",
+      fileIds: ["disguised-svg"],
+      onSourceSaved,
+    }),
+  ).rejects.toThrow("SVG");
+  expect(upsertSourceBySlug).not.toHaveBeenCalled();
+  expect(onSourceSaved).not.toHaveBeenCalled();
 });

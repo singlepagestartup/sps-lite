@@ -1,16 +1,19 @@
+import { Component as Button } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ButtonSecondary, defaultButtonSecondaryProps } from "./Component";
+import { defaultButtonSecondaryProps } from "./Component";
 
 const meta = {
   id: "modules-website-builder-models-button-singlepage-secondary",
   title: "Modules/Website-Builder/Button/Singlepage/secondary",
-  component: ButtonSecondary,
+  component: Button,
   parameters: {
     layout: "centered",
   },
-  args: defaultButtonSecondaryProps,
-} satisfies Meta<typeof ButtonSecondary>;
+  args: { ...defaultButtonSecondaryProps, variant: "secondary" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Button>, { variant: "secondary" }>
+>;
 
 export default meta;
 

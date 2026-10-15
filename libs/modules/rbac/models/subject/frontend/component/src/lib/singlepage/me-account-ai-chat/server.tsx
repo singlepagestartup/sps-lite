@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   const options = {
@@ -9,7 +9,7 @@ export default async function Server(props: IComponentProps) {
     next: { ...props.apiProps?.options?.next, revalidate: 0 },
   };
   const [profiles, identities, balance] = await Promise.all([
-    api
+    subjectApi
       .socialModuleProfileFind({
         id: props.data.id,
         params: {
@@ -20,14 +20,16 @@ export default async function Server(props: IComponentProps) {
         options,
       })
       .catch(() => undefined),
-    api.identityFind({ id: props.data.id, options }).catch(() => undefined),
-    api
+    subjectApi
+      .identityFind({ id: props.data.id, options })
+      .catch(() => undefined),
+    subjectApi
       .billingModuleBalance({ id: props.data.id, options })
       .catch(() => undefined),
   ]);
   const profile = profiles?.[0];
   const avatar = profile
-    ? await api
+    ? await subjectApi
         .socialModuleProfileFindByIdAvatarFind({
           id: props.data.id,
           socialModuleProfileId: profile.id,
@@ -36,7 +38,7 @@ export default async function Server(props: IComponentProps) {
         .catch(() => undefined)
     : undefined;
   return (
-    <Component
+    <ChildComponent
       {...props}
       accountProfile={profile}
       accountIdentities={identities}

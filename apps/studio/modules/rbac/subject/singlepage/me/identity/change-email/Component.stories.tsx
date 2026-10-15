@@ -1,4 +1,4 @@
-import { Component as RbacModuleSubject } from "../../../..";
+import { Component as Subject } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, userEvent } from "storybook/test";
 import { AccountProvider } from "../../account/Account";
@@ -8,13 +8,13 @@ import { aiChatWorkspaceFixture } from "../../../../../../social/profile/singlep
 import { ProjectProvider } from "../../../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
 import { defaultSettingsIdentities } from "../../../../../shared";
 import { useState } from "react";
-function Example() {
+function Component() {
   const [identity, setIdentity] = useState(defaultSettingsIdentities[0]);
   return (
     <AccountProvider account={aiChatAccount}>
       <ProfilesProvider {...aiChatWorkspaceFixture()}>
         <ProjectProvider profileId="pottery">
-          <RbacModuleSubject
+          <Subject
             variant="me-identity-change-email"
             identity={identity}
             onUpdate={setIdentity}
@@ -27,9 +27,9 @@ function Example() {
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-identity-change-email",
   title: "Modules/RBAC/Subject/Singlepage/me/identity/change-email",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const Expanded: StoryObj<typeof meta> = {

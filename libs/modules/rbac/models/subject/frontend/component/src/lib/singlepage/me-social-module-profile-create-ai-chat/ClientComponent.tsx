@@ -4,13 +4,16 @@ import { usePathname, useRouter } from "next/navigation";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import Link from "next/link";
 import { Icon } from "@sps/ui-adapter";
-import { api, queryClient } from "@sps/rbac/models/subject/sdk/client";
+import {
+  api as subjectApi,
+  queryClient,
+} from "@sps/rbac/models/subject/sdk/client";
 import type { IModel as IProfile } from "@sps/social/models/profile/sdk/model";
 import {
   findProjects,
   getProjectsQueryKey,
-  projectHref,
 } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
+import { projectHref } from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const router = useRouter();
@@ -19,7 +22,7 @@ export function Component(props: IComponentPropsExtended) {
   const [error, setError] = useState("");
   const [createdProfile, setCreatedProfile] = useState<IProfile | null>(null);
   const [creating, setCreating] = useState(false);
-  const create = api.socialModuleProfileCreate({ id: props.data.id });
+  const create = subjectApi.socialModuleProfileCreate({ id: props.data.id });
   if (props.pending)
     return (
       <div

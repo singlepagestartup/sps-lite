@@ -40,6 +40,7 @@ export interface ISourceFilesReaderProps {
     id: string;
     socialModuleProfileId: string;
     socialModuleChatId: string;
+    options?: NonNullable<IComponentProps["apiProps"]>["options"];
   };
   profileId: string;
   sourceId: string;

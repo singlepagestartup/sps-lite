@@ -1,5 +1,5 @@
 ---
-description: Review an SPS pull request or local diff for module boundaries, API/cache consistency, and evidenced behavior risks.
+description: Review SPS PRs or local diffs for module/service boundaries, frontend and Studio contracts, instance composition, and API/cache behavior.
 ---
 
 # Claude workflow adapter

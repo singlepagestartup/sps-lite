@@ -1,3 +1,5 @@
+import type { IComponentProps, IdentityFindDefaultProps } from "./interface";
+export type { IdentityFindDefaultProps } from "./interface";
 import { useCallback, useState } from "react";
 
 import { IdentityCardDefault } from "../card-default/Component";
@@ -8,14 +10,6 @@ import {
   type RbacIdentity,
 } from "../../../shared";
 
-export interface IdentityFindDefaultProps {
-  variant?: string;
-  title: string;
-  description: string;
-  emptyLabel: string;
-  identities: RbacIdentity[];
-}
-
 export const defaultIdentityFindDefaultProps: IdentityFindDefaultProps = {
   title: "Identities",
   description:
@@ -24,7 +18,7 @@ export const defaultIdentityFindDefaultProps: IdentityFindDefaultProps = {
   identities: defaultRbacIdentities,
 };
 
-export function IdentityFindDefault(props?: Partial<IdentityFindDefaultProps>) {
+export function IdentityFindDefault(props?: IComponentProps) {
   const { title, description, emptyLabel, identities } = {
     ...defaultIdentityFindDefaultProps,
     ...props,

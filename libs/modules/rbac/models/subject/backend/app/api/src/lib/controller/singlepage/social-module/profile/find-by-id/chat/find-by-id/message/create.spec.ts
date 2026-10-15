@@ -383,6 +383,13 @@ describe("Given: rbac social message create author relation", () => {
           { profileId: "assistant-profile", skillId: "brief-skill" },
         ]),
     };
+    const skill = {
+      id: "brief-skill",
+      slug: "ai-chat-account-manager-assistant-profile",
+    };
+    service.socialModuleProfileDocumentSkillFind = jest
+      .fn()
+      .mockResolvedValue(skill);
     const handler = new Handler(service);
     handler.notifyOtherSubjectsInChat = jest.fn().mockResolvedValue(undefined);
     await handler.execute(
@@ -419,15 +426,11 @@ describe("Given: rbac social message create author relation", () => {
         },
       }),
     );
-    expect(service.socialModule.profilesToSkills.find).toHaveBeenCalledWith({
-      params: {
-        filters: {
-          and: [
-            { column: "profileId", method: "eq", value: "assistant-profile" },
-          ],
-        },
-      },
+    expect(service.socialModuleProfileDocumentSkillFind).toHaveBeenCalledWith({
+      socialModuleProfileId: "assistant-profile",
+      documentKey: "brief",
     });
+    expect(service.socialModule.profilesToSkills.find).not.toHaveBeenCalled();
   });
 
   it("When: a document selects another document's Source Then: no message is written", async () => {

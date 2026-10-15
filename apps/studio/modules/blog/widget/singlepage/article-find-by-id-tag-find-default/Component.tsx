@@ -1,8 +1,12 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, ArticleFindByIdTagFindProps } from "./interface";
+export type { ArticleFindByIdTagFindProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as BlogModuleTag } from "../../../tag/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Tag } from "../../../tag/index";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -30,14 +34,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type ArticleFindByIdTagFindProps =
-  typeof defaultArticleFindByIdTagFindProps;
-export function ArticleFindByIdTagFind(
-  props?: Partial<ArticleFindByIdTagFindProps> & { variant?: string },
-) {
+export function ArticleFindByIdTagFind(props?: IComponentProps) {
   const { title, tags } = { ...defaultArticleFindByIdTagFindProps, ...props };
   return (
     <div
@@ -50,12 +50,12 @@ export function ArticleFindByIdTagFind(
       data-variant={props?.variant ?? "article-find-by-id-tag-find-default"}
     >
       <div className="mb-3 flex items-center gap-2">
-        <Tag className="size-5 text-muted-foreground" />
+        <TagIcon className="size-5 text-muted-foreground" />
         <span className="text-lg font-semibold text-foreground">{title}</span>
       </div>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <BlogModuleTag
+          <Tag
             variant="button-default"
             key={tag}
             label={tag}
@@ -66,7 +66,7 @@ export function ArticleFindByIdTagFind(
     </div>
   );
 }
-const Tag = createIcon("tag");
+const TagIcon = createIcon("tag");
 export const defaultArticleFindByIdTagFindProps = {
   title: "Tags",
   tags: ["pricing", "plans", "getting-started"],

@@ -226,10 +226,15 @@ export class Middleware {
     // broadcast announcing a change.
     const topics = resolveTopicsForPath(path, defaultCompiledTopicRules);
 
+    await this.invalidateTopics(topics);
+  }
+
+  /** Await before publishing a same-process or background mutation event. */
+  async invalidateTopics(topics: readonly string[]): Promise<void> {
     await Promise.all(
-      topics.map(async (topic) =>
-        this.bumpCacheVersion(getTopicVersionKey(topic)),
-      ),
+      [...new Set(topics)]
+        .filter(Boolean)
+        .map((topic) => this.bumpCacheVersion(getTopicVersionKey(topic))),
     );
   }
 

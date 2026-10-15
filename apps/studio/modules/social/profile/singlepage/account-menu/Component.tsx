@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IAccountMenuProps } from "./interface";
+export type { IAccountMenuProps } from "./interface";
 
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../shared/icon";
+
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useEffect, useState } from "react";
 import type { IAIChatUserProfile } from "../scope/ai-chat/project/models";
@@ -12,24 +15,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAccountMenuProps {
-  variant?: string;
-  data?: IAIChatUserProfile;
-  email?: string;
-  balance?: {
-    free: number;
-    purchased: number;
-  } | null;
-  showTokens?: boolean;
-  page?: string;
-  settingsHref?: string;
-  settingsTarget?: "_top";
-  onNavigate?: () => void;
-  onSignOut?: () => void;
-}
 export function Component({
   variant = "account-menu",
   data = aiChatAccount.profile,
@@ -41,7 +29,7 @@ export function Component({
   settingsTarget,
   onNavigate,
   onSignOut,
-}: IAccountMenuProps = {}) {
+}: IComponentProps = {}) {
   const [avatarFailed, setAvatarFailed] = useState(false);
   useEffect(() => setAvatarFailed(false), [data.avatar]);
   const balanceLabel = balance

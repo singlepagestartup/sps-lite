@@ -1,11 +1,5 @@
-export interface ButtonLinkProps {
-  variant?: string;
-  label: string;
-  href: string;
-  size?: "sm" | "xs";
-  tone?: "default" | "muted";
-  target?: "_self" | "_top";
-}
+import type { IComponentProps, ButtonLinkProps } from "./interface";
+export type { ButtonLinkProps } from "./interface";
 
 export const defaultButtonLinkProps: ButtonLinkProps = {
   label: "Privacy",
@@ -14,7 +8,7 @@ export const defaultButtonLinkProps: ButtonLinkProps = {
   tone: "default",
 };
 
-export function ButtonLink(props?: Partial<ButtonLinkProps>) {
+export function ButtonLink(props?: IComponentProps) {
   const label = props?.label ?? defaultButtonLinkProps.label;
   const href = props?.href ?? defaultButtonLinkProps.href;
   const size = props?.size ?? defaultButtonLinkProps.size;

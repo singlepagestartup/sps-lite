@@ -1,7 +1,7 @@
-import { Component as SocialModuleProfile } from "../../../../../index";
+import { Component as Profile } from "../../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-function Example() {
+function Component() {
   return (
     <DropdownMenu.Root defaultOpen modal={false}>
       <DropdownMenu.Trigger className="rounded-xl border border-border bg-card px-4 py-3">
@@ -11,7 +11,7 @@ function Example() {
         forceMount
         className="w-64 rounded-xl border border-border bg-card p-2 text-foreground"
       >
-        <SocialModuleProfile
+        <Profile
           variant="select-item-ai-chat-project"
           data={{
             id: "pottery",
@@ -27,7 +27,7 @@ function Example() {
 const meta = {
   id: "modules-social-models-profile-singlepage-select-item-ai-chat-project",
   title: "Modules/Social/Profile/Singlepage/select/item/ai-chat/project",
-  component: Example,
-} satisfies Meta<typeof Example>;
+  component: Component,
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

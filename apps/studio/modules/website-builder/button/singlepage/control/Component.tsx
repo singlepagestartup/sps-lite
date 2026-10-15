@@ -1,9 +1,8 @@
+import type { IComponentProps, IControlProps } from "./interface";
+export type { IControlProps } from "./interface";
 import { forwardRef, type ButtonHTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
-export interface IControlProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string;
-  appearance?: "primary" | "secondary" | "plain" | "danger";
-}
+
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =

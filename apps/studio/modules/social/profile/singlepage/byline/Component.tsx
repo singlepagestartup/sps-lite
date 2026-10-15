@@ -1,3 +1,5 @@
+import type { IComponentProps, ProfileBylineProps } from "./interface";
+export type { ProfileBylineProps } from "./interface";
 /**
  * social.profile.byline
  *
@@ -20,11 +22,7 @@ export const defaultProfileBylineProps = {
   size: "sm" as "sm" | "xs",
 };
 
-export type ProfileBylineProps = typeof defaultProfileBylineProps;
-
-export function ProfileByline(
-  props?: Partial<ProfileBylineProps> & { variant?: string },
-) {
+export function ProfileByline(props?: IComponentProps) {
   const { name, avatar, href, size, inverse } = {
     ...defaultProfileBylineProps,
     ...props,

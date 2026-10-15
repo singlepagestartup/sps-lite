@@ -1,20 +1,11 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
-import { Component as File } from "@sps/file-storage/models/file/frontend/component";
-import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
-import { clientHost } from "@sps/rbac/models/subject/sdk/model";
-import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import type { IComponentPropsExtended } from "./interface";
-import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as KnowledgeModuleSource } from "@sps/knowledge/models/source/frontend/component";
+import { Component as FileStorageModuleFile } from "@sps/file-storage/models/file/frontend/component";
+import type { IComponentPropsExtended, ISourceFileProps } from "./interface";
 
-interface ISourceFileProps {
-  file: IFile;
-  removing: boolean;
-  onRemove: (id: string) => void;
-}
 const SourceFile = memo(function SourceFile({
   file,
   removing,
@@ -23,13 +14,11 @@ const SourceFile = memo(function SourceFile({
   const title = file.adminTitle || file.alt || "File";
   return (
     <li className="relative min-w-0">
-      <File
+      <FileStorageModuleFile
         isServer={false}
         variant="attachment-ai-chat"
         data={file}
-        apiProps={{
-          reactQueryOptions: { initialData: file, queryFn: async () => file },
-        }}
+        dataSource="props"
       />
       <button
         type="button"
@@ -70,11 +59,11 @@ export const Component = memo(function Component(
     [data.id, project.requesterProfileId, project.chat.id, project.profile.id],
   );
   const update =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdUpdate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdUpdate(
       { ...scope, knowledgeModuleSourceId: source.id },
     );
   const files =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
       {},
     );
   const attachments = {
@@ -149,31 +138,11 @@ export const Component = memo(function Component(
     [files.mutateAsync, scope, source.id],
   );
   return (
-    <Source
+    <KnowledgeModuleSource
       isServer={false}
       variant="id-ai-chat"
       data={source}
-      apiProps={{
-        reactQueryOptions: {
-          initialData: source,
-          queryFn: async () => {
-            const records =
-              await serverApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
-                {
-                  ...scope,
-                  host: clientHost,
-                  options: {
-                    headers: saturateHeaders({ "Cache-Control": "no-store" }),
-                  },
-                },
-              );
-            const current = records.find((record) => record.id === source.id);
-            if (!current)
-              throw new Error("Source is no longer linked to this assistant.");
-            return current;
-          },
-        },
-      }}
+      dataSource="props"
       onDiscuss={discuss}
       attachments={
         <div className="mt-4 border-t border-border pt-3">

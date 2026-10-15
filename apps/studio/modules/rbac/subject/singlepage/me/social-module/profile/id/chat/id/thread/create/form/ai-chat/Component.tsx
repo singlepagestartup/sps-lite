@@ -1,12 +1,20 @@
 "use client";
+import type {
+  IComponentProps,
+  ISubjectThreadCreateFormProps,
+} from "./interface";
+export type { ISubjectThreadCreateFormProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../../../../../../shared/icon";
+
 import {
   useState,
   useId,
   type ReactNode,
   type InputHTMLAttributes,
 } from "react";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../../../../../../website-builder/feature";
-import type IconGlyphs from "../../../../../../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+
+import type IconGlyphs from "../../../../../../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { useStudioAccount } from "../../../../../../../../../account/Account";
 interface IFeedbackProps {
   children: ReactNode;
@@ -82,23 +90,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISubjectThreadCreateFormProps {
-  variant?: string;
-  subjectId?: string;
-  profileId: string;
-  chatId: string;
-  cancelHref: string;
-}
 export function Component({
   variant = "me-social-module-profile-id-chat-id-thread-create-form-ai-chat",
   subjectId,
   profileId,
   chatId,
   cancelHref,
-}: ISubjectThreadCreateFormProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const [title, setTitle] = useState("");
   const [previewed, setPreviewed] = useState(false);

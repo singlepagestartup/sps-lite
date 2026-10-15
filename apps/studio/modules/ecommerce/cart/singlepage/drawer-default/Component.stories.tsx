@@ -1,16 +1,19 @@
+import { Component as Cart } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { CartDrawerDefault, defaultCartDrawerDefaultProps } from "./Component";
+import { defaultCartDrawerDefaultProps } from "./Component";
 
 const meta = {
   id: "modules-ecommerce-models-cart-singlepage-cart-drawer-default",
   title: "Modules/Ecommerce/Cart/Singlepage/cart-drawer-default",
-  component: CartDrawerDefault,
+  component: Cart,
   parameters: {
     layout: "fullscreen",
   },
-  args: defaultCartDrawerDefaultProps,
-} satisfies Meta<typeof CartDrawerDefault>;
+  args: { ...defaultCartDrawerDefaultProps, variant: "drawer-default" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Cart>, { variant: "drawer-default" }>
+>;
 
 export default meta;
 

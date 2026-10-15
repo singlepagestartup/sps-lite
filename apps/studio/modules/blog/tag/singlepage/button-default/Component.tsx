@@ -1,3 +1,5 @@
+import type { IComponentProps, TagButtonDefaultProps } from "./interface";
+export type { TagButtonDefaultProps } from "./interface";
 /**
  * blog.tag.button-default
  *
@@ -5,18 +7,12 @@
  * widgets compose a list of these instead of re-implementing the chip markup.
  */
 
-export interface TagButtonDefaultProps {
-  variant?: string;
-  label: string;
-  href?: string;
-}
-
 export const defaultTagButtonDefaultProps: TagButtonDefaultProps = {
   label: "pricing",
   href: "/blog/tags/pricing",
 };
 
-export function TagButtonDefault(props?: Partial<TagButtonDefaultProps>) {
+export function TagButtonDefault(props?: IComponentProps) {
   const { label, href } = { ...defaultTagButtonDefaultProps, ...props };
 
   return (

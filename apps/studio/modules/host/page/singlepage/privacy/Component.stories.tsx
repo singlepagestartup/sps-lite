@@ -1,15 +1,17 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { PrivacyPage } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-privacy",
   title: "Modules/Host/Page/Singlepage/privacy",
-  component: PrivacyPage,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof PrivacyPage>;
+  args: { variant: "privacy" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Page>, { variant: "privacy" }>
+>;
 
 export default meta;
 

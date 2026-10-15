@@ -1,11 +1,6 @@
+import type { IComponentProps, CrmInputTextDefaultProps } from "./interface";
+export type { CrmInputTextDefaultProps } from "./interface";
 import { type CrmInputRecord, defaultCrmForm } from "../../../shared/demo-crm";
-
-export interface CrmInputTextDefaultProps {
-  variant?: string;
-  input: CrmInputRecord;
-  disabled?: boolean;
-  namePrefix?: string;
-}
 
 export const defaultCrmInputTextDefaultProps: CrmInputTextDefaultProps = {
   input: defaultCrmForm.steps[0].inputs[0],
@@ -13,7 +8,7 @@ export const defaultCrmInputTextDefaultProps: CrmInputTextDefaultProps = {
   namePrefix: "crm",
 };
 
-export function CrmInputTextDefault(props?: Partial<CrmInputTextDefaultProps>) {
+export function CrmInputTextDefault(props?: IComponentProps) {
   const { input, disabled, namePrefix } = {
     ...defaultCrmInputTextDefaultProps,
     ...props,

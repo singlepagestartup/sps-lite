@@ -1,6 +1,9 @@
+export { Component } from "./Component";
 export {
-  Component,
   type ILoginCopy,
   type ILoginProps,
   type ILoginErrors,
-} from "./Component";
+} from "./interface";
+
+export type { IComponentProps, IComponentPropsExtended } from "./interface";
+export { variant } from "./interface";

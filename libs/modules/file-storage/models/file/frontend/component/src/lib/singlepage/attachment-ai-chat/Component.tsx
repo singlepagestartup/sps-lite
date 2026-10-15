@@ -14,10 +14,29 @@ export function Component(props: IComponentPropsExtended) {
     file.file.split("?")[0].split(".").pop() ||
     ""
   ).toLowerCase();
+  const blocked =
+    /\.svgz?(?:[?#]|$)/i.test(file.file) ||
+    ["svg", "svgz"].includes(extension) ||
+    file.mimeType === "image/svg+xml" ||
+    file.mimeType === "application/x-knowledge-unavailable";
+  if (blocked)
+    return (
+      <div
+        data-module="file-storage"
+        data-model="file"
+        data-variant={props.variant}
+        data-id={file.id}
+        className="overflow-hidden rounded-xl border border-border bg-card p-3"
+      >
+        <FileText className="size-7" />
+        <p className="truncate text-xs font-medium">{title}</p>
+        <p className="text-xs text-muted-foreground">Unsupported attachment</p>
+      </div>
+    );
   const isImage =
     file.mimeType?.startsWith("image/") ||
     (!file.mimeType &&
-      ["png", "jpg", "jpeg", "gif", "webp", "svg", "avif"].includes(extension));
+      ["png", "jpg", "jpeg", "gif", "webp", "avif"].includes(extension));
   return (
     <a
       href={src}

@@ -1,7 +1,23 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  IChatPreviewProps,
+  IThreadRowProps,
+  IAttachedDocument,
+  IThreadMessage,
+  ITopic,
+} from "./interface";
+export type {
+  IChatPreviewProps,
+  IThreadRowProps,
+  IAttachedDocument,
+  IThreadMessage,
+  ITopic,
+} from "./interface";
 
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   memo,
   useCallback,
@@ -19,44 +35,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IChatPreviewProps {
-  variant?: string;
-  content?: IAIChatWebsiteContent;
-}
-export interface IThreadRowProps {
-  name: string;
-  value?: string;
-  selected: boolean;
-  disabled?: boolean;
-  status?: string;
-  topic?: boolean;
-  onSelect: (name: string) => void;
-}
-export interface IAttachedDocument {
-  name: string;
-  text: string;
-}
-export interface IThreadMessage {
-  id: string;
-  role: "user" | "assistant";
-  text: string;
-  documents?: IAttachedDocument[];
-}
-export interface ITopic {
-  id: string;
-  title: string;
-  documents: string[];
-  messages: IThreadMessage[];
-}
 type TView = "materials" | "document" | "files" | "workspace" | "topic";
 /** Artifact-derived local prototype: prepared files and scripted replies, no AI calls. */
 export function Component({
   variant = "id-preview-ai-chat",
   content = defaultContent,
-}: IChatPreviewProps = {}) {
+}: IComponentProps = {}) {
   const id = useId();
   const label = content.labels;
   const sequence = useRef(0);

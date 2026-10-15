@@ -1,9 +1,9 @@
-import { Component as FileStorageModuleFile } from "../../index";
+import { Component as File } from "../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useCallback, useState } from "react";
 import { FilesProvider } from "./Files";
 import { aiChatAttachmentFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-interface IExampleProps {
+interface IStoryProps {
   count?: number;
   expanded?: boolean;
   removing?: boolean;
@@ -16,7 +16,7 @@ function Attachments({
   removing = false,
   error = false,
   analyzing = false,
-}: IExampleProps) {
+}: IStoryProps) {
   const files = aiChatAttachmentFixture(count);
   const [ids, setIds] = useState(files.map((file) => file.id));
   const attach = useCallback(
@@ -32,7 +32,7 @@ function Attachments({
   return (
     <FilesProvider initialFiles={files}>
       <div className="mx-auto w-full max-w-sm p-4">
-        <FileStorageModuleFile
+        <File
           variant="list-attachments-ai-chat"
           section="Products"
           fileIds={ids}
@@ -49,13 +49,13 @@ function Attachments({
     </FilesProvider>
   );
 }
-function Example(props: IExampleProps) {
+function Component(props: IStoryProps) {
   return <Attachments key={JSON.stringify(props)} {...props} />;
 }
 const meta = {
   id: "modules-file-storage-models-file-singlepage-list-attachments-ai-chat",
   title: "Modules/File-Storage/File/Singlepage/list-attachments-ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
   args: {
     count: 2,
@@ -71,7 +71,7 @@ const meta = {
     error: { control: "boolean" },
     analyzing: { control: "boolean" },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const Empty: StoryObj<typeof meta> = { args: { count: 0 } };

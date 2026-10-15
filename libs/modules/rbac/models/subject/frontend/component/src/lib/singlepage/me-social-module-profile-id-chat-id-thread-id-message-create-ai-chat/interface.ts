@@ -28,3 +28,18 @@ export interface IComponentPropsExtended
     refetch?: () => void;
   };
 }
+
+export interface IAttachment {
+  id: string;
+  file: File;
+}
+
+export interface IAttachmentProps {
+  attachment: IAttachment;
+  first: boolean;
+  last: boolean;
+  disabled: boolean;
+  onRemove: (id: string) => void;
+  onMove: (id: string, direction: -1 | 1) => void;
+  onReorder: (id: string, targetId: string) => void;
+}

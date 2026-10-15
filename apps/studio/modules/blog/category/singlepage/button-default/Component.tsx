@@ -1,3 +1,5 @@
+import type { IComponentProps, CategoryButtonDefaultProps } from "./interface";
+export type { CategoryButtonDefaultProps } from "./interface";
 interface ICollectionCategory {
   slug: string;
   label: string;
@@ -29,13 +31,8 @@ function CategoryChoice({
     </button>
   );
 }
-export type CategoryButtonDefaultProps =
-  typeof defaultCategoryButtonDefaultProps & {
-    onSelect?: (slug: string) => void;
-  };
-export function CategoryButtonDefault(
-  props?: Partial<CategoryButtonDefaultProps> & { variant?: string },
-) {
+
+export function CategoryButtonDefault(props?: IComponentProps) {
   const { slug, label, count, isActive, onSelect } = {
     ...defaultCategoryButtonDefaultProps,
     ...props,

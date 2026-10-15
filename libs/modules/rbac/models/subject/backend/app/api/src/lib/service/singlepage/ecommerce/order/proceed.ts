@@ -32,6 +32,7 @@ import { Service as IdentityService } from "@sps/rbac/models/identity/backend/ap
 import { Service as RoleService } from "@sps/rbac/models/role/backend/app/api/src/lib/service";
 import { Service as RolesToEcommerceModuleProductsService } from "@sps/rbac/relations/roles-to-ecommerce-module-products/backend/app/api/src/lib/service";
 import { logger } from "@sps/backend-utils";
+import type { ICheckout as IEcommerceProductCheckout } from "../product/checkout";
 
 export type IExecuteProps = {
   subjectId?: string;
@@ -148,6 +149,8 @@ export class Service {
     subjectsToBillingModuleCurrencies: SubjectsToBillingModuleCurrenciesService,
     @inject(SubjectDI.ISubjectsToIdentitiesService)
     subjectsToIdentities: SubjectsToIdentitiesService,
+    @inject(SubjectDI.IEcommerceProductCheckout)
+    readonly ecommerceProductCheckout: IEcommerceProductCheckout,
   ) {
     this.repository = repository;
     this.socialModule = socialModule;
@@ -945,16 +948,10 @@ export class Service {
         firstInvoice.amount === 0 &&
         props.extendedOrder.checkoutAttributesByCurrency.amount === 0
       ) {
-        await api.ecommerceModuleProductCheckout({
+        await this.ecommerceProductCheckout({
           id: props.subjectToEcommerceModuleOrder.subjectId,
           productId: props.extendedOrder.ordersToProducts[0].productId,
           data: { provider, billingModule: { currency } },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-              "Cache-Control": "no-store",
-            },
-          },
         });
         return;
       }
@@ -1016,7 +1013,7 @@ export class Service {
             });
 
             if (telegramChats?.length && telegramChats.length === 1) {
-              await api.ecommerceModuleProductCheckout({
+              await this.ecommerceProductCheckout({
                 id: props.subjectToEcommerceModuleOrder.subjectId,
                 productId: props.extendedOrder.ordersToProducts[0].productId,
                 data: {

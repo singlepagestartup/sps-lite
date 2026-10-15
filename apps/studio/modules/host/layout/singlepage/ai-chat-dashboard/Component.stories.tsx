@@ -1,4 +1,4 @@
-import { Component as HostModuleLayout } from "../../index";
+import { Component as Layout } from "../../index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
@@ -8,9 +8,9 @@ import { AccountProvider } from "../../../../rbac/subject/singlepage/me/account/
 import { aiChatAccount } from "../../../../rbac/subject/singlepage/me/account/fixture";
 import { aiChatWorkspaceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import type { Meta, StoryObj } from "@storybook/react";
-function Example() {
+function Component() {
   return (
-    <HostModuleLayout
+    <Layout
       variant="ai-chat-dashboard"
       page="chat"
       profileSelect={(props) => (
@@ -30,13 +30,13 @@ function Example() {
       )}
     >
       <main className="mx-auto max-w-6xl p-5">Page content slot</main>
-    </HostModuleLayout>
+    </Layout>
   );
 }
 const meta = {
   id: "modules-host-models-layout-singlepage-ai-chat-dashboard",
   title: "Modules/Host/Layout/Singlepage/ai-chat-dashboard",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
   decorators: [
     (Story) => (
@@ -47,6 +47,6 @@ const meta = {
       </AccountProvider>
     ),
   ],
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

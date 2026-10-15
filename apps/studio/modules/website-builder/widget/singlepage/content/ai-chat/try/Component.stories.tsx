@@ -1,9 +1,10 @@
+import { Component as Widget } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component } from "./Component";
+
 const meta = {
   id: "modules-website-builder-models-widget-singlepage-content-ai-chat-try",
   title: "Modules/Website-Builder/Widget/Singlepage/content/ai-chat/try",
-  component: Component,
+  component: Widget,
   parameters: { layout: "fullscreen" },
   args: {
     children: (
@@ -11,7 +12,13 @@ const meta = {
         Chat preview supplied by Host Page
       </div>
     ),
+    variant: "content-ai-chat-try",
   },
-} satisfies Meta<typeof Component>;
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Widget>,
+    { variant: "content-ai-chat-try" }
+  >
+>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

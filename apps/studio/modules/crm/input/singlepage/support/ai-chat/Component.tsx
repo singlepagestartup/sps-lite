@@ -1,15 +1,7 @@
+import type { IComponentProps, ISupportInputProps } from "./interface";
+export type { ISupportInputProps } from "./interface";
 import { useId } from "react";
-export interface ISupportInputProps {
-  variant?: string;
-  id?: string;
-  name: string;
-  label: string;
-  placeholder: string;
-  value: string;
-  error?: string;
-  options?: string[];
-  onChange: (value: string) => void;
-}
+
 export function Component({
   variant = "support-ai-chat",
   id: suppliedId,
@@ -20,7 +12,7 @@ export function Component({
   error,
   options,
   onChange,
-}: ISupportInputProps) {
+}: IComponentProps) {
   const generatedId = useId();
   const id = suppliedId ?? generatedId;
   const attributes = {

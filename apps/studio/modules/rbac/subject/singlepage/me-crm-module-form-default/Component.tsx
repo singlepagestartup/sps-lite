@@ -1,3 +1,8 @@
+import type {
+  IComponentProps,
+  SubjectMeCrmFormDefaultProps,
+} from "./interface";
+export type { SubjectMeCrmFormDefaultProps } from "./interface";
 import { Component as CrmModuleWidget } from "../../../../crm/widget/index";
 import {
   type CrmFormRecord,
@@ -15,22 +20,7 @@ export const defaultSubjectMeCrmFormDefaultProps = {
   crmForm: defaultCrmForm,
 };
 
-export interface SubjectMeCrmFormDefaultProps {
-  variant?: string;
-  subject: {
-    id: string;
-    name: string;
-    email: string;
-  };
-  title: string;
-  description: string;
-  crmForm: CrmFormRecord;
-  embedded?: boolean;
-}
-
-export function SubjectMeCrmFormDefault(
-  props?: Partial<SubjectMeCrmFormDefaultProps>,
-) {
+export function SubjectMeCrmFormDefault(props?: IComponentProps) {
   const { subject, title, description, crmForm, embedded } = {
     ...defaultSubjectMeCrmFormDefaultProps,
     ...props,

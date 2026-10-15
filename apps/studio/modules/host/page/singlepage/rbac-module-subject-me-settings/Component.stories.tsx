@@ -1,15 +1,20 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { ProfileDefault } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-settings",
   title: "Modules/Host/Page/Singlepage/rbac-module-subject-me-settings",
-  component: ProfileDefault,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof ProfileDefault>;
+  args: { variant: "rbac-module-subject-me-settings" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "rbac-module-subject-me-settings" }
+  >
+>;
 
 export default meta;
 

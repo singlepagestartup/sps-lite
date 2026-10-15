@@ -24,3 +24,7 @@ export interface IComponentPropsExtended
   threadsError?: string;
   retryThreads?: () => void;
 }
+
+export interface IClientComponentProps extends IComponentPropsExtended {
+  project: NonNullable<IComponentPropsExtended["project"]>;
+}

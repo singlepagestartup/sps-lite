@@ -1,6 +1,15 @@
 "use client";
+import type {
+  IComponentProps,
+  ILoginCopy,
+  ILoginProps,
+  ILoginErrors,
+} from "./interface";
+export type { ILoginCopy, ILoginProps, ILoginErrors } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import { twMerge as mergeButtonClass } from "tailwind-merge";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature/index";
 
 import {
   type ReactNode,
@@ -12,7 +21,7 @@ import {
   useState,
   type FormEvent,
 } from "react";
-import type IconGlyphs from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { useStudioAccount } from "../../../../account/Account";
 import defaultCopy from "./content.json";
 function TextField({
@@ -140,29 +149,14 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ILoginCopy {
-  title: string;
-  description: string[];
-  successDescription: string[];
-  labels: Record<string, string>;
-}
-export interface ILoginProps {
-  variant?: string;
-  copy?: ILoginCopy;
-  onSuccess?: (email: string) => void;
-}
-export interface ILoginErrors {
-  email?: string;
-  password?: string;
-}
 export function Component({
   variant = "me-authentication-email-and-password-authentication-form-ai-chat",
   copy = defaultCopy,
   onSuccess,
-}: ILoginProps = {}) {
+}: IComponentProps = {}) {
   const { signIn } = useStudioAccount();
   const label = copy.labels;
   const id = useId();

@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   useState as useStatePresentation,
@@ -26,7 +30,7 @@ import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DialogPresentation from "@radix-ui/react-dialog";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IRecordFormProps {
   children: ReactNode;
   footer: ReactNode;
@@ -654,7 +658,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 interface IArticleRecord {
@@ -667,12 +671,10 @@ interface IArticleRecord {
   variant: string;
   className: string;
 }
-interface IComponentVariantProps {
-  variant?: string;
-}
+
 export function BlogArticleAdminV2List({
   variant = "admin-v2-list",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   const [articles, setArticles] = useState(initialArticles);
   const [preview, setPreview] = useState<IArticleRecord | null>(null);
   const [draft, setDraft] = useState<IArticleRecord | null>(null);

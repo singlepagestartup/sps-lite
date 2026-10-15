@@ -1,10 +1,5 @@
-export interface StartupWidgetDefaultProps {
-  variant?: string;
-  title: string;
-  subtitle?: string;
-  description?: string;
-  className?: string;
-}
+import type { IComponentProps, StartupWidgetDefaultProps } from "./interface";
+export type { StartupWidgetDefaultProps } from "./interface";
 
 export function StartupWidgetDefault({
   variant = "default",
@@ -12,7 +7,7 @@ export function StartupWidgetDefault({
   subtitle,
   description,
   className = "",
-}: StartupWidgetDefaultProps) {
+}: IComponentProps) {
   return (
     <section
       className={`w-full rounded-2xl border border-border bg-card p-6 sm:p-10 ${className}`}

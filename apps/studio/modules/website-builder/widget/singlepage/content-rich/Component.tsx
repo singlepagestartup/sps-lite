@@ -1,3 +1,5 @@
+import type { IComponentProps, ContentRichProps } from "./interface";
+export type { ContentRichProps } from "./interface";
 /**
  * website-builder.widget.content-rich
  *
@@ -39,11 +41,7 @@ export const defaultContentRichProps = {
   `,
 };
 
-export type ContentRichProps = typeof defaultContentRichProps;
-
-export function ContentRich(
-  props?: Partial<ContentRichProps> & { variant?: string },
-) {
+export function ContentRich(props?: IComponentProps) {
   const { content } = { ...defaultContentRichProps, ...props };
   const editor = useEditor(
     {

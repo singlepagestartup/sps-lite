@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IProductAdminListProps } from "./interface";
+export type { IProductAdminListProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   type ReactNode,
   useId,
@@ -25,11 +29,11 @@ import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as Dialog from "@radix-ui/react-dialog";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import { EcommerceProductAdminV2Form } from "../admin-v2-form/Component";
 import { studioProducts, type IStudioProduct } from "../../shared";
-import { Component as EcommerceModuleAttribute } from "../../../attribute/index";
+import { Component as Attribute } from "../../../attribute/index";
 interface IRecordEditorProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -609,17 +613,13 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IProductAdminListProps {
-  variant?: string;
-  initialProduct?: IStudioProduct;
-}
 export function EcommerceProductAdminV2List({
   variant = "admin-v2-list",
   initialProduct,
-}: IProductAdminListProps = {}) {
+}: IComponentProps = {}) {
   const [products, setProducts] = useState(studioProducts);
   const [editing, setEditing] = useState<IStudioProduct | null>(
     initialProduct ?? null,
@@ -710,7 +710,7 @@ export function EcommerceProductAdminV2List({
             key={editing.id || "new"}
             product={editing}
             embedded
-            attributes={<EcommerceModuleAttribute variant="list" />}
+            attributes={<Attribute variant="list" />}
             onSave={(product) => {
               const saved = {
                 ...product,

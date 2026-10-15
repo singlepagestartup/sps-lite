@@ -2,12 +2,16 @@
 import Link from "next/link";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { ChevronDown, LogOut, Settings } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component as Profile } from "@sps/social/models/profile/frontend/component";
-import type { IModel as IProfile } from "@sps/social/models/profile/sdk/model";
-import type { IComponentPropsExtended } from "./interface";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
+import type {
+  IComponentPropsExtended,
+  IAccountEmailProps,
+  IAccountAvatarProps,
+  IAccountTokenBalanceProps,
+  IAccountMenuProps,
+} from "./interface";
 import { Icon } from "@sps/ui-adapter";
-import type { ReactNode } from "react";
 
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -24,11 +28,7 @@ export function Component(props: IComponentPropsExtended) {
   );
 }
 
-function AccountEmail({
-  identities,
-}: {
-  identities: IComponentPropsExtended["accountIdentities"];
-}) {
+function AccountEmail({ identities }: IAccountEmailProps) {
   return identities?.map(
     (identity) =>
       identity.email && (
@@ -42,15 +42,9 @@ function AccountEmail({
   );
 }
 
-function AccountAvatar(props: {
-  subjectId: string;
-  profile: IProfile;
-  language: string;
-  fallback: ReactNode;
-  avatar?: IComponentPropsExtended["accountAvatar"];
-}) {
+function AccountAvatar(props: IAccountAvatarProps) {
   return (
-    <Profile
+    <SocialModuleProfile
       isServer={false}
       variant="chat-profile-avatar"
       language={props.language}
@@ -60,12 +54,6 @@ function AccountAvatar(props: {
       fallback={props.fallback}
     />
   );
-}
-
-interface IAccountTokenBalanceProps {
-  balance?: IComponentPropsExtended["accountBalance"];
-  subjectId: string;
-  language: string;
 }
 
 function AccountTokenBalance({ balance, language }: IAccountTokenBalanceProps) {
@@ -83,17 +71,6 @@ function AccountTokenBalance({ balance, language }: IAccountTokenBalanceProps) {
   );
 }
 
-interface IAccountMenuProps
-  extends Pick<
-    IComponentPropsExtended,
-    "accountIdentities" | "accountAvatar" | "accountBalance"
-  > {
-  subjectId: string;
-  subjectSlug: string;
-  language?: string;
-  settingsSelected?: boolean;
-  profile?: IProfile;
-}
 function AccountMenu({
   subjectId,
   subjectSlug,
@@ -105,7 +82,7 @@ function AccountMenu({
   accountBalance,
 }: IAccountMenuProps) {
   const localeBase = `/${language}`;
-  const logout = api.authenticationLogout({});
+  const logout = subjectApi.authenticationLogout({});
   const name =
     profile?.title?.[language] ||
     profile?.title?.en ||

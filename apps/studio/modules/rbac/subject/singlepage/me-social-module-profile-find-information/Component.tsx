@@ -1,12 +1,10 @@
+import type {
+  IComponentProps,
+  SubjectMeSocialModuleProfileFindInformationProps,
+} from "./interface";
+export type { SubjectMeSocialModuleProfileFindInformationProps } from "./interface";
 import { SubjectMeProfileInformation } from "../me/social-module/profile/id/settings/ai-chat/Component";
 import { defaultRbacProfiles, type RbacAccountProfile } from "../../../shared";
-
-export interface SubjectMeSocialModuleProfileFindInformationProps {
-  variant?: string;
-  title: string;
-  description: string;
-  profiles: RbacAccountProfile[];
-}
 
 export const defaultSubjectMeSocialModuleProfileFindInformationProps: SubjectMeSocialModuleProfileFindInformationProps =
   {
@@ -17,7 +15,7 @@ export const defaultSubjectMeSocialModuleProfileFindInformationProps: SubjectMeS
   };
 
 export function SubjectMeSocialModuleProfileFindInformation(
-  props?: Partial<SubjectMeSocialModuleProfileFindInformationProps>,
+  props?: IComponentProps,
 ) {
   const { title, description, profiles } = {
     ...defaultSubjectMeSocialModuleProfileFindInformationProps,

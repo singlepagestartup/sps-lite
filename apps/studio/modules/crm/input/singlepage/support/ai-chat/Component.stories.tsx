@@ -1,10 +1,10 @@
-import { Component as CrmModuleInput } from "../../..";
+import { Component as Input } from "../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-function Example() {
+function Component() {
   const [value, setValue] = useState("");
   return (
-    <CrmModuleInput
+    <Input
       variant="support-ai-chat"
       name="details"
       label="What happened?"
@@ -17,8 +17,8 @@ function Example() {
 const meta = {
   id: "modules-crm-models-input-singlepage-support-ai-chat",
   title: "Modules/CRM/Input/Singlepage/support/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

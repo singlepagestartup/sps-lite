@@ -9,6 +9,8 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       className={props.className}
       children={props.children}
+      crmModuleFormId={props.crmModuleFormId}
+      language={props.language}
     />
   );
 }

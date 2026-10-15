@@ -1,7 +1,7 @@
 "use client";
 import { memo, useState } from "react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component as Profile } from "@sps/social/models/profile/frontend/component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
 import { Icon } from "@sps/ui-adapter";
 import type { IComponentPropsExtended } from "./interface";
 export const Component = memo(function Component(
@@ -13,7 +13,7 @@ export const Component = memo(function Component(
     ...props.previewRead,
     refetch: props.previewRead.refetch || (() => window.location.reload()),
   };
-  const avatar = api.socialModuleProfileFindByIdAvatarUpdate({});
+  const avatar = subjectApi.socialModuleProfileFindByIdAvatarUpdate({});
   const [status, setStatus] = useState("");
   async function save(data: { file: globalThis.File } | { reset: true }) {
     setStatus("");
@@ -35,7 +35,7 @@ export const Component = memo(function Component(
       <p className="mb-3 text-sm font-semibold">Avatar</p>
       <div className="flex flex-wrap items-center gap-4">
         <div className="size-20 overflow-hidden rounded-2xl bg-muted">
-          <Profile
+          <SocialModuleProfile
             isServer={false}
             variant="chat-profile-avatar"
             data={props.profile}

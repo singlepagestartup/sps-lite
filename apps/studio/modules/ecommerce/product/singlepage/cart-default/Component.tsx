@@ -1,4 +1,15 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ProductCartDefaultItem,
+  ProductCartDefaultProps,
+} from "./interface";
+export type {
+  ProductCartDefaultItem,
+  ProductCartDefaultProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -8,7 +19,7 @@ import {
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { formatCartMoney } from "../../../cart/shared";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -37,29 +48,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ProductCartDefaultItem {
-  id: string;
-  slug: string;
-  title: string;
-  image: string;
-  priceLabel: string;
-  price: number;
-  quantity: number;
-}
-export interface ProductCartDefaultProps {
-  variant?: string;
-  item: ProductCartDefaultItem;
-  compact?: boolean;
-  href?: string;
-  showRemove?: boolean;
-  target?: "_blank" | "_parent" | "_self" | "_top";
-  onDecrease?: (item: ProductCartDefaultItem) => void;
-  onIncrease?: (item: ProductCartDefaultItem) => void;
-  onRemove?: (item: ProductCartDefaultItem) => void;
-}
 const Trash2 = createIcon("trash");
 const Plus = createIcon("plus");
 const Minus = createIcon("minus");
@@ -94,7 +85,7 @@ export const defaultProductCartDefaultProps: ProductCartDefaultProps = {
   showRemove: true,
 };
 export const ProductCartDefault = memo(function ProductCartDefault(
-  props: Partial<ProductCartDefaultProps>,
+  props: IComponentProps,
 ) {
   const {
     item,

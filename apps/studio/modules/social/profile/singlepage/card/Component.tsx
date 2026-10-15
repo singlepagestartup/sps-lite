@@ -1,3 +1,5 @@
+import type { IComponentProps, ProfileCardProps } from "./interface";
+export type { ProfileCardProps } from "./interface";
 /**
  * social.profile.card
  *
@@ -21,11 +23,7 @@ export const defaultProfileCardProps = {
   label: "Author",
 };
 
-export type ProfileCardProps = typeof defaultProfileCardProps;
-
-export function ProfileCard(
-  props?: Partial<ProfileCardProps> & { variant?: string },
-) {
+export function ProfileCard(props?: IComponentProps) {
   const { name, role, avatar, href, target, label } = {
     ...defaultProfileCardProps,
     ...props,

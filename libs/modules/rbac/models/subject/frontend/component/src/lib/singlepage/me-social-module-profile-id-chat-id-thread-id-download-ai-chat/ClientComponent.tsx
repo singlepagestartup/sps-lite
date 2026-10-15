@@ -1,6 +1,6 @@
 "use client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
-import { Component as Thread } from "@sps/social/models/thread/frontend/component";
+import { Component as SocialModuleThread } from "@sps/social/models/thread/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 import { readKnowledgeDocumentContent } from "@sps/shared-utils";
 export function Component(props: IComponentPropsExtended) {
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
   };
 
   return (
-    <Thread
+    <SocialModuleThread
       isServer={false}
       variant="download-ai-chat"
       data={thread}

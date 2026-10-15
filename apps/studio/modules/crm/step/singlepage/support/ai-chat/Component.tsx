@@ -1,16 +1,7 @@
-import { Component as CrmModuleInput } from "../../../../input";
-export interface ISupportStepProps {
-  variant?: string;
-  id: string;
-  fields: Record<
-    "topic" | "details" | "result",
-    { label: string; placeholder: string }
-  >;
-  topics: string[];
-  values: Record<"topic" | "details" | "result", string>;
-  errors?: Partial<Record<"topic" | "details" | "result", string>>;
-  onChange: (field: "topic" | "details" | "result", value: string) => void;
-}
+import type { IComponentProps, ISupportStepProps } from "./interface";
+export type { ISupportStepProps } from "./interface";
+import { Component as Input } from "../../../../input";
+
 export function Component({
   variant = "support-ai-chat",
   id,
@@ -19,7 +10,7 @@ export function Component({
   values,
   errors,
   onChange,
-}: ISupportStepProps) {
+}: IComponentProps) {
   return (
     <fieldset
       className="grid min-w-0 gap-5"
@@ -29,7 +20,7 @@ export function Component({
     >
       <legend className="sr-only">Support request details</legend>
       {(["topic", "details", "result"] as const).map((field) => (
-        <CrmModuleInput
+        <Input
           key={field}
           id={`${id}-${field}`}
           name={field}

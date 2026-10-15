@@ -1,2 +1,6 @@
-export { Component, type IComponentProps } from "./Component";
-export type { ISupportFormCopy } from "./singlepage/support/ai-chat/Component";
+export { Component } from "./Component";
+export type { IComponentProps } from "./interface";
+export type { ISupportFormCopy } from "./interface";
+
+export { Skeleton } from "./Skeleton";
+export type { ISkeletonProps } from "./interface";

@@ -1,11 +1,8 @@
+import type { IComponentProps, IVariantProps } from "./interface";
 import Markdown from "markdown-to-jsx";
 import type { ReactNode } from "react";
 import type { IAIChatSource } from "../../../../social/profile/singlepage/scope/ai-chat/project/models";
-export interface IComponentProps {
-  variant?: string;
-  data: IAIChatSource;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "id-sidebar-ai-chat",
   data,

@@ -1,14 +1,14 @@
+import type { IComponentProps, IProfileDocumentListProps } from "./interface";
+export type { IProfileDocumentListProps } from "./interface";
 import {
   Component as KnowledgeModuleSource,
   type ISourceCardProps,
 } from "../../../../../../../../knowledge/source";
-export interface IProfileDocumentListProps extends ISourceCardProps {
-  variant?: string;
-}
+
 export function Component({
   variant = "knowledge-module-source-list-document-ai-chat",
   ...card
-}: IProfileDocumentListProps = {}) {
+}: IComponentProps = {}) {
   return (
     <section
       aria-label="Document knowledge"

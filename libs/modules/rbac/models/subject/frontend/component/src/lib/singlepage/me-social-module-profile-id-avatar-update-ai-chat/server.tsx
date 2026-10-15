@@ -1,26 +1,26 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   const subjectId = props.data.id;
   const profileId = props.profile.id;
   try {
-    const data = await api.socialModuleProfileFindByIdAvatarFind({
+    const data = await subjectApi.socialModuleProfileFindByIdAvatarFind({
       id: subjectId,
       socialModuleProfileId: profileId,
       options: props.apiProps?.options,
     });
     return (
-      <Component
+      <ChildComponent
         {...props}
         previewRead={{ data, isPending: false, isError: false }}
       />
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         previewRead={{
           isPending: false,

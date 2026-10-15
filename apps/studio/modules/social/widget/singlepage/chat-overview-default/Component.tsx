@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  SocialWidgetChatOverviewDefaultProps,
+} from "./interface";
+export type { SocialWidgetChatOverviewDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -8,13 +15,13 @@ import {
   useState,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
-  Component as SocialModuleMessage,
+  Component as Message,
   type SocialMessageBubbleDefaultProps,
 } from "../../../message/index";
 import {
-  Component as SocialModuleThread,
+  Component as Thread,
   defaultSocialThreadListDefaultProps,
   defaultSocialProfiles,
   type SocialThreadListDefaultProps,
@@ -56,21 +63,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SocialWidgetChatOverviewDefaultProps {
-  variant?: string;
-  chat?: SocialWidgetChatListDefaultProps["chats"][number];
-  chatImage?: SocialPreviewAttachment;
-  onChatImageChange?: (file: File | null) => void;
-  onChatChange?: (
-    chat: SocialWidgetChatListDefaultProps["chats"][number],
-  ) => void;
-}
-export function SocialWidgetChatOverviewDefault(
-  props: SocialWidgetChatOverviewDefaultProps = {},
-) {
+export function SocialWidgetChatOverviewDefault(props: IComponentProps = {}) {
   const [localChat, setLocalChat] = useState<
     SocialWidgetChatListDefaultProps["chats"][number]
   >({
@@ -210,7 +206,7 @@ export function SocialWidgetChatOverviewDefault(
       data-variant={props.variant ?? "chat-overview-default"}
     >
       <div className="grid w-full overflow-hidden rounded-3xl border border-border bg-card md:h-[calc(100vh-10rem)] md:min-h-[760px] md:grid-cols-[300px_minmax(0,1fr)]">
-        <SocialModuleThread
+        <Thread
           variant="list-default"
           chatImage={chatImage}
           title={chat.name}
@@ -277,7 +273,7 @@ export function SocialWidgetChatOverviewDefault(
           )}
           <div className="max-h-[640px] min-h-0 flex-1 space-y-6 overflow-y-auto bg-card px-4 py-6 sm:px-7 md:max-h-none">
             {visibleInitial.map((message, index) => (
-              <SocialModuleMessage
+              <Message
                 key={`initial-${index}`}
                 {...message}
                 variant="bubble-default"
@@ -293,7 +289,7 @@ export function SocialWidgetChatOverviewDefault(
               </p>
             )}
             {visibleSent.map((message) => (
-              <SocialModuleMessage
+              <Message
                 variant="bubble-default"
                 key={message.id}
                 author="You"
@@ -395,7 +391,7 @@ export function SocialWidgetChatOverviewDefault(
         </div>
       </div>
       {settings && (
-        <SocialModuleThread
+        <Thread
           variant="chat-settings"
           profiles={defaultSocialProfiles}
           open

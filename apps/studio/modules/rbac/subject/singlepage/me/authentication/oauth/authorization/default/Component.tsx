@@ -1,4 +1,7 @@
 "use client";
+import type { IComponentProps, IOAuthAuthorizationProps } from "./interface";
+export type { IOAuthAuthorizationProps } from "./interface";
+
 import { twMerge as mergeButtonClass } from "tailwind-merge";
 
 import {
@@ -6,20 +9,14 @@ import {
   useEffect,
   useState,
 } from "react";
-export interface IOAuthAuthorizationProps {
-  variant?: string;
-  initialState?: "idle" | "authorize" | "complete" | "error";
-  providerName?: string;
-  accountEmail?: string;
-  onSuccess?: () => void;
-}
+
 export function Component({
   variant = "me-authentication-oauth-authorization-default",
   initialState = "idle",
   providerName = "Google",
   accountEmail = "preview@example.com",
   onSuccess,
-}: IOAuthAuthorizationProps = {}) {
+}: IComponentProps = {}) {
   const [state, setState] = useState(initialState);
   useEffect(() => setState(initialState), [initialState]);
   return (

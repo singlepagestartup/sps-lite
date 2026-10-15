@@ -1,14 +1,14 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature";
+import type { IComponentProps, IAttachmentFileProps } from "./interface";
+export type { IAttachmentFileProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import type { IProjectFile } from "../../../../social/profile/singlepage/scope/ai-chat/project/state";
 
-export interface IAttachmentFileProps {
-  variant?: string;
-  file: IProjectFile;
-}
 export function Component({
   variant = "attachment-ai-chat",
   file,
-}: IAttachmentFileProps) {
+}: IComponentProps) {
   const image =
     file.mimeType?.startsWith("image/") ||
     /\.(png|jpe?g|webp|gif|svg)$/i.test(file.name);
@@ -33,8 +33,8 @@ export function Component({
             className="h-full w-full object-contain"
           />
         ) : (
-          <WebsiteBuilderModuleFeature
-            variant="icon"
+          <SharedIcon
+            variant="phosphor"
             name="file-text"
             className="size-7 text-background"
           />

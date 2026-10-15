@@ -5,7 +5,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { useState } from "react";
 import { ArrowRight, Eye, EyeOff, LogIn } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 
 import type { IComponentProps } from "./interface";
 
@@ -29,10 +29,10 @@ export function Component({ mode }: IComponentProps) {
   const [visible, setVisible] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [status, setStatus] = useState("");
-  const login = api.authenticationEmailAndPasswordAuthentication({});
-  const register = api.authenticationEmailAndPasswordRegistration({});
-  const recover = api.authenticationEmailAndPasswordForgotPassword({});
-  const replace = api.authenticationEmailAndPasswordResetPassword({});
+  const login = subjectApi.authenticationEmailAndPasswordAuthentication({});
+  const register = subjectApi.authenticationEmailAndPasswordRegistration({});
+  const recover = subjectApi.authenticationEmailAndPasswordForgotPassword({});
+  const replace = subjectApi.authenticationEmailAndPasswordResetPassword({});
   const pending =
     login.isPending ||
     register.isPending ||

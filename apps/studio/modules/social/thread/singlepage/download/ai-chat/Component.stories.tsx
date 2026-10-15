@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component as SocialModuleThread } from "../../../index";
-import type { IThreadDownloadProps } from "./Component";
+import { Component as Thread } from "../../../index";
+import type { IThreadDownloadProps } from "./interface";
 
-function Example(props: IThreadDownloadProps) {
-  return <SocialModuleThread {...props} variant="download-ai-chat" />;
+function Component(props: IThreadDownloadProps) {
+  return <Thread {...props} variant="download-ai-chat" />;
 }
 const meta = {
   id: "modules-social-models-thread-singlepage-download-ai-chat",
   title: "Modules/Social/Thread/Singlepage/download/ai-chat",
-  component: Example,
+  component: Component,
   args: {
     threadId: "pottery:products:products:thread",
     fileName: "Products.md",
@@ -29,6 +29,6 @@ const meta = {
       },
     ],
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

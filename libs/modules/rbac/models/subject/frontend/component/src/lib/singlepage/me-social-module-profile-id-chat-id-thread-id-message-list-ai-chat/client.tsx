@@ -1,19 +1,24 @@
 "use client";
+import { Skeleton } from "./Skeleton";
 import "client-only";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default function Client(props: IComponentProps) {
   const messages =
-    api.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind({
-      id: props.data.id,
-      socialModuleProfileId: props.project.requesterProfileId,
-      socialModuleChatId: props.project.chat.id,
-      socialModuleThreadId: props.thread.id,
-      reactQueryOptions: { refetchInterval: 5000 },
-    });
+    subjectApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind(
+      {
+        options: props.apiProps?.options,
+        id: props.data.id,
+        socialModuleProfileId: props.project.requesterProfileId,
+        socialModuleChatId: props.project.chat.id,
+        socialModuleThreadId: props.thread.id,
+        reactQueryOptions: { refetchInterval: 5000 },
+      },
+    );
+  if (messages.isPending) return props.skeleton ?? <Skeleton />;
   return (
-    <Component
+    <ChildComponent
       {...props}
       messagesRead={{
         data: messages.data,

@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, ISourceDocumentLinkProps } from "./interface";
+export type { ISourceDocumentLinkProps } from "./interface";
 
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../shared/icon";
+
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { memo } from "react";
 import { useSource } from "../id/ai-chat/Source";
 function Icon(props: {
@@ -10,14 +13,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISourceDocumentLinkProps {
-  variant?: string;
-  selected: boolean;
-  href: string;
-}
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
@@ -29,7 +27,7 @@ export const Component = memo(function Component({
   variant = "list-item-document-ai-chat",
   selected,
   href,
-}: ISourceDocumentLinkProps) {
+}: IComponentProps) {
   const { source } = useSource();
   return (
     <a

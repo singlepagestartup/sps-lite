@@ -52,8 +52,9 @@ jest.mock("@sps/ecommerce/models/order/sdk/server", () => ({
 
 jest.mock("@sps/rbac/models/subject/sdk/server", () => ({
   api: {
-    ecommerceModuleProductCheckout: (...args: unknown[]) =>
-      mockSubjectProductCheckout(...args),
+    ecommerceModuleProductCheckout: () => {
+      throw new Error("Unexpected Subject loopback HTTP");
+    },
     notify: (...args: unknown[]) => mockSubjectNotify(...args),
   },
 }));
@@ -110,12 +111,6 @@ it("renews an expired zero-price daily subscription without requiring a Telegram
     data: {
       provider: "dummy",
       billingModule: { currency: { id: "currency" } },
-    },
-    options: {
-      headers: {
-        "X-RBAC-SECRET-KEY": "test-rbac-secret",
-        "Cache-Control": "no-store",
-      },
     },
   });
   expect(mockSubjectsToBillingModuleCurrenciesUpdate).toHaveBeenCalledTimes(1);
@@ -178,6 +173,7 @@ function createService(props?: {
     { find: subjectsToSocialModuleProfilesFind } as any,
     { find: jest.fn().mockResolvedValue([]) } as any,
     { find: jest.fn().mockResolvedValue([]) } as any,
+    mockSubjectProductCheckout,
   );
 
   return {

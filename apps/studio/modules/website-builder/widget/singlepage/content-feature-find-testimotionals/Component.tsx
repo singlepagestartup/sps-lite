@@ -1,5 +1,10 @@
+import type {
+  IComponentProps,
+  ContentFeatureFindTestimotionalsProps,
+} from "./interface";
+export type { ContentFeatureFindTestimotionalsProps } from "./interface";
 import {
-  Component as WebsiteBuilderModuleFeature,
+  Component as Feature,
   type FeatureTestimotionalProps,
 } from "../../../feature/index";
 
@@ -66,12 +71,7 @@ export const defaultContentFeatureFindTestimotionalsProps = {
   ] satisfies TestimonialItem[],
 };
 
-export type ContentFeatureFindTestimotionalsProps =
-  typeof defaultContentFeatureFindTestimotionalsProps;
-
-export function ContentFeatureFindTestimotionals(
-  props?: Partial<ContentFeatureFindTestimotionalsProps> & { variant?: string },
-) {
+export function ContentFeatureFindTestimotionals(props?: IComponentProps) {
   const { eyebrow, title, testimonials } = {
     ...defaultContentFeatureFindTestimotionalsProps,
     ...props,
@@ -93,7 +93,7 @@ export function ContentFeatureFindTestimotionals(
           data-ds-imports="website-builder.feature.testimotional"
         >
           {testimonials.map((testimonial) => (
-            <WebsiteBuilderModuleFeature
+            <Feature
               key={testimonial.name}
               {...testimonial}
               variant="testimotional"

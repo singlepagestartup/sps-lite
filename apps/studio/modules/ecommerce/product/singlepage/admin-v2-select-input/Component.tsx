@@ -1,8 +1,12 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IProductSelectProps } from "./interface";
+export type { IProductSelectProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, useState, useId } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { studioProducts, type IStudioProduct } from "../../shared";
 interface ISelectOption {
   value: string;
@@ -24,23 +28,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IProductSelectProps {
-  variant?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  disabled?: boolean;
-  records?: IStudioProduct[];
-}
 export function EcommerceProductAdminV2SelectInput({
   variant = "admin-v2-select-input",
   value,
   onValueChange,
   disabled,
   records = studioProducts,
-}: IProductSelectProps = {}) {
+}: IComponentProps = {}) {
   const id = useId();
   return (
     <label

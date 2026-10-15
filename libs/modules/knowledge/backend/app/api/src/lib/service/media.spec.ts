@@ -1,36 +1,23 @@
-import sharp from "sharp";
 import { MediaService } from "./media";
-
 jest.mock("file-type", () => ({
   fileTypeFromBuffer: jest.fn(async () => undefined),
 }));
-
-it("analyzes SVG visually instead of treating its XML as plain Knowledge text", async () => {
-  const generate = jest.fn(async (_props: any) => ({
-    text: "Logo with a blue accent",
-  }));
-  const service = new MediaService({ provider: { generate } as any });
-  const svg = Buffer.from(
-    '<svg width="20" height="10" xmlns="http://www.w3.org/2000/svg"><rect fill="blue" width="20" height="10"/></svg>',
-  );
-  jest.spyOn(service as any, "read").mockResolvedValue(svg);
-
-  await expect(
-    service.analyze({ file: "/logo.svg" } as any, "Brand reference"),
-  ).resolves.toBe("Logo with a blue accent");
-  expect(generate).toHaveBeenCalledWith(
-    expect.objectContaining({
-      model: "openai/gpt-6.1-sol",
-      reasoning: { effort: "high", exclude: true },
-    }),
-  );
-  const content = generate.mock.calls[0][0].context[0].content;
-  expect(content[0].text).toContain("Brand reference");
-  const imageUrl = content[1].image_url.url;
-  expect(imageUrl).toMatch(/^data:image\/png;base64,/);
-  expect(
-    await sharp(Buffer.from(imageUrl.split(",")[1], "base64")).metadata(),
-  ).toMatchObject({ format: "png", width: 20, height: 10 });
+it.each([
+  { file: "/logo.svg", mimeType: "image/svg+xml" },
+  { file: "/renamed.png", mimeType: "image/png" },
+  { file: "/notes.txt", mimeType: "text/plain" },
+])("rejects SVG before model or native rendering: $file", async (file) => {
+  const generate = jest.fn();
+  const run = jest.fn();
+  const service = new MediaService({ provider: { generate } as any, run });
+  jest
+    .spyOn(service as any, "read")
+    .mockResolvedValue(
+      Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>'),
+    );
+  await expect(service.analyze(file as any, "Context")).rejects.toThrow("SVG");
+  expect(generate).not.toHaveBeenCalled();
+  expect(run).not.toHaveBeenCalled();
 });
 
 it("preserves ordinary UTF-8 text without a visual analysis request", async () => {

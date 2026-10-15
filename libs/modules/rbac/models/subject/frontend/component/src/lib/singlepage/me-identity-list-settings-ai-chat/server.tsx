@@ -1,11 +1,11 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   try {
-    const data = await api.identityFind({
+    const data = await subjectApi.identityFind({
       id: props.data.id,
       options: {
         ...props.apiProps?.options,
@@ -13,14 +13,14 @@ export default async function Server(props: IComponentProps) {
       },
     });
     return (
-      <Component
+      <ChildComponent
         {...props}
         identitiesRead={{ data, isPending: false, isError: false }}
       />
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         identitiesRead={{
           isPending: false,

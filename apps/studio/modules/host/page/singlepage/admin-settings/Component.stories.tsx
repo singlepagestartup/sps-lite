@@ -1,15 +1,17 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { AdminSettings } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-admin-settings",
   title: "Modules/Host/Page/Singlepage/admin-settings",
-  component: AdminSettings,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof AdminSettings>;
+  args: { variant: "admin-settings" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Page>, { variant: "admin-settings" }>
+>;
 
 export default meta;
 

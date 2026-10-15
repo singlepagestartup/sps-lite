@@ -1,8 +1,10 @@
 "use client";
+import type { IComponentProps, IMessageListProps } from "./interface";
+export type { IMessageListProps } from "./interface";
 
 import { Component as KnowledgeModuleSource } from "../../../../knowledge/source/index";
 import { useProfileSources } from "../../../../knowledge/source/singlepage/id/ai-chat/Source";
-import { Component as SocialModuleProfile } from "../../../profile/index";
+import { Component as Profile } from "../../../profile/index";
 import { Component as MessageOverview } from "../id/ai-chat/index";
 import {
   useCallback,
@@ -14,18 +16,12 @@ import {
 import { type IProjectAgent } from "../../../profile/singlepage/agent/id/ai-chat/resolver";
 import type { IProjectMessage } from "../../../profile/singlepage/scope/ai-chat/project/state";
 
-export interface IMessageListProps {
-  variant?: string;
-  threadId: string;
-  messages: IProjectMessage[];
-  className?: string;
-}
 export function Component({
   variant = "list-ai-chat",
   threadId,
   messages,
   className = "",
-}: IMessageListProps) {
+}: IComponentProps) {
   const sources = useProfileSources();
   const [profile, setProfile] = useState<IProjectAgent | null>(null);
   const selectProfile = useCallback(
@@ -89,7 +85,7 @@ export function Component({
         ))}
         <div ref={end} />
       </div>
-      <SocialModuleProfile
+      <Profile
         variant="agent-id-ai-chat"
         agent={profile}
         knowledgeCount={sources.length}

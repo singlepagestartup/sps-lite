@@ -1,9 +1,9 @@
-import { Component as FileStorageModuleFile } from "../../index";
+import { Component as File } from "../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 const meta = {
   id: "modules-file-storage-models-file-singlepage-list-item-pending-ai-chat",
   title: "Modules/File-Storage/File/Singlepage/list-item-pending-ai-chat",
-  component: FileStorageModuleFile,
+  component: File,
   args: {
     variant: "list-item-pending-ai-chat",
     file: {
@@ -15,7 +15,12 @@ const meta = {
     },
     onRemove: () => undefined,
   },
-} satisfies Meta<typeof FileStorageModuleFile>;
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof File>,
+    { variant: "list-item-pending-ai-chat" }
+  >
+>;
 export default meta;
 export const Default: StoryObj<typeof meta> = { args: meta.args };
 

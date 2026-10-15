@@ -1,14 +1,12 @@
+import type { IComponentProps, ArticleCoverProps } from "./interface";
+export type { ArticleCoverProps } from "./interface";
 export const defaultArticleCoverProps = {
   coverImage:
     "/module-assets/images/singlepage/generated/living-focus/singlepagestartup-photography-business-conversation-square.png",
   title: "How to Choose the Right Plan for Your Business",
 };
 
-export type ArticleCoverProps = typeof defaultArticleCoverProps;
-
-export function ArticleCover(
-  props?: Partial<ArticleCoverProps> & { variant?: string },
-) {
+export function ArticleCover(props?: IComponentProps) {
   const { coverImage, title } = { ...defaultArticleCoverProps, ...props };
   return (
     <figure

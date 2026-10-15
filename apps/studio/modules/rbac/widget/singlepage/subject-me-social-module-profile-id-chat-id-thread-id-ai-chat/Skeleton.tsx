@@ -1,8 +1,6 @@
-export interface IWorkspaceSkeletonProps {
-  variant?: string;
-  stage?: "checking-session" | "loading-projects" | "loading-chat";
-  embedded?: boolean;
-}
+import type { IWorkspaceSkeletonProps } from "./interface";
+export type { IWorkspaceSkeletonProps } from "./interface";
+
 export function Component({
   variant = "subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
   stage = "checking-session",

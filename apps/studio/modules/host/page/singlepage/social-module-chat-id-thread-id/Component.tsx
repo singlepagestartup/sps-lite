@@ -1,4 +1,6 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import {
   Component as SocialModuleWidget,
   defaultSocialWidgetChatListDefaultProps,
@@ -9,12 +11,9 @@ import {
 } from "../../../../social/widget/singlepage/chat-overview-default/utils";
 import { useCallback, useEffect, useState } from "react";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function ChatDefault({
   variant = "social-module-chat-id-thread-id",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   const [imageStore] = useState(() => createPreviewAttachmentStore());
   const [chatImages, setChatImages] = useState<
     Record<string, SocialPreviewAttachment>
@@ -71,7 +70,7 @@ export function ChatDefault({
   const selectedChat = chats.find((chat) => chat.id === selectedId) ?? chats[0];
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="website"
         activeHref="/social/chats/[social.chats.id]/threads/[social.threads.id]"
         footer="compact"
@@ -104,7 +103,7 @@ export function ChatDefault({
             />
           </section>
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

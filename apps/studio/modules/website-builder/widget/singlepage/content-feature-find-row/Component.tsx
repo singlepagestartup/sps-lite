@@ -1,11 +1,13 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type { IComponentProps, ContentFeatureFindRowProps } from "./interface";
+export type { ContentFeatureFindRowProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps, type ReactNode } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 type ModuleIcon = ReturnType<typeof createIcon>;
-interface IModuleIconProps extends SVGProps<SVGSVGElement> {
-  size?: number;
-}
+
 type IconName = keyof typeof IconGlyphs;
 function createIcon(name: IconName) {
   const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
@@ -30,19 +32,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 interface ContactItem {
   label: string;
   icon: ModuleIcon;
 }
-export interface ContentFeatureFindRowProps
-  extends Partial<typeof defaultContentFeatureFindRowProps> {
-  variant?: string;
-  contactForm?: ReactNode;
-}
-export function ContentFeatureFindRow(props?: ContentFeatureFindRowProps) {
+
+export function ContentFeatureFindRow(props?: IComponentProps) {
   const { eyebrow, title, description, contacts, contactForm } = {
     ...defaultContentFeatureFindRowProps,
     ...props,
@@ -104,3 +102,5 @@ export const defaultContentFeatureFindRowProps = {
     { icon: MapPin, label: "San Francisco, CA" },
   ] satisfies ContactItem[],
 };
+
+import type { IModuleIconProps } from "./interface";

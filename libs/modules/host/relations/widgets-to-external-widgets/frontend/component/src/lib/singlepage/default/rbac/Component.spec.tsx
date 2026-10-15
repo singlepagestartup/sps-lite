@@ -37,7 +37,7 @@ beforeEach(() => {
   websiteRenders.mockClear();
 });
 it.each(["select-method", "registration", "forgot-password", "reset-password"])(
-  "loads both model records and composes %s authentication through Host",
+  "loads the exact %s RBAC Widget and delegates its own content composition",
   (action) => {
     record.variant = `subject-me-authentication-${action}-ai-chat`;
     const html = renderToStaticMarkup(
@@ -55,26 +55,16 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
         filters: { and: [{ column: "id", method: "eq", value: record.id }] },
       },
     });
-    expect(websiteReads).toHaveBeenCalledWith({
-      params: {
-        filters: {
-          and: [
-            {
-              column: "slug",
-              method: "eq",
-              value: "ai-chat-authentication-content",
-            },
-          ],
-        },
-      },
-    });
-    expect(html).toContain(
-      '<main data-website-widget="website-auth-widget"><form data-rbac-widget="rbac-auth-widget">',
+    expect(websiteReads).not.toHaveBeenCalled();
+    expect(websiteRenders).not.toHaveBeenCalled();
+    expect(html).toContain('<form data-rbac-widget="rbac-auth-widget">');
+    expect(rbacRenders.mock.calls[0][0]).toEqual(
+      expect.objectContaining({
+        data: record,
+        language: "en",
+        variant: record.variant,
+      }),
     );
-    expect(websiteRenders.mock.calls[0][0]).not.toHaveProperty("url");
     expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty("url");
-    expect(websiteRenders.mock.calls[0][0].media).toBe(
-      action === "registration" ? "stack" : undefined,
-    );
   },
 );

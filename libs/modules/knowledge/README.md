@@ -2,14 +2,14 @@
 
 Knowledge stores editable materials as **Source**, derives **Chunk** vectors, and provides scoped retrieval and generation. Several Files can belong to one Source. The user's notes and analyzed file descriptions share its `content`.
 
-The backend lives in `backend/app/api`; Source and Chunk have the standard model layers and SDKs. All associations use SPS relations. Social owns profile access, message origin/citations, and skill links. RBAC passes permitted `sourceIds` into Knowledge; Knowledge does not read Social permissions. An explicit empty scope returns no results.
+The backend lives in `backend/app/api`; Source and Chunk have the standard model layers and SDKs. The facade, indexer and material processor call effective Source, Chunk and relation services. Each model or relation service uses its own repository; File Storage owns byte reads, imports, locks and original deletion. Operation-scoped service instances share one transaction without rebinding singleton repositories. Generic Source and attachment CRUD use the same aggregate commands. Post-commit effects update HTTP cache generations and revalidate the Next fetch tags for affected collections, counts and records before the existing WebSocket event, including CLI/background changes. The API and CLI use the existing revalidation middleware callback and its failure policy. All associations use SPS relations. Social owns profile access, message origin/citations, and skill links. RBAC passes permitted `sourceIds` into Knowledge; Knowledge does not read Social permissions. An explicit empty scope returns no results.
 
 ## File analysis
 
 File format is detected from stored bytes. The common material service processes every current attachment:
 
 - PDF: render every page, transcribe text and tables, describe images and diagrams.
-- Image: recognize text and describe the visual content. SVG is rendered as PNG for the model; its original file is retained.
+- Raster image: recognize text and describe the visual content. SVG and SVGZ attachments are unsupported, including renamed files and existing stored Files.
 - Video: describe frames at one-second intervals by default and combine them with time-aligned speech transcription.
 - Audio: transcribe speech with segment timestamps.
 - UTF-8 text: preserve its structure and timestamps.
@@ -62,7 +62,7 @@ in Thread metadata using `confirmationMessageId`. A claimed proposal returns
 `applying` to reject/revise requests. If the write outcome is unknown, another
 confirm resumes the operation; it checks the saved title, notes and staged File
 links before completing the Thread status. First-Source creation uses the
-stable document slug and the repository's transactional slug lock, so concurrent
+stable document slug and the Source service's transactional slug lock, so concurrent
 confirmations reuse one Source and its unique profile/origin links.
 
 A missing staged File or a changed Source version requires a revised proposal
@@ -106,8 +106,9 @@ Origin and citation links use `messages-to-knowledge-module-sources` with `kind=
 
 New AI Chat message and sidebar uploads allow PNG, JPG, WebP, GIF, PDF, TXT,
 MD, CSV and JSON. Frontend pickers and scoped RBAC endpoints reject SVG and
-other unsupported uploads. Legacy SVG analysis sends a rendered PNG to the
-model while retaining the original file.
+other unsupported uploads. Backend byte, MIME and extension checks reject SVG before upload or association.
+Legacy SVG stays stored but cannot enter material analysis, model context or inline
+Knowledge previews. Its attachment card reports the unsupported format.
 
 The Knowledge module SDK uses `sourceIds` and `reindexSource`. Source content editing uses its model SDK or the scoped RBAC SDK. The chat sidebar provides Files open/add/replace/detach actions; it saves text changes before changing attachments. Open displays the original stored File in a new browser tab. Analyze files repeats analysis of all current attachments and indexing; Reindex only rebuilds the saved text's index.
 

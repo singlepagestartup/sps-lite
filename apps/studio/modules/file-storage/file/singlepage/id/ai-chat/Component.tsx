@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import type { IComponentProps, IFilePreviewProps } from "./interface";
+export type { IFilePreviewProps } from "./interface";
 
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import type { IProjectFile } from "../../../../../social/profile/singlepage/scope/ai-chat/project/state";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
@@ -9,19 +12,14 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IFilePreviewProps {
-  variant?: string;
-  file: IProjectFile;
-  compact?: boolean;
-}
 export function Component({
   variant = "id-ai-chat",
   file,
   compact,
-}: IFilePreviewProps) {
+}: IComponentProps) {
   return (
     <figure
       data-id={file.id}

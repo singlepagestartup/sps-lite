@@ -1,15 +1,15 @@
 "use server";
 import "server-only";
 
-import { api } from "@sps/ecommerce/models/order/sdk/server";
-import { Component as View } from "./Component";
+import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentPropsExtended } from "./interface";
 
 export async function Component(props: IComponentPropsExtended) {
   let totals: IComponentPropsExtended["totals"];
   let totalsError = false;
   try {
-    totals = await api.total({
+    totals = await orderApi.total({
       id: props.data.id,
       options: props.apiProps?.options,
     });
@@ -18,7 +18,7 @@ export async function Component(props: IComponentPropsExtended) {
   }
 
   return (
-    <View
+    <ChildComponent
       isServer={true}
       variant={props.variant}
       data={props.data}

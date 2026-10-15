@@ -1,8 +1,10 @@
-import { Component as Glyph } from "../icon/index";
+import type { IComponentProps, FeatureTestimotionalProps } from "./interface";
+export type { FeatureTestimotionalProps } from "./interface";
+import { Component as SharedIcon } from "../../../../shared/icon";
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMergePresentation, twMerge } from "tailwind-merge";
-import starFillSvg from "../icon/star-fill.svg?raw";
-import type IconGlyphs from "../icon/icons.json";
+
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -30,13 +32,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <Glyph {...props} />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type FeatureTestimotionalProps = typeof defaultFeatureTestimotionalProps;
-export function FeatureTestimotional(
-  props?: Partial<FeatureTestimotionalProps> & { variant?: string },
-) {
+export function FeatureTestimotional(props?: IComponentProps) {
   const { avatar, name, role, text, rating, className } = {
     ...defaultFeatureTestimotionalProps,
     ...props,
@@ -97,21 +96,12 @@ export function FeatureTestimotional(
 export const StarFilled = forwardRef<SVGSVGElement, IModuleIconProps>(
   function StarFilled({ className, size = 20, children, ...props }, ref) {
     return (
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        viewBox="0 0 256 256"
-        fill="currentColor"
-        width={size}
-        height={size}
+      <SharedIcon
+        variant="custom"
+        name="star-fill"
+        size={size}
         className={twMergePresentation("h-5 w-5 shrink-0", className)}
-        {...props}
-        ref={ref}
-        dangerouslySetInnerHTML={{
-          __html: starFillSvg
-            .replace(/<svg[^>]*>/, "")
-            .replace(/<\/svg>\s*$/, ""),
-        }}
+        svgProps={{ ...props, ref }}
       />
     );
   },

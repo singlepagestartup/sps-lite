@@ -1,13 +1,13 @@
 "use client";
 import { memo, useState } from "react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import { Component as ChangeEmail } from "../me-identity-change-email";
 import { Component as ChangePassword } from "../me-identity-change-password";
 import type { IComponentPropsExtended } from "./interface";
 export const Component = memo(function Component(
   props: IComponentPropsExtended,
 ) {
-  const remove = api.identityDelete({});
+  const remove = subjectApi.identityDelete({});
   const [confirm, setConfirm] = useState(false);
   const [error, setError] = useState("");
   return (

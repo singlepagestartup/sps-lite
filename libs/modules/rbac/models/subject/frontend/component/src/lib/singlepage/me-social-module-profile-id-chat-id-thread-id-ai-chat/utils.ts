@@ -26,48 +26,6 @@ export async function findProjects(
   const profileIds = new Set(props.profiles.map((profile) => profile.id));
   return projects.filter((project) => profileIds.has(project.profile.id));
 }
-export async function findProjectThreads(props: {
-  subjectId: string;
-  chatId: string;
-}) {
-  return subjectApi.socialModuleChatFindByIdThreadFind({
-    id: props.subjectId,
-    socialModuleChatId: props.chatId,
-    host: clientHost,
-    options: { headers: saturateHeaders({ "Cache-Control": "no-store" }) },
-  });
-}
-
-export async function findProjectProfile(props: {
-  subjectId: string;
-  profileId: string;
-}) {
-  const profiles = await subjectApi.socialModuleProfileFind({
-    id: props.subjectId,
-    params: {
-      filters: {
-        and: [{ column: "id", method: "eq", value: props.profileId }],
-      },
-    },
-    host: clientHost,
-    options: { headers: saturateHeaders({ "Cache-Control": "no-store" }) },
-  });
-  const profile = profiles.find((record) => record.id === props.profileId);
-  if (!profile)
-    throw new Error("Profile is no longer available to this account.");
-  return profile;
-}
-
 export function getProjectsQueryKey(subjectId: string) {
   return ["ai-chat-projects", subjectId];
-}
-
-export function projectHref(
-  project: IAIChatProject,
-  threadId = project.thread.id,
-) {
-  return `/ai-chat/social/profiles/${project.profile.id}/chats/${project.chat.id}/threads/${threadId}`;
-}
-export function projectBaseHref(project: IAIChatProject) {
-  return `/ai-chat/social/profiles/${project.profile.id}/chats/${project.chat.id}`;
 }

@@ -1,12 +1,10 @@
 "use client";
-import {
-  Component as Subject,
-  projectHref,
-} from "@sps/rbac/models/subject/frontend/component";
+import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
+import { projectHref } from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 import { useCallback, useState } from "react";
 import { Component as Projects } from "./Projects";
-import { Component as WebsiteBuilderWidget } from "@sps/website-builder/models/widget/frontend/component";
+import { Component as WidgetsToWebsiteBuilderModuleWidgets } from "@sps/rbac/relations/widgets-to-website-builder-module-widgets/frontend/component";
 export function Component(props: IComponentPropsExtended) {
   const [creating, setCreating] = useState(false);
   const openCreate = useCallback(() => setCreating(true), []);
@@ -64,19 +62,56 @@ export function Component(props: IComponentPropsExtended) {
                       href: `/${props.language || "en"}${projectHref(project)}`,
                     }))}
                   >
-                    <WebsiteBuilderWidget
+                    <WidgetsToWebsiteBuilderModuleWidgets
                       isServer={false}
-                      variant="content-ai-chat-profile-create"
-                      data={props.projectCreateWidget}
+                      variant="find"
+                      apiProps={{
+                        params: {
+                          filters: {
+                            and: [
+                              {
+                                column: "widgetId",
+                                method: "eq",
+                                value: props.data.id,
+                              },
+                              {
+                                column: "variant",
+                                method: "eq",
+                                value: "ai-chat-content",
+                              },
+                            ],
+                          },
+                        },
+                      }}
                     >
-                      <Subject
-                        isServer={false}
-                        variant="me-social-module-profile-create-ai-chat"
-                        data={data}
-                        projects={projects}
-                        hideBackLink
-                      />
-                    </WebsiteBuilderWidget>
+                      {({ data: links }) =>
+                        links?.length === 1 ? (
+                          links.map((link) => (
+                            <WidgetsToWebsiteBuilderModuleWidgets
+                              key={link.id}
+                              isServer={false}
+                              variant="ai-chat-content"
+                              dataSource="props"
+                              data={link}
+                              mode="project-create"
+                              language={props.language}
+                            >
+                              <Subject
+                                isServer={false}
+                                variant="me-social-module-profile-create-ai-chat"
+                                data={data}
+                                projects={projects}
+                                hideBackLink
+                              />
+                            </WidgetsToWebsiteBuilderModuleWidgets>
+                          ))
+                        ) : (
+                          <p role="alert">
+                            Project creation content is unavailable.
+                          </p>
+                        )
+                      }
+                    </WidgetsToWebsiteBuilderModuleWidgets>
                   </Projects>
                 );
               }}

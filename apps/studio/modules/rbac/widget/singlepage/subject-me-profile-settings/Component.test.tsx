@@ -1,7 +1,7 @@
 import { afterEach, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Component as RbacModuleWidget } from "../../index";
-import { Component as RbacModuleSubject } from "../../../subject";
+import { Component as Widget } from "../../index";
+import { Component as Subject } from "../../../subject";
 import { AccountProvider } from "../../../subject/singlepage/me/account/Account";
 import { aiChatAccount } from "../../../subject/singlepage/me/account/fixture";
 const originalWindow = globalThis.window;
@@ -20,7 +20,7 @@ test("profile settings retain the requested profile and refuse an unavailable ID
   };
   const html = renderToStaticMarkup(
     <AccountProvider account={aiChatAccount}>
-      <RbacModuleSubject
+      <Subject
         variant="me-social-module-profile-id-settings-ai-chat"
         profileId="maker"
         profile={profile}
@@ -32,7 +32,7 @@ test("profile settings retain the requested profile and refuse an unavailable ID
   expect(html).not.toContain('value="Alex"');
   const unavailable = renderToStaticMarkup(
     <AccountProvider account={aiChatAccount}>
-      <RbacModuleSubject
+      <Subject
         variant="me-social-module-profile-id-settings-ai-chat"
         profileId="missing"
       />
@@ -46,10 +46,7 @@ test("website and AI Chat settings share current-user profile, methods and data 
   for (const showTokens of [false, true]) {
     const html = renderToStaticMarkup(
       <AccountProvider account={aiChatAccount}>
-        <RbacModuleWidget
-          variant="subject-me-profile-settings"
-          showTokens={showTokens}
-        />
+        <Widget variant="subject-me-profile-settings" showTokens={showTokens} />
       </AccountProvider>,
     );
     expect(html).toContain(
@@ -95,7 +92,7 @@ test("profile fields come from the supplied example even with browser storage", 
         description: "Pottery workshops",
       }}
     >
-      <RbacModuleWidget variant="subject-me-profile-settings" />
+      <Widget variant="subject-me-profile-settings" />
     </AccountProvider>,
   );
   expect(html).toContain('value="alex-maker"');

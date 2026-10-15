@@ -61,6 +61,8 @@ export * from "./telegram-personal-ai-agent";
 
 export {
   getAIChatDocument,
+  projectHref,
+  projectBaseHref,
   type IAIChatDocument,
   type IAIChatProject,
 } from "./ai-chat-project";

@@ -1,7 +1,14 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  SocialMessageBubbleDefaultProps,
+} from "./interface";
+export type { SocialMessageBubbleDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps, useState } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   SocialMessageAttachments,
   type SocialMessageAttachment,
@@ -33,7 +40,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 interface SocialMessageReaction {
@@ -56,22 +63,8 @@ function normalizeReaction(reaction: string): SocialMessageReaction {
 function normalizeReactionOptions(options: string[]) {
   return options.map((option) => normalizeReaction(option).emoji);
 }
-export interface SocialMessageBubbleDefaultProps {
-  variant?: string;
-  author: string;
-  role: string;
-  body: string;
-  time: string;
-  side: "incoming" | "outgoing";
-  display?: "bubble" | "timeline";
-  attachments?: SocialMessageAttachment[];
-  onPreviewAttachment?: (attachment: SocialMessageAttachment) => void;
-  reactions?: string[];
-  reactionOptions?: string[];
-}
-export function SocialMessageBubbleDefault(
-  props?: Partial<SocialMessageBubbleDefaultProps>,
-) {
+
+export function SocialMessageBubbleDefault(props?: IComponentProps) {
   const mergedProps = {
     ...defaultSocialMessageBubbleDefaultProps,
     ...props,

@@ -1,10 +1,11 @@
 "use client";
 import "client-only";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default function Client(props: IComponentProps) {
-  const profiles = api.socialModuleProfileFind({
+  const profiles = subjectApi.socialModuleProfileFind({
+    options: props.apiProps?.options,
     id: props.data.id,
     reactQueryOptions: {
       initialData: props.initialProjects
@@ -26,7 +27,8 @@ export default function Client(props: IComponentProps) {
       },
     },
   });
-  const contexts = api.socialModuleProfileProjects({
+  const contexts = subjectApi.socialModuleProfileProjects({
+    options: props.apiProps?.options,
     id: props.data.id,
     reactQueryOptions: {
       initialData: props.initialProjects,
@@ -35,7 +37,7 @@ export default function Client(props: IComponentProps) {
   });
   const profileIds = new Set(profiles.data?.map((profile) => profile.id));
   return (
-    <Component
+    <ChildComponent
       {...props}
       loadedProjects={
         profiles.data?.length

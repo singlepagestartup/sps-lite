@@ -62,6 +62,7 @@ jest.mock(
 );
 
 import { Handler } from "./checkout";
+import { Service as ProductCheckout } from "../../../../../service/singlepage/ecommerce/product/checkout";
 
 function createContext(
   params: Record<string, string | undefined>,
@@ -77,7 +78,7 @@ function createContext(
 }
 
 function createService() {
-  return {
+  const service = {
     findById: jest.fn().mockResolvedValue({ id: "subject-1" }),
     deanonymize: jest.fn().mockResolvedValue(undefined),
     ecommerceOrderCheckout: jest.fn().mockResolvedValue({
@@ -101,6 +102,10 @@ function createService() {
       },
     },
   } as any;
+  service.ecommerceProductCheckout = jest.fn((props) =>
+    new ProductCheckout(service).execute(props),
+  );
+  return service;
 }
 
 describe("Given: ecommerce product checkout handler", () => {

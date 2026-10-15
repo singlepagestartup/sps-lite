@@ -1,7 +1,20 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  OtherAuthor,
+  CategoryBreakdown,
+  ProfileAuthorFindByIdOverviewDefaultProps,
+} from "./interface";
+export type {
+  OtherAuthor,
+  CategoryBreakdown,
+  ProfileAuthorFindByIdOverviewDefaultProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps, type ReactNode } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   ProfileAuthor,
   type ProfileAuthorProps,
@@ -35,33 +48,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface OtherAuthor {
-  slug: string;
-  name: string;
-  role: string;
-  avatar: string;
-  articleCount: number;
-}
-export interface CategoryBreakdown {
-  category: string;
-  count: number;
-  widthClassName: string;
-}
-export type ProfileAuthorFindByIdOverviewDefaultProps = Omit<
-  typeof defaultProfileAuthorFindByIdOverviewDefaultProps,
-  "profile"
-> & {
-  profile: ProfileAuthorProps;
-  articles?: ReactNode;
-};
-export function ProfileAuthorFindByIdOverviewDefault(
-  props?: Partial<ProfileAuthorFindByIdOverviewDefaultProps> & {
-    variant?: string;
-  },
-) {
+export function ProfileAuthorFindByIdOverviewDefault(props?: IComponentProps) {
   const profile = {
     ...defaultProfileAuthorFindByIdOverviewDefaultProps.profile,
     ...props?.profile,
@@ -90,7 +80,7 @@ export function ProfileAuthorFindByIdOverviewDefault(
       data-model="profile"
       data-variant={props?.variant ?? "author-find-by-id-overview-default"}
     >
-      <ProfileAuthor {...profile} />
+      <ProfileAuthor {...profile} variant="author" />
 
       <div className="w-full bg-muted">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">

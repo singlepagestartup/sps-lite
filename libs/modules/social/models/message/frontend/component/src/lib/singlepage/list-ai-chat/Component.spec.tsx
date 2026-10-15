@@ -128,7 +128,7 @@ it("opens the project assistant for an empty document introduction", () => {
   expect(open).toHaveBeenCalledWith("project");
 });
 
-it("shows every attachment in submission order and opens the original files", () => {
+it("preserves attachment order, opens supported originals and blocks legacy SVG", () => {
   render(
     <Component
       {...({
@@ -148,13 +148,21 @@ it("shows every attachment in submission order and opens the original files", ()
     within(gallery)
       .getAllByRole("link")
       .map((link) => link.getAttribute("aria-label")),
-  ).toEqual(["Open First.png", "Open Second.svg", "Open Third.pdf"]);
+  ).toEqual(["Open First.png", "Open Third.pdf"]);
   expect(
     within(gallery)
       .getAllByRole("link")
       .map((link) => link.getAttribute("href")?.split("/public")[1]),
-  ).toEqual(["/first.png", "/second.svg", "/third.pdf"]);
-  expect(within(gallery).getAllByRole("presentation")).toHaveLength(2);
+  ).toEqual(["/first.png", "/third.pdf"]);
+  expect(within(gallery).getAllByRole("presentation")).toHaveLength(1);
+  expect(within(gallery).getByText("Second.svg")).toBeTruthy();
+  expect(within(gallery).getByText("Unsupported attachment")).toBeTruthy();
+  expect(
+    Array.from(gallery.querySelectorAll('[data-model="file"]')).map((node) =>
+      node.getAttribute("data-id"),
+    ),
+  ).toEqual(["file-1", "file-2", "file-3"]);
+  expect(gallery.querySelector('img[src$=".svg"],a[href$=".svg"]')).toBeNull();
 });
 
 it("follows new replies and growing attachments but preserves the position when reading older messages", () => {

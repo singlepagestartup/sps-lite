@@ -1,4 +1,5 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -10,7 +11,7 @@ import {
   useState,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import type { SocialPreviewProfile } from "./Component";
 import type { SocialPreviewAttachment } from "../../../widget/singlepage/chat-overview-default/utils";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
@@ -40,7 +41,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 interface IChatImagePickerProps {

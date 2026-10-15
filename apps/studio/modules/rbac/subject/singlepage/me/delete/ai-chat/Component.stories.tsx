@@ -1,19 +1,19 @@
-import { Component as RbacModuleSubject } from "../../../..";
+import { Component as Subject } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../account/Account";
 import { aiChatAccount } from "../../account/fixture";
-function Example() {
+function Component() {
   return (
     <AccountProvider account={aiChatAccount}>
-      <RbacModuleSubject variant="me-delete-ai-chat" />
+      <Subject variant="me-delete-ai-chat" />
     </AccountProvider>
   );
 }
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-delete-ai-chat",
   title: "Modules/RBAC/Subject/Singlepage/me/delete/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

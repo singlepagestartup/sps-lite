@@ -1,21 +1,20 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature";
+import type { IComponentProps, ISubjectProfileCreateProps } from "./interface";
+export type { ISubjectProfileCreateProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import { useId, useState } from "react";
 import { useProfiles } from "../../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { useNavigate } from "../../../../../../../../host/layout/singlepage/ai-chat-landing/Navigation";
 import { useStudioAccount } from "../../../../account/Account";
-export interface ISubjectProfileCreateProps {
-  variant?: string;
-  subjectId?: string;
-  pending?: boolean;
-  hideBackLink?: boolean;
-}
+
 export function Component({
   variant = "me-social-module-profile-create-ai-chat",
   subjectId,
   pending,
   hideBackLink,
-}: ISubjectProfileCreateProps = {}) {
+}: IComponentProps = {}) {
   const { account } = useStudioAccount();
   const { create, loading, error, retry } = useProfiles();
   const navigate = useNavigate();
@@ -95,7 +94,7 @@ export function Component({
         autoComplete="off"
       />
       <Button type="submit" disabled={!name.trim()}>
-        <WebsiteBuilderModuleFeature variant="icon" name="plus" />
+        <SharedIcon variant="phosphor" name="plus" />
         Create project
       </Button>
       {!hideBackLink && (

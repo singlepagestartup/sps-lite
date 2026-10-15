@@ -1,2 +1,3 @@
 export { Component } from "./lib";
-export { projectHref } from "./lib/singlepage/me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
+export { projectHref } from "@sps/rbac/models/subject/sdk/model";
+export type { IComponentProps } from "./lib/interface";

@@ -1,14 +1,6 @@
+import type { IComponentProps, INavigationButtonProps } from "./interface";
+export type { INavigationButtonProps } from "./interface";
 import { memo, type HTMLAttributeAnchorTarget } from "react";
-
-export interface INavigationButtonProps {
-  variant?: string;
-  label: string;
-  href: string;
-  target?: HTMLAttributeAnchorTarget;
-  selected?: boolean;
-  disabled?: boolean;
-  onNavigate?: () => void;
-}
 
 export const Component = memo(function Component({
   variant = "navigation",
@@ -18,7 +10,7 @@ export const Component = memo(function Component({
   selected = false,
   disabled = false,
   onNavigate,
-}: Partial<INavigationButtonProps> = {}) {
+}: IComponentProps = {}) {
   const className = `inline-flex min-h-11 items-center rounded-xl px-3 py-2 text-sm font-medium no-underline transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground ${
     disabled
       ? "cursor-not-allowed text-muted-foreground"

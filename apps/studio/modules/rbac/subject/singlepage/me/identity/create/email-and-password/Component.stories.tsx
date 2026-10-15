@@ -1,16 +1,16 @@
-import { Component as RbacModuleSubject } from "../../../../..";
+import { Component as Subject } from "../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../account/Account";
 import { aiChatAccount } from "../../../account/fixture";
 import { ProfilesProvider } from "../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { aiChatWorkspaceFixture } from "../../../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
 import { ProjectProvider } from "../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
-function Example() {
+function Component() {
   return (
     <AccountProvider account={aiChatAccount}>
       <ProfilesProvider {...aiChatWorkspaceFixture()}>
         <ProjectProvider profileId="pottery">
-          <RbacModuleSubject
+          <Subject
             variant="me-identity-create-email-and-password"
             onComplete={() => {}}
           />
@@ -23,8 +23,8 @@ const meta = {
   id: "modules-rbac-models-subject-singlepage-me-identity-create-email-and-password",
   title:
     "Modules/RBAC/Subject/Singlepage/me/identity/create/email-and-password",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, ITokensProps } from "./interface";
+export type { ITokensProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 
 import {
   type ReactNode,
@@ -13,7 +16,7 @@ import {
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   IWebsiteSection,
   IAIChatServicePageContent as IAIChatServicePageContentPresentation,
@@ -242,17 +245,13 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ITokensProps {
-  variant?: string;
-  copy?: IAIChatServicePageContent;
-}
 export function Component({
   variant = "checkout-tokens-ai-chat",
   copy = defaultCopy,
-}: ITokensProps = {}) {
+}: IComponentProps = {}) {
   const aiChatAccount = useAIChatAccount();
   const { sections, labels } = copy;
   const projectHref = useAIChatProjectHref();

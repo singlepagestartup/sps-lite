@@ -1,12 +1,15 @@
 import Link from "next/link";
+import { cn } from "@sps/shared-frontend-client-utils";
+import { Component as Demo } from "./ClientComponent";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { AI_CHAT_WEBSITE_CONTENT as content } from "@sps/shared-utils";
 import type { IComponentPropsExtended } from "./interface";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 
 export function Component({
-  children,
   language = "en",
+  data,
+  className,
 }: IComponentPropsExtended) {
   const pathname = `/${language}`;
   return (
@@ -15,6 +18,8 @@ export function Component({
       data-module="website-builder"
       data-model="widget"
       data-variant="landing-ai-chat"
+      data-id={data?.id}
+      className={cn(data?.className, className)}
     >
       <section className="mx-auto max-w-6xl px-5 pb-6 pt-4 md:px-8 md:pt-6">
         <div className="grid overflow-hidden rounded-2xl bg-default text-default-foreground md:grid-cols-[1.1fr_0.9fr]">
@@ -24,7 +29,7 @@ export function Component({
               {content.hero.paragraphs[0]}
             </p>
             <h1 className="mt-5 max-w-md text-4xl font-semibold leading-tight tracking-normal">
-              {content.hero.title}
+              {data?.title?.[language] || data?.title?.en || content.hero.title}
             </h1>
             <p className="mt-5 max-w-md text-base leading-7 text-default-muted-foreground">
               {content.hero.paragraphs[1]}
@@ -76,7 +81,7 @@ export function Component({
             {content.labels["demo-upload-note"]}
           </p>
         </div>
-        {children}
+        <Demo />
       </section>
       <section id="help" className="mx-auto max-w-6xl px-5 pb-10 md:px-8">
         <div className="flex flex-wrap items-center justify-between gap-6 border-t border-border py-8">

@@ -1,12 +1,14 @@
 "use client";
+import { Skeleton } from "./Skeleton";
 import "client-only";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
-import { Component } from "./Component";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default function Client(props: IComponentProps) {
   const project = props.project;
   const scope = {
+    options: props.apiProps?.options,
     id: props.data.id,
     socialModuleProfileId: project.requesterProfileId,
     socialModuleChatId: project.chat.id,
@@ -15,11 +17,12 @@ export default function Client(props: IComponentProps) {
   const document = getAIChatDocument(props.thread.metadata);
   const isDocument = document?.profileId === project.profile.id;
   const sources =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
       { ...scope, reactQueryOptions: { enabled: isDocument } },
     );
+  if (isDocument && sources.isPending) return props.skeleton ?? <Skeleton />;
   return (
-    <Component
+    <ChildComponent
       {...props}
       sourcesRead={{
         data: sources.data,

@@ -1,17 +1,14 @@
+import type { IComponentProps, IAIChatTryProps } from "./interface";
+export type { IAIChatTryProps } from "./interface";
 import type { ReactNode } from "react";
 import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 
-export interface IAIChatTryProps {
-  variant?: string;
-  content?: { workflow: IWebsiteSection; uploadNote: string };
-  children?: ReactNode;
-}
 export function Component({
   variant = "content-ai-chat-try",
   content = defaultContent,
   children,
-}: IAIChatTryProps = {}) {
+}: IComponentProps = {}) {
   return (
     <section
       id="workflow"

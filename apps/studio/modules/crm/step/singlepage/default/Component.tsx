@@ -1,16 +1,11 @@
-import { Component as CrmModuleInput } from "../../../input/index";
+import type { IComponentProps, CrmStepDefaultProps } from "./interface";
+export type { CrmStepDefaultProps } from "./interface";
+import { Component as Input } from "../../../input/index";
 import {
   type CrmInputRecord,
   type CrmStepRecord,
   defaultCrmForm,
 } from "../../../shared/demo-crm";
-
-export interface CrmStepDefaultProps {
-  variant?: string;
-  step: CrmStepRecord;
-  disabled?: boolean;
-  namePrefix?: string;
-}
 
 export const defaultCrmStepDefaultProps: CrmStepDefaultProps = {
   step: defaultCrmForm.steps[0],
@@ -29,7 +24,7 @@ function CrmStepInput({
 }) {
   if (input.variant === "textarea-default") {
     return (
-      <CrmModuleInput
+      <Input
         variant="textarea-default"
         disabled={disabled}
         input={input}
@@ -40,7 +35,7 @@ function CrmStepInput({
 
   if (input.variant === "select-option-default") {
     return (
-      <CrmModuleInput
+      <Input
         variant="select-option-default"
         disabled={disabled}
         input={input}
@@ -50,7 +45,7 @@ function CrmStepInput({
   }
 
   return (
-    <CrmModuleInput
+    <Input
       variant="text-default"
       disabled={disabled}
       input={input}
@@ -59,7 +54,7 @@ function CrmStepInput({
   );
 }
 
-export function CrmStepDefault(props?: Partial<CrmStepDefaultProps>) {
+export function CrmStepDefault(props?: IComponentProps) {
   const { step, disabled, namePrefix } = {
     ...defaultCrmStepDefaultProps,
     ...props,

@@ -1,5 +1,11 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  SubjectMeProfileSettingsProps,
+} from "./interface";
+export type { SubjectMeProfileSettingsProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 
 import {
   forwardRef,
@@ -14,9 +20,9 @@ import {
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import type { IAIChatServicePageContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
-import { Component as RbacModuleSubject } from "../../../subject/index";
+import { Component as Subject } from "../../../subject/index";
 import { useStudioAccount } from "../../../subject/singlepage/me/account/Account";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -59,23 +65,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SubjectMeProfileSettingsProps {
-  variant?: string;
-  copy?: IAIChatServicePageContent;
-  showTokens?: boolean;
-  initialSection?: "profile" | "sign-in" | "purchases" | "data";
-  profileId?: string;
-}
 export function SubjectMeProfileSettings({
   variant = "subject-me-profile-settings",
   copy,
   showTokens = false,
   initialSection = "profile",
   profileId,
-}: SubjectMeProfileSettingsProps = {}) {
+}: IComponentProps = {}) {
   const session = useStudioAccount();
   const [activeSection, setActiveSection] = useState<string>(initialSection);
   const [signedOut, setSignedOut] = useState(false);
@@ -85,7 +84,7 @@ export function SubjectMeProfileSettings({
       id: "profile",
       label: "Profile",
       content: (
-        <RbacModuleSubject
+        <Subject
           variant="me-social-module-profile-id-settings-ai-chat"
           profileId={profileId ?? session.account.profile?.id}
         />
@@ -94,13 +93,13 @@ export function SubjectMeProfileSettings({
     {
       id: "sign-in",
       label: "Sign-in methods",
-      content: <RbacModuleSubject variant="me-identity-find-information" />,
+      content: <Subject variant="me-identity-find-information" />,
     },
     {
       id: "purchases",
       label: showTokens ? "Tokens and purchases" : "Purchases",
       content: (
-        <RbacModuleSubject
+        <Subject
           variant="me-ecommerce-module-order-list-ai-chat"
           copy={copy}
           showTokens={showTokens}
@@ -110,7 +109,7 @@ export function SubjectMeProfileSettings({
     {
       id: "data",
       label: "Data and privacy",
-      content: <RbacModuleSubject variant="me-delete-ai-chat" copy={copy} />,
+      content: <Subject variant="me-delete-ai-chat" copy={copy} />,
     },
   ];
   return (

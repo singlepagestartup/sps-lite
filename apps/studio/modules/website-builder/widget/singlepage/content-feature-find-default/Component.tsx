@@ -1,11 +1,21 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type {
+  IComponentProps,
+  ContentFeatureFindDefaultProps,
+  StatItem,
+  ModuleIcon,
+} from "./interface";
+export type {
+  ContentFeatureFindDefaultProps,
+  StatItem,
+  ModuleIcon,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
-type ModuleIcon = ReturnType<typeof createIcon>;
-interface IModuleIconProps extends SVGProps<SVGSVGElement> {
-  size?: number;
-}
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+
 type IconName = keyof typeof IconGlyphs;
 function createIcon(name: IconName) {
   const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
@@ -30,22 +40,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-interface StatItem {
-  value: string;
-  label: string;
-  icon: ModuleIcon;
-  description?: string;
-}
-export interface ContentFeatureFindDefaultProps {
-  variant?: string;
-  stats: StatItem[];
-}
-export function ContentFeatureFindDefault(
-  props?: Partial<ContentFeatureFindDefaultProps>,
-) {
+export function ContentFeatureFindDefault(props?: IComponentProps) {
   const { stats } = { ...defaultContentFeatureFindDefaultProps, ...props };
   return (
     <div
@@ -120,3 +118,5 @@ export const defaultContentFeatureFindDefaultProps = {
     },
   ] satisfies StatItem[],
 };
+
+import type { IModuleIconProps } from "./interface";

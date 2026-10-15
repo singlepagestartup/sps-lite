@@ -1,16 +1,19 @@
+import { Component as Profile } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ProfileFindRow, defaultProfileFindRowProps } from "./Component";
+import { defaultProfileFindRowProps } from "./Component";
 
 const meta = {
   id: "modules-social-models-profile-singlepage-find-row",
   title: "Modules/Social/Profile/Singlepage/find-row",
-  component: ProfileFindRow,
+  component: Profile,
   parameters: {
     layout: "centered",
   },
-  args: defaultProfileFindRowProps,
-} satisfies Meta<typeof ProfileFindRow>;
+  args: { ...defaultProfileFindRowProps, variant: "find-row" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Profile>, { variant: "find-row" }>
+>;
 
 export default meta;
 

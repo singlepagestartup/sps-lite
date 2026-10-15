@@ -8,15 +8,15 @@ const mockSource = {
   contentHash: "hash",
   indexedContentHash: "hash" as string | null,
 };
-jest.mock("@sps/knowledge/backend/app/api/src/lib/repository", () => ({
-  KnowledgeRepository: jest.fn(() => ({
-    sourceFiles: mockSourceFiles,
-    setFiles: mockSetFiles,
-    findSourceById: jest.fn(async () => mockSource),
-  })),
-}));
 jest.mock("@sps/knowledge/backend/app/api/src/lib/service", () => ({
-  KnowledgeService: jest.fn(() => ({ rebuildFiles: mockRebuild })),
+  KnowledgeService: jest.fn(() => ({
+    rebuildFiles: mockRebuild,
+    source: {
+      sourceFiles: mockSourceFiles,
+      setFiles: mockSetFiles,
+      findSourceById: jest.fn(async () => mockSource),
+    },
+  })),
 }));
 jest.mock("@sps/file-storage/models/file/sdk/server", () => ({
   api: { create: mockCreateFile },

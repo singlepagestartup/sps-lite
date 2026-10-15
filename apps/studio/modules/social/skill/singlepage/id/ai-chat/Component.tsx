@@ -1,3 +1,9 @@
+import type {
+  IComponentProps,
+  IAIChatSkill,
+  IComponentVariantProps,
+} from "./interface";
+export type { IAIChatSkill, IComponentVariantProps } from "./interface";
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 function MarkdownDocument({
@@ -80,22 +86,11 @@ function MarkdownDocument({
     </div>
   );
 }
-export interface IAIChatSkill {
-  id: string;
-  slug: string;
-  title: string;
-  adminTitle: string;
-  description: string;
-  variant: string;
-}
-interface IComponentVariantProps {
-  variant?: string;
-  data?: IAIChatSkill;
-}
+
 export function Component({
   variant = "id-ai-chat",
   data = businessAnalystSkill,
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <section
       data-ds-block="social.skill.id-ai-chat"

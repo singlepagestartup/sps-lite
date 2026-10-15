@@ -7,6 +7,13 @@
  */
 import { fireEvent, render, screen } from "@testing-library/react";
 const contentRead = jest.fn();
+const relationRead = jest.fn();
+const link = {
+  id: "project-link",
+  widgetId: "rbac-widget",
+  websiteBuilderModuleWidgetId: "creation-content-widget",
+  variant: "ai-chat-content",
+};
 const project = {
   profile: { id: "profile", title: { en: "Existing project" } },
   chat: { id: "chat" },
@@ -16,19 +23,53 @@ jest.mock("client-only", () => ({}), { virtual: true });
 jest.mock("server-only", () => ({}), { virtual: true });
 jest.mock("@sps/rbac/models/widget/sdk/client", () => ({
   Provider: ({ children }: any) => <>{children}</>,
-  api: { findById: () => ({ data: { id: "rbac-widget" }, isLoading: false }) },
+  api: {
+    findById: (props: any) => ({ data: { id: props.id }, isLoading: false }),
+  },
 }));
 jest.mock("@sps/rbac/models/widget/sdk/server", () => ({ api: {} }));
 jest.mock("@sps/website-builder/models/widget/sdk/client", () => ({
   Provider: ({ children }: any) => <>{children}</>,
   api: {
+    find: (props: any) => {
+      contentRead(props);
+      return {
+        data: [
+          {
+            id: "creation-content-widget",
+            variant: "content-ai-chat-profile-create",
+          },
+        ],
+        isLoading: false,
+      };
+    },
     findById: (props: any) => {
       contentRead(props);
-      return { data: { id: props.id }, isLoading: false };
+      return {
+        data: { id: props.id, variant: "content-ai-chat-profile-create" },
+        isLoading: false,
+      };
     },
   },
 }));
 jest.mock("@sps/website-builder/models/widget/sdk/server", () => ({ api: {} }));
+jest.mock(
+  "@sps/rbac/relations/widgets-to-website-builder-module-widgets/sdk/client",
+  () => ({
+    Provider: ({ children }: any) => <>{children}</>,
+    api: {
+      find: (props: any) => {
+        relationRead(props);
+        return { data: [link], isLoading: false };
+      },
+      findById: () => ({ data: link, isLoading: false }),
+    },
+  }),
+);
+jest.mock(
+  "@sps/rbac/relations/widgets-to-website-builder-module-widgets/sdk/server",
+  () => ({ api: {} }),
+);
 jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   projectHref: () =>
     "/ai-chat/social/profiles/profile/chats/chat/threads/thread",
@@ -59,7 +100,6 @@ it("opens the original photo card without replacing the project chooser", () => 
         variant: "subject-me-social-module-profile-create-ai-chat",
         language: "ru",
         data: { id: "rbac-widget" },
-        projectCreateWidget: { id: "creation-content-widget" },
       } as any)}
     />,
   );
@@ -87,8 +127,28 @@ it("opens the original photo card without replacing the project chooser", () => 
   expect(
     screen.queryByRole("heading", { name: "Create a project" }),
   ).toBeNull();
+  expect(relationRead).toHaveBeenCalledWith(
+    expect.objectContaining({
+      params: expect.objectContaining({
+        filters: {
+          and: [
+            { column: "widgetId", method: "eq", value: "rbac-widget" },
+            { column: "variant", method: "eq", value: "ai-chat-content" },
+          ],
+        },
+      }),
+    }),
+  );
   expect(contentRead).toHaveBeenCalledWith(
-    expect.objectContaining({ id: "creation-content-widget" }),
+    expect.objectContaining({
+      params: {
+        filters: {
+          and: [
+            { column: "id", method: "eq", value: "creation-content-widget" },
+          ],
+        },
+      },
+    }),
   );
   fireEvent.click(screen.getByRole("button", { name: "Back to projects" }));
   expect(screen.getByRole("heading", { name: "My projects" })).toBeTruthy();

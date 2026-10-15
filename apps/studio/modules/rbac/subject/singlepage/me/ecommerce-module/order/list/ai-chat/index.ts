@@ -1,1 +1,5 @@
-export { Component, type ISubjectOrderListProps } from "./Component";
+export { Component } from "./Component";
+export { type ISubjectOrderListProps } from "./interface";
+
+export type { IComponentProps, IComponentPropsExtended } from "./interface";
+export { variant } from "./interface";

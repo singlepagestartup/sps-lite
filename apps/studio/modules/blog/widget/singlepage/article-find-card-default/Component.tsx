@@ -1,4 +1,15 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ArticleFindCardDefaultArticle,
+  ArticleFindCardDefaultProps,
+} from "./interface";
+export type {
+  ArticleFindCardDefaultArticle,
+  ArticleFindCardDefaultProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   useId,
   forwardRef as forwardRefControl,
@@ -7,8 +18,8 @@ import {
   useState,
 } from "react";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as BlogModuleArticle } from "../../../article/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Article } from "../../../article/index";
 import { type CategoryButtonDefaultProps } from "../../../category/index";
 interface ICollectionPaginationProps {
   page: number;
@@ -143,33 +154,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-type BlogCategoryTab = Pick<
-  CategoryButtonDefaultProps,
-  "slug" | "label" | "count"
->;
-export interface ArticleFindCardDefaultArticle {
-  href?: string;
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  coverImage: string;
-  category: string;
-  date: string;
-  readTime: string;
-  commentCount: number;
-  authorName: string;
-  authorSlug: string;
-  authorAvatar: string;
-}
-export type ArticleFindCardDefaultProps =
-  typeof defaultArticleFindCardDefaultProps;
-export function ArticleFindCardDefault(
-  props?: Partial<ArticleFindCardDefaultProps> & { variant?: string },
-) {
+export function ArticleFindCardDefault(props?: IComponentProps) {
   const { categories, articles } = {
     ...defaultArticleFindCardDefaultProps,
     ...props,
@@ -229,7 +217,7 @@ export function ArticleFindCardDefault(
       {filtered.length > 0 ? (
         <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((article) => (
-            <BlogModuleArticle
+            <Article
               variant="card"
               key={article.id}
               href={article.href ?? articleOverviewStoryHref}
@@ -418,3 +406,5 @@ export const defaultArticleFindCardDefaultProps = {
     },
   ] as ArticleFindCardDefaultArticle[],
 };
+
+import type { BlogCategoryTab } from "./interface";

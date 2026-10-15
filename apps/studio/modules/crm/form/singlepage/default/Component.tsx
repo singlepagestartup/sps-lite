@@ -1,19 +1,15 @@
+import type { IComponentProps, CrmFormDefaultProps } from "./interface";
+export type { CrmFormDefaultProps } from "./interface";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
 import {
   forwardRef as forwardRefControl,
   type ButtonHTMLAttributes as ButtonControlProps,
   useState,
 } from "react";
-import { Component as CrmModuleStep } from "../../../step/index";
+import { Component as Step } from "../../../step/index";
 import { type CrmFormRecord, defaultCrmForm } from "../../../shared/demo-crm";
-export interface CrmFormDefaultProps {
-  variant?: string;
-  form: CrmFormRecord;
-  disabled?: boolean;
-  subjectName?: string;
-  embedded?: boolean;
-}
-export function CrmFormDefault(props?: Partial<CrmFormDefaultProps>) {
+
+export function CrmFormDefault(props?: IComponentProps) {
   const { form, disabled, embedded } = {
     ...defaultCrmFormDefaultProps,
     ...props,
@@ -52,7 +48,7 @@ export function CrmFormDefault(props?: Partial<CrmFormDefaultProps>) {
       </div>
       <div className="space-y-8">
         {form.steps.map((step) => (
-          <CrmModuleStep
+          <Step
             variant="default"
             disabled={disabled}
             key={step.id}

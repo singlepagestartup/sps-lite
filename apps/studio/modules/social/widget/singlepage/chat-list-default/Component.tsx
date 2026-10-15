@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  SocialWidgetChatListDefaultProps,
+} from "./interface";
+export type { SocialWidgetChatListDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -9,7 +16,7 @@ import {
   useState,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   ChatImagePicker,
   ChatParticipantPicker,
@@ -47,31 +54,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SocialWidgetChatListDefaultProps {
-  variant?: string;
-  selectedId?: string;
-  chatImages?: Record<string, SocialPreviewAttachment>;
-  onSelectChat?: (id: string) => void;
-  onCreateChat?: (
-    chat: SocialWidgetChatListDefaultProps["chats"][number],
-    imageFile?: File | null,
-  ) => void;
-  chats: Array<{
-    id: string;
-    name: string;
-    description: string;
-    unread: number;
-    active?: boolean;
-    memberIds?: string[];
-    icon: "general" | "engineering" | "design" | "marketing" | "random";
-  }>;
-}
-export function SocialWidgetChatListDefault(
-  props?: Partial<SocialWidgetChatListDefaultProps>,
-) {
+export function SocialWidgetChatListDefault(props?: IComponentProps) {
   const { chats, onSelectChat, onCreateChat } = {
     ...defaultSocialWidgetChatListDefaultProps,
     ...props,

@@ -1,11 +1,15 @@
+import { Component as Metadata } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import { HostMetadataAdminV2List } from "./Component";
+
 const meta = {
   id: "modules-host-models-metadata-singlepage-admin-v2-list",
   title: "Modules/Host/Metadata/Singlepage/admin-v2-list",
-  component: HostMetadataAdminV2List,
+  component: Metadata,
   parameters: { layout: "padded" },
-} satisfies Meta<typeof HostMetadataAdminV2List>;
+  args: { variant: "admin-v2-list" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Metadata>, { variant: "admin-v2-list" }>
+>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};

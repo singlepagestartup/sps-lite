@@ -1,3 +1,4 @@
+import type { IComponentProps as ISubjectMeCrmModuleFormSupportAiChat } from "./subject-me-crm-module-form-support-ai-chat/interface";
 import type { IComponentProps as ISubjectMeAuthenticationResetPasswordAiChat } from "./subject-me-authentication-reset-password-ai-chat/interface";
 import type { IComponentProps as ISubjectMeAuthenticationForgotPasswordAiChat } from "./subject-me-authentication-forgot-password-ai-chat/interface";
 import type { IComponentProps as ISubjectMeAuthenticationRegistrationAiChat } from "./subject-me-authentication-registration-ai-chat/interface";
@@ -32,6 +33,7 @@ import { IComponentProps as ISubjectOverviewDefaultComponentProps } from "./subj
 import { IComponentProps as ISubjectListDefaultComponentProps } from "./subject/list/default/interface";
 
 export type IComponentProps =
+  | ISubjectMeCrmModuleFormSupportAiChat
   | ISubjectMeAuthenticationResetPasswordAiChat
   | ISubjectMeAuthenticationForgotPasswordAiChat
   | ISubjectMeAuthenticationRegistrationAiChat

@@ -1,4 +1,10 @@
 "use client";
+import type {
+  IComponentProps,
+  SubjectMeIdentityFindInformationProps,
+} from "./interface";
+export type { SubjectMeIdentityFindInformationProps } from "./interface";
+
 import {
   useState,
   useCallback,
@@ -7,7 +13,7 @@ import {
   type ButtonHTMLAttributes as ButtonControlProps,
 } from "react";
 import { twMerge as mergeButtonClass } from "tailwind-merge";
-import { Component as RbacModuleIdentity } from "../../../../../../identity";
+import { Component as Identity } from "../../../../../../identity";
 import { useStudioAccount } from "../../../account/Account";
 import { aiChatAccount } from "../../../account/fixture";
 import {
@@ -22,13 +28,6 @@ import { Component as ConnectGoogle } from "../../create/oauth-google";
 import { Component as ConnectTelegram } from "../../create/telegram";
 import { Component as ConnectWallet } from "../../create/ethereum-virtual-machine";
 
-export interface SubjectMeIdentityFindInformationProps {
-  variant?: string;
-  title?: string;
-  description?: string;
-  emptyLabel?: string;
-  identities?: RbacIdentity[];
-}
 const connectors = [
   ConnectEmail,
   ConnectGoogle,
@@ -41,9 +40,7 @@ const providers = [
   "telegram",
   "ethereum_virtual_machine",
 ];
-export function SubjectMeIdentityFindInformation(
-  props: SubjectMeIdentityFindInformationProps = {},
-) {
+export function SubjectMeIdentityFindInformation(props: IComponentProps = {}) {
   const { title, description, emptyLabel } = {
     ...defaultSubjectMeIdentityFindInformationProps,
     ...props,
@@ -208,7 +205,7 @@ const SubjectIdentityRow = memo(function SubjectIdentityRow({
     [identity, onUpdate],
   );
   return (
-    <RbacModuleIdentity
+    <Identity
       variant="card-default"
       identity={identity}
       actions={

@@ -1,6 +1,8 @@
 "use client";
+import type { IComponentProps, ILoginPageProps } from "./interface";
+export type { ILoginPageProps } from "./interface";
 
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import {
   Component as RbacModuleSubject,
   type ILoginCopy,
@@ -12,18 +14,14 @@ import {
 import { useNavigate } from "../../../layout/singlepage/ai-chat-landing/Navigation";
 import { aiChatServiceHrefs } from "../../../layout/singlepage/ai-chat-landing/routes";
 
-export interface ILoginPageProps {
-  variant?: string;
-  copy?: { form: ILoginCopy; content: IAuthenticationContent };
-}
 export function Component({
   variant = "rbac-module-subject-me-authentication-select-method-ai-chat",
   copy,
-}: ILoginPageProps = {}) {
+}: IComponentProps = {}) {
   const navigate = useNavigate();
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="login"
         subjectAccount={({ onNavigate }) => (
@@ -46,7 +44,7 @@ export function Component({
             }}
           />
         </WebsiteBuilderModuleWidget>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

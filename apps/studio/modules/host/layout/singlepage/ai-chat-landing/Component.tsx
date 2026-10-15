@@ -1,18 +1,15 @@
+import type { IComponentProps, IAIChatLandingLayoutProps } from "./interface";
+export type { IAIChatLandingLayoutProps } from "./interface";
 import type { ReactNode } from "react";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import type { IWebsiteSection } from "../../../../website-builder/widget/singlepage/content/ai-chat/content";
-export interface IAIChatLandingLayoutProps {
-  variant?: string;
-  children?: ReactNode;
-  subjectAccount?: ReactNode;
-  footerContent?: IWebsiteSection;
-}
+
 export function Component({
   variant = "ai-chat-landing",
   children,
   subjectAccount,
   footerContent,
-}: IAIChatLandingLayoutProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div
       data-sps-theme="singlepage"

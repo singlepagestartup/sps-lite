@@ -13,9 +13,6 @@ const mockProject = {
   thread: { id: "owned-thread" },
 };
 jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
-  projectHref: jest.requireActual(
-    "../../../../../../../subject/frontend/component/src/lib/singlepage/me-social-module-profile-id-chat-id-thread-id-ai-chat/utils",
-  ).projectHref,
   Component: (props: any) => {
     if (props.variant === "authentication-me-default") {
       mockAuthenticationProps(props);
@@ -43,7 +40,10 @@ jest.mock("@sps/social/models/chat/frontend/component", () => ({
   Component: (props: any) => <section>{props.children}</section>,
 }));
 jest.mock("@sps/rbac/models/subject/sdk/server", () => ({ api: {} }));
-jest.mock("@sps/rbac/models/subject/sdk/model", () => ({ clientHost: "" }));
+jest.mock("@sps/rbac/models/subject/sdk/model", () => ({
+  ...jest.requireActual("@sps/rbac/models/subject/sdk/model"),
+  clientHost: "",
+}));
 jest.mock("@sps/shared-frontend-client-utils", () => ({
   saturateHeaders: () => ({}),
 }));

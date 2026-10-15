@@ -35,3 +35,5 @@ wrapper, accepts an initial title and content, and makes no `findById` request
 without an ID. The document's RBAC composition creates and links the Source.
 The editable fields live in its `ClientComponent`; the saved-record variant
 reuses those fields after loading its record.
+
+Source service owns conditional content/attachment changes, preserved slug upsert, derived publication and aggregate deletion. It traverses attachment and chunk relation services and the lower File Storage service. Model repositories contain only their own table operations. Operation-scoped services share one SQL transaction for locks, hash/snapshot checks, relation changes and derived index markers. Analysis and indexing run after commit; errors preserve saved human notes and original Files. New SVG attachments are rejected before saving or linking; legacy SVG cannot be analyzed or rendered inline.

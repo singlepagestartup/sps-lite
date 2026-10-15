@@ -32,3 +32,14 @@ export function getAIChatDocument(metadata: unknown): IAIChatDocument | null {
     sourceIds: [...new Set(record.sourceIds as string[])],
   };
 }
+
+export function projectHref(
+  project: IAIChatProject,
+  threadId = project.thread.id,
+) {
+  return `${projectBaseHref(project)}/threads/${threadId}`;
+}
+
+export function projectBaseHref(project: IAIChatProject) {
+  return `/ai-chat/social/profiles/${project.profile.id}/chats/${project.chat.id}`;
+}

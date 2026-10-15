@@ -1,19 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component as RbacModuleSubject } from "../../../../../index";
-import type { IProviderConnectProps } from "./Component";
-function Example(props: IProviderConnectProps) {
+import { Component as Subject } from "../../../../../index";
+import type { IProviderConnectProps } from "./interface";
+function Component(props: IProviderConnectProps) {
   return (
-    <RbacModuleSubject
-      {...props}
-      variant="me-authentication-provider-connect-default"
-    />
+    <Subject {...props} variant="me-authentication-provider-connect-default" />
   );
 }
 const meta = {
   id: "modules-rbac-models-subject-singlepage-authentication-provider-connect-default",
   title:
     "Modules/RBAC/Subject/Singlepage/authentication/provider-connect/default",
-  component: Example,
+  component: Component,
   args: { provider: "oauth_google" },
   argTypes: {
     provider: {
@@ -26,7 +23,7 @@ const meta = {
       ],
     },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Google: StoryObj<typeof meta> = {};
 export const Telegram: StoryObj<typeof meta> = {

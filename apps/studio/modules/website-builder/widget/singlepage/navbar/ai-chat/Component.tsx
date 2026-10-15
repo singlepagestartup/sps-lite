@@ -1,9 +1,16 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../feature/index";
+import type {
+  IComponentProps,
+  INavbarNavigationProps,
+  INavbarAiChatProps,
+} from "./interface";
+export type { INavbarNavigationProps, INavbarAiChatProps } from "./interface";
 
-import type IconGlyphs from "../../../../feature/singlepage/icon/icons.json";
-import { Component as WebsiteBuilderModuleLogotype } from "../../../../logotype/index";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../buttons-array/index";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Logotype } from "../../../../logotype/index";
+import { Component as ButtonsArray } from "../../../../buttons-array/index";
 import { useCallback, useId, useRef, useState, type ReactNode } from "react";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
@@ -11,22 +18,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface INavbarNavigationProps {
-  onNavigate: () => void;
-  onCloseAutoFocus: (event: Event) => void;
-}
-export interface INavbarAiChatProps {
-  variant?: string;
-  buttonsArrayId: string;
-  activeHref?: string;
-  navigationLayout?: "inline" | "collapsible";
-  navigationLabel?: string;
-  profileSelect?: (props: INavbarNavigationProps) => ReactNode;
-  subjectAccount?: (props: INavbarNavigationProps) => ReactNode;
-}
 export function Component({
   variant = "navbar-ai-chat",
   buttonsArrayId,
@@ -35,7 +29,7 @@ export function Component({
   navigationLabel = "Navigation",
   profileSelect,
   subjectAccount,
-}: INavbarAiChatProps) {
+}: IComponentProps) {
   const widgetId = "navbar-ai-chat";
   const navigationId = useId();
   const navigationTrigger = useRef<HTMLButtonElement>(null);
@@ -67,7 +61,7 @@ export function Component({
       <div
         className={`mx-auto flex max-w-6xl items-center justify-between gap-2 @[800px]:gap-5 ${collapsible ? "h-full" : "flex-wrap"}`}
       >
-        <WebsiteBuilderModuleLogotype variant="brand-ai-chat" />
+        <Logotype variant="brand-ai-chat" />
         <nav
           aria-label={navigationLabel}
           className="flex shrink-0 items-center justify-end gap-1"
@@ -86,7 +80,7 @@ export function Component({
                 : "flex items-center gap-1"
             }
           >
-            <WebsiteBuilderModuleButtonsArray
+            <ButtonsArray
               variant="navbar-ai-chat"
               id={buttonsArrayId}
               activeHref={activeHref}

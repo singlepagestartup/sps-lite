@@ -1,10 +1,10 @@
-import { Component as KnowledgeModuleSource } from "../../index";
+import { Component as Source } from "../../index";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FilesProvider } from "../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
 import { SourceProvider } from "../id/ai-chat/Source";
 import { aiChatSourceFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-function Example() {
+function Component() {
   const { source, files, fileIds } = aiChatSourceFixture();
   return (
     <FilesProvider initialFiles={files}>
@@ -14,7 +14,7 @@ function Example() {
         initialFileIds={fileIds}
       >
         <div className="w-64 bg-default p-4">
-          <KnowledgeModuleSource
+          <Source
             variant="list-item-document-ai-chat"
             selected
             href="/ai-chat/social/profiles/pottery"
@@ -28,8 +28,8 @@ function Example() {
 const meta = {
   id: "modules-knowledge-models-source-singlepage-list-item-document-ai-chat",
   title: "Modules/Knowledge/Source/Singlepage/list-item-document-ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "centered" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

@@ -1,6 +1,5 @@
 import { Component as ClientComponent } from "./ClientComponent";
 import type { IComponentPropsExtended } from "./interface";
-
 export function Component(props: IComponentPropsExtended) {
   return (
     <ClientComponent
@@ -9,10 +8,8 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       className={props.className}
       children={props.children}
-      id={props.id}
-      values={props.values}
-      errors={props.errors}
-      onChange={props.onChange}
+      language={props.language}
+      form={props.form}
       submitted={props.submitted}
       pending={props.pending}
     />

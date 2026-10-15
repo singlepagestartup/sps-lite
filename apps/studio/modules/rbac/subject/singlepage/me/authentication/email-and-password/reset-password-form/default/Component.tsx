@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ISubjectResetPasswordFormDefaultProps,
+} from "./interface";
+export type { ISubjectResetPasswordFormDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -9,7 +16,7 @@ import {
   twMerge as mergeButtonClass,
   twMerge as twMerge,
 } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -37,31 +44,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISubjectResetPasswordFormDefaultProps {
-  variant?: string;
-  title: string;
-  description: string;
-  passwordLabel: string;
-  passwordPlaceholder: string;
-  confirmPasswordLabel: string;
-  confirmPasswordPlaceholder: string;
-  submitLabel: string;
-  backLabel: string;
-  backHref: string;
-  backStoryHref?: string;
-}
 function getStoryLinkProps(href: string, storyHref?: string) {
   if (storyHref) {
     return { href: storyHref, target: "_top" as const };
   }
   return { href };
 }
-export function Component(
-  props?: Partial<ISubjectResetPasswordFormDefaultProps>,
-) {
+export function Component(props?: IComponentProps) {
   const {
     title,
     description,

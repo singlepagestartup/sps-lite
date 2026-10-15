@@ -1,3 +1,4 @@
+import type { Service as CrmRequestService } from "@sps/crm/models/request/backend/app/api/src/lib/service";
 export interface IReadService {
   find: (props?: any) => Promise<any>;
   findById: (props: { id: string }) => Promise<any>;
@@ -104,13 +105,21 @@ export interface INotificationModule {
 }
 
 export interface IFileStorageModule {
-  file: IReadService;
+  file: IReadService & {
+    readBytes: (file: { file: string }) => Promise<Buffer>;
+  };
 }
 
 export interface ICrmModule {
   form: IReadService;
-  request: IReadService;
+  request: CrmRequestService;
   formsToRequests: IReadService;
+  step: IReadService;
+  input: IReadService;
+  option: IReadService;
+  formsToSteps: IReadService;
+  stepsToInputs: IReadService;
+  inputsToOptions: IReadService;
 }
 
 export interface IBroadcastModule {
@@ -151,5 +160,8 @@ export const SubjectDI = {
   IBillRouteService: Symbol.for("rbac.subject.bill-route.service"),
   IEcommerceOrderProceedService: Symbol.for(
     "rbac.subject.ecommerce-order-proceed.service",
+  ),
+  IEcommerceProductCheckout: Symbol.for(
+    "rbac.subject.ecommerce-product-checkout",
   ),
 };

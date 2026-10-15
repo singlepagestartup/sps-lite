@@ -1,15 +1,9 @@
 "use client";
+import type { IComponentProps, ISubjectProfileSelectProps } from "./interface";
+export type { ISubjectProfileSelectProps } from "./interface";
+
 import { Component as SocialModuleProfile } from "../../../../../../../../social/profile";
 import { useStudioAccount } from "../../../../account/Account";
-
-export interface ISubjectProfileSelectProps {
-  variant?: string;
-  subjectId?: string;
-  profileId?: string;
-  pending?: boolean;
-  onNavigate?: () => void;
-  onCloseAutoFocus?: (event: Event) => void;
-}
 
 export function Component({
   variant = "me-social-module-profile-select-ai-chat",
@@ -18,7 +12,7 @@ export function Component({
   pending,
   onNavigate,
   onCloseAutoFocus,
-}: ISubjectProfileSelectProps = {}) {
+}: IComponentProps = {}) {
   const { account } = useStudioAccount();
   return (
     <div

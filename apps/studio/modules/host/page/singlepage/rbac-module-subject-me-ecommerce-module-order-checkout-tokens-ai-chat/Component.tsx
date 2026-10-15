@@ -1,15 +1,14 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function Component({
   variant = "rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="tokens"
         subjectAccount={({ onNavigate }) => (
@@ -22,7 +21,7 @@ export function Component({
         )}
       >
         <RbacModuleSubject variant="me-ecommerce-module-order-checkout-tokens-ai-chat" />
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

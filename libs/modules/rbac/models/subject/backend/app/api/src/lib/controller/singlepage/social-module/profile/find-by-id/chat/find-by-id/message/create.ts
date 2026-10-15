@@ -14,7 +14,11 @@ import { api as socialModuleThreadsToMessagesApi } from "@sps/social/relations/t
 import { api } from "@sps/rbac/models/subject/sdk/server";
 import { api as socialModuleMessagesToFileStorageModuleFilesApi } from "@sps/social/relations/messages-to-file-storage-module-files/sdk/server";
 import { IModel as ISocialModuleMessagesToFileStorageModuleFile } from "@sps/social/relations/messages-to-file-storage-module-files/sdk/model";
-import { getHttpErrorType, logger } from "@sps/backend-utils";
+import {
+  assertKnowledgeAttachmentBytes,
+  getHttpErrorType,
+  logger,
+} from "@sps/backend-utils";
 import {
   IModel as ISocialModuleMessage,
   shouldAwaitSocialMessageNotification,
@@ -31,7 +35,6 @@ import {
   getAIChatDocument,
   RBAC_AI_REACTION_REQUEST_METADATA_KEY,
 } from "@sps/rbac/models/subject/sdk/model";
-import { Service as ProfileSkills } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/skills";
 export class Handler {
   service: Service;
   audioTranscriptionService = new AudioTranscriptionService();
@@ -142,9 +145,10 @@ export class Handler {
           throw new Error(
             "Authorization error. Selected Knowledge Source does not belong to this document.",
           );
-        const skill = await new ProfileSkills(
-          this.service.socialModule,
-        ).forDocument(document.profileId, document.key);
+        const skill = await this.service.socialModuleProfileDocumentSkillFind({
+          socialModuleProfileId: document.profileId,
+          documentKey: document.key,
+        });
         const description =
           typeof parsedBody.data.description === "string"
             ? parsedBody.data.description
@@ -206,6 +210,13 @@ export class Handler {
         if (chat?.variant === "ai-chat") {
           try {
             assertSupportedAiChatAttachments(files);
+            for (const file of files) {
+              assertKnowledgeAttachmentBytes({
+                bytes: new Uint8Array(await file.arrayBuffer()),
+                name: file.name,
+                mimeType: file.type,
+              });
+            }
           } catch (error) {
             throw new Error(
               `Validation error. ${error instanceof Error ? error.message : String(error)}`,

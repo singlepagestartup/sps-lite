@@ -1,4 +1,7 @@
 "use client";
+import type { IComponentProps, IIdentityDeleteProps } from "./interface";
+export type { IIdentityDeleteProps } from "./interface";
+
 import { useState, useRef } from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { useStudioAccount } from "../../account/Account";
@@ -7,18 +10,13 @@ import {
   getIdentityProviderMeta,
   type RbacIdentity,
 } from "../../../../../shared";
-export interface IIdentityDeleteProps {
-  variant?: string;
-  subjectId?: string;
-  identity: RbacIdentity;
-  onDelete: (identity: RbacIdentity) => void;
-}
+
 export function Component({
   variant = "me-identity-delete",
   subjectId,
   identity,
   onDelete,
-}: IIdentityDeleteProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const [portal, setPortal] = useState<HTMLDivElement | null>(null);
   const cancel = useRef<HTMLButtonElement>(null);

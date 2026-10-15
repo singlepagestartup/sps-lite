@@ -79,6 +79,21 @@ describe("resolveTopicsForPath — rules vs canonical", () => {
 });
 
 describe("defaultCompiledTopicRules — framework action endpoints", () => {
+  it("maps generic credential changes onto the Identity collection and detail readers", () => {
+    const id = "303302a0-4eb7-4cef-af04-74d7e8e72442";
+    const mutation = resolveTopicsForPath(
+      `/api/rbac/identities/${id}/change-password`,
+      defaultCompiledTopicRules,
+    );
+    expect(mutation).toEqual(["rbac.identities", `rbac.identities.${id}`]);
+    for (const path of [
+      `/api/rbac/identities/${id}`,
+      `/api/rbac/subjects/${id}/identities`,
+    ]) {
+      const reader = resolveTopicsForPath(path, defaultCompiledTopicRules);
+      expect(reader.some((topic) => mutation.includes(topic))).toBe(true);
+    }
+  });
   it.each(["find-by-url", "url-segment-value", "urls"])(
     "maps Host %s reads onto Page mutation topics",
     (operation) => {

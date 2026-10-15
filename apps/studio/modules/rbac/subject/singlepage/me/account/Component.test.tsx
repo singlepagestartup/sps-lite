@@ -1,6 +1,6 @@
 import { afterEach, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Component as RbacModuleSubject } from "../../../index";
+import { Component as Subject } from "../../../index";
 import { AccountProvider, useStudioAccount } from "./Account";
 import { aiChatAccount } from "./fixture";
 const originalWindow = globalThis.window;
@@ -13,7 +13,7 @@ test("the same account shows its name/avatar with optional AI Chat tokens", () =
   function render(showTokens: boolean) {
     return renderToStaticMarkup(
       <AccountProvider account={aiChatAccount}>
-        <RbacModuleSubject variant="me-account" showTokens={showTokens} />
+        <Subject variant="me-account" showTokens={showTokens} />
       </AccountProvider>,
     );
   }
@@ -30,10 +30,10 @@ test("the same account shows its name/avatar with optional AI Chat tokens", () =
 
 test("guest headers share one sign-in control with the appropriate destination", () => {
   const chat = renderToStaticMarkup(
-    <RbacModuleSubject variant="me-account" signedIn={false} showTokens />,
+    <Subject variant="me-account" signedIn={false} showTokens />,
   );
   const website = renderToStaticMarkup(
-    <RbacModuleSubject variant="me-account" signedIn={false} />,
+    <Subject variant="me-account" signedIn={false} />,
   );
   for (const html of [chat, website]) {
     expect(html).toContain('data-ds-block="rbac.subject.me-account"');
@@ -70,12 +70,12 @@ test("browser session data cannot override explicit story props", () => {
   } as unknown as Window & typeof globalThis;
   const member = renderToStaticMarkup(
     <AccountProvider account={aiChatAccount} signedIn>
-      <RbacModuleSubject variant="me-account" showTokens />
+      <Subject variant="me-account" showTokens />
     </AccountProvider>,
   );
   const guest = renderToStaticMarkup(
     <AccountProvider account={aiChatAccount} signedIn={false}>
-      <RbacModuleSubject variant="me-account" showTokens />
+      <Subject variant="me-account" showTokens />
     </AccountProvider>,
   );
   expect(member).toContain("Alex");

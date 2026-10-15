@@ -1,15 +1,13 @@
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array/index";
+import type { IComponentProps, IAIChatHeroProps } from "./interface";
+export type { IAIChatHeroProps } from "./interface";
+import { Component as ButtonsArray } from "../../../../../buttons-array/index";
 import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 
-export interface IAIChatHeroProps {
-  variant?: string;
-  content?: { hero: IWebsiteSection; labels: Record<string, string> };
-}
 export function Component({
   variant = "content-ai-chat-hero",
   content = defaultContent,
-}: IAIChatHeroProps = {}) {
+}: IComponentProps = {}) {
   return (
     <section
       data-ds-block="website-builder.widget.content-ai-chat-hero"
@@ -31,7 +29,7 @@ export function Component({
             {content.hero.paragraphs[1]}
           </p>
           <div className="mt-6">
-            <WebsiteBuilderModuleButtonsArray
+            <ButtonsArray
               variant="default"
               buttons={[
                 {

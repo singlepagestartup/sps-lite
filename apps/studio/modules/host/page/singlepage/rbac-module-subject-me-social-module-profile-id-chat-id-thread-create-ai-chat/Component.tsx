@@ -1,19 +1,14 @@
 "use client";
+import type { IComponentProps, IThreadCreatePageProps } from "./interface";
+export type { IThreadCreatePageProps } from "./interface";
 
 import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 import { aiChatProfileHref } from "../../../layout/singlepage/ai-chat-landing/routes";
 import type { IProfilePageProps as IWorkspacePageProps } from "../rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat";
-export interface IThreadCreatePageProps {
-  variant?: string;
-  state?: IWorkspacePageProps["state"];
-  errorMessage?: string;
-  onRetry?: () => void;
-  profileId: string;
-  chatId: string;
-}
+
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
   state = "ready",
@@ -21,10 +16,10 @@ export function Component({
   onRetry,
   profileId,
   chatId,
-}: IThreadCreatePageProps) {
+}: IComponentProps) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={
@@ -56,7 +51,7 @@ export function Component({
           chatId={chatId}
           cancelHref={aiChatProfileHref(profileId)}
         />
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

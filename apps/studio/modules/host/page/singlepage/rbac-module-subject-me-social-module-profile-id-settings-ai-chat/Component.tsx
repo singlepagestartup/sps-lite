@@ -1,27 +1,23 @@
 "use client";
+import type { IComponentProps, IProfilePageProps } from "./interface";
+export type { IProfilePageProps } from "./interface";
 
 import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 import type { IProfilePageProps as IWorkspacePageProps } from "../rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat";
-export interface IProfilePageProps {
-  variant?: string;
-  state?: IWorkspacePageProps["state"];
-  errorMessage?: string;
-  onRetry?: () => void;
-  profileId: string;
-}
+
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-id-settings-ai-chat",
   state = "ready",
   errorMessage,
   onRetry,
   profileId,
-}: IProfilePageProps) {
+}: IComponentProps) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={
@@ -51,7 +47,7 @@ export function Component({
           onRetry={onRetry}
           profileId={profileId}
         />
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

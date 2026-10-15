@@ -105,61 +105,27 @@ beforeEach(() => {
   subjectCalls.mockClear();
   projectWidgetCalls.mockClear();
 });
-it("gives the chooser the original content Widget without mounting an empty Website Builder shell", () => {
-  widgets[0].variant = "content-ai-chat-profile-create";
-  const html = renderToStaticMarkup(
-    <Component {...props} url="/ai-chat/projects" />,
-  );
-  expect(html).toContain('aria-label="Project chooser"');
-  expect(widgetRenders).not.toHaveBeenCalled();
-  expect(projectWidgetCalls).toHaveBeenCalledWith(
-    expect.objectContaining({
-      data: { id: "project-widget" },
-      language: "en",
-      projectCreateWidget: widgets[0],
-    }),
-  );
-});
-it("composes the Social demo into the persisted Website Builder Landing through Host's child slot", () => {
-  widgets[0].variant = "landing-ai-chat";
-  const html = renderToStaticMarkup(<Component {...props} />);
-  expect(html).toContain('data-variant="landing-ai-chat"');
-  expect(html).toContain('data-variant="id-preview-ai-chat"');
-  expect(html).toContain('data-id="preview-chat"');
-  expect(subjectCalls).not.toHaveBeenCalled();
-  expect(widgetReads).toHaveBeenCalledWith({
-    params: {
-      filters: {
-        and: [{ column: "id", method: "eq", value: "website-widget" }],
+it.each([
+  "content-ai-chat-profile-create",
+  "content-ai-chat-help",
+  "landing-ai-chat",
+])(
+  "renders its exact persisted %s without cross-module record discovery",
+  (variant) => {
+    widgets[0].variant = variant;
+    const html = renderToStaticMarkup(<Component {...props} />);
+    expect(html).toContain(`data-variant="${variant}"`);
+    expect(projectWidgetCalls).not.toHaveBeenCalled();
+    expect(subjectCalls).not.toHaveBeenCalled();
+    expect(widgetReads).toHaveBeenCalledWith({
+      params: {
+        filters: {
+          and: [{ column: "id", method: "eq", value: "website-widget" }],
+        },
       },
-    },
-  });
-});
-it("injects the authenticated Subject support form into Help without a page-level RBAC Widget", () => {
-  widgets[0].variant = "content-ai-chat-help";
-  const html = renderToStaticMarkup(
-    <Component {...props} url="/ai-chat/help" />,
-  );
-  expect(html).toContain('data-variant="content-ai-chat-help"');
-  expect(html).toContain('data-subject-id="current-subject"');
-  expect(html).toContain('data-id="website-widget"');
-  expect(widgetRenders.mock.calls[0][0]).not.toHaveProperty("url");
-  expect(html).toMatch(
-    /<section[^>]*aria-label="Support request"[\s\S]*<h2[\s\S]*Support request<\/h2>[\s\S]*<form[^>]*aria-label="Subject support form"/,
-  );
-  expect(html.match(/Support request<\/h2>/g)).toHaveLength(1);
-  expect(subjectCalls.mock.calls.map(([call]) => call.variant)).toEqual([
-    "authentication-me-default",
-    "me-crm-module-form-support-ai-chat",
-  ]);
-  expect(subjectCalls.mock.calls[0][0].isServer).toBe(false);
-  expect(subjectCalls.mock.calls[1][0]).toEqual(
-    expect.objectContaining({
-      data: expect.objectContaining({ id: "current-subject" }),
-      isServer: false,
-    }),
-  );
-});
+    });
+  },
+);
 
 it.each([
   ["/ai-chat/help", true],

@@ -1,10 +1,13 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, IThreadAgentSelectProps } from "./interface";
+export type { IThreadAgentSelectProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 
 import { forwardRef, useState } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import type { IProjectAgent } from "../../id/ai-chat/resolver";
 import {
   Component as AgentProfile,
@@ -31,17 +34,13 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IThreadAgentSelectProps {
-  variant?: string;
-  onChange: (selected: boolean) => void;
-}
 export function Component({
   variant = "agent-select-ai-chat",
   onChange,
-}: IThreadAgentSelectProps) {
+}: IComponentProps) {
   const [agentId, setAgentId] = useState("");
   const [profile, setProfile] = useState<IProjectAgent | null>(null);
   return (

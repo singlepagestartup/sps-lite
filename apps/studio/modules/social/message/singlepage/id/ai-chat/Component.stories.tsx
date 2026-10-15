@@ -1,11 +1,11 @@
-import { Component as SocialModuleMessage } from "../../../index";
+import { Component as Message } from "../../../index";
 
 import { documentAgent } from "../../../../profile/singlepage/agent/id/ai-chat/resolver";
 import type { Meta, StoryObj } from "@storybook/react";
 
-function Example() {
+function Component() {
   return (
-    <SocialModuleMessage
+    <Message
       variant="id-ai-chat"
       message={{
         id: "brief-intro",
@@ -22,8 +22,8 @@ function Example() {
 const meta = {
   id: "modules-social-models-message-singlepage-id-ai-chat",
   title: "Modules/Social/Message/Singlepage/id/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

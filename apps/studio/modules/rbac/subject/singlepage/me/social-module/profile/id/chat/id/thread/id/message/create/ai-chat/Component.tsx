@@ -1,5 +1,9 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../../../../../../../website-builder/feature";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../../../../../../../shared/icon";
+
 import { Component as FileStorageModuleFile } from "../../../../../../../../../../../../../../file-storage/file";
 import { useThread } from "../../../../../../../../../../../../../../social/thread/singlepage/id/ai-chat/Thread";
 import { useFiles } from "../../../../../../../../../../../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
@@ -11,15 +15,7 @@ import {
 } from "../../../../../../../../../../../../../../file-storage/file/singlepage/list-attachments-ai-chat/utils";
 import { useStudioAccount } from "../../../../../../../../../../account/Account";
 import { useId, useRef, useEffect, useState, type FormEvent } from "react";
-export interface IComponentVariantProps {
-  variant?: string;
-  subjectId?: string;
-  profileId?: string;
-  chatId?: string;
-  threadId?: string;
-  sending?: boolean;
-  initialError?: string;
-}
+
 export function Component({
   variant = "me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat",
   subjectId,
@@ -28,7 +24,7 @@ export function Component({
   threadId,
   sending = false,
   initialError = "",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   const { account } = useStudioAccount();
   const {
     thread,
@@ -189,8 +185,8 @@ export function Component({
             aria-busy={reading}
             className="inline-flex min-h-10 items-center gap-2 rounded-lg text-xs font-semibold text-muted-foreground hover:text-foreground disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <WebsiteBuilderModuleFeature
-              variant="icon"
+            <SharedIcon
+              variant="phosphor"
               name="paperclip"
               className="size-4"
             />
@@ -203,8 +199,8 @@ export function Component({
             disabled={busy || (!value.trim() && !files.length)}
             className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground hover:brightness-95 disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <WebsiteBuilderModuleFeature
-              variant="icon"
+            <SharedIcon
+              variant="phosphor"
               name="paper-plane-tilt"
               className="size-4"
             />

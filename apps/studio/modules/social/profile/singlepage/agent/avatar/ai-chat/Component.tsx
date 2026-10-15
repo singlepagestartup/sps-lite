@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, IAgentAvatarProps } from "./interface";
+export type { IAgentAvatarProps } from "./interface";
 
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import type { IProjectAgent } from "../../id/ai-chat/resolver";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
@@ -9,19 +12,14 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAgentAvatarProps {
-  variant?: string;
-  agent: IProjectAgent;
-  onSelect: (agent: IProjectAgent) => void;
-}
 export function Component({
   variant = "agent-avatar-ai-chat",
   agent,
   onSelect,
-}: IAgentAvatarProps) {
+}: IComponentProps) {
   return (
     <button
       type="button"

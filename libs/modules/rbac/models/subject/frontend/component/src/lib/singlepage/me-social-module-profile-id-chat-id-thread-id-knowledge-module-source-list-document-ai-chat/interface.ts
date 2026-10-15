@@ -27,3 +27,14 @@ export interface IComponentPropsExtended
     refetch?: () => void;
   };
 }
+
+export interface IDraftSourceProps {
+  id: string;
+  title?: string;
+  placeholder?: string;
+  onSave: (
+    id: string,
+    value: { title: string; content: string },
+    files: File[],
+  ) => Promise<string>;
+}

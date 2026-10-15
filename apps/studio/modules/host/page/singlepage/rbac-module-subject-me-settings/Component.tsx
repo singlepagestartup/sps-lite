@@ -1,15 +1,14 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function ProfileDefault({
   variant = "rbac-module-subject-me-settings",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="website"
         activeHref="/rbac/subject/settings"
         signedIn
@@ -22,7 +21,7 @@ export function ProfileDefault({
         >
           <RbacModuleWidget variant="subject-me-profile-settings" />
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

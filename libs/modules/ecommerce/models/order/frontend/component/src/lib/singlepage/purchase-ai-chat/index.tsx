@@ -11,7 +11,7 @@ import { Component as Server } from "./server";
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Component={(props.isServer ? Server : Client) as any}
+      Component={props.isServer ? Server : Client}
       Provider={Provider}
       clientApi={clientApi}
       serverApi={serverApi}

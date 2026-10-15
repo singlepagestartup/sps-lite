@@ -10,7 +10,7 @@ import {
   X,
 } from "lucide-react";
 import { Icon } from "@sps/ui-adapter";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import {
   assertSupportedAiChatAttachments,
   AI_CHAT_ATTACHMENT_ACCEPT,
@@ -21,21 +21,11 @@ import {
   getAIChatDocument,
   RBAC_AI_REACTION_REQUEST_METADATA_KEY,
 } from "@sps/rbac/models/subject/sdk/model";
-import type { IComponentPropsExtended } from "./interface";
-interface IAttachment {
-  id: string;
-  file: File;
-}
-
-interface IAttachmentProps {
-  attachment: IAttachment;
-  first: boolean;
-  last: boolean;
-  disabled: boolean;
-  onRemove: (id: string) => void;
-  onMove: (id: string, direction: -1 | 1) => void;
-  onReorder: (id: string, targetId: string) => void;
-}
+import type {
+  IComponentPropsExtended,
+  IAttachment,
+  IAttachmentProps,
+} from "./interface";
 
 const Attachment = memo(function Attachment(props: IAttachmentProps) {
   const { attachment } = props;
@@ -182,7 +172,7 @@ export function Component(props: IComponentPropsExtended) {
   const [error, setError] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
   const createMessage =
-    api.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageCreate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageCreate(
       messageScope,
     );
   return (

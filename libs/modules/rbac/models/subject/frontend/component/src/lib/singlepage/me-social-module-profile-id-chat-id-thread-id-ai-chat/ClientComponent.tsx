@@ -4,25 +4,9 @@ import { Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
-import { Component as Thread } from "@sps/social/models/thread/frontend/component";
-import { findProjectThreads } from "./utils";
-import type { IComponentPropsExtended } from "./interface";
-export function Component(props: IComponentPropsExtended) {
-  if (!props.project)
-    return <p role="alert">Choose a project to open its workspace.</p>;
-  return (
-    <Workspace
-      key={`${props.project.profile.id}:${props.threadId}`}
-      {...props}
-      project={props.project}
-    />
-  );
-}
-function Workspace(
-  props: IComponentPropsExtended & {
-    project: NonNullable<IComponentPropsExtended["project"]>;
-  },
-) {
+import { Component as SocialModuleThread } from "@sps/social/models/thread/frontend/component";
+import type { IClientComponentProps } from "./interface";
+export function Component(props: IClientComponentProps) {
   const project = props.project;
   const router = useRouter();
   const [target, setTarget] = useState("whole");
@@ -71,21 +55,10 @@ function Workspace(
           {props.navigation}
         </nav>
       )}
-      <Thread
+      <SocialModuleThread
         isServer={false}
         data={thread}
-        apiProps={{
-          reactQueryOptions: {
-            initialData: thread,
-            queryFn: async () =>
-              (
-                await findProjectThreads({
-                  subjectId: props.data.id,
-                  chatId: project.chat.id,
-                })
-              ).find((item) => item.id === thread.id),
-          },
-        }}
+        dataSource="props"
         variant="id-ai-chat"
         isDocument={isDocument}
         navigation={

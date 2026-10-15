@@ -1,18 +1,15 @@
+import type { IComponentProps, CrmRequestDefaultProps } from "./interface";
+export type { CrmRequestDefaultProps } from "./interface";
 import {
   type CrmRequestRecord,
   defaultCrmRequest,
 } from "../../../shared/demo-crm";
 
-export interface CrmRequestDefaultProps {
-  variant?: string;
-  request: CrmRequestRecord;
-}
-
 export const defaultCrmRequestDefaultProps: CrmRequestDefaultProps = {
   request: defaultCrmRequest,
 };
 
-export function CrmRequestDefault(props?: Partial<CrmRequestDefaultProps>) {
+export function CrmRequestDefault(props?: IComponentProps) {
   const { request } = {
     ...defaultCrmRequestDefaultProps,
     ...props,

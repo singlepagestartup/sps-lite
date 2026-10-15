@@ -1,9 +1,9 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import { Component as SharedIcon } from "../../../../shared/icon";
 
 import * as React from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -34,7 +34,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 type CarouselApi = UseEmblaCarouselType[1];

@@ -1,20 +1,19 @@
+import type { IComponentProps, IHelpProps } from "./interface";
+export type { IHelpProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 import type { ReactNode } from "react";
 import Markdown from "markdown-to-jsx";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../feature";
+
 import type { IAIChatServicePageContent } from "../content";
 import defaultCopy from "./content.json";
-export interface IHelpProps {
-  variant?: string;
-  copy?: IAIChatServicePageContent;
-  projectHref?: string;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "content-ai-chat-help",
   copy = defaultCopy,
   projectHref = "/ai-chat/social/profiles/create",
   children,
-}: IHelpProps = {}) {
+}: IComponentProps = {}) {
   function paragraphs(items: string[]) {
     return items.map((text) => (
       <div key={text}>
@@ -47,7 +46,7 @@ export function Component({
         >
           <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold">
             <span className="grid size-10 place-items-center rounded-xl bg-muted">
-              <WebsiteBuilderModuleFeature variant="icon" name="chat-circle" />
+              <SharedIcon variant="phosphor" name="chat-circle" />
             </span>
             {copy.sections.request.title}
           </h2>
@@ -55,11 +54,7 @@ export function Component({
         </section>
         <aside className="min-w-0 rounded-2xl bg-default p-6 text-default-foreground @3xl:p-8">
           <span className="mb-6 grid size-12 place-items-center rounded-xl bg-card/10 text-primary">
-            <WebsiteBuilderModuleFeature
-              variant="icon"
-              name="clock"
-              size={24}
-            />
+            <SharedIcon variant="phosphor" name="clock" size={24} />
           </span>
           <h2 className="text-2xl font-semibold">
             {copy.sections.response.title}

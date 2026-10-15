@@ -1,17 +1,12 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature";
+import type { IComponentProps, IPendingFileProps } from "./interface";
+export type { IPendingFileProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import type { IProjectFile } from "../../../../social/profile/singlepage/scope/ai-chat/project/state";
 import { memo, useCallback } from "react";
-export interface IPendingFileProps {
-  variant?: string;
-  file: IProjectFile;
-  onRemove: (id: string) => void;
-  onMove?: (id: string, direction: -1 | 1) => void;
-  onReorder?: (id: string, targetId: string) => void;
-  first?: boolean;
-  last?: boolean;
-  disabled?: boolean;
-}
+
 export const Component = memo(function Component({
   variant = "list-item-pending-ai-chat",
   file,
@@ -21,7 +16,7 @@ export const Component = memo(function Component({
   first = false,
   last = false,
   disabled = false,
-}: IPendingFileProps) {
+}: IComponentProps) {
   const remove = useCallback(() => onRemove(file.id), [onRemove, file.id]);
   return (
     <li
@@ -55,11 +50,7 @@ export const Component = memo(function Component({
         onClick={remove}
         className="absolute right-1 top-1 z-10 grid size-6 place-items-center rounded-full bg-foreground text-background hover:opacity-80 disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
-        <WebsiteBuilderModuleFeature
-          variant="icon"
-          name="x"
-          className="size-4"
-        />
+        <SharedIcon variant="phosphor" name="x" className="size-4" />
       </button>
       <div className="flex h-20 items-center justify-center overflow-hidden rounded-lg bg-neutral-500">
         {file.mimeType?.startsWith("image/") && file.fileUrl ? (
@@ -70,8 +61,8 @@ export const Component = memo(function Component({
             className="h-full w-full object-contain"
           />
         ) : (
-          <WebsiteBuilderModuleFeature
-            variant="icon"
+          <SharedIcon
+            variant="phosphor"
             name="file-text"
             className="size-7 text-background"
           />
@@ -95,8 +86,8 @@ export const Component = memo(function Component({
                 onClick={() => onMove(file.id, direction)}
                 className="grid size-8 place-items-center rounded-md hover:bg-muted disabled:opacity-30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground"
               >
-                <WebsiteBuilderModuleFeature
-                  variant="icon"
+                <SharedIcon
+                  variant="phosphor"
                   name={direction === -1 ? "caret-left" : "caret-right"}
                   className="size-4"
                 />

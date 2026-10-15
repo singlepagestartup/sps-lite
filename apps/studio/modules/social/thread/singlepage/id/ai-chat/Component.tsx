@@ -1,9 +1,13 @@
 "use client";
+import type { IComponentProps, IThreadIdProps } from "./interface";
+export type { IThreadIdProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../shared/icon";
 
 import { type ReactNode as ReactNodePresentation, type ReactNode } from "react";
 import { Component as ThreadMessageList } from "../../message/list/ai-chat/index";
 import { ThreadProvider, useThread } from "./Thread";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature";
+
 interface IPanelHeaderProps {
   title: string;
   label: string;
@@ -24,16 +28,8 @@ function PanelHeader({ title, label, navigation, actions }: IPanelHeaderProps) {
     </header>
   );
 }
-export interface IThreadIdProps {
-  variant?: string;
-  navigation?: ReactNode;
-  messageCreate?: ReactNode;
-  knowledge?: ReactNode;
-  knowledgeUpdate?: ReactNode;
-  knowledgeSourceIds?: string[];
-  documentDownload?: ReactNode;
-}
-export function Component(props: IThreadIdProps) {
+
+export function Component(props: IComponentProps) {
   return (
     <ThreadProvider>
       <ThreadId {...props} variant={props.variant ?? "id-ai-chat"} />
@@ -102,7 +98,7 @@ function ThreadId({
           >
             <div className="mb-4 flex items-center justify-between gap-2">
               <h3 className="inline-flex items-center gap-2 text-sm font-semibold">
-                <WebsiteBuilderModuleFeature variant="icon" name="file-text" />
+                <SharedIcon variant="phosphor" name="file-text" />
                 {thread.title}
               </h3>
               {documentDownload}

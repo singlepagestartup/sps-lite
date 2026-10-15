@@ -1,3 +1,5 @@
+import type { IComponentProps, IAIChatDashboardLayoutProps } from "./interface";
+export type { IAIChatDashboardLayoutProps } from "./interface";
 import {
   Component as WebsiteBuilderModuleWidget,
   type INavbarAiChatProps,
@@ -5,19 +7,13 @@ import {
 import type { ReactNode } from "react";
 import { aiChatServiceHrefs } from "../ai-chat-landing/routes";
 
-export interface IAIChatDashboardLayoutProps
-  extends Pick<INavbarAiChatProps, "profileSelect" | "subjectAccount"> {
-  variant?: string;
-  page: "register" | "login" | "settings" | "help" | "tokens" | "chat";
-  children: ReactNode;
-}
 export function Component({
   variant = "ai-chat-dashboard",
   children,
   page,
   profileSelect,
   subjectAccount,
-}: IAIChatDashboardLayoutProps) {
+}: IComponentProps) {
   const accountAccess = page === "register" || page === "login";
   const buttonsArrayId = accountAccess ? "empty" : "ai-chat-help";
   return (

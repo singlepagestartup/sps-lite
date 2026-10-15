@@ -1,15 +1,20 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { EcommerceProductFindCard } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-ecommerce-module-product-find",
   title: "Modules/Host/Page/Singlepage/ecommerce-module-product-find",
-  component: EcommerceProductFindCard,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof EcommerceProductFindCard>;
+  args: { variant: "ecommerce-module-product-find" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "ecommerce-module-product-find" }
+  >
+>;
 
 export default meta;
 

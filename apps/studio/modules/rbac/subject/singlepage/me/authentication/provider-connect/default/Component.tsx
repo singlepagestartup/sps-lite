@@ -1,6 +1,10 @@
 "use client";
+import type { IComponentProps, IProviderConnectProps } from "./interface";
+export type { IProviderConnectProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../shared/icon";
+
 import { twMerge as mergeButtonClass } from "tailwind-merge";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../website-builder/feature/index";
 
 import {
   type InputHTMLAttributes,
@@ -10,7 +14,7 @@ import {
   useId,
   useState,
 } from "react";
-import type IconGlyphs from "../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { getIdentityProviderMeta } from "../../../../../../shared";
 interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -77,23 +81,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IProviderConnectProps {
-  variant?: string;
-  provider?: string;
-  account?: string;
-  onComplete?: (account: string) => void;
-  onCancel?: () => void;
-}
 export function Component({
   variant = "me-authentication-provider-connect-default",
   provider = "oauth_google",
   account = "",
   onComplete,
   onCancel,
-}: IProviderConnectProps = {}) {
+}: IComponentProps = {}) {
   const meta = getIdentityProviderMeta(provider);
   const credentials = meta.kind === "credentials";
   const [password, setPassword] = useState("");

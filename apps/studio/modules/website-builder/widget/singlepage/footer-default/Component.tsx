@@ -1,9 +1,11 @@
+import type { IComponentProps, FooterDefaultProps } from "./interface";
+export type { FooterDefaultProps } from "./interface";
 import {
-  Component as WebsiteBuilderModuleButtonsArray,
+  Component as ButtonsArray,
   type ButtonsArrayItem,
 } from "../../../buttons-array/index";
 
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
+import { Component as Logotype } from "../../../logotype/index";
 
 interface FooterColumn {
   title: string;
@@ -35,11 +37,7 @@ export const defaultFooterDefaultProps = {
   legalLinks: ["Privacy", "Terms", "Cookies"],
 };
 
-export type FooterDefaultProps = typeof defaultFooterDefaultProps;
-
-export function FooterDefault(
-  props?: Partial<FooterDefaultProps> & { variant?: string },
-) {
+export function FooterDefault(props?: IComponentProps) {
   const { brand, description, copyright, columns, legalLinks } = {
     ...defaultFooterDefaultProps,
     ...props,
@@ -78,13 +76,13 @@ export function FooterDefault(
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
           <div className="min-w-0 sm:col-span-2 lg:col-span-1">
-            <WebsiteBuilderModuleLogotype variant="default" brand={brand} />
+            <Logotype variant="default" brand={brand} />
             <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">
               {description}
             </p>
           </div>
           {columnGroups.map((column) => (
-            <WebsiteBuilderModuleButtonsArray
+            <ButtonsArray
               variant="default"
               ariaLabel={column.title}
               buttons={column.buttons}
@@ -96,7 +94,7 @@ export function FooterDefault(
         </div>
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
           <p className="text-xs leading-5 text-muted-foreground">{copyright}</p>
-          <WebsiteBuilderModuleButtonsArray
+          <ButtonsArray
             variant="default"
             ariaLabel="Legal"
             buttons={legalButtons}

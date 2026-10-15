@@ -1,4 +1,4 @@
-import { IComponentPropsExtended } from "./interface";
+import { IComponentPropsExtended, ILayoutWidgetsProps } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 import { Component as PagesToLayouts } from "@sps/host/relations/pages-to-layouts/frontend/component";
 import { Component as PagesToWidgets } from "@sps/host/relations/pages-to-widgets/frontend/component";
@@ -107,12 +107,6 @@ export function Component(props: IComponentPropsExtended) {
       </PagesToLayouts>
     </div>
   );
-}
-
-interface ILayoutWidgetsProps
-  extends Pick<IComponentPropsExtended, "isServer" | "language" | "url"> {
-  layoutId: string;
-  slot: "default" | "additional";
 }
 
 function LayoutWidgets(props: ILayoutWidgetsProps) {

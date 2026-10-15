@@ -1,37 +1,25 @@
 "use client";
+import type { IComponentProps, IProfilePageProps } from "./interface";
+export type { IProfilePageProps } from "./interface";
 
 import { Component as RbacModuleWidget } from "../../../../rbac/widget/index";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 import { aiChatProfileChatId } from "../../../layout/singlepage/ai-chat-landing/routes";
 import { useStudioAccount } from "../../../../rbac/subject/singlepage/me/account/Account";
 
-export interface IProfilePageProps {
-  variant?: string;
-  profileId: string;
-  state?:
-    | "ready"
-    | "checking-session"
-    | "loading-projects"
-    | "loading-chat"
-    | "sign-in-required"
-    | "access-denied"
-    | "error";
-  errorMessage?: string;
-  onRetry?: () => void;
-}
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
   profileId,
   state = "ready",
   errorMessage,
   onRetry,
-}: IProfilePageProps) {
+}: IComponentProps) {
   const { signedIn } = useStudioAccount();
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={
@@ -62,7 +50,7 @@ export function Component({
           profileId={profileId}
           chatId={aiChatProfileChatId(profileId)}
         />
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

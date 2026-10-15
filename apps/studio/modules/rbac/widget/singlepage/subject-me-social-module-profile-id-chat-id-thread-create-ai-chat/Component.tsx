@@ -1,22 +1,16 @@
 "use client";
+import type { IComponentProps, ISubjectThreadCreateProps } from "./interface";
+export type { ISubjectThreadCreateProps } from "./interface";
+
 import { Component as SocialModuleProfile } from "../../../../social/profile";
 import { Component as SocialModuleChat } from "../../../../social/chat";
 import { Component as SocialModuleThread } from "../../../../social/thread";
 import { useStudioAccount } from "../../../subject/singlepage/me/account/Account";
-import { Component as RbacModuleSubject } from "../../../subject";
+import { Component as Subject } from "../../../subject";
 import { Component as WorkspaceSkeleton } from "../subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Skeleton";
 import { Component as WorkspaceNotice } from "../subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Error";
 import type { ISubjectThreadWorkspaceProps } from "../subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Component";
-export interface ISubjectThreadCreateProps {
-  variant?: string;
-  state?: ISubjectThreadWorkspaceProps["state"];
-  errorMessage?: string;
-  onRetry?: () => void;
-  subjectId?: string;
-  profileId: string;
-  chatId: string;
-  cancelHref: string;
-}
+
 export function Component({
   variant = "subject-me-social-module-profile-id-chat-id-thread-create-ai-chat",
   state = "ready",
@@ -26,7 +20,7 @@ export function Component({
   profileId,
   chatId,
   cancelHref,
-}: ISubjectThreadCreateProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const actor = subjectId ?? account.subject?.id;
   if (
@@ -75,7 +69,7 @@ export function Component({
                 navigation={navigation}
                 chatId={chatId}
               >
-                <RbacModuleSubject
+                <Subject
                   variant="me-social-module-profile-id-chat-id-thread-create-form-ai-chat"
                   subjectId={actor}
                   profileId={profileId}

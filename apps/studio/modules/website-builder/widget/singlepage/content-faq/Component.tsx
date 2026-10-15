@@ -1,8 +1,16 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type {
+  IComponentProps,
+  ContentFaqItem,
+  ContentFaqProps,
+} from "./interface";
+export type { ContentFaqItem, ContentFaqProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+import { Component as Feature } from "../../../feature/index";
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../buttons-array/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as ButtonsArray } from "../../../buttons-array/index";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -30,17 +38,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ContentFaqItem {
-  q: string;
-  a: string;
-}
-export type ContentFaqProps = typeof defaultContentFaqProps;
-export function ContentFaq(
-  props?: Partial<ContentFaqProps> & { variant?: string },
-) {
+export function ContentFaq(props?: IComponentProps) {
   const { eyebrow, title, description, contactHref, faq } = {
     ...defaultContentFaqProps,
     ...props,
@@ -67,7 +68,7 @@ export function ContentFaq(
               {description}
             </p>
             <div className="mt-5">
-              <WebsiteBuilderModuleButtonsArray
+              <ButtonsArray
                 variant="default"
                 ariaLabel="FAQ contact actions"
                 buttons={[
@@ -86,7 +87,7 @@ export function ContentFaq(
             data-ds-imports="website-builder.feature.dropdown"
           >
             {faq.map((item, idx) => (
-              <WebsiteBuilderModuleFeature
+              <Feature
                 variant="dropdown"
                 key={item.q}
                 question={item.q}

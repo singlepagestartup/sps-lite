@@ -1,9 +1,12 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import type { IComponentProps, ISourceCardProps } from "./interface";
+export type { ISourceCardProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../shared/icon";
 
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as FileStorageModuleFile } from "../../../../../file-storage/file/index";
 import { memo, useCallback, useId } from "react";
 import { MarkdownField } from "./MarkdownField";
@@ -95,14 +98,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISourceCardProps {
-  variant?: string;
-  discussing?: boolean;
-  onDiscuss?: () => void;
-}
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
@@ -115,7 +113,7 @@ export const Component = memo(function Component({
   variant = "id-ai-chat",
   discussing = false,
   onDiscuss,
-}: ISourceCardProps) {
+}: IComponentProps) {
   const { source: data, fileIds, edit: onEdit, attach, detach } = useSource();
   const id = useId();
   const edit = useCallback(

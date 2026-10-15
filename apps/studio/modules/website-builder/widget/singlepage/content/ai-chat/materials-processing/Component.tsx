@@ -1,3 +1,5 @@
+import type { IComponentProps, IProcessingContentProps } from "./interface";
+export type { IProcessingContentProps } from "./interface";
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 import disclosure from "./disclosure.json";
@@ -81,16 +83,12 @@ function MarkdownDocument({
     </div>
   );
 }
-export interface IProcessingContentProps {
-  variant?: string;
-  id: string;
-  open?: boolean;
-}
+
 export function Component({
   variant = "content-ai-chat-materials-processing",
   id,
   open,
-}: IProcessingContentProps) {
+}: IComponentProps) {
   return (
     <details
       data-ds-block="website-builder.widget.content-ai-chat-materials-processing"

@@ -1,13 +1,12 @@
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 
 import { AdminV2PageShell } from "../shared/AdminV2PageShell";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function AdminPreviewDialog({
   variant = "admin-preview-dialog",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div
       data-ds-page="host.page.admin-preview-dialog"

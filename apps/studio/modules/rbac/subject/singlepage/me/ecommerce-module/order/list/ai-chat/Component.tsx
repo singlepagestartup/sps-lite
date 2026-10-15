@@ -1,16 +1,16 @@
 "use client";
+import type { IComponentProps, ISubjectOrderListProps } from "./interface";
+export type { ISubjectOrderListProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import { memo } from "react";
 import Markdown from "markdown-to-jsx";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature";
+
 import type { IAIChatServicePageContent } from "../../../../../../../../website-builder/widget/singlepage/content/ai-chat/content";
 import { useAIChatAccount } from "../../../../account/Account";
 import orders from "./orders.json";
-export interface ISubjectOrderListProps {
-  variant?: string;
-  showTokens?: boolean;
-  copy?: IAIChatServicePageContent;
-  empty?: boolean;
-}
+
 interface IOrder {
   id: string;
   date: string;
@@ -48,7 +48,7 @@ const OrderItem = memo(function OrderItem({
           href={`data:text/plain;charset=utf-8,${encodeURIComponent(receipt)}`}
           className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 text-sm font-medium"
         >
-          <WebsiteBuilderModuleFeature variant="icon" name="file-text" />
+          <SharedIcon variant="phosphor" name="file-text" />
           Receipt
         </a>
       </div>
@@ -60,7 +60,7 @@ export function Component({
   showTokens = false,
   copy,
   empty = false,
-}: ISubjectOrderListProps = {}) {
+}: IComponentProps = {}) {
   const account = useAIChatAccount();
   const purchases = copy?.sections.purchases;
   return (
@@ -74,7 +74,7 @@ export function Component({
         <div>
           <h2 className="flex items-center gap-3 text-xl font-semibold">
             <span className="grid size-10 place-items-center rounded-xl bg-muted">
-              <WebsiteBuilderModuleFeature variant="icon" name="wallet" />
+              <SharedIcon variant="phosphor" name="wallet" />
             </span>
             {showTokens
               ? (purchases?.title ?? "Tokens and purchases")
@@ -102,7 +102,7 @@ export function Component({
             }
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 text-sm font-semibold"
           >
-            <WebsiteBuilderModuleFeature variant="icon" name="plus" />
+            <SharedIcon variant="phosphor" name="plus" />
             {copy?.labels["buy-tokens"] ?? "Buy tokens"}
           </a>
         )}

@@ -1,4 +1,11 @@
 "use client";
+import type {
+  IComponentProps,
+  TAuthenticationMethod,
+  ISelectMethodProps,
+} from "./interface";
+export type { TAuthenticationMethod, ISelectMethodProps } from "./interface";
+
 import { twMerge as mergeButtonClass } from "tailwind-merge";
 
 import {
@@ -13,21 +20,12 @@ import { useStudioAccount } from "../../../account/Account";
 import { Component as EmailAndPasswordAuthenticationForm } from "../../email-and-password/authentication-form/default/index";
 import { Component as EthereumVirtualMachine } from "../../ethereum-virtual-machine/default/index";
 import { Component as OAuthAuthorization } from "../../oauth/authorization/default/index";
-export type TAuthenticationMethod =
-  | "email-and-password"
-  | "ethereum-virtual-machine"
-  | "oauth";
-export interface ISelectMethodProps {
-  variant?: string;
-  initialMethod?: TAuthenticationMethod;
 
-  onSuccess?: (email: string) => void;
-}
 export function Component({
   variant = "me-authentication-select-method-default",
   initialMethod = "email-and-password",
   onSuccess,
-}: ISelectMethodProps = {}) {
+}: IComponentProps = {}) {
   const [method, setMethod] = useState(initialMethod);
   const id = useId();
   const { account, signIn } = useStudioAccount();
@@ -48,82 +46,91 @@ export function Component({
     { value: "oauth", label: "OAuth" },
   ];
   return (
-    <EmailAndPasswordAuthenticationForm
-      variant={variant}
-      onSuccess={complete}
-      methodSelector={
-        <div
-          role="tablist"
-          aria-label="Authentication method"
-          className="flex flex-wrap gap-2"
-        >
-          {methods.map((item, index) => (
-            <Button
-              key={item.value}
-              type="button"
-              role="tab"
-              id={`${id}-tab-${item.value}`}
-              aria-selected={method === item.value}
-              aria-controls={`${id}-panel-${item.value}`}
-              tabIndex={method === item.value ? 0 : -1}
-              variant={method === item.value ? "primary" : "secondary"}
-              onClick={() => setMethod(item.value)}
-              onKeyDown={(event) => {
-                const next =
-                  event.key === "ArrowRight"
-                    ? (index + 1) % methods.length
-                    : event.key === "ArrowLeft"
-                      ? (index + methods.length - 1) % methods.length
-                      : event.key === "Home"
-                        ? 0
-                        : event.key === "End"
-                          ? methods.length - 1
-                          : undefined;
-                if (next === undefined) return;
-                event.preventDefault();
-                setMethod(methods[next].value);
-                (
-                  event.currentTarget.parentElement?.children[next] as
-                    | HTMLElement
-                    | undefined
-                )?.focus();
-              }}
+    <div
+      className="contents"
+      data-module="rbac"
+      data-model="subject"
+      data-variant={variant}
+    >
+      <EmailAndPasswordAuthenticationForm
+        variant="me-authentication-email-and-password-authentication-form-default"
+        onSuccess={complete}
+        methodSelector={
+          <div
+            role="tablist"
+            aria-label="Authentication method"
+            className="flex flex-wrap gap-2"
+          >
+            {methods.map((item, index) => (
+              <Button
+                key={item.value}
+                type="button"
+                role="tab"
+                id={`${id}-tab-${item.value}`}
+                aria-selected={method === item.value}
+                aria-controls={`${id}-panel-${item.value}`}
+                tabIndex={method === item.value ? 0 : -1}
+                variant={method === item.value ? "primary" : "secondary"}
+                onClick={() => setMethod(item.value)}
+                onKeyDown={(event) => {
+                  const next =
+                    event.key === "ArrowRight"
+                      ? (index + 1) % methods.length
+                      : event.key === "ArrowLeft"
+                        ? (index + methods.length - 1) % methods.length
+                        : event.key === "Home"
+                          ? 0
+                          : event.key === "End"
+                            ? methods.length - 1
+                            : undefined;
+                  if (next === undefined) return;
+                  event.preventDefault();
+                  setMethod(methods[next].value);
+                  (
+                    event.currentTarget.parentElement?.children[next] as
+                      | HTMLElement
+                      | undefined
+                  )?.focus();
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        }
+        showEmailFields={method === "email-and-password"}
+        emailPanelProps={{
+          role: "tabpanel",
+          id: `${id}-panel-email-and-password`,
+          "aria-labelledby": `${id}-tab-email-and-password`,
+        }}
+        methodContent={
+          <>
+            <div
+              role="tabpanel"
+              id={`${id}-panel-ethereum-virtual-machine`}
+              aria-labelledby={`${id}-tab-ethereum-virtual-machine`}
+              hidden={method !== "ethereum-virtual-machine"}
             >
-              {item.label}
-            </Button>
-          ))}
-        </div>
-      }
-      showEmailFields={method === "email-and-password"}
-      emailPanelProps={{
-        role: "tabpanel",
-        id: `${id}-panel-email-and-password`,
-        "aria-labelledby": `${id}-tab-email-and-password`,
-      }}
-      methodContent={
-        <>
-          <div
-            role="tabpanel"
-            id={`${id}-panel-ethereum-virtual-machine`}
-            aria-labelledby={`${id}-tab-ethereum-virtual-machine`}
-            hidden={method !== "ethereum-virtual-machine"}
-          >
-            <EthereumVirtualMachine onSuccess={() => complete(previewEmail)} />
-          </div>
-          <div
-            role="tabpanel"
-            id={`${id}-panel-oauth`}
-            aria-labelledby={`${id}-tab-oauth`}
-            hidden={method !== "oauth"}
-          >
-            <OAuthAuthorization
-              accountEmail={previewEmail}
-              onSuccess={() => complete(previewEmail)}
-            />
-          </div>
-        </>
-      }
-    />
+              <EthereumVirtualMachine
+                onSuccess={() => complete(previewEmail)}
+              />
+            </div>
+            <div
+              role="tabpanel"
+              id={`${id}-panel-oauth`}
+              aria-labelledby={`${id}-tab-oauth`}
+              hidden={method !== "oauth"}
+            >
+              <OAuthAuthorization
+                accountEmail={previewEmail}
+                onSuccess={() => complete(previewEmail)}
+              />
+            </div>
+          </>
+        }
+      />
+    </div>
   );
 }
 

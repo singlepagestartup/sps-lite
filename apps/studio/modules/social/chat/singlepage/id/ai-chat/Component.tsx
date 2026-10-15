@@ -1,22 +1,17 @@
 "use client";
+import type { IComponentProps, IChatIdProps } from "./interface";
+export type { IChatIdProps } from "./interface";
 
-import { Component as SocialModuleThread } from "../../../../thread/index";
+import { Component as Thread } from "../../../../thread/index";
 import type { ReactNode } from "react";
 
-export interface IChatIdProps {
-  variant?: string;
-  chatId?: string;
-  navigation?: ReactNode;
-  messageCreate?: ReactNode;
-  thread?: ReactNode;
-}
 export function Component({
   variant = "id-ai-chat",
   chatId = "project-chat",
   navigation,
   messageCreate,
   thread,
-}: IChatIdProps) {
+}: IComponentProps) {
   return (
     <section
       data-ds-block="social.chat.id-ai-chat"
@@ -29,7 +24,7 @@ export function Component({
       data-variant={variant}
     >
       {thread ?? (
-        <SocialModuleThread
+        <Thread
           variant="id-ai-chat"
           navigation={navigation}
           messageCreate={messageCreate}

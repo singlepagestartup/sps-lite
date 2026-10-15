@@ -1,4 +1,8 @@
-import IconGlyphs from "../../../../feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type { IComponentProps, IHeaderButtonProps } from "./interface";
+export type { IHeaderButtonProps } from "./interface";
+import IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { memo } from "react";
 type IconName = keyof typeof IconGlyphs;
 function Icon({
@@ -12,33 +16,17 @@ function Icon({
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  const geometry = IconGlyphs[name]
-    ?.replace(/^\s*<svg\b[^>]*>/, "")
-    .replace(/<\/svg>\s*$/, "");
-  if (!geometry) throw new Error("Missing Phosphor icon: " + name);
   return (
-    <svg
-      className={`shrink-0 ${size === 24 ? "size-6" : "size-5"} ${className}`}
-      width={size}
-      height={size}
-      viewBox="0 0 256 256"
-      fill="currentColor"
-      data-icon-family="phosphor"
-      data-icon-name={name}
-      data-icon-weight="regular"
-      aria-hidden="true"
-      focusable="false"
-      {...svgProps}
-      dangerouslySetInnerHTML={{ __html: geometry }}
+    <SharedIcon
+      variant="phosphor"
+      name={name}
+      size={size}
+      className={className}
+      svgProps={svgProps}
     />
   );
 }
-export interface IHeaderButtonProps {
-  variant?: string;
-  id: string;
-  activeHref?: string;
-  onNavigate?: () => void;
-}
+
 interface IHeaderButton {
   title: string;
   url: string;
@@ -76,7 +64,7 @@ export const Component = memo(function Component({
   id,
   activeHref,
   onNavigate,
-}: IHeaderButtonProps) {
+}: IComponentProps) {
   const data = buttons[id];
   if (!data) return null;
   const active = data.url === activeHref;

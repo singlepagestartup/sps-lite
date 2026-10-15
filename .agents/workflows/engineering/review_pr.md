@@ -75,6 +75,88 @@ an exception requires operator confirmation; an existing upward import does not
 establish an exception. Report unclear ownership with its path and consequence
 and keep accepted exceptions within their documented scope.
 
+## Structural checks that need more than an import-order scan
+
+Apply these checks to the affected paths and their real consumers. A passing
+broad test run does not replace the checks below. Record each manual-review
+comment against a verified finding, proposed correction or evidence-based
+explanation; distinguish planned work from implemented and tested work.
+
+### Studio and frontend contracts
+
+- Workspace is independent of Modules in implementations, tests, fixtures,
+  stories and generated stories. Resolve aliases, reexports, type imports,
+  literal dynamic imports, assets/styles and expanded globs; trace dependencies
+  through helpers and tools. Check the actual Storybook entrypoints. Separate
+  Modules stories in the same Storybook are allowed; a Workspace dependency
+  reaching Modules is not. An isolation check that excludes tests does not
+  establish this boundary.
+- Read the frontend component contract and applicable Studio docs. Public props
+  belong in `interface.ts`; each variant has a literal discriminator. Verify
+  the effective public union and registry through both base and startup
+  implementations, including an override with different required props.
+  Check the generator as well as authored output. Meaningless `VariantN`,
+  `IdentityActionN` and `Example` wrappers require descriptive names; distinguish
+  a story wrapper from the component it renders.
+- Static icons render without a Website Builder Feature record. Studio Modules
+  use their shared icon entry with layered collection variants; Workspace owns
+  its own assets. Genuine database-backed Feature views keep model ownership.
+  Review loading coverage for each affected model and distinct variant layout;
+  a parent frame is not a substitute for child loading. Production transfer
+  uses the existing `Skeleton` node parameter for Suspense and client loading.
+- A locally specialized reader is allowed for a documented SDK operation.
+  Preserve one query/Provider owner and the standard index/client/server/view
+  roles. Trace extra wrappers, queries in visual components, and constant
+  query functions that would freeze an initial result. Verify refresh after a
+  mutation or realtime event, not just the first render.
+
+### Instance composition and complete user operations
+
+- Trace Host `externalWidgetId` through the owning module Widget and explicit
+  relation to its content Widget. A variant selects a renderer; global
+  `find({ variant })` or fixed-slug lookup does not establish an instance
+  association. Flag Host business-variant branches that compensate for missing
+  relations. Check schema, SDK, admin/MCP consumers, data cutover, idempotence
+  and rollback; generate Drizzle migrations and leave snapshots untouched.
+- A local scripted landing demo must work without a saved Social Chat record
+  or live AI request. Keep its state in the owning Website Builder view and
+  follow the module order when moving presentation code.
+- CRM forms follow Form → Step → Input/options. Trace `control`, stable field
+  paths, required/disabled state and ordered multiple Steps all the way through
+  submitted data, stored Request, Form–Request relation and notification.
+  Visual parity or a successful Request write alone does not prove submission
+  correctness. Verify ownership of the referenced inputs/options before writes.
+
+### Service ownership and transport changes
+
+- A model service uses its own repository. A module facade, handler or indexer
+  delegates to the effective child model/relation or lower-module service;
+  constructing its repository, importing a private service implementation or
+  querying its tables directly bypasses that owner. Review bootstrap/startup
+  selection and hidden entrypoints such as generic CRUD, CLI and jobs. Do not
+  fix this by renaming the same repository or creating circular service calls.
+- Preserve a shared transaction scope, lock order, conditional revisions,
+  attachment snapshots and post-commit publication across service boundaries.
+  Never mutate a shared repository's database handle per request. Do not split
+  one atomic operation into SDK HTTP calls. External storage/model calls have
+  separate failure and compensation behavior from database rollback.
+- Before replacing self-HTTP with DI, enumerate the inner writes and actual
+  route topic resolution, cache bumps, WebSocket events, authorization and
+  other middleware effects. A controller's outer route need not cover those
+  writes; a job has no outer HTTP route. Retain or explicitly replace each
+  effect for every entrypoint and verify a warmed reader plus another client.
+- For Knowledge attachments, SVG is unsupported across upload, existing File
+  association, generic relation CRUD, CLI, rebuild and AI history/context.
+  Check bytes as well as declared MIME/name before writes or model payloads;
+  renamed files and legacy records need coverage. Preserve original stored
+  Files and render a blocked Knowledge card. Do not claim an access exploit or
+  XSS solely from a layer violation or the presence of an SVG file.
+- For catch-all generation changes, compare dev and production branches and
+  distinguish build-time path enumeration from on-demand rendering/ISR. Check
+  `dynamicParams`, effective fetch/dynamic behavior, first/repeated requests,
+  revalidation and authenticated cache isolation. A build's SSG label alone
+  does not prove the route's cache behavior.
+
 ## API and cache review
 
 Check cache behavior for changed API routes, SDK requests, backend mutations,
@@ -135,9 +217,12 @@ Load the source that governs the change rather than copying its whole checklist:
 | Studio or downstream inheritance | `.agents/workflows/design-to-implementation.md`, `.agents/contracts/inheritance.md`, and applicable Studio docs; source ownership, production data flow, and isolation of prototype material                                                                                                                                                   |
 | Tests and validation             | Root BDD/scoped-testing convention and the change's real consumer; observable behavior, relevant integration/scenario coverage, and explicit gaps                                                                                                                                                                                              |
 
-Keep deterministic lint/format failures in normal checks. Include a convention
-in the review findings when its violation creates a concrete behavior,
-compatibility, or maintenance problem. Cursor rules are supporting context;
+A verified violation of a mandatory framework contract is a structural finding
+even when the first render succeeds. State its ownership, compatibility or
+maintenance consequence separately from any reproduced functional failure.
+Keep deterministic lint/format failures in normal checks. Include other
+conventions in findings when they create a concrete behavior, compatibility or
+maintenance problem. Cursor rules are supporting context;
 verify them against canonical guidance and code, especially middleware order.
 
 ## Findings and developer decisions

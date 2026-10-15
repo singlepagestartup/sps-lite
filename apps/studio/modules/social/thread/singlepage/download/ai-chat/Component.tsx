@@ -1,21 +1,18 @@
 "use client";
+import type { IComponentProps, IThreadDownloadProps } from "./interface";
+export type { IThreadDownloadProps } from "./interface";
 
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
 import type { IAIChatSource } from "../../../../profile/singlepage/scope/ai-chat/project/models";
 import { threadDocumentMarkdown } from "../../id/ai-chat/state";
 
-export interface IThreadDownloadProps {
-  variant?: string;
-  threadId: string;
-  fileName: string;
-  sources: IAIChatSource[];
-}
 export function Component({
   variant = "download-ai-chat",
   threadId,
   fileName,
   sources,
-}: IThreadDownloadProps) {
+}: IComponentProps) {
   function download() {
     const url = URL.createObjectURL(
       new Blob([threadDocumentMarkdown(fileName, sources)], {
@@ -40,7 +37,7 @@ export function Component({
       onClick={download}
       className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card px-5 py-2 text-sm font-semibold transition hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
     >
-      <WebsiteBuilderModuleFeature variant="icon" name="arrow-down" />
+      <SharedIcon variant="phosphor" name="arrow-down" />
       .md
     </button>
   );

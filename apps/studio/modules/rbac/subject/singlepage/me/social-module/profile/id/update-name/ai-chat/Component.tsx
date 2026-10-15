@@ -1,17 +1,16 @@
 "use client";
+import type { IComponentProps, ISubjectProfileNameProps } from "./interface";
+export type { ISubjectProfileNameProps } from "./interface";
+
 import { useId, useState } from "react";
 import { useProfiles } from "../../../../../../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { useStudioAccount } from "../../../../../account/Account";
-export interface ISubjectProfileNameProps {
-  variant?: string;
-  profileId: string;
-  subjectId?: string;
-}
+
 export function Component({
   variant = "me-social-module-profile-id-update-name-ai-chat",
   profileId,
   subjectId,
-}: ISubjectProfileNameProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const { projects, rename } = useProfiles();
   const profile = projects.find((record) => record.id === profileId);

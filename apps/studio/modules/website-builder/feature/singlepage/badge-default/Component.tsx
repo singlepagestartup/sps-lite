@@ -1,12 +1,10 @@
+import type { IComponentProps, FeatureBadgeDefaultProps } from "./interface";
+export type { FeatureBadgeDefaultProps } from "./interface";
 export const defaultFeatureBadgeDefaultProps = {
   label: "v2.0 - Now with 15 modules",
 };
 
-export type FeatureBadgeDefaultProps = typeof defaultFeatureBadgeDefaultProps;
-
-export function FeatureBadgeDefault(
-  props?: Partial<FeatureBadgeDefaultProps> & { variant?: string },
-) {
+export function FeatureBadgeDefault(props?: IComponentProps) {
   const { label } = { ...defaultFeatureBadgeDefaultProps, ...props };
 
   return (

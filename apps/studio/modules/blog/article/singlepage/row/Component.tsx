@@ -1,12 +1,11 @@
+import type { IComponentProps, ArticleRowProps } from "./interface";
+export type { ArticleRowProps } from "./interface";
 /**
  * Model-owned article row with a square source image, a reading summary and
  * one metadata footer. Profile article collections compose this component.
  */
-type ArticleRowTarget = "_blank" | "_parent" | "_self" | "_top";
-export type ArticleRowProps = typeof defaultArticleRowProps;
-export function ArticleRow(
-  props?: Partial<ArticleRowProps> & { variant?: string },
-) {
+
+export function ArticleRow(props?: IComponentProps) {
   const {
     href,
     slug,
@@ -89,3 +88,5 @@ export const defaultArticleRowProps = {
   commentCount: 3,
   target: undefined as ArticleRowTarget | undefined,
 };
+
+import type { ArticleRowTarget } from "./interface";

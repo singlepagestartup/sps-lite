@@ -1,6 +1,7 @@
 /** @jest-environment jsdom */
 import { render, screen } from "@testing-library/react";
 
+jest.mock("client-only", () => ({}), { virtual: true });
 const mockSubjectReader = jest.fn();
 const mockRoleReader = jest.fn();
 const mockSubjectRoleReader = jest.fn();
@@ -30,6 +31,12 @@ jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
 
 jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   Component: (props: any) => {
+    if (props.variant === "authentication-is-authorized-wrapper-default") {
+      const Authorized = jest.requireActual(
+        "../../../../../libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/authentication/is-authorized-wrapper-default/client",
+      ).default;
+      return <Authorized {...props} />;
+    }
     mockSubjectReader(props);
     return props.children({
       data: mockSubject,

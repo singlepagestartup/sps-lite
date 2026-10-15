@@ -1,12 +1,12 @@
 "use client";
 import { useCallback } from "react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component as Profile } from "@sps/social/models/profile/frontend/component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import type { IModel as IProfile } from "@sps/social/models/profile/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
-  const update = api.socialModuleProfileFindByIdUpdate({});
+  const update = subjectApi.socialModuleProfileFindByIdUpdate({});
   const save = useCallback(
     (data: Pick<IProfile, "title" | "subtitle" | "description" | "slug">) =>
       update.mutateAsync({
@@ -37,7 +37,7 @@ export function Component(props: IComponentPropsExtended) {
     [update.mutateAsync, props.data.id, props.profile.id],
   );
   return (
-    <Profile
+    <SocialModuleProfile
       isServer={false}
       variant="id-settings-ai-chat"
       data={props.profile}
@@ -50,6 +50,6 @@ export function Component(props: IComponentPropsExtended) {
         data={props.data}
         profile={props.profile}
       />
-    </Profile>
+    </SocialModuleProfile>
   );
 }

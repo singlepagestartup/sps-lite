@@ -1,13 +1,16 @@
+import { Component as Subject } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SubjectMeDelete, defaultSubjectMeDeleteProps } from "./Component";
+import { defaultSubjectMeDeleteProps } from "./Component";
 
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-delete",
   title: "Modules/RBAC/Subject/Singlepage/me/delete/default",
-  component: SubjectMeDelete,
-  args: defaultSubjectMeDeleteProps,
-} satisfies Meta<typeof SubjectMeDelete>;
+  component: Subject,
+  args: { ...defaultSubjectMeDeleteProps, variant: "me-delete" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Subject>, { variant: "me-delete" }>
+>;
 
 export default meta;
 

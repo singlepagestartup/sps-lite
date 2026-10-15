@@ -1,4 +1,12 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ProductTierVariant,
+  ProductTierProps,
+} from "./interface";
+export type { ProductTierVariant, ProductTierProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -7,7 +15,7 @@ import {
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -35,24 +43,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type ProductTierVariant = "default" | "featured";
-export interface ProductTierProps {
-  variant?: string;
-  name: string;
-  price: string;
-  period: string;
-  description: string;
-  features: string[];
-  cta: string;
-  appearance?: ProductTierVariant;
-  badge?: string;
-  featured?: boolean;
-  className?: string;
-}
-export function ProductTier(props?: Partial<ProductTierProps>) {
+export function ProductTier(props?: IComponentProps) {
   const {
     name,
     price,

@@ -1,7 +1,14 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ProfileArticleFindByIdCommentFormDefaultProps,
+} from "./interface";
+export type { ProfileArticleFindByIdCommentFormDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps, useState } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -29,15 +36,11 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type ProfileArticleFindByIdCommentFormDefaultProps =
-  typeof defaultProfileArticleFindByIdCommentFormDefaultProps;
 export function ProfileArticleFindByIdCommentFormDefault(
-  props?: Partial<ProfileArticleFindByIdCommentFormDefaultProps> & {
-    variant?: string;
-  },
+  props?: IComponentProps,
 ) {
   const { placeholder, submitLabel } = {
     ...defaultProfileArticleFindByIdCommentFormDefaultProps,

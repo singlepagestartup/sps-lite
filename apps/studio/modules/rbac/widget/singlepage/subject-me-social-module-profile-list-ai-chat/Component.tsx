@@ -1,24 +1,15 @@
+import type {
+  IComponentProps,
+  IProjectSummary,
+  IProjectsOverviewProps,
+} from "./interface";
+export type { IProjectSummary, IProjectsOverviewProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 import { Component as WorkspaceNotice } from "../subject-me-social-module-profile-id-chat-id-thread-id-ai-chat/Error";
 import { memo, type ReactNode } from "react";
-import { Component as ProjectCreateContent } from "../../../../website-builder/widget/singlepage/content/ai-chat/profile-create/Component";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature";
-export interface IProjectSummary {
-  id: string;
-  name: string;
-  href: string;
-}
-export interface IProjectsOverviewProps {
-  variant?: string;
-  state?: "ready" | "sign-in-required";
-  projects: IProjectSummary[];
-  pending?: boolean;
-  error?: boolean;
-  creating?: boolean;
-  onCreate?: () => void;
-  onCancel?: () => void;
-  onRetry?: () => void;
-  children?: ReactNode;
-}
+import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget";
+
 const control =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-50";
 export function Component({
@@ -32,12 +23,17 @@ export function Component({
   onCancel,
   onRetry,
   children,
-}: IProjectsOverviewProps) {
+}: IComponentProps) {
   if (state === "sign-in-required")
     return <WorkspaceNotice variant={variant} state={state} />;
   if (creating)
     return (
-      <div className="w-full min-w-0">
+      <div
+        className="w-full min-w-0"
+        data-module="rbac"
+        data-model="widget"
+        data-variant={variant}
+      >
         <div className="mx-auto flex max-w-6xl justify-end px-4 pt-6 sm:px-5">
           <button
             type="button"
@@ -48,7 +44,9 @@ export function Component({
             Back to projects
           </button>
         </div>
-        <ProjectCreateContent>{children}</ProjectCreateContent>
+        <WebsiteBuilderModuleWidget variant="content-ai-chat-profile-create">
+          {children}
+        </WebsiteBuilderModuleWidget>
       </div>
     );
   return (
@@ -187,11 +185,5 @@ function Glyph({
 }: {
   name: "folder-open" | "plus" | "arrow-left" | "arrow-right";
 }) {
-  return (
-    <WebsiteBuilderModuleFeature
-      variant="icon"
-      name={name}
-      className="size-5"
-    />
-  );
+  return <SharedIcon variant="phosphor" name={name} className="size-5" />;
 }

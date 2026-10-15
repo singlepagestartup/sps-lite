@@ -1,11 +1,13 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
-
-export interface ContentTestimonialItem {
-  avatar: string;
-  name: string;
-  role: string;
-  text: string;
-}
+import type {
+  IComponentProps,
+  ContentTestimonialItem,
+  ContentTestimonialsProps,
+} from "./interface";
+export type {
+  ContentTestimonialItem,
+  ContentTestimonialsProps,
+} from "./interface";
+import { Component as Feature } from "../../../feature/index";
 
 const IMG = {
   avatar1:
@@ -33,11 +35,7 @@ export const defaultContentTestimonialsProps = {
   ] satisfies ContentTestimonialItem[],
 };
 
-export type ContentTestimonialsProps = typeof defaultContentTestimonialsProps;
-
-export function ContentTestimonials(
-  props?: Partial<ContentTestimonialsProps> & { variant?: string },
-) {
+export function ContentTestimonials(props?: IComponentProps) {
   const { eyebrow, title, testimonials } = {
     ...defaultContentTestimonialsProps,
     ...props,
@@ -68,12 +66,7 @@ export function ContentTestimonials(
           data-ds-imports="website-builder.feature.testimotional"
         >
           {testimonials.map((t) => (
-            <WebsiteBuilderModuleFeature
-              key={t.name}
-              {...t}
-              variant="testimotional"
-              rating={5}
-            />
+            <Feature key={t.name} {...t} variant="testimotional" rating={5} />
           ))}
         </div>
       </div>

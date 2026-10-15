@@ -1,14 +1,12 @@
 "use client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
-import { Component as Profile } from "@sps/social/models/profile/frontend/component";
-import { Component as Thread } from "@sps/social/models/thread/frontend/component";
+import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
+import { Component as SocialModuleThread } from "@sps/social/models/thread/frontend/component";
 import {
   projectHref,
   projectBaseHref,
-  findProjectThreads,
-  findProjectProfile,
-} from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
+} from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
@@ -26,21 +24,12 @@ export function Component(props: IComponentPropsExtended) {
     }),
   );
   return (
-    <Profile
+    <SocialModuleProfile
       isServer={false}
       variant="sidebar-ai-chat-project"
       language={props.language}
       data={project.profile}
-      apiProps={{
-        reactQueryOptions: {
-          initialData: project.profile,
-          queryFn: () =>
-            findProjectProfile({
-              subjectId: props.data.id,
-              profileId: project.profile.id,
-            }),
-        },
-      }}
+      dataSource="props"
       settingsHref={`${projectBaseHref(project)}/settings`}
       newThreadHref={`${projectBaseHref(project)}/threads/create`}
       settingsSelected={props.selected === "settings"}
@@ -50,24 +39,13 @@ export function Component(props: IComponentPropsExtended) {
           {threads.data
             ?.filter((thread) => !getAIChatDocument(thread.metadata))
             .map((thread) => (
-              <Thread
+              <SocialModuleThread
                 key={thread.id}
                 isServer={false}
                 variant="list-item-sidebar-ai-chat"
                 language={props.language}
                 data={thread}
-                apiProps={{
-                  reactQueryOptions: {
-                    initialData: thread,
-                    queryFn: async () =>
-                      (
-                        await findProjectThreads({
-                          subjectId: props.data.id,
-                          chatId: project.chat.id,
-                        })
-                      ).find((item) => item.id === thread.id),
-                  },
-                }}
+                dataSource="props"
                 href={projectHref(project, thread.id)}
                 selected={thread.id === props.threadId}
                 topic
@@ -76,40 +54,20 @@ export function Component(props: IComponentPropsExtended) {
         </>
       }
     >
-      <Profile
+      <SocialModuleProfile
         isServer={false}
         variant="thread-list-sidebar-ai-chat"
         language={props.language}
         data={project.profile}
-        apiProps={{
-          reactQueryOptions: {
-            initialData: project.profile,
-            queryFn: () =>
-              findProjectProfile({
-                subjectId: props.data.id,
-                profileId: project.profile.id,
-              }),
-          },
-        }}
+        dataSource="props"
         className="my-4"
         documents={documents.map((thread) => ({
           data: thread,
-          apiProps: {
-            reactQueryOptions: {
-              initialData: thread,
-              queryFn: async () =>
-                (
-                  await findProjectThreads({
-                    subjectId: props.data.id,
-                    chatId: project.chat.id,
-                  })
-                ).find((item) => item.id === thread.id),
-            },
-          },
+          dataSource: "props",
           href: projectHref(project, thread.id),
           selected: thread.id === (props.threadId || project.thread.id),
         }))}
       />
-    </Profile>
+    </SocialModuleProfile>
   );
 }

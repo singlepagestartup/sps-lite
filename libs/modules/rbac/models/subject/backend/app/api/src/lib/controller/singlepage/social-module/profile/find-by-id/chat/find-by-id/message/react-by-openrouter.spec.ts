@@ -1162,13 +1162,18 @@ describe("Given: OpenRouter thread context and reply validation", () => {
    * Then: both original text files and the image stay attached while extracted text is used only for routing.
    */
   it("When: several files are attached Then: originals drive generation and text previews drive routing", async () => {
-    const handler = new Handler(
-      {} as any,
-    ) as unknown as IOpenRouterAttachmentContextHandler;
-    jest
-      .spyOn(handler as any, "readFileStorageModuleFile")
-      .mockResolvedValueOnce("Часть 1: кота на фотографии зовут Барсик.")
-      .mockResolvedValueOnce("Часть 2: любимая игрушка Барсика — зелёный мяч.");
+    const readBytes = jest
+      .fn()
+      .mockResolvedValueOnce(
+        Buffer.from("Часть 1: кота на фотографии зовут Барсик."),
+      )
+      .mockResolvedValueOnce(
+        Buffer.from("Часть 2: любимая игрушка Барсика — зелёный мяч."),
+      )
+      .mockResolvedValueOnce(Buffer.from([0xff, 0xd8, 0xff]));
+    const handler = new Handler({
+      fileStorageModule: { file: { readBytes } },
+    } as any) as unknown as IOpenRouterAttachmentContextHandler;
 
     const resolved = await handler.resolveOpenRouterMessageContext({
       messageDescription:
@@ -1247,7 +1252,12 @@ describe("Given: OpenRouter thread context and reply validation", () => {
    * Then: preview copies are omitted while the original user attachments remain.
    */
   it("does not repeat proposal-gallery files in model context, while preserving original message attachments", async () => {
-    const handler = new Handler({} as any) as any;
+    const readBytes = jest.fn(async () =>
+      Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+    );
+    const handler = new Handler({
+      fileStorageModule: { file: { readBytes } },
+    } as any) as any;
     const props = {
       messageDescription: "Proposed notes",
       fileStorageFiles: [
@@ -1267,6 +1277,31 @@ describe("Given: OpenRouter thread context and reply validation", () => {
       expect.arrayContaining([expect.objectContaining({ type: "image_url" })]),
     );
   });
+
+  it.each([
+    { file: "/legacy.svg", extension: "svg", mimeType: "image/svg+xml" },
+    { file: "/renamed.png", extension: "png", mimeType: "image/png" },
+    { file: "/notes.txt", extension: "txt", mimeType: "text/plain" },
+  ])(
+    "excludes legacy SVG bytes from every model content part: $file",
+    async (file) => {
+      const readBytes = jest.fn(async () =>
+        Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"/>'),
+      );
+      const handler = new Handler({
+        fileStorageModule: { file: { readBytes } },
+      } as any) as any;
+      const result = await handler.resolveOpenRouterMessageContext({
+        messageDescription: "Keep notes",
+        fileStorageFiles: [file],
+      });
+      expect(result.content).toBe("Keep notes");
+      expect(result.routingText).toContain("Unsupported attachment excluded");
+      expect(JSON.stringify(result.content)).not.toContain("image_url");
+      expect(JSON.stringify(result.content)).not.toContain("file_url");
+      expect(JSON.stringify(result.content)).not.toContain("<svg");
+    },
+  );
 
   /**
    * BDD Scenario

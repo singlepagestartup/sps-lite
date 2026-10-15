@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, IIdAiChatProjectProps } from "./interface";
+export type { IIdAiChatProjectProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
 import {
@@ -11,7 +14,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as ProfileScope } from "../../../scope/ai-chat/project/index";
 import {
   Component as ProfileSidebar,
@@ -23,23 +26,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IIdAiChatProjectProps {
-  variant?: string;
-  profileId: string;
-  chatId?: string;
-  selected: IProfileSidebarProps["selected"];
-  children: (navigation: ReactNode) => ReactNode;
-}
 export function Component({
   variant = "id-ai-chat-project",
   profileId,
   chatId,
   selected,
   children,
-}: IIdAiChatProjectProps) {
+}: IComponentProps) {
   return (
     <div
       data-module="social"

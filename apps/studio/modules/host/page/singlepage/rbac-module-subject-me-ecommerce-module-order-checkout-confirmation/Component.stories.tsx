@@ -1,16 +1,26 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { EcommerceOrderCheckoutConfirmationDefault } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-ecommerce-module-order-checkout-confirmation",
   title:
     "Modules/Host/Page/Singlepage/rbac-module-subject-me-ecommerce-module-order-checkout-confirmation",
-  component: EcommerceOrderCheckoutConfirmationDefault,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof EcommerceOrderCheckoutConfirmationDefault>;
+  args: {
+    variant:
+      "rbac-module-subject-me-ecommerce-module-order-checkout-confirmation",
+  },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    {
+      variant: "rbac-module-subject-me-ecommerce-module-order-checkout-confirmation";
+    }
+  >
+>;
 
 export default meta;
 

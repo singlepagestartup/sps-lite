@@ -93,6 +93,36 @@ Callers import the public model entry and select its display with `variant`.
 Cross-model views always use this entry. Private sibling imports remain inside
 one model; providers and helpers keep their state-specific entry points.
 
+Each variant owns an `interface.ts` exporting its literal `variant`, public
+`IComponentProps`, payload types and `IComponentPropsExtended`. The view imports
+that contract; its `index.ts` exports the component and types. Model and layer
+interfaces derive the public union from their effective registries, so a startup
+override replaces both the renderer and the matching props contract. Optional
+arguments on a private view do not make `variant` optional at the public model
+entry. `studio:catalog` preserves authored contracts and requires an owning
+interface before assembling custom variants. Its generated table, card and list
+views use the same structure.
+
+The current tree has 63 model entries and 430 presentation variants, plus the
+static shared Icon entry. Every model exports a provider-free `Skeleton` and
+`ISkeletonProps` from its public index, with a `Loading` story. The skeleton uses
+the selected variant to distinguish list/table, form and image layouts. Source
+editors, Profile project frames and Chat/Thread conversations have their own
+loading compositions and stories; the RBAC chat workspace retains its dedicated
+frame. Loading previews need no model data
+or API. When transferring a view to production, pass a rendered node through the
+existing template parameter: `Skeleton={<Skeleton ... />}`. Both server Suspense
+and client pending reads use that node.
+
+Static glyphs live in `modules/shared/icon`, independently of Website Builder
+Feature records. Use its public entry with `variant="phosphor"` and one of the
+87 registered names, or `variant="custom" name="star-fill"`. Each collection
+owns its interface and assets; `startup/variants.ts` can replace a collection or
+add another. The selected collection determines the valid `name` values. SVG
+props and refs pass through `svgProps`; icons inherit text color. Keep Workspace's
+own icons within Workspace. Production uses the existing static Icon in
+`libs/shared/ui/adapter`, without database Feature records.
+
 ```tsx
 import { Component as BlogModuleArticle } from "../../../article";
 
@@ -242,11 +272,16 @@ Guest examples for document chats, thread creation and project settings select
 `sign-in-required`, with no project selector, files, threads or private forms.
 These stories contain no session checks or redirects.
 
-AI Chat prototypes live entirely in Studio. `Component.tsx` contains each variant's
-implementation, props and callbacks. `index.ts` exports the component and its
-public types or helpers. Fixture data and interactive examples live in
-`Component.stories.tsx`. Module website previews compose these components and frozen local copy. Workspace
-website previews use their own editable component snapshot and Markdown content.
+AI Chat prototypes live entirely in Studio. Each variant declares its public
+props, callback types and literal variant in `interface.ts`; `Component.tsx`
+contains its presentation. The public model interface selects the effective
+variant contract, including startup overrides. `index.ts` exposes the component
+and its public interface. Fixture data and interactive examples live in
+`Component.stories.tsx`. Some existing variants still declare props inline and
+require migration to this contract. Module website previews compose their owned
+components and local copy. Workspace website previews use their own editable
+component snapshot and Markdown content, independently of Modules, including
+stories, tests and fixtures.
 
 Studio callers import each model from `<module>/<model>/index.ts` and choose the
 view with `variant`. Each entry's discriminated props retain the required inputs

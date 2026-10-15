@@ -1,11 +1,11 @@
 "use client";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component as Order } from "@sps/ecommerce/models/order/frontend/component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as EcommerceModuleOrder } from "@sps/ecommerce/models/order/frontend/component";
 import { Icon } from "@sps/ui-adapter";
 import type { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
-  const orders = api.ecommerceModuleOrderList({
+  const orders = subjectApi.ecommerceModuleOrderList({
     id: props.data.id,
     params: {
       filters: {
@@ -72,7 +72,7 @@ export function Component(props: IComponentPropsExtended) {
                 new Date(a.createdAt).getTime(),
             )
             .map((order) => (
-              <Order
+              <EcommerceModuleOrder
                 key={order.id}
                 isServer={false}
                 variant="purchase-ai-chat"

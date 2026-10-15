@@ -1,15 +1,20 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { SocialProfileFindByIdOverviewAuthor } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-social-module-profile-slug-author",
   title: "Modules/Host/Page/Singlepage/social-module-profile-slug-author",
-  component: SocialProfileFindByIdOverviewAuthor,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof SocialProfileFindByIdOverviewAuthor>;
+  args: { variant: "social-module-profile-slug-author" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "social-module-profile-slug-author" }
+  >
+>;
 
 export default meta;
 

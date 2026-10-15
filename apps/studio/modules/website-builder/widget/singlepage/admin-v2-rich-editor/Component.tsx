@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -7,8 +11,8 @@ import {
   useState,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
-import { Component as WebsiteBuilderModuleButton } from "../../../button/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Button } from "../../../button/index";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import LinkExtension from "@tiptap/extension-link";
@@ -39,15 +43,12 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function WebsiteBuilderAdminV2RichEditor({
   variant = "admin-v2-rich-editor",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   const [preview, setPreview] = useState("desktop");
   const [status, setStatus] = useState("");
   const [linkOpen, setLinkOpen] = useState(false);
@@ -114,7 +115,7 @@ export function WebsiteBuilderAdminV2RichEditor({
           <p className={`text-sm ${kit.muted}`}>Page content</p>
           <h2 className="mt-1 text-2xl font-semibold">Content editor</h2>
         </div>
-        <Button
+        <ToolbarButton
           disabled={!editor}
           onClick={() =>
             setStatus("Saved in this preview. Changes reset on reload.")
@@ -122,7 +123,7 @@ export function WebsiteBuilderAdminV2RichEditor({
         >
           <Save className="size-5" />
           Save changes
-        </Button>
+        </ToolbarButton>
       </header>
       <div className="grid gap-6 p-5 sm:p-6 xl:grid-cols-[minmax(0,1fr)_240px]">
         <div className="min-w-0">
@@ -182,8 +183,8 @@ export function WebsiteBuilderAdminV2RichEditor({
                 </p>
               )}
               <div className="flex flex-wrap gap-2">
-                <Button type="submit">Apply link</Button>
-                <Button
+                <ToolbarButton type="submit">Apply link</ToolbarButton>
+                <ToolbarButton
                   variant="secondary"
                   onClick={() => {
                     editor?.chain().focus().unsetLink().run();
@@ -191,10 +192,13 @@ export function WebsiteBuilderAdminV2RichEditor({
                   }}
                 >
                   Remove link
-                </Button>
-                <Button variant="plain" onClick={() => setLinkOpen(false)}>
+                </ToolbarButton>
+                <ToolbarButton
+                  variant="plain"
+                  onClick={() => setLinkOpen(false)}
+                >
                   Cancel
-                </Button>
+                </ToolbarButton>
               </div>
             </form>
           )}
@@ -255,18 +259,11 @@ const List = createIcon("list");
 const Link = createIcon("link");
 const Italic = createIcon("text-italic");
 const Bold = createIcon("text-b");
-const Button = forwardRefControl<
+const ToolbarButton = forwardRefControl<
   HTMLButtonElement,
   ButtonControlProps<HTMLButtonElement> & {
     variant?: "primary" | "secondary" | "plain" | "danger";
   }
->(function Button({ variant = "primary", ...props }, ref) {
-  return (
-    <WebsiteBuilderModuleButton
-      {...props}
-      variant="control"
-      appearance={variant}
-      ref={ref}
-    />
-  );
+>(function ToolbarButton({ variant = "primary", ...props }, ref) {
+  return <Button {...props} variant="control" appearance={variant} ref={ref} />;
 });

@@ -1,19 +1,14 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function RbacSubjectAuthenticationResetPassword({
   variant = "rbac-module-subject-me-authentication-reset-password",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
-        variant="website"
-        activeHref="/reset-password"
-        footer="compact"
-      >
+      <Layout variant="website" activeHref="/reset-password" footer="compact">
         <main
           className="min-w-0"
           data-ds-page="host.page.rbac-module-subject-me-authentication-reset-password"
@@ -24,7 +19,7 @@ export function RbacSubjectAuthenticationResetPassword({
             </div>
           </section>
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

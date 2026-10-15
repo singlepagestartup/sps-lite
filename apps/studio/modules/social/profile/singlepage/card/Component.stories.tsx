@@ -1,16 +1,19 @@
+import { Component as Profile } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ProfileCard, defaultProfileCardProps } from "./Component";
+import { defaultProfileCardProps } from "./Component";
 
 const meta = {
   id: "modules-social-models-profile-singlepage-card",
   title: "Modules/Social/Profile/Singlepage/card",
-  component: ProfileCard,
+  component: Profile,
   parameters: {
     layout: "centered",
   },
-  args: defaultProfileCardProps,
-} satisfies Meta<typeof ProfileCard>;
+  args: { ...defaultProfileCardProps, variant: "card" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Profile>, { variant: "card" }>
+>;
 
 export default meta;
 

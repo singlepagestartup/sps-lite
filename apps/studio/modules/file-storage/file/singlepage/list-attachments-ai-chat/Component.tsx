@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, ISectionAssetsProps } from "./interface";
+export type { ISectionAssetsProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 
 import {
   forwardRef,
@@ -16,7 +19,7 @@ import {
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as AttachmentFile } from "../attachment-ai-chat";
 import { useFiles } from "./Files";
 import { readProjectFiles, AI_CHAT_ATTACHMENT_ACCEPT } from "./utils";
@@ -64,20 +67,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISectionAssetsProps {
-  variant?: string;
-  section: string;
-  fileIds: string[];
-  onAttach: (ids: string[]) => void;
-  onRemove: (fileId: string) => void | Promise<void>;
-  initialExpanded?: boolean;
-  pendingFileId?: string | null;
-  errorMessage?: string;
-  statusMessage?: string;
-}
 interface IFileAttachmentProps {
   id: string;
   onRemove: (id: string) => void;
@@ -93,7 +85,7 @@ export function Component({
   pendingFileId = null,
   errorMessage = "",
   statusMessage = "",
-}: ISectionAssetsProps) {
+}: IComponentProps) {
   const { files: sources, register } = useFiles();
   const linked = fileIds.filter((id) => sources.some((file) => file.id === id));
   const id = useId();

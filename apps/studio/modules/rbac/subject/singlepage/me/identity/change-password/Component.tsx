@@ -1,20 +1,18 @@
 "use client";
+import type { IComponentProps, IIdentityChangeProps } from "./interface";
+export type { IIdentityChangeProps } from "./interface";
+
 import { useState, useRef } from "react";
 import { useStudioAccount } from "../../account/Account";
 import type { RbacIdentity } from "../../../../../shared";
 import { Component as AccountChange } from "../../authentication/email-and-password/account-change/default";
-export interface IIdentityChangeProps {
-  variant?: string;
-  subjectId?: string;
-  identity: RbacIdentity;
-  onUpdate: (identity: RbacIdentity) => void;
-}
+
 export function Component({
   variant = "me-identity-change-password",
   subjectId,
   identity,
   onUpdate,
-}: IIdentityChangeProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const [open, setOpen] = useState(false);
   const trigger = useRef<HTMLButtonElement>(null);

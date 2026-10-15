@@ -1,7 +1,7 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import { SourceFiles } from "./ClientComponent";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
@@ -13,18 +13,20 @@ export default async function Server(props: IComponentProps) {
   };
   try {
     const profiles =
-      await api.socialModuleProfileFindByIdChatFindByIdProfileFind(scope);
+      await subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFind(
+        scope,
+      );
     const profile = profiles.find((item) => item.id === props.profileId);
     const target = { ...scope, targetSocialModuleProfileId: props.profileId };
     const skillsPromise =
       profile?.variant === "artificial-intelligence"
-        ? api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(
+        ? subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(
             target,
           )
         : Promise.resolve([]);
     const knowledgePromise =
       profile?.variant === "artificial-intelligence"
-        ? api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+        ? subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
             target,
           )
         : Promise.resolve([]);
@@ -38,7 +40,7 @@ export default async function Server(props: IComponentProps) {
             knowledge.value.map(async (source) => {
               try {
                 const files =
-                  await api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
+                  await subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
                     { ...target, knowledgeModuleSourceId: source.id },
                   );
                 return [
@@ -62,7 +64,7 @@ export default async function Server(props: IComponentProps) {
           )
         : [];
     return (
-      <Component
+      <ChildComponent
         {...props}
         profilesRead={{ data: profiles }}
         skillsRead={
@@ -80,7 +82,7 @@ export default async function Server(props: IComponentProps) {
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         profilesRead={{
           error: {

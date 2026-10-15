@@ -1,21 +1,21 @@
 "use client";
+import type {
+  IComponentProps,
+  ISubjectKnowledgeDocumentProps,
+} from "./interface";
+export type { ISubjectKnowledgeDocumentProps } from "./interface";
+
 import { Component as SocialModuleProfile } from "../../../../../../../../../../../../../../../../social/profile";
 import { useThread } from "../../../../../../../../../../../../../../../../social/thread/singlepage/id/ai-chat/Thread";
 import { useStudioAccount } from "../../../../../../../../../../../../account/Account";
-export interface ISubjectKnowledgeDocumentProps {
-  variant?: string;
-  subjectId?: string;
-  profileId: string;
-  chatId: string;
-  threadId: string;
-}
+
 export function Component({
   variant = "me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat",
   subjectId,
   profileId,
   chatId,
   threadId,
-}: ISubjectKnowledgeDocumentProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const { thread, workingOn, discuss } = useThread();
   if (thread.id !== threadId)

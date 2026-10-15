@@ -11,18 +11,18 @@ type IPageStoryProps = Pick<
   | "creatingProject"
   | "onCreatingProjectChange"
 >;
-function Example(props: IPageStoryProps) {
+function Component(props: IPageStoryProps) {
   return <AIChatPreview {...props} initialHref="/ai-chat/projects" />;
 }
 const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-social-module-profile-list-ai-chat",
   title:
     "Modules/Host/Page/Singlepage/rbac-module-subject-me-social-module-profile-list-ai-chat",
-  component: Example,
+  component: Component,
   render: function Render(props) {
     const [, updateArgs] = useArgs();
     return (
-      <Example
+      <Component
         {...props}
         onCreatingProjectChange={(creatingProject) =>
           updateArgs({ creatingProject })
@@ -60,7 +60,7 @@ const meta = {
     },
     creatingProject: { control: "boolean" },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const Empty: StoryObj<typeof meta> = {

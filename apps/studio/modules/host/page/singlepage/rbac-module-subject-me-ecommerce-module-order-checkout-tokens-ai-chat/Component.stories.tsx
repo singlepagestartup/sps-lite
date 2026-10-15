@@ -6,7 +6,7 @@ type IPageStoryProps = Pick<
   IAIChatPreviewProps,
   "signedIn" | "account" | "profiles"
 >;
-function Example(props: IPageStoryProps) {
+function Component(props: IPageStoryProps) {
   return (
     <AIChatPreview {...props} initialHref="/ai-chat/rbac/subjects/tokens" />
   );
@@ -15,7 +15,7 @@ const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
   title:
     "Modules/Host/Page/Singlepage/rbac-module-subject-me-ecommerce-module-order-checkout-tokens-ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
   args: {
     signedIn: true,
@@ -27,6 +27,6 @@ const meta = {
     account: { control: "object" },
     profiles: { control: "object" },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

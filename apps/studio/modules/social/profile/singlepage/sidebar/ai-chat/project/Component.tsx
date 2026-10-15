@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, IProfileSidebarProps } from "./interface";
+export type { IProfileSidebarProps } from "./interface";
 
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as ProfileSourceSidebarList } from "../../../knowledge-module/source/list/sidebar/ai-chat";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import {
@@ -14,21 +17,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IProfileSidebarProps {
-  variant?: string;
-  profileId: string;
-  chatId?: string;
-  selected: "products" | "settings" | "thread-create";
-}
 export function Component({
   variant = "sidebar-ai-chat-project",
   profileId,
   chatId,
   selected,
-}: IProfileSidebarProps) {
+}: IComponentProps) {
   const { projects } = useProfiles();
   const name =
     projects.find((profile) => profile.id === profileId)?.name ?? "Project";

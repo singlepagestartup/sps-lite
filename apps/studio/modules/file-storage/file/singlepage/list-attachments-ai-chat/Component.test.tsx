@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Component as Files } from "../../index";
+import { Component as File } from "../../index";
 import { FilesProvider } from "./Files";
 import { readProjectFiles } from "./utils";
 import { aiChatAttachmentFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
@@ -22,7 +22,7 @@ function renderAttachments(
         { ...files[0], id: "foreign", name: "Another section.jpg" },
       ]}
     >
-      <Files
+      <File
         variant="list-attachments-ai-chat"
         section="Brief"
         fileIds={files.map((file) => file.id)}
@@ -92,21 +92,24 @@ test("attachment movement preserves input and submission order in both message g
 test("new selections reject SVG and executable files before retaining attachments", async () => {
   await expect(
     readProjectFiles(
-      [new File(["notes"], "Notes.md"), new File(["<svg/>"], "Reference.svg")],
+      [
+        new globalThis.File(["notes"], "Notes.md"),
+        new globalThis.File(["<svg/>"], "Reference.svg"),
+      ],
       "test",
     ),
   ).rejects.toThrow("Unsupported files: Reference.svg");
   await expect(
-    readProjectFiles([new File(["bytes"], "Program.exe")], "test"),
+    readProjectFiles([new globalThis.File(["bytes"], "Program.exe")], "test"),
   ).rejects.toThrow("Allowed formats");
   await expect(
     readProjectFiles(
-      [new File(["text"], "Image.jpg", { type: "text/plain" })],
+      [new globalThis.File(["text"], "Image.jpg", { type: "text/plain" })],
       "test",
     ),
   ).rejects.toThrow("Unsupported files: Image.jpg");
   const [file] = await readProjectFiles(
-    [new File(["notes"], "Notes.md", { type: "text/markdown" })],
+    [new globalThis.File(["notes"], "Notes.md", { type: "text/markdown" })],
     "test",
   );
   expect(file.text).toBe("notes");

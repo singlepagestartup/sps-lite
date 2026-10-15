@@ -1,18 +1,17 @@
 "use client";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
 
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget";
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-create-ai-chat",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="chat"
         profileSelect={(props) => (
@@ -39,7 +38,7 @@ export function Component({
             id="how-your-materials-are-processed-and-stored"
           />
         </div>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IAttributeAdminFormProps } from "./interface";
+export type { IAttributeAdminFormProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type InputHTMLAttributes,
@@ -15,7 +19,7 @@ import {
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { studioAttributes, type IStudioAttribute } from "../../shared";
 interface IRecordFormProps {
   children: ReactNode;
@@ -85,21 +89,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAttributeAdminFormProps {
-  variant?: string;
-  attribute?: IStudioAttribute;
-  onSave?: (attribute: IStudioAttribute) => void;
-  embedded?: boolean;
-}
 export function EcommerceAttributeAdminV2Form({
   variant = "admin-v2-form",
   attribute = studioAttributes[0],
   onSave,
   embedded = false,
-}: IAttributeAdminFormProps = {}) {
+}: IComponentProps = {}) {
   const [draft, setDraft] = useState(attribute);
   const [language, setLanguage] = useState("en");
   const [status, setStatus] = useState("");

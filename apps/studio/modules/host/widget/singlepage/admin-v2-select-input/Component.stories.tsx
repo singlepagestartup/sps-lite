@@ -1,11 +1,18 @@
+import { Component as Widget } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import { HostWidgetAdminV2SelectInput } from "./Component";
+
 const meta = {
   id: "modules-host-models-widget-singlepage-admin-v2-select-input",
   title: "Modules/Host/Widget/Singlepage/admin-v2-select-input",
-  component: HostWidgetAdminV2SelectInput,
+  component: Widget,
   parameters: { layout: "padded" },
-} satisfies Meta<typeof HostWidgetAdminV2SelectInput>;
+  args: { variant: "admin-v2-select-input" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Widget>,
+    { variant: "admin-v2-select-input" }
+  >
+>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};

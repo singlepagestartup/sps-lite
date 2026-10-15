@@ -1,6 +1,10 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../feature/index";
-import type IconGlyphs from "../../../../../feature/singlepage/icon/icons.json";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../../../buttons-array/index";
+import type { IComponentProps, IAIChatContinueProps } from "./interface";
+export type { IAIChatContinueProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as ButtonsArray } from "../../../../../buttons-array/index";
 import type { IWebsiteSection } from "../content";
 import defaultContent from "./content.json";
 function Icon(props: {
@@ -9,24 +13,13 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAIChatContinueProps {
-  variant?: string;
-  content?: {
-    continue: IWebsiteSection;
-    terms: IWebsiteSection;
-    startLink: {
-      text: string;
-      href: string;
-    };
-  };
-}
 export function Component({
   variant = "content-ai-chat-continue",
   content = defaultContent,
-}: IAIChatContinueProps = {}) {
+}: IComponentProps = {}) {
   const mainLink = content.startLink;
   return (
     <section
@@ -43,7 +36,7 @@ export function Component({
             {content.continue.paragraphs[0]}
           </p>
         </div>
-        <WebsiteBuilderModuleButtonsArray
+        <ButtonsArray
           variant="default"
           buttons={[
             { label: mainLink.text, href: mainLink.href, variant: "primary" },
@@ -75,7 +68,7 @@ export function Component({
             ))}
           </dl>
           <div className="mt-5">
-            <WebsiteBuilderModuleButtonsArray
+            <ButtonsArray
               variant="default"
               buttons={content.terms.links.map((link) => ({
                 label: link.text,

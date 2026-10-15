@@ -1,16 +1,16 @@
+import { Component as Category } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  CategoryButtonDefault,
-  defaultCategoryButtonDefaultProps,
-} from "./Component";
+import { defaultCategoryButtonDefaultProps } from "./Component";
 
 const meta = {
   id: "modules-blog-models-category-singlepage-button-default",
   title: "Modules/Blog/Category/Singlepage/button-default",
-  component: CategoryButtonDefault,
+  component: Category,
   parameters: { layout: "centered" },
-  args: defaultCategoryButtonDefaultProps,
-} satisfies Meta<typeof CategoryButtonDefault>;
+  args: { ...defaultCategoryButtonDefaultProps, variant: "button-default" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Category>, { variant: "button-default" }>
+>;
 
 export default meta;
 

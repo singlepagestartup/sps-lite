@@ -1,20 +1,19 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../feature/index";
-import type IconGlyphs from "../../../../feature/singlepage/icon/icons.json";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-interface IComponentVariantProps {
-  variant?: string;
-}
-export function Component({
-  variant = "brand-ai-chat",
-}: IComponentVariantProps = {}) {
+export function Component({ variant = "brand-ai-chat" }: IComponentProps = {}) {
   return (
     <a
       href="/"

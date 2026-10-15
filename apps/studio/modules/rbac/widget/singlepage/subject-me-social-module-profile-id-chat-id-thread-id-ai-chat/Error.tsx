@@ -1,12 +1,6 @@
-export interface IWorkspaceNoticeProps {
-  variant?: string;
-  embedded?: boolean;
-  state: "sign-in-required" | "access-denied" | "error";
-  message?: string;
-  signInHref?: string;
-  projectsHref?: string;
-  onRetry?: () => void;
-}
+import type { IWorkspaceNoticeProps } from "./interface";
+export type { IWorkspaceNoticeProps } from "./interface";
+
 export function Component({
   variant = "subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
   state,

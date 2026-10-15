@@ -1,72 +1,58 @@
 "use client";
-import { useState } from "react";
+import { useCallback, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { MessageCircle } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { projectHref } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
-import type { IComponentPropsExtended } from "./interface";
-export function Component(props: IComponentPropsExtended) {
-  if (!props.project)
-    return (
-      <p role="alert" className="p-8">
-        Choose a project.
-      </p>
-    );
-  return (
-    <CreateThread
-      key={props.project.profile.id}
-      {...props}
-      project={props.project}
-    />
-  );
-}
-function CreateThread(
-  props: IComponentPropsExtended & {
-    project: NonNullable<IComponentPropsExtended["project"]>;
-  },
-) {
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { projectHref } from "@sps/rbac/models/subject/sdk/model";
+import type { IClientComponentProps } from "./interface";
+export function Component(props: IClientComponentProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { project } = props;
   const [name, setName] = useState("");
   const [error, setError] = useState("");
-  const create = api.socialModuleChatFindByIdThreadCreate({
+  const create = subjectApi.socialModuleChatFindByIdThreadCreate({
     id: props.data.id,
     socialModuleChatId: project.chat.id,
   });
+  const submitting = useRef(false);
+  const submit = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (!name.trim() || submitting.current) return;
+      submitting.current = true;
+      setError("");
+      try {
+        const thread = await create.mutateAsync({
+          id: props.data.id,
+          socialModuleChatId: project.chat.id,
+          data: {
+            title: name.trim(),
+            variant: "ai-chat",
+          },
+        });
+        router.push(
+          getLocalizedHref(pathname, projectHref(project, thread.id)),
+        );
+      } catch (error) {
+        setError(
+          error instanceof Error ? error.message : "Thread creation failed",
+        );
+      } finally {
+        submitting.current = false;
+      }
+    },
+    [name, create.mutateAsync, props.data.id, project, router, pathname],
+  );
   return (
     <div className="min-w-0 flex-1">
       <header className="border-b border-border p-5">
         <p className="text-xs text-muted-foreground">Thread</p>
         <h1 className="mt-1 text-base font-semibold">New thread</h1>
       </header>
-      <form
-        className="mx-auto grid max-w-xl gap-4 px-5 py-8"
-        onSubmit={async (event) => {
-          event.preventDefault();
-          if (!name.trim() || create.isPending) return;
-          setError("");
-          try {
-            const thread = await create.mutateAsync({
-              id: props.data.id,
-              socialModuleChatId: project.chat.id,
-              data: {
-                title: name.trim(),
-                variant: "ai-chat",
-              },
-            });
-            router.push(
-              getLocalizedHref(pathname, projectHref(project, thread.id)),
-            );
-          } catch (error) {
-            setError(
-              error instanceof Error ? error.message : "Thread creation failed",
-            );
-          }
-        }}
-      >
+      <form className="mx-auto grid max-w-xl gap-4 px-5 py-8" onSubmit={submit}>
         <p className="mb-1 text-sm leading-6 text-muted-foreground">
           Give this thread a name.
         </p>

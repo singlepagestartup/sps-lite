@@ -1,7 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type { IComponentProps, ContentCtaProps } from "./interface";
+export type { ContentCtaProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -29,13 +33,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type ContentCtaProps = typeof defaultContentCtaProps;
-export function ContentCta(
-  props?: Partial<ContentCtaProps> & { variant?: string },
-) {
+export function ContentCta(props?: IComponentProps) {
   const { title, description, primaryAction, secondaryAction } = {
     ...defaultContentCtaProps,
     ...props,

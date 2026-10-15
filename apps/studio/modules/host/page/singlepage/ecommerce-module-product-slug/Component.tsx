@@ -1,7 +1,9 @@
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
 import { Component as EcommerceModuleCart } from "../../../../ecommerce/cart/index";
 import { defaultProductOverviewDefaultProps } from "../../../../ecommerce/product/index";
-import { Component as HostModuleWidget } from "../../../widget/index";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Widget } from "../../../widget/index";
+import { Component as Layout } from "../../../layout/index";
 import { useCallback, useState } from "react";
 
 import {
@@ -51,12 +53,9 @@ const productOverviewRelatedProducts =
     target: "_top" as const,
   }));
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function EcommerceCartFlowDefault({
   variant = "ecommerce-module-product-slug",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartCount = getItemCount(items);
@@ -91,7 +90,7 @@ export function EcommerceCartFlowDefault({
 
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="website"
         activeHref="/ecommerce/products"
         cartButton={
@@ -118,7 +117,7 @@ export function EcommerceCartFlowDefault({
           className="min-w-0"
           data-ds-page="host.page.ecommerce-module-product-slug"
         >
-          <HostModuleWidget
+          <Widget
             variant="default"
             externalModule="ecommerce"
             productProps={{
@@ -135,7 +134,7 @@ export function EcommerceCartFlowDefault({
             }}
           />
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

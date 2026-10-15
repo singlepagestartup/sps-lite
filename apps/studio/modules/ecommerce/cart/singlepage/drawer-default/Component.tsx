@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, CartDrawerDefaultProps } from "./interface";
+export type { CartDrawerDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   useState as useStatePresentation,
   useRef,
@@ -12,8 +16,8 @@ import {
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as EcommerceModuleProduct } from "../../../product/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Product } from "../../../product/index";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   defaultCartItems,
@@ -113,22 +117,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface CartDrawerDefaultProps {
-  variant?: string;
-  items: CartItem[];
-  isOpen: boolean;
-  checkoutHref: string;
-  productsHref: string;
-  onClose?: () => void;
-  onClear?: () => void;
-  onDecrease?: (item: CartItem) => void;
-  onIncrease?: (item: CartItem) => void;
-  onRemove?: (item: CartItem) => void;
-}
-export function CartDrawerDefault(props?: Partial<CartDrawerDefaultProps>) {
+export function CartDrawerDefault(props?: IComponentProps) {
   const {
     items,
     isOpen,
@@ -228,7 +220,7 @@ export function CartDrawerDefault(props?: Partial<CartDrawerDefaultProps>) {
                   <ul className="divide-y divide-border">
                     {items.map((item) => (
                       <li key={item.id} className="py-5 first:pt-0 last:pb-0">
-                        <EcommerceModuleProduct
+                        <Product
                           variant="cart-default"
                           href={productOverviewStoryHref}
                           item={item}

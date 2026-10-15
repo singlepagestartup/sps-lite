@@ -1,6 +1,7 @@
+import { Component as Thread } from "../..";
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component, type SocialChatSettingsProps } from "./Component";
+import type { SocialChatSettingsProps } from "./interface";
 import {
   defaultSocialProfiles,
   defaultSocialThreadListDefaultProps,
@@ -11,12 +12,13 @@ function Preview(args: SocialChatSettingsProps) {
   return (
     <>
       <button onClick={() => setOpen(true)}>Open chat settings</button>
-      <Component
+      <Thread
         {...args}
         open={open}
         onOpenChange={setOpen}
         threads={threads}
         onThreadsChange={setThreads}
+        variant="chat-settings"
       />
     </>
   );
@@ -24,7 +26,7 @@ function Preview(args: SocialChatSettingsProps) {
 const meta = {
   id: "modules-social-models-thread-singlepage-chat-settings",
   title: "Modules/Social/Thread/Singlepage/chat-settings",
-  component: Component,
+  component: Thread,
   args: {
     open: true,
     title: "General",
@@ -34,9 +36,12 @@ const meta = {
     threads: defaultSocialThreadListDefaultProps.threads,
     onOpenChange: () => {},
     onThreadsChange: () => {},
+    variant: "chat-settings",
   },
   render: (args) => <Preview {...args} />,
-} satisfies Meta<typeof Component>;
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Thread>, { variant: "chat-settings" }>
+>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = { name: "default" };

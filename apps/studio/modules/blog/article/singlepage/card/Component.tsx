@@ -1,17 +1,13 @@
+import type { IComponentProps, ArticleCardProps } from "./interface";
+export type { ArticleCardProps } from "./interface";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 /**
  * Model-owned article link. Balanced, editorial and compact are presentation
  * choices over the same article props; widgets compose this component.
  * The footer separates the Social profile byline from reading metadata.
  */
-type ArticleCardTarget = "_blank" | "_parent" | "_self" | "_top";
-export type ArticleCardProps = typeof defaultArticleCardProps & {
-  /** Presentation choice only; the article record contract stays unchanged. */
-  layout?: "balanced" | "editorial" | "compact";
-};
-export function ArticleCard(
-  props?: Partial<ArticleCardProps> & { variant?: string },
-) {
+
+export function ArticleCard(props?: IComponentProps) {
   const {
     href,
     slug,
@@ -125,3 +121,5 @@ export const defaultArticleCardProps = {
   readTime: "7 min read",
   target: undefined as ArticleCardTarget | undefined,
 };
+
+import type { ArticleCardTarget } from "./interface";

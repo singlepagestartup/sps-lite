@@ -1,3 +1,4 @@
+import { Skeleton } from "./Skeleton";
 import {
   Provider,
   api as clientApi,
@@ -8,28 +9,16 @@ import { Component as ParentComponent } from "@sps/shared-frontend-components/si
 import Client from "./client";
 import Server from "./server";
 
-function Reader(props: IComponentProps) {
-  const Comp = props.isServer ? Server : Client;
-  return (
-    <Comp
-      isServer={props.isServer}
-      variant={props.variant}
-      data={props.data}
-      className={props.className}
-      children={props.children}
-      apiProps={props.apiProps}
-    />
-  );
-}
-
 export function Component(props: IComponentProps) {
   return (
     <ParentComponent
-      Component={Reader as any}
+      Component={props.isServer ? Server : Client}
       Provider={Provider}
       clientApi={clientApi}
       serverApi={serverApi}
       {...props}
+      Skeleton={props.skeleton ?? <Skeleton />}
+      skeleton={props.skeleton ?? <Skeleton />}
     />
   );
 }

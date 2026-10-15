@@ -1,4 +1,4 @@
-import { Component as KnowledgeModuleSource } from "../../../index";
+import { Component as Source } from "../../../index";
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FilesProvider } from "../../../../../file-storage/file/singlepage/list-attachments-ai-chat/Files";
@@ -7,16 +7,16 @@ import {
   aiChatSourceFixture,
   aiChatAttachmentFixture,
 } from "../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-interface IExampleProps {
+interface IStoryProps {
   empty?: boolean;
   withFiles?: boolean;
   fileCount?: number;
 }
-function Example({
+function Component({
   empty = false,
   withFiles = false,
   fileCount = 2,
-}: IExampleProps) {
+}: IStoryProps) {
   const { source } = aiChatSourceFixture();
   const files = aiChatAttachmentFixture(fileCount);
   const fileIds = files.map((file) => file.id);
@@ -29,7 +29,7 @@ function Example({
         initialFileIds={withFiles ? fileIds : []}
       >
         <div className="mx-auto max-w-xl p-4">
-          <KnowledgeModuleSource variant="id-ai-chat" />
+          <Source variant="id-ai-chat" />
         </div>
       </SourceProvider>
     </FilesProvider>
@@ -39,14 +39,14 @@ function Example({
 const meta = {
   id: "modules-knowledge-models-source-singlepage-id-ai-chat",
   title: "Modules/Knowledge/Source/Singlepage/id/ai-chat",
-  component: Example,
+  component: Component,
   args: { empty: false, withFiles: false },
   argTypes: {
     empty: { control: "boolean" },
     withFiles: { control: "boolean" },
   },
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 

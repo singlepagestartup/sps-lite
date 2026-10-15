@@ -1,4 +1,9 @@
 export { queryBuilder } from "./lib/query-builder";
+export {
+  createMutationEffectsPublisher,
+  type IMutationEffects,
+  type IMutationEffectsPublisherProps,
+} from "./lib/mutation-effects";
 /**
  * Response serialisation applied at the REST boundary (issue #270). Exported so
  * a module's hand-written handler can strip the same columns the shared REST

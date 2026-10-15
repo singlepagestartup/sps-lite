@@ -1,19 +1,16 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/me/account/Account";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
-export function Component({
-  variant = "ai-chat-help",
-}: IComponentVariantProps = {}) {
+export function Component({ variant = "ai-chat-help" }: IComponentProps = {}) {
   const projectHref = useAIChatProjectHref();
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="help"
         subjectAccount={({ onNavigate }) => (
@@ -34,7 +31,7 @@ export function Component({
             projectHref={projectHref}
           />
         </WebsiteBuilderModuleWidget>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

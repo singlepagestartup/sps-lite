@@ -1,16 +1,21 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { RbacSubjectAuthenticationResetPassword } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-authentication-reset-password",
   title:
     "Modules/Host/Page/Singlepage/rbac-module-subject-me-authentication-reset-password",
-  component: RbacSubjectAuthenticationResetPassword,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof RbacSubjectAuthenticationResetPassword>;
+  args: { variant: "rbac-module-subject-me-authentication-reset-password" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "rbac-module-subject-me-authentication-reset-password" }
+  >
+>;
 
 export default meta;
 

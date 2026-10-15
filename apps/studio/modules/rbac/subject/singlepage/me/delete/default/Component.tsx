@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, SubjectMeDeleteProps } from "./interface";
+export type { SubjectMeDeleteProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
 import {
   useState as useStatePresentation,
   useRef,
@@ -12,7 +16,7 @@ import {
   twMerge as mergeButtonClass,
   twMerge as twMerge,
 } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { defaultRbacSubject, type RbacSubject } from "../../../../../shared";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -106,17 +110,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SubjectMeDeleteProps {
-  variant?: string;
-  title: string;
-  description: string;
-  actionLabel: string;
-  subject: RbacSubject;
-}
-export function SubjectMeDelete(props?: Partial<SubjectMeDeleteProps>) {
+export function SubjectMeDelete(props?: IComponentProps) {
   const { title, description, actionLabel, subject } = {
     ...defaultSubjectMeDeleteProps,
     ...props,

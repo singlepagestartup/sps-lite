@@ -1,16 +1,16 @@
 "use client";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Plus } from "lucide-react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import {
   AI_CHAT_DOCUMENTS,
   assertSupportedAiChatAttachments,
 } from "@sps/shared-utils";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
-import { Component as Source } from "@sps/knowledge/models/source/frontend/component";
+import { Component as KnowledgeModuleSource } from "@sps/knowledge/models/source/frontend/component";
 import type { IModel as ISource } from "@sps/knowledge/models/source/sdk/model";
-import type { IComponentPropsExtended } from "./interface";
+import type { IComponentPropsExtended, IDraftSourceProps } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
   const thread = props.thread;
@@ -34,19 +34,19 @@ export function Component(props: IComponentPropsExtended) {
     refetch: props.sourcesRead.refetch || (() => window.location.reload()),
   };
   const createSource =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceCreate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceCreate(
       scope,
     );
   const updateDraftSource =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdUpdate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdUpdate(
       { ...scope, knowledgeModuleSourceId: "" },
     );
   const uploadFiles =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesUpdate(
       {},
     );
   const uploadedDraftFiles = useRef(new Map<string, Set<File>>());
-  const updateThread = api.socialModuleChatFindByIdThreadUpdate({
+  const updateThread = subjectApi.socialModuleChatFindByIdThreadUpdate({
     id: scope.id,
     socialModuleChatId: scope.socialModuleChatId,
     socialModuleThreadId: selectedThreadId,
@@ -215,16 +215,7 @@ export function Component(props: IComponentPropsExtended) {
     </>
   );
 }
-interface IDraftSourceProps {
-  id: string;
-  title?: string;
-  placeholder?: string;
-  onSave: (
-    id: string,
-    value: { title: string; content: string },
-    files: File[],
-  ) => Promise<string>;
-}
+
 const DraftSource = memo(function DraftSource({
   id,
   title,
@@ -241,7 +232,7 @@ const DraftSource = memo(function DraftSource({
     [id, onSave, files],
   );
   return (
-    <Source
+    <KnowledgeModuleSource
       isServer={false}
       variant="form-ai-chat"
       title={title}

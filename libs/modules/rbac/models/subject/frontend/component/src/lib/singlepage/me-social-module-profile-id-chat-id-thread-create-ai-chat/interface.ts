@@ -12,3 +12,7 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
 }
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}
+
+export interface IClientComponentProps extends IComponentPropsExtended {
+  project: NonNullable<IComponentPropsExtended["project"]>;
+}

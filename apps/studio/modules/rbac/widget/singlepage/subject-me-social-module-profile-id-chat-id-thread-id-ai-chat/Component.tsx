@@ -1,4 +1,10 @@
 "use client";
+import type {
+  IComponentProps,
+  ISubjectThreadWorkspaceProps,
+} from "./interface";
+export type { ISubjectThreadWorkspaceProps } from "./interface";
+
 import { Component as SocialModuleProfile } from "../../../../social/profile";
 import { Component as SocialModuleChat } from "../../../../social/chat";
 import { Component as SocialModuleThread } from "../../../../social/thread";
@@ -6,7 +12,7 @@ import { useStudioAccount } from "../../../subject/singlepage/me/account/Account
 import { useThread } from "../../../../social/thread/singlepage/id/ai-chat/Thread";
 import { ProjectProvider } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
 import { useSource } from "../../../../knowledge/source/singlepage/id/ai-chat/Source";
-import { Component as RbacModuleSubject } from "../../../subject";
+import { Component as Subject } from "../../../subject";
 import type { ReactNode } from "react";
 import {
   Component as WorkspaceSkeleton,
@@ -16,19 +22,7 @@ import {
   Component as WorkspaceNotice,
   type IWorkspaceNoticeProps,
 } from "./Error";
-export interface ISubjectThreadWorkspaceProps {
-  variant?: string;
-  state?:
-    | "ready"
-    | IWorkspaceSkeletonProps["stage"]
-    | IWorkspaceNoticeProps["state"];
-  errorMessage?: string;
-  onRetry?: () => void;
-  subjectId?: string;
-  profileId: string;
-  chatId: string;
-  threadId?: string;
-}
+
 interface IThreadWorkspaceContentProps
   extends Omit<ISubjectThreadWorkspaceProps, "variant"> {
   navigation: ReactNode;
@@ -57,7 +51,7 @@ function ThreadWorkspaceContent({
           variant="id-ai-chat"
           navigation={navigation}
           messageCreate={
-            <RbacModuleSubject
+            <Subject
               variant="me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat"
               subjectId={subjectId}
               profileId={profileId}
@@ -75,7 +69,7 @@ function ThreadWorkspaceContent({
             />
           }
           knowledgeUpdate={
-            <RbacModuleSubject
+            <Subject
               variant="me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-update-ai-chat"
               subjectId={subjectId}
               profileId={profileId}
@@ -85,7 +79,7 @@ function ThreadWorkspaceContent({
           }
           knowledge={
             <>
-              <RbacModuleSubject
+              <Subject
                 variant="me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-list-document-ai-chat"
                 subjectId={subjectId}
                 profileId={profileId}
@@ -143,7 +137,7 @@ function SubjectThreadWorkspace({
   );
 }
 
-export function Component(props: ISubjectThreadWorkspaceProps) {
+export function Component(props: IComponentProps) {
   const state = props.state ?? "ready";
   if (state === "checking-session" || state === "loading-projects")
     return <WorkspaceSkeleton stage={state} />;

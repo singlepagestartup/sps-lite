@@ -1,12 +1,11 @@
+import type { IComponentProps, IProfileCreateContentProps } from "./interface";
+export type { IProfileCreateContentProps } from "./interface";
 import type { ReactNode } from "react";
-export interface IProfileCreateContentProps {
-  variant?: string;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "content-ai-chat-profile-create",
   children,
-}: IProfileCreateContentProps) {
+}: IComponentProps) {
   return (
     <main
       className="mx-auto max-w-6xl px-4 py-6 @[640px]:px-5"

@@ -3,11 +3,15 @@ import type {
   IModel,
   IChatMessage,
 } from "@sps/social/models/message/sdk/model";
-import { api as fileApi } from "@sps/file-storage/models/file/sdk/server";
-import { RBAC_SECRET_KEY } from "@sps/shared-utils";
+import { assertKnowledgeAttachmentBytes } from "@sps/backend-utils";
 
 export class Service {
-  constructor(readonly service: Pick<SubjectService, "socialModule">) {}
+  constructor(
+    readonly service: Pick<
+      SubjectService,
+      "socialModule" | "fileStorageModule"
+    >,
+  ) {}
 
   async enrich(messages: IModel[]): Promise<IChatMessage[]> {
     if (!messages.length) return [];
@@ -32,21 +36,39 @@ export class Service {
       ...new Set(links.map((link) => link.fileStorageModuleFileId as string)),
     ];
     const files = fileIds.length
-      ? await fileApi.find({
+      ? await this.service.fileStorageModule.file.find({
           params: {
             filters: {
               and: [{ column: "id", method: "inArray", value: fileIds }],
             },
           },
-          options: {
-            headers: {
-              "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY!,
-              "Cache-Control": "no-store",
-            },
-          },
         })
       : [];
-    const filesById = new Map((files || []).map((file) => [file.id, file]));
+    const safeFiles: NonNullable<typeof files> = [];
+    for (const file of files || []) {
+      try {
+        assertKnowledgeAttachmentBytes({
+          bytes: new Uint8Array(),
+          name: file.extension ? "file." + file.extension : file.file,
+          mimeType: file.mimeType || undefined,
+        });
+        assertKnowledgeAttachmentBytes({
+          bytes: await this.service.fileStorageModule.file.readBytes(file),
+          name: file.file,
+          mimeType: file.mimeType || undefined,
+        });
+        safeFiles.push(file);
+      } catch (error) {
+        safeFiles.push({
+          ...file,
+          mimeType:
+            error instanceof Error && /SVG/.test(error.message)
+              ? "image/svg+xml"
+              : "application/x-knowledge-unavailable",
+        });
+      }
+    }
+    const filesById = new Map(safeFiles.map((file) => [file.id, file]));
     return messages.map((message) => ({
       ...message,
       authorProfileIds: authors

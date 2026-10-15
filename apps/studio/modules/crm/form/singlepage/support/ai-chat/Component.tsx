@@ -1,28 +1,20 @@
+import type {
+  IComponentProps,
+  ISupportFormCopy,
+  ISupportFormProps,
+} from "./interface";
+export type { ISupportFormCopy, ISupportFormProps } from "./interface";
 import type { ReactNode } from "react";
-import {
-  Component as CrmModuleStep,
-  type ISupportStepProps,
-} from "../../../../step";
+import { Component as Step, type ISupportStepProps } from "../../../../step";
 import defaultCopy from "./content.json";
-export interface ISupportFormCopy {
-  title: string;
-  fields: ISupportStepProps["fields"];
-  topics: string[];
-}
-export interface ISupportFormProps
-  extends Pick<ISupportStepProps, "id" | "values" | "errors" | "onChange"> {
-  variant?: string;
-  copy?: ISupportFormCopy;
-  submitted?: boolean;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "support-ai-chat",
   copy = defaultCopy,
   submitted,
   children,
   ...fields
-}: ISupportFormProps) {
+}: IComponentProps) {
   return (
     <div
       className="min-w-0"
@@ -31,7 +23,7 @@ export function Component({
       data-variant={variant}
     >
       {!submitted && (
-        <CrmModuleStep
+        <Step
           {...fields}
           fields={copy.fields}
           topics={copy.topics}

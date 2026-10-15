@@ -14,3 +14,18 @@ export interface IRecord {
   expiresAt: string;
   payload: JsonValue | null;
 }
+
+export const variant = "admin-v2-table";
+
+export interface IVariantProps {
+  variant?: "admin-v2-table";
+  empty?: boolean;
+}
+
+type IVariantInputs = NonNullable<IVariantProps>;
+
+export interface IComponentProps extends Omit<IVariantInputs, "variant"> {
+  variant?: "admin-v2-table";
+}
+
+export interface IComponentPropsExtended extends IComponentProps {}

@@ -1,13 +1,13 @@
-import { Component as RbacModuleSubject } from "../../../../../..";
+import { Component as Subject } from "../../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
-function Example() {
-  return <RbacModuleSubject variant="me-crm-module-form-support-ai-chat" />;
+function Component() {
+  return <Subject variant="me-crm-module-form-support-ai-chat" />;
 }
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-crm-module-form-support-ai-chat",
   title: "Modules/RBAC/Subject/Singlepage/me/crm-module/form/support/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

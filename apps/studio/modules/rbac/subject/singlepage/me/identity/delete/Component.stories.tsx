@@ -1,4 +1,4 @@
-import { Component as RbacModuleSubject } from "../../../..";
+import { Component as Subject } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../account/Account";
 import { aiChatAccount } from "../../account/fixture";
@@ -7,13 +7,13 @@ import { aiChatWorkspaceFixture } from "../../../../../../social/profile/singlep
 import { ProjectProvider } from "../../../../../../social/profile/singlepage/scope/ai-chat/project/Profile";
 import { defaultSettingsIdentities } from "../../../../../shared";
 import { useState } from "react";
-function Example() {
+function Component() {
   const [identity, setIdentity] = useState(defaultSettingsIdentities[0]);
   return (
     <AccountProvider account={aiChatAccount}>
       <ProfilesProvider {...aiChatWorkspaceFixture()}>
         <ProjectProvider profileId="pottery">
-          <RbacModuleSubject
+          <Subject
             variant="me-identity-delete"
             identity={identity}
             onDelete={() => {}}
@@ -26,8 +26,8 @@ function Example() {
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-identity-delete",
   title: "Modules/RBAC/Subject/Singlepage/me/identity/delete",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

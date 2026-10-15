@@ -1,20 +1,19 @@
+import { Component as Product } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-  ProductTier,
-  defaultProductTierProps,
-  featuredProductTierProps,
-} from "./Component";
+import { defaultProductTierProps, featuredProductTierProps } from "./Component";
 
 const meta = {
   id: "modules-ecommerce-models-product-singlepage-tier",
   title: "Modules/Ecommerce/Product/Singlepage/tier",
-  component: ProductTier,
+  component: Product,
   parameters: {
     layout: "padded",
   },
-  args: defaultProductTierProps,
-} satisfies Meta<typeof ProductTier>;
+  args: { ...defaultProductTierProps, variant: "tier" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Product>, { variant: "tier" }>
+>;
 
 export default meta;
 

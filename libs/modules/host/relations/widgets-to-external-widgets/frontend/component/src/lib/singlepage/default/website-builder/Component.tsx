@@ -23,18 +23,6 @@ export function Component(props: IComponentPropsExtended) {
     >
       {({ data }) => {
         return data?.map((entity) => {
-          if (
-            entity.variant === "content-ai-chat-profile-create" &&
-            props.url === "/ai-chat/projects"
-          )
-            return (
-              <Widget
-                key={entity.id}
-                {...props}
-                data={entity}
-                variant={entity.variant}
-              />
-            );
           return (
             <WebsiteBuilderModuleWidget
               key={entity.id}

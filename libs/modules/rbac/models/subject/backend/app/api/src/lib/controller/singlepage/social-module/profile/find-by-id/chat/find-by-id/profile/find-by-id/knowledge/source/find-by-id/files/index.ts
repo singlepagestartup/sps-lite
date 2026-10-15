@@ -1,10 +1,13 @@
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
-import { getHttpErrorType, logger } from "@sps/backend-utils";
-import { KnowledgeRepository } from "@sps/knowledge/backend/app/api/src/lib/repository";
+import {
+  getHttpErrorType,
+  logger,
+  assertKnowledgeAttachmentBytes,
+} from "@sps/backend-utils";
 import { KnowledgeService } from "@sps/knowledge/backend/app/api/src/lib/service";
-import { api as fileApi } from "@sps/file-storage/models/file/sdk/server";
+import { api as fileStorageFileApi } from "@sps/file-storage/models/file/sdk/server";
 import {
   RBAC_SECRET_KEY,
   assertSupportedAiChatAttachments,
@@ -15,9 +18,10 @@ export class Handler {
     try {
       const sourceId = c.req.param("knowledgeModuleSourceId");
       if (!sourceId) throw new Error("Knowledge Source is required.");
-      const repository = new KnowledgeRepository();
+      const knowledge = new KnowledgeService();
+      const source = knowledge.source;
       if (c.req.method === "GET")
-        return c.json({ data: await repository.sourceFiles(sourceId) });
+        return c.json({ data: await source.sourceFiles(sourceId) });
       const body = await c.req.formData();
       const removeFileId = body.get("removeFileId");
       const replaceFileId = body.get("replaceFileId");
@@ -27,7 +31,7 @@ export class Handler {
         typeof expectedContentHash !== "string"
       )
         throw new Error("Expected Source content hash must be a string.");
-      const current = await repository.sourceFiles(sourceId);
+      const current = await source.sourceFiles(sourceId);
       for (const id of [removeFileId, replaceFileId]) {
         if (id && !current.some((item) => item.file.id === id))
           throw new Error("File is not attached to this Source.");
@@ -38,6 +42,12 @@ export class Handler {
         .filter((value) => typeof value !== "string");
       try {
         assertSupportedAiChatAttachments(uploads);
+        for (const file of uploads)
+          assertKnowledgeAttachmentBytes({
+            bytes: new Uint8Array(await file.arrayBuffer()),
+            name: file.name,
+            mimeType: file.type,
+          });
       } catch (error) {
         throw new Error(
           `Validation error. ${error instanceof Error ? error.message : String(error)}`,
@@ -52,7 +62,7 @@ export class Handler {
       if (!uploads.length && !removeFileId && body.get("reanalyze") !== "true")
         throw new Error("Select files to attach.");
       for (const file of uploads) {
-        const saved = await fileApi.create({
+        const saved = await fileStorageFileApi.create({
           data: {
             adminTitle: file.name,
             alt: file.name,
@@ -71,7 +81,7 @@ export class Handler {
         return [file.id];
       });
       if (!replaceFileId) ids.push(...uploadedIds);
-      await repository.setFiles(
+      await source.setFiles(
         sourceId,
         ids,
         current.map(({ file }) => file.id),
@@ -112,21 +122,24 @@ export class Handler {
           .catch((error) => logger.error(error));
       } else {
         try {
-          await new KnowledgeService().rebuildFiles(sourceId);
+          await knowledge.rebuildFiles(sourceId);
         } catch (error) {
           processingError =
             error instanceof Error ? error.message : String(error);
         }
       }
-      const source = await repository.findSourceById(sourceId);
+      const savedSource = await source.findSourceById(sourceId);
       return c.json({
         data: {
-          files: await repository.sourceFiles(sourceId),
-          source,
+          files: await source.sourceFiles(sourceId),
+          source: savedSource,
           processingError,
           analysisPending:
             detached &&
-            Boolean(source && source.contentHash !== source.indexedContentHash),
+            Boolean(
+              savedSource &&
+                savedSource.contentHash !== savedSource.indexedContentHash,
+            ),
         },
       });
     } catch (error) {

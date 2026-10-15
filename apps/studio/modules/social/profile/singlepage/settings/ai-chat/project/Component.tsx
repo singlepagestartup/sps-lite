@@ -1,16 +1,13 @@
+import type { IComponentProps, IProfileSettingsProps } from "./interface";
+export type { IProfileSettingsProps } from "./interface";
 import type { ReactNode } from "react";
-export interface IProfileSettingsProps {
-  variant?: string;
-  profileId: string;
-  navigation?: ReactNode;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "settings-ai-chat-project",
   profileId,
   navigation,
   children,
-}: IProfileSettingsProps) {
+}: IComponentProps) {
   return (
     <section
       data-ds-block="social.profile.settings-ai-chat-project"

@@ -1,8 +1,15 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  CrmInputSelectOptionDefaultProps,
+} from "./interface";
+export type { CrmInputSelectOptionDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, useState } from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { type CrmInputRecord, defaultCrmForm } from "../../../shared/demo-crm";
 interface ISelectOption {
   value: string;
@@ -24,18 +31,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface CrmInputSelectOptionDefaultProps {
-  variant?: string;
-  input: CrmInputRecord;
-  disabled?: boolean;
-  namePrefix?: string;
-}
-export function CrmInputSelectOptionDefault(
-  props?: Partial<CrmInputSelectOptionDefaultProps>,
-) {
+export function CrmInputSelectOptionDefault(props?: IComponentProps) {
   const { input, disabled, namePrefix } = {
     ...defaultCrmInputSelectOptionDefaultProps,
     ...props,

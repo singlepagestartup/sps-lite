@@ -1,18 +1,15 @@
+import type { IComponentProps, CrmOptionDefaultProps } from "./interface";
+export type { CrmOptionDefaultProps } from "./interface";
 import {
   type CrmOptionRecord,
   defaultCrmOptions,
 } from "../../../shared/demo-crm";
 
-export interface CrmOptionDefaultProps {
-  variant?: string;
-  option: CrmOptionRecord;
-}
-
 export const defaultCrmOptionDefaultProps: CrmOptionDefaultProps = {
   option: defaultCrmOptions[0],
 };
 
-export function CrmOptionDefault(props?: Partial<CrmOptionDefaultProps>) {
+export function CrmOptionDefault(props?: IComponentProps) {
   const { option } = {
     ...defaultCrmOptionDefaultProps,
     ...props,

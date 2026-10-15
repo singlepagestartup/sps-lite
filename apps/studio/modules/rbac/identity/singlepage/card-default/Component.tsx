@@ -1,5 +1,12 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  IIdentityFlowProps,
+  IdentityCardDefaultProps,
+} from "./interface";
+export type { IIdentityFlowProps, IdentityCardDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 
 import {
   useState as useStatePresentation,
@@ -14,7 +21,7 @@ import {
 } from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   defaultSettingsIdentities,
   formatRbacDateTime,
@@ -116,25 +123,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IIdentityFlowProps {
-  identity: RbacIdentity;
-  action: "change-email" | "change-password" | "reconnect";
-  onClose: () => void;
-  onUpdate: (identity: RbacIdentity) => void;
-}
-export interface IdentityCardDefaultProps {
-  variant?: string;
-  actions?: ReactNode;
-  renderFlow?: (props: IIdentityFlowProps) => ReactNode;
-  identity: RbacIdentity;
-  lastOperationLabel?: string;
-  onAction?: (identity: RbacIdentity, action: IdentityAction) => void;
-  onUpdate?: (identity: RbacIdentity) => void;
-  embedded?: boolean;
-}
 const ChevronDown = createIcon("caret-down");
 const Check = createIcon("check");
 const focus =
@@ -172,7 +163,7 @@ export const defaultIdentityCardDefaultProps: IdentityCardDefaultProps = {
   identity: defaultSettingsIdentities[0],
 };
 export const IdentityCardDefault = memo(function IdentityCardDefault(
-  props: Partial<IdentityCardDefaultProps>,
+  props: IComponentProps,
 ) {
   const {
     identity: initialIdentity,

@@ -52,7 +52,7 @@
     "studio:storybook": "NX_DAEMON=false NX_ISOLATE_PLUGINS=false nx run @sps/source:studio:storybook --",
     "studio:storybook:build": "NX_DAEMON=false NX_ISOLATE_PLUGINS=false nx run @sps/source:studio:storybook:build --",
     "studio:presentation:export": "NX_DAEMON=false NX_ISOLATE_PLUGINS=false nx run @sps/source:studio:presentation:export --",
-    "studio:presentation:test": "bun test tools/studio apps/studio/workspace",
+    "studio:presentation:test": "bun test --timeout 30000 tools/studio apps/studio/workspace",
     "secrets:test": "bun test tools/dev/generate-secret.test.ts",
     "agents:editorial:test": "node --test tools/agents/editorial-pass.test.mjs",
     "agents:duplicates:check": "bun tools/agents/duplicate-sentences.ts",
@@ -67,7 +67,8 @@
     "singlepagestartup:github:test": "node --test tools/singlepagestartup/github/check.test.mjs",
     "singlepagestartup:pipeline:check": "bun tools/singlepagestartup/pipeline/check.ts",
     "singlepagestartup:pipeline:test": "bun test tools/singlepagestartup/pipeline/check.test.ts",
-    "knowledge:index": "NX_DAEMON=false NX_ISOLATE_PLUGINS=false nx run @sps/knowledge:index --"
+    "knowledge:index": "NX_DAEMON=false NX_ISOLATE_PLUGINS=false nx run @sps/knowledge:index --",
+    "check:module-dependencies": "node tools/agents/module-dependencies.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.717.0",

@@ -1,3 +1,4 @@
+import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
 import type { IResult } from "@sps/rbac/models/subject/sdk/server";
 import type { IComponentPropsExtended as IParentExtended } from "@sps/shared-frontend-components/singlepage/subject-default/interface";
 import type { IComponentProps as IParent } from "@sps/shared-frontend-components/singlepage/subject-default/interface";
@@ -26,4 +27,10 @@ export interface IComponentPropsExtended
     error?: { message: string };
     refetch?: () => void;
   };
+}
+
+export interface ISourceFileProps {
+  file: IFile;
+  removing: boolean;
+  onRemove: (id: string) => void;
 }

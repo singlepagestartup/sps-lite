@@ -1,11 +1,11 @@
-import { Component as CrmModuleStep } from "../../..";
+import { Component as Step } from "../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import copy from "../../../../form/singlepage/support/ai-chat/content.json";
-function Example() {
+function Component() {
   const [values, setValues] = useState({ topic: "", details: "", result: "" });
   return (
-    <CrmModuleStep
+    <Step
       variant="support-ai-chat"
       id="support-story"
       values={values}
@@ -20,8 +20,8 @@ function Example() {
 const meta = {
   id: "modules-crm-models-step-singlepage-support-ai-chat",
   title: "Modules/CRM/Step/Singlepage/support/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

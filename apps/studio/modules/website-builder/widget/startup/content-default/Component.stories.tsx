@@ -1,20 +1,23 @@
+import { Component as Widget } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import {
   ContentDefault,
   defaultContentProps,
 } from "../../singlepage/content-default/Component";
-import { ContentDefaultStartup, startupContentProps } from "./Component";
+import { startupContentProps } from "./Component";
 
 const meta = {
   id: "modules-website-builder-models-widget-startup-content-default",
   title: "Modules/Website-Builder/Widget/Startup/content-default",
-  component: ContentDefaultStartup,
+  component: Widget,
   parameters: {
     layout: "fullscreen",
   },
-  args: startupContentProps,
-} satisfies Meta<typeof ContentDefaultStartup>;
+  args: { ...startupContentProps, variant: "content-default" },
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Widget>, { variant: "content-default" }>
+>;
 
 export default meta;
 
@@ -29,7 +32,7 @@ export const CompareWithSinglepage: Story = {
   render: () => (
     <main className="min-h-screen bg-[#eaf0f7] text-slate-950 tracking-normal">
       <ContentDefault {...defaultContentProps} />
-      <ContentDefaultStartup />
+      <Widget variant="content-default" />
     </main>
   ),
 };

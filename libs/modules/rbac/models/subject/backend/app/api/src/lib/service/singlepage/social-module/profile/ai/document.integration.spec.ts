@@ -11,6 +11,8 @@ import { Table as Message } from "@sps/social/models/message/backend/repository/
 import { Table as ProfileSources } from "@sps/social/relations/profiles-to-knowledge-module-sources/backend/repository/database";
 import { Table as MessageSources } from "@sps/social/relations/messages-to-knowledge-module-sources/backend/repository/database";
 import { Table as Source } from "@sps/knowledge/models/source/backend/repository/database";
+import { createKnowledgeServices } from "@sps/knowledge/backend/app/api/src/lib/composition";
+import { Service as FileStorageFileService } from "@sps/file-storage/models/file/backend/app/api/src/lib/service";
 import { KnowledgeService } from "@sps/knowledge/backend/app/api/src/lib/service";
 import { Service } from "./document";
 import { MaterialService } from "@sps/knowledge/backend/app/api/src/lib/service/materials";
@@ -86,9 +88,9 @@ it("persists a confirmed document Source with profile and origin links, indexes 
     .insert(File)
     .values([
       {
-        file: `/fixture-${suffix}-original.svg`,
-        adminTitle: "Original.svg",
-        mimeType: "image/svg+xml",
+        file: `/fixture-${suffix}-original.png`,
+        adminTitle: "Original.png",
+        mimeType: "image/png",
       },
       {
         file: `/fixture-${suffix}-added.png`,
@@ -102,12 +104,19 @@ it("persists a confirmed document Source with profile and origin links, indexes 
       },
     ])
     .returning();
+  jest
+    .spyOn(FileStorageFileService.prototype, "readBytes")
+    .mockResolvedValue(Buffer.from("Fixture text"));
   let requestFiles = [files[0].id, files[1].id];
   let sourceId: string | undefined;
   const vector = Array.from({ length: 768 }, (_, index) =>
     index === 0 ? 1 : 0,
   );
   const knowledge = new KnowledgeService({
+    source: createKnowledgeServices({
+      processing: false,
+      publishEffects: async () => {},
+    }).source,
     embeddingClient: {
       embed: async () => vector,
       embedMany: async (texts) => texts.map(() => vector),
@@ -121,7 +130,7 @@ it("persists a confirmed document Source with profile and origin links, indexes 
     } as any,
   });
   (knowledge as any).materialService = new MaterialService({
-    repository: (knowledge as any).repository,
+    source: knowledge.source,
     media: {
       analyze: async (file: any) => `Analyzed ${file.adminTitle}`,
       synthesize: async () => "Fixture overview",
@@ -235,7 +244,7 @@ it("persists a confirmed document Source with profile and origin links, indexes 
         .where(eq(MessageSources.messageId, message.id)),
     ).toHaveLength(1);
     expect(
-      (await (knowledge as any).repository.sourceFiles(sourceId)).map(
+      (await knowledge.source.sourceFiles(sourceId)).map(
         (item: any) => item.file.id,
       ),
     ).toEqual([files[0].id, files[1].id]);
@@ -252,12 +261,12 @@ it("persists a confirmed document Source with profile and origin links, indexes 
     expect(readKnowledgeUserContext(source.content)).toBe(
       "Confirmed edited notes",
     );
-    expect(source.content).toContain("Analyzed Original.svg");
+    expect(source.content).toContain("Analyzed Original.png");
     expect(source.content).toContain("Analyzed Added.png");
     expect(source.content).toContain("Analyzed Extra.jpg");
     expect(source.indexedContentHash).toBe(source.contentHash);
     expect(
-      (await (knowledge as any).repository.sourceFiles(sourceId)).map(
+      (await knowledge.source.sourceFiles(sourceId)).map(
         (item: any) => item.file.id,
       ),
     ).toEqual([files[0].id, files[1].id, files[2].id]);

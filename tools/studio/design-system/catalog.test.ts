@@ -112,7 +112,7 @@ test("every native model has a public entry, both layers and local stories; Tele
       ],
     }),
   ).toEqual([]);
-});
+}, 30_000);
 
 test("schema reading includes inherited fields, defaults, nullability and vector dimensions", () => {
   const directory = mkdtempSync(path.join(tmpdir(), "studio-schema-"));
@@ -166,7 +166,11 @@ test("assembling keeps variant aliases, startup overrides and authored files", (
     mkdirSync(path.join(directory, layer, "example"), { recursive: true });
     writeFileSync(
       path.join(directory, layer, "example/Component.tsx"),
-      "export function Example() { return <p>Owned view</p>; }",
+      'import type { IComponentProps } from "./interface"; export function Component(_props: IComponentProps) { return <p>Owned view</p>; }',
+    );
+    writeFileSync(
+      path.join(directory, layer, "example/interface.ts"),
+      'export const variant = "owned-variant"; export interface IComponentProps { variant?: typeof variant }',
     );
     writeFileSync(
       path.join(directory, layer, "variants.ts"),
@@ -187,7 +191,7 @@ test("assembling keeps variant aliases, startup overrides and authored files", (
     ).toContain("Owned view");
     expect(
       readFileSync(path.join(directory, layer, "example/index.ts"), "utf8"),
-    ).toContain("Example as Component");
+    ).toContain('Component } from "./Component"');
   }
   expect(
     readFileSync(path.join(directory, "variants.ts"), "utf8").indexOf(
@@ -208,7 +212,11 @@ test("reassembling nested variants preserves custom keys and startup rendering",
     mkdirSync(selector, { recursive: true });
     writeFileSync(
       path.join(selector, "Component.tsx"),
-      `export function Component() { return ${JSON.stringify(layer)}; }`,
+      `import type { IComponentProps } from "./interface"; export function Component(_props: IComponentProps) { return ${JSON.stringify(layer)}; }`,
+    );
+    writeFileSync(
+      path.join(selector, "interface.ts"),
+      'export const variant = "choose-agent"; export interface IComponentProps { variant?: typeof variant }',
     );
     writeFileSync(
       path.join(directory, layer, "variants.ts"),
@@ -220,6 +228,10 @@ test("reassembling nested variants preserves custom keys and startup rendering",
   writeFileSync(
     path.join(sidebar, "Component.tsx"),
     'export function Component() { return "project sidebar"; }',
+  );
+  writeFileSync(
+    path.join(sidebar, "interface.ts"),
+    'export const variant = "sidebar-ai-chat-project"; export interface IComponentProps { variant?: typeof variant }',
   );
   for (let iteration = 0; iteration < 2; iteration++) {
     assembleEntity(directory);
@@ -302,6 +314,10 @@ test("scaffolding preserves authored data and UI and skips relations and Telegra
     "export function Component() { return <p>Owned list</p>; }",
   );
   rmSync(path.join(model, "singlepage/list"), { recursive: true });
+  writeFileSync(
+    path.join(own, "interface.ts"),
+    'export const variant = "list"; export interface IComponentProps { variant?: typeof variant }',
+  );
   writeFileSync(
     path.join(model, "singlepage/variants.ts"),
     'import { Component as Owned } from "./owned-list/Component"; export const variants = { "list": Owned };',

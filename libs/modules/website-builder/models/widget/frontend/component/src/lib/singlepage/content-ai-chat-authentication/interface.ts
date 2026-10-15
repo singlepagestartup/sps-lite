@@ -22,3 +22,9 @@ export interface IComponentProps
     IAuthenticationContentProps {}
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}
+
+export interface IParagraphsProps {
+  paragraphs: string[];
+  language: string;
+}
+export type IAuthenticationLinkProps = import("react").ComponentProps<"a">;

@@ -1,3 +1,4 @@
+import type { IComponentProps, IVariantProps } from "./interface";
 import { memo } from "react";
 import fixture from "../admin-v2-table/data.json";
 import type { IRecord } from "../admin-v2-table/interface";
@@ -27,12 +28,7 @@ function valueLabel(value: unknown): string {
       ? JSON.stringify(value)
       : String(value);
 }
-export interface IComponentProps {
-  variant?: string;
-  id?: string;
-  data?: IRecord;
-  className?: string;
-}
+
 function Card({
   variant = "admin-v2-card",
   id,

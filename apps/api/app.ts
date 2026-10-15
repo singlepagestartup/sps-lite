@@ -3,7 +3,11 @@ import { cors } from "hono/cors";
 import { createBunWebSocket } from "hono/bun";
 import { join, normalize } from "node:path";
 import { type ServerWebSocket } from "bun";
-import { ExceptionFilter, ParseQueryMiddleware } from "@sps/shared-backend-api";
+import {
+  ExceptionFilter,
+  ParseQueryMiddleware,
+  createMutationEffectsPublisher,
+} from "@sps/shared-backend-api";
 import {
   IsAuthorizedMiddleware,
   RevalidationMiddleware,
@@ -33,6 +37,9 @@ import { app as broadcastApp } from "@sps/broadcast/backend/app/api";
 import { app as fileStorageApp } from "@sps/file-storage/backend/app/api";
 import { app as socialApp } from "@sps/social/backend/app/api";
 import { app as knowledgeApp } from "@sps/knowledge/backend/app/api";
+
+import { setKnowledgeMutationPublisher } from "@sps/knowledge/backend/app/api/src/lib/composition";
+import { setCrmRequestMutationPublisher } from "@sps/crm/models/request/backend/app/api/src/lib/service";
 
 export const app = new Hono().basePath("/");
 const { upgradeWebSocket } = createBunWebSocket<ServerWebSocket>();
@@ -158,8 +165,14 @@ app.use(revalidationMiddleware.init());
  * Now added "Cache-Control": "no-store" for preventing caching of authorized requests,
  * but it should be added to the request
  */
+const httpCacheMiddleware = new HTTPCacheMiddleware();
+const publishMutationEffects = createMutationEffectsPublisher({
+  invalidateTopics: (topics) => httpCacheMiddleware.invalidateTopics(topics),
+  revalidateTag: (tag) => revalidationMiddleware.revalidateTag(tag),
+});
+setKnowledgeMutationPublisher(publishMutationEffects);
+setCrmRequestMutationPublisher(publishMutationEffects);
 if (MIDDLEWARE_HTTP_CACHE === "true") {
-  const httpCacheMiddleware = new HTTPCacheMiddleware();
   app.use(httpCacheMiddleware.init());
   httpCacheMiddleware.setRoutes(app);
 }

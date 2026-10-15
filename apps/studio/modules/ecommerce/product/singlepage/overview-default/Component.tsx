@@ -1,7 +1,24 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ProductOverviewBreadcrumbItem,
+  ProductOverviewHero,
+  ProductOverviewStat,
+  ProductOverviewRelatedProduct,
+  ProductOverviewDefaultProps,
+} from "./interface";
+export type {
+  ProductOverviewBreadcrumbItem,
+  ProductOverviewHero,
+  ProductOverviewStat,
+  ProductOverviewRelatedProduct,
+  ProductOverviewDefaultProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps, ReactNode } from "react";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { ProductCardRelated } from "../card-related/Component";
 import {
@@ -60,45 +77,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ProductOverviewBreadcrumbItem {
-  label: string;
-  href: string;
-}
-export interface ProductOverviewHero {
-  image: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  badge?: string;
-  description: string;
-  breadcrumb: ProductOverviewBreadcrumbItem[];
-}
-export interface ProductOverviewStat {
-  value: string;
-  label: string;
-}
-export interface ProductOverviewRelatedProduct {
-  id: string;
-  slug: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  priceLabel: string;
-  image: string;
-  href?: string;
-  target?: "_blank" | "_parent" | "_self" | "_top";
-}
-export interface ProductOverviewDefaultProps {
-  variant?: string;
-  hero: ProductOverviewHero;
-  stats: ProductOverviewStat[];
-  related: ProductOverviewRelatedProduct[];
-  purchase: Partial<typeof defaultProductOverviewPurchaseProps>;
-  cta: Partial<typeof defaultProductOverviewCtaProps>;
-}
 function ProductOverviewHeroSection({ hero }: { hero: ProductOverviewHero }) {
   return (
     <section
@@ -231,9 +212,7 @@ function ProductOverviewRelatedSection({
     </section>
   );
 }
-export function ProductOverviewDefault(
-  props?: Partial<ProductOverviewDefaultProps>,
-) {
+export function ProductOverviewDefault(props?: IComponentProps) {
   const { hero, stats, related, purchase, cta } = {
     ...defaultProductOverviewDefaultProps,
     ...props,

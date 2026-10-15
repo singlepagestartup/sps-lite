@@ -1,21 +1,22 @@
 "use client";
+import type { IComponentProps, ISubjectSupportProps } from "./interface";
+export type { ISubjectSupportProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import { useCallback, useId, useRef, useState, type FormEvent } from "react";
 import {
   Component as CrmModuleForm,
   type ISupportFormCopy,
 } from "../../../../../../../../crm/form";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature";
+
 import defaultCopy from "./content.json";
-export interface ISubjectSupportProps {
-  variant?: string;
-  formCopy?: ISupportFormCopy;
-  projectHref?: string;
-}
+
 export function Component({
   variant = "me-crm-module-form-support-ai-chat",
   formCopy,
   projectHref = "/ai-chat/social/profiles/create",
-}: ISubjectSupportProps = {}) {
+}: IComponentProps = {}) {
   const id = useId();
   const form = useRef<HTMLFormElement>(null);
   const [values, setValues] = useState({ topic: "", details: "", result: "" });
@@ -104,10 +105,7 @@ export function Component({
             type="submit"
             className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
           >
-            <WebsiteBuilderModuleFeature
-              variant="icon"
-              name="paper-plane-tilt"
-            />
+            <SharedIcon variant="phosphor" name="paper-plane-tilt" />
             {defaultCopy.labels.submit}
           </button>
         )}

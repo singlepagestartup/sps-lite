@@ -1,7 +1,7 @@
 "use client";
 import { memo } from "react";
-import { Component as ReceiptRelations } from "@sps/ecommerce/relations/orders-to-file-storage-module-files/frontend/component";
-import { Component as File } from "@sps/file-storage/models/file/frontend/component";
+import { Component as OrdersToFileStorageModuleFiles } from "@sps/ecommerce/relations/orders-to-file-storage-module-files/frontend/component";
+import { Component as FileStorageModuleFile } from "@sps/file-storage/models/file/frontend/component";
 import { Icon } from "@sps/ui-adapter";
 import { NEXT_PUBLIC_API_SERVICE_URL } from "@sps/shared-utils";
 import type { IComponentPropsExtended } from "./interface";
@@ -56,7 +56,7 @@ export const Component = memo(function Component(
                   </span>
                 ))}
         </span>
-        <ReceiptRelations
+        <OrdersToFileStorageModuleFiles
           isServer={false}
           variant="find"
           apiProps={{
@@ -70,9 +70,9 @@ export const Component = memo(function Component(
             },
           }}
         >
-          {({ data: receipts }) =>
-            receipts?.length ? (
-              <File
+          {({ data: ordersToFileStorageModuleFiles }) =>
+            ordersToFileStorageModuleFiles?.length ? (
+              <FileStorageModuleFile
                 isServer={false}
                 variant="find"
                 apiProps={{
@@ -82,22 +82,24 @@ export const Component = memo(function Component(
                         {
                           column: "id",
                           method: "eq",
-                          value: receipts[0].fileStorageModuleFileId,
+                          value:
+                            ordersToFileStorageModuleFiles[0]
+                              .fileStorageModuleFileId,
                         },
                       ],
                     },
                   },
                 }}
               >
-                {({ data: files }) =>
-                  files?.[0] ? (
+                {({ data: fileStorageModuleFiles }) =>
+                  fileStorageModuleFiles?.[0] ? (
                     <a
                       className={receiptClassName}
                       download
                       href={
-                        /^https?:\/\//.test(files[0].file)
-                          ? files[0].file
-                          : `${NEXT_PUBLIC_API_SERVICE_URL}/public${files[0].file}`
+                        /^https?:\/\//.test(fileStorageModuleFiles[0].file)
+                          ? fileStorageModuleFiles[0].file
+                          : `${NEXT_PUBLIC_API_SERVICE_URL}/public${fileStorageModuleFiles[0].file}`
                       }
                     >
                       <Icon name="file-text" />
@@ -115,7 +117,7 @@ export const Component = memo(function Component(
                     </button>
                   )
                 }
-              </File>
+              </FileStorageModuleFile>
             ) : (
               <button
                 type="button"
@@ -128,7 +130,7 @@ export const Component = memo(function Component(
               </button>
             )
           }
-        </ReceiptRelations>
+        </OrdersToFileStorageModuleFiles>
       </div>
     </li>
   );

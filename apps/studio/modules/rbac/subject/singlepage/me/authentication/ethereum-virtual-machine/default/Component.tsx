@@ -1,4 +1,10 @@
 "use client";
+import type {
+  IComponentProps,
+  IEthereumVirtualMachineProps,
+} from "./interface";
+export type { IEthereumVirtualMachineProps } from "./interface";
+
 import { twMerge as mergeButtonClass } from "tailwind-merge";
 
 import {
@@ -6,18 +12,13 @@ import {
   useEffect,
   useState,
 } from "react";
-export interface IEthereumVirtualMachineProps {
-  variant?: string;
-  initialState?: "idle" | "authorize" | "complete" | "error";
-  walletAddress?: string;
-  onSuccess?: () => void;
-}
+
 export function Component({
   variant = "me-authentication-ethereum-virtual-machine-default",
   initialState = "idle",
   walletAddress = "0x1234567890abcdef1234567890abcdef12345678",
   onSuccess,
-}: IEthereumVirtualMachineProps = {}) {
+}: IComponentProps = {}) {
   const [state, setState] = useState(initialState);
   useEffect(() => setState(initialState), [initialState]);
   return (

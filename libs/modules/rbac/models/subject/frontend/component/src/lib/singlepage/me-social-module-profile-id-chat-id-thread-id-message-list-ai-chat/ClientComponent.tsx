@@ -1,10 +1,7 @@
 "use client";
-import { api as serverApi } from "@sps/rbac/models/subject/sdk/server";
-import { clientHost } from "@sps/rbac/models/subject/sdk/model";
-import { saturateHeaders } from "@sps/shared-frontend-client-utils";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
 import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
-import { Component as Messages } from "@sps/social/models/message/frontend/component";
+import { Component as SocialModuleMessage } from "@sps/social/models/message/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const messages = {
@@ -26,39 +23,12 @@ export function Component(props: IComponentPropsExtended) {
       ? AI_CHAT_DOCUMENTS.find((item) => item.key === document.key)
       : undefined;
   return (
-    <Messages
+    <SocialModuleMessage
       isServer={false}
       variant="list-ai-chat"
       keepDataWhileFetching
-      apiProps={{
-        reactQueryOptions: {
-          initialData: ordered,
-          queryFn: () =>
-            serverApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind(
-              {
-                id: props.data.id,
-                socialModuleProfileId: props.project.requesterProfileId,
-                socialModuleChatId: props.project.chat.id,
-                socialModuleThreadId: props.thread.id,
-                host: clientHost,
-                options: {
-                  headers: saturateHeaders({ "Cache-Control": "no-store" }),
-                },
-              },
-            ),
-        },
-        params: {
-          filters: {
-            and: [
-              {
-                column: "id",
-                method: "inArray",
-                value: ordered.map((message) => message.id),
-              },
-            ],
-          },
-        },
-      }}
+      dataSource="props"
+      data={ordered}
       documentTitle={
         definition ? props.thread.title || definition.title : undefined
       }

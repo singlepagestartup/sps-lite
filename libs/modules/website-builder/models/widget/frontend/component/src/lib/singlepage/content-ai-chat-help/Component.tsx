@@ -1,3 +1,4 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import Markdown from "markdown-to-jsx";
 import { AI_CHAT_HELP_CONTENT } from "@sps/shared-utils";
 import { Icon } from "@sps/ui-adapter";
@@ -9,6 +10,7 @@ export function Component({
   data,
   children,
   language = "en",
+  className,
 }: IComponentPropsExtended) {
   const copy = AI_CHAT_HELP_CONTENT;
   function paragraphs(items: string[]) {
@@ -25,7 +27,11 @@ export function Component({
   }
   return (
     <main
-      className="@container mx-auto w-full max-w-6xl px-5 py-7 sm:px-8 sm:py-10"
+      className={cn(
+        "@container mx-auto w-full max-w-6xl px-5 py-7 sm:px-8 sm:py-10",
+        data?.className,
+        className,
+      )}
       data-module="website-builder"
       data-model="widget"
       data-variant={variant}
@@ -34,7 +40,9 @@ export function Component({
       <div className="mb-8 max-w-2xl">
         <div className="mb-4 h-1 w-10 rounded-full bg-primary text-primary-foreground" />
         <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-          {copy.sections.hero.title}
+          {data?.title?.[language] ||
+            data?.title?.en ||
+            copy.sections.hero.title}
         </h1>
         <div className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground [&_a]:underline">
           {paragraphs(copy.sections.hero.paragraphs)}

@@ -1,25 +1,25 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   const project = props.project;
   try {
-    const data = await api.socialModuleChatFindByIdThreadFind({
+    const data = await subjectApi.socialModuleChatFindByIdThreadFind({
       id: props.data.id,
       socialModuleChatId: project.chat.id,
       options: props.apiProps?.options,
     });
     return (
-      <Component
+      <ChildComponent
         {...props}
         threadsRead={{ data, isPending: false, isError: false }}
       />
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         threadsRead={{
           isPending: false,

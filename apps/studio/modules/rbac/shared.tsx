@@ -1,7 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../website-builder/feature/index";
+import { Component as SharedIcon } from "../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../shared/icon/singlepage/phosphor/icons.json";
 import { aiChatAccount } from "./subject/singlepage/me/account/fixture";
 type ModuleIcon = ReturnType<typeof createIcon>;
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
@@ -31,7 +32,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 export interface RbacSubject {

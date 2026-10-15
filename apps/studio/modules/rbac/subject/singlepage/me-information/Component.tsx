@@ -1,7 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, SubjectMeInformationProps } from "./interface";
+export type { SubjectMeInformationProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   defaultRbacSubject,
   formatRbacDateTime,
@@ -34,15 +38,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SubjectMeInformationProps {
-  variant?: string;
-  subject: RbacSubject;
-  title: string;
-  description: string;
-}
 function MetadataValue({
   label,
   value,
@@ -65,9 +63,7 @@ function MetadataValue({
     </div>
   );
 }
-export function SubjectMeInformation(
-  props?: Partial<SubjectMeInformationProps>,
-) {
+export function SubjectMeInformation(props?: IComponentProps) {
   const { subject, title, description } = {
     ...defaultSubjectMeInformationProps,
     ...props,

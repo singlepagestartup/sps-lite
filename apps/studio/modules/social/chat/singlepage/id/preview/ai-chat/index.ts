@@ -1,8 +1,11 @@
+export { Component } from "./Component";
 export {
-  Component,
   type IChatPreviewProps,
   type IThreadRowProps,
   type IAttachedDocument,
   type IThreadMessage,
   type ITopic,
-} from "./Component";
+} from "./interface";
+
+export type { IComponentProps, IComponentPropsExtended } from "./interface";
+export { variant } from "./interface";

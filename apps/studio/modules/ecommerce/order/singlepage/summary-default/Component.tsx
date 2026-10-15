@@ -1,8 +1,12 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, OrderSummaryDefaultProps } from "./interface";
+export type { OrderSummaryDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as EcommerceModuleProduct } from "../../../product/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Product } from "../../../product/index";
 import {
   formatCartMoney,
   getCartTotals,
@@ -36,19 +40,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface OrderSummaryDefaultProps {
-  variant?: string;
-  items: CartItem[];
-  compact?: boolean;
-  editable?: boolean;
-  onDecrease?: (item: CartItem) => void;
-  onIncrease?: (item: CartItem) => void;
-  onRemove?: (item: CartItem) => void;
-}
-export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
+export function OrderSummaryDefault(props?: IComponentProps) {
   const { items, compact, editable, onDecrease, onIncrease, onRemove } = {
     ...defaultOrderSummaryDefaultProps,
     ...props,
@@ -79,7 +74,7 @@ export function OrderSummaryDefault(props?: Partial<OrderSummaryDefaultProps>) {
       <ul className="divide-y divide-border px-6">
         {items.map((item) => (
           <li key={item.id} className="py-5">
-            <EcommerceModuleProduct
+            <Product
               variant="cart-default"
               compact={compact}
               href={productOverviewStoryHref}

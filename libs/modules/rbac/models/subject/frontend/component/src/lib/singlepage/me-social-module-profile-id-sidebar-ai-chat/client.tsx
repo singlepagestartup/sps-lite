@@ -1,17 +1,19 @@
 "use client";
+import { Skeleton } from "./Skeleton";
 import "client-only";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as ChildComponent } from "./Component";
 import { SourceFiles } from "./ClientComponent";
 import type { IComponentProps, ISourceFilesReaderProps } from "./interface";
 export default function Client(props: IComponentProps) {
   const scope = {
+    options: props.apiProps?.options,
     id: props.data.id,
     socialModuleProfileId: props.project.requesterProfileId,
     socialModuleChatId: props.project.chat.id,
   };
   const profiles =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFind(scope);
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFind(scope);
   const profile = profiles.data?.find((item) => item.id === props.profileId);
   const target = {
     ...scope,
@@ -21,13 +23,16 @@ export default function Client(props: IComponentProps) {
     },
   };
   const skills =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(target);
-  const knowledge =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(
       target,
     );
+  const knowledge =
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+      target,
+    );
+  if (profiles.isPending) return props.skeleton ?? <Skeleton />;
   return (
-    <Component
+    <ChildComponent
       {...props}
       profilesRead={{
         data: profiles.data,
@@ -66,7 +71,7 @@ function SourceFilesReader({
   sourceId,
 }: ISourceFilesReaderProps) {
   const files =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
       {
         ...scope,
         targetSocialModuleProfileId: profileId,

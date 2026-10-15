@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Component as SocialModuleChat } from "../../index";
+import { Component as Chat } from "../../index";
 const meta = {
   id: "modules-social-models-chat-singlepage-list",
   title: "Modules/Social/Chat/Singlepage/list",
-  component: SocialModuleChat,
+  component: Chat,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {
     count: { control: { type: "number", min: 0, max: 50 } },
     empty: { control: "boolean" },
   },
-} satisfies Meta<typeof SocialModuleChat>;
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Chat>, { variant: "list" }>
+>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};

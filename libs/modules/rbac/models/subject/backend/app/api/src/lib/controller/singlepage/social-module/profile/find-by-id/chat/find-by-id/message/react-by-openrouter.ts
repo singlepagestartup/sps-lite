@@ -35,6 +35,7 @@ import {
 } from "@sps/rbac/models/subject/sdk/model";
 import {
   blobifyFiles,
+  assertKnowledgeAttachmentBytes,
   getHttpErrorType,
   getAIChatDocumentForSkill,
   estimateAiContextTokens,
@@ -76,8 +77,7 @@ import type { IAiContextHistoryMessage } from "@sps/rbac/models/subject/backend/
 import { fingerprintAiContextMessage } from "@sps/rbac/models/subject/backend/app/api/src/lib/service/singlepage/social-module/profile/ai/context/utils";
 import * as jwt from "hono/jwt";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import { basename, extname, join, normalize } from "node:path";
+import { basename, extname } from "node:path";
 
 type TRequestTask =
   | "qa"
@@ -3704,52 +3704,6 @@ export class Handler {
     );
   }
 
-  private async readFileStorageModuleFile(file: IFileStorageModuleFile) {
-    const source = this.toLearnText(file.file);
-
-    if (!source) {
-      throw new Error("Validation error. File-storage path is required");
-    }
-
-    if (/^https?:\/\//i.test(source)) {
-      const response = await fetch(source);
-
-      if (!response.ok) {
-        throw new Error(
-          `Knowledge attachment download failed with status ${response.status}`,
-        );
-      }
-
-      return response.text();
-    }
-
-    const relativePath = normalize(source.replace(/^\/+/, ""));
-
-    if (!relativePath || relativePath.startsWith("..")) {
-      throw new Error("Validation error. Invalid file-storage path");
-    }
-
-    const candidates = [
-      join(process.cwd(), "public", relativePath),
-      join(process.cwd(), "apps/api/public", relativePath),
-    ];
-    let lastError: unknown;
-
-    for (const candidate of candidates) {
-      try {
-        return await readFile(candidate, "utf8");
-      } catch (error) {
-        lastError = error;
-      }
-    }
-
-    throw new Error(
-      `Text attachment could not be read from file-storage: ${
-        lastError instanceof Error ? lastError.message : String(lastError)
-      }`,
-    );
-  }
-
   private toTitle(value: string) {
     return this.toLearnText(value).replace(/\s+/g, " ").trim().slice(0, 120);
   }
@@ -3906,10 +3860,31 @@ export class Handler {
 
     for (const fileStorageFile of props.fileStorageFiles) {
       if (presentationOnlyIds.has(fileStorageFile.id)) continue;
-      if (this.isAudioFileStorageFile(fileStorageFile)) {
+      if (this.isAudioFileStorageFile(fileStorageFile)) continue;
+      let attachmentBytes: Buffer;
+      try {
+        assertKnowledgeAttachmentBytes({
+          bytes: new Uint8Array(),
+          name: fileStorageFile.extension
+            ? "file." + fileStorageFile.extension
+            : fileStorageFile.file,
+          mimeType: fileStorageFile.mimeType || undefined,
+        });
+        attachmentBytes =
+          await this.service.fileStorageModule.file.readBytes(fileStorageFile);
+        assertKnowledgeAttachmentBytes({
+          bytes: attachmentBytes,
+          name: fileStorageFile.file,
+          mimeType: fileStorageFile.mimeType || undefined,
+        });
+      } catch (error) {
+        // Historical unsupported attachments remain stored, but never enter model input.
+        routingTextParts.push(
+          "Unsupported attachment excluded: " +
+            (fileStorageFile.adminTitle || "file"),
+        );
         continue;
       }
-
       const source = this.toLearnText(fileStorageFile.file);
       const fileName =
         this.toLearnText(fileStorageFile.adminTitle) ||
@@ -3920,9 +3895,7 @@ export class Handler {
         : `${NEXT_PUBLIC_API_SERVICE_URL}/public${source}`;
 
       if (this.isTextFileStorageFile(fileStorageFile)) {
-        const attachmentText = (
-          await this.readFileStorageModuleFile(fileStorageFile)
-        ).trim();
+        const attachmentText = attachmentBytes.toString("utf8").trim();
 
         if (attachmentText) {
           routingTextParts.push(

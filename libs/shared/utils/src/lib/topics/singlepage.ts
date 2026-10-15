@@ -14,6 +14,11 @@ import type { ITopicRule } from "./index";
  * stay in lockstep for every rule listed here.
  */
 export const topicRules: ITopicRule[] = [
+  {
+    routeTemplate: "/api/rbac/identities/[rbac.identities.id]/change-password",
+    topics: ["rbac.identities", "rbac.identities.[rbac.identities.id]"],
+    stop: true,
+  },
   ...["find-by-url", "url-segment-value", "urls"].map(
     (operation): ITopicRule => ({
       routeTemplate: `/api/host/pages/${operation}`,

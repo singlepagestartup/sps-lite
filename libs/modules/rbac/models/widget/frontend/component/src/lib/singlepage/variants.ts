@@ -1,3 +1,4 @@
+import { Component as SubjectMeCrmModuleFormSupportAiChat } from "./subject-me-crm-module-form-support-ai-chat";
 import { Component as SubjectMeAuthenticationResetPasswordAiChat } from "./subject-me-authentication-reset-password-ai-chat";
 import { Component as SubjectMeAuthenticationForgotPasswordAiChat } from "./subject-me-authentication-forgot-password-ai-chat";
 import { Component as SubjectMeAuthenticationRegistrationAiChat } from "./subject-me-authentication-registration-ai-chat";
@@ -32,6 +33,8 @@ import { Component as SubjectOverviewDefault } from "./subject/overview/default"
 import { Component as SubjectListDefault } from "./subject/list/default";
 
 export const variants = {
+  "subject-me-crm-module-form-support-ai-chat":
+    SubjectMeCrmModuleFormSupportAiChat,
   "subject-me-authentication-reset-password-ai-chat":
     SubjectMeAuthenticationResetPasswordAiChat,
   "subject-me-authentication-forgot-password-ai-chat":

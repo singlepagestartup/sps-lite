@@ -1,8 +1,10 @@
-import { Component as Glyph } from "../icon/index";
+import type { IComponentProps, FeatureListItemDefaultProps } from "./interface";
+export type { FeatureListItemDefaultProps } from "./interface";
+import { Component as SharedIcon } from "../../../../shared/icon";
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../icon/icons.json";
-type ModuleIcon = ReturnType<typeof createIcon>;
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -30,14 +32,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <Glyph {...props} />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type FeatureListItemDefaultProps =
-  typeof defaultFeatureListItemDefaultProps;
-export function FeatureListItemDefault(
-  props?: Partial<FeatureListItemDefaultProps> & { variant?: string },
-) {
+export function FeatureListItemDefault(props?: IComponentProps) {
   const {
     icon: Icon,
     label,
@@ -72,3 +70,5 @@ export const defaultFeatureListItemDefaultProps = {
   label: "Modular architecture",
   className: "",
 };
+
+import type { ModuleIcon } from "./interface";

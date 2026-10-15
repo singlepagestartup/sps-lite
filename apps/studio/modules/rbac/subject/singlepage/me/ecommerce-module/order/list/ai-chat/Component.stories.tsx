@@ -1,14 +1,14 @@
-import { Component as RbacModuleSubject } from "../../../../../..";
+import { Component as Subject } from "../../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../account/Account";
 import { aiChatAccount } from "../../../../account/fixture";
-function Example({
+function Component({
   showTokens = true,
   empty = false,
 }: { showTokens?: boolean; empty?: boolean } = {}) {
   return (
     <AccountProvider account={aiChatAccount}>
-      <RbacModuleSubject
+      <Subject
         variant="me-ecommerce-module-order-list-ai-chat"
         showTokens={showTokens}
         empty={empty}
@@ -19,10 +19,10 @@ function Example({
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-ecommerce-module-order-list-ai-chat",
   title: "Modules/RBAC/Subject/Singlepage/me/ecommerce/order/list/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
   args: { showTokens: true, empty: false },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const Empty: StoryObj<typeof meta> = { args: { empty: true } };

@@ -1,12 +1,12 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   try {
     const data =
-      await api.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind(
+      await subjectApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageFind(
         {
           id: props.data.id,
           socialModuleProfileId: props.project.requesterProfileId,
@@ -16,14 +16,14 @@ export default async function Server(props: IComponentProps) {
         },
       );
     return (
-      <Component
+      <ChildComponent
         {...props}
         messagesRead={{ data, isPending: false, isError: false }}
       />
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         messagesRead={{
           isPending: false,

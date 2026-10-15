@@ -19,6 +19,7 @@ import {
   RequestSubjectCanManageChatAgentProfile,
   RequestSubjectIdOwner,
   RequestSubjectOwnsSocialModuleChat,
+  RequestSubjectOwnsIdentity,
 } from "../../../../../middlewares";
 
 import { Handler as AuthenticationMe } from "./authentication/me";
@@ -420,6 +421,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "PATCH",
         path: "/:uuid/identities/:identityUuid",
         handler: this.identitiesUpdate,
+        middlewares: [new RequestSubjectOwnsIdentity(this.service).init()],
       },
       {
         method: "POST",
@@ -430,6 +432,7 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "POST",
         path: "/:id/crm-module/form/:crmModuleFormId/request",
         handler: this.crmModuleFormRequestCreate,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "DELETE",

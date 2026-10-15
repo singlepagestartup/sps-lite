@@ -1,22 +1,6 @@
-export interface ContentDefaultProps {
-  variant?: string;
-  counterLabel?: string;
-  counterValue?: string | number;
-  eyebrow?: string;
-  title: string;
-  description?: string;
-  primaryAction?: {
-    label: string;
-    href: string;
-  };
-  secondaryAction?: {
-    label: string;
-    href: string;
-  };
-  mediaLabel?: string;
-  mediaSrc?: string;
-  mediaAlt?: string;
-}
+import type { IComponentProps, ContentDefaultProps } from "./interface";
+export type { ContentDefaultProps } from "./interface";
+
 export function ContentDefault({
   variant = "content-default",
   counterLabel = defaultContentProps.counterLabel,
@@ -29,7 +13,7 @@ export function ContentDefault({
   mediaLabel = defaultContentProps.mediaLabel,
   mediaSrc,
   mediaAlt = defaultContentProps.mediaAlt,
-}: ContentDefaultProps) {
+}: IComponentProps) {
   const hasCounterValue =
     counterValue !== undefined &&
     counterValue !== null &&

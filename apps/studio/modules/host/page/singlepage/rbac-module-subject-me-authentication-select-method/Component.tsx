@@ -1,18 +1,17 @@
-import { Component as HostModuleLayout } from "../../../layout/index";
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
+import { Component as Layout } from "../../../layout/index";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
 const authorProfileStoryHref =
   "/?path=/story/modules-host-models-page-singlepage-social-module-profile-slug-author--default";
 
-interface IComponentVariantProps {
-  variant?: string;
-}
 export function RbacSubjectAuthenticationSelectMethod({
   variant = "rbac-module-subject-me-authentication-select-method",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="website"
         activeHref="/rbac/subject/authentication/select-method"
         footer="compact"
@@ -30,7 +29,7 @@ export function RbacSubjectAuthenticationSelectMethod({
             }}
           />
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

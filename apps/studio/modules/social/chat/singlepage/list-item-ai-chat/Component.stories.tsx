@@ -1,11 +1,11 @@
-import { Component as SocialModuleChat } from "../../index";
+import { Component as Chat } from "../../index";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-function Example() {
+function Component() {
   return (
     <div className="w-64 rounded-xl bg-default p-4">
-      <SocialModuleChat
+      <Chat
         variant="list-item-ai-chat"
         data={{
           id: "work-chat",
@@ -22,8 +22,8 @@ function Example() {
 const meta = {
   id: "modules-social-models-chat-singlepage-list-item-ai-chat",
   title: "Modules/Social/Chat/Singlepage/list-item-ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "centered" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

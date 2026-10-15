@@ -1,11 +1,11 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   try {
-    const profiles = await api.socialModuleProfileFind({
+    const profiles = await subjectApi.socialModuleProfileFind({
       id: props.data.id,
       params: {
         filters: {
@@ -21,14 +21,14 @@ export default async function Server(props: IComponentProps) {
       options: props.apiProps?.options,
     });
     const contexts = profiles.length
-      ? await api.socialModuleProfileProjects({
+      ? await subjectApi.socialModuleProfileProjects({
           id: props.data.id,
           options: props.apiProps?.options,
         })
       : [];
     const profileIds = new Set(profiles.map((profile) => profile.id));
     return (
-      <Component
+      <ChildComponent
         {...props}
         loadedProjects={contexts.filter((project) =>
           profileIds.has(project.profile.id),
@@ -38,7 +38,7 @@ export default async function Server(props: IComponentProps) {
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         projectsLoading={false}
         projectsError={

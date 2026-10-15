@@ -4,6 +4,8 @@ import type { IComponentProps as IParent } from "@sps/shared-frontend-components
 
 export const variant =
   "subject-me-authentication-registration-ai-chat" as const;
-export interface IComponentProps extends IParent<IModel, typeof variant> {}
+export interface IComponentProps extends IParent<IModel, typeof variant> {
+  language?: string;
+}
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}

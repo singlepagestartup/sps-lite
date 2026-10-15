@@ -1,3 +1,5 @@
+import type { IComponentProps, ContentPageHeaderProps } from "./interface";
+export type { ContentPageHeaderProps } from "./interface";
 export const defaultContentPageHeaderProps = {
   eyebrow: "Services",
   title: "What we build",
@@ -5,14 +7,7 @@ export const defaultContentPageHeaderProps = {
     "End-to-end digital services — from website development and SaaS products to consulting, audits, and team training.",
 };
 
-export type ContentPageHeaderProps = typeof defaultContentPageHeaderProps & {
-  /** A tighter introduction for a page with a following featured panel. */
-  compact?: boolean;
-};
-
-export function ContentPageHeader(
-  props?: Partial<ContentPageHeaderProps> & { variant?: string },
-) {
+export function ContentPageHeader(props?: IComponentProps) {
   const {
     eyebrow,
     title,

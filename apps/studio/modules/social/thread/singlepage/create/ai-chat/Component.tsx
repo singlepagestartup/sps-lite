@@ -1,16 +1,13 @@
+import type { IComponentProps, IThreadCreateProps } from "./interface";
+export type { IThreadCreateProps } from "./interface";
 import type { ReactNode } from "react";
-export interface IThreadCreateProps {
-  variant?: string;
-  chatId?: string;
-  navigation?: ReactNode;
-  children?: ReactNode;
-}
+
 export function Component({
   variant = "create-ai-chat",
   chatId,
   navigation,
   children,
-}: IThreadCreateProps) {
+}: IComponentProps) {
   return (
     <section
       data-ds-block="social.thread.create-ai-chat"

@@ -1,3 +1,5 @@
+import type { IComponentProps, ProfileCompactProps } from "./interface";
+export type { ProfileCompactProps } from "./interface";
 /**
  * social.profile.compact
  *
@@ -16,11 +18,7 @@ export const defaultProfileCompactProps = {
   target: undefined as "_blank" | "_parent" | "_self" | "_top" | undefined,
 };
 
-export type ProfileCompactProps = typeof defaultProfileCompactProps;
-
-export function ProfileCompact(
-  props?: Partial<ProfileCompactProps> & { variant?: string },
-) {
+export function ProfileCompact(props?: IComponentProps) {
   const { name, role, avatar, href, target, inverse } = {
     ...defaultProfileCompactProps,
     ...props,

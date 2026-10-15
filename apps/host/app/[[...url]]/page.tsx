@@ -11,7 +11,8 @@ export const experimental_ppr = true;
 
 export async function generateStaticParams() {
   // Dynamic masks include user-owned entities and can expand to millions of
-  // paths. Resolve requested URLs on demand instead of enumerating them in dev.
+  // paths. Both build and dev leave the manifest empty; dynamicParams permits
+  // on-demand rendering, subject to each page's fetch and cache behavior.
   return [];
 }
 

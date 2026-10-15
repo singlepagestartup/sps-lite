@@ -1,6 +1,8 @@
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
 import { ReactNode as ReactNode } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { Component as BlogModuleWidget } from "../../../../blog/widget/index";
 interface SectionStackProps {
@@ -20,15 +22,13 @@ function SectionStack({ children, className }: SectionStackProps) {
     </div>
   );
 }
-interface IComponentVariantProps {
-  variant?: string;
-}
+
 export function BlogFindArticleCard({
   variant = "blog-module-article-find",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout variant="website" footer="compact">
+      <Layout variant="website" footer="compact">
         <main
           className="min-w-0"
           data-ds-page="host.page.blog-module-article-find"
@@ -46,7 +46,7 @@ export function BlogFindArticleCard({
             <BlogModuleWidget variant="tag-find-button" />
           </SectionStack>
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

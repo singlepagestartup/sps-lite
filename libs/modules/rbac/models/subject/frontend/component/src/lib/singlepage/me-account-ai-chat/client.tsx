@@ -1,29 +1,46 @@
 "use client";
+import { Skeleton } from "./Skeleton";
 import "client-only";
-import { api } from "@sps/rbac/models/subject/sdk/client";
-import { Component } from "./Component";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default function Client(props: IComponentProps) {
-  const profiles = api.socialModuleProfileFind({
+  const profiles = subjectApi.socialModuleProfileFind({
+    options: props.apiProps?.options,
     id: props.data.id,
     params: {
       filters: { and: [{ column: "variant", method: "eq", value: "default" }] },
     },
     reactQueryOptions: { retry: false },
   });
-  const identities = api.identityFind({
+  const identities = subjectApi.identityFind({
+    options: props.apiProps?.options
+      ? { ...props.apiProps.options, next: { ...props.apiProps.options.next } }
+      : undefined,
+
     id: props.data.id,
     reactQueryOptions: { retry: false },
   });
-  const balance = api.billingModuleBalance({ id: props.data.id });
+  const balance = subjectApi.billingModuleBalance({
+    options: props.apiProps?.options,
+    id: props.data.id,
+  });
   const profile = profiles.data?.[0];
-  const avatar = api.socialModuleProfileFindByIdAvatarFind({
+  const avatar = subjectApi.socialModuleProfileFindByIdAvatarFind({
+    options: props.apiProps?.options,
     id: props.data.id,
     socialModuleProfileId: profile?.id || "",
     reactQueryOptions: { retry: false, enabled: !!profile },
   });
+  if (
+    profiles.isPending ||
+    identities.isPending ||
+    balance.isPending ||
+    (!!profile && avatar.isPending)
+  )
+    return props.skeleton ?? <Skeleton />;
   return (
-    <Component
+    <ChildComponent
       {...props}
       accountProfile={profile}
       accountIdentities={identities.data}

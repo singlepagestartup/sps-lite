@@ -4,18 +4,19 @@
 
 Links host widgets to external module widgets.
 
-AI Chat composition uses the target Widget's persisted variant in `default`.
-The Website Builder `navbar-ai-chat` adapter supplies RBAC account and project
-selectors through the Widget's children. The project-creation and Help adapters
-supply their RBAC forms to Website Builder content slots.
-Navbar and Help resolve the Subject session through the client SDK inside their
-Client Components. The Host server readers load public Widget records without
-reading session cookies. Help composes its support form in the Host adapter.
-The persisted Website Builder Help Widget owns the support card; its
-child slot receives the RBAC form, which loads the CRM Form through its SDK.
-Landing receives the Social Chat demonstration through its children
-slot. Website Builder owns their presentation, and the Host adapter owns these
-cross-module imports.
+AI Chat composition starts from the target Widget's persisted module and ID.
+Projects, authentication and Help target RBAC Widgets. RBAC resolves their own
+Website Builder content and CRM links; Host does not search a content variant or
+global authentication slug. The original project creation card and photograph
+remain attached to the selected RBAC Widget. A separate runtime manifest command
+performs and can roll back the data cutover without changing Host Page, Layout
+or Widget IDs.
+
+Website Builder targets render their stored variant directly. Landing owns its
+local interactive demonstration and imports no Social Chat reader. The Navbar
+adapter supplies account/project controls and route presentation flags through
+children; public Widget record reads do not consume session cookies. Subject
+controls own their authenticated client SDK reads.
 
 The three Profile/Chat/Thread screen adapters resolve IDs through Host Page
 `url-segment-value`, using the page mask stored in the database. They pass those

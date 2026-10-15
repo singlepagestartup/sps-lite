@@ -1,32 +1,13 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { api } from "@sps/rbac/models/subject/sdk/client";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import { queryClient } from "@sps/shared-frontend-client-api";
 import { route } from "@sps/rbac/models/subject/sdk/model";
 import { getProjectsQueryKey } from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
-import type { IComponentPropsExtended } from "./interface";
+import type { IClientComponentProps } from "./interface";
 
-export function Component(props: IComponentPropsExtended) {
-  if (!props.project)
-    return (
-      <p role="alert" className="p-8">
-        Choose a project.
-      </p>
-    );
-  return (
-    <SettingsForm
-      key={props.project.profile.id}
-      {...props}
-      project={props.project}
-    />
-  );
-}
-function SettingsForm(
-  props: IComponentPropsExtended & {
-    project: NonNullable<IComponentPropsExtended["project"]>;
-  },
-) {
+export function Component(props: IClientComponentProps) {
   const { project } = props;
   const router = useRouter();
   const savedName = project.profile.title?.en || project.profile.adminTitle;
@@ -39,7 +20,9 @@ function SettingsForm(
     targetSocialModuleProfileId: project.profile.id,
   };
   const update =
-    api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdUpdate(scope);
+    subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdUpdate(
+      scope,
+    );
   return (
     <div className="min-w-0 flex-1">
       <header className="border-b border-border p-5">

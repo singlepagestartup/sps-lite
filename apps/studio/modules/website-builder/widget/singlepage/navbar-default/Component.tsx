@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type { IComponentProps, NavbarDefaultProps } from "./interface";
+export type { NavbarDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 
 import {
   forwardRef,
@@ -11,9 +14,9 @@ import {
   type ReactNode,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
-import { Component as WebsiteBuilderModuleButtonsArray } from "../../../buttons-array/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Logotype } from "../../../logotype/index";
+import { Component as ButtonsArray } from "../../../buttons-array/index";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -41,23 +44,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface NavbarDefaultProps {
-  variant?: string;
-  activeHref?: string;
-  brand?: string;
-  cartButton?: ReactNode;
-  subjectAccount?: ReactNode;
-}
 export function NavbarDefault({
   variant = "navbar-default",
   activeHref = "/",
   brand,
   cartButton,
   subjectAccount,
-}: NavbarDefaultProps = {}) {
+}: IComponentProps = {}) {
   const [open, setOpen] = useState(false);
   const menuId = useId();
   const trigger = useRef<HTMLButtonElement>(null);
@@ -79,12 +75,9 @@ export function NavbarDefault({
     >
       <div className="mx-auto flex min-h-20 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-6">
-          <WebsiteBuilderModuleLogotype variant="default" brand={brand} />
+          <Logotype variant="default" brand={brand} />
           <div className="hidden lg:block">
-            <WebsiteBuilderModuleButtonsArray
-              variant="navbar-default"
-              activeHref={activeHref}
-            />
+            <ButtonsArray variant="navbar-default" activeHref={activeHref} />
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-2">
@@ -105,7 +98,7 @@ export function NavbarDefault({
       </div>
       {open && (
         <div id={menuId} className="border-t border-border px-4 py-3 lg:hidden">
-          <WebsiteBuilderModuleButtonsArray
+          <ButtonsArray
             variant="navbar-default"
             activeHref={activeHref}
             orientation="vertical"

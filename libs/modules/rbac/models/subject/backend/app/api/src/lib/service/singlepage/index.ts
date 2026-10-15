@@ -1,3 +1,7 @@
+import {
+  Service as CrmFormRequestCreate,
+  type IExecuteProps as ICrmFormRequestCreateProps,
+} from "./crm/form/request";
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI } from "@sps/shared-backend-api";
@@ -10,6 +14,10 @@ import {
   type IAiContextService,
 } from "./social-module/profile/ai/context";
 import { Service as ProfileOwnership } from "./social-module/profile/ownership";
+import {
+  Service as ProfileSkills,
+  type IForDocumentProps as IProfileDocumentSkillProps,
+} from "./social-module/profile/skills";
 import { Service as AuthenticationMe } from "./authentication/me";
 import { Service as FreeSubscription } from "./billing/free-subscription";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
@@ -60,6 +68,10 @@ import {
   Service as EcommerceOrderCheckout,
   IExecuteProps as IEcommerceOrderCheckoutExecuteProps,
 } from "./ecommerce/order/checkout";
+import {
+  Service as EcommerceProductCheckout,
+  type IExecuteProps as IEcommerceProductCheckoutProps,
+} from "./ecommerce/product/checkout";
 import {
   Service as ChatSubjectsWithSocialModuleProfiles,
   IExecuteProps as IChatSubjectsWithSocialModuleProfilesProps,
@@ -235,6 +247,15 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return new SocialModuleProfileAvatarUpdate({
       fileStorageModule: this.fileStorageModule,
     }).execute(props);
+  }
+
+  async socialModuleProfileDocumentSkillFind(
+    props: IProfileDocumentSkillProps,
+  ) {
+    return this.getSocialModuleProfileSkillsService().forDocument(
+      props.socialModuleProfileId,
+      props.documentKey,
+    );
   }
 
   async socialModuleProfileMcpCatalogOpen(
@@ -481,6 +502,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }).execute(props);
   }
 
+  async crmModuleFormRequestCreate(props: ICrmFormRequestCreateProps) {
+    return this.getCrmFormRequestCreateService().execute(props);
+  }
+
+  async ecommerceProductCheckout(props: IEcommerceProductCheckoutProps) {
+    return this.getEcommerceProductCheckoutService().execute(props);
+  }
+
   async socialModuleChatSubjectsWithSocialModuleProfiles(
     props: IChatSubjectsWithSocialModuleProfilesProps,
   ) {
@@ -613,6 +642,18 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return new ChatLifecycleService(this);
   }
 
+  protected getCrmFormRequestCreateService() {
+    return new CrmFormRequestCreate(this);
+  }
+
+  protected getEcommerceProductCheckoutService() {
+    return new EcommerceProductCheckout(this);
+  }
+
+  protected getSocialModuleProfileSkillsService() {
+    return new ProfileSkills(this.socialModule);
+  }
+
   protected getSocialModuleProfileMcpCatalogService() {
     return new ProfileMcpCatalogService();
   }
@@ -635,6 +676,9 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 }
 
 export type {
+  ICrmModuleFormRequestCreateProps,
+  ISocialModuleProfileDocumentSkillFindProps,
+  IEcommerceProductCheckoutProps,
   IAiContextService,
   IAiContextServiceProps,
   IAiContextPrepareProps,

@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type { IComponentProps, IProjectSelectProps } from "./interface";
+export type { IProjectSelectProps } from "./interface";
 
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useProfiles } from "../../../scope/ai-chat/project/Profiles";
 import { Component as ProjectSelectItem } from "../../item/ai-chat/project/index";
@@ -11,23 +14,16 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IProjectSelectProps {
-  variant?: string;
-  profileId?: string;
-  onNavigate?: () => void;
-  onCloseAutoFocus?: (event: Event) => void;
-  pending?: boolean;
-}
 export function Component({
   variant = "select-ai-chat-project",
   profileId,
   onNavigate,
   onCloseAutoFocus,
   pending,
-}: IProjectSelectProps) {
+}: IComponentProps) {
   const { projects, loading, error, retry } = useProfiles();
   const buttonClassName = `inline-flex min-h-11 max-w-60 items-center gap-2 rounded-xl px-3 text-sm text-muted-foreground hover:bg-muted ${kit.focus}`;
   if (error)

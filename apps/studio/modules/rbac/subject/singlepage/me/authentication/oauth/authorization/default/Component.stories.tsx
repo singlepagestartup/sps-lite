@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component as RbacModuleSubject } from "../../../../../../index";
-import type { IOAuthAuthorizationProps } from "./Component";
-function Example(props: IOAuthAuthorizationProps) {
+import { Component as Subject } from "../../../../../../index";
+import type { IOAuthAuthorizationProps } from "./interface";
+function Component(props: IOAuthAuthorizationProps) {
   return (
-    <RbacModuleSubject
+    <Subject
       {...props}
       key={props.initialState}
       variant="me-authentication-oauth-authorization-default"
@@ -14,7 +14,7 @@ const meta = {
   id: "modules-rbac-models-subject-singlepage-me-authentication-oauth-authorization-default",
   title:
     "Modules/RBAC/Subject/Singlepage/authentication/oauth/authorization/default",
-  component: Example,
+  component: Component,
   args: { initialState: "idle" },
   argTypes: {
     initialState: {
@@ -23,6 +23,6 @@ const meta = {
     },
   },
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};

@@ -450,3 +450,44 @@ Stable thread/Profile sessions group answering, summary and JEV requests in
 OpenRouter. Initial and tool-triggered Knowledge search passes that session to
 embedding requests through `x-session-id`. Persistent instructions precede
 changing Knowledge fragments and conversation state.
+
+### Internal Identity and checkout calls
+
+Identity credential updates require a user JWT matching the Subject route and
+exactly one Subject–Identity relation. The exported
+`RequestSubjectOwnsIdentity` middleware checks both identifiers before the
+handler reads or changes credentials. A privileged secret alone does not satisfy
+this route. The handler calls the injected Identity service and applies its
+output schema to the saved record.
+
+Document message creation resolves its profession through the public
+`socialModuleProfileDocumentSkillFind` Subject method. Its protected factory
+permits startup specialization; controllers do not construct ProfileSkills.
+
+`ecommerceProductCheckout` creates the Product checkout graph and delegates to
+`ecommerceOrderCheckout`, which performs payment checkout and retains its
+compensation behavior. The Product HTTP handler and both order-renewal paths use
+the same public capability. Proceed receives a deferred DI callback so resolving
+Subject and Proceed does not form a constructor cycle, and startup Subject
+methods remain effective.
+
+The extracted Product service retains model and relation SDK mutations. Their
+API middleware bumps HTTP-cache generations before publishing WebSocket events,
+including when renewal starts from a global/scoped check or another service.
+The outer Product checkout route's `ecommerce.checkout` topic does not replace
+those mutation effects.
+
+### CRM submissions
+
+The Subject CRM Request endpoint requires the user JWT to match the Subject ID,
+including when a privileged secret is present. Global route permissions govern
+the selected Form endpoint; Form has no Subject/tenant ownership field. The
+service validates that each submitted Step, Input and Option belongs to that
+Form, using the current linked definitions.
+
+Controllers call `crmModuleFormRequestCreate`; its protected factory permits
+startup specialization. The service resolves notification configuration before
+writing, delegates the atomic Request/association command to CRM Request service,
+then delivers the server-assembled multi-Step payload after commit. The typed
+SDK response distinguishes a saved Request from notification readiness. Repeated
+submission IDs return the same saved receipt and do not resend notifications.

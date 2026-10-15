@@ -1,2 +1,6 @@
-export { Component, type IComponentProps } from "./Component";
-export type { ISourceCardProps } from "./singlepage/id/ai-chat/Component";
+export { Component } from "./Component";
+export type { IComponentProps } from "./interface";
+export type { ISourceCardProps } from "./interface";
+
+export { Skeleton } from "./Skeleton";
+export type { ISkeletonProps } from "./interface";

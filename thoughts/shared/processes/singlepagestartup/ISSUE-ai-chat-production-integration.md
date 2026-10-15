@@ -373,3 +373,155 @@ The check used the local production runtime, not a Docker deployment.
 The temporary production server and its build directory are removed. The
 pre-check tsconfig is restored, preserving earlier working-copy changes. The
 user's dev server, source font files and deployment configuration are unchanged.
+
+## PR #374 manual review remediation plan
+
+Source: 32 inline review comments, reviews 5530267500 and 5531869762, and the
+operator's goal-objective.md. Revision: f0bf528a9db3fd681fbcc0b556ae33c8505134de;
+main comparison base: 6664a9841bd81a9c02a711b92f1906a70ef72bcb.
+
+The remediation plan is
+[2026-10-15-pr-374-review-remediation.md](../../plans/singlepagestartup/2026-10-15-pr-374-review-remediation.md).
+It maps every inline comment to a workstream, an acceptance check and its
+published reply. All 32 replies are verified under flakecode. Review threads
+remain open. The plan includes Studio isolation and variant contracts, static
+icons and Skeletons, instance Widget relations and data cutover, frontend
+readers and CRM submission, Knowledge service ownership and SVG policy, RBAC
+service facades, and production ISR/cache validation.
+
+The current Studio baseline is 13 passing tests and one failing model-entry
+test. Its failure is the private cross-model import introduced by the restored
+project creation card. The current isolation gate passes eight tests while
+excluding Workspace tests that contain 13 Modules imports; this is a coverage
+gap, not proof of runtime Storybook imports. Eight Workspace story roots have
+no confirmed runtime path to Modules. The plan preserves the creation photo
+and separates those facts from the required full Workspace boundary.
+
+Knowledge media/materials/indexer baseline: three suites and 12 tests pass.
+The planned service refactor preserves transaction scope and locks; no access
+exploit or XSS is claimed from architectural violations. Previous support UI
+smoke evidence did not submit a Request and therefore does not establish CRM
+submission correctness. Runtime two-client cache/WS verification remains open.
+
+Canonical review-pr and frontend rules, the thin provider adapters, Studio
+README and the Studio projection path in design-to-implementation are updated
+locally. An independent read-only application of the revised rules found the
+expected structural paths without claiming that every violation reproduced a
+functional failure. Prettier, diff whitespace, YAML metadata and canonical
+adapter routing pass. The standard skill-creator Python validator is unavailable
+because both available Python runtimes lack PyYAML; js-yaml validates the
+metadata instead.
+
+Production refactoring and new automatic source gates in this plan are pending.
+No application source, generated migrations or user data were changed in this
+planning pass. Local rule and plan changes have not been committed or pushed;
+the remote PR revision remains the one above.
+
+[Published full remediation plan](https://github.com/singlepagestartup/singlepagestartup/pull/374#issuecomment-6192112844)
+is verified against the submitted body and author.
+
+## PR #374 remediation implementation
+
+The operator authorized all R01–R13 stages, checks, commit and push to the
+existing PR. The manual-review checklist stays open; review threads are not
+resolved automatically.
+
+Studio now uses literal variant contracts in owning interfaces, public story
+entries, effective startup replacement types and model loading exports. Its
+static Icon has Phosphor and custom collections. Workspace isolation covers
+its tests and actual story dependency graph, including neutral helpers,
+styles/assets and generated roots. The standalone Workspace build does not
+load Modules. Generator fixtures check the same public contracts after
+regeneration, including overridden required props.
+
+Two generated RBAC Widget relations replace implicit global content lookups.
+Host follows specific saved IDs; RBAC composes the auth/project/support
+instances. MCP traversal reaches nested content. The original creation photo
+and caption remain. The homepage demo uses local files/messages/topics and
+needs neither a saved Social Chat nor AI requests.
+
+The local API data cutover applied 38 operations, then repeated with zero
+writes; a fresh prepare contains zero operations. Six WB links and the Help
+Form with one Step, three required Inputs and seven Options were read back.
+The original WB and Form records match the saved before-state. No user
+Subject, project, Chat or message was changed. Manifest:
+`/private/tmp/pr374-widget-cutover-local-manifest.json`, SHA-256
+`c4a03a0a0ee7a860bfad8c17f0f2a60c486da54f6084e180317592fbe127f8e8`.
+It remains outside Git because its IDs belong to the local environment.
+
+Two real API semantics changed the cutover implementation. Generic create
+assigns its own UUID, so planned IDs must be remapped to returned IDs and
+persisted before dependent operations. Generic PATCH needs the full writable
+FK set, so guarded updates and rollback merge current fields instead of
+sending only the changed field. The fake adapter now reproduces both rules;
+lost create responses recover only through an unambiguous natural key.
+
+Production frontend readers keep one Provider/query owner and explicit
+serializable view props. The shared props mode renders a parent's current
+SDK result without a duplicate request; that parent retains subscriptions.
+Specialized reader loading, SDK options, refetch and Access scope are covered
+through public entries. Thread creation has a synchronous duplicate-submit
+lock and resets scope on account/project changes.
+
+Support submission uses the real Form/Step/Input relation chain and a typed
+UUID payload. Server validation checks required values and current child and
+Option membership before the atomic Request/relation transaction. Retries
+reuse an idempotency key. A saved receipt reports notification delivery as
+sent, failed or queued; a truthy Notification record alone no longer means
+successful delivery. Tests use a notification sink and do not send a real
+support request.
+
+Knowledge delegates to effective Source, Chunk, relation and File services.
+Transaction-local clones preserve startup capabilities without changing a
+shared repository handle. Bounded vector candidates and owner reads share a
+repeatable-read snapshot. The publisher resolves runtime injection lazily,
+invalidates API cache and exact Next tags after commit, then broadcasts.
+SVG checks cover bytes, MIME, filename and metadata on every attachment entry;
+ordinary Markdown containing an SVG example remains valid text. Existing
+SVG Files are retained and represented as blocked Knowledge cards.
+
+Identity updates retain JWT/Subject ownership checks, document skills use a
+public Subject capability, and free/Stars checkout delegates through one
+service handler. The module-order gate follows the canonical contract and
+resolves type imports, tests, dynamic imports/require and neutral barrels.
+
+Final verification and publication results are recorded in the implementation
+plan and the synchronized PR description. Five pre-existing untracked user
+files are excluded from this commit.
+
+Final checks pass: 23 scoped unit projects / 301 suites / 1,361 tests and
+16 scoped integration projects / 29 suites / 91 tests, with no skips in the
+final integration run. Studio presentation has 368 passing tests; the
+Modules/design-system run has 186. Studio validate, final Storybook and Host
+Webpack production builds succeed. Host, Studio, MCP, runtime and strict
+contract fixture type checks pass. API has exactly the same 22 baseline
+diagnostics, with no new file/code/message after line and union normalization.
+The module-order gate checks 14,772 source files and finds zero upward edges.
+
+The real transport regression uses production HTTP cache and publisher,
+local Redis and two actual Bun TCP/WebSocket clients. Both observe 10 from
+the warmed cache; no event is emitted while the bump is held. Their immediate
+GET after the event returns 20. Both sockets and the listener close and all
+fixture Redis keys are removed. Production Host ISR is also observed directly:
+public /en is cached, and the existing tag endpoint makes the next request
+MISS. Production image generation returns the same 22,401-byte PNG as dev.
+
+The first temporary font request used the repository root as next start's
+working directory and failed to resolve the custom build path. Restarting
+from apps/host, matching deployment, returns 200 without changing font code.
+The build's temporary tsconfig include was removed by restoring the exact
+pre-build file; previous working-copy contents were preserved.
+
+Browser scope and remaining checks are recorded in the plan/PR. Production
+Help and mobile local demo pass; real forms are not submitted. Existing
+Node 24/i18n server localStorage diagnostics and five Studio content/approval
+gaps remain explicitly separate from successful code checks.
+
+Final browser evidence: `/private/tmp/sps-pr374-browser-final.md`. A separate
+guest Chrome session verifies production landing, four auth forms, Help,
+photo loading and mobile 390px layout without overflow. Guest projects redirect
+to sign-in without showing the list. A synthetic private route shows the
+not-found page; auto-review rejected navigating to an existing private thread
+because it might disclose its content. No real forms or AI/support requests
+were submitted, and the viewport was restored. Dev Help remains a browser
+navigation timeout; the corresponding production page passes.

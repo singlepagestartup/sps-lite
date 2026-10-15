@@ -1,4 +1,4 @@
-import { Component as RbacModuleSubject } from "../../../../../../../../../../../../index";
+import { Component as Subject } from "../../../../../../../../../../../../index";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountProvider } from "../../../../../../../../../../account/Account";
 import { aiChatAccount } from "../../../../../../../../../../account/fixture";
@@ -7,20 +7,20 @@ import { SourceProvider } from "../../../../../../../../../../../../../../knowle
 import { ThreadProvider } from "../../../../../../../../../../../../../../social/thread/singlepage/id/ai-chat/Thread";
 
 import { aiChatAttachmentFixture } from "../../../../../../../../../../../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-interface IExampleProps {
+interface IStoryProps {
   fileCount?: number;
   draft?: string;
   sending?: boolean;
   failed?: boolean;
   unsupported?: boolean;
 }
-function Example({
+function Component({
   fileCount = 0,
   draft = "",
   sending = false,
   failed = false,
   unsupported = false,
-}: IExampleProps) {
+}: IStoryProps) {
   const files = aiChatAttachmentFixture(fileCount);
   return (
     <FilesProvider
@@ -33,7 +33,7 @@ function Example({
           initialDraft={draft}
         >
           <div className="mx-auto max-w-xl">
-            <RbacModuleSubject
+            <Subject
               variant="me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat"
               sending={sending}
               initialError={
@@ -54,7 +54,7 @@ const meta = {
   id: "modules-rbac-models-subject-singlepage-me-social-module-profile-id-chat-id-thread-id-message-create-ai-chat",
   title:
     "Modules/RBAC/Subject/Singlepage/me/social-module/profile/id/chat/id/thread/id/message/create/ai-chat",
-  component: Example,
+  component: Component,
   args: { fileCount: 0, draft: "", sending: false, failed: false },
   argTypes: {
     fileCount: { control: { type: "number", min: 0, max: 13 } },
@@ -70,7 +70,7 @@ const meta = {
       </AccountProvider>
     ),
   ],
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 

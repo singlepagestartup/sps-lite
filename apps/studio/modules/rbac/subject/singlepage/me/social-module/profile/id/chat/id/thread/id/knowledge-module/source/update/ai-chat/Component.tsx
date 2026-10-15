@@ -1,22 +1,19 @@
 "use client";
+import type { IComponentProps, IKnowledgeUpdateProps } from "./interface";
+export type { IKnowledgeUpdateProps } from "./interface";
+
 import { useRef, useEffect } from "react";
 import { useStudioAccount } from "../../../../../../../../../../../account/Account";
 import { useThread } from "../../../../../../../../../../../../../../../social/thread/singlepage/id/ai-chat/Thread";
 import { useSource } from "../../../../../../../../../../../../../../../knowledge/source/singlepage/id/ai-chat/Source";
-export interface IKnowledgeUpdateProps {
-  variant?: string;
-  subjectId?: string;
-  profileId: string;
-  chatId: string;
-  threadId: string;
-}
+
 export function Component({
   variant = "me-social-module-profile-id-chat-id-thread-id-knowledge-module-source-update-ai-chat",
   subjectId,
   profileId,
   chatId,
   threadId,
-}: IKnowledgeUpdateProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const { thread, pane, proposal, apply, dismiss, error } = useThread();
   const { source } = useSource();

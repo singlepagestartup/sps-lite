@@ -8,7 +8,7 @@ import {
 import { Component as KnowledgeModuleSource } from "../../../../../../knowledge/source/index";
 import type { Meta, StoryObj } from "@storybook/react";
 
-function Example() {
+function Component() {
   const [agent, setAgent] = useState<IProjectAgent | null>(
     documentAgent("strategy"),
   );
@@ -36,14 +36,14 @@ function Example() {
 const meta = {
   id: "modules-social-models-profile-singlepage-agent-id-ai-chat",
   title: "Modules/Social/Profile/Singlepage/agent/id/ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 
 // Profile knowledge includes sections from different document threads.
-function ProfileKnowledgeExample() {
+function ProfileKnowledgePreview() {
   const [open, setOpen] = useState(true);
   return (
     <div className="min-h-screen bg-muted p-8 font-default text-foreground">
@@ -93,11 +93,11 @@ function ProfileKnowledgeExample() {
   );
 }
 export const ProfileKnowledge: StoryObj<typeof meta> = {
-  render: () => <ProfileKnowledgeExample />,
+  render: () => <ProfileKnowledgePreview />,
 };
 
-import { Component as SocialModuleSkill } from "../../../../../../social/skill";
-function DocumentSkillsExample() {
+import { Component as Skill } from "../../../../../../social/skill";
+function DocumentSkillsPreview() {
   const [open, setOpen] = useState(true);
   const documents = ["brief", "strategy", "brand", "design", "products"];
   return (
@@ -116,7 +116,7 @@ function DocumentSkillsExample() {
         skills={documents.map((document) => {
           const profession = documentAgent(document);
           return (
-            <SocialModuleSkill
+            <Skill
               key={document}
               variant="id-ai-chat"
               data={{
@@ -135,5 +135,5 @@ function DocumentSkillsExample() {
   );
 }
 export const DocumentSkills: StoryObj<typeof meta> = {
-  render: () => <DocumentSkillsExample />,
+  render: () => <DocumentSkillsPreview />,
 };

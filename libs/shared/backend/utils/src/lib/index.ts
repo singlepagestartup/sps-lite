@@ -1,5 +1,9 @@
 export { util as authorization } from "./authorization";
 export { estimateAiContextTokens } from "./ai-context-tokens";
+export {
+  assertKnowledgeAttachmentBytes,
+  type IKnowledgeAttachmentBytesProps,
+} from "./knowledge-attachments";
 export { util as logger } from "./logger";
 export { util as websocketManager } from "./websocket-manager";
 export { util as getHttpErrorType } from "./http-error";

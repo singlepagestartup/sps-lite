@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ISubjectAuthenticationFormDefaultProps,
+} from "./interface";
+export type { ISubjectAuthenticationFormDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import {
   type ReactNode,
   type HTMLAttributes,
@@ -14,7 +21,7 @@ import {
   twMerge,
   twMerge as twMergePresentation,
 } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -44,35 +51,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISubjectAuthenticationFormDefaultProps {
-  variant?: string;
-  methodSelector?: ReactNode;
-  methodContent?: ReactNode;
-  showEmailFields?: boolean;
-  emailPanelProps?: HTMLAttributes<HTMLDivElement>;
-  onSuccess?: (email: string) => void;
-  title: string;
-  description: string;
-  demoNote: string;
-  emailLabel: string;
-  emailPlaceholder: string;
-  passwordLabel: string;
-  passwordPlaceholder: string;
-  rememberLabel: string;
-  forgotLabel: string;
-  forgotHref: string;
-  forgotStoryHref?: string;
-  submitLabel: string;
-  submitHref: string;
-  submitStoryHref?: string;
-  registerPrompt: string;
-  registerLabel: string;
-  registerHref: string;
-  registerStoryHref?: string;
-}
 function getStoryLinkProps(href: string, storyHref?: string) {
   if (storyHref) {
     return {
@@ -82,9 +63,7 @@ function getStoryLinkProps(href: string, storyHref?: string) {
   }
   return { href };
 }
-export function Component(
-  props?: Partial<ISubjectAuthenticationFormDefaultProps>,
-) {
+export function Component(props?: IComponentProps) {
   const {
     methodSelector,
     methodContent,

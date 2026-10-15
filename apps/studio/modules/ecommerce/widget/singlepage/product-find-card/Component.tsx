@@ -1,4 +1,17 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ProductFindCategory,
+  ProductFindProduct,
+  ProductFindCardProps,
+} from "./interface";
+export type {
+  ProductFindCategory,
+  ProductFindProduct,
+  ProductFindCardProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   useId,
   forwardRef as forwardRefControl,
@@ -8,8 +21,8 @@ import {
   useState,
 } from "react";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as EcommerceModuleProduct } from "../../../product/index";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Product } from "../../../product/index";
 interface ICollectionPaginationProps {
   page: number;
   pageSize: number;
@@ -143,30 +156,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ProductFindCategory {
-  slug: string;
-  label: string;
-}
-export interface ProductFindProduct {
-  id: string;
-  slug: string;
-  href?: string;
-  title: string;
-  subtitle: string;
-  category: string;
-  priceLabel: string;
-  badge?: string;
-  image: string;
-  shortDescription: string;
-  techStack: string[];
-}
-export type ProductFindCardProps = typeof defaultProductFindCardProps;
-export function ProductFindCard(
-  props?: Partial<ProductFindCardProps> & { variant?: string },
-) {
+export function ProductFindCard(props?: IComponentProps) {
   const { categories, products } = {
     ...defaultProductFindCardProps,
     ...props,
@@ -227,7 +220,7 @@ export function ProductFindCard(
       {visibleProducts.length ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {pageProducts.map((product) => (
-            <EcommerceModuleProduct
+            <Product
               variant="card"
               key={product.id}
               slug={product.slug}

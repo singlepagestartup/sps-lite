@@ -1,3 +1,5 @@
+import type { IComponentProps, ILogotypeDefaultProps } from "./interface";
+export type { ILogotypeDefaultProps } from "./interface";
 interface BrandMarkProps {
   size?: "sm" | "md";
   inverse?: boolean;
@@ -12,16 +14,12 @@ function BrandMark({ size = "md", inverse = false }: BrandMarkProps) {
     />
   );
 }
-export interface ILogotypeDefaultProps {
-  variant?: string;
-  brand?: string;
-  compact?: boolean;
-}
+
 export function Component({
   variant = "default",
   brand = "SinglePageStartup",
   compact = false,
-}: ILogotypeDefaultProps = {}) {
+}: IComponentProps = {}) {
   return (
     <a
       data-ds-block="website-builder.logotype.default"

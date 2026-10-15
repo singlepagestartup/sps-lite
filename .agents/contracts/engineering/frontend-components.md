@@ -2,7 +2,9 @@
 
 Read this contract before changing a production frontend variant or reviewing
 its client/server composition. It governs model and relation variants under
-`libs/modules` and their composition in Host.
+`libs/modules` and their composition in Host. Public type, variant, registration
+and naming rules also apply to presentation variants in `apps/studio/modules`;
+Studio remains independent of production SDKs and database loading.
 
 ## Reuse the component template
 
@@ -42,6 +44,25 @@ win. Follow a nested registry when the applicable template uses one.
 A file that exists on disk but cannot be selected through the public
 `variant` prop is incomplete.
 
+## Public types and import names
+
+Declare public props and any public payload types in the owning `interface.ts`,
+including types used by interactive views. A variant discriminator is its exact
+literal, not `string`. Export the effective props contract from the public
+interface; consumers must not depend on a private singlepage implementation for
+its types. A startup override replaces the matching base registry entry and its
+props contract. Type-check two variants with different required props and an
+override that changes those props.
+
+Name a same-module component after the model, such as `Identity`, and its SDK
+`identityApi`. Name a foreign component with
+module and model, such as `FileStorageModuleFile`; a foreign SDK alias includes
+module and model, such as `fileStorageFileApi`. Relations and their loaded data
+use the actual relation name, such as `OrdersToFileStorageModuleFiles` and
+`ordersToFileStorageModuleFiles`. In client/server readers, alias the local view
+as `ChildComponent`. Registry imports and story compositions use descriptive
+names; numeric placeholders do not identify their responsibility.
+
 ## Specialized client/server readers
 
 Local `client.tsx` and `server.tsx` are allowed when the variant needs data
@@ -65,9 +86,14 @@ as untyped objects.
 - Keep data requests in readers and SDKs. Interactive mutations use the client
   SDK in the interactive component or its established hook. Do not add raw
   fetches or a second data-fetching system in the visual component.
+- Keep index wiring in the applicable template; do not introduce another
+  Reader dispatcher between it and the local readers. When a template or
+  generator conflicts with this contract, correct that source too.
 - Preserve one owner for Provider and loading/error composition. Local readers
   replace the relevant shared reading behavior; do not wrap an unchanged shared
-  reader in another copy of its Provider or duplicate its requests.
+  reader in another copy of its Provider or duplicate its requests. A visual
+  component must not repeat a reader query or use a constant query function
+  that prevents subsequent refetch from loading current data.
 - Preserve the module dependency order, explicit client-boundary props, query
   subscriptions and mutation cache handling. Specialization changes which SDK
   operations run, not those contracts.
@@ -76,6 +102,17 @@ An existing local-reader example is the RBAC Subject variant at
 `libs/modules/rbac/models/subject/frontend/component/src/lib/singlepage/social-module/profile/chat/overview/default/`.
 Its structure illustrates reader placement; apply the boundary and cache rules
 in this contract when changing it or using it as a reference.
+
+## Already loaded SDK results
+
+When a parent reader already owns the current SDK result, use the shared
+reader's `dataSource="props"` mode for a child presentation. Pass the loaded
+record or collection through its typed public props. This mode performs no
+second request and adds no Provider; the parent retains the React Query cache,
+loading, error and subscription ownership. A refetch supplies the updated props.
+Do not simulate a query with a constant query function or use this mode to
+replace production SDK data with static fixtures. Reader bindings remain
+inside the template and are removed before props reach the visual component.
 
 ## Explicit props at the client boundary
 

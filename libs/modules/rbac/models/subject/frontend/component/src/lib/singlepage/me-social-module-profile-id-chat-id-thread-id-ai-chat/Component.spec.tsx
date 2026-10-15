@@ -52,12 +52,9 @@ it("loads Subject once and passes scoped Thread results through the public reade
   } as any);
   const parentTree = (element.type as any)(element.props);
   const sharedReader = findReader(parentTree)!;
-  const localDispatcher = (await SharedServer(
+  const localReader = (await SharedServer(
     sharedReader.props,
   )) as ReactElement<any>;
-  const localReader = (localDispatcher.type as any)(
-    localDispatcher.props,
-  ) as ReactElement<any>;
   const view = (await (localReader.type as any)(
     localReader.props,
   )) as ReactElement<any>;

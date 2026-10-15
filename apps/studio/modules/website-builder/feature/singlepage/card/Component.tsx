@@ -1,8 +1,10 @@
-import { Component as Glyph } from "../icon/index";
+import type { IComponentProps, FeatureCardProps } from "./interface";
+export type { FeatureCardProps } from "./interface";
+import { Component as SharedIcon } from "../../../../shared/icon";
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../icon/icons.json";
-type ModuleIcon = ReturnType<typeof createIcon>;
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
+
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -30,13 +32,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <Glyph {...props} />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export type FeatureCardProps = typeof defaultFeatureCardProps;
-export function FeatureCard(
-  props?: Partial<FeatureCardProps> & { variant?: string },
-) {
+export function FeatureCard(props?: IComponentProps) {
   const {
     icon: Icon,
     title,
@@ -70,3 +69,5 @@ export const defaultFeatureCardProps = {
   description:
     "Build pages visually with widgets, sliders, buttons, and logotypes managed from the admin panel.",
 };
+
+import type { ModuleIcon } from "./interface";

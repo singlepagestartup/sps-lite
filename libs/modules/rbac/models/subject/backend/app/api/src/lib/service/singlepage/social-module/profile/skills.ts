@@ -9,6 +9,11 @@ import { api as linksApi } from "@sps/social/relations/profiles-to-skills/sdk/se
 import type { IModel as ISkill } from "@sps/social/models/skill/sdk/model";
 import type { ISocialModule } from "../../../../di";
 
+export interface IForDocumentProps {
+  socialModuleProfileId: string;
+  documentKey: string;
+}
+
 export class Service {
   constructor(
     readonly socialModule: Pick<ISocialModule, "skill" | "profilesToSkills">,

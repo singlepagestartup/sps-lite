@@ -1,14 +1,18 @@
+import { Component as Subject } from "../../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-  Component as Form,
-  defaultSubjectRegistrationFormDefaultProps,
-} from "./Component";
+import { defaultSubjectRegistrationFormDefaultProps } from "./Component";
 
-import { Component as RbacModuleSubject } from "../../../../../../index";
-function Example(props: React.ComponentProps<typeof Form>) {
+function Component(
+  props: Extract<
+    React.ComponentProps<typeof Subject>,
+    {
+      variant: "me-authentication-email-and-password-registration-form-default";
+    }
+  >,
+) {
   return (
-    <RbacModuleSubject
+    <Subject
       {...props}
       variant="me-authentication-email-and-password-registration-form-default"
     />
@@ -19,9 +23,9 @@ const meta = {
   id: "modules-rbac-models-subject-singlepage-authentication-email-and-password-registration-form-default",
   title:
     "Modules/RBAC/Subject/Singlepage/authentication/email-and-password/registration-form/default",
-  component: Example,
+  component: Component,
   args: defaultSubjectRegistrationFormDefaultProps,
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 
 export default meta;
 

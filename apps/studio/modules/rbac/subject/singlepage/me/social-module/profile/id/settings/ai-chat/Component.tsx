@@ -1,6 +1,12 @@
 "use client";
+import type {
+  IComponentProps,
+  SubjectMeProfileInformationProps,
+} from "./interface";
+export type { SubjectMeProfileInformationProps } from "./interface";
 
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../../website-builder/feature/index";
+import { Component as SharedIcon } from "../../../../../../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -14,7 +20,7 @@ import {
   twMerge as mergeButtonClass,
   twMerge as twMerge,
 } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { useStudioAccount } from "../../../../../account/Account";
 import { aiChatAccount } from "../../../../../account/fixture";
 import {
@@ -50,25 +56,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SubjectMeProfileInformationProps {
-  profileId?: string;
-  subjectId?: string;
-  variant?: string;
-  user: RbacAccountUser;
-  title: string;
-  bio: string;
-  saveLabel: string;
-  profile: RbacAccountProfile;
-  profiles: RbacAccountProfile[];
-  description: string;
-  saveError?: string;
-}
-export function SubjectMeProfileInformation(
-  props?: Partial<SubjectMeProfileInformationProps>,
-) {
+export function SubjectMeProfileInformation(props?: IComponentProps) {
   const session = useStudioAccount();
   const currentProfile: RbacAccountProfile = {
     id: session.account.profile?.id ?? aiChatAccount.profile.id,

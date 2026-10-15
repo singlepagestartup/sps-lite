@@ -1,48 +1,83 @@
 /** @jest-environment jsdom */
-/**
- * BDD Suite: AI Chat content navigation.
- * Given: SDK-loaded landing, Help and authentication Widgets in a chosen locale.
- * When: their links render, including links inside Markdown.
- * Then: internal destinations retain the locale and disclosure fragments.
- */
-import { render } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 jest.mock("client-only", () => ({}), { virtual: true });
 jest.mock("server-only", () => ({}), { virtual: true });
 jest.mock("@sps/website-builder/models/widget/sdk/client", () => ({
   Provider: ({ children }: any) => <>{children}</>,
-  api: { findById: () => ({ data: { id: "widget" }, isLoading: false }) },
+  api: {
+    findById: ({ id }: any) => ({
+      data: { id, variant: "landing-ai-chat" },
+      isLoading: false,
+    }),
+  },
 }));
 jest.mock("@sps/website-builder/models/widget/sdk/server", () => ({ api: {} }));
+jest.mock("@sps/social/models/chat/frontend/component", () => {
+  throw new Error("Landing must not load a Social Chat");
+});
 import { Component as Widget } from "@sps/website-builder/models/widget/frontend/component";
-import { AI_CHAT_REGISTRATION_CONTENT } from "@sps/shared-utils";
-it.each(["en", "ru"])("retains %s in public content links", (language) => {
-  for (const variant of [
-    "landing-ai-chat",
-    "content-ai-chat-help",
-    "content-ai-chat-authentication",
-  ]) {
-    const view = render(
-      <Widget
-        {...({
-          isServer: false,
-          variant,
-          language,
-          data: { id: "widget" },
-          ...(variant === "content-ai-chat-authentication"
-            ? { content: AI_CHAT_REGISTRATION_CONTENT }
-            : {}),
-        } as any)}
-      />,
+it("runs the complete local walkthrough without a Social record or network and isolates visitors", () => {
+  const previous = globalThis.fetch;
+  const network = jest.fn(() => {
+    throw new Error("Walkthrough network is forbidden");
+  });
+  globalThis.fetch = network as any;
+  try {
+    const { container } = render(
+      <>
+        <Widget
+          isServer={false}
+          variant="landing-ai-chat"
+          data={{ id: "landing-a" } as any}
+        />
+        <Widget
+          isServer={false}
+          variant="landing-ai-chat"
+          data={{ id: "landing-b" } as any}
+        />
+      </>,
     );
-    const hrefs = [...view.container.querySelectorAll("a[href]")]
-      .map((link) => link.getAttribute("href")!)
-      .filter((href) => href.startsWith("/") && !href.startsWith("//"));
-    expect(hrefs.length).toBeGreaterThan(0);
-    expect(hrefs.every((href) => href.startsWith(`/${language}/`))).toBe(true);
-    if (variant === "content-ai-chat-authentication")
-      expect(hrefs).toContain(
-        `/${language}/ai-chat/projects#how-your-materials-are-processed-and-stored`,
-      );
-    view.unmount();
+    const demos = container.querySelectorAll(
+      '[data-variant="landing-ai-chat-demo"]',
+    );
+    expect(demos).toHaveLength(2);
+    const first = within(demos[0] as HTMLElement);
+    const second = within(demos[1] as HTMLElement);
+    fireEvent.click(first.getByRole("button", { name: "Check materials" }));
+    expect(second.queryByLabelText("Who is the workshop for?")).toBeNull();
+    fireEvent.change(first.getByLabelText("Who is the workshop for?"), {
+      target: { value: "First-time founders" },
+    });
+    fireEvent.click(first.getByRole("button", { name: "Send answer" }));
+    const editor = first.getByRole("textbox", {
+      name: "Edit document: Products",
+    }) as HTMLTextAreaElement;
+    expect(editor.value).toContain("First-time founders");
+    fireEvent.change(editor, { target: { value: "My edited draft" } });
+    expect(editor.value).toBe("My edited draft");
+    fireEvent.click(
+      first.getByRole("button", { name: "Open project workspace" }),
+    );
+    fireEvent.change(first.getByLabelText("Topic name"), {
+      target: { value: "Local topic" },
+    });
+    fireEvent.click(first.getByRole("button", { name: "Create topic" }));
+    expect(first.getByRole("heading", { name: "Local topic" })).toBeTruthy();
+    fireEvent.change(first.getByLabelText("Message in this topic"), {
+      target: { value: "Local message" },
+    });
+    fireEvent.click(first.getByRole("button", { name: "Send message" }));
+    expect(first.getByText("Local message")).toBeTruthy();
+    fireEvent.click(first.getByRole("button", { name: "Restart walkthrough" }));
+    expect(first.getByRole("button", { name: "Check materials" })).toBeTruthy();
+    expect(first.queryByText("Local message")).toBeNull();
+    expect(network).not.toHaveBeenCalled();
+    expect(
+      screen
+        .getAllByRole("link", { name: /Start with my files/i })[0]
+        .getAttribute("href"),
+    ).toBe("/en/ai-chat/projects");
+  } finally {
+    globalThis.fetch = previous;
   }
 });

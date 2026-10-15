@@ -1,9 +1,11 @@
+import type { IComponentProps, FooterCompactProps } from "./interface";
+export type { FooterCompactProps } from "./interface";
 import {
-  Component as WebsiteBuilderModuleButtonsArray,
+  Component as ButtonsArray,
   type ButtonsArrayItem,
 } from "../../../buttons-array/index";
 
-import { Component as WebsiteBuilderModuleLogotype } from "../../../logotype/index";
+import { Component as Logotype } from "../../../logotype/index";
 
 interface StudioLink {
   label: string;
@@ -21,11 +23,7 @@ export const defaultFooterCompactProps = {
   ] satisfies StudioLink[],
 };
 
-export type FooterCompactProps = typeof defaultFooterCompactProps;
-
-export function FooterCompact(
-  props?: Partial<FooterCompactProps> & { variant?: string },
-) {
+export function FooterCompact(props?: IComponentProps) {
   const { copyright, links } = { ...defaultFooterCompactProps, ...props };
   const utilityButtons = links.map(
     (link) =>
@@ -46,10 +44,10 @@ export function FooterCompact(
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
         <div className="flex min-w-0 items-center gap-3 text-sm leading-6 text-muted-foreground">
-          <WebsiteBuilderModuleLogotype variant="default" compact />
+          <Logotype variant="default" compact />
           <span>{copyright}</span>
         </div>
-        <WebsiteBuilderModuleButtonsArray
+        <ButtonsArray
           variant="default"
           ariaLabel="Utility"
           buttons={utilityButtons}

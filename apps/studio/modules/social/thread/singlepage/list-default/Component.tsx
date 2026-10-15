@@ -1,4 +1,15 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  SocialThreadListDefaultProps,
+  SocialPreviewProfile,
+} from "./interface";
+export type {
+  SocialThreadListDefaultProps,
+  SocialPreviewProfile,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -9,7 +20,7 @@ import {
   useState,
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as SocialChatSettings } from "../chat-settings/index";
 import {
   createPreviewAttachmentStore,
@@ -42,37 +53,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SocialThreadListDefaultProps {
-  variant?: string;
-  title: string;
-  description: string;
-  selectedId?: string;
-  onSelectThread?: (id: string) => void;
-  onOpenSettings?: () => void;
-  chatImage?: SocialPreviewAttachment;
-  threads: Array<{
-    id: string;
-    title: string;
-    excerpt: string;
-    date: string;
-    unread: number;
-    author?: string;
-    active?: boolean;
-    pinned?: boolean;
-    description?: string;
-  }>;
-}
 interface IThreadRowProps {
   thread: SocialThreadListDefaultProps["threads"][number];
   active: boolean;
   onSelect: (id: string) => void;
 }
-export function SocialThreadListDefault(
-  props?: Partial<SocialThreadListDefaultProps>,
-) {
+export function SocialThreadListDefault(props?: IComponentProps) {
   const { title, description, threads, onSelectThread, onOpenSettings } = {
     ...defaultSocialThreadListDefaultProps,
     ...props,
@@ -206,11 +195,7 @@ export function SocialThreadListDefault(
     </aside>
   );
 }
-export interface SocialPreviewProfile {
-  id: string;
-  name: string;
-  context?: string;
-}
+
 const X = createIcon("x");
 const Settings = createIcon("gear-six");
 const Search = createIcon("magnifying-glass");

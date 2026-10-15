@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import type { IComponentProps, ISubjectAccountProps } from "./interface";
+export type { ISubjectAccountProps } from "./interface";
 
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as SocialModuleProfile } from "../../../../../social/profile/index";
 import { useStudioAccount } from "./Account";
 import type { RbacAccountUser } from "../../../../shared";
@@ -12,21 +15,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISubjectAccountProps {
-  variant?: string;
-  showTokens?: boolean;
-  signedIn?: boolean;
-  user?: RbacAccountUser;
-  page?: string;
-  balance?: {
-    free: number;
-    purchased: number;
-  } | null;
-  onNavigate?: () => void;
-}
 export function Component({
   variant = "me-account",
   showTokens = false,
@@ -35,7 +26,7 @@ export function Component({
   page,
   balance,
   onNavigate,
-}: ISubjectAccountProps = {}) {
+}: IComponentProps = {}) {
   const session = useStudioAccount();
   const authenticated = signedIn ?? (user ? true : session.signedIn);
   const data = user

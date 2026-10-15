@@ -6,7 +6,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Component as HostModuleLayout } from "../../../../../host/layout/index";
 import { Component as SocialModuleProfile } from "../../../../../social/profile/index";
-import { Component as WebsiteBuilderModuleWidget } from "../../../index";
+import { Component as Widget } from "../../../index";
 import { Component as Navbar } from "./index";
 import { AIChatPreview } from "../../../../../host/page/singlepage/ai-chat/Preview";
 import { aiChatServiceHrefs } from "../../../../../host/layout/singlepage/ai-chat-landing/routes";
@@ -83,16 +83,43 @@ describe("Website Builder navbar composition", () => {
         file.includes(`${path.sep}modules${path.sep}`) &&
         !file.startsWith(
           path.join(studio, "modules/website-builder") + path.sep,
-        )
+        ) &&
+        !file.startsWith(path.join(studio, "modules/shared/icon") + path.sep)
       )
         throw new Error(`Website Builder imports higher module: ${file}`);
       if (!/\.[jt]sx?$/.test(file)) return;
       active.add(file);
-      for (const { fileName } of ts.preProcessFile(
+      const tree = ts.createSourceFile(
+        file,
         readFileSync(file, "utf8"),
+        ts.ScriptTarget.Latest,
         true,
-        true,
-      ).importedFiles) {
+      );
+      const imports = tree.statements.flatMap((node) => {
+        if (
+          !(ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) ||
+          !node.moduleSpecifier ||
+          !ts.isStringLiteral(node.moduleSpecifier)
+        )
+          return [];
+        if (
+          (ts.isExportDeclaration(node) && node.isTypeOnly) ||
+          (ts.isImportDeclaration(node) && node.importClause?.isTypeOnly)
+        )
+          return [];
+        if (ts.isImportDeclaration(node)) {
+          const bindings = node.importClause?.namedBindings;
+          if (
+            bindings &&
+            ts.isNamedImports(bindings) &&
+            !node.importClause?.name &&
+            bindings.elements.every((element) => element.isTypeOnly)
+          )
+            return [];
+        }
+        return [{ fileName: node.moduleSpecifier.text }];
+      });
+      for (const { fileName } of imports) {
         expect(fileName.startsWith("@sps/")).toBe(false);
         if (!fileName.startsWith(".")) continue;
         const target = path.resolve(path.dirname(file), fileName.split("?")[0]);
@@ -178,13 +205,13 @@ describe("Website Builder navbar composition", () => {
 
   test("landing and contact widgets receive higher models as slots", () => {
     const landing = renderToStaticMarkup(
-      <WebsiteBuilderModuleWidget variant="content-ai-chat-try">
+      <Widget variant="content-ai-chat-try">
         <aside>Chat preview slot</aside>
-      </WebsiteBuilderModuleWidget>,
+      </Widget>,
     );
     expect(landing).toContain("preview slot</aside>");
     const contact = renderToStaticMarkup(
-      <WebsiteBuilderModuleWidget
+      <Widget
         variant="content-feature-find-row"
         contactForm={<form>Subject form slot</form>}
       />,
@@ -194,7 +221,7 @@ describe("Website Builder navbar composition", () => {
 
   test("help gets the current project address from its caller", () => {
     const html = renderToStaticMarkup(
-      <WebsiteBuilderModuleWidget
+      <Widget
         variant="content-ai-chat-help"
         projectHref="/ai-chat/social/profiles/selected-project"
       />,
@@ -278,8 +305,10 @@ describe("Website Builder navbar composition", () => {
       }
       if (route.startsWith("social/profiles")) {
         expect(source).toContain("profileSelect=");
-        expect(source).toContain('variant="select-ai-chat-project"');
-        expect(source).toContain("social/profile/index");
+        expect(source).toMatch(
+          /variant="(?:select-ai-chat-project|me-social-module-profile-select-ai-chat)"/,
+        );
+        expect(source).toMatch(/(?:social\/profile|rbac\/subject)\/index/);
       }
     }
   });

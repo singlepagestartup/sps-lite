@@ -1,15 +1,20 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { BlogFindByIdArticleOverview } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-blog-module-article-slug",
   title: "Modules/Host/Page/Singlepage/blog-module-article-slug",
-  component: BlogFindByIdArticleOverview,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof BlogFindByIdArticleOverview>;
+  args: { variant: "blog-module-article-slug" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "blog-module-article-slug" }
+  >
+>;
 
 export default meta;
 

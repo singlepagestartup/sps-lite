@@ -1,26 +1,26 @@
-import { Component as RbacModuleSubject } from "../../../index";
+import { Component as Subject } from "../../../index";
 import { AccountProvider } from "./Account";
-import type { ISubjectAccountProps } from "./Component";
+import type { ISubjectAccountProps } from "./interface";
 import { aiChatAccount } from "./fixture";
 import type { Meta, StoryObj } from "@storybook/react";
-function Example(props: ISubjectAccountProps) {
+function Component(props: ISubjectAccountProps) {
   return (
     <AccountProvider account={aiChatAccount}>
-      <RbacModuleSubject {...props} variant="me-account" />
+      <Subject {...props} variant="me-account" />
     </AccountProvider>
   );
 }
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-account",
   title: "Modules/RBAC/Subject/Singlepage/me/account",
-  component: Example,
+  component: Component,
   parameters: { layout: "centered" },
   args: { signedIn: true, showTokens: false },
   argTypes: {
     signedIn: { control: "boolean" },
     showTokens: { control: "boolean" },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const AIChat: StoryObj<typeof meta> = { args: { showTokens: true } };

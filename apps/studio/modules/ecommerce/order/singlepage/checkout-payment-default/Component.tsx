@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  OrderCheckoutPaymentDefaultProps,
+} from "./interface";
+export type { OrderCheckoutPaymentDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type InputHTMLAttributes,
@@ -7,7 +14,7 @@ import {
   useState,
 } from "react";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
   paymentMethods,
   type PaymentMethod,
@@ -42,16 +49,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface OrderCheckoutPaymentDefaultProps {
-  variant?: string;
-  initialMethod: PaymentMethod;
-  agreementLabel: string;
-  actionLabel: string;
-  backLabel: string;
-}
 function PaymentMethodButton({
   method,
   isActive,
@@ -180,9 +180,7 @@ function WalletNotice({ method }: { method: PaymentMethod }) {
     </section>
   );
 }
-export function OrderCheckoutPaymentDefault(
-  props?: Partial<OrderCheckoutPaymentDefaultProps>,
-) {
+export function OrderCheckoutPaymentDefault(props?: IComponentProps) {
   const { initialMethod, agreementLabel, actionLabel, backLabel } = {
     ...defaultOrderCheckoutPaymentDefaultProps,
     ...props,

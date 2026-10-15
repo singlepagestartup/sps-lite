@@ -1,7 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, ArticleFeaturedProps } from "./interface";
+export type { ArticleFeaturedProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -30,14 +34,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-type ArticleFeaturedTarget = "_blank" | "_parent" | "_self" | "_top";
-export type ArticleFeaturedProps = typeof defaultArticleFeaturedProps;
-export function ArticleFeatured(
-  props?: Partial<ArticleFeaturedProps> & { variant?: string },
-) {
+export function ArticleFeatured(props?: IComponentProps) {
   const {
     href,
     slug,
@@ -139,3 +139,5 @@ export const defaultArticleFeaturedProps = {
   readTime: "7 min read",
   target: undefined as ArticleFeaturedTarget | undefined,
 };
+
+import type { ArticleFeaturedTarget } from "./interface";

@@ -1,12 +1,13 @@
+import { Component as Widget } from "../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Component } from "./Component";
+
 import registrationContent from "./registration.json";
 
 const meta = {
   id: "modules-website-builder-models-widget-singlepage-content-ai-chat-authentication",
   title:
     "Modules/Website-Builder/Widget/Singlepage/content/ai-chat/authentication",
-  component: Component,
+  component: Widget,
   parameters: { layout: "fullscreen" },
   args: {
     children: (
@@ -16,8 +17,14 @@ const meta = {
     ),
     media: "cover",
     asideIcon: "question",
+    variant: "content-ai-chat-authentication",
   },
-} satisfies Meta<typeof Component>;
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Widget>,
+    { variant: "content-ai-chat-authentication" }
+  >
+>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const StackedImages: StoryObj<typeof meta> = {

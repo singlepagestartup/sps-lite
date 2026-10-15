@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, IChatListItemProps } from "./interface";
+export type { IChatListItemProps } from "./interface";
 
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../shared/icon";
+
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { memo } from "react";
 import type { IAIChatChat } from "../../../profile/singlepage/scope/ai-chat/project/models";
 function Icon(props: {
@@ -10,15 +13,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IChatListItemProps {
-  variant?: string;
-  data: IAIChatChat;
-  selected: boolean;
-  onSelect: (id: string) => void;
-}
 const focus =
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground";
 const buttonBase =
@@ -31,7 +28,7 @@ export const Component = memo(function Component({
   data,
   selected,
   onSelect,
-}: IChatListItemProps) {
+}: IComponentProps) {
   return (
     <button
       type="button"

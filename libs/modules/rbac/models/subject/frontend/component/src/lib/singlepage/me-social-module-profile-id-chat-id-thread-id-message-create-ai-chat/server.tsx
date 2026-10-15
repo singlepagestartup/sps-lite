@@ -1,8 +1,8 @@
 "use server";
 import "server-only";
-import { api } from "@sps/rbac/models/subject/sdk/server";
+import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
-import { Component } from "./Component";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentProps } from "./interface";
 export default async function Server(props: IComponentProps) {
   const project = props.project;
@@ -18,18 +18,18 @@ export default async function Server(props: IComponentProps) {
   try {
     const data = !isDocument
       ? []
-      : await api.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
+      : await subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFind(
           { ...scope },
         );
     return (
-      <Component
+      <ChildComponent
         {...props}
         sourcesRead={{ data, isPending: false, isError: false }}
       />
     );
   } catch (error) {
     return (
-      <Component
+      <ChildComponent
         {...props}
         sourcesRead={{
           isPending: false,

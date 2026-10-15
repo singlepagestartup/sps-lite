@@ -34,3 +34,5 @@ Knowledge owns operations that also rebuild Sources using that File.
 - `admin-select-input`: admin select input for choosing a file.
 - `admin-table`: admin table listing files.
 - `admin-table-row`: admin row showing file fields.
+
+The effective File service exposes stored-byte reads, path imports and transaction-bound reference/update locks for consuming services. Its repository owns File table SQL. Knowledge supplies its attachment policy before an import and before creating a Knowledge relation; File Storage remains independent of Knowledge.

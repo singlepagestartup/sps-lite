@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import type { IComponentProps, IThreadSettingsProps } from "./interface";
+export type { IThreadSettingsProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../shared/icon";
 
 import {
   type InputHTMLAttributes,
@@ -9,7 +12,7 @@ import {
   useState,
 } from "react";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import * as Dialog from "@radix-ui/react-dialog";
 import { type IProjectTopic } from "../../../../profile/singlepage/scope/ai-chat/project/state";
 interface ITextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -62,21 +65,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IThreadSettingsProps {
-  variant?: string;
-  topic: IProjectTopic;
-  onSave: (title: string) => void;
-  onDelete: () => void;
-}
 export function Component({
   variant = "id-ai-chat-settings",
   topic,
   onSave,
   onDelete,
-}: IThreadSettingsProps) {
+}: IComponentProps) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(topic.title);
   const [confirmDelete, setConfirmDelete] = useState(false);

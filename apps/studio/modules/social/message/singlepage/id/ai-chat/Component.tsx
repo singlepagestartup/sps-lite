@@ -1,7 +1,10 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import type { IComponentProps, IMessageOverviewProps } from "./interface";
+export type { IMessageOverviewProps } from "./interface";
 
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { memo } from "react";
 import {
   type IProjectMessage,
@@ -9,23 +12,16 @@ import {
 } from "../../../../profile/singlepage/scope/ai-chat/project/state";
 import { Component as FileStorageModuleFile } from "../../../../../file-storage/file/index";
 import { type IProjectAgent } from "../../../../profile/singlepage/agent/id/ai-chat/resolver";
-import { Component as SocialModuleProfile } from "../../../../profile/index";
+import { Component as Profile } from "../../../../profile/index";
 function Icon(props: {
   name: keyof typeof IconGlyphs;
   size?: 20 | 24;
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IMessageOverviewProps {
-  variant?: string;
-  message: IProjectMessage;
-  agent: IProjectAgent | null;
-  onSelect: (agent: IProjectAgent) => void;
-  showContext: boolean;
-}
 interface IMessageContextProps {
   documents: IProjectDocumentContext[];
   label: string;
@@ -86,7 +82,7 @@ export const Component = memo(function Component({
   agent: replyingAgent,
   onSelect,
   showContext,
-}: IMessageOverviewProps) {
+}: IComponentProps) {
   return (
     <article
       data-ds-block="social.message.id-ai-chat"
@@ -98,7 +94,7 @@ export const Component = memo(function Component({
     >
       {message.role === "assistant" &&
         (replyingAgent ? (
-          <SocialModuleProfile
+          <Profile
             variant="agent-avatar-ai-chat"
             agent={replyingAgent}
             onSelect={onSelect}

@@ -1,18 +1,18 @@
 "use client";
 import "client-only";
 
-import { api } from "@sps/ecommerce/models/order/sdk/client";
-import { Component as View } from "./Component";
+import { api as orderApi } from "@sps/ecommerce/models/order/sdk/client";
+import { Component as ChildComponent } from "./Component";
 import type { IComponentPropsExtended } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
-  const totals = api.total({
+  const totals = orderApi.total({
     id: props.data.id,
     options: props.apiProps?.options,
   });
 
   return (
-    <View
+    <ChildComponent
       isServer={false}
       variant={props.variant}
       data={props.data}

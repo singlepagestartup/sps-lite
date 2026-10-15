@@ -1,6 +1,6 @@
 "use client";
 
-import { Component as HostModulePage, type ILoginPageProps } from "../../index";
+import { Component as Page, type ILoginPageProps } from "../../index";
 import type { MouseEvent } from "react";
 import type { IProfilePageProps } from "../rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat";
 
@@ -66,7 +66,7 @@ function ProfilePage({
 >) {
   if (route.page === "profile-overview")
     return (
-      <HostModulePage
+      <Page
         variant="rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat"
         profileId={route.profileId!}
         state={workspaceState}
@@ -76,7 +76,7 @@ function ProfilePage({
     );
   if (route.page === "thread-create")
     return (
-      <HostModulePage
+      <Page
         variant="rbac-module-subject-me-social-module-profile-id-chat-id-thread-create-ai-chat"
         profileId={route.profileId!}
         chatId={route.chatId!}
@@ -87,7 +87,7 @@ function ProfilePage({
     );
   const variant = profilePages[route.page as keyof typeof profilePages];
   return variant ? (
-    <HostModulePage
+    <Page
       variant={variant}
       profileId={route.profileId!}
       state={workspaceState}
@@ -125,20 +125,20 @@ function Pages({
     <>
       {serviceVariant ===
       "rbac-module-subject-me-authentication-select-method-ai-chat" ? (
-        <HostModulePage
+        <Page
           variant="rbac-module-subject-me-authentication-select-method-ai-chat"
           copy={loginCopy}
         />
       ) : serviceVariant ===
         "rbac-module-subject-me-social-module-profile-list-ai-chat" ? (
-        <HostModulePage
+        <Page
           variant={serviceVariant}
           state={projectsState}
           creating={creatingProject}
           onCreatingChange={onCreatingProjectChange}
         />
       ) : (
-        serviceVariant && <HostModulePage variant={serviceVariant} />
+        serviceVariant && <Page variant={serviceVariant} />
       )}
       {route.profileId && !available && (
         <ProfilePage

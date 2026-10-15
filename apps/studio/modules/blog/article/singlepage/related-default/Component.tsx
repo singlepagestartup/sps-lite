@@ -1,13 +1,11 @@
+import type { IComponentProps, ArticleRelatedDefaultProps } from "./interface";
+export type { ArticleRelatedDefaultProps } from "./interface";
 /**
  * Model-owned compact article link for related-content collections.
  * Category and reading time share a row above the title and publication date.
  */
-type ArticleRelatedDefaultTarget = "_blank" | "_parent" | "_self" | "_top";
-export type ArticleRelatedDefaultProps =
-  typeof defaultArticleRelatedDefaultProps;
-export function ArticleRelatedDefault(
-  props?: Partial<ArticleRelatedDefaultProps> & { variant?: string },
-) {
+
+export function ArticleRelatedDefault(props?: IComponentProps) {
   const { href, slug, category, title, date, readTime, target } = {
     ...defaultArticleRelatedDefaultProps,
     ...props,
@@ -53,3 +51,5 @@ export const defaultArticleRelatedDefaultProps = {
   readTime: "5 min read",
   target: undefined as ArticleRelatedDefaultTarget | undefined,
 };
+
+import type { ArticleRelatedDefaultTarget } from "./interface";

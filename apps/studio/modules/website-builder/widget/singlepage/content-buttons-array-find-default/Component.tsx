@@ -1,11 +1,16 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../feature/index";
+import type {
+  IComponentProps,
+  ContentButtonsArrayFindDefaultProps,
+} from "./interface";
+export type { ContentButtonsArrayFindDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 type ModuleIcon = ReturnType<typeof createIcon>;
-interface IModuleIconProps extends SVGProps<SVGSVGElement> {
-  size?: number;
-}
+
 type IconName = keyof typeof IconGlyphs;
 function createIcon(name: IconName) {
   const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
@@ -30,18 +35,15 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 interface IntegrationItem {
   label: string;
   icon: ModuleIcon;
 }
-export type ContentButtonsArrayFindDefaultProps =
-  typeof defaultContentButtonsArrayFindDefaultProps;
-export function ContentButtonsArrayFindDefault(
-  props?: Partial<ContentButtonsArrayFindDefaultProps> & { variant?: string },
-) {
+
+export function ContentButtonsArrayFindDefault(props?: IComponentProps) {
   const { label, integrations } = {
     ...defaultContentButtonsArrayFindDefaultProps,
     ...props,
@@ -93,3 +95,5 @@ export const defaultContentButtonsArrayFindDefaultProps = {
     { icon: Mail, label: "SMTP" },
   ] satisfies IntegrationItem[],
 };
+
+import type { IModuleIconProps } from "./interface";

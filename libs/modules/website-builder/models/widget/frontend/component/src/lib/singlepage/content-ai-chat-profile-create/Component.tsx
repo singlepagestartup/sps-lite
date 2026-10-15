@@ -1,20 +1,29 @@
+import { cn } from "@sps/shared-frontend-client-utils";
 import type { IComponentPropsExtended } from "./interface";
 export function Component({
   variant = "content-ai-chat-profile-create",
   children,
+  data,
+  language = "en",
+  className,
 }: IComponentPropsExtended) {
   return (
     <main
-      className="mx-auto max-w-6xl px-4 py-6 sm:px-5"
+      className={cn(
+        "mx-auto max-w-6xl px-4 py-6 sm:px-5",
+        data?.className,
+        className,
+      )}
       data-module="website-builder"
       data-model="widget"
       data-variant={variant}
+      data-id={data?.id}
     >
       <div className="grid min-w-0 overflow-hidden rounded-2xl border border-border bg-card md:grid-cols-2">
         <section className="flex flex-col justify-center p-6 sm:p-10">
           <span className="mb-5 h-1 w-10 rounded-full bg-primary text-primary-foreground" />
           <h1 className="text-3xl font-semibold leading-tight">
-            Start with a name.
+            {data?.title?.[language] || data?.title?.en || "Start with a name."}
           </h1>
           <p className="mt-4 text-sm leading-6 text-muted-foreground">
             Create a project with Brief, Strategy, Brand, Design and Products

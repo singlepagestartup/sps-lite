@@ -1,4 +1,19 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  BlogCommentData,
+  RelatedArticle,
+  PinnedProduct,
+  ArticleDetailProps,
+} from "./interface";
+export type {
+  BlogCommentData,
+  RelatedArticle,
+  PinnedProduct,
+  ArticleDetailProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import {
   forwardRef,
   type SVGProps,
@@ -9,12 +24,12 @@ import {
 } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
 import { Component as WebsiteBuilderModuleButton } from "../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import { Component as SocialModuleProfile } from "../../../../social/profile/index";
 import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
 import { Component as SocialModuleWidget } from "../../../../social/widget/index";
 import { Component as EcommerceModuleProduct } from "../../../../ecommerce/product/index";
-import { Component as BlogModuleTag } from "../../../tag/index";
+import { Component as Tag } from "../../../tag/index";
 import { ArticleRelatedDefault } from "../related-default/Component";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -43,42 +58,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface BlogCommentData {
-  id: string;
-  author: string;
-  avatar: string;
-  date: string;
-  text: string;
-  likes: number;
-  replies?: BlogCommentData[];
-}
-export interface RelatedArticle {
-  id: string;
-  slug: string;
-  title: string;
-  category: string;
-  date: string;
-  readTime: string;
-}
-export interface PinnedProduct {
-  id: string;
-  slug: string;
-  title: string;
-  shortDescription: string;
-  price: string;
-  priceLabel: string;
-  category: string;
-}
-export type ArticleDetailProps = typeof defaultArticleDetailProps & {
-  cover?: ReactNode;
-  tagsCard?: ReactNode;
-};
-export function ArticleDetail(
-  props?: Partial<ArticleDetailProps> & { variant?: string },
-) {
+export function ArticleDetail(props?: IComponentProps) {
   const {
     slug,
     category,
@@ -170,7 +153,7 @@ export function ArticleDetail(
             <div className="rounded-3xl border border-border bg-card p-5 sm:p-8 lg:p-10">
               <div className="mb-8 flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <BlogModuleTag
+                  <Tag
                     variant="button-default"
                     key={tag}
                     label={tag}

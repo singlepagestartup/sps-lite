@@ -1,9 +1,9 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import { Component as SharedIcon } from "../../../../../shared/icon";
 
 import { twMerge as twMerge } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import * as Dialog from "@radix-ui/react-dialog";
 function MarkdownDocument({
   children,
@@ -91,7 +91,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 export interface IDocumentGuideProps {

@@ -1,15 +1,15 @@
-import { Component as FileStorageModuleFile } from "../../index";
+import { Component as File } from "../../index";
 import { aiChatAttachmentFixture } from "../../../../social/profile/singlepage/scope/ai-chat/project/fixtures";
-import type { IAttachmentFileProps } from "./Component";
+import type { IAttachmentFileProps } from "./interface";
 import type { Meta, StoryObj } from "@storybook/react";
-function Example({ file }: IAttachmentFileProps) {
-  return <FileStorageModuleFile variant="attachment-ai-chat" file={file} />;
+function Component({ file }: IAttachmentFileProps) {
+  return <File variant="attachment-ai-chat" file={file} />;
 }
 const files = aiChatAttachmentFixture(4);
 const meta = {
   id: "modules-file-storage-models-file-singlepage-attachment-ai-chat",
   title: "Modules/File-Storage/File/Singlepage/attachment-ai-chat",
-  component: Example,
+  component: Component,
   args: { file: files[0] },
   decorators: [
     (Story) => (
@@ -18,7 +18,7 @@ const meta = {
       </div>
     ),
   ],
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const Document: StoryObj<typeof meta> = { args: { file: files[3] } };

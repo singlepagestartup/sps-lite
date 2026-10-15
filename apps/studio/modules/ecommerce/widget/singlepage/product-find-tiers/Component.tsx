@@ -1,9 +1,13 @@
+import type {
+  IComponentProps,
+  ProductTierItem,
+  ProductFindTiersProps,
+} from "./interface";
+export type { ProductTierItem, ProductFindTiersProps } from "./interface";
 import {
-  Component as EcommerceModuleProduct,
+  Component as Product,
   type ProductTierProps,
 } from "../../../product/index";
-
-export type ProductTierItem = ProductTierProps;
 
 export const defaultProductFindTiersProps = {
   eyebrow: "Pricing",
@@ -64,8 +68,6 @@ export const defaultProductFindTiersProps = {
   ] as ProductTierItem[],
 };
 
-export type ProductFindTiersProps = typeof defaultProductFindTiersProps;
-
 function SectionHeader({
   eyebrow,
   title,
@@ -90,9 +92,7 @@ function SectionHeader({
   );
 }
 
-export function ProductFindTiers(
-  props?: Partial<ProductFindTiersProps> & { variant?: string },
-) {
+export function ProductFindTiers(props?: IComponentProps) {
   const { eyebrow, title, description, products } = {
     ...defaultProductFindTiersProps,
     ...props,
@@ -117,7 +117,7 @@ export function ProductFindTiers(
         />
         <div className="grid items-stretch gap-6 lg:grid-cols-3">
           {products.map((product) => (
-            <EcommerceModuleProduct
+            <Product
               variant="tier"
               key={product.name}
               name={product.name}

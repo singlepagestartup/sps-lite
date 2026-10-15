@@ -585,9 +585,12 @@ describe("Local AI Chat components", () => {
       const file = path.join(import.meta.dir, "..", variant, "Component.tsx");
       const text = readFileSync(file, "utf8");
       const imports = ts.preProcessFile(text, true, true).importedFiles;
-      expect(imports.some(({ fileName }) => fileName.startsWith("./"))).toBe(
-        false,
-      );
+      expect(
+        imports.some(
+          ({ fileName }) =>
+            fileName.startsWith("./") && fileName !== "./interface",
+        ),
+      ).toBe(false);
       expect(text).not.toMatch(
         /currentUrl|popstate|location\.pathname|navigationHref|workspaceOpened/,
       );

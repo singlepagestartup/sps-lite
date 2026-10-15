@@ -1,22 +1,20 @@
 "use client";
+import type { IComponentProps, IProjectsPageProps } from "./interface";
+export type { IProjectsPageProps } from "./interface";
+
 import { useCallback, useState } from "react";
-import { Component as HostModuleLayout } from "../../../layout";
+import { Component as Layout } from "../../../layout";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject";
 import { Component as RbacModuleWidget } from "../../../../rbac/widget";
 import { useProfiles } from "../../../../social/profile/singlepage/scope/ai-chat/project/Profiles";
 import { aiChatProfileHref } from "../../../layout/singlepage/ai-chat-landing/routes";
-export interface IProjectsPageProps {
-  variant?: string;
-  state?: "ready" | "sign-in-required";
-  creating?: boolean;
-  onCreatingChange?: (creating: boolean) => void;
-}
+
 export function Component({
   variant = "rbac-module-subject-me-social-module-profile-list-ai-chat",
   state = "ready",
   creating: controlledCreating,
   onCreatingChange,
-}: IProjectsPageProps = {}) {
+}: IComponentProps = {}) {
   const { projects, loading, error, retry } = useProfiles();
   const [creating, setCreating] = useState(false);
   const openCreate = useCallback(() => {
@@ -29,7 +27,7 @@ export function Component({
   }, [onCreatingChange]);
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="ai-chat-dashboard"
         page="chat"
         subjectAccount={({ onNavigate }) => (
@@ -63,7 +61,7 @@ export function Component({
             />
           </RbacModuleWidget>
         }
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

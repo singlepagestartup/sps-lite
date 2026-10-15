@@ -1,5 +1,12 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  IAgentProfileProps,
+  IAgentPickerProps,
+} from "./interface";
+export type { IAgentProfileProps, IAgentPickerProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 
 import {
   forwardRef,
@@ -15,8 +22,8 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import Markdown from "markdown-to-jsx";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../../../website-builder/feature/singlepage/icon/icons.json";
-import { Component as SocialModuleSkill } from "../../../../../skill/index";
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
+import { Component as Skill } from "../../../../../skill/index";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AI_CHAT_AGENTS, type IProjectAgent } from "./resolver";
 import { Component as ProjectAgentAvatar } from "../../avatar/ai-chat/index";
@@ -164,24 +171,9 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAgentProfileProps {
-  variant?: string;
-  knowledge?: ReactNode;
-  knowledgeCount?: number;
-  skills?: ReactNode;
-  skillsCount?: number;
-  agent: IProjectAgent | null;
-  onClose: () => void;
-}
-export interface IAgentPickerProps {
-  agent: IProjectAgent | null;
-  agents: IProjectAgent[];
-  onChange: (agent: IProjectAgent | null) => void;
-  onSave: (agent: IProjectAgent) => void;
-}
 export function Component({
   variant = "agent-id-ai-chat",
   agent,
@@ -190,7 +182,7 @@ export function Component({
   knowledgeCount = 0,
   skills,
   skillsCount = 1,
-}: IAgentProfileProps) {
+}: IComponentProps) {
   return (
     <Dialog.Root
       open={Boolean(agent)}
@@ -244,7 +236,7 @@ export function Component({
               {skills ?? (
                 <div className="rounded-xl border border-border p-4">
                   {agent?.id === knowledgeAgent.id ? (
-                    <SocialModuleSkill variant="id-ai-chat" />
+                    <Skill variant="id-ai-chat" />
                   ) : (
                     <MarkdownDocument hideTitle>
                       {agent?.role ?? ""}

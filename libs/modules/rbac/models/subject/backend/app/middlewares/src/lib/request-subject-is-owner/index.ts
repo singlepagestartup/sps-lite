@@ -8,7 +8,7 @@ import { authorization, getHttpErrorType, verifyJwt } from "@sps/backend-utils";
 export interface IMiddlewareGeneric {}
 
 export class Middleware {
-  init(): MiddlewareHandler<any, any, {}> {
+  init(options?: { requireJwt?: boolean }): MiddlewareHandler<any, any, {}> {
     return createMiddleware(async (c, next) => {
       try {
         if (!RBAC_JWT_SECRET) {
@@ -28,7 +28,7 @@ export class Middleware {
           throw new Error("Validation error. No id provided");
         }
 
-        if (!secretKey) {
+        if (!secretKey || options?.requireJwt) {
           const token = authorization(c);
 
           if (!token) {

@@ -1,7 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, ProductCardRelatedProps } from "./interface";
+export type { ProductCardRelatedProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -29,7 +33,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 /**
@@ -39,18 +43,8 @@ function Icon(props: {
  * Owned by the ecommerce module (model: product).
  * Source: ProductPage WidgetRelated card (lines 653-679).
  */
-export interface ProductCardRelatedProps {
-  variant?: string;
-  slug: string;
-  image: string;
-  category: string;
-  priceLabel: string;
-  title: string;
-  subtitle: string;
-  href?: string;
-  target?: "_blank" | "_parent" | "_self" | "_top";
-}
-export function ProductCardRelated(props?: Partial<ProductCardRelatedProps>) {
+
+export function ProductCardRelated(props?: IComponentProps) {
   const { slug, image, priceLabel, title, subtitle, href, target } = {
     ...defaultProductCardRelatedProps,
     ...props,

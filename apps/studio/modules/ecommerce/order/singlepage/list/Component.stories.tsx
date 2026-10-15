@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Component as EcommerceModuleOrder } from "../../index";
+import { Component as Order } from "../../index";
 const meta = {
   id: "modules-ecommerce-models-order-singlepage-list",
   title: "Modules/Ecommerce/Order/Singlepage/list",
-  component: EcommerceModuleOrder,
+  component: Order,
   args: { variant: "list", count: 3, empty: false },
   argTypes: {
     count: { control: { type: "number", min: 0, max: 50 } },
     empty: { control: "boolean" },
   },
-} satisfies Meta<typeof EcommerceModuleOrder>;
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Order>, { variant: "list" }>
+>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {};

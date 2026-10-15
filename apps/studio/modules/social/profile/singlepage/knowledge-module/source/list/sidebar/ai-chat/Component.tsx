@@ -1,17 +1,21 @@
 "use client";
+import type {
+  IComponentProps,
+  IProfileSourceSidebarListProps,
+} from "./interface";
+export type { IProfileSourceSidebarListProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import { useId, useState } from "react";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature";
+
 import { Component as KnowledgeModuleSource } from "../../../../../../../../knowledge/source";
-export interface IProfileSourceSidebarListProps {
-  variant?: string;
-  href: string;
-  selected?: boolean;
-}
+
 export function Component({
   variant = "knowledge-module-source-list-sidebar-ai-chat",
   href,
   selected = false,
-}: IProfileSourceSidebarListProps) {
+}: IComponentProps) {
   const id = useId();
   const [open, setOpen] = useState(true);
   const kit = {
@@ -33,15 +37,11 @@ export function Component({
         onClick={() => setOpen((current) => !current)}
         className={`flex min-h-11 w-full items-center gap-2 rounded-lg bg-card/10 px-3 py-2 text-left text-sm font-semibold ${kit.focus}`}
       >
-        <WebsiteBuilderModuleFeature
-          variant="icon"
-          name="folder-open"
-          className="size-4"
-        />
+        <SharedIcon variant="phosphor" name="folder-open" className="size-4" />
         <span className="flex-1">Documents</span>
         <span className="text-xs text-default-foreground/60">1</span>
-        <WebsiteBuilderModuleFeature
-          variant="icon"
+        <SharedIcon
+          variant="phosphor"
           name="caret-down"
           className={`size-4 ${open ? "rotate-180" : ""}`}
         />

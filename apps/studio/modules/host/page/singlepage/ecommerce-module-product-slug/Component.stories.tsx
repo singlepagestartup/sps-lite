@@ -1,15 +1,20 @@
+import { Component as Page } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { EcommerceCartFlowDefault } from "./Component";
 
 const meta = {
   id: "modules-host-models-page-singlepage-ecommerce-module-product-slug",
   title: "Modules/Host/Page/Singlepage/ecommerce-module-product-slug",
-  component: EcommerceCartFlowDefault,
+  component: Page,
   parameters: {
     layout: "fullscreen",
   },
-} satisfies Meta<typeof EcommerceCartFlowDefault>;
+  args: { variant: "ecommerce-module-product-slug" },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Page>,
+    { variant: "ecommerce-module-product-slug" }
+  >
+>;
 
 export default meta;
 

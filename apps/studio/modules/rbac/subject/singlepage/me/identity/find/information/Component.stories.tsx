@@ -1,16 +1,22 @@
+import { Component as Subject } from "../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import {
-  SubjectMeIdentityFindInformation,
-  defaultSubjectMeIdentityFindInformationProps,
-} from "./Component";
+import { defaultSubjectMeIdentityFindInformationProps } from "./Component";
 
 const meta = {
   id: "modules-rbac-models-subject-singlepage-me-identity-find-information",
   title: "Modules/RBAC/Subject/Singlepage/me/identity/find/information",
-  component: SubjectMeIdentityFindInformation,
-  args: defaultSubjectMeIdentityFindInformationProps,
-} satisfies Meta<typeof SubjectMeIdentityFindInformation>;
+  component: Subject,
+  args: {
+    ...defaultSubjectMeIdentityFindInformationProps,
+    variant: "me-identity-find-information",
+  },
+} satisfies Meta<
+  Extract<
+    React.ComponentProps<typeof Subject>,
+    { variant: "me-identity-find-information" }
+  >
+>;
 
 export default meta;
 

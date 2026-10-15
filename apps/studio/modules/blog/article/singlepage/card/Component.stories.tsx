@@ -1,12 +1,13 @@
+import { Component as Article } from "../..";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ArticleCard, defaultArticleCardProps } from "./Component";
+import { defaultArticleCardProps } from "./Component";
 
 const meta = {
   id: "modules-blog-models-article-singlepage-card",
   title: "Modules/Blog/Article/Singlepage/card",
-  component: ArticleCard,
+  component: Article,
   parameters: { layout: "padded" },
-  args: defaultArticleCardProps,
+  args: { ...defaultArticleCardProps, variant: "card" },
   argTypes: {
     layout: {
       control: "select",
@@ -15,10 +16,12 @@ const meta = {
   },
   render: (args) => (
     <div className="max-w-sm">
-      <ArticleCard {...args} />
+      <Article {...args} variant="card" />
     </div>
   ),
-} satisfies Meta<typeof ArticleCard>;
+} satisfies Meta<
+  Extract<React.ComponentProps<typeof Article>, { variant: "card" }>
+>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -42,7 +45,7 @@ export const Comparison: Story = {
                 ? "Editorial"
                 : "Compact"}
           </h2>
-          <ArticleCard {...args} layout={layout} />
+          <Article {...args} layout={layout} variant="card" />
         </section>
       ))}
     </div>

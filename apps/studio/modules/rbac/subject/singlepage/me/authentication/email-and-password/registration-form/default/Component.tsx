@@ -1,4 +1,11 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature/index";
+import type {
+  IComponentProps,
+  ISubjectRegistrationFormDefaultProps,
+} from "./interface";
+export type { ISubjectRegistrationFormDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
+
 import {
   forwardRef,
   type InputHTMLAttributes,
@@ -12,7 +19,7 @@ import {
   twMerge,
   twMerge as twMergePresentation,
 } from "tailwind-merge";
-import type IconGlyphs from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -42,33 +49,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface ISubjectRegistrationFormDefaultProps {
-  variant?: string;
-  title: string;
-  description: string;
-  demoNote: string;
-  nameLabel: string;
-  namePlaceholder: string;
-  emailLabel: string;
-  emailPlaceholder: string;
-  passwordLabel: string;
-  passwordPlaceholder: string;
-  confirmLabel: string;
-  confirmPlaceholder: string;
-  termsLabel: string;
-  termsHref: string;
-  privacyHref: string;
-  submitLabel: string;
-  loginPrompt: string;
-  loginLabel: string;
-  loginHref: string;
-}
-export function Component(
-  props?: Partial<ISubjectRegistrationFormDefaultProps>,
-) {
+export function Component(props?: IComponentProps) {
   const {
     title,
     description,

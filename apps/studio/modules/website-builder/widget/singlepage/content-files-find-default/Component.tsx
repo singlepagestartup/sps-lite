@@ -1,13 +1,18 @@
+import type {
+  IComponentProps,
+  ContentFilesFindDefaultProps,
+} from "./interface";
+export type { ContentFilesFindDefaultProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
 import { forwardRef, type SVGProps } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import type IconGlyphs from "../../../feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import {
-  Component as WebsiteBuilderModuleFeature,
+  Component as Feature,
   type FeatureListItemDefaultProps,
 } from "../../../feature/index";
-interface IModuleIconProps extends SVGProps<SVGSVGElement> {
-  size?: number;
-}
+
 type IconName = keyof typeof IconGlyphs;
 function createIcon(name: IconName) {
   const Component = forwardRef<SVGSVGElement, IModuleIconProps>(
@@ -32,15 +37,12 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 type FeatureListItem = Pick<FeatureListItemDefaultProps, "label" | "icon">;
-export type ContentFilesFindDefaultProps =
-  typeof defaultContentFilesFindDefaultProps;
-export function ContentFilesFindDefault(
-  props?: Partial<ContentFilesFindDefaultProps> & { variant?: string },
-) {
+
+export function ContentFilesFindDefault(props?: IComponentProps) {
   const { eyebrow, title, paragraphs, mediaSrc, mediaAlt, features } = {
     ...defaultContentFilesFindDefaultProps,
     ...props,
@@ -83,7 +85,7 @@ export function ContentFilesFindDefault(
               data-ds-imports="website-builder.feature.list-item-default"
             >
               {features.map((item) => (
-                <WebsiteBuilderModuleFeature
+                <Feature
                   key={item.label}
                   {...item}
                   variant="list-item-default"
@@ -118,3 +120,5 @@ export const defaultContentFilesFindDefaultProps = {
     { label: "Rich-text editor", icon: FileText },
   ] satisfies FeatureListItem[],
 };
+
+import type { IModuleIconProps } from "./interface";

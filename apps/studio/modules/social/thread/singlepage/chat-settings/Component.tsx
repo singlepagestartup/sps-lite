@@ -1,4 +1,8 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../website-builder/feature/index";
+import type { IComponentProps, SocialChatSettingsProps } from "./interface";
+export type { SocialChatSettingsProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../shared/icon";
+
 import * as Tabs from "@radix-ui/react-tabs";
 import {
   forwardRef,
@@ -9,7 +13,7 @@ import {
   useState,
 } from "react";
 import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
-import type IconGlyphs from "../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../shared/icon/singlepage/phosphor/icons.json";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   ChatImagePicker,
@@ -47,28 +51,10 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface SocialChatSettingsProps {
-  variant?: string;
-  open: boolean;
-  onCloseAutoFocus?: Dialog.DialogContentProps["onCloseAutoFocus"];
-  onOpenChange: (open: boolean) => void;
-  title: string;
-  description: string;
-  threads: SocialThreadListDefaultProps["threads"];
-  memberIds: string[];
-  profiles: SocialPreviewProfile[];
-  image?: SocialPreviewAttachment;
-  onImageChange?: (file: File | null) => void;
-  initialTab?: "general" | "threads" | "members";
-  initialThreadId?: string;
-  onChatChange?: (title: string, description: string) => void;
-  onThreadsChange: (threads: SocialThreadListDefaultProps["threads"]) => void;
-  onMembersChange?: (ids: string[]) => void;
-}
-export function Component(props: SocialChatSettingsProps) {
+export function Component(props: IComponentProps) {
   const [portal, setPortal] = useState<HTMLDivElement | null>(null);
   const [tab, setTab] = useState(props.initialTab ?? "general");
   const [name, setName] = useState(props.title);

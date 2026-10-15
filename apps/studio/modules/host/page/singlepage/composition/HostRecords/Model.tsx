@@ -1,4 +1,5 @@
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../website-builder/feature/index";
+import { Component as SharedIcon } from "../../../../../shared/icon";
+
 import {
   forwardRef,
   useState as useStatePresentation,
@@ -26,7 +27,7 @@ import { twMerge, twMerge as twMergePresentation } from "tailwind-merge";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Component as WebsiteBuilderModuleButton } from "../../../../../website-builder/button/index";
-import type IconGlyphs from "../../../../../website-builder/feature/singlepage/icon/icons.json";
+import type IconGlyphs from "../../../../../shared/icon/singlepage/phosphor/icons.json";
 import { HOST_STUDIO_FIELDS } from "./state/constants";
 import {
   createHostModel,
@@ -667,7 +668,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 export interface IHostModelListProps {

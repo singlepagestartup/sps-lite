@@ -1,5 +1,8 @@
 "use client";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../../../../website-builder/feature/index";
+import type { IComponentProps, IAccountChangeProps } from "./interface";
+export type { IAccountChangeProps } from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../../../shared/icon";
 
 import {
   type InputHTMLAttributes,
@@ -19,7 +22,7 @@ import {
 import {
   type default as IconGlyphs,
   default as IconPresentationGlyphs,
-} from "../../../../../../../../website-builder/feature/singlepage/icon/icons.json";
+} from "../../../../../../../../shared/icon/singlepage/phosphor/icons.json";
 interface IModuleIconProps extends SVGProps<SVGSVGElement> {
   size?: number;
 }
@@ -106,7 +109,7 @@ function Icon(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
 function IconPresentation(props: {
@@ -115,23 +118,16 @@ function IconPresentation(props: {
   className?: string;
   svgProps?: React.SVGProps<SVGSVGElement>;
 }) {
-  return <WebsiteBuilderModuleFeature {...props} variant="icon" />;
+  return <SharedIcon {...props} variant="phosphor" />;
 }
 
-export interface IAccountChangeProps {
-  variant?: string;
-  kind?: "email" | "password";
-  email?: string;
-  onComplete?: (email?: string) => void;
-  onCancel?: () => void;
-}
 export function Component({
   variant = "me-authentication-email-and-password-account-change-default",
   kind = "email",
   email = "alex@example.com",
   onComplete,
   onCancel,
-}: IAccountChangeProps = {}) {
+}: IComponentProps = {}) {
   const [step, setStep] = useState<
     "start" | "verify-current" | "details" | "verify-new" | "complete"
   >(kind === "password" ? "details" : "start");

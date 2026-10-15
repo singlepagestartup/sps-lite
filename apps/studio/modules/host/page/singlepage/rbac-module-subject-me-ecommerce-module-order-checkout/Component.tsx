@@ -1,6 +1,8 @@
+import type { IComponentProps, IComponentVariantProps } from "./interface";
+export type { IComponentVariantProps } from "./interface";
 import { ReactNode as ReactNode } from "react";
 import { twMerge as twMerge } from "tailwind-merge";
-import { Component as HostModuleLayout } from "../../../layout/index";
+import { Component as Layout } from "../../../layout/index";
 import { Component as EcommerceModuleOrder } from "../../../../ecommerce/order/index";
 interface SectionStackProps {
   children: ReactNode;
@@ -19,15 +21,13 @@ function SectionStack({ children, className }: SectionStackProps) {
     </div>
   );
 }
-interface IComponentVariantProps {
-  variant?: string;
-}
+
 export function EcommerceOrderCheckoutDetailsDefault({
   variant = "rbac-module-subject-me-ecommerce-module-order-checkout",
-}: IComponentVariantProps = {}) {
+}: IComponentProps = {}) {
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
-      <HostModuleLayout
+      <Layout
         variant="website"
         activeHref="/checkout"
         cartCount={1}
@@ -52,7 +52,7 @@ export function EcommerceOrderCheckoutDetailsDefault({
             </section>
           </SectionStack>
         </main>
-      </HostModuleLayout>
+      </Layout>
     </div>
   );
 }

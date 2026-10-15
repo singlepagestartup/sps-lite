@@ -1,16 +1,12 @@
 "use client";
+import type { IComponentProps, IIdentityCreateProps } from "./interface";
+export type { IIdentityCreateProps } from "./interface";
+
 import { useState } from "react";
 import { useStudioAccount } from "../../../account/Account";
 import { getIdentityProviderMeta } from "../../../../../../shared";
 import { Component as ProviderConnect } from "../../../authentication/provider-connect/default";
-export interface IIdentityCreateProps {
-  variant?: string;
-  subjectId?: string;
-  connected?: boolean;
-  account?: string;
-  reconnect?: boolean;
-  onComplete: (account: string) => void;
-}
+
 export function Component({
   variant = "me-identity-create-email-and-password",
   subjectId,
@@ -18,7 +14,7 @@ export function Component({
   account: login,
   reconnect = false,
   onComplete,
-}: IIdentityCreateProps) {
+}: IComponentProps) {
   const { account } = useStudioAccount();
   const [open, setOpen] = useState(false);
   const meta = getIdentityProviderMeta("email_and_password");

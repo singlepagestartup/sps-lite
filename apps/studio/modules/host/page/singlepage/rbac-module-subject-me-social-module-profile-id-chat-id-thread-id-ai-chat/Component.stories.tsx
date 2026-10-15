@@ -13,7 +13,7 @@ type IPageStoryProps = Pick<
   | "workspaceErrorMessage"
   | "onRetry"
 > & { withAttachments?: boolean };
-function Example({ withAttachments = false, ...props }: IPageStoryProps) {
+function Component({ withAttachments = false, ...props }: IPageStoryProps) {
   return (
     <ProjectProvider
       key={String(withAttachments)}
@@ -31,7 +31,7 @@ const meta = {
   id: "modules-host-models-page-singlepage-rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
   title:
     "Modules/Host/Page/Singlepage/rbac-module-subject-me-social-module-profile-id-chat-id-thread-id-ai-chat",
-  component: Example,
+  component: Component,
   parameters: { layout: "fullscreen" },
   args: {
     signedIn: true,
@@ -58,7 +58,7 @@ const meta = {
     account: { control: "object" },
     profiles: { control: "object" },
   },
-} satisfies Meta<typeof Example>;
+} satisfies Meta<typeof Component>;
 export default meta;
 export const Default: StoryObj<typeof meta> = {};
 export const CheckingSession: StoryObj<typeof meta> = {

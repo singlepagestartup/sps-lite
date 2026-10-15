@@ -60,6 +60,11 @@ outbound delivery to `notification`.
 
 ## Implementation and review
 
+Run `npm run check:module-dependencies` when reviewing changed module imports.
+The check reads the order above, resolves TypeScript aliases and neutral barrels,
+and includes type imports and tests. It reports upward edges; it does not prove
+that every remaining intra-module graph is free of runtime cycles.
+
 Check each new cross-module import against this order, including schemas,
 types, frontend composition and transitive barrel exports. Existing upward
 imports are findings, not permission to repeat them. Keep their triggering

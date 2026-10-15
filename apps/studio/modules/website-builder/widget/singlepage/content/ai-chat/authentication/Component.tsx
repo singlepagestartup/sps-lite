@@ -1,21 +1,19 @@
+import type {
+  IComponentProps,
+  IAuthenticationContent,
+  IAuthenticationContentProps,
+} from "./interface";
+export type {
+  IAuthenticationContent,
+  IAuthenticationContentProps,
+} from "./interface";
+
+import { Component as SharedIcon } from "../../../../../../shared/icon";
 import type { ReactNode } from "react";
 import Markdown from "markdown-to-jsx";
-import { Component as WebsiteBuilderModuleFeature } from "../../../../../feature";
-import type IconGlyphs from "../../../../../feature/singlepage/icon/icons.json";
-import defaultContent from "./content.json";
 
-export interface IAuthenticationContent {
-  intro: { title: string; paragraphs: string[] };
-  images: { src: string; alt: string; assetId: string }[];
-  aside: { title: string; paragraphs: string[] };
-}
-export interface IAuthenticationContentProps {
-  variant?: string;
-  content?: IAuthenticationContent;
-  children?: ReactNode;
-  media?: "cover" | "stack";
-  asideIcon?: keyof typeof IconGlyphs;
-}
+import type IconGlyphs from "../../../../../../shared/icon/singlepage/phosphor/icons.json";
+import defaultContent from "./content.json";
 
 function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
   return (
@@ -37,7 +35,7 @@ export function Component({
   children,
   media = "cover",
   asideIcon = "question",
-}: IAuthenticationContentProps = {}) {
+}: IComponentProps = {}) {
   return (
     <main
       data-module="website-builder"
@@ -89,10 +87,7 @@ export function Component({
                 >
                   <h2 className="flex items-center gap-3 text-xl font-semibold">
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted">
-                      <WebsiteBuilderModuleFeature
-                        variant="icon"
-                        name={asideIcon}
-                      />
+                      <SharedIcon variant="phosphor" name={asideIcon} />
                     </span>
                     {content.aside.title}
                   </h2>

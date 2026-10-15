@@ -1,13 +1,10 @@
 "use client";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import {
-  Component as Profile,
+  Component as SocialModuleProfile,
   EmptyProjectSelect,
 } from "@sps/social/models/profile/frontend/component";
-import {
-  projectHref,
-  findProjectProfile,
-} from "../me-social-module-profile-id-chat-id-thread-id-ai-chat/utils";
+import { projectHref } from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   return (
@@ -45,21 +42,12 @@ export function Component(props: IComponentPropsExtended) {
               empty={!projects.length}
             >
               {projects.map((item) => (
-                <Profile
+                <SocialModuleProfile
                   key={`${item.profile.id}:${item.chat.id}`}
                   isServer={false}
                   variant="select-item-ai-chat-project"
                   data={item.profile}
-                  apiProps={{
-                    reactQueryOptions: {
-                      initialData: item.profile,
-                      queryFn: () =>
-                        findProjectProfile({
-                          subjectId: props.data.id,
-                          profileId: item.profile.id,
-                        }),
-                    },
-                  }}
+                  dataSource="props"
                   href={`/${props.language}${projectHref(item)}`}
                   selected={false}
                 />
@@ -67,38 +55,20 @@ export function Component(props: IComponentPropsExtended) {
             </EmptyProjectSelect>
           );
         return (
-          <Profile
+          <SocialModuleProfile
             isServer={false}
             variant="select-ai-chat-project"
             data={current.profile}
-            apiProps={{
-              reactQueryOptions: {
-                initialData: current.profile,
-                queryFn: () =>
-                  findProjectProfile({
-                    subjectId: props.data.id,
-                    profileId: current.profile.id,
-                  }),
-              },
-            }}
+            dataSource="props"
             createHref={`/${props.language}/ai-chat/projects`}
           >
             {projects.map((item) => (
-              <Profile
+              <SocialModuleProfile
                 key={`${item.profile.id}:${item.chat.id}`}
                 isServer={false}
                 variant="select-item-ai-chat-project"
                 data={item.profile}
-                apiProps={{
-                  reactQueryOptions: {
-                    initialData: item.profile,
-                    queryFn: () =>
-                      findProjectProfile({
-                        subjectId: props.data.id,
-                        profileId: item.profile.id,
-                      }),
-                  },
-                }}
+                dataSource="props"
                 href={`/${props.language}${projectHref(item)}`}
                 selected={
                   item.profile.id === current?.profile.id &&
@@ -106,7 +76,7 @@ export function Component(props: IComponentPropsExtended) {
                 }
               />
             ))}
-          </Profile>
+          </SocialModuleProfile>
         );
       }}
     />
