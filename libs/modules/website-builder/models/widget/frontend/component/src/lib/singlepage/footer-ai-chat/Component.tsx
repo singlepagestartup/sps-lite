@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { Component as WidgetLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
 import type { IComponentPropsExtended } from "./interface";
@@ -36,11 +37,15 @@ export function Component(props: IComponentPropsExtended) {
         }
       </WidgetLogotypes>
       <div className="flex flex-wrap gap-4">
-        <a href={getLocalizedHref(pathname, "/ai-chat/projects")}>
+        <Link href={getLocalizedHref(pathname, "/ai-chat/projects")}>
           Start with my files
-        </a>
-        <a href={getLocalizedHref(pathname, "/ai-chat/sign-in")}>Sign in</a>
-        <a href={getLocalizedHref(pathname, "/framework")}>Code Framework</a>
+        </Link>
+        <Link href={getLocalizedHref(pathname, "/ai-chat/sign-in")}>
+          Sign in
+        </Link>
+        <Link href={getLocalizedHref(pathname, "/framework")}>
+          Code Framework
+        </Link>
       </div>
     </footer>
   );

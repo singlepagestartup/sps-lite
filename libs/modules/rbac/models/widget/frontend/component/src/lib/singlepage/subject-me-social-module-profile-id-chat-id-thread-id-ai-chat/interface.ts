@@ -12,3 +12,12 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
 }
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}
+
+export interface IWorkspaceNoticeProps {
+  embedded?: boolean;
+  state: "sign-in-required" | "access-denied" | "error";
+  message?: string;
+  signInHref?: string;
+  projectsHref?: string;
+  onRetry?: () => void;
+}

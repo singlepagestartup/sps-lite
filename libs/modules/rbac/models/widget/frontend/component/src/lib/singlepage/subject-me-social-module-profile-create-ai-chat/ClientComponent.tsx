@@ -2,13 +2,27 @@
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import { projectHref } from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Component as Projects } from "./Projects";
 import { Component as WidgetsToWebsiteBuilderModuleWidgets } from "@sps/rbac/relations/widgets-to-website-builder-module-widgets/frontend/component";
 export function Component(props: IComponentPropsExtended) {
-  const [creating, setCreating] = useState(false);
-  const openCreate = useCallback(() => setCreating(true), []);
-  const closeCreate = useCallback(() => setCreating(false), []);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const creating = searchParams?.get("create") === "1";
+  const setCreating = useCallback(
+    (value: boolean) => {
+      const params = new URLSearchParams(searchParams?.toString());
+      if (value) params.set("create", "1");
+      else params.delete("create");
+      const query = params.toString();
+      router.push(`${pathname}${query ? `?${query}` : ""}`, { scroll: false });
+    },
+    [pathname, router, searchParams],
+  );
+  const openCreate = useCallback(() => setCreating(true), [setCreating]);
+  const closeCreate = useCallback(() => setCreating(false), [setCreating]);
   return (
     <div
       data-module="rbac"

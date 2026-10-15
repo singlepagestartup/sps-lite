@@ -548,3 +548,33 @@ download without a direct fallback. RBAC unit: 143 suites / 760 tests pass;
 the existing scoped Thread realtime-refetch regression also passes. Logs:
 `/private/tmp/sps-thread-permission-red.log`,
 `/private/tmp/sps-thread-download-green.log`.
+
+## AI Chat navigation follow-up
+
+Internal Help, home, footer, authentication-copy, project-card and workspace
+recovery links use Next `Link`. Their locale and accessible labels are
+preserved. Same-page walkthrough anchors and file downloads keep their
+existing behavior.
+
+The header creation action targets `/<locale>/ai-chat/projects?create=1`.
+The project Widget reads this query through Next navigation; Create and Back
+to projects update it with the router while preserving other query parameters.
+A direct URL or browser history change selects the same photographic creation
+card. The chooser remains the default without `create=1`.
+
+Verification: RBAC 143 suites / 761 tests and Website Builder 5 suites / 16 tests
+pass. Six navigation cases render the real Next Link and verify that it prevents
+document navigation and calls the router with the localized destination. The
+creation regression covers direct query entry, chooser/form transitions,
+unrelated query parameters and back/forward state. Host TypeScript passes.
+Browser checks cover the photographic form, Back to projects, Help, home and
+the header New project destination. No project, AI or support form is submitted.
+The browser reports a Next smooth-scroll advisory; no RSC or hydration error
+appears in the checked transitions.
+
+The separate OpenRouter log investigation confirms successful saved provider
+responses and matching configured, running-process and dashboard API-key
+fingerprints. The relevant UTC interval is included in the refreshed Logs
+range; workspace Logs show older requests while the recent replies remain
+absent. The cause of this dashboard discrepancy is unconfirmed. No provider
+settings or credentials change, and no new inference request is sent.

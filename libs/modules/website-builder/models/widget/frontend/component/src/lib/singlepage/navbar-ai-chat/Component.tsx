@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { Icon } from "@sps/ui-adapter";
 import { Component as WidgetLogotypes } from "@sps/website-builder/relations/widgets-to-logotypes/frontend/component";
@@ -46,23 +47,23 @@ export function Component(props: IComponentPropsExtended) {
           }
         </WidgetLogotypes>
         <div className="flex flex-wrap items-center gap-1 text-sm">
-          <a
+          <Link
             href={getLocalizedHref(localeBase, "/ai-chat/help")}
             aria-current={helpSelected ? "page" : undefined}
             className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-3 text-sm ${focus} ${helpSelected ? "bg-default font-semibold text-default-foreground" : "text-muted-foreground hover:bg-muted"}`}
           >
             <Icon name="question" />
             Help
-          </a>
+          </Link>
           {props.children}
           {!props.children && (
-            <a
+            <Link
               href={getLocalizedHref(localeBase, "/ai-chat/sign-in")}
               className={`inline-flex min-h-11 items-center gap-2 rounded-xl px-3 font-semibold hover:bg-muted ${focus}`}
             >
               <Icon name="user-circle" />
               Sign in
-            </a>
+            </Link>
           )}
         </div>
       </nav>

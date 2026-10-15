@@ -1,11 +1,5 @@
-export interface IWorkspaceNoticeProps {
-  embedded?: boolean;
-  state: "sign-in-required" | "access-denied" | "error";
-  message?: string;
-  signInHref?: string;
-  projectsHref?: string;
-  onRetry?: () => void;
-}
+import Link from "next/link";
+import type { IWorkspaceNoticeProps } from "./interface";
 export function Component({
   state,
   embedded = false,
@@ -55,17 +49,17 @@ export function Component({
               Try again
             </button>
           ) : (
-            <a
+            <Link
               href={needsSignIn ? signInHref : projectsHref}
               className={control}
             >
               {needsSignIn ? "Sign in" : "My projects"}
-            </a>
+            </Link>
           )}
           {state === "access-denied" && (
-            <a href={signInHref} className={control}>
+            <Link href={signInHref} className={control}>
               Switch account
-            </a>
+            </Link>
           )}
         </div>
       </div>

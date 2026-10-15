@@ -6,6 +6,17 @@
  * Then: creation has its original photograph, copy and form; the chooser retains its project links.
  */
 import { fireEvent, render, screen } from "@testing-library/react";
+let mockSearch = "";
+const mockPush = jest.fn();
+jest.mock("next/navigation", () => ({
+  usePathname: () => "/ru/ai-chat/projects",
+  useSearchParams: () => new URLSearchParams(mockSearch),
+  useRouter: () => ({ push: mockPush }),
+}));
+beforeEach(() => {
+  mockSearch = "";
+  jest.clearAllMocks();
+});
 const contentRead = jest.fn();
 const relationRead = jest.fn();
 const link = {
@@ -93,16 +104,13 @@ jest.mock("@sps/rbac/models/widget/frontend/component", () => ({
   Component: (props: any) => jest.requireActual("./index").Component(props),
 }));
 it("opens the original photo card without replacing the project chooser", () => {
-  render(
-    <Widget
-      {...({
-        isServer: false,
-        variant: "subject-me-social-module-profile-create-ai-chat",
-        language: "ru",
-        data: { id: "rbac-widget" },
-      } as any)}
-    />,
-  );
+  const props = {
+    isServer: false,
+    variant: "subject-me-social-module-profile-create-ai-chat",
+    language: "ru",
+    data: { id: "rbac-widget" },
+  } as any;
+  const view = render(<Widget {...props} />);
   expect(screen.getByRole("heading", { name: "My projects" })).toBeTruthy();
   expect(
     screen
@@ -112,6 +120,11 @@ it("opens the original photo card without replacing the project chooser", () => 
   expect(screen.queryByRole("form")).toBeNull();
   expect(contentRead).not.toHaveBeenCalled();
   fireEvent.click(screen.getByRole("button", { name: "Create project" }));
+  expect(mockPush).toHaveBeenCalledWith("/ru/ai-chat/projects?create=1", {
+    scroll: false,
+  });
+  mockSearch = "create=1";
+  view.rerender(<Widget {...props} />);
   expect(
     screen.getByRole("heading", { name: "Start with a name." }),
   ).toBeTruthy();
@@ -151,6 +164,34 @@ it("opens the original photo card without replacing the project chooser", () => 
     }),
   );
   fireEvent.click(screen.getByRole("button", { name: "Back to projects" }));
+  expect(mockPush).toHaveBeenLastCalledWith("/ru/ai-chat/projects", {
+    scroll: false,
+  });
+  mockSearch = "";
+  view.rerender(<Widget {...props} />);
   expect(screen.getByRole("heading", { name: "My projects" })).toBeTruthy();
   expect(screen.queryByRole("form")).toBeNull();
+});
+
+it("opens creation from the URL and follows back/forward query changes", () => {
+  mockSearch = "create=1&source=header";
+  const props = {
+    isServer: false,
+    variant: "subject-me-social-module-profile-create-ai-chat",
+    language: "ru",
+    data: { id: "rbac-widget" },
+  } as any;
+  const view = render(<Widget {...props} />);
+  expect(screen.getByRole("form", { name: "Create project" })).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Back to projects" }));
+  expect(mockPush).toHaveBeenLastCalledWith(
+    "/ru/ai-chat/projects?source=header",
+    { scroll: false },
+  );
+  mockSearch = "source=header";
+  view.rerender(<Widget {...props} />);
+  expect(screen.getByRole("heading", { name: "My projects" })).toBeTruthy();
+  mockSearch = "create=1&source=header";
+  view.rerender(<Widget {...props} />);
+  expect(screen.getByRole("form", { name: "Create project" })).toBeTruthy();
 });

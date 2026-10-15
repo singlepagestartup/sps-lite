@@ -1,6 +1,11 @@
 import { renderToStaticMarkup } from "react-dom/server";
 jest.mock("client-only", () => ({}), { virtual: true });
 jest.mock("server-only", () => ({}), { virtual: true });
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/ru/ai-chat/projects",
+  useSearchParams: () => new URLSearchParams(),
+}));
 
 let mockAuthenticated = true;
 let mockAuthState = "ready";

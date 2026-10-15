@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
 import { Icon } from "@sps/ui-adapter";
 import type { IComponentPropsExtended } from "./interface";
@@ -8,7 +9,7 @@ export function Component({
 }: IComponentPropsExtended) {
   const pathname = `/${language}`;
   return (
-    <a
+    <Link
       href={getLocalizedHref(pathname, "/")}
       data-ds-block="website-builder.logotype.brand-ai-chat"
       data-id={data.id}
@@ -42,7 +43,7 @@ export function Component({
       >
         <Icon name="star" className="size-4" />
       </span>
-    </a>
+    </Link>
   );
 }
 const focus =

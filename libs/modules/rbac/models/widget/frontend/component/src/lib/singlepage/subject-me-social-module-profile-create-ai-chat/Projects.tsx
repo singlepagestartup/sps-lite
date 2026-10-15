@@ -1,21 +1,7 @@
-import { memo, type ReactNode } from "react";
+import Link from "next/link";
+import { memo } from "react";
 import { Icon, type IconName } from "@sps/ui-adapter";
-export interface IProjectSummary {
-  id: string;
-  name: string;
-  href: string;
-}
-export interface IProjectsOverviewProps {
-  variant?: string;
-  projects: IProjectSummary[];
-  pending?: boolean;
-  error?: boolean;
-  creating?: boolean;
-  onCreate?: () => void;
-  onCancel?: () => void;
-  onRetry?: () => void;
-  children?: ReactNode;
-}
+import type { IProjectSummary, IProjectsOverviewProps } from "./interface";
 const control =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-50";
 export function Component({
@@ -157,7 +143,7 @@ const ProjectCard = memo(function ProjectCard({
       data-project-id={project.id}
       className="min-w-0"
     >
-      <a
+      <Link
         href={project.href}
         aria-label={`Open ${project.name}`}
         className="group flex h-full min-h-52 flex-col rounded-2xl border border-border bg-card p-6 text-foreground no-underline transition hover:border-foreground/30 hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
@@ -172,7 +158,7 @@ const ProjectCard = memo(function ProjectCard({
         <span className="mt-6 flex items-center gap-2 text-sm font-semibold">
           Open project <Glyph name="arrow-right" />
         </span>
-      </a>
+      </Link>
     </li>
   );
 });

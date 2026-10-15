@@ -7,6 +7,8 @@ import {
 import { projectHref } from "@sps/rbac/models/subject/sdk/model";
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
+  const locale = props.language || "en";
+  const createHref = `/${locale}/ai-chat/projects?create=1`;
   return (
     <Subject
       isServer={false}
@@ -16,17 +18,13 @@ export function Component(props: IComponentPropsExtended) {
       renderError={({ retry }) => (
         <EmptyProjectSelect
           isServer={false}
-          createHref={`/${props.language}/ai-chat/projects`}
+          createHref={createHref}
           error
           onRetry={retry}
         />
       )}
       loading={
-        <EmptyProjectSelect
-          isServer={false}
-          createHref={`/${props.language}/ai-chat/projects`}
-          pending
-        />
+        <EmptyProjectSelect isServer={false} createHref={createHref} pending />
       }
       renderProjects={({ projects }) => {
         const current = projects.find(
@@ -38,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
           return (
             <EmptyProjectSelect
               isServer={false}
-              createHref={`/${props.language}/ai-chat/projects`}
+              createHref={createHref}
               empty={!projects.length}
             >
               {projects.map((item) => (
@@ -48,7 +46,7 @@ export function Component(props: IComponentPropsExtended) {
                   variant="select-item-ai-chat-project"
                   data={item.profile}
                   dataSource="props"
-                  href={`/${props.language}${projectHref(item)}`}
+                  href={`/${locale}${projectHref(item)}`}
                   selected={false}
                 />
               ))}
@@ -60,7 +58,7 @@ export function Component(props: IComponentPropsExtended) {
             variant="select-ai-chat-project"
             data={current.profile}
             dataSource="props"
-            createHref={`/${props.language}/ai-chat/projects`}
+            createHref={createHref}
           >
             {projects.map((item) => (
               <SocialModuleProfile
@@ -69,7 +67,7 @@ export function Component(props: IComponentPropsExtended) {
                 variant="select-item-ai-chat-project"
                 data={item.profile}
                 dataSource="props"
-                href={`/${props.language}${projectHref(item)}`}
+                href={`/${locale}${projectHref(item)}`}
                 selected={
                   item.profile.id === current?.profile.id &&
                   item.chat.id === current?.chat.id

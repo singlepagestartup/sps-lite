@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Markdown from "markdown-to-jsx";
 import { Icon } from "@sps/ui-adapter";
 
@@ -24,7 +25,7 @@ function Paragraphs({ paragraphs, language }: IParagraphsProps) {
                     href = "",
                     ...props
                   }: IAuthenticationLinkProps) => (
-                    <a
+                    <Link
                       {...props}
                       href={getLocalizedHref(`/${language}`, href)}
                     />
