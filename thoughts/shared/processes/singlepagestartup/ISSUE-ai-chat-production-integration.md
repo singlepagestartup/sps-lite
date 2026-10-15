@@ -578,3 +578,48 @@ fingerprints. The relevant UTC interval is included in the refreshed Logs
 range; workspace Logs show older requests while the recent replies remain
 absent. The cause of this dashboard discrepancy is unconfirmed. No provider
 settings or credentials change, and no new inference request is sent.
+
+## Attachment preview follow-up
+
+Saved Knowledge files, message attachments and staged composer attachments open
+in the same centered dialog. Images support zoom. PDF.js renders one PDF page
+at a time with page and zoom controls; the app bundles its worker and loads it when a PDF
+opens. Markdown has formatted and source views; TXT, CSV, JSON, LOG and YAML use
+scrolling plain text. Other formats and failed previews retain original/download
+actions. PDF and text thumbnails use dark Lucide glyphs and format labels on
+the muted background. Remove and reorder controls remain separate buttons.
+
+The shared UI adapter imports no business module. The File Storage attachment
+variant retains its shared record reader and explicit display props. Its lazy
+local client reader requests stored text through fileApi.previewText only when
+the dialog opens, using the shared Query client and File realtime topics.
+Declared and streamed text sizes are bounded to 2 MiB, with a 60-second stale
+time and 120-second collection time after unmount. Original-byte downloads and
+PDF reads use the File Storage SDK with optional cancellation and omitted
+credentials. Local files are read in the browser without an upload or message
+mutation. Object URLs, FileReaders, render tasks and document loads clean up
+when their owner unmounts. Legacy SVG remains blocked.
+
+The browser verifies saved image opening and zoom, local Markdown formatted
+and source views, JSON text, a 15-page PDF rendered in the dialog, and Markdown
+download. The browser's native PDF object displayed an empty area, so the final
+implementation uses PDF.js. No file or message is submitted during these
+checks; the user's original draft tab stays untouched. Local screenshot:
+/private/tmp/sps-file-preview-markdown.png.
+
+Verification: RBAC 143 suites / 762 tests, File Storage 5 suites / 18 tests,
+and Social 25 suites / 72 tests pass. Host TypeScript passes; the module-order
+gate checks 14,780 source files with zero violations. Regression coverage
+includes lazy text reads, scoped metadata reuse without a Provider, PDF page
+and zoom controls, recovery after a failed PDF page, bounded streams,
+cancellation forwarding, safe Markdown, focus restoration, object-URL cleanup,
+and unchanged unsent drafts/removal/reordering. The first broad RBAC run exits
+139 without an assertion failure; its isolated rerun with a 6 GiB Node heap
+passes in 18.7 seconds. Logs are under /private/tmp/sps-file-preview-\*.
+
+The Webpack production build passes with the lazy PDF.js worker. Output uses
+an isolated .next-file-preview-check directory, preserving the running dev
+build. Next's temporary tsconfig include is restored to the exact pre-build
+file. The sandboxed sitemap fetch reports EPERM against the local API; this
+check confirms compilation, types and worker bundling, with sitemap data
+completeness unverified. No PDF worker or Host type error is reported.

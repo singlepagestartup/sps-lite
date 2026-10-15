@@ -8,3 +8,8 @@ export type { ISpsComponentBase } from "./lib/interfaces/components";
 
 export { Select, type ISelectOption } from "./lib/select";
 export { Icon, type IconName, type IIconProps } from "./lib/icons";
+export { FilePreview, FilePreviewText } from "./lib/file-preview";
+export type {
+  IFilePreviewProps,
+  IFilePreviewTextProps,
+} from "./lib/file-preview/interface";

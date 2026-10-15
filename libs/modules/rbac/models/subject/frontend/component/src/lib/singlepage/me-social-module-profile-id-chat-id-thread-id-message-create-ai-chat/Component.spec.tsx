@@ -1,5 +1,20 @@
 /** @jest-environment jsdom */
 jest.mock("client-only", () => ({}), { virtual: true });
+jest.mock("pdfjs-dist/webpack.mjs", () => ({
+  getDocument: () => ({
+    promise: Promise.resolve({
+      numPages: 1,
+      getPage: async () => ({
+        getViewport: ({ scale }: any) => ({
+          width: 600 * scale,
+          height: 800 * scale,
+        }),
+        render: () => ({ promise: Promise.resolve(), cancel: jest.fn() }),
+      }),
+    }),
+    destroy: jest.fn(),
+  }),
+}));
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 const send = jest.fn();
 jest.mock("@sps/rbac/models/subject/sdk/client", () => ({
@@ -291,4 +306,64 @@ it("rejects new SVG attachments without replacing earlier supported files", asyn
   fireEvent.click(screen.getByRole("button", { name: "Send" }));
   await waitFor(() => expect(send).toHaveBeenCalledTimes(1));
   expect(send.mock.calls[0][0].data.files).toEqual([first, second]);
+});
+
+it("previews staged Markdown and PDF locally without submitting, then keeps removal and the draft intact", async () => {
+  URL.createObjectURL = jest.fn(() => "blob:preview");
+  URL.revokeObjectURL = jest.fn();
+  const { unmount } = render(
+    <Component
+      {...({
+        data: { id: "subject" },
+        project: {
+          requesterProfileId: "requester",
+          profile: { id: "project" },
+          chat: { id: "chat" },
+        },
+        thread: { id: "topic", metadata: {} },
+        target: "whole",
+        onTargetChange: jest.fn(),
+      } as any)}
+    />,
+  );
+  const markdown = new File(
+    [
+      "# Local notes\n\n**Keep this draft**\n\n[unsafe](javascript:alert(1))\n\n![External](https://example.com/tracker.png)\n\n<script>alert(1)</script>",
+    ],
+    "Notes.md",
+    { type: "text/markdown" },
+  );
+  const pdf = new File(["%PDF-1.7"], "Guide.pdf", { type: "application/pdf" });
+  pdf.arrayBuffer = async () => new ArrayBuffer(8);
+  global.ResizeObserver = class {
+    observe() {}
+    disconnect() {}
+    unobserve() {}
+  };
+  fireEvent.change(screen.getByLabelText("Attach files to message"), {
+    target: { files: [markdown, pdf] },
+  });
+  const message = screen.getByRole("textbox", { name: "Message" });
+  fireEvent.change(message, { target: { value: "Unsent message" } });
+  fireEvent.click(screen.getByRole("button", { name: "Preview Notes.md" }));
+  await waitFor(() =>
+    expect(screen.getByRole("heading", { name: "Local notes" })).toBeTruthy(),
+  );
+  expect(
+    document.querySelector(
+      'a[href^="javascript:"], script, img[src="https://example.com/tracker.png"]',
+    ),
+  ).toBeNull();
+  fireEvent.click(screen.getByRole("button", { name: "Source", exact: true }));
+  expect(screen.getByText(/# Local notes/).tagName).toBe("PRE");
+  fireEvent.click(screen.getByRole("button", { name: "Close", exact: true }));
+  fireEvent.click(screen.getByRole("button", { name: "Preview Guide.pdf" }));
+  await waitFor(() => expect(screen.getByText("Page 1 of 1")).toBeTruthy());
+  fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+  fireEvent.click(screen.getByRole("button", { name: "Remove Guide.pdf" }));
+  expect(screen.getByRole("button", { name: "Preview Notes.md" })).toBeTruthy();
+  expect((message as HTMLTextAreaElement).value).toBe("Unsent message");
+  expect(send).not.toHaveBeenCalled();
+  unmount();
+  expect(URL.revokeObjectURL).toHaveBeenCalledTimes(2);
 });

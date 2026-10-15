@@ -1,4 +1,5 @@
 import type { UseQueryOptions } from "@tanstack/react-query";
+import type { IFilePreviewProps } from "@sps/ui-adapter";
 import type { IModel } from "@sps/file-storage/models/file/sdk/model";
 import type {
   IComponentProps as IParent,
@@ -13,3 +14,13 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
 }
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}
+
+export interface IClientComponentProps extends IFilePreviewProps {
+  fileId: string;
+  variant: typeof variant;
+}
+
+export interface ITextContentProps {
+  /** Byte query uses the File SDK; parent retains the authorized live File record. */
+  file: IModel;
+}

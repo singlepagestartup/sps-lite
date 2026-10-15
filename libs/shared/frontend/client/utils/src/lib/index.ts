@@ -20,3 +20,8 @@ export {
 } from "./admin-route";
 
 export { getLocalizedHref } from "./localized-href";
+export {
+  getFilePreviewKind,
+  getFilePreviewUrl,
+  type FilePreviewKind,
+} from "./file-preview";

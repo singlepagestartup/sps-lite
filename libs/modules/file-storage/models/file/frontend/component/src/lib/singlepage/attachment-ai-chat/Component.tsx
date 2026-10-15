@@ -1,6 +1,8 @@
 import { FileText } from "lucide-react";
 import { NEXT_PUBLIC_API_SERVICE_URL } from "@sps/shared-utils";
 import type { IComponentPropsExtended } from "./interface";
+import { Component as ClientComponent } from "./ClientComponent";
+import TextContent from "./client";
 
 export function Component(props: IComponentPropsExtended) {
   const file = props.data;
@@ -17,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
   const blocked =
     /\.svgz?(?:[?#]|$)/i.test(file.file) ||
     ["svg", "svgz"].includes(extension) ||
-    file.mimeType === "image/svg+xml" ||
+    file.mimeType?.split(";")[0].trim().toLowerCase() === "image/svg+xml" ||
     file.mimeType === "application/x-knowledge-unavailable";
   if (blocked)
     return (
@@ -33,37 +35,15 @@ export function Component(props: IComponentPropsExtended) {
         <p className="text-xs text-muted-foreground">Unsupported attachment</p>
       </div>
     );
-  const isImage =
-    file.mimeType?.startsWith("image/") ||
-    (!file.mimeType &&
-      ["png", "jpg", "jpeg", "gif", "webp", "avif"].includes(extension));
   return (
-    <a
-      href={src}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Open ${title}`}
-      data-module="file-storage"
-      data-model="file"
-      data-variant={props.variant}
-      data-id={file.id}
-      className="block overflow-hidden rounded-xl border border-border bg-card focus-visible:outline-2 focus-visible:outline-offset-2"
-    >
-      <div className="flex h-24 items-center justify-center bg-neutral-500">
-        {isImage ? (
-          <img
-            src={src}
-            alt=""
-            loading="lazy"
-            className="h-full w-full object-contain"
-          />
-        ) : (
-          <FileText className="size-7 text-background" />
-        )}
-      </div>
-      <p title={title} className="truncate px-3 py-2 text-xs font-medium">
-        {title}
-      </p>
-    </a>
+    <ClientComponent
+      fileId={file.id}
+      variant={props.variant}
+      name={title}
+      src={src}
+      mimeType={file.mimeType}
+      extension={extension}
+      textContent={<TextContent file={file} />}
+    />
   );
 }

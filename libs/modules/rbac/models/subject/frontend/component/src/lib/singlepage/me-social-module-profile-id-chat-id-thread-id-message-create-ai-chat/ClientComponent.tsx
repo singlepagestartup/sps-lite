@@ -1,15 +1,8 @@
 "use client";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import {
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-  Paperclip,
-  Send,
-  X,
-} from "lucide-react";
-import { Icon } from "@sps/ui-adapter";
+import { ChevronLeft, ChevronRight, Paperclip, Send, X } from "lucide-react";
+import { Icon, FilePreview } from "@sps/ui-adapter";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import {
   assertSupportedAiChatAttachments,
@@ -29,13 +22,6 @@ import type {
 
 const Attachment = memo(function Attachment(props: IAttachmentProps) {
   const { attachment } = props;
-  const [preview, setPreview] = useState<string>();
-  useEffect(() => {
-    if (!attachment.file.type.startsWith("image/")) return;
-    const url = URL.createObjectURL(attachment.file);
-    setPreview(url);
-    return () => URL.revokeObjectURL(url);
-  }, [attachment.file]);
   return (
     <li
       draggable={!props.disabled}
@@ -67,24 +53,13 @@ const Attachment = memo(function Attachment(props: IAttachmentProps) {
       >
         <X className="size-4" />
       </button>
-      <div className="flex h-20 items-center justify-center overflow-hidden rounded-lg bg-neutral-500">
-        {preview ? (
-          <img
-            src={preview}
-            alt={attachment.file.name}
-            draggable={false}
-            className="h-full w-full object-contain"
-          />
-        ) : (
-          <FileText className="size-7 text-muted-foreground" />
-        )}
-      </div>
-      <p
-        title={attachment.file.name}
-        className="mt-2 truncate text-xs font-medium"
-      >
-        {attachment.file.name}
-      </p>
+      <FilePreview
+        name={attachment.file.name}
+        mimeType={attachment.file.type}
+        localFile={attachment.file}
+        className="border-0 bg-transparent"
+        thumbnailClassName="h-20 rounded-lg"
+      />
       <div className="mt-1 flex items-center justify-between gap-1">
         <span className="text-xs text-muted-foreground">
           {Math.max(1, Math.ceil(attachment.file.size / 1024))} KB

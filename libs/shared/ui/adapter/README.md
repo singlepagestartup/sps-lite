@@ -9,6 +9,7 @@ src/
 └── lib/
     ├── button/           # Button adapter component
     ├── form-field/       # Form field adapter component
+    ├── file-preview/     # Attachment preview dialog
     ├── input/            # Input adapter component
     ├── icons/            # Shared React SVG icons
     ├── select/           # Select adapter component
@@ -59,6 +60,28 @@ use SVG properties for an accessible label when the icon conveys meaning.
 
 Static image files belong in `apps/host/public/images` or File Storage. Icons
 use shared UI components directly rather than a Website Builder Feature variant.
+
+### File preview
+
+`FilePreview` from `@sps/ui-adapter` renders a keyboard-accessible thumbnail
+button and a centered dialog. Pass a local `File` through `localFile` to preview
+an unsent attachment, or pass `src`, `mimeType`, `extension` and `name` for a
+stored file. Its props live in `src/lib/file-preview/interface.ts`.
+
+Images support zoom. PDF.js loads on demand and renders one PDF page at a time
+with page and zoom controls; its worker is bundled with the app. Markdown has
+Preview and Source modes, while TXT, CSV, JSON, LOG and YAML use plain text.
+Markdown raw HTML is disabled, unsafe links are omitted and inline image
+references remain text. Other formats show an original/download fallback.
+Document thumbnails use foreground-colored Lucide glyphs and a format label
+on the muted background.
+
+The adapter imports no business SDK. A stored-file owner supplies a lazy
+`textContent` JSX reader and an `onDownload(signal?)` callback for original
+bytes. The callback also supplies PDF bytes and can abort when the dialog
+closes. Local files use browser object URLs and are never uploaded by preview.
+The adapter revokes these URLs on cleanup. Text preview is limited to 2 MiB;
+opening or downloading the original remains available when preview fails.
 
 ## Usage
 

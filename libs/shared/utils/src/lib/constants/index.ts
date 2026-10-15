@@ -56,4 +56,5 @@ export * from "./ai-chat-skill-templates";
 
 export * from "./open-router-models";
 export * from "./ai-chat-attachments";
+export * from "./file-preview";
 export * from "./ai-context";

@@ -1,4 +1,8 @@
 /** @jest-environment jsdom */
+jest.mock("client-only", () => ({}), { virtual: true });
+jest.mock("@sps/file-storage/models/file/sdk/client", () => ({
+  api: { previewText: jest.fn(), download: jest.fn() },
+}));
 import { fireEvent, render, screen, within } from "@testing-library/react";
 const mockFiles = [
   {
@@ -146,14 +150,9 @@ it("preserves attachment order, opens supported originals and blocks legacy SVG"
   const gallery = screen.getByRole("list", { name: "Message attachments" });
   expect(
     within(gallery)
-      .getAllByRole("link")
+      .getAllByRole("button", { name: /^Preview / })
       .map((link) => link.getAttribute("aria-label")),
-  ).toEqual(["Open First.png", "Open Third.pdf"]);
-  expect(
-    within(gallery)
-      .getAllByRole("link")
-      .map((link) => link.getAttribute("href")?.split("/public")[1]),
-  ).toEqual(["/first.png", "/third.pdf"]);
+  ).toEqual(["Preview First.png", "Preview Third.pdf"]);
   expect(within(gallery).getAllByRole("presentation")).toHaveLength(1);
   expect(within(gallery).getByText("Second.svg")).toBeTruthy();
   expect(within(gallery).getByText("Unsupported attachment")).toBeTruthy();
@@ -264,9 +263,9 @@ it("renders scoped authors and all files without reading generic relations", () 
   expect(messageFiles).not.toHaveBeenCalled();
   expect(
     within(screen.getByRole("list", { name: "Message attachments" }))
-      .getAllByRole("link")
+      .getAllByRole("button", { name: /^Preview / })
       .map((link) => link.getAttribute("aria-label")),
-  ).toEqual(["Open Third.pdf", "Open First.png"]);
+  ).toEqual(["Preview Third.pdf", "Preview First.png"]);
   fireEvent.click(screen.getByRole("button", { name: "About this assistant" }));
   expect(open).toHaveBeenCalledWith("author-assistant");
 });
