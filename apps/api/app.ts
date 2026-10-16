@@ -137,9 +137,7 @@ export const consistencyRuntime = createConsistencyRuntime({
     await verifyJwt(authorization.replace(/^Bearer\s+/i, ""), RBAC_JWT_SECRET);
   },
   invalidateTags: async (tags) => {
-    await Promise.all(
-      tags.map((tag) => revalidationMiddleware.revalidateTag(tag, true)),
-    );
+    await revalidationMiddleware.revalidateTags(tags, true);
   },
   publishLegacy: async (topics) => {
     topics = expandLegacyTopics(topics);

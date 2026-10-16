@@ -170,6 +170,18 @@ export function createConsistencyRuntime(props: IConsistencyRuntimeProps) {
       client.busy = false;
     }
   }
+  const recordFailure = (error: unknown) => {
+    metrics.dispatchFailures++;
+    retryAt = Date.now() + Math.min(30000, 1000 * 2 ** Math.min(failures++, 5));
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Consistency runtime unavailable";
+    if (message !== lastError) {
+      console.error("Consistency runtime:", message);
+      lastError = message;
+    }
+  };
   const tick = async () => {
     if (busy) return;
     busy = true;
@@ -177,13 +189,17 @@ export function createConsistencyRuntime(props: IConsistencyRuntimeProps) {
       if (legacyCursor === undefined)
         legacyCursor = (await store.status()).cursor;
       if (Date.now() >= retryAt) {
-        await store.dispatch(async (tags, keys) => {
-          invalidateConsistencyMemory(keys);
-          await props.invalidateTags?.(tags);
-        });
-        failures = 0;
-        retryAt = 0;
-        lastError = "";
+        try {
+          await store.dispatch(async (tags, keys) => {
+            invalidateConsistencyMemory(keys);
+            await props.invalidateTags?.(tags);
+          });
+          failures = 0;
+          retryAt = 0;
+          lastError = "";
+        } catch (error) {
+          recordFailure(error);
+        }
       }
       const delivered = await store.events(legacyCursor);
       if (delivered.length) {
@@ -213,17 +229,7 @@ export function createConsistencyRuntime(props: IConsistencyRuntimeProps) {
       ).length;
       if (++ticks % 60 === 0) await store.cleanup();
     } catch (error) {
-      metrics.dispatchFailures++;
-      retryAt =
-        Date.now() + Math.min(30000, 1000 * 2 ** Math.min(failures++, 5));
-      const message =
-        error instanceof Error
-          ? error.message
-          : "Consistency runtime unavailable";
-      if (message !== lastError) {
-        console.error("Consistency runtime:", message);
-        lastError = message;
-      }
+      recordFailure(error);
     } finally {
       busy = false;
     }
@@ -238,6 +244,7 @@ export function createConsistencyRuntime(props: IConsistencyRuntimeProps) {
         0,
       ),
       retryAt,
+      lastError,
       memory: process.memoryUsage(),
       queryRequests: Object.fromEntries(queryRequests),
     }),

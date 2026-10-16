@@ -110,3 +110,49 @@ Warm cache быстрее baseline на этом aggregate, metadata = 284 bytes
 Host Page `url-segment-value` и `find-by-url` сохраняют загруженное содержимое при background refetch. Skeleton относится к первоначальной загрузке. Вложенные project/account menus не размонтируются вместе с URL reader. Regression до исправления воспроизводил потерю меню и состояния для обычного ID и результата null; окончательный Host suite — 17 suites, 41 passed, TypeScript — passed.
 
 На dev-маршруте проекта реальная ревалидация вызвана созданием и удалением собственной временной Host Page через SDK. Registry подтвердил новые URL responses; раскрытое account menu осталось открытым после обеих операций. Fixture удалена. Скриншот — `.artifacts/consistency/header-stable.jpg`. Production build именно этого изменения отдельно не повторялся.
+
+## Настройки, покупки и доставка обновлений
+
+Profile settings показывает успех через Sonner справа внизу, с зелёным статусом,
+иконкой и закрытием. Inline alert остаётся для ошибок. Studio `Saved` воспроизводит
+тот же вид уведомления и сообщает о сохранении только в preview.
+
+Purchases использует существующий Subject-scoped список с
+`includePurchaseDetails=true`. Проверка JWT и принадлежности Order предшествует
+расчёту totals и чтению связанных receipt Files; весь ответ собирается в одном
+consistency snapshot. Дочерний Ecommerce view получает `dataSource="props"` и
+не вызывает generic total/receipt endpoints. Regression проверяет, что чужой
+Order и чужой File не попадают в ответ, а total 0 сохраняется. В dev и production
+обычный пользователь видит `0 ⭐️` и доступную квитанцию без Permission error.
+Связанный продукт — Free Subscription; нулевая сумма не подменяет ошибку чтения.
+
+Диагностика локального API выявила 151 ожидающее событие и зависшую очистку Next
+тегов: первая пачка затрагивала 279 уникальных тегов. Вместо 279 параллельных GET
+диспетчер отправляет 3 последовательных POST (128/128/23). Ошибка Next оставляет
+batch неподтверждённым, но не останавливает heartbeat. После обработки pending=0,
+lagMs=0. Проверки охватывают retry, legacy 405 fallback и heartbeat при сбое.
+
+Индикатор установлен в корневом Host layout и относится ко всем страницам.
+При открытом сокете и отставании он сообщает о задержке обновлений; при разрыве —
+о переподключении. Он не сохраняет формы и не делает запросов к AI. Invalidate
+frame без поля degraded не сбрасывает полученный heartbeat-статус.
+
+Дополнительные проверки: RBAC 765, Ecommerce 43, Social 76, Host app 43,
+Middleware 89, shared backend 71 passed / 1 skipped; Studio 188 passed.
+Host и Studio TypeScript проходят. API сохраняет 20 прежних диагностик.
+Bun bundle собирается с external native bcrypt/canvas/sharp. Окончательный Host
+production Webpack build проходит вместе с проверкой типов. Браузерная проверка
+сохранения/покупок пройдена в dev и production. Module direction: 14 785 файлов,
+0 нарушений; placement и formatting проходят. Повторная диагностика после
+нескольких dev-компиляций: pending=0, lagMs=0, lastError пустой; накопительный
+счётчик dispatchFailures сохраняет 3 уже восстановленные попытки.
+
+Studio разрешает только два точных pure chat-scroll subpath; transitive SDK
+import и широкий shared barrel отклоняются. Общий контроллер соответствует
+плану Studio/production, а Modules и Workspace сохраняют независимость.
+Проверка Social истории сохраняет scroll position при входящем сообщении до
+явного нажатия New messages.
+
+Скриншоты: `.artifacts/consistency/profile-toast.jpg`,
+`story-profile-saved.jpg`, `production-profile-toast.jpg`,
+`production-purchases-scoped.jpg`. Пользовательские uploads не включаются в коммит.

@@ -14,6 +14,51 @@ jest.mock("@sps/providers-db", () => ({ ConsistencyStore: jest.fn() }));
 import { createConsistencyRuntime } from "./consistency";
 import { consistencyContext } from "../repository/database/context";
 
+it("keeps sending heartbeats while Next invalidation is failing", async () => {
+  const status = { epoch: "test", cursor: "0", oldest: "0", degraded: true };
+  const store: any = {
+    status: async () => status,
+    queries: async () => [],
+    changed: async () => [],
+    events: async () => [],
+    renew: async () => ({
+      refs: [],
+      renewedRefs: [],
+      expiresAt: new Date(Date.now() + 60000).toISOString(),
+    }),
+    dispatch: async () => {
+      throw new Error("Next unavailable");
+    },
+  };
+  const runtime = createConsistencyRuntime({
+    store,
+    verifyAuthorization: async () => {},
+  });
+  const send = jest.fn();
+  const log = jest.spyOn(console, "error").mockImplementation(() => {});
+  try {
+    await runtime.receive(
+      { send, close: jest.fn() },
+      JSON.stringify({
+        type: "subscribe",
+        refs: [],
+        cursor: "0",
+        epoch: "test",
+      }),
+    );
+    send.mockClear();
+    jest.useFakeTimers({ now: Date.now() + 16000 });
+    await runtime.tick();
+    expect(runtime.metrics().dispatchFailures).toBe(1);
+    expect(
+      send.mock.calls.some(([body]) => JSON.parse(body).type === "heartbeat"),
+    ).toBe(true);
+  } finally {
+    jest.useRealTimers();
+    log.mockRestore();
+  }
+});
+
 it("checks authorization and PostgreSQL versions before a private cache hit, including a late stale SET", async () => {
   values.clear();
   let generation = "0",

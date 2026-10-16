@@ -1,6 +1,7 @@
 # Revalidation transport
 
-Host owns one `/ws/revalidation` connection. React Query owns API results;
+Host mounts Revalidation once in `apps/host/app/layout.tsx`, so every Host page,
+including account settings, shares one `/ws/revalidation` connection. React Query owns API results;
 `globalActionsStore` holds compact consistency diagnostics and legacy events. Entity
 bodies never travel through this shared socket.
 
@@ -46,7 +47,15 @@ load starts with fresh reads; sessionStorage does not restore entity data.
 JWT checks recur during socket renewal. Changed access dependencies force a
 fresh authorized read. A 401/403 reconciliation clears previously loaded query
 data. Login, logout and a changed principal reset old subscriptions and cached
-queries. Background refresh retains drafts, focus and scroll position.
+queries. Background refresh keeps mounted component state, focus and scroll position.
+The transport does not save forms or drafts. Entity data stays in React Query;
+a draft stays in its component's local state unless its owning feature saves it.
+
+The site-wide status becomes visible after five seconds without a connection or
+when dispatcher lag exceeds two seconds. A closed socket shows "Reconnecting.
+Updates may be delayed." An open socket with lag shows "Updates are delayed.
+Checking for changes." A healthy connection keeps the status visually hidden.
+This feature makes no AI provider requests.
 
 ## Legacy compatibility
 
@@ -67,3 +76,16 @@ Ordinary messages do not call router.refresh, reload or root-layout invalidation
 protocol; `observe` compares cached candidates with fresh reads and omits browser capabilities; `off` omits read
 tracking. The committed-write bridge continues in all modes. HTTP response
 caching is separately opt-in through `MIDDLEWARE_HTTP_CACHE=true`.
+
+## Next tag delivery
+
+The dispatcher deduplicates tags and sends sequential POST batches of at most
+128 tags to Host `/api/revalidate`. Host validates the bounded payload and
+acknowledges after calling `revalidateTag` for every tag. A 404/405 from an older
+Host falls back to serial legacy GET requests. Other failures keep the outbox
+batch pending for retry with backoff; they never acknowledge undelivered events.
+
+Next delivery failure does not stop socket heartbeats or pumping previously
+delivered events. Browsers can still check authoritative query versions while
+the outbox catches up. Operator diagnostics include pending count, lag,
+dispatch failures, retry time and `lastError`; the latter is not sent to browsers.

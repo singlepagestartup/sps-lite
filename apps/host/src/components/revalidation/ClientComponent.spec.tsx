@@ -55,3 +55,35 @@ it("processes every replay frame even when React batches several messages before
   ]);
   view.unmount();
 });
+
+it("distinguishes delayed updates on an open socket and retains that status until a healthy heartbeat", () => {
+  const view = render(<Component />);
+  const receive = (frame: object) =>
+    act(() =>
+      mockOnMessage(
+        new MessageEvent("message", {
+          data: JSON.stringify({
+            protocol: 1,
+            epoch: "test",
+            cursor: "0",
+            refs: [],
+            ...frame,
+          }),
+        }),
+      ),
+    );
+  receive({ type: "heartbeat", degraded: true });
+  expect(
+    view.getByText("Updates are delayed. Checking for changes."),
+  ).toBeTruthy();
+  receive({ type: "invalidate" });
+  expect(
+    view.getByText("Updates are delayed. Checking for changes."),
+  ).toBeTruthy();
+  receive({ type: "heartbeat", degraded: false });
+  expect(
+    view.queryByText("Updates are delayed. Checking for changes."),
+  ).toBeNull();
+  expect(view.getByText("Connected")).toBeTruthy();
+  view.unmount();
+});

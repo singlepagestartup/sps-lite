@@ -33,8 +33,10 @@ export function Component() {
         const data = JSON.parse(String(event.data));
         if (data.protocol === 1) {
           heartbeat.current = Date.now();
-          degraded.current = !!data.degraded;
-          setCatchingUp(!!data.degraded);
+          if (typeof data.degraded === "boolean") {
+            degraded.current = data.degraded;
+            setCatchingUp(data.degraded);
+          }
           if (epoch.current && epoch.current !== data.epoch)
             state.receive({
               ...data,
@@ -236,7 +238,9 @@ export function Component() {
       }
     >
       {catchingUp
-        ? "Reconnecting and checking for updates. Your draft is kept."
+        ? readyState === ReadyState.OPEN
+          ? "Updates are delayed. Checking for changes."
+          : "Reconnecting. Updates may be delayed."
         : "Connected"}
     </div>
   );
