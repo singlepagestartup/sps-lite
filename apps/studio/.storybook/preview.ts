@@ -1,7 +1,7 @@
 import "../runtime/styles.css";
 import "../workspace/styles/default.css";
 import { createElement } from "react";
-import { Toaster } from "sonner";
+import { Toaster } from "@sps/ui-adapter/toast";
 
 import type { Preview } from "@storybook/react";
 
@@ -25,13 +25,11 @@ const preview: Preview = {
                 : " min-h-0 w-full"),
         },
         createElement(Story),
-        createElement(Toaster, {
-          position: "bottom-right",
-          richColors: true,
-          closeButton: true,
-          duration: context.parameters.toastDuration ?? 4500,
-          toastOptions: { classNames: { toast: "font-default" } },
-        }),
+        context.parameters.toastCatalog
+          ? null
+          : createElement(Toaster, {
+              duration: context.parameters.toastDuration ?? 4500,
+            }),
       );
       return layer === "singlepage"
         ? preview

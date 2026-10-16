@@ -234,9 +234,6 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
           setMessage("");
           toast.success("Profile saved", {
             description: "Your profile changes are saved in this preview.",
-            richColors: true,
-            closeButton: true,
-            position: "bottom-right",
           });
         }}
       >

@@ -105,7 +105,7 @@ interface before assembling custom variants. Its generated table, card and list
 views use the same structure.
 
 The current tree has 63 model entries and 430 presentation variants, plus the
-static shared Icon entry. Every model exports a provider-free `Skeleton` and
+shared Icon and Toast entries. Every model exports a provider-free `Skeleton` and
 `ISkeletonProps` from its public index, with a `Loading` story. The skeleton uses
 the selected variant to distinguish list/table, form and image layouts. Source
 editors, Profile project frames and Chat/Thread conversations have their own
@@ -117,7 +117,7 @@ and client pending reads use that node.
 
 Static glyphs live in `modules/shared/icon`, independently of Website Builder
 Feature records. Use its public entry with `variant="phosphor"` and one of the
-87 registered names, or `variant="custom" name="star-fill"`. Each collection
+90 registered names, or `variant="custom" name="star-fill"`. Each collection
 owns its interface and assets; `startup/variants.ts` can replace a collection or
 add another. The selected collection determines the valid `name` values. SVG
 props and refs pass through `svgProps`; icons inherit text color. Keep Workspace's
@@ -142,19 +142,33 @@ include Default, Empty and Many (20 cards). Repeated cards use one local example
 Custom model variants retain their own props and interactive states. Studio
 composes its own models and fixtures without production SDKs, providers or an API.
 
-The shared chat viewport controller has two exact UI-only public entries:
-`@sps/shared-frontend-client-utils/chat-scroll` and
-`@sps/shared-utils/chat-scroll`. Studio and production use the same controller
-for follow-latest and history anchoring. Studio maps only these subpaths, never
-their package barrels. The isolation gates walk their transitive imports and
-require React or another exact approved pure entry; an SDK import fails the gate.
-Workspace and Modules remain independent, including through these utilities.
+Studio shares three exact UI-only public entries with production:
+`@sps/shared-frontend-client-utils/chat-scroll`,
+`@sps/shared-utils/chat-scroll`, and `@sps/ui-adapter/toast`.
+The chat viewport controller owns follow-latest and history anchoring. Toast owns
+notification presentation and its Phosphor status icons. Studio maps these
+subpaths rather than their package barrels. Isolation gates walk their full
+import graphs, allowing only the named UI files and React, Sonner and
+Tailwind Merge. SDKs, app imports and broad shared barrels fail the gate.
+Workspace and Modules remain independent through these entries too.
 
-The account Profile settings `Saved` story exercises Save profile and shows the
-bottom-right Sonner success notification with a check icon and close button.
-Its preview text identifies a local preview save. Form validation and request
-errors remain beside the form. The Modules decorator supplies its own Toaster;
-Workspace presentation keeps its own styling and notification ownership.
+`Modules/Shared/Toast/Singlepage/Default` renders Default, Success, Error,
+Warning, Info, Loading, Action, LongText, AllStates, Stacked and AutoDismiss.
+Controls edit the text, state, action label, duration and position. Persistent
+keeps examples visible; the Loading example has a local Complete operation
+button. AllStates lays out the actual renderer in a flowing gallery, while
+individual examples use its normal floating placement.
+`Modules/Shared/Toast/Singlepage/Icons` shows all seven notification glyphs,
+including the animated loader and close icon. The full Phosphor collection is
+under `Modules/Shared/Icon/Singlepage/Phosphor/Collection`.
+
+Host and Studio use the same UI-only Toaster exported by
+`libs/shared/ui/adapter/src/lib/toast`. Change its card layout in `Component.tsx`
+and its status glyphs in `icons.tsx`; callers supply message content and behavior.
+The module decorator mounts one Toaster except when the Toast catalog owns it.
+The account Profile settings Saved story keeps its success notification visible;
+request and validation errors stay beside that form. Workspace retains its own
+presentation and notification ownership.
 
 `studio:presentation:export` builds the resolved semantic React/HTML presentation,
 resolves `singlepage` or `startup` from repository identity, and writes a

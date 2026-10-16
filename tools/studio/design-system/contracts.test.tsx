@@ -222,7 +222,7 @@ test("stories bind public model entries to the owning variant contract", () => {
 });
 
 test("static icons render every registered glyph without model providers", () => {
-  expect(Object.keys(glyphs)).toHaveLength(87);
+  expect(Object.keys(glyphs)).toHaveLength(90);
   for (const name of Object.keys(glyphs) as Array<keyof typeof glyphs>) {
     const html = renderToStaticMarkup(
       <SharedIcon

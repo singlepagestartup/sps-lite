@@ -91,6 +91,9 @@
         "tools/plugins/sps-generator-plugin/src/index.ts"
       ],
       "@sps/startup/*": ["libs/modules/startup/*"],
+      "@sps/ui-adapter/toast": [
+        "libs/shared/ui/adapter/src/lib/toast/index.tsx"
+      ],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
       "@sps/website-builder/*": ["libs/modules/website-builder/*"],
       "@sps/shared-utils/chat-scroll": [

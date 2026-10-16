@@ -61,6 +61,10 @@ const config: StorybookConfig = {
       ...config.resolve,
       alias: {
         ...config.resolve?.alias,
+        "@sps/ui-adapter/toast": path.resolve(
+          configDirectory,
+          "../../../libs/shared/ui/adapter/src/lib/toast/index.tsx",
+        ),
         "@sps/shared-frontend-client-utils/chat-scroll": path.resolve(
           configDirectory,
           "../../../libs/shared/frontend/client/utils/src/lib/chat-scroll/index.ts",

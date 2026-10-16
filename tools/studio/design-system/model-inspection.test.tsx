@@ -253,6 +253,14 @@ for (const entry of files(modules).filter((file) =>
       { variant: "button-default" },
       { variant: "phosphor", name: "user" },
       { variant: "custom", name: "star-fill" },
+      ...(module === "shared" && model === "toast"
+        ? [
+            { variant: "default", type: "success" },
+            { variant: "default", type: "error" },
+            { variant: "default", type: "loading" },
+            { variant: "icons" },
+          ]
+        : []),
     ].filter((props) => props.variant in variants);
     expect(states.length).toBeGreaterThan(0);
     for (const props of states)

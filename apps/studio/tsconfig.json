@@ -7,6 +7,9 @@
       ],
       "@sps/shared-utils/chat-scroll": [
         "libs/shared/utils/src/lib/constants/chat-scroll.ts"
+      ],
+      "@sps/ui-adapter/toast": [
+        "libs/shared/ui/adapter/src/lib/toast/index.tsx"
       ]
     },
     "target": "ES2022",

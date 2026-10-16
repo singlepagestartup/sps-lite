@@ -156,3 +156,42 @@ import и широкий shared barrel отклоняются. Общий кон
 Скриншоты: `.artifacts/consistency/profile-toast.jpg`,
 `story-profile-saved.jpg`, `production-profile-toast.jpg`,
 `production-purchases-scoped.jpg`. Пользовательские uploads не включаются в коммит.
+
+## Общие уведомления и иконки
+
+`Modules/Shared/Toast` содержит зарегистрированные `singlepage/default` и
+`singlepage/icons` с эффективными `startup` registries и публичными интерфейсами.
+В Default доступны обычное уведомление, Success, Error, Warning, Info, Loading,
+Action, LongText, AllStates, Stacked и AutoDismiss. Controls меняют текст,
+состояние, действие, длительность и положение; Persistent сохраняет превью
+видимым. AllStates использует тот же renderer в сетке, чтобы не обрезать стопку.
+
+Host root layout и Studio используют `@sps/ui-adapter/toast`. В
+`libs/shared/ui/adapter/src/lib/toast/Component.tsx` находится оформление карточки
+и контролов; `icons.tsx` выбирает Phosphor glyph для статуса. Локальные
+richColors/position/closeButton из сохранения профиля удалены. Существующие
+Sonner-вызовы SDK используют тот же store и общий смонтированный renderer.
+Карточки светлые с рамкой и семантическими цветами темы; лаймовый относится к
+иконке успеха, destructive — к ошибке. API, cache и данные моделей не меняются.
+
+Toast Icons показывает bell, check-circle, x-circle, warning, info, spinner-gap и
+x. Три недостающих SVG взяты из официальной MIT-коллекции Phosphor Regular;
+лицензия находится и в runtime icons. Общая Studio-коллекция содержит 90 glyphs.
+Отдельный UI subpath и транзитивная проверка не допускают SDK, app imports или
+широкие barrels; разрешены React, Sonner и Tailwind Merge.
+
+Проверки: Studio — 192 passed, Social — 27 suites / 76 passed, Studio TypeScript —
+passed, module direction — 14 785 файлов / 0 нарушений, placement — passed.
+В браузере пройдены действие через Enter, Loading → Success, закрытие,
+автозакрытие и редактирование Controls. На фактической ширине 390 px
+scrollWidth=390, границы длинной карточки — 16…374 px. В dev сохранение профиля
+показывает общий Toast; отправленные поля не менялись.
+
+Production Host Webpack build, включая проверку типов, и Storybook build проходят.
+На отдельном production Host сохранение профиля показывает тот же белый Toast
+с Phosphor-иконками; browser warning/error log пуст. В существующей Saved story
+проверены один Toaster и одно уведомление. Поля профиля при проверке не менялись.
+Скриншоты находятся в `.artifacts/toast/`: `dev-profile.jpg`,
+`production-profile.jpg`, `catalog.jpg`, `mobile-long-text.jpg`, `icons.jpg`.
+Storybook остаётся доступным на 4321; тестовый production Host после проверки
+останавливается, пользовательские API/Host продолжают работать.

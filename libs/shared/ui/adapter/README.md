@@ -11,6 +11,7 @@ src/
     ├── form-field/       # Form field adapter component
     ├── file-preview/     # Attachment preview dialog
     ├── input/            # Input adapter component
+    ├── toast/            # Shared Sonner notification renderer and status icons
     ├── icons/            # Shared React SVG icons
     ├── select/           # Select adapter component
     ├── interfaces/       # Common interfaces and types
@@ -82,6 +83,41 @@ bytes. The callback also supplies PDF bytes and can abort when the dialog
 closes. Local files use browser object URLs and are never uploaded by preview.
 The adapter revokes these URLs on cleanup. Text preview is limited to 2 MiB;
 opening or downloading the original remains available when preview fails.
+
+### Toast notifications
+
+Host mounts `Toaster` from `@sps/ui-adapter/toast` once in its root layout.
+The same public UI-only entry is used by the Studio Toast catalog and module
+previews. It imports no SDK, Provider, entity cache or application code.
+
+The renderer owns the card, typography, border, shadow, close/action controls
+and status icons. `Component.tsx` is the style entry and `icons.tsx` maps states
+to Phosphor Regular glyphs from the existing static Icon library. Success uses
+the primary accent, error uses destructive, and the remaining states use muted
+surfaces. Cards use semantic theme colors. The spinner respects reduced motion.
+
+Default placement is bottom-right, duration 4.5 seconds, with a close button.
+Sonner keeps its existing store and transport API, so current SDK
+`toast.error(...)` calls use the same mounted renderer. Producers pass content,
+actions and IDs without defining visual options such as `richColors` or custom
+classes. The profile save action follows this contract. The legacy shadcn
+Toaster remains available for compatibility; Host uses the adapter entry.
+
+```tsx
+import { Toaster, toast } from "@sps/ui-adapter/toast";
+
+// App shell, once:
+<Toaster />;
+// After a successful operation:
+toast.success("Profile saved", { description: "Your changes have been saved." });
+```
+
+Storybook exposes all notification states, action/dismiss/loading interactions,
+long text, stacked notifications, auto-dismiss and a persistent editing mode.
+The Toast Icons story shows its seven glyphs; the general Shared Icon collection
+also contains info, x-circle and spinner-gap. SVG sources are from the official
+[Phosphor Regular collection](https://github.com/phosphor-icons/core/tree/main/assets/regular),
+covered by the MIT license retained beside the runtime glyphs in `icons/LICENSE`.
 
 ## Usage
 

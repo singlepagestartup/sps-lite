@@ -13,3 +13,6 @@ export type {
   IFilePreviewProps,
   IFilePreviewTextProps,
 } from "./lib/file-preview/interface";
+
+export { Toaster, ToastIcon, toast } from "./lib/toast";
+export type { IToasterProps, IToastIconProps } from "./lib/toast";

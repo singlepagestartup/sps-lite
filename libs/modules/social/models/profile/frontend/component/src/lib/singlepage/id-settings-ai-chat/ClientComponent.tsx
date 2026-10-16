@@ -36,9 +36,6 @@ export const Component = memo(function Component(
           });
           toast.success("Profile saved", {
             description: "Your profile changes have been saved.",
-            richColors: true,
-            closeButton: true,
-            position: "bottom-right",
           });
         } catch (error) {
           setError(

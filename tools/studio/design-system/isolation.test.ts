@@ -12,7 +12,12 @@ import path from "node:path";
 import { globSync } from "tinyglobby";
 import ts from "typescript";
 import { syncProductStories } from "../products/stories";
-import { pureStudioUtility, pureStudioUtilities } from "./isolation";
+import {
+  pureStudioUtility,
+  pureStudioUtilities,
+  isPureStudioUtilityFile,
+  isPureStudioExternal,
+} from "./isolation";
 
 const root = path.resolve(import.meta.dir, "../../..");
 const studio = path.join(root, "apps/studio");
@@ -359,9 +364,24 @@ function isolationViolations(
         (dependency &&
           (within(dependency, path.join(options.root, "libs")) ||
             within(dependency, path.join(options.root, "apps/host"))));
+      const pureSource = isPureStudioUtilityFile(options.root, file);
+      const pureDependency =
+        Boolean(pureStudioUtility(options.root, reference.specifier)) ||
+        Boolean(
+          pureSource &&
+            reference.specifier.startsWith(".") &&
+            dependency &&
+            isPureStudioUtilityFile(
+              options.root,
+              resolveFile(dependency) ?? dependency,
+            ),
+        );
       if (
         wrongOwner ||
-        (production && !pureStudioUtility(options.root, reference.specifier))
+        (production && !pureDependency) ||
+        (pureSource &&
+          !pureDependency &&
+          !isPureStudioExternal(reference.specifier))
       ) {
         violations.add(
           [
@@ -414,48 +434,59 @@ test("detects production aliases and relative imports, including type dependenci
   ).toBe(false);
 });
 
-test("shared UI utilities import only React or another exact pure entry", () => {
-  for (const file of pureStudioUtilities(root)) {
+test("shared UI entries have a transitive UI-only graph without SDK or app imports", () => {
+  const visited = new Set<string>();
+  function visit(file: string) {
+    if (visited.has(file)) return;
+    visited.add(file);
+    expect(isPureStudioUtilityFile(root, file)).toBe(true);
     for (const { specifier } of references(file)) {
-      expect(
-        specifier === "react" || Boolean(pureStudioUtility(root, specifier)),
-      ).toBe(true);
+      if (isPureStudioExternal(specifier)) continue;
+      const dependency = target(file, specifier, isolationOptions);
+      const resolved = dependency && resolveFile(dependency);
+      expect(resolved).toBeDefined();
+      if (resolved) visit(resolved);
     }
   }
-  expect(
-    forbidden(
-      path.join(studio, "view.ts"),
-      "@sps/shared-frontend-client-utils",
-    ),
-  ).toBe(true);
+  pureStudioUtilities(root).forEach(visit);
+  for (const specifier of [
+    "@sps/shared-frontend-client-utils",
+    "@sps/ui-adapter",
+  ])
+    expect(forbidden(path.join(studio, "view.ts"), specifier)).toBe(true);
 });
 
-test("an approved utility cannot hide a transitive SDK dependency", () => {
-  const fixture = mkdtempSync(path.join(tmpdir(), "sps-studio-pure-"));
-  try {
-    const studio = path.join(fixture, "apps/studio");
-    const entry = path.join(studio, "modules/view.ts");
-    const utility = pureStudioUtility(
-      fixture,
-      "@sps/shared-frontend-client-utils/chat-scroll",
-    )!;
-    mkdirSync(path.dirname(entry), { recursive: true });
-    mkdirSync(path.dirname(utility), { recursive: true });
-    writeFileSync(
-      entry,
-      'import "@sps/shared-frontend-client-utils/chat-scroll";',
-    );
-    writeFileSync(utility, 'import "@sps/social/models/message/sdk/client";');
-    const violations = isolationViolations([entry], "modules", {
-      root: fixture,
-      studio,
-    });
-    expect(violations).toHaveLength(1);
-    expect(violations[0]).toContain("@sps/social/models/message/sdk/client");
-  } finally {
-    rmSync(fixture, { recursive: true, force: true });
-  }
-});
+test.each([
+  [
+    "@sps/shared-frontend-client-utils/chat-scroll",
+    "@sps/social/models/message/sdk/client",
+  ],
+  ["@sps/ui-adapter/toast", "@sps/rbac/models/subject/sdk/client"],
+  ["@sps/ui-adapter/toast", "@sps/ui-adapter"],
+  ["@sps/ui-adapter/toast", "next/navigation"],
+])(
+  "approved entry %s rejects transitive dependency %s",
+  (specifier, dependency) => {
+    const fixture = mkdtempSync(path.join(tmpdir(), "sps-studio-pure-"));
+    try {
+      const studio = path.join(fixture, "apps/studio");
+      const entry = path.join(studio, "modules/view.ts");
+      const utility = pureStudioUtility(fixture, specifier)!;
+      mkdirSync(path.dirname(entry), { recursive: true });
+      mkdirSync(path.dirname(utility), { recursive: true });
+      writeFileSync(entry, `import "${specifier}";`);
+      writeFileSync(utility, `import "${dependency}";`);
+      const violations = isolationViolations([entry], "modules", {
+        root: fixture,
+        studio,
+      });
+      expect(violations).toHaveLength(1);
+      expect(violations[0]).toContain(dependency);
+    } finally {
+      rmSync(fixture, { recursive: true, force: true });
+    }
+  },
+);
 
 test("Studio code, styles and Storybook configuration do not import production", () => {
   const violations = files(studio)

@@ -26,12 +26,12 @@ it("shows a success toast only after a successful save and keeps success out of 
     expect(success).toHaveBeenCalledWith(
       "Profile saved",
       expect.objectContaining({
-        richColors: true,
-        position: "bottom-right",
-        closeButton: true,
+        description: "Your profile changes have been saved.",
       }),
     ),
   );
+  expect(success.mock.calls[0][1]).not.toHaveProperty("richColors");
+  expect(success.mock.calls[0][1]).not.toHaveProperty("position");
   expect(onSave).toHaveBeenCalledTimes(1);
   expect(screen.queryByRole("status")).toBeNull();
   expect(screen.queryByRole("alert")).toBeNull();

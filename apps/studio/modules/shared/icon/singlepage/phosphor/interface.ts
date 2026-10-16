@@ -1,6 +1,9 @@
 export const variant = "phosphor";
 
 export type IconName =
+  | "spinner-gap"
+  | "x-circle"
+  | "info"
   | "arrow-down"
   | "arrow-left"
   | "arrow-right"
