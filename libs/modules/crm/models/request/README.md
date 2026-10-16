@@ -36,10 +36,10 @@ repositories. A transaction-scoped advisory lock serializes a key derived from
 Subject, Form and submission ID. The stored digest rejects reuse with different
 values; repeated identical submissions return the same Request.
 
-The API host installs `setCrmRequestMutationPublisher`. Submissions require that
-publisher before writing. After commit, Request and Form–Request cache topics are
-invalidated before their WebSocket event. A relation failure rolls both records
-back and publishes nothing.
+PostgreSQL capture records Request and Form–Request writes in the same
+transaction. The shared dispatcher invalidates registered reads and bridges
+legacy subscribers. Submissions require no publisher registration in the API
+host. Notification delivery remains outside the database transaction.
 
 Notification configuration is checked before the first save; delivery starts
 after commit. The response includes `submissionResult.saved`, `requestId`,

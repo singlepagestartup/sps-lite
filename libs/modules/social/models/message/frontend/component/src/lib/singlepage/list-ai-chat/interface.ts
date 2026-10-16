@@ -6,6 +6,7 @@ export interface IComponentProps extends IParent<IModel, typeof variant> {
   apiProps?: IParent<IModel, typeof variant>["apiProps"] & {
     reactQueryOptions?: Partial<UseQueryOptions<IModel[]>>;
   };
+  threadId?: string;
   documentTitle?: string;
   emptyMessage?: string;
   requesterProfileId: string;

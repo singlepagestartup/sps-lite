@@ -26,7 +26,7 @@ export function Component(props: IClientComponentProps) {
         </p>
       )
     );
-  if (props.threadsError || !thread) {
+  if (!thread) {
     if (props.renderLoadError)
       return props.renderLoadError({
         retry: () => {

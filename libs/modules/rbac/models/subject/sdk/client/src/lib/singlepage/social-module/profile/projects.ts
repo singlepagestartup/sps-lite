@@ -7,7 +7,11 @@ import {
 } from "@sps/rbac/models/subject/sdk/server";
 import { clientHost, route } from "@sps/rbac/models/subject/sdk/model";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import { queryClient, subscription } from "@sps/shared-frontend-client-api";
+import {
+  queryClient,
+  subscription,
+  consistencyQueryKey,
+} from "@sps/shared-frontend-client-api";
 import { useQuery, type UseQueryOptions } from "@tanstack/react-query";
 import { useEffect } from "react";
 
@@ -23,7 +27,7 @@ export function action(props: IProps) {
   useEffect(() => subscription(key, queryClient), [key]);
   return useQuery<IResult>({
     ...reactQueryOptions,
-    queryKey: [key],
+    queryKey: consistencyQueryKey(key, undefined, clientHost),
     meta: {
       topics: [
         "social.profiles",

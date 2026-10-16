@@ -1,29 +1,56 @@
 /** @jest-environment jsdom */
-import { render, screen } from "@testing-library/react";
-jest.mock("client-only", () => ({}));
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Component } from "./client";
+jest.mock("client-only", () => ({}));
+jest.mock("@sps/shared-frontend-client-api", () => ({ factory: jest.fn() }));
 
-it("retains mounted records during background fetching when the reader opts in", () => {
+it("keeps the mounted form, draft, focus and selection during background fetch/error", () => {
+  const data = [{ id: "one" }];
   const find = jest.fn(() => ({
-    data: [{ id: "reply" }],
+    data,
     isFetching: false,
     isLoading: false,
+    isError: false,
   }));
   const props: any = {
     api: { find },
-    variant: "find",
-    keepDataWhileFetching: true,
-    children: ({ data }: any) => <div data-testid="reply">{data[0].id}</div>,
+    children: ({ data }: any) =>
+      data?.map((row: any) => (
+        <input key={row.id} aria-label="Draft" defaultValue="" />
+      )),
   };
-  const { rerender } = render(<Component {...props} />);
-  const row = screen.getByTestId("reply");
+  const view = render(<Component {...props} />);
+  const input = screen.getByRole("textbox", {
+    name: "Draft",
+  }) as HTMLInputElement;
+  fireEvent.change(input, { target: { value: "unsent draft" } });
+  input.focus();
+  input.setSelectionRange(2, 5);
   find.mockReturnValue({
-    data: [{ id: "reply" }],
+    data,
     isFetching: true,
     isLoading: false,
+    isError: false,
   });
-  rerender(<Component {...props} />);
-  expect(screen.getByTestId("reply")).toBe(row);
-  rerender(<Component {...props} keepDataWhileFetching={false} />);
-  expect(screen.queryByTestId("reply")).toBeNull();
+  view.rerender(<Component {...props} />);
+  expect(screen.getByRole("textbox", { name: "Draft" })).toBe(input);
+  find.mockReturnValue({
+    data,
+    isFetching: false,
+    isLoading: false,
+    isError: true,
+  });
+  view.rerender(<Component {...props} />);
+  expect(input.value).toBe("unsent draft");
+  expect(document.activeElement).toBe(input);
+  expect([input.selectionStart, input.selectionEnd]).toEqual([2, 5]);
+  view.rerender(<Component {...props} keepDataWhileFetching={false} />);
+  find.mockReturnValue({
+    data,
+    isFetching: true,
+    isLoading: false,
+    isError: false,
+  });
+  view.rerender(<Component {...props} keepDataWhileFetching={false} />);
+  expect(screen.queryByRole("textbox", { name: "Draft" })).toBeNull();
 });

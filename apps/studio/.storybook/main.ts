@@ -59,6 +59,17 @@ const config: StorybookConfig = {
     ],
     resolve: {
       ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        "@sps/shared-frontend-client-utils/chat-scroll": path.resolve(
+          configDirectory,
+          "../../../libs/shared/frontend/client/utils/src/lib/chat-scroll/index.ts",
+        ),
+        "@sps/shared-utils/chat-scroll": path.resolve(
+          configDirectory,
+          "../../../libs/shared/utils/src/lib/constants/chat-scroll.ts",
+        ),
+      },
     },
     css: {
       ...config.css,

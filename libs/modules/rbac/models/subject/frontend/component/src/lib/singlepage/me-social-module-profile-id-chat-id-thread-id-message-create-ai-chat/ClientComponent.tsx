@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Paperclip, Send, X } from "lucide-react";
 import { Icon, FilePreview } from "@sps/ui-adapter";
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/client";
 import {
+  CHAT_FOLLOW_LATEST_EVENT,
   assertSupportedAiChatAttachments,
   AI_CHAT_ATTACHMENT_ACCEPT,
   AI_CHAT_ATTACHMENT_FORMAT_LABEL,
@@ -188,6 +189,11 @@ export function Component(props: IComponentPropsExtended) {
               },
             },
           });
+          globalThis.document.dispatchEvent(
+            new CustomEvent(CHAT_FOLLOW_LATEST_EVENT, {
+              detail: { threadId: props.thread.id },
+            }),
+          );
           setMessage("");
           setFiles([]);
           if (fileInput.current) fileInput.current.value = "";

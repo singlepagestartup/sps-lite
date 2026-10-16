@@ -10,7 +10,11 @@ import {
   type IResult as IParentResult,
 } from "@sps/rbac/models/subject/sdk/server";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import { queryClient, subscription } from "@sps/shared-frontend-client-api";
+import {
+  queryClient,
+  subscription,
+  consistencyQueryKey,
+} from "@sps/shared-frontend-client-api";
 import { useEffect } from "react";
 
 export type IProps = IParentProps["IEcommerceModuleOrderListProps"] & {
@@ -32,7 +36,7 @@ export function action(props: IProps) {
   }, [queryKey]);
 
   return useQuery<IResult>({
-    queryKey: props.params ? [queryKey, props.params] : [queryKey],
+    queryKey: consistencyQueryKey(queryKey, props.params, clientHost),
     // Canonical realtime subscription (issue #195): hand-written SDK
     // queries MUST declare meta.topics — the topic branch disables the
     // legacy route fallback whenever any topic subscriber matches, so a
@@ -57,20 +61,18 @@ export function action(props: IProps) {
         host: clientHost,
       });
 
-      return result;
-    },
-    select(data) {
       globalActionsStore.getState().addAction({
         type: "query",
         name: `${route}/${props.id}/ecommerce-module/orders`,
-        props: this,
-        result: data,
+        props: { params: props.params },
+        result,
         timestamp: Date.now(),
         requestId: createId(),
       });
 
-      return data;
+      return result;
     },
+
     staleTime: 0,
     refetchOnMount: "always",
     refetchOnWindowFocus: true,

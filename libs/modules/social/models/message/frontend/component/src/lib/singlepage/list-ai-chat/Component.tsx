@@ -8,6 +8,7 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       className={props.className}
       children={props.children}
+      threadId={props.threadId}
       documentTitle={props.documentTitle}
       emptyMessage={props.emptyMessage}
       requesterProfileId={props.requesterProfileId}

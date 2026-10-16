@@ -21,6 +21,9 @@ jest.mock("@sps/shared-frontend-client-utils", () => ({
   saturateHeaders: () => ({}),
 }));
 jest.mock("@sps/shared-frontend-client-api", () => ({
+  consistencyQueryKey: jest.requireActual(
+    "../../../../../../../../../../../shared/frontend/client/api/src/lib/consistency",
+  ).consistencyQueryKey,
   queryClient: {},
   subscription: jest.fn(),
 }));
@@ -39,6 +42,8 @@ describe("Subject order collection cache", () => {
     const [cart, history] = mockUseQuery.mock.calls.map(([options]) => options);
     expect(cart.queryKey).toEqual([
       "/api/rbac/subjects/subject/ecommerce-module/orders",
+      undefined,
+      { principal: "", host: "http://localhost:4000" },
     ]);
     expect(history.queryKey).not.toEqual(cart.queryKey);
   });

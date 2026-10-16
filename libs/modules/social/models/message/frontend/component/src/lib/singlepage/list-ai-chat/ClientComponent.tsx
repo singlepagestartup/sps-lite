@@ -2,9 +2,10 @@
 import { Component as Authors } from "@sps/social/relations/profiles-to-messages/frontend/component";
 import { Component as MessageFiles } from "@sps/social/relations/messages-to-file-storage-module-files/frontend/component";
 import { Component as Files } from "@sps/file-storage/models/file/frontend/component";
-import { memo, useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { Bot, User } from "lucide-react";
 import Markdown from "markdown-to-jsx";
+import { useChatScroll } from "@sps/shared-frontend-client-utils";
 import type { IComponentPropsExtended } from "./interface";
 import type { IChatMessage as IModel } from "@sps/social/models/message/sdk/model";
 import type { IModel as IFile } from "@sps/file-storage/models/file/sdk/model";
@@ -27,12 +28,7 @@ function AttachmentStrip({ files }: { files: IFile[] }) {
               isServer={false}
               variant="attachment-ai-chat"
               data={file}
-              apiProps={{
-                reactQueryOptions: {
-                  initialData: file,
-                  queryFn: async () => file,
-                },
-              }}
+              dataSource="props"
             />
           </li>
         ))}
@@ -157,6 +153,7 @@ const Row = memo(function Row({
                                   isServer={false}
                                   variant="attachment-ai-chat"
                                   data={file}
+                                  dataSource="props"
                                 />
                               ))
                             }
@@ -174,39 +171,20 @@ const Row = memo(function Row({
   );
 });
 export function Component(props: IComponentPropsExtended) {
-  const list = useRef<HTMLDivElement>(null);
-  const followingLatest = useRef(true);
-  const ordered = [...props.data].sort(
-    (a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+  const ordered = useMemo(
+    () =>
+      [...props.data].sort(
+        (a, b) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime() ||
+          a.id.localeCompare(b.id),
+      ),
+    [props.data],
   );
-  const latest = ordered[ordered.length - 1];
-  useLayoutEffect(() => {
-    const pane = list.current?.closest<HTMLElement>("[data-ai-chat-messages]");
-    if (!pane) return;
-    followingLatest.current = true;
-    pane.scrollTop = pane.scrollHeight;
-  }, [latest?.id, latest?.description, ordered.length]);
-  useEffect(() => {
-    const content = list.current;
-    const pane = content?.closest<HTMLElement>("[data-ai-chat-messages]");
-    if (!content || !pane) return;
-    const onScroll = () => {
-      followingLatest.current =
-        pane.scrollHeight - pane.scrollTop - pane.clientHeight < 80;
-    };
-    pane.addEventListener("scroll", onScroll, { passive: true });
-    const observer =
-      typeof ResizeObserver === "undefined"
-        ? undefined
-        : new ResizeObserver(() => {
-            if (followingLatest.current) pane.scrollTop = pane.scrollHeight;
-          });
-    observer?.observe(content);
-    return () => {
-      pane.removeEventListener("scroll", onScroll);
-      observer?.disconnect();
-    };
-  }, []);
+  const { list, hasNew, followLatest } = useChatScroll({
+    identity: props.threadId || "current",
+    revision: props.data,
+    count: ordered.length,
+  });
   return (
     <div
       ref={list}
@@ -215,6 +193,15 @@ export function Component(props: IComponentPropsExtended) {
       data-variant="list-ai-chat"
       aria-live="polite"
     >
+      {hasNew && (
+        <button
+          type="button"
+          onClick={followLatest}
+          className="sticky top-3 z-10 mx-auto block rounded-full border border-border bg-card px-4 py-2 text-sm shadow-sm"
+        >
+          New messages
+        </button>
+      )}
       {!props.data.length && !props.documentTitle && (
         <div className="flex gap-3 p-5">
           <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">

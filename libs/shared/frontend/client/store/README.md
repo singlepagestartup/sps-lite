@@ -73,14 +73,16 @@ function Component() {
 
 ## Realtime flow
 
-1. The backend revalidation middleware broadcasts a successful mutation after
-   HTTP-cache generation bumps finish.
-2. Host's revalidation component receives the WebSocket message and adds an
-   action named `revalidation` to `globalActionsStore`.
-3. The shared SDK `subscription(...)` listens to those in-memory events and
-   invalidates React Query entries by `meta.topics`. Route matching remains
-   available when that route has no query covered by the broadcast topics.
-   Active matching queries refetch.
+1. Database capture commits generations and an outbox entry with the mutation.
+2. The shared runtime assigns a durable delivery cursor after Next tag
+   invalidation. Host receives private ref notifications on one WebSocket and
+   routes them through the query consistency lifecycle to React Query.
+3. Host records compact notification diagnostics under `consistency` in
+   `globalActionsStore`. These records have counts/cursors, no entity bodies,
+   credentials or opaque capabilities. The store is not a replay checkpoint.
+4. Legacy frames enter the store under `revalidation`. SDK `subscription(...)`
+   matches their topics or routes only for queries without accepted, unexpired
+   consistency coverage. Active matching queries refetch.
 
 Factory SDKs provide the subscriptions. Hand-written SDK queries must register
 and clean up their subscriptions and preserve topic metadata. Local mutation

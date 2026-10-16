@@ -8,7 +8,7 @@ export function Component(props: IComponentPropsExtended) {
     ...props.messagesRead,
     refetch: props.messagesRead.refetch || (() => window.location.reload()),
   };
-  if (messages.error)
+  if (messages.error && !messages.data)
     return (
       <p role="alert" className="p-4 text-destructive">
         {messages.error.message}
@@ -26,6 +26,7 @@ export function Component(props: IComponentPropsExtended) {
     <SocialModuleMessage
       isServer={false}
       variant="list-ai-chat"
+      threadId={props.thread.id}
       keepDataWhileFetching
       dataSource="props"
       data={ordered}

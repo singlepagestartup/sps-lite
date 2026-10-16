@@ -25,3 +25,5 @@ export {
   getFilePreviewUrl,
   type FilePreviewKind,
 } from "./file-preview";
+
+export { useChatScroll, type IChatScrollProps } from "./chat-scroll";

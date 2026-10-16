@@ -1,5 +1,6 @@
 import { Component as Message, type IMessageListProps } from "../../index";
 
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { knowledgeAgent } from "../../../profile/singlepage/agent/id/ai-chat/index";
 
@@ -96,5 +97,39 @@ export const ConfirmedDocument: StoryObj<typeof meta> = {
         text: "Products.md is saved. The four files are attached to the document.",
       },
     ],
+  },
+};
+
+export const RealtimeHistory: StoryObj<typeof meta> = {
+  render: function RealtimeHistory(args) {
+    const [messages, setMessages] = useState(
+      Array.from({ length: 30 }, (_, index) => ({
+        id: `history-${index}`,
+        role: "user" as const,
+        text: `Message ${index + 1}`,
+      })),
+    );
+    return (
+      <div className="mx-auto max-w-xl">
+        <button
+          onClick={() =>
+            setMessages((current) => [
+              ...current,
+              {
+                id: `message-${current.length}`,
+                role: "user",
+                text: "New incoming message",
+              },
+            ])
+          }
+          className="rounded border p-3"
+        >
+          Append message
+        </button>
+        <div data-ai-chat-messages className="h-96 overflow-y-auto">
+          <Component {...args} messages={messages} />
+        </div>
+      </div>
+    );
   },
 };

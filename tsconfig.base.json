@@ -92,7 +92,13 @@
       ],
       "@sps/startup/*": ["libs/modules/startup/*"],
       "@sps/ui-adapter": ["libs/shared/ui/adapter/src/index.ts"],
-      "@sps/website-builder/*": ["libs/modules/website-builder/*"]
+      "@sps/website-builder/*": ["libs/modules/website-builder/*"],
+      "@sps/shared-utils/chat-scroll": [
+        "libs/shared/utils/src/lib/constants/chat-scroll.ts"
+      ],
+      "@sps/shared-frontend-client-utils/chat-scroll": [
+        "libs/shared/frontend/client/utils/src/lib/chat-scroll/index.ts"
+      ]
     },
     "typeRoots": [
       "./node_modules/@types",

@@ -13,7 +13,6 @@ export default function Client(props: IComponentProps) {
         socialModuleProfileId: props.project.requesterProfileId,
         socialModuleChatId: props.project.chat.id,
         socialModuleThreadId: props.thread.id,
-        reactQueryOptions: { refetchInterval: 5000 },
       },
     );
   if (messages.isPending) return props.skeleton ?? <Skeleton />;
