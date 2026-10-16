@@ -104,3 +104,9 @@ Warm cache быстрее baseline на этом aggregate, metadata = 284 bytes
 - [ ] Выполнен бюджет no-store p95 ≤ baseline +20%.
 - [ ] Получены полный production UI/SQL profiling и матрица всех кастомных Host views.
 - [ ] Пройдено ручное code review и подтверждено переключение production-окружения.
+
+## Стабильность навигации при ревалидации
+
+Host Page `url-segment-value` и `find-by-url` сохраняют загруженное содержимое при background refetch. Skeleton относится к первоначальной загрузке. Вложенные project/account menus не размонтируются вместе с URL reader. Regression до исправления воспроизводил потерю меню и состояния для обычного ID и результата null; окончательный Host suite — 17 suites, 41 passed, TypeScript — passed.
+
+На dev-маршруте проекта реальная ревалидация вызвана созданием и удалением собственной временной Host Page через SDK. Registry подтвердил новые URL responses; раскрытое account menu осталось открытым после обеих операций. Fixture удалена. Скриншот — `.artifacts/consistency/header-stable.jpg`. Production build именно этого изменения отдельно не повторялся.

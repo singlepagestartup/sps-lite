@@ -29,6 +29,8 @@ The project chooser preserves the original photographic creation form. Telegram 
 
 ## Verification
 
+- [x] Header refresh regression: Host URL readers retain mounted project/account controls during background refetch, including a resolved null segment. The regression fails before the fix; Host 17 suites / 41 tests and TypeScript pass. A real dev URL invalidation preserves the open account menu; its temporary Page fixture is removed. The production build was not repeated for this follow-up.
+
 - [x] Automatic consistency: RBAC 144 suites / 764 tests; shared backend 70 passed / 1 skipped, client API 48, client utils 26, shared utils 86, middleware 86, KV 7; Knowledge integration 20 and CRM integration 5. PostgreSQL regressions cover direct SQL/cascade/rollback, commit ordering, replay baselines, private refs and maintenance rollback. Capture coverage is 155/155 and generation is unchanged on repeat. Final module gate: 14,782 files, zero violations.
 - [x] Dev Chrome and production Chrome/in-app browser: two participants receive messages, a separate chat stays untouched, draft/scroll survive reconciliation and API restart, membership revoke hides data and restore recovers it. A product added to two separate test carts totals 125 T, then quantity 2 updates the second tab to 250 T. Final ordinary-participant sends produce no generic File permission error. Generated test data is removed.
 - [x] Final Bun API bundle, Host Webpack production build/start and Storybook build pass. Production browser checks use the built bundles. The local build needs an 8 GB V8 heap and disabled Webpack disk cache; the dev Turbopack attempt encountered a Rust panic, so dev was checked with Webpack.
