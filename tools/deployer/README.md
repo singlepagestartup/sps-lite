@@ -377,6 +377,14 @@ Never commit a Lightsail private key, the generated `inventory.yaml`, or a real
 
 ## Docker image rollout
 
+API startup applies consistency infrastructure migrations before model and
+relation migrations, finishes seeding, and then starts the HTTP listener.
+A failed migration or seed stops startup. The API service health check probes
+its loopback HTTP listener; the 30-minute startup allowance covers migrations.
+With `start-first` updates, Swarm retains the previous API task until the new
+task passes this check. Existing services must apply the API compose health
+check once before an image with synchronous migrations is rolled out.
+
 Release workflows still update each service through its Portainer webhook. A
 shared preparation job first pulls every unique release image through the
 Portainer Docker API and waits for extraction to finish. This prevents API,

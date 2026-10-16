@@ -1,5 +1,13 @@
 # Runtime maintenance
 
+API release startup runs `migrate.sh seed` before opening its HTTP listener.
+Consistency infrastructure migrates first, followed by the module migrations
+and seed. The deployment health check keeps a new API task in startup while
+this work runs; a failed command prevents the API from starting.
+
+Check the startup ordering and failure handling with
+`node --test tools/runtime/api-startup.test.mjs`.
+
 `sync-next-static.mjs` maintains deployed Next.js assets. The AI Chat Widget
 command below changes persisted content configuration through normal SDKs.
 Neither command implements behavior by editing repository data snapshots.

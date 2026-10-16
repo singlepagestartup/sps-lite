@@ -6,6 +6,7 @@ The project chooser preserves the original photographic creation form. Telegram 
 
 ## Changes
 
+- Apply provider consistency migrations before module migrations and finish migrations/seeding before the API listens. Add an API readiness health check for start-first updates; existing deployments must apply that service configuration before publishing the new image.
 - Centralize notification presentation in the UI adapter and use the same renderer in Host and Studio. Shared Toast exposes all states, actions, long text, stacking, persistent previews and status icons; the Shared Phosphor collection includes 90 glyphs. Keep profile validation errors inline and remove per-form visual options. Fetch purchase totals and receipt metadata through the existing Subject-owned list, then render provided details without generic Ecommerce requests.
 - Send deduplicated Next tags in bounded POST batches with serial GET compatibility fallback. Keep heartbeat delivery active during Next retries; distinguish delayed updates from a disconnected socket in the global Host status.
 
@@ -32,6 +33,7 @@ The project chooser preserves the original photographic creation form. Telegram 
 
 ## Verification
 
+- [x] Release startup: the repeated Host production build, including TypeScript, passes. Four shell-level regressions verify infrastructure-first ordering and prevent API startup after infrastructure, module or seed failure. The Bun API bundle processes 6,004 modules; three static-asset synchronization tests pass. Existing production needs the documented API readiness configuration before this image is published.
 - [x] Shared Toast: Studio 192 tests, Social 76 tests and Studio TypeScript pass. Module direction checks 14,785 files with zero violations; placement passes. Browser checks cover Controls, keyboard action, close/auto-dismiss, Loading → Success, seven glyphs and the long notification at an actual 390 px viewport without horizontal overflow. Dev and production profile save use the common renderer with no browser errors. Host production build with type validation and Storybook production build pass; the existing Saved story mounts exactly one Toaster and one notification.
 
 - [x] Settings follow-up: RBAC 765, Ecommerce 43, Social 76, Host app 43, Middleware 89, shared backend 71 passed / 1 skipped; Studio 188 passed. Host and Studio TypeScript pass; the API retains its 20 existing diagnostics. Dev and production show the success toast, a valid zero-price subscription total and its owned receipt without generic Ecommerce permission errors. Outbox recovery drains the observed 151 pending events to zero. The final Host production build (including type validation) and Bun API bundle pass; module direction checks 14,785 source files with zero violations and placement/formatting pass.
@@ -94,3 +96,5 @@ Owned overrides and data require review even after a clean merge:
 16. Owned Host revalidation routes must accept bounded POST tag batches; API supports older GET-only Hosts through a 404/405 fallback. Keep failed outbox batches pending and heartbeats independent of Next delivery. Verify recovery and healthy status after restarting either service. Studio imports of shared chat scrolling must use the two exact pure subpaths and retain transitive isolation checks.
 
 17. Owned Host shells should mount `Toaster` from `@sps/ui-adapter/toast` once. Remove per-form visual options and keep notification content/actions in callers; existing Sonner SDK calls share the same store. Map the exact Toast subpath in owned Studio Vite/TypeScript configurations, include its Tailwind source, preserve the transitive UI-only gate and avoid a second Toaster in Toast catalog stories. Retain the Phosphor license and verify owned theme, close/action/loading/long-text states in Studio and Host.
+
+18. Before deploying images with synchronous API migrations, apply the API compose readiness check to existing services. Keep start-first updates and the migration startup allowance; preserve database backups and verify the new task becomes healthy before the old task stops. Owned startup scripts must migrate provider consistency infrastructure first and stop on migration/seed failure. Run the startup regression suite and verify capture coverage after rollout.

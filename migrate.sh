@@ -4,6 +4,7 @@ set -euo pipefail
 
 # NX not run all commands in project.json after last update
 # still looking for solution
+npx nx run @sps/providers-db:repository-migrate
 npx nx run @sps/file-storage:repository-migrate
 npx nx run @sps/broadcast:repository-migrate
 npx nx run @sps/website-builder:repository-migrate
