@@ -7,11 +7,13 @@ export function Component(props: IComponentPropsExtended) {
       isServer={props.isServer}
       variant={props.variant}
       data={props.data}
+      dataSource={props.dataSource}
       className={props.className}
       children={props.children}
-      totals={props.totals}
+      totals={props.purchaseDetails?.totals ?? props.totals}
       totalsPending={props.totalsPending}
       totalsError={props.totalsError}
+      purchaseDetails={props.purchaseDetails}
     />
   );
 }

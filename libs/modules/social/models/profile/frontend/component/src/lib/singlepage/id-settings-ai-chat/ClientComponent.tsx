@@ -1,6 +1,7 @@
 "use client";
 import { memo, useEffect, useId, useRef, useState } from "react";
 import { Icon } from "@sps/ui-adapter";
+import { toast } from "sonner";
 import type { IComponentPropsExtended } from "./interface";
 export const Component = memo(function Component(
   props: IComponentPropsExtended,
@@ -10,7 +11,6 @@ export const Component = memo(function Component(
   const [headline, setHeadline] = useState(profile.subtitle?.en || "");
   const [description, setDescription] = useState(profile.description?.en || "");
   const [slug, setSlug] = useState(profile.slug);
-  const [status, setStatus] = useState("");
   const [error, setError] = useState("");
   const errorId = useId();
   const errorRef = useRef<HTMLDivElement>(null);
@@ -23,11 +23,9 @@ export const Component = memo(function Component(
     <form
       onChangeCapture={() => {
         setError("");
-        setStatus("");
       }}
       onSubmit={async (event) => {
         event.preventDefault();
-        setStatus("");
         setError("");
         try {
           await props.onSave({
@@ -36,7 +34,12 @@ export const Component = memo(function Component(
             description: { ...profile.description, en: description },
             slug,
           });
-          setStatus("Profile saved");
+          toast.success("Profile saved", {
+            description: "Your profile changes have been saved.",
+            richColors: true,
+            closeButton: true,
+            position: "bottom-right",
+          });
         } catch (error) {
           setError(
             error instanceof Error
@@ -112,11 +115,6 @@ export const Component = memo(function Component(
           <p className="font-semibold">Profile could not be saved</p>
           <p className="mt-1 break-words leading-6">{error}</p>
         </div>
-      )}
-      {status && (
-        <p role="status" className="mt-3 text-sm text-muted-foreground">
-          {status}
-        </p>
       )}
     </form>
   );

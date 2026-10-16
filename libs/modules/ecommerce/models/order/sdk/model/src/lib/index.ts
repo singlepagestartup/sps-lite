@@ -1,3 +1,11 @@
+import type { IModel as IBillingModuleCurrency } from "@sps/billing/models/currency/sdk/model";
+import type { IModel as IFileStorageModuleFile } from "@sps/file-storage/models/file/sdk/model";
+
+export interface IPurchaseDetails {
+  totals: { total: number; billingModuleCurrency: IBillingModuleCurrency }[];
+  receipts: IFileStorageModuleFile[];
+}
+
 export {
   type IInsertSchema,
   type ISelectSchema as IModel,

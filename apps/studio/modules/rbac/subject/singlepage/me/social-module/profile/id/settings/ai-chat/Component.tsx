@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "sonner";
 import type {
   IComponentProps,
   SubjectMeProfileInformationProps,
@@ -230,9 +231,13 @@ function ProfileSettingsForm(props: IProfileSettingsFormProps) {
           }
           setSavedProfile(draft);
           setInvalid(false);
-          setMessage(
-            "Profile saved in this preview. No server data was changed.",
-          );
+          setMessage("");
+          toast.success("Profile saved", {
+            description: "Your profile changes are saved in this preview.",
+            richColors: true,
+            closeButton: true,
+            position: "bottom-right",
+          });
         }}
       >
         <fieldset className="min-w-0 border-0 p-0">

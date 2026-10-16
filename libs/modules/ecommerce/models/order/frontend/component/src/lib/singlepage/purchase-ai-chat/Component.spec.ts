@@ -2,6 +2,8 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 const mockTotal = jest.fn();
+const mockReceiptLinks = jest.fn();
+const mockReceiptFiles = jest.fn();
 let mockReceipts: { fileStorageModuleFileId: string }[] = [];
 jest.mock("server-only", () => ({}));
 jest.mock("client-only", () => ({}));
@@ -27,14 +29,19 @@ jest.mock("@sps/ecommerce/models/order/sdk/server", () => ({
 jest.mock(
   "@sps/ecommerce/relations/orders-to-file-storage-module-files/frontend/component",
   () => ({
-    Component: ({ children }: any) => children({ data: mockReceipts }),
+    Component: ({ children }: any) => {
+      mockReceiptLinks();
+      return children({ data: mockReceipts });
+    },
   }),
 );
 jest.mock("@sps/file-storage/models/file/frontend/component", () => ({
-  Component: ({ children }: any) =>
-    children({
+  Component: ({ children }: any) => {
+    mockReceiptFiles();
+    return children({
       data: [{ id: "receipt-file", file: "/file-storage/static/receipt.pdf" }],
-    }),
+    });
+  },
 }));
 jest.mock("@sps/website-builder/models/feature/frontend/component", () => ({
   Component: () => null,
@@ -62,6 +69,7 @@ function renderPurchase() {
 }
 describe("Paid purchase details", () => {
   beforeEach(() => {
+    jest.clearAllMocks();
     mockReceipts = [{ fileStorageModuleFileId: "receipt-file" }];
     const currency = {
       id: "rub",
@@ -103,6 +111,40 @@ describe("Paid purchase details", () => {
     const html = renderPurchase();
     expect(html).toContain("Total unavailable");
     expect(html).toContain("SPS-2026-1042");
+  });
+  it("renders parent-owned purchase details without generic totals or receipt queries", () => {
+    const html = renderToStaticMarkup(
+      createElement(Component, {
+        isServer: false,
+        variant: "purchase-ai-chat",
+        dataSource: "props",
+        data: {
+          id: "owned-order",
+          createdAt: "2026-10-16",
+          status: "paid",
+        } as any,
+        purchaseDetails: {
+          totals: [
+            {
+              total: 0,
+              billingModuleCurrency: {
+                id: "usd",
+                slug: "usd",
+                symbol: "$",
+              } as any,
+            },
+          ],
+          receipts: [
+            { id: "owned-file", file: "/file-storage/static/owned.pdf" } as any,
+          ],
+        },
+      }),
+    );
+    expect(html).toContain("0 USD");
+    expect(html).toContain("/public/file-storage/static/owned.pdf");
+    expect(mockTotal).not.toHaveBeenCalled();
+    expect(mockReceiptLinks).not.toHaveBeenCalled();
+    expect(mockReceiptFiles).not.toHaveBeenCalled();
   });
   it("loads totals through the server SDK before rendering a server purchase", async () => {
     const serverApi = jest.requireMock(

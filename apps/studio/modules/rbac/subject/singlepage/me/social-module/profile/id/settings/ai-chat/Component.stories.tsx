@@ -1,5 +1,6 @@
 import { Component as Subject } from "../../../../../../..";
 import type { Meta, StoryObj } from "@storybook/react";
+import { within, userEvent, expect } from "storybook/test";
 
 import { defaultSubjectMeProfileInformationProps } from "./Component";
 
@@ -30,4 +31,15 @@ export const Default: Story = {
 
 export const SaveError: Story = {
   args: { saveError: "Conflict error. Entity already exists" },
+};
+
+export const Saved: Story = {
+  parameters: { toastDuration: Infinity },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("button", { name: /save/i }));
+    await expect(
+      within(canvasElement.ownerDocument.body).findByText("Profile saved"),
+    ).resolves.toBeVisible();
+  },
 };

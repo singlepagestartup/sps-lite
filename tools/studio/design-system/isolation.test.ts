@@ -12,6 +12,7 @@ import path from "node:path";
 import { globSync } from "tinyglobby";
 import ts from "typescript";
 import { syncProductStories } from "../products/stories";
+import { pureStudioUtility, pureStudioUtilities } from "./isolation";
 
 const root = path.resolve(import.meta.dir, "../../..");
 const studio = path.join(root, "apps/studio");
@@ -238,6 +239,8 @@ function target(
   glob = false,
 ): string | undefined {
   const name = glob ? specifier : specifier.split(/[?#]/)[0];
+  const pureUtility = pureStudioUtility(options.root, name);
+  if (pureUtility) return pureUtility;
   if (/^(?:https?:|data:|blob:|node:|#)/.test(name)) return undefined;
   if (name.startsWith("/module-assets/"))
     return path.join(
@@ -286,6 +289,7 @@ function resolveFile(target: string): string | undefined {
   ].find((file) => ts.sys.fileExists(file));
 }
 function forbidden(file: string, specifier: string): boolean {
+  if (pureStudioUtility(root, specifier)) return false;
   const resolved = target(file, specifier, isolationOptions);
   return (
     specifier.startsWith("@sps/") ||
@@ -355,7 +359,10 @@ function isolationViolations(
         (dependency &&
           (within(dependency, path.join(options.root, "libs")) ||
             within(dependency, path.join(options.root, "apps/host"))));
-      if (wrongOwner || production) {
+      if (
+        wrongOwner ||
+        (production && !pureStudioUtility(options.root, reference.specifier))
+      ) {
         violations.add(
           [
             ...chain,
@@ -405,6 +412,49 @@ test("detects production aliases and relative imports, including type dependenci
       "../modules/host/page/interface",
     ),
   ).toBe(false);
+});
+
+test("shared UI utilities import only React or another exact pure entry", () => {
+  for (const file of pureStudioUtilities(root)) {
+    for (const { specifier } of references(file)) {
+      expect(
+        specifier === "react" || Boolean(pureStudioUtility(root, specifier)),
+      ).toBe(true);
+    }
+  }
+  expect(
+    forbidden(
+      path.join(studio, "view.ts"),
+      "@sps/shared-frontend-client-utils",
+    ),
+  ).toBe(true);
+});
+
+test("an approved utility cannot hide a transitive SDK dependency", () => {
+  const fixture = mkdtempSync(path.join(tmpdir(), "sps-studio-pure-"));
+  try {
+    const studio = path.join(fixture, "apps/studio");
+    const entry = path.join(studio, "modules/view.ts");
+    const utility = pureStudioUtility(
+      fixture,
+      "@sps/shared-frontend-client-utils/chat-scroll",
+    )!;
+    mkdirSync(path.dirname(entry), { recursive: true });
+    mkdirSync(path.dirname(utility), { recursive: true });
+    writeFileSync(
+      entry,
+      'import "@sps/shared-frontend-client-utils/chat-scroll";',
+    );
+    writeFileSync(utility, 'import "@sps/social/models/message/sdk/client";');
+    const violations = isolationViolations([entry], "modules", {
+      root: fixture,
+      studio,
+    });
+    expect(violations).toHaveLength(1);
+    expect(violations[0]).toContain("@sps/social/models/message/sdk/client");
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
 });
 
 test("Studio code, styles and Storybook configuration do not import production", () => {

@@ -2,6 +2,10 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import ts from "typescript";
+import {
+  isPureStudioUtilityFile,
+  pureStudioUtility,
+} from "../../../../../../../tools/studio/design-system/isolation";
 import { renderToStaticMarkup } from "react-dom/server";
 import { AIChatPreview } from "./Preview";
 import { isAIChatRoute } from "../../../layout/singlepage/ai-chat-landing/routes";
@@ -484,18 +488,26 @@ describe("Local AI Chat components", () => {
       expect(isAIChatRoute(url)).toBe(false);
   });
 
-  test("the composed component graph resolves entirely within Studio", () => {
+  test("the composed graph uses Studio views and exact pure UI utilities", () => {
     const visited = new Set<string>();
     function visit(file: string) {
       if (visited.has(file)) return;
       visited.add(file);
-      expect(file.startsWith(studio + path.sep)).toBe(true);
+      expect(
+        file.startsWith(studio + path.sep) ||
+          isPureStudioUtilityFile(root, file),
+      ).toBe(true);
       if (!/\.[jt]sx?$/.test(file)) return;
       for (const { fileName } of ts.preProcessFile(
         readFileSync(file, "utf8"),
         true,
         true,
       ).importedFiles) {
+        const utility = pureStudioUtility(root, fileName);
+        if (utility) {
+          visit(utility);
+          continue;
+        }
         expect(fileName.startsWith("@sps/")).toBe(false);
         if (!fileName.startsWith(".")) continue;
         const target = path.resolve(path.dirname(file), fileName.split("?")[0]);

@@ -8,6 +8,7 @@ export function Component(props: IComponentPropsExtended) {
   const orders = subjectApi.ecommerceModuleOrderList({
     id: props.data.id,
     params: {
+      includePurchaseDetails: true,
       filters: {
         and: [
           { column: "type", method: "eq", value: "history" },
@@ -77,6 +78,8 @@ export function Component(props: IComponentPropsExtended) {
                 isServer={false}
                 variant="purchase-ai-chat"
                 data={order}
+                dataSource="props"
+                purchaseDetails={order.purchaseDetails}
               />
             ))}
         </ul>

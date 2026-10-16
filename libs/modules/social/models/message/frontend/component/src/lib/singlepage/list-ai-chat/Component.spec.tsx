@@ -216,6 +216,8 @@ it("follows new replies and growing attachments but preserves the position when 
         },
       ]),
     );
+    expect(pane.scrollTop).toBe(100);
+    fireEvent.click(screen.getByRole("button", { name: "New messages" }));
     expect(pane.scrollTop).toBe(1400);
     unmount();
   } finally {

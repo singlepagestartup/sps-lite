@@ -85,6 +85,23 @@ must be available even when the browser's cookie-change event has already fired.
 
 These routes use owner middleware and concrete permissions in the Subject's private account role. Email codes expire after ten minutes, are stored as keyed hashes, and are consumed atomically. An incorrect code consumes that challenge; another code can be requested after the per-stage, one-minute sending limit. Password changes use the existing owner Identity update method with the current password and a new password; the form requires its repeated value before submitting.
 
+### Purchase details
+
+`GET /rbac/subjects/:id/ecommerce-module/orders?includePurchaseDetails=true`
+returns optional `purchaseDetails` with totals and receipt File metadata. The
+handler verifies the JWT Subject, filters by Subject→Order membership, and
+postfilters the result before enriching it. Caller OR filters cannot widen
+ownership. Effective Order, receipt-relation and File services run in the same
+consistency snapshot, so their captured dependencies participate in recovery.
+The flag is read directly from the request because the common query parser
+retains only its standard parameters.
+
+The account purchases reader owns this scoped SDK query. It passes each Order
+and its details to `purchase-ai-chat` with `dataSource="props"`; that child
+renders the supplied totals and receipt without querying generic Ecommerce
+endpoints. Zero is a valid total, including a free subscription. Standalone
+Ecommerce readers retain their own authorization requirements.
+
 ## Anonymous Session Lifecycle
 
 A subject and a JWT are issued on the first visit, including public browsing,

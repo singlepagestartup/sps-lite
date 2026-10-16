@@ -140,7 +140,21 @@ The catalog provides `admin-v2-table`, `admin-v2-card` and `list`. Tables expose
 `empty`; lists expose `empty` and `count` through Storybook Controls. List stories
 include Default, Empty and Many (20 cards). Repeated cards use one local example.
 Custom model variants retain their own props and interactive states. Studio
-composes models directly and requires neither production libraries nor an API.
+composes its own models and fixtures without production SDKs, providers or an API.
+
+The shared chat viewport controller has two exact UI-only public entries:
+`@sps/shared-frontend-client-utils/chat-scroll` and
+`@sps/shared-utils/chat-scroll`. Studio and production use the same controller
+for follow-latest and history anchoring. Studio maps only these subpaths, never
+their package barrels. The isolation gates walk their transitive imports and
+require React or another exact approved pure entry; an SDK import fails the gate.
+Workspace and Modules remain independent, including through these utilities.
+
+The account Profile settings `Saved` story exercises Save profile and shows the
+bottom-right Sonner success notification with a check icon and close button.
+Its preview text identifies a local preview save. Form validation and request
+errors remain beside the form. The Modules decorator supplies its own Toaster;
+Workspace presentation keeps its own styling and notification ownership.
 
 `studio:presentation:export` builds the resolved semantic React/HTML presentation,
 resolves `singlepage` or `startup` from repository identity, and writes a

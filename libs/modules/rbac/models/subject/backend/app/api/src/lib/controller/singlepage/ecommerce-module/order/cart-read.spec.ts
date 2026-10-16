@@ -38,9 +38,18 @@ import { Handler as TotalHandler } from "./total";
 
 function createContext(params?: unknown) {
   return {
-    get: () => params,
+    get: () => {
+      if (!params) return params;
+      const { includePurchaseDetails, ...parsed } = params as Record<
+        string,
+        unknown
+      >;
+      return parsed;
+    },
     req: {
       param: (name: string) => (name === "id" ? "subject-1" : undefined),
+      query: (name: string) =>
+        (params as Record<string, unknown> | undefined)?.[name],
     },
     json: jest.fn((payload: unknown) => payload),
   } as any;
@@ -205,5 +214,72 @@ describe("Subject order history", () => {
       await new ListHandler(service).execute(createContext(), jest.fn()),
     ).toEqual({ data: [] });
     expect(orderFind).not.toHaveBeenCalled();
+  });
+
+  it("enriches only owned purchases with zero totals and linked receipt files", async () => {
+    const { service, orderFind } = createService();
+    orderFind.mockResolvedValue([
+      { id: "order-1", type: "history" },
+      { id: "foreign-order" },
+    ]);
+    const totals = [
+      {
+        total: 0,
+        billingModuleCurrency: { id: "usd", slug: "usd", symbol: "$" },
+      },
+    ];
+    service.ecommerceModule.order.findByIdTotal.mockResolvedValue(totals);
+    service.ecommerceModule.ordersToFileStorageModuleFiles = {
+      find: jest
+        .fn()
+        .mockResolvedValue([{ fileStorageModuleFileId: "receipt" }]),
+    };
+    service.fileStorageModule = {
+      file: {
+        find: jest
+          .fn()
+          .mockResolvedValue([
+            { id: "receipt", file: "/receipt.pdf" },
+            { id: "foreign-file" },
+          ]),
+      },
+    };
+    const result = await new ListHandler(service).execute(
+      createContext({
+        includePurchaseDetails: "true",
+        filters: { and: [{ column: "type", method: "eq", value: "history" }] },
+      }),
+      jest.fn(),
+    );
+    expect(service.ecommerceModule.order.findByIdTotal).toHaveBeenCalledTimes(
+      1,
+    );
+    expect(service.ecommerceModule.order.findByIdTotal).toHaveBeenCalledWith({
+      id: "order-1",
+    });
+    expect(
+      service.ecommerceModule.ordersToFileStorageModuleFiles.find,
+    ).toHaveBeenCalledWith({
+      params: {
+        filters: {
+          and: [
+            { column: "orderId", method: "eq", value: "order-1" },
+            { column: "variant", method: "eq", value: "receipt-default" },
+          ],
+        },
+      },
+    });
+    expect(result).toEqual({
+      data: [
+        {
+          id: "order-1",
+          type: "history",
+          purchaseDetails: {
+            totals,
+            receipts: [{ id: "receipt", file: "/receipt.pdf" }],
+          },
+        },
+      ],
+    });
   });
 });

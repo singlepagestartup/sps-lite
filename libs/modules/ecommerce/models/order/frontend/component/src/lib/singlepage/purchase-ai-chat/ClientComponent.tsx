@@ -4,7 +4,34 @@ import { Component as OrdersToFileStorageModuleFiles } from "@sps/ecommerce/rela
 import { Component as FileStorageModuleFile } from "@sps/file-storage/models/file/frontend/component";
 import { Icon } from "@sps/ui-adapter";
 import { NEXT_PUBLIC_API_SERVICE_URL } from "@sps/shared-utils";
-import type { IComponentPropsExtended } from "./interface";
+import type { IComponentPropsExtended, IReceiptProps } from "./interface";
+
+function Receipt({ file }: IReceiptProps) {
+  const className =
+    "inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 text-sm font-medium";
+  return file ? (
+    <a
+      className={className}
+      download
+      href={
+        /^https?:\/\//.test(file.file)
+          ? file.file
+          : `${NEXT_PUBLIC_API_SERVICE_URL}/public${file.file}`
+      }
+    >
+      <Icon name="file-text" /> Receipt
+    </a>
+  ) : (
+    <button
+      type="button"
+      disabled
+      title="Receipt is not available yet."
+      className={className}
+    >
+      <Icon name="file-text" /> Receipt
+    </button>
+  );
+}
 
 export const Component = memo(function Component(
   props: IComponentPropsExtended,
@@ -23,8 +50,6 @@ export const Component = memo(function Component(
   const dateLabel = Number.isNaN(date.getTime())
     ? ""
     : date.toISOString().slice(0, 10);
-  const receiptClassName =
-    "inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-4 text-sm font-medium";
   return (
     <li
       className="grid min-w-0 gap-3 border-t border-border py-4 @[640px]:grid-cols-[minmax(0,1fr)_auto] @[640px]:items-center"
@@ -56,81 +81,58 @@ export const Component = memo(function Component(
                   </span>
                 ))}
         </span>
-        <OrdersToFileStorageModuleFiles
-          isServer={false}
-          variant="find"
-          apiProps={{
-            params: {
-              filters: {
-                and: [
-                  { column: "orderId", method: "eq", value: props.data.id },
-                  { column: "variant", method: "eq", value: "receipt-default" },
-                ],
-              },
-            },
-          }}
-        >
-          {({ data: ordersToFileStorageModuleFiles }) =>
-            ordersToFileStorageModuleFiles?.length ? (
-              <FileStorageModuleFile
-                isServer={false}
-                variant="find"
-                apiProps={{
-                  params: {
-                    filters: {
-                      and: [
-                        {
-                          column: "id",
-                          method: "eq",
-                          value:
-                            ordersToFileStorageModuleFiles[0]
-                              .fileStorageModuleFileId,
-                        },
-                      ],
+        {props.purchaseDetails || props.dataSource === "props" ? (
+          <Receipt file={props.purchaseDetails?.receipts[0]} />
+        ) : (
+          <OrdersToFileStorageModuleFiles
+            isServer={false}
+            variant="find"
+            apiProps={{
+              params: {
+                filters: {
+                  and: [
+                    { column: "orderId", method: "eq", value: props.data.id },
+                    {
+                      column: "variant",
+                      method: "eq",
+                      value: "receipt-default",
                     },
-                  },
-                }}
-              >
-                {({ data: fileStorageModuleFiles }) =>
-                  fileStorageModuleFiles?.[0] ? (
-                    <a
-                      className={receiptClassName}
-                      download
-                      href={
-                        /^https?:\/\//.test(fileStorageModuleFiles[0].file)
-                          ? fileStorageModuleFiles[0].file
-                          : `${NEXT_PUBLIC_API_SERVICE_URL}/public${fileStorageModuleFiles[0].file}`
-                      }
-                    >
-                      <Icon name="file-text" />
-                      Receipt
-                    </a>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      title="Receipt is not available yet."
-                      className={receiptClassName}
-                    >
-                      <Icon name="file-text" />
-                      Receipt
-                    </button>
-                  )
-                }
-              </FileStorageModuleFile>
-            ) : (
-              <button
-                type="button"
-                disabled
-                title="Receipt is not available yet."
-                className={receiptClassName}
-              >
-                <Icon name="file-text" />
-                Receipt
-              </button>
-            )
-          }
-        </OrdersToFileStorageModuleFiles>
+                  ],
+                },
+              },
+            }}
+          >
+            {({ data: ordersToFileStorageModuleFiles }) =>
+              ordersToFileStorageModuleFiles?.length ? (
+                <FileStorageModuleFile
+                  isServer={false}
+                  variant="find"
+                  apiProps={{
+                    params: {
+                      filters: {
+                        and: [
+                          {
+                            column: "id",
+                            method: "eq",
+                            value:
+                              ordersToFileStorageModuleFiles[0]
+                                .fileStorageModuleFileId,
+                          },
+                        ],
+                      },
+                    },
+                  }}
+                >
+                  {({ data: fileStorageModuleFiles }) => (
+                    <Receipt file={fileStorageModuleFiles?.[0]} />
+                  )}
+                </FileStorageModuleFile>
+              ) : (
+                <Receipt />
+              )
+            }
+          </OrdersToFileStorageModuleFiles>
+        )}
       </div>
     </li>
   );
