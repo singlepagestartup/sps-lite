@@ -163,36 +163,48 @@ Check cache behavior for changed API routes, SDK requests, backend mutations,
 and their readers. Also check a job or CLI mutation when it affects data served
 by the API: it has no outer HTTP middleware by default.
 
-1. **Read scope.** Determine whether the GET is cached, excluded, or explicitly
-   sent with `Cache-Control: no-store`. The HTTP-cache key is identity-blind;
-   authenticated or ownership-scoped responses require an effective exclusion
-   or request header. A fetch `cache: "no-store"` option controls its own cache
-   and does not by itself bypass SPS HTTP caching. Inspect the actual options
-   and headers reaching each cache boundary.
-2. **Write scope.** List every model and relation changed, including cascades,
-   derived records, and index markers. Compare that list with the external
-   mutation route's resolved topics and the cached readers' topics. API entry
-   alone does not guarantee coverage of nested writes. A direct DB transaction
-   does not run another model's HTTP middleware. Custom aliases, aggregate/RPC
-   routes, and background writes need an explicit path to the affected readers.
-3. **Ordering.** Verify that HTTP-cache generation bumps complete before the
-   WebSocket notification permits an immediate refetch. Hono's post-`next()`
-   execution is inner-first: RevalidationMiddleware is registered before
-   HTTPCacheMiddleware in `apps/api/app.ts`. Cache failure behavior is also part
-   of the documented contract; bounded stale reads after a failed version bump
-   are an accepted fallback, not evidence that every KV failure requires a new
-   architecture.
-4. **Client consistency.** Factory SDKs supply topics and cache handling.
-   Hand-written queries need appropriate `meta.topics`, subscription cleanup,
-   and preserved option merging. Hand-written mutations keep shared list-cache
-   patching, count/detail handling where applicable, internal success callbacks,
-   and WebSocket reconciliation. A local cache patch cannot update another
-   client's cache or repair a stale server response.
-5. **Other cache boundaries.** When the changed flow uses cached server rendering
-   or an aggregate query, inspect its tags, revalidation, keys, filters, and
-   pagination. Include service-level memory caches when the changed operation
-   uses them. Compare readers with mutation effects instead of assuming that
-   one model's invalidation covers every derived result.
+1. **Read identity and access.** Trace authorization before a response-cache
+   hit. The consistency cache partitions full URL/params, host, credentials,
+   locale/representation and epoch, then checks PostgreSQL generations.
+   Redis is disposable. The legacy HTTP cache remains identity-blind and needs
+   private-route exclusions or `Cache-Control: no-store`. A fetch `cache`
+   option alone does not bypass an API cache.
+2. **Capture and read coverage.** Check the generated catalog and deployed row
+   and TRUNCATE triggers for each changed Table, including cascades, direct SQL,
+   CLI and jobs. Reads record candidate scopes before SQL, including empty
+   relations, count and top-K candidates. Custom SQL calls `trackRepositoryRead`
+   for every source Table; run `node tools/dev/audit-consistency-reads.mjs`.
+   Unsupported predicates widen to collection generations. Missing coverage or
+   descriptors exclude an answer from the new cache. Effective service calls
+   use the shared transaction scope; domain publisher setters and another
+   cache relation graph are not required.
+3. **Ordering and recovery.** Generations and outbox commit with the write.
+   Check serialized delivery sequence/checkpoint, Next invalidation before
+   journal delivery, per-process journal readers, replay/resync, bounded frames,
+   renewable private refs and epoch reset. A late cache SET must fail a later
+   generation check. An API response remains verifiable during dispatcher
+   outage; public Next ISR retains an eventual window and finite TTL. Private
+   mutable reads stay dynamic/no-store at the Next boundary.
+4. **Client consistency.** Query identity includes every parameter, API host
+   and principal. The shared consistency lifecycle binds metadata to that query,
+   coalesces refetches and checks versions after reconnect, focus or missed
+   heartbeats. Legacy suppression applies only to an accepted, unexpired ref
+   for that query. Hand-written SDKs retain topic metadata and subscription
+   cleanup for uncovered reads. Mutations patch shared list/detail/count caches
+   before consumer callbacks and retain cross-client reconciliation.
+5. **Aggregates and UI.** Follow actual reads through services, nested HTTP
+   descriptors, memory caches and Next tags. Snapshot-dependent aggregates use
+   one SQL snapshot. Warm the answer, mutate a relation/quantity/price, then
+   check another client. Preserve mounted content on background fetch/error,
+   clear data after 401/403, and verify draft, selection, stable row references
+   and scroll anchors. Healthy chat has no component-level polling.
+6. **Rollout evidence.** Distinguish off, observe, compatibility and enabled.
+   Observe mode compares a candidate answer with a fresh read without serving
+   the candidate. Keep cache serving separately configurable and report shadow
+   mismatches, outbox lag, coverage and cache-hit cost. Generate migrations with
+   the owning Drizzle target; test repeated generation and maintenance reset.
+   Verify both dev and production rendering. A passing no-store run is a
+   control, not proof that warmed response caching is correct.
 
 Flag a missing or incorrect cache path as a finding even if the data write
 succeeds. Name the setting, request, and reader that make the problem observable.

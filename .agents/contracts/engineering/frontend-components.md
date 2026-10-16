@@ -181,21 +181,32 @@ Client data has separate owners:
   A new persistent draft requirement needs an explicit storage/lifetime
   contract; the global event log does not provide that persistence.
 
-The realtime path is backend mutation → revalidation WebSocket → Host's
-revalidation component → `globalActionsStore` → SDK `subscription(...)` →
-React Query invalidation and refetch of active matching queries. Matching uses
-`meta.topics`; route matching remains available when that route has no query
-covered by the broadcast topics. Revalidation runs from incoming events in
-memory, independently of the debug snapshot.
+The main realtime path is database capture → durable delivery journal → Host's
+shared WebSocket → query consistency lifecycle → React Query invalidation and
+authorized refetch. Query refs belong to the current principal and API host;
+replay, renewable leases and batch version checks recover missed events.
+Host records compact notification diagnostics in `globalActionsStore`; entity
+data stays in React Query. The registry holds query metadata, not another
+entity store.
 
-Use the existing SDK subscription pipeline instead of opening a revalidation
-WebSocket per variant. Factory SDKs provide subscriptions and mutation cache
-handling. Hand-written SDK queries keep `meta.topics`, option merging and
-subscription cleanup; hand-written mutations keep action tracking, shared
-cache patching and internal success handling before consumer callbacks.
-Local patches update the acting client's cache; WebSocket reconciliation
-covers other subscribed clients and server-created or derived changes.
-Additional reads in specialized variants obey the same rules.
+Legacy events pass through `globalActionsStore` and SDK `subscription(...)`
+using `meta.topics` or route fallback. Suppress them only for that query's
+accepted, unexpired consistency ref. Keep legacy subscriptions and option
+merging for uncovered or old servers. A variant uses this shared pipeline;
+it does not open another revalidation WebSocket or add its own entity poll.
+
+Factory SDKs provide mutation cache handling. Hand-written mutations retain
+shared cache patching and internal success handling before consumer callbacks.
+A local patch updates the acting client; journal reconciliation reaches other
+clients and covers derived changes. Additional reads in specialized variants
+follow the same contract. Query keys include every filter/page parameter and
+principal; changing identity must not show the previous principal's data.
+
+Keep existing data mounted during background fetching and transient errors.
+An explicit 401/403 clears inaccessible entity data. Stable ID keys, memoized
+rows and callbacks preserve drafts and focus. The chat scroll controller owns
+the actual scroll container, retains a visible anchor while reading history,
+and follows new content only when already at the end or explicitly requested.
 
 Read `libs/shared/frontend/client/api/README.md` for query/mutation contracts,
 `libs/shared/frontend/client/store/README.md` for event storage, and
