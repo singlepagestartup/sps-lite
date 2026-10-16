@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { CRUDService, type IMutationEffects } from "@sps/shared-backend-api";
-import { logger } from "@sps/backend-utils";
+import { CRUDService } from "@sps/shared-backend-api";
 import { Table } from "@sps/crm/models/request/backend/repository/database";
 import type { Repository } from "../../repository";
 import type { Service as FormsToRequestsService } from "@sps/crm/relations/forms-to-requests/backend/app/api/src/lib/service";
@@ -14,30 +13,11 @@ export interface ISubmissionProps {
   formId: string;
   payload: Record<string, unknown>;
 }
-export type TMutationPublisher = (effects: IMutationEffects) => Promise<void>;
-let mutationPublisher: TMutationPublisher | undefined;
-export function setCrmRequestMutationPublisher(publish: TMutationPublisher) {
-  mutationPublisher = publish;
-}
-
 @injectable()
 export class Service extends CRUDService<Request> {
   private submissionRelations?: FormsToRequestsService;
-  private submissionPublisher?: TMutationPublisher;
-  configureSubmissions(props: {
-    formsToRequests: FormsToRequestsService;
-    publish?: TMutationPublisher;
-  }) {
+  configureSubmissions(props: { formsToRequests: FormsToRequestsService }) {
     this.submissionRelations = props.formsToRequests;
-    this.submissionPublisher = props.publish;
-  }
-  private publisher() {
-    const publish = this.submissionPublisher || mutationPublisher;
-    if (!publish)
-      throw new Error(
-        "Configuration error. CRM mutation publisher is not configured",
-      );
-    return publish;
   }
   private owner() {
     return this.repository as Repository;
@@ -83,12 +63,10 @@ export class Service extends CRUDService<Request> {
   async submit(
     props: ISubmissionProps,
   ): Promise<{ request: Request; created: boolean }> {
-    const publish = this.publisher();
     if (!this.submissionRelations)
       throw new Error(
         "Configuration error. CRM submission relations are not configured",
       );
-    let relationId: string | undefined;
     const result = await this.owner().transaction(async (db) => {
       const scope = this.scoped(db);
       await scope.owner().lockSubmission(props.key);
@@ -104,16 +82,11 @@ export class Service extends CRUDService<Request> {
           },
         },
       });
-      const relation = await this.submissionRelations!.withTransaction(
-        db,
-      ).create({
+      await this.submissionRelations!.withTransaction(db).create({
         data: { formId: props.formId, requestId: request.id },
       });
-      relationId = relation.id;
       return { request, created: true };
     });
-    if (result.created)
-      await this.publish(publish, result.request.id, relationId);
     return result;
   }
   async setSubmissionNotificationStatus(props: {
@@ -121,7 +94,6 @@ export class Service extends CRUDService<Request> {
     key: string;
     status: TNotificationStatus;
   }): Promise<Request> {
-    const publish = this.publisher();
     const request = await this.owner().transaction(async (db) => {
       const scope = this.scoped(db);
       await scope.owner().lockSubmission(props.key);
@@ -139,29 +111,6 @@ export class Service extends CRUDService<Request> {
         throw new Error("Not Found error. CRM submission was not found");
       return saved;
     });
-    await this.publish(publish, request.id);
     return request;
-  }
-  private async publish(
-    publish: TMutationPublisher,
-    requestId: string,
-    relationId?: string,
-  ) {
-    try {
-      await publish({
-        topics: ["crm.requests", "crm.forms-to-requests"],
-        payload: "/api/crm/requests",
-        tags: [
-          "/api/crm/requests",
-          "/api/crm/requests/count",
-          "/api/crm/requests/" + requestId,
-          "/api/crm/forms-to-requests",
-          "/api/crm/forms-to-requests/count",
-          ...(relationId ? ["/api/crm/forms-to-requests/" + relationId] : []),
-        ],
-      });
-    } catch (error) {
-      logger.error(error);
-    }
   }
 }

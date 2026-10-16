@@ -4,7 +4,22 @@
  * When: content, attachments or derived records change.
  * Then: concurrent validation and partial failures preserve a consistent Source.
  */
-jest.mock("@sps/providers-kv", () => ({ Provider: jest.fn(() => ({})) }));
+jest.mock("@sps/providers-kv", () => {
+  const values = new Map<string, string>();
+  return {
+    Provider: class {
+      async get({ prefix, key }: any) {
+        return values.get(prefix + key);
+      }
+      async set({ prefix, key, value }: any) {
+        values.set(prefix + key, value);
+      }
+    },
+  };
+});
+import { ConsistencyStore } from "@sps/providers-db";
+import { resourceIdentity, scopeDependencyKey } from "@sps/shared-backend-api";
+const consistency = new ConsistencyStore();
 import { createKnowledgeServices } from "./composition";
 import { Service as FileStorageFileService } from "@sps/file-storage/models/file/backend/app/api/src/lib/service";
 import {
@@ -22,7 +37,6 @@ import { Provider } from "@sps/providers-file-storage";
 
 const repository = createKnowledgeServices({
   processing: false,
-  publishEffects: async () => {},
 }).source;
 const readStoredBytes = jest
   .spyOn(FileStorageFileService.prototype, "readBytes")
@@ -69,8 +83,7 @@ afterEach(() => {
 it("serves generic Source CRUD through effective services and refreshes a warm HTTP cache before a second client refetch", async () => {
   const { Hono } = await import("hono");
   const { createServer } = await import("node:http");
-  const { Middleware: Cache } = await import("@sps/http-cache");
-  const { createMutationEffectsPublisher, ExceptionFilter } = await import(
+  const { createConsistencyRuntime, ExceptionFilter } = await import(
     "@sps/shared-backend-api"
   );
   const { App: SourceApp } = await import(
@@ -91,50 +104,12 @@ it("serves generic Source CRUD through effective services and refreshes a warm H
   const { Configuration: RelationConfiguration } = await import(
     "@sps/knowledge/relations/sources-to-file-storage-module-files/backend/app/api/src/lib/configuration"
   );
-  const values = new Map<string, string>();
-  const cache = new Cache();
-  cache.storeProvider = {
-    async get({ prefix, key }: any) {
-      return values.get(prefix + ":" + key) ?? null;
-    },
-    async set({ prefix, key, value }: any) {
-      values.set(prefix + ":" + key, value);
-    },
-    async incr({ prefix, key }: any) {
-      const k = prefix + ":" + key;
-      const v = Number(values.get(k) || 0) + 1;
-      values.set(k, String(v));
-      return v;
-    },
-  } as any;
   let baseUrl = "";
   let sourceId = "";
-  let subscriberRead: Promise<any> | undefined;
-  let observe = false;
-  const revalidatedTags: string[] = [];
-  const publish = createMutationEffectsPublisher({
-    invalidateTopics: (topics) => cache.invalidateTopics(topics),
-    revalidateTag: async (tag) => {
-      revalidatedTags.push(tag);
-    },
-    broadcast: () => {
-      if (observe) {
-        expect(revalidatedTags).toEqual(
-          expect.arrayContaining([
-            "/api/knowledge/sources",
-            "/api/knowledge/sources/" + sourceId,
-          ]),
-        );
-        subscriberRead = fetch(baseUrl + "/api/knowledge/sources/" + sourceId, {
-          headers: { "X-Fixture-Client": "second" },
-        }).then((r) => r.json());
-      }
-    },
+  const runtime = createConsistencyRuntime({
+    verifyAuthorization: async () => {},
   });
-  const graph = createKnowledgeServices({
-    processing: false,
-    publishEffects: publish,
-  });
+  const graph = createKnowledgeServices({ processing: false });
   const sourceApp = new SourceApp(
     new ExceptionFilter(),
     new SourceController(graph.source),
@@ -148,7 +123,8 @@ it("serves generic Source CRUD through effective services and refreshes a warm H
   await sourceApp.init();
   await relationApp.init();
   const app = new Hono();
-  app.use(cache.init());
+  app.use(runtime.middleware());
+  app.use(runtime.cache());
   app.route("/api/knowledge/sources", sourceApp.hono);
   app.route(
     "/api/knowledge/sources-to-file-storage-module-files",
@@ -210,21 +186,14 @@ it("serves generic Source CRUD through effective services and refreshes a warm H
       "Before",
     );
     expect(read.mock.calls.length).toBe(reads);
-    expect(
-      [...values.keys()].some((key) => key.startsWith("http-cache:data:")),
-    ).toBe(true);
-    revalidatedTags.length = 0;
-    observe = true;
     const update = new FormData();
     update.set("data", JSON.stringify({ content: "After" }));
     expect((await fetch(url, { method: "PATCH", body: update })).status).toBe(
       200,
     );
-    expect((await subscriberRead).data.content).toBe("After");
     expect(((await (await fetch(url)).json()) as any).data.content).toBe(
       "After",
     );
-    observe = false;
     const [file] = await db
       .insert(FileTable)
       .values({
@@ -330,9 +299,8 @@ describe("effective service boundaries and SVG policy", () => {
         .extension,
     ).toBe("png");
   });
-  it("publishes a committed File import when the subsequent effective relation service refuses attachment", async () => {
+  it("captures a committed File import when the subsequent effective relation service refuses attachment", async () => {
     const current = await source("Original notes");
-    const effects: any[] = [];
     jest
       .spyOn(FileStorageFileService.prototype, "importPath")
       .mockImplementation(async function (this: FileStorageFileService, props) {
@@ -352,18 +320,7 @@ describe("effective service boundaries and SVG policy", () => {
         fileIds.push(file.id);
         return file;
       });
-    const graph = createKnowledgeServices({
-      processing: false,
-      publishEffects: async (effect) => {
-        expect(
-          await db
-            .select()
-            .from(FileTable)
-            .where(eq(FileTable.id, fileIds.at(-1)!)),
-        ).toHaveLength(1);
-        effects.push(effect);
-      },
-    });
+    const graph = createKnowledgeServices({ processing: false });
     graph.sourcesToFileStorageModuleFiles.create = jest.fn(async () => {
       throw new Error("Import attachment policy refused");
     });
@@ -373,16 +330,14 @@ describe("effective service boundaries and SVG policy", () => {
         filePath: "fixture-" + randomUUID() + ".txt",
       }),
     ).rejects.toThrow("Import attachment policy refused");
-    expect(effects).toEqual([
-      {
-        topics: ["file-storage.files"],
-        payload: "/api/file-storage/files",
-        tags: [
-          "/api/file-storage/files/count",
-          "/api/file-storage/files/" + fileIds.at(-1),
-        ],
-      },
-    ]);
+    const fileKey = scopeDependencyKey(
+      resourceIdentity(FileTable),
+      "id",
+      fileIds.at(-1)!,
+    );
+    expect(
+      BigInt((await consistency.versions([fileKey]))[fileKey]),
+    ).toBeGreaterThan(0n);
     expect(await repository.sourceFiles(current.id)).toEqual([]);
     expect((await repository.findSourceById(current.id))!.content).toBe(
       "Original notes",
@@ -398,7 +353,6 @@ describe("effective service boundaries and SVG policy", () => {
       );
     const services = createKnowledgeServices({
       processing: false,
-      publishEffects: async () => {},
     });
     await expect(
       services.sourcesToFileStorageModuleFiles.create({
@@ -447,18 +401,15 @@ describe("effective service boundaries and SVG policy", () => {
     const file = await storedFile();
     const base = createKnowledgeServices({
       processing: false,
-      publishEffects: async () => {},
     });
     const relation = base.sourcesToFileStorageModuleFiles;
     const refuse = jest.fn(async () => {
       throw new Error("Child service policy refused attachment");
     });
     relation.create = refuse;
-    const publishEffects = jest.fn(async () => {});
     const services = createKnowledgeServices({
       sourcesToFileStorageModuleFiles: relation,
       processing: false,
-      publishEffects,
     });
     await expect(
       services.source.updateSourceWithAttachments({
@@ -468,7 +419,6 @@ describe("effective service boundaries and SVG policy", () => {
       }),
     ).rejects.toThrow("Child service policy");
     expect(refuse).toHaveBeenCalledTimes(1);
-    expect(publishEffects).not.toHaveBeenCalled();
     expect(await repository.findSourceById(current.id)).toEqual(before);
     expect(await repository.sourceFiles(current.id)).toEqual([]);
     expect(

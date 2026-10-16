@@ -123,11 +123,17 @@ export class Middleware {
     });
   }
 
-  async revalidateTag(tag: string) {
+  async revalidateTag(tag: string, required = false) {
     try {
-      await fetch(HOST_SERVICE_URL + "/api/revalidate?tag=" + tag);
+      const response = await fetch(
+        HOST_SERVICE_URL + "/api/revalidate?tag=" + encodeURIComponent(tag),
+        { signal: AbortSignal.timeout(3000) },
+      );
+      if (!response.ok)
+        throw new Error(`Next invalidation failed (${response.status})`);
     } catch (error) {
-      console.log("🚀 ~ revalidateTag ~ error:", error);
+      if (required) throw error;
+      console.log("Next invalidation failed:", error);
     }
   }
 }

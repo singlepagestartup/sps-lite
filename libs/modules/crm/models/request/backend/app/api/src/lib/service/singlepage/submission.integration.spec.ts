@@ -1,3 +1,5 @@
+import { ConsistencyStore } from "@sps/providers-db";
+import { resourceIdentity, scopeDependencyKey } from "@sps/shared-backend-api";
 import { randomUUID } from "node:crypto";
 import { Service } from "..";
 import { Repository } from "../../repository";
@@ -50,24 +52,7 @@ it("serializes concurrent retries into one committed Request and relation while 
   const requestDb = request.repository.db;
   const relationDb = relations.repository.db;
   const key = `pr374-${randomUUID()}`;
-  const published: unknown[] = [];
-  request.configureSubmissions({
-    formsToRequests: relations,
-    publish: async (effects) => {
-      const saved = await request.findSubmission({ key, digest: "digest" });
-      expect(saved).toBeDefined();
-      expect(
-        await relations.find({
-          params: {
-            filters: {
-              and: [{ column: "formId", method: "eq", value: owner.id }],
-            },
-          },
-        }),
-      ).toHaveLength(1);
-      published.push(effects);
-    },
-  });
+  request.configureSubmissions({ formsToRequests: relations });
   let requestId: string | undefined;
   try {
     const results = await Promise.all(
@@ -84,7 +69,6 @@ it("serializes concurrent retries into one committed Request and relation while 
     expect(results[1].request.id).toBe(requestId);
     expect(results.filter((result) => result.created)).toHaveLength(1);
     expect(results[0].request.payload?.effectiveRequest).toBe("startup");
-    expect(published).toHaveLength(1);
     const links = await relations.find({
       params: {
         filters: { and: [{ column: "formId", method: "eq", value: owner.id }] },
@@ -92,14 +76,15 @@ it("serializes concurrent retries into one committed Request and relation while 
     });
     expect(links).toHaveLength(1);
     expect(links[0]).toMatchObject({ requestId, variant: "startup-relation" });
-    expect(published[0]).toMatchObject({
-      tags: expect.arrayContaining([
-        "/api/crm/requests",
-        "/api/crm/requests/" + requestId,
-        "/api/crm/forms-to-requests",
-        "/api/crm/forms-to-requests/" + links[0].id,
-      ]),
-    });
+    const store = new ConsistencyStore();
+    const dependency = scopeDependencyKey(
+      resourceIdentity(request.repository.Table),
+      "id",
+      requestId!,
+    );
+    expect(
+      BigInt((await store.versions([dependency]))[dependency]),
+    ).toBeGreaterThan(0n);
     await expect(
       request.submit({ key, digest: "changed", formId: owner.id, payload: {} }),
     ).rejects.toThrow("different values");
@@ -111,7 +96,7 @@ it("serializes concurrent retries into one committed Request and relation while 
   }
 });
 
-it("rolls back both records and publishes nothing when the relation service fails after its insert", async () => {
+it("rolls back both records when the relation service fails after its insert", async () => {
   class FailingRelationService extends FormsToRequestsService {
     override async create(props: { data: any }) {
       await super.create(props);
@@ -123,8 +108,7 @@ it("rolls back both records and publishes nothing when the relation service fail
   const relations = new FailingRelationService(
     new FormsToRequestsRepository(new FormsToRequestsConfiguration()),
   );
-  const publish = jest.fn();
-  request.configureSubmissions({ formsToRequests: relations, publish });
+  request.configureSubmissions({ formsToRequests: relations });
   const key = `pr374-${randomUUID()}`;
   try {
     await expect(
@@ -142,7 +126,6 @@ it("rolls back both records and publishes nothing when the relation service fail
         },
       }),
     ).toEqual([]);
-    expect(publish).not.toHaveBeenCalled();
   } finally {
     await form.delete({ id: owner.id });
   }

@@ -1,7 +1,3 @@
-import { Middleware as RevalidationMiddleware } from "@sps/revalidation";
-import { Middleware as HTTPCacheMiddleware } from "@sps/http-cache";
-import { createMutationEffectsPublisher } from "@sps/shared-backend-api";
-import { setKnowledgeMutationPublisher } from "../composition";
 import { KnowledgeIndexer } from ".";
 
 function readArg(name: string) {
@@ -13,14 +9,6 @@ function readArg(name: string) {
 
 async function main() {
   const limitArg = readArg("limit");
-  const cache = new HTTPCacheMiddleware();
-  const revalidation = new RevalidationMiddleware();
-  setKnowledgeMutationPublisher(
-    createMutationEffectsPublisher({
-      invalidateTopics: (topics) => cache.invalidateTopics(topics),
-      revalidateTag: (tag) => revalidation.revalidateTag(tag),
-    }),
-  );
   const indexer = new KnowledgeIndexer();
   const result = await indexer.index({
     rootPath: readArg("rootPath"),

@@ -23,7 +23,9 @@ export interface IExtendedReadService extends IReadService {
   findByIdExtended: (props: { id: string }) => Promise<any>;
 }
 
-export interface IEcommerceOrderReadService extends IExtendedReadService {
+export interface IEcommerceOrderReadService
+  extends IExtendedReadService,
+    ICreateService {
   findByIdTotal: (props: { id: string }) => Promise<any>;
   findByIdQuantity: (props: { id: string }) => Promise<any>;
   findByIdCheckoutAttributes: (props: {
@@ -36,7 +38,7 @@ export interface IEcommerceOrderReadService extends IExtendedReadService {
   }) => Promise<any>;
 }
 
-export interface IEcommerceOrdersToProductsService extends IReadService {
+export interface IEcommerceOrdersToProductsService extends ICreateService {
   getTotal: (props: { id: string }) => Promise<any>;
 }
 
@@ -45,7 +47,7 @@ export interface ISocialModule {
   skill: ICreateUpdateService;
   chat: IReadService;
   thread: IUpdateService;
-  message: IReadService;
+  message: ICreateService;
   action: IReadService;
   attribute: IReadService;
   attributeKey: IReadService;
@@ -54,15 +56,15 @@ export interface ISocialModule {
   profilesToKnowledgeModuleSources: ICreateService;
   messagesToKnowledgeModuleSources: ICreateService;
   skillsToKnowledgeModuleSources: ICreateService;
-  profilesToMessages: IReadService;
+  profilesToMessages: ICreateService;
   profilesToActions: IReadService;
   profilesToAttributes: IReadService;
   chatsToThreads: IReadService;
-  chatsToMessages: IReadService;
+  chatsToMessages: ICreateService;
   chatsToActions: IReadService;
   threadsToActions: IReadService;
   threadsToMessages: ICreateService;
-  messagesToFileStorageModuleFiles: IReadService;
+  messagesToFileStorageModuleFiles: ICreateService;
   attributeKeysToAttributes: IReadService;
 }
 
@@ -72,9 +74,9 @@ export interface IEcommerceModule {
   product: IExtendedReadService;
   attribute: IReadService;
   attributeKey: IReadService;
-  storesToOrders: IReadService;
+  storesToOrders: ICreateService;
   ordersToProducts: IEcommerceOrdersToProductsService;
-  ordersToBillingModuleCurrencies: IReadService;
+  ordersToBillingModuleCurrencies: ICreateService;
   ordersToBillingModulePaymentIntents: IReadService;
   ordersToFileStorageModuleFiles: IReadService;
   productsToAttributes: IReadService;

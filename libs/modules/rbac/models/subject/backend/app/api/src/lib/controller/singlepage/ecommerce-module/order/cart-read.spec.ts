@@ -1,3 +1,7 @@
+jest.mock("@sps/shared-backend-api", () => ({
+  withConsistencySnapshot: async (operation: () => Promise<unknown>) =>
+    operation(),
+}));
 /**
  * BDD Suite: active cart read controllers.
  *
@@ -10,6 +14,7 @@ const authorizationMock = jest.fn();
 const verifyMock = jest.fn();
 
 jest.mock("@sps/shared-utils", () => ({
+  ...jest.requireActual("@sps/shared-utils"),
   RBAC_JWT_SECRET: "jwt-secret",
   RBAC_SECRET_KEY: "rbac-secret",
 }));

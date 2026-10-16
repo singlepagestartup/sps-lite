@@ -451,7 +451,11 @@ describe("HTTP-cache clear route access and namespace isolation", () => {
     await expect(response.json()).resolves.toEqual({
       message: "Cache cleared",
     });
-    expect(deletedPrefixes).toEqual(["http-cache:data", "http-cache:version"]);
+    expect(deletedPrefixes).toEqual([
+      "http-cache:data",
+      "http-cache:version",
+      "sps-consistency:v1",
+    ]);
     expect(keys).not.toContain(
       "http-cache:data:/api/pages:v0:t0:response-hash",
     );

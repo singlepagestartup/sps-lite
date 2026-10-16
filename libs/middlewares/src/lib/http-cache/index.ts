@@ -262,7 +262,10 @@ export class Middleware {
       // gap. Mutations now always run the bump block, excluded or not.
       const isCacheExcluded = this.excludedRoutesMatcher.matches(pathname);
       const isCacheableGet =
-        method === "GET" && cacheControl !== "no-store" && !isCacheExcluded;
+        method === "GET" &&
+        cacheControl !== "no-store" &&
+        !isCacheExcluded &&
+        c.req.header("X-SPS-Consistency") !== "1";
 
       let cacheVersion = DEFAULT_CACHE_VERSION;
       let topicVersionsByTopic: Record<string, number> = {};
@@ -413,15 +416,14 @@ export class Middleware {
   }
 
   setRoutes(app: any) {
-    // Flushing is an operator action, and this route answers before the
-    // is-authorized middleware exists (issue #277), so the credential check
-    // has to travel with the route rather than sit in the allow-list.
+    // The operator guard travels with the route, including standalone mounts.
     const operatorSecret = new OperatorSecretMiddleware();
 
     app.get("/api/http-cache/clear", operatorSecret.init(), async (c) => {
       await Promise.all([
         this.storeProvider.delByPrefix({ prefix: CACHE_DATA_PREFIX }),
         this.storeProvider.delByPrefix({ prefix: CACHE_VERSION_PREFIX }),
+        this.storeProvider.delByPrefix({ prefix: "sps-consistency:v1" }),
       ]);
 
       return c.json({ message: "Cache cleared" });

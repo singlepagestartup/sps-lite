@@ -1,8 +1,5 @@
 import { Service as SourceService } from "@sps/knowledge/models/source/backend/app/api/src/lib/service";
-import {
-  createKnowledgeServices,
-  setKnowledgeMutationPublisher,
-} from "./composition";
+import { createKnowledgeServices } from "./composition";
 
 function sourceFixture() {
   const fresh = {
@@ -109,7 +106,7 @@ it("traverses the effective relation service for files instead of accessing its 
   );
   expect(f.find).not.toHaveBeenCalled();
 });
-it("preserves effective child overrides in transaction scopes and publishes only after commit", async () => {
+it("preserves effective child overrides in transaction scopes and commits without changing singleton repositories", async () => {
   const calls: string[] = [];
   const tx = { transactionId: "operation" };
   const repository: any = {
@@ -132,83 +129,35 @@ it("preserves effective child overrides in transaction scopes and publishes only
   const graph = createKnowledgeServices({
     source,
     processing: false,
-    publishEffects: async () => {
-      calls.push("publish");
-    },
   });
   const saved = await graph.source.upsertSourceBySlug(
     { slug: "test", title: "Test", content: "Notes" },
     true,
   );
   expect(saved.id).toBe("source");
-  expect(calls).toEqual(["source lock", "commit", "publish"]);
+  expect(calls).toEqual(["source lock", "commit"]);
   expect(repository.db).toBeUndefined();
 });
 
-it("resolves a publisher registered after generic model bootstrap before committing writes", async () => {
-  const events: string[] = [];
-  const tx = {};
-  const repository: any = {
-    transaction: async (operation: (tx: unknown) => Promise<unknown>) => {
-      const result = await operation(tx);
-      events.push("commit");
-      return result;
-    },
+it("commits without application-level publisher wiring", async () => {
+  const transaction = jest.fn(async (operation) => operation({}));
+  const source = new SourceService({
+    transaction,
     lockSlug: async () => {},
     find: async () => [],
     insert: async (data: any) => ({ id: "source", ...data }),
-  };
-  const graph = createKnowledgeServices({
-    source: new SourceService(repository),
-    processing: false,
-  });
-  const publish = jest.fn(async () => {
-    events.push("publish");
-  });
-  const restore = setKnowledgeMutationPublisher(publish);
-  try {
-    await graph.source.upsertSourceBySlug({
-      slug: "late-wiring",
-      title: "Title",
-      content: "Notes",
-    });
-    expect(events).toEqual(["commit", "publish"]);
-    expect(publish).toHaveBeenCalledWith(
-      expect.objectContaining({
-        tags: expect.arrayContaining([
-          "/api/knowledge/sources/source",
-          "/api/knowledge/sources",
-          "/api/knowledge/sources/count",
-        ]),
-        topics: expect.arrayContaining([
-          "knowledge.sources",
-          "knowledge.chunks",
-          "knowledge.sources-to-chunks",
-          "knowledge.sources-to-file-storage-module-files",
-        ]),
-      }),
-    );
-  } finally {
-    restore();
-  }
-});
-
-it("refuses an unconfigured mutation before opening a write transaction", async () => {
-  const transaction = jest.fn();
-  const find = jest.fn(async () => []);
-  const graph = createKnowledgeServices({
-    source: new SourceService({ transaction, find } as any),
-    processing: false,
-  });
-  expect(await graph.source.find()).toEqual([]);
-  await expect(
-    graph.source.upsertSourceBySlug({
-      slug: "unconfigured",
-      title: "Title",
-      content: "Notes",
-    }),
-  ).rejects.toThrow("mutation publisher is not configured");
-  expect(transaction).not.toHaveBeenCalled();
+  } as any);
+  const graph = createKnowledgeServices({ source, processing: false });
+  expect(
+    (
+      await graph.source.upsertSourceBySlug({
+        slug: "capture",
+        title: "Capture",
+        content: "Notes",
+      })
+    ).id,
+  ).toBe("source");
+  expect(transaction).toHaveBeenCalledTimes(1);
 });
 
 it("expands global vector candidates past stale results without reading every Source or restricting the global HNSW query", async () => {
@@ -242,22 +191,16 @@ it("expands global vector candidates past stale results without reading every So
   expect(f.sourcesToChunks.forSources).not.toHaveBeenCalled();
 });
 
-it("publishes a separately committed File import even if Source association later fails", async () => {
+it("retains an imported File when Source association fails", async () => {
   const events: string[] = [];
-  const publish = jest.fn(async () => {
-    events.push("publish File");
-  });
   const source = new SourceService({} as any);
-  const importPath = jest.fn(async () => {
-    events.push("create File");
-    return { id: "new-file" };
-  });
   source.configure({
     sourcesToFileStorageModuleFiles: { sourceFiles: async () => [] },
-    fileStorageFile: { importPath },
-    publisher: () => {
-      events.push("resolve publisher");
-      return publish;
+    fileStorageFile: {
+      importPath: async () => {
+        events.push("create File");
+        return { id: "new-file" };
+      },
     },
   } as any);
   source.attachFiles = jest.fn(async () => {
@@ -267,15 +210,5 @@ it("publishes a separately committed File import even if Source association late
   await expect(
     source.ensureFileForSource({ sourceId: "source", filePath: "fixture.txt" }),
   ).rejects.toThrow("link refused");
-  expect(events).toEqual([
-    "resolve publisher",
-    "create File",
-    "publish File",
-    "attach",
-  ]);
-  expect(publish).toHaveBeenCalledWith({
-    topics: ["file-storage.files"],
-    payload: "/api/file-storage/files",
-    tags: ["/api/file-storage/files/count", "/api/file-storage/files/new-file"],
-  });
+  expect(events).toEqual(["create File", "attach"]);
 });

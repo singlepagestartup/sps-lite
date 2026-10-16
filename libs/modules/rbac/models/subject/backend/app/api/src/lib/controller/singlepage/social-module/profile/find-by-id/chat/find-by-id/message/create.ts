@@ -7,12 +7,8 @@ import {
 import { Context } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { Service } from "../../../../../../../../service";
-import { api as socialModuleProfilesToMessagesApi } from "@sps/social/relations/profiles-to-messages/sdk/server";
 import { api as socialModuleMessageApi } from "@sps/social/models/message/sdk/server";
-import { api as socialModuleChatsToMessagesApi } from "@sps/social/relations/chats-to-messages/sdk/server";
-import { api as socialModuleThreadsToMessagesApi } from "@sps/social/relations/threads-to-messages/sdk/server";
 import { api } from "@sps/rbac/models/subject/sdk/server";
-import { api as socialModuleMessagesToFileStorageModuleFilesApi } from "@sps/social/relations/messages-to-file-storage-module-files/sdk/server";
 import { IModel as ISocialModuleMessagesToFileStorageModuleFile } from "@sps/social/relations/messages-to-file-storage-module-files/sdk/model";
 import {
   assertKnowledgeAttachmentBytes,
@@ -35,6 +31,9 @@ import {
   getAIChatDocument,
   RBAC_AI_REACTION_REQUEST_METADATA_KEY,
 } from "@sps/rbac/models/subject/sdk/model";
+import { getDrizzle } from "@sps/shared-backend-database-config";
+import { withConsistencyDatabase } from "@sps/shared-backend-api";
+
 export class Handler {
   service: Service;
   audioTranscriptionService = new AudioTranscriptionService();
@@ -226,101 +225,42 @@ export class Handler {
         parsedBody.files = { files };
       }
 
-      let socialModuleMessage = await socialModuleMessageApi.create({
-        data: parsedBody.data,
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-        },
-      });
-
-      await socialModuleChatsToMessagesApi.create({
-        data: {
-          messageId: socialModuleMessage.id,
-          chatId: socialModuleChatId,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-        },
-      });
-
-      await socialModuleThreadsToMessagesApi.create({
-        data: {
-          messageId: socialModuleMessage.id,
-          threadId: socialModuleThreadId,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-        },
-      });
-
-      if (parsedBody.files?.["files"]) {
-        const files = parsedBody.files["files"];
-        if (Array.isArray(files)) {
-          for (const [index, file] of files.entries()) {
-            try {
-              const fileStorageFile = await fileStorageModuleFileApi.create({
-                data: {
-                  adminTitle: file.name,
-                  file: file,
-                },
-                options: {
-                  headers: {
-                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                  },
-                },
-              });
-              await socialModuleMessagesToFileStorageModuleFilesApi.create({
-                data: {
-                  messageId: socialModuleMessage.id,
-                  fileStorageModuleFileId: fileStorageFile.id,
-                  orderIndex: index,
-                },
-                options: {
-                  headers: {
-                    "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                  },
-                },
-              });
-            } catch (error) {
-              console.error(`Error processing file ${file.name}:`, error);
-            }
-          }
-        } else {
-          try {
-            const fileStorageFile = await fileStorageModuleFileApi.create({
-              data: {
-                adminTitle: files.name,
-                file: files,
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-              },
-            });
-            await socialModuleMessagesToFileStorageModuleFilesApi.create({
-              data: {
-                messageId: socialModuleMessage.id,
-                fileStorageModuleFileId: fileStorageFile.id,
-                orderIndex: 0,
-              },
-              options: {
-                headers: {
-                  "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-                },
-              },
-            });
-          } catch (error) {
-            console.error("Error processing single file:", error);
-          }
-        }
+      // Object storage work finishes before the short database transaction.
+      const uploadedFiles: IFileStorageModuleFile[] = [];
+      for (const file of files) {
+        const stored = await fileStorageModuleFileApi.create({
+          data: { adminTitle: file.name, file },
+          options: { headers: { "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY } },
+        });
+        uploadedFiles.push(stored);
       }
+      let socialModuleMessage = await getDrizzle({}).transaction((tx) =>
+        withConsistencyDatabase(tx, async () => {
+          const message = await this.service.socialModule.message.create({
+            data: parsedBody.data,
+          });
+          await this.service.socialModule.chatsToMessages.create({
+            data: { messageId: message.id, chatId: socialModuleChatId },
+          });
+          await this.service.socialModule.threadsToMessages.create({
+            data: { messageId: message.id, threadId: socialModuleThreadId },
+          });
+          await this.service.socialModule.profilesToMessages.create({
+            data: { messageId: message.id, profileId: socialModuleProfileId },
+          });
+          for (const [orderIndex, file] of uploadedFiles.entries())
+            await this.service.socialModule.messagesToFileStorageModuleFiles.create(
+              {
+                data: {
+                  messageId: message.id,
+                  fileStorageModuleFileId: file.id,
+                  orderIndex,
+                },
+              },
+            );
+          return message as ISocialModuleMessage;
+        }),
+      );
 
       const socialModuleMessagesToFileStorageModuleFiles =
         await this.service.socialModule.messagesToFileStorageModuleFiles.find({
@@ -359,18 +299,6 @@ export class Handler {
           },
         );
       }
-
-      await socialModuleProfilesToMessagesApi.create({
-        data: {
-          messageId: socialModuleMessage.id,
-          profileId: socialModuleProfileId,
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,
-          },
-        },
-      });
 
       socialModuleMessage = await this.audioTranscriptionService.prepareAndRun({
         fileStorageModuleFiles,
@@ -421,7 +349,18 @@ export class Handler {
       }
 
       return c.json({
-        data: socialModuleMessage,
+        data: {
+          ...socialModuleMessage,
+          authorProfileIds: [socialModuleProfileId],
+          attachments: (socialModuleMessagesToFileStorageModuleFiles || [])
+            .toSorted((a, b) => (a.orderIndex || 0) - (b.orderIndex || 0))
+            .flatMap((link) => {
+              const file = fileStorageModuleFiles?.find(
+                (file) => file.id === link.fileStorageModuleFileId,
+              );
+              return file ? [file] : [];
+            }),
+        },
       });
     } catch (error: unknown) {
       const { status, message, details } = getHttpErrorType(error);

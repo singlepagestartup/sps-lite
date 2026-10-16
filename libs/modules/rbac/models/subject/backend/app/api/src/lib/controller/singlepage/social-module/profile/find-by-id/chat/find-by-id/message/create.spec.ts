@@ -1,3 +1,15 @@
+jest.mock("@sps/shared-backend-api", () => ({
+  withConsistencyDatabase: async (
+    _db: unknown,
+    operation: () => Promise<unknown>,
+  ) => operation(),
+}));
+jest.mock("@sps/shared-backend-database-config", () => ({
+  getDrizzle: () => ({
+    transaction: async (operation: (db: unknown) => Promise<unknown>) =>
+      operation({}),
+  }),
+}));
 /**
  * BDD Suite: rbac social message create author relation.
  *
@@ -17,6 +29,7 @@ const mockRbacSubjectNotify = jest.fn();
 
 jest.mock("@sps/shared-utils", () => {
   return {
+    ...jest.requireActual("@sps/shared-utils"),
     AUDIO_TRANSCRIPTION_LEGACY_METADATA_KEY: "telegramVoiceTranscription",
     AUDIO_TRANSCRIPTION_ACTION_TYPE: "audio_transcription_completed",
     AUDIO_TRANSCRIPTION_DEFAULT_MODEL: "gpt-4o-transcribe",
@@ -149,6 +162,21 @@ function createService() {
       .fn()
       .mockResolvedValue(undefined),
     socialModule: {
+      message: {
+        create: (...args: unknown[]) => mockSocialModuleMessageCreate(...args),
+      },
+      profilesToMessages: {
+        create: (...args: unknown[]) =>
+          mockSocialModuleProfilesToMessagesCreate(...args),
+      },
+      chatsToMessages: {
+        create: (...args: unknown[]) =>
+          mockSocialModuleChatsToMessagesCreate(...args),
+      },
+      threadsToMessages: {
+        create: (...args: unknown[]) =>
+          mockSocialModuleThreadsToMessagesCreate(...args),
+      },
       chat: {
         findById: jest
           .fn()
@@ -172,6 +200,8 @@ function createService() {
         }),
       },
       messagesToFileStorageModuleFiles: {
+        create: (...args: unknown[]) =>
+          mockSocialModuleMessagesToFilesCreate(...args),
         find: jest.fn().mockResolvedValue([]),
       },
     },
@@ -228,17 +258,18 @@ describe("Given: rbac social message create author relation", () => {
         messageId: "message-1",
         profileId: "profile-1",
       },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": "rbac-secret",
-        },
-      },
     });
     expect(events.indexOf("profiles-to-messages")).toBeGreaterThanOrEqual(0);
     expect(events.indexOf("response")).toBeGreaterThan(
       events.indexOf("profiles-to-messages"),
     );
     expect(handler.notifyOtherSubjectsInChat).toHaveBeenCalled();
+    expect(context.json).toHaveBeenCalledWith({
+      data: expect.objectContaining({
+        authorProfileIds: ["profile-1"],
+        attachments: [],
+      }),
+    });
   });
 
   /**
@@ -340,11 +371,6 @@ describe("Given: rbac social message create author relation", () => {
             skillIds: ["skill-1"],
             useKnowledgeSearch: false,
           },
-        },
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": "rbac-secret",
         },
       },
     });
@@ -498,11 +524,6 @@ describe("Given: rbac social message create author relation", () => {
       data: {
         messageId: "message-1",
         profileId: "profile-1",
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": "rbac-secret",
-        },
       },
     });
     expect(handler.notifyOtherSubjectsInChat).not.toHaveBeenCalled();

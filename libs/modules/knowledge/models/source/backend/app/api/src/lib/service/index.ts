@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { CRUDService, type IMutationEffects } from "@sps/shared-backend-api";
+import { CRUDService } from "@sps/shared-backend-api";
 import { assertKnowledgeAttachmentBytes } from "@sps/backend-utils";
 import { Table } from "@sps/knowledge/models/source/backend/repository/database";
 import type { Repository } from "../repository";
@@ -39,8 +39,6 @@ export interface ISourceServices {
   inTransaction: boolean;
   transaction: <T>(operation: (source: Service) => Promise<T>) => Promise<T>;
   readSnapshot: <T>(operation: (source: Service) => Promise<T>) => Promise<T>;
-  changed: (topics?: string[], tags?: string[]) => void;
-  publisher: () => (effects: IMutationEffects) => Promise<void>;
   afterCommit: (operation: () => Promise<unknown>) => void;
   process: (sourceId: string, material: boolean) => Promise<unknown>;
 }
@@ -65,15 +63,10 @@ export class Service extends CRUDService<Source> {
       ? operation(this)
       : services.transaction(operation);
   }
-  private mark() {
-    this.dependencies().changed();
-  }
   private async saveRecord(props: { id?: string; data: any }) {
     const source = props.id
       ? await super.update({ id: props.id, data: props.data })
       : await super.create({ data: props.data });
-    if (source)
-      this.dependencies().changed([], ["/api/knowledge/sources/" + source.id]);
     return source;
   }
   async create(props: { data: any }): Promise<Source> {
@@ -86,7 +79,6 @@ export class Service extends CRUDService<Source> {
           lastIndexedAt: null,
         },
       }))!;
-      scope.mark();
       scope
         .dependencies()
         .afterCommit(() => scope.dependencies().process(source.id, false));
@@ -177,7 +169,6 @@ export class Service extends CRUDService<Source> {
             : {}),
         },
       }))!;
-      scope.mark();
       return source;
     });
   }
@@ -277,7 +268,6 @@ export class Service extends CRUDService<Source> {
         .dependencies()
         .sourcesToFileStorageModuleFiles.append(source.id, props.fileIds || []);
       if (attachmentsChanged) await scope.invalidateSources([updated]);
-      scope.mark();
       return {
         source: (await scope.findById({ id: source.id }))!,
         attachmentsChanged,
@@ -296,13 +286,11 @@ export class Service extends CRUDService<Source> {
           .dependencies()
           .sourcesToFileStorageModuleFiles.delete({ id: link.id });
       const deleted = await scope.deleteRecord(sourceId);
-      scope.mark();
       return deleted;
     });
   }
   private async deleteRecord(id: string) {
     const source = await super.delete({ id });
-    this.dependencies().changed([], ["/api/knowledge/sources/" + id]);
     return source;
   }
   private async clearSourceChunks(sourceIds: string[]) {
@@ -325,7 +313,6 @@ export class Service extends CRUDService<Source> {
           id: source.id,
           data: { ...source, indexedContentHash: null, lastIndexedAt: null },
         });
-      scope.mark();
     });
   }
   async invalidateFileContent(
@@ -348,7 +335,6 @@ export class Service extends CRUDService<Source> {
           lastIndexedAt: null,
         },
       });
-      scope.mark();
       return saved;
     });
   }
@@ -375,7 +361,6 @@ export class Service extends CRUDService<Source> {
           lastIndexedAt: new Date(),
         },
       });
-      scope.mark();
       return true;
     });
   }
@@ -402,7 +387,6 @@ export class Service extends CRUDService<Source> {
           contentHash: hashContent(props.content),
         },
       });
-      scope.mark();
       return saved;
     });
   }
@@ -480,7 +464,6 @@ export class Service extends CRUDService<Source> {
                 data: { ...previous!, ...props.data },
               });
       await scope.invalidateSources(sources);
-      scope.mark();
       for (const id of sourceIds)
         scope
           .dependencies()
@@ -536,19 +519,6 @@ export class Service extends CRUDService<Source> {
               id: props.id,
               data: { ...previous, ...props.data },
             });
-      scope
-        .dependencies()
-        .changed(
-          ["file-storage.files"],
-          props.action === "delete"
-            ? fileLinks.map(
-                (link) =>
-                  "/api/knowledge/sources-to-file-storage-module-files/" +
-                  link.id,
-              )
-            : [],
-        );
-      scope.mark();
       return { file, sourceIds };
     });
   }
@@ -564,7 +534,6 @@ export class Service extends CRUDService<Source> {
           .sourcesToFileStorageModuleFiles.append(sourceId, fileIds)
       ) {
         await scope.invalidateSources(sources);
-        scope.mark();
       }
     });
   }
@@ -602,7 +571,6 @@ export class Service extends CRUDService<Source> {
           expectedFileIds,
         );
       await scope.invalidateSources(sources);
-      scope.mark();
     });
   }
   async ensureFileForSource(props: { sourceId: string; filePath: string }) {
@@ -615,21 +583,11 @@ export class Service extends CRUDService<Source> {
       ({ file }) => file.slug === slug,
     );
     if (existing) return existing.file;
-    const publish = this.dependencies().publisher();
     const file = await this.dependencies().fileStorageFile.importPath({
       filePath: props.filePath,
       slug,
       validate: (bytes) =>
         assertKnowledgeAttachmentBytes({ bytes, name: props.filePath }),
-    });
-    // File import commits before Source linking and remains stored if linking fails.
-    await publish({
-      topics: ["file-storage.files"],
-      payload: "/api/file-storage/files",
-      tags: [
-        "/api/file-storage/files/count",
-        "/api/file-storage/files/" + file.id,
-      ],
     });
     await this.attachFiles(props.sourceId, [file.id]);
     return file;

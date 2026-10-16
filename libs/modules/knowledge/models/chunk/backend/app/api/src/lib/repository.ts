@@ -1,6 +1,9 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { DatabaseRepository } from "@sps/shared-backend-api";
+import {
+  DatabaseRepository,
+  trackRepositoryRead,
+} from "@sps/shared-backend-api";
 import { Table } from "@sps/knowledge/models/chunk/backend/repository/database";
 import { sql } from "drizzle-orm";
 
@@ -14,6 +17,13 @@ export class Repository extends DatabaseRepository<typeof Table> {
     materialized?: boolean;
   }) {
     if (props.ids && !props.ids.length) return [];
+    await trackRepositoryRead(
+      Table,
+      this.db,
+      props.ids
+        ? { and: [{ column: "id", method: "inArray", value: props.ids }] }
+        : undefined,
+    );
     const vector = `[${props.embedding.join(",")}]`;
     const distance = sql<number>`${Table.embedding} <=> ${vector}::vector`;
     const scope = props.ids

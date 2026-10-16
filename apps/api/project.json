@@ -66,6 +66,9 @@
           },
           {
             "command": "npx nx run @sps/agent:repository-generate"
+          },
+          {
+            "command": "npx nx run @sps/providers-db:repository-generate"
           }
         ]
       }
@@ -77,6 +80,9 @@
         "parallel": false,
         "cwd": ".",
         "commands": [
+          {
+            "command": "npx nx run @sps/providers-db:repository-migrate"
+          },
           {
             "command": "npx nx run @sps/file-storage:repository-migrate"
           },

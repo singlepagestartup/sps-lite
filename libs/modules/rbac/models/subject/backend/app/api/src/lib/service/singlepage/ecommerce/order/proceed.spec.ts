@@ -16,6 +16,7 @@ const mockSubjectNotify = jest.fn();
 const mockLoggerError = jest.fn();
 
 jest.mock("@sps/shared-utils", () => ({
+  ...jest.requireActual("@sps/shared-utils"),
   RBAC_SECRET_KEY: "test-rbac-secret",
 }));
 

@@ -6,7 +6,7 @@ import { type ServerWebSocket } from "bun";
 import {
   ExceptionFilter,
   ParseQueryMiddleware,
-  createMutationEffectsPublisher,
+  createConsistencyRuntime,
 } from "@sps/shared-backend-api";
 import {
   IsAuthorizedMiddleware,
@@ -16,11 +16,16 @@ import {
   RequestIdMiddleware,
   ActionLoggerMiddleware,
   BillRouteMiddleware,
+  OperatorSecretMiddleware,
 } from "@sps/middlewares";
-import { MIDDLEWARE_HTTP_CACHE } from "@sps/shared-utils";
+import {
+  MIDDLEWARE_HTTP_CACHE,
+  RBAC_JWT_SECRET,
+  expandLegacyTopics,
+} from "@sps/shared-utils";
 import { v4 as uuidv4 } from "uuid";
 import { ContentfulStatusCode } from "hono/utils/http-status";
-import { websocketManager } from "@sps/backend-utils";
+import { websocketManager, verifyJwt } from "@sps/backend-utils";
 
 import { app as agentApp } from "@sps/agent/backend/app/api";
 import { app as analyticApp } from "@sps/analytic/backend/app/api";
@@ -37,9 +42,6 @@ import { app as broadcastApp } from "@sps/broadcast/backend/app/api";
 import { app as fileStorageApp } from "@sps/file-storage/backend/app/api";
 import { app as socialApp } from "@sps/social/backend/app/api";
 import { app as knowledgeApp } from "@sps/knowledge/backend/app/api";
-
-import { setKnowledgeMutationPublisher } from "@sps/knowledge/backend/app/api/src/lib/composition";
-import { setCrmRequestMutationPublisher } from "@sps/crm/models/request/backend/app/api/src/lib/service";
 
 export const app = new Hono().basePath("/");
 const { upgradeWebSocket } = createBunWebSocket<ServerWebSocket>();
@@ -63,8 +65,11 @@ app.use(
       "X-Set-Cookie",
       "Cache-Control",
       "X-RBAC-SECRET-KEY",
+      "X-SPS-Consistency",
+      "X-SPS-Query-Tag",
     ],
     credentials: true,
+    exposeHeaders: ["x-sps-consistency"],
     maxAge: 86400,
   }),
 );
@@ -122,6 +127,64 @@ app.on(["GET", "HEAD"], "/public/*", async (c) => {
 const requestIdMiddleware = new RequestIdMiddleware();
 app.use(requestIdMiddleware.init());
 
+const consistencyMode = process.env.SPS_CONSISTENCY_MODE || "compatibility";
+if (!["off", "observe", "compatibility", "enabled"].includes(consistencyMode))
+  throw new Error("Invalid SPS_CONSISTENCY_MODE");
+export const consistencyRuntime = createConsistencyRuntime({
+  verifyAuthorization: async (authorization) => {
+    if (!authorization) return; // Only anonymous query capabilities can match.
+    if (!RBAC_JWT_SECRET) throw new Error("JWT verification is not configured");
+    await verifyJwt(authorization.replace(/^Bearer\s+/i, ""), RBAC_JWT_SECRET);
+  },
+  invalidateTags: async (tags) => {
+    await Promise.all(
+      tags.map((tag) => revalidationMiddleware.revalidateTag(tag, true)),
+    );
+  },
+  publishLegacy: async (topics) => {
+    topics = expandLegacyTopics(topics);
+    await httpCacheMiddleware.invalidateTopics(topics);
+    const now = Date.now();
+    websocketManager.broadcastMessage({
+      slug: "revalidation",
+      payload: "/api",
+      topics,
+      createdAt: new Date(now).toISOString(),
+      expiresAt: new Date(now + 60000).toISOString(),
+    });
+  },
+});
+if (consistencyMode !== "off")
+  app.use(
+    consistencyRuntime.middleware({ metadata: consistencyMode !== "observe" }),
+  );
+app.post("/api/consistency/check", async (c) => {
+  const body = await c.req.json();
+  if (
+    !Array.isArray(body.refs) ||
+    body.refs.length > 100 ||
+    !body.refs.every(
+      (ref: unknown) => typeof ref === "string" && ref.length < 128,
+    )
+  )
+    return c.json({ error: "Invalid refs" }, 400);
+  const authorization = c.req.header("Authorization") || "";
+  return c.json({
+    data: await consistencyRuntime.check(body.refs, authorization),
+  });
+});
+app.get(
+  "/api/consistency/status",
+  new OperatorSecretMiddleware().init(),
+  async (c) =>
+    c.json({
+      data: {
+        ...(await consistencyRuntime.store.diagnostics()),
+        ...consistencyRuntime.metrics(),
+      },
+    }),
+);
+
 app.options("*", (c) => {
   return c.text("OK", 204 as ContentfulStatusCode);
 });
@@ -133,17 +196,28 @@ app.get(
   "/ws/revalidation",
   upgradeWebSocket((c) => {
     const clientId = c.req.header("X-Client-ID") || uuidv4();
+    let consistencySocket:
+      | { send: (message: string) => void; close: () => void }
+      | undefined;
 
     return {
       onOpen(event, ws) {
         websocketManager.addClient(clientId, ws);
+        consistencySocket = {
+          send: (message) => ws.send(message),
+          close: () => ws.close(),
+        };
       },
       onMessage(event, ws) {
-        console.log(`Message from client: ${event.data}`);
-        ws.send("Hello from server!");
+        if (consistencyMode === "off" || !consistencySocket) return;
+        // Modern clients reconcile through their private query capabilities.
+        void consistencyRuntime
+          .receive(consistencySocket, String(event.data))
+          .catch(() => ws.close(1008, "Invalid subscription"));
       },
       onClose: () => {
         websocketManager.removeClient(clientId);
+        if (consistencySocket) consistencyRuntime.disconnect(consistencySocket);
       },
     };
   }),
@@ -166,16 +240,6 @@ app.use(revalidationMiddleware.init());
  * MIDDLEWARE_HTTP_CACHE below; scoped reads also need exclusions or no-store.
  */
 const httpCacheMiddleware = new HTTPCacheMiddleware();
-const publishMutationEffects = createMutationEffectsPublisher({
-  invalidateTopics: (topics) => httpCacheMiddleware.invalidateTopics(topics),
-  revalidateTag: (tag) => revalidationMiddleware.revalidateTag(tag),
-});
-setKnowledgeMutationPublisher(publishMutationEffects);
-setCrmRequestMutationPublisher(publishMutationEffects);
-if (MIDDLEWARE_HTTP_CACHE === "true") {
-  app.use(httpCacheMiddleware.init());
-  httpCacheMiddleware.setRoutes(app);
-}
 
 const actionLoggerMiddleware = new ActionLoggerMiddleware();
 app.use(actionLoggerMiddleware.init());
@@ -188,6 +252,15 @@ app.use(billRouteMiddleware.init());
 
 const parseQueryMiddleware = new ParseQueryMiddleware();
 app.use(parseQueryMiddleware.init());
+
+if (MIDDLEWARE_HTTP_CACHE === "true") {
+  if (consistencyMode !== "off")
+    app.use(
+      consistencyRuntime.cache({ observe: consistencyMode === "observe" }),
+    );
+  else app.use(httpCacheMiddleware.init());
+  httpCacheMiddleware.setRoutes(app);
+}
 
 app.route("/api/agent", agentApp.hono);
 app.route("/api/host", hostApp.hono);
@@ -204,3 +277,5 @@ app.route("/api/file-storage", fileStorageApp.hono);
 app.route("/api/analytic", analyticApp.hono);
 app.route("/api/social", socialApp.hono);
 app.route("/api/knowledge", knowledgeApp.hono);
+await consistencyRuntime.store.assertCoverage();
+consistencyRuntime.start();

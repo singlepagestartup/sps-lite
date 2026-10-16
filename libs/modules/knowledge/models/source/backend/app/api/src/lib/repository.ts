@@ -1,6 +1,9 @@
 import "reflect-metadata";
 import { injectable } from "inversify";
-import { DatabaseRepository } from "@sps/shared-backend-api";
+import {
+  DatabaseRepository,
+  trackRepositoryRead,
+} from "@sps/shared-backend-api";
 import { Table } from "@sps/knowledge/models/source/backend/repository/database";
 import { asc, inArray, sql } from "drizzle-orm";
 
@@ -18,6 +21,9 @@ export class Repository extends DatabaseRepository<typeof Table> {
 
   async lock(ids: string[]) {
     if (!ids.length) return [];
+    await trackRepositoryRead(Table, this.db, {
+      and: [{ column: "id", method: "inArray", value: ids }],
+    });
     return this.db
       .select()
       .from(Table)
@@ -31,6 +37,9 @@ export class Repository extends DatabaseRepository<typeof Table> {
   }
   async freshHeaders(ids: string[]) {
     if (!ids.length) return [];
+    await trackRepositoryRead(Table, this.db, {
+      and: [{ column: "id", method: "inArray", value: ids }],
+    });
     return this.db
       .select({
         id: Table.id,

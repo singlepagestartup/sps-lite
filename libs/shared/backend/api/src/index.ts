@@ -32,5 +32,13 @@ export * from "./lib/app";
 export * from "./lib/di/constants";
 export * from "./lib/service";
 export * from "./lib/repository";
+export {
+  trackRepositoryRead,
+  withConsistencyDatabase,
+  withConsistencySnapshot,
+  resourceIdentity,
+  scopeDependencyKey,
+} from "./lib/repository/database/context";
+export { createConsistencyRuntime } from "./lib/mutation-effects/consistency";
 export * from "./lib/configuration";
 export * from "./lib/middleware";
