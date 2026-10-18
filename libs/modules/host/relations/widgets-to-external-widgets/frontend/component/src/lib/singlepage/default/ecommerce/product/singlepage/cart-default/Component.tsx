@@ -1,21 +1,12 @@
-import { Component as RbacSubject } from "../../../../rbac/subject";
-import { Component as EcommerceModuleProduct } from "@sps/ecommerce/models/product/frontend/component";
-import { IComponentProps } from "./interface";
-
+import { Component as RbacModuleSubject } from "@sps/rbac/models/subject/frontend/component";
+import type { IComponentProps } from "./interface";
 export function Component(props: IComponentProps) {
   return (
-    <EcommerceModuleProduct
+    <RbacModuleSubject
       isServer={props.isServer}
-      variant={props.variant}
-      data={props.data}
+      variant="me-ecommerce-module-product-cart-row-default"
+      product={props.data}
       language={props.language}
-    >
-      <RbacSubject
-        isServer={props.isServer}
-        product={props.data}
-        language={props.language}
-        variant="me-ecommerce-module-product-cart-default"
-      />
-    </EcommerceModuleProduct>
+    />
   );
 }

@@ -8,9 +8,9 @@ export function Component(props: IComponentPropsExtended) {
       variant={props.variant}
       data={props.data}
       language={props.language}
-      profileId={props.profileId}
-      chatId={props.chatId}
-      threadId={props.threadId}
+      profileId={props.profileId ?? props.routeParams?.["social.profiles.id"]}
+      chatId={props.chatId ?? props.routeParams?.["social.chats.id"]}
+      threadId={props.threadId ?? props.routeParams?.["social.threads.id"]}
     />
   );
 }

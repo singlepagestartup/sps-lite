@@ -3,14 +3,8 @@ import type { IComponentProps, ILoginPageProps } from "./interface";
 export type { ILoginPageProps } from "./interface";
 
 import { Component as Layout } from "../../../layout/index";
-import {
-  Component as RbacModuleSubject,
-  type ILoginCopy,
-} from "../../../../rbac/subject/index";
-import {
-  Component as WebsiteBuilderModuleWidget,
-  type IAuthenticationContent,
-} from "../../../../website-builder/widget";
+import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
+import { Component as RbacModuleWidget } from "../../../../rbac/widget";
 import { useNavigate } from "../../../layout/singlepage/ai-chat-landing/Navigation";
 import { aiChatServiceHrefs } from "../../../layout/singlepage/ai-chat-landing/routes";
 
@@ -32,18 +26,11 @@ export function Component({
           />
         )}
       >
-        <WebsiteBuilderModuleWidget
-          variant="content-ai-chat-authentication"
-          content={copy?.content}
-        >
-          <RbacModuleSubject
-            variant="me-authentication-email-and-password-authentication-form-ai-chat"
-            copy={copy?.form}
-            onSuccess={() => {
-              navigate(aiChatServiceHrefs["profile-list"]);
-            }}
-          />
-        </WebsiteBuilderModuleWidget>
+        <RbacModuleWidget
+          variant="subject-me-authentication-select-method-ai-chat"
+          copy={copy}
+          onSuccess={() => navigate(aiChatServiceHrefs["profile-list"])}
+        />
       </Layout>
     </div>
   );

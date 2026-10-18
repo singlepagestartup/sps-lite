@@ -10,6 +10,7 @@ export const variant = "default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   url: string;
+  routeParams?: Record<string, string>;
   language: string;
 }
 
@@ -21,7 +22,10 @@ export interface IComponentPropsExtended
   > {}
 
 export interface ILayoutWidgetsProps
-  extends Pick<IComponentPropsExtended, "isServer" | "language" | "url"> {
+  extends Pick<
+    IComponentPropsExtended,
+    "isServer" | "language" | "url" | "routeParams"
+  > {
   layoutId: string;
   slot: "default" | "additional";
 }

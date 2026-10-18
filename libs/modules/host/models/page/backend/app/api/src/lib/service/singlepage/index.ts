@@ -7,6 +7,7 @@ import {
   buildTreePaths,
   RBAC_SECRET_KEY,
   responsePipe,
+  extractRouteParams,
 } from "@sps/shared-utils";
 
 export type EntityWithUrls = typeof Table.$inferSelect & {
@@ -85,7 +86,15 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       id: targetPage.id,
     });
 
-    return populatedPage;
+    return populatedPage
+      ? {
+          ...populatedPage,
+          routeParams: extractRouteParams({
+            url: props.url,
+            mask: populatedPage.url,
+          }),
+        }
+      : populatedPage;
   }
 
   protected async processPaginationSegment(segment: string): Promise<string[]> {
@@ -250,29 +259,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Not Found error. Entity not found");
     }
 
-    const entityUrlParts = entity.url.split("/").filter((part) => part !== "");
-    const segmentIndex = entityUrlParts.findIndex((part) =>
-      part.includes(props.segment),
+    const params =
+      entity.routeParams ??
+      extractRouteParams({ url: props.url, mask: entity.url });
+    // Retain legacy partial-name lookup; new callers consume exact map keys.
+    const key = Object.keys(params).find((name) =>
+      name.includes(props.segment),
     );
-
-    if (segmentIndex === -1) {
-      const urlParts = props.url.split("/").filter((part) => part !== "");
-      if (urlParts.length === entityUrlParts.length - 1) {
-        return "1";
-      }
-      return null;
-    }
-
-    const urlParts = props.url.split("/").filter((part) => part !== "");
-    const segmentValue = urlParts[segmentIndex];
-
-    if (segmentValue === undefined) {
-      const maskPart = entityUrlParts[segmentIndex];
-      if (maskPart?.includes(":pagination:")) {
-        return "1";
-      }
-    }
-
-    return segmentValue ?? null;
+    return key ? params[key] : null;
   }
 }

@@ -14,7 +14,7 @@ import { render } from "@testing-library/react";
 
 const rbacSpy = jest.fn();
 
-jest.mock("../../../../rbac/subject", () => ({
+jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   Component: (props: any) => {
     rbacSpy(props);
     return <div data-testid={props.variant} />;

@@ -27,8 +27,8 @@ RBAC widgets provide reusable content blocks for access and account flows.
 - `subject-me-authentication-*-ai-chat`: separate authentication pages whose own Widget relation selects the Website Builder frame, containing the corresponding Subject form.
 
 AI Chat Widgets use the shared model reader. Auth, project list/create and Help
-read content links by their own Widget ID; the relation resolves the exact Website
-Builder record and validates its presentation variant. Interactive Subject forms
+read content links by their own Widget ID; the default relation resolves the exact Website
+Builder record and forwards the rendered form slot. Interactive Subject forms
 retain their authenticated SDK scope. Route IDs and locale come from Host;
 Widgets do not select another instance from URL strings, variants or global
 content slugs.
@@ -39,11 +39,12 @@ content slugs.
   Form → Step → Input owns the fields; RBAC owns authenticated submission.
 
 The admin-v2 Widget form exposes Website Builder and CRM relation tabs. Missing,
-duplicate or mismatched AI Chat content slots report a configuration error.
+duplicate AI Chat content links report a configuration error.
 The project chooser keeps the original creation photograph, copy and form.
 
 Landing's interactive walkthrough belongs to Website Builder and needs no
-Social Chat record. Host still composes Navbar account controls and route flags.
+Social Chat record. Host forwards Navbar presentation flags; RBAC Subject owns
+the session, project selector and account controls.
 
 - `default`: placeholder widget view.
 - `find`: data-fetch wrapper for querying widgets.
@@ -51,3 +52,25 @@ Social Chat record. Host still composes Navbar account controls and route flags.
 - `admin-select-input`: admin select input for choosing a widget.
 - `admin-table`: admin table listing widgets.
 - `admin-table-row`: admin row showing widget fields.
+
+## Functional and presentation composition
+
+Authentication, registration, recovery, project creation and support use their
+own RBAC Widget variants. Each reads its saved Widget links by widgetId and
+renders the standard default relation. The linked Website Builder variant owns
+its layout and content; the RBAC variant supplies its Subject form as children.
+There is no relation-specific business mode. Sign-in, registration, forgot and
+reset password have independent Website Builder presentations and may share a
+stateless layout inside that model. A stored copy/image change does not add a
+new RBAC variant. Shared content is forked before assigning distinct layouts,
+so changing registration does not alter sign-in.
+
+### Page context and migrated compositions
+
+AI Chat workspace/settings Widgets accept routeParams with full Page-mask keys
+and retain explicit profileId/chatId/threadId inputs for standalone callers.
+They select the required values inside RBAC. Host renders their saved variant
+through this model's public registry without a separate adapter registry.
+Legacy Subject list/overview, identity settings and product/order compositions
+also live here; their functional Content sits beside the owning Widget view.
+The saved Widget IDs, localized content and relation records are unchanged.

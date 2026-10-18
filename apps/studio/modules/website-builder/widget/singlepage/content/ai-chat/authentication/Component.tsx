@@ -1,5 +1,6 @@
 import type {
   IComponentProps,
+  IAuthenticationPresentationProps,
   IAuthenticationContent,
   IAuthenticationContentProps,
 } from "./interface";
@@ -29,13 +30,13 @@ function Paragraphs({ paragraphs }: { paragraphs: string[] }) {
   );
 }
 
-export function Component({
+export function AuthenticationPresentation({
   variant = "content-ai-chat-authentication",
   content = defaultContent,
   children,
   media = "cover",
   asideIcon = "question",
-}: IComponentProps = {}) {
+}: IAuthenticationPresentationProps) {
   return (
     <main
       data-module="website-builder"
@@ -101,5 +102,18 @@ export function Component({
         </aside>
       </div>
     </main>
+  );
+}
+
+export function Component(props: IComponentProps = {}) {
+  return (
+    <AuthenticationPresentation
+      variant="content-ai-chat-authentication"
+      content={props.content}
+      media={props.media}
+      asideIcon={props.asideIcon}
+    >
+      {props.children}
+    </AuthenticationPresentation>
   );
 }

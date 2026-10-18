@@ -1,4 +1,3 @@
-import { Component as AiChatContent } from "./ai-chat-content";
 import { Component as AdminV2Form } from "./admin-v2/form";
 import { Component as AdminV2SelectInput } from "./admin-v2/select-input";
 import { Component as AdminV2Table } from "./admin-v2/table";
@@ -10,7 +9,6 @@ import { Component as AdminForm } from "./admin/form";
 import { Component as Find } from "./find";
 import { Component as Default } from "./default";
 export const variants = {
-  "ai-chat-content": AiChatContent,
   "admin-v2-form": AdminV2Form,
   "admin-v2-select-input": AdminV2SelectInput,
   "admin-v2-table": AdminV2Table,

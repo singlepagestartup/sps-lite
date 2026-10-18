@@ -1,3 +1,9 @@
+/**
+ * BDD Suite: Studio AI Chat composition.
+ * Given: independent model fixtures and Host page recipes.
+ * When: projects, authentication and support pages render.
+ * Then: context, public Widget ownership, forms and presentation remain connected.
+ */
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
@@ -233,7 +239,7 @@ describe("Local AI Chat components", () => {
     }
   });
 
-  test("Host composes one Layout, static Widget content and a Subject form", () => {
+  test("Host delegates each form and presentation pair to its owning RBAC Widget", () => {
     for (const method of ["select-method", "registration"]) {
       const html = renderToStaticMarkup(
         <AIChatPreview
@@ -243,13 +249,17 @@ describe("Local AI Chat components", () => {
       expect(html.match(/data-ds-block="host\.layout\.[^"]+"/g)).toHaveLength(
         1,
       );
+      const owner = html.indexOf(
+        `data-variant="subject-me-authentication-${method}-ai-chat"`,
+      );
       const content = html.indexOf(
-        'data-variant="content-ai-chat-authentication"',
+        `data-variant="content-ai-chat-${method === "registration" ? "registration" : "authentication"}"`,
       );
       const form = html.indexOf(
         `data-variant="me-authentication-email-and-password-${method === "registration" ? "registration" : "authentication"}-form-ai-chat"`,
       );
-      expect(content).toBeGreaterThan(-1);
+      expect(owner).toBeGreaterThan(-1);
+      expect(content).toBeGreaterThan(owner);
       expect(form).toBeGreaterThan(content);
       expect(html).toContain("<h1");
       expect(html).toContain("<img");
@@ -309,6 +319,12 @@ describe("Local AI Chat components", () => {
       /<form[^>]*data-module="rbac"[^>]*data-model="subject"[^>]*data-variant="me-crm-module-form-support-ai-chat"/,
     );
     expect(html).toContain('data-model="form" data-variant="support-ai-chat"');
+    const owner = html.indexOf(
+      'data-variant="subject-me-crm-module-form-support-ai-chat"',
+    );
+    const presentation = html.indexOf('data-variant="content-ai-chat-help"');
+    expect(owner).toBeGreaterThan(-1);
+    expect(presentation).toBeGreaterThan(owner);
     expect(html).toContain('data-model="step" data-variant="support-ai-chat"');
     expect(
       html.match(/data-model="input" data-variant="support-ai-chat"/g),

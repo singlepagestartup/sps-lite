@@ -34,6 +34,12 @@ jest.mock("@sps/website-builder/models/widget/frontend/component", () => ({
 jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   Component: (props: any) => {
     subjectCalls(props);
+    if (props.variant === "me-navigation-controls-ai-chat") {
+      const { Component: Navigation } = jest.requireActual(
+        "../../../../../../../../../../rbac/models/subject/frontend/component/src/lib/singlepage/me-navigation-controls-ai-chat/ClientComponent",
+      );
+      return <Navigation {...props} />;
+    }
     return props.variant === "authentication-me-default" ? (
       props.children({
         data: { id: "current-subject", variant: "default" },
@@ -149,7 +155,11 @@ it.each([
     );
     expect(target).not.toHaveProperty("url");
     expect(target).not.toHaveProperty("apiProps");
-    expect(subjectCalls.mock.calls[0][0]).toEqual(
+    expect(
+      subjectCalls.mock.calls.find(
+        ([call]) => call.variant === "authentication-me-default",
+      )?.[0],
+    ).toEqual(
       expect.objectContaining({
         variant: "authentication-me-default",
         isServer: false,
@@ -171,6 +181,7 @@ it("shows Sign in for an anonymous default Subject without reading account or pr
   expect(html).toContain("Sign in");
   expect(html).not.toContain("Projects unavailable");
   expect(subjectCalls.mock.calls.map(([call]) => call.variant)).toEqual([
+    "me-navigation-controls-ai-chat",
     "authentication-me-default",
   ]);
 });

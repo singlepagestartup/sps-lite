@@ -25,3 +25,12 @@ export interface IComponentProps extends Omit<IVariantInputs, "variant"> {
 }
 
 export interface IComponentPropsExtended extends IComponentProps {}
+
+export interface IAuthenticationPresentationProps
+  extends Omit<IComponentProps, "variant"> {
+  variant:
+    | "content-ai-chat-authentication"
+    | "content-ai-chat-registration"
+    | "content-ai-chat-forgot-password"
+    | "content-ai-chat-reset-password";
+}

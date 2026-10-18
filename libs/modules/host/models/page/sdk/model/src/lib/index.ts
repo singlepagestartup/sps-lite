@@ -1,3 +1,4 @@
+import type { ISelectSchema } from "@sps/host/models/page/backend/repository/database";
 export {
   type IInsertSchema,
   type ISelectSchema as IModel,
@@ -21,3 +22,8 @@ export const options = {
     revalidate: REVALIDATE,
   },
 } as NextRequestOptions;
+
+/** Computed routing response; routeParams is not stored on the Page table. */
+export interface IResolvedPage extends ISelectSchema {
+  routeParams: Record<string, string>;
+}

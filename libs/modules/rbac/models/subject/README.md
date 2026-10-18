@@ -508,3 +508,17 @@ writing, delegates the atomic Request/association command to CRM Request service
 then delivers the server-assembled multi-Step payload after commit. The typed
 SDK response distinguishes a saved Request from notification readiness. Repeated
 submission IDs return the same saved receipt and do not resend notifications.
+
+### Public session compositions
+
+The public Subject registry owns the me-authentication, me-CRM, me-Social and
+me-Ecommerce wrappers previously composed by Host. These variants resolve the
+current Subject internally; callers pass product/form/chat UI inputs through
+the public component rather than importing Host implementation paths.
+
+`me-ecommerce-module-product-card-default`,
+`me-ecommerce-module-product-overview-default` and
+`me-ecommerce-module-product-cart-row-default` compose Ecommerce Product presentation with scoped
+cart/checkout actions. Product presentation keeps its JSX slots and has no
+RBAC import. me-navigation-controls-ai-chat owns the session, project selector
+and account controls; it receives routeParams and a settingsSelected flag.

@@ -1,3 +1,6 @@
+import { Component as SubjectMeCrmModuleFormSupportAiChat } from "./subject-me-crm-module-form-support-ai-chat";
+import { Component as SubjectMeAuthenticationRegistrationAiChat } from "./subject-me-authentication-registration-ai-chat";
+import { Component as SubjectMeAuthenticationSelectMethodAiChat } from "./subject-me-authentication-select-method-ai-chat";
 import { Component as AdminV2Card } from "./admin-v2-card/index";
 import { Component as AdminV2Table } from "./admin-v2-table/index";
 import { Component as List } from "./list/index";
@@ -8,6 +11,12 @@ import { Component as SubjectMeSocialModuleProfileIdSettingsAiChat } from "./sub
 import { Component as SubjectMeSocialModuleProfileListAiChat } from "./subject-me-social-module-profile-list-ai-chat/index";
 
 export const variants = {
+  "subject-me-crm-module-form-support-ai-chat":
+    SubjectMeCrmModuleFormSupportAiChat,
+  "subject-me-authentication-registration-ai-chat":
+    SubjectMeAuthenticationRegistrationAiChat,
+  "subject-me-authentication-select-method-ai-chat":
+    SubjectMeAuthenticationSelectMethodAiChat,
   "admin-v2-card": AdminV2Card,
   "admin-v2-table": AdminV2Table,
   list: List,

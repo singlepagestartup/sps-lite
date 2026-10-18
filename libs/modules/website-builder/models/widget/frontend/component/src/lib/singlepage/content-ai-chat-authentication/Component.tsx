@@ -5,11 +5,11 @@ import { Icon } from "@sps/ui-adapter";
 import { AI_CHAT_AUTHENTICATION_CONTENT as defaultContent } from "@sps/shared-utils";
 import type {
   IComponentPropsExtended,
+  IAuthenticationPresentationProps,
   IParagraphsProps,
   IAuthenticationLinkProps,
 } from "./interface";
-import { cn } from "@sps/shared-frontend-client-utils";
-import { getLocalizedHref } from "@sps/shared-frontend-client-utils";
+import { cn, getLocalizedHref } from "@sps/shared-frontend-client-utils";
 
 function Paragraphs({ paragraphs, language }: IParagraphsProps) {
   return (
@@ -42,7 +42,7 @@ function Paragraphs({ paragraphs, language }: IParagraphsProps) {
   );
 }
 
-export function Component({
+export function AuthenticationPresentation({
   variant = "content-ai-chat-authentication",
   content,
   data,
@@ -51,15 +51,20 @@ export function Component({
   media = "cover",
   asideIcon = "question",
   language = "en",
-}: IComponentPropsExtended) {
-  const copy = content ?? {
-    ...defaultContent,
+}: IAuthenticationPresentationProps) {
+  const baseline = content ?? defaultContent;
+  const introduction = data?.subtitle?.[language] || data?.subtitle?.en;
+  const description = data?.description?.[language] || data?.description?.en;
+  const copy = {
+    ...baseline,
     intro: {
-      ...defaultContent.intro,
-      title:
-        data?.title?.[language] ||
-        data?.title?.en ||
-        defaultContent.intro.title,
+      ...baseline.intro,
+      title: data?.title?.[language] || data?.title?.en || baseline.intro.title,
+      paragraphs: introduction ? [introduction] : baseline.intro.paragraphs,
+    },
+    aside: {
+      ...baseline.aside,
+      paragraphs: description ? [description] : baseline.aside.paragraphs,
     },
   };
   return (
@@ -138,5 +143,21 @@ export function Component({
         </aside>
       </div>
     </main>
+  );
+}
+
+export function Component(props: IComponentPropsExtended) {
+  return (
+    <AuthenticationPresentation
+      variant="content-ai-chat-authentication"
+      data={props.data}
+      language={props.language}
+      className={props.className}
+      content={props.content}
+      media={props.media}
+      asideIcon={props.asideIcon}
+    >
+      {props.children}
+    </AuthenticationPresentation>
   );
 }

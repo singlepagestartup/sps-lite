@@ -1,13 +1,14 @@
-import type { ILoginCopy } from "../../../../rbac/subject/index";
-
-import type { IAuthenticationContent } from "../../../../website-builder/widget";
+import type { IComponentProps as IRbacModuleWidgetProps } from "../../../../rbac/widget";
 
 export const variant =
   "rbac-module-subject-me-authentication-select-method-ai-chat";
 
 export interface ILoginPageProps {
   variant?: "rbac-module-subject-me-authentication-select-method-ai-chat";
-  copy?: { form: ILoginCopy; content: IAuthenticationContent };
+  copy?: Extract<
+    IRbacModuleWidgetProps,
+    { variant: "subject-me-authentication-select-method-ai-chat" }
+  >["copy"];
 }
 
 type IVariantInputs = NonNullable<ILoginPageProps>;

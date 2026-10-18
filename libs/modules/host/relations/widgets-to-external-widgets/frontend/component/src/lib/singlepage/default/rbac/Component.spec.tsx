@@ -9,7 +9,6 @@ const rbacReads = jest.fn();
 const rbacRenders = jest.fn();
 const websiteReads = jest.fn();
 const websiteRenders = jest.fn();
-jest.mock("./widget", () => ({ Component: () => null }));
 jest.mock("@sps/rbac/models/widget/frontend/component", () => ({
   Component: (props: any) => {
     if (props.variant === "find") {
@@ -47,6 +46,7 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
           data: { externalWidgetId: record.id },
           url: "/ai-chat/sign-in",
           language: "en",
+          routeParams: { "social.chats.id": "chat" },
         } as any)}
       />,
     );
@@ -61,6 +61,8 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
     expect(rbacRenders.mock.calls[0][0]).toEqual(
       expect.objectContaining({
         data: record,
+        dataSource: "props",
+        routeParams: { "social.chats.id": "chat" },
         language: "en",
         variant: record.variant,
       }),

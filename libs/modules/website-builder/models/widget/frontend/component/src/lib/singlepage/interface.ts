@@ -1,3 +1,6 @@
+import type { IComponentProps as IContentAiChatResetPassword } from "./content-ai-chat-reset-password/interface";
+import type { IComponentProps as IContentAiChatForgotPassword } from "./content-ai-chat-forgot-password/interface";
+import type { IComponentProps as IContentAiChatRegistration } from "./content-ai-chat-registration/interface";
 import type { IComponentProps as IContentAiChatAuthentication } from "./content-ai-chat-authentication/interface";
 import type { IComponentProps as IContentAiChatHelp } from "./content-ai-chat-help/interface";
 import type { IComponentProps as IContentAiChatMaterialsProcessing } from "./content-ai-chat-materials-processing/interface";
@@ -21,6 +24,9 @@ import { IComponentProps as IContentDefaultComponentProps } from "./content-defa
 import { IComponentProps as IFooterDefaultComponentProps } from "./footer-default/interface";
 import { IComponentProps as INavbarDefaultComponentProps } from "./navbar-default/interface";
 export type IComponentProps =
+  | IContentAiChatResetPassword
+  | IContentAiChatForgotPassword
+  | IContentAiChatRegistration
   | IContentAiChatAuthentication
   | IContentAiChatHelp
   | IContentAiChatMaterialsProcessing

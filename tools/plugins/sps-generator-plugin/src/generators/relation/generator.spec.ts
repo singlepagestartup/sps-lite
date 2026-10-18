@@ -1,3 +1,9 @@
+/**
+ * BDD Suite: Default relation generation.
+ * Given: a cross-module Widget relation.
+ * When: the standard relation is generated.
+ * Then: exact references and rendered slots are retained without a second query.
+ */
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -46,6 +52,20 @@ it("generates distinct cross-module Widget fields without changing the lower own
   expect(schema).toContain("Table as WebsiteBuilderModuleWidget");
   expect(schema).toContain("websiteBuilderModuleWidgetId:");
   expect(schema.match(/widgetId:/g)).toHaveLength(1);
+  const view = tree
+    .read(
+      `${base}/frontend/component/src/lib/singlepage/default/Component.tsx`,
+    )!
+    .toString();
+  expect(view).toContain('dataSource="props"');
+  expect(view).toContain("{props.children}");
+  expect(
+    tree
+      .read(
+        `${base}/frontend/component/src/lib/singlepage/default/interface.ts`,
+      )!
+      .toString(),
+  ).toContain('children?: import("react").ReactNode');
   const form = tree
     .read(
       `${base}/frontend/component/src/lib/singlepage/admin-v2/form/ClientComponent.tsx`,

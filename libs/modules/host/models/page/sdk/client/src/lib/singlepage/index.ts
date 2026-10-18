@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  type IResolvedPage,
   IModel,
   route,
   clientHost,
@@ -51,7 +52,7 @@ export type IProps = {
 
 export type IResult = {
   IUrlSegmentValueProps: string | null;
-  IFindByUrlProps: IModel;
+  IFindByUrlProps: IResolvedPage;
 };
 
 export const api = {
@@ -69,7 +70,7 @@ export const api = {
     );
     const queryKey = `${route}/find-by-url?${stringifiedQuery}`;
     useEffect(() => subscription(queryKey, queryClient), [queryKey]);
-    return useQuery<IModel>({
+    return useQuery<IResolvedPage>({
       queryKey: [queryKey],
       meta: { topics: ["host.pages"] },
       queryFn: async () => {
@@ -96,11 +97,11 @@ export const api = {
             requestOptions,
           );
 
-          const json = await responsePipe<{ data: IModel }>({
+          const json = await responsePipe<{ data: IResolvedPage }>({
             res,
           });
 
-          const transformedData = transformResponseItem<IModel>(json);
+          const transformedData = transformResponseItem<IResolvedPage>(json);
 
           return transformedData;
         } catch (error: any) {

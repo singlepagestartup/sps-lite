@@ -1,13 +1,10 @@
 import type { IComponentProps, IComponentVariantProps } from "./interface";
 export type { IComponentVariantProps } from "./interface";
 import { Component as Layout } from "../../../layout/index";
-import { Component as WebsiteBuilderModuleWidget } from "../../../../website-builder/widget/index";
+import { Component as RbacModuleWidget } from "../../../../rbac/widget";
 import { Component as RbacModuleSubject } from "../../../../rbac/subject/index";
 
-import { useAIChatProjectHref } from "../../../../rbac/subject/singlepage/me/account/Account";
-
 export function Component({ variant = "ai-chat-help" }: IComponentProps = {}) {
-  const projectHref = useAIChatProjectHref();
   return (
     <div data-module="host" data-model="page" data-variant={variant}>
       <Layout
@@ -22,15 +19,7 @@ export function Component({ variant = "ai-chat-help" }: IComponentProps = {}) {
           />
         )}
       >
-        <WebsiteBuilderModuleWidget
-          variant="content-ai-chat-help"
-          projectHref={projectHref}
-        >
-          <RbacModuleSubject
-            variant="me-crm-module-form-support-ai-chat"
-            projectHref={projectHref}
-          />
-        </WebsiteBuilderModuleWidget>
+        <RbacModuleWidget variant="subject-me-crm-module-form-support-ai-chat" />
       </Layout>
     </div>
   );

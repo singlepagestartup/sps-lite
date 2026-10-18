@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import { parseArgs } from "node:util";
 import { readFile, writeFile, rename, open, unlink } from "node:fs/promises";
 import {
   AI_CHAT_SUPPORT_FORM_CONTENT,
@@ -10,7 +11,6 @@ export interface IWidgetCutoverTarget {
   hostLinkId: string;
   rbacWidgetId: string;
   websiteBuilderWidgetId: string;
-  mode: "project-create" | "authentication" | "registration" | "help";
   crmFormId?: string;
   crmWidgetId?: string;
 }
@@ -163,66 +163,112 @@ export async function prepareWidgetCutover(
       "website-builder.widget",
       target.websiteBuilderWidgetId,
     );
-    const expectedWebsite =
-      target.mode === "project-create"
-        ? "content-ai-chat-profile-create"
-        : target.mode === "help"
-          ? "content-ai-chat-help"
-          : "content-ai-chat-authentication";
-    if (website.variant !== expectedWebsite)
-      throw new Error(`Wrong Website Builder variant for ${target.mode}`);
-    const expectedRbac =
-      target.mode === "project-create"
-        ? "subject-me-social-module-profile-create-ai-chat"
-        : target.mode === "help"
-          ? "subject-me-crm-module-form-support-ai-chat"
-          : undefined;
-    if (expectedRbac && rbac.variant !== expectedRbac) {
-      if (target.mode !== "help" || rbac.variant !== "ai-chat-help")
-        throw new Error(`Wrong RBAC variant for ${target.mode}`);
+    const presentations: Record<string, string> = {
+      "subject-me-social-module-profile-create-ai-chat":
+        "content-ai-chat-profile-create",
+      "subject-me-crm-module-form-support-ai-chat": "content-ai-chat-help",
+      "ai-chat-help": "content-ai-chat-help",
+      "subject-me-authentication-select-method-ai-chat":
+        "content-ai-chat-authentication",
+      "subject-me-authentication-registration-ai-chat":
+        "content-ai-chat-registration",
+      "subject-me-authentication-forgot-password-ai-chat":
+        "content-ai-chat-forgot-password",
+      "subject-me-authentication-reset-password-ai-chat":
+        "content-ai-chat-reset-password",
+    };
+    const expectedWebsite = presentations[rbac.variant];
+    if (!expectedWebsite) throw new Error("Unsupported RBAC Widget scenario");
+    if (rbac.variant === "ai-chat-help")
       manifest.operations.push({
         entity: "rbac.widget",
         id: rbac.id,
         before: rbac,
-        data: { variant: expectedRbac },
+        data: { variant: "subject-me-crm-module-form-support-ai-chat" },
       });
+    let content = website;
+    if (website.variant !== expectedWebsite) {
+      if (
+        website.variant !== "content-ai-chat-authentication" ||
+        ![
+          "content-ai-chat-registration",
+          "content-ai-chat-forgot-password",
+          "content-ai-chat-reset-password",
+        ].includes(expectedWebsite)
+      )
+        throw new Error(`Wrong Website Builder variant for ${rbac.variant}`);
+      // A saved frame may be shared by sign-in, registration and recovery.
+      // Fork its presentation without changing that source or its other consumers.
+      const slug = `ai-chat-${rbac.id}-content`;
+      content = await ensure(
+        "website-builder.widget",
+        { slug },
+        {
+          ...updatePayload(website, {}),
+          slug,
+          variant: expectedWebsite,
+        },
+      );
+      for (const [relation, targetColumn] of [
+        ["widgets-to-buttons-arrays", "buttonsArrayId"],
+        ["widgets-to-features", "featureId"],
+        ["widgets-to-file-storage-module-files", "fileStorageModuleFileId"],
+        ["widgets-to-logotypes", "logotypeId"],
+        ["widgets-to-sliders", "sliderId"],
+      ]) {
+        const entity = `website-builder.${relation}`;
+        const edges = await find(adapter, entity, { widgetId: website.id });
+        if (edges.length >= 101)
+          throw new Error(
+            "Content relation requires pagination before transfer",
+          );
+        for (const edge of edges) {
+          await required(entity, edge.id);
+          await ensure(
+            entity,
+            {
+              widgetId: content.id,
+              [targetColumn]: edge[targetColumn],
+              variant: edge.variant,
+              orderIndex: edge.orderIndex,
+            },
+            {
+              ...updatePayload(edge, {}),
+              widgetId: content.id,
+            },
+          );
+        }
+      }
     }
-    if (
-      target.mode === "registration" &&
-      rbac.variant !== "subject-me-authentication-registration-ai-chat"
-    )
-      throw new Error("Registration requires the registration RBAC Widget");
-    if (
-      target.mode === "authentication" &&
-      ![
-        "subject-me-authentication-select-method-ai-chat",
-        "subject-me-authentication-forgot-password-ai-chat",
-        "subject-me-authentication-reset-password-ai-chat",
-      ].includes(rbac.variant)
-    )
-      throw new Error("Expected an authentication RBAC Widget");
-    const links = await find(
-      adapter,
-      "rbac.widgets-to-website-builder-module-widgets",
-      { widgetId: rbac.id, variant: "ai-chat-content" },
-    );
-    if (
-      links.length > 1 ||
-      (links.length === 1 &&
-        links[0].websiteBuilderModuleWidgetId !== website.id)
-    )
-      throw new Error("RBAC Widget already has a different content slot");
-    await ensure(
-      "rbac.widgets-to-website-builder-module-widgets",
-      { widgetId: rbac.id, websiteBuilderModuleWidgetId: website.id },
-      {
-        widgetId: rbac.id,
-        websiteBuilderModuleWidgetId: website.id,
-        variant: "ai-chat-content",
-        orderIndex: 0,
-      },
-    );
-    if (target.mode === "help") {
+    const entity = "rbac.widgets-to-website-builder-module-widgets";
+    const links = await find(adapter, entity, { widgetId: rbac.id });
+    if (links.length > 1)
+      throw new Error(
+        "RBAC Widget has multiple content links; select its content explicitly",
+      );
+    if (links.length) {
+      const link = await required(entity, links[0].id);
+      if (![website.id, content.id].includes(link.websiteBuilderModuleWidgetId))
+        throw new Error("RBAC Widget already has different linked content");
+      const data = {
+        variant: "default",
+        websiteBuilderModuleWidgetId: content.id,
+      };
+      if (!matches(link, data))
+        manifest.operations.push({ entity, id: link.id, before: link, data });
+    } else {
+      await ensure(
+        entity,
+        { widgetId: rbac.id, websiteBuilderModuleWidgetId: content.id },
+        {
+          widgetId: rbac.id,
+          websiteBuilderModuleWidgetId: content.id,
+          variant: "default",
+          orderIndex: 0,
+        },
+      );
+    }
+    if (expectedWebsite === "content-ai-chat-help") {
       if (!target.crmFormId)
         throw new Error("Help requires an explicit CRM Form ID");
       const form = await required("crm.form", target.crmFormId);
@@ -674,25 +720,51 @@ export async function rollbackWidgetCutover(
   await persist(manifest);
 }
 
+export function cutoverApiOrigin(
+  apiServiceUrl: string,
+  allowedApiOrigin?: string,
+) {
+  const origin = new URL(apiServiceUrl);
+  if (
+    !["http:", "https:"].includes(origin.protocol) ||
+    origin.username ||
+    origin.password ||
+    origin.pathname !== "/" ||
+    origin.search ||
+    origin.hash
+  )
+    throw new Error("Cutover API must be a credential-free HTTP origin");
+  const local = ["localhost", "127.0.0.1", "[::1]"].includes(origin.hostname);
+  if (
+    !local &&
+    (origin.protocol !== "https:" || allowedApiOrigin !== origin.origin)
+  )
+    throw new Error(
+      "Remote cutover requires HTTPS and --allow-api-origin with the exact API origin",
+    );
+  return origin;
+}
+
 async function main() {
-  const [mode, inputPath, manifestPath] = process.argv.slice(2);
+  const { positionals, values } = parseArgs({
+    args: process.argv.slice(2),
+    options: { "allow-api-origin": { type: "string" } },
+    allowPositionals: true,
+  });
+  const [mode, inputPath, manifestPath] = positionals;
   if (
     !["prepare", "apply", "rollback"].includes(mode) ||
     !inputPath ||
-    (mode === "prepare" && !manifestPath)
+    (mode === "prepare" && !manifestPath) ||
+    positionals.length !== (mode === "prepare" ? 3 : 2)
   )
     throw new Error(
-      "Usage: bun run --tsconfig-override ./tsconfig.base.json tools/runtime/ai-chat-widget-links.ts prepare <explicit-input.json> <new-before-manifest.json> | apply|rollback <manifest.json>",
+      "Usage: bun run --tsconfig-override ./tsconfig.base.json tools/runtime/ai-chat-widget-links.ts prepare <explicit-input.json> <new-before-manifest.json> | apply|rollback <manifest.json> [--allow-api-origin https://api.example.com]",
     );
-  const origin = new URL(API_SERVICE_URL ?? "");
-  if (
-    !["localhost", "127.0.0.1", "[::1]"].includes(origin.hostname) ||
-    origin.username ||
-    origin.password
-  )
-    throw new Error(
-      "This cutover command requires a credential-free loopback API origin",
-    );
+  const origin = cutoverApiOrigin(
+    API_SERVICE_URL ?? "",
+    values["allow-api-origin"],
+  );
   const { getContentEntityDescriptor } = await import(
     "../../apps/mcp/lib/content-management/registry"
   );

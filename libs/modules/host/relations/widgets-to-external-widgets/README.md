@@ -18,13 +18,16 @@ adapter supplies account/project controls and route presentation flags through
 children; public Widget record reads do not consume session cookies. Subject
 controls own their authenticated client SDK reads.
 
-The three Profile/Chat/Thread screen adapters resolve IDs through Host Page
-`url-segment-value`, using the page mask stored in the database. They pass those
-IDs and the locale to RBAC Widgets. The Navbar adapter supplies `helpSelected`
-to Website Builder and `settingsSelected` to the Subject account menu. The raw
-Page URL remains in Host; external Widgets receive model IDs, locale and
-presentation flags. Host relation filters stay on the relation reader and are
-not forwarded to a target Widget's SDK.
+Page supplies the computed routeParams map through Host Widget composition.
+The RBAC adapter loads the exact target and renders its saved variant through
+the public RBAC Widget entrypoint with dataSource=props. It has no private RBAC
+Widget or Subject registry and no screen-specific branch. RBAC owns the route
+key selection, Subject/session wrappers and functional view composition.
+
+Existing Ecommerce Product adapters forward to public RBAC product-card
+compositions for compatibility. RBAC provides authenticated cart/checkout
+controls to Ecommerce slots. Host retains module integration and pure route
+presentation flags; relation filters do not reach a target Widget SDK.
 
 ## Fields
 

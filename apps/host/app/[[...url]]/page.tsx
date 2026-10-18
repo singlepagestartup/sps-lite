@@ -60,7 +60,9 @@ export default async function Page(props: {
             <HostModulePage
               isServer={true}
               variant={data?.variant as any}
+              dataSource="props"
               data={data}
+              routeParams={data.routeParams}
               url={slashedUrl}
               language={language}
             />

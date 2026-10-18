@@ -1,11 +1,14 @@
-import type { IComponentPropsExtended as IParentExtended } from "@sps/shared-frontend-components/singlepage/default/interface";
+import type {
+  IComponentPropsExtended as IParentExtended,
+  IComponentProps as IParent,
+} from "@sps/shared-frontend-components/singlepage/default/interface";
 import type { IModel } from "@sps/rbac/models/widget/sdk/model";
-import type { IComponentProps as IParent } from "@sps/shared-frontend-components/singlepage/default/interface";
 
 export const variant =
   "subject-me-social-module-profile-id-chat-id-thread-create-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   language?: string;
+  routeParams?: Record<string, string>;
   profileId?: string;
   chatId?: string;
   threadId?: string;

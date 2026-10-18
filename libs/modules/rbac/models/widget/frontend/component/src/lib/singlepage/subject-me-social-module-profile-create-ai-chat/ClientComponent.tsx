@@ -88,11 +88,6 @@ export function Component(props: IComponentPropsExtended) {
                                 method: "eq",
                                 value: props.data.id,
                               },
-                              {
-                                column: "variant",
-                                method: "eq",
-                                value: "ai-chat-content",
-                              },
                             ],
                           },
                         },
@@ -104,10 +99,9 @@ export function Component(props: IComponentPropsExtended) {
                             <WidgetsToWebsiteBuilderModuleWidgets
                               key={link.id}
                               isServer={false}
-                              variant="ai-chat-content"
+                              variant="default"
                               dataSource="props"
                               data={link}
-                              mode="project-create"
                               language={props.language}
                             >
                               <Subject

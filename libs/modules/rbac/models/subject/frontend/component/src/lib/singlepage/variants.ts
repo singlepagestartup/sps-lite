@@ -1,3 +1,16 @@
+import { Component as MeNavigationControlsAiChat } from "./me-navigation-controls-ai-chat";
+import { Component as MeEcommerceModuleProductCartRowDefault } from "./me-ecommerce-module-product-cart-row-default";
+import { Component as MeEcommerceModuleProductOverviewDefault } from "./me-ecommerce-module-product-overview-default";
+import { Component as MeEcommerceModuleProductCardDefault } from "./me-ecommerce-module-product-card-default";
+import { Component as SocialModuleProfileButtonDefault } from "./social-module-profile-button-default";
+import { Component as MeSocialModuleProfileChatListDefault } from "./me-social-module-profile-chat-list-default";
+import { Component as MeCrmModuleFormRequestCreate } from "./me-crm-module-form-request-create";
+import { Component as MeSocialModuleProfileChatOverviewDefault } from "./me-social-module-profile-chat-overview-default";
+import { Component as MeAuthenticationDefault } from "./me-authentication-default";
+import { Component as MeEcommerceModuleCartDefault } from "./me-ecommerce-module-cart-default";
+import { Component as MeEcommerceModuleProductCheckoutDefault } from "./me-ecommerce-module-product-checkout-default";
+import { Component as MeEcommerceModuleProductCartDefault } from "./me-ecommerce-module-product-cart-default";
+import { Component as MeEcommerceModuleOrderListCheckoutDefault } from "./me-ecommerce-module-order-list-checkout-default";
 import { Component as MeSocialModuleProfileIdSidebarAiChat } from "./me-social-module-profile-id-sidebar-ai-chat";
 import { Component as ResetPasswordFormAiChat } from "./authentication/email-and-password/reset-password-form-ai-chat";
 import { Component as ForgotPasswordFormAiChat } from "./authentication/email-and-password/forgot-password-form-ai-chat";
@@ -69,6 +82,28 @@ import { Component as SocialModuleProfileChatListDefault } from "./social-module
 import { Component as SocialModuleProfileChatOverviewDefault } from "./social-module/profile/chat/overview/default";
 
 export const variants = {
+  "me-navigation-controls-ai-chat": MeNavigationControlsAiChat,
+  "me-ecommerce-module-product-cart-row-default":
+    MeEcommerceModuleProductCartRowDefault,
+  "me-ecommerce-module-product-overview-default":
+    MeEcommerceModuleProductOverviewDefault,
+  "me-ecommerce-module-product-card-default":
+    MeEcommerceModuleProductCardDefault,
+  "social-module-profile-button-default": SocialModuleProfileButtonDefault,
+  "me-social-module-profile-chat-list-default":
+    MeSocialModuleProfileChatListDefault,
+  "me-crm-module-form-request-create": MeCrmModuleFormRequestCreate,
+  "me-social-module-profile-chat-overview-default":
+    MeSocialModuleProfileChatOverviewDefault,
+  "me-authentication-default": MeAuthenticationDefault,
+  "me-ecommerce-module-cart-default": MeEcommerceModuleCartDefault,
+  "me-ecommerce-module-product-checkout-default":
+    MeEcommerceModuleProductCheckoutDefault,
+  "me-ecommerce-module-product-cart-default":
+    MeEcommerceModuleProductCartDefault,
+  "me-ecommerce-module-order-list-checkout-default":
+    MeEcommerceModuleOrderListCheckoutDefault,
+
   "authentication-email-and-password-form-ai-chat":
     AuthenticationEmailAndPasswordFormAiChat,
   "me-social-module-profile-id-sidebar-ai-chat":

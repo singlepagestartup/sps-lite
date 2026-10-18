@@ -112,6 +112,18 @@ explanation; distinguish planned work from implemented and tested work.
 
 ### Instance composition and complete user operations
 
+- Apply the Functional Widgets and presentation Widgets section of
+  `.agents/contracts/engineering/frontend-components.md`. Trace principal,
+  queries, forms and mutations to the domain Widget; trace layout, copy and
+  imagery to Website Builder. The default relation forwards the linked record
+  and JSX slots without screen-specific modes, form selection or content
+  overrides. A specialized relation needs association-specific evidence.
+  Verify public variant registrations and preserve saved content during any
+  split of a shared presentation record.
+- Check resolved Page parameters against the frontend contract. Page resolves
+  the map once, Host forwards it without business-screen dispatch, and domain
+  Widgets consume their own keys. Retain scalar API compatibility, locale and
+  pagination behavior, current-Subject isolation and scoped resource guards.
 - Trace Host `externalWidgetId` through the owning module Widget and explicit
   relation to its content Widget. A variant selects a renderer; global
   `find({ variant })` or fixed-slug lookup does not establish an instance

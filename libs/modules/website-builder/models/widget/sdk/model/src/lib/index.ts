@@ -22,6 +22,9 @@ export const options = {
 } as NextRequestOptions;
 export const variants = [
   "content-ai-chat-authentication",
+  "content-ai-chat-reset-password",
+  "content-ai-chat-forgot-password",
+  "content-ai-chat-registration",
   "content-ai-chat-help",
   "content-ai-chat-materials-processing",
   "content-ai-chat-profile-create",

@@ -38,6 +38,8 @@ Each module contains:
 - Always use SDK providers for data access from `libs/modules/<module>/models/<model|relation>/sdk/<client|server>`.
 - Before implementing or reviewing frontend variants, read `.agents/contracts/engineering/frontend-components.md` for required file roles, layer registration, shared or specialized client/server readers, explicit UI props and JSX slots, and query-cache/store/realtime ownership.
 - Use relation components with `variant="find"` and filter via `apiProps.params.filters.and`.
+- Keep principal/data/form/mutation logic in the owning domain Widget and layout/copy/imagery in Website Builder Widget variants. Connect exact instances through default relations and rendered JSX slots; relations must not switch on business screens or inject their presentation. See the Functional Widgets and presentation Widgets section of the frontend contract.
+- Resolve Page routeParams once from the saved URL mask and forward the plain map to domain Widgets. Keep session operations in RBAC and business variant registries in their owning modules; do not repeat per-segment Page readers in Host adapters.
 - Backend only hosted in `apps/api/app.ts`.
 - Backend route middleware must live in the module's `backend/app/middlewares/src/lib/*` folder and be exported from that middleware package; controllers should only compose route definitions, middleware instances, and handlers.
 - Put a new file where its kind already lives, not beside whatever calls it: a constant belongs with the shared constants, a pure predicate in a utils package, a service beside the other services. List the target directory first and check the siblings are the same kind of thing. Do not add a layer, a top-level directory, or a shared package to make a change fit; where nothing fits, say so and agree the exception before writing it. See `.agents/contracts/engineering/code-placement.md`.
@@ -154,6 +156,7 @@ against that order; changes to the order or exceptions require operator confirma
 
 - Enforce TypeScript interface-first style, PascalCase components, and consistent export order.
 - Confirm frontend changes obey the Tailwind/shadcn preset rules, required variant file roles, matching registration and props union in the owning layer, and SDK-based data fetching. Specialized local `client.tsx`/`server.tsx` readers follow the same component contract.
+- Confirm domain Widget logic and Website Builder presentation remain separate, with exact instance links and default relation renderers; specialized relations require association-specific behavior.
 - Confirm backend changes preserve the layered architecture (repository/service/controller) and never bypass shared utilities (logging, caching, RBAC, revalidation).
 - Confirm every new file sits with its own kind: constants with constants, pure helpers in a utils package, services beside services; and that no new layer, top-level directory, or shared package was introduced to fit the change.
 - Ensure schema changes were followed by the Drizzle generation command; do not manually create migration SQL, snapshots, or `_journal.json` entries.

@@ -13,10 +13,7 @@ export function Component(props: IComponentPropsExtended) {
       apiProps={{
         params: {
           filters: {
-            and: [
-              { column: "widgetId", method: "eq", value: props.data.id },
-              { column: "variant", method: "eq", value: "ai-chat-content" },
-            ],
+            and: [{ column: "widgetId", method: "eq", value: props.data.id }],
           },
         },
       }}
@@ -27,10 +24,9 @@ export function Component(props: IComponentPropsExtended) {
             <WidgetsToWebsiteBuilderModuleWidgets
               key={link.id}
               isServer={false}
-              variant="ai-chat-content"
+              variant="default"
               dataSource="props"
               data={link}
-              mode="help"
               language={props.language}
             >
               <WidgetsToCrmModuleWidgets

@@ -1,4 +1,3 @@
-import { sql } from "drizzle-orm";
 import * as pgCore from "drizzle-orm/pg-core";
 import { Table as Widget } from "@sps/rbac/models/widget/backend/repository/database";
 import { Table as WebsiteBuilderModuleWidget } from "@sps/website-builder/models/widget/backend/repository/database";
@@ -27,10 +26,6 @@ export const Table = pgTable(
       .references(() => WebsiteBuilderModuleWidget.id, { onDelete: "cascade" }),
   },
   (table) => ({
-    aiChatContentSlot: pgCore
-      .uniqueIndex("rbac_widget_ai_chat_content_slot")
-      .on(table.widgetId)
-      .where(sql`${table.variant} = 'ai-chat-content'`),
     ownerTarget: pgCore
       .unique()
       .on(table.widgetId, table.websiteBuilderModuleWidgetId),

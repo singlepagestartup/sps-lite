@@ -1,3 +1,6 @@
+import { Component as ContentAiChatResetPassword } from "./content-ai-chat-reset-password";
+import { Component as ContentAiChatForgotPassword } from "./content-ai-chat-forgot-password";
+import { Component as ContentAiChatRegistration } from "./content-ai-chat-registration";
 import { Component as ContentAiChatAuthentication } from "./content-ai-chat-authentication";
 import { Component as ContentAiChatHelp } from "./content-ai-chat-help";
 import { Component as ContentAiChatMaterialsProcessing } from "./content-ai-chat-materials-processing";
@@ -21,6 +24,9 @@ import { Component as ContentDefaultComponent } from "./content-default";
 import { Component as FooterDefaultComponent } from "./footer-default";
 import { Component as NavbarDefaultComponent } from "./navbar-default";
 export const variants = {
+  "content-ai-chat-reset-password": ContentAiChatResetPassword,
+  "content-ai-chat-forgot-password": ContentAiChatForgotPassword,
+  "content-ai-chat-registration": ContentAiChatRegistration,
   "content-ai-chat-authentication": ContentAiChatAuthentication,
   "content-ai-chat-help": ContentAiChatHelp,
   "content-ai-chat-materials-processing": ContentAiChatMaterialsProcessing,

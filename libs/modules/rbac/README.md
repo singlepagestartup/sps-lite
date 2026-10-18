@@ -282,3 +282,14 @@ may share the `default` variant and remain separate records.
 | [subjects-to-social-module-profiles](./relations/subjects-to-social-module-profiles/README.md)                 | Link subjects to social profiles |
 
 ---
+
+## Widget composition
+
+RBAC Widget variants own authentication, account/project state, scoped readers
+and forms. Their exact Website Builder Widget links use the standard default
+relation and rendered JSX children. Website Builder owns layout, imagery and
+copy. Screen names and modes do not belong in relation renderers. See the
+[frontend composition contract](../../../.agents/contracts/engineering/frontend-components.md),
+[Widget documentation](./models/widget/README.md),
+[Website Builder links](./relations/widgets-to-website-builder-module-widgets/README.md)
+and [CRM links](./relations/widgets-to-crm-module-widgets/README.md).

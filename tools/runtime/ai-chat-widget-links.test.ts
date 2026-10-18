@@ -1,11 +1,42 @@
+/**
+ * BDD Suite: Widget instance transfer.
+ * Given: existing saved Widget graphs and independent presentations.
+ * When: the SDK manifest is prepared, applied, repeated or rolled back.
+ * Then: content, relation IDs and authorization remain consistent.
+ */
 import { randomUUID } from "node:crypto";
 import { describe, expect, it } from "bun:test";
 import {
   prepareWidgetCutover,
   applyWidgetCutover,
   rollbackWidgetCutover,
+  cutoverApiOrigin,
   type IWidgetCutoverAdapter,
 } from "./ai-chat-widget-links";
+
+describe("Cutover deployment origin", () => {
+  it("allows local development and an explicitly selected HTTPS deployment", () => {
+    expect(cutoverApiOrigin("http://localhost:4000").origin).toBe(
+      "http://localhost:4000",
+    );
+    expect(
+      cutoverApiOrigin("https://api.example.com", "https://api.example.com")
+        .origin,
+    ).toBe("https://api.example.com");
+  });
+  it.each([
+    ["https://api.example.com", undefined],
+    ["https://api.example.com", "https://another.example.com"],
+    ["http://api.example.com", "http://api.example.com"],
+    ["https://user:password@api.example.com", "https://api.example.com"],
+    ["https://api.example.com/api", "https://api.example.com"],
+    ["https://api.example.com?target=other", "https://api.example.com"],
+    ["https://api.example.com#other", "https://api.example.com"],
+    ["ftp://localhost", undefined],
+  ])("rejects an unselected or non-origin destination %s", (url, allowed) => {
+    expect(() => cutoverApiOrigin(url!, allowed)).toThrow();
+  });
+});
 function fixture() {
   const records = new Map<string, Map<string, any>>();
   const put = (entity: string, record: any) => {
@@ -74,12 +105,128 @@ function fixture() {
       hostLinkId: `host-${suffix}`,
       rbacWidgetId: `rbac-${suffix}`,
       websiteBuilderWidgetId: `website-${suffix}`,
-      mode: "project-create" as const,
     })),
   };
   return { adapter, records, put, input, writes: () => writes };
 }
 describe("explicit widget graph cutover", () => {
+  it("moves legacy links to default and forks shared auth presentations without changing content or IDs", async () => {
+    const f = fixture();
+    const source = {
+      id: "website-a",
+      variant: "content-ai-chat-authentication",
+      slug: "original-auth",
+      title: { en: "Edited title", ru: "Свой заголовок" },
+      subtitle: { en: "Edited introduction" },
+      description: { ru: "Свой текст" },
+      className: "custom-frame",
+      updatedAt: "before",
+    };
+    f.put("website-builder.widget", source);
+    f.put("website-builder.widgets-to-file-storage-module-files", {
+      id: "photo-link",
+      widgetId: source.id,
+      fileStorageModuleFileId: "original-photo",
+      variant: "default",
+      orderIndex: 7,
+      className: "original-image",
+    });
+    const actions = [
+      "select-method",
+      "registration",
+      "forgot-password",
+      "reset-password",
+    ];
+    const targets = actions.map((action) => {
+      const owner = `rbac-${action}`;
+      const host = `host-${action}`;
+      f.put("rbac.widget", {
+        id: owner,
+        variant: `subject-me-authentication-${action}-ai-chat`,
+      });
+      f.put("host.widgets-to-external-widgets", {
+        id: host,
+        widgetId: `root-${action}`,
+        externalModule: "rbac",
+        externalWidgetId: owner,
+      });
+      f.put("rbac.widgets-to-website-builder-module-widgets", {
+        id: `link-${action}`,
+        widgetId: owner,
+        websiteBuilderModuleWidgetId: source.id,
+        variant: "ai-chat-content",
+        orderIndex: 4,
+        className: "saved-link",
+      });
+      return {
+        hostLinkId: host,
+        rbacWidgetId: owner,
+        websiteBuilderWidgetId: source.id,
+      };
+    });
+    const manifest = await prepareWidgetCutover({ targets }, f.adapter);
+    expect(f.writes()).toBe(0);
+    await applyWidgetCutover(manifest, f.adapter, async () => {});
+    expect(f.records.get("website-builder.widget")!.get(source.id)).toEqual(
+      source,
+    );
+    const ids = new Set<string>();
+    for (const action of actions) {
+      const link = f.records
+        .get("rbac.widgets-to-website-builder-module-widgets")!
+        .get(`link-${action}`);
+      expect(link).toMatchObject({
+        id: `link-${action}`,
+        variant: "default",
+        orderIndex: 4,
+        className: "saved-link",
+      });
+      const content = f.records
+        .get("website-builder.widget")!
+        .get(link.websiteBuilderModuleWidgetId);
+      expect(content).toMatchObject({
+        title: source.title,
+        subtitle: source.subtitle,
+        description: source.description,
+        className: source.className,
+      });
+      expect(content.variant).toBe(
+        action === "select-method"
+          ? source.variant
+          : `content-ai-chat-${action}`,
+      );
+      ids.add(content.id);
+      const photos = [
+        ...f.records
+          .get("website-builder.widgets-to-file-storage-module-files")!
+          .values(),
+      ].filter((edge) => edge.widgetId === content.id);
+      expect(photos).toHaveLength(1);
+      expect(photos[0]).toMatchObject({
+        fileStorageModuleFileId: "original-photo",
+        orderIndex: 7,
+        className: "original-image",
+      });
+    }
+    expect(ids.size).toBe(4);
+    const written = f.writes();
+    await applyWidgetCutover(manifest, f.adapter, async () => {});
+    expect(f.writes()).toBe(written);
+    expect(
+      (await prepareWidgetCutover({ targets }, f.adapter)).operations,
+    ).toHaveLength(0);
+    await rollbackWidgetCutover(manifest, f.adapter, async () => {});
+    for (const action of actions)
+      expect(
+        f.records
+          .get("rbac.widgets-to-website-builder-module-widgets")!
+          .get(`link-${action}`),
+      ).toMatchObject({
+        variant: "ai-chat-content",
+        websiteBuilderModuleWidgetId: source.id,
+      });
+  });
+
   it("prepares without writes, isolates same-variant instances, applies twice and rolls back old Host IDs", async () => {
     const f = fixture();
     const manifest = await prepareWidgetCutover(f.input, f.adapter);
@@ -167,9 +314,7 @@ describe("explicit widget graph cutover", () => {
     });
     f.put("crm.form", { id: "form-a", variant: "support-ai-chat" });
     const input = {
-      targets: [
-        { ...f.input.targets[0], mode: "help" as const, crmFormId: "form-a" },
-      ],
+      targets: [{ ...f.input.targets[0], crmFormId: "form-a" }],
     };
     const manifest = await prepareWidgetCutover(input, f.adapter);
     expect(f.writes()).toBe(0);

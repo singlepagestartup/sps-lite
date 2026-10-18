@@ -23,7 +23,7 @@ const link = {
   id: "project-link",
   widgetId: "rbac-widget",
   websiteBuilderModuleWidgetId: "creation-content-widget",
-  variant: "ai-chat-content",
+  variant: "default",
 };
 const project = {
   profile: { id: "profile", title: { en: "Existing project" } },
@@ -144,10 +144,7 @@ it("opens the original photo card without replacing the project chooser", () => 
     expect.objectContaining({
       params: expect.objectContaining({
         filters: {
-          and: [
-            { column: "widgetId", method: "eq", value: "rbac-widget" },
-            { column: "variant", method: "eq", value: "ai-chat-content" },
-          ],
+          and: [{ column: "widgetId", method: "eq", value: "rbac-widget" }],
         },
       }),
     }),

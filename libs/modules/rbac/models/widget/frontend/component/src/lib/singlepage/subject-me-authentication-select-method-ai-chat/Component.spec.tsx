@@ -1,13 +1,20 @@
-/** @jest-environment jsdom */
+/**
+ * BDD Suite: Functional and presentation Widgets.
+ * Given: RBAC authentication Widgets with explicit default links.
+ * When: their public variants render independent Website Builder presentations.
+ * Then: the selected form and saved content survive without relation-specific modes.
+ * @jest-environment jsdom
+ */
 import { cleanup, render, screen } from "@testing-library/react";
 let action = "select-method";
+let contentOverrides: Record<string, unknown> = {};
 const relationRead = jest.fn();
 const contentRead = jest.fn();
 const link = () => ({
   id: `link-${action}`,
   widgetId: `rbac-${action}`,
   websiteBuilderModuleWidgetId: `website-${action}`,
-  variant: "ai-chat-content",
+  variant: "default",
 });
 jest.mock("client-only", () => ({}), { virtual: true });
 jest.mock("server-only", () => ({}), { virtual: true });
@@ -62,8 +69,12 @@ jest.mock("@sps/website-builder/models/widget/sdk/client", () => ({
         data: [
           {
             id,
-            variant: "content-ai-chat-authentication",
+            variant:
+              action === "select-method"
+                ? "content-ai-chat-authentication"
+                : `content-ai-chat-${action}`,
             title: { en: `Title ${id}` },
+            ...contentOverrides,
           },
         ],
         isLoading: false,
@@ -76,7 +87,10 @@ jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
   Component: (props: any) => <form aria-label={props.variant} />,
 }));
 import { Component as Widget } from "@sps/rbac/models/widget/frontend/component";
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  contentOverrides = {};
+});
 it.each(["select-method", "registration", "forgot-password", "reset-password"])(
   "renders %s auth through that RBAC instance's link and preserves its frame",
   (value) => {
@@ -94,13 +108,11 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
     expect(relationRead).toHaveBeenCalledWith({
       params: {
         filters: {
-          and: [
-            { column: "widgetId", method: "eq", value: `rbac-${action}` },
-            { column: "variant", method: "eq", value: "ai-chat-content" },
-          ],
+          and: [{ column: "widgetId", method: "eq", value: `rbac-${action}` }],
         },
       },
     });
+    expect(contentRead).toHaveBeenCalledTimes(1);
     expect(contentRead).toHaveBeenCalledWith({
       params: {
         filters: {
@@ -112,7 +124,7 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
     });
     expect(
       container.querySelector(
-        '[data-variant="content-ai-chat-authentication"]',
+        `[data-variant="${action === "select-method" ? "content-ai-chat-authentication" : `content-ai-chat-${action}`}" ]`,
       ),
     ).toBeTruthy();
     expect(screen.getAllByRole("img")).toHaveLength(
@@ -159,4 +171,36 @@ it("keeps two same-variant authentication instances bound to their own saved con
     "website-rbac-a",
     "website-rbac-b",
   ]);
+});
+
+/** BDD Scenario: edited presentation content is independent from the registration operation. */
+it("renders saved localized registration copy through the default relation without losing its form", () => {
+  action = "registration";
+  contentOverrides = {
+    title: { ru: "Мой заголовок" },
+    subtitle: { ru: "Моё вступление" },
+    description: { ru: "Моя информация" },
+  };
+  const { container } = render(
+    <Widget
+      isServer={false}
+      variant="subject-me-authentication-registration-ai-chat"
+      data={{ id: "rbac-registration" } as any}
+      language="ru"
+    />,
+  );
+  expect(screen.getByRole("heading", { name: "Мой заголовок" })).toBeTruthy();
+  expect(screen.getByText("Моё вступление")).toBeTruthy();
+  expect(screen.getByText("Моя информация")).toBeTruthy();
+  expect(
+    screen.getByRole("form", {
+      name: "me-authentication-email-and-password-registration-form-ai-chat",
+    }),
+  ).toBeTruthy();
+  expect(
+    container.querySelector(
+      '[data-relation="widgets-to-website-builder-module-widgets"][data-variant="default"]',
+    ),
+  ).toBeTruthy();
+  expect(screen.getAllByRole("img")).toHaveLength(2);
 });

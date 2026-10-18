@@ -1,3 +1,9 @@
+/**
+ * BDD Suite: Widget relation migrations.
+ * Given: an isolated PostgreSQL schema and generated migrations.
+ * When: default links are inserted and referenced records are deleted.
+ * Then: FKs, pair uniqueness, multiple links and cascades match the standard relation contract.
+ */
 import { randomUUID } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
@@ -30,7 +36,7 @@ it.each([
     await getPostgresClient().begin(async (tx) => {
       await tx.unsafe(`CREATE SCHEMA "${schema}"`);
       await tx.unsafe(`SET LOCAL search_path TO "${schema}", public`);
-      await tx.unsafe(`CREATE TABLE "sps_rc_widget" (id uuid PRIMARY KEY)`);
+      await tx.unsafe('CREATE TABLE "sps_rc_widget" (id uuid PRIMARY KEY)');
       await tx.unsafe(`CREATE TABLE "${targetTable}" (id uuid PRIMARY KEY)`);
       const folder = path.resolve(
         process.cwd(),
@@ -62,8 +68,8 @@ it.each([
         targetB,
       ]);
       const insert = `INSERT INTO "${relationTable}" (wt_id,"${targetColumn}",variant) VALUES ($1,$2,$3)`;
-      await tx.unsafe(insert, [owner, target, "ai-chat-content"]);
-      await tx.unsafe(insert, [ownerB, target, "ai-chat-content"]);
+      await tx.unsafe(insert, [owner, target, "default"]);
+      await tx.unsafe(insert, [ownerB, target, "default"]);
       await expect(
         tx.savepoint((scope) =>
           scope.unsafe(insert, [missing, targetB, "default"]),
@@ -71,20 +77,17 @@ it.each([
       ).rejects.toMatchObject({ code: "23503" });
       await expect(
         tx.savepoint((scope) =>
-          scope.unsafe(insert, [owner, target, "ai-chat-content"]),
+          scope.unsafe(insert, [owner, target, "default"]),
         ),
       ).rejects.toMatchObject({ code: "23505" });
-      if (relation === "widgets-to-website-builder-module-widgets")
-        await expect(
-          tx.savepoint((scope) =>
-            scope.unsafe(insert, [owner, targetB, "ai-chat-content"]),
-          ),
-        ).rejects.toMatchObject({ code: "23505" });
+      await tx.unsafe(insert, [owner, targetB, "default"]);
+      expect(await tx.unsafe(`SELECT * FROM "${relationTable}"`)).toHaveLength(
+        3,
+      );
       await tx.unsafe(`DELETE FROM "${targetTable}" WHERE id=$1`, [target]);
       expect(await tx.unsafe(`SELECT * FROM "${relationTable}"`)).toHaveLength(
-        0,
+        1,
       );
-      await tx.unsafe(insert, [owner, targetB, "default"]);
       await tx.unsafe('DELETE FROM "sps_rc_widget" WHERE id=$1', [owner]);
       expect(await tx.unsafe(`SELECT * FROM "${relationTable}"`)).toHaveLength(
         0,

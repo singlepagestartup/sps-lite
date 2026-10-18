@@ -15,14 +15,17 @@ Neither command implements behavior by editing repository data snapshots.
 ## AI Chat Widget links
 
 First deploy the two additive RBAC relation migrations and the API/SDK code.
-The data command requires a credential-free loopback `API_SERVICE_URL`, and
-uses server credentials from the environment without writing them to its
-manifest. Other deployment origins require their own explicit operational
-change; this local command rejects them.
+The data command uses a credential-free loopback `API_SERVICE_URL` by default.
+For an authorized deployment, select its exact HTTPS origin explicitly with
+`--allow-api-origin https://api.example.com` on prepare, apply and rollback.
+Set API_SERVICE_URL to that same origin and supply that deployment's server
+credentials through the environment. Credentials never enter the manifest.
+The command rejects mismatched origins, URL credentials, paths, queries and
+fragments; an existing manifest remains bound to its recorded API origin.
 
 Create an input JSON with `targets`. Each target names actual
-`hostLinkId`, `rbacWidgetId`, `websiteBuilderWidgetId` and `mode`:
-`project-create`, `authentication`, `registration` or `help`. Help also names
+`hostLinkId`, `rbacWidgetId` and `websiteBuilderWidgetId`. The saved RBAC Widget
+variant identifies its scenario; no mode is supplied. Help also names
 its actual `crmFormId` and may name an existing `crmWidgetId`. Missing CRM Widget
 and an unconfigured support Form are prepared as additive records: one Step,
 three required Inputs and seven linked topic Options from the existing support
@@ -56,7 +59,7 @@ mutation, reads back each result, and switches Host roots last. It can resume th
 same manifest after interruption; repeating a completed apply creates no
 additional records. Rerunning prepare on the configured graph produces no
 mutations. A manifest file lock prevents two local processes applying it at once;
-FK, pair uniqueness and the AI Chat content-slot index protect relation writes.
+FK and owner/target pair uniqueness protect relation writes.
 Updates retain the checked record's writable fields, including required foreign
 keys, because generic PATCH validation requires them. ID and timestamps remain
 server-owned. The command does not provide an atomic transaction across HTTP calls.
@@ -75,5 +78,33 @@ bun test --tsconfig-override ./tsconfig.base.json tools/runtime/ai-chat-widget-l
 ```
 
 The relation's PostgreSQL integration suite applies generated SQL in an isolated
-schema and checks FK, cascade, unique pairs and the content slot. It leaves
+schema and checks FK, cascade, unique pairs and multiple ordered default links. It leaves
 application records untouched. Run it against the disposable test database.
+
+### Existing AI Chat links
+
+Apply the generated migration removing the screen-specific index before the
+transfer. The same prepare command accepts existing linked instances and changes
+their relation variant to default without replacing relation IDs, ordering or
+class names. Its source Website Builder Widget ID stays explicit. When a shared
+authentication frame needs registration, forgot-password or reset-password
+presentation, preparation forks its writable fields and outgoing media, feature,
+button-array, logotype and slider links. Targets keep their original files and
+child content; the shared source and its consumers are unchanged. Each fork has
+a deterministic owner-specific slug for recovery and repeat detection.
+
+Review and preserve the before manifest. Apply and repeat the same manifest,
+then run prepare with a new manifest path and require zero remaining operations.
+A repeat refuses conflicting edits instead of overwriting content. Rollback
+restores relation targets and variants and retains additive presentations for
+reuse. Deploy the matching application version when restoring old variants.
+
+## Host startup
+
+`npm run host:dev` and `npm run host:start` use host.mjs to run their existing Nx
+targets. The launcher disables experimental Node WebStorage during SSR and
+preserves inherited NODE_OPTIONS, including the production heap limit.
+Browser storage remains available in the browser. Wallet SDKs otherwise detect
+Node 24 localStorage and can reject startup with getItem is not a function.
+
+Check with `node --test tools/runtime/host.test.mjs`.

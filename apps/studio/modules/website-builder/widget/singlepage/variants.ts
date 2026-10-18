@@ -1,3 +1,6 @@
+import { Component as ContentAiChatResetPassword } from "./content/ai-chat/reset-password";
+import { Component as ContentAiChatForgotPassword } from "./content/ai-chat/forgot-password";
+import { Component as ContentAiChatRegistration } from "./content/ai-chat/registration";
 import { Component as AdminV2Card } from "./admin-v2-card/index";
 import { Component as AdminV2Navigation } from "./admin-v2-navigation/index";
 import { Component as AdminV2RichEditor } from "./admin-v2-rich-editor/index";
@@ -32,6 +35,9 @@ import { Component as NavbarAiChat } from "./navbar/ai-chat/index";
 import { Component as NavbarAiChatLanding } from "./navbar/ai-chat-landing/index";
 
 export const variants = {
+  "content-ai-chat-reset-password": ContentAiChatResetPassword,
+  "content-ai-chat-forgot-password": ContentAiChatForgotPassword,
+  "content-ai-chat-registration": ContentAiChatRegistration,
   "admin-v2-card": AdminV2Card,
   "admin-v2-navigation": AdminV2Navigation,
   "admin-v2-rich-editor": AdminV2RichEditor,

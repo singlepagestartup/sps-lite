@@ -1,7 +1,9 @@
-import type { IComponentPropsExtended as IParentExtended } from "@sps/shared-frontend-components/singlepage/default/interface";
-import type { IComponentProps as IParent } from "@sps/shared-frontend-components/singlepage/default/interface";
+import type {
+  IComponentPropsExtended as IParentExtended,
+  IComponentProps as IParent,
+} from "@sps/shared-frontend-components/singlepage/default/interface";
 import type { IModel } from "@sps/website-builder/models/widget/sdk/model";
-import type { ISpsComponentBase, IconName } from "@sps/ui-adapter";
+import type { IconName } from "@sps/ui-adapter";
 import type { ReactNode } from "react";
 
 export interface IAuthenticationContent {
@@ -28,3 +30,14 @@ export interface IParagraphsProps {
   language: string;
 }
 export type IAuthenticationLinkProps = import("react").ComponentProps<"a">;
+
+export interface IAuthenticationPresentationProps
+  extends IAuthenticationContentProps {
+  data: IModel;
+  className?: string;
+  variant:
+    | "content-ai-chat-authentication"
+    | "content-ai-chat-registration"
+    | "content-ai-chat-forgot-password"
+    | "content-ai-chat-reset-password";
+}

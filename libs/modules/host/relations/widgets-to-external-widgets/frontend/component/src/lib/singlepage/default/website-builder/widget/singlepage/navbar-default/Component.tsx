@@ -1,4 +1,4 @@
-import { Component as RbacSubject } from "../../../../rbac/subject";
+import { Component as RbacSubject } from "@sps/rbac/models/subject/frontend/component";
 import { IComponentProps } from "./interface";
 
 export function Component(props: IComponentProps) {
