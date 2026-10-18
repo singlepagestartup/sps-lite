@@ -42,6 +42,10 @@ export interface IWidgetCutoverManifest {
   schema: "sps.ai-chat-widget-cutover.v1";
   createdAt: string;
   apiOrigin?: string;
+  hostBindings?: Pick<
+    IWidgetCutoverTarget,
+    "hostLinkId" | "websiteBuilderWidgetId" | "rbacWidgetId"
+  >[];
   status: "prepared" | "applying" | "applied" | "rolling-back" | "rolled-back";
   checks: { entity: string; record: Record<string, unknown> }[];
   operations: IWidgetCutoverOperation[];
@@ -100,6 +104,48 @@ async function read(
   return records[0];
 }
 
+async function assertSinglePresentationRoot(
+  adapter: IWidgetCutoverAdapter,
+  binding: Pick<
+    IWidgetCutoverTarget,
+    "hostLinkId" | "websiteBuilderWidgetId" | "rbacWidgetId"
+  >,
+) {
+  const host = await read(
+    adapter,
+    "host.widgets-to-external-widgets",
+    binding.hostLinkId,
+  );
+  if (!host) throw new Error("Host link is unavailable");
+  const siblings = await find(adapter, "host.widgets-to-external-widgets", {
+    widgetId: host.widgetId,
+  });
+  if (siblings.length >= 101)
+    throw new Error("Host links require pagination before transfer");
+  const linkedContent = binding.rbacWidgetId
+    ? await find(adapter, "rbac.widgets-to-website-builder-module-widgets", {
+        widgetId: binding.rbacWidgetId,
+      })
+    : [];
+  if (linkedContent.length >= 101)
+    throw new Error("Content links require pagination before transfer");
+  const presentationIds = new Set([
+    binding.websiteBuilderWidgetId,
+    ...linkedContent.map((link) => link.websiteBuilderModuleWidgetId),
+  ]);
+  const duplicates = siblings.filter(
+    (link) =>
+      link.id !== host.id &&
+      link.variant !== "hidden" &&
+      link.externalModule === "website-builder" &&
+      presentationIds.has(link.externalWidgetId),
+  );
+  if (duplicates.length)
+    throw new Error(
+      `Host Widget also renders this presentation directly: ${duplicates.map((link) => link.id).join(", ")}. Review and mark obsolete direct associations hidden before transfer; preserve the Website Builder Widget.`,
+    );
+}
+
 /** Read-only preparation. Before records and all generated IDs are persisted before any mutation. */
 export async function prepareWidgetCutover(
   input: IWidgetCutoverInput,
@@ -109,6 +155,13 @@ export async function prepareWidgetCutover(
     throw new Error("At least one explicit Host link is required");
   const manifest: IWidgetCutoverManifest = {
     schema: "sps.ai-chat-widget-cutover.v1",
+    hostBindings: input.targets.map(
+      ({ hostLinkId, websiteBuilderWidgetId, rbacWidgetId }) => ({
+        hostLinkId,
+        websiteBuilderWidgetId,
+        rbacWidgetId,
+      }),
+    ),
     createdAt: new Date().toISOString(),
     status: "prepared",
     checks: [],
@@ -154,6 +207,7 @@ export async function prepareWidgetCutover(
   }
   const hostUpdates: IWidgetCutoverOperation[] = [];
   for (const target of input.targets) {
+    await assertSinglePresentationRoot(adapter, target);
     const host = await required(
       "host.widgets-to-external-widgets",
       target.hostLinkId,
@@ -583,6 +637,8 @@ export async function applyWidgetCutover(
     ["rolling-back", "rolled-back"].includes(manifest.status)
   )
     throw new Error("Cannot apply this manifest");
+  for (const binding of manifest.hostBindings ?? [])
+    await assertSinglePresentationRoot(adapter, binding);
   for (const check of manifest.checks) {
     if (
       manifest.status !== "prepared" &&

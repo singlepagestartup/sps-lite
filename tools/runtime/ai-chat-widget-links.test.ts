@@ -110,6 +110,81 @@ function fixture() {
   return { adapter, records, put, input, writes: () => writes };
 }
 describe("explicit widget graph cutover", () => {
+  function duplicateHostRoot(f: ReturnType<typeof fixture>) {
+    f.put("host.widgets-to-external-widgets", {
+      id: "duplicate-host-root",
+      widgetId: "host-widget-a",
+      externalModule: "website-builder",
+      externalWidgetId: "website-a",
+      variant: "default",
+      updatedAt: "old",
+    });
+  }
+  it("refuses a direct presentation root beside its domain Widget before preparing writes", async () => {
+    const f = fixture();
+    duplicateHostRoot(f);
+    await expect(prepareWidgetCutover(f.input, f.adapter)).rejects.toThrow(
+      "duplicate-host-root",
+    );
+    expect(f.writes()).toBe(0);
+  });
+  it("refuses a duplicate presentation root added after preparation before applying writes", async () => {
+    const f = fixture();
+    const manifest = await prepareWidgetCutover(f.input, f.adapter);
+    duplicateHostRoot(f);
+    await expect(
+      applyWidgetCutover(manifest, f.adapter, async () => {}),
+    ).rejects.toThrow("duplicate-host-root");
+    expect(f.writes()).toBe(0);
+  });
+  it("detects a direct duplicate of an already linked presentation fork", async () => {
+    const f = fixture();
+    f.put("rbac.widgets-to-website-builder-module-widgets", {
+      id: "content-link",
+      widgetId: "rbac-a",
+      websiteBuilderModuleWidgetId: "forked-content",
+      variant: "default",
+    });
+    f.put("host.widgets-to-external-widgets", {
+      id: "duplicate-fork",
+      widgetId: "host-widget-a",
+      externalModule: "website-builder",
+      externalWidgetId: "forked-content",
+      variant: "default",
+    });
+    await expect(prepareWidgetCutover(f.input, f.adapter)).rejects.toThrow(
+      "duplicate-fork",
+    );
+    expect(f.writes()).toBe(0);
+  });
+  it("keeps independent presentations in the same Host Widget", async () => {
+    const f = fixture();
+    f.put("host.widgets-to-external-widgets", {
+      id: "decoration",
+      widgetId: "host-widget-a",
+      externalModule: "website-builder",
+      externalWidgetId: "independent-content",
+    });
+    const manifest = await prepareWidgetCutover(f.input, f.adapter);
+    await applyWidgetCutover(manifest, f.adapter, async () => {});
+    expect(
+      f.records.get("host.widgets-to-external-widgets")?.has("decoration"),
+    ).toBe(true);
+  });
+  it("allows retired seed associations marked hidden without modifying them", async () => {
+    const f = fixture();
+    duplicateHostRoot(f);
+    f.records
+      .get("host.widgets-to-external-widgets")!
+      .get("duplicate-host-root").variant = "hidden";
+    const manifest = await prepareWidgetCutover(f.input, f.adapter);
+    await applyWidgetCutover(manifest, f.adapter, async () => {});
+    expect(
+      f.records
+        .get("host.widgets-to-external-widgets")!
+        .get("duplicate-host-root").variant,
+    ).toBe("hidden");
+  });
   it("moves legacy links to default and forks shared auth presentations without changing content or IDs", async () => {
     const f = fixture();
     const source = {

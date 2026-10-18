@@ -53,6 +53,16 @@ the mapping before continuing. An unknown create response is recovered only
 through its prepared natural selector; multiple matches abort. Review the six
 route bindings and public read
 policy before `apply`. No record is chosen by a runtime variant-only search.
+Preparation also rejects a direct Host link to the same presentation beside
+the selected domain Widget. This graph renders the frame twice. Review the
+reported association IDs, save their original records and mark only obsolete
+direct associations with the existing hidden variant through an explicit
+content-management flow; retain the Website Builder Widgets and their content.
+Keeping a retired association's natural key prevents later seed runs from
+recreating it as an active default link. The frontend registers hidden explicitly
+and does not render or fetch its target. Independent presentations remain
+valid. New manifests repeat this graph check before apply writes, including
+when a duplicate appears after preparation.
 
 `apply` rejects stale initial records, persists progress before and after each
 mutation, reads back each result, and switches Host roots last. It can resume the

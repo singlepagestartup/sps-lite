@@ -29,9 +29,9 @@ export function Component(props: IComponentPropsExtended) {
         }}
       >
         {({ data }) => {
-          return data?.map((entity, index) => {
+          return data?.map((entity) => {
             return (
-              <div key={index} className="relative h-5 aspect-1 shrink-0">
+              <div key={entity.id} className="relative h-5 aspect-1 shrink-0">
                 <div className="absolute inset-0">
                   <OptionsToFileStorageModuleWidgets
                     isServer={props.isServer}
@@ -44,7 +44,9 @@ export function Component(props: IComponentPropsExtended) {
           });
         }}
       </OptionsToFileStorageModuleWidgets>
-      <span>{props.data.title?.[props.language]}</span>
+      <span>
+        {props.data.title?.[props.language] || props.data.title?.en || ""}
+      </span>
     </div>
   );
 }

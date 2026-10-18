@@ -44,6 +44,10 @@ presentation flags; relation filters do not reach a target Widget SDK.
 ## Variants
 
 - `default`: renders the related target for this link.
+- `hidden`: retains an inactive association without rendering or fetching its
+  target. Keep this state for retired seeded links so later seed runs find the
+  existing natural key instead of recreating an active duplicate. Active domain
+  and presentation compositions still use default; hidden does not select a screen.
 - `find`: data-fetch wrapper for querying relations.
 - `admin-select-input`: admin UI select input for linking relations.
 - `admin-table-row`: admin UI row for relation listings.
