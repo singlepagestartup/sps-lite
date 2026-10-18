@@ -694,7 +694,9 @@ export class Service {
     skipModelLookup?: boolean;
   }): Promise<IOpenRouterBilling> {
     const usage = this.normalizeUsage(props.data?.usage);
-    const models = props.skipModelLookup ? [] : await this.getModels();
+    const models = props.skipModelLookup
+      ? []
+      : await this.getModels().catch(() => []);
     const pricingModelId =
       typeof props.data?.model === "string"
         ? props.data.model
@@ -959,16 +961,34 @@ export class Service {
           "Content-Type": "application/json",
           Authorization: `Bearer ${this.apiKey}`,
         },
+        signal: AbortSignal.timeout(30_000),
       });
 
+      if (!response.ok) {
+        throw new Error(
+          `OpenRouter models request failed (HTTP ${response.status}).`,
+        );
+      }
+
       const data = (await response.json()) as { data?: IOpenRouterModel[] };
-      models = Array.isArray(data.data) ? data.data : [];
+      if (
+        !Array.isArray(data.data) ||
+        !data.data.length ||
+        !data.data.every(
+          (model) =>
+            model && typeof model.id === "string" && model.id.trim().length,
+        )
+      ) {
+        throw new Error("OpenRouter returned an invalid model catalog.");
+      }
+      models = data.data;
     } catch (error) {
       console.warn("OpenRouter models fetch failed", {
         error: this.stringifyError(error),
       });
 
-      return cachedModels?.models || [];
+      if (cachedModels) return cachedModels.models;
+      throw error;
     }
 
     cachedModels = {

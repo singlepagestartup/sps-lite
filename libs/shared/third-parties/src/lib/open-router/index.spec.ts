@@ -21,6 +21,102 @@ jest.mock(
 
 import { Service } from "./index";
 
+describe("OpenRouter model catalog cache", () => {
+  const originalFetch = global.fetch;
+  let service: Service;
+
+  beforeEach(() => {
+    jest.isolateModules(() => {
+      const { Service: IsolatedService } =
+        jest.requireActual<typeof import("./index")>("./index");
+      service = new IsolatedService();
+    });
+    jest.spyOn(console, "warn").mockImplementation(() => undefined);
+  });
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+    jest.restoreAllMocks();
+  });
+
+  it.each([
+    ["HTTP failure", 503, { error: { message: "Unavailable" } }],
+    ["empty catalog", 200, { data: [] }],
+    ["missing catalog", 200, { error: { message: "Invalid response" } }],
+    ["invalid model", 200, { data: [{ id: "" }] }],
+    ["null model", 200, { data: [null] }],
+  ])(
+    "does not cache a cold %s and recovers on the next call",
+    async (_, status, body) => {
+      const models = [{ id: "openai/test-model" }];
+      const fetchMock = jest
+        .fn()
+        .mockResolvedValueOnce(Response.json(body, { status }))
+        .mockResolvedValueOnce(Response.json({ data: models }));
+      global.fetch = fetchMock;
+
+      await expect(service.getModels()).rejects.toThrow();
+      await expect(service.getModels()).resolves.toEqual(models);
+      await expect(service.getModels()).resolves.toEqual(models);
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+      expect(fetchMock.mock.calls[0][1].signal).toBeInstanceOf(AbortSignal);
+    },
+  );
+
+  it.each(["HTTP", "network", "JSON"])(
+    "keeps the last valid catalog after a %s failure without caching the failure",
+    async (failure) => {
+      const now = jest.spyOn(Date, "now").mockReturnValue(1_000);
+      const oldModels = [{ id: "openai/old-model" }];
+      const newModels = [{ id: "openai/new-model" }];
+      const fetchMock = jest
+        .fn()
+        .mockResolvedValueOnce(Response.json({ data: oldModels }));
+      if (failure === "HTTP") {
+        fetchMock.mockResolvedValueOnce(
+          Response.json({ error: { message: "Unavailable" } }, { status: 503 }),
+        );
+      } else if (failure === "network") {
+        fetchMock.mockRejectedValueOnce(new Error("Network unavailable"));
+      } else {
+        fetchMock.mockResolvedValueOnce(new Response("invalid JSON"));
+      }
+      fetchMock.mockResolvedValueOnce(Response.json({ data: newModels }));
+      global.fetch = fetchMock;
+
+      await expect(service.getModels()).resolves.toEqual(oldModels);
+      await expect(service.getModels()).resolves.toEqual(oldModels);
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+
+      now.mockReturnValue(6 * 60 * 1_000);
+      await expect(service.getModels()).resolves.toEqual(oldModels);
+      await expect(service.getModels()).resolves.toEqual(newModels);
+      expect(fetchMock).toHaveBeenCalledTimes(3);
+    },
+  );
+
+  it("preserves a completed generation and reported billing when the catalog is unavailable", async () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(
+        Response.json({
+          choices: [{ message: { content: "Answer" } }],
+          usage: { prompt_tokens: 10, completion_tokens: 5, cost: 0.001 },
+        }),
+      )
+      .mockResolvedValueOnce(
+        Response.json({ error: { message: "Unavailable" } }, { status: 503 }),
+      );
+
+    await expect(
+      service.generate({
+        model: "openai/test-model",
+        context: [{ role: "user", content: "Question" }],
+      }),
+    ).resolves.toMatchObject({ text: "Answer", billing: { totalUsd: 0.001 } });
+  });
+});
+
 describe("OpenRouter completion, tool-calling, and billing contracts", () => {
   const originalFetch = global.fetch;
 

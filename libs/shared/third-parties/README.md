@@ -49,6 +49,13 @@ optional `timeoutMs` override. RBAC summaries use 60 seconds and fall back to
 original history on failure. Sessions help provider routing and log grouping;
 actual cache usage comes from provider usage fields.
 
+`getModels()` caches a valid, nonempty catalog for five minutes. Catalog
+requests have a 30-second network deadline. Failed HTTP responses and invalid
+catalogs retain the last valid catalog without extending its expiry; the next
+call retries the request. Without a cached catalog, the lookup throws the
+original error. Billing can still use the cost reported by a completed
+generation when the catalog is unavailable.
+
 ## Usage
 
 ```typescript
