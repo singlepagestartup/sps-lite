@@ -47,7 +47,7 @@ export function Component(props: IComponentPropsExtended) {
             <Content
               isServer={props.isServer}
               language={props.language || "en"}
-              routeParams={props.routeParams}
+              subjectSlug={props.subjectSlug}
             />
           )}
         </CardContent>

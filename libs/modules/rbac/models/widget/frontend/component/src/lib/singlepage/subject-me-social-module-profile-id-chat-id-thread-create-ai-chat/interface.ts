@@ -8,7 +8,6 @@ export const variant =
   "subject-me-social-module-profile-id-chat-id-thread-create-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   language?: string;
-  routeParams?: Record<string, string>;
   profileId?: string;
   chatId?: string;
   threadId?: string;

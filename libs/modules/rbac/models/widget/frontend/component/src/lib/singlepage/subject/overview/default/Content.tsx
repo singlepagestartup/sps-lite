@@ -1,7 +1,7 @@
 import { Component as RbacModuleSubject } from "@sps/rbac/models/subject/frontend/component";
 import type { IContentProps } from "./interface";
 export function Component(props: IContentProps) {
-  const slug = props.routeParams?.["rbac.subjects.slug"];
+  const slug = props.subjectSlug;
   if (!slug) {
     return <></>;
   }

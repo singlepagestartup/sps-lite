@@ -105,7 +105,6 @@ it.each([true, false])(
   (isServer) => {
     const url =
       "/ai-chat/social/profiles/profile-id/chats/chat-id/threads/thread-id";
-    const routeParams = { "social.chats.id": "chat-id" };
     const html = renderToStaticMarkup(
       <Page
         {...({
@@ -113,7 +112,6 @@ it.each([true, false])(
           variant: "default",
           data: { id: "page-id" },
           language: "ru",
-          routeParams,
           url,
         } as any)}
       />,
@@ -133,10 +131,12 @@ it.each([true, false])(
       ...layoutWidgetProps.mock.calls,
     ])
       expect(call).not.toHaveProperty("url");
-    for (const [call] of widgetProps.mock.calls)
+    for (const [call] of widgetProps.mock.calls) {
       expect(call).toEqual(
-        expect.objectContaining({ url, language: "ru", isServer, routeParams }),
+        expect.objectContaining({ url, language: "ru", isServer }),
       );
+      expect(call).not.toHaveProperty("routeParams");
+    }
     expect(
       slotReads.mock.calls.map(([call]) => call.apiProps.params.filters.and),
     ).toEqual([

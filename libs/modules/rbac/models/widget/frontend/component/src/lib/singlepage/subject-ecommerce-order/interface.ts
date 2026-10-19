@@ -10,7 +10,6 @@ export const variant = "subject-ecommerce-order" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language?: string;
-  routeParams?: Record<string, string>;
 }
 
 export interface IComponentPropsExtended
@@ -23,11 +22,4 @@ export interface IComponentPropsExtended
 export interface IContentProps {
   isServer: boolean;
   language: string;
-  routeParams?: Record<string, string>;
-}
-
-export interface IContentProps {
-  isServer: boolean;
-  language: string;
-  routeParams?: Record<string, string>;
 }

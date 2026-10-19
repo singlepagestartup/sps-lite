@@ -1,5 +1,6 @@
 import type { IComponentPropsExtended } from "../interface";
 import { Component as RbacModuleWidget } from "@sps/rbac/models/widget/frontend/component";
+import { Component as Page } from "@sps/host/models/page/frontend/component";
 export function Component(props: IComponentPropsExtended) {
   return (
     <RbacModuleWidget
@@ -21,15 +22,26 @@ export function Component(props: IComponentPropsExtended) {
     >
       {({ data }) =>
         data?.map((entity) => (
-          <RbacModuleWidget
+          <Page
             key={entity.id}
             isServer={props.isServer}
-            dataSource="props"
-            data={entity}
-            language={props.language}
-            routeParams={props.routeParams}
-            variant={entity.variant as any}
-          />
+            variant="url-segment-values"
+            url={props.url}
+          >
+            {({ data }) => (
+              <RbacModuleWidget
+                isServer={props.isServer}
+                dataSource="props"
+                data={entity}
+                language={props.language}
+                profileId={data?.["social.profiles.id"]}
+                chatId={data?.["social.chats.id"]}
+                threadId={data?.["social.threads.id"]}
+                subjectSlug={data?.["rbac.subjects.slug"]}
+                variant={entity.variant as any}
+              />
+            )}
+          </Page>
         ))
       }
     </RbacModuleWidget>

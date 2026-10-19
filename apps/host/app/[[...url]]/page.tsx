@@ -62,7 +62,6 @@ export default async function Page(props: {
               variant={data?.variant as any}
               dataSource="props"
               data={data}
-              routeParams={data.routeParams}
               url={slashedUrl}
               language={language}
             />

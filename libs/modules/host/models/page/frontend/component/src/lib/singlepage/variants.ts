@@ -5,6 +5,7 @@ import { Component as AdminV2SelectInput } from "./admin-v2/select-input";
 import { Component as AdminV2Table } from "./admin-v2/table";
 import { Component as AdminV2TableRow } from "./admin-v2/table-row";
 import { Component as UrlSegmentValue } from "./url-segment-value";
+import { Component as UrlSegmentValues } from "./url-segment-values";
 import { Component as FindByUrl } from "./find-by-url";
 import { Component as Find } from "./find";
 import { Component as AdminTableRow } from "./admin/table-row";
@@ -13,6 +14,7 @@ import { Component as AdminSelectInput } from "./admin/select-input";
 import { Component as AdminForm } from "./admin/form";
 import { Component as Default } from "./default";
 export const variants = {
+  "url-segment-values": UrlSegmentValues,
   "url-segment-value": UrlSegmentValue,
   "find-by-url": FindByUrl,
   find: Find,

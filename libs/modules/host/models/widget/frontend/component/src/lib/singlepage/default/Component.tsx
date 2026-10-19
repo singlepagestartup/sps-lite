@@ -41,7 +41,6 @@ export function Component(props: IComponentPropsExtended) {
                 variant={entity.variant as any}
                 data={entity}
                 url={props.url}
-                routeParams={props.routeParams}
                 language={props.language}
               />
             );

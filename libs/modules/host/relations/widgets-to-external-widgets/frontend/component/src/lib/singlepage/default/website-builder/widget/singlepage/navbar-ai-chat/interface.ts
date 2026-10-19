@@ -5,5 +5,4 @@ export interface IComponentProps extends ISpsComponentBase {
   data: IModel;
   language: string;
   url: string;
-  routeParams?: Record<string, string>;
 }

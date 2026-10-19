@@ -54,7 +54,6 @@ export function Component(props: IComponentPropsExtended) {
                     isServer={props.isServer}
                     language={props.language}
                     url={props.url}
-                    routeParams={props.routeParams}
                     layoutId={entity.layoutId}
                     slot="default"
                   />
@@ -64,7 +63,6 @@ export function Component(props: IComponentPropsExtended) {
                     isServer={props.isServer}
                     language={props.language}
                     url={props.url}
-                    routeParams={props.routeParams}
                     layoutId={entity.layoutId}
                     slot="additional"
                   />
@@ -96,7 +94,6 @@ export function Component(props: IComponentPropsExtended) {
                           variant={entity.variant as any}
                           data={entity}
                           url={props.url}
-                          routeParams={props.routeParams}
                           language={props.language}
                         />
                       );
@@ -157,7 +154,6 @@ function LayoutWidgets(props: ILayoutWidgetsProps) {
                     data={widget}
                     language={props.language}
                     url={props.url}
-                    routeParams={props.routeParams}
                   />
                 ))
               }

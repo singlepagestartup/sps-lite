@@ -18,11 +18,13 @@ adapter supplies account/project controls and route presentation flags through
 children; public Widget record reads do not consume session cookies. Subject
 controls own their authenticated client SDK reads.
 
-Page supplies the computed routeParams map through Host Widget composition.
-The RBAC adapter loads the exact target and renders its saved variant through
-the public RBAC Widget entrypoint with dataSource=props. It has no private RBAC
-Widget or Subject registry and no screen-specific branch. RBAC owns the route
-key selection, Subject/session wrappers and functional view composition.
+Host leaf compositions read named URL values through Page variant=url-segment-values
+and its render callback. The RBAC adapter loads the exact target, selects the
+required IDs/slugs inside that callback and renders its saved variant through
+the public RBAC Widget entrypoint with dataSource=props. Routing maps are not
+threaded through Page, Widget or relation props. There is no private RBAC Widget
+or Subject registry or screen-specific branch. RBAC owns Subject/session wrappers
+and functional view composition.
 
 Existing Ecommerce Product adapters forward to public RBAC product-card
 compositions for compatibility. RBAC provides authenticated cart/checkout

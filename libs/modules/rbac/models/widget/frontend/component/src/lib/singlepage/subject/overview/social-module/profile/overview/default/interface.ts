@@ -10,7 +10,7 @@ export const variant =
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  routeParams?: Record<string, string>;
+  subjectSlug?: string;
   language: string;
 }
 
@@ -24,5 +24,5 @@ export interface IComponentPropsExtended
 export interface IContentProps {
   isServer: boolean;
   language: string;
-  routeParams?: Record<string, string>;
+  subjectSlug?: string;
 }

@@ -4,7 +4,6 @@ import { IModel } from "@sps/crm/models/widget/sdk/model";
 export type IComponentProps = ISpsComponentBase & {
   language: string;
   url: string;
-  routeParams?: Record<string, string>;
   variant: "navbar-default";
   data: IModel;
 };

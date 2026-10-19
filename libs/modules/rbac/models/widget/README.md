@@ -67,10 +67,12 @@ so changing registration does not alter sign-in.
 
 ### Page context and migrated compositions
 
-AI Chat workspace/settings Widgets accept routeParams with full Page-mask keys
-and retain explicit profileId/chatId/threadId inputs for standalone callers.
-They select the required values inside RBAC. Host renders their saved variant
-through this model's public registry without a separate adapter registry.
+AI Chat workspace/settings Widgets accept explicit profileId/chatId/threadId
+inputs. Subject overview/product views accept subjectSlug. Host obtains these
+values inside a Page url-segment-values render callback and renders the saved
+Widget variant through this model's public registry. RBAC receives no routing
+map and imports no Host reader. Standalone callers provide the same explicit
+inputs without a Host dependency.
 Legacy Subject list/overview, identity settings and product/order compositions
 also live here; their functional Content sits beside the owning Widget view.
 The saved Widget IDs, localized content and relation records are unchanged.

@@ -249,3 +249,36 @@ API и отказ 403 при доступе к чужому Subject. Все пр
 Production-код и опубликованный тег закреплены на 6137f18820; итоговый
 коммит с отчётом и описанием PR содержит только документацию.
 Ограничения smoke-прогона перечислены в разделе 0.0.314 выше.
+
+## Page render-reader
+
+Host leaf compositions use Page variant=url-segment-values and its children
+callback. The client/server reader calls the existing findByUrl SDK and returns
+the complete named map as data. Client readers for one URL share the SDK query.
+The backend response field routeParams and scalar API remain available.
+
+Page, Host Widget and relation props no longer carry the map. The callback
+selects explicit profileId/chatId/threadId or subjectSlug inputs for RBAC; Blog,
+Social and Ecommerce adapters select their own URL values in the same way.
+RBAC retains session and mutation ownership and imports no Host component.
+The missing ./widget import was present in an uncommitted local copy of the old
+Host adapter; the public RBAC registry owns those implementations.
+
+The useful optimization is a complete named map from one Page resolution. It
+is independent of whether UI composition uses a render callback or forwarded
+props. The render-reader preserves this repository's JSX data-dependency style
+and avoids coupling intermediate containers to the routing-map contract.
+
+Validation: Host 15 suites / 38 tests, RBAC 150 / 776, standalone Host TypeScript,
+changed-file ESLint, module direction (14 787 sources / zero violations),
+placement and full Host production build pass. Reader tests cover static/unknown
+Pages, a complete named map, shared client URL reads and retained drafts/focus
+through background refetch.
+
+Dev on 3000 opens the existing project and creates QA Page render-reader in its
+chat. Project settings and the new thread work after restarting the dev Host.
+The built preview on 3333 opens the same settings/thread, the account menu,
+Help and the preserved photographic project form. Checked final browser states
+have no console errors. The local test thread remains for manual inspection.
+Screenshots are in .artifacts/route-render-reader/. This follow-up has no new
+production release; the deployed version remains 0.0.315.

@@ -9,6 +9,20 @@ const rbacReads = jest.fn();
 const rbacRenders = jest.fn();
 const websiteReads = jest.fn();
 const websiteRenders = jest.fn();
+const pageReads = jest.fn();
+jest.mock("@sps/host/models/page/frontend/component", () => ({
+  Component: (props: any) => {
+    pageReads(props);
+    return props.children({
+      data: {
+        "social.profiles.id": "profile",
+        "social.chats.id": "chat",
+        "social.threads.id": "thread",
+        "rbac.subjects.slug": "subject",
+      },
+    });
+  },
+}));
 jest.mock("@sps/rbac/models/widget/frontend/component", () => ({
   Component: (props: any) => {
     if (props.variant === "find") {
@@ -34,6 +48,7 @@ beforeEach(() => {
   rbacRenders.mockClear();
   websiteReads.mockClear();
   websiteRenders.mockClear();
+  pageReads.mockClear();
 });
 it.each(["select-method", "registration", "forgot-password", "reset-password"])(
   "loads the exact %s RBAC Widget and delegates its own content composition",
@@ -46,7 +61,6 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
           data: { externalWidgetId: record.id },
           url: "/ai-chat/sign-in",
           language: "en",
-          routeParams: { "social.chats.id": "chat" },
         } as any)}
       />,
     );
@@ -62,11 +76,21 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
       expect.objectContaining({
         data: record,
         dataSource: "props",
-        routeParams: { "social.chats.id": "chat" },
+        profileId: "profile",
+        chatId: "chat",
+        threadId: "thread",
+        subjectSlug: "subject",
         language: "en",
         variant: record.variant,
       }),
     );
     expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty("url");
+    expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty("routeParams");
+    expect(pageReads.mock.calls[0][0]).toEqual(
+      expect.objectContaining({
+        variant: "url-segment-values",
+        url: "/ai-chat/sign-in",
+      }),
+    );
   },
 );

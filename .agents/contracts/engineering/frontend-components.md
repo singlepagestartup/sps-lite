@@ -212,17 +212,24 @@ placeholder names such as `social.chats.id`. This map is routing context, not a
 Page database field, entity data or authentication state. The Host entrypoint
 removes the locale before resolution and forwards the locale separately.
 
-Page and Host Widget/relation composition forward the map as explicit plain
-props. A lower domain Widget reads the keys required by its own operation;
-it must not import Host Page components, SDKs or private types. Host dispatches
-by external module and exact saved Widget ID, renders the loaded record through
-the module's public variant registry and `dataSource="props"`, and does not keep
-a second registry of that module's business screens. Domain session wrappers
-and authenticated operations belong in RBAC, including cart/checkout controls
-passed into Ecommerce presentation slots.
+Host leaf compositions read the map with the public Page
+`variant="url-segment-values"` render-reader. Its client and server paths call
+Page.findByUrl through the owning SDK; the client shares that URL query and its
+subscriptions. The callback receives the complete map as `data`, including an
+empty object for a static Page. Select needed values inside that callback and
+pass explicit resource IDs or slugs directly to the domain component. Do not
+thread the map through Page, Widget, layout or relation props. Do not call SDKs
+imperatively from visual components to replace this reader composition.
 
-Do not nest url-segment-value readers to resolve individual keys already
-present in routeParams. The scalar API remains a compatibility entrypoint using
+A lower domain Widget accepts explicit inputs and must not import Host Page
+components, SDKs or private types. Host dispatches by external module and exact
+saved Widget ID, renders the loaded record through the module's public variant
+registry and `dataSource="props"`, and keeps no second registry of business
+screens. Domain session wrappers and authenticated operations belong in RBAC,
+including cart/checkout controls passed into Ecommerce presentation slots.
+
+Use one map reader instead of nesting scalar readers for individual keys.
+The scalar API remains a compatibility entrypoint using
 the shared extraction logic. Preserve encoded path values, exact new map keys,
 static-page empty maps and pagination defaults; only a pagination token may
 default to the first page. URL parameters never establish the current Subject,

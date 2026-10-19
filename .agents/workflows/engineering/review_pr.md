@@ -120,10 +120,12 @@ explanation; distinguish planned work from implemented and tested work.
   overrides. A specialized relation needs association-specific evidence.
   Verify public variant registrations and preserve saved content during any
   split of a shared presentation record.
-- Check resolved Page parameters against the frontend contract. Page resolves
-  the map once, Host forwards it without business-screen dispatch, and domain
-  Widgets consume their own keys. Retain scalar API compatibility, locale and
-  pagination behavior, current-Subject isolation and scoped resource guards.
+- Check resolved Page parameters against the frontend contract. Host leaf
+  compositions use Page's url-segment-values render-reader and select explicit
+  IDs/slugs inside its callback. Flag routeParams prop drilling through Page,
+  Widget or relations, imperative visual SDK calls and Host imports from lower
+  domain modules. Retain public domain variant dispatch, scalar API compatibility,
+  locale/pagination behavior, current-Subject isolation and scoped guards.
 - Trace Host `externalWidgetId` through the owning module Widget and explicit
   relation to its content Widget. A variant selects a renderer; global
   `find({ variant })` or fixed-slug lookup does not establish an instance
