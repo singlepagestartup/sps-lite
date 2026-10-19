@@ -17,9 +17,6 @@ import {
   type IModel as IRbacSubject,
 } from "@sps/rbac/models/subject/sdk/model";
 import { FormField } from "@sps/ui-adapter";
-import { api as socialModuleProfileApi } from "@sps/social/models/profile/sdk/client";
-import { api as socialModuleProfilesToChatsApi } from "@sps/social/relations/profiles-to-chats/sdk/client";
-import { route as socialModuleProfilesToChatsRoute } from "@sps/social/relations/profiles-to-chats/sdk/model";
 import type { IModel as ISocialModuleProfile } from "@sps/social/models/profile/sdk/model";
 import { internationalization } from "@sps/shared-configuration";
 import { Form } from "@sps/shared-ui-shadcn";
@@ -279,36 +276,6 @@ export function Component(props: IComponentPropsExtended) {
       socialModuleChatId: props.socialModuleChat.id,
     });
   const {
-    data: socialModuleProfilesToChats,
-    isLoading: socialModuleProfilesToChatsIsLoading,
-    refetch: refetchSocialModuleProfilesToChats,
-  } = socialModuleProfilesToChatsApi.find({
-    params: {
-      filters: {
-        and: [
-          {
-            column: "chatId",
-            method: "eq",
-            value: props.socialModuleChat.id,
-          },
-        ],
-      },
-      orderBy: {
-        and: [
-          {
-            column: "createdAt",
-            method: "asc",
-          },
-        ],
-      },
-    },
-    options: {
-      headers: {
-        "Cache-Control": "no-store",
-      },
-    },
-  });
-  const {
     data: socialModuleThreads,
     isLoading: socialModuleThreadsIsLoading,
     refetch: refetchSocialModuleThreads,
@@ -456,51 +423,12 @@ export function Component(props: IComponentPropsExtended) {
         .includes(normalizedSearch);
     });
   }, [threadItems, threadSearch]);
-  const memberProfileIds = useMemo(() => {
-    return new Set(
-      (socialModuleProfilesToChats || [])
-        .map((socialModuleProfileToChat) => {
-          return socialModuleProfileToChat.profileId;
-        })
-        .filter((profileId): profileId is string => Boolean(profileId)),
-    );
-  }, [socialModuleProfilesToChats]);
-  const memberProfileIdsArray = useMemo(() => {
-    return Array.from(memberProfileIds);
-  }, [memberProfileIds]);
-  const {
-    data: socialModuleMemberProfiles,
-    isLoading: socialModuleMemberProfilesIsLoading,
-  } = socialModuleProfileApi.find({
-    params: {
-      limit: Math.max(memberProfileIdsArray.length, 1),
-      filters: {
-        and: [
-          {
-            column: "id",
-            method: "inArray",
-            value: memberProfileIdsArray,
-          },
-        ],
-      },
-      orderBy: {
-        and: [
-          {
-            column: "slug",
-            method: "asc",
-          },
-        ],
-      },
-    },
-    options: {
-      headers: {
-        "Cache-Control": "no-store",
-      },
-    },
-    reactQueryOptions: {
-      enabled: memberProfileIdsArray.length > 0,
-    },
-  });
+  const socialModuleMemberProfiles = props.socialModuleChat.participants;
+  const memberProfileIds = useMemo(
+    () =>
+      new Set((socialModuleMemberProfiles || []).map((profile) => profile.id)),
+    [socialModuleMemberProfiles],
+  );
   const {
     data: searchedSocialModuleProfiles,
     isLoading: searchedSocialModuleProfilesIsLoading,
@@ -551,30 +479,15 @@ export function Component(props: IComponentPropsExtended) {
       };
     });
   }, [props.language, socialModuleMemberProfiles]);
-  const knowledgeAssistantProfile = useMemo(() => {
-    const profilesById = new Map(
-      (socialModuleMemberProfiles || []).map((socialModuleProfile) => {
-        return [socialModuleProfile.id, socialModuleProfile];
-      }),
-    );
-
-    for (const relation of socialModuleProfilesToChats || []) {
-      if (!relation.profileId) {
-        continue;
-      }
-
-      const profile = profilesById.get(relation.profileId);
-
-      if (
-        profile?.variant === "artificial-intelligence" &&
-        profile.slug?.startsWith("chat-gpt-")
-      ) {
-        return profile;
-      }
-    }
-
-    return null;
-  }, [socialModuleMemberProfiles, socialModuleProfilesToChats]);
+  const knowledgeAssistantProfile = useMemo(
+    () =>
+      (socialModuleMemberProfiles || []).find(
+        (profile) =>
+          profile.variant === "artificial-intelligence" &&
+          profile.slug?.startsWith("chat-gpt-"),
+      ) || null,
+    [socialModuleMemberProfiles],
+  );
   const artificialIntelligenceOpponentProfile = useMemo(() => {
     if (knowledgeAssistantProfile) {
       return knowledgeAssistantProfile;
@@ -663,10 +576,6 @@ export function Component(props: IComponentPropsExtended) {
   };
 
   const refetchMemberQueries = () => {
-    void queryClient.invalidateQueries({
-      queryKey: [socialModuleProfilesToChatsRoute],
-    });
-    void refetchSocialModuleProfilesToChats();
     refetchChatQueries();
   };
 
@@ -1246,12 +1155,7 @@ export function Component(props: IComponentPropsExtended) {
                         Members ({membersCount})
                       </h4>
                       <div className="space-y-1">
-                        {socialModuleProfilesToChatsIsLoading ||
-                        socialModuleMemberProfilesIsLoading ? (
-                          <p className="py-4 text-center text-xs text-slate-400">
-                            Loading profiles...
-                          </p>
-                        ) : filteredMemberItems.length ? (
+                        {filteredMemberItems.length ? (
                           filteredMemberItems.map((profileItem) => {
                             const isCurrentProfile =
                               profileItem.profile.id ===

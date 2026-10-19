@@ -567,7 +567,7 @@ export class ChatLifecycleService {
     return linkedProfileIds;
   }
 
-  protected async isSubjectAdmin(subjectId: string): Promise<boolean> {
+  async isSubjectAdmin(subjectId: string): Promise<boolean> {
     const subjectToRoles = await this.service.subjectsToRoles.find({
       params: {
         filters: {

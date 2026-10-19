@@ -2,7 +2,7 @@ import {
   ALLOWED_BILLING_SERVICE_PROVIDERS,
   RBAC_SECRET_KEY,
 } from "@sps/shared-utils";
-import { api as rbacModuleSubjectApi } from "@sps/rbac/models/subject/sdk/server";
+import type { ICheckout } from "../ecommerce/product/checkout";
 import { api as orderApi } from "@sps/ecommerce/models/order/sdk/server";
 import { type IBillingModule, type IEcommerceModule } from "../../../di";
 import { Service as SubjectsToEcommerceModuleOrdersService } from "@sps/rbac/relations/subjects-to-ecommerce-module-orders/backend/app/api/src/lib/service";
@@ -19,14 +19,17 @@ export interface IConstructorProps {
   ecommerceModule: IEcommerceModule;
   billingModule: IBillingModule;
   subjectsToEcommerceModuleOrders: SubjectsToEcommerceModuleOrdersService;
+  checkout: ICheckout;
 }
 
 export class Service {
+  readonly checkout: ICheckout;
   ecommerceModule: IEcommerceModule;
   billingModule: IBillingModule;
   subjectsToEcommerceModuleOrders: SubjectsToEcommerceModuleOrdersService;
 
   constructor(props: IConstructorProps) {
+    this.checkout = props.checkout;
     this.ecommerceModule = props.ecommerceModule;
     this.billingModule = props.billingModule;
     this.subjectsToEcommerceModuleOrders =
@@ -122,10 +125,10 @@ export class Service {
       throw new Error("Validation error. 'id' is required");
     }
 
-    return this.executeCheckout(props, rbacSecretKey);
+    return this.executeCheckout(props);
   }
 
-  protected async executeCheckout(props: IExecuteProps, rbacSecretKey: string) {
+  protected async executeCheckout(props: IExecuteProps) {
     const subjectToOrders = await this.subjectsToEcommerceModuleOrders.find({
       params: {
         filters: {
@@ -330,7 +333,7 @@ export class Service {
         "Configuration error. Enable the internal dummy provider for automatic zero-price subscriptions.",
       );
 
-    return rbacModuleSubjectApi.ecommerceModuleProductCheckout({
+    return this.checkout({
       id: props.id,
       productId: freeSubscriptionProduct.id,
       data: {
@@ -339,12 +342,6 @@ export class Service {
           currency: billingModuleCurrency,
         },
         ...(props.chatId ? { account: props.chatId } : { email: props.email }),
-      },
-      options: {
-        headers: {
-          "X-RBAC-SECRET-KEY": rbacSecretKey,
-          "Cache-Control": "no-store",
-        },
       },
     });
   }

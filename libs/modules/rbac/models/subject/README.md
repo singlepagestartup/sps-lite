@@ -509,9 +509,11 @@ permits startup specialization; controllers do not construct ProfileSkills.
 `ecommerceProductCheckout` creates the Product checkout graph and delegates to
 `ecommerceOrderCheckout`, which performs payment checkout and retains its
 compensation behavior. The Product HTTP handler and both order-renewal paths use
-the same public capability. Proceed receives a deferred DI callback so resolving
-Subject and Proceed does not form a constructor cycle, and startup Subject
-methods remain effective.
+the same public capability. Authentication bootstrap and the Telegram
+free-subscription flow also invoke it directly after selecting the configured
+zero-price Product. The public HTTP checkout retains its Subject JWT ownership
+check. Proceed receives a deferred DI callback so resolving Subject and Proceed
+does not form a constructor cycle, and startup Subject methods remain effective.
 
 The extracted Product service retains model and relation SDK mutations. Their
 API middleware bumps HTTP-cache generations before publishing WebSocket events,
@@ -553,3 +555,18 @@ blogModuleArticle and language. Its client view owns the authorization wrapper
 and reads the Article's Website Builder associations through their component
 SDK. Blog Widgets receive the rendered operation through a typed slot; this
 Subject variant receives no routing map.
+
+### Authorized Chat participants
+
+The Subject Chat detail operation accepts `params.includeParticipants: true`.
+It checks the owned Profile and its Chat membership before adding participant
+Profiles to the response, within one consistent read snapshot. The default
+Chat row and overview use this projection rather than generic Social relation
+or Profile requests. Participant changes invalidate the tracked Chat response.
+
+The `social-module-profile-find` render-reader returns the current Subject's
+Profiles. Its optional `params.socialModuleChatId` restricts them to membership
+in that Chat; the existing administrator fallback retains only the administrator's
+own Profiles. The ordinary Chat overview chooses one allowed identity before
+loading details. SDK query identity includes parameters, API host and principal.
+No additional public permissions or relation graph are needed.

@@ -4,11 +4,6 @@ jest.mock("@sps/shared-utils", () => ({
   RBAC_SECRET_KEY: "secret",
   ALLOWED_BILLING_SERVICE_PROVIDERS: "dummy",
 }));
-jest.mock("@sps/rbac/models/subject/sdk/server", () => ({
-  api: {
-    ecommerceModuleProductCheckout: (...args: unknown[]) => checkout(...args),
-  },
-}));
 jest.mock("@sps/ecommerce/models/order/sdk/server", () => ({
   api: { check: (...args: unknown[]) => checkOrder(...args) },
 }));
@@ -16,6 +11,7 @@ import { Service } from "./free-subscription";
 
 function fixture() {
   const dependencies: any = {
+    checkout,
     subjectsToEcommerceModuleOrders: { find: jest.fn().mockResolvedValue([]) },
     ecommerceModule: {
       order: {
@@ -68,20 +64,18 @@ beforeEach(() => {
   checkout.mockResolvedValue({ billingModule: { invoices: [] } });
 });
 
-it("starts the configured zero-price subscription without a Telegram account or payment details", async () => {
+it("uses the trusted checkout capability without a Subject HTTP request or a JWT", async () => {
   const { service } = fixture();
   await service.execute({ id: "user" });
-  expect(checkout).toHaveBeenCalledWith(
-    expect.objectContaining({
-      id: "user",
-      productId: "free",
-      data: {
-        provider: "dummy",
-        email: undefined,
-        billingModule: { currency: { id: "currency" } },
-      },
-    }),
-  );
+  expect(checkout).toHaveBeenCalledWith({
+    id: "user",
+    productId: "free",
+    data: {
+      provider: "dummy",
+      email: undefined,
+      billingModule: { currency: { id: "currency" } },
+    },
+  });
 });
 
 it("does not duplicate an active subscription or replace a paid subscription", async () => {

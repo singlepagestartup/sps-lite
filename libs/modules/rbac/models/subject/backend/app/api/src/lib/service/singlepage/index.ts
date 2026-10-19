@@ -1,4 +1,8 @@
 import {
+  Service as ChatParticipants,
+  type IExecuteProps as IChatParticipantsProps,
+} from "./social-module/chat/participants";
+import {
   Service as EcommerceOrderAccess,
   type IExecuteProps as IEcommerceOrderAccessProps,
 } from "./ecommerce/order/access";
@@ -447,6 +451,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async freeSubscriptionEnsure(props: { subjectId: string }) {
     await new FreeSubscription({
+      checkout: (checkoutProps) => this.ecommerceProductCheckout(checkoutProps),
       ecommerceModule: this.ecommerceModule,
       billingModule: this.billingModule,
       subjectsToEcommerceModuleOrders: this.subjectsToEcommerceModuleOrders,
@@ -519,6 +524,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 
   async ecommerceProductCheckout(props: IEcommerceProductCheckoutProps) {
     return this.getEcommerceProductCheckoutService().execute(props);
+  }
+
+  async socialModuleChatLifecycleIsSubjectAdmin(props: { subjectId: string }) {
+    return this.getChatLifecycleService().isSubjectAdmin(props.subjectId);
+  }
+
+  async socialModuleChatParticipants(props: IChatParticipantsProps) {
+    return new ChatParticipants(this).execute(props);
   }
 
   async socialModuleChatSubjectsWithSocialModuleProfiles(
@@ -643,6 +656,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     props: ITelegramCheckoutFreeSubscriptionExecuteProps,
   ) {
     return new TelegramCheckoutFreeSubscription({
+      checkout: (checkoutProps) => this.ecommerceProductCheckout(checkoutProps),
       ecommerceModule: this.ecommerceModule,
       billingModule: this.billingModule,
       subjectsToEcommerceModuleOrders: this.subjectsToEcommerceModuleOrders,

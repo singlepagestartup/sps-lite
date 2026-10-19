@@ -17,6 +17,7 @@ export interface ICreateProps {
 
 export interface IFindProps {
   subjectId: string;
+  socialModuleChatId?: string;
   params?: Record<string, any>;
 }
 
@@ -132,7 +133,37 @@ export class Service {
       ...new Set<string>((relations || []).map((r) => r.socialModuleProfileId)),
     ];
     if (!ownIds.length) return [];
-    const profileIds = ownIds;
+    let profileIds = ownIds;
+    if (props.socialModuleChatId) {
+      const memberships = await this.service.socialModule.profilesToChats.find({
+        params: {
+          filters: {
+            and: [
+              {
+                column: "chatId",
+                method: "eq",
+                value: props.socialModuleChatId,
+              },
+              { column: "profileId", method: "inArray", value: ownIds },
+            ],
+          },
+        },
+      });
+      const joined = new Set(
+        (memberships || [])
+          .filter((link) => link.chatId === props.socialModuleChatId)
+          .map((link) => link.profileId),
+      );
+      profileIds = ownIds.filter((id) => joined.has(id));
+      if (
+        !profileIds.length &&
+        (await this.service.socialModuleChatLifecycleIsSubjectAdmin({
+          subjectId: props.subjectId,
+        }))
+      )
+        profileIds = ownIds;
+      if (!profileIds.length) return [];
+    }
     const profiles = await this.service.socialModule.profile.find({
       params: {
         ...props.params,

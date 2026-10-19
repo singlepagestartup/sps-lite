@@ -99,6 +99,7 @@ function dependencies() {
           ),
       },
     },
+    socialModuleChatLifecycleIsSubjectAdmin: jest.fn().mockResolvedValue(false),
     socialModuleChatLifecycleAssertSubjectOwnsChat: jest.fn(),
     socialModuleChatLifecycleCreateChatWithDefaultThread: jest
       .fn()
@@ -393,4 +394,32 @@ describe("Subject profile collection", () => {
     expect(mockProfileCreate).not.toHaveBeenCalled();
     expect(mockBootstrap).not.toHaveBeenCalled();
   });
+});
+
+it("filters owned profiles by this chat before opening an overview", async () => {
+  const deps = dependencies();
+  const result = await new Service(deps as any).find({
+    subjectId: "owner",
+    socialModuleChatId: "existing-chat",
+  });
+  expect(result.map((p) => p.id)).toEqual(["AI-one"]);
+});
+it("returns no profile for a chat none of the subject's profiles joined", async () => {
+  const deps = dependencies();
+  expect(
+    await new Service(deps as any).find({
+      subjectId: "owner",
+      socialModuleChatId: "unjoined-chat",
+    }),
+  ).toEqual([]);
+  expect(deps.socialModule.profile.find).not.toHaveBeenCalled();
+});
+it("preserves the existing administrator fallback using only their own profiles", async () => {
+  const deps = dependencies();
+  deps.socialModuleChatLifecycleIsSubjectAdmin.mockResolvedValue(true);
+  const result = await new Service(deps as any).find({
+    subjectId: "owner",
+    socialModuleChatId: "unjoined-chat",
+  });
+  expect(result.map((p) => p.id)).toEqual(["human", "AI-one", "AI-two"]);
 });
