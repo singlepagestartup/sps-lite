@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
 import type { IResult } from "@sps/rbac/models/subject/sdk/server";
-import type { IModel } from "@sps/rbac/models/subject/sdk/model";
+import type {
+  IModel,
+  IAIChatProject,
+} from "@sps/rbac/models/subject/sdk/model";
 import type {
   IComponentProps as IParent,
   IComponentPropsExtended as IParentExtended,
 } from "@sps/shared-frontend-components/singlepage/subject-default/interface";
-import type { IAIChatProject } from "@sps/rbac/models/subject/sdk/model";
+
 export const variant = "me-social-module-profile-id-sidebar-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   project: IAIChatProject;
-  profileId: string;
+  socialModuleProfileId: string;
   onClose: () => void;
 }
 export interface IComponentPropsExtended
@@ -42,6 +45,6 @@ export interface ISourceFilesReaderProps {
     socialModuleChatId: string;
     options?: NonNullable<IComponentProps["apiProps"]>["options"];
   };
-  profileId: string;
+  socialModuleProfileId: string;
   sourceId: string;
 }

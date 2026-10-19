@@ -1,3 +1,4 @@
+import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/host/relations/widgets-to-external-widgets/sdk/model";
 import { IModel } from "@sps/host/relations/widgets-to-external-widgets/sdk/model";
 import {
@@ -19,3 +20,7 @@ export interface IComponentPropsExtended
     typeof variant,
     IComponentProps
   > {}
+
+export interface IExternalWidgetProps extends IComponentPropsExtended {
+  routeParams: IRouteParams | undefined;
+}

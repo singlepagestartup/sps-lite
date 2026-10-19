@@ -29,8 +29,9 @@ export function Component(props: IComponentPropsExtended) {
       renderProjects={({ projects }) => {
         const current = projects.find(
           (item) =>
-            item.profile.id === props.profileId &&
-            (!props.chatId || item.chat.id === props.chatId),
+            item.profile.id === props.socialModuleProfileId &&
+            (!props.socialModuleChatId ||
+              item.chat.id === props.socialModuleChatId),
         );
         if (!current)
           return (

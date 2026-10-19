@@ -1,12 +1,13 @@
 "use client";
-import { getAIChatDocument } from "@sps/rbac/models/subject/sdk/model";
-import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
-import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
-import { Component as SocialModuleThread } from "@sps/social/models/thread/frontend/component";
 import {
+  getAIChatDocument,
   projectHref,
   projectBaseHref,
 } from "@sps/rbac/models/subject/sdk/model";
+import { AI_CHAT_DOCUMENTS } from "@sps/shared-utils";
+import { Component as SocialModuleProfile } from "@sps/social/models/profile/frontend/component";
+import { Component as SocialModuleThread } from "@sps/social/models/thread/frontend/component";
+
 import type { IComponentPropsExtended } from "./interface";
 export function Component(props: IComponentPropsExtended) {
   const project = props.project;
@@ -47,7 +48,7 @@ export function Component(props: IComponentPropsExtended) {
                 data={thread}
                 dataSource="props"
                 href={projectHref(project, thread.id)}
-                selected={thread.id === props.threadId}
+                selected={thread.id === props.socialModuleThreadId}
                 topic
               />
             ))}
@@ -65,7 +66,8 @@ export function Component(props: IComponentPropsExtended) {
           data: thread,
           dataSource: "props",
           href: projectHref(project, thread.id),
-          selected: thread.id === (props.threadId || project.thread.id),
+          selected:
+            thread.id === (props.socialModuleThreadId || project.thread.id),
         }))}
       />
     </SocialModuleProfile>

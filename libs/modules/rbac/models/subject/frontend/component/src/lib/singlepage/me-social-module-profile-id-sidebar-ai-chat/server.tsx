@@ -16,8 +16,13 @@ export default async function Server(props: IComponentProps) {
       await subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFind(
         scope,
       );
-    const profile = profiles.find((item) => item.id === props.profileId);
-    const target = { ...scope, targetSocialModuleProfileId: props.profileId };
+    const profile = profiles.find(
+      (item) => item.id === props.socialModuleProfileId,
+    );
+    const target = {
+      ...scope,
+      targetSocialModuleProfileId: props.socialModuleProfileId,
+    };
     const skillsPromise =
       profile?.variant === "artificial-intelligence"
         ? subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdSkillFind(

@@ -21,13 +21,29 @@ Blog widgets are reusable content blocks that render article and category lists 
 
 - `default`: placeholder widget view.
 - `category-list-default`: renders a card with all categories listed.
-- `category-overview-default`: layout wrapper for category overview content.
+- `category-overview-default`: selects and renders the Category identified by the Page map.
 - `article-list-default`: renders a card with related articles (or all articles if no relation).
-- `article-overview-default`: layout wrapper for article overview content.
-- `article-overview-with-private-content-default`: wrapper variant for private/child content.
-- `article-overview-ecommerce-module-product-list-default`: layout wrapper for article + ecommerce product lists.
+- `article-overview-default`: selects and renders the Article identified by the Page map.
+- `article-overview-with-private-content-default`: Article view with a higher-module private-content slot.
+- `article-overview-ecommerce-module-product-list-default`: related Product views with a higher-module purchase slot.
 - `find`: data-fetch wrapper for querying widgets.
 - `admin-form`: admin create/edit form for localized fields and metadata.
 - `admin-select-input`: admin select input for choosing a widget.
 - `admin-table`: admin table listing widgets.
 - `admin-table-row`: admin row showing widget fields.
+
+## Page context and higher-module slots
+
+Article overview Widgets select `blog.articles.slug` from readonly `routeParams`;
+Category overview selects `blog.categories.slug`. They read the matching entity
+through public model components and keep lower views on explicit loaded data.
+Missing keys do not issue unfiltered reads. Host dispatches saved Widgets through
+the public registry with dataSource=props. Stored Widget records and content
+remain unchanged.
+
+Private Article composition exposes `renderPrivateContent({ data: article })`.
+Article products expose `renderProduct({ data: product })`, with a public
+Ecommerce view as the default. Host supplies the RBAC operations in those typed
+slots; Blog imports no RBAC code. Callbacks execute beside the owning reader and
+produce JSX before any client boundary. Lower entity reads do not receive the
+routing map.

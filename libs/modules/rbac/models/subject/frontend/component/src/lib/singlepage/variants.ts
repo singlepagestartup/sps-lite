@@ -1,3 +1,4 @@
+import { Component as MeBlogModuleArticlePrivateContentDefault } from "./me-blog-module-article-private-content-default";
 import { Component as MeNavigationControlsAiChat } from "./me-navigation-controls-ai-chat";
 import { Component as MeEcommerceModuleProductCartRowDefault } from "./me-ecommerce-module-product-cart-row-default";
 import { Component as MeEcommerceModuleProductOverviewDefault } from "./me-ecommerce-module-product-overview-default";
@@ -82,6 +83,8 @@ import { Component as SocialModuleProfileChatListDefault } from "./social-module
 import { Component as SocialModuleProfileChatOverviewDefault } from "./social-module/profile/chat/overview/default";
 
 export const variants = {
+  "me-blog-module-article-private-content-default":
+    MeBlogModuleArticlePrivateContentDefault,
   "me-navigation-controls-ai-chat": MeNavigationControlsAiChat,
   "me-ecommerce-module-product-cart-row-default":
     MeEcommerceModuleProductCartRowDefault,

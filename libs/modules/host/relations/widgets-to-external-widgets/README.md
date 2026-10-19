@@ -18,18 +18,34 @@ adapter supplies account/project controls and route presentation flags through
 children; public Widget record reads do not consume session cookies. Subject
 controls own their authenticated client SDK reads.
 
-Host leaf compositions read named URL values through Page variant=url-segment-values
-and its render callback. The RBAC adapter loads the exact target, selects the
-required IDs/slugs inside that callback and renders its saved variant through
-the public RBAC Widget entrypoint with dataSource=props. Routing maps are not
-threaded through Page, Widget or relation props. There is no private RBAC Widget
-or Subject registry or screen-specific branch. RBAC owns Subject/session wrappers
-and functional view composition.
+The external-Widget leaf uses Page variant=url-segment-values and its render
+callback once for the selected association. It passes the complete original
+`routeParams` map to route-dependent module Widgets. Host adapters select no
+business resource keys for those Widgets; unknown keys remain available to
+project extensions. Upper Page, Layout and Host Widget components do not drill
+the map through their props. Non-Widget navigation Subject controls remain
+explicit JSX slots; presentation Widgets receive rendered controls.
 
-Existing Ecommerce Product adapters forward to public RBAC product-card
-compositions for compatibility. RBAC provides authenticated cart/checkout
-controls to Ecommerce slots. Host retains module integration and pure route
-presentation flags; relation filters do not reach a target Widget SDK.
+RBAC, Blog and Social Widgets select their full routing keys and pass explicit
+resource inputs or loaded records to Content and lower model components. Host
+has no private Widget registries for these modules or Ecommerce. Blog exposes
+renderPrivateContent and renderProduct slots, and Social exposes renderChat and
+chatList slots for RBAC-owned operations. Those callbacks resolve within the
+same runtime before JSX crosses a client boundary. No lower module imports RBAC.
+
+Purchasing scenarios target RBAC Widgets and their exact Website Builder
+presentation links. Product cards, prices and media remain Ecommerce; Subject
+owns scoped cart/checkout controls. Relation filters do not reach a target
+Widget SDK. Routing maps do not become entity SDK parameters or query keys.
+
+Four existing purchasing configurations transfer through
+`tools/runtime/ecommerce-widget-links.ts`. Prepare it with explicit Host link
+and source Ecommerce Widget IDs, inspect the before manifest, then apply it.
+The active Host association IDs and order stay unchanged. An inactive hidden
+association preserves each original seed lookup key. Source Widgets and their links
+are retained for rollback. Website Builder copies preserve localized title,
+subtitle, description, anchor and className. Repeat application is safe; the
+command refuses stale records and writes Host bindings last.
 
 ## Fields
 

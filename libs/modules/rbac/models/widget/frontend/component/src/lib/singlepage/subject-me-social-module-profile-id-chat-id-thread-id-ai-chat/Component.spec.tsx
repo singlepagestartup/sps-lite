@@ -42,9 +42,12 @@ it.each([Workspace, Settings])(
       variant: "workspace",
       data: { id: mockRecord.id },
       language: "en",
-      profileId: "profile",
-      chatId: "chat",
-      threadId: "thread",
+      routeParams: {
+        "social.profiles.id": "profile",
+        "social.chats.id": "chat",
+        "social.threads.id": "thread",
+        other: "unrelated",
+      },
     } as any);
     const readerTree = (publicElement.type as any)(publicElement.props);
     const reader = findServerReader(readerTree)!;
@@ -54,6 +57,13 @@ it.each([Workspace, Settings])(
     const clientElement = (loaded.type as any)(loaded.props);
     expect(clientElement.props.data).toBe(mockRecord);
     expect(clientElement.props.isServer).toBe(false);
+    expect(clientElement.props).not.toHaveProperty("routeParams");
+    if (Variant === Workspace)
+      expect(clientElement.props).toMatchObject({
+        socialModuleProfileId: "profile",
+        socialModuleChatId: "chat",
+        socialModuleThreadId: "thread",
+      });
     for (const name of [
       "api",
       "clientApi",

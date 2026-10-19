@@ -22,3 +22,8 @@ export {
   Middleware as RequestSubjectCanManageChatAgentProfile,
   type IMiddlewareGeneric as IRequestSubjectCanManageChatAgentProfileMiddlewareGeneric,
 } from "./lib/request-subject-can-manage-chat-agent-profile";
+
+export {
+  Middleware as RequestSubjectOwnsEcommerceModuleOrder,
+  type IMiddlewareGeneric as IRequestSubjectOwnsEcommerceModuleOrderMiddlewareGeneric,
+} from "./lib/request-subject-owns-ecommerce-module-order";

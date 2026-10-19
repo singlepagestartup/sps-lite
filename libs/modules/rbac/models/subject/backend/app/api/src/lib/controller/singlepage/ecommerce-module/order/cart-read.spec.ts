@@ -40,10 +40,8 @@ function createContext(params?: unknown) {
   return {
     get: () => {
       if (!params) return params;
-      const { includePurchaseDetails, ...parsed } = params as Record<
-        string,
-        unknown
-      >;
+      const { includePurchaseDetails, includeCartDetails, ...parsed } =
+        params as Record<string, unknown>;
       return parsed;
     },
     req: {
@@ -281,5 +279,72 @@ describe("Subject order history", () => {
         },
       ],
     });
+  });
+});
+
+describe("Private cart projection", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    authorizationMock.mockReturnValue("token");
+    verifyMock.mockResolvedValue({ subject: { id: "subject-1" } });
+  });
+  it("expands only the caller's active orders, even with broad OR filters", async () => {
+    const { service, orderFind } = createService();
+    orderFind.mockResolvedValue([
+      { id: "order-1", type: "cart", status: "new" },
+      { id: "foreign", type: "cart", status: "new" },
+      { id: "old", type: "history", status: "paid" },
+    ]);
+    service.subjectsToEcommerceModuleOrders.find.mockResolvedValue([
+      { ecommerceModuleOrderId: "order-1" },
+      { ecommerceModuleOrderId: "old" },
+    ]);
+    service.ecommerceModule.order.findByIdCartDetails = jest
+      .fn()
+      .mockResolvedValue({
+        lines: [{ id: "my-line", productId: "product", quantity: 2 }],
+        totals: [{ total: 250 }],
+      });
+    service.ecommerceModule.storesToOrders = {
+      find: jest.fn().mockResolvedValue([{ storeId: "store" }]),
+    };
+    const result = await new ListHandler(service).execute(
+      createContext({
+        includeCartDetails: "true",
+        filters: { or: [{ column: "status", method: "eq", value: "paid" }] },
+      }),
+      jest.fn(),
+    );
+    expect(result).toEqual({
+      data: [
+        {
+          id: "order-1",
+          type: "cart",
+          status: "new",
+          cartDetails: {
+            lines: [{ id: "my-line", productId: "product", quantity: 2 }],
+            totals: [{ total: 250 }],
+            storeIds: ["store"],
+          },
+        },
+      ],
+    });
+    expect(
+      service.ecommerceModule.order.findByIdCartDetails,
+    ).toHaveBeenCalledTimes(1);
+    expect(
+      service.ecommerceModule.order.findByIdCartDetails,
+    ).toHaveBeenCalledWith({ id: "order-1" });
+  });
+  it("rejects a token for a different subject before reading data", async () => {
+    const { service } = createService();
+    verifyMock.mockResolvedValue({ subject: { id: "other" } });
+    await expect(
+      new ListHandler(service).execute(
+        createContext({ includeCartDetails: "true" }),
+        jest.fn(),
+      ),
+    ).rejects.toThrow();
+    expect(service.subjectsToEcommerceModuleOrders.find).not.toHaveBeenCalled();
   });
 });

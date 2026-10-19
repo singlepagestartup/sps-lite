@@ -56,13 +56,12 @@ placeholder. Поле не хранится в таблице. Общий extrac
 сохраняются. Несуществующий ключ возвращает null, включая маршрут с пропущенной
 pagination; значение 1 относится только к pagination token.
 
-Host entrypoint удаляет locale, разрешает Page один раз и передаёт загруженную
-запись через dataSource=props. Page и её Widget/relation-композиции передают
-routeParams как обычные props. Startup-композиции Host, создающие Widget вне
-этой цепочки, также передают карту от разрешённой Page; передача только URL
-больше не запускает скрытые поэлементные запросы в адаптере. Layout получает готовые nodes. RBAC Widget
-выбирает ключи своей операции; standalone callers сохраняют явные
-profileId/chatId/threadId. Host не импортируется из RBAC.
+Host entrypoint удаляет locale и разрешает Page. Leaf-композиция внешнего Widget
+использует Page render-reader и передаёт полную карту routeParams в Widget
+модуля. Верхние Page, Layout и Host Widget передают URL и готовые nodes; карта
+через них не проходит. Widget модуля выбирает полные ключи своей операции,
+проверяет обязательные значения и передаёт Content/Subject явные props.
+RBAC не импортирует Host; общий readonly IRouteParams находится в shared-utils.
 
 В базовом дереве Host было 23 JSX-вызова url-segment-value в 17 файлах. В текущих
 адаптерах таких вызовов нет. Частные реестры rbac/widget и rbac/subject удалены
@@ -71,12 +70,18 @@ Widget с dataSource=props. Семь legacy Widget-композиций нахо
 со своими view; девять session/Subject wrappers, три Product compositions и
 навигационные controls зарегистрированы в публичном RBAC Subject.
 
-Ecommerce Product сохраняет презентацию и JSX slots. RBAC собирает в этих
-слотах scoped cart/checkout. Старые Host Product views и navbar integration
-остаются тонкими forwarding adapters для сохранённых конфигураций: в них нет
-получения текущего Subject или реализации операции. Saved Widget IDs,
-локализованный контент и relation records этим этапом не меняются; миграция БД
-для routeParams не требуется.
+Ecommerce Product сохраняет данные, представление и JSX slots. RBAC Subject
+собирает scoped cart/checkout; четыре сценария каталога, товара, категории и
+магазина находятся в публичных RBAC Widget variants. Их внешняя композиция и
+сохранённые тексты принадлежат связанному Website Builder Widget. Частных
+реестров Ecommerce Product, Order и Widget в Host нет. Host разрешает точный
+внешний Widget и передаёт ему полную карту из Page render-reader.
+
+SDK-команда tools/runtime/ecommerce-widget-links.ts переносит сохранённые
+подключения с before manifest, повторным применением и откатом. Она сохраняет
+ID и порядок активных Host-связей, исходные Ecommerce Widgets и локализованный
+контент. Связи hidden сохраняют исходные seed lookup keys. Схемы и seed snapshots
+не меняются. Публичные списки категорий и магазинов остаются в Ecommerce.
 
 authentication-me остаётся RBAC session reader: URL не определяет текущего
 пользователя. Resource ownership и Thread–Chat membership проверяются scoped
@@ -257,9 +262,12 @@ callback. The client/server reader calls the existing findByUrl SDK and returns
 the complete named map as data. Client readers for one URL share the SDK query.
 The backend response field routeParams and scalar API remain available.
 
-Page, Host Widget and relation props no longer carry the map. The callback
-selects explicit profileId/chatId/threadId or subjectSlug inputs for RBAC; Blog,
-Social and Ecommerce adapters select their own URL values in the same way.
+The external-Widget leaf forwards the original routeParams map into module
+Widgets. RBAC selects its full Social, Subject and Ecommerce keys; Blog and
+Social select their own resource keys. Content, model components and client
+views receive explicit inputs. Host dispatches through public Widget registries;
+Blog/Social typed slots compose RBAC operations without upward imports.
+
 RBAC retains session and mutation ownership and imports no Host component.
 The missing ./widget import was present in an uncommitted local copy of the old
 Host adapter; the public RBAC registry owns those implementations.

@@ -41,3 +41,12 @@ subscribes to the contributing collection topics. The shared topic rule in
 HTTP-cache generations, so a refetch after a quantity, price, relation or
 currency mutation reads a fresh aggregate response. Additional aggregate
 inputs must be covered in both the query and the backend topic rule.
+
+## Cart detail capability
+
+The backend Service exposes findByIdCartDetails for a caller that has already
+established Order access. It loads the Order's lines, only their referenced
+Products and totals through existing services. It does not establish a Subject
+or bypass caller authorization. The RBAC Subject order-list endpoint supplies
+ownership scope and a consistent read snapshot before invoking this capability.
+The SDK model exports ICartDetails; no database field or migration is needed.

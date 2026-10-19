@@ -1,3 +1,11 @@
+import type { IModel as IOrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/sdk/model";
+import type { IModel as IProduct } from "@sps/ecommerce/models/product/sdk/model";
+
+export interface ICartDetails {
+  lines: (IOrdersToProducts & { product: IProduct | null })[];
+  totals: { total: number; billingModuleCurrency: IBillingModuleCurrency }[];
+}
+
 import type { IModel as IBillingModuleCurrency } from "@sps/billing/models/currency/sdk/model";
 import type { IModel as IFileStorageModuleFile } from "@sps/file-storage/models/file/sdk/model";
 

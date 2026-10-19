@@ -4,6 +4,7 @@ export const variant = "me-ecommerce-module-product-overview-default" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   product: IProduct;
+  store?: import("@sps/ecommerce/models/store/sdk/model").IModel;
   language: string;
 }
 export interface IProductDetailProps extends ISpsComponentBase {

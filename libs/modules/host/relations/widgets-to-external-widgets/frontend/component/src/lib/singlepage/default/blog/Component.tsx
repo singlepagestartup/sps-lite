@@ -1,8 +1,7 @@
-import { IComponentPropsExtended } from "../interface";
+import type { IExternalWidgetProps } from "../interface";
 import { Component as BlogModuleWidget } from "@sps/blog/models/widget/frontend/component";
-import { Component as Widget } from "./widget";
-
-export function Component(props: IComponentPropsExtended) {
+import { Component as RbacModuleSubject } from "@sps/rbac/models/subject/frontend/component";
+export function Component(props: IExternalWidgetProps) {
   return (
     <BlogModuleWidget
       isServer={props.isServer}
@@ -21,21 +20,35 @@ export function Component(props: IComponentPropsExtended) {
         },
       }}
     >
-      {({ data }) => {
-        return data?.map((entity, index) => {
-          return (
-            <BlogModuleWidget
-              key={index}
-              isServer={props.isServer}
-              data={entity}
-              language={props.language}
-              variant={entity.variant as any}
-            >
-              <Widget {...props} data={entity} variant={entity.variant} />
-            </BlogModuleWidget>
-          );
-        });
-      }}
+      {({ data }) =>
+        data?.map((entity) => (
+          <BlogModuleWidget
+            key={entity.id}
+            isServer={props.isServer}
+            dataSource="props"
+            data={entity}
+            language={props.language}
+            routeParams={props.routeParams}
+            variant={entity.variant as any}
+            renderPrivateContent={({ data }) => (
+              <RbacModuleSubject
+                isServer={props.isServer}
+                variant="me-blog-module-article-private-content-default"
+                blogModuleArticle={data}
+                language={props.language}
+              />
+            )}
+            renderProduct={({ data }) => (
+              <RbacModuleSubject
+                isServer={props.isServer}
+                variant="me-ecommerce-module-product-card-default"
+                product={data}
+                language={props.language}
+              />
+            )}
+          />
+        ))
+      }
     </BlogModuleWidget>
   );
 }

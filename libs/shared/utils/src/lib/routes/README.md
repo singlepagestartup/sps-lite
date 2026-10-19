@@ -116,3 +116,8 @@ values, ignores query/hash, returns an empty map for static routes and supplies
 1 only for an omitted pagination token. It rejects mismatched masks and
 repeated keys. Locale removal belongs to the Host entrypoint; this helper does
 not query models, choose among Page records or authorize access.
+
+`IRouteParams` is the neutral readonly map of named Page placeholders. Values are
+strings or undefined for missing keys. Module Widgets use this type without
+importing Host; the keys retain their full names such as social.chats.id.
+The map describes routing context and grants no resource access.

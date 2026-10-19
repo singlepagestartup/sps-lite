@@ -8,6 +8,7 @@ import QueryString from "qs";
 import {
   IModel as IEcommerceModuleOrder,
   type IPurchaseDetails,
+  type ICartDetails,
 } from "@sps/ecommerce/models/order/sdk/model";
 
 export interface IProps {
@@ -17,6 +18,7 @@ export interface IProps {
   revalidate?: number;
   params?: {
     includePurchaseDetails?: boolean;
+    includeCartDetails?: boolean;
     [key: string]: any;
   };
   options?: Partial<NextRequestOptions>;
@@ -24,6 +26,7 @@ export interface IProps {
 
 export type IResult = (IEcommerceModuleOrder & {
   purchaseDetails?: IPurchaseDetails;
+  cartDetails?: ICartDetails & { storeIds: string[] };
 })[];
 
 export async function action(props: IProps): Promise<IResult> {

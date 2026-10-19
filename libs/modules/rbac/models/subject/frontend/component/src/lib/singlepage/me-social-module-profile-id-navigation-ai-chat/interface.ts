@@ -1,6 +1,9 @@
 import type { IResult } from "@sps/rbac/models/subject/sdk/server";
-import type { IComponentPropsExtended as IParentExtended } from "@sps/shared-frontend-components/singlepage/subject-default/interface";
-import type { IComponentProps as IParent } from "@sps/shared-frontend-components/singlepage/subject-default/interface";
+import type {
+  IComponentPropsExtended as IParentExtended,
+  IComponentProps as IParent,
+} from "@sps/shared-frontend-components/singlepage/subject-default/interface";
+
 import type { ReactNode } from "react";
 import type {
   IModel,
@@ -13,7 +16,7 @@ export const variant =
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   project: IAIChatProject;
   language?: string;
-  threadId?: string;
+  socialModuleThreadId?: string;
   selected?: "settings" | "create";
 }
 export interface IComponentPropsExtended

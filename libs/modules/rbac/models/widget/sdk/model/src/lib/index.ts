@@ -15,6 +15,10 @@ export const serverHost = API_SERVICE_URL;
 export const clientHost = NEXT_PUBLIC_API_SERVICE_URL;
 export const route = "/api/rbac/widgets";
 export const variants = [
+  "subject-me-ecommerce-module-product-list-default",
+  "subject-me-ecommerce-module-product-overview-default",
+  "subject-me-ecommerce-module-category-overview-default",
+  "subject-me-ecommerce-module-store-overview-default",
   "subject-ecommerce-order",
   "subject-ecommerce-product-list-default",
   "subject-me-crm-module-form-support-ai-chat",

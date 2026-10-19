@@ -5,10 +5,10 @@ import { Component as Subject } from "@sps/rbac/models/subject/frontend/componen
 import { api as subjectApi } from "@sps/rbac/models/subject/sdk/server";
 import { clientHost } from "@sps/rbac/models/subject/sdk/model";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import type { IComponentPropsExtended } from "./interface";
+import type { IClientComponentProps } from "./interface";
 import { Component as WorkspaceSkeleton } from "./Skeleton";
 import { Component as WorkspaceNotice } from "./Error";
-export function Component(props: IComponentPropsExtended) {
+export function Component(props: IClientComponentProps) {
   return (
     <div
       data-module="rbac"
@@ -44,8 +44,8 @@ export function Component(props: IComponentPropsExtended) {
               renderProjects={({ projects }) => {
                 const project = projects.find(
                   (item) =>
-                    item.profile.id === props.profileId &&
-                    item.chat.id === props.chatId,
+                    item.profile.id === props.socialModuleProfileId &&
+                    item.chat.id === props.socialModuleChatId,
                 );
                 if (!project)
                   return (
@@ -62,7 +62,7 @@ export function Component(props: IComponentPropsExtended) {
                     language={props.language}
                     data={data}
                     project={project}
-                    threadId={props.threadId}
+                    socialModuleThreadId={props.socialModuleThreadId}
                   />
                 );
                 return (
@@ -102,7 +102,7 @@ export function Component(props: IComponentPropsExtended) {
                           data={data}
                           project={project}
                           navigation={navigation}
-                          threadId={props.threadId}
+                          socialModuleThreadId={props.socialModuleThreadId}
                           renderLoadError={({ retry, unavailable }) => (
                             <WorkspaceNotice
                               state={unavailable ? "access-denied" : "error"}

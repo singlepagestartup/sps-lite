@@ -1,4 +1,8 @@
 import {
+  Service as EcommerceOrderAccess,
+  type IExecuteProps as IEcommerceOrderAccessProps,
+} from "./ecommerce/order/access";
+import {
   Service as CrmFormRequestCreate,
   type IExecuteProps as ICrmFormRequestCreateProps,
 } from "./crm/form/request";
@@ -235,6 +239,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     this.subjectsToRoles = subjectsToRoles;
     this.subjectsToEcommerceModuleOrders = subjectsToEcommerceModuleOrders;
     this.subjectsToBillingModuleCurrencies = subjectsToBillingModuleCurrencies;
+  }
+
+  async ecommerceModuleOrderAssertAccess(props: IEcommerceOrderAccessProps) {
+    return new EcommerceOrderAccess({
+      subjectsToOrders: this.subjectsToEcommerceModuleOrders,
+      ordersToProducts: this.ecommerceModule.ordersToProducts,
+    }).execute(props);
   }
 
   async isAuthorized(props: IIsAuthorizedExecuteProps): Promise<any> {

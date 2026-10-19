@@ -1,3 +1,4 @@
+import type { IComponentProps as IContentEcommerceDefault } from "./content-ecommerce-default/interface";
 import type { IComponentProps as IContentAiChatResetPassword } from "./content-ai-chat-reset-password/interface";
 import type { IComponentProps as IContentAiChatForgotPassword } from "./content-ai-chat-forgot-password/interface";
 import type { IComponentProps as IContentAiChatRegistration } from "./content-ai-chat-registration/interface";
@@ -24,6 +25,7 @@ import { IComponentProps as IContentDefaultComponentProps } from "./content-defa
 import { IComponentProps as IFooterDefaultComponentProps } from "./footer-default/interface";
 import { IComponentProps as INavbarDefaultComponentProps } from "./navbar-default/interface";
 export type IComponentProps =
+  | IContentEcommerceDefault
   | IContentAiChatResetPassword
   | IContentAiChatForgotPassword
   | IContentAiChatRegistration

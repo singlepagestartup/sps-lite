@@ -7,7 +7,9 @@ import type { IComponentPropsExtended, ISourceFilesProps } from "./interface";
 
 export function Component(props: IComponentPropsExtended) {
   const profiles = props.profilesRead;
-  const profile = profiles.data?.find((item) => item.id === props.profileId);
+  const profile = profiles.data?.find(
+    (item) => item.id === props.socialModuleProfileId,
+  );
   const skills = props.skillsRead;
   const knowledge = props.knowledgeRead;
   if (profiles.isPending)

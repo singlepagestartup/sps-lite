@@ -6,6 +6,7 @@ export {
   selectSchema,
 } from "@sps/host/models/page/backend/repository/database";
 import {
+  type IRouteParams,
   API_SERVICE_URL,
   NEXT_PUBLIC_API_SERVICE_URL,
   NextRequestOptions,
@@ -25,5 +26,5 @@ export const options = {
 
 /** Computed routing response; routeParams is not stored on the Page table. */
 export interface IResolvedPage extends ISelectSchema {
-  routeParams: Record<string, string>;
+  routeParams: IRouteParams;
 }

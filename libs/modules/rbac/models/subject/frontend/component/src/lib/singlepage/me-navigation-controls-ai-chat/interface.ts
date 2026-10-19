@@ -3,7 +3,7 @@ export const variant = "me-navigation-controls-ai-chat" as const;
 export interface IComponentProps extends ISpsComponentBase {
   variant: typeof variant;
   language: string;
-  profileId?: string;
-  chatId?: string;
+  socialModuleProfileId?: string;
+  socialModuleChatId?: string;
   settingsSelected?: boolean;
 }

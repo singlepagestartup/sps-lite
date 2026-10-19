@@ -18,6 +18,7 @@ import {
   RequestSocialModuleThreadBelongsToChat,
   RequestSubjectCanManageChatAgentProfile,
   RequestSubjectIdOwner,
+  RequestSubjectOwnsEcommerceModuleOrder,
   RequestSubjectOwnsSocialModuleChat,
   RequestSubjectOwnsIdentity,
 } from "../../../../../middlewares";
@@ -343,11 +344,13 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "POST",
         path: "/:id/ecommerce-module/orders",
         handler: this.ecommerceModuleOrderCreate,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "POST",
         path: "/:id/ecommerce-module/products/:productId/checkout",
         handler: this.ecommerceModuleProductIdCheckout,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "POST",
@@ -358,31 +361,43 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "GET",
         path: "/:id/ecommerce-module/orders/quantity",
         handler: this.ecommerceModuleOrderQuantity,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "GET",
         path: "/:id/ecommerce-module/orders/total",
         handler: this.ecommerceModuleOrderTotal,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "GET",
         path: "/:id/ecommerce-module/orders",
         handler: this.ecommerceModuleOrderList,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "POST",
         path: "/:id/ecommerce-module/orders/checkout",
         handler: this.ecommerceModuleOrderCheckout,
+        middlewares: [new RequestSubjectIdOwner().init({ requireJwt: true })],
       },
       {
         method: "GET",
         path: "/:id/ecommerce-module/orders/:orderId/quantity",
         handler: this.ecommerceModuleOrderIdQuantity,
+        middlewares: [
+          new RequestSubjectIdOwner().init({ requireJwt: true }),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "GET",
         path: "/:id/ecommerce-module/orders/:orderId/total",
         handler: this.ecommerceModuleOrderIdTotal,
+        middlewares: [
+          new RequestSubjectIdOwner().init({ requireJwt: true }),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "POST",
@@ -400,6 +415,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "PATCH",
         path: "/:id/ecommerce-module/orders/:orderId",
         handler: this.ecommerceModuleOrderIdUpdate,
+        middlewares: [
+          new RequestSubjectIdOwner().init({ requireJwt: true }),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "DELETE",
@@ -416,6 +435,10 @@ export class Controller extends RESTController<(typeof Table)["$inferSelect"]> {
         method: "DELETE",
         path: "/:id/ecommerce-module/orders/:orderId",
         handler: this.ecommerceModuleOrderIdDelete,
+        middlewares: [
+          new RequestSubjectIdOwner().init({ requireJwt: true }),
+          new RequestSubjectOwnsEcommerceModuleOrder(this.service).init(),
+        ],
       },
       {
         method: "PATCH",

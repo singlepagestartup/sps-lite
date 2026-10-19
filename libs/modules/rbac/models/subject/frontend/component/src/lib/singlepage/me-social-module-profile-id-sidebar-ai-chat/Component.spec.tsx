@@ -73,7 +73,7 @@ it("shows all Knowledge and Skills of the selected Chat profile through owner-sc
           profile: { id: "project" },
           chat: { id: "chat" },
         },
-        profileId: "assistant",
+        socialModuleProfileId: "assistant",
         onClose: close,
       } as any)}
     />,

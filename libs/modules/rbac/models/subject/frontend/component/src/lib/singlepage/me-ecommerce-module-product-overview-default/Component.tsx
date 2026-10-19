@@ -38,6 +38,7 @@ export function Component(props: IComponentProps) {
         <RbacSubject
           isServer={props.isServer}
           product={props.product}
+          store={props.store}
           language={props.language}
           variant="me-ecommerce-module-product-cart-default"
           className="w-full"
@@ -45,6 +46,7 @@ export function Component(props: IComponentProps) {
         <RbacSubject
           isServer={props.isServer}
           product={props.product}
+          store={props.store}
           language={props.language}
           variant="me-ecommerce-module-product-checkout-default"
           className="w-full"

@@ -6,8 +6,8 @@ export function Component(props: IComponentProps) {
       isServer={false}
       variant={props.variant}
       language={props.language}
-      profileId={props.profileId}
-      chatId={props.chatId}
+      socialModuleProfileId={props.socialModuleProfileId}
+      socialModuleChatId={props.socialModuleChatId}
       settingsSelected={props.settingsSelected}
     />
   );

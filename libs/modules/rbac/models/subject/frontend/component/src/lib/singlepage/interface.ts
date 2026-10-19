@@ -1,3 +1,4 @@
+import type { IComponentProps as IMeBlogModuleArticlePrivateContentDefault } from "./me-blog-module-article-private-content-default/interface";
 import type { IComponentProps as IMeNavigationControlsAiChatInterface } from "./me-navigation-controls-ai-chat/interface";
 import type { IComponentProps as IMeEcommerceModuleProductCartRowDefaultInterface } from "./me-ecommerce-module-product-cart-row-default/interface";
 import type { IComponentProps as IMeEcommerceModuleProductOverviewDefaultInterface } from "./me-ecommerce-module-product-overview-default/interface";
@@ -83,6 +84,7 @@ import { IComponentProps as ISocialModuleProfileChatListDefaultComponentProps } 
 import { IComponentProps as ISocialModuleProfileChatOverviewDefaultComponentProps } from "./social-module/profile/chat/overview/default/interface";
 
 export type IComponentProps =
+  | IMeBlogModuleArticlePrivateContentDefault
   | IMeNavigationControlsAiChatInterface
   | IMeEcommerceModuleProductCartRowDefaultInterface
   | IMeEcommerceModuleProductOverviewDefaultInterface

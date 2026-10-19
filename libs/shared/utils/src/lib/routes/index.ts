@@ -1,3 +1,6 @@
+/** Named values resolved from a Page mask; missing keys remain undefined. */
+export type IRouteParams = Readonly<Record<string, string | undefined>>;
+
 /**
  * Shared, dependency-free route-matching primitive (issue #195 DX follow-up).
  *

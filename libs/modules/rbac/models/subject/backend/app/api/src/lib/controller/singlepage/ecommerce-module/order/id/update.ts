@@ -55,7 +55,17 @@ export class Handler {
 
       const data = JSON.parse(body["data"]);
 
-      if (!data.ordersToProducts) {
+      if (
+        !Array.isArray(data.ordersToProducts) ||
+        !data.ordersToProducts.length ||
+        data.ordersToProducts.some(
+          (line: { id?: string; quantity?: number }) =>
+            !line ||
+            typeof line.id !== "string" ||
+            !Number.isSafeInteger(line.quantity) ||
+            Number(line.quantity) <= 0,
+        )
+      ) {
         throw new Error("Validation error. No ordersToProducts provided");
       }
 
@@ -66,6 +76,12 @@ export class Handler {
       if (!entity) {
         throw new Error("Not Found error. No entity found");
       }
+
+      await this.service.ecommerceModuleOrderAssertAccess({
+        subjectId: id,
+        orderId,
+        lineIds: data.ordersToProducts.map((line: { id: string }) => line.id),
+      });
 
       const order = await this.service.ecommerceModule.order.findById({
         id: orderId,
@@ -81,7 +97,14 @@ export class Handler {
 
       await ecommerceOrderApi.update({
         id: orderId,
-        data,
+        data: {
+          ordersToProducts: data.ordersToProducts.map(
+            (line: { id: string; quantity: number }) => ({
+              id: line.id,
+              quantity: line.quantity,
+            }),
+          ),
+        },
         options: {
           headers: {
             "X-RBAC-SECRET-KEY": RBAC_SECRET_KEY,

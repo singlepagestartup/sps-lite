@@ -67,6 +67,17 @@ jest.mock(
   }),
 );
 
+jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
+  Component: (props: any) =>
+    props.children?.({
+      data: [
+        {
+          id: "order-1",
+          cartDetails: { lines: [{ id: "line-1", quantity: 1 }] },
+        },
+      ],
+    }),
+}));
 import { Component } from "./ClientComponent";
 
 describe("Given: order update-default action component", () => {

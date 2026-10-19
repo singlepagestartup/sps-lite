@@ -14,10 +14,12 @@ export default function Client(props: IComponentProps) {
   };
   const profiles =
     subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFind(scope);
-  const profile = profiles.data?.find((item) => item.id === props.profileId);
+  const profile = profiles.data?.find(
+    (item) => item.id === props.socialModuleProfileId,
+  );
   const target = {
     ...scope,
-    targetSocialModuleProfileId: props.profileId,
+    targetSocialModuleProfileId: props.socialModuleProfileId,
     reactQueryOptions: {
       enabled: !!profile && profile.variant === "artificial-intelligence",
     },
@@ -57,7 +59,7 @@ export default function Client(props: IComponentProps) {
           <SourceFilesReader
             key={source.id}
             scope={scope}
-            profileId={props.profileId}
+            socialModuleProfileId={props.socialModuleProfileId}
             sourceId={source.id}
           />,
         ]),
@@ -67,14 +69,14 @@ export default function Client(props: IComponentProps) {
 }
 function SourceFilesReader({
   scope,
-  profileId,
+  socialModuleProfileId,
   sourceId,
 }: ISourceFilesReaderProps) {
   const files =
     subjectApi.socialModuleProfileFindByIdChatFindByIdProfileFindByIdKnowledgeSourceFindByIdFilesFind(
       {
         ...scope,
-        targetSocialModuleProfileId: profileId,
+        targetSocialModuleProfileId: socialModuleProfileId,
         knowledgeModuleSourceId: sourceId,
       },
     );

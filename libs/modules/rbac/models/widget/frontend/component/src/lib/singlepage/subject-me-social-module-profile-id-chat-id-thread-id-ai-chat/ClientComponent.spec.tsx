@@ -63,8 +63,8 @@ const props = {
   isServer: false,
   data: { id: "widget" },
   language: "ru",
-  profileId: "owned-profile",
-  chatId: "owned-chat",
+  socialModuleProfileId: "owned-profile",
+  socialModuleChatId: "owned-chat",
 };
 
 beforeEach(() => {
@@ -104,7 +104,9 @@ it.each([Thread, ThreadCreate, ProjectSettings])(
   "keeps the access-denied result for an authenticated foreign-project visitor",
   (View) => {
     const html = renderToStaticMarkup(
-      <View {...({ ...props, profileId: "foreign-profile" } as any)} />,
+      <View
+        {...({ ...props, socialModuleProfileId: "foreign-profile" } as any)}
+      />,
     );
     expect(html).toContain("This project is unavailable in your workspace.");
     expect(html).not.toContain("Workspace content");

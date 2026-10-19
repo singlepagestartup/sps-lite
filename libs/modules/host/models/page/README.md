@@ -8,7 +8,8 @@ for the page. Page resolves the Layout's default and additional Widget links,
 composes their Host Widgets with the current route, and supplies ready nodes to
 the Layout. The Layout and its relation presenters receive no URL. Host leaf
 compositions use the Page url-segment-values render-reader to obtain named URL
-values. Domain Widgets receive their explicit IDs or slugs; Host retains
+values. Domain Widgets receive the complete readonly routeParams map and select
+explicit resource props for their Content and model views. Host retains
 presentation flags without interpreting business screens.
 
 ## Fields
@@ -60,12 +61,15 @@ Host leaf compositions use the public Page component:
 
 ```tsx
 <Page isServer={props.isServer} variant="url-segment-values" url={props.url}>
-  {({ data }) => <RbacModuleWidget isServer={props.isServer} variant="subject-me-social-module-profile-id-chat-id-thread-id-ai-chat" dataSource="props" data={widget} profileId={data?.["social.profiles.id"]} chatId={data?.["social.chats.id"]} threadId={data?.["social.threads.id"]} />}
+  {({ data }) => <RbacModuleWidget isServer={props.isServer} variant="subject-me-social-module-profile-id-chat-id-thread-id-ai-chat" dataSource="props" data={widget} routeParams={data} />}
 </Page>
 ```
 
-The map stays inside that callback. Page, layout, Widget and relation props do
-not carry it. Repeated readers for the same URL share the client SDK query;
+The leaf callback passes the map unchanged to the module Widget. Upper Page,
+Layout and Host Widget compositions do not drill it through the tree. The module
+Widget selects full keys and supplies explicit IDs/slugs to its lower views.
+`IRouteParams` lives in shared route utilities and represents missing keys as
+undefined. Repeated readers for the same URL share the client SDK query;
 background refetch retains the mounted child. The server path uses the same
 findByUrl SDK operation. A static Page supplies `{}`, and an unresolved Page
 supplies `undefined`. A profile/chat/thread screen needs one map read instead

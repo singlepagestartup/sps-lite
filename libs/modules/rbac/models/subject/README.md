@@ -10,6 +10,31 @@ Subjects represent visitors, registered accounts and actors, and connect identit
 - Frontend variants such as `me-ecommerce-module-product-cart-default`, `me-ecommerce-module-product-checkout-default`, and `me-ecommerce-module-cart-default` are the supported entry points for host/cart behavior.
 - Dependency direction is one-way: `rbac > ecommerce`. RBAC may compose ecommerce SDK/components; ecommerce must not import RBAC subject implementation.
 
+### Current-Subject cart reads
+
+`GET /api/rbac/subjects/:id/ecommerce-module/orders?includeCartDetails=true`
+returns only that Subject's active cart orders, including `cartDetails.lines`
+(with Product records), `cartDetails.totals` and `cartDetails.storeIds`. Owner
+scope and active-cart restrictions are enforced even with caller filters.
+The projection runs in withConsistencySnapshot; the lower Ecommerce
+findByIdCartDetails capability owns line/product loading and amount calculation.
+Products remain Ecommerce models.
+
+Product controls, quantity editing and the cart sheet use the Subject order-list
+render-reader with this parameter. Their matching SDK query is shared; they do
+not fetch personal Order or OrdersToProducts data through generic Ecommerce
+read endpoints. Public Product price/media readers remain Ecommerce operations.
+The cart sheet groups the server-calculated amounts by currency from the same
+projection as its rows; it makes no separate total request and hides checkout
+when the cart is empty. The extended response has its own query key; captured dependencies and the
+legacy SDK topics retain cross-client invalidation after line, quantity or
+price changes. Mutable reads remain no-store at the Next boundary.
+
+Cart routes use RequestSubjectIdOwner first. Order-ID routes additionally use
+RequestSubjectOwnsEcommerceModuleOrder. The owning Subject service verifies the
+Subject–Order link and, for quantity edits, every submitted Order–Product line.
+A caller's own Subject ID alone does not authorize changes to another order.
+
 ## Authorization Layering
 
 - `backend/app/api/src/lib/service/singlepage/is-authorized.ts` must stay thin: it resolves `rbac.permission` and role access only.
@@ -522,3 +547,9 @@ the public component rather than importing Host implementation paths.
 cart/checkout actions. Product presentation keeps its JSX slots and has no
 RBAC import. me-navigation-controls-ai-chat owns the session, project selector
 and account controls; it receives routeParams and a settingsSelected flag.
+
+The `me-blog-module-article-private-content-default` variant accepts an explicit
+blogModuleArticle and language. Its client view owns the authorization wrapper
+and reads the Article's Website Builder associations through their component
+SDK. Blog Widgets receive the rendered operation through a typed slot; this
+Subject variant receives no routing map.

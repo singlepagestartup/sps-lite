@@ -6,7 +6,7 @@ export function Component(props: IComponentPropsExtended) {
     return <p role="alert">Choose a project to open its workspace.</p>;
   return (
     <ClientComponent
-      key={`${props.project.profile.id}:${props.threadId || props.project.thread.id}`}
+      key={`${props.project.profile.id}:${props.socialModuleThreadId || props.project.thread.id}`}
       isServer={props.isServer}
       variant={props.variant}
       data={props.data}
@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
       children={props.children}
       projects={props.projects}
       project={props.project}
-      threadId={props.threadId}
+      socialModuleThreadId={props.socialModuleThreadId}
       navigation={props.navigation}
       loading={props.loading}
       renderLoadError={props.renderLoadError}

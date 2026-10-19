@@ -9,8 +9,8 @@ export function Component(props: IComponentPropsExtended) {
       data={props.data}
       className={props.className}
       children={props.children}
-      profileId={props.profileId}
-      chatId={props.chatId}
+      socialModuleProfileId={props.socialModuleProfileId}
+      socialModuleChatId={props.socialModuleChatId}
       language={props.language}
       projects={props.projects}
     />

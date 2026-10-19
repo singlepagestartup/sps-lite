@@ -26,6 +26,9 @@ export interface IExtendedReadService extends IReadService {
 export interface IEcommerceOrderReadService
   extends IExtendedReadService,
     ICreateService {
+  findByIdCartDetails: (props: {
+    id: string;
+  }) => Promise<import("@sps/ecommerce/models/order/sdk/model").ICartDetails>;
   findByIdTotal: (props: { id: string }) => Promise<any>;
   findByIdQuantity: (props: { id: string }) => Promise<any>;
   findByIdCheckoutAttributes: (props: {

@@ -121,10 +121,12 @@ explanation; distinguish planned work from implemented and tested work.
   Verify public variant registrations and preserve saved content during any
   split of a shared presentation record.
 - Check resolved Page parameters against the frontend contract. Host leaf
-  compositions use Page's url-segment-values render-reader and select explicit
-  IDs/slugs inside its callback. Flag routeParams prop drilling through Page,
-  Widget or relations, imperative visual SDK calls and Host imports from lower
-  domain modules. Retain public domain variant dispatch, scalar API compatibility,
+  compositions use Page's url-segment-values render-reader and pass the original
+  routeParams map to dependent module Widgets. Widgets select full keys and pass
+  explicit resource props to Content, client views, models and forms. Flag map
+  drilling above the leaf or below the module Widget, missing-key unfiltered
+  reads, whole-map entity query keys, imperative visual SDK calls and Host imports
+  from lower domain modules. Retain public domain variant dispatch, scalar API compatibility,
   locale/pagination behavior, current-Subject isolation and scoped guards.
 - Trace Host `externalWidgetId` through the owning module Widget and explicit
   relation to its content Widget. A variant selects a renderer; global

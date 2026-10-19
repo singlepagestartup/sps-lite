@@ -12,7 +12,7 @@ export function Component(props: IComponentPropsExtended) {
       children={props.children}
       project={props.project}
       language={props.language}
-      threadId={props.threadId}
+      socialModuleThreadId={props.socialModuleThreadId}
       selected={props.selected}
     />
   );

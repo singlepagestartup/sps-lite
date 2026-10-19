@@ -39,7 +39,7 @@ export interface IWidgetCutoverOperation {
   rolledBack?: boolean;
 }
 export interface IWidgetCutoverManifest {
-  schema: "sps.ai-chat-widget-cutover.v1";
+  schema: "sps.ai-chat-widget-cutover.v1" | "sps.ecommerce-widget-cutover.v1";
   createdAt: string;
   apiOrigin?: string;
   hostBindings?: Pick<
@@ -633,7 +633,10 @@ export async function applyWidgetCutover(
   persist: (manifest: IWidgetCutoverManifest) => Promise<void>,
 ) {
   if (
-    manifest.schema !== "sps.ai-chat-widget-cutover.v1" ||
+    ![
+      "sps.ai-chat-widget-cutover.v1",
+      "sps.ecommerce-widget-cutover.v1",
+    ].includes(manifest.schema) ||
     ["rolling-back", "rolled-back"].includes(manifest.status)
   )
     throw new Error("Cannot apply this manifest");
@@ -734,7 +737,12 @@ export async function rollbackWidgetCutover(
   adapter: IWidgetCutoverAdapter,
   persist: (manifest: IWidgetCutoverManifest) => Promise<void>,
 ) {
-  if (manifest.schema !== "sps.ai-chat-widget-cutover.v1")
+  if (
+    ![
+      "sps.ai-chat-widget-cutover.v1",
+      "sps.ecommerce-widget-cutover.v1",
+    ].includes(manifest.schema)
+  )
     throw new Error("Unknown manifest schema");
   manifest.status = "rolling-back";
   await persist(manifest);

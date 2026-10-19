@@ -15,6 +15,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 const mutateAsyncMock = jest.fn();
 const useFormMock = jest.fn();
 const ecommerceModuleOrderApiPropsMock = jest.fn();
+let cartOrders: any[];
 
 const submitPayload = {
   provider: "stripe",
@@ -132,10 +133,22 @@ jest.mock("../total-default", () => ({
       : null,
 }));
 
+jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
+  Component: (props: any) => {
+    ecommerceModuleOrderApiPropsMock(props.apiProps);
+    return props.children?.({
+      data: cartOrders,
+    });
+  },
+}));
+jest.mock("@sps/ecommerce/models/product/frontend/component", () => ({
+  Component: () => null,
+}));
 import { Component } from "./ClientComponent";
 
 describe("Given: order list checkout component", () => {
   beforeEach(() => {
+    cartOrders = [{ id: "order-1", cartDetails: { lines: [], totals: [] } }];
     mutateAsyncMock.mockReset();
     useFormMock.mockReset();
     ecommerceModuleOrderApiPropsMock.mockReset();
@@ -226,28 +239,48 @@ describe("Given: order list checkout component", () => {
     );
 
     expect(ecommerceModuleOrderApiPropsMock).toHaveBeenCalledWith({
-      params: {
-        filters: {
-          and: expect.arrayContaining([
-            {
-              column: "type",
-              method: "eq",
-              value: "cart",
-            },
-            {
-              column: "status",
-              method: "eq",
-              value: "new",
-            },
-          ]),
-        },
-      },
-      options: {
-        cache: "no-store",
-        headers: {
-          "Cache-Control": "no-store",
-        },
-      },
+      params: { includeCartDetails: true },
     });
+  });
+  it("renders totals from the same private snapshot and leaves cached amounts unchanged", () => {
+    const first = {
+      total: 125,
+      billingModuleCurrency: { id: "eur", symbol: "€" },
+    };
+    cartOrders = [
+      { id: "one", cartDetails: { lines: [], totals: [first] } },
+      {
+        id: "two",
+        cartDetails: {
+          lines: [],
+          totals: [
+            { total: 250, billingModuleCurrency: { id: "eur", symbol: "€" } },
+          ],
+        },
+      },
+    ];
+    render(
+      <Component
+        isServer={false}
+        variant="ecommerce-module-order-list-checkout-default"
+        data={{ id: "subject-1" } as any}
+        language="en"
+      />,
+    );
+    expect(screen.getByText("375 €")).toBeTruthy();
+    expect(first.total).toBe(125);
+  });
+  it("does not offer checkout for an empty cart", () => {
+    cartOrders = [];
+    render(
+      <Component
+        isServer={false}
+        variant="ecommerce-module-order-list-checkout-default"
+        data={{ id: "subject-1" } as any}
+        language="en"
+      />,
+    );
+    expect(screen.getByText("Your cart is empty.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Checkout" })).toBeNull();
   });
 });

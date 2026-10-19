@@ -1,3 +1,4 @@
+import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/rbac/models/widget/sdk/model";
 import { IModel } from "@sps/rbac/models/widget/sdk/model";
 import {
@@ -10,7 +11,7 @@ export const variant = "subject-overview-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language?: string;
-  subjectSlug?: string;
+  routeParams?: IRouteParams;
 }
 
 export interface IComponentPropsExtended

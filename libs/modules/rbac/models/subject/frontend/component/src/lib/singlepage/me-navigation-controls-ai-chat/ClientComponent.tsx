@@ -3,8 +3,8 @@ import { Component as Subject } from "@sps/rbac/models/subject/frontend/componen
 import type { IComponentProps } from "./interface";
 import { Icon } from "@sps/ui-adapter";
 export function Component(props: IComponentProps) {
-  const profileId = props.profileId;
-  const chatId = props.chatId;
+  const profileId = props.socialModuleProfileId;
+  const chatId = props.socialModuleChatId;
   const signIn = (
     <a
       href={`/${props.language || "en"}/ai-chat/sign-in`}
@@ -31,8 +31,8 @@ export function Component(props: IComponentProps) {
               isServer={false}
               variant="me-social-module-profile-select-ai-chat"
               data={data}
-              profileId={profileId}
-              chatId={chatId}
+              socialModuleProfileId={profileId}
+              socialModuleChatId={chatId}
               language={props.language}
             />
             <Subject

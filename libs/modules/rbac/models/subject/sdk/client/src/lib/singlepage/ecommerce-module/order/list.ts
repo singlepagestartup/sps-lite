@@ -47,6 +47,15 @@ export function action(props: IProps) {
       topics: Array.from(
         new Set([
           "ecommerce.orders",
+          ...(props.params?.includeCartDetails
+            ? [
+                "ecommerce.orders-to-products",
+                "rbac.subjects-to-ecommerce-module-orders",
+                "ecommerce.products",
+                "ecommerce.products-to-attributes",
+                "ecommerce.attributes",
+              ]
+            : []),
           ...((userMeta?.topics as string[] | undefined) ?? []),
         ]),
       ),

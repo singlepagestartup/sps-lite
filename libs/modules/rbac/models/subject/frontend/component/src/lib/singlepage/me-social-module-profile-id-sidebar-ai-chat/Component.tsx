@@ -11,7 +11,7 @@ export function Component(props: IComponentPropsExtended) {
       variant={props.variant}
       data={props.data}
       project={props.project}
-      profileId={props.profileId}
+      socialModuleProfileId={props.socialModuleProfileId}
       onClose={props.onClose}
     />
   );

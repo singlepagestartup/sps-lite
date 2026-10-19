@@ -8,6 +8,7 @@ import { withConsistencySnapshot } from "@sps/shared-backend-api";
 import type {
   IModel as IEcommerceModuleOrder,
   IPurchaseDetails,
+  ICartDetails,
 } from "@sps/ecommerce/models/order/sdk/model";
 
 export class Handler {
@@ -68,6 +69,7 @@ export class Handler {
         }
 
         const params = c.get("parsedQuery");
+        const includeCartDetails = c.req.query("includeCartDetails") === "true";
         const includePurchaseDetails =
           c.req.query("includePurchaseDetails") === "true";
         const ownedOrderIds = subjectsToEcommerceModuleOrders.map(
@@ -84,9 +86,10 @@ export class Handler {
               ...params?.filters,
               and: [
                 { column: "id", method: "inArray", value: ownedOrderIds },
-                ...(params?.filters
-                  ? (params.filters.and ?? [])
-                  : defaultFilters),
+                ...(includeCartDetails || !params?.filters
+                  ? defaultFilters
+                  : []),
+                ...(params?.filters?.and ?? []),
               ],
             },
           },
@@ -97,6 +100,35 @@ export class Handler {
         const ownedOrders = (orders ?? []).filter((order) =>
           ownedIds.has(order.id),
         );
+        if (includeCartDetails) {
+          const carts: (IEcommerceModuleOrder & {
+            cartDetails: ICartDetails & { storeIds: string[] };
+          })[] = [];
+          for (const order of ownedOrders) {
+            // Defense against OR filters: private cart expansion never includes historical orders.
+            if (order.type !== "cart" || order.status !== "new") continue;
+            const stores =
+              await this.service.ecommerceModule.storesToOrders.find({
+                params: {
+                  filters: {
+                    and: [{ column: "orderId", method: "eq", value: order.id }],
+                  },
+                },
+              });
+            carts.push({
+              ...order,
+              cartDetails: {
+                ...(await this.service.ecommerceModule.order.findByIdCartDetails(
+                  { id: order.id },
+                )),
+                storeIds: (stores ?? []).map(
+                  (link: { storeId: string }) => link.storeId,
+                ),
+              },
+            });
+          }
+          return c.json({ data: carts });
+        }
         if (!includePurchaseDetails) return c.json({ data: ownedOrders });
         const purchases: (IEcommerceModuleOrder & {
           purchaseDetails: IPurchaseDetails;

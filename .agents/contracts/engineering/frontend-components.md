@@ -63,6 +63,16 @@ use the actual relation name, such as `OrdersToFileStorageModuleFiles` and
 as `ChildComponent`. Registry imports and story compositions use descriptive
 names; numeric placeholders do not identify their responsibility.
 
+Resource ID and slug props use the receiving component's module as their naming
+context. Same-module resources omit the module prefix: an RBAC Widget accepts
+`subjectSlug`. Foreign resources include `<module>Module<Model><Id|Slug>`:
+`socialModuleProfileId`, `socialModuleChatId`, `socialModuleThreadId`,
+`ecommerceModuleProductSlug`, `ecommerceModuleCategorySlug` and
+`ecommerceModuleStoreSlug` in RBAC. Keep that name through public interfaces and
+client/server forwarding within the module. Page-level functional Widgets accept
+`routeParams` and select resource props at their own boundary, as described below.
+Existing SDK payload and database field names retain their own contracts.
+
 ## Specialized client/server readers
 
 Local `client.tsx` and `server.tsx` are allowed when the variant needs data
@@ -207,26 +217,42 @@ runtime global variant/slug searches.
 ## Resolved Page parameters
 
 Host Page resolves a URL against its persisted mask once. Its find-by-url SDK
-result includes a computed `routeParams: Record<string, string>` keyed by full
-placeholder names such as `social.chats.id`. This map is routing context, not a
-Page database field, entity data or authentication state. The Host entrypoint
-removes the locale before resolution and forwards the locale separately.
+result includes computed `routeParams` keyed by full placeholder names such as
+`social.chats.id`. The neutral `IRouteParams` type lives with the route utilities
+in `@sps/shared-utils`: it is a readonly map whose missing keys are undefined.
+This map is routing context, not a Page database field, entity data or
+authentication state. The Host entrypoint removes locale before resolution and
+forwards the locale separately.
 
-Host leaf compositions read the map with the public Page
-`variant="url-segment-values"` render-reader. Its client and server paths call
-Page.findByUrl through the owning SDK; the client shares that URL query and its
-subscriptions. The callback receives the complete map as `data`, including an
-empty object for a static Page. Select needed values inside that callback and
-pass explicit resource IDs or slugs directly to the domain component. Do not
-thread the map through Page, Widget, layout or relation props. Do not call SDKs
-imperatively from visual components to replace this reader composition.
+The Host external-Widget leaf composition reads the complete map with Page
+`variant="url-segment-values"` and its render callback. Its client and server
+paths call Page.findByUrl through the owning SDK; client readers share the URL
+query and subscriptions. The callback forwards the original map as one
+`routeParams` prop to route-dependent module Widgets. Preserve unknown keys,
+static-page empty maps and unresolved-page undefined. Do not reconstruct,
+rename or filter the map in a Host module adapter, and do not drill it through
+upper Page, Host Widget or Layout components.
 
-A lower domain Widget accepts explicit inputs and must not import Host Page
-components, SDKs or private types. Host dispatches by external module and exact
-saved Widget ID, renders the loaded record through the module's public variant
-registry and `dataSource="props"`, and keeps no second registry of business
-screens. Domain session wrappers and authenticated operations belong in RBAC,
-including cart/checkout controls passed into Ecommerce presentation slots.
+A module Widget selects its own full keys and passes explicit IDs, slugs or
+loaded data to Content, client views, models, forms and relation renderers.
+Those lower components do not receive the complete map. Check required values
+before issuing reads; a missing ID or slug must not trigger an unfiltered query.
+Client views retain explicit serializable props. Keep the map out of entity SDK
+arguments, query keys and mutation payloads: each SDK operation receives only
+its actual resource/filter inputs. Forward the existing map reference instead
+of creating a copy on every render.
+
+Lower modules import the neutral route type and never Host Page components,
+SDKs or private types. Host dispatches by external module and exact saved Widget
+ID, renders the loaded record through the module's public variant registry and
+`dataSource="props"`, and keeps no second registry of business screens. Where a
+lower module needs a higher module's operation, expose a typed render slot or
+ReactNode slot. Resolve render callbacks on the same side of the client/server
+boundary before passing rendered JSX into a client view. Host may compose a
+non-Widget Subject control directly with explicit inputs; presentation Widgets
+receive rendered controls, not routing maps or authenticated SDK bindings.
+Domain session wrappers and authenticated operations belong in RBAC, including
+cart/checkout controls passed into Ecommerce presentation slots.
 
 Use one map reader instead of nesting scalar readers for individual keys.
 The scalar API remains a compatibility entrypoint using

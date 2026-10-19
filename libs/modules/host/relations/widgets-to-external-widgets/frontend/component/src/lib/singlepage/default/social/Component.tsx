@@ -1,12 +1,7 @@
-import { IComponentPropsExtended } from "../interface";
+import type { IExternalWidgetProps } from "../interface";
 import { Component as SocialModuleWidget } from "@sps/social/models/widget/frontend/component";
-import { Component as Widget } from "./widget";
-
-export function Component(
-  props: IComponentPropsExtended & {
-    language: string;
-  },
-) {
+import { Component as RbacModuleSubject } from "@sps/rbac/models/subject/frontend/component";
+export function Component(props: IExternalWidgetProps) {
   return (
     <SocialModuleWidget
       isServer={props.isServer}
@@ -25,21 +20,35 @@ export function Component(
         },
       }}
     >
-      {({ data }) => {
-        return data?.map((entity, index) => {
-          return (
-            <SocialModuleWidget
-              key={index}
-              isServer={props.isServer}
-              data={entity}
-              language={props.language}
-              variant={entity.variant as any}
-            >
-              <Widget {...props} data={entity} variant={entity.variant} />
-            </SocialModuleWidget>
-          );
-        });
-      }}
+      {({ data }) =>
+        data?.map((entity) => (
+          <SocialModuleWidget
+            key={entity.id}
+            isServer={props.isServer}
+            dataSource="props"
+            data={entity}
+            language={props.language}
+            routeParams={props.routeParams}
+            variant={entity.variant as any}
+            renderChat={({ chatId, threadId }) => (
+              <RbacModuleSubject
+                isServer={props.isServer}
+                variant="me-social-module-profile-chat-overview-default"
+                socialModuleChatId={chatId}
+                socialModuleThreadId={threadId}
+                language={props.language}
+              />
+            )}
+            chatList={
+              <RbacModuleSubject
+                isServer={props.isServer}
+                variant="me-social-module-profile-chat-list-default"
+                language={props.language}
+              />
+            }
+          />
+        ))
+      }
     </SocialModuleWidget>
   );
 }

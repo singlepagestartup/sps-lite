@@ -50,3 +50,11 @@ family shares a stateless layout within Website Builder. Localized title,
 subtitle and description override its default heading, introduction and aside
 body. Default images and supplementary copy remain variant-owned presentation;
 CMS migration of those defaults to linked media/content is a separate follow-up.
+
+## Ecommerce presentation
+
+`content-ecommerce-default` renders the saved localized title, subtitle,
+description, anchor and className around a rendered children slot. RBAC Widget
+variants own catalog and purchase composition and select this exact record
+through their default Widget relation. This presentation imports no RBAC or
+Ecommerce models and performs no session, cart or order reads.

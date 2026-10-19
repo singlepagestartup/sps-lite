@@ -13,7 +13,7 @@ export function Component(props: IComponentPropsExtended) {
       hideBackLink={props.hideBackLink}
       pending={props.pending}
       project={props.project}
-      threadId={props.threadId}
+      socialModuleThreadId={props.socialModuleThreadId}
     />
   );
 }

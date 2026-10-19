@@ -1,8 +1,8 @@
 "use client";
 import { Component as Profile } from "@sps/social/models/profile/frontend/component";
 import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
-import type { IComponentPropsExtended } from "./interface";
-export function Component(props: IComponentPropsExtended) {
+import type { IClientComponentProps } from "./interface";
+export function Component(props: IClientComponentProps) {
   return (
     <div
       data-module="rbac"
@@ -26,8 +26,8 @@ export function Component(props: IComponentPropsExtended) {
               renderProjects={({ projects }) => {
                 const project = projects.find(
                   (item) =>
-                    item.profile.id === props.profileId &&
-                    item.chat.id === props.chatId,
+                    item.profile.id === props.socialModuleProfileId &&
+                    item.chat.id === props.socialModuleChatId,
                 );
                 if (!project)
                   return (
@@ -42,7 +42,7 @@ export function Component(props: IComponentPropsExtended) {
                     language={props.language}
                     data={data}
                     project={project}
-                    threadId={props.threadId}
+                    socialModuleThreadId={props.socialModuleThreadId}
                     selected="settings"
                   />
                 );
@@ -60,7 +60,7 @@ export function Component(props: IComponentPropsExtended) {
                         data={data}
                         projects={projects}
                         project={project}
-                        threadId={props.threadId}
+                        socialModuleThreadId={props.socialModuleThreadId}
                       />
                     </Profile>
                   </main>

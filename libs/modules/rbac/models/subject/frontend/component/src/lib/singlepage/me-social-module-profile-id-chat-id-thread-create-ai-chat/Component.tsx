@@ -18,7 +18,7 @@ export function Component(props: IComponentPropsExtended) {
       children={props.children}
       projects={props.projects}
       project={props.project}
-      threadId={props.threadId}
+      socialModuleThreadId={props.socialModuleThreadId}
     />
   );
 }

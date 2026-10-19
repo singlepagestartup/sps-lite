@@ -16,7 +16,7 @@ export function Component(props: IClientComponentProps) {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const onDiscuss = useCallback((id: string) => setTarget(id), []);
   const thread = props.threads?.find(
-    (thread) => thread.id === (props.threadId || project.thread.id),
+    (thread) => thread.id === (props.socialModuleThreadId || project.thread.id),
   );
   if (props.threadsLoading)
     return (
@@ -111,7 +111,7 @@ export function Component(props: IClientComponentProps) {
           variant="me-social-module-profile-id-sidebar-ai-chat"
           data={props.data}
           project={project}
-          profileId={profileId}
+          socialModuleProfileId={profileId}
           onClose={closeProfile}
         />
       )}
