@@ -199,6 +199,7 @@ export function Component(props: IComponentPropsExtended) {
         <DraftSource
           key={id}
           id={id}
+          hasSavedSources={documentSources.length > 0}
           title={id === "initial" ? thread.title?.replace(/\.md$/, "") : ""}
           placeholder={prompt}
           onSave={saveDraft}
@@ -218,11 +219,16 @@ export function Component(props: IComponentPropsExtended) {
 
 const DraftSource = memo(function DraftSource({
   id,
+  hasSavedSources,
   title,
   placeholder,
   onSave,
 }: IDraftSourceProps) {
   const [files, setFiles] = useState<File[]>([]);
+  const touched = useRef(false);
+  const markTouched = useCallback(() => {
+    touched.current = true;
+  }, []);
   const attach = useCallback(async (selected: FileList) => {
     setFiles((current) => [...current, ...Array.from(selected)]);
     return "Files selected. Save knowledge to attach them.";
@@ -231,29 +237,33 @@ const DraftSource = memo(function DraftSource({
     (value: { title: string; content: string }) => onSave(id, value, files),
     [id, onSave, files],
   );
+  if (id === "initial" && hasSavedSources && !touched.current && !files.length)
+    return null;
   return (
-    <KnowledgeModuleSource
-      isServer={false}
-      variant="form-ai-chat"
-      title={title}
-      placeholder={placeholder}
-      onSave={save}
-      onAttach={attach}
-      attachments={
-        files.length > 0 ? (
-          <div className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
-            <p>Files · {files.length}</p>
-            {files.map((file, index) => (
-              <p key={`${file.name}:${file.lastModified}:${index}`}>
-                {file.name}
+    <div className="contents" onChangeCapture={markTouched}>
+      <KnowledgeModuleSource
+        isServer={false}
+        variant="form-ai-chat"
+        title={title}
+        placeholder={placeholder}
+        onSave={save}
+        onAttach={attach}
+        attachments={
+          files.length > 0 ? (
+            <div className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
+              <p>Files · {files.length}</p>
+              {files.map((file, index) => (
+                <p key={`${file.name}:${file.lastModified}:${index}`}>
+                  {file.name}
+                </p>
+              ))}
+              <p className="mt-2">
+                Selected files are attached when you save this knowledge.
               </p>
-            ))}
-            <p className="mt-2">
-              Selected files are attached when you save this knowledge.
-            </p>
-          </div>
-        ) : undefined
-      }
-    />
+            </div>
+          ) : undefined
+        }
+      />
+    </div>
   );
 });

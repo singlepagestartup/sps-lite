@@ -97,6 +97,38 @@ it("offers a retry without creating a draft after a failed initial Source read",
   fireEvent.click(screen.getByRole("button", { name: "Retry" }));
   expect(refetch).toHaveBeenCalledTimes(1);
 });
+it("hides the untouched initial form when another session saves the document", () => {
+  const view = render(<Component {...loadingProps} />);
+  expect(
+    screen.getByRole("textbox", { name: "Products content" }),
+  ).toBeTruthy();
+  sourceRead = { data: [{ id: "saved-source" }] };
+  view.rerender(<Component {...loadingProps} />);
+  expect(
+    screen.queryByRole("textbox", { name: "Products content" }),
+  ).toBeNull();
+  expect(
+    screen.getByRole("button", { name: "Add knowledge section" }),
+  ).toBeTruthy();
+});
+it("keeps an explicitly added empty section when another session saves the document", () => {
+  Object.defineProperty(crypto, "randomUUID", {
+    configurable: true,
+    value: () => "added-section",
+  });
+  const view = render(<Component {...loadingProps} />);
+  fireEvent.click(
+    screen.getByRole("button", { name: "Add knowledge section" }),
+  );
+  expect(
+    screen.getAllByRole("button", { name: "Save knowledge" }),
+  ).toHaveLength(2);
+  sourceRead = { data: [{ id: "saved-source" }] };
+  view.rerender(<Component {...loadingProps} />);
+  expect(
+    screen.getAllByRole("button", { name: "Save knowledge" }),
+  ).toHaveLength(1);
+});
 it("keeps draft text and selected files when a saved Source appears during editing", async () => {
   const view = render(<Component {...loadingProps} />);
   fireEvent.change(screen.getByRole("textbox", { name: "Products content" }), {

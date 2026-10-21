@@ -33,6 +33,7 @@ export interface IComponentPropsExtended
 
 export interface IDraftSourceProps {
   id: string;
+  hasSavedSources: boolean;
   title?: string;
   placeholder?: string;
   onSave: (
