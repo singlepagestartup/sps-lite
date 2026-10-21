@@ -34,6 +34,9 @@ export function Component<
   delete passProps.Component;
   delete passProps.Skeleton;
   delete passProps.api;
+  delete passProps.Provider;
+  delete passProps.clientApi;
+  delete passProps.serverApi;
 
   const [jwtCookies, , , updateCookies] = useCookies(["rbac.subject.jwt"]);
 
@@ -67,12 +70,16 @@ export function Component<
 
   if (token.decodedToken?.subject?.id === props.data.id) {
     return (
-      <Child {...props} isServer={false} data={token.decodedToken.subject} />
+      <Child
+        {...passProps}
+        isServer={false}
+        data={token.decodedToken.subject}
+      />
     );
   }
 
   if (data) {
-    return <Child {...props} isServer={false} data={data} />;
+    return <Child {...passProps} isServer={false} data={data} />;
   }
 
   return <></>;

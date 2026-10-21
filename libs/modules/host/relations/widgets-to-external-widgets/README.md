@@ -18,20 +18,20 @@ adapter supplies account/project controls and route presentation flags through
 children; public Widget record reads do not consume session cookies. Subject
 controls own their authenticated client SDK reads.
 
-The external-Widget leaf uses Page variant=url-segment-values and its render
-callback once for the selected association. It passes the complete original
-`routeParams` map to route-dependent module Widgets. Host adapters select no
-business resource keys for those Widgets; unknown keys remain available to
-project extensions. Upper Page, Layout and Host Widget components do not drill
-the map through their props. Non-Widget navigation Subject controls remain
-explicit JSX slots; presentation Widgets receive rendered controls.
+Route-dependent module adapters and the Navbar leaf use Page
+variant=url-segment-values. The complete map stays inside its render callback;
+Host passes explicit IDs and module-qualified slugs to the public saved Widget
+variant. Page, Layout, Widget and relation props do not carry the map. Missing
+values remain undefined, and domain readers guard required IDs before querying.
+Navigation Subject controls remain explicit JSX slots.
 
-RBAC, Blog and Social Widgets select their full routing keys and pass explicit
-resource inputs or loaded records to Content and lower model components. Host
-has no private Widget registries for these modules or Ecommerce. Blog exposes
-renderPrivateContent and renderProduct slots, and Social exposes renderChat and
-chatList slots for RBAC-owned operations. Those callbacks resolve within the
-same runtime before JSX crosses a client boundary. No lower module imports RBAC.
+Host has no private Widget registries for RBAC, Blog, Social or Ecommerce.
+Blog retains renderPrivateContent and renderProduct slots: its readers supply
+loaded Article/Product records, and Host supplies the RBAC operation. Those
+callbacks resolve within the same runtime before JSX crosses a client boundary.
+Authenticated Social chat list and overview bindings target RBAC Widgets; the
+Social adapter has no Subject imports or callbacks. Lower modules respect the
+confirmed dependency order.
 
 Purchasing scenarios target RBAC Widgets and their exact Website Builder
 presentation links. Product cards, prices and media remain Ecommerce; Subject

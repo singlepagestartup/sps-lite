@@ -42,12 +42,9 @@ it.each([Workspace, Settings])(
       variant: "workspace",
       data: { id: mockRecord.id },
       language: "en",
-      routeParams: {
-        "social.profiles.id": "profile",
-        "social.chats.id": "chat",
-        "social.threads.id": "thread",
-        other: "unrelated",
-      },
+      socialModuleProfileId: "profile",
+      socialModuleChatId: "chat",
+      socialModuleThreadId: "thread",
     } as any);
     const readerTree = (publicElement.type as any)(publicElement.props);
     const reader = findServerReader(readerTree)!;

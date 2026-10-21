@@ -1,3 +1,5 @@
+import { Component as SubjectMeSocialModuleProfileChatOverviewDefault } from "./subject/me/social-module/profile/chat/overview-default";
+import { Component as SubjectMeSocialModuleProfileChatListDefault } from "./subject/me/social-module/profile/chat/list-default";
 import { Component as SubjectMeEcommerceModuleStoreOverviewDefault } from "./subject-me-ecommerce-module-store-overview-default";
 import { Component as SubjectMeEcommerceModuleCategoryOverviewDefault } from "./subject-me-ecommerce-module-category-overview-default";
 import { Component as SubjectMeEcommerceModuleProductOverviewDefault } from "./subject-me-ecommerce-module-product-overview-default";
@@ -39,6 +41,10 @@ import { Component as SubjectOverviewDefault } from "./subject/overview/default"
 import { Component as SubjectListDefault } from "./subject/list/default";
 
 export const variants = {
+  "subject-me-social-module-profile-chat-overview-default":
+    SubjectMeSocialModuleProfileChatOverviewDefault,
+  "subject-me-social-module-profile-chat-list-default":
+    SubjectMeSocialModuleProfileChatListDefault,
   "subject-me-ecommerce-module-store-overview-default":
     SubjectMeEcommerceModuleStoreOverviewDefault,
   "subject-me-ecommerce-module-category-overview-default":

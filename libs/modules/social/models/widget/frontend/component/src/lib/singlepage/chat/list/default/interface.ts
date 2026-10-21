@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 export { type IModel } from "@sps/social/models/widget/sdk/model";
 import { IModel } from "@sps/social/models/widget/sdk/model";
 import {
@@ -11,7 +10,6 @@ export const variant = "chat-list-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
-  chatList?: ReactNode;
 }
 
 export interface IComponentPropsExtended

@@ -35,9 +35,7 @@ export function Component(props: IComponentPropsExtended) {
                 <Content
                   isServer={props.isServer}
                   language={props.language || "en"}
-                  ecommerceModuleProductSlug={
-                    props.routeParams?.["ecommerce.products.slug"]
-                  }
+                  ecommerceModuleProductSlug={props.ecommerceModuleProductSlug}
                 />
               </WidgetsToWebsiteBuilderModuleWidgets>
             ))

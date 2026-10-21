@@ -1,3 +1,5 @@
+import type { IComponentProps as ISubjectMeSocialModuleProfileChatOverviewDefault } from "./subject/me/social-module/profile/chat/overview-default/interface";
+import type { IComponentProps as ISubjectMeSocialModuleProfileChatListDefault } from "./subject/me/social-module/profile/chat/list-default/interface";
 import type { IComponentProps as ISubjectMeEcommerceModuleStoreOverviewDefault } from "./subject-me-ecommerce-module-store-overview-default/interface";
 import type { IComponentProps as ISubjectMeEcommerceModuleCategoryOverviewDefault } from "./subject-me-ecommerce-module-category-overview-default/interface";
 import type { IComponentProps as ISubjectMeEcommerceModuleProductOverviewDefault } from "./subject-me-ecommerce-module-product-overview-default/interface";
@@ -39,6 +41,8 @@ import { IComponentProps as ISubjectOverviewDefaultComponentProps } from "./subj
 import { IComponentProps as ISubjectListDefaultComponentProps } from "./subject/list/default/interface";
 
 export type IComponentProps =
+  | ISubjectMeSocialModuleProfileChatOverviewDefault
+  | ISubjectMeSocialModuleProfileChatListDefault
   | ISubjectMeEcommerceModuleStoreOverviewDefault
   | ISubjectMeEcommerceModuleCategoryOverviewDefault
   | ISubjectMeEcommerceModuleProductOverviewDefault

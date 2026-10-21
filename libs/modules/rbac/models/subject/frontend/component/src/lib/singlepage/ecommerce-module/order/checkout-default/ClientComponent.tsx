@@ -51,7 +51,7 @@ export function Component(props: IComponentPropsExtended) {
       ecommerceModule: {
         orders: [
           {
-            id: props.order.id,
+            id: props.ecommerceModuleOrder.id,
           },
         ],
       },

@@ -121,7 +121,7 @@ export function Component(props: IComponentPropsExtended) {
                     <Row
                       key={order.id}
                       subject={props.data}
-                      order={order}
+                      ecommerceModuleOrder={order}
                       index={index}
                       form={form}
                       language={props.language}

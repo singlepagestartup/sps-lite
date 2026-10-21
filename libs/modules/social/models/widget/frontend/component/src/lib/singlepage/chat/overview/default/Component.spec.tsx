@@ -7,7 +7,7 @@ const props = {
   language: "en",
   variant: "chat-overview-default",
 };
-it("selects Social keys and supplies only explicit IDs to the higher-module operation", () => {
+it("renders supplied JSX without selecting routing parameters or invoking a higher module", () => {
   const renderChat = jest.fn(() => <p>Authorized chat</p>);
   const html = renderToStaticMarkup(
     <Component
@@ -19,14 +19,12 @@ it("selects Social keys and supplies only explicit IDs to the higher-module oper
           other: "opaque",
         }),
         renderChat,
+        children: <p>Supplied content</p>,
       } as any)}
     />,
   );
-  expect(renderChat).toHaveBeenCalledWith({
-    chatId: "chat",
-    threadId: "thread",
-  });
-  expect(html).toContain("Authorized chat");
+  expect(renderChat).not.toHaveBeenCalled();
+  expect(html).toContain("Supplied content");
 });
 it.each([{}, { "social.threads.id": "thread" }])(
   "does not request a chat without its ID",

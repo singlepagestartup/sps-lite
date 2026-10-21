@@ -18,7 +18,7 @@ export const Component = memo(function Component(
   const participants = props.socialModuleChat.participants || [];
   return (
     <Link
-      href={`/social/chats/${props.socialModuleChat.id}`}
+      href={`/${props.language}/social/chats/${props.socialModuleChat.id}`}
       data-module="rbac"
       data-model="subject"
       data-variant={props.variant}

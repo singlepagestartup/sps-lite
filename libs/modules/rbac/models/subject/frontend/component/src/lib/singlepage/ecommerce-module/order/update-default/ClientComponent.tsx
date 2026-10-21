@@ -33,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
   async function onSubmit(data: z.infer<typeof formSchema>) {
     updateEntity.mutate({
       id: props.data.id,
-      orderId: props.order.id,
+      orderId: props.ecommerceModuleOrder.id,
       data,
     });
   }
@@ -55,8 +55,9 @@ export function Component(props: IComponentPropsExtended) {
           apiProps={{ params: { includeCartDetails: true } }}
         >
           {({ data: orders }) => {
-            const data = orders.find((order) => order.id === props.order.id)
-              ?.cartDetails?.lines;
+            const data = orders.find(
+              (order) => order.id === props.ecommerceModuleOrder.id,
+            )?.cartDetails?.lines;
 
             return data?.map((entity, index) => {
               return (

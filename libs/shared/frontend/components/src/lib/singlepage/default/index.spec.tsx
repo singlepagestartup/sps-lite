@@ -109,3 +109,27 @@ it("uses the supplied Skeleton node while the client SDK query is pending", () =
   expect(screen.queryByRole("status")).toBeNull();
   expect(screen.getByText("Loaded")).toBeTruthy();
 });
+
+it("strips all reader bindings after the server SDK read", async () => {
+  const { Component: ServerReader } = await import("./server");
+  const data = { id: "record", title: "Loaded" };
+  const element = await ServerReader({
+    ...bindings,
+    api: { findById: jest.fn().mockResolvedValue(data) },
+    Component: () => null,
+    Skeleton: () => null,
+    isServer: true,
+    variant: "test",
+    data: { id: "record" },
+  } as any);
+  expect(element!.props.data).toBe(data);
+  for (const key of [
+    "api",
+    "clientApi",
+    "serverApi",
+    "Provider",
+    "Component",
+    "Skeleton",
+  ])
+    expect(element!.props).not.toHaveProperty(key);
+});

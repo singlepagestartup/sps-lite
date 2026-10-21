@@ -1,4 +1,3 @@
-import type { IRouteParams } from "@sps/shared-utils";
 import type {
   IComponentPropsExtended as IParentExtended,
   IComponentProps as IParent,
@@ -9,7 +8,9 @@ export const variant =
   "subject-me-social-module-profile-id-chat-id-thread-id-ai-chat" as const;
 export interface IComponentProps extends IParent<IModel, typeof variant> {
   language?: string;
-  routeParams?: IRouteParams;
+  socialModuleProfileId?: string;
+  socialModuleChatId?: string;
+  socialModuleThreadId?: string;
 }
 export interface IComponentPropsExtended
   extends IParentExtended<IModel, typeof variant, IComponentProps> {}
@@ -23,8 +24,7 @@ export interface IWorkspaceNoticeProps {
   onRetry?: () => void;
 }
 
-export interface IClientComponentProps
-  extends Omit<IComponentPropsExtended, "routeParams"> {
+export interface IClientComponentProps extends IComponentPropsExtended {
   socialModuleProfileId?: string;
   socialModuleChatId?: string;
   socialModuleThreadId?: string;

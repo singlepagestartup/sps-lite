@@ -1,3 +1,5 @@
+import { Component as SubjectMeSocialModuleProfileChatOverviewDefault } from "./subject/me/social-module/profile/chat/overview-default";
+import { Component as SubjectMeSocialModuleProfileChatListDefault } from "./subject/me/social-module/profile/chat/list-default";
 import { Component as SubjectMeCrmModuleFormSupportAiChat } from "./subject-me-crm-module-form-support-ai-chat";
 import { Component as SubjectMeAuthenticationRegistrationAiChat } from "./subject-me-authentication-registration-ai-chat";
 import { Component as SubjectMeAuthenticationSelectMethodAiChat } from "./subject-me-authentication-select-method-ai-chat";
@@ -11,6 +13,10 @@ import { Component as SubjectMeSocialModuleProfileIdSettingsAiChat } from "./sub
 import { Component as SubjectMeSocialModuleProfileListAiChat } from "./subject-me-social-module-profile-list-ai-chat/index";
 
 export const variants = {
+  "subject-me-social-module-profile-chat-overview-default":
+    SubjectMeSocialModuleProfileChatOverviewDefault,
+  "subject-me-social-module-profile-chat-list-default":
+    SubjectMeSocialModuleProfileChatListDefault,
   "subject-me-crm-module-form-support-ai-chat":
     SubjectMeCrmModuleFormSupportAiChat,
   "subject-me-authentication-registration-ai-chat":

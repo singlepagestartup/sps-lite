@@ -73,10 +73,7 @@ it.each([Overview, PrivateContent, Products])(
       <View
         {...({
           ...props,
-          routeParams: Object.freeze({
-            "blog.articles.slug": "a%2Fb",
-            "unrelated.id": "other",
-          }),
+          articleSlug: "a%2Fb",
           renderPrivateContent,
           renderProduct,
         } as any)}
@@ -107,10 +104,7 @@ it("uses the category key rather than another module's category slug", () => {
     <Category
       {...({
         ...props,
-        routeParams: {
-          "blog.categories.slug": "blog-category",
-          "ecommerce.categories.slug": "shop-category",
-        },
+        categorySlug: "blog-category",
       } as any)}
     />,
   );

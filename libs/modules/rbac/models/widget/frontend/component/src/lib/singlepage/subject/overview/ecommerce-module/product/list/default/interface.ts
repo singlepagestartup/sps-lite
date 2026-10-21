@@ -1,4 +1,3 @@
-import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/rbac/models/widget/sdk/model";
 import { IModel } from "@sps/rbac/models/widget/sdk/model";
 import {
@@ -11,7 +10,7 @@ export const variant =
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  routeParams?: IRouteParams;
+  subjectSlug?: string;
   language: string;
 }
 

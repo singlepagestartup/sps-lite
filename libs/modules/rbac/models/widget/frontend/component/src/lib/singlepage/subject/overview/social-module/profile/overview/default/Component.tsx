@@ -19,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
         <Content
           isServer={props.isServer}
           language={props.language || "en"}
-          subjectSlug={props.routeParams?.["rbac.subjects.slug"]}
+          subjectSlug={props.subjectSlug}
         />
       )}
     </div>

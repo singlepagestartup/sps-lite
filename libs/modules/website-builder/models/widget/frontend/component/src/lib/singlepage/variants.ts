@@ -1,3 +1,4 @@
+import { Component as ContentSocialChatDefault } from "./content/social/chat-default";
 import { Component as ContentEcommerceDefault } from "./content-ecommerce-default";
 import { Component as ContentAiChatResetPassword } from "./content-ai-chat-reset-password";
 import { Component as ContentAiChatForgotPassword } from "./content-ai-chat-forgot-password";
@@ -25,6 +26,7 @@ import { Component as ContentDefaultComponent } from "./content-default";
 import { Component as FooterDefaultComponent } from "./footer-default";
 import { Component as NavbarDefaultComponent } from "./navbar-default";
 export const variants = {
+  "content-social-chat-default": ContentSocialChatDefault,
   "content-ecommerce-default": ContentEcommerceDefault,
   "content-ai-chat-reset-password": ContentAiChatResetPassword,
   "content-ai-chat-forgot-password": ContentAiChatForgotPassword,

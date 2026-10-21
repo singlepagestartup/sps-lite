@@ -80,10 +80,10 @@ export function Component(props: IContentProps) {
                                 return (
                                   <Subject
                                     key={product.id}
-                                    isServer={props.isServer}
+                                    isServer={false}
                                     variant="me-ecommerce-module-product-card-default"
-                                    product={product}
-                                    store={store}
+                                    ecommerceModuleProduct={product}
+                                    ecommerceModuleStore={store}
                                     language={props.language}
                                   />
                                 );

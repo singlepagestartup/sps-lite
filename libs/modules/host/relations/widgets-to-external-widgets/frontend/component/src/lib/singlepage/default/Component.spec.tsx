@@ -87,29 +87,26 @@ it.each([
   "social",
   "startup",
   "website-builder",
-])(
-  "forwards the original complete Page map to %s composition",
-  (externalModule) => {
-    mockParams = Object.freeze({
-      "unknown.module.id": "future",
-      "social.chats.id": "chat",
-    });
-    renderToStaticMarkup(
-      <Component
-        {...({
-          isServer: true,
-          variant: "default",
-          data: { id: "link", externalModule, externalWidgetId: "widget" },
-          url: "/chat",
-          language: "en",
-        } as any)}
-      />,
-    );
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
-    expect(mockDispatch.mock.calls[0][0]).toBe(externalModule);
-    expect(mockDispatch.mock.calls[0][1].routeParams).toBe(mockParams);
-  },
-);
+])("leaves URL resolution in the %s leaf composition", (externalModule) => {
+  mockParams = Object.freeze({
+    "unknown.module.id": "future",
+    "social.chats.id": "chat",
+  });
+  renderToStaticMarkup(
+    <Component
+      {...({
+        isServer: true,
+        variant: "default",
+        data: { id: "link", externalModule, externalWidgetId: "widget" },
+        url: "/chat",
+        language: "en",
+      } as any)}
+    />,
+  );
+  expect(mockDispatch).toHaveBeenCalledTimes(1);
+  expect(mockDispatch.mock.calls[0][0]).toBe(externalModule);
+  expect(mockDispatch.mock.calls[0][1]).not.toHaveProperty("routeParams");
+});
 it.each([{}, undefined])(
   "preserves static and unresolved Page context without inventing IDs",
   (params) => {
@@ -129,6 +126,6 @@ it.each([{}, undefined])(
         } as any)}
       />,
     );
-    expect(mockDispatch.mock.calls[0][1].routeParams).toBe(params);
+    expect(mockDispatch.mock.calls[0][1]).not.toHaveProperty("routeParams");
   },
 );

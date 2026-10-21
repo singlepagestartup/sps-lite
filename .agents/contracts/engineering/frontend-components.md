@@ -21,6 +21,17 @@ For ordinary saved-record variants, bind the model SDKs and renderer to
 Implement the view in `Component.tsx` and its interactive controls in an
 optional `ClientComponent.tsx`.
 
+For a custom operation without a record input, such as `authenticationMe`, use
+`@sps/shared-frontend-components/singlepage/reader` as the Provider, Suspense and
+error boundary. The variant's `index.tsx` selects its local `client.tsx` or
+`server.tsx`; those readers own the SDK operation and supply typed loaded data
+to `Component.tsx`. Reuse the owning module's session reader for authentication
+instead of duplicating JWT/cookie handling in the variant's interactive view.
+When a session is initialized in the browser, an absent server Subject keeps
+the client reader mounted so it can observe that initialization. Pass explicit
+UI inputs into this fallback; server request headers and SDK bindings stay on
+the server.
+
 ## Variant files and registration
 
 Keep each variant in its own folder in the owning `singlepage` or `startup`
@@ -43,6 +54,20 @@ registry merges `singlepage` first and `startup` second so project overrides
 win. Follow a nested registry when the applicable template uses one.
 A file that exists on disk but cannot be selected through the public
 `variant` prop is incomplete.
+
+Group current-Subject compositions under `singlepage/me/`, then the foreign
+module, model and operation, for example
+`me/ecommerce-module/product/card-default` and
+`me/ecommerce-module/order/list/checkout-default`. Keep the public variant
+literal independent of the folder path. Moving a variant does not require
+renaming saved variant values. A `me` entrypoint owns the current Subject read;
+its loaded view passes that Subject explicitly to lower actions. An already
+loaded Subject uses `dataSource="props"` to avoid a second reader and Provider.
+On cached Host pages, the composing Widget mounts current-user `me` variants
+with `isServer={false}`. Public catalog readers can remain server-rendered.
+A session server reader requires a request-rendered route: reading cookies
+inside an ISR fallback can fail with `DYNAMIC_SERVER_USAGE`. Test the built
+Host as well as dev when changing this boundary.
 
 ## Public types and import names
 
@@ -69,9 +94,13 @@ context. Same-module resources omit the module prefix: an RBAC Widget accepts
 `socialModuleProfileId`, `socialModuleChatId`, `socialModuleThreadId`,
 `ecommerceModuleProductSlug`, `ecommerceModuleCategorySlug` and
 `ecommerceModuleStoreSlug` in RBAC. Keep that name through public interfaces and
-client/server forwarding within the module. Page-level functional Widgets accept
-`routeParams` and select resource props at their own boundary, as described below.
+client/server forwarding within the module. Host's leaf Page render-reader selects
+these explicit resource props, as described below.
 Existing SDK payload and database field names retain their own contracts.
+
+The same convention applies to whole foreign records: RBAC props use
+`ecommerceModuleProduct`, `ecommerceModuleStore` and `ecommerceModuleOrder`.
+The owning Subject's loaded result remains `data`.
 
 ## Specialized client/server readers
 
@@ -197,6 +226,13 @@ Authentication, registration, project creation and support decisions stay in
 Widget variants. A relation renderer must not switch on those screen names,
 accept a business `mode`, select their forms or inject their copy and imagery.
 Screen-specific unique indexes are not a substitute for Widget composition.
+Authenticated chat list and overview pages target RBAC Widgets. Host forwards
+their saved instance and explicit resource IDs; RBAC composes the
+Subject operation into the linked Website Builder frame. Social model views
+receive explicit resources or rendered children. Do not pass route-derived IDs
+from Host down to a lower Widget only to return them through a render callback.
+A render callback remains appropriate when the lower reader actually supplies
+newly loaded data, provided it stays within one execution runtime.
 
 Different operations use distinct domain Widget variants. Distinct layouts use
 presentation variants; changing only stored copy or photographs does not require
@@ -224,23 +260,18 @@ This map is routing context, not a Page database field, entity data or
 authentication state. The Host entrypoint removes locale before resolution and
 forwards the locale separately.
 
-The Host external-Widget leaf composition reads the complete map with Page
+The Host module adapter or navigation leaf reads the complete map with Page
 `variant="url-segment-values"` and its render callback. Its client and server
 paths call Page.findByUrl through the owning SDK; client readers share the URL
-query and subscriptions. The callback forwards the original map as one
-`routeParams` prop to route-dependent module Widgets. Preserve unknown keys,
-static-page empty maps and unresolved-page undefined. Do not reconstruct,
-rename or filter the map in a Host module adapter, and do not drill it through
-upper Page, Host Widget or Layout components.
+query and subscriptions. Keep the map inside that callback. Select full keys
+there and pass explicit IDs or slugs directly to domain components. Page,
+Widget, Layout and relation props do not carry `routeParams`.
 
-A module Widget selects its own full keys and passes explicit IDs, slugs or
-loaded data to Content, client views, models, forms and relation renderers.
-Those lower components do not receive the complete map. Check required values
-before issuing reads; a missing ID or slug must not trigger an unfiltered query.
-Client views retain explicit serializable props. Keep the map out of entity SDK
-arguments, query keys and mutation payloads: each SDK operation receives only
-its actual resource/filter inputs. Forward the existing map reference instead
-of creating a copy on every render.
+Domain Widgets pass explicit resource props or loaded data to Content, client
+views, models, forms and relation renderers. Check required values before issuing
+reads; a missing ID or slug must not trigger an unfiltered query. Client views
+retain explicit serializable props. Entity SDK arguments, query keys and mutation
+payloads contain only that operation's actual resource/filter inputs.
 
 Lower modules import the neutral route type and never Host Page components,
 SDKs or private types. Host dispatches by external module and exact saved Widget
@@ -320,6 +351,10 @@ cache ordering.
 - Compare the wrapper with its applicable template. For local readers, verify
   the reason for specialization, SDK input/result types and supported runtime
   paths; check whether Provider, loading ownership or requests are duplicated.
+- For current-Subject variants, check the `me/<module>/<model>/<operation>`
+  folder grouping and trace the loaded Subject from its reader to the view.
+  A pure foreign-model wrapper without a Subject read does not belong in a
+  Subject `me` variant. Check module-qualified props for foreign records.
 - Trace API data through React Query, realtime events through the shared store
   and SDK subscriptions, and persistent UI state through its explicit storage
   contract. Check cache patching and cross-client reconciliation for affected

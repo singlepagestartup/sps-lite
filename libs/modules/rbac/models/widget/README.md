@@ -20,24 +20,24 @@ RBAC widgets provide reusable content blocks for access and account flows.
 ## Ecommerce scenarios
 
 - `subject-me-ecommerce-module-product-list-default`: catalog with current-Subject purchase actions.
-- `subject-me-ecommerce-module-product-overview-default`: one Product selected from `routeParams["ecommerce.products.slug"]`.
-- `subject-me-ecommerce-module-category-overview-default`: Category products and their Store-specific purchase actions, selected from `routeParams["ecommerce.categories.slug"]`.
-- `subject-me-ecommerce-module-store-overview-default`: Store products and purchase actions, selected from `routeParams["ecommerce.stores.slug"]`.
+- `subject-me-ecommerce-module-product-overview-default`: one Product selected by `ecommerceModuleProductSlug`.
+- `subject-me-ecommerce-module-category-overview-default`: Category products and their Store-specific purchase actions, selected by `ecommerceModuleCategorySlug`.
+- `subject-me-ecommerce-module-store-overview-default`: Store products and purchase actions, selected by `ecommerceModuleStoreSlug`.
 
 Each uses the public Widget reader and its own default
 widgets-to-website-builder-module-widgets association. The linked
 `content-ecommerce-default` Website Builder Widget owns the block layout and
 editable copy. Product cards, attributes and media remain in Ecommerce;
-Subject variants provide the session and scoped cart operations. Host forwards
-the complete `routeParams` map from Page's render callback without selecting
-resource keys. Each Widget selects its own keys and passes explicit props to
-its Content and Subject views. Host holds no scenario registry.
+Subject variants provide the session and scoped cart operations. Host's Page
+render-reader passes explicit resource props to the saved Widget. Each Widget
+forwards its required inputs to Content and Subject views. Host holds no
+scenario registry.
 
 ## Variants
 
 - `subject-me-profile-settings`: account sections composed from separate Subject Profile, avatar, Identity and purchase components.
 - `subject-me-social-module-profile-create-ai-chat`: authenticated project chooser and creation flow. Its own `widgets-to-website-builder-module-widgets` link selects the persisted Website Builder creation card. The chooser renders project links; Create project opens the original `content-ai-chat-profile-create` card with its photograph, copy and Subject form. Back to projects returns to the chooser.
-- `subject-me-social-module-profile-id-settings-ai-chat`: project settings for the Profile/Chat selected from routeParams.
+- `subject-me-social-module-profile-id-settings-ai-chat`: project settings for the explicitly selected Profile/Chat.
 - `subject-me-social-module-profile-id-chat-id-thread-create-ai-chat`: Thread creation within a selected, connected project.
 - `subject-me-social-module-profile-id-chat-id-thread-id-ai-chat`: connected-project guard and Social Profile → Chat → Thread composition. Subject components provide messages, composer, Knowledge editors and document export.
 - `subject-me-authentication-*-ai-chat`: separate authentication pages whose own Widget relation selects the Website Builder frame, containing the corresponding Subject form.
@@ -83,15 +83,34 @@ so changing registration does not alter sign-in.
 
 ### Page context and migrated compositions
 
-AI Chat workspace/settings Widgets accept `routeParams` and select
-`social.profiles.id`, `social.chats.id` and `social.threads.id`. Subject overview
-and product views select `rbac.subjects.slug`; Ecommerce views select their full
-Ecommerce keys. The neutral readonly `IRouteParams` type comes from shared route
-utilities. Client views and Content receive explicit resource props, never the
-map. A missing required value cannot become an unfiltered collection read.
-Host resolves Page through its render-reader and passes the original map to the
-public saved Widget variant. RBAC imports no Host reader and does not add the
-map to SDK query keys. Standalone callers supply the same routing context.
+AI Chat workspace/settings Widgets accept `socialModuleProfileId`,
+`socialModuleChatId` and `socialModuleThreadId`. Subject overview and product
+views accept `subjectSlug`; Ecommerce views accept module-qualified slugs.
+Host selects these values inside Page's render callback. No Widget, relation,
+Content or client view accepts the complete routing map. A missing required
+value cannot become an unfiltered collection read. RBAC imports no Host reader.
+Standalone callers supply the same explicit resource inputs.
 Legacy Subject list/overview, identity settings and product/order compositions
 also live here; their functional Content sits beside the owning Widget view.
 The saved Widget IDs, localized content and relation records are unchanged.
+
+## Current-Subject chat Widgets
+
+`subject-me-social-module-profile-chat-list-default` and
+`subject-me-social-module-profile-chat-overview-default` live under
+`singlepage/subject/me/social-module/profile/chat/`. Each accepts explicit
+`socialModuleChatId` and `socialModuleThreadId` inputs from Host. Content mounts the Subject me-reader with `isServer={false}`;
+public frame configuration can remain server-rendered on cached Host pages.
+A missing Chat ID leaves the overview reader unmounted.
+
+Each saved RBAC Widget has its own default
+`widgets-to-website-builder-module-widgets` link to a
+`content-social-chat-default` frame. The two operations share the renderer,
+while independent frame records preserve their original copy and class names.
+The frame renders the supplied JSX without adding headings that were absent
+from the original Social wrappers. Host contains no chat Subject callbacks.
+
+The list selects one owned acting Profile and requests a single Subject-wide
+Chat collection. Shared chats appear once even when several owned Profiles
+participate. Participant data is included in the collection response; loaded
+rows use `dataSource="props"` instead of individual detail queries.

@@ -1,4 +1,3 @@
-import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/social/models/widget/sdk/model";
 import { IModel } from "@sps/social/models/widget/sdk/model";
 import {
@@ -11,7 +10,7 @@ export const variant = "profile-overview-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
-  routeParams?: IRouteParams;
+  profileSlug?: string;
 }
 
 export interface IComponentPropsExtended

@@ -1,4 +1,3 @@
-import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/blog/models/widget/sdk/model";
 import { IModel } from "@sps/blog/models/widget/sdk/model";
 import {
@@ -12,7 +11,7 @@ export const variant = "article-overview-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
-  routeParams?: IRouteParams;
+  articleSlug?: string;
 }
 
 export interface IComponentPropsExtended

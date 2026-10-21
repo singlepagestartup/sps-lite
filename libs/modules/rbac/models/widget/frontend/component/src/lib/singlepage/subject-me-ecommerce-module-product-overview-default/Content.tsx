@@ -27,9 +27,9 @@ export function Component(props: IContentProps) {
           return (
             <Subject
               key={product.id}
-              isServer={props.isServer}
+              isServer={false}
               variant="me-ecommerce-module-product-overview-default"
-              product={product}
+              ecommerceModuleProduct={product}
               language={props.language}
             />
           );

@@ -118,3 +118,31 @@ Browser storage remains available in the browser. Wallet SDKs otherwise detect
 Node 24 localStorage and can reject startup with getItem is not a function.
 
 Check with `node --test tools/runtime/host.test.mjs`.
+
+## Social chat Widget links
+
+`social-widget-links.ts` transfers the chat list and overview bindings to RBAC
+Widgets. Its input contains explicit `{ hostLinkId, socialWidgetId }` targets.
+Preparation copies localized fields, admin title and class names to independent
+`content-social-chat-default` Website Builder instances. Standard default RBAC
+relations connect each functional Widget to its frame. Source Social Widgets
+remain available and inactive Host associations preserve seed lookup keys.
+
+Use the same environment, origin validation and manifest handling as AI Chat
+Widget links:
+
+```sh
+npx dotenv -e apps/api/.env -- bun run --tsconfig-override ./tsconfig.base.json tools/runtime/social-widget-links.ts prepare /absolute/input.json /absolute/new-before-manifest.json
+npx dotenv -e apps/api/.env -- bun run --tsconfig-override ./tsconfig.base.json tools/runtime/social-widget-links.ts apply /absolute/new-before-manifest.json
+npx dotenv -e apps/api/.env -- bun run --tsconfig-override ./tsconfig.base.json tools/runtime/social-widget-links.ts rollback /absolute/new-before-manifest.json
+bun test --tsconfig-override ./tsconfig.base.json tools/runtime/social-widget-links.test.ts tools/runtime/ecommerce-widget-links.test.ts
+```
+
+Ecommerce and Social commands share `module-widget-links.ts` for preparation,
+CLI locking and progress persistence; the existing apply/rollback engine stays
+in `ai-chat-widget-links.ts`. A prepared manifest is bound to its migration and
+API origin. Verify repeat apply, zero-operation prepare and rollback before
+removing a compatible application version. Release in stages: make the new
+variants available alongside the old composition, transfer bindings, then
+remove the Host injection. Rollback after cleanup also restores the compatible
+application version. Repository data snapshots are not migration inputs.

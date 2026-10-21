@@ -21,10 +21,12 @@ export function Component(props: IComponentPropsExtended) {
         {({ data }) => {
           const orders = data.filter(
             (order) =>
-              (!props.store ||
-                order.cartDetails?.storeIds.includes(props.store.id)) &&
+              (!props.ecommerceModuleStore ||
+                order.cartDetails?.storeIds.includes(
+                  props.ecommerceModuleStore.id,
+                )) &&
               order.cartDetails?.lines.some(
-                (line) => line.productId === props.product.id,
+                (line) => line.productId === props.ecommerceModuleProduct.id,
               ),
           );
           return orders.length ? (
@@ -34,22 +36,22 @@ export function Component(props: IComponentPropsExtended) {
                   isServer={false}
                   variant="ecommerce-module-order-update-default"
                   data={props.data}
-                  order={order}
+                  ecommerceModuleOrder={order}
                   language={props.language}
                 />
                 <Subject
                   isServer={false}
                   variant="ecommerce-module-order-delete-default"
                   data={props.data}
-                  order={order}
+                  ecommerceModuleOrder={order}
                   language={props.language}
                 />
                 <Subject
                   isServer={false}
                   variant="ecommerce-module-order-checkout-default"
-                  product={props.product}
+                  ecommerceModuleProduct={props.ecommerceModuleProduct}
                   data={props.data}
-                  order={order}
+                  ecommerceModuleOrder={order}
                   language={props.language}
                 />
               </div>
@@ -59,8 +61,8 @@ export function Component(props: IComponentPropsExtended) {
               isServer={false}
               variant="ecommerce-module-order-create-default"
               data={props.data}
-              product={props.product}
-              store={props.store}
+              ecommerceModuleProduct={props.ecommerceModuleProduct}
+              ecommerceModuleStore={props.ecommerceModuleStore}
               language={props.language}
             />
           );

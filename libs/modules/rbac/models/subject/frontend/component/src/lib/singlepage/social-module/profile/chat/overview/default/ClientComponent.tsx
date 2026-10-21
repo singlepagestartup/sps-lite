@@ -330,10 +330,11 @@ export function Component(props: IComponentPropsExtended) {
     }
 
     router.replace(
-      `/social/chats/${props.socialModuleChat.id}/threads/${activeSocialModuleThreadId}`,
+      `/${props.language}/social/chats/${props.socialModuleChat.id}/threads/${activeSocialModuleThreadId}`,
     );
   }, [
     activeSocialModuleThreadId,
+    props.language,
     props.socialModuleChat.id,
     props.socialModuleThreadId,
     router,
@@ -677,7 +678,7 @@ export function Component(props: IComponentPropsExtended) {
           if (removalIntent.mode === "leave") {
             setShowSettings(false);
             toast.success("You left the chat");
-            router.push("/social/chats");
+            router.push(`/${props.language}/social/chats`);
           } else {
             toast.success("Profile removed from chat");
           }
@@ -699,7 +700,7 @@ export function Component(props: IComponentPropsExtended) {
           setShowSettings(false);
           refetchChatQueries();
           toast.success("Chat deleted");
-          router.push("/social/chats");
+          router.push(`/${props.language}/social/chats`);
         },
       },
     );
@@ -730,7 +731,7 @@ export function Component(props: IComponentPropsExtended) {
 
           if (data?.id) {
             router.push(
-              `/social/chats/${props.socialModuleChat.id}/threads/${data.id}`,
+              `/${props.language}/social/chats/${props.socialModuleChat.id}/threads/${data.id}`,
             );
           }
         },
@@ -798,10 +799,12 @@ export function Component(props: IComponentPropsExtended) {
 
             if (nextThread?.data.id) {
               router.push(
-                `/social/chats/${props.socialModuleChat.id}/threads/${nextThread.data.id}`,
+                `/${props.language}/social/chats/${props.socialModuleChat.id}/threads/${nextThread.data.id}`,
               );
             } else {
-              router.push(`/social/chats/${props.socialModuleChat.id}`);
+              router.push(
+                `/${props.language}/social/chats/${props.socialModuleChat.id}`,
+              );
             }
           }
         },
@@ -890,7 +893,7 @@ export function Component(props: IComponentPropsExtended) {
                     onClick={() => {
                       setMobilePanel("messages");
                       router.push(
-                        `/social/chats/${props.socialModuleChat.id}/threads/${socialModuleThread.id}`,
+                        `/${props.language}/social/chats/${props.socialModuleChat.id}/threads/${socialModuleThread.id}`,
                       );
                     }}
                     className={cn(

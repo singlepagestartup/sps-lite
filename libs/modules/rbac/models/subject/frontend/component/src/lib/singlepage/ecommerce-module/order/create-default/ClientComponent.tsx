@@ -34,8 +34,8 @@ export function Component(props: IComponentPropsExtended) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       quantity: 1,
-      productId: props.product.id,
-      storeId: props.store?.id || undefined,
+      productId: props.ecommerceModuleProduct.id,
+      storeId: props.ecommerceModuleStore?.id || undefined,
       billingModule: {
         currency: {
           id: props.billingModule?.currency?.id || undefined,
@@ -105,7 +105,7 @@ export function Component(props: IComponentPropsExtended) {
                         {
                           column: "productId",
                           method: "eq",
-                          value: props.product.id,
+                          value: props.ecommerceModuleProduct.id,
                         },
                       ],
                     },

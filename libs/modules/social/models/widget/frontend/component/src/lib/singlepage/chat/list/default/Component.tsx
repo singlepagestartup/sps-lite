@@ -14,7 +14,7 @@ export function Component(props: IComponentPropsExtended) {
         props.className,
       )}
     >
-      {props.children ?? props.chatList}
+      {props.children}
     </div>
   );
 }

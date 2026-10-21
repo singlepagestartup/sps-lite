@@ -19,7 +19,7 @@ export function Component(props: IComponentPropsExtended) {
         <Content
           isServer={props.isServer}
           language={props.language}
-          articleSlug={props.routeParams?.["blog.articles.slug"]}
+          articleSlug={props.articleSlug}
           renderPrivateContent={props.renderPrivateContent}
         />
       )}

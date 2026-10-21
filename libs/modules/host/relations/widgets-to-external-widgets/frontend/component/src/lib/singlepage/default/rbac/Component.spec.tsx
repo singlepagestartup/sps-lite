@@ -74,7 +74,13 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
           data: { externalWidgetId: record.id },
           url: "/ai-chat/sign-in",
           language: "en",
-          routeParams,
+          socialModuleProfileId: "profile",
+          socialModuleChatId: "chat",
+          socialModuleThreadId: "thread",
+          subjectSlug: "subject",
+          ecommerceModuleProductSlug: "product",
+          ecommerceModuleCategorySlug: "category",
+          ecommerceModuleStoreSlug: "store",
         } as any)}
       />,
     );
@@ -90,21 +96,20 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
       expect.objectContaining({
         data: record,
         dataSource: "props",
-        routeParams,
+        socialModuleProfileId: "profile",
+        socialModuleChatId: "chat",
+        socialModuleThreadId: "thread",
+        subjectSlug: "subject",
+        ecommerceModuleProductSlug: "product",
+        ecommerceModuleCategorySlug: "category",
+        ecommerceModuleStoreSlug: "store",
         language: "en",
         variant: record.variant,
       }),
     );
     expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty("url");
-    expect(rbacRenders.mock.calls[0][0].routeParams).toBe(routeParams);
+    expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty("routeParams");
     for (const key of [
-      "socialModuleProfileId",
-      "socialModuleChatId",
-      "socialModuleThreadId",
-      "subjectSlug",
-      "ecommerceModuleProductSlug",
-      "ecommerceModuleCategorySlug",
-      "ecommerceModuleStoreSlug",
       "profileId",
       "chatId",
       "threadId",
@@ -114,6 +119,11 @@ it.each(["select-method", "registration", "forgot-password", "reset-password"])(
       "rbacModuleSubjectSlug",
     ])
       expect(rbacRenders.mock.calls[0][0]).not.toHaveProperty(key);
-    expect(pageReads).not.toHaveBeenCalled();
+    expect(pageReads).toHaveBeenCalledWith(
+      expect.objectContaining({
+        variant: "url-segment-values",
+        url: "/ai-chat/sign-in",
+      }),
+    );
   },
 );

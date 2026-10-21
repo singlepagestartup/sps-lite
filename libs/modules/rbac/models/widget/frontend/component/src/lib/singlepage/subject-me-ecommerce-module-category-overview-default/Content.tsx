@@ -135,9 +135,13 @@ export function Component(props: IContentProps) {
                                                   return (
                                                     <RbacSubject
                                                       key={store.id}
-                                                      isServer={props.isServer}
-                                                      product={product}
-                                                      store={store}
+                                                      isServer={false}
+                                                      ecommerceModuleProduct={
+                                                        product
+                                                      }
+                                                      ecommerceModuleStore={
+                                                        store
+                                                      }
                                                       language={props.language}
                                                       variant="me-ecommerce-module-product-cart-default"
                                                     />

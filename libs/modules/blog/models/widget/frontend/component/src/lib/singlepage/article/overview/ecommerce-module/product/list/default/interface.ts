@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { IModel as IProduct } from "@sps/ecommerce/models/product/sdk/model";
-import type { IRouteParams } from "@sps/shared-utils";
 export { type IModel } from "@sps/blog/models/widget/sdk/model";
 import { IModel } from "@sps/blog/models/widget/sdk/model";
 import {
@@ -14,7 +13,7 @@ export const variant =
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
-  routeParams?: IRouteParams;
+  articleSlug?: string;
   renderProduct?: (props: { data: IProduct }) => ReactNode;
 }
 

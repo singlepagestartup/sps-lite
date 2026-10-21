@@ -1,4 +1,3 @@
-import type { IRouteParams } from "@sps/shared-utils";
 import type { ISpsComponentBase } from "@sps/ui-adapter";
 import type { IModel } from "@sps/website-builder/models/widget/sdk/model";
 export interface IComponentProps extends ISpsComponentBase {
@@ -6,5 +5,4 @@ export interface IComponentProps extends ISpsComponentBase {
   data: IModel;
   language: string;
   url: string;
-  routeParams?: IRouteParams;
 }

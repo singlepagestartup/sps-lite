@@ -36,7 +36,7 @@ export function Component(props: IComponentPropsExtended) {
                   isServer={props.isServer}
                   language={props.language || "en"}
                   ecommerceModuleCategorySlug={
-                    props.routeParams?.["ecommerce.categories.slug"]
+                    props.ecommerceModuleCategorySlug
                   }
                 />
               </WidgetsToWebsiteBuilderModuleWidgets>

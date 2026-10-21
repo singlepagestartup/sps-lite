@@ -21,9 +21,9 @@ Blog widgets are reusable content blocks that render article and category lists 
 
 - `default`: placeholder widget view.
 - `category-list-default`: renders a card with all categories listed.
-- `category-overview-default`: selects and renders the Category identified by the Page map.
+- `category-overview-default`: selects and renders the Category identified by its explicit slug.
 - `article-list-default`: renders a card with related articles (or all articles if no relation).
-- `article-overview-default`: selects and renders the Article identified by the Page map.
+- `article-overview-default`: selects and renders the Article identified by its explicit slug.
 - `article-overview-with-private-content-default`: Article view with a higher-module private-content slot.
 - `article-overview-ecommerce-module-product-list-default`: related Product views with a higher-module purchase slot.
 - `find`: data-fetch wrapper for querying widgets.
@@ -34,8 +34,8 @@ Blog widgets are reusable content blocks that render article and category lists 
 
 ## Page context and higher-module slots
 
-Article overview Widgets select `blog.articles.slug` from readonly `routeParams`;
-Category overview selects `blog.categories.slug`. They read the matching entity
+Article overview Widgets accept `articleSlug`; Category overview accepts
+`categorySlug`. Host selects both inside its Page render-reader callback. They read the matching entity
 through public model components and keep lower views on explicit loaded data.
 Missing keys do not issue unfiltered reads. Host dispatches saved Widgets through
 the public registry with dataSource=props. Stored Widget records and content

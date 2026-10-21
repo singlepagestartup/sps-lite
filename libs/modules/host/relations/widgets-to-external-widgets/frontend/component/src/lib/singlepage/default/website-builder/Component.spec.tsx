@@ -36,7 +36,7 @@ jest.mock("@sps/rbac/models/subject/frontend/component", () => ({
     subjectCalls(props);
     if (props.variant === "me-navigation-controls-ai-chat") {
       const { Component: Navigation } = jest.requireActual(
-        "../../../../../../../../../../rbac/models/subject/frontend/component/src/lib/singlepage/me-navigation-controls-ai-chat/ClientComponent",
+        "../../../../../../../../../../rbac/models/subject/frontend/component/src/lib/singlepage/me/navigation/controls-ai-chat/ClientComponent",
       );
       return <Navigation {...props} />;
     }

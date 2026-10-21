@@ -546,9 +546,27 @@ the public component rather than importing Host implementation paths.
 `me-ecommerce-module-product-card-default`,
 `me-ecommerce-module-product-overview-default` and
 `me-ecommerce-module-product-cart-row-default` compose Ecommerce Product presentation with scoped
-cart/checkout actions. Product presentation keeps its JSX slots and has no
-RBAC import. me-navigation-controls-ai-chat owns the session, project selector
-and account controls; it receives routeParams and a settingsSelected flag.
+cart/checkout actions. Their files live under
+`frontend/component/src/lib/singlepage/me/ecommerce-module/product/`.
+Each `index.tsx` binds the shared reader parent and the local `client.tsx` /
+`server.tsx`. The local readers reuse `authenticationMe` and supply the current
+Subject as `data`. The loaded view passes that Subject to cart/checkout actions
+with `dataSource="props"`; the actions do not fetch the Subject again.
+If the first server request has no session cookie, its fallback mounts the
+client reader to observe browser session initialization. That fallback receives
+UI inputs and no server request headers.
+Cached Host catalog and navbar compositions mount these `me` entrypoints with
+`isServer={false}` while public catalog reads stay on the server. The session
+server readers support request-rendered routes; cookies cannot personalize
+an ISR page shared between users.
+Foreign records are `ecommerceModuleProduct`, `ecommerceModuleStore` and
+`ecommerceModuleOrder`. Product presentation keeps its JSX slots and has no
+RBAC import. `me-navigation-controls-ai-chat` owns the session, project selector
+and account controls; it receives explicit Social IDs and `settingsSelected`.
+
+Current-Subject variants are grouped under `singlepage/me/` by module, model
+and operation. Public variant strings remain stable when folders move; callers
+use the public Subject registry.
 
 The `me-blog-module-article-private-content-default` variant accepts an explicit
 blogModuleArticle and language. Its client view owns the authorization wrapper
@@ -570,3 +588,25 @@ in that Chat; the existing administrator fallback retains only the administrator
 own Profiles. The ordinary Chat overview chooses one allowed identity before
 loading details. SDK query identity includes parameters, API host and principal.
 No additional public permissions or relation graph are needed.
+
+### Current-Subject chat readers
+
+The two `me-social-module-profile-chat-*-default` entrypoints use the shared
+reader parent and local client/server session readers. Their loaded views
+compose the owned Profile reader and the scoped Chat operation. Interactive
+views receive explicit Subject and Social resource props; they do not repeat
+session initialization.
+
+`socialModuleProfileFindByIdChatFind` accepts `includeSubjectProfiles` and
+`includeParticipants`. Subject expansion validates the requested owned Profile,
+collects all owned Profile memberships, deduplicates Chat IDs and reads one
+collection. Administrative scope uses the existing Chat lifecycle role check.
+Participant expansion runs in bulk after access validation. Query identity
+includes these parameters, API host and current principal. A loaded list row
+uses `dataSource="props"` and retains the parent collection subscription.
+
+Profile-scoped Knowledge reads retain the current Subject ID when resolving a
+target Profile in a Chat. An ordinary requester must participate; the existing
+administrative Chat scope may read without joining. The target Profile must
+still belong to that Chat and each Source must belong to the target Profile.
+Membership denial is a permission error, rather than an expired session.

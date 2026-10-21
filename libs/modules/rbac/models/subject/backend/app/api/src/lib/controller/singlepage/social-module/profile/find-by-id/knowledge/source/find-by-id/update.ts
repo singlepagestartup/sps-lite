@@ -39,6 +39,7 @@ export class Handler {
 
       await assertProfileKnowledgeSourceAccess({
         service: this.service,
+        subjectId: requireParam(c, "id"),
         socialModuleProfileId,
         knowledgeModuleSourceId,
         targetSocialModuleProfileId: c.req.query("targetSocialModuleProfileId"),

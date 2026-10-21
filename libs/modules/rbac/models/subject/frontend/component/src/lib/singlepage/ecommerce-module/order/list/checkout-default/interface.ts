@@ -21,7 +21,7 @@ export interface IComponentPropsExtended
 
 export interface IRowProps {
   subject: IModel;
-  order: import("@sps/rbac/models/subject/sdk/server").IResult["IEcommerceModuleOrderListResult"][number];
+  ecommerceModuleOrder: import("@sps/rbac/models/subject/sdk/server").IResult["IEcommerceModuleOrderListResult"][number];
   index: number;
   language: string;
   form: import("react-hook-form").UseFormReturn<any>;

@@ -120,11 +120,17 @@ explanation; distinguish planned work from implemented and tested work.
   overrides. A specialized relation needs association-specific evidence.
   Verify public variant registrations and preserve saved content during any
   split of a shared presentation record.
+- For authenticated chat lists and overviews, trace Host → saved RBAC Widget →
+  default Website Builder association → rendered Subject content. Flag a Host
+  adapter injecting a chat Subject operation into a lower module through
+  route-derived callbacks. Lower readers may still supply newly loaded data
+  through same-runtime render slots. Verify both an ordinary member and an
+  administrator observing a chat without joining it; Chat and Knowledge access
+  must follow their existing RBAC scope consistently.
 - Check resolved Page parameters against the frontend contract. Host leaf
-  compositions use Page's url-segment-values render-reader and pass the original
-  routeParams map to dependent module Widgets. Widgets select full keys and pass
-  explicit resource props to Content, client views, models and forms. Flag map
-  drilling above the leaf or below the module Widget, missing-key unfiltered
+  compositions use Page's url-segment-values render-reader, keep the complete
+  map inside its callback and pass explicit IDs/slugs directly to domain
+  components. Flag routeParams in Page, Widget or relation props, missing-key unfiltered
   reads, whole-map entity query keys, imperative visual SDK calls and Host imports
   from lower domain modules. Retain public domain variant dispatch, scalar API compatibility,
   locale/pagination behavior, current-Subject isolation and scoped guards.
