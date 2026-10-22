@@ -385,6 +385,19 @@ the Chat’s single primary relation retains `variant="default"`.
 
 ### OpenRouter decisions and automatic replies
 
+OpenRouter admission checks the sum of all Subject balance relations in each
+accepted currency. A new request needs at least the one-token reservation;
+zero and negative totals are rejected before model selection or generation.
+Billing debits one stable balance row with a conditional write and rereads the
+total after a competing write, so concurrent requests cannot reserve the same
+last token. Exact provider usage is settled after the response. That final cost
+can exceed the reservation and leave a negative total; further requests remain
+blocked until the total covers a new reservation.
+
+Agent persists an insufficient-tokens reply in the requesting Chat or Thread,
+marked as system traffic excluded from model context. Web AI Chat receives the
+reply without a Telegram premium keyboard. Telegram retains its premium flow.
+
 Creating an AI Chat assistant also creates and links five separate document
 Skills from `libs/shared/utils/src/lib/constants/ai-chat-skill-templates.ts`.
 Commands include the assistant profile ID; descriptions are independent for

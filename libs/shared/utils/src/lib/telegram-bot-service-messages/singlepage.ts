@@ -36,8 +36,8 @@ export const util = {
     en: "You do not have an active subscription. Please subscribe to use this feature.",
   },
   openRouterNotEnoughTokens: {
-    ru: "У вас закончились токены для данного функционала. Дождитесь возобновления счетчика, выберите другую подписку или пополните баланс токенов",
-    en: "У вас закончились токены для данного функционала. Дождитесь возобновления счетчика, выберите другую подписку или пополните баланс токенов",
+    ru: "Недостаточно токенов для генерации ответа. Пополните баланс или дождитесь следующего начисления по подписке.",
+    en: "You do not have enough tokens to generate a response. Top up your balance or wait for your next subscription allowance.",
   },
   openRouterContextResetByNew: {
     ru: "Контекст очищен. Следующий ответ будет строиться только от новых сообщений после /new.",

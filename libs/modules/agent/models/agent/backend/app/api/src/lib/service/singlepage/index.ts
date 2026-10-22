@@ -2465,60 +2465,67 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
             "Validation error. You do not have access to this resource because you have not 'subjectsToBillingModuleCurrencies' for pay that route",
           )
         ) {
+          let reply: ISocialModuleMessage;
           if (socialModuleThreadId) {
-            await rbacModuleSubjectApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageCreate(
-              {
-                id: props.rbacModuleSubject.id,
-                socialModuleProfileId: props.shouldReplySocialModuleProfile.id,
-                socialModuleChatId: props.socialModuleChat.id,
-                socialModuleThreadId,
-                data: this.withSystemMessageMetadata({
-                  source: "agent.openrouter.status",
-                  data: {
-                    description:
-                      this.statusMessages.openRouterNotEnoughTokens.ru,
-                  },
-                }),
-                options: {
-                  headers: {
-                    Authorization: "Bearer " + props.jwtToken,
+            reply =
+              await rbacModuleSubjectApi.socialModuleProfileFindByIdChatFindByIdThreadFindByIdMessageCreate(
+                {
+                  id: props.rbacModuleSubject.id,
+                  socialModuleProfileId:
+                    props.shouldReplySocialModuleProfile.id,
+                  socialModuleChatId: props.socialModuleChat.id,
+                  socialModuleThreadId,
+                  data: this.withSystemMessageMetadata({
+                    source: "agent.openrouter.status",
+                    data: {
+                      description:
+                        this.statusMessages.openRouterNotEnoughTokens.ru,
+                    },
+                  }),
+                  options: {
+                    headers: {
+                      Authorization: "Bearer " + props.jwtToken,
+                    },
                   },
                 },
-              },
-            );
+              );
           } else {
-            await rbacModuleSubjectApi.socialModuleProfileFindByIdChatFindByIdMessageCreate(
-              {
-                id: props.rbacModuleSubject.id,
-                socialModuleProfileId: props.shouldReplySocialModuleProfile.id,
-                socialModuleChatId: props.socialModuleChat.id,
-                data: this.withSystemMessageMetadata({
-                  source: "agent.openrouter.status",
-                  data: {
-                    description:
-                      this.statusMessages.openRouterNotEnoughTokens.ru,
-                  },
-                }),
-                options: {
-                  headers: {
-                    Authorization: "Bearer " + props.jwtToken,
+            reply =
+              await rbacModuleSubjectApi.socialModuleProfileFindByIdChatFindByIdMessageCreate(
+                {
+                  id: props.rbacModuleSubject.id,
+                  socialModuleProfileId:
+                    props.shouldReplySocialModuleProfile.id,
+                  socialModuleChatId: props.socialModuleChat.id,
+                  data: this.withSystemMessageMetadata({
+                    source: "agent.openrouter.status",
+                    data: {
+                      description:
+                        this.statusMessages.openRouterNotEnoughTokens.ru,
+                    },
+                  }),
+                  options: {
+                    headers: {
+                      Authorization: "Bearer " + props.jwtToken,
+                    },
                   },
                 },
-              },
-            );
+              );
           }
-          await this.telegramBotPremiumMessageWithKeyboardCreate({
-            jwtToken: props.jwtToken,
-            messageFromSocialModuleProfile:
-              props.messageFromSocialModuleProfile,
-            rbacModuleSubject: props.rbacModuleSubject,
-            shouldReplySocialModuleProfile:
-              props.shouldReplySocialModuleProfile,
-            socialModuleMessage: props.socialModuleMessage,
-            socialModuleChat: props.socialModuleChat,
-          });
+          if (props.socialModuleChat.variant === "telegram") {
+            await this.telegramBotPremiumMessageWithKeyboardCreate({
+              jwtToken: props.jwtToken,
+              messageFromSocialModuleProfile:
+                props.messageFromSocialModuleProfile,
+              rbacModuleSubject: props.rbacModuleSubject,
+              shouldReplySocialModuleProfile:
+                props.shouldReplySocialModuleProfile,
+              socialModuleMessage: props.socialModuleMessage,
+              socialModuleChat: props.socialModuleChat,
+            });
+          }
 
-          throw error;
+          return reply;
         }
       }
 
