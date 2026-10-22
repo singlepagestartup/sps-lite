@@ -1,41 +1,64 @@
-import { IComponentPropsExtended } from "../interface";
+import { Component as Page } from "@sps/host/models/page/frontend/component";
+import type { IExternalWidgetProps } from "../interface";
 import { Component as BlogModuleWidget } from "@sps/blog/models/widget/frontend/component";
-import { Component as Widget } from "./widget";
-
-export function Component(props: IComponentPropsExtended) {
+import { Component as RbacModuleSubject } from "@sps/rbac/models/subject/frontend/component";
+export function Component(props: IExternalWidgetProps) {
   return (
-    <BlogModuleWidget
+    <Page
       isServer={props.isServer}
-      variant="find"
-      apiProps={{
-        params: {
-          filters: {
-            and: [
-              {
-                column: "id",
-                method: "eq",
-                value: props.data.externalWidgetId,
-              },
-            ],
-          },
-        },
-      }}
+      variant="url-segment-values"
+      url={props.url}
     >
-      {({ data }) => {
-        return data?.map((entity, index) => {
-          return (
-            <BlogModuleWidget
-              key={index}
-              isServer={props.isServer}
-              data={entity}
-              language={props.language}
-              variant={entity.variant as any}
-            >
-              <Widget {...props} data={entity} variant={entity.variant} />
-            </BlogModuleWidget>
-          );
-        });
-      }}
-    </BlogModuleWidget>
+      {({ data: routeParams }) => (
+        <BlogModuleWidget
+          isServer={props.isServer}
+          variant="find"
+          apiProps={{
+            params: {
+              filters: {
+                and: [
+                  {
+                    column: "id",
+                    method: "eq",
+                    value: props.data.externalWidgetId,
+                  },
+                ],
+              },
+            },
+          }}
+        >
+          {({ data }) =>
+            data?.map((entity) => (
+              <BlogModuleWidget
+                key={entity.id}
+                isServer={props.isServer}
+                dataSource="props"
+                data={entity}
+                language={props.language}
+                articleSlug={routeParams?.["blog.articles.slug"]}
+                categorySlug={routeParams?.["blog.categories.slug"]}
+                variant={entity.variant as any}
+                renderPrivateContent={({ data }) => (
+                  <RbacModuleSubject
+                    isServer={props.isServer}
+                    variant="me-blog-module-article-private-content-default"
+                    blogModuleArticle={data}
+                    language={props.language}
+                  />
+                )}
+                renderProduct={({ data }) => (
+                  <RbacModuleSubject
+                    isServer={false}
+                    variant="me-ecommerce-module-product-card-default"
+                    ecommerceModuleProduct={data}
+                    language={props.language}
+                  />
+                )}
+              />
+            ))
+          }
+        </BlogModuleWidget>
+      )}
+    </Page>
   );
 }

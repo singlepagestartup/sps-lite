@@ -7,9 +7,9 @@ export function Component(props: IComponentPropsExtended) {
       isServer={props.isServer}
       variant={props.variant}
       data={props.data}
-      product={props.product}
+      ecommerceModuleProduct={props.ecommerceModuleProduct}
       className={props.className}
-      store={props.store}
+      ecommerceModuleStore={props.ecommerceModuleStore}
       language={props.language}
     />
   );

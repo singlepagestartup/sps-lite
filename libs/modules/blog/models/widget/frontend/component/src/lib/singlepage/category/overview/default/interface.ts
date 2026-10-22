@@ -10,6 +10,7 @@ export const variant = "category-overview-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
+  categorySlug?: string;
 }
 
 export interface IComponentPropsExtended
@@ -18,3 +19,9 @@ export interface IComponentPropsExtended
     typeof variant,
     IComponentProps
   > {}
+
+export interface IContentProps {
+  isServer: boolean;
+  language: string;
+  categorySlug?: string;
+}

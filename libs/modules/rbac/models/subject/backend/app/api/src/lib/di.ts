@@ -1,3 +1,4 @@
+import type { Service as CrmRequestService } from "@sps/crm/models/request/backend/app/api/src/lib/service";
 export interface IReadService {
   find: (props?: any) => Promise<any>;
   findById: (props: { id: string }) => Promise<any>;
@@ -22,7 +23,12 @@ export interface IExtendedReadService extends IReadService {
   findByIdExtended: (props: { id: string }) => Promise<any>;
 }
 
-export interface IEcommerceOrderReadService extends IExtendedReadService {
+export interface IEcommerceOrderReadService
+  extends IExtendedReadService,
+    ICreateService {
+  findByIdCartDetails: (props: {
+    id: string;
+  }) => Promise<import("@sps/ecommerce/models/order/sdk/model").ICartDetails>;
   findByIdTotal: (props: { id: string }) => Promise<any>;
   findByIdQuantity: (props: { id: string }) => Promise<any>;
   findByIdCheckoutAttributes: (props: {
@@ -35,7 +41,7 @@ export interface IEcommerceOrderReadService extends IExtendedReadService {
   }) => Promise<any>;
 }
 
-export interface IEcommerceOrdersToProductsService extends IReadService {
+export interface IEcommerceOrdersToProductsService extends ICreateService {
   getTotal: (props: { id: string }) => Promise<any>;
 }
 
@@ -44,7 +50,7 @@ export interface ISocialModule {
   skill: ICreateUpdateService;
   chat: IReadService;
   thread: IUpdateService;
-  message: IReadService;
+  message: ICreateService;
   action: IReadService;
   attribute: IReadService;
   attributeKey: IReadService;
@@ -53,15 +59,15 @@ export interface ISocialModule {
   profilesToKnowledgeModuleSources: ICreateService;
   messagesToKnowledgeModuleSources: ICreateService;
   skillsToKnowledgeModuleSources: ICreateService;
-  profilesToMessages: IReadService;
+  profilesToMessages: ICreateService;
   profilesToActions: IReadService;
   profilesToAttributes: IReadService;
   chatsToThreads: IReadService;
-  chatsToMessages: IReadService;
+  chatsToMessages: ICreateService;
   chatsToActions: IReadService;
   threadsToActions: IReadService;
   threadsToMessages: ICreateService;
-  messagesToFileStorageModuleFiles: IReadService;
+  messagesToFileStorageModuleFiles: ICreateService;
   attributeKeysToAttributes: IReadService;
 }
 
@@ -71,9 +77,9 @@ export interface IEcommerceModule {
   product: IExtendedReadService;
   attribute: IReadService;
   attributeKey: IReadService;
-  storesToOrders: IReadService;
+  storesToOrders: ICreateService;
   ordersToProducts: IEcommerceOrdersToProductsService;
-  ordersToBillingModuleCurrencies: IReadService;
+  ordersToBillingModuleCurrencies: ICreateService;
   ordersToBillingModulePaymentIntents: IReadService;
   ordersToFileStorageModuleFiles: IReadService;
   productsToAttributes: IReadService;
@@ -92,20 +98,33 @@ export interface IBillingModule {
 
 export interface INotificationModule {
   topic: IReadService;
-  notification: IReadService;
+  notification: IReadService & {
+    sendVerificationCode: (props: {
+      email: string;
+      code: string;
+    }) => Promise<{ sent: boolean }>;
+  };
   template: IReadService;
   topicsToNotifications: IReadService;
   notificationsToTemplates: IReadService;
 }
 
 export interface IFileStorageModule {
-  file: IReadService;
+  file: IReadService & {
+    readBytes: (file: { file: string }) => Promise<Buffer>;
+  };
 }
 
 export interface ICrmModule {
   form: IReadService;
-  request: IReadService;
+  request: CrmRequestService;
   formsToRequests: IReadService;
+  step: IReadService;
+  input: IReadService;
+  option: IReadService;
+  formsToSteps: IReadService;
+  stepsToInputs: IReadService;
+  inputsToOptions: IReadService;
 }
 
 export interface IBroadcastModule {
@@ -146,5 +165,8 @@ export const SubjectDI = {
   IBillRouteService: Symbol.for("rbac.subject.bill-route.service"),
   IEcommerceOrderProceedService: Symbol.for(
     "rbac.subject.ecommerce-order-proceed.service",
+  ),
+  IEcommerceProductCheckout: Symbol.for(
+    "rbac.subject.ecommerce-product-checkout",
   ),
 };

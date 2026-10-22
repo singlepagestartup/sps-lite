@@ -24,6 +24,7 @@ export class Handler {
       const socialModuleProfileId = requireParam(c, "socialModuleProfileId");
       const documentProfileId = await resolveKnowledgeSourceProfileId({
         service: this.service,
+        subjectId: requireParam(c, "id"),
         socialModuleProfileId,
         targetSocialModuleProfileId: c.req.query("targetSocialModuleProfileId"),
         socialModuleChatId: c.req.query("socialModuleChatId"),

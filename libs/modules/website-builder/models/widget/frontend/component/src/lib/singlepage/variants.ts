@@ -1,3 +1,15 @@
+import { Component as ContentSocialChatDefault } from "./content/social/chat-default";
+import { Component as ContentEcommerceDefault } from "./content-ecommerce-default";
+import { Component as ContentAiChatResetPassword } from "./content-ai-chat-reset-password";
+import { Component as ContentAiChatForgotPassword } from "./content-ai-chat-forgot-password";
+import { Component as ContentAiChatRegistration } from "./content-ai-chat-registration";
+import { Component as ContentAiChatAuthentication } from "./content-ai-chat-authentication";
+import { Component as ContentAiChatHelp } from "./content-ai-chat-help";
+import { Component as ContentAiChatMaterialsProcessing } from "./content-ai-chat-materials-processing";
+import { Component as ContentAiChatProfileCreate } from "./content-ai-chat-profile-create";
+import { Component as LandingAiChat } from "./landing-ai-chat";
+import { Component as FooterAiChat } from "./footer-ai-chat";
+import { Component as NavbarAiChat } from "./navbar-ai-chat";
 import { Component as AdminV2SidebarItem } from "./admin-v2/sidebar-item";
 import { Component as AdminV2Card } from "./admin-v2/card";
 import { Component as AdminV2Form } from "./admin-v2/form";
@@ -14,6 +26,18 @@ import { Component as ContentDefaultComponent } from "./content-default";
 import { Component as FooterDefaultComponent } from "./footer-default";
 import { Component as NavbarDefaultComponent } from "./navbar-default";
 export const variants = {
+  "content-social-chat-default": ContentSocialChatDefault,
+  "content-ecommerce-default": ContentEcommerceDefault,
+  "content-ai-chat-reset-password": ContentAiChatResetPassword,
+  "content-ai-chat-forgot-password": ContentAiChatForgotPassword,
+  "content-ai-chat-registration": ContentAiChatRegistration,
+  "content-ai-chat-authentication": ContentAiChatAuthentication,
+  "content-ai-chat-help": ContentAiChatHelp,
+  "content-ai-chat-materials-processing": ContentAiChatMaterialsProcessing,
+  "content-ai-chat-profile-create": ContentAiChatProfileCreate,
+  "landing-ai-chat": LandingAiChat,
+  "footer-ai-chat": FooterAiChat,
+  "navbar-ai-chat": NavbarAiChat,
   find: Find,
   "admin-select-input": AdminSelectInput,
   "admin-table-row": AdminTableRow,

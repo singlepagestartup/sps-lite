@@ -1,7 +1,7 @@
 export { type IModel } from "@sps/rbac/models/subject/sdk/model";
 import { IModel } from "@sps/rbac/models/subject/sdk/model";
-import { IModel as IProduct } from "@sps/ecommerce/models/product/sdk/model";
-import { IModel as IStore } from "@sps/ecommerce/models/store/sdk/model";
+import { IModel as IEcommerceModuleProduct } from "@sps/ecommerce/models/product/sdk/model";
+import { IModel as IEcommerceModuleStore } from "@sps/ecommerce/models/store/sdk/model";
 import {
   IComponentProps as IParentComponentProps,
   IComponentPropsExtended as IParentComponentPropsExtended,
@@ -12,8 +12,8 @@ export const variant = "ecommerce-module-product-cart-default" as const;
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
   language: string;
-  product: IProduct;
-  store?: IStore;
+  ecommerceModuleProduct: IEcommerceModuleProduct;
+  ecommerceModuleStore?: IEcommerceModuleStore;
 }
 
 export interface IComponentPropsExtended

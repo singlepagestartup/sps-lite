@@ -28,3 +28,19 @@ Social widgets provide layout wrappers for profile and chat views.
 - `admin-select-input`: admin select input for choosing a widget.
 - `admin-table`: admin table listing widgets.
 - `admin-table-row`: admin row showing widget fields.
+
+## Page context and chat composition
+
+Profile overview accepts `profileSlug` selected by Host and
+loads the Profile through its model reader. Authenticated chat lists and chat
+overviews belong to RBAC Widgets. Their Website Builder frame receives rendered
+Subject content, and Social model views retain the Chat/Thread/Message UI.
+Social imports no RBAC code and the legacy chat Widget wrappers render only
+supplied children; they do not extract chat IDs or invoke higher-module callbacks.
+
+Existing chat Widget records and their localized content are retained by
+`tools/runtime/social-widget-links.ts`. Its prepare/apply/rollback flow copies
+the frame fields into explicit Website Builder instances and switches the same
+Host association IDs to RBAC Widgets. The inactive original source associations
+prevent seed from recreating an active duplicate. A downstream upgrade using
+these legacy bindings needs the data cutover as well as the new code.

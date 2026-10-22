@@ -10,8 +10,8 @@ export const variant = "article-overview-default" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  id: IArticle["id"];
   language: string;
+  articleSlug?: string;
 }
 
 export interface IComponentPropsExtended
@@ -20,3 +20,9 @@ export interface IComponentPropsExtended
     typeof variant,
     IComponentProps
   > {}
+
+export interface IContentProps {
+  isServer: boolean;
+  language: string;
+  articleSlug?: string;
+}

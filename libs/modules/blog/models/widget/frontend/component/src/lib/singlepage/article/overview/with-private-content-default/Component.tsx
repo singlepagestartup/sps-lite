@@ -1,3 +1,4 @@
+import { Component as Content } from "./Content";
 import { IComponentPropsExtended } from "./interface";
 import { cn } from "@sps/shared-frontend-client-utils";
 
@@ -14,7 +15,14 @@ export function Component(props: IComponentPropsExtended) {
         props.className,
       )}
     >
-      {props.children}
+      {props.children ?? (
+        <Content
+          isServer={props.isServer}
+          language={props.language}
+          articleSlug={props.articleSlug}
+          renderPrivateContent={props.renderPrivateContent}
+        />
+      )}
     </div>
   );
 }

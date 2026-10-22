@@ -29,6 +29,9 @@ export function Component<
   delete passProps.Component;
   delete passProps.Skeleton;
   delete passProps.api;
+  delete passProps.Provider;
+  delete passProps.clientApi;
+  delete passProps.serverApi;
 
   if (isLoading || !data) {
     return props.Skeleton ?? <Skeleton />;

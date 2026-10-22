@@ -2,6 +2,7 @@
 
 import { IComponentPropsExtended } from "./interface";
 import { api } from "@sps/rbac/models/subject/sdk/client";
+import { Component as Subject } from "@sps/rbac/models/subject/frontend/component";
 import { Component as EcommerceOrdersToProducts } from "@sps/ecommerce/relations/orders-to-products/frontend/component";
 import { Button, Form } from "@sps/shared-ui-shadcn";
 import { useForm } from "react-hook-form";
@@ -32,7 +33,7 @@ export function Component(props: IComponentPropsExtended) {
   async function onSubmit(data: z.infer<typeof formSchema>) {
     updateEntity.mutate({
       id: props.data.id,
-      orderId: props.order.id,
+      orderId: props.ecommerceModuleOrder.id,
       data,
     });
   }
@@ -46,31 +47,26 @@ export function Component(props: IComponentPropsExtended) {
   return (
     <Form {...form}>
       <div className="flex flex-row gap-1">
-        <EcommerceOrdersToProducts
+        <Subject
           isServer={false}
-          variant="find"
-          apiProps={{
-            params: {
-              filters: {
-                and: [
-                  {
-                    column: "orderId",
-                    method: "eq",
-                    value: props.order.id,
-                  },
-                ],
-              },
-            },
-          }}
+          variant="ecommerce-module-order-list-default"
+          data={props.data}
+          language={props.language}
+          apiProps={{ params: { includeCartDetails: true } }}
         >
-          {({ data }) => {
+          {({ data: orders }) => {
+            const data = orders.find(
+              (order) => order.id === props.ecommerceModuleOrder.id,
+            )?.cartDetails?.lines;
+
             return data?.map((entity, index) => {
               return (
-                <div key={index} className="flex w-full gap-1">
+                <div key={entity.id} className="flex w-full gap-1">
                   <EcommerceOrdersToProducts
                     isServer={false}
                     variant="form-field-default"
                     field="id"
+                    dataSource="props"
                     data={entity}
                     form={form}
                     name={`ordersToProducts.${index}.id`}
@@ -80,6 +76,7 @@ export function Component(props: IComponentPropsExtended) {
                     isServer={false}
                     variant="form-field-default"
                     field="quantity"
+                    dataSource="props"
                     data={entity}
                     form={form}
                     type="number"
@@ -89,11 +86,12 @@ export function Component(props: IComponentPropsExtended) {
               );
             });
           }}
-        </EcommerceOrdersToProducts>
+        </Subject>
         <Button
           onClick={form.handleSubmit(onSubmit)}
           variant="secondary"
           className="w-fit flex shrink-0"
+          disabled={updateEntity.isPending}
         >
           Update
         </Button>

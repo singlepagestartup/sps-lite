@@ -7,10 +7,10 @@ export function Component(props: IComponentPropsExtended) {
       isServer={props.isServer}
       variant={props.variant}
       className={props.className}
-      product={props.product}
+      ecommerceModuleProduct={props.ecommerceModuleProduct}
       data={props.data}
       language={props.language}
-      store={props.store}
+      ecommerceModuleStore={props.ecommerceModuleStore}
     />
   );
 }

@@ -25,6 +25,7 @@ function createContext() {
     req: {
       param: jest.fn((name: string) => {
         const params: Record<string, string> = {
+          id: "subject-1",
           socialModuleProfileId: "profile-1",
           knowledgeModuleSourceId: "source-1",
         };

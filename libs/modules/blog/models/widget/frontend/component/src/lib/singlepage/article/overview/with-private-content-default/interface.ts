@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 export { type IModel } from "@sps/blog/models/widget/sdk/model";
 import { IModel } from "@sps/blog/models/widget/sdk/model";
 import {
@@ -10,8 +11,9 @@ export const variant = "article-overview-with-private-content-default" as const;
 
 export interface IComponentProps
   extends IParentComponentProps<IModel, typeof variant> {
-  id: IArticle["id"];
   language: string;
+  articleSlug?: string;
+  renderPrivateContent?: (props: { data: IArticle }) => ReactNode;
 }
 
 export interface IComponentPropsExtended
@@ -20,3 +22,10 @@ export interface IComponentPropsExtended
     typeof variant,
     IComponentProps
   > {}
+
+export interface IContentProps {
+  isServer: boolean;
+  language: string;
+  articleSlug?: string;
+  renderPrivateContent?: IComponentProps["renderPrivateContent"];
+}

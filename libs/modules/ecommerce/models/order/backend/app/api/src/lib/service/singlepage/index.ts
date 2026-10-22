@@ -1,3 +1,4 @@
+import { Service as CartDetailsService } from "./find-by-id/cart-details";
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI } from "@sps/shared-backend-api";
@@ -115,6 +116,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     this.productsToFileStorageModuleFiles = productsToFileStorageModuleFiles;
     this.ordersToBillingModulePaymentIntents =
       ordersToBillingModulePaymentIntents;
+  }
+
+  async findByIdCartDetails(props: { id: string }) {
+    return new CartDetailsService({
+      ordersToProducts: this.ordersToProducts,
+      product: this.product,
+      total: (input) => this.findByIdTotal(input),
+    }).execute(props);
   }
 
   async findByIdExtended(

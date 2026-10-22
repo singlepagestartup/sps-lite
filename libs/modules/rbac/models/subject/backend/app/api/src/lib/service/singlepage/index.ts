@@ -1,7 +1,33 @@
+import {
+  Service as ChatParticipants,
+  type IExecuteProps as IChatParticipantsProps,
+} from "./social-module/chat/participants";
+import {
+  Service as EcommerceOrderAccess,
+  type IExecuteProps as IEcommerceOrderAccessProps,
+} from "./ecommerce/order/access";
+import {
+  Service as CrmFormRequestCreate,
+  type IExecuteProps as ICrmFormRequestCreateProps,
+} from "./crm/form/request";
 import "reflect-metadata";
 import { inject, injectable } from "inversify";
 import { CRUDService, DI } from "@sps/shared-backend-api";
 import { Repository } from "../../repository";
+import { verify } from "hono/jwt";
+import { RBAC_JWT_SECRET } from "@sps/shared-utils";
+import {
+  Service as AiContextService,
+  type IAiContextServiceProps,
+  type IAiContextService,
+} from "./social-module/profile/ai/context";
+import { Service as ProfileOwnership } from "./social-module/profile/ownership";
+import {
+  Service as ProfileSkills,
+  type IForDocumentProps as IProfileDocumentSkillProps,
+} from "./social-module/profile/skills";
+import { Service as AuthenticationMe } from "./authentication/me";
+import { Service as FreeSubscription } from "./billing/free-subscription";
 import { Table } from "@sps/rbac/models/subject/backend/repository/database";
 import { Service as Logout } from "./logout";
 import {
@@ -50,6 +76,10 @@ import {
   Service as EcommerceOrderCheckout,
   IExecuteProps as IEcommerceOrderCheckoutExecuteProps,
 } from "./ecommerce/order/checkout";
+import {
+  Service as EcommerceProductCheckout,
+  type IExecuteProps as IEcommerceProductCheckoutProps,
+} from "./ecommerce/product/checkout";
 import {
   Service as ChatSubjectsWithSocialModuleProfiles,
   IExecuteProps as IChatSubjectsWithSocialModuleProfilesProps,
@@ -130,6 +160,10 @@ import {
   SocialProfileKnowledgeAccessService,
   type IEnsureSocialProfileKnowledgeAccessProps,
 } from "./social-module/profile/knowledge/access";
+import {
+  Service as SocialModuleProfileAvatarUpdate,
+  type IExecuteProps as ISocialModuleProfileAvatarUpdateProps,
+} from "./social-module/profile/avatar";
 
 @injectable()
 export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
@@ -211,8 +245,32 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     this.subjectsToBillingModuleCurrencies = subjectsToBillingModuleCurrencies;
   }
 
+  async ecommerceModuleOrderAssertAccess(props: IEcommerceOrderAccessProps) {
+    return new EcommerceOrderAccess({
+      subjectsToOrders: this.subjectsToEcommerceModuleOrders,
+      ordersToProducts: this.ecommerceModule.ordersToProducts,
+    }).execute(props);
+  }
+
   async isAuthorized(props: IIsAuthorizedExecuteProps): Promise<any> {
     return this.isAuthorizedService.execute(props);
+  }
+
+  async socialModuleProfileAvatarUpdate(
+    props: ISocialModuleProfileAvatarUpdateProps,
+  ) {
+    return new SocialModuleProfileAvatarUpdate({
+      fileStorageModule: this.fileStorageModule,
+    }).execute(props);
+  }
+
+  async socialModuleProfileDocumentSkillFind(
+    props: IProfileDocumentSkillProps,
+  ) {
+    return this.getSocialModuleProfileSkillsService().forDocument(
+      props.socialModuleProfileId,
+      props.documentKey,
+    );
   }
 
   async socialModuleProfileMcpCatalogOpen(
@@ -221,10 +279,28 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return this.getSocialModuleProfileMcpCatalogService().open(props);
   }
 
+  async socialModuleProfileAvatarFind(props: {
+    socialModuleProfileId: string | undefined;
+  }) {
+    return new SocialModuleProfileAvatarUpdate({
+      fileStorageModule: this.fileStorageModule,
+    }).find(props.socialModuleProfileId);
+  }
+
   async socialModuleProfileAiToolLoopRun(
     props: ISocialProfileAiToolLoopProps,
   ): Promise<ISocialProfileAiToolLoopResult> {
     return this.getSocialModuleProfileAiToolLoopService().run(props);
+  }
+
+  socialModuleProfileAiContextCreate(
+    props: Omit<IAiContextServiceProps, "socialModule" | "fileStorageModule">,
+  ): IAiContextService {
+    return this.createSocialModuleProfileAiContextService({
+      ...props,
+      socialModule: this.socialModule,
+      fileStorageModule: this.fileStorageModule,
+    });
   }
 
   socialModuleProfileAiExecutionActionReporterCreate(
@@ -262,15 +338,29 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
       throw new Error("Not found error. Social module thread not found");
     }
 
-    return this.socialModule.thread.update({
-      id: thread.id,
-      data: {
-        metadata: setRbacAiThreadModelPreference({
-          metadata: thread.metadata,
-          modelId: props.modelId,
-        }),
-      },
-    });
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const current = attempt
+        ? await this.socialModule.thread.findById({ id: thread.id })
+        : thread;
+      const metadata = setRbacAiThreadModelPreference({
+        metadata: current.metadata,
+        modelId: props.modelId,
+      });
+      const updated = await this.socialModule.thread.update({
+        id: current.id,
+        data: {
+          metadataNamespaceUpdate: {
+            namespace: "rbacAiThreadPreferences",
+            expectedValue: current.metadata.rbacAiThreadPreferences ?? null,
+            value: metadata.rbacAiThreadPreferences,
+          },
+        },
+      });
+      if (updated) return updated;
+    }
+    throw new Error(
+      "Thread preferences changed concurrently. Retry with the current thread.",
+    );
   }
 
   async logout(): Promise<any> {
@@ -302,14 +392,18 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async authenticationLoginAndPassowrd(
     props: IAuthenticationEmailAndPasswordExecuteProps,
   ) {
-    return new AuthenticationEmailAndPassword(this.repository).execute(props);
+    return this.completeUserAuthentication(
+      await new AuthenticationEmailAndPassword(this.repository).execute(props),
+    );
   }
 
   async authenticationEthereumVirtualMachine(
     props: IAuthenticationEthereumVirtualMachineExecuteProps,
   ) {
-    return new AuthenticationEthereumVirtualMachine(this.repository).execute(
-      props,
+    return this.completeUserAuthentication(
+      await new AuthenticationEthereumVirtualMachine(this.repository).execute(
+        props,
+      ),
     );
   }
 
@@ -326,7 +420,44 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
   async authenticationOAuthExchange(
     props: IAuthenticationOAuthExchangeExecuteProps,
   ) {
-    return new AuthenticationOAuthExchange(this.repository).execute(props);
+    return this.completeUserAuthentication(
+      await new AuthenticationOAuthExchange(this.repository).execute(props),
+    );
+  }
+
+  async socialModuleProfileOwnershipEnsure(props: { subjectId: string }) {
+    return new ProfileOwnership(this).ensure(props);
+  }
+
+  async authenticationMe(props: { subjectId: string }) {
+    return new AuthenticationMe(this).execute(props);
+  }
+
+  protected async completeUserAuthentication<T extends { jwt: string }>(
+    result: T,
+  ): Promise<T> {
+    if (!RBAC_JWT_SECRET)
+      throw new Error("Configuration error. RBAC_JWT_SECRET not set");
+    const decoded = await verify(result.jwt, RBAC_JWT_SECRET);
+    const subjectId = decoded.subject?.["id"];
+    if (typeof subjectId !== "string")
+      throw new Error(
+        "Authentication error. No Subject in authenticated session",
+      );
+    await this.socialModuleProfileOwnershipEnsure({ subjectId });
+    await this.freeSubscriptionEnsure({ subjectId });
+    return result;
+  }
+
+  async freeSubscriptionEnsure(props: { subjectId: string }) {
+    await new FreeSubscription({
+      checkout: (checkoutProps) => this.ecommerceProductCheckout(checkoutProps),
+      ecommerceModule: this.ecommerceModule,
+      billingModule: this.billingModule,
+      subjectsToEcommerceModuleOrders: this.subjectsToEcommerceModuleOrders,
+    }).activate({ id: props.subjectId }, (proceedProps) =>
+      this.ecommerceOrderProceed(proceedProps),
+    );
   }
 
   async deleteAnonymousSubjects(props?: IDeleteAnonymousSubjectsExecuteProps) {
@@ -387,6 +518,22 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     }).execute(props);
   }
 
+  async crmModuleFormRequestCreate(props: ICrmFormRequestCreateProps) {
+    return this.getCrmFormRequestCreateService().execute(props);
+  }
+
+  async ecommerceProductCheckout(props: IEcommerceProductCheckoutProps) {
+    return this.getEcommerceProductCheckoutService().execute(props);
+  }
+
+  async socialModuleChatLifecycleIsSubjectAdmin(props: { subjectId: string }) {
+    return this.getChatLifecycleService().isSubjectAdmin(props.subjectId);
+  }
+
+  async socialModuleChatParticipants(props: IChatParticipantsProps) {
+    return new ChatParticipants(this).execute(props);
+  }
+
   async socialModuleChatSubjectsWithSocialModuleProfiles(
     props: IChatSubjectsWithSocialModuleProfilesProps,
   ) {
@@ -402,6 +549,13 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     autoBootstrapProfile: boolean;
   }) {
     return this.getChatLifecycleService().createChatWithDefaultThread(props);
+  }
+
+  async socialModuleChatLifecycleValidateDocument(props: {
+    socialModuleChatId: string;
+    document: unknown;
+  }) {
+    return this.getChatLifecycleService().validateDocument(props);
   }
 
   async socialModuleChatLifecycleAssertSubjectOwnsChat(props: {
@@ -502,6 +656,7 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     props: ITelegramCheckoutFreeSubscriptionExecuteProps,
   ) {
     return new TelegramCheckoutFreeSubscription({
+      checkout: (checkoutProps) => this.ecommerceProductCheckout(checkoutProps),
       ecommerceModule: this.ecommerceModule,
       billingModule: this.billingModule,
       subjectsToEcommerceModuleOrders: this.subjectsToEcommerceModuleOrders,
@@ -512,12 +667,30 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
     return new ChatLifecycleService(this);
   }
 
+  protected getCrmFormRequestCreateService() {
+    return new CrmFormRequestCreate(this);
+  }
+
+  protected getEcommerceProductCheckoutService() {
+    return new EcommerceProductCheckout(this);
+  }
+
+  protected getSocialModuleProfileSkillsService() {
+    return new ProfileSkills(this.socialModule);
+  }
+
   protected getSocialModuleProfileMcpCatalogService() {
     return new ProfileMcpCatalogService();
   }
 
   protected getSocialModuleProfileAiToolLoopService() {
     return new SocialProfileAiToolLoop();
+  }
+
+  protected createSocialModuleProfileAiContextService(
+    props: IAiContextServiceProps,
+  ): IAiContextService {
+    return new AiContextService(props);
   }
 
   protected createSocialModuleProfileAiExecutionActionReporter(
@@ -528,6 +701,14 @@ export class Service extends CRUDService<(typeof Table)["$inferSelect"]> {
 }
 
 export type {
+  ICrmModuleFormRequestCreateProps,
+  ISocialModuleProfileDocumentSkillFindProps,
+  IEcommerceProductCheckoutProps,
+  IAiContextService,
+  IAiContextServiceProps,
+  IAiContextPrepareProps,
+  IAiContextPreparation,
+  IAiContextHistoryMessage,
   IAiExecutionActionReporter,
   IAiExecutionActionReporterProps,
   IOpenRouterBillingLedgerEntry,

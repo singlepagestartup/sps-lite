@@ -63,6 +63,11 @@ export class Handler {
         throw new Error("Not Found error. No entity found");
       }
 
+      await this.service.ecommerceModuleOrderAssertAccess({
+        subjectId: id,
+        orderId,
+      });
+
       const order = await this.service.ecommerceModule.order.findById({
         id: orderId,
       });

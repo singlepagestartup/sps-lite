@@ -44,6 +44,7 @@ export async function findProfileKnowledgeSourceRelations(props: {
 
 export async function resolveKnowledgeSourceProfileId(props: {
   service: Service;
+  subjectId: string;
   socialModuleProfileId: string;
   targetSocialModuleProfileId?: string;
   socialModuleChatId?: string;
@@ -102,15 +103,20 @@ export async function resolveKnowledgeSourceProfileId(props: {
     }),
   ]);
 
-  if (!requestingProfileToChat?.length) {
+  if (
+    !requestingProfileToChat?.length &&
+    !(await props.service.socialModuleChatLifecycleIsSubjectAdmin({
+      subjectId: props.subjectId,
+    }))
+  ) {
     throw new Error(
-      "Authorization error. Requesting social-module profile is not connected to chat",
+      "Permission error. Requesting social-module profile is not connected to chat",
     );
   }
 
   if (!targetProfileToChat?.length) {
     throw new Error(
-      "Authorization error. Target social-module profile is not connected to chat",
+      "Permission error. Target social-module profile is not connected to chat",
     );
   }
 
@@ -130,6 +136,7 @@ export function getKnowledgeSourceIds(relations: unknown[]) {
 
 export async function assertProfileKnowledgeSourceAccess(props: {
   service: Service;
+  subjectId: string;
   socialModuleProfileId: string;
   knowledgeModuleSourceId: string;
   targetSocialModuleProfileId?: string;
@@ -137,6 +144,7 @@ export async function assertProfileKnowledgeSourceAccess(props: {
 }) {
   const documentProfileId = await resolveKnowledgeSourceProfileId({
     service: props.service,
+    subjectId: props.subjectId,
     socialModuleProfileId: props.socialModuleProfileId,
     targetSocialModuleProfileId: props.targetSocialModuleProfileId,
     socialModuleChatId: props.socialModuleChatId,

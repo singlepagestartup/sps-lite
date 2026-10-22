@@ -21,6 +21,18 @@ export const options = {
   },
 } as NextRequestOptions;
 export const variants = [
+  "content-social-chat-default",
+  "content-ecommerce-default",
+  "content-ai-chat-authentication",
+  "content-ai-chat-reset-password",
+  "content-ai-chat-forgot-password",
+  "content-ai-chat-registration",
+  "content-ai-chat-help",
+  "content-ai-chat-materials-processing",
+  "content-ai-chat-profile-create",
+  "landing-ai-chat",
+  "footer-ai-chat",
+  "navbar-ai-chat",
   "default",
   "content-default",
   "footer-default",

@@ -57,7 +57,7 @@ export function Component(props: IComponentPropsExtended) {
       email: "",
       quantity: 1,
       comment: "",
-      storeId: props.store?.id || undefined,
+      storeId: props.ecommerceModuleStore?.id || undefined,
       billingModule: {
         currency: {
           id: undefined,
@@ -70,7 +70,7 @@ export function Component(props: IComponentPropsExtended) {
     productCheckout
       .mutateAsync({
         id: props.data.id,
-        productId: props.product.id,
+        productId: props.ecommerceModuleProduct.id,
         data,
       })
       .then((result) => {
@@ -95,7 +95,7 @@ export function Component(props: IComponentPropsExtended) {
             form={form}
             formFieldName="billingModule.currency.id"
             className="w-fit"
-            data={props.product}
+            data={props.ecommerceModuleProduct}
           />
           <FormField
             ui="shadcn"
@@ -135,7 +135,7 @@ export function Component(props: IComponentPropsExtended) {
                   <EcommerceProduct
                     isServer={false}
                     variant="price-default"
-                    data={props.product}
+                    data={props.ecommerceModuleProduct}
                     className="text-white"
                     billingModuleCurrencyId={form.watch(
                       "billingModule.currency.id",

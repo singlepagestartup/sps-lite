@@ -10,7 +10,11 @@ import {
   type IResult as IParentResult,
 } from "@sps/rbac/models/subject/sdk/server";
 import { saturateHeaders } from "@sps/shared-frontend-client-utils";
-import { queryClient, subscription } from "@sps/shared-frontend-client-api";
+import {
+  queryClient,
+  subscription,
+  consistencyQueryKey,
+} from "@sps/shared-frontend-client-api";
 import {
   defaultCompiledTopicRules,
   resolveTopicsForPath,
@@ -45,13 +49,13 @@ export function action(props: IProps) {
   }, [queryKey]);
 
   return useQuery<IResult>({
-    queryKey: [queryKey],
+    queryKey: consistencyQueryKey(queryKey, undefined, clientHost),
     // This RBAC endpoint is a composite read over a Social relation and
     // Knowledge Sources. Resolve the framework rule instead of deriving the
     // misleading literal `social.documents` topic from its URL suffix.
     meta: {
-      topics: resolveTopicsForPath(queryKey, defaultCompiledTopicRules),
       ...(userMeta ?? {}),
+      topics: resolveTopicsForPath(queryKey, defaultCompiledTopicRules),
     },
     queryFn: async () => {
       const result = await api.socialModuleProfileFindByIdKnowledgeSourceFind({

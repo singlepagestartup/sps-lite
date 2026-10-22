@@ -5,6 +5,7 @@ import { IComponentProps as IAdminV2SelectInputComponentProps } from "./admin-v2
 import { IComponentProps as IAdminV2TableComponentProps } from "./admin-v2/table/interface";
 import { IComponentProps as IAdminV2TableRowComponentProps } from "./admin-v2/table-row/interface";
 import { IComponentProps as IUrlSegmentValueComponentProps } from "./url-segment-value/interface";
+import type { IComponentProps as IUrlSegmentValuesComponentProps } from "./url-segment-values/interface";
 import { IComponentProps as IFindByUrlComponentProps } from "./find-by-url/interface";
 import { IComponentProps as IFindComponentProps } from "./find/interface";
 import { IComponentProps as IAdminTableRowComponentProps } from "./admin/table-row/interface";
@@ -13,6 +14,7 @@ import { IComponentProps as IAdminSelectInputComponentProps } from "./admin/sele
 import { IComponentProps as IAdminFormComponentProps } from "./admin/form/interface";
 import { IComponentProps as IDefaultComponentProps } from "./default/interface";
 export type IComponentProps =
+  | IUrlSegmentValuesComponentProps
   | IUrlSegmentValueComponentProps
   | IFindByUrlComponentProps
   | IFindComponentProps

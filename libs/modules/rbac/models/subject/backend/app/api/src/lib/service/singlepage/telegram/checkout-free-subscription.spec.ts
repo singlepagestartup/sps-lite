@@ -12,13 +12,6 @@ jest.mock("@sps/shared-utils", () => ({
   RBAC_SECRET_KEY: "test-rbac-secret",
 }));
 
-jest.mock("@sps/rbac/models/subject/sdk/server", () => ({
-  api: {
-    ecommerceModuleProductCheckout: (...args: unknown[]) =>
-      mockEcommerceModuleProductCheckout(...args),
-  },
-}));
-
 import { Service } from "./checkout-free-subscription";
 
 function createFreeSubscriptionContext(props?: {
@@ -125,6 +118,7 @@ function createFreeSubscriptionContext(props?: {
   } as any;
 
   const service = new Service({
+    checkout: mockEcommerceModuleProductCheckout,
     subjectsToEcommerceModuleOrders,
     ecommerceModule,
     billingModule,
@@ -187,7 +181,7 @@ describe("Given: telegram user with attached subject triggers the bot", () => {
      *
      * Given: the subject has no ecommerce orders and a zero-price subscription product exists.
      * When: telegram free subscription checkout is requested.
-     * Then: checkout starts with telegram-star provider and privileged headers.
+     * Then: checkout uses the trusted capability with the telegram-star provider.
      */
     it("Then: free subscription checkout starts with telegram-star provider", async () => {
       const checkoutResult = {
@@ -218,12 +212,6 @@ describe("Given: telegram user with attached subject triggers the bot", () => {
             },
           },
           account: "telegram-chat-1",
-        },
-        options: {
-          headers: {
-            "X-RBAC-SECRET-KEY": "test-rbac-secret",
-            "Cache-Control": "no-store",
-          },
         },
       });
     });

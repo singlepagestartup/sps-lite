@@ -51,6 +51,7 @@ function createContext(
 
 function createService() {
   return {
+    ecommerceModuleOrderAssertAccess: jest.fn().mockResolvedValue(undefined),
     findById: jest.fn().mockResolvedValue({ id: "subject-1" }),
     ecommerceModule: {
       order: {
@@ -110,5 +111,35 @@ describe("Given: ecommerce order update handler", () => {
     expect(context.json).toHaveBeenCalledWith({
       data: expect.objectContaining({ id: "subject-1" }),
     });
+  });
+  it("ignores injected order state and line ownership fields", async () => {
+    const service = createService();
+    const context = createContext(
+      { id: "subject-1", orderId: "order-1" },
+      {
+        data: JSON.stringify({
+          status: "paid",
+          ordersToProducts: [
+            {
+              id: "otp-1",
+              quantity: 2,
+              orderId: "foreign",
+              productId: "other",
+            },
+          ],
+        }),
+      },
+    );
+    await new Handler(service).execute(context, jest.fn());
+    expect(service.ecommerceModuleOrderAssertAccess).toHaveBeenCalledWith({
+      subjectId: "subject-1",
+      orderId: "order-1",
+      lineIds: ["otp-1"],
+    });
+    expect(orderUpdateMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: { ordersToProducts: [{ id: "otp-1", quantity: 2 }] },
+      }),
+    );
   });
 });

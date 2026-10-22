@@ -24,7 +24,7 @@ export function Component(props: IComponentPropsExtended) {
   async function onSubmit(data: z.infer<typeof formSchema>) {
     deleteEntity.mutate({
       id: props.data.id,
-      orderId: props.order.id,
+      orderId: props.ecommerceModuleOrder.id,
     });
   }
 
@@ -45,7 +45,7 @@ export function Component(props: IComponentPropsExtended) {
               {
                 column: "orderId",
                 method: "eq",
-                value: props.order.id,
+                value: props.ecommerceModuleOrder.id,
               },
             ],
           },

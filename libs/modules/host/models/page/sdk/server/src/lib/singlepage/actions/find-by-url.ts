@@ -1,4 +1,8 @@
-import { route, IModel, serverHost } from "@sps/host/models/page/sdk/model";
+import {
+  route,
+  IResolvedPage,
+  serverHost,
+} from "@sps/host/models/page/sdk/model";
 import {
   NextRequestOptions,
   responsePipe,
@@ -56,7 +60,7 @@ export async function action({
     options,
   );
 
-  const json = await responsePipe<{ data: IModel }>({
+  const json = await responsePipe<{ data: IResolvedPage }>({
     res,
     catchErrors: catchErrors || productionBuild,
     silentErrorStatuses,
@@ -66,7 +70,7 @@ export async function action({
     return;
   }
 
-  const transformedData = transformResponseItem<IModel>(json);
+  const transformedData = transformResponseItem<IResolvedPage>(json);
 
   if (!transformedData?.id) {
     return;
