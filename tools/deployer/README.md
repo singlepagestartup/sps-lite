@@ -382,7 +382,9 @@ relation migrations, finishes seeding, and then starts the HTTP listener.
 A failed migration or seed stops startup. The API service health check probes
 its loopback `authentication/me` endpoint and requires a successful HTTP
 response; an unauthenticated request returns an empty session. The 30-minute
-startup allowance covers migrations.
+startup allowance covers migrations. The probe sends `Cache-Control: no-store`
+so cache-version lookups cannot stall the liveness request. Without credentials,
+the endpoint returns an empty session without querying subjects or identities.
 With `start-first` updates, Swarm retains the previous API task until the new
 task passes this check. Existing services must apply the API compose health
 check once before an image with synchronous migrations is rolled out.

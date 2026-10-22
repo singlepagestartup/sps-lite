@@ -1,4 +1,6 @@
 import { Hono } from "hono";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 const values = new Map<string, string>();
 jest.mock("@sps/providers-kv", () => ({
   Provider: class {
@@ -13,6 +15,45 @@ jest.mock("@sps/providers-kv", () => ({
 jest.mock("@sps/providers-db", () => ({ ConsistencyStore: jest.fn() }));
 import { createConsistencyRuntime } from "./consistency";
 import { consistencyContext } from "../repository/database/context";
+
+it("keeps the deployed health probe independent of a stalled cache-version lookup", async () => {
+  const template = readFileSync(
+    resolve(
+      __dirname,
+      "../../../../../../../tools/deployer/api/docker-compose.api.yaml.j2",
+    ),
+    "utf8",
+  );
+  const command: string[] = JSON.parse(template.match(/test: (\[.*\])/)![1]);
+  const headers = new Headers();
+  command.forEach((argument, index) => {
+    if (argument === "--header") {
+      const [name, ...value] = command[index + 1].split(":");
+      headers.set(name, value.join(":").trim());
+    }
+  });
+  expect(headers.get("Cache-Control")).toBe("no-store");
+  const path = new URL(command.at(-1)!).pathname;
+  const store: any = {
+    status: jest.fn(() => new Promise(() => {})),
+    register: jest.fn(),
+  };
+  const runtime = createConsistencyRuntime({
+    store,
+    verifyAuthorization: async () => {},
+  });
+  const app = new Hono();
+  app.use(runtime.middleware());
+  app.use(runtime.cache());
+  app.get(path, (c) => c.json({ data: null }));
+
+  const response = await app.request(path, { headers });
+
+  expect(response.status).toBe(200);
+  expect(await response.json()).toEqual({ data: null });
+  expect(store.status).not.toHaveBeenCalled();
+  expect(store.register).not.toHaveBeenCalled();
+});
 
 it("keeps sending heartbeats while Next invalidation is failing", async () => {
   const status = { epoch: "test", cursor: "0", oldest: "0", degraded: true };
